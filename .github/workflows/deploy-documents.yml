@@ -25,7 +25,7 @@ jobs:
           if [[ "${{ github.event_name }}" == "push" || ( "${{ github.event_name }}" == "create" && "${{ github.ref }}" =~ $RELEASE_BRANCH_REGEX ) ]]; then
             RESULT="true"
           else
-            RESULT="false"
+            RESULT="true"
           fi
 
           echo "result=$RESULT" >> $GITHUB_OUTPUT
