@@ -34,7 +34,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: pre-publish
-    if: needs.publish-determination.outputs.result == 'true'
+    if: needs.pre-publish.outputs.result == 'true'
 
     steps:
       - name: Checkout repository
