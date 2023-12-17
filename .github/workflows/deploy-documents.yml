@@ -13,7 +13,7 @@ on:
   create:
 
 jobs:
-  publish-determination:
+  pre-publish:
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.determination.outputs.result }}
@@ -44,7 +44,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Install Poetry
+      - name: Install Requirements
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
@@ -54,7 +54,7 @@ jobs:
 
       - name: Determine versioning parameters
         id: determine-versioning
-        run: echo 'data={"version":"5.4.0", alias="latest"}' >> $GITHUB_OUTPUT
+        run: echo "data={"version":"5.4.0", "alias"="latest"}" >> $GITHUB_OUTPUT
 
       - name: Deploy
         if: fromJson(steps.determine-versioning.outputs.data).version != null
