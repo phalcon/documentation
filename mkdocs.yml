@@ -217,12 +217,12 @@ nav:
       - Cache: cache.md
       - Config: config.md
       - Escaper: html-escaper.md
-      - HTTP:
-          - Cookies: response.md#cookies
-          - Request: request.md
-          - Response: response.md
       - Loader: autoload.md
       - Logger: logger.md
+      - HTTP:
+          - Cookies: response/#cookies
+          - Request: request.md
+          - Response: response.md
       - i18n:
           - Internationalization: i18n.md
           - Translate: translate.md

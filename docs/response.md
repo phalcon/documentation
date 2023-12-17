@@ -682,7 +682,7 @@ $eTag = sha1($mostRecentDate);
 $response->setHeader('E-Tag', $eTag);
 ```
 
-### `304`
+### Not Modified - `304`
 Generating a `not-modified` response also helps with caching, by instructing the browser that the contents have not been modified, and therefore the locally cached copy of the data on the browser should be used.
 
 
@@ -719,7 +719,7 @@ class PostsController extends Controller
         return $this
             ->response
             ->setStatusCode(404, 'Not Found')
-            ->setContent("Sorry, the page doesn't exist")
+            ->setContent("Sorry, the page does not exist")
             ->send();
     }
 }
