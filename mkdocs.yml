@@ -1,0 +1,240 @@
+
+# Project information
+site_name: Phalcon Documentation
+site_url: https://docs.phalcon.io
+site_author: Phalcon Team
+site_description: >-
+  Phalcon Framework. A full-stack PHP framework delivered as a PHP extension,
+  offering lower resource consumption and high performance.
+
+# Repository
+repo_name: phalcon/docs
+repo_url: https://github.com/phalcon/docs
+
+# Copyright
+copyright: Copyright &copy; 2012 - present Phalcon Team
+
+# Configuration
+theme:
+  name: material
+  #  custom_dir: material/overrides
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+  font:
+    text: Titillium Web
+    code: Source Code Pro
+  favicon: assets/images/favicon.ico
+  logo: https://assets.phalcon.io/phalcon/images/svg/phalcon-logo-white-105x40.svg
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - redirects:
+      redirect_maps:
+        'index.md': 'introduction.md'
+        'loader.md': 'autoload.md'
+        'collection.md': 'support-collection.md'
+        'helper.md': 'support-helper.md'
+        'registry.md': 'support-registry.md'
+        'version.md': 'support-version.md'
+
+# Hooks
+#hooks:
+#  - material/overrides/hooks/shortcodes.py
+#  - material/overrides/hooks/translations.py
+
+# Additional configuration
+extra:
+  version:
+    default: 5.4.0
+    provider: mike
+  annotate:
+    json: [ .s2 ]
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/phalcon
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/phalconphp
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.extra
+  - pymdownx.tabbed
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  - pymdownx.highlight:
+      anchor_linenums: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - toc:
+      permalink: true
+
+# Page tree
+nav:
+  - Home:
+      - Introduction: introduction.md
+      - Changelog:
+        - Current Version: https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG-5.0.md
+        - How to upgrade: upgrade.md
+      - Contributing:
+        - Contributions: contributions.md
+        - Asking a question: https://phalcon.io/discussions
+        - Requesting a change: new-feature-request.md
+        - Issuing a Pull Request: new-pull-request.md
+      - Guides:
+        - Backtrace Generation: generating-backtrace.md
+        - Reproducible Tests: reproducible-tests.md
+        - Testing environment: testing-environment.md
+      - Sponsoring: sponsors.md
+  - Getting Started:
+      - Installation: installation.md
+      - Webserver Setup: webserver-setup.md
+      - Environments:
+        - Devilbox: environments-devilbox.md
+        - Nanobox: environments-nanobox.md
+      - Development Tools:
+        - Devtools: devtools.md
+        - Debug: support-debug.md
+        - Migrations: db-migrations.md
+        - Unit Testing: unit-testing.md
+      - Tutorials:
+          - Basic: tutorial-basic.md
+          - Invo: tutorial-invo.md
+          - REST: tutorial-rest.md
+          - Vokuro: tutorial-vokuro.md
+          - Use case: use-case.md
+          - Performance: performance.md
+  - Core:
+      - Application: application.md
+      - Micro: application-micro.md
+      - CLI: application-cli.md
+      - DI Container: di.md
+      - MVC: mvc.md
+      - Namespaces: namespaces.md
+      - API Index: api/index.md
+  - Database:
+      - Layer: db-layer.md
+      - PHQL: db-phql.md
+      - ODM: db-odm.md
+      - Models: db-models.md
+      - Behaviors: db-models-behaviors.md
+      - Cache: db-models-cache.md
+      - Events: db-models-events.md
+      - Metadata: db-models-metadata.md
+      - Relationships: db-models-relationships.md
+      - Transactions: db-models-transactions.md
+      - Validators: db-models-validation.md
+      - Pagination: db-pagination.md
+      - Migrations: db-migrations.md
+  - Front End:
+      - Assets: assets.md
+      - Flash Messenger: flash.md
+      - Forms: forms.md
+      - Image: image.md
+      - HTML:
+        - Attributes: html-attributes.md
+        - Breadcrumbs: html-breadcrumbs.md
+        - Escaper: html-escaper.md
+        - Link: html-link.md
+        - Tag Factory: html-tagfactory.md
+      - Tag (legacy): tag.md
+      - View: views.md
+      - Volt: volt.md
+  - Business Logic:
+      - Access Control Lists: acl.md
+      - Annotations: annotations.md
+      - Controllers: controllers.md
+      - Dispatcher: dispatcher.md
+      - Event Manager: events.md
+      - Filters: filter-filter.md
+      - Routing: routing.md
+      - Sessions: session.md
+      - Url: mvc-url.md
+      - Validation: filter-validation.md
+  - Services:
+      - Cache: cache.md
+      - Config: config.md
+      - Escaper: html-escaper.md
+      - HTTP:
+          - Cookies: response.md#cookies
+          - Request: request.md
+          - Response: response.md
+      - Loader: autoload.md
+      - Logger: logger.md
+      - i18n:
+          - Internationalization: i18n.md
+          - Translate: translate.md
+      - Queue: queue.md
+      - Security:
+          - Cryptography: encryption-crypt.md
+          - Security: encryption-security.md
+          - JWT: encryption-security-jwt.md
+      - Storage: storage.md
+      - Utility:
+          - Collection: support-collection.md
+          - Domain: domain.md
+          - Helper: support-helper.md
+          - Registry: support-registry.md
+          - Version: support-version.md
