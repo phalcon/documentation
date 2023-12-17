@@ -29,6 +29,7 @@ jobs:
           fi
 
           echo "result=$RESULT" >> $GITHUB_OUTPUT
+          echo "Deploy documents: $RESULT"
 
   publish:
     runs-on: ubuntu-latest
