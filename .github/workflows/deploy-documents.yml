@@ -64,7 +64,7 @@ jobs:
           # we let @phalconbot own these commits.
           git config user.name niden
           git config user.email nikos@niden.net
-          git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
+          git fetch --no-tags --prune --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages
           mike deploy \
             --update-aliases \
             --push \
