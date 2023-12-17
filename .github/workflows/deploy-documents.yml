@@ -55,7 +55,7 @@ jobs:
 
       - name: Determine versioning parameters
         id: determine-versioning
-        run: echo "data={"version":"5.4", "alias":"latest"}" >> $GITHUB_OUTPUT
+        run: echo 'data={"version":"5.4", "alias":"latest"}' >> $GITHUB_OUTPUT
 
       - name: Deploy
         if: fromJson(steps.determine-versioning.outputs.data).version != null
