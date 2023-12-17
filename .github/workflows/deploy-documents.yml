@@ -62,8 +62,8 @@ jobs:
         run: |
           # Publishing implies creating a git commit on the production branch, 
           # we let @phalconbot own these commits.
-          git config --global user.email "nikos@niden.net"
-          git config --global user.name "Phalcon Team Deploy Bot"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
           mike deploy \
             --update-aliases \
