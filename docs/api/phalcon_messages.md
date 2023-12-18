@@ -1,3 +1,8 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Messages'
+---
 
 * [Phalcon\Messages\Exception](#messages-exception)
 * [Phalcon\Messages\Message](#messages-message)
@@ -6,10 +11,12 @@
 
 <h1 id="messages-exception">Class Phalcon\Messages\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Messages/Exception.zep)
 
 | Namespace  | Phalcon\Messages |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
+
+Phalcon\Validation\Exception
 
 Exceptions thrown in Phalcon\Messages\* classes will use this class
 
@@ -17,7 +24,7 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 <h1 id="messages-message">Class Phalcon\Messages\Message</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Message.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Messages/Message.zep)
 
 | Namespace  | Phalcon\Messages |
 | Uses       | JsonSerializable |
@@ -72,31 +79,31 @@ Magic __toString method returns verbose message
 
 
 ```php
-public function getCode(): int;
+public function getCode(): int
 ```
 
 
 
 ```php
-public function getField(): string;
+public function getField(): string
 ```
 
 
 
 ```php
-public function getMessage(): string;
+public function getMessage(): string
 ```
 
 
 
 ```php
-public function getMetaData(): array;
+public function getMetaData(): array
 ```
 
 
 
 ```php
-public function getType(): string;
+public function getType(): string
 ```
 
 
@@ -141,7 +148,7 @@ Sets message type
 
 <h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/MessageInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Messages/MessageInterface.zep)
 
 | Namespace  | Phalcon\Messages |
 
@@ -222,7 +229,7 @@ Sets message type
 
 <h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Messages.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Messages/Messages.zep)
 
 | Namespace  | Phalcon\Messages |
 | Uses       | ArrayAccess, Countable, Iterator, JsonSerializable |

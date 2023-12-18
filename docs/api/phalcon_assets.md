@@ -1,3 +1,8 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Assets'
+---
 
 * [Phalcon\Assets\Asset](#assets-asset)
 * [Phalcon\Assets\Asset\Css](#assets-asset-css)
@@ -16,29 +21,29 @@
 
 <h1 id="assets-asset">Class Phalcon\Assets\Asset</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Asset.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Asset.zep)
 
 | Namespace  | Phalcon\Assets |
 | Implements | AssetInterface |
 
-Represents an asset
+Represents an asset asset
 
 ```php
-$asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
+$asset = new \Phalcon\Assets\Asset("js", "javascripts/jquery.js");
 ```
 
 
 ## Properties
 ```php
 /**
- * @var array
+ * @var array | null
  */
 protected attributes;
 
 /**
  * @var bool
  */
-protected isAutoVersion = false;
+protected autoVersion = false;
 
 /**
  * @var bool
@@ -48,7 +53,7 @@ protected filter;
 /**
  * @var bool
  */
-protected isLocal;
+protected local;
 
 /**
  * @var string
@@ -76,10 +81,9 @@ protected targetUri;
 protected type;
 
 /**
- * Version of resource
- *
- * @var string|null
- */
+	 * Version of resource
+	 * @var string
+	 */
 protected version;
 
 ```
@@ -87,9 +91,9 @@ protected version;
 ## Methods
 
 ```php
-public function __construct( string $type, string $path, bool $isLocal = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $isAutoVersion = bool );
+public function __construct( string $type, string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool );
 ```
-Asset constructor.
+Phalcon\Assets\Asset constructor
 
 
 ```php
@@ -99,9 +103,9 @@ Gets the asset's key.
 
 
 ```php
-public function getAttributes(): array;
+public function getAttributes(): array | null
 ```
-Gets extra HTML attributes.
+
 
 
 ```php
@@ -112,13 +116,19 @@ Optionally a base path where the asset is located can be set
 
 
 ```php
-public function getFilter(): bool;
+public function getFilter(): bool
 ```
 
 
 
 ```php
-public function getPath(): string;
+public function getLocal(): bool
+```
+
+
+
+```php
+public function getPath(): string
 ```
 
 
@@ -142,45 +152,39 @@ Returns the real target uri for the generated HTML
 
 
 ```php
-public function getSourcePath(): string;
+public function getSourcePath(): string
 ```
 
 
 
 ```php
-public function getTargetPath(): string;
+public function getTargetPath(): string
 ```
 
 
 
 ```php
-public function getTargetUri(): string;
+public function getTargetUri(): string
 ```
 
 
 
 ```php
-public function getType(): string;
+public function getType(): string
 ```
 
 
 
 ```php
-public function getVersion(): string | null;
+public function getVersion(): 	string
 ```
-Version of resource
+
 
 
 ```php
 public function isAutoVersion(): bool;
 ```
-Checks if the asset is using auto version
-
-
-```php
-public function isLocal(): bool;
-```
-Checks if the asset is local or not
+Checks if resource is using auto version
 
 
 ```php
@@ -190,7 +194,7 @@ Sets extra HTML attributes
 
 
 ```php
-public function setAutoVersion( bool $flag ): AssetInterface;
+public function setAutoVersion( bool $autoVersion )
 ```
 
 
@@ -202,7 +206,7 @@ Sets if the asset must be filtered or not
 
 
 ```php
-public function setIsLocal( bool $flag ): AssetInterface;
+public function setLocal( bool $local ): AssetInterface;
 ```
 Sets if the asset is local or external
 
@@ -238,19 +242,7 @@ Sets the asset's type
 
 
 ```php
-public function setVersion( string $version ): AssetInterface;
-```
-Sets the asset's version
-
-
-```php
-protected function phpFileExists( string $filename ): bool;
-```
-@todo to be removed when we get traits
-
-
-```php
-protected function phpFileGetContents( string $filename );
+public function setVersion( 	string $version )
 ```
 
 
@@ -259,7 +251,7 @@ protected function phpFileGetContents( string $filename );
 
 <h1 id="assets-asset-css">Class Phalcon\Assets\Asset\Css</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Asset/Css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Asset/Css.zep)
 
 | Namespace  | Phalcon\Assets\Asset |
 | Uses       | Phalcon\Assets\Asset |
@@ -280,7 +272,7 @@ Phalcon\Assets\Asset\Css constructor
 
 <h1 id="assets-asset-js">Class Phalcon\Assets\Asset\Js</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Asset/Js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Asset/Js.zep)
 
 | Namespace  | Phalcon\Assets\Asset |
 | Uses       | Phalcon\Assets\Asset |
@@ -301,7 +293,7 @@ Phalcon\Assets\Asset\Js constructor
 
 <h1 id="assets-assetinterface">Interface Phalcon\Assets\AssetInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/AssetInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/AssetInterface.zep)
 
 | Namespace  | Phalcon\Assets |
 
@@ -356,13 +348,13 @@ Sets the asset's type.
 
 <h1 id="assets-collection">Class Phalcon\Assets\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Collection.zep)
 
 | Namespace  | Phalcon\Assets |
-| Uses       | ArrayIterator, Countable, IteratorAggregate |
-| Implements | Countable, IteratorAggregate |
+| Uses       | Countable, Iterator, Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Js, Phalcon\Assets\Inline\Css |
+| Implements | Countable, Iterator |
 
-Collection of asset objects
+Represents a collection of assets
 
 
 ## Properties
@@ -378,10 +370,9 @@ protected assets;
 protected attributes;
 
 /**
- * Should version be determined from file modification time
- *
- * @var bool
- */
+	 * Should version be determined from file modification time
+	 * @var bool
+	 */
 protected autoVersion = false;
 
 /**
@@ -395,9 +386,9 @@ protected codes;
 protected filters;
 
 /**
- * @var bool
+ * @var array
  */
-protected isLocal = true;
+protected includedAssets;
 
 /**
  * @var bool
@@ -405,47 +396,64 @@ protected isLocal = true;
 protected join = true;
 
 /**
- * @var string
+ * @var bool
  */
-protected prefix = ;
+protected local = true;
 
 /**
  * @var string
  */
-protected sourcePath = ;
+protected prefix;
+
+/**
+ * @var int
+ */
+protected position = 0;
+
+/**
+ * @var string
+ */
+protected sourcePath;
 
 /**
  * @var bool
  */
-protected targetIsLocal = true;
+protected targetLocal = true;
 
 /**
  * @var string
  */
-protected targetPath = ;
+protected targetPath;
 
 /**
  * @var string
  */
-protected targetUri = ;
+protected targetUri;
 
 /**
- * @var string
- */
-protected version = ;
+	 * Version of resource
+	 * @var string
+	 */
+protected version;
 
 ```
 
 ## Methods
 
 ```php
-public function add( AssetInterface $asset ): Collection;
+public function __construct();
 ```
-Adds an asset to the collection
+Phalcon\Assets\Collection constructor
 
 
 ```php
-public function addCss( string $path, mixed $isLocal = null, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Collection;
+public function add( AssetInterface $asset ): Collection;
+```
+Adds a asset to the collection
+
+
+```php
+public function addCss( string $path, mixed $local = null, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Collection;
 ```
 Adds a CSS asset to the collection
 
@@ -463,19 +471,19 @@ Adds an inline code to the collection
 
 
 ```php
-public function addInlineCss( string $content, bool $filter = bool, array $attributes = [] ): Collection;
+public function addInlineCss( string $content, bool $filter = bool, mixed $attributes = null ): Collection;
 ```
 Adds an inline CSS to the collection
 
 
 ```php
-public function addInlineJs( string $content, bool $filter = bool, array $attributes = [] ): Collection;
+public function addInlineJs( string $content, bool $filter = bool, mixed $attributes = null ): Collection;
 ```
 Adds an inline JavaScript to the collection
 
 
 ```php
-public function addJs( string $path, mixed $isLocal = null, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Collection;
+public function addJs( string $path, mixed $local = null, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Collection;
 ```
 Adds a JavaScript asset to the collection
 
@@ -483,49 +491,59 @@ Adds a JavaScript asset to the collection
 ```php
 public function count(): int;
 ```
-Return the count of the assets
+Returns the number of elements in the form
 
 
 ```php
-public function getAssets(): array;
+public function current(): Asset;
+```
+Returns the current asset in the iterator
+
+
+```php
+public function getAssets(): array
 ```
 
 
 
 ```php
-public function getAttributes(): array;
+public function getAttributes(): array
 ```
 
 
 
 ```php
-public function getCodes(): array;
+public function getCodes(): array
 ```
 
 
 
 ```php
-public function getFilters(): array;
+public function getFilters(): array
 ```
 
 
 
 ```php
-public function getIterator(): \Traversable;
-```
-Returns the generator of the class
-
-@link https://php.net/manual/en/iteratoraggregate.getiterator.php
-
-
-```php
-public function getJoin(): bool;
+public function getJoin(): bool
 ```
 
 
 
 ```php
-public function getPrefix(): string;
+public function getLocal(): bool
+```
+
+
+
+```php
+public function getPosition(): int
+```
+
+
+
+```php
+public function getPrefix(): string
 ```
 
 
@@ -538,31 +556,31 @@ be written
 
 
 ```php
-public function getSourcePath(): string;
+public function getSourcePath(): string
 ```
 
 
 
 ```php
-public function getTargetIsLocal(): bool;
+public function getTargetLocal(): bool
 ```
 
 
 
 ```php
-public function getTargetPath(): string;
+public function getTargetPath(): string
 ```
 
 
 
 ```php
-public function getTargetUri(): string;
+public function getTargetUri(): string
 ```
 
 
 
 ```php
-public function getVersion(): string;
+public function getVersion(): 	string
 ```
 
 
@@ -592,16 +610,28 @@ Checks if collection is using auto version
 
 
 ```php
-public function isLocal(): bool;
-```
-
-
-
-```php
-public function join( bool $flag ): Collection;
+public function join( bool $join ): Collection;
 ```
 Sets if all filtered assets in the collection must be joined in a single
 result file
+
+
+```php
+public function key(): int;
+```
+Returns the current position/key in the iterator
+
+
+```php
+public function next(): void;
+```
+Moves the internal iteration pointer to the next position
+
+
+```php
+public function rewind(): void;
+```
+Rewinds the internal iterator
 
 
 ```php
@@ -611,7 +641,7 @@ Sets extra HTML attributes
 
 
 ```php
-public function setAutoVersion( bool $flag ): Collection;
+public function setAutoVersion( 	bool $autoVersion )
 ```
 
 
@@ -623,7 +653,7 @@ Sets an array of filters in the collection
 
 
 ```php
-public function setIsLocal( bool $flag ): Collection;
+public function setLocal( bool $local ): Collection;
 ```
 Sets if the collection uses local assets by default
 
@@ -641,9 +671,9 @@ Sets a base source path for all the assets in this collection
 
 
 ```php
-public function setTargetIsLocal( bool $flag ): Collection;
+public function setTargetLocal( bool $targetLocal ): Collection;
 ```
-Sets if the target local or not
+Sets the target local
 
 
 ```php
@@ -659,25 +689,31 @@ Sets a target uri for the generated HTML
 
 
 ```php
-public function setVersion( string $version ): Collection;
+public function setVersion( 	string $version )
 ```
-Sets the version
+
+
+
+```php
+public function valid(): bool;
+```
+Check if the current element in the iterator is valid
 
 
 ```php
 final protected function addAsset( AssetInterface $asset ): bool;
 ```
-Adds an asset or inline-code to the collection
+Adds a asset or inline-code to the collection
 
 
 
 
 <h1 id="assets-exception">Class Phalcon\Assets\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Exception.zep)
 
 | Namespace  | Phalcon\Assets |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Assets will use this class
 
@@ -685,7 +721,7 @@ Exceptions thrown in Phalcon\Assets will use this class
 
 <h1 id="assets-filterinterface">Interface Phalcon\Assets\FilterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/FilterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/FilterInterface.zep)
 
 | Namespace  | Phalcon\Assets |
 
@@ -704,7 +740,7 @@ Filters the content returning a string with the filtered content
 
 <h1 id="assets-filters-cssmin">Class Phalcon\Assets\Filters\Cssmin</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Filters/CssMin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Filters/CssMin.zep)
 
 | Namespace  | Phalcon\Assets\Filters |
 | Uses       | Phalcon\Assets\FilterInterface |
@@ -720,17 +756,14 @@ removes last semicolon from last property
 public function filter( string $content ): string;
 ```
 Filters the content using CSSMIN
-
-!!! info "NOTE"
-
-    This functionality is not currently available
+NOTE: This functionality is not currently available
 
 
 
 
 <h1 id="assets-filters-jsmin">Class Phalcon\Assets\Filters\Jsmin</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Filters/JsMin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Filters/JsMin.zep)
 
 | Namespace  | Phalcon\Assets\Filters |
 | Uses       | Phalcon\Assets\FilterInterface |
@@ -747,17 +780,14 @@ replaced with linefeeds. Most spaces and linefeeds will be removed.
 public function filter( string $content ): string;
 ```
 Filters the content using JSMIN
-
-!!! info "NOTE"
-
-    This functionality is not currently available
+NOTE: This functionality is not currently available
 
 
 
 
 <h1 id="assets-filters-none">Class Phalcon\Assets\Filters\None</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Filters/None.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Filters/None.zep)
 
 | Namespace  | Phalcon\Assets\Filters |
 | Uses       | Phalcon\Assets\FilterInterface |
@@ -778,7 +808,7 @@ Returns the content as is
 
 <h1 id="assets-inline">Class Phalcon\Assets\Inline</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Inline.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Inline.zep)
 
 | Namespace  | Phalcon\Assets |
 | Implements | AssetInterface |
@@ -793,7 +823,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 ## Properties
 ```php
 /**
- * @var array
+ * @var array | null
  */
 protected attributes;
 
@@ -829,25 +859,25 @@ Gets the asset's key.
 
 
 ```php
-public function getAttributes(): array;
+public function getAttributes(): array | null
 ```
 
 
 
 ```php
-public function getContent(): string;
+public function getContent(): string
 ```
 
 
 
 ```php
-public function getFilter(): bool;
+public function getFilter(): bool
 ```
 
 
 
 ```php
-public function getType(): string;
+public function getType(): string
 ```
 
 
@@ -874,7 +904,7 @@ Sets the inline's type
 
 <h1 id="assets-inline-css">Class Phalcon\Assets\Inline\Css</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Inline/Css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Inline/Css.zep)
 
 | Namespace  | Phalcon\Assets\Inline |
 | Uses       | Phalcon\Assets\Inline |
@@ -886,7 +916,7 @@ Represents an inlined CSS
 ## Methods
 
 ```php
-public function __construct( string $content, bool $filter = bool, array $attributes = [] );
+public function __construct( string $content, bool $filter = bool, mixed $attributes = null );
 ```
 Phalcon\Assets\Inline\Css constructor
 
@@ -895,7 +925,7 @@ Phalcon\Assets\Inline\Css constructor
 
 <h1 id="assets-inline-js">Class Phalcon\Assets\Inline\Js</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Inline/Js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Inline/Js.zep)
 
 | Namespace  | Phalcon\Assets\Inline |
 | Uses       | Phalcon\Assets\Inline |
@@ -907,7 +937,7 @@ Represents an inline JavaScript
 ## Methods
 
 ```php
-public function __construct( string $content, bool $filter = bool, array $attributes = [] );
+public function __construct( string $content, bool $filter = bool, mixed $attributes = null );
 ```
 Phalcon\Assets\Inline\Js constructor
 
@@ -916,45 +946,41 @@ Phalcon\Assets\Inline\Js constructor
 
 <h1 id="assets-manager">Class Phalcon\Assets\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Assets/Manager.zep)
 
 | Namespace  | Phalcon\Assets |
-| Uses       | Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\AbstractInjectionAware, Phalcon\Html\Helper\Element, Phalcon\Html\Helper\Link, Phalcon\Html\Helper\Script, Phalcon\Html\TagFactory |
+| Uses       | Phalcon\Tag, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware |
 | Extends    | AbstractInjectionAware |
+
+Phalcon\Assets\Manager
 
 Manages collections of CSS/JavaScript assets
 
 
 ## Properties
 ```php
+//
+protected collections;
+
 /**
+ * Options configure
  * @var array
  */
-protected collections;
+protected options;
 
 /**
  * @var bool
  */
 protected implicitOutput = true;
 
-/**
- * @var array
- */
-protected options;
-
-/**
- * @var TagFactory
- */
-protected tagFactory;
-
 ```
 
 ## Methods
 
 ```php
-public function __construct( TagFactory $tagFactory, array $options = [] );
+public function __construct( array $options = [] );
 ```
-Manager constructor.
+Phalcon\Assets\Manager constructor
 
 
 ```php
@@ -962,17 +988,36 @@ public function addAsset( Asset $asset ): Manager;
 ```
 Adds a raw asset to the manager
 
+```php
+$assets->addAsset(
+    new Phalcon\Assets\Asset("css", "css/style.css")
+);
+```
+
 
 ```php
 public function addAssetByType( string $type, Asset $asset ): Manager;
 ```
 Adds a asset by its type
 
+```php
+$assets->addAssetByType(
+    "css",
+    new \Phalcon\Assets\Asset\Css("css/style.css")
+);
+```
+
 
 ```php
-public function addCss( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Manager;
+public function addCss( string $path, mixed $local = bool, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Manager;
 ```
-Adds a CSS asset to the 'css' collection
+   Adds a CSS asset to the 'css' collection
+   
+   ```php
+   $assets->addCss("css/bootstrap.css");
+   $assets->addCss("http://bootstrap.my-cdn.com/style.css", false);
+   ```
+   
 
 
 ```php
@@ -988,19 +1033,19 @@ Adds an inline code by its type
 
 
 ```php
-public function addInlineCss( string $content, bool $filter = bool, array $attributes = [] ): Manager;
+public function addInlineCss( string $content, mixed $filter = bool, mixed $attributes = null ): Manager;
 ```
 Adds an inline CSS to the 'css' collection
 
 
 ```php
-public function addInlineJs( string $content, bool $filter = bool, array $attributes = [] ): Manager;
+public function addInlineJs( string $content, mixed $filter = bool, mixed $attributes = null ): Manager;
 ```
 Adds an inline JavaScript to the 'js' collection
 
 
 ```php
-public function addJs( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Manager;
+public function addJs( string $path, mixed $local = bool, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Manager;
 ```
 Adds a JavaScript asset to the 'js' collection
 
@@ -1023,20 +1068,20 @@ Creates/Returns a collection of assets by type
 
 
 ```php
-public function exists( string $name ): bool;
+public function exists( string $id ): bool;
 ```
 Returns true or false if collection exists.
 
 ```php
-if ($manager->exists("jsHeader")) {
+if ($assets->exists("jsHeader")) {
     // \Phalcon\Assets\Collection
-    $collection = $manager->get("jsHeader");
+    $collection = $assets->get("jsHeader");
 }
 ```
 
 
 ```php
-public function get( string $name ): Collection;
+public function get( string $id ): Collection;
 ```
 Returns a collection by its id.
 
@@ -1070,26 +1115,13 @@ Returns the manager options
 
 
 ```php
-public function has( string $name ): bool;
-```
-Returns true or false if collection exists.
-
-```php
-if ($manager->has("jsHeader")) {
-    // \Phalcon\Assets\Collection
-    $collection = $manager->get("jsHeader");
-}
-```
-
-
-```php
-public function output( Collection $collection, string $type ): string | null;
+public function output( Collection $collection, mixed $callback, mixed $type ): string | null;
 ```
 Traverses a collection calling the callback to generate its HTML
 
 
 ```php
-public function outputCss( string $name = null ): string;
+public function outputCss( string $collectionName = null ): string;
 ```
 Prints the HTML for CSS assets
 
@@ -1101,25 +1133,25 @@ Traverses a collection and generate its HTML
 
 
 ```php
-public function outputInlineCss( string $name = null ): string;
+public function outputInlineCss( string $collectionName = null ): string;
 ```
 Prints the HTML for inline CSS
 
 
 ```php
-public function outputInlineJs( string $name = null ): string;
+public function outputInlineJs( string $collectionName = null ): string;
 ```
 Prints the HTML for inline JS
 
 
 ```php
-public function outputJs( string $name = null ): string;
+public function outputJs( string $collectionName = null ): string;
 ```
 Prints the HTML for JS assets
 
 
 ```php
-public function set( string $name, Collection $collection ): Manager;
+public function set( string $id, Collection $collection ): Manager;
 ```
 Sets a collection in the Assets Manager
 

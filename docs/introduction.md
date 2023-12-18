@@ -3,8 +3,6 @@
 
 **A full-stack PHP framework delivered as a C-extension**
 
-[![Phalcon](https://github.com/phalcon/cphalcon/actions/workflows/main.yml/badge.svg?branch=5.0.x)](https://github.com/phalcon/cphalcon/actions/workflows/main.yml)
-
 ## Mission :rocket:
 
 Our mission is to empower developers with an advanced, feature-rich tool: Phalcon. This framework is designed to facilitate the development of powerful applications with minimal server resource consumption and optimal performance.
@@ -25,7 +23,7 @@ Phalcon is loosely coupled, allowing developers to use only the objects that the
 
     The translation of the documentation is driven by enthusiasts and contributors. We invite and appreciate your participation in the translation effort. Contribute new translations or corrections via [GitHub][github_docs] for English or [Crowdin][crowdin] for other languages.
 
-You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality. 
+You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality.
 
 Since this is a community driven project, you can share your thoughts and requests for functionality you need by issuing a [New Feature Request][new-feature-request] and if you wish vote in GitHub for [existing NFRs][new-feature-request-list].
 
@@ -38,7 +36,7 @@ Feel free to connect with us using our social media accounts:
     ---
 
     [:octicons-chevron-right-12: Discord Chat][discord]
-     
+
     [:octicons-chevron-right-12: Discussions][discussions]
 
 -   :octicons-question-16:{ .lg .middle } __Support__
@@ -46,7 +44,7 @@ Feel free to connect with us using our social media accounts:
     ---
 
     [:octicons-chevron-right-12: GitHub Sponsors - Support Us][github_sponsors]
- 
+
     [:octicons-chevron-right-12: OpenCollective - Support Us][opencollective_sponsors]
 
 -   :octicons-megaphone-16:{ .lg .middle } __Social Media__
@@ -54,24 +52,24 @@ Feel free to connect with us using our social media accounts:
     ---
 
     [:octicons-chevron-right-12: Telegram][telegram]
- 
+
     [:octicons-chevron-right-12: Gab][gab]
- 
+
     [:octicons-chevron-right-12: MeWe][mewe]
- 
+
     [:octicons-chevron-right-12: Reddit][reddit]
- 
+
     [:octicons-chevron-right-12: Facebook][fb]
- 
+
     [:octicons-chevron-right-12: Twitter][t]
- 
+
 
 -   :octicons-video-16:{ .lg .middle } __Videos__
 
     ---
 
     [:octicons-chevron-right-12: BitChute][bitchute]
- 
+
     [:octicons-chevron-right-12: LBRY][lbry]
 
     [:octicons-chevron-right-12: YouTube][youtube]
@@ -79,7 +77,7 @@ Feel free to connect with us using our social media accounts:
 </div>
 
 
-[github]: https://github.com/phalcon/cphalcon 
+[github]: https://github.com/phalcon/cphalcon
 [github_docs]: https://github.com/phalcon/docs
 [new-feature-request]: new-feature-request.md
 [new-feature-request-list]: new-feature-request-list.md
@@ -93,14 +91,3 @@ Feel free to connect with us using our social media accounts:
 [reddit]: https://phalcon.io/reddit
 [fb]: https://phalcon.io/fb
 [t]: https://phalcon.io/t
-
-
--   :octicons-video-16:{ .lg .middle } __Videos__
-
-    ---
-
-    [:octicons-chevron-right-12: BitChute](https://phalcon.io/bitchute)
-
-    [:octicons-chevron-right-12: LBRY](https://phalcon.io/lbry)
-
-    [:octicons-chevron-right-12: YouTube](https://phalcon.io/youtube)

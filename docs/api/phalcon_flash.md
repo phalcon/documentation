@@ -1,3 +1,8 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Flash'
+---
 
 * [Phalcon\Flash\AbstractFlash](#flash-abstractflash)
 * [Phalcon\Flash\Direct](#flash-direct)
@@ -7,10 +12,10 @@
 
 <h1 id="flash-abstractflash">Abstract Class Phalcon\Flash\AbstractFlash</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/AbstractFlash.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Flash/AbstractFlash.zep)
 
 | Namespace  | Phalcon\Flash |
-| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Session\ManagerInterface, Phalcon\Support\Helper\Str\Interpolate |
+| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Escaper\EscaperInterface, Phalcon\Session\ManagerInterface |
 | Extends    | AbstractInjectionAware |
 | Implements | FlashInterface |
 
@@ -21,10 +26,6 @@ stylized using CSS
 $flash->success("The record was successfully deleted");
 $flash->error("Cannot open the file");
 ```
-
-Class AbstractFlash
-
-@package Phalcon\Flash
 
 
 ## Properties
@@ -45,11 +46,6 @@ protected automaticHtml = true;
 protected cssClasses;
 
 /**
- * @var array
- */
-protected cssIconClasses;
-
-/**
  * @var string
  */
 protected customTemplate = ;
@@ -65,17 +61,12 @@ protected escaperService;
 protected implicitFlush = true;
 
 /**
- * @var Interpolate
- */
-protected interpolator;
-
-/**
  * @var array
  */
 protected messages;
 
 /**
- * @var SessionInterface|null
+ * @var SessionInterface | null
  */
 protected sessionService;
 
@@ -86,7 +77,7 @@ protected sessionService;
 ```php
 public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
 ```
-AbstractFlash constructor.
+Phalcon\Flash constructor
 
 
 ```php
@@ -106,31 +97,19 @@ $flash->error("This is an error");
 
 
 ```php
-public function getAutoescape(): bool;
+public function getAutoescape(): bool
 ```
 
 
 
 ```php
-public function getAutomaticHtml(): bool;
+public function getCssClasses(): array
 ```
 
 
 
 ```php
-public function getCssClasses(): array;
-```
-
-
-
-```php
-public function getCssIconClasses(): array;
-```
-
-
-
-```php
-public function getCustomTemplate(): string;
+public function getCustomTemplate(): string
 ```
 
 
@@ -152,7 +131,7 @@ $flash->notice("This is an information");
 
 
 ```php
-public function outputMessage( string $type, mixed $message ): string | null;
+public function outputMessage( string $type, mixed $message );
 ```
 Outputs a message formatting it with HTML
 
@@ -162,43 +141,37 @@ $flash->outputMessage("error", $message);
 
 
 ```php
-public function setAutoescape( bool $autoescape ): AbstractFlash;
+public function setAutoescape( bool $autoescape ): FlashInterface;
 ```
 Set the autoescape mode in generated HTML
 
 
 ```php
-public function setAutomaticHtml( bool $automaticHtml ): AbstractFlash;
+public function setAutomaticHtml( bool $automaticHtml ): FlashInterface;
 ```
 Set if the output must be implicitly formatted with HTML
 
 
 ```php
-public function setCssClasses( array $cssClasses ): AbstractFlash;
+public function setCssClasses( array $cssClasses ): FlashInterface;
 ```
 Set an array with CSS classes to format the messages
 
 
 ```php
-public function setCssIconClasses( array $cssIconClasses ): AbstractFlash;
+public function setCustomTemplate( string $customTemplate ): FlashInterface;
 ```
-Set an array with CSS classes to format the icon messages
+Set an custom template for showing the messages
 
 
 ```php
-public function setCustomTemplate( string $customTemplate ): AbstractFlash;
-```
-Set a custom template for showing the messages
-
-
-```php
-public function setEscaperService( EscaperInterface $escaperService ): AbstractFlash;
+public function setEscaperService( EscaperInterface $escaperService ): FlashInterface;
 ```
 Sets the Escaper Service
 
 
 ```php
-public function setImplicitFlush( bool $implicitFlush ): AbstractFlash;
+public function setImplicitFlush( bool $implicitFlush ): FlashInterface;
 ```
 Set whether the output must be implicitly flushed to the output or
 returned as string
@@ -228,14 +201,13 @@ $flash->warning("Hey, this is important");
 
 <h1 id="flash-direct">Class Phalcon\Flash\Direct</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/Direct.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Flash/Direct.zep)
 
 | Namespace  | Phalcon\Flash |
 | Extends    | AbstractFlash |
 
-Class Direct
-
-@package Phalcon\Flash
+This is an implementation of the Phalcon\Flash\FlashInterface that
+immediately outputs any message passed to it.
 
 
 ## Methods
@@ -256,10 +228,10 @@ Prints the messages accumulated in the flasher
 
 <h1 id="flash-exception">Class Phalcon\Flash\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Flash/Exception.zep)
 
 | Namespace  | Phalcon\Flash |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Flash classes will use this class
 
@@ -267,13 +239,13 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 
 <h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/FlashInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Flash/FlashInterface.zep)
 
 | Namespace  | Phalcon\Flash |
 
-Interface FlashInterface
+Phalcon\Flash\FlashInterface
 
-@package Phalcon\Flash
+Interface for Phalcon\Flash classes
 
 
 ## Methods
@@ -312,25 +284,16 @@ Shows a HTML warning message
 
 <h1 id="flash-session">Class Phalcon\Flash\Session</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/Session.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Flash/Session.zep)
 
 | Namespace  | Phalcon\Flash |
-| Uses       | Phalcon\Session\ManagerInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Session\ManagerInterface |
 | Extends    | AbstractFlash |
 
 This is an implementation of the Phalcon\Flash\FlashInterface that
 temporarily stores the messages in session, then messages can be printed in
 the next request.
 
-Class Session
-
-@package Phalcon\Flash
-
-
-## Constants
-```php
-const SESSION_KEY = _flashMessages;
-```
 
 ## Methods
 
@@ -338,8 +301,6 @@ const SESSION_KEY = _flashMessages;
 public function clear(): void;
 ```
 Clear messages in the session messenger
-
-@throws Exception
 
 
 ```php
@@ -355,13 +316,13 @@ Returns the Session Service
 
 
 ```php
-public function has( string $type = null ): bool;
+public function has( mixed $type = null ): bool;
 ```
 Checks whether there are messages
 
 
 ```php
-public function message( string $type, mixed $message ): string | null;
+public function message( string $type, string $message ): string | null;
 ```
 Adds a message to the session flasher
 
@@ -373,7 +334,7 @@ Prints the messages in the session flasher
 
 
 ```php
-protected function getSessionMessages( bool $remove, string $type = null ): array;
+protected function getSessionMessages( bool $remove, mixed $type = null ): array;
 ```
 Returns the messages stored in session
 

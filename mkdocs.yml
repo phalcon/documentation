@@ -78,11 +78,6 @@ plugins:
   - redirects:
       redirect_maps:
         'index.md': 'introduction.md'
-        'loader.md': 'autoload.md'
-        'collection.md': 'support-collection.md'
-        'helper.md': 'support-helper.md'
-        'registry.md': 'support-registry.md'
-        'version.md': 'support-version.md'
 
 # Hooks
 #hooks:
@@ -136,7 +131,7 @@ nav:
   - Home:
       - Introduction: introduction.md
       - Changelog:
-        - Current Version: https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG-5.0.md
+        - Current Version: https://github.com/phalcon/cphalcon/tree/master/resources
         - How to upgrade: upgrade.md
       - Contributing:
         - Contributions: contributions.md
@@ -147,6 +142,7 @@ nav:
         - Backtrace Generation: generating-backtrace.md
         - Reproducible Tests: reproducible-tests.md
         - Testing environment: testing-environment.md
+        - Coding Standard: coding-standard.md
       - Sponsoring: sponsors.md
   - Getting Started:
       - Installation: installation.md
@@ -156,7 +152,7 @@ nav:
         - Nanobox: environments-nanobox.md
       - Development Tools:
         - Devtools: devtools.md
-        - Debug: support-debug.md
+        - Debug: debug.md
         - Migrations: db-migrations.md
         - Unit Testing: unit-testing.md
       - Tutorials:
@@ -186,20 +182,14 @@ nav:
       - Relationships: db-models-relationships.md
       - Transactions: db-models-transactions.md
       - Validators: db-models-validation.md
-      - Pagination: db-pagination.md
+      - Pagination: pagination.md
       - Migrations: db-migrations.md
   - Front End:
       - Assets: assets.md
       - Flash Messenger: flash.md
       - Forms: forms.md
       - Image: image.md
-      - HTML:
-        - Attributes: html-attributes.md
-        - Breadcrumbs: html-breadcrumbs.md
-        - Escaper: html-escaper.md
-        - Link: html-link.md
-        - Tag Factory: html-tagfactory.md
-      - Tag (legacy): tag.md
+      - Tag: tag.md
       - View: views.md
       - Volt: volt.md
   - Business Logic:
@@ -208,33 +198,43 @@ nav:
       - Controllers: controllers.md
       - Dispatcher: dispatcher.md
       - Event Manager: events.md
-      - Filters: filter-filter.md
+      - Filters: filter.md
       - Routing: routing.md
       - Sessions: session.md
-      - Url: mvc-url.md
-      - Validation: filter-validation.md
+      - Url: url.md
+      - Validation: validation.md
   - Services:
       - Cache: cache.md
       - Config: config.md
-      - Escaper: html-escaper.md
+      - Escaper: escaper.md
       - HTTP:
-          - Cookies: response.md#cookies
+          - Cookies: response#cookies
           - Request: request.md
           - Response: response.md
-      - Loader: autoload.md
+      - Loader: loader.md
       - Logger: logger.md
       - i18n:
           - Internationalization: i18n.md
           - Translate: translate.md
       - Queue: queue.md
+      - PSR:
+          - PSR-3 Logger: logger.md
+          - PSR-0, PSR-4 Loader: loader.md
+          - PSR-7 HTTP Request: http-request.md
+          - PSR-7 HTTP Response: http-response.md
+          - PSR-7 HTTP Server Request: http-server-request.md
+          - PSR-7 HTTP Stream: http-stream.md
+          - PSR-7 HTTP UploadedFile: http-uploaded-file.md
+          - PSR-7 HTTP Uri: http-uri.md
+          - PSR-11 Container: container.md
+          - PSR-13 HTML Links: html-link.md
+          - PSR-17 HTTP Factories: http-factories.md
       - Security:
-          - Cryptography: encryption-crypt.md
-          - Security: encryption-security.md
-          - JWT: encryption-security-jwt.md
-      - Storage: storage.md
+          - Cryptography: crypt.md
+          - Security: security.md
+          - JWT: security-jwt.md
       - Utility:
-          - Collection: support-collection.md
+          - Collection: collection.md
           - Domain: domain.md
-          - Helper: support-helper.md
-          - Registry: support-registry.md
-          - Version: support-version.md
+          - Helper: helper.md
+          - Registry: registry.md

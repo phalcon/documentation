@@ -8,7 +8,7 @@ Using a static analysis tool in your project can dramatically increase your code
 ## Integrating Psalm with Phalcon
 
 ```bash
-composer require --dev vimeo/psalm
+composer require --dev vimeo/psalm:^3.11
 ```
 
 or by manually adding it to `composer.json`:
@@ -16,7 +16,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
     "require-dev": {
-        "vimeo/psalm": "^4.7"
+        "vimeo/psalm": "^3.11"
     }
 }
 ```
@@ -28,7 +28,7 @@ Phalcon provides a stub library that provides support for most IDEs. Psalm requi
 You can use the IDE Stubs library by adding it as a dependency:
 
 ```bash
-composer require --dev phalcon/ide-stubs:^v5.0
+composer require --dev phalcon/ide-stubs:^v4.0
 ```
 
 or by manually adding it to `composer.json`:
@@ -36,7 +36,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
     "require-dev": {
-        "phalcon/ide-stubs": ",^v5.0"
+        "phalcon/ide-stubs": ",^v4.0"
     }
 }
 ```

@@ -1,8 +1,7 @@
 # Session
 - - -
-
 ## Overview
-Sessions are used in PHP to persist data between requests. This enables developers to build better applications and increase the user experience. A very common usage of sessions is to keep whether a user is logged in or not. [Phalcon\Session\Manager][session-manager] is an object-oriented approach to handle sessions using Phalcon. There are several reasons to use this component instead of raw sessions or accessing the `$_SESSION` superglobal:
+Sessions are used in PHP to persist data between requests. This enables developers to build better applications and increase the user experience. A very common usage of sessions is to keep whether a user is logged in or not. [Phalcon\Session\Manager][session-manager] is an object oriented approach to handle sessions using Phalcon. There are several reasons to use this component instead of raw sessions or accessing the `$_SESSION` superglobal:
 
 - You can easily isolate session data across applications on the same domain
 - Intercept where session data is set/get in your application
@@ -11,9 +10,9 @@ Sessions are used in PHP to persist data between requests. This enables develope
 ## Manager
 [Phalcon\Session\Manager][session-manager] is a component that allows you to manipulate sessions in your application. This manager accepts an adapter which is the way the data will be communicated to a particular store. 
 
-!!! warning "NOTE"
+> **NOTE**: PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a _handler_ in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
+{: .alert .alert-warning }
 
-    PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a _handler_ in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
 
 ```php
 <?php
@@ -41,12 +40,12 @@ The constructor accepts an array of options that relate to the session. You can 
 ### Start
 In order to work with the session, you need to start it. `start()` performs this task. Usually this call is made when the component is registered or at the very top of your application's workflow. `start()` returns a boolean value indicating success or failure. 
 
-!!! info "NOTE"
-
-    - If the session has already started, the call will return `true`. 
-    - If any headers have been sent, it will return `false`
-    - If the adapter is not set, it will throw an exception
-    - It will return the result of `session_start()`
+> **NOTE**:
+> - If the session has already started, the call will return `true`. 
+> - If any headers have been sent, it will return `false`
+> - If the adapter is not set, it will throw an exception
+> - It will return the result of `session_start()`
+{: .alert .alert-info } 
 
 ```php
 <?php
@@ -144,7 +143,7 @@ $session->regenerateId();
 ```
 
 ### Get
-You can use `get()` to retrieve the contents stored in the session for a particular element passed as a string parameter. The component also supports the magic getter, so you can retrieve it as a property of the manager.
+You can use `get()` to retrieve the contents stored in the session for a particular element passed as a string parameter. The component also supports the magic getter so you can retrieve it as a property of the manager.
 
 ```php
 <?php
@@ -194,11 +193,10 @@ var_dump(
 ```
 
 ### Id
-You can also set the session id. The session id is set in an HTTP cookie. You can set the name by calling `setId()`. `getId()` is used to retrieve the session id.
+You can also set the session id. The session id is set in a HTTP cookie. You can set the name by calling `setId()`. `getId()` is used to retrieve the session id.
 
-!!! info "NOTE"
-
-    You need call this method before calling `start()` for the id to take effect
+> **NOTE**: You need call this method before calling `start()` for the id to take effect
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -221,11 +219,10 @@ echo $session->getId(); // 'phalcon-id'
 ```
 
 ### Name
-Each session can have a name. The session name is set in an HTTP cookie. If this is not set, the `session.name` `php.ini` setting is used. You can set the name by calling `setName()`. `getName()` is used to retrieve the session name.
+Each session can have a name. The session name is set in a HTTP cookie. If this is not set, the `session.name` `php.ini` setting is used. You can set the name by calling `setName()`. `getName()` is used to retrieve the session name.
 
-!!! info "NOTE"
-
-    You need to call this method before calling `start()` for the name to take effect
+> **NOTE**: You need to call this method before calling `start()` for the name to take effect
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -248,7 +245,7 @@ echo $session->getName(); // 'phalcon-app'
 ```
 
 ### Options
-You can set options for the manager by using `setOptions()`. The method accepts an array and in it, you can set the `uniqueId` for the session. To get the options you can call `getOptions()` which will return the array of options stored in the manager.
+You can set options for the manager by using `setOptions()`. The method accepts an array and in it you can set the `uniqueId` for the session. To get the options you can call `getOptions()` which will return the array of options stored in the manager.
 
 ```php
 <?php
@@ -276,7 +273,7 @@ $session->setOptions(
 In the above example, after `setOptions()` is called with a new `uniqueId`, data will be stored using `id-2` now and anything stored before that will not be accessible until you change the key back to `id-1`.
 
 ### Set
-You can use `set()` to store contents in your session. The method accepts a `string` as the name of the element and the value to be stored. The component also supports the magic setter, so you can set it as a property of the manager.
+You can use `set()` to store contents in your session. The method accepts a `string` as the name of the element and the value to be stored. The component also supports the magic setter so you can set it as a property of the manager.
 
 ```php
 <?php
@@ -328,19 +325,11 @@ unset($session->userId);
 [Phalcon\Session\Adapter\Libmemcached][session-adapter-libmemcached] uses the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] internally to store data in Memcached. In order to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.  
 
 The available options for Memcached are:
-
-| Name      | Description          |
-|-----------|----------------------|
-| `client`  | client settings      |
-| `servers` | array of server data |
-
-The `servers` option is an array that contains the following options:
-
-| Name     | Description               |
-|----------|---------------------------|
-| `host`   | the host                  |
-| `port`   | the port                  |
-| `weight` | the weight for the server | 
+- `client` - client settings
+- `servers` - array of server data
+    - `host` - the host
+    - `port` - the port
+    - `weight` - the weight for the server
 
 ```php
 <?php
@@ -390,15 +379,12 @@ $session
 [Phalcon\Session\Adapter\Redis][session-adapter-redis] uses the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis] internally to store data in Redis. In order to use this adapter you need the settings for Redis and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.  
 
 The available options for Redis are:
-
-| Name         | Description                           |
-|--------------|---------------------------------------|
-| `host`       | the host                              |
-| `port`       | the port                              |
-| `index`      | the index                             |
-| `persistent` | whether to persist connections or not |
-| `auth`       | authentication parameters             |
-| `socket`     | socket connection                     |
+- `host` - the host
+- `port` - the port
+- `index` - the index
+- `persistent` - whether to persist connections or not
+- `auth` - authentication parameters
+- `socket` - socket connection
 
 ```php
 <?php
@@ -457,16 +443,34 @@ use SessionHandlerInterface;
 
 class Custom extends SessionHandlerInterface
 {
+    /**
+     * Close
+     */
     public function close() -> bool;
 
+    /**
+     * Destroy
+     */
     public function destroy($sessionId) -> bool;
 
-    public function gc(int $maxlifetime) -> bool;
+    /**
+     * Garbage Collector
+     */
+    public function gc($maxlifetime) -> bool;
 
+    /**
+     * Read
+     */
     public function read($sessionId) -> string;
 
+    /**
+     * Open
+     */
     public function open($savePath, $sessionName) -> bool;
 
+    /**
+     * Write
+     */
     public function write($sessionId, $data) -> bool;
 }
 ```
@@ -498,21 +502,37 @@ class IndexController extends Controller
 ```
 
 ## Bag
-[Phalcon\Session\Bag][session-bag] is a component that helps to separate session data into `namespaces`. This way you can create groups of session variables for your application. Setting data in the bag stores them automatically in the session:
+[Phalcon\Session\Bag][session-bag] is a component that helps separating session data into `namespaces`. This way you can create groups of session variables for your application. Setting data in the bag stores them automatically in the session:
 
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
+use Phalcon\Session\Manager;
+use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Bag as SessionBag;
-use Phalcon\Session\Manager as SessionManager;
-use Phalcon\Session\Adapter\Stream as SessionAdapter;
 
 $container = new Di();
-$adapter = new SessionAdapter();
-$session = new SessionManager();
-$session->setAdapter($adapter);
-$user      = new SessionBag($session, 'user');
+
+$container->set(
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+
+        $session
+            ->setAdapter($files)
+            ->start();
+
+        return $session;
+    }
+);
+
+$user = new SessionBag('user');
 
 $user->setDI($container);
 
@@ -526,7 +546,7 @@ If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container you can 
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 
@@ -573,7 +593,40 @@ class InvoicesController extends Controller
 ```
 
 ## Persistent Data
-You can also inject the [Phalcon\Session\Bag][session-bag] component. Doing so will help you isolate variables for every class without polluting the session. The component is registered automatically using the `persistent` property name. Anything set in `$this->persist` will only be available in each class itself, whereas if data is set in the session manager will be available throughout the application.
+You can also inject the [Phalcon\Session\Bag][session-bag] component. Doing so will help you isolate variables for every class without polluting the session. The component is registered automatically using the `persistent` property name. 
+
+> NOTE: A `session` service must be present for the `persistent` service to work and persist the data
+{: .alert .alert-warning }
+
+In your providers/services setup:
+
+```php
+<?php
+
+use Phalcon\Di;
+use Phalcon\Session\Manager;
+use Phalcon\Session\Adapter\Stream;
+
+$container = new Di();
+
+$container->set(
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+
+        $session
+            ->setAdapter($files)
+            ->start();
+
+        return $session;
+    }
+);
+```
 
 In a controller:
 
@@ -636,8 +689,6 @@ class InvoicesController extends Controller
 }
 ```
 
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[di-injectable]: api/phalcon_di.md#di-injectable
 [incubator]: https://github.com/phalcon/incubator/
 [session-adapter-abstractadapter]: api/phalcon_session.md#session-adapter-abstractadapter
 [session-adapter-libmemcached]: api/phalcon_session.md#session-adapter-libmemcached
@@ -652,3 +703,5 @@ class InvoicesController extends Controller
 [storage-adapter]: api/phalcon_storage.md#storage-adapterfactory
 [storage-adapter-libmemcached]: api/phalcon_storage.md#storage-adapter-libmemcached
 [storage-adapter-redis]: api/phalcon_storage.md#storage-adapter-redis
+[di-factorydefault]: api/phalcon_di.md#di-factorydefault
+[di-injectable]: api/phalcon_di.md#di-injectable

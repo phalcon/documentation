@@ -1,6 +1,5 @@
 # MVC - Model View Controller
 - - -
-
 ## Overview
 Model View Controller ([MVC][wiki-mvc]) is a software architectural pattern, which divides the application logic into three interconnected elements, separating internal representations of information of the application. 
 
@@ -14,15 +13,12 @@ MVC benefits include:
 If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in Zephir, which is translated to C, offering a high performance implementation of the MVC pattern in PHP applications.
 
 ## Models
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [more...][db-models]
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [more...](db-models.md)
 
 ## Views
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [more...][views]
+Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [more...](views.md)
 
 ## Controllers
-The controllers provide the _flow_ between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [more...][controllers]
+The controllers provide the _flow_ between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [more...](controllers.md)
 
 [wiki-mvc]: https://en.wikipedia.org/wiki/Model–view–controller
-[db-models]: db-models.md
-[views]: views.md
-[controllers]: controllers.md

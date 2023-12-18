@@ -1,14 +1,12 @@
 # Model Relationships
 - - -
-
 ## Overview
 [Database normalization][db-normalization] is a process where data is split into different tables and links are created between those tables, in order to increase flexibility, reduce data redundancy and improve data integrity. Relationships are defined in the `initialize` method of each model. 
 
 The following types of relationships are available:
+- one to one
 
-**one to one**
-
-```php
+```
 hasOne(
     string|array $fields, 
     string $referenceModel, 
@@ -27,9 +25,9 @@ hasOneThrough(
 )
 ```
 
-**one to many**
+- one to many
 
-```php
+```
 hasMany(
     string|array $fields, 
     string $referenceModel, 
@@ -38,9 +36,9 @@ hasMany(
 )
 ```
 
-**many to one**
+- many to one
 
-```php
+```
 belongsTo(
     string|array $fields, 
     string $referenceModel, 
@@ -49,9 +47,9 @@ belongsTo(
 )
 ```
 
-**many to many**
+- many to many
 
-```php
+```
 hasManyToMany(
     string|array $fields, 
     string $intermediateModel, 
@@ -63,7 +61,7 @@ hasManyToMany(
 )
 ```
 
-Relationships can be unidirectional or bidirectional, and each can be simple (a one-to-one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from the source model easily and in a uniform way.
+Relationships can be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from the source model easily and in a uniform way.
 
 ```php
 <?php
@@ -244,6 +242,7 @@ class Products extends Model
 
     public function initialize()
     {
+        // To the intermediate table
         $this->hasMany(
             'prd_id',
             InvoicesProducts::class,
@@ -269,7 +268,7 @@ class Products extends Model
 
 The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model, and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
 
-Many-to-many relationships require 3 models and define the attributes involved in the relationship:
+Many to many relationships require 3 models and define the attributes involved in the relationship:
 
 ```php
 <?php
@@ -359,6 +358,7 @@ class Invoices extends Model
                     return [
                         'conditions' => 'cst_location = :location:',
                         'bind'       => [
+                            // Location can change between queries
                             'location' => $container->getShared('myLocationService')->myLocation,
                          ]
                     ];
@@ -444,9 +444,8 @@ class Products extends Model
 }
 ```
 
-!!! info "NOTE"
-
-    The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+> **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+{: .alert .alert-info }
 
 ## Accessing
 There are several ways that we can access the relationships of a model.
@@ -475,7 +474,7 @@ foreach ($customer->invoices as $invoice) {
 }
 ```
 
-or for a many-to-many relationship (see models above):
+or for a many to many relationship (see models above):
 
 ```php
 <?php
@@ -520,7 +519,7 @@ foreach ($customer->getInvoices() as $invoice) {
 }
 ```
 
-or for a many-to-many relationship (see models above):
+or for a many to many relationship (see models above):
 
 ```php
 <?php
@@ -640,7 +639,7 @@ foreach ($products as $product) {
 The prefix `get` is used to `find()`/`findFirst()` related records.
 
 | Type             | Implicit Method | Returns                                                              |
-|------------------|-----------------|----------------------------------------------------------------------|
+|------------------| ----------------|----------------------------------------------------------------------|
 | Belongs-To       | `findFirst`     | Model instance of the related record directly                        |
 | Has-One          | `findFirst`     | Model instance of the related record directly                        |
 | Has-One-Through  | `findFirst`     | Model instance of the related record directly                        |
@@ -684,7 +683,7 @@ foreach ($customer->getRelated('invoices') as $invoice) {
 }
 ```
 
-or for a many-to-many relationship (see models above):
+or for a many to many relationship (see models above):
 
 ```php
 <?php
@@ -843,7 +842,7 @@ class Parts extends Model
 ```
 In the example above, we have a `Part` that has a relationship with one or more `Part` objects. Each `Part` can consist of other parts that construct it. As a result we end up with a self join relationship. For a telephone `Part` we have the following children:
 
-```php
+```
 <?php
 
 $phone = Parts::findFirst(....);
@@ -854,12 +853,10 @@ echo $phone->getChildren();
 // --- Battery
 // --- Charger
 ```
-
 and each of those parts has the telephone as a parent:
-
-```php
+```
 <?php
-$charger = Parts::findFirst(...);
+$charger = Parts::findFirst(....);
 
 echo $phone->getParent();
 
@@ -869,9 +866,8 @@ echo $phone->getParent();
 ## Caching
 Accessing related data can significantly increase the number of queries in your database. You can reduce this load as much as possible, by utilizing the `reusable` option in your relationship. Setting this option to `true` will instruct Phalcon to cache the results of the relationship the first time it is accessed, so that subsequent calls to the same relationship can use the cached resultset and not request the data again from the database. This cache is active during the same request.
 
-!!! info "NOTE"
-
-    You are encouraged to use the `reusable` option as often as possible in your relationships
+> **NOTE**: You are encouraged to use the `reusable` option as often as possible in your relationships
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -982,6 +978,7 @@ class Companies extends Model
 {
     public function initialize()
     {
+        // All invoices relationship
         $this->hasMany(
             'id',
             Invoices::class,
@@ -991,6 +988,7 @@ class Companies extends Model
             ]
         );
 
+        // Paid invoices relationship
         $this->hasMany(
             'id',
             Invoices::class,
@@ -1003,6 +1001,7 @@ class Companies extends Model
             ]
         );
 
+        // Unpaid invoices relationship + bound parameters
         $this->hasMany(
             'id',
             Invoices::class,
@@ -1045,6 +1044,7 @@ $unpaidInvoices = $company->getRelated(
     ]
 );
 
+// Also ordered
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
     [
@@ -1228,17 +1228,20 @@ Magic properties can be used to store a record and its related properties:
 ```php
 <?php
 
+// Create an artist
 $artist = new Artists();
 
 $artist->name    = 'Shinichi Osawa';
 $artist->country = 'Japan';
 
+// Create an album
 $album = new Albums();
 
 $album->name   = 'The One';
-$album->artist = $artist;
+$album->artist = $artist; // Assign the artist
 $album->year   = 2008;
 
+// Save both records
 $album->save();
 ```
 
@@ -1280,17 +1283,16 @@ $customer->save();
 
 The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship of the customer as an array. The customer record is then saved, which also saves the two invoices in the database and links them to the customer.
 
-Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replacement. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.  
+Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an __update__, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.  
 
 Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages generated during the save process of the whole transaction will be passed back to the user for more information.
 
-!!! warning "NOTE"
-
-    Adding related entities by overloading the following methods/events is **not** possible:
-    
-    - `Phalcon\Mvc\Model::beforeSave()`
-    - `Phalcon\Mvc\Model::beforeCreate()`
-    - `Phalcon\Mvc\Model::beforeUpdate()`
+> **NOTE**: Adding related entities by overloading the following methods/events is **not** possible:
+>
+> - `Phalcon\Mvc\Model::beforeSave()`
+> - `Phalcon\Mvc\Model::beforeCreate()`
+> - `Phalcon\Mvc\Model::beforeUpdate()`
+{: .alert .alert-warning }
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
@@ -1389,53 +1391,6 @@ $customer->getInvoices()->delete(
     }
 );
 ```
-
-
-### Messages
-You can append messages from another model.
-
-```php
-<?php
-
-$invoices = $customer->getInvoices();
-
-foreach ($invoices as $invoice) {
-    if ( false === $invoice->save() ) {
-        $customer->appendMessagesFrom($invoice);
-    }
-}
-$messages = $customer->getMessages();
-foreach ($messages as $message) {
-    echo $message;
-    $metaData = $message->getMetadata();
-    if ( true === isset($metaData['model']) ) {
-        echo $metaData['model'];
-    }
-}
-```
-
-
-For better error reporting you can retrieve the name of the Model and Reference Model from the Message MetaData:
-
-```php
-<?php
-
-$invoices = $customer->getInvoices();
-if ( false === $customer->save() ) {
-    $messages = $customer->getMessages();
-    foreach ($messages as $message) {
-        echo $message;
-        $metaData = $message->getMetadata();
-        if ( true === isset($metaData['model']) ) {
-            echo $metaData['model'];
-        }
-        if ( true === isset($metaData['referenceModel']) ) {
-            echo $metaData['referenceModel'];
-        }
-    }
-}
-```
-
 
 [db-normalization]: https://en.wikipedia.org/wiki/Database_normalization
 [mvc-model]: api/phalcon_mvc.md#mvc-model

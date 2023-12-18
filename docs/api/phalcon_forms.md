@@ -1,3 +1,8 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Forms'
+---
 
 * [Phalcon\Forms\Element\AbstractElement](#forms-element-abstractelement)
 * [Phalcon\Forms\Element\Check](#forms-element-check)
@@ -19,10 +24,10 @@
 
 <h1 id="forms-element-abstractelement">Abstract Class Phalcon\Forms\Element\AbstractElement</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/AbstractElement.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/AbstractElement.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | InvalidArgumentException, Phalcon\Di\DiInterface, Phalcon\Di\Di, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Html\Escaper, Phalcon\Html\TagFactory, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
+| Uses       | InvalidArgumentException, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation\ValidatorInterface |
 | Implements | ElementInterface |
 
 This is a base class for form elements
@@ -30,59 +35,33 @@ This is a base class for form elements
 
 ## Properties
 ```php
-/**
- * @var array
- */
+//
 protected attributes;
 
-/**
- * @var array
- */
+//
 protected filters;
 
-/**
- * @var Form|null
- */
+//
 protected form;
 
-/**
- * @var string|null
- */
+//
 protected label;
 
-/**
- * @var string
- */
-protected method = inputText;
-
-/**
- * @var Messages
- */
+//
 protected messages;
 
-/**
- * @var string
- */
+//
 protected name;
 
-/**
- * @var array
- */
+//
 protected options;
-
-/**
- * @var TagFactory|null
- */
-protected tagFactory;
 
 /**
  * @var array
  */
 protected validators;
 
-/**
- * @var mixed|null
- */
+//
 protected value;
 
 ```
@@ -92,7 +71,7 @@ protected value;
 ```php
 public function __construct( string $name, array $attributes = [] );
 ```
-Constructor
+Phalcon\Forms\Element constructor
 
 
 ```php
@@ -181,12 +160,6 @@ Returns the element name
 
 
 ```php
-public function getTagFactory(): TagFactory | null;
-```
-Returns the tagFactory; throws exception if not present
-
-
-```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
 Returns the value of an option if present
@@ -223,9 +196,10 @@ Generate the HTML to label the element
 
 
 ```php
-public function render( array $attributes = [] ): string;
+public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
 ```
-Renders the element widget returning HTML
+Returns an array of prepared attributes for Phalcon\Tag helpers
+according to the element parameters
 
 
 ```php
@@ -278,12 +252,6 @@ Sets the element name
 
 
 ```php
-public function setTagFactory( TagFactory $tagFactory ): AbstractElement;
-```
-Sets the TagFactory
-
-
-```php
 public function setUserOption( string $option, mixed $value ): ElementInterface;
 ```
 Sets an option for the element
@@ -295,37 +263,34 @@ public function setUserOptions( array $options ): ElementInterface;
 Sets options for the element
 
 
-```php
-protected function getLocalTagFactory(): TagFactory;
-```
-Returns the tagFactory; throws exception if not present
-
-
 
 
 <h1 id="forms-element-check">Class Phalcon\Forms\Element\Check</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Check.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Check.zep)
 
 | Namespace  | Phalcon\Forms\Element |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
+
+Phalcon\Forms\Element\Check
 
 Component INPUT[type=check] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputCheckbox;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning HTML
+
+
 
 
 <h1 id="forms-element-date">Class Phalcon\Forms\Element\Date</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Date.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Date.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -334,22 +299,22 @@ protected method = inputCheckbox;
 Component INPUT[type=date] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputDate;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning html
+
+
 
 
 <h1 id="forms-element-elementinterface">Interface Phalcon\Forms\Element\ElementInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/ElementInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/ElementInterface.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Forms\Form, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Filter\Validation\ValidatorInterface |
+| Uses       | Phalcon\Forms\Form, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidatorInterface |
 
 Interface for Phalcon\Forms\Element classes
 
@@ -472,6 +437,13 @@ Generate the HTML to label the element
 
 
 ```php
+public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
+```
+Returns an array of prepared attributes for Phalcon\Tag helpers
+according to the element's parameters
+
+
+```php
 public function render( array $attributes = [] ): string;
 ```
 Renders the element widget
@@ -542,28 +514,30 @@ Sets options for the element
 
 <h1 id="forms-element-email">Class Phalcon\Forms\Element\Email</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Email.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
+Phalcon\Forms\Element\Email
+
 Component INPUT[type=email] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputEmail;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning HTML
+
+
 
 
 <h1 id="forms-element-file">Class Phalcon\Forms\Element\File</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/File.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/File.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -572,116 +546,124 @@ protected method = inputEmail;
 Component INPUT[type=file] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputFile;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning HTML
+
+
 
 
 <h1 id="forms-element-hidden">Class Phalcon\Forms\Element\Hidden</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Hidden.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Hidden.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
+
+Phalcon\Forms\Element\Hidden
 
 Component INPUT[type=hidden] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputHidden;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning HTML
+
+
 
 
 <h1 id="forms-element-numeric">Class Phalcon\Forms\Element\Numeric</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Numeric.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Numeric.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
+
+Phalcon\Forms\Element\Numeric
 
 Component INPUT[type=number] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputNumeric;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning HTML
+
+
 
 
 <h1 id="forms-element-password">Class Phalcon\Forms\Element\Password</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Password.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Password.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
+
+Phalcon\Forms\Element\Password
 
 Component INPUT[type=password] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputPassword;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning HTML
+
+
 
 
 <h1 id="forms-element-radio">Class Phalcon\Forms\Element\Radio</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Radio.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Radio.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
+Phalcon\Forms\Element\Radio
+
 Component INPUT[type=radio] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputRadio;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget returning HTML
+
+
 
 
 <h1 id="forms-element-select">Class Phalcon\Forms\Element\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Select.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag\Select |
 | Extends    | AbstractElement |
+
+Phalcon\Forms\Element\Select
 
 Component SELECT (choice) for forms
 
 
 ## Properties
 ```php
-/**
- * @var object|array|null
- */
+//
 protected optionsValues;
 
 ```
@@ -689,9 +671,9 @@ protected optionsValues;
 ## Methods
 
 ```php
-public function __construct( string $name, mixed $options = null, array $attributes = [] );
+public function __construct( string $name, mixed $options = null, mixed $attributes = null );
 ```
-Constructor
+Phalcon\Forms\Element constructor
 
 
 ```php
@@ -718,18 +700,11 @@ public function setOptions( mixed $options ): ElementInterface;
 Set the choice's options
 
 
-```php
-protected function prepareAttributes( array $attributes = [] ): array;
-```
-Returns an array of prepared attributes for Phalcon\Html\TagFactory
-helpers according to the element parameters
-
-
 
 
 <h1 id="forms-element-submit">Class Phalcon\Forms\Element\Submit</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Submit.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Submit.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -738,31 +713,42 @@ helpers according to the element parameters
 Component INPUT[type=submit] for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputSubmit;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget
+
+
 
 
 <h1 id="forms-element-text">Class Phalcon\Forms\Element\Text</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/Text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/Text.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Forms\Exception |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
+Phalcon\Forms\Element\Text
+
 Component INPUT[type=text] for forms
+
+
+## Methods
+
+```php
+public function render( array $attributes = [] ): string;
+```
+Renders the element widget
+
 
 
 
 <h1 id="forms-element-textarea">Class Phalcon\Forms\Element\TextArea</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Element/TextArea.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Element/TextArea.zep)
 
 | Namespace  | Phalcon\Forms\Element |
 | Uses       | Phalcon\Tag |
@@ -771,22 +757,22 @@ Component INPUT[type=text] for forms
 Component TEXTAREA for forms
 
 
-## Properties
-```php
-/**
- * @var string
- */
-protected method = inputTextarea;
+## Methods
 
+```php
+public function render( array $attributes = [] ): string;
 ```
+Renders the element widget
+
+
 
 
 <h1 id="forms-exception">Class Phalcon\Forms\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Exception.zep)
 
 | Namespace  | Phalcon\Forms |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Forms will use this class
 
@@ -794,10 +780,10 @@ Exceptions thrown in Phalcon\Forms will use this class
 
 <h1 id="forms-form">Class Phalcon\Forms\Form</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Form.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Form.zep)
 
 | Namespace  | Phalcon\Forms |
-| Uses       | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Html\TagFactory, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Filter\Validation, Phalcon\Filter\Validation\ValidationInterface |
+| Uses       | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface |
 | Extends    | Injectable |
 | Implements | Countable, Iterator, AttributesInterface |
 
@@ -807,64 +793,33 @@ This component allows to build forms using an object-oriented interface
 ## Properties
 ```php
 /**
- * @var AttributesInterface|null
+ * @var Attributes | null
  */
 protected attributes;
 
-/**
- * @var array
- */
+//
 protected data;
 
-/**
- * @var array
- */
-protected filteredData;
-
-/**
- * @var array
- */
+//
 protected elements;
 
-/**
- * @var array
- */
+//
 protected elementsIndexed;
 
-/**
- * @var object|null
- */
+//
 protected entity;
 
-/**
- * @var Messages|array|null
- */
+//
 protected messages;
 
-/**
- * @var int
- */
-protected position = 0;
+//
+protected position;
 
-/**
- * @var array
- */
+//
 protected options;
 
-/**
- * @var TagFactory|null
- */
-protected tagFactory;
-
-/**
- * @var ValidationInterface|null
- */
+//
 protected validation;
-
-/**
- * @var array
- */
-protected whitelist;
 
 ```
 
@@ -883,7 +838,7 @@ Adds an element to the form
 
 
 ```php
-public function bind( array $data, mixed $entity = null, array $whitelist = [] ): Form;
+public function bind( array $data, mixed $entity, mixed $whitelist = null ): Form;
 ```
 Binds data to the entity
 
@@ -901,7 +856,7 @@ Returns the number of elements in the form
 
 
 ```php
-public function current(): mixed;
+public function current(): ElementInterface | bool;
 ```
 Returns the current element in the iterator
 
@@ -938,12 +893,6 @@ Returns the entity related to the model
 
 
 ```php
-public function getFilteredValue( string $name ): mixed | null;
-```
-Gets a value from the internal filtered data or calls getValue(name)
-
-
-```php
 public function getLabel( string $name ): string;
 ```
 Returns a label for an element
@@ -972,12 +921,6 @@ Returns the messages generated for a specific element
 
 
 ```php
-public function getTagFactory(): TagFactory | null;
-```
-Returns the tagFactory object
-
-
-```php
 public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
 Returns the value of an option if present
@@ -990,21 +933,15 @@ Returns the options for the element
 
 
 ```php
-public function getValidation(): ValidationInterface | null;
+public function getValidation()
 ```
-return ValidationInterface|null
+
 
 
 ```php
 public function getValue( string $name ): mixed | null;
 ```
 Gets a value from the internal related entity or from the default value
-
-
-```php
-public function getWhitelist(): array;
-```
-return array
 
 
 ```php
@@ -1020,7 +957,7 @@ Check if messages were generated for a specific element
 
 
 ```php
-public function isValid( mixed $data = null, mixed $entity = null, array $whitelist = [] ): bool;
+public function isValid( mixed $data = null, mixed $entity = null ): bool;
 ```
 Validates the form
 
@@ -1032,7 +969,7 @@ Returns the current position/key in the iterator
 
 
 ```php
-public function label( string $name, array $attributes = [] ): string;
+public function label( string $name, array $attributes = null ): string;
 ```
 Generate the label of an element added to the form including HTML
 
@@ -1081,12 +1018,6 @@ Sets the entity related to the model
 
 
 ```php
-public function setTagFactory( TagFactory $tagFactory ): Form;
-```
-Sets the tagFactory for the form
-
-
-```php
 public function setUserOption( string $option, mixed $value ): Form;
 ```
 Sets an option for the form
@@ -1099,15 +1030,9 @@ Sets options for the element
 
 
 ```php
-public function setValidation( ValidationInterface $validation ): Form;
+public function setValidation( $validation )
 ```
-Sets the default validation
 
-
-```php
-public function setWhitelist( array $whitelist ): Form;
-```
-Sets the default whitelist
 
 
 ```php
@@ -1120,7 +1045,7 @@ Check if the current element in the iterator is valid
 
 <h1 id="forms-manager">Class Phalcon\Forms\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Forms/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Forms/Manager.zep)
 
 | Namespace  | Phalcon\Forms |
 
@@ -1129,9 +1054,7 @@ Forms Manager
 
 ## Properties
 ```php
-/**
- * @var array
- */
+//
 protected forms;
 
 ```

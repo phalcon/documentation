@@ -1,13 +1,12 @@
 # Dispatcher Component
 - - -
-
 ## Overview
 The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
 
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Mvc\Dispatcher;
 
 $container  = new Di();
@@ -387,7 +386,7 @@ while (true !== $finished) {
 In the code above, we are calculating the controller name, instantiate it and call the relevant action. After that we finish the loop. The example is very simplified and lacks validations, filters and additional checks, but it demonstrates the normal flow of operation within the dispatcher.
 
 ## Forwarding
-The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in situations when checking if the user has access to certain areas, and if not allowed to be forwarded to other controllers and actions, thus allowing you to reuse code.
+The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in situations when checking if the user has access to certain areas, and if not allowed be forwarded to other controllers and actions, thus allowing you to reuse code.
 
 ```php
 <?php
@@ -414,9 +413,8 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! info "NOTE"
-
-    Keep in mind that performing a `forward` is not the same as making an HTTP redirect. Although they produce the same result, performing a `forward` will not reload the current page, while the HTTP redirect needs two requests to complete the process.
+> **NOTE**: Keep in mind that performing a `forward` is not the same as making a HTTP redirect. Although they produce the same result, performing a `forward` will not reload the current page, while the HTTP redirect needs two requests to complete the process.
+{: .alert .alert-info }
 
 Examples:
 
@@ -454,7 +452,7 @@ A `forward` action accepts the following parameters:
 
 ## Parameters
 ### Preparing
-By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance, you might want your URLs to be:
+By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance you might want your URLs to be:
  
 ```
 https://domain.com/controller/key1/value1/key2/value
@@ -663,9 +661,8 @@ $container->set(
 );
 ```
 
-!!! info "NOTE"
-
-    The code above can be used as is or adjusted to help with legacy URL transformations or other use cases where we need to manipulate the action name.
+> **NOTE**: The code above can be used as is or adjusted to help with legacy URL transformations or other use cases where we need to manipulate the action name.
+{: .alert .alert-info }
 
 ### Model Injection
 There are instances that you might want to inject automatically model instances that have been matched with the parameters passed in the URL. 
@@ -767,9 +764,8 @@ $dispatcher->setModelBinder(
 return $dispatcher;
 ```
 
-!!! warning "NOTE"
-
-    The [Phalcon\Mvc\Model\Binder][mvc-model-binder] component uses PHP's Reflection API internally, which consumes additional processing cycles. For that reason, it has the ability to use a `cache` instance or a cache service name. To use this feature, you can pass the cache service name or instance as the second argument in the `setModelBinder()` method or by just passing the cache instance in the `Binder` constructor.
+> **NOTE**: The [Phalcon\Mvc\Model\Binder][mvc-model-binder] component uses PHP's Reflection API internally, which consumes additional processing cycles. For that reason, it has the ability to use a `cache` instance or a cache service name. To use this feature, you can pass the cache service name or instance as the second argument in the `setModelBinder()` method or by just passing the cache instance in the `Binder` constructor.
+{: .alert .alert-warning }
 
 Also, by using the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface] in controllers, you can define the models binding in base controllers.
 
@@ -803,7 +799,7 @@ use Phalcon\Mvc\Model\Binder\BindableInterface;
 
 class InvoicesController extends CrudController implements BindableInterface
 {
-    public function getModelName()
+    public static function getModelName()
     {
         return Invoices::class;
     }
@@ -832,12 +828,11 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
-
-    Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
+> Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
+{: .alert .alert-warning }
 
 ## Not-Found (404) 
-If an [Events Manager][events] has been defined, you can use it to intercept exceptions that are thrown when the controller/action pair are not found.
+If an [Events Manager](events.md) has been defined, you can use it to intercept exceptions that are thrown when the controller/action pair are not found.
 
 ```php
 <?php
@@ -965,28 +960,27 @@ class ExceptionsPlugin
 }
 ```
 
-!!! danger "NOTE"
-
-    Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
+> **NOTE**: Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
+{: .alert .alert-danger }
 
 ## Events
-[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to a [Manager][events] if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
+[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to an [Manager](events.md) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Event Name             | Triggered                                                                                                                   | Can stop |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------|:--------:|
-| `afterBinding`         | After models are bound but before executing route                                                                           |   Yes    |
-| `afterDispatch`        | After executing the controller/action method.                                                                               |   Yes    |
+| `afterBinding`         | After models are bound but before executing route                                                                           |    Yes   |
+| `afterDispatch`        | After executing the controller/action method.                                                                               |    Yes   |
 | `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |    No    |
 | `afterExecuteRoute`    | After executing the controller/action method.                                                                               |    No    |
 | `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |    No    |
-| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Yes    |
-| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |   Yes    |
-| `beforeException`      | Before the dispatcher throws any exception                                                                                  |   Yes    |
-| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |   Yes    |
+| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |    Yes   |
+| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |    Yes   |
+| `beforeException`      | Before the dispatcher throws any exception                                                                                  |    Yes   |
+| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |    Yes   |
 | `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |    No    |
-| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |   Yes    |
+| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |    Yes   |
 
-The [INVO][invo] sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl][acl]
+The [INVO][invo] sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl](acl.md)
 
 The following example demonstrates how to attach listeners to this component:
 
@@ -1042,9 +1036,8 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
-
-    Methods on event listeners accept a [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
+> **NOTE**: Methods on event listeners accept an [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
+{: .alert .alert-warning }
 
 ## Events Manager
 You can use the `dispatcher::beforeForward` event to change modules and perform redirections easier.
@@ -1053,7 +1046,7 @@ You can use the `dispatcher::beforeForward` event to change modules and perform 
 <?php
 
 use App\Back\Bootstrap;
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Events\Manager;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Events\Event;
@@ -1256,5 +1249,3 @@ class MyDispatcher implements DispatcherInterface
 [mvc-model-binder]: api/phalcon_mvc.md#mvc-model-binder
 [mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvc-model-binder-bindableinterface
 [mvc-model-binderinterface]: api/phalcon_mvc.md#mvc-model-binderinterface
-[events]: events.md
-[acl]: acl.md

@@ -1,6 +1,5 @@
 # Controllers
 - - -
-
 ## Overview
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called _actions_ that contain such business logic and handle user requests.
 
@@ -8,18 +7,17 @@ An action is any public method in a controller with the `Action` suffix. These _
 
 Controllers in Phalcon **must** have the suffix `Controller` in their file and class name and **must** extend the [Phalcon\Mvc\Controller][mvc-controller] class.
 
-!!! info "NOTE"
-
-    The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
+> **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
+{: .alert .alert-info }
 
 ## Routing
-[Routing][routing] is further explained in the relevant document. However, the default route is:
+[Routing](routing.md) is further explained in the relevant document. However the default route is:
 
 ```bash
 /:module/:controller/:action/:parameter1/:parameter2
 ```
 
-You can find more information about modules in the [application][application] document. For an application that does not have any modules, the default routes are:
+You can find more information about modules in the [application](application.md) document. For an application that does not have any modules, the default routes are:
 
 
 ```bash
@@ -41,9 +39,9 @@ will have:
 | `2`         | **Parameter1** |
 | `25`        | **Parameter2** |
 
-The above will call the `InvoicesController` and `listAction`. The parameters will be available through the [request][request] in the controller and action.
+The above will call the `InvoicesController` and `listAction`. The parameters will be available through the [request](request.md) in the controller and action.
 
-Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Autoload\Loader][autoload] has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
+Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Loader](loader.md) has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
 
 A sample controller is as follows:
 
@@ -92,13 +90,12 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+> **NOTE**: The use of the `__construct()` method is not recommended.
+{: .alert .alert-warning }
 
-    The use of the `__construct()` method is not recommended.
 
-!!! warning "NOTE"
-
-    The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
+> **NOTE**: The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
+{: .alert .alert-warning }
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
@@ -116,14 +113,13 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
-
-    Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application).
+> **NOTE**: Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application).
+{: .alert .alert-warning }
 
 ## Dispatch Loop
-The dispatch loop will be executed within the [Dispatcher][dispatcher] until there are no actions left to be executed. In the examples above we showed code in only one action, which will be executed with the appropriate request.
+The dispatch loop will be executed within the [Dispatcher](dispatcher.md) until there are no actions left to be executed. In the examples above we showed code in only one action, which will be executed with the appropriate request.
 
-We can utilize the [Dispatcher][dispatcher] object to forward the request to a different module, controller or action, thus creating a more complex flow of operations in the dispatch loop. 
+We can utilize the [Dispatcher](dispatcher.md) object to forward the request to a different module, controller or action, thus creating a more complex flow of operations in the dispatch loop. 
 
 ```php
 <?php
@@ -183,7 +179,7 @@ class UsersController extends Controller
 
 The above is a simple example of forwarding for users that are not logged in or do not have access. You can check the Events section below on how you can leverage events to do the same thing globally for your application.
 
-There is no limit on the `forward` calls you can have in your application. You have to be careful though, since forwarding could lead to circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View][views].
+There is no limit on the `forward` calls you can have in your application. You have to be careful though, since forwarding could lead to circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View](views.md).
 
 ## Actions
 Actions are methods that are called to execute the necessary functionality for our application. Actions **must** be suffixed by `Action` and they match a route request from the user. 
@@ -245,9 +241,8 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
-
-    You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
+> **NOTE**: You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
+{: .alert .alert-warning }
 
 For the example above, the URL to call the method is:
 
@@ -310,7 +305,7 @@ class InvoicesController extends Controller
 The above parameters will match the route the way it was defined.
 
 ## Events
-Controllers automatically act as listeners for [dispatcher][dispatcher] [events][events], implementing methods with those event names allowing you to implement hook points before/after the actions are executed:
+Controllers automatically act as listeners for [dispatcher](dispatcher.md) [events](events.md), implementing methods with those event names allowing you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
@@ -320,8 +315,8 @@ use Phalcon\Flash\Direct;
 use Phalcon\Mvc\Controller;
 
 /**
- * @property Dispatcher $dispatcher
- * @property Direct     $flash
+ * @property Dispatcher\ $dispatcher
+ * @property Direct      $flash
  */
 class InvoicesController extends Controller
 {
@@ -352,13 +347,12 @@ class InvoicesController extends Controller
 ```
 
 ## Request - Response
-If you have already registered a [Request][request] and [Response][response] services to your DI container or have simply instantiated the [Phalcon\Di\FactoryDefault][di-factorydefault] one, you can access these objects as properties in your controller.
+If you have already registered a [Request](request.md) and [Response](response.md) services to your DI container or have simply instantiated the [Phalcon\Di\FactoryDefault][di-factorydefault] one, you can access these objects as properties in your controller.
 
 For [Phalcon\Di\FactoryDefault][di-factorydefault], your objects will be [Phalcon\Http\Request][request] for `request` and [Phalcon\Http\Response][response] for response. The `request` contains the request from the user, including all the variables set by the method use (`GET`, `POST` etc.) along with additional information regarding the request. The `response` contains data that we need to send back such as `content-type`, status code, payload etc.
 
-!!! info "NOTE"
-
-    In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
+> **NOTE**: In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -532,12 +526,11 @@ class UserController extends Controller
 }
 ```
 
-!!! info "NOTE"
-
-    Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
+> **NOTE**: Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
+{: .alert .alert-info }
 
 ## Dependency Injection
-You can create a controller as a stand-alone class. However, you can extend the [Phalcon\Mvc\Controller][mvc-controller] class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:
+You can create a controller as a stand alone class. However you can extend the [Phalcon\Mvc\Controller][mvc-controller] class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:
 
 ```php
 <?php
@@ -618,10 +611,6 @@ $container->set(
 [mvc-controller-bindmodelinterface]: api/phalcon_mvc.md#mvc-controller-bindmodelinterface
 [mvc-controllerinterface]: api/phalcon_mvc.md#mvc-controllerinterface
 [di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[request]: request.md
-[response]: response.md
+[request]: api/phalcon_http.md#http-request
+[response]: api/phalcon_http.md#http-response
 [session-bag]: api/phalcon_session.md#session-bag
-[dispatcher]: dispatcher.md
-[events]: events.md
-[application]: application.md
-[autoload]: autoload.md

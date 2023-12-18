@@ -1,10 +1,5 @@
 # Domain
 - - -
-
-!!! warning "NOTE"
-
-    In future versions of Phalcon, this component will be reworked to follow the [Payload Interop][payload-interop] interface.
-
 The domain component incorporates components that are used for the implementation of the [Action Domain Responder][adr] ([ADR][adr-jones]) pattern and can also be used when implementing [Domain Driven Design][ddd].
 
 ## Payload
@@ -22,19 +17,16 @@ When using this object, you can set its status, the input, the output, any messa
 
 The properties stored are:
 
-| Property   | Description       |
-|------------|-------------------|
-| `extras`   | Extra information |
-| `input`    | Input             |
-| `messages` | Messages          |
-| `status`   | Status            |
-| `output`   | Output            |
+* `extras`: Extra information
+* `input`: Input
+* `messages`: Messages
+* `status`: Status
+* `output`: Output
 
 The component offers getters and setters for the above properties.
 
-!!! info "NOTE"
-
-    All the setters return a [Phalcon\Domain\Payload][payload-payload] object, which allows you to chain calls for a more fluent syntax.
+> **NOTE**: All the setters return back a [Phalcon\Domain\Payload][payload-payload] object, which allows you to chain calls for a more fluent syntax.
+{: .alert .alert-info }
 
 ## Factory
 [Phalcon\Domain\PayloadFactory][payload-payloadfactory] is also available, offering an easy way to generate new Payload objects.
@@ -51,11 +43,9 @@ $payload = $payloadFactory->newInstance();
 ## Interfaces
 There are three interfaces that you can take advantage of if you wish to extend the object.
 
-| Interface           | Description                          |
-|---------------------|--------------------------------------|
-| `ReadableInterface` | contains only read methods           |
-| `WritableInterface` | contains only write methods          |
-| `PayloadInterface`  | contains both read and write methods |
+* `ReadableInterface`: contains only read methods
+* `WritableInterface`: contains only write methods
+* `PayloadInterface`: contains both read and write methods
 
 ## Status Values
 The [Phalcon\Domain\Payload\Status][payload-status] class contains several constants to help with the domain status of your Payload objects. You can always extend the class and introduce your own domain statuses, depending on the needs of your application.
@@ -129,14 +119,12 @@ class ReportsController extends Controller
 
 * [Action Domain Responder][adr]
 * [Clarifications to a review of Action Domain Responder][adr-clarifications]
-* [Payload Interop][payload-interop]
 
 
 [adr]: https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder
 [adr-jones]: https://pmjones.io/adr/
 [adr-clarifications]: https://paul-m-jones.com/post/2018/12/19/clarifications-to-a-review-of-action-domain-responder/
 [ddd]: https://en.wikipedia.org/wiki/Domain-driven_design 
-[payload-interop]: https://github.com/payload-interop/payload-interop
 [payload-payload]: api/phalcon_domain.md#domain-payload-payload
 [payload-payloadfactory]: api/phalcon_domain.md#domain-payload-payloadfactory
 [payload-payloadinterface]: api/phalcon_domain.md#domain-payload-payloadinterface

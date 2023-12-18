@@ -1,6 +1,5 @@
 # Assets Management
 - - -
-
 ## Overview
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
 
@@ -15,67 +14,15 @@ $container = new FactoryDefault();
 $manager   = $container->get('assets')
 ```
 
-Alternatively, you can register the [Phalcon\Assets\Manager][assets-manager] in your `Phalcon\Di\Di`:
-
-```php
-<?php
-
-use Phalcon\Assets\Manager;
-use Phalcon\Di\Di();
-use Phalcon\Html\TagFactory();
-
-$container  = new Di();
-$tagFactory = new TagFactory();
-
-$container->set(
-    'assets',
-    function () use ($tagFactory) {
-        return new Manager($tagFactory);
-    }
-)
-```
-
-If you do use the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\Html\TagFactory][html-tagfactory] is already registered as a service with the name `tag` and automatically injected in the constructor of [Phalcon\Assets\Manager][assets-manager]. This is to ensure that objects are reused and memory usage is kept to a minimum. If you are registering the [Phalcon\Assets\Manager][assets-manager] on your own, and you already have the [Phalcon\Html\TagFactory][html-tagfactory] registered in your container, you can reuse it without creating a new instance. 
-
 ## Assets
 Assets can be added to the manager or a collection using the Asset related classes. The [Phalcon\Assets\Asset][asset] class. The object accepts the necessary data to create the asset. 
- 
-**type**
-
-can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
-
-**path**
-
-the path of the asset
-
-**local**
-
-whether this is a local asset or not
-
-**filter**
-
-any filter attached to this asset
-
-**attributes**
-
-attributes relative to the asset
-
-**version**
-
-version of the asset
-
-**autoVersion**
-
-let the component auto version this asset or not
-
-
-Each asset has a unique key assigned to it. The key is computed using `sha256` and it is calculated as: 
-
-```php
-$this->getType() . ":" . $this->getPath()
-```
-
-This ensures uniqueness and does not duplicate assets in the asset manager.
+* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+* `path` : the path of the asset
+* `local`: whether this is a local asset or not
+* `filter`: any filter attached to this asset
+* `attributes`: attributes relative to the asset
+* `version`: version of the asset
+* `autoVersion`: let the component auto version this asset or not
 
 ```php
 <?php
@@ -131,22 +78,10 @@ $asset = new Js(
 
 ### Inline
 There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Phalcon\Assets\Inline][asset-inline] class to generate this content. The object can be created with the following parameters:
-
-**type**
-
-can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
- 
-**content**
-
-the content to be injected
-
-**filter**
-
-any filter attached to this asset
- 
-**attributes**
-
-attributes relative to the asset
+* `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+* `content`: the content to be injected
+* `filter`: any filter attached to this asset
+* `attributes`: attributes relative to the asset
 
 ```php
 <?php
@@ -201,6 +136,7 @@ class IndexController extends Controller
     public function index()
     {
         try {
+            // Add some local CSS assets
             $this->assets->addCss('css/style.css');
             $this->assets->addCss('css/index.css');
         } catch (Exception $ex) {
@@ -213,7 +149,7 @@ class IndexController extends Controller
 
 ## Adding Assets
 ### Files
-`Phalcon\Assets\Manager` supports two built-in assets: CSS and JavaScript assets. You can also create other asset types if you need. The assets manager internally stores two default collections of assets - one for JavaScript and another for CSS. 
+Assets supports two built-in assets: CSS and JavaScript assets. You can also create other asset types if you need. The assets manager internally stores two default collections of assets - one for JavaScript and another for CSS. 
 
 You can easily add assets to these collections:
 
@@ -226,16 +162,18 @@ class IndexController extends Controller
 {
     public function index()
     {
+        // Add some local CSS assets
         $this->assets->addCss('css/style.css');
         $this->assets->addCss('css/index.css');
 
+        // And some local JavaScript assets
         $this->assets->addJs('js/jquery.js');
         $this->assets->addJs('js/bootstrap.min.js');
     }
 }
 ```
 
-For better page load performance, it is recommended to place JavaScript links at the end of the HTML instead of in the `<head>` element. However, this might not be always feasible based on the Javascript files you need to load and their dependencies.
+For better page load performance, it is recommended to place JavaScript links at the end of the HTML instead of in the `<head>` element. However this might not be always feasible based on the Javascript files you need to load and their dependencies.
 
 You can also add assets to the manager by using Asset objects:
 ```php
@@ -296,7 +234,7 @@ $manager
 ```
 
 ## Local/Remote Assets
-Local assets are those who are provided by the same application, and they are located in a public location (usually `public`). The URLs for local assets are generated using the [url][url] service.
+Local assets are those who are provided by the same application and they are located in a public location (usually `public`). The URLs for local assets are generated using the [url][url] service.
 
 Remote assets are those such as common libraries like [jQuery][jquery], [Bootstrap][bootstrap], etc. that are provided by a [CDN][cdn].
 
@@ -323,13 +261,13 @@ public function indexAction()
 ```php
 <?php
 
-// Javascript - <head>
+// Javascript - header
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript - <footer>
+// Javascript - footer
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -337,7 +275,7 @@ $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
 ### Get
-The _getter_ methods exposed by the component, allow you to get the collection from anywhere in your code and manipulate it according to your needs. The manager offers `get()`, `getCollection()`, `getCss()` and `getJs()`. These methods will return the collection that the manager stores. The `getCss()` and `getJs()` will return the built-in - pre registered - collections. 
+The _getter_ methods exposed by the component, allow you to get the collection from anywhere in your code and manipulate it according to your needs. The manager offers `get()`, `getCollection()`, `getCss()` and `getJs()`. These methods will return back the collection that the manager stores. The `getCss()` and `getJs()` will return the built-in - pre registered - collections. 
 
 The `collection()` method acts as a _creator_ and _getter_ at the same time. It allows you to create a collection and get it back so that you can then add assets to it. The `getCss()` and `getJs()` perform the same function i.e. create the collection if it does not exist and return it. Those two collections set the predefined `css` and `js` collections in the manager.
 
@@ -349,8 +287,8 @@ $headerCollection = $this->assets->collection('headerJs');
 $headerCollection = $this->assets->get('headerJs');
 ```
 
-### Has
-The `has()` method allows you to check if a particular collection exists in the manager;
+### Exists
+The `exists` method allows you to check if a particular collection exists in the manager;
 ```php
 <?php
 
@@ -405,7 +343,7 @@ $headerCollection = $this
 ```
 
 ### Built-In Filters
-Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v5 we are offering only the [Phalcon\Assets\Filters\None][filter-none] filter (which does not change the asset contents) and the [Phalcon\Assets\FilterInterface][filter-interface] interface, offering the ability to create custom filters.
+Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v4 we are offering only the [Phalcon\Assets\Filters\None][filter-none] filter (which does not change the asset contents) and the [Phalcon\Assets\FilterInterface][filter-interface] interface, offering the ability to create custom filters.
 
 ### Custom Filters
 Creating custom filters is very easy. You can use this extensibility to take advantage of existing and more advanced filtering/minification tools like [YUI][yui], [Sass][sass], [Closure][closure], etc.:
@@ -442,6 +380,7 @@ class CssYUICompressor implements FilterInterface
      */
     public function filter($contents)
     {
+        // Write the string contents into a temporal file
         file_put_contents('temp/my-temp-1.css', $contents);
 
         system(
@@ -454,6 +393,7 @@ class CssYUICompressor implements FilterInterface
             ' -o temp/my-temp-file-2.css'
         );
 
+        // Return the contents of file
         return file_get_contents('temp/my-temp-file-2.css');
     }
 }
@@ -464,8 +404,10 @@ Usage:
 ```php
 <?php
 
+// Get some CSS collection
 $css = $this->assets->get('head');
 
+// Add/Enable the YUI compressor filter in the collection
 $css->addFilter(
     new CssYUICompressor(
         [
@@ -514,13 +456,13 @@ To output files:
 ```php
 <?php
 
-// Javascript - <head>
+// Javascript - header
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript - <footer>
+// Javascript - footer
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -552,13 +494,13 @@ Volt syntax:
     <head>
         <title>Some amazing website</title>
 
-        {{ assets.outputCss('header') }}
+        {% raw %}{{ assets.outputCss('header') }}{% endraw %}
     </head>
 
     <body>
         <!-- ... -->
 
-        {{ assets.outputJs('footer') }}
+        {% raw %}{{ assets.outputJs('footer') }}{% endraw %}
     </body>
 <html>
 ```
@@ -605,13 +547,13 @@ Volt syntax:
     <head>
         <title>Some amazing website</title>
 
-        {{ assets.outputInlineCss() }}
+        {% raw %}{{ assets.outputInlineCss() }}{% endraw %}
     </head>
 
     <body>
         <!-- ... -->
 
-        {{ assets.outputInlineJs() }}
+        {% raw %}{{ assets.outputInlineJs() }}{% endraw %}
     </body>
 <html>
 ```
@@ -639,16 +581,14 @@ The `outputJs()` and `outputCss()` methods are available to generate the necessa
 ```php
 <?php
 
-use Phalcon\Html\TagFactory;
+use Phalcon\Tag;
 
-$tagFactory   = new TagFactory();
 $jsCollection = $this->assets->collection('js');
 
 foreach ($jsCollection as $asset) {
-    echo (string) $tagFactory
-        ->script()
-        ->add($asset->getPath())
-    ;
+    echo Tag::javascriptInclude(
+        $asset->getPath()
+    );
 }
 ```
 
@@ -709,14 +649,13 @@ $asset = new Css(
 );
 ```
 The above will result in the following script as the output (assuming that your file was modified in May 20th 2019):
-Assuming that your file was last modified on May 20, the version 
+Assuming that your file was last modified in May 20, the version 
 ```html
 <link rel="stylesheet" href="css/bootstrap.css?ver=1558392141">
 ```
 
-!!! warning "NOTE"
-
-    Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unnecessary read operations on the file system. 
+> **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unnecessary read operations on the file system. 
+{: .alert .alert-warning }
 
 ## Improving Performance
 There are many ways to optimize processing assets. One method is to allow your web server to handle the assets, thus improving response time. First we need to set up the Assets Manager. We will use a base controller, but you can use the manager anywhere you need to, accessing it from the Di container:
@@ -769,7 +708,7 @@ $router->addGet(
     ]
 );
 
-// ...
+// Other routes...
 ```
 
 Finally, we need to create a controller to handle asset requests:
@@ -832,7 +771,7 @@ class AssetsController extends ControllerBase
 }
 ```
 
-If precompiled assets exist in the file system they must be served directly by web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache, it will be a little different:
+If precompiled assets exist in the file system they must be served directly by web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache it will be a little different:
 
 ```nginx
 location ~ ^/assets/ {
@@ -864,6 +803,17 @@ We do not recommend to use the above example in production environments and for 
 
 In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cache][varnish] would be more preferable.
 
+[jquery]: https://jquery.com
+[bootstrap]: https://getbootstrap.com
+[cdn]: https://en.wikipedia.org/wiki/Content_delivery_network
+[yui]: https://yui.github.io/yuicompressor
+[sass]: https://sass-lang.com
+[closure]: https://developers.google.com/closure/compiler
+[url]: url.md
+[collections]: api/phalcon_assets.md#assets-collection
+[filter-interface]: api/phalcon_assets.md#assets-filterinterface
+[filter-none]: api/phalcon_assets.md#assets-filters-none
+[varnish]: https://varnish-cache.org/
 [asset]: api/phalcon_assets.md#assets-asset
 [asset-css]: api/phalcon_assets.md#assets-asset-css
 [asset-js]: api/phalcon_assets.md#assets-asset-js
@@ -873,17 +823,5 @@ In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cac
 [asset-inline-js]: api/phalcon_assets.md#assets-inline-js
 [asset-exception]: api/phalcon_assets.md#assets-exception
 [assets-manager]: api/phalcon_assets.md#assets-manager
-[bootstrap]: https://getbootstrap.com
 [cache-busting]: https://www.keycdn.com/support/what-is-cache-busting
-[cdn]: https://en.wikipedia.org/wiki/Content_delivery_network
-[closure]: https://developers.google.com/closure/compiler
-[collections]: api/phalcon_assets.md#assets-collection
 [di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[filter-interface]: api/phalcon_assets.md#assets-filterinterface
-[filter-none]: api/phalcon_assets.md#assets-filters-none
-[jquery]: https://jquery.com
-[sass]: https://sass-lang.com
-[html-tagfactory]: html-tagfactory.md
-[yui]: https://yui.github.io/yuicompressor
-[url]: mvc-url.md
-[varnish]: https://varnish-cache.org/

@@ -1,10 +1,9 @@
-# Access Control Lists (ACL)
+# Access Control Lists (acl.md)
 - - -
-
 ## Overview
-[Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests. 
+[Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (acl.md) allow an application to control access to its areas and the underlying objects from requests. 
 
-In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Resources. In the Phalcon world, we use the terminology [Role][acl-role] and [Component][acl-component].
+In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role][acl-role] and [Component][acl-component].
 
 !!! info "Use Case"
 
@@ -15,14 +14,14 @@ In short, ACLs have two objects: The object that needs access, and the object th
     - Accounting Department Access
     - Manager Access
     - Guest Access
-    
+ 
     **Component**
     - Login page
     - Admin page
     - Invoices page
     - Reports page
 
-As seen above in the use case, a [Role][acl-role] is defined as who needs to access a particular [Component][acl-component] i.e. an area of the application. A [Component][acl-component] is defined as the area of the application that needs to be accessed. 
+As seen above in the use case, an [Role][acl-role] is defined as who needs to access a particular [Component][acl-component] i.e. an area of the application. A [Component][acl-component] is defined as the area of the application that needs to be accessed. 
 
 Using the [Phalcon\Acl][acl-acl] component, we can tie those two together, and strengthen the security of our application, allowing only specific roles to be bound to specific components.
 
@@ -99,7 +98,7 @@ $acl->addRole('guest');
 ```
 
 ## Adding Components
-A [Component][acl-component] is the area of the application where access is controlled. In an MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Component][acl-component] class can be used to define components in the application. Also, it is important to add related actions to a component so that the ACL can understand what it should control.
+A [Component][acl-component] is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Component][acl-component] class can be used to define components in the application. Also it is important to add related actions to a component so that the ACL can understand what it should control.
 
 There are two ways of adding components to our list. 
 * by using a [Phalcon\Acl\Component][acl-component] object or 
@@ -177,10 +176,17 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
+/**
+ * Add the roles
+ */
 $acl->addRole('manager');
 $acl->addRole('accounting');
 $acl->addRole('guest');
 
+
+/**
+ * Add the Components
+ */
 
 $acl->addComponent(
     'admin',
@@ -208,10 +214,15 @@ $acl->addComponent(
     ]
 );
 
-$acl->allow('manager', 'admin', 'dashboard');
+/**
+ * Now tie them all together 
+ */
+$acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
-$acl->allow('accounting', 'reports', '*');
 $acl->allow('*', 'session', '*');
+$acl->allow('*', '*', 'view');
+
+$acl->deny('guest', '*', 'view');
 ```
 
 What the above lines tell us:
@@ -220,13 +231,13 @@ What the above lines tell us:
 $acl->allow('manager', 'admin', 'users');
 ```
 
-For the `manager` role, allow access to the `admin` component and `users` action. To bring this into perspective with an MVC application, the above line says that the group `manager` is allowed to access the `admin` controller and `users` action.
+For the `manager` role, allow access to the `admin` component and `users` action. To bring this into perspective with a MVC application, the above line says that the group `manager` is allowed to access the `admin` controller and `users` action.
 
 ```php
 $acl->allow('manager', 'reports', ['list', 'add']);
 ```
 
-You can also pass an array as the `action` parameter when invoking the `allow()` command. The above means that for the `manager` role, allow access to the `reports` component and `list` and `add` actions. Again to bring this into perspective with an MVC application, the above line says that the group `manager` is allowed to access the `reports` controller and `list` and `add` actions. 
+You can also pass an array as the `action` parameter when invoking the `allow()` command. The above means that for the `manager` role, allow access to the `reports` component and `list` and `add` actions. Again to bring this into perspective with a MVC application, the above line says that the group `manager` is allowed to access the `reports` controller and `list` and `add` actions. 
 
 ```php
 $acl->allow('*', 'session', '*');
@@ -238,13 +249,12 @@ Wildcards can also be used to do mass matching for roles, components or actions.
 $acl->allow('*', '*', 'view');
 ```
 
-Similarly, the above gives access to any role, any component that has the `view` action. In an MVC application, the above is the equivalent of allowing any group to access any controller that exposes a `viewAction`. 
+Similarly the above gives access to any role, any component that has the `view` action. In a MVC application, the above is the equivalent of allowing any group to access any controller that exposes a `viewAction`. 
 
-!!! danger "NOTE"
-
-    Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
-    
-    There are plenty of tests in our GitHub repository (`tests` folder) to offer guidance and ideas.
+> **NOTE**: Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
+>
+> [Codeception][codeception] is the chosen testing framework for Phalcon and there are plenty of tests in our GitHub repository (`tests` folder) to offer guidance and ideas.
+{:.alert .alert-danger}
 
 ```php
 $acl->deny('guest', '*', 'view');
@@ -274,12 +284,13 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-// Add roles
+/**
+ * Setup the ACL
+ */
 $acl->addRole('manager');
 $acl->addRole('accounting');
 $acl->addRole('guest');
 
-// Add components
 $acl->addComponent(
     'admin',
     [
@@ -306,30 +317,30 @@ $acl->addComponent(
     ]
 );
 
-// Set up the `allow` list
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('*', 'session', '*');
 $acl->allow('*', '*', 'view');
 
-// Set up the `deny` list
 $acl->deny('guest', '*', 'view');
 
 // ....
 
-// `true` - defined explicitly
+
+
+// true - defined explicitly
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-// `true` - defined with wildcard
+// true - defined with wildcard
 $acl->isAllowed('manager', 'session', 'login');
 
-// `true` - defined with wildcard
+// true - defined with wildcard
 $acl->isAllowed('accounting', 'reports', 'view');
 
-// `false` - defined explicitly
+// false - defined explicitly
 $acl->isAllowed('guest', 'reports', 'view');
 
-// `false` - default access level
+// false - default access level
 $acl->isAllowed('guest', 'reports', 'add');
 ```
 
@@ -347,10 +358,11 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-// Add roles
+/**
+ * Setup the ACL
+ */
 $acl->addRole('manager');
 
-// Add components
 $acl->addComponent(
     'admin',
     [
@@ -382,10 +394,11 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-// Add roles
+/**
+ * Setup the ACL
+ */
 $acl->addRole('manager');
 
-// Add components
 $acl->addComponent(
     'admin',
     [
@@ -405,7 +418,7 @@ $acl->allow(
     }
 );
 
-// Returns `true`
+// Returns true
 $acl->isAllowed(
     'manager',
     'admin',
@@ -415,7 +428,7 @@ $acl->isAllowed(
     ]
 );
 
-// Returns `false`
+// Returns false
 $acl->isAllowed(
     'manager',
     'admin',
@@ -426,9 +439,8 @@ $acl->isAllowed(
 );
 ```
 
-!!! info "NOTE"
-
-    The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that the parameter of to the function.
+> **NOTE**:The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that the parameter of to the function.
+{:.alert .alert-info}
 
 You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl\Enum::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`: 
 
@@ -442,10 +454,11 @@ use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
-// Add roles
+/**
+ * Setup the ACL
+ */
 $acl->addRole('manager');
 
-// Add components
 $acl->addComponent(
     'admin',
     [
@@ -465,30 +478,30 @@ $acl->allow(
     }
 );
 
-// Returns `false`
+// Returns false
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
 $acl->setNoArgumentsDefaultAction(
     Enum::ALLOW
 );
 
-// Returns `true`
+// Returns true
 $acl->isAllowed('manager', 'admin', 'dashboard');
 ```
 
 ## Custom Objects
 Phalcon allows developers to define their own role and component objects. These objects must implement the supplied interfaces:
 
-* [Phalcon\Acl\RoleAwareInterface][acl-roleawareinterface] for Role
-* [Phalcon\Acl\ComponentAwareInterface][acl-componentawareinterface] for Component
+* [Phalcon\Acl\RoleAware][acl-roleaware] for Role
+* [Phalcon\Acl\ComponentAware][acl-componentaware] for Component
 
 ### Role
-We can implement the [Phalcon\Acl\RoleAwareInterface][acl-roleawareinterface] in our custom class with its own logic. The example below shows a new role object called `ManagerRole`: 
+We can implement the [Phalcon\Acl\RoleAware][acl-roleaware] in our custom class with its own logic. The example below shows a new role object called `ManagerRole`: 
 
 ```php
 <?php
 
-use Phalcon\Acl\RoleAwareInterface;
+use Phalcon\Acl\RoleAware;
 
 // Create our class which will be used as roleName
 class ManagerRole implements RoleAware
@@ -572,10 +585,14 @@ use ReportsComponent;
 
 $acl = new Memory();
 
-// Add roles
+/**
+ * Add the roles
+ */
 $acl->addRole('manager');
 
-// Add components
+/**
+ * Add the Components
+ */
 $acl->addComponent(
     'reports',
     [
@@ -585,9 +602,10 @@ $acl->addComponent(
     ]
 );
 
-// Now tie them all together with a custom function.
-// The `ManagerRole` and `ModelSubject` parameters are necessary
-// for the custom function to work
+/**
+ * Now tie them all together with a custom function. The ManagerRole and
+ * ModelSbject parameters are necessary for the custom function to work 
+ */
 $acl->allow(
     'manager', 
     'reports', 
@@ -605,13 +623,14 @@ $admin    = new ManagerRole(3, 'manager');
 // id - name - userId
 $reports  = new ModelComponent(2, 'reports', 2);
 
-// Check whether our user objects have access. Returns `false`
+// Check whether our user objects have access 
+// Returns false
 $acl->isAllowed($levelOne, $reports, 'list');
 
-// Returns `true`
+// Returns true
 $acl->isAllowed($levelTwo, $reports, 'list');
 
-// Returns `false`
+// Returns false
 $acl->isAllowed($admin, $reports, 'list');
 ```
 
@@ -628,18 +647,26 @@ use Phalcon\Acl\Role;
 
 $acl = new Memory();
 
-// Create roles
+/**
+ * Create the roles
+ */
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
-// Add the `guest` role to the ACL
+/**
+ * Add the `guest` role to the ACL 
+ */
 $acl->addRole($guest);
 
-// Add the `accounting` inheriting from `guest`
+/**
+ * Add the `accounting` inheriting from `guest` 
+ */
 $acl->addRole($accounting, $guest);
 
-// Add the `manager` inheriting from `accounting`
+/**
+ * Add the `manager` inheriting from `accounting` 
+ */
 $acl->addRole($manager, $accounting);
 ```
 
@@ -656,19 +683,26 @@ use Phalcon\Acl\Role;
 
 $acl = new Memory();
 
-// Create roles
+/**
+ * Create the roles
+ */
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
-// Add all the roles
+/**
+ * Add all the roles
+ */
 $acl->addRole($manager);
 $acl->addRole($accounting);
 $acl->addRole($guest);
 
-// Add the inheritance
+/**
+ * Add the inheritance 
+ */
 $acl->addInherit($manager, $accounting);
 $acl->addInherit($accounting, $guest);
+
 ```
 
 ## Serialization
@@ -686,22 +720,21 @@ if (true !== is_file($aclFile)) {
     // The ACL does not exist - build it
     $acl = new Memory();
 
-    // Define roles, components, access, etc.
-    // ...
+    // ... Define roles, components, access, etc
 
-    // Store serialized list into a plain file
+    // Store serialized list into plain file
     file_put_contents(
         $aclFile,
         serialize($acl)
     );
 } else {
-    // Restore the ACL object from the serialized file
+    // Restore ACL object from serialized file
     $acl = unserialize(
         file_get_contents($aclFile)
     );
 }
 
-// Use the ACL list as needed
+// Use ACL list as needed
 if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
     echo 'Access granted!';
 } else {
@@ -712,12 +745,12 @@ if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
 It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is rebuilt with every request, while other adapters or means of serializing and storing the ACL in production.
 
 ## Events
-[Phalcon\Acl][acl-acl] can work in conjunction with the [Events Manager][events] if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
+[Phalcon\Acl][acl-acl] can work in conjunction with the [Events Manager](events.md) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
 
 | Event Name          | Triggered                                                | Can stop role? |
 |---------------------|----------------------------------------------------------|:--------------:|
-| `afterCheckAccess`  | Triggered after checking if a role/component has access  |       No       |
-| `beforeCheckAccess` | Triggered before checking if a role/component has access |      Yes       |
+| `afterCheckAccess`  | Triggered after checking if a role/component has access  | No             |
+| `beforeCheckAccess` | Triggered before checking if a role/component has access | Yes            |
 
 The following example demonstrates how to attach listeners to the ACL:
 
@@ -733,7 +766,7 @@ use Phalcon\Events\Manager;
 // Create an event manager
 $eventsManager = new Manager();
 
-// Attach a listener for type `acl`
+// Attach a listener for type 'acl'
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -747,7 +780,7 @@ $eventsManager->attach(
 
 $acl = new Memory();
 
-// Setup the `$acl`
+// Setup the $acl
 // ...
 
 // Bind the eventsManager to the ACL component
@@ -790,4 +823,3 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 [acl-roleinterface]: api/phalcon_acl.md#acl-roleinterface
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
-[events]: events.md

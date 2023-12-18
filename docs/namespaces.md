@@ -1,11 +1,10 @@
 # Namespaces
 - - -
-
 ## Overview
 [Namespaces][namespaces] can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
 
 ## Activation
-If you decided to use namespaces for your application, you will need to instruct your autoloader on where your namespaces reside. This is the most common way to distinguish between namespaces in your application. If you chose to use the [Phalcon\Autoload\Loader][autoload] component, then you will need to register your namespaces accordingly:
+If you decided to use namespaces for your application, you will need to instruct your autoloader on where your namespaces reside. This is the most common way to distinguish between namespaces in your application. If you chose to use the [Phalcon\Loader](loader.md) component, then you will need to register your namespaces accordingly:
 
 ```php
 <?php
@@ -18,7 +17,7 @@ $loader->registerNamespaces(
 );
 ```
 
-You can also specify the namespace when defining your routes, using the [Router][routing] component:
+You can also specify the namespace when defining your routes, using the [Router](routing.md) component:
 
 ```php
 <?php
@@ -48,7 +47,7 @@ $router->add(
 );
 ```
 
-Finally, if you are only working with the same namespace for every controller, you can define a default namespace in your [Dispatcher][dispatcher]. Doing so, you will not need to specify the full class in the router path:
+Finally, if you are only working with the same namespace for every controller, you can define a default namespace in your [Dispatcher](dispatcher.md). Doing so, you will not need to specify the full class in the router path:
 
 ```php
 <?php
@@ -145,6 +144,3 @@ $phql = 'SELECT i.* '
 ```
 
 [namespaces]: https://php.net/manual/en/language.namespaces.php 
-[routing]: routing.md
-[dispatcher]: dispatcher.md
-[autoload]: autoload.md

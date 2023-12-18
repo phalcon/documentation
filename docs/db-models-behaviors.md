@@ -1,6 +1,5 @@
 # Model Behaviors
 - - -
-
 ## Overview
 [Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to re-use code. Although you can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Traits require you to use exactly the same field names for common code to work. Behaviors are more flexible.
 
@@ -55,10 +54,10 @@ class Invoices extends Model
 ## Built In
 The following built-in behaviors are provided by the framework:
 
-| Name                                               | Description                                                                                                |
-|----------------------------------------------------|------------------------------------------------------------------------------------------------------------|
-| [SoftDelete][mvc-model-behavior-softdelete]        | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
-| [Timestampable][mvc-model-behavior-timestampable]  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
+| Name                                              | Description                                                                                                |
+|---------------------------------------------------|------------------------------------------------------------------------------------------------------------| 
+| [SoftDelete][mvc-model-behavior-softdelete]       | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+| [Timestampable][mvc-model-behavior-timestampable] | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
 
 ## Timestampable
 This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
@@ -197,9 +196,8 @@ mysql> select * from co_invoices;
 2 rows in set (0.00 sec)
 ```
 
-!!! warning "NOTE"
-
-    You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
+> **NOTE**: You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
+{: .alert .alert-warning }
 
 ## Custom
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] or extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior] which exposes most of the methods required for implementing custom behaviors.
@@ -214,7 +212,7 @@ public function missingMethod(
 )
 ```
 
-This method acts as a fallback when a missing method is called on the model
+This methods acts as a fallback when a missing method is called on the model
 
 ```php
 public function notify(
@@ -223,21 +221,19 @@ public function notify(
 )
 ```
 
-This method receives the notifications from the [Events Manager][events].
+This method receives the notifications from the [Events Manager](events.md).
 
-Additionally, if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
+Additionally if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
 
-| Method                                 | Description                                                   |
-|----------------------------------------|---------------------------------------------------------------|
-| `getOptions(string $eventName = null)` | Returns the behavior options related to an event              |
-| `mustTakeAction(string $eventName)`    | Checks whether the behavior must take action on certain event |
+- `getOptions(string $eventName = null)` - Returns the behavior options related to an event
+- `mustTakeAction(string $eventName)` - `bool` - Checks whether the behavior must take action on certain event
 
 The following behavior is an example, it implements the `Blameable` behavior which helps identify the user that is performed operations on a model:
 
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
 
@@ -299,8 +295,8 @@ use Phalcon\Mvc\Model\BehaviorInterface;
 class Sluggable extends Behavior
 {
     public function missingMethod(
-        ModelInterface $model,
-        string $method,
+        string $model, 
+        ModelInterface $method, 
         $arguments = []
     ) {
         if ($method === 'getSlug') {
@@ -351,16 +347,15 @@ class Invoices extends Model
 }
 ```
 
-!!! info "NOTE"
+> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
+{: .alert .alert-info }
 
-    You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also, if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
 
 [date]: https://php.net/manual/en/function.date.php
-[events-list]: events.md#list-of-events
+[events-list]: events#list-of-events
 [mvc-model-behavior]: api/phalcon_mvc.md#mvc-model-behavior
 [mvc-model-behavior-softdelete]: api/phalcon_mvc.md#mvc-model-behavior-softdelete
 [mvc-model-behavior-timestampable]: api/phalcon_mvc.md#mvc-model-behavior-timestampable
 [mvc-model-behaviorinterface]: api/phalcon_mvc.md#mvc-model-behaviorinterface
 [time]: https://php.net/manual/en/function.time.php
 [traits]: https://php.net/manual/en/language.oop5.traits.php
-[events]: events.md

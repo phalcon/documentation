@@ -1,12 +1,11 @@
 # Model Metadata
 - - -
-
 ## Overview
 When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
 
-!!! warning "NOTE"
+> **NOTE**: During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
+{: .alert .alert-warning } 
 
-    During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
 
 ```php
 <?php
@@ -16,7 +15,7 @@ use Phalcon\Mvc\Model\MetaData;
 
 $invoice = new Invoices();
 
-/** @var MetaData $metadata */
+/** @var MetaData\ $metadata */
 $metadata = $invoice->getModelsMetaData();
 
 $attributes = $metadata->getAttributes($invoice);
@@ -95,7 +94,7 @@ public function getAutomaticCreateAttributes(
     ModelInterface $model
 ): array
 ```
-Return attributes that must be ignored from the `INSERT` SQL generation
+Returns attributes that must be ignored from the `INSERT` SQL generation
 
 ```php
 print_r(
@@ -110,7 +109,7 @@ public function getAutomaticUpdateAttributes(
     ModelInterface $model
 ): array
 ```
-Return attributes that must be ignored from the `UPDATE` SQL generation
+Returns attributes that must be ignored from the `UPDATE` SQL generation
 
 ```php
 print_r(
@@ -123,7 +122,7 @@ print_r(
 ```php
 public function getBindTypes(ModelInterface $model): array
 ```
-Return attributes and their bind data types
+Returns attributes and their bind data types
 
 ```php
 print_r(
@@ -150,7 +149,7 @@ print_r(
 ```php
 public function getDefaultValues(ModelInterface $model): array
 ```
-Return attributes (which have default values) and their default values
+Returns attributes (which have default values) and their default values
 
 ```php
  print_r(
@@ -163,7 +162,7 @@ Return attributes (which have default values) and their default values
 ```php
 public function getDataTypes(ModelInterface $model): array
 ```
-Return attributes and their data types
+Returns attributes and their data types
 
 ```php
 print_r(
@@ -176,7 +175,7 @@ print_r(
 ```php
 public function getDataTypesNumeric(ModelInterface $model): array
 ```
-Return attributes which types are numerical
+Returns attributes which types are numerical
 
 ```php
 print_r(
@@ -191,7 +190,7 @@ public function getEmptyStringAttributes(
     ModelInterface $model
 ): array
 ```
-Return attributes allow empty strings
+Returns attributes allow empty strings
 
 ```php
 print_r(
@@ -475,14 +474,13 @@ final protected function initialize(
 Initialize the metadata for certain table
 
 ## Adapters
-Retrieving the metadata is an expensive database operation, and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
+Retrieving the metadata is an expensive database operation and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
 
-!!! info "NOTE"
-
-    For local development, the [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory] adapter is recommended so that any changes to the database can be reflected immediately. 
+> **NOTE**: For local development, the [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory] adapter is recommended so that any changes to the database can be reflected immediately. 
+{: .alert .alert-info }
  
 | Adapter                                                                     | Description                                                                                         |
-|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+|-----------------------------------------------------------------------------| ----------------------------------------------------------------------------------------------------|
 | [Phalcon\Mvc\Models\MetaData\Apcu][mvc-model-metadata-apcu]                 | This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. (production) |
 | [Phalcon\Mvc\Models\MetaData\Libmemcached][mvc-model-metadata-libmemcached] | This adapter uses the [Memcached Server][memcached] to store the table metadata. (production)       | 
 | [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory]             | This adapter uses memory. The metadata is cached only during the request. (development)             |   
@@ -676,7 +674,7 @@ $container->set(
 This strategy does not require any customization and is implicitly used by all the metadata adapters.
 
 ### Annotations 
-This strategy makes use of [annotations][annotations] to describe the columns in a model. 
+This strategy makes use of [annotations](annotations.md) to describe the columns in a model. 
 
 ```php
 <?php
@@ -714,7 +712,7 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 The following annotations are supported:
 
 | Name        | Description                                       |
-|-------------|---------------------------------------------------|
+|-------------| ------------------------------------------------- |
 | `@Primary`  | Mark the field as part of the table's primary key |
 | `@Identity` | The field is an auto_increment/serial column      |
 | `@Column`   | This marks an attribute as a mapped column        |
@@ -920,4 +918,3 @@ class MyStrategy StrategyInterface
 [mvc-model-metadata-stream]: api/phalcon_mvc.md#mvc-model-metadata-stream
 [mvc-model-metadatainterface]: api/phalcon_mvc.md#mvc-model-metadatainterface
 [cache-adapter-factory]: cache.md#adapter-factory
-[annotations]: annotations.md

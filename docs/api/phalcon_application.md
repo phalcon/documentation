@@ -1,10 +1,15 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Application'
+---
 
 * [Phalcon\Application\AbstractApplication](#application-abstractapplication)
 * [Phalcon\Application\Exception](#application-exception)
 
 <h1 id="application-abstractapplication">Abstract Class Phalcon\Application\AbstractApplication</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Application/AbstractApplication.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Application/AbstractApplication.zep)
 
 | Namespace  | Phalcon\Application |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
@@ -17,17 +22,17 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 ## Properties
 ```php
 /**
- * @var DiInterface|null
+ * @var DiInterface
  */
 protected container;
 
 /**
  * @var string
  */
-protected defaultModule = "";
+protected defaultModule;
 
 /**
- * @var ManagerInterface|null
+ * @var null | ManagerInterface
  */
 protected eventsManager;
 
@@ -53,7 +58,7 @@ Returns the default module name
 
 
 ```php
-public function getEventsManager(): ManagerInterface | null;
+public function getEventsManager(): ManagerInterface;
 ```
 Returns the internal event manager
 
@@ -107,9 +112,9 @@ Sets the events manager
 
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Application/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Application/Exception.zep)
 
 | Namespace  | Phalcon\Application |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Application class will use this class

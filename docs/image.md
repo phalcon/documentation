@@ -1,6 +1,5 @@
 # Image
 - - -
-
 ## Overview
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
@@ -30,27 +29,14 @@ This component uses adapters that offer methods to manipulate images. You can ea
 - `HORIZONTAL`
 - `VERTICAL`
 
-## Supported images (GD)
-
-- IMAGETYPE_GIF
-- IMAGETYPE_JPEG
-- IMAGETYPE_JPEG2000
-- IMAGETYPE_PNG
-- IMAGETYPE_WEBP
-- IMAGETYPE_WBMP
-- IMAGETYPE_XBM
-
 ## Getters
 Each adapter offers getters to provide information about the component:
-
-| Method                  | Description                                       |
-|-------------------------|---------------------------------------------------|
-| `getHeight(): int`      | Returns the image height                          |
-| `getImage(): mixed`     | Returns the image                                 |
-| `getMime(): string`     | Returns the image mime type                       |
-| `getRealpath(): string` | Returns the real path where the image is located  |
-| `getType(): int`        | Returns the image type (This is driver dependent) |
-| `getWidth(): int`       | Returns the image width                           | 
+- `getHeight()` - `int` - Returns the image height
+- `getImage()` - `mixed` - Returns the image
+- `getMime()` - `string` - Returns the image mime type
+- `getRealpath()` - `string` - Returns the real path where the image is located
+- `getType()` - `int` - Returns the image type (This is driver dependent)
+- `getWidth()` - `int` - Returns the image width 
 
 ## GD
 [Phalcon\Image\Adapters\Gd][image-adapter-gd] utilizes the [GD PHP extension][gd]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
@@ -61,11 +47,8 @@ Each adapter offers getters to provide information about the component:
 ## Operations
 ### `background()`
 Sets the background color for the image. The available parameters are:
-
-| Parameter       | Description                            |
-|-----------------|----------------------------------------|
-| `string $color` | the color in hex format                |
-| `int $opacity`  | the opacity (optional - default `100`) |
+- `color` - `string` - the color in hex format
+- `opacity` - `int` - the opacity (optional - default `100`).
 
 ```php
 <?php
@@ -96,13 +79,10 @@ $image->save('blur-image.jpg');
 
 ### `crop()`
 You can crop images programmatically. The `crop()` method accepts the following parameters:
-
-| Parameter      | Description             |
-|----------------|-------------------------|
-| `int $width`   | the width               |
-| `int $height`  | the height              |
-| `int $offsetX` | the X offset (optional) |
-| `int $offsetY` | the Y offset (optional) |
+- `width` - `int` - the width
+- `height` - `int` - the height
+- `offsetX` - `int` - the X offset (optional)
+- `offsetY` - `int` - the Y offset (optional)
 
 The following example crops 100px by 100px from the center of the image:
 
@@ -144,13 +124,10 @@ $image->save('flip-image.jpg');
 
 ### `liquidRescale()`
 This method is only available in the [Phalcon\Image\Imagick][image-adapter-imagick] adapter. It uses the [liquid][imagick-liquidrescale] rescaling method to rescale the image. The method accepts the following parameters:
-
-| Parameter       | Description                                                                                                     |
-|-----------------|-----------------------------------------------------------------------------------------------------------------|
-| `int $width`    | the new width                                                                                                   | 
-| `int $height`   | the new height                                                                                                  |
-| `int $deltaX`   | How much the seam can traverse on x-axis. Passing `0` causes the seams to be straight. (optional - default `0`) |
-| `int $rigidity` | Introduces a bias for non-straight seams. (optional - default `0`)                                              |
+- `width` - `int` - the new width 
+- `height` - `int` - the new height
+- `deltaX` - `int` - How much the seam can traverse on x-axis. Passing `0` causes the seams to be straight. (optional - default `0`)
+- `rigidity` - `int` - Introduces a bias for non-straight seams. (optional - default `0`).
 
 ```php
 <?php
@@ -197,12 +174,9 @@ $image->save('pixelate-image.jpg');
 
 ### `reflection()`
 Adds reflection to the image. The method accepts the following parameters:
-
-| Parameter      | Description                                            |
-|----------------|--------------------------------------------------------|
-| `int $height`  | the height                                             |
-| `int $opacity` | the opacity (optional - default `100`)                 |
-| `bool $fadeIn` | whether to fade in or not (optional - default `false`) |
+- `height` - `int` - the height
+- `opacity` - `int` - the opacity (optional - default `100`)
+- `fadeIn` - `bool` - whether to fade in or not (optional - default `false`)
 
 ```php
 <?php
@@ -218,11 +192,8 @@ $image->save('reflection-image.jpg');
 
 ### `render()`
 Renders the image and returns it back as a binary string. The method accepts the following parameters:
-
-| Method         | Description                                         |
-|----------------|-----------------------------------------------------|
-| `string $ext`  | the extension (optional)                            |
-| `int $quality` | the quality of the image (optional - default `100`) |
+- `ext` - `string` - the extension (optional)
+- `quality` - `int` - the quality of the image (optional - default `100`)
 
 ```php
 <?php
@@ -238,21 +209,16 @@ echo $image->render('jpg', 90);
 
 ### `resize()`
 Resizes the image based on the passed parameters. The method accepts the following parameters:
-
-| Parameter     | Description                                              |
-|---------------|----------------------------------------------------------|
-| `int $width`  | the width (optional)                                     |
-| `int $height` | the height (optional)                                    |
-| `int $master` | constant signifying the resizing method (default `AUTO`) |
-
-**Constants**
-- `Phalcon\Image\Enum::AUTO`
-- `Phalcon\Image\Enum::HEIGHT`
-- `Phalcon\Image\Enum::INVERSE`
-- `Phalcon\Image\Enum::NONE`
-- `Phalcon\Image\Enum::PRECISE`
-- `Phalcon\Image\Enum::TENSILE`
-- `Phalcon\Image\Enum::WIDTH`
+- `width` - `int` - the width (optional)
+- `height` - `int` - the height (optional)
+- `master` - `int` - constant signifying the resizing method (default `AUTO`)
+    - `Phalcon\Image\Enum::AUTO`
+    - `Phalcon\Image\Enum::HEIGHT`
+    - `Phalcon\Image\Enum::INVERSE`
+    - `Phalcon\Image\Enum::NONE`
+    - `Phalcon\Image\Enum::PRECISE`
+    - `Phalcon\Image\Enum::TENSILE`
+    - `Phalcon\Image\Enum::WIDTH`
 
 If any of the parameters are not correct, a [Phalcon\Image\Exception][image-exception] will be thrown.
 
@@ -347,7 +313,7 @@ $image->save('resize-width-image.jpg');
 ```
 
 ### `rotate()`
-Rotates an image based on the given degrees. Positive numbers rotate the image clockwise while negative counterclockwise.
+Rotates an image based on the given degrees. Positive numbers rotate the image clockwise while negative counter clockwise.
 
 The following example rotates an image by 90 degrees clockwise
 
@@ -367,11 +333,8 @@ $image->save('rotate-image.jpg');
 After manipulating your image, you will most likely want to save it. If you wish to just get the result of the manipulations back as a string, you can use the `render()` method.
 
 The `save()` method accepts the filename and quality as parameters:
-
-| Property       | Description                                        |
-|----------------|----------------------------------------------------|
-| `string $file` | the target file name (optional)                    |
-| `int $quality` | the quality of the image (optional - default `-1`) |
+- `file` - `string` - the target file name (optional)
+- `quality` - `int` - the quality of the image (optional - default `-1`)
 
 If a file name is not specified, the manipulated image will overwrite the original image. 
 
@@ -446,16 +409,13 @@ $image->save('sharpen-image.jpg');
 
 ### `text()`
 You can add text to your image by calling `text()`. The available parameters are:
-
-| Property                  | Description                                                 |
-|---------------------------|-------------------------------------------------------------|
-| `string $text`            | the text                                                    |
-| `int&vert;false $offsetX` | the X offset, `false` to disable                            | 
-| `int&vert;false $offsetY` | the Y offset, `false` to disable                            | 
-| `int $opacity`            | the opacity of the text (optional - default `100`)          |
-| `string $color`           | the color for the text (optional - default `"000000"`)      |
-| `int $size`               | the size of the font for the text (optional - default `12`) |
-| `string $fontfile`        | the font file to be used for the text (optional)            |
+- `text` - `string` - the text
+- `offsetX` - `int`/`false` - the X offset, `false` to disable 
+- `offsetY` - `int`/`false` - the Y offset, `false` to disable 
+- `opacity` - `int` - the opacity of the text (optional - default `100`)
+- `color` - `string` - the color for the text (optional - default `"000000"`)
+- `size` - `int` - the size of the font for the text (optional - default `12`)
+- `fontfile` - `string` - the font file to be used for the text (optional)
 
 ```php
 <?php
@@ -479,15 +439,12 @@ $image->save('text-image.jpg');
 
 ### `watermark()`
 Adds a watermark to an image. The available parameters are:
+- `watermark` - `AdapterInterface` - the image to use for the watermark
+- `offsetX` - `int` - the X offset (optional)
+- `offsetY` - `int` - the Y offset (optional) 
+- `opacity` - `int` - the opacity of the image (optional - default `100`)
 
-| Property                      | Description                                         |
-|-------------------------------|-----------------------------------------------------|
-| `AdapterInterface $watermark` | the image to use for the watermark                  |
-| `int $offsetX`                | the X offset (optional)                             |
-| `int $offsetY`                | the Y offset (optional)                             | 
-| `int $opacity`                | the opacity of the image (optional - default `100`) |
-
-The following example puts the watermark in the top left corner of the image:
+The following example puts the watermark at the top left corner of the image:
 
 ```php
 <?php
@@ -511,7 +468,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-You can also manipulate the watermarked image before applying it to the main image. In the following example we resize, rotate and sharpen the watermark and put it in the bottom right corner with a 10px margin:
+You can also manipulate the watermarked image before applying it to the main image. In the following example we resize, rotate and sharpen the watermark and put it at the bottom right corner with a 10px margin:
 
 ```php
 <?php
@@ -543,6 +500,7 @@ $image->save('watermark-image.jpg');
 ## Factory 
 ### `newInstance`
 
+
 The [Phalcon\Image\ImageFactory][image-imagefactory] offers an easy way to create image adapter objects. There are two adapters already preset for you:
 
 - `gd`- [Phalcon\Image\Adapter\Gd][image-adapter-gd]          
@@ -561,16 +519,13 @@ $image = $factory->newInstance('gd', 'image.jpg');
 ```
 
 The available parameters for `newInstance()` are:
-
-| Property       | Description                        |
-|----------------|------------------------------------|
-| `string $name` | the name of the adapter            |
-| `string $file` | the file name                      |
-| `int $width`   | the width of the image (optional)  |
-| `int $height`  | the height of the image (optional) |
+- `name` - `string` - the name of the adapter
+- `file` - `string` - the file name
+- `width` - `int` - the width of the image (optional)
+- `height` - `int` - the height of the image (optional)
 
 ### `load`
-The Image Factory also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config\Config][config] object, with directives that are used to set up the image adapter. The object requires the `adapter` element, as well as the `file` element. `width` and `height` can also be set as options.
+The Image Factory also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config](config.md) object, with directives that are used to set up the image adapter. The object requires the `adapter` element, as well as the `file` element. `width` and `height` can also be set as options.
 
 ```php
 <?php
@@ -718,7 +673,7 @@ class MyImageAdapter implements AdapterInterface
     );
 
     /**
-     * Add a watermark to the image
+     * Add a watermark tot he image
      */
     public function watermark(
         AdapterInterface $watermark, 
@@ -740,4 +695,3 @@ class MyImageAdapter implements AdapterInterface
 [image-exception]: api/phalcon_image.md#image-exception
 [image-imagefactory]: api/phalcon_image.md#image-imagefactory
 [imagick-liquidrescale]: https://www.php.net/manual/en/imagick.liquidrescaleimage.php 
-[config]: config.md

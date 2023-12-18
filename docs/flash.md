@@ -1,11 +1,10 @@
 # Flash Messages
 - - -
-
 ## Overview
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
 ## Adapters
-This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available, but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface][flash-flashinterface] interface.
+This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface][flash-flashinterface] interface.
 
 | Adapter                                | Description                                                                                  |
 |----------------------------------------|----------------------------------------------------------------------------------------------|
@@ -18,7 +17,7 @@ This component uses adapters that dictate how messages are displayed or sent to 
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -33,7 +32,7 @@ $flash->error('Something went wrong');
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager;
@@ -61,7 +60,7 @@ and in your view
 or when using Volt
 
 ```twig
-{{ flash.output() }}
+{% raw %}{{ flash.output() }}{% endraw %}
 ```
 
 Imagine a login form that you need to validate the username and password and inform the user if their credentials are correct. The [Phalcon\Flash\Session][flash-session] can be used to perform this task as follows:  
@@ -152,15 +151,14 @@ and in your view
 or when using Volt
 
 ```twig
-{{ flashSession.output() }}
+{% raw %}{{ flashSession.output() }}{% endraw %}
 ```
 
-!!! info "NOTE"
-
-    In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
+> **NOTE**: In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
+{: .alert .alert-info }
 
 ## Styling
-The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default, the component uses the following mapping:
+The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default the component uses the following mapping:
 
 | Type      | Name of CSS class |
 |-----------|-------------------|
@@ -188,7 +186,7 @@ If you do not wish to use the default classes, you can use the `setCssClasses()`
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -228,21 +226,18 @@ will produce:
 <div class="alert alert-danger">Error message</div>
 ```
 
-!!! info "NOTE"
-
-    The `setCssClasses()` returns back the object, so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
+{: .alert .alert-info }
 
 The component also allows you to specify a different template, so that you can control the HTML produced by the component. The `setCustomTemplate()` and `getCustomTemplate()` expose this functionality. The template needs to have two placeholders:
 
-| Placeholder  | Description                          |
-|:------------:|--------------------------------------|
-| `%cssClass%` | where the CSS class will be injected |
-| `%message%`  | where the message will be injected   |
+- `%cssClass%` - where the CSS class will be injected
+- `%message%` - where the message will be injected
 
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -265,108 +260,8 @@ will produce:
 <span class="myErrorClass">Error message</span>
 ```
 
-!!! info "NOTE"
-
-    The `setCustomTemplate()` returns back the object, so you can use in a more fluent interface by chaining calls.
-
-You can also set the icon class for each CSS class by using `setCssIconClasses()`. This is particularly useful when working with CSS libraries such as [Bootstrap][bootstrap].
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Flash\Direct;
-
-$escaper = new Escaper();
-$flash   = new Direct($escaper);
-
-$iconClasses = [
-    'error'   => 'alert alert-error',
-    'success' => 'alert alert-success',
-    'notice'  => 'alert alert-notice',
-    'warning' => 'alert alert-warning',
-];
-
-$flash->setCssIconClasses($iconClasses);
-```
-
-and then calling
-
-```php
-$flash->error('Error message');
-```
-
-will produce:
-
-```html
-<div class="errorMessage"><i class="alert alert-error"></i>Error message
-```
-
-!!! info "NOTE"
-
-    The `setCssIconClasses()` returns back the object, so you can use in a more fluent interface by chaining calls.
-
-An example of how the `setCssClasses`, `setCssIconClasses` and `setCustomTemplate` can be used to output flash messages that can be _closed_ is below:
-
-```php
-<?php
-
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Flash\Session;
-
-$container = new FactoryDefault();
-
-$container->set(
-    'flashSession',
-    function () {
-        $flash = new Session();
-
-        $flash->setCssClasses(
-            [
-                'error'   => 'error_message callout alert radius flashSession',
-                'success' => 'success_message callout success radius flashSession',
-                'warning' => 'warning_message callout warning radius flashSession',
-                'notice'  => 'notice_message callout secondary radius flashSession'
-            ]
-        );
-
-        $flash->setCssIconClasses(
-            [
-                'error'   => 'fi-alert',
-                'success' => 'fi-check',
-                'notice'  => 'fi-star',
-                'warning' => 'fi-flag',
-            ]
-        );
-
-        $template = '<div class="%cssClass%">
-    <i class="%cssIconClass%"></i> %message%
-    <button class="close-button" aria-label="Close" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>';
-        $flash->setCustomTemplate($template);
-
-        $flash->setAutoescape(false);
-
-        return $flash;
-    }
-);
-```
-If you then call:
-
-```php
-$this->flashSession->error('An error has occurred. Please contact support.')
-```
-will produce the following HTML snippet in your view (when calling `$flashSession->output()`:
-```html
-<div class="error_message callout alert radius flashSession">
-    <i class="fi-alert"></i> An error has occurred. Please contact support.
-    <button class="close-button" aria-label="Close" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-```
+> **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
+{: .alert .alert-info }
 
 ## Messages
 As mentioned above, the component has different types of messages. To add a message to the component you can call `message()` with the type as well as the message itself. The types of messages are:
@@ -379,7 +274,7 @@ As mentioned above, the component has different types of messages. To add a mess
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -393,7 +288,7 @@ While you can pass the type as the first parameter when calling `message()` you 
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -410,7 +305,7 @@ If your application requires it, you might want to clear the messages at some po
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -421,17 +316,16 @@ $flash->error('Error message');
 $flash->clear();
 ```
 
-!!! info "NOTE"
-
-    `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
+> **NOTE**: `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
+{: .alert .alert-info }
 
 ## Implicit Flush
-By default, implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
+By default implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
 
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -447,13 +341,11 @@ echo $flash
 ;
 ```
 
-!!! info "NOTE"
+> **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
+{: .alert .alert-info }
 
-    The `setImplicitFlush()` returns back the object, so you can use in a more fluent interface by chaining calls.
-
-!!! warning "NOTE"
-
-    When using the [Phalcon\Flash\Direct][flash-direct] component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
+> **NOTE**: When using the [Phalcon\Flash\Direct][flash-direct] component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
+{: .alert .alert-warning }
 
 ## Escaping
 By default, the component will escape the contents of the message. There might be times however that you do not wish to escape the contents of your messages. You can use the `setAutoescape(false)`;
@@ -461,7 +353,7 @@ By default, the component will escape the contents of the message. There might b
 ```php
 <?php
 
-use Phalcon\Html\Escaper;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $escaper = new Escaper();
@@ -481,12 +373,11 @@ will produce
 <div class="errorMessage">&lt;h1&gt;Error&lt;/h1&gt;</div>
 ```
 
-!!! info "NOTE"
-
-    The `setAutoescape()` returns back the object, so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
+{: .alert .alert-info }
 
 ## Dependency Injection
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally, the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`. 
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`. 
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -495,8 +386,8 @@ An example of the registration of the service as well as accessing it is below:
 ```php
 <?php
 
-use Phalcon\Di\Di;
-use Phalcon\Html\Escaper;
+use Phalcon\Di;
+use Phalcon\Escaper;
 use Phalcon\Flash\Direct;
 
 $container = new Di();
@@ -515,8 +406,8 @@ $container->set(
 ```php
 <?php
 
-use Phalcon\Di\Di;
-use Phalcon\Html\Escaper;
+use Phalcon\Di;
+use Phalcon\Escaper;
 use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager;
@@ -539,9 +430,8 @@ $container->set(
 );
 ```
 
-!!! info "NOTE"
-
-    You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already register in it, they will be used internally. This is another way of instantiating the components.
+> **NOTE** You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already register in it, they will be used internally. This is another way of instantiating the components.
+{: .alert .alert-info }
 
 You can now use the component in a controller (or a component that implements [Phalcon\Di\Injectable][di-injectable])
 

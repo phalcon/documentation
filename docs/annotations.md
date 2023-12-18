@@ -1,8 +1,7 @@
 # Annotations
 - - -
-
 ## Overview
-Phalcon introduced the first annotations parser component written in C for PHP. The `Phalcon\Annotations` namespace contains general purpose components that offers an easy way to parse and cache annotations in PHP applications.
+Phalcon introduced the first annotations parser component written in C for PHP. The `Phalcon\Annotations` namespace contains general purpose components that offer an easy way to parse and cache annotations in PHP applications.
 
 ## Usage
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
@@ -51,7 +50,7 @@ Also, an annotation can be placed at any part of a docblock:
 <?php
 
 /**
- * This is a property with a special feature
+ * This a property with a special feature
  *
  * @SpecialFeature
  *
@@ -80,7 +79,7 @@ However, to make the code more maintainable and understandable it is recommended
 <?php
 
 /**
- * This is a property with a special feature
+ * This a property with a special feature
  * More comments
  *
  * @SpecialFeature({someParameter='the value', false})
@@ -186,10 +185,10 @@ Nested Annotations
 ## Adapters
 This component makes use of adapters to cache or no cache the parsed and processed annotations improving performance:
 
-| Adapter                                                          | Description                                                                  |
-|------------------------------------------------------------------|------------------------------------------------------------------------------|
-| [Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu]     | Use APCu to store parsed and processed annotations (production)              |
-| [Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] | Use memory to store annotations (development)                                |
+| Adapter                                                          | Description                                                                 |
+|------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| [Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu]     | Use APCu to store parsed and processed annotations (production)             |
+| [Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] | Use memory to store annotations (development)                               |
 | [Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] | Use a file stream to store annotations. Must be used with a byte-code cache. |
 
 ### Apcu
@@ -235,7 +234,7 @@ return $result;
 ```
 
 ### Memory
-[Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes, while developing your application.
+[Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes while developing your application.
 
 ```php
 <?php
@@ -246,7 +245,7 @@ $adapter = new Memory();
 ```
 
 ### Stream
-[Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] stores the parsed and processed annotations in a file on the server. This adapter can be used in production systems, but it will increase the I/O since for every request the annotations cache files will need to be read from the file system. The adapter accepts one parameter in the constructor's `$options` array:
+[Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] stores the parsed and processed annotations in a file on the server. This adapter can be used in production systems but it will increase the I/O since for every request the annotations cache files will need to be read from the file system. The adapter accepts one parameter in the constructor's `options` array:
 - `annotationsDir` - the directory to store the annotations cache
 
 ```php
@@ -268,7 +267,7 @@ If there is a problem with storing the data in the folder due to permissions or 
 
 ## Factory
 ### `newInstance`
-We can easily create an annotations adapter class using the `new` keyword. However, Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. The factory will accept an array of options which will in turn be used to instantiate the necessary adapter class. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. The names of the preconfigured adapters are:
+We can easily create an annotations adapter class using the `new` keyword. However Phalcon offers the [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] class, so that developers can easily instantiate annotations adapters. The factory will accept an array of options which will in turn be used to instantiate the necessary adapter class. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface]. The names of the preconfigured adapters are:
 
 | Name     | Adapter                                                          |
 |----------|------------------------------------------------------------------|
@@ -293,7 +292,7 @@ $apcu    = $factory->newInstance('apcu', $options);
 ```
 
 ### `load`
-The [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config\Config][config] object, with directives that are used to set up the adapter. The object requires the `adapter` element, as well as the `options` element with the necessary directives.
+The [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config](config.md) object, with directives that are used to set up the adapter. The object requires the `adapter` element, as well as the `options` element with the necessary directives.
 
 ```php
 <?php
@@ -334,7 +333,7 @@ foreach ($annotations as $annotation) {
 ```
 In the above example we first create the memory annotations adapter. We then call `get` on it to load the annotations from the `Invoices` class. The `getClassAnnotations` will return a [Phalcon\Annotations\Collection][annotations-collection] class. We iterate through the collection and print out the name (`getName`), the number arguments (`numberArguments`) and then we print all the arguments (`getArguments`) on screen.
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter to reduce unnecessary CPU cycles for parsing.
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter so as to reduce unnecessary CPU cycles for parsing.
 
 ## Exceptions
 Any exceptions thrown in the `Phalcon\Annotations` namespace will be of type [Phalcon\Annotations\Exception][annotations-exception]. You can use these exceptions to selectively catch exceptions thrown only from this component.
@@ -454,9 +453,8 @@ class BaseController extends Controller
 }
 ```
 
-!!! info "NOTE"
-
-    You can also implement the above to a listener and use the `beforeDispatch` event if you wish.
+> **NOTE** You can also implement the above to a listener and use the `beforeDispatch` event if you wish.
+{: .alert .alert-info }
 
 and in our controllers we can specify:
 
@@ -633,4 +631,3 @@ class Invoices extends BaseController
 [annotations-reader]: api/phalcon_annotations.md#annotations-reader
 [annotations-readerinterface]: api/phalcon_annotations.md#annotations-readerinterface
 [annotations-reflection]: api/phalcon_annotations.md#annotations-reflection
-[config]: config.md

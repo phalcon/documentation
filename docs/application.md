@@ -1,6 +1,5 @@
 # Application
 - - -
-
 ## Overview
 [Phalcon\Mvc\Application][mvc-application] is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. This is a full stack application integrated with all the additional services required to allow the MVC pattern to operate as desired.
 
@@ -25,10 +24,6 @@ try {
 }
 ```
 
-!!! warning "NOTE"
-
-    `handle()` accepts a URI and will not operate without it. You can pass the `$_SERVER["REQUEST_URI"]` as a parameter
-
 ## Methods
 ```php
 public function __construct(
@@ -43,7 +38,7 @@ public function getDefaultModule(): string
 Returns the default module name
 
 ```php
-public function getEventsManager(): ManagerInterface | null
+public function getEventsManager(): ManagerInterface
 ```
 Returns the internal event manager
 
@@ -101,7 +96,7 @@ public function handle(
     string $uri
 ): ResponseInterface | bool
 ```
-Handles an MVC request. Accepts the server URI (usually `$_SERVER['REQUEST_URI`]`)
+Handles a MVC request. Accepts the server URI (usually `$_SERVER['REQUEST_URI`]`)
 
 ```php
 public function sendCookiesOnHandleRequest(
@@ -334,7 +329,7 @@ If namespaces are not used, the following bootstrap file could be used:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Autoload\Loader;
+use Phalcon\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\View;
 
@@ -381,13 +376,13 @@ If namespaces are used, the bootstrap changes slightly:
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Autoload\Loader;
+use Phalcon\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View;
 
 $loader = new Loader();
-$loader->setNamespaces(
+$loader->registerNamespaces(
     [
         'Single\Controllers' => '../apps/controllers/',
         'Single\Models'      => '../apps/models/',
@@ -436,7 +431,7 @@ try {
 ```
 
 ### Multi Module
-A multimodule application uses the same document root for more than one module. Modules are groups of components/files that offer functionality but increase maintainability and isolate functionality if necessary. Each module must implement the [Phalcon\Mvc\ModuleDefinitionInterface][mvc-moduledefinitioninterface], to ensure proper functionality. A sample directory structure can be seen below:
+A multi-module application uses the same document root for more than one module. Modules are groups of components/files that offer functionality but increase maintainability and isolate functionality if necessary. Each module must implement the [Phalcon\Mvc\ModuleDefinitionInterface][mvc-moduledefinitioninterface], to ensure proper functionality. A sample directory structure can be seen below:
 
 ```
 multiple/
@@ -463,7 +458,7 @@ Each subdirectory in `apps/` directory have its own MVC structure. A `Module.php
 
 namespace Multi\Back;
 
-use Phalcon\Autoload\Loader;
+use Phalcon\Loader;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\ModuleDefinitionInterface;
@@ -476,7 +471,7 @@ class Module implements ModuleDefinitionInterface
     )
     {
         $loader = new Loader();
-        $loader->setNamespaces(
+        $loader->registerNamespaces(
             [
                 'Multi\Back\Controllers' => '../apps/back/controllers/',
                 'Multi\Back\Models'      => '../apps/back/models/',
@@ -488,7 +483,7 @@ class Module implements ModuleDefinitionInterface
 
     public function registerServices(DiInterface $container)
     {
-        // Dispatcher
+        // Registering a dispatcher
         $container->set(
             'dispatcher',
             function () {
@@ -501,7 +496,7 @@ class Module implements ModuleDefinitionInterface
             }
         );
 
-        // View
+        // Registering the view component
         $container->set(
             'view',
             function () {
@@ -517,7 +512,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-A slightly modified bootstrap file is required for a multimodule MVC architecture
+A slightly modified bootstrap file is required for a a multi module MVC architecture
 
 ```php
 <?php
@@ -632,7 +627,7 @@ $application->registerModules(
 );
 ```
 
-When a [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup. 
+When [Phalcon\Mvc\Application][mvc-application] has modules registered, it is essential that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup. 
 
 Module definition classes must implement two methods: 
 - `registerAutoloaders()` and 
@@ -674,7 +669,7 @@ try {
 
 
 ## Events
-[Phalcon\Mvc\Application][mvc-application] is able to send events to the [EventsManager][events] (if it is present). Events are triggered using the type `application`. The following events are supported:
+[Phalcon\Mvc\Application][mvc-application] is able to send events to the [EventsManager](events.md) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
 | Event Name            | Triggered                                                    |
 |-----------------------|--------------------------------------------------------------|
@@ -705,12 +700,10 @@ $manager->attach(
 ```
 
 ## External Resources
-* [MVC examples on GitHub][mvc-examples]
+* [MVC examples on GitHub](https://github.com/phalcon/mvc)
 
 [application-abstractapplication]: api/phalcon_application.md#application-abstractapplication
 [application-exception]: api/phalcon_application.md#application-exception
 [mvc-application]: api/phalcon_mvc.md#mvc-application
 [mvc-application-exception]: api/phalcon_mvc.md#mvc-application-exception
 [mvc-moduledefinitioninterface]: api/phalcon_mvc.md#mvc-moduledefinitioninterface
-[mvc-examples]: https://github.com/phalcon/mvc
-[events]: events.md

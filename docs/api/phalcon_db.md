@@ -1,3 +1,8 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Db'
+---
 
 * [Phalcon\Db\AbstractDb](#db-abstractdb)
 * [Phalcon\Db\Adapter\AbstractAdapter](#db-adapter-abstractadapter)
@@ -23,12 +28,12 @@
 * [Phalcon\Db\RawValue](#db-rawvalue)
 * [Phalcon\Db\Reference](#db-reference)
 * [Phalcon\Db\ReferenceInterface](#db-referenceinterface)
-* [Phalcon\Db\Result\PdoResult](#db-result-pdoresult)
+* [Phalcon\Db\Result\Pdo](#db-result-pdo)
 * [Phalcon\Db\ResultInterface](#db-resultinterface)
 
 <h1 id="db-abstractdb">Abstract Class Phalcon\Db\AbstractDb</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/AbstractDb.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/AbstractDb.zep)
 
 | Namespace  | Phalcon\Db |
 | Uses       | \PDO |
@@ -88,7 +93,7 @@ Enables/disables options in the Database component
 
 <h1 id="db-adapter-abstractadapter">Abstract Class Phalcon\Db\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Db\Adapter |
 | Uses       | Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
@@ -101,29 +106,23 @@ Base class for Phalcon\Db\Adapter adapters
 ```php
 /**
  * Connection ID
- *
- * @var int
  */
 protected static connectionConsecutive = 0;
 
 /**
  * Active connection ID
  *
- * @var int
+ * @var long
  */
 protected connectionId;
 
 /**
  * Descriptor used to connect to a database
- *
- * @var array
  */
 protected descriptor;
 
 /**
  * Dialect instance
- *
- * @var object
  */
 protected dialect;
 
@@ -137,7 +136,7 @@ protected dialectType;
 /**
  * Event Manager
  *
- * @var ManagerInterface|null
+ * @var ManagerInterface
  */
 protected eventsManager;
 
@@ -171,15 +170,11 @@ protected sqlVariables;
 
 /**
  * Current transaction level
- *
- * @var int
  */
 protected transactionLevel = 0;
 
 /**
  * Whether the database supports transactions with save points
- *
- * @var bool
  */
 protected transactionsWithSavepoints = false;
 
@@ -243,7 +238,7 @@ Creates a view
 
 
 ```php
-public function delete( mixed $table, string $whereCondition = null, array $placeholders = [], array $dataTypes = [] ): bool;
+public function delete( mixed $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 Deletes data from a table using custom RBDM SQL syntax
 
@@ -339,7 +334,7 @@ $escapedTable = $connection->escapeIdentifier(
 
 
 ```php
-public function fetchAll( string $sqlQuery, int $fetchMode = static-constant-access, array $bindParams = [], array $bindTypes = [] ): array;
+public function fetchAll( string $sqlQuery, int $fetchMode = static-constant-access, mixed $bindParams = null, mixed $bindTypes = null ): array;
 ```
 Dumps the complete result of a query into an array
 
@@ -388,7 +383,7 @@ print_r($robot);
 
 
 ```php
-public function fetchOne( string $sqlQuery, mixed $fetchMode = static-constant-access, array $bindParams = [], array $bindTypes = [] ): array;
+public function fetchOne( string $sqlQuery, mixed $fetchMode = static-constant-access, mixed $bindParams = null, mixed $bindTypes = null ): array;
 ```
 Returns the first row in a SQL query result
 
@@ -490,13 +485,13 @@ Returns internal dialect instance
 
 
 ```php
-public function getDialectType(): string;
+public function getDialectType(): string
 ```
-Name of the dialect used
+
 
 
 ```php
-public function getEventsManager(): ManagerInterface | null;
+public function getEventsManager(): ManagerInterface;
 ```
 Returns the internal event manager
 
@@ -526,15 +521,15 @@ Active SQL statement in the object
 
 
 ```php
-public function getSQLVariables(): array;
+public function getSqlVariables(): array
 ```
-Active SQL variables in the object
+
 
 
 ```php
-public function getType(): string;
+public function getType(): string
 ```
-Type of database system the adapter is used for
+
 
 
 ```php
@@ -778,7 +773,7 @@ var_dump(
 
 <h1 id="db-adapter-adapterinterface">Interface Phalcon\Db\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Db\Adapter |
 | Uses       | Phalcon\Db\DialectInterface, Phalcon\Db\ResultInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\ReferenceInterface |
@@ -826,7 +821,7 @@ Starts a transaction in the connection
 
 
 ```php
-public function close(): void;
+public function close(): bool;
 ```
 Closes active connection returning success. Phalcon automatically closes
 and destroys active connections within Phalcon\Db\Pool
@@ -839,7 +834,7 @@ Commits the active transaction in the connection
 
 
 ```php
-public function connect( array $descriptor = [] ): void;
+public function connect( array $descriptor = null ): bool;
 ```
 This method is automatically called in \Phalcon\Db\Adapter\Pdo
 constructor. Call it when you need to restore a database connection
@@ -864,7 +859,7 @@ Creates a view
 
 
 ```php
-public function delete( mixed $table, string $whereCondition = null, array $placeholders = [], array $dataTypes = [] ): bool;
+public function delete( mixed $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 Deletes data from a table using custom RDBMS SQL syntax
 
@@ -936,7 +931,7 @@ Escapes a value to avoid SQL injections
 
 
 ```php
-public function execute( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): bool;
+public function execute( string $sqlStatement, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 Sends SQL statements to the database server returning the success state.
 Use this method only when the SQL statement sent to the server doesn't
@@ -944,7 +939,7 @@ return any rows
 
 
 ```php
-public function fetchAll( string $sqlQuery, int $fetchMode = int, array $bindParams = [], array $bindTypes = [] ): array;
+public function fetchAll( string $sqlQuery, int $fetchMode = int, mixed $placeholders = null ): array;
 ```
 Dumps the complete result of a query into an array
 
@@ -969,7 +964,7 @@ print_r($robot);
 
 
 ```php
-public function fetchOne( string $sqlQuery, int $fetchMode = int, array $bindParams = [], array $bindTypes = [] ): array;
+public function fetchOne( string $sqlQuery, int $fetchMode = int, mixed $placeholders = null ): array;
 ```
 Returns the first row in a SQL query result
 
@@ -1047,7 +1042,7 @@ Returns the name of the dialect used
 
 
 ```php
-public function getInternalHandler(): mixed;
+public function getInternalHandler(): \PDO;
 ```
 Return internal PDO handler
 
@@ -1127,7 +1122,7 @@ Checks whether connection is under database transaction
 
 
 ```php
-public function lastInsertId( string $name = null ): string | bool;
+public function lastInsertId( mixed $sequenceName = null );
 ```
 Returns insert id for the auto_increment column inserted in the last SQL
 statement
@@ -1158,7 +1153,7 @@ Modifies a table column based on a definition
 
 
 ```php
-public function query( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): ResultInterface | bool;
+public function query( string $sqlStatement, mixed $placeholders = null, mixed $dataTypes = null ): ResultInterface | bool;
 ```
 Sends SQL statements to the database server returning the success state.
 Use this method only when the SQL statement sent to the server returns
@@ -1266,10 +1261,10 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-adapter-pdo-abstractpdo">Abstract Class Phalcon\Db\Adapter\Pdo\AbstractPdo</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
-| Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\PdoResult, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface |
+| Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\Pdo, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface |
 | Extends    | AbstractAdapter |
 
 Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect
@@ -1294,10 +1289,8 @@ $connection = new Mysql($config);
 ```php
 /**
  * Last affected rows
- *
- * @var int
  */
-protected affectedRows = 0;
+protected affectedRows;
 
 /**
  * PDO Handler
@@ -1338,7 +1331,7 @@ Starts a transaction in the connection
 
 
 ```php
-public function close(): void;
+public function close(): bool;
 ```
 Closes the active connection returning success. Phalcon automatically
 closes and destroys active connections when the request ends
@@ -1351,7 +1344,7 @@ Commits the active transaction in the connection
 
 
 ```php
-public function connect( array $descriptor = [] ): void;
+public function connect( array $descriptor = null ): bool;
 ```
 This method is automatically called in \Phalcon\Db\Adapter\Pdo
 constructor.
@@ -1406,7 +1399,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 
 ```php
-public function execute( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): bool;
+public function execute( string $sqlStatement, mixed $bindParams = null, mixed $bindTypes = null ): bool;
 ```
 Sends SQL statements to the database server returning the success state.
 Use this method only when the SQL statement sent to the server doesn't
@@ -1454,13 +1447,13 @@ $result = $connection->executePrepared(
 
 
 ```php
-public function getErrorInfo(): array;
+public function getErrorInfo();
 ```
 Return the error info, if any
 
 
 ```php
-public function getInternalHandler(): mixed;
+public function getInternalHandler(): \PDO;
 ```
 Return internal PDO handler
 
@@ -1487,7 +1480,7 @@ var_dump(
 
 
 ```php
-public function lastInsertId( string $name = null ): string | bool;
+public function lastInsertId( mixed $sequenceName = null ): int | bool;
 ```
 Returns the insert id for the auto_increment/serial column inserted in
 the latest executed SQL statement
@@ -1536,7 +1529,7 @@ $result = $connection->executePrepared(
 
 
 ```php
-public function query( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): ResultInterface | bool;
+public function query( string $sqlStatement, mixed $bindParams = null, mixed $bindTypes = null ): ResultInterface | bool;
 ```
 Sends SQL statements to the database server returning the success state.
 Use this method only when the SQL statement sent to the server is
@@ -1581,7 +1574,7 @@ Constructs the SQL statement (with parameters)
 
 <h1 id="db-adapter-pdo-mysql">Class Phalcon\Db\Adapter\Pdo\Mysql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Adapter/Pdo/Mysql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/Mysql.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
@@ -1619,12 +1612,6 @@ protected type = mysql;
 ```
 
 ## Methods
-
-```php
-public function __construct( array $descriptor );
-```
-Constructor for Phalcon\Db\Adapter\Pdo
-
 
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
@@ -1678,7 +1665,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdo-postgresql">Class Phalcon\Db\Adapter\Pdo\Postgresql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Adapter/Pdo/Postgresql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/Postgresql.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Throwable |
@@ -1724,7 +1711,7 @@ Constructor for Phalcon\Db\Adapter\Pdo\Postgresql
 
 
 ```php
-public function connect( array $descriptor = [] ): void;
+public function connect( array $descriptor = null ): bool;
 ```
 This method is automatically called in Phalcon\Db\Adapter\Pdo
 constructor. Call it when you need to restore a database connection.
@@ -1813,7 +1800,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdo-sqlite">Class Phalcon\Db\Adapter\Pdo\Sqlite</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Adapter/Pdo/Sqlite.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/Sqlite.zep)
 
 | Namespace  | Phalcon\Db\Adapter\Pdo |
 | Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
@@ -1855,7 +1842,7 @@ Constructor for Phalcon\Db\Adapter\Pdo\Sqlite
 
 
 ```php
-public function connect( array $descriptor = [] ): void;
+public function connect( array $descriptor = null ): bool;
 ```
 This method is automatically called in Phalcon\Db\Adapter\Pdo
 constructor. Call it when you need to restore a database connection.
@@ -1938,10 +1925,10 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdofactory">Class Phalcon\Db\Adapter\PdoFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Adapter/PdoFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/PdoFactory.zep)
 
 | Namespace  | Phalcon\Db\Adapter |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Support\Helper\Arr\Get |
+| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
 | Extends    | AbstractFactory |
 
 This file is part of the Phalcon Framework.
@@ -1973,13 +1960,7 @@ Create a new instance of the adapter
 
 
 ```php
-protected function getExceptionClass(): string;
-```
-
-
-
-```php
-protected function getServices(): array;
+protected function getAdapters(): array;
 ```
 Returns the available adapters
 
@@ -1988,7 +1969,7 @@ Returns the available adapters
 
 <h1 id="db-column">Class Phalcon\Db\Column</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Column.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Column.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | ColumnInterface |
@@ -2027,7 +2008,6 @@ const BIND_PARAM_NULL = 0;
 const BIND_PARAM_STR = 2;
 const BIND_SKIP = 1024;
 const TYPE_BIGINTEGER = 14;
-const TYPE_BINARY = 26;
 const TYPE_BIT = 19;
 const TYPE_BLOB = 11;
 const TYPE_BOOLEAN = 8;
@@ -2053,7 +2033,6 @@ const TYPE_TIMESTAMP = 17;
 const TYPE_TINYBLOB = 10;
 const TYPE_TINYINTEGER = 26;
 const TYPE_TINYTEXT = 25;
-const TYPE_VARBINARY = 27;
 const TYPE_VARCHAR = 2;
 ```
 
@@ -2075,24 +2054,13 @@ protected autoIncrement = false;
 
 /**
  * Bind Type
- *
- * @var int
  */
 protected bindType = 2;
 
 /**
- * Column's comment
- *
- * @var string|null
- */
-protected comment;
-
-/**
  * Default column value
- *
- * @var mixed|null
  */
-protected defaultValue;
+protected _default;
 
 /**
  * Position is first
@@ -2103,8 +2071,6 @@ protected first = false;
 
 /**
  * The column have some numeric type?
- *
- * @var bool
  */
 protected isNumeric = false;
 
@@ -2114,6 +2080,13 @@ protected isNumeric = false;
  * @var string
  */
 protected name;
+
+/**
+ * Column's comment
+ *
+ * @var string
+ */
+protected comment;
 
 /**
  * Column not nullable?
@@ -2126,8 +2099,6 @@ protected notNull = true;
 
 /**
  * Column is part of the primary key?
- *
- * @var bool
  */
 protected primary = false;
 
@@ -2141,7 +2112,7 @@ protected scale = 0;
 /**
  * Integer column size
  *
- * @var int|string
+ * @var int | string
  */
 protected size = 0;
 
@@ -2196,51 +2167,51 @@ Returns the type of bind handling
 
 
 ```php
-public function getComment(): string | null;
+public function getComment(): string
 ```
-Column's comment
+
 
 
 ```php
-public function getDefault(): mixed;
+public function getName(): string
 ```
-Default column value
+
 
 
 ```php
-public function getName(): string;
+public function getScale(): int
 ```
-Column's name
+
 
 
 ```php
-public function getScale(): int;
+public function getSize(): int | string
 ```
-Integer column number scale
+
 
 
 ```php
-public function getSize(): int | string;
+public function getType(): int
 ```
-Integer column size
+
 
 
 ```php
-public function getType(): int;
+public function getTypeReference(): int
 ```
-Column data type
+
 
 
 ```php
-public function getTypeReference(): int;
+public function getTypeValues(): array|string
 ```
-Column data type reference
+
 
 
 ```php
-public function getTypeValues(): array | string;
+public function get_default()
 ```
-Column data type values
+
 
 
 ```php
@@ -2289,7 +2260,7 @@ Returns true if number column is unsigned
 
 <h1 id="db-columninterface">Interface Phalcon\Db\ColumnInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/ColumnInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/ColumnInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -2398,7 +2369,7 @@ Returns true if number column is unsigned
 
 <h1 id="db-dialect">Abstract Class Phalcon\Db\Dialect</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Dialect.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | DialectInterface |
@@ -2409,14 +2380,10 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 ## Properties
 ```php
-/**
- * @var string
- */
+//
 protected escapeChar;
 
-/**
- * @var array
- */
+//
 protected customFunctions;
 
 ```
@@ -2454,7 +2421,7 @@ echo $sql; // SELECTFROM robots FOR UPDATE
 
 
 ```php
-final public function getColumnList( array $columnList, string $escapeChar = null, array $bindCounts = [] ): string;
+final public function getColumnList( array $columnList, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Gets a list of columns with escaped identifiers
 
@@ -2475,13 +2442,13 @@ Returns registered functions
 
 
 ```php
-final public function getSqlColumn( mixed $column, string $escapeChar = null, array $bindCounts = [] ): string;
+final public function getSqlColumn( mixed $column, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve Column expressions
 
 
 ```php
-public function getSqlExpression( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+public function getSqlExpression( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Transforms an intermediate representation for an expression into a database system valid expression
 
@@ -2580,25 +2547,25 @@ Resolve
 
 
 ```php
-final protected function getSqlExpressionBinaryOperations( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionBinaryOperations( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve binary operations expressions
 
 
 ```php
-final protected function getSqlExpressionCase( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionCase( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve CASE expressions
 
 
 ```php
-final protected function getSqlExpressionCastValue( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionCastValue( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve CAST of values
 
 
 ```php
-final protected function getSqlExpressionConvertValue( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionConvertValue( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve CONVERT of values encodings
 
@@ -2610,49 +2577,49 @@ Resolve a FROM clause
 
 
 ```php
-final protected function getSqlExpressionFunctionCall( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionFunctionCall( array $expression, string $escapeChar = null, mixed $bindCounts ): string;
 ```
 Resolve function calls
 
 
 ```php
-final protected function getSqlExpressionGroupBy( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionGroupBy( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve a GROUP BY clause
 
 
 ```php
-final protected function getSqlExpressionHaving( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionHaving( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve a HAVING clause
 
 
 ```php
-final protected function getSqlExpressionJoins( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionJoins( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve a JOINs clause
 
 
 ```php
-final protected function getSqlExpressionLimit( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionLimit( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve a LIMIT clause
 
 
 ```php
-final protected function getSqlExpressionList( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionList( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve Lists
 
 
 ```php
-final protected function getSqlExpressionObject( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionObject( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve object expressions
 
 
 ```php
-final protected function getSqlExpressionOrderBy( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionOrderBy( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve an ORDER BY clause
 
@@ -2664,19 +2631,19 @@ Resolve qualified expressions
 
 
 ```php
-final protected function getSqlExpressionScalar( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionScalar( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve Column expressions
 
 
 ```php
-final protected function getSqlExpressionUnaryOperations( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionUnaryOperations( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve unary operations expressions
 
 
 ```php
-final protected function getSqlExpressionWhere( mixed $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+final protected function getSqlExpressionWhere( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Resolve a WHERE clause
 
@@ -2703,7 +2670,7 @@ Prepares table for this RDBMS
 
 <h1 id="db-dialect-mysql">Class Phalcon\Db\Dialect\Mysql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Dialect/Mysql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect/Mysql.zep)
 
 | Namespace  | Phalcon\Db\Dialect |
 | Uses       | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface |
@@ -2907,7 +2874,7 @@ Generates SQL to add the table creation options
 
 <h1 id="db-dialect-postgresql">Class Phalcon\Db\Dialect\Postgresql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Dialect/Postgresql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect/Postgresql.zep)
 
 | Namespace  | Phalcon\Db\Dialect |
 | Uses       | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface |
@@ -3106,7 +3073,7 @@ protected function getTableOptions( array $definition ): string;
 
 <h1 id="db-dialect-sqlite">Class Phalcon\Db\Dialect\Sqlite</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Dialect/Sqlite.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect/Sqlite.zep)
 
 | Namespace  | Phalcon\Db\Dialect |
 | Uses       | Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\Dialect, Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface |
@@ -3318,7 +3285,7 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-dialectinterface">Interface Phalcon\Db\DialectInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/DialectInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/DialectInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -3412,7 +3379,7 @@ Generates SQL to delete primary key from a table
 
 
 ```php
-public function dropTable( string $tableName, string $schemaName, bool $ifExists = bool ): string;
+public function dropTable( string $tableName, string $schemaName ): string;
 ```
 Generates SQL to drop a table
 
@@ -3448,7 +3415,7 @@ Returns registered functions
 
 
 ```php
-public function getSqlExpression( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
+public function getSqlExpression( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 Transforms an intermediate representation for an expression into a
 database system valid expression
@@ -3536,7 +3503,7 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-enum">Class Phalcon\Db\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Enum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Enum.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -3551,7 +3518,6 @@ const FETCH_BOUND;
 const FETCH_CLASS;
 const FETCH_CLASSTYPE;
 const FETCH_COLUMN;
-const FETCH_DEFAULT = 0;
 const FETCH_FUNC;
 const FETCH_GROUP;
 const FETCH_INTO;
@@ -3560,7 +3526,6 @@ const FETCH_LAZY;
 const FETCH_NAMED;
 const FETCH_NUM;
 const FETCH_OBJ;
-const FETCH_ORI_NEXT;
 const FETCH_PROPS_LATE;
 const FETCH_SERIALIZE;
 const FETCH_UNIQUE;
@@ -3569,10 +3534,10 @@ const FETCH_UNIQUE;
 
 <h1 id="db-exception">Class Phalcon\Db\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Exception.zep)
 
 | Namespace  | Phalcon\Db |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Db will use this class
 
@@ -3580,7 +3545,7 @@ Exceptions thrown in Phalcon\Db will use this class
 
 <h1 id="db-index">Class Phalcon\Db\Index</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Index.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Index.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | IndexInterface |
@@ -3648,28 +3613,28 @@ Phalcon\Db\Index constructor
 
 
 ```php
-public function getColumns(): array;
+public function getColumns(): array
 ```
-Index columns
+
 
 
 ```php
-public function getName(): string;
+public function getName(): string
 ```
-Index name
+
 
 
 ```php
-public function getType(): string;
+public function getType(): string
 ```
-Index type
+
 
 
 
 
 <h1 id="db-indexinterface">Interface Phalcon\Db\IndexInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/IndexInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/IndexInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -3700,7 +3665,7 @@ Gets the index type
 
 <h1 id="db-profiler">Class Phalcon\Db\Profiler</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Profiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Profiler.zep)
 
 | Namespace  | Phalcon\Db |
 | Uses       | Phalcon\Db\Profiler\Item |
@@ -3759,25 +3724,25 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 ## Properties
 ```php
 /**
- * Active Item
+ * Active Phalcon\Db\Profiler\Item
  *
- * @var Item
+ * @var Phalcon\Db\Profiler\Item
  */
 protected activeProfile;
 
 /**
- * All the Items in the active profile
+ * All the Phalcon\Db\Profiler\Item in the active profile
  *
- * @var Item[]
+ * @var \Phalcon\Db\Profiler\Item[]
  */
 protected allProfiles;
 
 /**
- * Total time spent by all profiles to complete in nanoseconds
+ * Total time spent by all profiles to complete
  *
  * @var float
  */
-protected totalNanoseconds = 0;
+protected totalSeconds = 0;
 
 ```
 
@@ -3802,18 +3767,6 @@ Returns all the processed profiles
 
 
 ```php
-public function getTotalElapsedMilliseconds(): double;
-```
-Returns the total time in milliseconds spent by the profiles
-
-
-```php
-public function getTotalElapsedNanoseconds(): double;
-```
-Returns the total time in nanoseconds spent by the profiles
-
-
-```php
 public function getTotalElapsedSeconds(): double;
 ```
 Returns the total time in seconds spent by the profiles
@@ -3826,7 +3779,7 @@ Resets the profiler, cleaning up all the profiles
 
 
 ```php
-public function startProfile( string $sqlStatement, array $sqlVariables = [], array $sqlBindTypes = [] ): Profiler;
+public function startProfile( string $sqlStatement, mixed $sqlVariables = null, mixed $sqlBindTypes = null ): Profiler;
 ```
 Starts the profile of a SQL sentence
 
@@ -3841,7 +3794,7 @@ Stops the active profile
 
 <h1 id="db-profiler-item">Class Phalcon\Db\Profiler\Item</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Profiler/Item.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Profiler/Item.zep)
 
 | Namespace  | Phalcon\Db\Profiler |
 
@@ -3890,45 +3843,33 @@ protected sqlVariables;
 ## Methods
 
 ```php
-public function getFinalTime(): double;
+public function getFinalTime(): double
 ```
-Return the timestamp when the profile ended
+
 
 
 ```php
-public function getInitialTime(): double;
+public function getInitialTime(): double
 ```
-Return the timestamp when the profile started
+
 
 
 ```php
-public function getSqlBindTypes(): array;
+public function getSqlBindTypes(): array
 ```
-Return the SQL bind types related to the profile
+
 
 
 ```php
-public function getSqlStatement(): string;
+public function getSqlStatement(): string
 ```
-Return the SQL statement related to the profile
+
 
 
 ```php
-public function getSqlVariables(): array;
+public function getSqlVariables(): array
 ```
-Return the SQL variables related to the profile
 
-
-```php
-public function getTotalElapsedMilliseconds(): double;
-```
-Returns the total time in milliseconds spent by the profile
-
-
-```php
-public function getTotalElapsedNanoseconds(): double;
-```
-Returns the total time in nanoseconds spent by the profile
 
 
 ```php
@@ -3938,40 +3879,40 @@ Returns the total time in seconds spent by the profile
 
 
 ```php
-public function setFinalTime( double $finalTime ): Item;
+public function setFinalTime( double $finalTime )
 ```
-Return the timestamp when the profile ended
+
 
 
 ```php
-public function setInitialTime( double $initialTime ): Item;
+public function setInitialTime( double $initialTime )
 ```
-Return the timestamp when the profile started
+
 
 
 ```php
-public function setSqlBindTypes( array $sqlBindTypes ): Item;
+public function setSqlBindTypes( array $sqlBindTypes )
 ```
-Return the SQL bind types related to the profile
+
 
 
 ```php
-public function setSqlStatement( string $sqlStatement ): Item;
+public function setSqlStatement( string $sqlStatement )
 ```
-Return the SQL statement related to the profile
+
 
 
 ```php
-public function setSqlVariables( array $sqlVariables ): Item;
+public function setSqlVariables( array $sqlVariables )
 ```
-Return the SQL variables related to the profile
+
 
 
 
 
 <h1 id="db-rawvalue">Class Phalcon\Db\RawValue</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/RawValue.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/RawValue.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -4009,13 +3950,13 @@ Phalcon\Db\RawValue constructor
 
 
 ```php
-public function __toString(): string;
+public function __toString(): string
 ```
 
 
 
 ```php
-public function getValue(): string;
+public function getValue(): string
 ```
 
 
@@ -4024,7 +3965,7 @@ public function getValue(): string;
 
 <h1 id="db-reference">Class Phalcon\Db\Reference</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Reference.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Reference.zep)
 
 | Namespace  | Phalcon\Db |
 | Implements | ReferenceInterface |
@@ -4119,58 +4060,58 @@ Phalcon\Db\Reference constructor
 
 
 ```php
-public function getColumns(): array;
+public function getColumns(): array
 ```
-Local reference columns
+
 
 
 ```php
-public function getName(): string;
+public function getName(): string
 ```
-Constraint name
+
 
 
 ```php
-public function getOnDelete(): string;
+public function getOnDelete(): string
 ```
-ON DELETE
+
 
 
 ```php
-public function getOnUpdate(): string;
+public function getOnUpdate(): string
 ```
-ON UPDATE
+
 
 
 ```php
-public function getReferencedColumns(): array;
+public function getReferencedColumns(): array
 ```
-Referenced Columns
+
 
 
 ```php
-public function getReferencedSchema(): string;
+public function getReferencedSchema(): string
 ```
-Referenced Schema
+
 
 
 ```php
-public function getReferencedTable(): string;
+public function getReferencedTable(): string
 ```
-Referenced Table
+
 
 
 ```php
-public function getSchemaName(): string;
+public function getSchemaName(): string
 ```
-Schema name
+
 
 
 
 
 <h1 id="db-referenceinterface">Interface Phalcon\Db\ReferenceInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/ReferenceInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/ReferenceInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -4229,9 +4170,9 @@ Gets the schema where referenced table is
 
 
 
-<h1 id="db-result-pdoresult">Class Phalcon\Db\Result\PdoResult</h1>
+<h1 id="db-result-pdo">Class Phalcon\Db\Result\Pdo</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/Result/PdoResult.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Result/Pdo.zep)
 
 | Namespace  | Phalcon\Db\Result |
 | Uses       | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface |
@@ -4254,25 +4195,17 @@ while ($robot = $result->fetchArray()) {
 
 ## Properties
 ```php
-/**
- * @var array
- */
+//
 protected bindParams;
 
-/**
- * @var array
- */
+//
 protected bindTypes;
 
-/**
- * @var AdapterInterface
- */
+//
 protected connection;
 
 /**
  * Active fetch mode
- *
- * @var int
  */
 protected fetchMode;
 
@@ -4283,20 +4216,13 @@ protected fetchMode;
  */
 protected pdoStatement;
 
-/**
- * @var mixed
- * TODO: Check if this property is used
- */
+//
 protected result;
 
-/**
- * @var bool
- */
+//
 protected rowCount = false;
 
-/**
- * @var string|null
- */
+//
 protected sqlStatement;
 
 ```
@@ -4310,7 +4236,7 @@ Phalcon\Db\Result\Pdo constructor
 
 
 ```php
-public function dataSeek( int $number ): void;
+public function dataSeek( long $number ): void;
 ```
 Moves internal resultset cursor to another position letting us to fetch a
 certain row
@@ -4337,14 +4263,14 @@ execute the cursor again to fetch rows from the beginning
 
 
 ```php
-public function fetch( int $fetchStyle = null, int $cursorOrientation = static-constant-access, int $cursorOffset = int );
+public function fetch( mixed $fetchStyle = null, mixed $cursorOrientation = null, mixed $cursorOffset = null );
 ```
 Fetches an array/object of strings that corresponds to the fetched row,
 or FALSE if there are no more rows. This method is affected by the active
 fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("SELECTFROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_OBJ
@@ -4357,7 +4283,7 @@ while ($robot = $result->fetch()) {
 
 
 ```php
-public function fetchAll( int $mode = Enum::FETCH_DEFAULT, mixed $fetchArgument = Enum::FETCH_ORI_NEXT, mixed $constructorArgs = null ): array;
+public function fetchAll( mixed $fetchStyle = null, mixed $fetchArgument = null, mixed $ctorArgs = null ): array;
 ```
 Returns an array of arrays containing all the records in the result
 This method is affected by the active fetch flag set using
@@ -4365,7 +4291,7 @@ This method is affected by the active fetch flag set using
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots ORDER BY name"
+    "SELECTFROM robots ORDER BY name"
 );
 
 $robots = $result->fetchAll();
@@ -4380,7 +4306,7 @@ if there are no more rows. This method is affected by the active fetch
 flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECT * FROM robots robots ORDER BY name");
+$result = $connection->query("SELECTFROM robots ORDER BY name");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_NUM
@@ -4405,7 +4331,7 @@ Gets number of rows returned by a resultset
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots robots ORDER BY name"
+    "SELECTFROM robots ORDER BY name"
 );
 
 echo "There are ", $result->numRows(), " rows in the resultset";
@@ -4444,7 +4370,7 @@ $result->setFetchMode(
 
 <h1 id="db-resultinterface">Interface Phalcon\Db\ResultInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Db/ResultInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/ResultInterface.zep)
 
 | Namespace  | Phalcon\Db |
 
@@ -4454,7 +4380,7 @@ Interface for Phalcon\Db\Result objects
 ## Methods
 
 ```php
-public function dataSeek( int $number );
+public function dataSeek( long $number );
 ```
 Moves internal resultset cursor to another position letting us to fetch a
 certain row

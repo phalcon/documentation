@@ -1,3 +1,8 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Tag'
+---
 
 * [Phalcon\Tag](#tag)
 * [Phalcon\Tag\Exception](#tag-exception)
@@ -5,10 +10,10 @@
 
 <h1 id="tag">Class Phalcon\Tag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Tag.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Mvc\Url\UrlInterface, Phalcon\Support\Helper\Str\Friendly |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Helper\Str, Phalcon\Helper\Exception, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
 
 Phalcon\Tag is designed to simplify building of HTML tags.
 It provides a set of helpers to generate HTML in a dynamic way.
@@ -32,60 +37,40 @@ const XHTML5 = 11;
 
 ## Properties
 ```php
-/**
- * @var bool
- */
+//
 protected static autoEscape = true;
 
 /**
  * DI Container
- *
- * @var DiInterface|null
  */
 protected static container;
 
 /**
  * Pre-assigned values for components
- *
- * @var array
  */
 protected static displayValues;
 
-/**
- * @var array
- */
+//
 protected static documentAppendTitle;
 
-/**
- * @var array
- */
+//
 protected static documentPrependTitle;
 
 /**
  * HTML document title
- *
- * @var string|null
  */
 protected static documentTitle;
 
-/**
- * @var string|null
- */
+//
 protected static documentTitleSeparator;
 
-/**
- * @var int
- */
+//
 protected static documentType = 11;
 
-/**
- * @var EscaperInterface|null
- */
+//
 protected static escaperService;
 
-/**
- * @var UrlInterface|null
- */
+//
 protected static urlService;
 
 ```
@@ -155,7 +140,7 @@ Builds a HTML input[type="file"] tag
 
 
 ```php
-public static function formLegacy( mixed $parameters ): string;
+public static function form( mixed $parameters ): string;
 ```
 Builds a HTML FORM tag
 
@@ -461,10 +446,10 @@ Builds INPUT tags that implements the checked attribute
 
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Tag/Exception.zep)
 
 | Namespace  | Phalcon\Tag |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Phalcon\Tag\Exception
 
@@ -474,10 +459,10 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Tag/Select.zep)
 
 | Namespace  | Phalcon\Tag |
-| Uses       | Phalcon\Tag, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
+| Uses       | Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
 
 Phalcon\Tag\Select
 

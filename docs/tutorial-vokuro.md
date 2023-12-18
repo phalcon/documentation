@@ -3,22 +3,19 @@
 
 ## Vökuró
 [Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
-- User Login (security)
-- User Signup (security)
+- User Login (security.md)
+- User Signup (security.md)
 - User Permissions
 - User management
 
-!!! info "NOTE"
+> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
+{: .alert .alert-info }
 
-    You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application, and it does not fit all needs.
+> **NOTE**: This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
+{: .alert .alert-warning }
 
-!!! warning "NOTE"
-
-    This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
-
-!!! warning "NOTE"
-
-    Note the code below has been formatted to increase readability
+> **NOTE**: Note the code below has been formatted to increase readability
+{: .alert .alert-warning }
 
 ## Installation
 ### Downloading
@@ -47,7 +44,7 @@ There are some prerequisites for the Vökuró to run. You will need to have PHP 
 - xml
 - xmlwriter
 
-Phalcon needs to be installed. Head over to the [installation][installation] page if you need help with installing Phalcon.  
+Phalcon needs to be installed. Head over to the [installation](installation.md) page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr][psr] GitHub page. 
 
 Finally, you will also need to ensure that you have updated the composer packages (see section below).
 
@@ -80,10 +77,10 @@ This will enter us in the dockerized environment. To check the PHP version:
 ```bash
 root@c7b43060b115:/code $ php -v
 
-PHP 8.1.8 (cli) (built: Jul 12 2022 08:28:43) (NTS)
-Copyright (c) The PHP Group
-Zend Engine v4.1.8, Copyright (c) Zend Technologies
-    with Xdebug v3.1.5, Copyright (c) 2002-2022, by Derick Rethans
+PHP 7.3.9 (cli) (built: Sep 12 2019 10:08:33) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.9, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.3.9, Copyright (c) 1999-2018, by Zend Technologies
 ```
 
 and Phalcon:
@@ -157,26 +154,26 @@ vokuro/
 
 The available options are:
 
-| Option               | Description                                                                                                                                                               |
-|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Encryption\Crypt][encryption-crypt] component to produce passwords and any additional security features               |
-| `APP_BASE_URI`       | Usually `/` if your web server points directly to the Vökuró directory. If you have installed Vökuró in a sub directory, you can adjust the base URI                      |
-| `APP_PUBLIC_URL`     | The public URL of the application. This is used for the emails.                                                                                                           |
-| `DB_ADAPTER`         | The database adapter. The available adapters are: `mysql`, `pgsql`, `sqlite`. Please ensure that the relevant extensions for the database are installed in your system.   |
-| `DB_HOST`            | The database host                                                                                                                                                         |
-| `DB_PORT`            | The database port                                                                                                                                                         |
-| `DB_USERNAME`        | The database username                                                                                                                                                     |
-| `DB_PASSWORD`        | The database password                                                                                                                                                     |
-| `DB_NAME`            | The database name                                                                                                                                                         |
-| `MAIL_FROM_NAME`     | The FROM name when sending emails                                                                                                                                         |
-| `MAIL_FROM_EMAIL`    | The FROM email when sending emails                                                                                                                                        |
-| `MAIL_SMTP_SERVER`   | The SMTP server                                                                                                                                                           |
-| `MAIL_SMTP_PORT`     | The SMTP port                                                                                                                                                             |
-| `MAIL_SMTP_SECURITY` | The SMTP security (e.g. `tls`)                                                                                                                                            |
-| `MAIL_SMTP_USERNAME` | The SMTP username                                                                                                                                                         |
-| `MAIL_SMTP_PASSWORD` | The SMTP password                                                                                                                                                         |
-| `CODECEPTION_URL`    | The Codeception server for tests. If you run the tests locally this should be `127.0.0.1`                                                                                 |
-| `CODECEPTION_PORT`   | The Codeception port                                                                                                                                                      |
+| Option               | Description                                                                                                                                                              |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|                                                                                                                                                                          
+| `APP_CRYPT_SALT`     | Random and long string that is used by the [Phalcon\Crypt](crypt.md) component to produce passwords and any additional security features                                    |
+| `APP_BASE_URI`       | Usually `/` if your web server points directly to the Vökuró directory. If you have installed Vökuró in a sub directory, you can adjust the base URI                     |
+| `APP_PUBLIC_URL`     | The public URL of the application. This is used for the emails.                                                                                                          |
+| `DB_ADAPTER`         | The database adapter. The available adapters are: `mysql`, `pgsql`, `sqlite`. Please ensure that the relevant extensions for the database are installed in your system.  |
+| `DB_HOST`            | The database host                                                                                                                                                        |
+| `DB_PORT`            | The database port                                                                                                                                                        |
+| `DB_USERNAME`        | The database username                                                                                                                                                    |
+| `DB_PASSWORD`        | The database password                                                                                                                                                    |
+| `DB_NAME`            | The database name                                                                                                                                                        |
+| `MAIL_FROM_NAME`     | The FROM name when sending emails                                                                                                                                        |
+| `MAIL_FROM_EMAIL`    | The FROM email when sending emails                                                                                                                                       |
+| `MAIL_SMTP_SERVER`   | The SMTP server                                                                                                                                                          |
+| `MAIL_SMTP_PORT`     | The SMTP port                                                                                                                                                            |
+| `MAIL_SMTP_SECURITY` | The SMTP security (e.g. `tls`)                                                                                                                                           |
+| `MAIL_SMTP_USERNAME` | The SMTP username                                                                                                                                                        |
+| `MAIL_SMTP_PASSWORD` | The SMTP password                                                                                                                                                        |
+| `CODECEPTION_URL`    | The Codeception server for tests. If you run the tests locally this should be `127.0.0.1`                                                                                |
+| `CODECEPTION_PORT`   | The Codeception port                                                                                                                                                     |
 
 
 Once the configuration file is in place, visiting the IP address will present a screen similar to this:
@@ -213,7 +210,7 @@ And the `status` command will now show all green:
 ### Config
 **acl.php**
 
-Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of _routes_ that controls which routes are visible to only logged-in users.
+Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of _routes_ that controls which routes are visible to only logged in users.
 
 The current setup will require a user to be logged in, if they visit these routes:
 
@@ -230,11 +227,10 @@ The current setup will require a user to be logged in, if they visit these route
 - `profiles/delete`
 - `permissions/index`
 
-If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes to ensure that your protected routes are behind the login mechanism. 
+If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes so as to ensure that your protected routes are behind the login mechanism. 
 
-!!! info "NOTE"
-
-    Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
+> **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
+{: .alert .alert-info }
 
 **config.php**
 
@@ -248,7 +244,7 @@ This file contains all the providers that Vökuró needs. This is a list of clas
 
 **routes.php**
 
-This file contains the routes that Vökuró understands. The router already registers the default routes, so any routes defined in `routes.php` are specific ones. You can add any non-standard routes you need, when customizing Vökuró, in this file. As a reminder, the default routes are:
+This file contains the routes that Vökuró understands. The router already registers the default routes, so any routes defined in `routes.php` are specific ones. You can add any non standard routes you need, when customizing Vökuró, in this file. As a reminder, the default routes are:
 
 ```bash
 /:controller/:action/:parameters
@@ -272,9 +268,9 @@ Looking at `composer.json` the required packages are:
 
 ```json
 "require": {
-    "php": ">=8.0",
+    "php": ">=7.2",
     "ext-openssl": "*",
-    "ext-phalcon": "~5.0.0",
+    "ext-phalcon": "~4.0.0-beta.2",
     "robmorgan/phinx": "^0.11.1",
     "swiftmailer/swiftmailer": "^5.4",
     "vlucas/phpdotenv": "^3.4"
@@ -312,8 +308,14 @@ $rootPath = dirname(__DIR__);
 try {
     require_once $rootPath . '/vendor/autoload.php';
 
+    /**
+     * Load .env configurations
+     */
     Dotenv\Dotenv::create($rootPath)->load();
 
+    /**
+     * Run Vökuró!
+     */
     echo (new VokuroApplication($rootPath))->run();
 } catch (Exception $e) {
     echo $e->getMessage(), '<br>';
@@ -325,9 +327,8 @@ First of all we ensure that we have full error reporting. You can of course chan
 
 A `try`/`catch` block wraps all operations. This ensures that all errors are caught and displayed on screen.
 
-!!! danger "NOTE"
-
-    You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
+> **NOTE** You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
+{: .alert .alert-danger }
 
 We ensure that we have access to all the supporting libraries by loading composer's autoloader. In the `composer.json` we have also defined the `autoload` entry, directing the autoloader to load any `Vokuro` namespaced classes from the `src` folder.
 
@@ -366,6 +367,9 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Mvc\Application as MvcApplication;
 
+/**
+ * Vökuró Application
+ */
 class Application
 {
     const APPLICATION_PROVIDER = 'bootstrap';
@@ -381,6 +385,8 @@ class Application
     protected $di;
 
     /**
+     * Project root path
+     *
      * @var string
      */
     protected $rootPath;
@@ -402,6 +408,8 @@ class Application
     }
 
     /**
+     * Run Vökuró Application
+     *
      * @return string
      * @throws Exception
      */
@@ -415,6 +423,8 @@ class Application
     }
 
     /**
+     * Get Project root path
+     *
      * @return string
      */
     public function getRootPath(): string
@@ -454,13 +464,13 @@ class Application
 
 ```
 
-The constructor of the class first creates a new DI container and store it in a local property. We are using the [Phalcon\Di\FactoryDefault][di] one, which has a lot of services already registered for us. 
+The constructor of the class first creates a new DI container and store it in a local property. We are using the [Phalcon\Di\FactoryDefault](di.md) one, which has a lot of services already registered for us. 
 
-We then create a new [Phalcon\Mvc\Application][application] and store it in a property also. We also store the root path because it is useful throughout the application.
+We then create a new [Phalcon\Mvc\Application](application.md) and store it in a property also. We also store the root path because it is useful throughout the application.
 
 We then register this class (the `Vokuro\Application`) in the Di container using the name `bootstrap`. This allows us to have access to this class from any part of our application through the Di container.
 
-The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault][di] object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
+The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault](di.md) object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
 
 The available providers are:
 
@@ -503,7 +513,7 @@ As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, Postgre
 | `users`               | Users                                   |
 
 ## Models
-Following the [Model-View-Controller][mvc] pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object-oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
+Following the [Model-View-Controller][mvc] pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
 
 ```php
 <?php
@@ -513,6 +523,11 @@ namespace Vokuro\Models;
 
 use Phalcon\Mvc\Model;
 
+/**
+ * SuccessLogins
+ *
+ * This model registers successfully logins registered users have made
+ */
 class SuccessLogins extends Model
 {
     /**
@@ -555,9 +570,8 @@ In the model above, we have defined all the fields of the table as public proper
 echo $successLogin->ipAddress;
 ```
 
-!!! warning "NOTE"
-
-    If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
+> **NOTE**: If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
+{: .alert .alert-warning }
 
 In the `initialize()` method, we also define a relationship between this model and the `Users` model. We assign the fields (local/remote) as well as an `alias` for this relationship. We can therefore access the user related to a record of this model as follows:
 
@@ -565,14 +579,13 @@ In the `initialize()` method, we also define a relationship between this model a
 echo $successLogin->user->name;
 ```
 
-!!! info "NOTE"
-
-    Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
+> **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
+{: .alert .alert-info }
 
 ## Controllers
 Again following the [Model-View-Controller][mvc] pattern, Vökuró has one controller to handle a specific _parent_ route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory. 
 
-The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore, if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
+The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
 
 After that, unless you have registered specific routes, the default routes (automatically registered) will try to match:
 
@@ -615,11 +628,10 @@ The available controllers, actions and routes for Vökuró are:
 
 
 ## Views
-The last element of the [Model-View-Controller][mvc] pattern is the views. Vökuró uses [Volt][volt] as the view engine for its views.
+The last element of the [Model-View-Controller][mvc] pattern is the views. Vökuró uses [Volt](volt.md) as the view engine for its views.
 
-!!! info "NOTE"
-
-    Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
+> **NOTE**: Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
+{: .alert .alert-info }
 
 The views directory contains directories that map to each controller. Inside each of those directories, `.volt` files are mapped to each action. So for example the route:
 
@@ -664,15 +676,15 @@ The available views are:
 | `Users`       | `delete`         | `/users/delete.volt`           | Delete user                                 | 
 | `Users`       | `edit`           | `/users/edit.volt`             | Edit user                                   | 
 
-The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged-in users. The individual views are injected into the layouts and construct the final page.
+The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
 
 ## Components
 There are several components that we use in Vökuró, offering functionality throughout the application. All these components are located in the `/src/Plugins` directory.
 
 ### Acl
-`Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List][acl] for our application. The ACL controls which user has access to which resources. You can read more about ACL in our [dedicated page][acl].
+`Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List][acl] for our application. The ACL controls which user has access to which resources. You can read more about ACL in our [dedicated page](acl.md).
 
-In this component, We define the resources that are considered _private_. These are held in an internal array with controller as the key and action as the value, and identify which controller/actions require authentication. It also holds human-readable descriptions for actions used throughout the application.
+In this component, We define the resources that are considered _private_. These are held in an internal array with controller as the key and action as the value, and identify which controller/actions require authentication. It also holds human readable descriptions for actions used throughout the application.
 
 The component exposes the following methods:
 
@@ -711,9 +723,8 @@ The component exposes the following methods:
 ### Mail
 `Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer][swiftmailer]. It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message. 
 
-!!! info "NOTE"
-
-    Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
+> **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
+{: .alert .alert-info } 
 
 ## Sign Up
 ### Controller
@@ -745,6 +756,9 @@ use Vokuro\Models\Users;
  */
 class SessionController extends ControllerBase
 {
+    /**
+     * Allow a user to signup to the system
+     */
     public function signupAction()
     {
         $form = new SignUpForm();
@@ -779,13 +793,12 @@ The workflow of the application is:
 
 ### Form
 
-In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form][forms] and [Phalcon\Filter\Validation\*][filter-validation] classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen. 
+In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms.md) and [Phalcon\Validation\*](validation.md) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen. 
 
 When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages. 
 
-!!! info "NOTE"
-
-    All the forms for Vökuró are located in `/src/Forms`
+> **NOTE**: All the forms for Vökuró are located in `/src/Forms`
+{: .alert .alert-info }
 
 First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
 
@@ -831,6 +844,7 @@ class SignUpForm extends Form
 
         $this->add($name);
 
+        // Email
         $email = new Text('email');
         $email->setLabel('E-Mail');
         $email->addValidators(
@@ -850,6 +864,7 @@ class SignUpForm extends Form
 
         $this->add($email);
 
+        // Password
         $password = new Password('password');
         $password->setLabel('Password');
         $password->addValidators(
@@ -878,6 +893,7 @@ class SignUpForm extends Form
 
         $this->add($password);
 
+        // Confirm Password
         $confirmPassword = new Password('confirmPassword');
         $confirmPassword->setLabel('Confirm Password');
         $confirmPassword->addValidators(
@@ -893,6 +909,7 @@ class SignUpForm extends Form
 
         $this->add($confirmPassword);
 
+        // Remember
         $terms = new Check(
             'terms', 
             [
@@ -913,6 +930,7 @@ class SignUpForm extends Form
 
         $this->add($terms);
 
+        // CSRF
         $csrf = new Hidden('csrf');
         $csrf->addValidator(
             new Identical(
@@ -926,6 +944,7 @@ class SignUpForm extends Form
 
         $this->add($csrf);
 
+        // Sign Up
         $this->add(
             new Submit(
                 'Sign Up', 
@@ -937,6 +956,8 @@ class SignUpForm extends Form
     }
 
     /**
+     * Prints messages for a specific element
+     *
      * @param string $name
      *
      * @return string
@@ -972,6 +993,7 @@ Adding elements is pretty straight forward:
 <?php
 declare(strict_types=1);
 
+// Email
 $email = new Text('email');
 $email->setLabel('E-Mail');
 $email->addValidators(
@@ -1017,6 +1039,7 @@ $this->view->setVar('form', $form);
 Our view now needs to _render_ the elements:
 
 ```twig
+{% raw %}
 {# ... #}
 {% 
     set isEmailValidClass = form.messages('email') ? 
@@ -1076,10 +1099,10 @@ Our view now needs to _render_ the elements:
 <hr>
 
 {{ link_to('session/login', "&larr; Back to Login") }}
-
+{% endraw %}
 ```
 
-The variable that we set in our view for our `SignUpForm` object is called `form`. We therefore use it directly and call the methods of it. The syntax in Volt is slightly different. In PHP, we would use `$form->render()` whereas in Volt we will use `form.render()`.
+The variable that we set in our view for our `SignUpForm` object is called `form`. We therefore use it directly and call the methods of it. The syntax in Volt is slightly different. In PHP we would use `$form->render()` whereas in Volt we will use `form.render()`.
 
 The view contains a conditional at the top, checking whether there have been any errors in our form, and if there were, it attaches the `is-invalid` CSS class to the element. This class puts a nice red border by the element, highlighting the error and showing the message.
 
@@ -1113,6 +1136,9 @@ use Vokuro\Models\Users;
  */
 class SessionController extends ControllerBase
 {
+    /**
+     * Allow a user to signup to the system
+     */
     public function signupAction()
     {
         $form = new SignUpForm();
@@ -1163,13 +1189,13 @@ class SessionController extends ControllerBase
 }
 ```
 
-If the user has submitted data, the following line will evaluate, and we will be executing code inside the `if` statement:
+If the user has submitted data, the following line will evaluate and we will be executing code inside the `if` statement:
 
 ```php
 if (true === $this->request->isPost()) {
 ```
 
-Here we are checking the request that came from the user, if it is a `POST`. Now that it is, we need to use the form validators and check if we have any errors. The [Phalcon\Http\Request][request] object, allows us to get that data easily by using:
+Here we are checking the request that came from the user, if it is a `POST`. Now that it is, we need to use the form validators and check if we have any errors. The [Phalcon\Http\Request](request.md) object, allows us to get that data easily by using:
 
 ```php
 $this->request->getPost()
@@ -1181,7 +1207,7 @@ We now need to pass this posted data in the form and call `isValid`. This will f
 if (false !== $form->isValid($this->request->getPost())) {
 ```
 
-If everything is fine, we use again the [Phalcon\Http\Request][request] object to retrieve the submitted data but also sanitize them. The following example strips the tags from the submitted `name` string:
+If everything is fine, we use again the [Phalcon\Http\Request](request.md) object to retrieve the submitted data but also sanitize them. The following example strips the tags from the submitted `name` string:
 
 ```php
 $name     = $this
@@ -1190,7 +1216,7 @@ $name     = $this
 ;
 ```
 
-Note that we never store clear text passwords. Instead, we use the [Phalcon\Encryption\Security][encryption-security] component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. This way, if someone compromises our database, at least they have no access to clear text passwords.
+Note that we never store clear text passwords. Instead we use the [Phalcon\Security](security.md) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. This way, if someone compromises our database, at least they have no access to clear text passwords.
 
 ```php
 $password = $this
@@ -1231,7 +1257,7 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events. 
 
-The core method, the setup if you like happens in the `initialize` method. That is the spot where we set all the [relationships][db-models-relationships] for the model. For the `Users` class we have several relationships defined. Why relationships you might ask? Phalcon offers an easy way to retrieve related data to a particular model. 
+The core method, the setup if you like happens in the `initialize` method. That is the spot where we set all the [relationships](db-models-relationships.md) for the model. For the `Users` class we have several relationships defined. Why relationships you might ask? Phalcon offers an easy way to retrieve related data to a particular model. 
 
 If for instance we want to check all the successful logins for a particular user, we can do so with the following code snippet:
 
@@ -1307,6 +1333,9 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
+/**
+ * All the users registered in the application
+ */
 class Users extends Model
 {
     // ...
@@ -1367,11 +1396,11 @@ class Users extends Model
 
 As you can see in the defined relationships, we have a `belongsTo` and three `hasMany`. All relationships have an alias so that we can access them easier. The `belongsTo` relationship also has the `reusable` flag set to on. This means that if the relationship is called more than once in the same request, Phalcon would perform the database query only the first time and cache the resultset. Any subsequent calls will use the cached resultset. 
 
-Also, notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised. 
+Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised. 
 
 **Events**
 
-[Phalcon\Mvc\Model][db-models] is designed to fire specific [events][events]. These event methods can be located either in a listener or in the same model. 
+[Phalcon\Mvc\Model](db-models.md) is designed to fire specific [events](events.md). These event methods can be located either in a listener or in the same model. 
 
 For the `Users` model, we attach code to the `afterSave` and `beforeValidationOnCreate` events. 
 
@@ -1386,6 +1415,9 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
+/**
+ * All the users registered in the application
+ */
 class Users extends Model
 {
     public function beforeValidationOnCreate()
@@ -1420,7 +1452,7 @@ class Users extends Model
 }
 ```
 
-The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Encryption\Security][encryption-security] and storing it in the `password` property. We also set the flag to change the password.
+The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security.md) and storing it in the `password` property. We also set the flag to change the password.
 
 If the password is not empty, we just set the `mustChangePassword` field to `N`. Finally, we set some defaults on whether the user is `active`, `suspended` or `banned`. This ensures that our record is ready before it is inserted in the database.
 
@@ -1434,6 +1466,9 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
+/**
+ * All the users registered in the application
+ */
 class Users extends Model
 {
     public function afterSave()
@@ -1460,13 +1495,12 @@ class Users extends Model
 
 The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen. 
 
-!!! info "NOTE"
-
-    Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
+> **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
+{: .alert .alert-info }
 
 **Validation**
 
-The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator][filter-validation] to it. The validator will fire right before any save operation is performed on the model and the message will be returned if the validation fails.
+The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation.md) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 
 
 ```php
@@ -1479,6 +1513,9 @@ use Phalcon\Mvc\Model;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 
+/**
+ * All the users registered in the application
+ */
 class Users extends Model
 {
     public function validation()
@@ -1500,7 +1537,7 @@ class Users extends Model
 ```
 
 ## Conclusion
-Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However, you can use it as a starting point to develop your application.
+Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
 
 ## References
 
@@ -1508,12 +1545,14 @@ Vökuró is a sample application that we use to demonstrate some of the features
 - [Composer][composer] 
 - [DotEnv - Vance Lucas][dotenv]
 - [Model-View-Controller definition][mvc]
+- [Nanobox Guides][nanobox-guides]
 - [Phinx - Cake PHP][phinx]
+- [PSR Extension][psr]
 - [Swift Mailer][swiftmailer]
-- [Phalcon ACL][acl]
-- [Phalcon Forms][forms]
-- [Phalcon HTTP Response][response]
-- [Phalcon Security][encryption-security]
+- [Phalcon ACL](acl.md)
+- [Phalcon Forms](forms.md)
+- [Phalcon HTTP Response](response.md)
+- [Phalcon Security](security.md)
 - [Vökuró - GitHub Repository][github_vokuro]
 
 
@@ -1526,15 +1565,3 @@ Vökuró is a sample application that we use to demonstrate some of the features
 [phinx]: https://github.com/cakephp/phinx
 [psr]: https://github.com/jbboehr/php-psr
 [swiftmailer]: https://swiftmailer.symfony.com
-[installation]: installation.md
-[acl]: acl.md
-[forms]: forms.md
-[response]: response.md
-[encryption-security]: encryption-security.md
-[filter-validation]: filter-validation.md
-[di]: di.md
-[application]: application.md
-[volt]: volt.md
-[db-models-relationships]: db-models-relationships.md
-[events]: events.md
-[encryption-crypt]: encryption-crypt.md

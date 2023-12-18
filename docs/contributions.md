@@ -1,10 +1,9 @@
 # Contributions
 - - -
-
 # Contributing to Phalcon
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
-Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication, and we can all move the project forward!
+Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
 
 The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub][github]. You can browse our repositories in our [organization page][phalcon-org].
  
@@ -17,27 +16,24 @@ When you create a pull request, we have a handy template to help you describe wh
 * put on hold, if discussion is necessary (community, core team etc.)
 * rejected
 
-!!! warning "NOTE"
-
-    If your pull request is a new feature, it is best to discuss with the core team first, to ensure that it will align with the evolution of the framework.
-
-!!! danger "NOTE"
-
-    Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
+> **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
+{:.alert .alert-danger}
 
 ## Documentation
 If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
 
-All you have to do is go to our [docs-apps][phalcon-docs-apps] repository, fork it, make the changes and send us a pull request.
+All you have to do is go to our [docs][phalcon-docs] repository, fork it, make the changes and send us a pull request.
+
+> **NOTE**: Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
+{:.alert .alert-warning}
 
 ## Translations
-We have removed the translations from v5.5.x onward. There was not that much traffic from the community to help with translating the documentation to different languages.
+If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin][crowdin]. Our project is located [here][phalcon-docs]. If your language is not listed, please send us a message so that we can add it.
 
 ## Questions and Support
 
-!!! danger "NOTE"
-
-    We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official discussions page][phalcon-discussions] or our [Discord][phalcon-discord] server.
+> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [github discussions][discussions] or our [Discord][phalcon-discord] server.
+{:.alert .alert-danger}
 
 ## Bug Report Checklist
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
@@ -60,7 +56,7 @@ Please check the following links for instructions on how to generate the backtra
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing][env] page for more information on how to set up a test environment and how to write tests.
 - Since Phalcon is written in [Zephir][zephir], please do not submit commits that modify the C generated files directly
-- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-12][psr-12] standard
+- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2][psr-2] standard
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 - More information [here][pr].
 
@@ -84,8 +80,10 @@ Thanks!
 [github]: https://github.com
 [phalcon-org]: https://github.com/phalcon
 [github-pr]: https://help.github.com/articles/using-pull-requests/ 
-[phalcon-docs-app]: https://github.com/phalcon/docs-app
-[phalcon-discussions]: https://phalcon.io/discussions
+[phalcon-docs]: https://github.com/phalcon/docs
+[crowdin]: https://crowdin.com
+[phalcon-docs]: https://crowdin.com/project/phalcon-documentation
+[discussions]: https://github.com/phalcon/cphalcon/discussions
 [phalcon-discord]: https://phalcon.io/discord
 [tests]: reproducible-tests.md
 [segfault]: https://en.wikipedia.org/wiki/Segmentation_fault 
@@ -95,7 +93,7 @@ Thanks!
 [building-php]: https://www.phpinternalsbook.com/build_system/building_php.html
 [env]: testing-environment.md
 [zephir]: https://zephir-lang.com 
-[psr-12]: https://www.php-fig.org/psr/
+[psr-2]: https://www.php-fig.org/psr/
 [pr]: new-pull-request.md
 [nfr]: new-feature-request.md
 [support]: https://phalcon.io/support

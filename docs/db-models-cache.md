@@ -1,20 +1,19 @@
 # Model Caching
 - - -
-
 ## Overview
-In most applications, there is data that changes infrequently. One of the most common bottlenecks in terms of performance is accessing data from a database. We first have a layer of complexity that allows PHP to communicate with the database, and then we have the layer of complexity and potentially bottleneck within the database itself, when trying to analyze the query sent and return the data back (especially when the query contains multiple joins and group statements).
+In most applications, there is data that changes infrequently. One of the most common bottlenecks in terms of performance is accessing data from a database. We first have a layer of complexity that allows PHP to communicate with the database and then we have the layer of complexity and potentially bottleneck within the database itself, when trying to analyze the query sent and return the data back (especially when the query contains multiple joins and group statements).
 
 Implementing some layers of caching, reduces the number of connections and lookups to your database. This will ensure that data is queried from the database only when absolutely necessary. This article showcases some areas that caching could increase performance. 
 
 ## Resultsets
 A well established technique to avoid querying the database in every request, is to cache resultsets that do not change frequently, using a system with faster access (usually memory).
 
-When [Phalcon\Mvc\Model][mvc-model] requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache][cache] component that can store any kind of data. Integrating this service with your code requires a [Cache][cache] object.
+When [Phalcon\Mvc\Model][mvc-model] requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a [cache](cache.md) component that can store any kind of data. Integrating this service with your code requires a [Cache](cache.md) object.
 
 ```php
 <?php
 
-use Phalcon\Cache\Cache;
+use Phalcon\Cache;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Storage\SerializerFactory;
@@ -39,11 +38,11 @@ $container->set(
 );
 ```
 
-!!! warning "NOTE"
+> **NOTE**: It is imperative to use a serializer that can properly serialize and unserialize objects without changing their state. `Php` and `Igbinary` are such serializers. `Json` will convert objects to `stdClass` and `Simple`/`Complex` resultsets will become arrays. Choosing a serializer that cannot store objects properly will produce errors when the cache is restored for your models.
+{: .alert .alert-warning }
 
-    It is imperative to use a serializer that can properly serialize and unserialize objects without changing their state. `Php` and `Igbinary` are such serializers. `Json` will convert objects to `stdClass` and `Simple`/`Complex` resultsets will become arrays. Choosing a serializer that cannot store objects properly will produce errors when the cache is restored for your models.
 
-You have complete control in how you create and customize the cache component before registering it. You can check the [cache][cache] document for various options and customizations available when creating the cache component.
+You have complete control in how you create and customize the cache component before registering it. You can check the [cache](cache.md) document for various options and customizations available when creating the cache component.
 
 Once the cache component is properly set up, resultsets can be cached by using the `cache` element in the query commands for models such as `find`, `findFirst` etc.
 
@@ -132,9 +131,8 @@ When a cached resultset needs to be invalidated, you can simply delete it from t
 
 What resultsets to cache and for how long will depend on the needs of your application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly with subsequent changes to the underlying records that represent these resultsets.
 
-!!! info "NOTE"
-
-    Caching data comes with the cost of compiling and storing that data in the cache. You should always leverage that processing cost when formulating your caching strategy. What data is cached and for how long depends on the needs of your application.
+> **NOTE**: Caching data comes with the cost of compiling and storing that data in the cache. You should always leverage that processing cost when formulating your caching strategy. What data is cached and for how long depends on the needs of your application.
+{: .alert .alert-info }
 
 ## Forcing Cache
 Earlier we saw how [Phalcon\Mvc\Model][mvc-model] integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
@@ -142,6 +140,7 @@ Earlier we saw how [Phalcon\Mvc\Model][mvc-model] integrates with the caching co
 ```php
 <?php
 
+// Cache the resultset for only for 5 minutes
 $invoices = Invoices::find(
     [
         'cache' => [
@@ -296,7 +295,7 @@ class Invoices extends AbstractCachable
 ```
 
 ## PHQL Queries
-Regardless of the syntax we used to create them, all queries in the ORM are handled internally using [PHQL][db-phql]. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
+Regardless of the syntax we used to create them, all queries in the ORM are handled internally using [PHQL](db-phql.md). This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
 ```php
 <?php
@@ -361,7 +360,7 @@ foreach ($invoices as $invoice) {
     echo $customer->cst_name, PHP_EOL;
 }
 ```
-A customer can have more than one invoice. Therefore, in this example, the same customer record could be unnecessarily queried several times. To avoid this, we can set the relationship as `reusable`. This will instruct Phalcon to cache the related record in memory the first time it is accessed, and subsequent calls to the same record will return the data from the memory cached entity.
+A customer can have more than one invoice. Therefore in this example, the same customer record could be unnecessarily queried several times. To avoid this, we can set the relationship as `reusable`. This will instruct Phalcon to cache the related record in memory the first time it is accessed, and subsequent calls to the same record will return the data from the memory cached entity.
 
 ```php
 <?php
@@ -387,9 +386,8 @@ class Invoices extends Model
 
 Note that this type of cache works in memory only, this means that cached data are released when the request is terminated.
 
-!!! danger "NOTE"
-
-    The above example is **for demonstration only** and should not be used in your code because it introduces the [N+1][n-1] problem
+> **NOTE** The above example is **for demonstration only** and should not be used in your code because it introduces the [N+1][n-1] problem
+{: .alert .alert-danger }
 
 ## Related Records
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
@@ -426,7 +424,7 @@ $customer = $invoice->getCustomer();
 $customer = $invoice->getRelated('customer');
 ```
 
-The above call the same `findFirst` method in the background. Additionally, we could replace the `findFirst()` method in the `Invoices` model and implement the cache that is most appropriate for our application needs:
+The above calls call the same `findFirst` method in the background. Additionally, we could replace the `findFirst()` method in the `Invoices` model and implement the cache that is most appropriate for our application needs:
 
 ```php
 <?php
@@ -448,7 +446,7 @@ In this scenario, we assume that every time we query a resultset, we also retrie
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Mvc\Model;
 
 class Invoices extends Model
@@ -528,16 +526,15 @@ class Invoices extends Model
 
 Getting all the invoices will also loop through the resultset and get all related `Customer` records, storing them in the resultset using the `customer` property. Once the operation is completed, the whole resultset is stored in the cache. Any subsequent call to `find` in `Invoices` will use the cached resultset without hitting the database.
 
-!!! warning "NOTE"
-
-    You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries.
+> **NOTE**: You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries.
+{: .alert .alert-warning }
 
 The above can also be performed using PHQL:
 
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Mvc\Model;
 
 class Invoices extends Model
@@ -604,7 +601,7 @@ class Invoices extends Model
 One of the strategies that we can employ is conditional caching. Since each cache back end has its strengths and weaknesses, we could decide that the cache backend would be determined by the value of the primary key of the model we are accessing: 
 
 | Type          | Cache Backend |
-|---------------|---------------|
+| ------------- | ------------- |
 | 1 - 10000     | redis1        |
 | 10000 - 20000 | redis2        |
 | > 20000       | redis3        |
@@ -659,7 +656,7 @@ $invoices = Invoices::find(
 
 To achieve this we need to intercept the intermediate representation (IR) generated by the PHQL parser and customize the cache accordingly:
 
-The first task is to create a custom builder, so we can generate a totally customized query:
+The first is create a custom builder, so we can generate a totally customized query:
 
 ```php
 <?php
@@ -733,6 +730,7 @@ class CustomQuery extends ModelQuery
             );
         }
 
+        // Check if the query has conditions
         if (true === isset($ir['where'])) {
             $visitor = new CustomNodeVisitor();
             $visitor->visit(
@@ -941,5 +939,3 @@ Execution plans for queries involving [prepared statements][prepared_statements]
 [prepared_statements]: https://en.wikipedia.org/wiki/Prepared_statement
 [sql_injections]: https://en.wikipedia.org/wiki/SQL_injection
 [n-1]: https://leanpub.com/sn1php
-[cache]: cache.md
-[db-phql]: db-phql.md

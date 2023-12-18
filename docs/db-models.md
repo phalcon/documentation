@@ -1,6 +1,5 @@
 # Models
 - - -
-
 ## Overview
 The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. It is a class that connects business objects and database tables, to create a persistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).
 
@@ -8,9 +7,8 @@ A model represents the information (data) of the application and the rules to ma
 
 The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
-!!! warning "NOTE"
-
-    Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db\Db][db] component documentation.
+> **NOTE**: Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/phalcon_db.md) component documentation.
+{: .alert .alert-warning }
 
 ```php
 <?php
@@ -56,22 +54,21 @@ if (false === $result) {
 }
 ```
 
-!!! info "NOTE"
-
-    For information on how to create a model please check the [Creating Models][creating-models] section
+> **NOTE**: For information on how to create a model please check the [Creating Models](#creating-models) section
+{: .alert .alert-info }
 
 
 ## Constants
 
-| Constant               |     Value     |
+| Constant               | Value         |
 |------------------------|:-------------:|
-| DIRTY_STATE_DETACHED   |       2       |
-| DIRTY_STATE_PERSISTENT |       0       |
-| DIRTY_STATE_TRANSIENT  |       1       |
-| OP_CREATE              |       1       |
-| OP_DELETE              |       3       |
-| OP_NONE                |       0       |
-| OP_UPDATE              |       2       |
+| DIRTY_STATE_DETACHED   | 2             |
+| DIRTY_STATE_PERSISTENT | 0             |
+| DIRTY_STATE_TRANSIENT  | 1             |
+| OP_CREATE              | 1             |
+| OP_DELETE              | 3             |
+| OP_NONE                | 0             |
+| OP_UPDATE              | 2             |
 | TRANSACTION_INDEX      | 'transaction' |
 
 ## Methods
@@ -112,7 +109,7 @@ public function __isset(string $property): bool
 ```php
 public function __set(string $property, mixed $value)
 ```
-Magic method to assign values to the model
+Magic method to assign values to the the model
 
 ```php
 public function addBehavior(
@@ -234,7 +231,7 @@ $invoice->assign(
 
 By default `assign` will use setters if they exist, you can disable it by using `ini_set` to directly use properties
 
-```php
+```
 ini_set('phalcon.orm.disable_assign_setters', true);
 ```
 
@@ -317,7 +314,7 @@ public static function cloneResultMap(
     bool $keepSnapshots = null
 ): ModelInterface
 ```
-Assign values to a model from an array, returning a new model, using the column map.
+Assigns values to a model from an array, returning a new model, using the column map.
 
 ```php
 <?php
@@ -343,7 +340,7 @@ public static function cloneResultMapHydrate(
     int $hydrationMode
 ): mixed
 ```
-Returns a hydrated result based on the data and the column map
+Returns an hydrated result based on the data and the column map
 
 ```php
 public static function count(
@@ -442,7 +439,7 @@ public static function find(
     mixed $parameters = null
 ): ResultsetInterface
 ```
-Query for a set of records that match the specified conditions. `find()` is flexible enough to accept a variety of parameters to find the data required. You can check the [Finding Records][finding-records] section for more information.
+Query for a set of records that match the specified conditions. `find()` is flexible enough to accept a variety of parameters to find the data required. You can check the [Finding Records](#finding-records) section for more information.
 
 ```php
 <?php
@@ -459,9 +456,8 @@ public static function findFirst(
 ```
 Query the first record that matches the specified conditions. It will return a resultset or `null` if the record was not found.
 
-!!! warning "NOTE"
-
-    `findFirst()` no longer returns `false` if records were not found.
+> **NOTE**: `findFirst()` no longer returns `false` if records were not found.
+{: .alert .alert-warning }
 
 ```php
 <?php
@@ -550,10 +546,8 @@ if (false === $result) {
 
 }
 ```
-
-!!! warning "NOTE"
-
-    `save()` no longer accepts parameters to set data. You can use `assign` instead.
+> **NOTE**: `save()` no longer accepts parameters to set data. You can use `assign` instead.
+{: .alert .alert-warning }
 
 ```php
 public function getModelsManager(): ManagerInterface
@@ -593,9 +587,8 @@ public function getRelated(
 ```
 Returns related records based on defined relations. If the relationship is one to one and no records have been found, it will return `null`
 
-!!! warning "NOTE"
-
-    `getRelated()` no longer returns `false` if a record was not found on a one-to-one relationship.
+> **NOTE**: `getRelated()` no longer returns `false` if a record was not found on a one to one relationship.
+{: .alert .alert-warning }
 
 ```php
 <?php
@@ -863,10 +856,8 @@ $invoice->inv_total = 120;
 
 $invoice->save();
 ```
-
-!!! warning "NOTE"
-
-    `save()` no longer accepts parameters to set data. You can use `assign` instead.
+> **NOTE**: `save()` no longer accepts parameters to set data. You can use `assign` instead.
+{: .alert .alert-warning }
 
 ```php
 public function serialize(): string
@@ -985,7 +976,7 @@ Sets the DependencyInjection connection service name used to write data
 
 ```php
 public function skipOperation(bool $skip): void
-```
+```php
 Skips the current operation forcing a success state
 
 ```php
@@ -1124,7 +1115,7 @@ protected function belongsTo(
     array options = null
 ): Relation
 ```
-Set up a reverse 1-1 or n-1 relation between two models
+Setup a reverse 1-1 or n-1 relation between two models
 
 ```php
 <?php 
@@ -1187,7 +1178,7 @@ protected function hasManyToMany(
     array $options = null
 ): Relation
 ```
-Set up an n-n relation between two models, through an intermediate relation
+Setup an n-n relation between two models, through an intermediate relation
 
 ```php
 <?php 
@@ -1481,13 +1472,12 @@ class Invoices extends Model
 
 **Properties vs. Setters/Getters**
 
-!!! warning "NOTE"
+> NOTE: The model class uses some properties internally for services. The names of those properties are reserved and cannot be used as fields in the database. Please keep that in mind when naming the fields of your tables. If there are collisions, your models will not update properly.
+>
+> `container`, `dirtyState`, `dirtyRelated`, `errorMessages`, `modelsManager`, `modelsMetaData`, `related`, `operationMade`, `oldSnapshot`, `skipped`, `snapshot`, `transaction`, `uniqueKey`, `uniqueParams`, `uniqueTypes`
+{: .alert .alert-warning }
 
-    The model class uses some properties internally for services. The names of those properties are reserved and cannot be used as fields in the database. Please keep that in mind when naming the fields of your tables. If there are collisions, your models will not update properly.
-
-    `container`, `dirtyState`, `dirtyRelated`, `errorMessages`, `modelsManager`, `modelsMetaData`, `related`, `operationMade`, `oldSnapshot`, `skipped`, `snapshot`, `transaction`, `uniqueKey`, `uniqueParams`, `uniqueTypes`
-
-Models can be implemented with public properties, meaning that each property can be read and updated from any part of the code that has instantiated that model class:
+Models can be implemented with public properties, meaning that each property can be read and updated updated from any part of the code that has instantiated that model class:
 
 ```php
 <?php
@@ -1605,13 +1595,11 @@ class Invoices extends Model
 
 Public properties provide less complexity in development. However, getters/setters can heavily increase the testability, extensibility and maintainability of applications. You will need to decide which strategy is best for you depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
-!!! warning "NOTE"
+> **NOTE**: Underscores in property names can be problematic when using getters and setters.
+{: .alert .alert-warning }
 
-    Underscores in property names can be problematic when using getters and setters.
-
-!!! warning "NOTE"
-
-    When using the getters/setters approach, you will need to define your properties as `protected`.
+> **NOTE**: When using the getters/setters approach, you will need to define your properties as `protected`.
+{: .alert .alert-warning }
 
 If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). 
 
@@ -1667,7 +1655,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model][
 [Phalcon\Mvc\Model][mvc-model] also offers several methods for querying records.
  
 ### `find` 
-The method returns a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], [Phalcon\Mvc\Model\Resultset\Complex][mvc-model-resultset-complex] or [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] collection of records even if the result returned is only one record.
+The method returns a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], [Phalcon\Mvc\Model\Resultset\Comples][mvc-model-resultset-complex] or [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] collection of records even if the result returned is only one record.
   
  The method accept a variety of parameters to retrieve data:
 
@@ -1726,10 +1714,9 @@ $invoice = Invoices::findFirst('inv_id = 3');
 ```
 You can also pass a string with a `WHERE` clause. In the above example we are getting the same record, instructing the ORM to give us a record with `inv_cst_id = 3`
 
-!!! warning "NOTE"
+> **NOTE**: If primary key of table is not numeric, use condition. See examples below.
+ {: .alert .alert-warning }
 
-    If primary key of table is not numeric, use condition. See examples below.
- 
 ```php
 $uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
 $invoice = Invoices::findFirst([
@@ -1746,10 +1733,9 @@ $invoice = Invoices::findFirst([
 ]);
 ```
 
-!!! warning "NOTE"
+> **NOTE**: If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
+ {: .alert .alert-warning }
 
-    If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
- 
 ```php
 <?php
 
@@ -1762,9 +1748,8 @@ $invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
 
 ### Parameters
 
-!!! warning "NOTE"
-
-    It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria come from user input. For more information check the [Binding Parameters][binding-parameters]` section.
+> **NOTE**: It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria comes from user input. For more information check the [Binding Parameters](#binding-parameters)` section.
+{: .alert .alert-warning }
 
 Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria. 
 
@@ -1871,9 +1856,8 @@ $invoices = Invoices::find(
      
 Return specific columns in the model. 
 
-!!! info "NOTE"
-
-    When using this option an incomplete object is returned, and therefore you cannot call methods such as `update()`, `getRelated()` etc.
+> **NOTE**: When using this option an incomplete object is returned, and therefore you cannot call methods such as `update()`, `getRelated()` etc.
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -1894,11 +1878,11 @@ $invoices = Invoices::find(
 );
 ```
 
-The columns array can return the columns directly if only a value has been set for one of the array elements. However, if you choose to specify a key, it will be used as an alias for that field. In the above example, the `cst_name_first` is aliased as `first`.
+The columns array can return the columns directly if only a value has been set for one of the array elements. However if you choose to specify a key, it will be used as an alias for that field. In the above example, the `cst_name_first` is aliased as `first`.
 
 **`conditions`**
   
-Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default, [Phalcon\Mvc\Model][mvc-model] assumes the first parameter are the conditions. 
+Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model][mvc-model] assumes the first parameter are the conditions. 
 
 ```php
 <?php
@@ -2083,10 +2067,10 @@ $invoices = Invoices::query()
 
 The static method `query()` returns a [Phalcon\Mvc\Model\Criteria][mvc-model-criteria] object that is friendly with IDE auto complete. 
 
-All the queries are internally handled as [PHQL][db-phql] queries. PHQL is a high-level, object-oriented and SQL-like language. This language offers more features to perform queries such as joining other models, group records, aggregations etc.
+All the queries are internally handled as [PHQL](db-phql.md) queries. PHQL is a high-level, object-oriented and SQL-like language. This language offers more features to perform queries such as joining other models, group records, aggregations etc.
 
 ### `findBy*`
-You can use the `findBy<property-name>()` method. This method expands on the `find()` method mentioned above. It allows you to quickly perform a select query from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
+You can use the `findBy<property-name>()` method. This method expands on the `find()` method mentioned above. It allows you to quickly perform a select of records from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
 
 For the following model:
 
@@ -2134,9 +2118,8 @@ use MyApp\Models\Invoices;
 $invoices = Invoices::findByInvTotal(100);
 ```
 
-!!! info "NOTE"
-
-    The property names are changed to camel case if they have underscores. `inv_total` becomes `InvTotal`
+> **NOTE**: The property names are changed to camel case if they have underscores. `inv_total` becomes `InvTotal`
+{: .alert .alert-info }
 
 You can also pass parameters in an array as the second parameter. These parameters are the same as the ones you can pass in the `find` method.
 
@@ -2202,9 +2185,8 @@ $name  = 'Darth Vader';
 $guest = Guestbook::findFirstByName($name);
 ```
 
-!!! info "NOTE"
-
-    Notice that we used `Name` in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
+> **NOTE**: Notice that we used `Name` in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
+{: .alert .alert-info }
 
 ### Model Resultsets
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple]. This is an object that encapsulates all the functionality a resultset has, such as seeking, traversing, counting etc.
@@ -2259,14 +2241,13 @@ $invoice = $invoices->getLast();
 ```
 
 Phalcon's resultsets emulate scrollable cursors. You can get any row just by accessing its position, or seeking the internal pointer to a specific position.
-
-!!! info "NOTE"
-
-    Some database systems do not support scrollable cursors. This forces Phalcon to re-execute the query, in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
+ 
+> **NOTE**: Some database systems do not support scrollable cursors. This forces Phalcon to re-execute the query, in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
+{: .alert .alert-info }
 
 Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#disablingenabling-features) section.
 
-Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache\Cache][cache] can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](cache.md) can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
@@ -2289,7 +2270,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 ### Custom Resultsets
-There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning to the caller usually an array of transformed data. 
+There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data. 
 
 With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality, that otherwise would be in the model, and can be reused by other models, thus keeping the code [DRY][dry]. This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
 
@@ -2372,11 +2353,10 @@ $invoices = $invoices->filter(
 The above example will return only the paid invoices from our table (`inv_status_flag = 1`);
 
 ### Binding Parameters
-Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. You are encouraged to use this methodology to eliminate the possibility of your code being subject to SQL injection attacks. Both `string` and `integer` placeholders are supported. 
+Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both `string` and `integer` placeholders are supported. 
 
-!!! info "NOTE"
-
-    When using `integer` placeholders you must prefix them with `?` (`?0`, `?1`). When using `string` placeholders you must enclose the string in `:` (`:name:`, `:total:`). 
+> **NOTE**: When using `integer` placeholders you must prefix them with `?` (`?0`, `?1`). When using `string` placeholders you must enclose the string in `:` (`:name:`, `:total:`). 
+{: .alert .alert-info }
 
 Some examples:
 
@@ -2419,9 +2399,9 @@ $invoices = Invoices::find(
 );
 ```
 
-Strings are automatically escaped using [PDO][pdo-statements]. This function takes into account the connection charset, therefore it is recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+Strings are automatically escaped using [PDO][pdo-statements]. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-Additionally, you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to their data type:
+Additionally you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to their data type:
 
 ```php
 <?php
@@ -2449,15 +2429,13 @@ $invoices = Invoices::find(
 );
 ```
 
-!!! info "NOTE"
-
-    Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all the columns are strings
+> **NOTE**: Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are strings
+{: .alert .alert-info }
 
 You can also bind arrays in the parameters, especially when using the `IN` SQL keyword. 
 
-!!! info "NOTE"
-
-    You need to use a zero based array for arrays without missing elements 
+> **NOTE**: You need to use a zero based array for arrays without missing elements 
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -2489,11 +2467,10 @@ $invoices = Invoices::find(
 );
 ```
 
-!!! info "NOTE"
+> **NOTE**: Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
+{: .alert .alert-info }
 
-    Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
-
-If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. Also, when using `findFirstBy*` the parameters are automatically bound.
+If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. Also when using `findFirstBy*` the parameters are automatically bound.
 
 ```php
 <?php
@@ -2511,7 +2488,7 @@ $invoices = Invoices::findByInvTotal(1000);
 ```
 
 ## Before/After Fetching 
-There are cases where we need to manipulate the data after it has been fetched from the database so that our model contains what we need in the application layer. As seen in the [events][events] document, models act as listeners, so we can implement some events as methods in the model.
+There are cases where we need to manipulate the data after it has been fetched from the database so that our model contains what we need in the application layer. As seen in the [events](events.md) document, models act as listeners so we can implement some events as methods in the model.
 
 Such methods include `beforeSave`, `afterSave` and `afterFetch` as shown in our example below. The `afterFetch` method will run right after the data populates the model from the database. We can utilize this method to modify or transform the data in the model.
 
@@ -2778,7 +2755,7 @@ $invoice->assign(
 $result = $invoice->save();
 ```
 
-Values assigned directly, or via the array of attributes, are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
+Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
 
 ```php
 <?php
@@ -2792,11 +2769,10 @@ $invoice->assign($_POST);
 $result = $invoice->save();
 ```
 
-!!! danger "NOTE"
+> **NOTE**: Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
+{: .alert .alert-danger }
 
-    Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
-
-You can set an additional parameter in `assign` to set a whitelist of fields that are only taken into account when doing the mass assignment:
+You can set an additional parameter in `assign` to set a whitelist of fields that only must taken into account when doing the mass assignment:
 
 ```php
 <?php
@@ -2818,9 +2794,8 @@ $invoice->assign(
 $result = $invoice->save();
 ```
 
-!!! info "NOTE"
-
-    On really busy applications, you can use `create` or `update` for the respective operations. By using those two methods instead of save, we ensure that data will be saved or not in the database, since those throw exceptions on `create` if the record already exists, and on `update` if the record does not exist.
+> **NOTE**: On really busy applications, you can use `create` or `update` for the respective operations. By using those two methods instead of save, we ensure that data will be saved or not in the database, since those throw exceptions on `create` if the record already exists, and on `update` if the record does not exist.
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -2917,24 +2892,20 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-!!! info "NOTE"
-
-    Check the [transactions][transactions] section on how you can delete all the records in a loop with one operation
+> **NOTE**: Check the [transactions](#transactions) section on how you can delete all the records in a loop with one operation
+{: .alert .alert-info }
 
 ## Hydration Modes
 As mentioned earlier, resultsets are collections of complete objects. This means that every returned result is an object, representing a row in the database. These documents can be modified and later on saved to persist the changes in the database.
 
-However, there are times that you will need to get the data in a read only mode, such as in cases of just viewing data. In these cases, it is useful to change the way the records are returned to save resources and increase performance. The strategy used to represent these objects returned in a resultset is called `hydration`.
+However, there are times that you will need to get the data in a read only mode, such as in cases of just viewing data. In these cases, it is useful to change the way the records are returned to save resources and increase performance. The strategy used to represent these objects returned in an resultset is called `hydration`.
 
 Phalcon offers three ways of hydrating data:
+- Arrays : `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`
+- Objects : `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS`
+- Records : `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS`
 
-| Result  | Mode                                           |
-|---------|------------------------------------------------|
-| Arrays  | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
-| Objects | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
-| Records | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
-
-The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
+The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return back objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 
 ```php
 <?php
@@ -3040,7 +3011,7 @@ echo $invoice->inv_id; // 4
 
 [Phalcon\Mvc\Model][mvc-model] attempts to recognize the identity column from each table. However, depending on the database system, these columns might be serial columns, such as in the case of PostgreSQL or `auto_increment` columns in the case of MySQL.
 
-PostgreSQL uses sequences to generate automatically numeric values for the primary key. Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `co_invoices_id_seq`. If the sequence name is different, you can always use the `getSequenceName()` method in the model, instructing Phalcon the sequence it needs to use for the primary key:
+PostgreSQL uses sequences to generate automatically numeric values for the primary key. Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `co_invoices_id_seq`. If the sequence name is different, you can always use the `getSequenceName()` method method in the model, instructing Phalcon the sequence it needs to use for the primary key:
 
 ```php
 <?php
@@ -3068,7 +3039,7 @@ CREATE TABLE co_invoices (
 )
 ```
 
-The code above (for MySQL) instructs the RDBMS to assign the current timestamp on the `inv_created_at` field when the record is created. We can therefore omit this field when creating a record. Similarly, we might want to ignore some fields when we are updating records.
+The code above (for MySQL) instructs the RDBMS to assign the current timestamp on the `inv_created_at` field when the record is created. We can therefore omit this field when creating a record. Similarly we might want to ignore some fields when we are updating records.
 
 To achieve this task we can use the `skipAttributes` (for any operation), `skipAttributesOnCreate` (create) or `skipAttributesOnUpdate` (update)
 
@@ -3145,17 +3116,11 @@ class Invoices extends Model
 }
 ```
 
-!!! warning "NOTE"
-
-    Never use a [Phalcon\Db\RawValue][db-rawvalue] to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used for SQL injection attacks.
+> **NOTE**: Never use a [Phalcon\Db\RawValue][db-rawvalue] to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used for SQL injection attacks.
+{: .alert .alert-warning }
 
 ## Dynamic Updates
-
-!!! warning "NOTE"
-
-    Dynamic Update is now enabled by default, you can disable it by changing the "phalcon.orm.dynamic_update" in the php.ini or by ini_set.
-
-If the system-wide dynamic update is disabled, the SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
+SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
 In some cases this could improve the performance by reducing the traffic between the application and the database server, especially when the target table has blob/text fields:
 
@@ -3208,9 +3173,8 @@ class Invoices extends Model
 }
 ```
 
-!!! info "NOTE"
-
-    In the array defined in the column map, the keys are the actual names of the fields in the database, and the values are the _virtual_ fields we can use in your code
+> **NOTE**: In the array defined in the column map, the keys are the actual names of the fields in the database, and the values are the _virtual_ fields we can use in your code
+{: .alert .alert-info }
 
 Now we can use those _virtual_ fields (or column map) in your code:
 
@@ -3305,7 +3269,7 @@ var_dump($invoice->hasChanged('inv_total')); // true
 var_dump($invoice->hasChanged('inv_cst_id')); // false
 ```
 
-Snapshots are updated on model creation/update. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update, but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`. 
+Snapshots are updated on model creation/update. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`. 
 
 You can disable this functionality by using:
 
@@ -3379,7 +3343,7 @@ var_dump(
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
 ## Events
-As mentioned before [Phalcon\Mvc\Model][mvc-model] acts as a listener to events. Therefore, all the events that the model is listening to can be implemented as methods in the model itself. You can check the [events][events] document for additional information.
+As mentioned before [Phalcon\Mvc\Model][mvc-model] acts as a listener to events. Therefore, all the events that the model is listening to can be implemented as methods in the model itself. You can check the [events](events.md) document for additional information.
 
 The events supported are:
 
@@ -3428,7 +3392,7 @@ class Invoices extends Model
 ```
 
 ## Transactions
-[Transactions][db-models-transactions] are necessary to ensure data integrity, when we need to insert or update data in more than one table during the same operation. [Phalcon\Mvc\Model][mvc-model] exposes the `setTransaction` method that allows you to bind each model to an active transaction.
+[Transactions](db-models-transactions.md) are necessary to ensure data integrity, when we need to insert or update data in more than one table during the same operation. [Phalcon\Mvc\Model][mvc-model] exposes the `setTransaction` method that allows you to bind each model to an active transaction.
 
 
 ```php
@@ -3695,9 +3659,9 @@ class Invoices extends Model
      * @return Phalcon\Db\Adapter\AdapterInterface
      */
     public function selectReadConnection(
-        array $intermediate, 
-        array $bindParams, 
-        array $bindTypes
+        $intermediate, 
+        $bindParams, 
+        $bindTypes
     ) {
         if (true === isset($intermediate['where'])) {
             $conditions = $intermediate['where'];
@@ -3727,9 +3691,9 @@ If conditions have been defined, we are checking if we have the `id` as a field 
 The `selectReadConnection()` method is called every time we need to get data from the database, and returns the correct connection to be used.
 
 ## Dependency Injection
-[Phalcon\Mvc\Model][mvc-model] is tightly bound to the DI container. You can retrieve the container by using the `getDI` method. Therefore, you have access to all services registered in the DI container. 
+[Phalcon\Mvc\Model][mvc-model] is tightly bound to the DI container. You can retrieve the container by using the `getDI` method. Therefore you have access to all services registered in the DI container. 
 
-The following example shows you how you can print any messages generated by an unsuccessful `save` operation in the model, and show these messages in the [flash][flash] messenger. To do this, we use the `notSaved` event:
+The following example shows you how you can print any messages generated by an unsuccessful `save` operation in the model, and show these messages in the [flash](flash.md) messenger. To do this, we use the `notSaved` event:
 
 
 ```php
@@ -3746,6 +3710,7 @@ class Invoices extends Model
         $flash    = $this->getDI()->getFlash();
         $messages = $this->getMessages();
 
+        // Show validation messages
         foreach ($messages as $message) {
             $flash->error($message);
         }
@@ -3756,7 +3721,7 @@ class Invoices extends Model
 ## Model Features
 The ORM has several options that control specific behaviors globally. You can enable or disable these features by adding specific lines to your `php.ini` file or use the `setup` static method on the model. You can enable or disable these features temporarily in your code or permanently.
 
-```ini
+```
 phalcon.orm.column_renaming = false
 phalcon.orm.events          = false
 ```
@@ -3794,13 +3759,14 @@ The available options are:
 | `lateStateBinding`              | `false` | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |
 | `notNullValidations`            | `true`  | Automatically validate the not `null` columns present                  |
 | `phqlLiterals`                  | `true`  | Literals in the PHQL parser                                            |
-| `prefetchRecords`               |   `0`   | The number of records to prefetch when getting data from the ORM       |                       
+| `prefetchRecords`               | `0`     | The number of records to prefetch when getting data from the ORM       |                       
 | `updateSnapshotOnSave`          | `true`  | Update snapshots on `save()`                                           |
 | `virtualForeignKeys`            | `true`  | Virtual foreign keys                                                   |
 
 `ini` options:
 
 ```
+; phalcon.orm.ast_cache = null
 ; phalcon.orm.cache_level = 3
 ; phalcon.orm.case_insensitive_column_map = false
 ; phalcon.orm.cast_last_insert_id_to_int = false
@@ -3816,95 +3782,23 @@ The available options are:
 ; phalcon.orm.ignore_unknown_columns = false
 ; phalcon.orm.late_state_binding = false
 ; phalcon.orm.not_null_validations = true
-; phalcon.orm.resultset_prefetch_records = "0"
+; phalcon.orm.parser_cache = null,
+; phalcon.orm.resultset_prefetch_records = 0
 ; phalcon.orm.unique_cache_id = 3
 ; phalcon.orm.update_snapshot_on_save = true
 ; phalcon.orm.virtual_foreign_keys = true
-; phalcon.db.escape_identifiers = On
-; phalcon.db.force_casting = Off
 ```
 
-!!! warning "NOTE"
+> **NOTE** `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`.
+{: .alert .alert-warning }
 
-    `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`.
-
-## Integers vs. Strings
-If you want to get integer values back from `int` related database fields, you will need to do the following:
-- Make sure that the `castOnHydrate` (or set `ini_set('phalcon.orm.cast_on_hydrate', 'on')`) is enabled
-
-```php
-<?php
-
-use Phalcon\Mvc\Model;
-
-Model::setup(
-    [
-        'castOnHydrate' => true,
-    ]
-);
-```
-
-- Ensure that you are using the `mysqlnd` driver on your server. You can check that using `phpinfo()` (pdo_mysql > Client API version)
-- In your database connection provider you need to pass the following options:
-
-```php
-[
-    PDO::ATTR_EMULATE_PREPARES  => false,
-    PDO::ATTR_STRINGIFY_FETCHES => false,
-]
-```
-
-Registering the provider should look like this:
-
-```php 
-<?php
-
-$parameters = [
-  // ....
-];
-
-/** @var Manager $eventsManager */
-$eventsManager = $container->getShared('eventsManager');
-
-$container->setShared(
-    'db',
-    function () use ($eventsManager, $parameters) {
-        $options = [
-            'host'     => $parameters['host'] ?? 'localhost',
-            'dbname'   => $parameters['dbname'] ?? 'phalcon',
-            'username' => $parameters['user'] ?? 'root',
-            'password' => $parameters['pass'] ?? 'secret',
-            'encoding' => $parameters['encoding'] ?? 'utf8',
-            'options'  => [
-                PDO::ATTR_EMULATE_PREPARES  => false,
-                PDO::ATTR_STRINGIFY_FETCHES => false,
-            ]
-        ];
-
-        $connection = new Mysql($options);
-        $connection->setEventsManager($eventsManager);
-
-        return $connection;
-    );
-}
-```
-
-## Invalid parameter number
-In v5, the parameters used to instantiate PDO have changed. More specifically the `PDO::ATTR_EMULATE_PREPARES` now defaults to `false`. As a result, you might encounter the following message in your code, when a bound parameter is used more than once in a query:
-
-!!! warning "Error"
-
-    Invalid parameter number
-
-You can change the name of the parameters, or you can change the `PDO::ATTR_EMULATE_PREPARES` to `true`, when registering your database provider.
-
-## Stand-Alone Component 
+## Stand Alone Component 
 You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary setup on your own if you wish. The example below demonstrates how you can achieve that.
 
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Db\Adapter\Pdo\Sqlite;
@@ -3969,13 +3863,3 @@ echo Invoices::count();
 [mvc-model-validationfailed]: api/phalcon_mvc.md#mvc-model-validationfailed
 [mvc-modelinterface]: api/phalcon_mvc.md#mvc-modelinterface
 [pdo-statements]: https://php.net/manual/en/pdo.prepared-statements.php
-[db]: db-layer.md
-[creating-models]: #creating-models
-[finding-records]: #finding-records
-[binding-parameters]: #binding-parameters
-[transactions]: #transactions
-[db-models-transactions]: db-models-transactions.md
-[db-phql]: db-phql.md
-[cache]: cache.md
-[events]: events.md
-[flash]: flash.md

@@ -1,3 +1,8 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Dispatcher'
+---
 
 * [Phalcon\Dispatcher\AbstractDispatcher](#dispatcher-abstractdispatcher)
 * [Phalcon\Dispatcher\DispatcherInterface](#dispatcher-dispatcherinterface)
@@ -5,7 +10,7 @@
 
 <h1 id="dispatcher-abstractdispatcher">Abstract Class Phalcon\Dispatcher\AbstractDispatcher</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Dispatcher/AbstractDispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Dispatcher/AbstractDispatcher.zep)
 
 | Namespace  | Phalcon\Dispatcher |
 | Uses       | Exception, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface |
@@ -19,9 +24,7 @@ dispatchers.
 
 ## Properties
 ```php
-/**
- * @var object|null
- */
+//
 protected activeHandler;
 
 /**
@@ -29,9 +32,7 @@ protected activeHandler;
  */
 protected activeMethodMap;
 
-/**
- * @var string|null
- */
+//
 protected actionName;
 
 /**
@@ -49,14 +50,10 @@ protected camelCaseMap;
  */
 protected defaultAction = ;
 
-/**
- * @var string|null
- */
+//
 protected defaultNamespace;
 
-/**
- * @var string|null
- */
+//
 protected defaultHandler;
 
 /**
@@ -64,9 +61,7 @@ protected defaultHandler;
  */
 protected handlerHashes;
 
-/**
- * @var string|null
- */
+//
 protected handlerName;
 
 /**
@@ -74,9 +69,7 @@ protected handlerName;
  */
 protected handlerSuffix = ;
 
-/**
- * @var ManagerInterface|null
- */
+//
 protected eventsManager;
 
 /**
@@ -94,14 +87,10 @@ protected forwarded = false;
  */
 protected isControllerInitialize = false;
 
-/**
- * @var mixed|null
- */
+//
 protected lastHandler;
 
-/**
- * @var BinderInterface|null
- */
+//
 protected modelBinder;
 
 /**
@@ -109,14 +98,10 @@ protected modelBinder;
  */
 protected modelBinding = false;
 
-/**
- * @var string|null
- */
+//
 protected moduleName;
 
-/**
- * @var string|null
- */
+//
 protected namespaceName;
 
 /**
@@ -124,24 +109,16 @@ protected namespaceName;
  */
 protected params;
 
-/**
- * @var string|null
- */
+//
 protected previousActionName;
 
-/**
- * @var string|null
- */
+//
 protected previousHandlerName;
 
-/**
- * @var string|null
- */
+//
 protected previousNamespaceName;
 
-/**
- * @var string|null
- */
+//
 protected returnedValue;
 
 ```
@@ -175,7 +152,7 @@ $this->dispatcher->forward(
 );
 ```
 
-@throws PhalconException
+@throws \Phalcon\Exception
 
 
 ```php
@@ -220,7 +197,7 @@ Returns the default namespace
 
 
 ```php
-public function getEventsManager(): ManagerInterface | null;
+public function getEventsManager(): ManagerInterface;
 ```
 Returns the internal event manager
 
@@ -244,7 +221,7 @@ Gets model binder
 
 
 ```php
-public function getModuleName(): string | null;
+public function getModuleName(): string;
 ```
 Gets the module where the controller class is
 
@@ -262,23 +239,9 @@ Gets a param by its name or numeric index
 
 
 ```php
-public function getParameter( mixed $param, mixed $filters = null, mixed $defaultValue = null ): mixed;
-```
-Gets a param by its name or numeric index
-
-
-```php
-public function getParameters(): array;
-```
-Gets action params
-
-
-```php
 public function getParams(): array;
 ```
 Gets action params
-
-@todo remove this in future versions
 
 
 ```php
@@ -289,13 +252,6 @@ Returns value returned by the latest dispatched action
 
 ```php
 public function hasParam( mixed $param ): bool;
-```
-Check if a param exists
-@todo deprecate this in the future
-
-
-```php
-public function hasParameter( mixed $param ): bool;
 ```
 Check if a param exists
 
@@ -326,7 +282,7 @@ Sets the default action name
 
 
 ```php
-public function setDefaultNamespace( string $defaultNamespace ): void;
+public function setDefaultNamespace( string $namespaceName ): void;
 ```
 Sets the default namespace
 
@@ -366,7 +322,7 @@ $di->set(
 
 
 ```php
-public function setModuleName( string $moduleName = null ): void;
+public function setModuleName( string $moduleName ): void;
 ```
 Sets the module where the controller is (only informative)
 
@@ -381,26 +337,12 @@ Sets the namespace where the controller class is
 public function setParam( mixed $param, mixed $value ): void;
 ```
 Set a param by its name or numeric index
-@todo deprecate this in the future
-
-
-```php
-public function setParameter( mixed $param, mixed $value ): void;
-```
-Set a param by its name or numeric index
-
-
-```php
-public function setParameters( array $params ): void;
-```
-Sets action params to be dispatched
 
 
 ```php
 public function setParams( array $params ): void;
 ```
 Sets action params to be dispatched
-@todo deprecate this in the future
 
 
 ```php
@@ -431,7 +373,7 @@ protected function toCamelCase( string $input ): string;
 
 <h1 id="dispatcher-dispatcherinterface">Interface Phalcon\Dispatcher\DispatcherInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Dispatcher/DispatcherInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Dispatcher/DispatcherInterface.zep)
 
 | Namespace  | Phalcon\Dispatcher |
 
@@ -477,18 +419,6 @@ Gets a param by its name or numeric index
 
 
 ```php
-public function getParameter( mixed $param, mixed $filters = null ): mixed;
-```
-Gets a param by its name or numeric index
-
-
-```php
-public function getParameters(): array;
-```
-Gets action params
-
-
-```php
 public function getParams(): array;
 ```
 Gets action params
@@ -544,7 +474,7 @@ Sets the default suffix for the handler
 
 
 ```php
-public function setModuleName( string $moduleName = null ): void;
+public function setModuleName( string $moduleName ): void;
 ```
 Sets the module name which the application belongs to
 
@@ -571,10 +501,10 @@ Sets action params to be dispatched
 
 <h1 id="dispatcher-exception">Class Phalcon\Dispatcher\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Dispatcher/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Dispatcher/Exception.zep)
 
 | Namespace  | Phalcon\Dispatcher |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Dispatcher/* will use this class
 

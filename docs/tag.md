@@ -1,18 +1,12 @@
 # Tag (View Helpers)
 - - -
-
-!!! danger "NOTE"
-
-    `Phalcon\Tag` will be removed in a future Phalcon version. The functionality is offered by the [Phalcon\Html\TagFactory][tagfactory] component.
-
 ## Overview
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag][tag] component which in turn offers view helpers to generate HTML markup.
 
-This component can be used in a plain HTML+PHP view or in a [Volt][volt] template.
+This component can be used in a plain HTML+PHP view or in a [Volt](volt.md) template.
 
-!!! warning "NOTE"
-
-    This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code, since HTML generation touches a lot of areas of the application, the view in particular.
+> **NOTE**: This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code, since HTML generation touches a lot of areas of the application, the view in particular.
+{: .alert .alert-warning } 
 
 ## DocType
 You can set the doctype for your page using `setDocType()`. The method accepts one of the available constants, generating the necessary `<doctype>` HTML. The method returns the `Tag` component and thus the call can be chained.
@@ -61,7 +55,7 @@ You can output the doctype using `getDocType()` in your views:
 or in Volt: 
 
 ```twig
-{{ get_doctype() }}
+{% raw %}{{ get_doctype() }}{% endraw %}
 ```
 
 ## Title
@@ -70,9 +64,8 @@ or in Volt:
 ### `appendTitle()`
 Appends text to the current title. The method accepts either a `string` or an `array`. 
 
-!!! info "NOTE"
-
-    If a `string` is supplied, it will be added to the internal collection holding the append title text. If however you supply an `array` the internal collection will be replaced.
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the append title text. If however you supply an `array` the internal collection will be replaced.
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -177,9 +170,8 @@ echo Tag::getTitleSeparator(); // ''
 ### `prependTitle()`
 Prepends text to the current title. The method accepts either a `string` or an `array`. 
 
-!!! info "NOTE"
-
-    If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however you supply an `array` the internal collection will be replaced.
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however you supply an `array` the internal collection will be replaced.
+{: .alert .alert-info }
 
 ```php
 <?php
@@ -258,7 +250,7 @@ Tag::setTitleSeparator(' ');
 
 ## Input
 ### `checkField()`
-Builds an HTML `input[type='check']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='check']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -287,11 +279,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ check_field('terms', 'value': 'Y') }}
+{% raw %}{{ check_field('terms', 'value': 'Y') }}{% endraw %}
 ```
 
 ### `colorField()`
-Builds an HTML `input[type='color']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='color']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -320,11 +312,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ color_field('background', 'class': 'myclass') }}
+{% raw %}{{ color_field('background', 'class': 'myclass') }}{% endraw %}
 ```
 
 ### `dateField()`
-Builds an HTML `input[type='date']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='date']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -353,11 +345,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ date_field('born', 'value': '1980-01-01') }}
+{% raw %}{{ date_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
 
 ### `dateTimeField()`
-Builds an HTML `input[type='datetime']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='datetime']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -387,11 +379,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ date_time_field('born', 'value': '1980-01-01') }}
+{% raw %}{{ date_time_field('born', 'value': '1980-01-01') }}{% endraw %}
 ```
 
 ### `dateTimeLocalField()`
-Builds an HTML `input[type='datetime-local']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='datetime-local']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -421,11 +413,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ date_time_local_field('born', 'value': '1980-01-01 01:02:03') }}
+{% raw %}{{ date_time_local_field('born', 'value': '1980-01-01 01:02:03') }}{% endraw %}
 ```
 
 ### `fileField()`
-Builds an HTML `input[type='file']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='file']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -454,11 +446,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ file_field('document', 'class': 'input') }}
+{% raw %}{{ file_field('document', 'class': 'input') }}{% endraw %}
 ```
 
 ### `hiddenField()`
-Builds an HTML `input[type='hidden']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='hidden']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -487,11 +479,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ hidden_field('id', 'value': '1234') }}
+{% raw %}{{ hidden_field('id', 'value': '1234') }}{% endraw %}
 ```
 
 ### `imageInput()`
-Builds an HTML `input[type='image']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='image']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -518,11 +510,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ image_input('src': '/img/button.png') }}
+{% raw %}{{ image_input('src': '/img/button.png') }}{% endraw %}
 ```
 
 ### `monthField()`
-Builds an HTML `input[type='month']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='month']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -551,11 +543,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ month_field('month', 'value': '04') }}
+{% raw %}{{ month_field('month', 'value': '04') }}{% endraw %}
 ```
 
 ### `numericField()`
-Builds an HTML `input[type='number']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='number']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -586,11 +578,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ numeric_field('price', 'min': '1', 'max': '5') }}
+{% raw %}{{ numeric_field('price', 'min': '1', 'max': '5') }}{% endraw %}
 ```
 
 ### `radioField()`
-Builds an HTML `input[type='radio']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='radio']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -619,11 +611,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ radio_field('gender', 'value': 'Male') }}
+{% raw %}{{ radio_field('gender', 'value': 'Male') }}{% endraw %}
 ```
 
 ### `rangeField()`
-Builds an HTML `input[type='range']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='range']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -654,11 +646,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ range_field('points', 'min': '0', 'max': '10') }}
+{% raw %}{{ range_field('points', 'min': '0', 'max': '10') }}{% endraw %}
 ```
 
 ### `searchField()`
-Builds an HTML `input[type='search']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='search']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -687,11 +679,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ search_field('search', 'q': 'startsearch') }}
+{% raw %}{{ search_field('search', 'q': 'startsearch') }}{% endraw %}
 ```
 
 ### `submitButton()`
-Builds an HTML `input[type='submit']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='submit']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -718,11 +710,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ submit_button('Save') }}
+{% raw %}{{ submit_button('Save') }}{% endraw %}
 ```
 
 ### `telField()`
-Builds an HTML `input[type='tel']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='tel']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -751,11 +743,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ tel_field('mobile', 'size': '12') }}
+{% raw %}{{ tel_field('mobile', 'size': '12') }}{% endraw %}
 ```
 
 ### `passwordField()`
-Builds an HTML `input[type='text']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='text']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -784,11 +776,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ text_field('name', 'size': '30') }}
+{% raw %}{{ text_field('name', 'size': '30') }}{% endraw %}
 ```
 
 ### `timeField()`
-Builds an HTML `input[type='time']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='time']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -817,11 +809,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ time_field('start', 'size': '5') }}
+{% raw %}{{ time_field('start', 'size': '5') }}{% endraw %}
 ```
 
 ### `urlField()`
-Builds an HTML `input[type='url']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='url']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -848,11 +840,11 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ url_field('homepage') }}
+{% raw %}{{ url_field('homepage') }}{% endraw %}
 ```
 
 ### `weekField()`
-Builds an HTML `input[type='week']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds a HTML `input[type='week']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
@@ -881,13 +873,13 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ week_field('week', 'size': '2') }}
+{% raw %}{{ week_field('week', 'size': '2') }}{% endraw %}
 ```
 
 ## Elements
 
 ### `image()`
-Builds an HTML image tag. Accepts an array with the attributes of the element. The first element of the array is the src of the element. The method accepts a second boolean parameter, signifying whether this resource is local or not.
+Builds a HTML image tag. Accepts an array with the attributes of the element. The first element of the array is the src of the element. The method accepts a second boolean parameter, signifying whether this resource is local or not.
 
 ```php
 <?php
@@ -904,11 +896,11 @@ echo Tag::image(
 // <img alt='alternative text' src='/your-app/img/hello.gif'>
 
 echo Tag::image(
-   'https://static.mywebsite.com/img/bg.png',
+   'http://static.mywebsite.com/img/bg.png',
     false
 );
 
-// <img src='https://static.mywebsite.com/img/bg.png'>
+// <img src='http://static.mywebsite.com/img/bg.png'>
 ```
 
 HTML syntax:
@@ -921,15 +913,15 @@ HTML syntax:
 ); ?>
 
 <?php echo $this->tag->image(
-   'https://static.mywebsite.com/img/bg.png',
+   'http://static.mywebsite.com/img/bg.png',
     false
 ); ?>
 ```
 
 Volt syntax:
 ```twig
-{{ image('img/hello.gif', 'alt': 'alternative text') }}
-{{ image('https://static.mywebsite.com/img/bg.png', false) }}
+{% raw %}{{ image('img/hello.gif', 'alt': 'alternative text') }}
+{{ image('http://static.mywebsite.com/img/bg.png', false) }}{% endraw %}
 ```
 
 ### `select()`
@@ -999,7 +991,7 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ select(
+{% raw %}{{ select(
     [
         'invoiceId',
         $resultset,
@@ -1011,7 +1003,7 @@ Volt syntax:
         'emptyText'  : 'Choose an Invoice to pay',
         'emptyValue' : '0',
     ]
-) }}
+) }}{% endraw %}
 ```
 
 ### `selectStatic()`
@@ -1068,7 +1060,7 @@ HTML syntax:
 
 Volt syntax:
 ```twig
-{{ select(
+{% raw %}{{ select(
     [
         'invoiceId',
         $resultset,
@@ -1076,7 +1068,7 @@ Volt syntax:
         'emptyText'  : 'Choose an Invoice to pay',
         'emptyValue' : '0',
     ]
-) }}
+) }}{% endraw %}
 ```
 
 ### `tagHtml()`
@@ -1085,7 +1077,7 @@ Phalcon offers a generic HTML helper that allows the generation of any kind of H
 The `tagHtml()` accepts the following parameters
 - `name` - `string` - the name of the element
 - `attributes` - `array` - any attributes
-- `selfClose` - `bool` - whether this is a self-closing element or not
+- `selfClose` - `bool` - whether this is a self closing element or not
 - `onlyStart` - `bool` - whether to produce only the _opening_ part of the tag (i.e. `<tag>` vs. `<tag></tag>`)
 - `useEol` - `bool` - add a `PHP_EOL` at the end of the generated string or not
 
@@ -1138,10 +1130,11 @@ echo $this->tag->tagHtmlClose('canvas');
 
 Volt syntax:
 ```twig
+{% raw %}
 {{ tag_html('canvas', ['id': 'canvas1', width': '300', 'class': 'cnvclass'], false, true, true) }}
     This is my canvas
 {{ tag_html_close('canvas') }}
-
+{% endraw %}
 ```
 ## Assets
 [Phalcon\Tag][tag] offers helper methods to generate stylesheet and javascript HTML tags.
@@ -1203,7 +1196,7 @@ echo $this->tag->stylesheetLink(
 Volt Syntax:
 
 ```php
-{{ stylesheet_link('css/style.css') }}
+{% raw %}{{ stylesheet_link('css/style.css') }}
 {{ stylesheet_link(
         'https://fonts.googleapis.com/css?family=Rosario', 
         false
@@ -1216,7 +1209,7 @@ Volt Syntax:
         ],
         false
     ) 
-}}
+}}{% endraw %}
 ```
 
 ### `javascriptInclude()`
@@ -1274,7 +1267,7 @@ echo $this->tag->javascriptInclude(
 Volt Syntax:
 
 ```php
-{{ javascript_include('js/jquery.js') }}
+{% raw %}{{ javascript_include('js/jquery.js') }}
 {{ javascript_include(
         'https://code.jquery.com/jquery/jquery.min.js', 
         false
@@ -1287,7 +1280,7 @@ Volt Syntax:
         ],
         false
     ) 
-}}
+}}{% endraw %}
 ```
 
 ## Links
@@ -1361,6 +1354,7 @@ echo $this->tag->linkTo('https://phalcon.io/', 'Phalcon', false);
 
 Volt syntax:
 ```twig
+{% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
 {{ link_to(
     'signup/register',
@@ -1374,10 +1368,10 @@ Volt syntax:
     'https://phalcon.io/',
     'Phalcon Home',
     false
-) }}
+) }}{% endraw %}
 ```
 
-If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url][mvc-url].
+If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag][tag] will resolve the route internally and produce the correct URL using [Phalcon\Url](url.md).
 
 ```php
 <?php
@@ -1416,6 +1410,7 @@ echo $this->tag->linkTo(
 
 Volt syntax:
 ```twig
+{% raw %}
 {{ link_to('signup/register', 'Register Here!') }}
 {{ link_to(
     [   
@@ -1425,7 +1420,7 @@ Volt syntax:
     ], 
     'Show Invoice',
     'class': 'edit-btn'
-) }}
+) }}{% endraw %}
 ```
 
 ## Forms
@@ -1473,6 +1468,7 @@ echo $this->tag->endForm();
 
 Volt syntax:
 ```twig
+{% raw %}
 {{ form(
     [
         '/admin/invoices/create', 
@@ -1481,14 +1477,14 @@ Volt syntax:
     ]
 );
 
-{{ end_form() }}
+{{ end_form() }}{% endraw %}
 ```
 
-Phalcon also provides a [form builder][forms] to create forms in an object-oriented manner.
+Phalcon also provides a [form builder](forms.md) to create forms in an object-oriented manner.
 
 ## Data
 ### `setDefault()`
-You can use `setDefault()` to pre-populate values for elements generated by [Phalcon\Tag][tag]. The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it, you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
+You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag][tag]. The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
 
 ```php
 <?php
@@ -1635,7 +1631,7 @@ An example of the registration of the service as well as accessing it is below:
 ```php
 <?php
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Tag;
 
 $container = new Di();
@@ -1740,7 +1736,7 @@ After creating our custom helper, we will autoload the new directory that contai
 ```php
 <?php
 
-use Phalcon\Loader\Loader;
+use Phalcon\Loader;
 use Phalcon\Mvc\Application;
 use Phalcon\Di\FactoryDefault();
 use Phalcon\Exception as PhalconException;
@@ -1760,7 +1756,7 @@ try {
 
     $di = new FactoryDefault();
 
-    // Assign our new tag a definition, so we can call it
+    // Assign our new tag a definition so we can call it
     $di->set(
         'MyTags',
         function () {
@@ -1796,12 +1792,8 @@ echo MyTags::audioField(
 ?>
 ```
 
-You can also check out [Volt][volt] a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag][tag].
+You can also check out [Volt](volt.md) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag][tag].
 
 [factorydefault]: api/phalcon_di.md#di-factorydefault
 [injectable]: api/phalcon_di.md#di-injectable
 [tag]: api/phalcon_tag.md
-[tagfactory]: html-tagfactory.md
-[volt]: volt.md
-[mvc-url]: mvc-url.md
-[forms]: forms.md

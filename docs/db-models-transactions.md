@@ -1,6 +1,5 @@
 # Model Transactions
 - - -
-
 ## Overview
 When a process performs multiple database operations, it is important to perform all these operations as a single unit of work. This way if one of the operations fails, we do not end up with corrupted data or orphaned records. Database transactions offer this functionality and ensure that all database operations have been executed successfully prior to storing the data in the database. 
 
@@ -93,8 +92,10 @@ Isolated transactions are executed in a new connection ensuring that all the gen
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
+// Create a transaction manager
 $manager = new TxManager();
 
+// Request a transaction
 $transaction = $manager->get();
 
 try {
@@ -141,8 +142,10 @@ Transactions can be used to delete a number of records, ensuring that everything
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
+// Create a transaction manager
 $manager = new TxManager();
 
+// Request a transaction
 $transaction = $manager->get();
 
 try {
@@ -177,7 +180,7 @@ try {
 ## Exceptions
 Any exceptions thrown in the Logger component will be of type [Phalcon\Mvc\Model\Transaction\Exception][mvc-model-transaction-exception] or [Phalcon\Mvc\Model\Transaction\Failed][mvc-model-transaction-failed]. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
-Additionally, you can throw an exception if the rollback was not successful, by using the `throwRollbackException(true)` method.
+Additionally you can throw an exception if the rollback was not successful, by using the `throwRollbackException(true)` method.
 
 
 ```php
@@ -186,8 +189,10 @@ Additionally, you can throw an exception if the rollback was not successful, by 
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
+// Create a transaction manager
 $manager = new TxManager();
 
+// Request a transaction
 $transaction = $manager
     ->get()
     ->throwRollbackException(true)
@@ -264,9 +269,9 @@ class ProductsController extends Controller
 }
 ```
 
-!!! info "NOTE"
+> **NOTE**: While a transaction is active, the transaction manager will always return the same transaction across the application.
+{: .alert .alert-info }
 
-    While a transaction is active, the transaction manager will always return the same transaction across the application.
 
 [mvc-model-transaction]: api/phalcon_mvc.md#mvc-model-transaction
 [mvc-model-transaction-exception]: api/phalcon_mvc.md#mvc-model-transaction-exception

@@ -105,7 +105,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Incubator\Test\PHPUnit\UnitTestCase;
 use PHPUnit\Framework\IncompleteTestError;
@@ -168,14 +168,14 @@ class UnitTest extends AbstractUnitTest
 ```
 
 If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
-
 ```php
     protected function setUp(): void
     {
         parent::setUp();
         
-        //...
+        //some setup mocks
     }
+
 ````
 
 ### Running Unit Tests
@@ -184,10 +184,11 @@ When you execute `vendor/bin/phpunit` in your command-line, you will get the fol
 
 ```bash
 $ phpunit
-PHPUnit 9.5.23 by Sebastian Bergmann and contributors.
+PHPUnit 9.1.4 by Sebastian Bergmann and contributors.
 
-Runtime:       PHP 8.1.8 with Xdebug 3.1.5
+Runtime:       PHP 7.4.5 with Xdebug 2.9.5
 Configuration: /var/www//phpunit.xml
+
 
 Time: 3 ms, Memory: 3.25Mb
 

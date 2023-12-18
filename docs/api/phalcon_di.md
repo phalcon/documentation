@@ -1,12 +1,16 @@
+---
+layout: default
+version: '4.0'
+title: 'Phalcon\Di'
+---
 
+* [Phalcon\Di](#di)
 * [Phalcon\Di\AbstractInjectionAware](#di-abstractinjectionaware)
-* [Phalcon\Di\Di](#di-di)
 * [Phalcon\Di\DiInterface](#di-diinterface)
 * [Phalcon\Di\Exception](#di-exception)
 * [Phalcon\Di\Exception\ServiceResolutionException](#di-exception-serviceresolutionexception)
 * [Phalcon\Di\FactoryDefault](#di-factorydefault)
 * [Phalcon\Di\FactoryDefault\Cli](#di-factorydefault-cli)
-* [Phalcon\Di\InitializationAwareInterface](#di-initializationawareinterface)
 * [Phalcon\Di\Injectable](#di-injectable)
 * [Phalcon\Di\InjectionAwareInterface](#di-injectionawareinterface)
 * [Phalcon\Di\Service](#di-service)
@@ -14,55 +18,18 @@
 * [Phalcon\Di\ServiceInterface](#di-serviceinterface)
 * [Phalcon\Di\ServiceProviderInterface](#di-serviceproviderinterface)
 
-<h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
+<h1 id="di">Class Phalcon\Di</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/AbstractInjectionAware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di.zep)
 
-| Namespace  | Phalcon\Di |
-| Implements | InjectionAwareInterface |
-
-This abstract class offers common access to the DI in a class
-
-
-## Properties
-```php
-/**
- * Dependency Injector
- *
- * @var DiInterface
- */
-protected container;
-
-```
-
-## Methods
-
-```php
-public function getDI(): DiInterface;
-```
-Returns the internal dependency injector
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the dependency injector
-
-
-
-
-<h1 id="di-di">Class Phalcon\Di\Di</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Di.zep)
-
-| Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InitializationAwareInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
+| Namespace  | Phalcon |
+| Uses       | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
 | Implements | DiInterface |
 
-Phalcon\Di\Di is a component that implements Dependency Injection/Service
+Phalcon\Di is a component that implements Dependency Injection/Service
 Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\Di\Di is essential to integrate the
+Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the
 different components of the framework. The developer can also use this
 component to inject dependencies and manage global instances of the different
 classes used in the application.
@@ -77,7 +44,7 @@ Additionally, this pattern increases testability in the code, thus making it
 less prone to errors.
 
 ```php
-use Phalcon\Di\Di;
+use Phalcon\Di;
 use Phalcon\Http\Request;
 
 $di = new Di();
@@ -108,24 +75,22 @@ protected services;
 
 /**
  * List of shared instances
- *
- * @var array
  */
 protected sharedInstances;
 
 /**
  * Events Manager
  *
- * @var ManagerInterface|null
+ * @var ManagerInterface | null
  */
 protected eventsManager;
 
 /**
  * Latest DI build
  *
- * @var DiInterface|null
+ * @var DiInterface | null
  */
-protected static defaultDi;
+protected static _default;
 
 ```
 
@@ -140,7 +105,7 @@ Magic method to get or set services using setters/getters
 ```php
 public function __construct();
 ```
-Phalcon\Di\Di constructor
+Phalcon\Di constructor
 
 
 ```php
@@ -379,15 +344,52 @@ Loads services from a Config object.
 
 
 
+<h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/AbstractInjectionAware.zep)
+
+| Namespace  | Phalcon\Di |
+| Implements | InjectionAwareInterface |
+
+This abstract class offers common access to the DI in a class
+
+
+## Properties
+```php
+/**
+ * Dependency Injector
+ *
+ * @var DiInterface
+ */
+protected container;
+
+```
+
+## Methods
+
+```php
+public function getDI(): DiInterface;
+```
+Returns the internal dependency injector
+
+
+```php
+public function setDI( DiInterface $container ): void;
+```
+Sets the dependency injector
+
+
+
+
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/DiInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/DiInterface.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | ArrayAccess |
 | Extends    | ArrayAccess |
 
-Interface for Phalcon\Di\Di
+Interface for Phalcon\Di
 
 
 ## Methods
@@ -483,10 +485,10 @@ Registers an "always shared" service in the services container
 
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/Exception.zep)
 
 | Namespace  | Phalcon\Di |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Di will use this class
 
@@ -494,24 +496,24 @@ Exceptions thrown in Phalcon\Di will use this class
 
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Exception/ServiceResolutionException.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/Exception/ServiceResolutionException.zep)
 
 | Namespace  | Phalcon\Di\Exception |
 | Extends    | \Phalcon\Di\Exception |
 
-Phalcon\Di\Exception\ServiceResolutionException
-
+ Phalcon\Di\Exception\ServiceResolutionException
+ 
 
 
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/FactoryDefault.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/FactoryDefault.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Phalcon\Filter\FilterFactory |
-| Extends    | \Phalcon\Di\Di |
+| Extends    | \Phalcon\Di |
 
-This is a variant of the standard Phalcon\Di\Di. By default it automatically
+This is a variant of the standard Phalcon\Di. By default it automatically
 registers all the services provided by the framework. Thanks to this, the
 developer does not need to register each service individually providing a
 full stack framework
@@ -529,7 +531,7 @@ Phalcon\Di\FactoryDefault constructor
 
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/FactoryDefault/Cli.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/FactoryDefault/Cli.zep)
 
 | Namespace  | Phalcon\Di\FactoryDefault |
 | Uses       | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory |
@@ -553,43 +555,49 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 
 
-<h1 id="di-initializationawareinterface">Interface Phalcon\Di\InitializationAwareInterface</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/InitializationAwareInterface.zep)
-
-| Namespace  | Phalcon\Di |
-
-Interface for components that have `initialize()`
-
-
-## Methods
-
-```php
-public function initialize(): void;
-```
-
-
-
-
-
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Injectable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/Injectable.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | stdClass, Phalcon\Di\Di, Phalcon\Session\BagInterface |
-| Extends    | stdClass |
+| Uses       | Phalcon\Di, Phalcon\Session\BagInterface |
 | Implements | InjectionAwareInterface |
 
 This class allows to access services in the services container by just only
 accessing a public property with the same name of a registered service
+
+@property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher
+@property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router
+@property \Phalcon\Url|\Phalcon\Url\UrlInterface $url
+@property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request
+@property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response
+@property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies
+@property \Phalcon\Filter $filter
+@property \Phalcon\Flash\Direct $flash
+@property \Phalcon\Flash\Session $flashSession
+@property \Phalcon\Session\ManagerInterface $session
+@property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager
+@property \Phalcon\Db\Adapter\AdapterInterface $db
+@property \Phalcon\Security $security
+@property \Phalcon\Crypt|\Phalcon\CryptInterface $crypt
+@property \Phalcon\Tag $tag
+@property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper
+@property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
+@property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager
+@property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata
+@property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager
+@property \Phalcon\Assets\Manager $assets
+@property \Phalcon\Di|\Phalcon\Di\DiInterface $di
+@property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent
+@property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
+
 
 ## Properties
 ```php
 /**
  * Dependency Injector
  *
- * @var DiInterface|null
+ * @var DiInterface
  */
 protected container;
 
@@ -625,12 +633,12 @@ Sets the dependency injector
 
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/InjectionAwareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/InjectionAwareInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
 This interface must be implemented in those classes that uses internally the
-Phalcon\Di\Di that creates them
+Phalcon\Di that creates them
 
 
 ## Methods
@@ -651,7 +659,7 @@ Sets the dependency injector
 
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Service.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/Service.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder |
@@ -671,9 +679,7 @@ $request = service->resolve();
 
 ## Properties
 ```php
-/**
- * @var mixed
- */
+//
 protected definition;
 
 /**
@@ -686,9 +692,7 @@ protected resolved = false;
  */
 protected shared = false;
 
-/**
- * @var mixed|null
- */
+//
 protected sharedInstance;
 
 ```
@@ -759,7 +763,7 @@ Sets/Resets the shared instance related to the service
 
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Service/Builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/Service/Builder.zep)
 
 | Namespace  | Phalcon\Di\Service |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
@@ -781,7 +785,7 @@ Builds a service using a complex service definition
 
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/ServiceInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/ServiceInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
@@ -842,7 +846,7 @@ Sets if the service is shared or not
 
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/ServiceProviderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Di/ServiceProviderInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
