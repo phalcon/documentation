@@ -15,8 +15,9 @@ php cli.php
 
 In the above example, the `cli.php` is the entry point of our application, while the `src/tasks` directory contains all the task classes that handle each command.
 
-> **NOTE**: Each task file and class **must** be suffixed with `Task`. The default task (if no parameters have been passed) is `MainTask` and the default method to be executed inside a task is `main` 
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Each task file and class **must** be suffixed with `Task`. The default task (if no parameters have been passed) is `MainTask` and the default method to be executed inside a task is `main` 
 
 ## Bootstrap
 As seen above, the entry point of our CLI application is the `cli.php`. In that script, we need to bootstrap our application with relevant services, directives etc. This is similar to the all familiar `index.php` that we use for MVC applications.
@@ -97,8 +98,9 @@ $loader->register();
 
 Create the Phalcon autoloader and register the namespace to point to the `src/` directory.
 
-> **NOTE**: If you decided to use the Composer autoloader in your `composer.json`, you do not need to register the loader in this application
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    If you decided to use the Composer autoloader in your `composer.json`, you do not need to register the loader in this application
 
 **DI**
 ```php

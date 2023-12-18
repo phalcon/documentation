@@ -181,8 +181,10 @@ $connection->query(
 
 In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
 
-> **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
+
   
 ## Handlers
 The events manager wires a handler to an event. A handler is a piece of code that will do something when the event fires. As seen in the above example, you can use an anonymous function as your handler:
@@ -556,8 +558,10 @@ $eventsManager->fire('notifications:afterSend', $this, $data, false);
 
 The `afterSend` event will no longer be cancelable and will execute on all listeners that implement it.
 
-> **NOTE**: You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object.
-{: .alert .alert-warning } 
+!!! warning "NOTE"
+
+    You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object.
+
 
 ## Priorities
 When attaching listeners you can set a specific priority. Setting up priorities when attaching listeners to your events manager defines the order in which they are called:
@@ -588,11 +592,13 @@ $eventsManager->attach(
 ); 
 ```
 
-> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **NOTE**: A high priority number means that the listener will be processed before those with lower priorities
-{: .alert .alert-warning }
+    In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default
+
+!!! warning "NOTE"
+
+    A high priority number means that the listener will be processed before those with lower priorities
 
 ## Responses
 The events manager can also collect any responses returned by each event and return them back using the `getResponses()` method. The method returns an array with the responses:
@@ -634,8 +640,9 @@ The above example produces:
 ]
 ```
 
-> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them.
 
 ## Exceptions
 Any exceptions thrown in the Paginator component will be of type [Phalcon\Events\Exception][events-exception]. You can use this exception to selectively catch exceptions thrown only from this component.

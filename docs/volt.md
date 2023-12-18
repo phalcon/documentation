@@ -405,8 +405,9 @@ class PostsController extends Controller
 }
 ```
 
-> **NOTE** The placeholders for Volt `{% raw %}{{{% endraw %}`, `{% raw %}}}{% endraw %}`, `{% raw %}{%{% endraw %}` and `{% raw %}%}{% endraw %}` cannot be changed or set. 
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The placeholders for Volt `{% raw %}{{{% endraw %}`, `{% raw %}}}{% endraw %}`, `{% raw %}{%{% endraw %}` and `{% raw %}%}{% endraw %}` cannot be changed or set. 
 
 ### Vue.js
 If you are using [Vue][vue] you will need to change the interpolators in Vue itself:
@@ -1445,8 +1446,9 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it is possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-> **NOTE**: By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
 
 ## Autoescape Mode
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:

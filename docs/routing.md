@@ -395,8 +395,9 @@ In the example above, we are using wildcards to make a route valid for many URIs
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions][pcre]. 
 
-> **NOTE**: It is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    It is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 
 The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the first subpattern matched (`:controller`) is the controller part of the route, the second the action (`:action`) and after that any parameters passed (`:params`).
 
@@ -924,8 +925,9 @@ $router->notFound(
 );
 ```
 
-> **NOTE**: This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(false);`
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(false);`
 
 ## Defaults
 You can define default values for `module`, `controller` and `action. When a route is missing any of these elements in its path, the router will automatically use the default value set.
@@ -1463,8 +1465,9 @@ $router->add(
 );
 ```
 
-> **NOTE**: Be careful when allowing characters in regular expressions for controllers and namespaces. These will become class names and in turn they will interact with the file system. As such, it is possible that an attacker can access unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)`
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    Be careful when allowing characters in regular expressions for controllers and namespaces. These will become class names and in turn they will interact with the file system. As such, it is possible that an attacker can access unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)`
 
 [devtools]: https://phalcon.io/en/download/tools
 [di-injectable]: api/phalcon_di.md#di-injectable

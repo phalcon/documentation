@@ -71,8 +71,9 @@ run.config:
       - redis
 ```
 
-> **NOTE** The order of the extensions **does** matter. Certain extensions will not load if their prerequisites are not loaded. For instance `igbinary` has to be loaded before `redis` etc.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The order of the extensions **does** matter. Certain extensions will not load if their prerequisites are not loaded. For instance `igbinary` has to be loaded before `redis` etc.
 
 ### Add Phalcon Devtools to your `composer.json`
 Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
@@ -85,8 +86,9 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 }
 ```
 
-> **NOTE**: The version of Phalcon Devtools depends on which PHP version as well as Phalcon version you're using.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The version of Phalcon Devtools depends on which PHP version as well as Phalcon version you're using.
 
 ### Start Nanobox and Generate a New Phalcon App
 From the root of your project, run the following commands to start Nanobox and generate a new Phalcon app. As Nanobox starts, the PHP engine will automatically install and enable the Phalcon extension, run a `composer install` which will install Phalcon Devtools, then drop you into an interactive console inside the virtual environment. Your working directory is mounted into the `/app` directory in the VM, so as changes are made, they will be reflected both in the VM and in your local working directory.

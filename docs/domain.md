@@ -25,8 +25,9 @@ The properties stored are:
 
 The component offers getters and setters for the above properties.
 
-> **NOTE**: All the setters return back a [Phalcon\Domain\Payload][payload-payload] object, which allows you to chain calls for a more fluent syntax.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    All the setters return back a [Phalcon\Domain\Payload][payload-payload] object, which allows you to chain calls for a more fluent syntax.
 
 ## Factory
 [Phalcon\Domain\PayloadFactory][payload-payloadfactory] is also available, offering an easy way to generate new Payload objects.

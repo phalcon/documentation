@@ -38,8 +38,9 @@ $container->set(
 );
 ```
 
-> **NOTE**: It is imperative to use a serializer that can properly serialize and unserialize objects without changing their state. `Php` and `Igbinary` are such serializers. `Json` will convert objects to `stdClass` and `Simple`/`Complex` resultsets will become arrays. Choosing a serializer that cannot store objects properly will produce errors when the cache is restored for your models.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    It is imperative to use a serializer that can properly serialize and unserialize objects without changing their state. `Php` and `Igbinary` are such serializers. `Json` will convert objects to `stdClass` and `Simple`/`Complex` resultsets will become arrays. Choosing a serializer that cannot store objects properly will produce errors when the cache is restored for your models.
 
 
 You have complete control in how you create and customize the cache component before registering it. You can check the [cache](cache.md) document for various options and customizations available when creating the cache component.
@@ -131,8 +132,9 @@ When a cached resultset needs to be invalidated, you can simply delete it from t
 
 What resultsets to cache and for how long will depend on the needs of your application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly with subsequent changes to the underlying records that represent these resultsets.
 
-> **NOTE**: Caching data comes with the cost of compiling and storing that data in the cache. You should always leverage that processing cost when formulating your caching strategy. What data is cached and for how long depends on the needs of your application.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Caching data comes with the cost of compiling and storing that data in the cache. You should always leverage that processing cost when formulating your caching strategy. What data is cached and for how long depends on the needs of your application.
 
 ## Forcing Cache
 Earlier we saw how [Phalcon\Mvc\Model][mvc-model] integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
@@ -386,8 +388,9 @@ class Invoices extends Model
 
 Note that this type of cache works in memory only, this means that cached data are released when the request is terminated.
 
-> **NOTE** The above example is **for demonstration only** and should not be used in your code because it introduces the [N+1][n-1] problem
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    The above example is **for demonstration only** and should not be used in your code because it introduces the [N+1][n-1] problem
 
 ## Related Records
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
@@ -526,8 +529,9 @@ class Invoices extends Model
 
 Getting all the invoices will also loop through the resultset and get all related `Customer` records, storing them in the resultset using the `customer` property. Once the operation is completed, the whole resultset is stored in the cache. Any subsequent call to `find` in `Invoices` will use the cached resultset without hitting the database.
 
-> **NOTE**: You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries.
 
 The above can also be performed using PHQL:
 

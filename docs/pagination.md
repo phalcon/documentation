@@ -37,8 +37,10 @@ For the source of the data, the component uses adapters. It comes with the follo
 | [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]   | Use a PHP array as source data                                                      |
 | [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] | Use a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object as source data  |
 
-> **NOTE**: Since PDO does not support scrollable cursors, [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] should not be used to paginate a large number of records
-{: .alert .alert-warning}
+!!! warning "NOTE"
+
+    Since PDO does not support scrollable cursors, [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] should not be used to paginate a large number of records
+
 
 
 ### Methods

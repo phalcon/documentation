@@ -187,8 +187,10 @@ tutorial/
 **Document root**
 The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files.  The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`). 
 
-> **NOTE**: Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
- {: .alert .alert-warning}
+!!! warning "NOTE"
+
+    Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+ 
 
 ```
 # tutorial/.htaccess
@@ -344,11 +346,13 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 ## WAMP
 [WampServer][wamp] is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
-{: .alert .alert-warning }
+!!! warning "NOTE"
 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
-{: .alert .alert-warning }
+    Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+
+!!! warning "NOTE"
+
+    Paths in this guide should be relative, according to your installation WAMP
 
 ### Download Phalcon
 For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
@@ -395,11 +399,13 @@ extension=php_phalcon.dll
 
 and save it.
 
-> **NOTE**: The path above might differ depending on the apache installation you have for your web server. Adjust it accordingly.
-{: .alert .alert-warning }
+!!! warning "NOTE"
 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
-{: .alert .alert-warning }
+    The path above might differ depending on the apache installation you have for your web server. Adjust it accordingly.
+
+!!! warning "NOTE"
+
+    As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
 
 ![](assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
 
@@ -411,17 +417,20 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ![](assets/images/content/webserver-wamp-phalcon.png)
 
-> **Congratulations! You are now phlying with Phalcon.**
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    **Congratulations! You are now phlying with Phalcon.**
 
 ## XAMPP
 [XAMPP][xampp] is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
-{: .alert .alert-warning }
+!!! warning "NOTE"
 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
-{: .alert .alert-warning }
+    Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+
+!!! warning "NOTE"
+
+    Paths in this guide should be relative, according to your installation WAMP
 
 ### Download Phalcon
 For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by XAMPP:
@@ -458,8 +467,9 @@ extension=php_phalcon.dll
 
 and save it.
 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
 
 ![](assets/images/content/webserver-xampp-phalcon-php-ini.png)
 
@@ -471,8 +481,9 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 ![](assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-> **Congratulations! You are now phlying with Phalcon.**
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    **Congratulations! You are now phlying with Phalcon.**
 
 
 ## Cherokee

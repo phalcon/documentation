@@ -10,8 +10,9 @@ Sessions are used in PHP to persist data between requests. This enables develope
 ## Manager
 [Phalcon\Session\Manager][session-manager] is a component that allows you to manipulate sessions in your application. This manager accepts an adapter which is the way the data will be communicated to a particular store. 
 
-> **NOTE**: PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a _handler_ in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a _handler_ in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
 
 
 ```php
@@ -40,12 +41,12 @@ The constructor accepts an array of options that relate to the session. You can 
 ### Start
 In order to work with the session, you need to start it. `start()` performs this task. Usually this call is made when the component is registered or at the very top of your application's workflow. `start()` returns a boolean value indicating success or failure. 
 
-> **NOTE**:
-> - If the session has already started, the call will return `true`. 
-> - If any headers have been sent, it will return `false`
-> - If the adapter is not set, it will throw an exception
-> - It will return the result of `session_start()`
-{: .alert .alert-info } 
+!!! info "NOTE"
+
+    - If the session has already started, the call will return `true`. 
+    - If any headers have been sent, it will return `false`
+    - If the adapter is not set, it will throw an exception
+    - It will return the result of `session_start()`
 
 ```php
 <?php
@@ -195,8 +196,9 @@ var_dump(
 ### Id
 You can also set the session id. The session id is set in a HTTP cookie. You can set the name by calling `setId()`. `getId()` is used to retrieve the session id.
 
-> **NOTE**: You need call this method before calling `start()` for the id to take effect
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    You need call this method before calling `start()` for the id to take effect
 
 ```php
 <?php
@@ -221,8 +223,9 @@ echo $session->getId(); // 'phalcon-id'
 ### Name
 Each session can have a name. The session name is set in a HTTP cookie. If this is not set, the `session.name` `php.ini` setting is used. You can set the name by calling `setName()`. `getName()` is used to retrieve the session name.
 
-> **NOTE**: You need to call this method before calling `start()` for the name to take effect
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    You need to call this method before calling `start()` for the name to take effect
 
 ```php
 <?php
@@ -595,8 +598,9 @@ class InvoicesController extends Controller
 ## Persistent Data
 You can also inject the [Phalcon\Session\Bag][session-bag] component. Doing so will help you isolate variables for every class without polluting the session. The component is registered automatically using the `persistent` property name. 
 
-> NOTE: A `session` service must be present for the `persistent` service to work and persist the data
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    A `session` service must be present for the `persistent` service to work and persist the data
 
 In your providers/services setup:
 

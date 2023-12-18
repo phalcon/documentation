@@ -579,8 +579,9 @@ You are not required to implement all of the files mentioned above. [Phalcon\Mvc
 </html>
 ```
 
-> **NOTE**: The call to `$this->getContent()` instructs [Phalcon\Mvc\View][mvc-view] on where to inject the contents of the previous view executed in the hierarchy.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The call to `$this->getContent()` instructs [Phalcon\Mvc\View][mvc-view] on where to inject the contents of the previous view executed in the hierarchy.
 
 For the example above, the output will be:
 

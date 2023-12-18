@@ -444,8 +444,9 @@ class Products extends Model
 }
 ```
 
-> **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
 ## Accessing
 There are several ways that we can access the relationships of a model.
@@ -866,8 +867,9 @@ echo $phone->getParent();
 ## Caching
 Accessing related data can significantly increase the number of queries in your database. You can reduce this load as much as possible, by utilizing the `reusable` option in your relationship. Setting this option to `true` will instruct Phalcon to cache the results of the relationship the first time it is accessed, so that subsequent calls to the same relationship can use the cached resultset and not request the data again from the database. This cache is active during the same request.
 
-> **NOTE**: You are encouraged to use the `reusable` option as often as possible in your relationships
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    You are encouraged to use the `reusable` option as often as possible in your relationships
 
 ```php
 <?php
@@ -1287,12 +1289,13 @@ Although the syntax above is very handy, it is not always ideal to use it, espec
 
 Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages generated during the save process of the whole transaction will be passed back to the user for more information.
 
-> **NOTE**: Adding related entities by overloading the following methods/events is **not** possible:
->
-> - `Phalcon\Mvc\Model::beforeSave()`
-> - `Phalcon\Mvc\Model::beforeCreate()`
-> - `Phalcon\Mvc\Model::beforeUpdate()`
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Adding related entities by overloading the following methods/events is **not** possible:
+
+    - `Phalcon\Mvc\Model::beforeSave()`
+    - `Phalcon\Mvc\Model::beforeCreate()`
+    - `Phalcon\Mvc\Model::beforeUpdate()`
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 

@@ -7,8 +7,9 @@
 
 These components aid in creating Link objects as defined by the [PSR-13][psr-13] standard.
 
-> **NOTE**: This component does not generate any HTML links. It just stores the links and offers methods as defined by the [PSR-13][psr-13] standard. You will need to create your own serializers that will parse these objects and generate the necessary output. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    This component does not generate any HTML links. It just stores the links and offers methods as defined by the [PSR-13][psr-13] standard. You will need to create your own serializers that will parse these objects and generate the necessary output. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use.
 
 ## Link
 The [Phalcon\Html\Link\Link][html-link-link] is used to create a link and assign attributes to it upon construction.

@@ -1,7 +1,8 @@
 # Database Migrations
 - - -
-> **NOTE**: Phalcon migrations have been removed from DevTools and moved to a separate repository.
-{: .alert .alert-info } 
+!!! info "NOTE"
+
+    Phalcon migrations have been removed from DevTools and moved to a separate repository.
 
 ## Package git repository
 
@@ -189,5 +190,6 @@ Will produce folder name with such names
 
 Migrations will be executed from oldest to newest.
 
-> **NOTE**: Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.

@@ -11,8 +11,9 @@
  - Headers
  - Message body
  
-> **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
 
 ```php
 <?php

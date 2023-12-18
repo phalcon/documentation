@@ -8,14 +8,17 @@
 - User Permissions
 - User management
 
-> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **NOTE**: This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
-{: .alert .alert-warning }
+    You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
 
-> **NOTE**: Note the code below has been formatted to increase readability
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
+
+!!! warning "NOTE"
+
+    Note the code below has been formatted to increase readability
 
 ## Installation
 ### Downloading
@@ -229,8 +232,9 @@ The current setup will require a user to be logged in, if they visit these route
 
 If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes so as to ensure that your protected routes are behind the login mechanism. 
 
-> **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
 
 **config.php**
 
@@ -327,8 +331,9 @@ First of all we ensure that we have full error reporting. You can of course chan
 
 A `try`/`catch` block wraps all operations. This ensures that all errors are caught and displayed on screen.
 
-> **NOTE** You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial not a full scale production application
 
 We ensure that we have access to all the supporting libraries by loading composer's autoloader. In the `composer.json` we have also defined the `autoload` entry, directing the autoloader to load any `Vokuro` namespaced classes from the `src` folder.
 
@@ -570,8 +575,9 @@ In the model above, we have defined all the fields of the table as public proper
 echo $successLogin->ipAddress;
 ```
 
-> **NOTE**: If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
 
 In the `initialize()` method, we also define a relationship between this model and the `Users` model. We assign the fields (local/remote) as well as an `alias` for this relationship. We can therefore access the user related to a record of this model as follows:
 
@@ -579,8 +585,9 @@ In the `initialize()` method, we also define a relationship between this model a
 echo $successLogin->user->name;
 ```
 
-> **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
 
 ## Controllers
 Again following the [Model-View-Controller][mvc] pattern, Vökuró has one controller to handle a specific _parent_ route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory. 
@@ -630,8 +637,9 @@ The available controllers, actions and routes for Vökuró are:
 ## Views
 The last element of the [Model-View-Controller][mvc] pattern is the views. Vökuró uses [Volt](volt.md) as the view engine for its views.
 
-> **NOTE**: Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
 
 The views directory contains directories that map to each controller. Inside each of those directories, `.volt` files are mapped to each action. So for example the route:
 
@@ -723,8 +731,9 @@ The component exposes the following methods:
 ### Mail
 `Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer][swiftmailer]. It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message. 
 
-> **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
-{: .alert .alert-info } 
+!!! info "NOTE"
+
+    Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
 
 ## Sign Up
 ### Controller
@@ -797,8 +806,9 @@ In order to have validation for user supplied data, we are utilizing the [Phalco
 
 When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages. 
 
-> **NOTE**: All the forms for Vökuró are located in `/src/Forms`
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    All the forms for Vökuró are located in `/src/Forms`
 
 First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
 
@@ -1495,8 +1505,9 @@ class Users extends Model
 
 The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen. 
 
-> **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 
 **Validation**
 

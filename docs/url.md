@@ -71,8 +71,9 @@ echo $url->getStatic('img/logo.png'); // https://assets.phalcon.io/img/logo.png
 
 The above code will prefix all the static assets with `https://assets.phalcon.io`, ensuring that assets in your production environment use the CDN URL, while local development loads them directly from your machine.
 
-> **NOTE**: The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 
 Finally, depending on the routes you have specified, you can retrieve a static resource which is defined in a named route by passing an array to `getStatic()` and using `for` keyword as a key and the name of the route as a value.
 
@@ -157,15 +158,17 @@ class InvoicesController extends Controller
 
 And now we can generate any URL using `get()` in subsequent actions, that will be prefixed with `/portal/`
 
-> **NOTE**: The trailing slash in the `setBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The trailing slash in the `setBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 
 
 ### Routing
 If you are using the [Router](routing.md) with its default behavior, your application is able to match routes based on the following pattern: 
 
-> /:controller/:action/:params
-{: .alert .alert-info }
+!!! info "Pattern"
+
+    > /:controller/:action/:params
 
 
 Therefore, it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get()`:
@@ -261,8 +264,9 @@ $url->setBaseUri('/app/public/index.php'); // $_SERVER['REQUEST_URI']
 echo $url->get('products/save'); // /app/public/index.php/portal/invoices/save
 ```
 
-> **NOTE**: If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route matching mechanism handled by the web server is much faster than handling things in your own application.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route matching mechanism handled by the web server is much faster than handling things in your own application.
 
 ### View/Volt
 The function `url` is available in volt to generate URLs using this component:
@@ -312,8 +316,9 @@ echo $url->path('storage/config.php'); // /data/app/storage/config.php
 
 The above code will prefix all the paths with `/data/app/`.
 
-> **NOTE**: The trailing slash in the `setBasePath()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The trailing slash in the `setBasePath()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 
 ## Exceptions
 Any exceptions thrown in the [Phalcon\Url][url] component will be of type [Phalcon\Url\Exception][url-exception]. You can use this exception to selectively catch exceptions thrown only from this component.

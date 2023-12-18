@@ -385,8 +385,9 @@ $translator = new Csv($interpolator, $options);
 
 ### Gettext
 
-> **NOTE**: This adapter **requires** the [gettext][php-gettext] PHP extension. Please make sure that your system has it installed so that you can take advantage of this adapter's functionality
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    This adapter **requires** the [gettext][php-gettext] PHP extension. Please make sure that your system has it installed so that you can take advantage of this adapter's functionality
 
 The [gettext][wiki-gettext] format has been around for years and many applications are using it because it has become a standard and it is easy to use. The translations are stored in `.po` and `.mo` files, and content can be easily added or changed using online editors or tools such as [POEdit][poedit]. This adapter requires files to be in specific folders so it can locate the translation files. The options array accepts:
 

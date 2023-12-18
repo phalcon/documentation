@@ -7,8 +7,9 @@ An action is any public method in a controller with the `Action` suffix. These _
 
 Controllers in Phalcon **must** have the suffix `Controller` in their file and class name and **must** extend the [Phalcon\Mvc\Controller][mvc-controller] class.
 
-> **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
 
 ## Routing
 [Routing](routing.md) is further explained in the relevant document. However the default route is:
@@ -90,12 +91,14 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: The use of the `__construct()` method is not recommended.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The use of the `__construct()` method is not recommended.
 
 
-> **NOTE**: The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
@@ -113,8 +116,9 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application).
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application).
 
 ## Dispatch Loop
 The dispatch loop will be executed within the [Dispatcher](dispatcher.md) until there are no actions left to be executed. In the examples above we showed code in only one action, which will be executed with the appropriate request.
@@ -241,8 +245,9 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
 
 For the example above, the URL to call the method is:
 
@@ -351,8 +356,9 @@ If you have already registered a [Request](request.md) and [Response](response.m
 
 For [Phalcon\Di\FactoryDefault][di-factorydefault], your objects will be [Phalcon\Http\Request][request] for `request` and [Phalcon\Http\Response][response] for response. The `request` contains the request from the user, including all the variables set by the method use (`GET`, `POST` etc.) along with additional information regarding the request. The `response` contains data that we need to send back such as `content-type`, status code, payload etc.
 
-> **NOTE**: In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
 
 ```php
 <?php
@@ -526,8 +532,9 @@ class UserController extends Controller
 }
 ```
 
-> **NOTE**: Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
 
 ## Dependency Injection
 You can create a controller as a stand alone class. However you can extend the [Phalcon\Mvc\Controller][mvc-controller] class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:

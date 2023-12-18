@@ -453,8 +453,9 @@ class BaseController extends Controller
 }
 ```
 
-> **NOTE** You can also implement the above to a listener and use the `beforeDispatch` event if you wish.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    You can also implement the above to a listener and use the `beforeDispatch` event if you wish.
 
 and in our controllers we can specify:
 

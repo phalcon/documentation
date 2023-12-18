@@ -67,10 +67,7 @@ php -m | grep phalcon
 
 ## ACL
 
-> Status: **changes required**
->
-> Usage: [ACL Documentation](acl.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](acl.md)
 
 The [ACL](acl.md) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
@@ -117,10 +114,7 @@ echo Enum::DENY;  //prints 0
 
 ## Assets
 
-> Status: **changes required**
->
-> Usage: [Assets Documentation](assets.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](assets.md)
 
 CSS and JS filters have been removed from the [Assets](assets.md) component. Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.  
 
@@ -136,10 +130,7 @@ CSS and JS filters have been removed from the [Assets](assets.md) component. Due
 
 ## Cache
 
-> Status: **changes required**
->
-> Usage: [Cache Documentation](cache.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](cache.md)
 
 `xcache`, `apc` and `memcache` adapters have been deprecated and removed. The first two are not supported for PHP 7.2+. `apc` has been replaced with `apcu` and `memcache` can be replaced with the `libmemcached` one.
 
@@ -215,10 +206,7 @@ $container->set(
 
 ## CLI
 
-> Status: **changes required**
->
-> Usage: [CLI Documentation](application-cli.md)
-{: .alert .alert-danger }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](application-cli.md)
 
 ### Parameters
 Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
@@ -349,10 +337,7 @@ echo Enum::FETCH_ASSOC;
 
 ## Filter
 
-> Status: **changes required**
->
-> Usage: [Filter Documentation](filter.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](filter.md)
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
@@ -404,8 +389,9 @@ $container->set(
 );
 ```
 
-> **NOTE**: Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
 
 ### Constants
 The constants that the v3 `Phalcon\Filter` have somewhat changed. 
@@ -494,10 +480,7 @@ echo Enum::VERTICAL;   // prints  12
 
 ## Logger
 
-> Status: **changes required**
->
-> Usage: [Logger Documentation](logger.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](logger.md)
 
 The `Logger` component has been rewritten to comply with [PSR-3][psr-3]. This allows you to use the [Phalcon\Logger](api/phalcon_logger.md) to any application that utilizes a [PSR-3][psr-3] logger, not just Phalcon based ones.
 
@@ -597,10 +580,7 @@ Removed in version 4.0:
 
 ## Models
 
-> Status: **changes required**
->
-> Usage: [Models Documentation](db-models.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](db-models.md)
 
 - You can no longer assign data to models while saving them
 
@@ -640,10 +620,7 @@ $criteria->limit(10, null);
 
 ## MVC
 
-> Status: **changes required**
->
-> Usage: [MVC Documentation](mvc.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](mvc.md)
 
 ### Mvc\Collection
 - Removed `Phalcon\Mvc\Collection::validationHasFailed`
@@ -805,10 +782,8 @@ $group->addTrace(
 - - -
 
 ## Session
-> Status: **changes required**
->
-> Usage: [Session Documentation](session.md)
-{: .alert .alert-info }
+
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](session.md)
 
 `Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. `Session` was refactored.
 
@@ -848,10 +823,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 ## Text
 
-> Status: **changes required**
->
-> Usage: [Str Documentation](helper.md#str)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](helper.md#str)
 
 The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
 
@@ -875,10 +847,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 ## Views
 
-> Status: **changes required**
->
-> Usage: [View Documentation](views.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](views.md)
 
 View caching along with the `viewCache` service have been removed from the framework because they were incompatible with the new Cache component. Developers can easily utilize a _view cache_ from external services such as Varnish, Cloudflare etc. Additionally, developers can cache fragments by either using the `Phalcon\Mvc\View\Simple::render()` or the `Phalcon\Mvc\View::toString()`. Those two methods return the produced HTML that can be cached in the cache backend of your choice. 
 
@@ -886,10 +855,7 @@ View caching along with the `viewCache` service have been removed from the frame
 
 ## Url
 
-> Status: **changes required**
->
-> Usage: [Url Documentation](url.md)
-{: .alert .alert-info }
+![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)](url.md)
 
 The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functionality remains the same.  
 

@@ -269,8 +269,9 @@ class ProductsController extends Controller
 }
 ```
 
-> **NOTE**: While a transaction is active, the transaction manager will always return the same transaction across the application.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    While a transaction is active, the transaction manager will always return the same transaction across the application.
 
 
 [mvc-model-transaction]: api/phalcon_mvc.md#mvc-model-transaction

@@ -45,8 +45,10 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 ### `load()`
 [Phalcon\Logger\LoggerFactory][logger-loggerfactory] offers the `load` method, that constructs a logger based on supplied configuration. The configuration can be an array or a [Phalcon\Config](config.md) object. 
 
-> **NOTE**: Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
-{: .alert .alert-info}
+!!! info "NOTE"
+
+    Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
+
 
 ```php
 <?php
@@ -231,8 +233,9 @@ $logger
 ```
 Log only to remote and manager
 
-> **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Internally, the component loops through the registered adapters and calls the relevant logging method to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
 
 ## Constants
 The class offers a number of constants that can be used to distinguish between log levels. These constants can also be used as the first parameter in the `log()` method. 
@@ -293,11 +296,13 @@ The log generated is as follows:
 
 The above can be used in situations where you want to log messages above a certain severity based on conditions in your application such as development mode vs. production.
 
-> **NOTE**: The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **NOTE**: It is **never** a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
-{: .alert .alert-danger }
+    The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
+
+!!! danger "NOTE"
+
+    It is **never** a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
 
 ## Transactions 
 [Phalcon\Logger][logger-logger] also offers the ability to queue the messages in your logger, and then _commit_ them all together in the log file. This is similar to a database transaction with `begin` and `commit`. Each adapter exposes the following methods:
@@ -339,9 +344,11 @@ $logger->error('Something happened');
 ```
 the message will be logged in both `local` and `remote` adapters. It will be queued for the `manager` adapter and not logged until we call the `commit` method in the `manager` adapter.
 
-> **NOTE**: If you set one or more adapters to be in transaction mode (i.e. call `begin`) and forget to call `commit`, The adapter will call `commit` for you right before it is destroyed.
-{: .alert .alert-info }
->
+!!! info "NOTE"
+
+    If you set one or more adapters to be in transaction mode (i.e. call `begin`) and forget to call `commit`, The adapter will call `commit` for you right before it is destroyed.
+
+
 ## Message Formatting
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 

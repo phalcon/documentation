@@ -130,8 +130,9 @@ The registered names for respective helpers are:
 ### Helpers
 All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above. Other than the `*Raw` helpers, if text is required by the helper, it will be automatically escaped using [Phalcon\Escaper](escaper.md).
 
-> **NOTE**: The code and output below has been formatted for readability
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The code and output below has been formatted for readability
 
 ### `a`
 [Phalcon\Html\Helper\Anchor][html-helper-anchor] creates anchor HTML tags. The component accepts the `href` as a string, the `text` as a string and optionally an array with all the attributes that the anchor needs.
@@ -204,8 +205,10 @@ $options = [
 echo $anchor($options);
 // <body id="my-id" class="my-class">
 ```
-> **NOTE**: This helper creates only the opening `<body>` tag. You will need to use the `Close` helper to generate the closing `</body>` tag.
-{: .alert .alert-info } 
+!!! info "NOTE"
+
+    This helper creates only the opening `<body>` tag. You will need to use the `Close` helper to generate the closing `</body>` tag.
+
 
 ### `button`     
 [Phalcon\Html\Helper\Button][html-helper-button] creates `<button>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
@@ -329,8 +332,10 @@ echo $anchor($options);
 //    enctype="multipart/form-data">
 ```
 
-> **NOTE**: This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag.
-{: .alert .alert-info } 
+!!! info "NOTE"
+
+    This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag.
+
 
 ### `img`        
 [Phalcon\Html\Helper\Img][html-helper-img] creates `<img>` HTML tags. The component accepts the `src` as a string and optionally an array with all the attributes that the anchor needs.
@@ -381,8 +386,10 @@ echo $anchor($options);
 //    class="my-class">
 ```
 
-> **NOTE**: This helper creates only the opening `<label>` tag. You will need to use the `Close` helper to generate the closing `</label>` tag.
-{: .alert .alert-info } 
+!!! info "NOTE"
+
+    This helper creates only the opening `<label>` tag. You will need to use the `Close` helper to generate the closing `</label>` tag.
+
 
 ### `textarea`   
 [Phalcon\Html\Helper\TextArea][html-helper-textarea] creates `<textarea>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
@@ -410,8 +417,9 @@ echo $anchor('click<>me', $options);
 // </textarea>
 ```
 
-> **NOTE**: More helpers will become available in future versions of Phalcon. The goal is to completely replace the [Phalcon\Tag](tag.md) object with small HTML helper classes.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    More helpers will become available in future versions of Phalcon. The goal is to completely replace the [Phalcon\Tag](tag.md) object with small HTML helper classes.
 
 [html-attributes]: api/phalcon_html.md#html-attributes
 [html-attributes-attributesinterface]: api/phalcon_html.md#html-attributes-attributesinterface

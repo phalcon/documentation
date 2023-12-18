@@ -654,8 +654,9 @@ Assuming that your file was last modified in May 20, the version
 <link rel="stylesheet" href="css/bootstrap.css?ver=1558392141">
 ```
 
-> **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unnecessary read operations on the file system. 
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unnecessary read operations on the file system. 
 
 ## Improving Performance
 There are many ways to optimize processing assets. One method is to allow your web server to handle the assets, thus improving response time. First we need to set up the Assets Manager. We will use a base controller, but you can use the manager anywhere you need to, accessing it from the Di container:

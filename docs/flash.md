@@ -154,8 +154,9 @@ or when using Volt
 {% raw %}{{ flashSession.output() }}{% endraw %}
 ```
 
-> **NOTE**: In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
 
 ## Styling
 The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default the component uses the following mapping:
@@ -226,8 +227,9 @@ will produce:
 <div class="alert alert-danger">Error message</div>
 ```
 
-> **NOTE**: The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
 
 The component also allows you to specify a different template, so that you can control the HTML produced by the component. The `setCustomTemplate()` and `getCustomTemplate()` expose this functionality. The template needs to have two placeholders:
 
@@ -260,8 +262,9 @@ will produce:
 <span class="myErrorClass">Error message</span>
 ```
 
-> **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
 
 ## Messages
 As mentioned above, the component has different types of messages. To add a message to the component you can call `message()` with the type as well as the message itself. The types of messages are:
@@ -316,8 +319,9 @@ $flash->error('Error message');
 $flash->clear();
 ```
 
-> **NOTE**: `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
 
 ## Implicit Flush
 By default implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
@@ -341,11 +345,13 @@ echo $flash
 ;
 ```
 
-> **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **NOTE**: When using the [Phalcon\Flash\Direct][flash-direct] component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
-{: .alert .alert-warning }
+    The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
+
+!!! warning "NOTE"
+
+    When using the [Phalcon\Flash\Direct][flash-direct] component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
 
 ## Escaping
 By default, the component will escape the contents of the message. There might be times however that you do not wish to escape the contents of your messages. You can use the `setAutoescape(false)`;
@@ -373,8 +379,9 @@ will produce
 <div class="errorMessage">&lt;h1&gt;Error&lt;/h1&gt;</div>
 ```
 
-> **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
 
 ## Dependency Injection
 If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`. 
@@ -430,8 +437,9 @@ $container->set(
 );
 ```
 
-> **NOTE** You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already register in it, they will be used internally. This is another way of instantiating the components.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already register in it, they will be used internally. This is another way of instantiating the components.
 
 You can now use the component in a controller (or a component that implements [Phalcon\Di\Injectable][di-injectable])
 

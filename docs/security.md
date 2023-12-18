@@ -2,8 +2,9 @@
 - - -
 ## Overview
 
-> **NOTE**: Requires PHP's [openssl][openssl] extension to be present in the system
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Requires PHP's [openssl][openssl] extension to be present in the system
 
 [Phalcon\Security][security] is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
@@ -113,15 +114,17 @@ class SessionController extends Controller
 }
 ```
 
-> **NOTE** The code snippet above is incomplete and **must not be used as is for production applications**
-{: .alert .alert-danger }
+!!! danger "NOTE"
+ 
+    The code snippet above is incomplete and **must not be used as is for production applications**
 
 The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security][security] component so that we do not save it as plain text in our database.
 
 The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security][security] component, to assess whether the supplied password hashed is the same as the one stored in the database. 
 
-> **NOTE**: You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you.
 
 If the password is not correct, you can then inform the user that something is wrong with the credentials. It is always a good idea not to provide specific information about your users to people that want to hack your site. So for instance our example above can produce two messages:
 
@@ -202,8 +205,9 @@ class SessionController extends Controller
 }
 ```
 
-> **NOTE**: It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise the `checkToken()` will not work.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise the `checkToken()` will not work.
 
 Adding a [captcha][captcha] to the form is also recommended to completely avoid the risks of this attack.
 

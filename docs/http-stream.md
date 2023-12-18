@@ -38,8 +38,9 @@ If there is an error, a `RuntimeException` will be thrown.
 ### `__toString()`
 Reads all data from the stream into a string, from the beginning to end. The method will first try to `seek()` to the beginning of the stream before reading the data and read the stream until the end is reached. 
 
-> **NOTE** Calling this method on large files will result in a large amount of data being loaded in memory
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    Calling this method on large files will result in a large amount of data being loaded in memory
 
 ```php
 <?php

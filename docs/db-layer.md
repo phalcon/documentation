@@ -77,8 +77,9 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 - `TYPE_TINYTEXT` - Tiny Text
 - `TYPE_VARCHAR` - Varchar
 
-> **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite).
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite).
 
 ### Methods
 
@@ -763,8 +764,9 @@ $posts = $modelsManager->executeQuery(
 );
 ```
 
-> **NOTE**: There are more examples on how to extend PHQL in the [PHQL](db-phql.md) document.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    There are more examples on how to extend PHQL in the [PHQL](db-phql.md) document.
 
 ## Connect
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
@@ -964,8 +966,9 @@ $success = $connection->update(
 ```
 Dynamic generation 
 
-> **NOTE**: With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped!
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped!
 
 ```php
 <?php
@@ -981,8 +984,9 @@ $success = $connection->updateAsDict(
 ```
 Dynamic generation (alternative syntax)
 
-> **NOTE**: With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped!
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) is not escaped!
 
 ```php
 <?php
@@ -1533,8 +1537,9 @@ if (11 === $invoice->inv_id) {
 }
 ```
 
-> **NOTE**: If you wish to return the primary key when using the `lastInsertId` as an `integer`, you can use the `castLastInsertIdToInt => true` feature on the model.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    If you wish to return the primary key when using the `lastInsertId` as an `integer`, you can use the `castLastInsertIdToInt => true` feature on the model.
 
 ## Transactions
 Working with transactions is supported the same way as with with PDO. Using transactions increases performance in most database systems and also ensures data integrity:

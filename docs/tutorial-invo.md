@@ -4,11 +4,13 @@
 ## Overview
 [INVO][github_invo] is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. It showcases how certain tasks are handled by Phalcon. On the client side, [Bootstrap][bootstrap] is used for the UI. The application does not generate actual invoices, but serves as an example on how these tasks are implemented using Phalcon.
 
-> **NOTE**: It is recommended that you open the application in your favorite editor so that you can follow this tutorial easier. 
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **NOTE**: Note the code below has been formatted to increase readability
-{: .alert .alert-warning }
+    It is recommended that you open the application in your favorite editor so that you can follow this tutorial easier. 
+
+!!! warning "NOTE"
+
+    Note the code below has been formatted to increase readability
 
 ## Structure
 You can clone the repository to your machine (or download it) from [GitHub][github_invo]. Once you clone it (or download and unzip it) you will end up with the following directory structure: 
@@ -116,11 +118,13 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-> **NOTE**: The above code has registered the directories that were defined in the configuration file. The only directory that is not registered is the `viewsDir` because it contains HTML + PHP files but no classes. 
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **NOTE**: We use a constant called `APP_PATH`. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project:
-{: .alert .alert-info }
+    The above code has registered the directories that were defined in the configuration file. The only directory that is not registered is the `viewsDir` because it contains HTML + PHP files but no classes. 
+
+!!! info "NOTE"
+
+    We use a constant called `APP_PATH`. This constant is defined in the bootstrap (`public/index.php`) to allow us to have a reference to the root of our project:
 
 ```php
 <?php
@@ -381,8 +385,9 @@ $this->session->set(
 );
 ```
 
-> **NOTE**: For more information about Di services, please check the [Dependency Injection](di.md) document.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    For more information about Di services, please check the [Dependency Injection](di.md) document.
 
 The `startAction` first checks if data has been submitted using a `POST`. If not, the user will be redirected again to the same form. We are checking if the form has been submitted via `POST` using the `isPost()` method on the request object. 
 
@@ -420,8 +425,9 @@ $user = Users::findFirst(
     ]
 );
 ```
-> **NOTE**: 
-Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. This safely replaces the values for those columns without having the risk of a SQL injection.
+!!! warning "NOTE"
+
+    Note, the use of 'bound parameters', placeholders `:email:` and `:password:` are placed where values should be, then the values are _bound_ using the parameter `bind`. This safely replaces the values for those columns without having the risk of a SQL injection.
 
 When searching for the user in the database, we are not searching for the password directly using clear text. The application stores passwords as hashes, using the [sha1][sha1] method. Although this methodology is adequate for a tutorial, you might want to consider using a different algorithm for a production application. The [Phalcon\Security](security.md) component offers convenience methods to strengthen the algorithm used for your hashes.
 

@@ -2,13 +2,15 @@
 - - -
 ## Overview
 
-> **NOTE**: Requires PHP's [openssl][openssl] extension to be present in the system
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **DOES NOT** support insecure algorithms with modes: 
->
->`des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
-{: .alert .alert-danger }
+    Requires PHP's [openssl][openssl] extension to be present in the system
+
+!!! danger "NOTE"
+    
+    **DOES NOT** support insecure algorithms with modes: 
+
+    `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt][crypt] component. This class offers simple object-oriented wrappers to the [openssl][openssl] PHP's encryption library.
 
@@ -16,8 +18,9 @@ By default, this component utilizes the `AES-256-CFB` cipher.
 
 The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
 
-> **NOTE**: You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
 
 ## Basic Usage
 This component is designed to be very simple to use:
@@ -88,8 +91,9 @@ $encrypted = $crypt->encrypt($text, $key);
 
 The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
 
-> **NOTE: If you choose `ccm` or `gcm` related ciphers, you must also supply `authData` for them. An exception will be thrown otherwise.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    If you choose `ccm` or `gcm` related ciphers, you must also supply `authData` for them. An exception will be thrown otherwise.
 
 ## Decrypt
 The `decrypt()` method decrypts a string. Similar to `encrypt()` the component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
@@ -170,10 +174,11 @@ The component offers a getter and a setter for the key to be used. Once the key 
 * `getKey()`: Returns the encryption key.
 * `setKey()` Sets the encryption key.
 
-> You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
->
->Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security.md) component, which can offer a strong key by hashing a string.
-{: .alert .alert-danger }
+!!! danger "NOTE"
+ 
+    You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
+
+    Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security.md) component, which can offer a strong key by hashing a string.
 
 ### Signing
 To instruct the component to use signing or not, `useSigning` is available. It accepts a boolean which sets a flag internally, specifying whether signing will be used or not.

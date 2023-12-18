@@ -16,24 +16,27 @@ When you create a pull request, we have a handy template to help you describe wh
 * put on hold, if discussion is necessary (community, core team etc.)
 * rejected
 
-> **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
-{:.alert .alert-danger}
+!!! danger "NOTE"
+
+    Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
 
 ## Documentation
 If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
 
 All you have to do is go to our [docs][phalcon-docs] repository, fork it, make the changes and send us a pull request.
 
-> **NOTE**: Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
-{:.alert .alert-warning}
+!!! warning "NOTE"
+
+    Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
 
 ## Translations
 If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin][crowdin]. Our project is located [here][phalcon-docs]. If your language is not listed, please send us a message so that we can add it.
 
 ## Questions and Support
 
-> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [github discussions][discussions] or our [Discord][phalcon-discord] server.
-{:.alert .alert-danger}
+!!! danger "NOTE"
+
+    We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [github discussions][discussions] or our [Discord][phalcon-discord] server.
 
 ## Bug Report Checklist
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.

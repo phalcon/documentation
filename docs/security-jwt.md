@@ -2,8 +2,9 @@
 - - -
 ## Overview
 
-> **NOTE**: Currently, only symmetric algorithms are supported 
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Currently, only symmetric algorithms are supported 
 
 `Phalcon\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7519][rfc-7519]. These components are:
 

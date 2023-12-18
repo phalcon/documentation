@@ -413,8 +413,9 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Keep in mind that performing a `forward` is not the same as making a HTTP redirect. Although they produce the same result, performing a `forward` will not reload the current page, while the HTTP redirect needs two requests to complete the process.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Keep in mind that performing a `forward` is not the same as making a HTTP redirect. Although they produce the same result, performing a `forward` will not reload the current page, while the HTTP redirect needs two requests to complete the process.
 
 Examples:
 
@@ -661,8 +662,9 @@ $container->set(
 );
 ```
 
-> **NOTE**: The code above can be used as is or adjusted to help with legacy URL transformations or other use cases where we need to manipulate the action name.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The code above can be used as is or adjusted to help with legacy URL transformations or other use cases where we need to manipulate the action name.
 
 ### Model Injection
 There are instances that you might want to inject automatically model instances that have been matched with the parameters passed in the URL. 
@@ -764,8 +766,9 @@ $dispatcher->setModelBinder(
 return $dispatcher;
 ```
 
-> **NOTE**: The [Phalcon\Mvc\Model\Binder][mvc-model-binder] component uses PHP's Reflection API internally, which consumes additional processing cycles. For that reason, it has the ability to use a `cache` instance or a cache service name. To use this feature, you can pass the cache service name or instance as the second argument in the `setModelBinder()` method or by just passing the cache instance in the `Binder` constructor.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The [Phalcon\Mvc\Model\Binder][mvc-model-binder] component uses PHP's Reflection API internally, which consumes additional processing cycles. For that reason, it has the ability to use a `cache` instance or a cache service name. To use this feature, you can pass the cache service name or instance as the second argument in the `setModelBinder()` method or by just passing the cache instance in the `Binder` constructor.
 
 Also, by using the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface] in controllers, you can define the models binding in base controllers.
 
@@ -828,8 +831,9 @@ class InvoicesController extends Controller
 }
 ```
 
-> Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
 
 ## Not-Found (404) 
 If an [Events Manager](events.md) has been defined, you can use it to intercept exceptions that are thrown when the controller/action pair are not found.
@@ -960,8 +964,9 @@ class ExceptionsPlugin
 }
 ```
 
-> **NOTE**: Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
 
 ## Events
 [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to an [Manager](events.md) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
@@ -1036,8 +1041,9 @@ class InvoicesController extends Controller
 }
 ```
 
-> **NOTE**: Methods on event listeners accept an [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Methods on event listeners accept an [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
 
 ## Events Manager
 You can use the `dispatcher::beforeForward` event to change modules and perform redirections easier.

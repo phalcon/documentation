@@ -735,8 +735,9 @@ $container->set(
 );
 ```
 
-> NOTE: `$this` can be used inside a closure
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    `$this` can be used inside a closure
 
 ### Complex Registration
 If it is required to change the definition of a service without instantiating/resolving the service, then, we need to define the services using the array syntax. Define a service using an array definition can be a little more verbose:
@@ -1049,8 +1050,9 @@ In the examples above, when the framework needs to access the request data, it w
 
 As shown in the above examples, each of the ways used to set/register a service has advantages and disadvantages. It is up to the developer and the particular requirements that will designate which one is used. Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
 
-> **NOTE**: [Phalcon\Di][di] offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    [Phalcon\Di][di] offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
 ### Load From Config
 
@@ -1075,8 +1077,9 @@ $container->loadFromYaml('services.yml');
 $container->get('/app/config/services.yml');
 ```
 
-> **NOTE**: This approach requires that the module Yaml be installed. Please refer to [this document][yaml] for more information.
-{: .alert .alert-danger }
+!!! danger "NOTE"
+
+    This approach requires that the module Yaml be installed. Please refer to [this document][yaml] for more information.
 
 
 **PHP**
@@ -1210,8 +1213,9 @@ $session = $container->get('session');
 $session = $container->getSession();
 ```
 
-> **NOTE**: If a service is not registered as shared and you want to ensure that a shared instance will be accessed every time the service is retrieved from the DI, you can use the `getShared` method
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    If a service is not registered as shared and you want to ensure that a shared instance will be accessed every time the service is retrieved from the DI, you can use the `getShared` method
 
 ```php
 $request = $container->getShared('request');
@@ -1309,8 +1313,9 @@ $container->set('inv-component', InvoiceComponent::class);
 $invoiceComponent = $container->get('inv-component');
 ```
 
-> **NOTE** `: $invoiceComponent->setDi($container) is automatically called)
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    `$invoiceComponent->setDi($container)` is automatically called)
 
 For your convenience you can also extend the [Phalcon\Di\AbstractInjectionAware][di-abstractinjectionaware] class which contains the above code and exposes the protected `$container` property for you to use.
 
@@ -1514,8 +1519,9 @@ foreach ($services as $service) {
 ## Factory Default 
 For convenience to developers, the [Phalcon\Di\FactoryDefault][di-factorydefault] is available with several preset services for you. Nothing stops you from registering all the services your application requires one by one. However, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault], which contains a list of services ready to be used. The list of services registered allows you to have a container suitable for a full stack application.
 
-> **NOTE** Since the services are always lazy loaded, instantiating the [Phalcon\Di\FactoryDefault][di-factorydefault] container will not consume more memory than a [Phalcon\Di][di] one.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Since the services are always lazy loaded, instantiating the [Phalcon\Di\FactoryDefault][di-factorydefault] container will not consume more memory than a [Phalcon\Di][di] one.
 
 ```php
 <?php

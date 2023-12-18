@@ -303,8 +303,9 @@ Defining routes in a [Phalcon\Mvc\Micro][mvc-micro] application is very easy. Ro
 ### Activation
 Routing is handled by the [Phalcon\Mvc\Router][mvc-router] object. 
 
-> **NOTE**: Routes must always start with `/`
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Routes must always start with `/`
 
 Usually, the starting route for an application is `/`, accessed via the `GET` HTTP method:
 
@@ -319,8 +320,9 @@ $application->get(
 );
 ```
 
-> **NOTE**: Check our [routing](routing.md) document for more information for the [Phalcon\Mvc\Router][mvc-router]
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Check our [routing](routing.md) document for more information for the [Phalcon\Mvc\Router][mvc-router]
 
 **Application object**
 
@@ -984,8 +986,9 @@ $invoices->get('/delete/{id}', 'deleteAction');
 $app->mount($invoices);
 ```
 
-> **NOTE**: The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.
 
 **Methods**
 
@@ -1164,8 +1167,9 @@ $app->get(
 );
 ```
 
-> **NOTE**: Check our [routing](routing.md) document for more information for the [Phalcon\Mvc\Router][mvc-router]
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Check our [routing](routing.md) document for more information for the [Phalcon\Mvc\Router][mvc-router]
 
 ### Redirections
 You can redirect one matched route to another using the [Phalcon\Http\Response][http-response] object, just like in a full application.
@@ -1192,8 +1196,9 @@ $app->get('/invoices/view/{id}',
 );
 ```
 
-> **NOTE**: We have to pass the `$app` object in our anonymous function to have access to the `request` object.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    We have to pass the `$app` object in our anonymous function to have access to the `request` object.
 
 When using controllers as handlers, you can perform the redirect just as easy:
 
@@ -1614,8 +1619,9 @@ $app->setEventsManager($manager);
 ## Middleware
 Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve maintainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business rule has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
 
-> **NOTE**: The middleware handled by the Micro application **are not** compatible with [PSR-15][psr-15]. In future versions of Phalcon, the whole HTTP layer will be rewritten to align with PSR-7 and PSR-15.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    The middleware handled by the Micro application **are not** compatible with [PSR-15][psr-15]. In future versions of Phalcon, the whole HTTP layer will be rewritten to align with PSR-7 and PSR-15.
 
 The presence of a [Phalcon\Events\Manager][events-manager] is essential for middleware to operate, so it has to be registered in our DI container.
 
@@ -1628,8 +1634,9 @@ Middleware can be attached to a micro application in 3 different events. Those a
 | `after`  | After the handler has been executed            |
 | `finish` | After the response has been sent to the caller |
 
-> **NOTE**: You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
 
 **before**
 
@@ -1691,8 +1698,9 @@ $app->after(
 ```
 In the above example, the handler returns an array of data. The `after` event calls `json_encode` on it, thus returning valid JSON.
 
-> **NOTE**: You will need to do a bit more work here to set the necessary headers for JSON. An alternative to the above code would be to use the Response object and `setJsonContent`
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    You will need to do a bit more work here to set the necessary headers for JSON. An alternative to the above code would be to use the Response object and `setJsonContent`
 
 **finish**
 
@@ -2170,8 +2178,9 @@ class RequestMiddleware implements MiddlewareInterface
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-> **NOTE**: We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.
 
 ```php
 <?php
@@ -2215,8 +2224,9 @@ class ResponseMiddleware implements MiddlewareInterface
 ### Models
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
-> **NOTE**: The relevant `db` service must be registered in your DI container.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The relevant `db` service must be registered in your DI container.
 
 ```php
 <?php
@@ -2329,8 +2339,9 @@ $app->get(
 );
 ```
 
-> **NOTE**: The above example uses the [Phalcon\Mvc\View\Simple][mvc-view-simple] component, which uses relative paths instead of controllers and actions. You can use the [Phalcon\Mvc\View][mvc-view] component instead, but to do so you will need to change the parameters passed to `render()`.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    The above example uses the [Phalcon\Mvc\View\Simple][mvc-view-simple] component, which uses relative paths instead of controllers and actions. You can use the [Phalcon\Mvc\View][mvc-view] component instead, but to do so you will need to change the parameters passed to `render()`.
 
 ```php
 <?php

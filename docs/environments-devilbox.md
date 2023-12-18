@@ -17,10 +17,11 @@ The following configuration will be used:
 | Database              | n.a.                                              |
 | `TLD_SUFFIX`          | loc                                               |
 | Project URL           | `http://my-phalcon.loc`, `https://my-phalcon.loc` |                          
- 
-> * Inside the Devilbox PHP container, projects are always in `/shared/httpd/`.
-> * On your host operating system, projects are by default in `./data/www/` inside the Devilbox git directory. This path can be changed via `HOST_PATH_HTTPD_DATADIR`.
-{: .alert .alert-info }
+
+!!! info "NOTE"
+
+    * Inside the Devilbox PHP container, projects are always in `/shared/httpd/`.
+    * On your host operating system, projects are by default in `./data/www/` inside the Devilbox git directory. This path can be changed via `HOST_PATH_HTTPD_DATADIR`.
 
 ## Activation
 
@@ -93,8 +94,9 @@ devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
 
 As you can see in the above listing, the `htdocs` folder that is required by the web server is now pointing to the entry point of your framework.
 
-> **NOTE**: When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
 
 ### DNS Record
 

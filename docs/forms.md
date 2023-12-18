@@ -126,8 +126,9 @@ public function __construct(
 ```
 Constructor. Accepts optionally an `entity` object which will be read internally. If the properties of the object contain properties that match the names of the elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](db-models.md) or even a `\stdClass`. The second parameter is `userOptions` an optional array with user defined data.
 
-> **NOTE**: If the form has the `initialize` method present, the constructor will call it automatically with the same parameters
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    If the form has the `initialize` method present, the constructor will call it automatically with the same parameters
 
 ```php
 <?php
@@ -320,8 +321,9 @@ The second optional parameter is `entity` (object). If passed, internally the co
 
 Once the `bind()` process finishes, the modified `entity` will be passed in the `beforeValidation` event (if events are enabled) and after that all the validators will be called on the form using the modified `entity` object. 
 
-> **NOTE**: Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, so as to keep a copy of the original object
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, so as to keep a copy of the original object
 
 ```php
 <?php
@@ -658,8 +660,9 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 
 These elements use the [Phalcon\Tag](tag.md) component transparently.
  
-> **NOTE**: For more information regarding HTML elements, you can check our [Tag document](tag.md)
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    For more information regarding HTML elements, you can check our [Tag document](tag.md)
 
 The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and` emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
  
@@ -708,8 +711,9 @@ $email->setFilters(
 $form->add($email);
 ```
 
-> **NOTE**: For more information regarding filters, you can check our [Filter document](filter.md)
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    For more information regarding filters, you can check our [Filter document](filter.md)
 
 ## Validation
 Phalcon forms are integrated with the [validation](validation.md) component to offer instant validation. Built-in or custom validators could be set to each element:

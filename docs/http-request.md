@@ -7,11 +7,13 @@
 
 This implementation has been created to establish a standard between middleware implementations. Applications often need to send requests to external endpoints. To achieve this you can use the [Phalcon\Http\Message\Request][http-message-request] object. In return, our application will receive back a response object. 
 
-> **NOTE** Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests.
-{: .alert .alert-info }
+!!! info "NOTE"
 
-> **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
-{: .alert .alert-info }
+    Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests.
+
+!!! info "NOTE"
+
+    In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
 
 ```php
 <?php

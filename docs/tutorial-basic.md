@@ -32,8 +32,9 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
         └── js
 ```
 
-> **NOTE**: Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the [installation](installation.md) page and complete the installation prior to continuing with this tutorial.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the [installation](installation.md) page and complete the installation prior to continuing with this tutorial.
 
 If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools.md) also. The DevTools leverage PHP's built-in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
 
@@ -99,8 +100,9 @@ Since Phalcon is loosely coupled, services are registered with the frameworks De
 
 Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection etc.
 
-> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler][injection]. Also we have [a great tutorial](di.md) covering many use cases.
-{: .alert .alert-warning }
+!!! warning "NOTE"
+
+    If you are still interested in the details please see this article by [Martin Fowler][injection]. Also we have [a great tutorial](di.md) covering many use cases.
 
 ### Factory Default
 The [Phalcon\Di\FactoryDefault][di-factorydefault] is a variant of [Phalcon\Di][di]. To make things easier, it will automatically register most of the components that are required by an application and come with Phalcon as standard. Although it is recommended to set up services manually, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault] container initially and later on customize it to fit your needs.
@@ -267,8 +269,9 @@ The controller classes must have the suffix `Controller` and controller actions 
 
 ![](assets/images/content/tutorial-basic-1.png)
 
-> **Congratulations, you are Phlying with Phalcon!**
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    **Congratulations, you are Phlying with Phalcon!**
 
 ## Sending Output to a View
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. 
@@ -341,8 +344,9 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 
 To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag.md) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector so we can use `$this->tag` to access its functionality. 
 
-> **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
 
 The [Phalcon\Tag](tag.md) component also uses the previously registered [Phalcon\Uri](url.md) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag.md).
 
@@ -460,8 +464,9 @@ class Users extends Model
 }
 ```
 
-> **NOTE**: Note that the public properties of the model correspond to the names of the fields in our table. 
-{: .alert .alert-info }
+!!! info "NOTE"
+
+    Note that the public properties of the model correspond to the names of the fields in our table. 
 
 ## Setting a Database Connection
 In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has, that can be used throughout our application:
@@ -581,8 +586,9 @@ class IndexController extends Controller
 }
 ```
 
-> **NOTE**: We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
-{: .alert .alert-info } 
+!!! info "NOTE"
+
+    We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
 
 In our view file `views/index/index.phtml` we can use the `$users` variable as follows:
 
