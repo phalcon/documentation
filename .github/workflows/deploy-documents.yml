@@ -69,5 +69,6 @@ jobs:
           mike deploy \
             --update-aliases \
             --branch production \
+            --push
             ${{ fromJson(steps.determine-versioning.outputs.data).version }} \
             ${{ fromJson(steps.determine-versioning.outputs.data).alias }}
