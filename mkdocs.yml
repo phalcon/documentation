@@ -147,6 +147,7 @@ nav:
         - Backtrace Generation: generating-backtrace.md
         - Reproducible Tests: reproducible-tests.md
         - Testing environment: testing-environment.md
+        - Coding Standard: coding-standard.md
       - Sponsoring: sponsors.md
   - Getting Started:
       - Installation: installation.md
