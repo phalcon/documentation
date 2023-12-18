@@ -2,7 +2,6 @@ name: Deploy Documents
 
 env:
   PYTHON_VERSION: "3.9"
-  DOCS_VERSION: "5.5"
 
 on:
   push:
@@ -56,7 +55,11 @@ jobs:
 #
       - name: Determine versioning parameters
         id: determine-versioning
-        run: echo 'data={"version":"${{ env.DOCS_VERSION }}", "alias":"latest"}' >> $GITHUB_OUTPUT
+        run: |
+          LINE=$(head -n 1 ./VERSION)
+          VERSION="${LINE%|*}"
+          ALIAS="${LINE#*|}"
+          echo 'data={"version":"$VERSION", "alias":"$ALIAS"}' >> $GITHUB_OUTPUT
 
       - name: Deploy
         if: fromJson(steps.determine-versioning.outputs.data).version != null
