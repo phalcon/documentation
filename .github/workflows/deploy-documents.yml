@@ -51,9 +51,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Create all generated documentation content
-        run: mkdocs build
-
+#      - name: Create all generated documentation content
+#        run: mkdocs build
+#
       - name: Determine versioning parameters
         id: determine-versioning
         run: echo 'data={"version":"${{ env.DOCS_VERSION }}", "alias":"latest"}' >> $GITHUB_OUTPUT
@@ -69,6 +69,6 @@ jobs:
           mike deploy \
             --update-aliases \
             --branch production \
-            --push
+            --push \
             ${{ fromJson(steps.determine-versioning.outputs.data).version }} \
             ${{ fromJson(steps.determine-versioning.outputs.data).alias }}
