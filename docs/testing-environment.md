@@ -30,6 +30,7 @@ git clone git@github.com:niden/cphalcon
 
 ## Build the environment
 Once you are in `cphalcon` folder (or wherever you cloned the repository), you will need to build the containers 
+
 ```bash
 docker compose build 
 ```
