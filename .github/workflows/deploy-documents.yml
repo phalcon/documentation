@@ -59,6 +59,7 @@ jobs:
           # Read the first line from the VERSION file
           DATA=$(head -n 1 ./VERSION)
           # Set the GitHub Actions environment variable
+          echo "data=${DATA}"
           echo "data=${DATA}" >> $GITHUB_ENV
 
       - name: Deploy
