@@ -65,10 +65,11 @@ jobs:
           # we let @phalconbot own these commits.
           git config user.name niden
           git config user.email nikos@niden.net
-          git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
           mike deploy \
             --update-aliases \
             --branch production \
-            --push \
             ${{ fromJson(steps.determine-versioning.outputs.data).version }} \
             ${{ fromJson(steps.determine-versioning.outputs.data).alias }}
+          git remote set-url origin \
+            https://x-access-token:${{ secrets.DOCS_PAT }}@github.com/${{ github.repository }}
+          git push
