@@ -57,10 +57,11 @@ jobs:
         id: determine-versioning
         run: |
           # Read the first line from the VERSION file
-          DATA=$(head -n 1 ./VERSION)
-          # Set the GitHub Actions environment variable
-          echo "data=${DATA}"
-          echo "data=${DATA}" >> $GITHUB_ENV
+          VER=$(head -n 1 ./VERSION)
+          DATA='data='
+          DATA+=$VER
+          echo ${DATA}
+          echo $DATA >> $GITHUB_ENV
 
       - name: Deploy
         if: fromJson(steps.determine-versioning.outputs.data).version != null
