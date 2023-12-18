@@ -57,18 +57,9 @@ jobs:
         id: determine-versioning
         run: |
           # Read the first line from the VERSION file
-          LINE=$(head -n 1 ./VERSION)
-  
-          # Extract version and alias using parameter expansion
-          VERSION="${LINE%%|*}"
-          ALIAS="${LINE#*|}"
-
-          # Print the extracted values for verification
-          echo "Version: $VERSION"
-          echo "Alias: $ALIAS"
-
+          DATA=$(head -n 1 ./VERSION)
           # Set the GitHub Actions environment variable
-          echo "data={\"version\":\"$VERSION\", \"alias\":\"$ALIAS\"}" >> $GITHUB_ENV
+          echo "data=${DATA}" >> $GITHUB_ENV
 
       - name: Deploy
         if: fromJson(steps.determine-versioning.outputs.data).version != null
