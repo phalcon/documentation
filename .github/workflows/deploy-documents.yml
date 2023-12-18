@@ -57,14 +57,21 @@ jobs:
         id: determine-versioning
         run: |
           # Read the first line from the VERSION file
-          VER=$(head -n 1 ./VERSION)
-          DATA='data='
-          DATA+=$VER
-          echo ${DATA}
-          echo $DATA >> $GITHUB_ENV
+          LINE=$(head -n 1 ./VERSION)
+          
+          # Extract version and alias using parameter expansion
+          VERSION="${LINE%%|*}"
+          ALIAS="${LINE#*|}"
+          
+          # Print the extracted values for verification
+          echo "Version: $VERSION"
+          echo "Alias: $ALIAS"
+          
+          echo "PH_DOCS_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "PH_DOCS_ALIAS=$ALIAS" >> $GITHUB_ENV
 
       - name: Deploy
-        if: fromJson(steps.determine-versioning.outputs.data).version != null
+        if: ${{ env.PH_DOCS_VERSION }} != null
         run: |
           # Publishing implies creating a git commit on the production branch, 
           # we let @phalconbot own these commits.
@@ -75,5 +82,5 @@ jobs:
             --update-aliases \
             --branch production \
             --push \
-            ${{ fromJson(steps.determine-versioning.outputs.data).version }} \
-            ${{ fromJson(steps.determine-versioning.outputs.data).alias }}
+            ${{ env.PH_DOCS_VERSION }} \
+            ${{ env.PH_DOCS_ALIAS }}
