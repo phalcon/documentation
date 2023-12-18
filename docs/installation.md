@@ -3,10 +3,10 @@
 
 ## Requirements
 
-### PHP 8.0
-Phalcon v5.5 supports only PHP 8.0 and above. 
+### PHP 7.4
+Phalcon v5 supports only PHP 7.4 and above. 
 
-Although PHP 8.0 has been released several years ago and its [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications. We will continue to support PHP 8.0 for v5 for another year. Phalcon v6 and later will support PHP 8.1+. 
+PHP 7.4 has been released 2 years ago and its [active support][php-support] was until November 2021, while security updates were until November 2022. Phalcon follows actively supported PHP versions, therefore support for PHP 7.4 will not be available in future versions. We will continue to support PHP 7.4 for v5 for another year, until September 2023. Phalcon v6 and later will support PHP 8.+. 
 
 !!! info "NOTE"
 
@@ -34,7 +34,9 @@ We have hosted our website and blog for the last few years on an Amazon VM with 
 
     You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 
-Along with PHP 8.0 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
+     The documentation below refers to the Phalcon 5.0.0 installation. Adjust your installation/commands to the version you want to install accordingly.
+
+Along with PHP 7.4 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
 
 * [curl][curl]
 * [fileinfo][fileinfo]
@@ -162,7 +164,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.5.0 ./
+git checkout tags/v5.4.0 ./
 zephir fullclean
 zephir build
 ```
@@ -187,7 +189,7 @@ After saving the setting, restart the daemon:
 Brew includes binary packages, so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
 
 #### Compilation requirements
-* PHP 8.x development resources
+* PHP 7.x (or 8.x) development resources
 * XCode
 
 #### Brew
@@ -236,6 +238,10 @@ The available DLLs are:
 
 | Architecture | Version | Type                  |
 |:------------:|:-------:|-----------------------|
+|     x64      |   7.x   | Thread safe           |
+|     x64      |   7.x   | Non Thread safe (NTS) |
+|     x86      |   7.x   | Thread safe           |
+|     x86      |   7.x   | Non Thread safe (NTS) |
 |     x64      |   8.x   | Thread safe           |
 |     x64      |   8.x   | Non Thread safe (NTS) |
 |     x86      |   8.x   | Thread safe           |
@@ -297,7 +303,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.5.0 ./
+git checkout tags/v5.4.0 ./
 zephir fullclean
 zephir build
 ```
@@ -322,7 +328,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.5.0 ./
+git checkout tags/v5.4.0 ./
 zephir fullclean
 zephir compile
 cd ext
@@ -335,7 +341,7 @@ If you use the above method you will need to add the `extension=phalcon.so` in y
 
 !!! warning "NOTE"
 
-    If you are installing Phalcon with PHP 8.+, the paths will vary slightly.
+    Paths may vary depending on your system and Phalcon version
 
 #### Tuning Build
 

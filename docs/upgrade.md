@@ -9,17 +9,17 @@ Phalcon v5 contains a lot of changes in components and interfaces. Upgrading is 
 We will outline the areas that you need to pay attention to and make necessary changes so that your code can run as smoothly as it has been with v4. Although the changes are significant, it is more of a methodical task than a daunting one.
 
 ## Requirements
-### PHP 8.0
-Phalcon v5 supports only PHP 8.0 and above. PHP 8.0 [active support][php-support] has already expired, including security fixes. We will be supporting this version for a while longer, offering developers more time to upgrade their applications.
+### PHP 7.4
+Phalcon v5 supports only PHP 7.4 and above. PHP 7.4 [active support][php-support] expired roughly a month before the release of Phalcon 5, but support for security patches etc. will continue until November 2022. After that time, we will drop support for PHP 7.4 also.
 
 Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
 
 ### Installation
 Phalcon can be installed using PECL.
 
-```
+```bash
 pecl install phalcon
-// pecl install phalcon-5.4.0
+// pecl install phalcon-5.3.0
 ```
 
 **Alternative installation**
