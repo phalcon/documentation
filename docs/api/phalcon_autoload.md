@@ -1,32 +1,63 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Autoload\Exception](#autoload-exception)
-* [Phalcon\Autoload\Loader](#autoload-loader)
+!!! info "NOTE"
 
-<h1 id="autoload-exception">Class Phalcon\Autoload\Exception</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Autoload/Exception.zep)
 
-| Namespace  | Phalcon\Autoload |
-| Extends    | \Exception |
+
+## Autoload\Exception 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exception.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Autoload`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Autoload will use this class
 
 
 
-<h1 id="autoload-loader">Class Phalcon\Autoload\Loader</h1>
+## Autoload\Loader 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Autoload/Loader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Loader.zep)
 
-| Namespace  | Phalcon\Autoload |
-| Uses       | Phalcon\Events\AbstractEventsAware |
-| Extends    | AbstractEventsAware |
+
+-   __Namespace__
+
+    - `Phalcon\Autoload`
+
+-   __Uses__
+    
+    - `Phalcon\Events\AbstractEventsAware`
+
+-   __Extends__
+    
+    `AbstractEventsAware`
+
+-   __Implements__
+    
 
 The Phalcon Autoloader provides an easy way to automatically load classes
 (namespaced or not) as well as files. It also features extension loading,
 allowing the user to autoload files with different extensions than .php.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string|null
@@ -85,7 +116,7 @@ protected namespaces;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( bool $isDebug = bool );

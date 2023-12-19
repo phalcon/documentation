@@ -1,85 +1,40 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Html\Attributes](#html-attributes)
-* [Phalcon\Html\Attributes\AttributesInterface](#html-attributes-attributesinterface)
-* [Phalcon\Html\Attributes\RenderInterface](#html-attributes-renderinterface)
-* [Phalcon\Html\Breadcrumbs](#html-breadcrumbs)
-* [Phalcon\Html\Escaper](#html-escaper)
-* [Phalcon\Html\Escaper\EscaperInterface](#html-escaper-escaperinterface)
-* [Phalcon\Html\Escaper\Exception](#html-escaper-exception)
-* [Phalcon\Html\EscaperFactory](#html-escaperfactory)
-* [Phalcon\Html\Exception](#html-exception)
-* [Phalcon\Html\Helper\AbstractHelper](#html-helper-abstracthelper)
-* [Phalcon\Html\Helper\AbstractList](#html-helper-abstractlist)
-* [Phalcon\Html\Helper\AbstractSeries](#html-helper-abstractseries)
-* [Phalcon\Html\Helper\Anchor](#html-helper-anchor)
-* [Phalcon\Html\Helper\Base](#html-helper-base)
-* [Phalcon\Html\Helper\Body](#html-helper-body)
-* [Phalcon\Html\Helper\Button](#html-helper-button)
-* [Phalcon\Html\Helper\Close](#html-helper-close)
-* [Phalcon\Html\Helper\Doctype](#html-helper-doctype)
-* [Phalcon\Html\Helper\Element](#html-helper-element)
-* [Phalcon\Html\Helper\Form](#html-helper-form)
-* [Phalcon\Html\Helper\Img](#html-helper-img)
-* [Phalcon\Html\Helper\Input\AbstractInput](#html-helper-input-abstractinput)
-* [Phalcon\Html\Helper\Input\Checkbox](#html-helper-input-checkbox)
-* [Phalcon\Html\Helper\Input\Color](#html-helper-input-color)
-* [Phalcon\Html\Helper\Input\Date](#html-helper-input-date)
-* [Phalcon\Html\Helper\Input\DateTime](#html-helper-input-datetime)
-* [Phalcon\Html\Helper\Input\DateTimeLocal](#html-helper-input-datetimelocal)
-* [Phalcon\Html\Helper\Input\Email](#html-helper-input-email)
-* [Phalcon\Html\Helper\Input\File](#html-helper-input-file)
-* [Phalcon\Html\Helper\Input\Hidden](#html-helper-input-hidden)
-* [Phalcon\Html\Helper\Input\Image](#html-helper-input-image)
-* [Phalcon\Html\Helper\Input\Input](#html-helper-input-input)
-* [Phalcon\Html\Helper\Input\Month](#html-helper-input-month)
-* [Phalcon\Html\Helper\Input\Numeric](#html-helper-input-numeric)
-* [Phalcon\Html\Helper\Input\Password](#html-helper-input-password)
-* [Phalcon\Html\Helper\Input\Radio](#html-helper-input-radio)
-* [Phalcon\Html\Helper\Input\Range](#html-helper-input-range)
-* [Phalcon\Html\Helper\Input\Search](#html-helper-input-search)
-* [Phalcon\Html\Helper\Input\Select](#html-helper-input-select)
-* [Phalcon\Html\Helper\Input\Submit](#html-helper-input-submit)
-* [Phalcon\Html\Helper\Input\Tel](#html-helper-input-tel)
-* [Phalcon\Html\Helper\Input\Text](#html-helper-input-text)
-* [Phalcon\Html\Helper\Input\Textarea](#html-helper-input-textarea)
-* [Phalcon\Html\Helper\Input\Time](#html-helper-input-time)
-* [Phalcon\Html\Helper\Input\Url](#html-helper-input-url)
-* [Phalcon\Html\Helper\Input\Week](#html-helper-input-week)
-* [Phalcon\Html\Helper\Label](#html-helper-label)
-* [Phalcon\Html\Helper\Link](#html-helper-link)
-* [Phalcon\Html\Helper\Meta](#html-helper-meta)
-* [Phalcon\Html\Helper\Ol](#html-helper-ol)
-* [Phalcon\Html\Helper\Script](#html-helper-script)
-* [Phalcon\Html\Helper\Style](#html-helper-style)
-* [Phalcon\Html\Helper\Title](#html-helper-title)
-* [Phalcon\Html\Helper\Ul](#html-helper-ul)
-* [Phalcon\Html\Link\AbstractLink](#html-link-abstractlink)
-* [Phalcon\Html\Link\AbstractLinkProvider](#html-link-abstractlinkprovider)
-* [Phalcon\Html\Link\EvolvableLink](#html-link-evolvablelink)
-* [Phalcon\Html\Link\EvolvableLinkProvider](#html-link-evolvablelinkprovider)
-* [Phalcon\Html\Link\Interfaces\EvolvableLinkInterface](#html-link-interfaces-evolvablelinkinterface)
-* [Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface](#html-link-interfaces-evolvablelinkproviderinterface)
-* [Phalcon\Html\Link\Interfaces\LinkInterface](#html-link-interfaces-linkinterface)
-* [Phalcon\Html\Link\Interfaces\LinkProviderInterface](#html-link-interfaces-linkproviderinterface)
-* [Phalcon\Html\Link\Link](#html-link-link)
-* [Phalcon\Html\Link\LinkProvider](#html-link-linkprovider)
-* [Phalcon\Html\Link\Serializer\Header](#html-link-serializer-header)
-* [Phalcon\Html\Link\Serializer\SerializerInterface](#html-link-serializer-serializerinterface)
-* [Phalcon\Html\TagFactory](#html-tagfactory)
+!!! info "NOTE"
 
-<h1 id="html-attributes">Class Phalcon\Html\Attributes</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Attributes.zep)
 
-| Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Support\Collection, Phalcon\Html\Attributes\RenderInterface |
-| Extends    | Collection |
-| Implements | RenderInterface |
+
+## Html\Attributes 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Attributes.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Attributes\RenderInterface`
+    - `Phalcon\Support\Collection`
+
+-   __Extends__
+    
+    `Collection`
+
+-   __Implements__
+    
+    - `RenderInterface`
 
 This class helps to work with HTML Attributes
 
 
-## Methods
+### Methods
 
 ```php
 public function __toString(): string;
@@ -101,19 +56,31 @@ protected function renderAttributes( array $attributes ): string;
 
 
 
-<h1 id="html-attributes-attributesinterface">Interface Phalcon\Html\Attributes\AttributesInterface</h1>
+## Html\Attributes\AttributesInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Attributes/AttributesInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Attributes/AttributesInterface.zep)
 
-| Namespace  | Phalcon\Html\Attributes |
-| Uses       | Phalcon\Html\Attributes |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Attributes`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Attributes`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 * Phalcon\Html\Attributes\AttributesInterface
 *
 * Interface Phalcon\Html\Attributes\AttributesInterface
 */
 
-## Methods
+### Methods
 
 ```php
 public function getAttributes(): Attributes;
@@ -129,18 +96,30 @@ Set Attributes
 
 
 
-<h1 id="html-attributes-renderinterface">Interface Phalcon\Html\Attributes\RenderInterface</h1>
+## Html\Attributes\RenderInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Attributes/RenderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Attributes/RenderInterface.zep)
 
-| Namespace  | Phalcon\Html\Attributes |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Attributes`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 * Phalcon\Html\Attributes\RenderInterface
 *
 * Interface Phalcon\Html\Attributes\RenderInterface
 */
 
-## Methods
+### Methods
 
 ```php
 public function render(): string;
@@ -150,12 +129,24 @@ Generate a string represetation
 
 
 
-<h1 id="html-breadcrumbs">Class Phalcon\Html\Breadcrumbs</h1>
+## Html\Breadcrumbs 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Breadcrumbs.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Breadcrumbs.zep)
 
-| Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Di\DiInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html`
+
+-   __Uses__
+    
+    - `Phalcon\Di\DiInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Html\Breadcrumbs
 
@@ -164,7 +155,7 @@ The resulting HTML when calling `render()` will have each breadcrumb enclosed
 in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
 
-## Properties
+### Properties
 ```php
 /**
  * Keeps all the breadcrumbs
@@ -189,7 +180,7 @@ private template = <dt><a href=\"%link%\">%label%</a></dt>;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function add( string $label, string $link = string ): Breadcrumbs;
@@ -258,13 +249,25 @@ Returns the internal breadcrumbs array
 
 
 
-<h1 id="html-escaper">Class Phalcon\Html\Escaper</h1>
+## Html\Escaper 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Escaper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper.zep)
 
-| Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Html\Escaper\EscaperInterface |
-| Implements | EscaperInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Escaper\EscaperInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `EscaperInterface`
 
 Phalcon\Html\Escaper
 
@@ -283,7 +286,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var bool
@@ -304,7 +307,7 @@ protected flags = 11;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function attributes( mixed $input ): string;
@@ -451,16 +454,28 @@ Proxy method for testing
 
 
 
-<h1 id="html-escaper-escaperinterface">Interface Phalcon\Html\Escaper\EscaperInterface</h1>
+## Html\Escaper\EscaperInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Escaper/EscaperInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/EscaperInterface.zep)
 
-| Namespace  | Phalcon\Html\Escaper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Html\Escaper
 
 
-## Methods
+### Methods
 
 ```php
 public function attributes( string $input ): string;
@@ -514,27 +529,51 @@ Escapes a URL. Internally uses rawurlencode
 
 
 
-<h1 id="html-escaper-exception">Class Phalcon\Html\Escaper\Exception</h1>
+## Html\Escaper\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Escaper/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/Exception.zep)
 
-| Namespace  | Phalcon\Html\Escaper |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Html\Escaper will use this class
 
 
 
-<h1 id="html-escaperfactory">Class Phalcon\Html\EscaperFactory</h1>
+## Html\EscaperFactory 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/EscaperFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/EscaperFactory.zep)
 
-| Namespace  | Phalcon\Html |
+
+-   __Namespace__
+
+    - `Phalcon\Html`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Class EscaperFactory
 
 
-## Methods
+### Methods
 
 ```php
 public function newInstance(): Escaper;
@@ -544,12 +583,24 @@ Create a new instance of the object
 
 
 
-<h1 id="html-exception">Class Phalcon\Html\Exception</h1>
+## Html\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exception.zep)
 
-| Namespace  | Phalcon\Html |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Html`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Html\Tag\Exception
 
@@ -557,14 +608,33 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 
 
 
-<h1 id="html-helper-abstracthelper">Abstract Class Phalcon\Html\Helper\AbstractHelper</h1>
+## Html\Helper\AbstractHelper ![Abstract](assets/images/abstract-green.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/AbstractHelper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/AbstractHelper.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Exception |
 
-## Properties
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+@property string           $delimiter
+@property EscaperInterface $escaper
+@property string           $indent
+@property int              $indentLevel
+
+
+### Properties
 ```php
 /**
  * @var string
@@ -588,7 +658,7 @@ protected indentLevel = 1;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( EscaperInterface $escaper );
@@ -653,18 +723,30 @@ Produces a self close tag i.e. <img />
 
 
 
-<h1 id="html-helper-abstractlist">Abstract Class Phalcon\Html\Helper\AbstractList</h1>
+## Html\Helper\AbstractList ![Abstract](assets/images/abstract-green.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/AbstractList.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/AbstractList.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class AbstractList
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
@@ -683,7 +765,7 @@ protected store;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $indent = string, string $delimiter = null, array $attributes = [] ): AbstractList;
@@ -705,14 +787,30 @@ Returns the tag name.
 
 
 
-<h1 id="html-helper-abstractseries">Abstract Class Phalcon\Html\Helper\AbstractSeries</h1>
+## Html\Helper\AbstractSeries ![Abstract](assets/images/abstract-green.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/AbstractSeries.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/AbstractSeries.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Extends    | AbstractHelper |
 
-## Properties
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
+
+@property array $attributes
+@property array $store
+
+
+### Properties
 ```php
 /**
  * @var array
@@ -726,7 +824,7 @@ protected store;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $indent = string, string $delimiter = null ): AbstractSeries;
@@ -741,6 +839,12 @@ Generates and returns the HTML for the list.
 
 
 ```php
+public function reset(): AbstractSeries;
+```
+Resets the internal store.
+
+
+```php
 abstract protected function getTag(): string;
 ```
 Returns the tag name.
@@ -748,18 +852,30 @@ Returns the tag name.
 
 
 
-<h1 id="html-helper-anchor">Class Phalcon\Html\Helper\Anchor</h1>
+## Html\Helper\Anchor 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Anchor.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Anchor.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Anchor
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $href, string $text, array $attributes = [], bool $raw = bool ): string;
@@ -775,18 +891,30 @@ protected function processAttributes( string $href, array $attributes ): array;
 
 
 
-<h1 id="html-helper-base">Class Phalcon\Html\Helper\Base</h1>
+## Html\Helper\Base 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Base.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Base.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Base
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $href = null, array $attributes = [] ): string;
@@ -796,18 +924,30 @@ Produce a `<base/>` tag.
 
 
 
-<h1 id="html-helper-body">Class Phalcon\Html\Helper\Body</h1>
+## Html\Helper\Body 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Body.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Body.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Body
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -817,18 +957,30 @@ Produce a `<body>` tag.
 
 
 
-<h1 id="html-helper-button">Class Phalcon\Html\Helper\Button</h1>
+## Html\Helper\Button 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Button.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Button.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Button
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $text, array $attributes = [], bool $raw = bool ): string;
@@ -838,17 +990,29 @@ Produce a `<button>` tag.
 
 
 
-<h1 id="html-helper-close">Class Phalcon\Html\Helper\Close</h1>
+## Html\Helper\Close 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Close.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Close.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Close
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $tag, bool $raw = bool ): string;
@@ -858,16 +1022,28 @@ Produce a `</...>` tag.
 
 
 
-<h1 id="html-helper-doctype">Class Phalcon\Html\Helper\Doctype</h1>
+## Html\Helper\Doctype 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Doctype.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Doctype.zep)
 
-| Namespace  | Phalcon\Html\Helper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Creates Doctype tags
 
 
-## Constants
+### Constants
 ```php
 const HTML32 = 1;
 const HTML401_FRAMESET = 4;
@@ -882,7 +1058,7 @@ const XHTML20 = 10;
 const XHTML5 = 11;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
@@ -896,7 +1072,7 @@ private flag;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct();
@@ -918,18 +1094,30 @@ public function __toString(): string;
 
 
 
-<h1 id="html-helper-element">Class Phalcon\Html\Helper\Element</h1>
+## Html\Helper\Element 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Element.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Element.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Element
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $tag, string $text, array $attributes = [], bool $raw = bool ): string;
@@ -939,18 +1127,30 @@ Produce a tag.
 
 
 
-<h1 id="html-helper-form">Class Phalcon\Html\Helper\Form</h1>
+## Html\Helper\Form 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Form.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Form.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Form
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -960,18 +1160,30 @@ Produce a `<form>` tag.
 
 
 
-<h1 id="html-helper-img">Class Phalcon\Html\Helper\Img</h1>
+## Html\Helper\Img 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Img.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Img.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Img
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $src, array $attributes = [] ): string;
@@ -981,17 +1193,34 @@ Produce a <img> tag.
 
 
 
-<h1 id="html-helper-input-abstractinput">Abstract Class Phalcon\Html\Helper\Input\AbstractInput</h1>
+## Html\Helper\Input\AbstractInput ![Abstract](assets/images/abstract-green.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/AbstractInput.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/AbstractInput.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Uses       | Phalcon\Html\Helper\AbstractHelper |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Helper\AbstractHelper`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class AbstractInput
 
-## Properties
+@property array  $attributes
+@property string $type
+@property string $value
+
+
+### Properties
 ```php
 /**
  * @var string
@@ -1005,7 +1234,7 @@ protected attributes;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $name, string $value = null, array $attributes = [] ): AbstractInput;
@@ -1027,17 +1256,32 @@ Sets the value of the element
 
 
 
-<h1 id="html-helper-input-checkbox">Class Phalcon\Html\Helper\Input\Checkbox</h1>
+## Html\Helper\Input\Checkbox 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Checkbox.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Checkbox.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Uses       | Phalcon\Html\Escaper\EscaperInterface |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Escaper\EscaperInterface`
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Checkbox
 
-## Properties
+@property array $label
+
+
+### Properties
 ```php
 /**
  * @var array
@@ -1051,7 +1295,7 @@ protected type = checkbox;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( EscaperInterface $escaper );
@@ -1073,17 +1317,29 @@ Attaches a label to the element
 
 
 
-<h1 id="html-helper-input-color">Class Phalcon\Html\Helper\Input\Color</h1>
+## Html\Helper\Input\Color 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Color.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Color.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Color
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = color;
@@ -1091,17 +1347,29 @@ protected type = color;
 ```
 
 
-<h1 id="html-helper-input-date">Class Phalcon\Html\Helper\Input\Date</h1>
+## Html\Helper\Input\Date 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Date.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Date.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Date
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = date;
@@ -1109,17 +1377,29 @@ protected type = date;
 ```
 
 
-<h1 id="html-helper-input-datetime">Class Phalcon\Html\Helper\Input\DateTime</h1>
+## Html\Helper\Input\DateTime 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/DateTime.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/DateTime.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class DateTime
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = datetime;
@@ -1127,17 +1407,29 @@ protected type = datetime;
 ```
 
 
-<h1 id="html-helper-input-datetimelocal">Class Phalcon\Html\Helper\Input\DateTimeLocal</h1>
+## Html\Helper\Input\DateTimeLocal 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/DateTimeLocal.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/DateTimeLocal.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class DateTimeLocal
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = datetime-local;
@@ -1145,17 +1437,29 @@ protected type = datetime-local;
 ```
 
 
-<h1 id="html-helper-input-email">Class Phalcon\Html\Helper\Input\Email</h1>
+## Html\Helper\Input\Email 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Email.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Email
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = email;
@@ -1163,17 +1467,29 @@ protected type = email;
 ```
 
 
-<h1 id="html-helper-input-file">Class Phalcon\Html\Helper\Input\File</h1>
+## Html\Helper\Input\File 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/File.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/File.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class File
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = file;
@@ -1181,17 +1497,29 @@ protected type = file;
 ```
 
 
-<h1 id="html-helper-input-hidden">Class Phalcon\Html\Helper\Input\Hidden</h1>
+## Html\Helper\Input\Hidden 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Hidden.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Hidden.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Hidden
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = hidden;
@@ -1199,17 +1527,29 @@ protected type = hidden;
 ```
 
 
-<h1 id="html-helper-input-image">Class Phalcon\Html\Helper\Input\Image</h1>
+## Html\Helper\Input\Image 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Image.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Image.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Image
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = image;
@@ -1217,17 +1557,29 @@ protected type = image;
 ```
 
 
-<h1 id="html-helper-input-input">Class Phalcon\Html\Helper\Input\Input</h1>
+## Html\Helper\Input\Input 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Input.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Input.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Input
 
 
-## Methods
+### Methods
 
 ```php
 public function setType( string $type ): AbstractInput;
@@ -1237,17 +1589,29 @@ Sets the type of the input
 
 
 
-<h1 id="html-helper-input-month">Class Phalcon\Html\Helper\Input\Month</h1>
+## Html\Helper\Input\Month 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Month.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Month.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Month
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = month;
@@ -1255,17 +1619,29 @@ protected type = month;
 ```
 
 
-<h1 id="html-helper-input-numeric">Class Phalcon\Html\Helper\Input\Numeric</h1>
+## Html\Helper\Input\Numeric 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Numeric.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Numeric.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Numeric
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = number;
@@ -1273,17 +1649,29 @@ protected type = number;
 ```
 
 
-<h1 id="html-helper-input-password">Class Phalcon\Html\Helper\Input\Password</h1>
+## Html\Helper\Input\Password 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Password.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Password.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Password
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = password;
@@ -1291,17 +1679,29 @@ protected type = password;
 ```
 
 
-<h1 id="html-helper-input-radio">Class Phalcon\Html\Helper\Input\Radio</h1>
+## Html\Helper\Input\Radio 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Radio.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Radio.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | Checkbox |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Checkbox`
+
+-   __Implements__
+    
 
 Class Radio
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
@@ -1311,17 +1711,29 @@ protected type = radio;
 ```
 
 
-<h1 id="html-helper-input-range">Class Phalcon\Html\Helper\Input\Range</h1>
+## Html\Helper\Input\Range 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Range.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Range.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Range
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = range;
@@ -1329,17 +1741,29 @@ protected type = range;
 ```
 
 
-<h1 id="html-helper-input-search">Class Phalcon\Html\Helper\Input\Search</h1>
+## Html\Helper\Input\Search 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Search.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Search.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Search
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = search;
@@ -1347,17 +1771,34 @@ protected type = search;
 ```
 
 
-<h1 id="html-helper-input-select">Class Phalcon\Html\Helper\Input\Select</h1>
+## Html\Helper\Input\Select 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Select.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Uses       | Phalcon\Html\Helper\AbstractList |
-| Extends    | AbstractList |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Helper\AbstractList`
+
+-   __Extends__
+    
+    `AbstractList`
+
+-   __Implements__
+    
 
 Class Select
 
-## Properties
+@property string $elementTag
+@property bool   $inOptGroup
+@property string $selected
+
+
+### Properties
 ```php
 /**
  * @var string
@@ -1376,7 +1817,7 @@ protected selected = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function add( string $text, string $value = null, array $attributes = [], bool $raw = bool ): Select;
@@ -1422,17 +1863,29 @@ protected function optGroupStart( string $label, array $attributes ): string;
 
 
 
-<h1 id="html-helper-input-submit">Class Phalcon\Html\Helper\Input\Submit</h1>
+## Html\Helper\Input\Submit 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Submit.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Submit.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Submit
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = submit;
@@ -1440,17 +1893,29 @@ protected type = submit;
 ```
 
 
-<h1 id="html-helper-input-tel">Class Phalcon\Html\Helper\Input\Tel</h1>
+## Html\Helper\Input\Tel 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Tel.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Tel.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Tel
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = tel;
@@ -1458,29 +1923,53 @@ protected type = tel;
 ```
 
 
-<h1 id="html-helper-input-text">Class Phalcon\Html\Helper\Input\Text</h1>
+## Html\Helper\Input\Text 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Text.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Text
 
 
 
-<h1 id="html-helper-input-textarea">Class Phalcon\Html\Helper\Input\Textarea</h1>
+## Html\Helper\Input\Textarea 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Textarea.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Textarea.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Textarea
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
@@ -1489,7 +1978,7 @@ protected type = textarea;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __toString();
@@ -1499,17 +1988,29 @@ Returns the HTML for the input.
 
 
 
-<h1 id="html-helper-input-time">Class Phalcon\Html\Helper\Input\Time</h1>
+## Html\Helper\Input\Time 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Time.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Time.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Time
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = time;
@@ -1517,17 +2018,29 @@ protected type = time;
 ```
 
 
-<h1 id="html-helper-input-url">Class Phalcon\Html\Helper\Input\Url</h1>
+## Html\Helper\Input\Url 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Url.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Url
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = url;
@@ -1535,17 +2048,29 @@ protected type = url;
 ```
 
 
-<h1 id="html-helper-input-week">Class Phalcon\Html\Helper\Input\Week</h1>
+## Html\Helper\Input\Week 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Input/Week.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Week.zep)
 
-| Namespace  | Phalcon\Html\Helper\Input |
-| Extends    | AbstractInput |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
 
 Class Week
 
 
-## Properties
+### Properties
 ```php
 //
 protected type = week;
@@ -1553,18 +2078,30 @@ protected type = week;
 ```
 
 
-<h1 id="html-helper-label">Class Phalcon\Html\Helper\Label</h1>
+## Html\Helper\Label 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Label.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Label.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Label
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $label, array $attributes = [], bool $raw = bool ): string;
@@ -1574,17 +2111,29 @@ Produce a `<label>` tag.
 
 
 
-<h1 id="html-helper-link">Class Phalcon\Html\Helper\Link</h1>
+## Html\Helper\Link 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Link.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Link.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Extends    | Style |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Style`
+
+-   __Implements__
+    
 
 Creates <link> tags
 
 
-## Methods
+### Methods
 
 ```php
 public function add( string $url, array $attributes = [] );
@@ -1606,18 +2155,30 @@ protected function getTag(): string;
 
 
 
-<h1 id="html-helper-meta">Class Phalcon\Html\Helper\Meta</h1>
+## Html\Helper\Meta 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Meta.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Meta.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractSeries |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractSeries`
+
+-   __Implements__
+    
 
 Class Meta
 
 
-## Methods
+### Methods
 
 ```php
 public function add( array $attributes = [] ): Meta;
@@ -1651,17 +2212,29 @@ protected function getTag(): string;
 
 
 
-<h1 id="html-helper-ol">Class Phalcon\Html\Helper\Ol</h1>
+## Html\Helper\Ol 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Ol.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Ol.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Extends    | AbstractList |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractList`
+
+-   __Implements__
+    
 
 Class Ol
 
 
-## Methods
+### Methods
 
 ```php
 public function add( string $text, array $attributes = [], bool $raw = bool ): AbstractList;
@@ -1677,18 +2250,30 @@ protected function getTag(): string;
 
 
 
-<h1 id="html-helper-script">Class Phalcon\Html\Helper\Script</h1>
+## Html\Helper\Script 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Script.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Script.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractSeries |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractSeries`
+
+-   __Implements__
+    
 
 Class Script
 
 
-## Methods
+### Methods
 
 ```php
 public function add( string $url, array $attributes = [] );
@@ -1710,18 +2295,30 @@ protected function getTag(): string;
 
 
 
-<h1 id="html-helper-style">Class Phalcon\Html\Helper\Style</h1>
+## Html\Helper\Style 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Style.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Style.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractSeries |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractSeries`
+
+-   __Implements__
+    
 
 Class Style
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var bool
@@ -1730,7 +2327,7 @@ private isStyle = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function add( string $url, array $attributes = [] );
@@ -1758,17 +2355,37 @@ protected function getTag(): string;
 
 
 
-<h1 id="html-helper-title">Class Phalcon\Html\Helper\Title</h1>
+## Html\Helper\Title 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Title.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Title.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception |
-| Extends    | AbstractHelper |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
 
 Class Title
 
-## Properties
+@property array  $append
+@property string $delimiter
+@property string $indent
+@property array  $prepend
+@property string $title
+@property string $separator
+
+
+### Properties
 ```php
 /**
  * @var array
@@ -1792,7 +2409,7 @@ protected separator = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $indent = string, string $delimiter = null ): Title;
@@ -1838,17 +2455,29 @@ Sets the separator
 
 
 
-<h1 id="html-helper-ul">Class Phalcon\Html\Helper\Ul</h1>
+## Html\Helper\Ul 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Helper/Ul.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Ul.zep)
 
-| Namespace  | Phalcon\Html\Helper |
-| Extends    | Ol |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Ol`
+
+-   __Implements__
+    
 
 Class Ul
 
 
-## Methods
+### Methods
 
 ```php
 protected function getTag(): string;
@@ -1858,14 +2487,32 @@ protected function getTag(): string;
 
 
 
-<h1 id="html-link-abstractlink">Abstract Class Phalcon\Html\Link\AbstractLink</h1>
+## Html\Link\AbstractLink ![Abstract](assets/images/abstract-green.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/AbstractLink.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/AbstractLink.zep)
 
-| Namespace  | Phalcon\Html\Link |
-| Uses       | Phalcon\Support\Collection |
 
-## Properties
+-   __Namespace__
+
+    - `Phalcon\Html\Link`
+
+-   __Uses__
+    
+    - `Phalcon\Support\Collection`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+@property array  $attributes
+@property string $href
+@property array  $rels
+@property bool   $templated
+
+
+### Properties
 ```php
 /**
  * @var Collection
@@ -1889,7 +2536,7 @@ protected templated = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $rel = string, string $href = string, array $attributes = [] );
@@ -1972,14 +2619,29 @@ Determines if a href is a templated link or not.
 
 
 
-<h1 id="html-link-abstractlinkprovider">Abstract Class Phalcon\Html\Link\AbstractLinkProvider</h1>
+## Html\Link\AbstractLinkProvider ![Abstract](assets/images/abstract-green.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/AbstractLinkProvider.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/AbstractLinkProvider.zep)
 
-| Namespace  | Phalcon\Html\Link |
-| Uses       | Phalcon\Html\Link\Interfaces\LinkInterface |
 
-## Properties
+-   __Namespace__
+
+    - `Phalcon\Html\Link`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Link\Interfaces\LinkInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+@property array $links
+
+
+### Properties
 ```php
 /**
  * @var array
@@ -1988,7 +2650,7 @@ protected links;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $links = [] );
@@ -2044,18 +2706,36 @@ Returns the object hash key
 
 
 
-<h1 id="html-link-evolvablelink">Class Phalcon\Html\Link\EvolvableLink</h1>
+## Html\Link\EvolvableLink 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/EvolvableLink.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/EvolvableLink.zep)
 
-| Namespace  | Phalcon\Html\Link |
-| Uses       | Phalcon\Html\Link\Interfaces\EvolvableLinkInterface |
-| Extends    | Link |
-| Implements | EvolvableLinkInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
+
+-   __Extends__
+    
+    `Link`
+
+-   __Implements__
+    
+    - `EvolvableLinkInterface`
 
 Class Phalcon\Http\Link\EvolvableLink
 
-## Methods
+@property array  attributes
+@property string href
+@property array  rels
+@property bool   templated
+
+
+### Methods
 
 ```php
 public function withAttribute( mixed $attribute, mixed $value ): EvolvableLinkInterface;
@@ -2101,18 +2781,34 @@ normally without errors.
 
 
 
-<h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
+## Html\Link\EvolvableLinkProvider 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/EvolvableLinkProvider.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/EvolvableLinkProvider.zep)
 
-| Namespace  | Phalcon\Html\Link |
-| Uses       | Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface, Phalcon\Html\Link\Interfaces\LinkInterface |
-| Extends    | LinkProvider |
-| Implements | EvolvableLinkProviderInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`
+    - `Phalcon\Html\Link\Interfaces\LinkInterface`
+
+-   __Extends__
+    
+    `LinkProvider`
+
+-   __Implements__
+    
+    - `EvolvableLinkProviderInterface`
 
 Class Phalcon\Http\Link\LinkProvider
 
-## Methods
+@property LinkInterface[] links
+
+
+### Methods
 
 ```php
 public function withLink( LinkInterface $link ): EvolvableLinkProviderInterface;
@@ -2136,17 +2832,29 @@ object already in the collection.
 
 
 
-<h1 id="html-link-interfaces-evolvablelinkinterface">Interface Phalcon\Html\Link\Interfaces\EvolvableLinkInterface</h1>
+## Html\Link\Interfaces\EvolvableLinkInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/Interfaces/EvolvableLinkInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/EvolvableLinkInterface.zep)
 
-| Namespace  | Phalcon\Html\Link\Interfaces |
-| Extends    | LinkInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link\Interfaces`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `LinkInterface`
+
+-   __Implements__
+    
 
 An evolvable link value object.
 
 
-## Methods
+### Methods
 
 ```php
 public function withAttribute( string $attribute, string $value ): EvolvableLinkInterface;
@@ -2192,17 +2900,29 @@ normally without errors.
 
 
 
-<h1 id="html-link-interfaces-evolvablelinkproviderinterface">Interface Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface</h1>
+## Html\Link\Interfaces\EvolvableLinkProviderInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/Interfaces/EvolvableLinkProviderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/EvolvableLinkProviderInterface.zep)
 
-| Namespace  | Phalcon\Html\Link\Interfaces |
-| Extends    | LinkProviderInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link\Interfaces`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `LinkProviderInterface`
+
+-   __Implements__
+    
 
 An evolvable link provider value object.
 
 
-## Methods
+### Methods
 
 ```php
 public function withLink( LinkInterface $link ): EvolvableLinkProviderInterface;
@@ -2226,16 +2946,28 @@ object already in the collection.
 
 
 
-<h1 id="html-link-interfaces-linkinterface">Interface Phalcon\Html\Link\Interfaces\LinkInterface</h1>
+## Html\Link\Interfaces\LinkInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/Interfaces/LinkInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/LinkInterface.zep)
 
-| Namespace  | Phalcon\Html\Link\Interfaces |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link\Interfaces`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 A readable link object.
 
 
-## Methods
+### Methods
 
 ```php
 public function getAttributes(): array;
@@ -2274,16 +3006,28 @@ Returns whether this is a templated link.
 
 
 
-<h1 id="html-link-interfaces-linkproviderinterface">Interface Phalcon\Html\Link\Interfaces\LinkProviderInterface</h1>
+## Html\Link\Interfaces\LinkProviderInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/Interfaces/LinkProviderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/LinkProviderInterface.zep)
 
-| Namespace  | Phalcon\Html\Link\Interfaces |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link\Interfaces`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 A link provider object.
 
 
-## Methods
+### Methods
 
 ```php
 public function getLinks(): array;
@@ -2300,18 +3044,38 @@ relationship.
 
 
 
-<h1 id="html-link-link">Class Phalcon\Html\Link\Link</h1>
+## Html\Link\Link 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/Link.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Link.zep)
 
-| Namespace  | Phalcon\Html\Link |
-| Uses       | Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Html\Link\Interfaces\LinkInterface |
-| Extends    | AbstractLink |
-| Implements | LinkInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Link\Interfaces\LinkInterface`
+    - `Phalcon\Support\Collection`
+    - `Phalcon\Support\Collection\CollectionInterface`
+
+-   __Extends__
+    
+    `AbstractLink`
+
+-   __Implements__
+    
+    - `LinkInterface`
 
 Class Phalcon\Http\Link\Link
 
-## Methods
+@property array  attributes
+@property string href
+@property array  rels
+@property bool   templated
+
+
+### Methods
 
 ```php
 public function getAttributes(): array;
@@ -2350,16 +3114,32 @@ Returns whether or not this is a templated link.
 
 
 
-<h1 id="html-link-linkprovider">Class Phalcon\Html\Link\LinkProvider</h1>
+## Html\Link\LinkProvider 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/LinkProvider.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/LinkProvider.zep)
 
-| Namespace  | Phalcon\Html\Link |
-| Uses       | Phalcon\Html\Link\Interfaces\LinkInterface, Phalcon\Html\Link\Interfaces\LinkProviderInterface |
-| Extends    | AbstractLinkProvider |
-| Implements | LinkProviderInterface |
 
-## Methods
+-   __Namespace__
+
+    - `Phalcon\Html\Link`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Link\Interfaces\LinkInterface`
+    - `Phalcon\Html\Link\Interfaces\LinkProviderInterface`
+
+-   __Extends__
+    
+    `AbstractLinkProvider`
+
+-   __Implements__
+    
+    - `LinkProviderInterface`
+
+@property LinkInterface[] links
+
+
+### Methods
 
 ```php
 public function getLinks(): array;
@@ -2383,17 +3163,29 @@ MUST be returned.
 
 
 
-<h1 id="html-link-serializer-header">Class Phalcon\Html\Link\Serializer\Header</h1>
+## Html\Link\Serializer\Header 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/Serializer/Header.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Serializer/Header.zep)
 
-| Namespace  | Phalcon\Html\Link\Serializer |
-| Implements | SerializerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link\Serializer`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SerializerInterface`
 
 Class Phalcon\Http\Link\Serializer\Header
 
 
-## Methods
+### Methods
 
 ```php
 public function serialize( array $links ): string | null;
@@ -2403,16 +3195,28 @@ Serializes all the passed links to a HTTP link header
 
 
 
-<h1 id="html-link-serializer-serializerinterface">Interface Phalcon\Html\Link\Serializer\SerializerInterface</h1>
+## Html\Link\Serializer\SerializerInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/Link/Serializer/SerializerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Serializer/SerializerInterface.zep)
 
-| Namespace  | Phalcon\Html\Link\Serializer |
+
+-   __Namespace__
+
+    - `Phalcon\Html\Link\Serializer`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Class Phalcon\Http\Link\Serializer\SerializerInterface
 
 
-## Methods
+### Methods
 
 ```php
 public function serialize( array $links ): string | null;
@@ -2422,13 +3226,58 @@ Serializer method
 
 
 
-<h1 id="html-tagfactory">Class Phalcon\Html\TagFactory</h1>
+## Html\TagFactory 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Html/TagFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/TagFactory.zep)
 
-| Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Helper\Doctype, Phalcon\Html\Helper\Input\Checkbox, Phalcon\Html\Helper\Input\Color, Phalcon\Html\Helper\Input\Date, Phalcon\Html\Helper\Input\DateTime, Phalcon\Html\Helper\Input\DateTimeLocal, Phalcon\Html\Helper\Input\Email, Phalcon\Html\Helper\Input\File, Phalcon\Html\Helper\Input\Hidden, Phalcon\Html\Helper\Input\Image, Phalcon\Html\Helper\Input\Input, Phalcon\Html\Helper\Input\Month, Phalcon\Html\Helper\Input\Numeric, Phalcon\Html\Helper\Input\Password, Phalcon\Html\Helper\Input\Radio, Phalcon\Html\Helper\Input\Range, Phalcon\Html\Helper\Input\Search, Phalcon\Html\Helper\Input\Select, Phalcon\Html\Helper\Input\Submit, Phalcon\Html\Helper\Input\Tel, Phalcon\Html\Helper\Input\Text, Phalcon\Html\Helper\Input\Textarea, Phalcon\Html\Helper\Input\Time, Phalcon\Html\Helper\Input\Url, Phalcon\Html\Helper\Input\Week, Phalcon\Html\Helper\Meta, Phalcon\Html\Helper\Ol, Phalcon\Html\Helper\Script, Phalcon\Html\Helper\Style, Phalcon\Html\Helper\Title, Phalcon\Html\Helper\Ul, Phalcon\Html\Link\Link |
-| Extends    | AbstractFactory |
+
+-   __Namespace__
+
+    - `Phalcon\Html`
+
+-   __Uses__
+    
+    - `Phalcon\Factory\AbstractFactory`
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Helper\Doctype`
+    - `Phalcon\Html\Helper\Input\Checkbox`
+    - `Phalcon\Html\Helper\Input\Color`
+    - `Phalcon\Html\Helper\Input\Date`
+    - `Phalcon\Html\Helper\Input\DateTime`
+    - `Phalcon\Html\Helper\Input\DateTimeLocal`
+    - `Phalcon\Html\Helper\Input\Email`
+    - `Phalcon\Html\Helper\Input\File`
+    - `Phalcon\Html\Helper\Input\Hidden`
+    - `Phalcon\Html\Helper\Input\Image`
+    - `Phalcon\Html\Helper\Input\Input`
+    - `Phalcon\Html\Helper\Input\Month`
+    - `Phalcon\Html\Helper\Input\Numeric`
+    - `Phalcon\Html\Helper\Input\Password`
+    - `Phalcon\Html\Helper\Input\Radio`
+    - `Phalcon\Html\Helper\Input\Range`
+    - `Phalcon\Html\Helper\Input\Search`
+    - `Phalcon\Html\Helper\Input\Select`
+    - `Phalcon\Html\Helper\Input\Submit`
+    - `Phalcon\Html\Helper\Input\Tel`
+    - `Phalcon\Html\Helper\Input\Text`
+    - `Phalcon\Html\Helper\Input\Textarea`
+    - `Phalcon\Html\Helper\Input\Time`
+    - `Phalcon\Html\Helper\Input\Url`
+    - `Phalcon\Html\Helper\Input\Week`
+    - `Phalcon\Html\Helper\Meta`
+    - `Phalcon\Html\Helper\Ol`
+    - `Phalcon\Html\Helper\Script`
+    - `Phalcon\Html\Helper\Style`
+    - `Phalcon\Html\Helper\Title`
+    - `Phalcon\Html\Helper\Ul`
+    - `Phalcon\Html\Link\Link`
+
+-   __Extends__
+    
+    `AbstractFactory`
+
+-   __Implements__
+    
 
 ServiceLocator implementation for Tag helpers.
 
@@ -2438,7 +3287,53 @@ the object.
 
 The class implements `__call()` to allow calling helper objects as methods.
 
-## Properties
+@property EscaperInterface $escaper
+@property array            $services
+
+@method string        a(string $href, string $text, array $attributes = [], bool $raw = false)
+@method string        base(string $href, array $attributes = [])
+@method string        body(array $attributes = [])
+@method string        button(string $text, array $attributes = [], bool $raw = false)
+@method string        close(string $tag, bool $raw = false)
+@method Doctype       doctype(int $flag, string $delimiter)
+@method string        element(string $tag, string $text, array $attributes = [], bool $raw = false)
+@method string        form(array $attributes = [])
+@method string        img(string $src, array $attributes = [])
+@method Checkbox      inputCheckbox(string $name, string $value = null, array $attributes = [])
+@method Color         inputColor(string $name, string $value = null, array $attributes = [])
+@method Date          inputDate(string $name, string $value = null, array $attributes = [])
+@method DateTime      inputDateTime(string $name, string $value = null, array $attributes = [])
+@method DateTimeLocal inputDateTimeLocal(string $name, string $value = null, array $attributes = [])
+@method Email         inputEmail(string $name, string $value = null, array $attributes = [])
+@method File          inputFile(string $name, string $value = null, array $attributes = [])
+@method Hidden        inputHidden(string $name, string $value = null, array $attributes = [])
+@method Image         inputImage(string $name, string $value = null, array $attributes = [])
+@method Input         inputInput(string $name, string $value = null, array $attributes = [])
+@method Month         inputMonth(string $name, string $value = null, array $attributes = [])
+@method Numeric       inputNumeric(string $name, string $value = null, array $attributes = [])
+@method Password      inputPassword(string $name, string $value = null, array $attributes = [])
+@method Radio         inputRadio(string $name, string $value = null, array $attributes = [])
+@method Range         inputRange(string $name, string $value = null, array $attributes = [])
+@method Search        inputSearch(string $name, string $value = null, array $attributes = [])
+@method Select        inputSelect(string $name, string $value = null, array $attributes = [])
+@method Submit        inputSubmit(string $name, string $value = null, array $attributes = [])
+@method Tel           inputTel(string $name, string $value = null, array $attributes = [])
+@method Text          inputText(string $name, string $value = null, array $attributes = [])
+@method Textarea      inputTextarea(string $name, string $value = null, array $attributes = [])
+@method Time          inputTime(string $name, string $value = null, array $attributes = [])
+@method Url           inputUrl(string $name, string $value = null, array $attributes = [])
+@method Week          inputWeek(string $name, string $value = null, array $attributes = [])
+@method string        label(string $label, array $attributes = [], bool $raw = false)
+@method Link          link(string $indent = '    ', string $delimiter = PHP_EOL)
+@method Meta          meta(string $indent = '    ', string $delimiter = PHP_EOL)
+@method Ol            ol(string $text, array $attributes = [], bool $raw = false)
+@method Script        script(string $indent = '    ', string $delimiter = PHP_EOL)
+@method Style         style(string $indent = '    ', string $delimiter = PHP_EOL)
+@method Title         title(string $indent = '    ', string $delimiter = PHP_EOL)
+@method Ul            ul(string $text, array $attributes = [], bool $raw = false)
+
+
+### Properties
 ```php
 /**
  * @var EscaperInterface
@@ -2452,7 +3347,7 @@ protected services;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __call( string $name, array $arguments );

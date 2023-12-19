@@ -1,29 +1,42 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Cli\Console](#cli-console)
-* [Phalcon\Cli\Console\Exception](#cli-console-exception)
-* [Phalcon\Cli\Dispatcher](#cli-dispatcher)
-* [Phalcon\Cli\Dispatcher\Exception](#cli-dispatcher-exception)
-* [Phalcon\Cli\DispatcherInterface](#cli-dispatcherinterface)
-* [Phalcon\Cli\Router](#cli-router)
-* [Phalcon\Cli\Router\Exception](#cli-router-exception)
-* [Phalcon\Cli\Router\Route](#cli-router-route)
-* [Phalcon\Cli\Router\RouteInterface](#cli-router-routeinterface)
-* [Phalcon\Cli\RouterInterface](#cli-routerinterface)
-* [Phalcon\Cli\Task](#cli-task)
-* [Phalcon\Cli\TaskInterface](#cli-taskinterface)
+!!! info "NOTE"
 
-<h1 id="cli-console">Class Phalcon\Cli\Console</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Console.zep)
 
-| Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface |
-| Extends    | AbstractApplication |
+
+## Cli\Console 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli`
+
+-   __Uses__
+    
+    - `Phalcon\Application\AbstractApplication`
+    - `Phalcon\Cli\Console\Exception`
+    - `Phalcon\Cli\Router\Route`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Events\ManagerInterface`
+
+-   __Extends__
+    
+    `AbstractApplication`
+
+-   __Implements__
+    
 
 This component allows to create CLI applications using Phalcon
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
@@ -37,7 +50,7 @@ protected options;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function handle( array $arguments = null );
@@ -53,25 +66,52 @@ Set an specific argument
 
 
 
-<h1 id="cli-console-exception">Class Phalcon\Cli\Console\Exception</h1>
+## Cli\Console\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Console/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exception.zep)
 
-| Namespace  | Phalcon\Cli\Console |
-| Extends    | \Phalcon\Application\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Console`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Phalcon\Application\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Cli\Console will use this class
 
 
 
-<h1 id="cli-dispatcher">Class Phalcon\Cli\Dispatcher</h1>
+## Cli\Dispatcher 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Dispatcher.zep)
 
-| Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Cli\Dispatcher\Exception, Phalcon\Dispatcher\AbstractDispatcher, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface |
-| Extends    | CliDispatcher |
-| Implements | DispatcherInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Cli`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Dispatcher\Exception`
+    - `Phalcon\Dispatcher\AbstractDispatcher`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Filter\FilterInterface`
+
+-   __Extends__
+    
+    `CliDispatcher`
+
+-   __Implements__
+    
+    - `DispatcherInterface`
 
 Dispatching is the process of taking the command-line arguments, extracting
 the module name, task name, action name, and optional parameters contained in
@@ -95,7 +135,7 @@ $handle = $dispatcher->dispatch();
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected defaultHandler = main;
@@ -117,7 +157,7 @@ protected options;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] ): mixed;
@@ -205,29 +245,53 @@ Throws an internal exception
 
 
 
-<h1 id="cli-dispatcher-exception">Class Phalcon\Cli\Dispatcher\Exception</h1>
+## Cli\Dispatcher\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Dispatcher/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Dispatcher/Exception.zep)
 
-| Namespace  | Phalcon\Cli\Dispatcher |
-| Extends    | \Phalcon\Dispatcher\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Dispatcher`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Phalcon\Dispatcher\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 
 
 
-<h1 id="cli-dispatcherinterface">Interface Phalcon\Cli\DispatcherInterface</h1>
+## Cli\DispatcherInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/DispatcherInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/DispatcherInterface.zep)
 
-| Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Dispatcher\DispatcherInterface |
-| Extends    | DispatcherInterfaceBase |
+
+-   __Namespace__
+
+    - `Phalcon\Cli`
+
+-   __Uses__
+    
+    - `Phalcon\Dispatcher\DispatcherInterface`
+
+-   __Extends__
+    
+    `DispatcherInterfaceBase`
+
+-   __Implements__
+    
 
 Interface for Phalcon\Cli\Dispatcher
 
 
-## Methods
+### Methods
 
 ```php
 public function getActiveTask(): TaskInterface;
@@ -285,13 +349,29 @@ Sets the default task suffix
 
 
 
-<h1 id="cli-router">Class Phalcon\Cli\Router</h1>
+## Cli\Router 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Router.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router.zep)
 
-| Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception, Phalcon\Cli\Router\RouteInterface |
-| Extends    | AbstractInjectionAware |
+
+-   __Namespace__
+
+    - `Phalcon\Cli`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Router\Exception`
+    - `Phalcon\Cli\Router\Route`
+    - `Phalcon\Cli\Router\RouteInterface`
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process
 of taking a command-line arguments and decomposing it into parameters to
@@ -313,22 +393,22 @@ echo $router->getTaskName();
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
- * @var string|null
+ * @var string
  */
-protected action;
-
-/**
- * @var string|null
- */
-protected defaultAction;
+protected action = ;
 
 /**
  * @var string
  */
-protected defaultModule = "";
+protected defaultAction = ;
+
+/**
+ * @var string
+ */
+protected defaultModule = ;
 
 /**
  * @var array
@@ -336,9 +416,9 @@ protected defaultModule = "";
 protected defaultParams;
 
 /**
- * @var string|null
+ * @var string
  */
-protected defaultTask;
+protected defaultTask = ;
 
 /**
  * @var RouteInterface|null
@@ -353,7 +433,7 @@ protected matches;
 /**
  * @var string
  */
-protected module = "";
+protected module = ;
 
 /**
  * @var array
@@ -366,9 +446,9 @@ protected params;
 protected routes;
 
 /**
- * @var string|null
+ * @var string
  */
-protected task;
+protected task = ;
 
 /**
  * @var bool
@@ -377,7 +457,7 @@ protected wasMatched = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( bool $defaultRoutes = bool );
@@ -506,33 +586,57 @@ Checks if the router matches any of the defined routes
 
 
 
-<h1 id="cli-router-exception">Class Phalcon\Cli\Router\Exception</h1>
+## Cli\Router\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Router/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exception.zep)
 
-| Namespace  | Phalcon\Cli\Router |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Cli\Router will use this class
 
 
 
-<h1 id="cli-router-route">Class Phalcon\Cli\Router\Route</h1>
+## Cli\Router\Route 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Router/Route.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Route.zep)
 
-| Namespace  | Phalcon\Cli\Router |
-| Implements | RouteInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `RouteInterface`
 
 This class represents every route added to the router
 
 
-## Constants
+### Constants
 ```php
 const DEFAULT_DELIMITER =  ;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var mixed|null
@@ -540,9 +644,9 @@ const DEFAULT_DELIMITER =  ;
 protected beforeMatch;
 
 /**
- * @var string|null
+ * @var string
  */
-protected compiledPattern;
+protected compiledPattern = ;
 
 /**
  * @var array
@@ -560,9 +664,9 @@ protected delimiter;
 protected static delimiterPath;
 
 /**
- * @var string|null
+ * @var string
  */
-protected description;
+protected description = ;
 
 /**
  * @var string
@@ -572,7 +676,7 @@ protected routeId;
 /**
  * @var string
  */
-protected name;
+protected name = ;
 
 /**
  * @var array
@@ -582,16 +686,16 @@ protected paths;
 /**
  * @var string
  */
-protected pattern;
+protected pattern = ;
 
 /**
- * @var int|string
+ * @var int
  */
 protected static uniqueId = 0;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $pattern, mixed $paths = null );
@@ -728,16 +832,28 @@ $router->add(
 
 
 
-<h1 id="cli-router-routeinterface">Interface Phalcon\Cli\Router\RouteInterface</h1>
+## Cli\Router\RouteInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Router/RouteInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/RouteInterface.zep)
 
-| Namespace  | Phalcon\Cli\Router |
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Cli\Router\Route
 
 
-## Methods
+### Methods
 
 ```php
 public function compilePattern( string $pattern ): string;
@@ -826,17 +942,29 @@ Sets the route's name
 
 
 
-<h1 id="cli-routerinterface">Interface Phalcon\Cli\RouterInterface</h1>
+## Cli\RouterInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/RouterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/RouterInterface.zep)
 
-| Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Cli\Router\RouteInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Cli`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Router\RouteInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Cli\Router
 
 
-## Methods
+### Methods
 
 ```php
 public function add( string $pattern, mixed $paths = null ): RouteInterface;
@@ -943,14 +1071,29 @@ Check if the router matches any of the defined routes
 
 
 
-<h1 id="cli-task">Class Phalcon\Cli\Task</h1>
+## Cli\Task 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/Task.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Task.zep)
 
-| Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
-| Extends    | Injectable |
-| Implements | TaskInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Cli`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
+    - `TaskInterface`
 
 Every command-line task should extend this class that encapsulates all the
 task functionality
@@ -976,7 +1119,7 @@ class HelloTask extends \Phalcon\Cli\Task
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var ManagerInterface
@@ -985,7 +1128,7 @@ protected eventsManager;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 final public function __construct();
@@ -1007,10 +1150,22 @@ Sets the events manager
 
 
 
-<h1 id="cli-taskinterface">Interface Phalcon\Cli\TaskInterface</h1>
+## Cli\TaskInterface ![Abstract](assets/images/interface-blue.png) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Cli/TaskInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/TaskInterface.zep)
 
-| Namespace  | Phalcon\Cli |
+
+-   __Namespace__
+
+    - `Phalcon\Cli`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for task handlers
