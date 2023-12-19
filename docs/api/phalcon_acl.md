@@ -1,34 +1,51 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Acl'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Acl\Adapter\AbstractAdapter](#acl-adapter-abstractadapter)
-* [Phalcon\Acl\Adapter\AdapterInterface](#acl-adapter-adapterinterface)
-* [Phalcon\Acl\Adapter\Memory](#acl-adapter-memory)
-* [Phalcon\Acl\Component](#acl-component)
-* [Phalcon\Acl\ComponentAware](#acl-componentaware)
-* [Phalcon\Acl\ComponentInterface](#acl-componentinterface)
-* [Phalcon\Acl\Enum](#acl-enum)
-* [Phalcon\Acl\Exception](#acl-exception)
-* [Phalcon\Acl\Role](#acl-role)
-* [Phalcon\Acl\RoleAware](#acl-roleaware)
-* [Phalcon\Acl\RoleInterface](#acl-roleinterface)
+!!! info "NOTE"
 
-<h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Acl\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
-| Namespace  | Phalcon\Acl\Adapter |
-| Uses       | Phalcon\Acl\Enum, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface |
-| Implements | AdapterInterface, EventsAwareInterface |
+
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Adapter`
+
+-   __Uses__
+
+    - `Phalcon\Acl\Enum`
+    - `Phalcon\Events\AbstractEventsAware`
+    - `Phalcon\Events\EventsAwareInterface`
+
+-   __Extends__
+
+    `AbstractEventsAware`
+
+-   __Implements__
+
+    - `AdapterInterface`
+    - `EventsAwareInterface`
 
 Adapter for Phalcon\Acl adapters
 
-
-## Properties
+### Properties
 ```php
+/**
+ * Access Granted
+ *
+ * @var bool
+ */
+protected accessGranted = false;
+
 /**
  * Active access which the list is checking if some role can access it
  *
@@ -37,11 +54,11 @@ Adapter for Phalcon\Acl adapters
 protected activeAccess;
 
 /**
- * Access Granted
+ * Component which the list is checking if some role can access it
  *
- * @var bool
+ * @var string|null
  */
-protected accessGranted = false;
+protected activeComponent;
 
 /**
  * Role which the list is checking if it's allowed to certain
@@ -52,46 +69,33 @@ protected accessGranted = false;
 protected activeRole;
 
 /**
- * Component which the list is checking if some role can access it
- *
- * @var string|null
- */
-protected activeComponent;
-
-/**
  * Default access
  *
  * @var int
  */
 protected defaultAccess;
 
-/**
- * Events manager
- *
- * @var ManagerInterface|null
- */
-protected eventsManager;
-
 ```
 
-## Methods
+### Methods
 
 ```php
-public function getActiveAccess(): string|null
+public function getActiveAccess(): string | null;
 ```
-
+Active access which the list is checking if some role can access it
 
 
 ```php
-public function getActiveComponent(): string|null
+public function getActiveComponent(): string | null;
 ```
-
+Component which the list is checking if some role can access it
 
 
 ```php
-public function getActiveRole(): string|null
+public function getActiveRole(): string | null;
 ```
-
+Role which the list is checking if it's allowed to certain
+component/access
 
 
 ```php
@@ -101,44 +105,45 @@ Returns the default ACL access level
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
-```
-Returns the internal event manager
-
-
-```php
 public function setDefaultAction( int $defaultAccess ): void;
 ```
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
-
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-Sets the events manager
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
 
 
 
-<h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
+## Acl\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/Adapter/AdapterInterface.zep)
 
-| Namespace  | Phalcon\Acl\Adapter |
-| Uses       | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Adapter`
+
+-   __Uses__
+
+    - `Phalcon\Acl\ComponentInterface`
+    - `Phalcon\Acl\RoleInterface`
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Interface for Phalcon\Acl adapters
 
 
-## Methods
+### Methods
 
 ```php
-public function addComponent( mixed $componentObject, mixed $accessList ): bool;
+public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 ```
 Adds a component to the ACL list
 
 Access names can be a particular action, by example
-search, update, delete, etc or a list of them
+search, update, delete, etc. or a list of them
 
 
 ```php
@@ -148,7 +153,7 @@ Adds access to components
 
 
 ```php
-public function addInherit( string $roleName, mixed $roleToInherit ): bool;
+public function addInherit( string $roleName, mixed $roleToInherits ): bool;
 ```
 Do a role inherit from another existing role
 
@@ -175,7 +180,7 @@ Deny access to a role on a component
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-Removes an access from a component
+Removes access from a component
 
 
 ```php
@@ -257,13 +262,34 @@ accessKey
 
 
 
-<h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
+## Acl\Adapter\Memory
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/Adapter/Memory.zep)
 
-| Namespace  | Phalcon\Acl\Adapter |
-| Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Adapter`
+
+-   __Uses__
+
+    - `Phalcon\Acl\Component`
+    - `Phalcon\Acl\ComponentAwareInterface`
+    - `Phalcon\Acl\ComponentInterface`
+    - `Phalcon\Acl\Enum`
+    - `Phalcon\Acl\Exception`
+    - `Phalcon\Acl\Role`
+    - `Phalcon\Acl\RoleAwareInterface`
+    - `Phalcon\Acl\RoleInterface`
+    - `ReflectionClass`
+    - `ReflectionFunction`
+
+-   __Extends__
+
+    `AbstractAdapter`
+
+-   __Implements__
+
 
 Manages ACL lists in memory
 
@@ -328,7 +354,7 @@ foreach ($privateComponents as $component => $actions) {
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Access
@@ -345,7 +371,7 @@ protected access;
 protected accessList;
 
 /**
- * Returns latest function used to acquire access
+ * Returns the latest function used to acquire access
  *
  * @var mixed
  */
@@ -359,7 +385,7 @@ protected activeFunction;
 protected activeFunctionCustomArgumentsCount = 0;
 
 /**
- * Returns latest key used to acquire access
+ * Returns the latest key used to acquire access
  *
  * @var string|null
  */
@@ -387,7 +413,7 @@ protected componentsNames;
 protected func;
 
 /**
- * Default action for no arguments is allow
+ * Default action for no arguments is `allow`
  *
  * @var mixed
  */
@@ -407,16 +433,9 @@ protected roles;
  */
 protected roleInherits;
 
-/**
- * Roles Names
- *
- * @var mixed
- */
-protected rolesNames;
-
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct();
@@ -430,11 +449,11 @@ public function addComponent( mixed $componentValue, mixed $accessList ): bool;
 Adds a component to the ACL list
 
 Access names can be a particular action, by example
-search, update, delete, etc or a list of them
+search, update, delete, etc. or a list of them
 
 Example:
 ```php
-// Add a component to the the list allowing access to an action
+// Add a component to the list allowing access to an action
 $acl->addComponent(
     new Phalcon\Acl\Component("customers"),
     "search"
@@ -511,7 +530,7 @@ $acl->allow("*", "products", "browse");
 
 // Allow access to any role to browse on any component
 $acl->allow("*", "*", "browse");
-
+```
 
 ```php
 public function deny( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
@@ -536,25 +555,25 @@ $acl->deny("*", "*", "browse");
 ```php
 public function dropComponentAccess( string $componentName, mixed $accessList ): void;
 ```
-Removes an access from a component
+Removes access from a component
 
 
 ```php
-public function getActiveFunction(): mixed
+public function getActiveFunction(): mixed;
 ```
-
+Returns the latest function used to acquire access
 
 
 ```php
-public function getActiveFunctionCustomArgumentsCount(): int
+public function getActiveFunctionCustomArgumentsCount(): int;
 ```
-
+Returns number of additional arguments(excluding role and resource) for active function
 
 
 ```php
-public function getActiveKey(): string|null
+public function getActiveKey(): string | null;
 ```
-
+Returns the latest key used to acquire access
 
 
 ```php
@@ -612,17 +631,29 @@ accessKey
 
 
 
-<h1 id="acl-component">Class Phalcon\Acl\Component</h1>
+## Acl\Component
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/Component.zep)
 
-| Namespace  | Phalcon\Acl |
-| Implements | ComponentInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
+    - `ComponentInterface`
 
 This class defines component entity and its description
 
 
-## Properties
+### Properties
 ```php
 /**
  * Component description
@@ -640,7 +671,7 @@ private name;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -649,35 +680,47 @@ Phalcon\Acl\Component constructor
 
 
 ```php
-public function __toString(): string
+public function __toString(): string;
 ```
 
 
 
 ```php
-public function getDescription(): string
+public function getDescription(): string;
 ```
 
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
 
 
 
 
 
-<h1 id="acl-componentaware">Interface Phalcon\Acl\ComponentAware</h1>
+## Acl\ComponentAwareInterface ![Abstract](../assets/images/interface-blue.svg)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/ComponentAware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/ComponentAwareInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Interface for classes which could be used in allow method as RESOURCE
 
 
-## Methods
+### Methods
 
 ```php
 public function getComponentName(): string;
@@ -687,16 +730,28 @@ Returns component name
 
 
 
-<h1 id="acl-componentinterface">Interface Phalcon\Acl\ComponentInterface</h1>
+## Acl\ComponentInterface ![Abstract](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/ComponentInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Interface for Phalcon\Acl\Component
 
 
-## Methods
+### Methods
 
 ```php
 public function __toString(): string;
@@ -718,52 +773,81 @@ Returns the component name
 
 
 
-<h1 id="acl-enum">Class Phalcon\Acl\Enum</h1>
+## Acl\Enum
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/Enum.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Constants for Phalcon\Acl\Adapter adapters
 
 
-## Constants
+### Constants
 ```php
 const ALLOW = 1;
 const DENY = 0;
 ```
 
 
-<h1 id="acl-exception">Class Phalcon\Acl\Exception</h1>
+## Acl\Exception
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/Exception.zep)
 
-| Namespace  | Phalcon\Acl |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+    `\Exception`
+
+-   __Implements__
+
 
 Class for exceptions thrown by Phalcon\Acl
 
 
 
-<h1 id="acl-role">Class Phalcon\Acl\Role</h1>
+## Acl\Role
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/Role.zep)
 
-| Namespace  | Phalcon\Acl |
-| Implements | RoleInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
+    - `RoleInterface`
 
 This class defines role entity and its description
 
 
-## Properties
+### Properties
 ```php
-/**
- * Role name
- *
- * @var string
- */
-private name;
-
 /**
  * Role description
  *
@@ -771,9 +855,16 @@ private name;
  */
 private description;
 
+/**
+ * Role name
+ *
+ * @var string
+ */
+private name;
+
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -782,35 +873,47 @@ Phalcon\Acl\Role constructor
 
 
 ```php
-public function __toString(): string
+public function __toString(): string;
 ```
 
 
 
 ```php
-public function getDescription(): string
+public function getDescription(): string;
 ```
 
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
 
 
 
 
 
-<h1 id="acl-roleaware">Interface Phalcon\Acl\RoleAware</h1>
+## Acl\RoleAwareInterface ![Abstract](../assets/images/interface-blue.svg)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/RoleAware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/RoleAwareInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Interface for classes which could be used in allow method as ROLE
 
 
-## Methods
+### Methods
 
 ```php
 public function getRoleName(): string;
@@ -820,16 +923,28 @@ Returns role name
 
 
 
-<h1 id="acl-roleinterface">Interface Phalcon\Acl\RoleInterface</h1>
+## Acl\RoleInterface ![Abstract](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Acl/RoleInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Interface for Phalcon\Acl\Role
 
 
-## Methods
+### Methods
 
 ```php
 public function __toString(): string;
