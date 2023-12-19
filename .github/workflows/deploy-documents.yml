@@ -1,4 +1,7 @@
-name: Deploy Documents
+# Workflow inspiration and adaptation came from Andruino-Cli
+# https://github.com/arduino/arduino-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
+
+name: Deploy Documents 5.5
 
 env:
   PYTHON_VERSION: "3.9"
@@ -50,9 +53,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      #      - name: Create all generated documentation content
-      #        run: mkdocs build
-      #
       - name: Determine versioning parameters
         id: determine-versioning
         run: |
@@ -74,7 +74,7 @@ jobs:
         if: ${{ env.PH_DOCS_VERSION }} != null
         run: |
           # Publishing implies creating a git commit on the production branch, 
-          # we let @phalconbot own these commits.
+          # We will need to create a user for this at some point
           git config user.name niden
           git config user.email nikos@niden.net
           git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
