@@ -9,7 +9,7 @@ hide:
 
 
 
-## Acl\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
+## Acl\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
@@ -977,5 +977,3 @@ Returns role description
 public function getName(): string;
 ```
 Returns the role name
-
-
