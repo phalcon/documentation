@@ -7,24 +7,29 @@ hide:
 
     All classes are prefixed with `Phalcon`
 
-## Acl\Adapter\AbstractAdapter
+
+
+## Acl\Adapter\AbstractAdapter ![Abstract](assets/images/abstract-green.png) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AbstractAdapter.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Acl\Adapter`
 
 -   __Uses__
-
-    - `Phalcon\Acl\Enum` 
+    
+    - `Phalcon\Acl\Enum`
     - `Phalcon\Events\AbstractEventsAware`
     - `Phalcon\Events\EventsAwareInterface`
 
 -   __Extends__
-
+    
     `AbstractEventsAware`
 
 -   __Implements__
-
+    
     - `AdapterInterface`
     - `EventsAwareInterface`
 
@@ -106,24 +111,25 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 
 
-## Acl\Adapter\AdapterInterface
+## Acl\Adapter\AdapterInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AdapterInterface.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Acl\Adapter`
 
 -   __Uses__
-
+    
     - `Phalcon\Acl\ComponentInterface`
     - `Phalcon\Acl\RoleInterface`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for Phalcon\Acl adapters
 
@@ -262,33 +268,35 @@ accessKey
 
 
 
-## Acl\Adapter\Memory
+
+## Acl\Adapter\Memory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/Memory.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Acl\Adapter`
 
 -   __Uses__
-
+    
     - `Phalcon\Acl\Component`
     - `Phalcon\Acl\ComponentAwareInterface`
     - `Phalcon\Acl\ComponentInterface`
     - `Phalcon\Acl\Enum`
     - `Phalcon\Acl\Exception`
     - `Phalcon\Acl\Role`
-    - `Phalcon\Acl\RoleInterface`
     - `Phalcon\Acl\RoleAwareInterface`
+    - `Phalcon\Acl\RoleInterface`
     - `ReflectionClass`
     - `ReflectionFunction`
 
 -   __Extends__
-
+    
     `AbstractAdapter`
 
 -   __Implements__
-
+    
 
 Manages ACL lists in memory
 
@@ -353,7 +361,7 @@ foreach ($privateComponents as $component => $actions) {
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Access
@@ -434,7 +442,7 @@ protected roleInherits;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct();
@@ -638,17 +646,29 @@ accessKey
 
 
 
-<h1 id="acl-component">Class Phalcon\Acl\Component</h1>
+## Acl\Component 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Component.zep)
 
-| Namespace  | Phalcon\Acl |
-| Implements | ComponentInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ComponentInterface`
 
 This class defines component entity and its description
 
 
-## Properties
+### Properties
 ```php
 /**
  * Component description
@@ -666,7 +686,7 @@ private name;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -694,16 +714,28 @@ public function getName(): string;
 
 
 
-<h1 id="acl-componentawareinterface">Interface Phalcon\Acl\ComponentAwareInterface</h1>
+## Acl\ComponentAwareInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentAwareInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for classes which could be used in allow method as RESOURCE
 
 
-## Methods
+### Methods
 
 ```php
 public function getComponentName(): string;
@@ -713,16 +745,28 @@ Returns component name
 
 
 
-<h1 id="acl-componentinterface">Interface Phalcon\Acl\ComponentInterface</h1>
+## Acl\ComponentInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Acl\Component
 
 
-## Methods
+### Methods
 
 ```php
 public function __toString(): string;
@@ -744,44 +788,80 @@ Returns the component name
 
 
 
-<h1 id="acl-enum">Class Phalcon\Acl\Enum</h1>
+## Acl\Enum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Enum.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Constants for Phalcon\Acl\Adapter adapters
 
 
-## Constants
+### Constants
 ```php
 const ALLOW = 1;
 const DENY = 0;
 ```
 
 
-<h1 id="acl-exception">Class Phalcon\Acl\Exception</h1>
+## Acl\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exception.zep)
 
-| Namespace  | Phalcon\Acl |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Class for exceptions thrown by Phalcon\Acl
 
 
 
-<h1 id="acl-role">Class Phalcon\Acl\Role</h1>
+## Acl\Role 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Role.zep)
 
-| Namespace  | Phalcon\Acl |
-| Implements | RoleInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `RoleInterface`
 
 This class defines role entity and its description
 
 
-## Properties
+### Properties
 ```php
 /**
  * Role description
@@ -799,7 +879,7 @@ private name;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -827,16 +907,28 @@ public function getName(): string;
 
 
 
-<h1 id="acl-roleawareinterface">Interface Phalcon\Acl\RoleAwareInterface</h1>
+## Acl\RoleAwareInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleAwareInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for classes which could be used in allow method as ROLE
 
 
-## Methods
+### Methods
 
 ```php
 public function getRoleName(): string;
@@ -846,16 +938,28 @@ Returns role name
 
 
 
-<h1 id="acl-roleinterface">Interface Phalcon\Acl\RoleInterface</h1>
+## Acl\RoleInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleInterface.zep)
 
-| Namespace  | Phalcon\Acl |
+
+-   __Namespace__
+
+    - `Phalcon\Acl`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Acl\Role
 
 
-## Methods
+### Methods
 
 ```php
 public function __toString(): string;

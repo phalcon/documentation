@@ -1,20 +1,42 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Application\AbstractApplication](#application-abstractapplication)
-* [Phalcon\Application\Exception](#application-exception)
+!!! info "NOTE"
 
-<h1 id="application-abstractapplication">Abstract Class Phalcon\Application\AbstractApplication</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Application\AbstractApplication ![Abstract](assets/images/abstract-green.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Application/AbstractApplication.zep)
 
-| Namespace  | Phalcon\Application |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
-| Extends    | Injectable |
-| Implements | EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Application`
+
+-   __Uses__
+    
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var DiInterface|null
@@ -24,7 +46,7 @@ protected container;
 /**
  * @var string
  */
-protected defaultModule = "";
+protected defaultModule = ;
 
 /**
  * @var ManagerInterface|null
@@ -38,7 +60,7 @@ protected modules;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( DiInterface $container = null );
@@ -105,11 +127,23 @@ Sets the events manager
 
 
 
-<h1 id="application-exception">Class Phalcon\Application\Exception</h1>
+## Application\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Application/Exception.zep)
 
-| Namespace  | Phalcon\Application |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Application`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Application class will use this class

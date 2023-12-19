@@ -1,34 +1,64 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Messages\Exception](#messages-exception)
-* [Phalcon\Messages\Message](#messages-message)
-* [Phalcon\Messages\MessageInterface](#messages-messageinterface)
-* [Phalcon\Messages\Messages](#messages-messages)
+!!! info "NOTE"
 
-<h1 id="messages-exception">Class Phalcon\Messages\Exception</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Messages\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exception.zep)
 
-| Namespace  | Phalcon\Messages |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 
 
-<h1 id="messages-message">Class Phalcon\Messages\Message</h1>
+## Messages\Message 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Message.zep)
 
-| Namespace  | Phalcon\Messages |
-| Uses       | JsonSerializable |
-| Implements | MessageInterface, JsonSerializable |
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+    - `JsonSerializable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `JsonSerializable`
+    - `MessageInterface`
 
 Phalcon\Messages\Message
 
 Stores a message from various components
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var int
@@ -57,7 +87,7 @@ protected metaData;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] );
@@ -139,18 +169,30 @@ Sets message type
 
 
 
-<h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
+## Messages\MessageInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/MessageInterface.zep)
 
-| Namespace  | Phalcon\Messages |
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Messages\MessageInterface
 
 Interface for Phalcon\Messages\MessageInterface
 
 
-## Methods
+### Methods
 
 ```php
 public function __toString(): string;
@@ -220,18 +262,36 @@ Sets message type
 
 
 
-<h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
+## Messages\Messages 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Messages.zep)
 
-| Namespace  | Phalcon\Messages |
-| Uses       | ArrayAccess, Countable, Iterator, JsonSerializable |
-| Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `Countable`
+    - `Iterator`
+    - `JsonSerializable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ArrayAccess`
+    - `Countable`
+    - `Iterator`
+    - `JsonSerializable`
 
 Represents a collection of messages
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var int
@@ -245,7 +305,7 @@ protected messages;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $messages = [] );

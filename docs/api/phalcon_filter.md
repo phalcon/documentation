@@ -1,77 +1,32 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Filter\Exception](#filter-exception)
-* [Phalcon\Filter\Filter](#filter-filter)
-* [Phalcon\Filter\FilterFactory](#filter-filterfactory)
-* [Phalcon\Filter\FilterInterface](#filter-filterinterface)
-* [Phalcon\Filter\Sanitize\AbsInt](#filter-sanitize-absint)
-* [Phalcon\Filter\Sanitize\Alnum](#filter-sanitize-alnum)
-* [Phalcon\Filter\Sanitize\Alpha](#filter-sanitize-alpha)
-* [Phalcon\Filter\Sanitize\BoolVal](#filter-sanitize-boolval)
-* [Phalcon\Filter\Sanitize\Email](#filter-sanitize-email)
-* [Phalcon\Filter\Sanitize\FloatVal](#filter-sanitize-floatval)
-* [Phalcon\Filter\Sanitize\IntVal](#filter-sanitize-intval)
-* [Phalcon\Filter\Sanitize\Lower](#filter-sanitize-lower)
-* [Phalcon\Filter\Sanitize\LowerFirst](#filter-sanitize-lowerfirst)
-* [Phalcon\Filter\Sanitize\Regex](#filter-sanitize-regex)
-* [Phalcon\Filter\Sanitize\Remove](#filter-sanitize-remove)
-* [Phalcon\Filter\Sanitize\Replace](#filter-sanitize-replace)
-* [Phalcon\Filter\Sanitize\Special](#filter-sanitize-special)
-* [Phalcon\Filter\Sanitize\SpecialFull](#filter-sanitize-specialfull)
-* [Phalcon\Filter\Sanitize\StringVal](#filter-sanitize-stringval)
-* [Phalcon\Filter\Sanitize\StringValLegacy](#filter-sanitize-stringvallegacy)
-* [Phalcon\Filter\Sanitize\Striptags](#filter-sanitize-striptags)
-* [Phalcon\Filter\Sanitize\Trim](#filter-sanitize-trim)
-* [Phalcon\Filter\Sanitize\Upper](#filter-sanitize-upper)
-* [Phalcon\Filter\Sanitize\UpperFirst](#filter-sanitize-upperfirst)
-* [Phalcon\Filter\Sanitize\UpperWords](#filter-sanitize-upperwords)
-* [Phalcon\Filter\Sanitize\Url](#filter-sanitize-url)
-* [Phalcon\Filter\Validation](#filter-validation)
-* [Phalcon\Filter\Validation\AbstractCombinedFieldsValidator](#filter-validation-abstractcombinedfieldsvalidator)
-* [Phalcon\Filter\Validation\AbstractValidator](#filter-validation-abstractvalidator)
-* [Phalcon\Filter\Validation\AbstractValidatorComposite](#filter-validation-abstractvalidatorcomposite)
-* [Phalcon\Filter\Validation\Exception](#filter-validation-exception)
-* [Phalcon\Filter\Validation\ValidationInterface](#filter-validation-validationinterface)
-* [Phalcon\Filter\Validation\Validator\Alnum](#filter-validation-validator-alnum)
-* [Phalcon\Filter\Validation\Validator\Alpha](#filter-validation-validator-alpha)
-* [Phalcon\Filter\Validation\Validator\Between](#filter-validation-validator-between)
-* [Phalcon\Filter\Validation\Validator\Callback](#filter-validation-validator-callback)
-* [Phalcon\Filter\Validation\Validator\Confirmation](#filter-validation-validator-confirmation)
-* [Phalcon\Filter\Validation\Validator\CreditCard](#filter-validation-validator-creditcard)
-* [Phalcon\Filter\Validation\Validator\Date](#filter-validation-validator-date)
-* [Phalcon\Filter\Validation\Validator\Digit](#filter-validation-validator-digit)
-* [Phalcon\Filter\Validation\Validator\Email](#filter-validation-validator-email)
-* [Phalcon\Filter\Validation\Validator\Exception](#filter-validation-validator-exception)
-* [Phalcon\Filter\Validation\Validator\ExclusionIn](#filter-validation-validator-exclusionin)
-* [Phalcon\Filter\Validation\Validator\File](#filter-validation-validator-file)
-* [Phalcon\Filter\Validation\Validator\File\AbstractFile](#filter-validation-validator-file-abstractfile)
-* [Phalcon\Filter\Validation\Validator\File\MimeType](#filter-validation-validator-file-mimetype)
-* [Phalcon\Filter\Validation\Validator\File\Resolution\Equal](#filter-validation-validator-file-resolution-equal)
-* [Phalcon\Filter\Validation\Validator\File\Resolution\Max](#filter-validation-validator-file-resolution-max)
-* [Phalcon\Filter\Validation\Validator\File\Resolution\Min](#filter-validation-validator-file-resolution-min)
-* [Phalcon\Filter\Validation\Validator\File\Size\Equal](#filter-validation-validator-file-size-equal)
-* [Phalcon\Filter\Validation\Validator\File\Size\Max](#filter-validation-validator-file-size-max)
-* [Phalcon\Filter\Validation\Validator\File\Size\Min](#filter-validation-validator-file-size-min)
-* [Phalcon\Filter\Validation\Validator\Identical](#filter-validation-validator-identical)
-* [Phalcon\Filter\Validation\Validator\InclusionIn](#filter-validation-validator-inclusionin)
-* [Phalcon\Filter\Validation\Validator\Ip](#filter-validation-validator-ip)
-* [Phalcon\Filter\Validation\Validator\Numericality](#filter-validation-validator-numericality)
-* [Phalcon\Filter\Validation\Validator\PresenceOf](#filter-validation-validator-presenceof)
-* [Phalcon\Filter\Validation\Validator\Regex](#filter-validation-validator-regex)
-* [Phalcon\Filter\Validation\Validator\StringLength](#filter-validation-validator-stringlength)
-* [Phalcon\Filter\Validation\Validator\StringLength\Max](#filter-validation-validator-stringlength-max)
-* [Phalcon\Filter\Validation\Validator\StringLength\Min](#filter-validation-validator-stringlength-min)
-* [Phalcon\Filter\Validation\Validator\Uniqueness](#filter-validation-validator-uniqueness)
-* [Phalcon\Filter\Validation\Validator\Url](#filter-validation-validator-url)
-* [Phalcon\Filter\Validation\ValidatorCompositeInterface](#filter-validation-validatorcompositeinterface)
-* [Phalcon\Filter\Validation\ValidatorFactory](#filter-validation-validatorfactory)
-* [Phalcon\Filter\Validation\ValidatorInterface](#filter-validation-validatorinterface)
+!!! info "NOTE"
 
-<h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Filter\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Exception.zep)
 
-| Namespace  | Phalcon\Filter |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Filter`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Filter\Exception
 
@@ -79,16 +34,55 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 
 
-<h1 id="filter-filter">Class Phalcon\Filter\Filter</h1>
+## Filter\Filter 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Filter.zep)
 
-| Namespace  | Phalcon\Filter |
-| Implements | FilterInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Filter`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `FilterInterface`
 
 Lazy loads, stores and exposes sanitizer objects
 
-## Constants
+@method absint(mixed $input): int
+@method alnum(mixed $input): string
+@method alpha(mixed $input): string
+@method bool(mixed $input): bool
+@method email(string $input): string
+@method float(mixed $input): float
+@method int(string $input): int
+@method lower(string $input): string
+@method lowerfirst(string $input): string
+@method regex(mixed $input, mixed $pattern, mixed $replace): mixed
+@method remove(mixed $input, mixed $replace): mixed
+@method replace(mixed $input, mixed $source, mixed $target): mixed
+@method special(string $input): string
+@method specialfull(string $input): string
+@method string(string $input): string
+@method stringlegacy(mixed $input): string
+@method striptags(string $input): string
+@method trim(string $input): string
+@method upper(string $input): string
+@method upperFirst(string $input): string
+@method upperWords(string $input): string|null
+@method url(string $input): string|null
+
+@property array $mapper
+@property array $services
+
+
+### Constants
 ```php
 const FILTER_ABSINT = absint;
 const FILTER_ALNUM = alnum;
@@ -114,7 +108,7 @@ const FILTER_UPPERWORDS = upperwords;
 const FILTER_URL = url;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
@@ -128,7 +122,7 @@ protected services;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __call( string $name, array $args );
@@ -175,19 +169,31 @@ Loads the objects in the internal mapper array
 
 
 
-<h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
+## Filter\FilterFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/FilterFactory.zep)
 
-| Namespace  | Phalcon\Filter |
-| Uses       | Phalcon\Filter\Filter |
+
+-   __Namespace__
+
+    - `Phalcon\Filter`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Filter`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Class FilterFactory
 
 @package Phalcon\Filter
 
 
-## Methods
+### Methods
 
 ```php
 public function newInstance(): FilterInterface;
@@ -204,16 +210,28 @@ Returns the available adapters
 
 
 
-<h1 id="filter-filterinterface">Interface Phalcon\Filter\FilterInterface</h1>
+## Filter\FilterInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/FilterInterface.zep)
 
-| Namespace  | Phalcon\Filter |
+
+-   __Namespace__
+
+    - `Phalcon\Filter`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Lazy loads, stores and exposes sanitizer objects
 
 
-## Methods
+### Methods
 
 ```php
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
@@ -223,18 +241,30 @@ Sanitizes a value with a specified single or set of sanitizers
 
 
 
-<h1 id="filter-sanitize-absint">Class Phalcon\Filter\Sanitize\AbsInt</h1>
+## Filter\Sanitize\AbsInt 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/AbsInt.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\AbsInt
 
 Sanitizes a value to absolute integer
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -244,18 +274,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-alnum">Class Phalcon\Filter\Sanitize\Alnum</h1>
+## Filter\Sanitize\Alnum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Alnum.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Alnum
 
 Sanitizes a value to an alphanumeric value
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -265,18 +307,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-alpha">Class Phalcon\Filter\Sanitize\Alpha</h1>
+## Filter\Sanitize\Alpha 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Alpha.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Alpha
 
 Sanitizes a value to an alpha value
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -286,18 +340,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-boolval">Class Phalcon\Filter\Sanitize\BoolVal</h1>
+## Filter\Sanitize\BoolVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/BoolVal.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\BoolVal
 
 Sanitizes a value to boolean
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -307,18 +373,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-email">Class Phalcon\Filter\Sanitize\Email</h1>
+## Filter\Sanitize\Email 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Email.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Email
 
 Sanitizes an email string
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -328,18 +406,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-floatval">Class Phalcon\Filter\Sanitize\FloatVal</h1>
+## Filter\Sanitize\FloatVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/FloatVal.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\FloatVal
 
 Sanitizes a value to float
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -349,18 +439,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-intval">Class Phalcon\Filter\Sanitize\IntVal</h1>
+## Filter\Sanitize\IntVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/IntVal.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\IntVal
 
 Sanitizes a value to integer
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -370,18 +472,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-lower">Class Phalcon\Filter\Sanitize\Lower</h1>
+## Filter\Sanitize\Lower 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Lower.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Lower
 
 Sanitizes a value to lowercase
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input );
@@ -391,18 +505,30 @@ public function __invoke( string $input );
 
 
 
-<h1 id="filter-sanitize-lowerfirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
+## Filter\Sanitize\LowerFirst 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/LowerFirst.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\LowerFirst
 
 Sanitizes a value to lcfirst
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input );
@@ -412,18 +538,30 @@ public function __invoke( string $input );
 
 
 
-<h1 id="filter-sanitize-regex">Class Phalcon\Filter\Sanitize\Regex</h1>
+## Filter\Sanitize\Regex 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Regex.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Regex
 
 Sanitizes a value performing preg_replace
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input, mixed $pattern, mixed $replace );
@@ -433,18 +571,30 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 
 
 
-<h1 id="filter-sanitize-remove">Class Phalcon\Filter\Sanitize\Remove</h1>
+## Filter\Sanitize\Remove 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Remove.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Remove
 
 Sanitizes a value removing parts of a string
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input, mixed $replace );
@@ -454,18 +604,30 @@ public function __invoke( mixed $input, mixed $replace );
 
 
 
-<h1 id="filter-sanitize-replace">Class Phalcon\Filter\Sanitize\Replace</h1>
+## Filter\Sanitize\Replace 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Replace.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Replace
 
 Sanitizes a value replacing parts of a string
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input, mixed $from, mixed $to );
@@ -475,18 +637,30 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
 
 
 
-<h1 id="filter-sanitize-special">Class Phalcon\Filter\Sanitize\Special</h1>
+## Filter\Sanitize\Special 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Special.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Special
 
 Sanitizes a value special characters
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -496,18 +670,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-specialfull">Class Phalcon\Filter\Sanitize\SpecialFull</h1>
+## Filter\Sanitize\SpecialFull 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/SpecialFull.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\SpecialFull
 
 Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -517,16 +703,28 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-stringval">Class Phalcon\Filter\Sanitize\StringVal</h1>
+## Filter\Sanitize\StringVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/StringVal.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Sanitizes a value to string
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input, int $flags = int ): string;
@@ -536,11 +734,23 @@ public function __invoke( string $input, int $flags = int ): string;
 
 
 
-<h1 id="filter-sanitize-stringvallegacy">Class Phalcon\Filter\Sanitize\StringValLegacy</h1>
+## Filter\Sanitize\StringValLegacy 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/StringValLegacy.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Sanitizes a value to string using `filter_var()`. The filter provides
 backwards compatibility with versions prior to v5. For PHP higher or equal to
@@ -548,7 +758,7 @@ backwards compatibility with versions prior to v5. For PHP higher or equal to
 string is passed, the method will return false
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -558,18 +768,30 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-sanitize-striptags">Class Phalcon\Filter\Sanitize\Striptags</h1>
+## Filter\Sanitize\Striptags 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Striptags.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Striptags
 
 Sanitizes a value striptags
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input );
@@ -579,18 +801,30 @@ public function __invoke( string $input );
 
 
 
-<h1 id="filter-sanitize-trim">Class Phalcon\Filter\Sanitize\Trim</h1>
+## Filter\Sanitize\Trim 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Trim.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Trim
 
 Sanitizes a value removing leading and trailing spaces
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input );
@@ -600,18 +834,30 @@ public function __invoke( string $input );
 
 
 
-<h1 id="filter-sanitize-upper">Class Phalcon\Filter\Sanitize\Upper</h1>
+## Filter\Sanitize\Upper 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Upper.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Upper
 
 Sanitizes a value to uppercase
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input );
@@ -621,18 +867,30 @@ public function __invoke( string $input );
 
 
 
-<h1 id="filter-sanitize-upperfirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
+## Filter\Sanitize\UpperFirst 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/UpperFirst.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\UpperFirst
 
 Sanitizes a value to ucfirst
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input );
@@ -642,18 +900,30 @@ public function __invoke( string $input );
 
 
 
-<h1 id="filter-sanitize-upperwords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
+## Filter\Sanitize\UpperWords 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/UpperWords.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\UpperWords
 
 Sanitizes a value to uppercase the first character of each word
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( string $input );
@@ -663,18 +933,30 @@ public function __invoke( string $input );
 
 
 
-<h1 id="filter-sanitize-url">Class Phalcon\Filter\Sanitize\Url</h1>
+## Filter\Sanitize\Url 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Url.zep)
 
-| Namespace  | Phalcon\Filter\Sanitize |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Filter\Sanitize\Url
 
 Sanitizes a value url
 
 
-## Methods
+### Methods
 
 ```php
 public function __invoke( mixed $input );
@@ -684,19 +966,40 @@ public function __invoke( mixed $input );
 
 
 
-<h1 id="filter-validation">Class Phalcon\Filter\Validation</h1>
+## Filter\Validation 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation.zep)
 
-| Namespace  | Phalcon\Filter |
-| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Filter\Validation\ValidationInterface, Phalcon\Filter\Validation\Exception, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Filter\Validation\AbstractCombinedFieldsValidator |
-| Extends    | Injectable |
-| Implements | ValidationInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Filter`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Filter\FilterInterface`
+    - `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\ValidationInterface`
+    - `Phalcon\Filter\Validation\ValidatorInterface`
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Messages\Messages`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `ValidationInterface`
 
 Allows to validate data using custom or built-in validators
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
@@ -744,7 +1047,7 @@ protected values;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $validators = [] );
@@ -875,42 +1178,68 @@ Internal validations, if it returns true, then skip the current validator
 
 
 
-<h1 id="filter-validation-abstractcombinedfieldsvalidator">Abstract Class Phalcon\Filter\Validation\AbstractCombinedFieldsValidator</h1>
+## Filter\Validation\AbstractCombinedFieldsValidator ![Abstract](assets/images/abstract-green.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractCombinedFieldsValidator.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 This is a base class for combined fields validators
 
 
 
-<h1 id="filter-validation-abstractvalidator">Abstract Class Phalcon\Filter\Validation\AbstractValidator</h1>
+## Filter\Validation\AbstractValidator ![Abstract](assets/images/abstract-green.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractValidator.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Uses       | Phalcon\Support\Helper\Arr\Whitelist, Phalcon\Messages\Message, Phalcon\Filter\Validation |
-| Implements | ValidatorInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Messages\Message`
+    - `Phalcon\Support\Helper\Arr\Whitelist`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ValidatorInterface`
 
 This is a base class for validators
 
 
-## Properties
+### Properties
 ```php
 /**
-    * Message template
-    *
-    * @var string|null
-    */
+ * Message template
+ *
+ * @var string|null
+ */
 protected template;
 
 /**
-    * Message templates
-    *
-    * @var array
-    */
+ * Message templates
+ *
+ * @var array
+ */
 protected templates;
 
 /**
@@ -920,7 +1249,7 @@ protected options;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -968,17 +1297,13 @@ Sets an option in the validator
 ```php
 public function setTemplate( string $template ): ValidatorInterface;
 ```
-   Set a new template message
-   
-   
+Set a new template message
 
 
 ```php
 public function setTemplates( array $templates ): ValidatorInterface;
 ```
-   Clear current templates and set new from an array,
-   
-   
+Clear current templates and set new from an array,
 
 
 ```php
@@ -991,6 +1316,13 @@ Executes the validation
 protected function allowEmpty( mixed $field, mixed $value ): bool;
 ```
 Checks if field can be empty.
+
+
+```php
+protected function checkArray( mixed $value, string $field ): mixed;
+```
+Checks if a value is an array and returns the element based on the
+passed field name
 
 
 ```php
@@ -1007,19 +1339,31 @@ Prepares a label for the field.
 
 
 
-<h1 id="filter-validation-abstractvalidatorcomposite">Abstract Class Phalcon\Filter\Validation\AbstractValidatorComposite</h1>
+## Filter\Validation\AbstractValidatorComposite ![Abstract](assets/images/abstract-green.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractValidatorComposite.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Uses       | Phalcon\Filter\Validation |
-| Extends    | AbstractValidator |
-| Implements | ValidatorCompositeInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
+    - `ValidatorCompositeInterface`
 
 This is a base class for combined fields validators
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
@@ -1028,7 +1372,7 @@ protected validators;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getValidators(): array;
@@ -1044,28 +1388,54 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-exception">Class Phalcon\Filter\Validation\Exception</h1>
+## Filter\Validation\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exception.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 
 
 
-<h1 id="filter-validation-validationinterface">Interface Phalcon\Filter\Validation\ValidationInterface</h1>
+## Filter\Validation\ValidationInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidationInterface.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Uses       | Phalcon\Di\Injectable, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Messages\Messages`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for the Phalcon\Filter\Validation component
 
 
-## Methods
+### Methods
 
 ```php
 public function add( mixed $field, ValidatorInterface $validator ): ValidationInterface;
@@ -1154,13 +1524,26 @@ Validate a set of data according to a set of rules
 
 
 
-<h1 id="filter-validation-validator-alnum">Class Phalcon\Filter\Validation\Validator\Alnum</h1>
+## Filter\Validation\Validator\Alnum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Alnum.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Check for alphanumeric character(s)
 
@@ -1196,14 +1579,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must contain only letters and numbers;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1219,13 +1602,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-alpha">Class Phalcon\Filter\Validation\Validator\Alpha</h1>
+## Filter\Validation\Validator\Alpha 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Alpha.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Check for alphabetic character(s)
 
@@ -1261,14 +1658,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must contain only letters;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1284,13 +1681,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-between">Class Phalcon\Filter\Validation\Validator\Between</h1>
+## Filter\Validation\Validator\Between 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Between.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Validates that a value is between an inclusive range of two values.
 For a value x, the test is passed if minimum<=x<=maximum.
@@ -1337,14 +1748,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be within the range of :min to :max;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1360,13 +1771,28 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-callback">Class Phalcon\Filter\Validation\Validator\Callback</h1>
+## Filter\Validation\Validator\Callback 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Callback.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\ValidatorInterface, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\ValidatorInterface`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Calls user function for validation
 
@@ -1412,14 +1838,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must match the callback function;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1435,13 +1861,28 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-confirmation">Class Phalcon\Filter\Validation\Validator\Confirmation</h1>
+## Filter\Validation\Validator\Confirmation 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Confirmation.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Exception, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Checks that two values have the same value
 
@@ -1482,14 +1923,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be the same as :with;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1511,13 +1952,27 @@ Compare strings
 
 
 
-<h1 id="filter-validation-validator-creditcard">Class Phalcon\Filter\Validation\Validator\CreditCard</h1>
+## Filter\Validation\Validator\CreditCard 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/CreditCard.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Checks if a value has a valid credit card number
 
@@ -1553,14 +2008,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field is not valid for a credit card number;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1576,13 +2031,28 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-date">Class Phalcon\Filter\Validation\Validator\Date</h1>
+## Filter\Validation\Validator\Date 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Date.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | DateTime, Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `DateTime`
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Checks if a value is a valid date
 
@@ -1623,14 +2093,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field is not a valid date;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1646,13 +2116,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-digit">Class Phalcon\Filter\Validation\Validator\Digit</h1>
+## Filter\Validation\Validator\Digit 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Digit.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Check for numeric character(s)
 
@@ -1688,14 +2172,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be numeric;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1711,13 +2195,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-email">Class Phalcon\Filter\Validation\Validator\Email</h1>
+## Filter\Validation\Validator\Email 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Email.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Checks if a value has a correct e-mail format
 
@@ -1753,14 +2251,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be an email address;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1776,25 +2274,52 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-exception">Class Phalcon\Filter\Validation\Validator\Exception</h1>
+## Filter\Validation\Validator\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Exception.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Filter\Validation\Validator\* classes will use this
 class
 
 
 
-<h1 id="filter-validation-validator-exclusionin">Class Phalcon\Filter\Validation\Validator\ExclusionIn</h1>
+## Filter\Validation\Validator\ExclusionIn 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/ExclusionIn.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Check if a value is not included into a list of values
 
@@ -1841,14 +2366,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must not be a part of list: :domain;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1864,13 +2389,35 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-file">Class Phalcon\Filter\Validation\Validator\File</h1>
+## Filter\Validation\Validator\File 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Support\Helper\Arr\Get, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidatorComposite, Phalcon\Filter\Validation\Validator\File\MimeType, Phalcon\Filter\Validation\Validator\File\Resolution\Equal, Phalcon\Filter\Validation\Validator\File\Resolution\Max, Phalcon\Filter\Validation\Validator\File\Resolution\Min, Phalcon\Filter\Validation\Validator\File\Size\Equal, Phalcon\Filter\Validation\Validator\File\Size\Max, Phalcon\Filter\Validation\Validator\File\Size\Min |
-| Extends    | AbstractValidatorComposite |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidatorComposite`
+    - `Phalcon\Filter\Validation\Validator\File\MimeType`
+    - `Phalcon\Filter\Validation\Validator\File\Resolution\Equal`
+    - `Phalcon\Filter\Validation\Validator\File\Resolution\Max`
+    - `Phalcon\Filter\Validation\Validator\File\Resolution\Min`
+    - `Phalcon\Filter\Validation\Validator\File\Size\Equal`
+    - `Phalcon\Filter\Validation\Validator\File\Size\Max`
+    - `Phalcon\Filter\Validation\Validator\File\Size\Min`
+    - `Phalcon\Messages\Message`
+    - `Phalcon\Support\Helper\Arr\Get`
+
+-   __Extends__
+    
+    `AbstractValidatorComposite`
+
+-   __Implements__
+    
 
 Checks if a value has a correct file
 
@@ -1942,7 +2489,7 @@ $validator->add(
 ```
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -1952,13 +2499,27 @@ Constructor
 
 
 
-<h1 id="filter-validation-validator-file-abstractfile">Abstract Class Phalcon\Filter\Validation\Validator\File\AbstractFile</h1>
+## Filter\Validation\Validator\File\AbstractFile ![Abstract](assets/images/abstract-green.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/AbstractFile.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Checks if a value has a correct file
 
@@ -1999,7 +2560,7 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Empty is empty
@@ -2024,46 +2585,36 @@ protected messageValid = Field :field is not valid;
 
 ```
 
-## Methods
+### Methods
 
 ```php
-public function checkUpload( Validation $validation, mixed $field ): bool;
+public function checkUpload( Validation $validation, string $field ): bool;
 ```
-   Check upload
-   
-   
+Check upload
 
 
 ```php
-public function checkUploadIsEmpty( Validation $validation, mixed $field ): bool;
+public function checkUploadIsEmpty( Validation $validation, string $field ): bool;
 ```
-   Check if upload is empty
-   
-   
+Check if upload is empty
 
 
 ```php
-public function checkUploadIsValid( Validation $validation, mixed $field ): bool;
+public function checkUploadIsValid( Validation $validation, string $field ): bool;
 ```
-   Check if upload is valid
-   
-   
+Check if upload is valid
 
 
 ```php
-public function checkUploadMaxSize( Validation $validation, mixed $field ): bool;
+public function checkUploadMaxSize( Validation $validation, string $field ): bool;
 ```
-   Check if uploaded file is larger than PHP allowed size
-   
-   
+Check if uploaded file is larger than PHP allowed size
 
 
 ```php
 public function getFileSizeInBytes( string $size ): double;
 ```
-   Convert a string like "2.5MB" in bytes
-   
-   
+Convert a string like "2.5MB" in bytes
 
 
 ```php
@@ -2112,18 +2663,32 @@ File is not valid
 protected function checkIsUploadedFile( string $name ): bool;
 ```
 Checks if a file has been uploaded; Internal check that can be
-overriden in a subclass if you do not want to check uploaded files
+overridden in a subclass if you do not want to check uploaded files
 
 
 
 
-<h1 id="filter-validation-validator-file-mimetype">Class Phalcon\Filter\Validation\Validator\File\MimeType</h1>
+## Filter\Validation\Validator\File\MimeType 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/MimeType.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Exception |
-| Extends    | AbstractFile |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractFile`
+
+-   __Implements__
+    
 
 Checks if a value has a correct file mime type
 
@@ -2173,14 +2738,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = File :field must be of type: :types;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2190,13 +2755,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-file-resolution-equal">Class Phalcon\Filter\Validation\Validator\File\Resolution\Equal</h1>
+## Filter\Validation\Validator\File\Resolution\Equal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Resolution/Equal.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File\Resolution |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile |
-| Extends    | AbstractFile |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File\Resolution`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractFile`
+
+-   __Implements__
+    
 
 Checks if a file has the right resolution
 
@@ -2237,14 +2816,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = The resolution of the field :field has to be equal :resolution;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2260,13 +2839,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-file-resolution-max">Class Phalcon\Filter\Validation\Validator\File\Resolution\Max</h1>
+## Filter\Validation\Validator\File\Resolution\Max 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Resolution/Max.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File\Resolution |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile |
-| Extends    | AbstractFile |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File\Resolution`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractFile`
+
+-   __Implements__
+    
 
 Checks if a file has the right resolution
 
@@ -2312,14 +2905,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = File :field exceeds the maximum resolution of :resolution;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2335,13 +2928,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-file-resolution-min">Class Phalcon\Filter\Validation\Validator\File\Resolution\Min</h1>
+## Filter\Validation\Validator\File\Resolution\Min 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Resolution/Min.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File\Resolution |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile |
-| Extends    | AbstractFile |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File\Resolution`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractFile`
+
+-   __Implements__
+    
 
 Checks if a file has the right resolution
 
@@ -2387,14 +2994,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = File :field can not have the minimum resolution of :resolution;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2410,13 +3017,26 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-file-size-equal">Class Phalcon\Filter\Validation\Validator\File\Size\Equal</h1>
+## Filter\Validation\Validator\File\Size\Equal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Size/Equal.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File\Size |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile |
-| Extends    | AbstractFile |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File\Size`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+
+-   __Extends__
+    
+    `AbstractFile`
+
+-   __Implements__
+    
 
 Checks if a value has a correct file
 
@@ -2462,20 +3082,16 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
-//
+/**
+ * @var string|null
+ */
 protected template = File :field does not have the exact :size file size;
 
 ```
 
-## Methods
-
-```php
-public function __construct( array $options = [] );
-```
-Constructor
-
+### Methods
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2483,15 +3099,32 @@ public function validate( Validation $validation, mixed $field ): bool;
 Executes the validation
 
 
+```php
+protected function getConditional( double $source, double $target, bool $included = bool );
+```
+Executes the conditional
 
 
-<h1 id="filter-validation-validator-file-size-max">Class Phalcon\Filter\Validation\Validator\File\Size\Max</h1>
+
+
+## Filter\Validation\Validator\File\Size\Max 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Size/Max.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File\Size |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile |
-| Extends    | AbstractFile |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File\Size`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Equal`
+
+-   __Implements__
+    
 
 Checks if a value has a correct file
 
@@ -2537,36 +3170,43 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
-//
+/**
+ * @var string|null
+ */
 protected template = File :field exceeds the size of :size;
 
 ```
 
-## Methods
+### Methods
 
 ```php
-public function __construct( array $options = [] );
+protected function getConditional( double $source, double $target, bool $included = bool );
 ```
-Constructor
-
-
-```php
-public function validate( Validation $validation, mixed $field ): bool;
-```
-Executes the validation
+Executes the conditional
 
 
 
 
-<h1 id="filter-validation-validator-file-size-min">Class Phalcon\Filter\Validation\Validator\File\Size\Min</h1>
+## Filter\Validation\Validator\File\Size\Min 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Size/Min.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\File\Size |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\Validator\File\AbstractFile |
-| Extends    | AbstractFile |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\File\Size`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Equal`
+
+-   __Implements__
+    
 
 Checks if a value has a correct file
 
@@ -2612,36 +3252,46 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
-//
+/**
+ * @var string|null
+ */
 protected template = File :field can not have the minimum size of :size;
 
 ```
 
-## Methods
+### Methods
 
 ```php
-public function __construct( array $options = [] );
+protected function getConditional( double $source, double $target, bool $included = bool );
 ```
-Constructor
-
-
-```php
-public function validate( Validation $validation, mixed $field ): bool;
-```
-Executes the validation
+Executes the conditional
 
 
 
 
-<h1 id="filter-validation-validator-identical">Class Phalcon\Filter\Validation\Validator\Identical</h1>
+## Filter\Validation\Validator\Identical 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Identical.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Checks if a value is identical to other
 
@@ -2682,14 +3332,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field does not have the expected value;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2705,13 +3355,28 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-inclusionin">Class Phalcon\Filter\Validation\Validator\InclusionIn</h1>
+## Filter\Validation\Validator\InclusionIn 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/InclusionIn.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Check if a value is included into a list of values
 
@@ -2752,14 +3417,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be a part of list: :domain;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2775,13 +3440,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-ip">Class Phalcon\Filter\Validation\Validator\Ip</h1>
+## Filter\Validation\Validator\Ip 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Ip.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Messages\Message |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Check for IP addresses
 
@@ -2834,20 +3513,20 @@ $validator->add(
 ```
 
 
-## Constants
+### Constants
 ```php
 const VERSION_4 = FILTER_FLAG_IPV4;
 const VERSION_6 = FILTER_FLAG_IPV6;
 ```
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be a valid IP address;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2863,13 +3542,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-numericality">Class Phalcon\Filter\Validation\Validator\Numericality</h1>
+## Filter\Validation\Validator\Numericality 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Numericality.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Check for a valid numeric value
 
@@ -2905,14 +3598,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field does not have a valid numeric format;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2928,13 +3621,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-presenceof">Class Phalcon\Filter\Validation\Validator\PresenceOf</h1>
+## Filter\Validation\Validator\PresenceOf 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/PresenceOf.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Validates that a value is not null or empty string
 
@@ -2970,14 +3677,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field is required;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2993,13 +3700,27 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-regex">Class Phalcon\Filter\Validation\Validator\Regex</h1>
+## Filter\Validation\Validator\Regex 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Regex.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Allows validate if the value of a field matches a regular expression
 
@@ -3040,14 +3761,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field does not match the required format;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -3063,13 +3784,30 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-stringlength">Class Phalcon\Filter\Validation\Validator\StringLength</h1>
+## Filter\Validation\Validator\StringLength 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/StringLength.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\AbstractValidatorComposite, Phalcon\Filter\Validation\Validator\StringLength\Max, Phalcon\Filter\Validation\Validator\StringLength\Min, Phalcon\Filter\Validation\Exception |
-| Extends    | AbstractValidatorComposite |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\AbstractValidatorComposite`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\Validator\StringLength\Max`
+    - `Phalcon\Filter\Validation\Validator\StringLength\Min`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidatorComposite`
+
+-   __Implements__
+    
 
 Validates that a string has the specified maximum and minimum constraints
 The test is passed if for a string's length L, min<=L<=max, i.e. L must
@@ -3133,7 +3871,7 @@ $validation->add(
 ```
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -3143,13 +3881,28 @@ Constructor
 
 
 
-<h1 id="filter-validation-validator-stringlength-max">Class Phalcon\Filter\Validation\Validator\StringLength\Max</h1>
+## Filter\Validation\Validator\StringLength\Max 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/StringLength/Max.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\StringLength |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\StringLength`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Validates that a string has the specified maximum constraints
 The test is passed if for a string's length L, L<=max, i.e. L must
@@ -3197,14 +3950,14 @@ $validation->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must not exceed :max characters long;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -3220,13 +3973,28 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-stringlength-min">Class Phalcon\Filter\Validation\Validator\StringLength\Min</h1>
+## Filter\Validation\Validator\StringLength\Min 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/StringLength/Min.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator\StringLength |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator, Phalcon\Filter\Validation\Exception |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator\StringLength`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Validates that a string has the specified minimum constraints
 The test is passed if for a string's length L, min<=L, i.e. L must
@@ -3274,14 +4042,14 @@ $validation->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be at least :min characters long;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -3297,13 +4065,30 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validator-uniqueness">Class Phalcon\Filter\Validation\Validator\Uniqueness</h1>
+## Filter\Validation\Validator\Uniqueness 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Uniqueness.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractCombinedFieldsValidator, Phalcon\Filter\Validation\Exception |
-| Extends    | AbstractCombinedFieldsValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`
+    - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Messages\Message`
+    - `Phalcon\Mvc\Model`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+    `AbstractCombinedFieldsValidator`
+
+-   __Implements__
+    
 
 Check that a field is unique in the related table
 
@@ -3375,7 +4160,7 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be unique;
@@ -3387,7 +4172,7 @@ private columnMap;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -3421,13 +4206,27 @@ Uniqueness method used for model
 
 
 
-<h1 id="filter-validation-validator-url">Class Phalcon\Filter\Validation\Validator\Url</h1>
+## Filter\Validation\Validator\Url 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Url.zep)
 
-| Namespace  | Phalcon\Filter\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Filter\Validation, Phalcon\Filter\Validation\AbstractValidator |
-| Extends    | AbstractValidator |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Validator`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Messages\Message`
+
+-   __Extends__
+    
+    `AbstractValidator`
+
+-   __Implements__
+    
 
 Checks if a value has a url format
 
@@ -3463,14 +4262,14 @@ $validator->add(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 protected template = Field :field must be a url;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -3486,17 +4285,29 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validatorcompositeinterface">Interface Phalcon\Filter\Validation\ValidatorCompositeInterface</h1>
+## Filter\Validation\ValidatorCompositeInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorCompositeInterface.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Uses       | Phalcon\Filter\Validation |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This is a base class for combined fields validators
 
 
-## Methods
+### Methods
 
 ```php
 public function getValidators(): array;
@@ -3512,13 +4323,25 @@ Executes the validation
 
 
 
-<h1 id="filter-validation-validatorfactory">Class Phalcon\Filter\Validation\ValidatorFactory</h1>
+## Filter\Validation\ValidatorFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorFactory.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Uses       | Phalcon\Factory\AbstractFactory |
-| Extends    | AbstractFactory |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+    - `Phalcon\Factory\AbstractFactory`
+
+-   __Extends__
+    
+    `AbstractFactory`
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -3528,7 +4351,7 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $services = [] );
@@ -3556,17 +4379,29 @@ Returns the available adapters
 
 
 
-<h1 id="filter-validation-validatorinterface">Interface Phalcon\Filter\Validation\ValidatorInterface</h1>
+## Filter\Validation\ValidatorInterface ![Abstract](assets/images/interface-blue.png) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorInterface.zep)
 
-| Namespace  | Phalcon\Filter\Validation |
-| Uses       | Phalcon\Filter\Validation |
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Filter\Validation\AbstractValidator
 
 
-## Methods
+### Methods
 
 ```php
 public function getOption( string $key, mixed $defaultValue = null ): mixed;
@@ -3578,17 +4413,13 @@ Returns null if the option hasn't set
 ```php
 public function getTemplate( string $field ): string;
 ```
-   Get the template message
-   
-   
+Get the template message
 
 
 ```php
 public function getTemplates(): array;
 ```
-   Get message templates
-   
-   
+Get message templates
 
 
 ```php
@@ -3600,17 +4431,13 @@ Checks if an option is defined
 ```php
 public function setTemplate( string $template ): ValidatorInterface;
 ```
-   Set a new template message
-   
-   
+Set a new template message
 
 
 ```php
 public function setTemplates( array $templates ): ValidatorInterface;
 ```
-   Clear current template and set new from an array,
-   
-   
+Clear current template and set new from an array,
 
 
 ```php
