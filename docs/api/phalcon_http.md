@@ -19,7 +19,7 @@
 
 <h1 id="http-cookie">Class Phalcon\Http\Cookie</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Cookie.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Encryption\Crypt\CryptInterface, Phalcon\Encryption\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
@@ -267,7 +267,7 @@ Assert the cookie's key is enough long.
 
 <h1 id="http-cookie-cookieinterface">Interface Phalcon\Http\Cookie\CookieInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Cookie/CookieInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/CookieInterface.zep)
 
 | Namespace  | Phalcon\Http\Cookie |
 
@@ -396,7 +396,7 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 <h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Cookie/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exception.zep)
 
 | Namespace  | Phalcon\Http\Cookie |
 | Extends    | \Exception |
@@ -409,7 +409,7 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 <h1 id="http-message-requestmethodinterface">Interface Phalcon\Http\Message\RequestMethodInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Message/RequestMethodInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/RequestMethodInterface.zep)
 
 | Namespace  | Phalcon\Http\Message |
 
@@ -437,7 +437,7 @@ const METHOD_TRACE = TRACE;
 
 <h1 id="http-message-responsestatuscodeinterface">Interface Phalcon\Http\Message\ResponseStatusCodeInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
 
 | Namespace  | Phalcon\Http\Message |
 
@@ -564,7 +564,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
 
 <h1 id="http-request">Class Phalcon\Http\Request</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, Phalcon\Support\Helper\Json\Decode, UnexpectedValueException, stdClass |
@@ -1205,7 +1205,7 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 <h1 id="http-request-exception">Class Phalcon\Http\Request\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exception.zep)
 
 | Namespace  | Phalcon\Http\Request |
 | Extends    | \Exception |
@@ -1218,7 +1218,7 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 <h1 id="http-request-file">Class Phalcon\Http\Request\File</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request/File.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/File.zep)
 
 | Namespace  | Phalcon\Http\Request |
 | Implements | FileInterface |
@@ -1363,7 +1363,7 @@ Moves the temporary file to a destination within the application
 
 <h1 id="http-request-fileinterface">Interface Phalcon\Http\Request\FileInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request/FileInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/FileInterface.zep)
 
 | Namespace  | Phalcon\Http\Request |
 
@@ -1419,7 +1419,7 @@ Move the temporary file to a destination
 
 <h1 id="http-requestinterface">Interface Phalcon\Http\RequestInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/RequestInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/RequestInterface.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | Phalcon\Http\Request\FileInterface, stdClass |
@@ -1841,7 +1841,7 @@ Returns the number of files available
 
 <h1 id="http-response">Class Phalcon\Http\Response</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | DateTime, DateTimeZone, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Support\Helper\Json\Encode |
@@ -2210,7 +2210,7 @@ $response->setStatusCode(404, "Not Found");
 
 <h1 id="http-response-cookies">Class Phalcon\Http\Response\Cookies</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/Cookies.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Cookies.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\Cookie\Exception, Phalcon\Http\Cookie\CookieInterface |
@@ -2399,7 +2399,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 <h1 id="http-response-cookiesinterface">Interface Phalcon\Http\Response\CookiesInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/CookiesInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/CookiesInterface.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Uses       | Phalcon\Http\Cookie\CookieInterface |
@@ -2464,7 +2464,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 <h1 id="http-response-exception">Class Phalcon\Http\Response\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exception.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Extends    | \Exception |
@@ -2477,7 +2477,7 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 <h1 id="http-response-headers">Class Phalcon\Http\Response\Headers</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/Headers.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Headers.zep)
 
 | Namespace  | Phalcon\Http\Response |
 | Implements | HeadersInterface |
@@ -2561,7 +2561,7 @@ Returns the current headers as an array
 
 <h1 id="http-response-headersinterface">Interface Phalcon\Http\Response\HeadersInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/HeadersInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/HeadersInterface.zep)
 
 | Namespace  | Phalcon\Http\Response |
 
@@ -2612,7 +2612,7 @@ Sets a raw header to be sent at the end of the request
 
 <h1 id="http-responseinterface">Interface Phalcon\Http\ResponseInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/ResponseInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/ResponseInterface.zep)
 
 | Namespace  | Phalcon\Http |
 | Uses       | DateTime, Phalcon\Http\Response\HeadersInterface |

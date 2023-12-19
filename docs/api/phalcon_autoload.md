@@ -4,7 +4,7 @@
 
 <h1 id="autoload-exception">Class Phalcon\Autoload\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Autoload/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exception.zep)
 
 | Namespace  | Phalcon\Autoload |
 | Extends    | \Exception |
@@ -15,7 +15,7 @@ Exceptions thrown in Phalcon\Autoload will use this class
 
 <h1 id="autoload-loader">Class Phalcon\Autoload\Loader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Autoload/Loader.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Loader.zep)
 
 | Namespace  | Phalcon\Autoload |
 | Uses       | Phalcon\Events\AbstractEventsAware |

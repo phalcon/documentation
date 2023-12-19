@@ -16,7 +16,7 @@
 
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/AbstractInjectionAware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/AbstractInjectionAware.zep)
 
 | Namespace  | Phalcon\Di |
 | Implements | InjectionAwareInterface |
@@ -53,7 +53,7 @@ Sets the dependency injector
 
 <h1 id="di-di">Class Phalcon\Di\Di</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Di.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Di.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\ConfigInterface, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InitializationAwareInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
@@ -381,7 +381,7 @@ Loads services from a Config object.
 
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/DiInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/DiInterface.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | ArrayAccess |
@@ -483,7 +483,7 @@ Registers an "always shared" service in the services container
 
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exception.zep)
 
 | Namespace  | Phalcon\Di |
 | Extends    | \Exception |
@@ -494,7 +494,7 @@ Exceptions thrown in Phalcon\Di will use this class
 
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Exception/ServiceResolutionException.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exception/ServiceResolutionException.zep)
 
 | Namespace  | Phalcon\Di\Exception |
 | Extends    | \Phalcon\Di\Exception |
@@ -505,7 +505,7 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/FactoryDefault.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/FactoryDefault.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Phalcon\Filter\FilterFactory |
@@ -529,7 +529,7 @@ Phalcon\Di\FactoryDefault constructor
 
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/FactoryDefault/Cli.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/FactoryDefault/Cli.zep)
 
 | Namespace  | Phalcon\Di\FactoryDefault |
 | Uses       | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory |
@@ -555,7 +555,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 <h1 id="di-initializationawareinterface">Interface Phalcon\Di\InitializationAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/InitializationAwareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InitializationAwareInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
@@ -574,7 +574,7 @@ public function initialize(): void;
 
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Injectable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Injectable.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | stdClass, Phalcon\Di\Di, Phalcon\Session\BagInterface |
@@ -625,7 +625,7 @@ Sets the dependency injector
 
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/InjectionAwareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InjectionAwareInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
@@ -651,7 +651,7 @@ Sets the dependency injector
 
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Service.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Service.zep)
 
 | Namespace  | Phalcon\Di |
 | Uses       | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder |
@@ -759,7 +759,7 @@ Sets/Resets the shared instance related to the service
 
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/Service/Builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Service/Builder.zep)
 
 | Namespace  | Phalcon\Di\Service |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
@@ -781,7 +781,7 @@ Builds a service using a complex service definition
 
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/ServiceInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceInterface.zep)
 
 | Namespace  | Phalcon\Di |
 
@@ -842,7 +842,7 @@ Sets if the service is shared or not
 
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Di/ServiceProviderInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceProviderInterface.zep)
 
 | Namespace  | Phalcon\Di |
 

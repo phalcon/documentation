@@ -5,7 +5,7 @@
 
 <h1 id="tag">Class Phalcon\Tag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag.zep)
 
 | Namespace  | Phalcon |
 | Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Mvc\Url\UrlInterface, Phalcon\Support\Helper\Str\Friendly |
@@ -461,7 +461,7 @@ Builds INPUT tags that implements the checked attribute
 
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Exception.zep)
 
 | Namespace  | Phalcon\Tag |
 | Extends    | \Exception |
@@ -474,7 +474,7 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Select.zep)
 
 | Namespace  | Phalcon\Tag |
 | Uses       | Phalcon\Tag, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |

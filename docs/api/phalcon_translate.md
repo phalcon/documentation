@@ -13,7 +13,7 @@
 
 <h1 id="translate-adapter-abstractadapter">Abstract Class Phalcon\Translate\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AbstractAdapter.zep)
 
 | Namespace  | Phalcon\Translate\Adapter |
 | Uses       | Phalcon\Support\Helper\Arr\Get, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
@@ -89,7 +89,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-adapter-adapterinterface">Interface Phalcon\Translate\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AdapterInterface.zep)
 
 | Namespace  | Phalcon\Translate\Adapter |
 
@@ -122,7 +122,7 @@ Returns the translation string of the given key
 
 <h1 id="translate-adapter-csv">Class Phalcon\Translate\Adapter\Csv</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/Csv.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/Csv.zep)
 
 | Namespace  | Phalcon\Translate\Adapter |
 | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
@@ -182,7 +182,7 @@ protected function phpFopen( string $filename, string $mode );
 
 <h1 id="translate-adapter-gettext">Class Phalcon\Translate\Adapter\Gettext</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/Gettext.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/Gettext.zep)
 
 | Namespace  | Phalcon\Translate\Adapter |
 | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
@@ -365,7 +365,7 @@ Validator for constructor
 
 <h1 id="translate-adapter-nativearray">Class Phalcon\Translate\Adapter\NativeArray</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/NativeArray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/NativeArray.zep)
 
 | Namespace  | Phalcon\Translate\Adapter |
 | Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
@@ -432,7 +432,7 @@ Returns the internal array
 
 <h1 id="translate-exception">Class Phalcon\Translate\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exception.zep)
 
 | Namespace  | Phalcon\Translate |
 | Extends    | \Exception |
@@ -445,7 +445,7 @@ Class for exceptions thrown by Phalcon\Translate
 
 <h1 id="translate-interpolator-associativearray">Class Phalcon\Translate\Interpolator\AssociativeArray</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Interpolator/AssociativeArray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/AssociativeArray.zep)
 
 | Namespace  | Phalcon\Translate\Interpolator |
 | Uses       | Phalcon\Support\Helper\Str\Interpolate |
@@ -468,7 +468,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolator-indexedarray">Class Phalcon\Translate\Interpolator\IndexedArray</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Interpolator/IndexedArray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/IndexedArray.zep)
 
 | Namespace  | Phalcon\Translate\Interpolator |
 | Implements | InterpolatorInterface |
@@ -490,7 +490,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolator-interpolatorinterface">Interface Phalcon\Translate\Interpolator\InterpolatorInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
 
 | Namespace  | Phalcon\Translate\Interpolator |
 
@@ -511,7 +511,7 @@ Replaces placeholders by the values passed
 
 <h1 id="translate-interpolatorfactory">Class Phalcon\Translate\InterpolatorFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/InterpolatorFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/InterpolatorFactory.zep)
 
 | Namespace  | Phalcon\Translate |
 | Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Interpolator\InterpolatorInterface |
@@ -555,7 +555,7 @@ Returns the available adapters
 
 <h1 id="translate-translatefactory">Class Phalcon\Translate\TranslateFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/TranslateFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/TranslateFactory.zep)
 
 | Namespace  | Phalcon\Translate |
 | Uses       | Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory, Phalcon\Translate\Adapter\AdapterInterface |
