@@ -168,13 +168,13 @@ nav:
           - Use case: use-case.md
           - Performance: performance.md
   - Core:
+      - API Index: api/index.md
       - Application: application.md
       - Micro: application-micro.md
       - CLI: application-cli.md
       - DI Container: di.md
       - MVC: mvc.md
       - Namespaces: namespaces.md
-      - API Index: api/index.md
   - Database:
       - Layer: db-layer.md
       - PHQL: db-phql.md
