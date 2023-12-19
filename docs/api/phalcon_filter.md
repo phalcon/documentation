@@ -210,7 +210,7 @@ Returns the available adapters
 
 
 
-## Filter\FilterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Filter\FilterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/FilterInterface.zep)
 
@@ -1411,7 +1411,7 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 
 
 
-## Filter\Validation\ValidationInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Filter\Validation\ValidationInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidationInterface.zep)
 
@@ -4285,7 +4285,7 @@ Executes the validation
 
 
 
-## Filter\Validation\ValidatorCompositeInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Filter\Validation\ValidatorCompositeInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorCompositeInterface.zep)
 
@@ -4379,7 +4379,7 @@ Returns the available adapters
 
 
 
-## Filter\Validation\ValidatorInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Filter\Validation\ValidatorInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorInterface.zep)
 

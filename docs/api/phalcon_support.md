@@ -271,7 +271,7 @@ Internal method to set data
 
 
 
-## Support\Collection\CollectionInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Support\Collection\CollectionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/CollectionInterface.zep)
 
@@ -3033,7 +3033,7 @@ Returns the available adapters
 
 
 
-## Support\Registry ![Abstract](../assets/images/final-red.svg) 
+## Support\Registry ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Registry.zep)
 

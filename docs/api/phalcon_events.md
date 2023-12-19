@@ -203,7 +203,7 @@ if ($event->isCancelable()) {
 
 
 
-## Events\EventInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Events\EventInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventInterface.zep)
 
@@ -270,7 +270,7 @@ Stops the event preventing propagation
 
 
 
-## Events\EventsAwareInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Events\EventsAwareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventsAwareInterface.zep)
 
@@ -485,7 +485,7 @@ public function isValidHandler( mixed $handler ): bool;
 
 
 
-## Events\ManagerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Events\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/ManagerInterface.zep)
 

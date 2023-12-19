@@ -594,7 +594,7 @@ protected function parseConfig( mixed $config ): array;
 
 
 
-## Config\ConfigInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Config\ConfigInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/ConfigInterface.zep)
 

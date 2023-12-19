@@ -226,7 +226,7 @@ Initializes the serializer
 
 
 
-## Storage\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Storage\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AdapterInterface.zep)
 
@@ -1735,7 +1735,7 @@ Serializer using the built-in Redis 'php' serializer
 
 
 
-## Storage\Serializer\SerializerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Storage\Serializer\SerializerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/SerializerInterface.zep)
 

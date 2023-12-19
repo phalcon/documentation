@@ -364,7 +364,7 @@ protected function phpOpensslRandomPseudoBytes( int $length );
 
 
 
-## Encryption\Crypt\CryptInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Encryption\Crypt\CryptInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/CryptInterface.zep)
 
@@ -763,7 +763,7 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-## Encryption\Crypt\Padding\PadInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Encryption\Crypt\Padding\PadInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/PadInterface.zep)
 
@@ -1659,7 +1659,7 @@ Verify a passed source with a payload and passphrase
 
 
 
-## Encryption\Security\JWT\Signer\SignerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Encryption\Security\JWT\Signer\SignerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/SignerInterface.zep)
 

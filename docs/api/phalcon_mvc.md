@@ -224,7 +224,7 @@ Phalcon\Mvc\Controller constructor
 
 
 
-## Mvc\Controller\BindModelInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Controller\BindModelInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Controller/BindModelInterface.zep)
 
@@ -257,7 +257,7 @@ Return the model name associated with this controller
 
 
 
-## Mvc\ControllerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\ControllerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ControllerInterface.zep)
 
@@ -500,7 +500,7 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 
 
-## Mvc\DispatcherInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\DispatcherInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/DispatcherInterface.zep)
 
@@ -565,7 +565,7 @@ Sets the default controller name
 
 
 
-## Mvc\EntityInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\EntityInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/EntityInterface.zep)
 
@@ -1179,7 +1179,7 @@ Internal function to add a handler to the group.
 
 
 
-## Mvc\Micro\CollectionInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Micro\CollectionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/CollectionInterface.zep)
 
@@ -1385,7 +1385,7 @@ public function getHandler(): object | null;
 
 
 
-## Mvc\Micro\MiddlewareInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Micro\MiddlewareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/MiddlewareInterface.zep)
 
@@ -3230,7 +3230,7 @@ Listens for notifications from the models manager
 
 
 
-## Mvc\Model\BehaviorInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\BehaviorInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/BehaviorInterface.zep)
 
@@ -3390,7 +3390,7 @@ Get modified params for handler using reflection
 
 
 
-## Mvc\Model\Binder\BindableInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\Binder\BindableInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Binder/BindableInterface.zep)
 
@@ -3424,7 +3424,7 @@ this class
 
 
 
-## Mvc\Model\BinderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\BinderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/BinderInterface.zep)
 
@@ -3881,7 +3881,7 @@ Sets the conditions parameter in the criteria
 
 
 
-## Mvc\Model\CriteriaInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\CriteriaInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/CriteriaInterface.zep)
 
@@ -4911,7 +4911,7 @@ Merge two arrays of find parameters
 
 
 
-## Mvc\Model\ManagerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/ManagerInterface.zep)
 
@@ -6073,7 +6073,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 
 
-## Mvc\Model\MetaData\Strategy\StrategyInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\MetaData\Strategy\StrategyInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Strategy/StrategyInterface.zep)
 
@@ -6184,7 +6184,7 @@ Writes the meta-data to files
 
 
 
-## Mvc\Model\MetaDataInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\MetaDataInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaDataInterface.zep)
 
@@ -7646,7 +7646,7 @@ Appends a NOT IN condition
 
 
 
-## Mvc\Model\Query\BuilderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\Query\BuilderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/BuilderInterface.zep)
 
@@ -8056,7 +8056,7 @@ Allows to check if the executed operation was successful
 
 
 
-## Mvc\Model\Query\StatusInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\Query\StatusInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/StatusInterface.zep)
 
@@ -8103,7 +8103,7 @@ Allows to check if the executed operation was successful
 
 
 
-## Mvc\Model\QueryInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\QueryInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/QueryInterface.zep)
 
@@ -8391,7 +8391,7 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-## Mvc\Model\RelationInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\RelationInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/RelationInterface.zep)
 
@@ -8509,7 +8509,7 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-## Mvc\Model\ResultInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\ResultInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/ResultInterface.zep)
 
@@ -9076,7 +9076,7 @@ the saved state
 
 
 
-## Mvc\Model\ResultsetInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\ResultsetInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/ResultsetInterface.zep)
 
@@ -9786,7 +9786,7 @@ Removes transactions from the TransactionManager
 
 
 
-## Mvc\Model\Transaction\ManagerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\Transaction\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Transaction/ManagerInterface.zep)
 
@@ -9887,7 +9887,7 @@ Set if the transaction manager must register a shutdown function to clean up pen
 
 
 
-## Mvc\Model\TransactionInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Model\TransactionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/TransactionInterface.zep)
 
@@ -10051,7 +10051,7 @@ Returns the model that generated the messages
 
 
 
-## Mvc\ModelInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\ModelInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ModelInterface.zep)
 
@@ -10338,7 +10338,7 @@ Check whether validation process has generated any messages
 
 
 
-## Mvc\ModuleDefinitionInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\ModuleDefinitionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ModuleDefinitionInterface.zep)
 
@@ -11285,7 +11285,7 @@ Adds a route applying the common attributes
 
 
 
-## Mvc\Router\GroupInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Router\GroupInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/GroupInterface.zep)
 
@@ -11806,7 +11806,7 @@ $route->via(
 
 
 
-## Mvc\Router\RouteInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Router\RouteInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/RouteInterface.zep)
 
@@ -11929,7 +11929,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-## Mvc\RouterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\RouterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/RouterInterface.zep)
 
@@ -12349,7 +12349,7 @@ Exceptions thrown in Phalcon\Mvc\Url will use this class
 
 
 
-## Mvc\Url\UrlInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\Url\UrlInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/UrlInterface.zep)
 
@@ -13150,7 +13150,7 @@ Renders a partial inside another view
 
 
 
-## Mvc\View\Engine\EngineInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\View\Engine\EngineInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/EngineInterface.zep)
 
@@ -14171,7 +14171,7 @@ Phalcon\Mvc\View\Engine\Php
 
 
 
-## Mvc\ViewBaseInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\ViewBaseInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ViewBaseInterface.zep)
 
@@ -14248,7 +14248,7 @@ slash or backslash
 
 
 
-## Mvc\ViewInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Mvc\ViewInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/ViewInterface.zep)
 

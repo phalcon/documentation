@@ -310,7 +310,7 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 
 
 
-## Flash\FlashInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Flash\FlashInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/FlashInterface.zep)
 

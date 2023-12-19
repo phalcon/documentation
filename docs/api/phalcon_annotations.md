@@ -108,7 +108,7 @@ Sets the annotations parser
 
 
 
-## Annotations\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Annotations\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/AdapterInterface.zep)
 
@@ -724,7 +724,7 @@ Parses a raw doc block returning the annotations found
 
 
 
-## Annotations\ReaderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Annotations\ReaderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/ReaderInterface.zep)
 

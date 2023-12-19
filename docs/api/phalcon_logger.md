@@ -319,7 +319,7 @@ Returns the formatted item
 
 
 
-## Logger\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Logger\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/AdapterInterface.zep)
 
@@ -818,7 +818,7 @@ protected function getInterpolatedMessage( Item $item, string $message ): string
 
 
 
-## Logger\Formatter\FormatterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Logger\Formatter\FormatterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/FormatterInterface.zep)
 
@@ -1222,7 +1222,7 @@ protected function getExceptionClass(): string;
 
 
 
-## Logger\LoggerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Logger\LoggerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/LoggerInterface.zep)
 

@@ -56,7 +56,7 @@ protected function renderAttributes( array $attributes ): string;
 
 
 
-## Html\Attributes\AttributesInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Attributes\AttributesInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Attributes/AttributesInterface.zep)
 
@@ -96,7 +96,7 @@ Set Attributes
 
 
 
-## Html\Attributes\RenderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Attributes\RenderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Attributes/RenderInterface.zep)
 
@@ -454,7 +454,7 @@ Proxy method for testing
 
 
 
-## Html\Escaper\EscaperInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Escaper\EscaperInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/EscaperInterface.zep)
 
@@ -2832,7 +2832,7 @@ object already in the collection.
 
 
 
-## Html\Link\Interfaces\EvolvableLinkInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Link\Interfaces\EvolvableLinkInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/EvolvableLinkInterface.zep)
 
@@ -2900,7 +2900,7 @@ normally without errors.
 
 
 
-## Html\Link\Interfaces\EvolvableLinkProviderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Link\Interfaces\EvolvableLinkProviderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/EvolvableLinkProviderInterface.zep)
 
@@ -2946,7 +2946,7 @@ object already in the collection.
 
 
 
-## Html\Link\Interfaces\LinkInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Link\Interfaces\LinkInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/LinkInterface.zep)
 
@@ -3006,7 +3006,7 @@ Returns whether this is a templated link.
 
 
 
-## Html\Link\Interfaces\LinkProviderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Link\Interfaces\LinkProviderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/LinkProviderInterface.zep)
 
@@ -3195,7 +3195,7 @@ Serializes all the passed links to a HTTP link header
 
 
 
-## Html\Link\Serializer\SerializerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Html\Link\Serializer\SerializerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Serializer/SerializerInterface.zep)
 

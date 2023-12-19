@@ -169,7 +169,7 @@ Sets message type
 
 
 
-## Messages\MessageInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Messages\MessageInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/MessageInterface.zep)
 

@@ -456,7 +456,7 @@ protected function toCamelCase( string $input ): string;
 
 
 
-## Dispatcher\DispatcherInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Dispatcher\DispatcherInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/DispatcherInterface.zep)
 

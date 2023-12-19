@@ -794,7 +794,7 @@ var_dump(
 
 
 
-## Db\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Adapter/AdapterInterface.zep)
 
@@ -2425,7 +2425,7 @@ Returns true if number column is unsigned
 
 
 
-## Db\ColumnInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\ColumnInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ColumnInterface.zep)
 
@@ -3532,7 +3532,7 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-## Db\DialectInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\DialectInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/DialectInterface.zep)
 
@@ -3931,7 +3931,7 @@ Index type
 
 
 
-## Db\IndexInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\IndexInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/IndexInterface.zep)
 
@@ -4492,7 +4492,7 @@ Schema name
 
 
 
-## Db\ReferenceInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\ReferenceInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ReferenceInterface.zep)
 
@@ -4792,7 +4792,7 @@ $result->setFetchMode(
 
 
 
-## Db\ResultInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\ResultInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ResultInterface.zep)
 

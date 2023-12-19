@@ -212,7 +212,7 @@ protected function checkHighLow( int $value, int $min = int, int $max = int ): i
 
 
 
-## Image\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Image\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/AdapterInterface.zep)
 

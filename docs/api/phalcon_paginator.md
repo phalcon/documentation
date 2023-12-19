@@ -106,7 +106,7 @@ Gets current repository for pagination
 
 
 
-## Paginator\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Paginator\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AdapterInterface.zep)
 
@@ -651,7 +651,7 @@ Resolve alias property name
 
 
 
-## Paginator\RepositoryInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Paginator\RepositoryInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/RepositoryInterface.zep)
 
