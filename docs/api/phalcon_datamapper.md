@@ -41,7 +41,7 @@ methods
 /**
  * @var array
  */
-protected arguments;
+protected $arguments;
 
 ```
 
@@ -107,12 +107,12 @@ methods
 /**
  * @var \PDO
  */
-protected pdo;
+protected $pdo;
 
 /**
  * @var ProfilerInterface
  */
-protected profiler;
+protected $profiler;
 
 ```
 
@@ -733,28 +733,28 @@ Manages Connection instances for default, read, and write connections.
  *
  * @var ConnectionInterface
  */
-protected master;
+protected $master;
 
 /**
  * A registry of Connection "read" factories/instances.
  *
  * @var array
  */
-protected read;
+protected $read;
 
 /**
  * A registry of Connection "write" factories/instances.
  *
  * @var array
  */
-protected write;
+protected $write;
 
 /**
  * A collection of resolved instances
  *
  * @var array
  */
-private instances;
+private $instances;
 
 ```
 
@@ -981,7 +981,7 @@ A memory-based logger.
 /**
  * @var array
  */
-protected messages;
+protected $messages;
 
 ```
 
@@ -1104,32 +1104,32 @@ Sends query profiles to a logger.
 /**
  * @var bool
  */
-protected active = false;
+protected $active = false;
 
 /**
  * @var array
  */
-protected context;
+protected $context;
 
 /**
  * @var string
  */
-protected logFormat = ;
+protected $logFormat = ;
 
 /**
  * @var int
  */
-protected logLevel = 0;
+protected $logLevel = ;
 
 /**
  * @var LoggerInterface
  */
-protected logger;
+protected $logger;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 ```
 
@@ -1432,17 +1432,17 @@ Class AbstractQuery
 /**
  * @var Bind
  */
-protected bind;
+protected $bind;
 
 /**
  * @var Connection
  */
-protected connection;
+protected $connection;
 
 /**
  * @var array
  */
-protected store;
+protected $store;
 
 ```
 
@@ -1554,12 +1554,12 @@ Class Bind
 /**
  * @var int
  */
-protected inlineCount = 0;
+protected $inlineCount = ;
 
 /**
  * @var array
  */
-protected store;
+protected $store;
 
 ```
 
@@ -1774,7 +1774,7 @@ QueryFactory
 /**
  * @var string
  */
-protected selectClass = ;
+protected $selectClass = ;
 
 ```
 
@@ -1854,12 +1854,12 @@ const JOIN_RIGHT = RIGHT;
 /**
  * @var string
  */
-protected asAlias = ;
+protected $asAlias = ;
 
 /**
  * @var bool
  */
-protected forUpdate = false;
+protected $forUpdate = false;
 
 ```
 

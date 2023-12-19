@@ -42,7 +42,7 @@ This component offers caching capabilities for your application.
  *
  * @var AdapterInterface
  */
-protected adapter;
+protected $adapter;
 
 ```
 
@@ -340,7 +340,7 @@ Factory to create Cache adapters
 /**
  * @var SerializerFactory
  */
-private serializerFactory;
+private $serializerFactory;
 
 ```
 
@@ -488,7 +488,7 @@ Creates a new Cache class
 /**
  * @var AdapterFactory
  */
-protected adapterFactory;
+protected $adapterFactory;
 
 ```
 

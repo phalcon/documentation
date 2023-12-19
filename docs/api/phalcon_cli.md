@@ -41,12 +41,12 @@ This component allows to create CLI applications using Phalcon
 /**
  * @var array
  */
-protected arguments;
+protected $arguments;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 ```
 
@@ -138,22 +138,22 @@ $handle = $dispatcher->dispatch();
 ### Properties
 ```php
 //
-protected defaultHandler = main;
+protected $defaultHandler = main;
 
 /**
  * @var string
  */
-protected defaultAction = main;
+protected $defaultAction = main;
 
 /**
  * @var string
  */
-protected handlerSuffix = Task;
+protected $handlerSuffix = Task;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 ```
 
@@ -398,62 +398,62 @@ echo $router->getTaskName();
 /**
  * @var string
  */
-protected action = ;
+protected $action = ;
 
 /**
  * @var string
  */
-protected defaultAction = ;
+protected $defaultAction = ;
 
 /**
  * @var string
  */
-protected defaultModule = ;
+protected $defaultModule = ;
 
 /**
  * @var array
  */
-protected defaultParams;
+protected $defaultParams;
 
 /**
  * @var string
  */
-protected defaultTask = ;
+protected $defaultTask = ;
 
 /**
  * @var RouteInterface|null
  */
-protected matchedRoute;
+protected $matchedRoute;
 
 /**
  * @var array
  */
-protected matches;
+protected $matches;
 
 /**
  * @var string
  */
-protected module = ;
+protected $module = ;
 
 /**
  * @var array
  */
-protected params;
+protected $params;
 
 /**
  * @var array
  */
-protected routes;
+protected $routes;
 
 /**
  * @var string
  */
-protected task = ;
+protected $task = ;
 
 /**
  * @var bool
  */
-protected wasMatched = false;
+protected $wasMatched = false;
 
 ```
 
@@ -641,57 +641,57 @@ const DEFAULT_DELIMITER =  ;
 /**
  * @var mixed|null
  */
-protected beforeMatch;
+protected $beforeMatch;
 
 /**
  * @var string
  */
-protected compiledPattern = ;
+protected $compiledPattern = ;
 
 /**
  * @var array
  */
-protected converters;
+protected $converters;
 
 /**
  * @var string
  */
-protected delimiter;
+protected $delimiter;
 
 /**
  * @var string
  */
-protected static delimiterPath;
+protected static $delimiterPath;
 
 /**
  * @var string
  */
-protected description = ;
+protected $description = ;
 
 /**
  * @var string
  */
-protected routeId;
+protected $routeId;
 
 /**
  * @var string
  */
-protected name = ;
+protected $name = ;
 
 /**
  * @var array
  */
-protected paths;
+protected $paths;
 
 /**
  * @var string
  */
-protected pattern = ;
+protected $pattern = ;
 
 /**
  * @var int
  */
-protected static uniqueId = 0;
+protected static $uniqueId = ;
 
 ```
 
@@ -1124,7 +1124,7 @@ class HelloTask extends \Phalcon\Cli\Task
 /**
  * @var ManagerInterface
  */
-protected eventsManager;
+protected $eventsManager;
 
 ```
 

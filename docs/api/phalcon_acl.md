@@ -43,21 +43,21 @@ Adapter for Phalcon\Acl adapters
  *
  * @var bool
  */
-protected accessGranted = false;
+protected $accessGranted = false;
 
 /**
  * Active access which the list is checking if some role can access it
  *
  * @var string|null
  */
-protected activeAccess;
+protected $activeAccess;
 
 /**
  * Component which the list is checking if some role can access it
  *
  * @var string|null
  */
-protected activeComponent;
+protected $activeComponent;
 
 /**
  * Role which the list is checking if it's allowed to certain
@@ -65,14 +65,14 @@ protected activeComponent;
  *
  * @var string|null
  */
-protected activeRole;
+protected $activeRole;
 
 /**
  * Default access
  *
  * @var int
  */
-protected defaultAccess;
+protected $defaultAccess;
 
 ```
 
@@ -368,77 +368,77 @@ foreach ($privateComponents as $component => $actions) {
  *
  * @var mixed
  */
-protected access;
+protected $access;
 
 /**
  * Access List
  *
  * @var mixed
  */
-protected accessList;
+protected $accessList;
 
 /**
  * Returns the latest function used to acquire access
  *
  * @var mixed
  */
-protected activeFunction;
+protected $activeFunction;
 
 /**
  * Returns number of additional arguments(excluding role and resource) for active function
  *
  * @var int
  */
-protected activeFunctionCustomArgumentsCount = 0;
+protected $activeFunctionCustomArgumentsCount = ;
 
 /**
  * Returns the latest key used to acquire access
  *
  * @var string|null
  */
-protected activeKey;
+protected $activeKey;
 
 /**
  * Components
  *
  * @var mixed
  */
-protected components;
+protected $components;
 
 /**
  * Component Names
  *
  * @var mixed
  */
-protected componentsNames;
+protected $componentsNames;
 
 /**
  * Function List
  *
  * @var mixed
  */
-protected func;
+protected $func;
 
 /**
  * Default action for no arguments is `allow`
  *
  * @var mixed
  */
-protected noArgumentsDefaultAction;
+protected $noArgumentsDefaultAction;
 
 /**
  * Roles
  *
  * @var mixed
  */
-protected roles;
+protected $roles;
 
 /**
  * Role Inherits
  *
  * @var mixed
  */
-protected roleInherits;
+protected $roleInherits;
 
 ```
 
@@ -676,14 +676,14 @@ This class defines component entity and its description
  *
  * @var string
  */
-private description;
+private $description;
 
 /**
  * Component name
  *
  * @var string
  */
-private name;
+private $name;
 
 ```
 
@@ -869,14 +869,14 @@ This class defines role entity and its description
  *
  * @var string
  */
-private description;
+private $description;
 
 /**
  * Role name
  *
  * @var string
  */
-private name;
+private $name;
 
 ```
 

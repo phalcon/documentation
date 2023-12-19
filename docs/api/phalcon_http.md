@@ -46,69 +46,69 @@ Provide OO wrappers to manage a HTTP cookie.
 /**
  * @var string
  */
-protected domain;
+protected $domain;
 
 /**
  * @var int
  */
-protected expire;
+protected $expire;
 
 /**
  * @var FilterInterface|null
  */
-protected filter;
+protected $filter;
 
 /**
  * @var bool
  */
-protected httpOnly;
+protected $httpOnly;
 
 /**
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var string
  */
-protected path;
+protected $path;
 
 /**
  * @var bool
  */
-protected read = false;
+protected $read = false;
 
 /**
  * @var bool
  */
-protected restored = false;
+protected $restored = false;
 
 /**
  * @var bool
  */
-protected secure = true;
+protected $secure = true;
 
 /**
  * The cookie's sign key.
  *
  * @var string|null
  */
-protected signKey;
+protected $signKey;
 
 /**
  * @var bool
  */
-protected useEncryption = false;
+protected $useEncryption = false;
 
 /**
  * @var mixed|null
  */
-protected value;
+protected $value;
 
 ```
 
@@ -685,37 +685,37 @@ $request->getLanguages();
 /**
  * @var FilterInterface|null
  */
-private filterService;
+private $filterService;
 
 /**
  * @var bool
  */
-private httpMethodParameterOverride = false;
+private $httpMethodParameterOverride = false;
 
 /**
  * @var array
  */
-private queryFilters;
+private $queryFilters;
 
 /**
  * @var array|null
  */
-private patchCache;
+private $patchCache;
 
 /**
  * @var array|null
  */
-private putCache;
+private $putCache;
 
 /**
  * @var string
  */
-private rawBody = ;
+private $rawBody = ;
 
 /**
  * @var bool
  */
-private strictHostCheck = false;
+private $strictHostCheck = false;
 
 ```
 
@@ -1358,42 +1358,42 @@ class PostsController extends Controller
 /**
  * @var string|null
  */
-protected error;
+protected $error;
 
 /**
  * @var string
  */
-protected extension;
+protected $extension;
 
 /**
  * @var string|null
  */
-protected key;
+protected $key;
 
 /**
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * @var string
  */
-protected realType;
+protected $realType;
 
 /**
  * @var int
  */
-protected size = 0;
+protected $size = ;
 
 /**
  * @var string|null
  */
-protected tmp;
+protected $tmp;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
@@ -2027,47 +2027,47 @@ $response->send();
 /**
  * @var DiInterface|null
  */
-protected container;
+protected $container;
 
 /**
  * @var string|null
  */
-protected content;
+protected $content;
 
 /**
  * @var CookiesInterface|null
  */
-protected cookies;
+protected $cookies;
 
 /**
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * @var string|null
  */
-protected file;
+protected $file;
 
 /**
  * @var Headers
  */
-protected headers;
+protected $headers;
 
 /**
  * @var bool
  */
-protected sent = false;
+protected $sent = false;
 
 /**
  * @var array
  */
-protected statusCodes;
+protected $statusCodes;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 ```
 
@@ -2446,28 +2446,28 @@ $di->set(
 /**
  * @var array
  */
-protected cookies;
+protected $cookies;
 
 /**
  * @var bool
  */
-protected isSent = false;
+protected $isSent = false;
 
 /**
  * @var bool
  */
-protected registered = false;
+protected $registered = false;
 
 /**
  * The cookie's sign key.
  * @var string|null
  */
-protected signKey;
+protected $signKey;
 
 /**
  * @var bool
  */
-protected useEncryption = true;
+protected $useEncryption = true;
 
 ```
 
@@ -2704,12 +2704,12 @@ This class is a bag to manage the response headers
 /**
  * @var array
  */
-protected headers;
+protected $headers;
 
 /**
  * @var bool
  */
-protected isSent = false;
+protected $isSent = false;
 
 ```
 

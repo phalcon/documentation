@@ -63,27 +63,27 @@ Stores a message from various components
 /**
  * @var int
  */
-protected code;
+protected $code;
 
 /**
  * @var string
  */
-protected field;
+protected $field;
 
 /**
  * @var string
  */
-protected message;
+protected $message;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 /**
  * @var array
  */
-protected metaData;
+protected $metaData;
 
 ```
 
@@ -296,12 +296,12 @@ Represents a collection of messages
 /**
  * @var int
  */
-protected position = 0;
+protected $position = ;
 
 /**
  * @var array
  */
-protected messages;
+protected $messages;
 
 ```
 

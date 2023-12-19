@@ -40,54 +40,54 @@ $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var bool
  */
-protected isAutoVersion = false;
+protected $isAutoVersion = false;
 
 /**
  * @var bool
  */
-protected filter;
+protected $filter;
 
 /**
  * @var bool
  */
-protected isLocal;
+protected $isLocal;
 
 /**
  * @var string
  */
-protected path;
+protected $path;
 
 /**
  * @var string
  */
-protected sourcePath;
+protected $sourcePath;
 
 /**
  * @var string
  */
-protected targetPath;
+protected $targetPath;
 
 /**
  * @var string
  */
-protected targetUri;
+protected $targetUri;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 /**
  * Version of resource
  *
  * @var string|null
  */
-protected version;
+protected $version;
 
 ```
 
@@ -428,69 +428,69 @@ Collection of asset objects
 /**
  * @var array
  */
-protected assets;
+protected $assets;
 
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * Should version be determined from file modification time
  *
  * @var bool
  */
-protected autoVersion = false;
+protected $autoVersion = false;
 
 /**
  * @var array
  */
-protected codes;
+protected $codes;
 
 /**
  * @var array
  */
-protected filters;
+protected $filters;
 
 /**
  * @var bool
  */
-protected isLocal = true;
+protected $isLocal = true;
 
 /**
  * @var bool
  */
-protected join = true;
+protected $join = true;
 
 /**
  * @var string
  */
-protected prefix = ;
+protected $prefix = ;
 
 /**
  * @var string
  */
-protected sourcePath = ;
+protected $sourcePath = ;
 
 /**
  * @var bool
  */
-protected targetIsLocal = true;
+protected $targetIsLocal = true;
 
 /**
  * @var string
  */
-protected targetPath = ;
+protected $targetPath = ;
 
 /**
  * @var string
  */
-protected targetUri = ;
+protected $targetUri = ;
 
 /**
  * @var string
  */
-protected version = ;
+protected $version = ;
 
 ```
 
@@ -923,22 +923,22 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var string
  */
-protected content;
+protected $content;
 
 /**
  * @var bool
  */
-protected filter;
+protected $filter;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
@@ -1102,22 +1102,22 @@ Manages collections of CSS/JavaScript assets
 /**
  * @var array
  */
-protected collections;
+protected $collections;
 
 /**
  * @var bool
  */
-protected implicitOutput = true;
+protected $implicitOutput = true;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var TagFactory
  */
-protected tagFactory;
+protected $tagFactory;
 
 ```
 

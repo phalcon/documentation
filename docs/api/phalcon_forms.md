@@ -46,57 +46,57 @@ This is a base class for form elements
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var array
  */
-protected filters;
+protected $filters;
 
 /**
  * @var Form|null
  */
-protected form;
+protected $form;
 
 /**
  * @var string|null
  */
-protected label;
+protected $label;
 
 /**
  * @var string
  */
-protected method = inputText;
+protected $method = inputText;
 
 /**
  * @var Messages
  */
-protected messages;
+protected $messages;
 
 /**
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var TagFactory|null
  */
-protected tagFactory;
+protected $tagFactory;
 
 /**
  * @var array
  */
-protected validators;
+protected $validators;
 
 /**
  * @var mixed|null
  */
-protected value;
+protected $value;
 
 ```
 
@@ -343,7 +343,7 @@ Component INPUT[type=check] for forms
 /**
  * @var string
  */
-protected method = inputCheckbox;
+protected $method = inputCheckbox;
 
 ```
 
@@ -376,7 +376,7 @@ Component INPUT[type=date] for forms
 /**
  * @var string
  */
-protected method = inputDate;
+protected $method = inputDate;
 
 ```
 
@@ -620,7 +620,7 @@ Component INPUT[type=email] for forms
 /**
  * @var string
  */
-protected method = inputEmail;
+protected $method = inputEmail;
 
 ```
 
@@ -653,7 +653,7 @@ Component INPUT[type=file] for forms
 /**
  * @var string
  */
-protected method = inputFile;
+protected $method = inputFile;
 
 ```
 
@@ -686,7 +686,7 @@ Component INPUT[type=hidden] for forms
 /**
  * @var string
  */
-protected method = inputHidden;
+protected $method = inputHidden;
 
 ```
 
@@ -719,7 +719,7 @@ Component INPUT[type=number] for forms
 /**
  * @var string
  */
-protected method = inputNumeric;
+protected $method = inputNumeric;
 
 ```
 
@@ -752,7 +752,7 @@ Component INPUT[type=password] for forms
 /**
  * @var string
  */
-protected method = inputPassword;
+protected $method = inputPassword;
 
 ```
 
@@ -785,7 +785,7 @@ Component INPUT[type=radio] for forms
 /**
  * @var string
  */
-protected method = inputRadio;
+protected $method = inputRadio;
 
 ```
 
@@ -818,7 +818,7 @@ Component SELECT (choice) for forms
 /**
  * @var object|array|null
  */
-protected optionsValues;
+protected $optionsValues;
 
 ```
 
@@ -891,7 +891,7 @@ Component INPUT[type=submit] for forms
 /**
  * @var string
  */
-protected method = inputSubmit;
+protected $method = inputSubmit;
 
 ```
 
@@ -948,7 +948,7 @@ Component TEXTAREA for forms
 /**
  * @var string
  */
-protected method = inputTextarea;
+protected $method = inputTextarea;
 
 ```
 
@@ -1019,62 +1019,62 @@ This component allows to build forms using an object-oriented interface
 /**
  * @var AttributesInterface|null
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 /**
  * @var array
  */
-protected filteredData;
+protected $filteredData;
 
 /**
  * @var array
  */
-protected elements;
+protected $elements;
 
 /**
  * @var array
  */
-protected elementsIndexed;
+protected $elementsIndexed;
 
 /**
  * @var object|null
  */
-protected entity;
+protected $entity;
 
 /**
  * @var Messages|array|null
  */
-protected messages;
+protected $messages;
 
 /**
  * @var int
  */
-protected position = 0;
+protected $position = ;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var TagFactory|null
  */
-protected tagFactory;
+protected $tagFactory;
 
 /**
  * @var ValidationInterface|null
  */
-protected validation;
+protected $validation;
 
 /**
  * @var array
  */
-protected whitelist;
+protected $whitelist;
 
 ```
 
@@ -1354,7 +1354,7 @@ Forms Manager
 /**
  * @var array
  */
-protected forms;
+protected $forms;
 
 ```
 

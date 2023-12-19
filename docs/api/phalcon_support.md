@@ -63,17 +63,17 @@ etc.
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 /**
  * @var bool
  */
-protected insensitive = true;
+protected $insensitive = true;
 
 /**
  * @var array
  */
-protected lowerKeys;
+protected $lowerKeys;
 
 ```
 
@@ -477,47 +477,47 @@ Provides debug capabilities to Phalcon applications
 /**
  * @var array
  */
-protected blacklist;
+protected $blacklist;
 
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 /**
  * @var bool
  */
-protected hideDocumentRoot = false;
+protected $hideDocumentRoot = false;
 
 /**
  * @var bool
  */
-protected static isActive = false;
+protected static $isActive = false;
 
 /**
  * @var bool
  */
-protected showBackTrace = true;
+protected $showBackTrace = true;
 
 /**
  * @var bool
  */
-protected showFileFragment = false;
+protected $showFileFragment = false;
 
 /**
  * @var bool
  */
-protected showFiles = true;
+protected $showFiles = true;
 
 /**
  * @var string
     */
-protected uri = https://assets.phalcon.io/debug/5.0.x/;
+protected $uri = https://assets.phalcon.io/debug/5.0.x/;
 
 /**
  * @var Version
  */
-private version;
+private $version;
 
 ```
 
@@ -706,22 +706,22 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 /**
  * @var bool
  */
-protected detailed = false;
+protected $detailed = false;
 
 /**
  * @var array
  */
-protected methods;
+protected $methods;
 
 /**
  * @var array
  */
-protected styles;
+protected $styles;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 ```
 

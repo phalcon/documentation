@@ -38,7 +38,7 @@ This abstract class offers common access to the DI in a class
  *
  * @var DiInterface
  */
-protected container;
+protected $container;
 
 ```
 
@@ -134,28 +134,28 @@ $request = $di->getRequest();
  *
  * @var ServiceInterface[]
  */
-protected services;
+protected $services;
 
 /**
  * List of shared instances
  *
  * @var array
  */
-protected sharedInstances;
+protected $sharedInstances;
 
 /**
  * Events Manager
  *
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * Latest DI build
  *
  * @var DiInterface|null
  */
-protected static defaultDi;
+protected static $defaultDi;
 
 ```
 
@@ -735,7 +735,7 @@ accessing a public property with the same name of a registered service
  *
  * @var DiInterface|null
  */
-protected container;
+protected $container;
 
 ```
 
@@ -844,22 +844,22 @@ $request = service->resolve();
 /**
  * @var mixed
  */
-protected definition;
+protected $definition;
 
 /**
  * @var bool
  */
-protected resolved = false;
+protected $resolved = false;
 
 /**
  * @var bool
  */
-protected shared = false;
+protected $shared = false;
 
 /**
  * @var mixed|null
  */
-protected sharedInstance;
+protected $sharedInstance;
 
 ```
 

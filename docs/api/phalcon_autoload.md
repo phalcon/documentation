@@ -62,57 +62,57 @@ allowing the user to autoload files with different extensions than .php.
 /**
  * @var string|null
  */
-protected checkedPath;
+protected $checkedPath;
 
 /**
  * @var array
  */
-protected classes;
+protected $classes;
 
 /**
  * @var array
  */
-protected debug;
+protected $debug;
 
 /**
  * @var array
  */
-protected directories;
+protected $directories;
 
 /**
  * @var array
  */
-protected extensions;
+protected $extensions;
 
 /**
  * @var string|callable
  */
-protected fileCheckingCallback = is_file;
+protected $fileCheckingCallback = is_file;
 
 /**
  * @var array
  */
-protected files;
+protected $files;
 
 /**
  * @var string|null
  */
-protected foundPath;
+protected $foundPath;
 
 /**
  * @var bool
  */
-protected isDebug = false;
+protected $isDebug = false;
 
 /**
  * @var bool
  */
-protected isRegistered = false;
+protected $isRegistered = false;
 
 /**
  * @var array
  */
-protected namespaces;
+protected $namespaces;
 
 ```
 

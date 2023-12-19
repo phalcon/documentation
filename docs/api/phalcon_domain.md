@@ -39,42 +39,42 @@ Holds the payload
  *
  * @var Throwable|null
  */
-protected exception;
+protected $exception;
 
 /**
  * Extra information
  *
  * @var mixed
  */
-protected extras;
+protected $extras;
 
 /**
  * Input
  *
  * @var mixed
  */
-protected input;
+protected $input;
 
 /**
  * Messages
  *
  * @var mixed
  */
-protected messages;
+protected $messages;
 
 /**
  * Status
  *
  * @var mixed
  */
-protected status;
+protected $status;
 
 /**
  * Output
  *
  * @var mixed
  */
-protected output;
+protected $output;
 
 ```
 

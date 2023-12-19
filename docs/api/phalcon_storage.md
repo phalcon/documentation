@@ -52,45 +52,45 @@ Class AbstractAdapter
 /**
  * @var mixed
  */
-protected adapter;
+protected $adapter;
 
 /**
  * Name of the default serializer class
  *
  * @var string
  */
-protected defaultSerializer = php;
+protected $defaultSerializer = php;
 
 /**
  * Name of the default TTL (time to live)
  *
  * @var int
  */
-protected lifetime = 3600;
+protected $lifetime = 3600;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var string
  */
-protected prefix = ph-memo-;
+protected $prefix = ph-memo-;
 
 /**
  * Serializer
  *
  * @var SerializerInterface|null
  */
-protected serializer;
+protected $serializer;
 
 /**
  * Serializer Factory
  *
  * @var SerializerFactory
  */
-protected serializerFactory;
+protected $serializerFactory;
 
 ```
 
@@ -358,7 +358,7 @@ Apcu adapter
 /**
  * @var string
  */
-protected prefix = ph-apcu-;
+protected $prefix = ph-apcu-;
 
 ```
 
@@ -505,7 +505,7 @@ Libmemcached adapter
 /**
  * @var string
  */
-protected prefix = ph-memc-;
+protected $prefix = ph-memc-;
 
 ```
 
@@ -613,7 +613,7 @@ Memory adapter
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 ```
 
@@ -720,7 +720,7 @@ Redis adapter
 /**
  * @var string
  */
-protected prefix = ph-reds-;
+protected $prefix = ph-reds-;
 
 ```
 
@@ -833,12 +833,12 @@ Stream adapter
 /**
  * @var string
  */
-protected prefix = ph-strm;
+protected $prefix = ph-strm;
 
 /**
  * @var string
  */
-protected storageDir = ;
+protected $storageDir = ;
 
 ```
 
@@ -975,17 +975,17 @@ protected function phpUnlink( string $filename ): bool;
  *
  * @var int|null
  */
-protected fetching;
+protected $fetching;
 
 /**
  * @var array
  */
-protected weakList;
+protected $weakList;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 ```
 
@@ -1101,7 +1101,7 @@ file that was distributed with this source code.
 /**
  * @var SerializerFactory
  */
-private serializerFactory;
+private $serializerFactory;
 
 ```
 
@@ -1187,12 +1187,12 @@ Exceptions thrown in Phalcon\Storage will use this class
 /**
  * @var mixed
  */
-protected data;
+protected $data;
 
 /**
  * @var bool
  */
-protected isSuccess = true;
+protected $isSuccess = true;
 
 ```
 
@@ -1390,12 +1390,12 @@ file that was distributed with this source code.
 /**
  * @var Decode
  */
-private decode;
+private $decode;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 ```
 

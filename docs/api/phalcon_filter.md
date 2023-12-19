@@ -113,12 +113,12 @@ const FILTER_URL = url;
 /**
  * @var array
  */
-protected mapper;
+protected $mapper;
 
 /**
  * @var array
  */
-protected services;
+protected $services;
 
 ```
 
@@ -1004,46 +1004,46 @@ Allows to validate data using custom or built-in validators
 /**
  * @var array
  */
-protected combinedFieldsValidators;
+protected $combinedFieldsValidators;
 
 /**
  * @var mixed
  */
-protected data;
+protected $data;
 
 /**
  * @var object|null
  */
-protected entity;
+protected $entity;
 
 /**
  * @var array
  */
-protected filters;
+protected $filters;
 
 /**
  * @var array
  */
-protected labels;
+protected $labels;
 
 /**
  * @var Messages|null
  */
-protected messages;
+protected $messages;
 
 /**
  * List of validators
  *
  * @var array
  */
-protected validators;
+protected $validators;
 
 /**
  * Calculated values
  *
  * @var array
  */
-protected values;
+protected $values;
 
 ```
 
@@ -1233,19 +1233,19 @@ This is a base class for validators
  *
  * @var string|null
  */
-protected template;
+protected $template;
 
 /**
  * Message templates
  *
  * @var array
  */
-protected templates;
+protected $templates;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 ```
 
@@ -1368,7 +1368,7 @@ This is a base class for combined fields validators
 /**
  * @var array
  */
-protected validators;
+protected $validators;
 
 ```
 
@@ -1582,7 +1582,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must contain only letters and numbers;
+protected $template = Field :field must contain only letters and numbers;
 
 ```
 
@@ -1661,7 +1661,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must contain only letters;
+protected $template = Field :field must contain only letters;
 
 ```
 
@@ -1751,7 +1751,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be within the range of :min to :max;
+protected $template = Field :field must be within the range of :min to :max;
 
 ```
 
@@ -1841,7 +1841,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must match the callback function;
+protected $template = Field :field must match the callback function;
 
 ```
 
@@ -1926,7 +1926,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be the same as :with;
+protected $template = Field :field must be the same as :with;
 
 ```
 
@@ -2011,7 +2011,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field is not valid for a credit card number;
+protected $template = Field :field is not valid for a credit card number;
 
 ```
 
@@ -2096,7 +2096,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field is not a valid date;
+protected $template = Field :field is not a valid date;
 
 ```
 
@@ -2175,7 +2175,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be numeric;
+protected $template = Field :field must be numeric;
 
 ```
 
@@ -2254,7 +2254,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be an email address;
+protected $template = Field :field must be an email address;
 
 ```
 
@@ -2369,7 +2369,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must not be a part of list: :domain;
+protected $template = Field :field must not be a part of list: :domain;
 
 ```
 
@@ -2567,21 +2567,21 @@ $validator->add(
  *
  * @var string
  */
-protected messageFileEmpty = Field :field must not be empty;
+protected $messageFileEmpty = Field :field must not be empty;
 
 /**
  * File exceeds the file size set in PHP configuration
  *
  * @var string
  */
-protected messageIniSize = File :field exceeds the maximum file size;
+protected $messageIniSize = File :field exceeds the maximum file size;
 
 /**
  * File is not valid
  *
  * @var string
  */
-protected messageValid = Field :field is not valid;
+protected $messageValid = Field :field is not valid;
 
 ```
 
@@ -2741,7 +2741,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = File :field must be of type: :types;
+protected $template = File :field must be of type: :types;
 
 ```
 
@@ -2819,7 +2819,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = The resolution of the field :field has to be equal :resolution;
+protected $template = The resolution of the field :field has to be equal :resolution;
 
 ```
 
@@ -2908,7 +2908,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = File :field exceeds the maximum resolution of :resolution;
+protected $template = File :field exceeds the maximum resolution of :resolution;
 
 ```
 
@@ -2997,7 +2997,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = File :field can not have the minimum resolution of :resolution;
+protected $template = File :field can not have the minimum resolution of :resolution;
 
 ```
 
@@ -3087,7 +3087,7 @@ $validator->add(
 /**
  * @var string|null
  */
-protected template = File :field does not have the exact :size file size;
+protected $template = File :field does not have the exact :size file size;
 
 ```
 
@@ -3175,7 +3175,7 @@ $validator->add(
 /**
  * @var string|null
  */
-protected template = File :field exceeds the size of :size;
+protected $template = File :field exceeds the size of :size;
 
 ```
 
@@ -3257,7 +3257,7 @@ $validator->add(
 /**
  * @var string|null
  */
-protected template = File :field can not have the minimum size of :size;
+protected $template = File :field can not have the minimum size of :size;
 
 ```
 
@@ -3335,7 +3335,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field does not have the expected value;
+protected $template = Field :field does not have the expected value;
 
 ```
 
@@ -3420,7 +3420,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be a part of list: :domain;
+protected $template = Field :field must be a part of list: :domain;
 
 ```
 
@@ -3522,7 +3522,7 @@ const VERSION_6 = FILTER_FLAG_IPV6;
 ### Properties
 ```php
 //
-protected template = Field :field must be a valid IP address;
+protected $template = Field :field must be a valid IP address;
 
 ```
 
@@ -3601,7 +3601,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field does not have a valid numeric format;
+protected $template = Field :field does not have a valid numeric format;
 
 ```
 
@@ -3680,7 +3680,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field is required;
+protected $template = Field :field is required;
 
 ```
 
@@ -3764,7 +3764,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field does not match the required format;
+protected $template = Field :field does not match the required format;
 
 ```
 
@@ -3953,7 +3953,7 @@ $validation->add(
 ### Properties
 ```php
 //
-protected template = Field :field must not exceed :max characters long;
+protected $template = Field :field must not exceed :max characters long;
 
 ```
 
@@ -4045,7 +4045,7 @@ $validation->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be at least :min characters long;
+protected $template = Field :field must be at least :min characters long;
 
 ```
 
@@ -4163,12 +4163,12 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be unique;
+protected $template = Field :field must be unique;
 
 /**
  * @var array|null
  */
-private columnMap;
+private $columnMap;
 
 ```
 
@@ -4265,7 +4265,7 @@ $validator->add(
 ### Properties
 ```php
 //
-protected template = Field :field must be a url;
+protected $template = Field :field must be a url;
 
 ```
 

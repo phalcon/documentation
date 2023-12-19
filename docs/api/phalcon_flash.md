@@ -53,52 +53,52 @@ Class AbstractFlash
 /**
  * @var bool
  */
-protected autoescape = true;
+protected $autoescape = true;
 
 /**
  * @var bool
  */
-protected automaticHtml = true;
+protected $automaticHtml = true;
 
 /**
  * @var array
  */
-protected cssClasses;
+protected $cssClasses;
 
 /**
  * @var array
  */
-protected cssIconClasses;
+protected $cssIconClasses;
 
 /**
  * @var string
  */
-protected customTemplate = ;
+protected $customTemplate = ;
 
 /**
  * @var EscaperInterface | null
  */
-protected escaperService;
+protected $escaperService;
 
 /**
  * @var bool
  */
-protected implicitFlush = true;
+protected $implicitFlush = true;
 
 /**
  * @var Interpolate
  */
-protected interpolator;
+protected $interpolator;
 
 /**
  * @var array
  */
-protected messages;
+protected $messages;
 
 /**
  * @var SessionInterface|null
  */
-protected sessionService;
+protected $sessionService;
 
 ```
 

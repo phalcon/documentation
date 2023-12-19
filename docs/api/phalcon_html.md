@@ -162,21 +162,21 @@ in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
  *
  * @var array
  */
-private elements;
+private $elements;
 
 /**
  * Crumb separator
  *
  * @var string
  */
-private separator =  / ;
+private $separator =  / ;
 
 /**
  * The HTML template to use to render the breadcrumbs.
  *
  * @var string
  */
-private template = <dt><a href=\"%link%\">%label%</a></dt>;
+private $template = <dt><a href=\"%link%\">%label%</a></dt>;
 
 ```
 
@@ -291,19 +291,19 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 /**
  * @var bool
  */
-protected doubleEncode = true;
+protected $doubleEncode = true;
 
 /**
  * @var string
  */
-protected encoding = utf-8;
+protected $encoding = utf-8;
 
 /**
  * ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
  *
  * @var int
  */
-protected flags = 11;
+protected $flags = 11;
 
 ```
 
@@ -639,22 +639,22 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 /**
  * @var string
  */
-protected delimiter = ;
+protected $delimiter = ;
 
 /**
  * @var EscaperInterface
  */
-protected escaper;
+protected $escaper;
 
 /**
  * @var string
  */
-protected indent =     ;
+protected $indent =     ;
 
 /**
  * @var int
  */
-protected indentLevel = 1;
+protected $indentLevel = 1;
 
 ```
 
@@ -751,17 +751,17 @@ Class AbstractList
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var string
  */
-protected elementTag = li;
+protected $elementTag = li;
 
 /**
  * @var array
  */
-protected store;
+protected $store;
 
 ```
 
@@ -815,12 +815,12 @@ Returns the tag name.
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var array
  */
-protected store;
+protected $store;
 
 ```
 
@@ -1063,12 +1063,12 @@ const XHTML5 = 11;
 /**
  * @var string
  */
-private delimiter;
+private $delimiter;
 
 /**
  * @var int
  */
-private flag;
+private $flag;
 
 ```
 
@@ -1225,12 +1225,12 @@ Class AbstractInput
 /**
  * @var string
  */
-protected type = text;
+protected $type = text;
 
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 ```
 
@@ -1286,12 +1286,12 @@ Class Checkbox
 /**
  * @var array
  */
-protected label;
+protected $label;
 
 /**
  * @var string
  */
-protected type = checkbox;
+protected $type = checkbox;
 
 ```
 
@@ -1342,7 +1342,7 @@ Class Color
 ### Properties
 ```php
 //
-protected type = color;
+protected $type = color;
 
 ```
 
@@ -1372,7 +1372,7 @@ Class Date
 ### Properties
 ```php
 //
-protected type = date;
+protected $type = date;
 
 ```
 
@@ -1402,7 +1402,7 @@ Class DateTime
 ### Properties
 ```php
 //
-protected type = datetime;
+protected $type = datetime;
 
 ```
 
@@ -1432,7 +1432,7 @@ Class DateTimeLocal
 ### Properties
 ```php
 //
-protected type = datetime-local;
+protected $type = datetime-local;
 
 ```
 
@@ -1462,7 +1462,7 @@ Class Email
 ### Properties
 ```php
 //
-protected type = email;
+protected $type = email;
 
 ```
 
@@ -1492,7 +1492,7 @@ Class File
 ### Properties
 ```php
 //
-protected type = file;
+protected $type = file;
 
 ```
 
@@ -1522,7 +1522,7 @@ Class Hidden
 ### Properties
 ```php
 //
-protected type = hidden;
+protected $type = hidden;
 
 ```
 
@@ -1552,7 +1552,7 @@ Class Image
 ### Properties
 ```php
 //
-protected type = image;
+protected $type = image;
 
 ```
 
@@ -1614,7 +1614,7 @@ Class Month
 ### Properties
 ```php
 //
-protected type = month;
+protected $type = month;
 
 ```
 
@@ -1644,7 +1644,7 @@ Class Numeric
 ### Properties
 ```php
 //
-protected type = number;
+protected $type = number;
 
 ```
 
@@ -1674,7 +1674,7 @@ Class Password
 ### Properties
 ```php
 //
-protected type = password;
+protected $type = password;
 
 ```
 
@@ -1706,7 +1706,7 @@ Class Radio
 /**
  * @var string
  */
-protected type = radio;
+protected $type = radio;
 
 ```
 
@@ -1736,7 +1736,7 @@ Class Range
 ### Properties
 ```php
 //
-protected type = range;
+protected $type = range;
 
 ```
 
@@ -1766,7 +1766,7 @@ Class Search
 ### Properties
 ```php
 //
-protected type = search;
+protected $type = search;
 
 ```
 
@@ -1803,17 +1803,17 @@ Class Select
 /**
  * @var string
  */
-protected elementTag = option;
+protected $elementTag = option;
 
 /**
  * @var bool
  */
-protected inOptGroup = false;
+protected $inOptGroup = false;
 
 /**
  * @var string
  */
-protected selected = ;
+protected $selected = ;
 
 ```
 
@@ -1888,7 +1888,7 @@ Class Submit
 ### Properties
 ```php
 //
-protected type = submit;
+protected $type = submit;
 
 ```
 
@@ -1918,7 +1918,7 @@ Class Tel
 ### Properties
 ```php
 //
-protected type = tel;
+protected $type = tel;
 
 ```
 
@@ -1974,7 +1974,7 @@ Class Textarea
 /**
  * @var string
  */
-protected type = textarea;
+protected $type = textarea;
 
 ```
 
@@ -2013,7 +2013,7 @@ Class Time
 ### Properties
 ```php
 //
-protected type = time;
+protected $type = time;
 
 ```
 
@@ -2043,7 +2043,7 @@ Class Url
 ### Properties
 ```php
 //
-protected type = url;
+protected $type = url;
 
 ```
 
@@ -2073,7 +2073,7 @@ Class Week
 ### Properties
 ```php
 //
-protected type = week;
+protected $type = week;
 
 ```
 
@@ -2323,7 +2323,7 @@ Class Style
 /**
  * @var bool
  */
-private isStyle = false;
+private $isStyle = false;
 
 ```
 
@@ -2390,22 +2390,22 @@ Class Title
 /**
  * @var array
  */
-protected append;
+protected $append;
 
 /**
  * @var array
  */
-protected prepend;
+protected $prepend;
 
 /**
  * @var string
  */
-protected title = ;
+protected $title = ;
 
 /**
  * @var string
  */
-protected separator = ;
+protected $separator = ;
 
 ```
 
@@ -2517,22 +2517,22 @@ protected function getTag(): string;
 /**
  * @var Collection
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var string
  */
-protected href = ;
+protected $href = ;
 
 /**
  * @var Collection
  */
-protected rels;
+protected $rels;
 
 /**
  * @var bool
  */
-protected templated = false;
+protected $templated = false;
 
 ```
 
@@ -2646,7 +2646,7 @@ Determines if a href is a templated link or not.
 /**
  * @var array
  */
-protected links;
+protected $links;
 
 ```
 
@@ -3338,12 +3338,12 @@ The class implements `__call()` to allow calling helper objects as methods.
 /**
  * @var EscaperInterface
  */
-private escaper;
+private $escaper;
 
 /**
  * @var array
  */
-protected services;
+protected $services;
 
 ```
 

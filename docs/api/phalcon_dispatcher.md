@@ -49,127 +49,127 @@ dispatchers.
 /**
  * @var object|null
  */
-protected activeHandler;
+protected $activeHandler;
 
 /**
  * @var array
  */
-protected activeMethodMap;
+protected $activeMethodMap;
 
 /**
  * @var string
  */
-protected actionName = ;
+protected $actionName = ;
 
 /**
  * @var string
  */
-protected actionSuffix = Action;
+protected $actionSuffix = Action;
 
 /**
  * @var array
  */
-protected camelCaseMap;
+protected $camelCaseMap;
 
 /**
  * @var string
  */
-protected defaultAction = ;
+protected $defaultAction = ;
 
 /**
  * @var string
  */
-protected defaultNamespace = ;
+protected $defaultNamespace = ;
 
 /**
  * @var string
  */
-protected defaultHandler = ;
+protected $defaultHandler = ;
 
 /**
  * @var array
  */
-protected handlerHashes;
+protected $handlerHashes;
 
 /**
  * @var string
  */
-protected handlerName = ;
+protected $handlerName = ;
 
 /**
  * @var string
  */
-protected handlerSuffix = ;
+protected $handlerSuffix = ;
 
 /**
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * @var bool
  */
-protected finished = false;
+protected $finished = false;
 
 /**
  * @var bool
  */
-protected forwarded = false;
+protected $forwarded = false;
 
 /**
  * @var bool
  */
-protected isControllerInitialize = false;
+protected $isControllerInitialize = false;
 
 /**
  * @var mixed|null
  */
-protected lastHandler;
+protected $lastHandler;
 
 /**
  * @var BinderInterface|null
  */
-protected modelBinder;
+protected $modelBinder;
 
 /**
  * @var bool
  */
-protected modelBinding = false;
+protected $modelBinding = false;
 
 /**
  * @var string
  */
-protected moduleName = ;
+protected $moduleName = ;
 
 /**
  * @var string
  */
-protected namespaceName = ;
+protected $namespaceName = ;
 
 /**
  * @var array
  */
-protected params;
+protected $params;
 
 /**
  * @var string|null
  */
-protected previousActionName = ;
+protected $previousActionName = ;
 
 /**
  * @var string|null
  */
-protected previousHandlerName = ;
+protected $previousHandlerName = ;
 
 /**
  * @var string|null
  */
-protected previousNamespaceName = ;
+protected $previousNamespaceName = ;
 
 /**
  * @var string|null
  */
-protected returnedValue;
+protected $returnedValue;
 
 ```
 

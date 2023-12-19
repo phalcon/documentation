@@ -67,31 +67,31 @@ const WARNING = 4;
  *
  * @var AdapterInterface[]
  */
-protected adapters;
+protected $adapters;
 
 /**
  * The excluded adapters for this log process
  *
  * @var array
  */
-protected excluded;
+protected $excluded;
 
 /**
  * Minimum log level for the logger
  *
  * @var int
  */
-protected logLevel = 8;
+protected $logLevel = 8;
 
 /**
  * @var string
  */
-protected name = ;
+protected $name = ;
 
 /**
  * @var DateTimeZone
  */
-protected timezone;
+protected $timezone;
 
 ```
 
@@ -215,28 +215,28 @@ Class AbstractAdapter
  *
  * @var string
  */
-protected defaultFormatter = Phalcon\\Logger\Formatter\\Line;
+protected $defaultFormatter = Phalcon\\Logger\Formatter\\Line;
 
 /**
  * Formatter
  *
  * @var FormatterInterface|null
  */
-protected formatter;
+protected $formatter;
 
 /**
  * Tells if there is an active transaction or not
  *
  * @var bool
  */
-protected inTransaction = false;
+protected $inTransaction = false;
 
 /**
  * Array with messages queued in the transaction
  *
  * @var array
  */
-protected queue;
+protected $queue;
 
 ```
 
@@ -492,21 +492,21 @@ $logger->close();
  *
  * @var string
  */
-protected mode = ab;
+protected $mode = ab;
 
 /**
  * Stream name
  *
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * Path options
  *
  * @var array
  */
-protected options;
+protected $options;
 
 ```
 
@@ -580,22 +580,22 @@ Class Syslog
 /**
  * @var int
  */
-protected facility = 0;
+protected $facility = ;
 
 /**
  * @var string
  */
-protected name = ;
+protected $name = ;
 
 /**
  * @var bool
  */
-protected opened = false;
+protected $opened = false;
 
 /**
  * @var int
  */
-protected option = 0;
+protected $option = ;
 
 ```
 
@@ -776,17 +776,17 @@ Class AbstractFormatter
  *
  * @var string
  */
-protected dateFormat = c;
+protected $dateFormat = c;
 
 /**
  * @var string
  */
-protected interpolatorLeft = %;
+protected $interpolatorLeft = %;
 
 /**
  * @var string
  */
-protected interpolatorRight = %;
+protected $interpolatorRight = %;
 
 ```
 
@@ -923,7 +923,7 @@ Class Line
  *
  * @var string
  */
-protected format;
+protected $format;
 
 ```
 
@@ -990,27 +990,27 @@ Represents each item in a logging transaction
 /**
  * @var array
  */
-protected context;
+protected $context;
 
 /**
  * @var DateTimeImmutable
  */
-protected dateTime;
+protected $dateTime;
 
 /**
  * @var string
  */
-protected message;
+protected $message;
 
 /**
  * @var int
  */
-protected level;
+protected $level;
 
 /**
  * @var string
  */
-protected levelName;
+protected $levelName;
 
 ```
 
@@ -1184,7 +1184,7 @@ Factory creating logger objects
 /**
  * @var AdapterFactory
  */
-private adapterFactory;
+private $adapterFactory;
 
 ```
 

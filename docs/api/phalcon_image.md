@@ -38,31 +38,31 @@ All image adapters must use this class
 /**
  * @var string
  */
-protected file;
+protected $file;
 
 /**
  * Image height
  *
  * @var int
  */
-protected height;
+protected $height;
 
 /**
  * @var mixed|null
  */
-protected image;
+protected $image;
 
 /**
  * Image mime type
  *
  * @var string
  */
-protected mime;
+protected $mime;
 
 /**
  * @var string
  */
-protected realpath;
+protected $realpath;
 
 /**
  * Image type
@@ -71,14 +71,14 @@ protected realpath;
  *
  * @var int
  */
-protected type;
+protected $type;
 
 /**
  * Image width
  *
  * @var int
  */
-protected width;
+protected $width;
 
 ```
 
@@ -510,7 +510,7 @@ if ($image->save()) {
 /**
  * @var int
  */
-protected version = 0;
+protected $version = ;
 
 ```
 

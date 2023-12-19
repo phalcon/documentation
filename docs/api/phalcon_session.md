@@ -43,7 +43,7 @@ file that was distributed with this source code.
 /**
  * @var AdapterInterface
  */
-protected adapter;
+protected $adapter;
 
 ```
 
@@ -169,28 +169,28 @@ $session->setAdapter(new Noop());
  *
  * @var null
  */
-protected connection;
+protected $connection;
 
 /**
  * Session options
  *
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * Session prefix
  *
  * @var string
  */
-protected prefix = ;
+protected $prefix = ;
 
 /**
  * Time To Live
  *
  * @var int
  */
-protected ttl = 8600;
+protected $ttl = 8600;
 
 ```
 
@@ -328,7 +328,7 @@ $session->setAdapter($files);
 /**
  * @var string
  */
-private path = ;
+private $path = ;
 
 ```
 
@@ -465,19 +465,19 @@ $user->age  = 22;
 /**
  * @var DiInterface|null
  */
-private container;
+private $container;
 
 /**
  * Session Bag name
  *
  * @var string
  */
-private name;
+private $name;
 
 /**
  * @var ManagerInterface
  */
-private session;
+private $session;
 
 ```
 
@@ -676,22 +676,22 @@ Exceptions thrown in Phalcon\Session will use this class
 /**
  * @var SessionHandlerInterface|null
  */
-private adapter;
+private $adapter;
 
 /**
  * @var string
  */
-private name = ;
+private $name = ;
 
 /**
  * @var array
  */
-private options;
+private $options;
 
 /**
  * @var string
  */
-private uniqueId = ;
+private $uniqueId = ;
 
 ```
 

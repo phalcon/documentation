@@ -445,7 +445,7 @@ const DEFAULT_PATH_DELIMITER = .;
 /**
  * @var string
  */
-protected pathDelimiter;
+protected $pathDelimiter;
 
 ```
 
