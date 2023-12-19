@@ -78,11 +78,6 @@ plugins:
   - redirects:
       redirect_maps:
         'index.md': 'introduction.md'
-        'loader.md': 'autoload.md'
-        'collection.md': 'support-collection.md'
-        'helper.md': 'support-helper.md'
-        'registry.md': 'support-registry.md'
-        'version.md': 'support-version.md'
 
 # Hooks
 #hooks:
@@ -136,8 +131,7 @@ nav:
   - Home:
       - Introduction: introduction.md
       - Changelog:
-        - Current Version: https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG-5.0.md
-        - How to upgrade: upgrade.md
+        - Current Version: https://github.com/phalcon/cphalcon/tree/master/resources
       - Contributing:
         - Contributions: contributions.md
         - Asking a question: https://phalcon.io/discussions
@@ -146,25 +140,23 @@ nav:
       - Guides:
         - Backtrace Generation: generating-backtrace.md
         - Reproducible Tests: reproducible-tests.md
-        - Testing environment: testing-environment.md
       - Sponsoring: sponsors.md
   - Getting Started:
       - Installation: installation.md
       - Webserver Setup: webserver-setup.md
+      - WAMP: webserver-wamp.md
+      - XAMPP: webserver-xampp.md
       - Environments:
-        - Devilbox: environments-devilbox.md
         - Nanobox: environments-nanobox.md
       - Development Tools:
-        - Devtools: devtools.md
-        - Debug: support-debug.md
-        - Migrations: db-migrations.md
-        - Unit Testing: unit-testing.md
+        - Installation: devtools-installation.md
+        - Usage: devtools-usage.md
+        - Debug: debug.md
       - Tutorials:
           - Basic: tutorial-basic.md
           - Invo: tutorial-invo.md
           - REST: tutorial-rest.md
           - Vokuro: tutorial-vokuro.md
-          - Use case: use-case.md
           - Performance: performance.md
   - Core:
       - Application: application.md
@@ -193,13 +185,7 @@ nav:
       - Flash Messenger: flash.md
       - Forms: forms.md
       - Image: image.md
-      - HTML:
-        - Attributes: html-attributes.md
-        - Breadcrumbs: html-breadcrumbs.md
-        - Escaper: html-escaper.md
-        - Link: html-link.md
-        - Tag Factory: html-tagfactory.md
-      - Tag (legacy): tag.md
+      - Tag: tag.md
       - View: views.md
       - Volt: volt.md
   - Business Logic:
@@ -208,19 +194,19 @@ nav:
       - Controllers: controllers.md
       - Dispatcher: dispatcher.md
       - Event Manager: events.md
-      - Filters: filter-filter.md
+      - Filters: filter.md
       - Routing: routing.md
       - Sessions: session.md
-      - Url: mvc-url.md
-      - Validation: filter-validation.md
+      - Url: url.md
+      - Validation: validation.md
   - Services:
       - Cache: cache.md
       - Config: config.md
-      - Escaper: html-escaper.md
-      - Loader: autoload.md
-      - Logger: logger.md
+      - Escaper: escaper.md
+      - Loader: loader.md
+      - Logger: logging.md
       - HTTP:
-          - Cookies: response/#cookies
+          - Cookies: cookies.md
           - Request: request.md
           - Response: response.md
       - i18n:
@@ -228,13 +214,5 @@ nav:
           - Translate: translate.md
       - Queue: queue.md
       - Security:
-          - Cryptography: encryption-crypt.md
-          - Security: encryption-security.md
-          - JWT: encryption-security-jwt.md
-      - Storage: storage.md
-      - Utility:
-          - Collection: support-collection.md
-          - Domain: domain.md
-          - Helper: support-helper.md
-          - Registry: support-registry.md
-          - Version: support-version.md
+          - Cryptography: crypt.md
+          - Security: security.md
