@@ -1,10 +1,6 @@
+
 # Model Behaviors
-- - -
-
-## Overview
-[Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to re-use code. Although you can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Traits require you to use exactly the same field names for common code to work. Behaviors are more flexible.
-
-The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement behaviors.
+Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
 A behavior must be added in the model initializer, a model can have zero or more behaviors:
 
@@ -14,27 +10,13 @@ A behavior must be added in the model initializer, a model can have zero or more
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Behavior\Timestampable;
 
-class Invoices extends Model
+class Users extends Model
 {
-    /**
-     * @var int
-     */
-    public $inv_id;
+    public $id;
 
-    /**
-     * @var string
-     */
-    public $inv_created_at;
+    public $name;
 
-    /**
-     * @var int
-     */
-    public $inv_status_flag;
-
-    /**
-     * @var string
-     */
-    public $inv_title;
+    public $created_at;
 
     public function initialize()
     {
@@ -42,9 +24,9 @@ class Invoices extends Model
             new Timestampable(
                 [
                     'beforeCreate' => [
-                        'field'  => 'inv_created_at',
+                        'field'  => 'created_at',
                         'format' => 'Y-m-d',
-                    ],
+                    ]
                 ]
             )
         );
@@ -52,13 +34,13 @@ class Invoices extends Model
 }
 ```
 
-## Built In
 The following built-in behaviors are provided by the framework:
 
-| Name                                               | Description                                                                                                |
-|----------------------------------------------------|------------------------------------------------------------------------------------------------------------|
-| [SoftDelete][mvc-model-behavior-softdelete]        | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
-| [Timestampable][mvc-model-behavior-timestampable]  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
+| Name           | Description                                                                                                |
+| -------------- | ---------------------------------------------------------------------------------------------------------- | 
+| Timestampable  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
+| SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+
 
 ## Timestampable
 This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
@@ -74,16 +56,17 @@ public function initialize()
         new Timestampable(
             [
                 'beforeCreate' => [
-                    'field'  => 'inv_created_at',
+                    'field'  => 'created_at',
                     'format' => 'Y-m-d',
-                ],
+                ]
             ]
         )
     );
 }
 ```
 
-Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as the format of the [date][date] function. `format` can also be an anonymous function offering additional functionality to generate any kind of timestamp string:
+Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used
+as format of the PHP's function [date](https://php.net/manual/en/function.date.php), format can also be an anonymous function providing you the free to generate any kind timestamp:
 
 ```php
 <?php
@@ -98,22 +81,23 @@ public function initialize()
         new Timestampable(
             [
                 'beforeCreate' => [
-                    'field'  => 'inv_created_at',
+                    'field'  => 'created_at',
                     'format' => function () {
                         $datetime = new Datetime(
                             new DateTimeZone('Europe/Stockholm')
                         );
 
                         return $datetime->format('Y-m-d H:i:sP');
-                    },
-                ],
+                    }
+                ]
             ]
         )
     );
 }
 ```
 
-If the option `format` is omitted a timestamp using the PHP's function [time][time], will be used.
+If the option `format` is omitted a timestamp using the PHP's function [time](https://php.net/manual/en/function.time.php), will be used.
+
 
 ## SoftDelete
 This behavior can be used as follows:
@@ -124,38 +108,22 @@ This behavior can be used as follows:
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Behavior\SoftDelete;
 
-class Invoices extends Model
+class Users extends Model
 {
-    const ACTIVE   = 1;
-    const INACTIVE = 0;
+    const DELETED     = 'D';
+    const NOT_DELETED = 'N';
 
-    /**
-     * @var int
-     */
-    public $inv_id;
-
-    /**
-     * @var string
-     */
-    public $inv_created_at;
-
-    /**
-     * @var int
-     */
-    public $inv_deleted_flag;
-
-    /**
-     * @var string
-     */
-    public $inv_title;
+    public $id;
+    public $name;
+    public $status;
 
     public function initialize()
     {
         $this->addBehavior(
             new SoftDelete(
                 [
-                    'field' => 'inv_deleted_flag',
-                    'value' => Invoices::INACTIVE,
+                    'field' => 'status',
+                    'value' => Users::DELETED,
                 ]
             )
         );
@@ -163,16 +131,16 @@ class Invoices extends Model
 }
 ```
 
-This behavior accepts two options: `field` and `value`, `field` determines what field must be updated and `value` the value to be deleted. Assuming that our table has the following rows:
+This behavior accepts two options: `field` and `value`, `field` determines what field must be updated and `value` the value to be deleted. Let's pretend the table `users` has the following data:
 
 ```sql
-mysql> select * from co_invoices;
-+--------+------------------+-----------------------------+
-| inv_id | inv_deleted_flag | inv_title                   |
-+--------+------------------+-----------------------------+
-|  1     | 0                | Invoice for ACME Inc.       |
-|  2     | 0                | Invoice for Spaceballs Inc. |
-+--------+------------------+-----------------------------+
+mysql> select * from users;
++----+---------+--------+
+| id | name    | status |
++----+---------+--------+
+|  1 | Lana    | N      |
+|  2 | Brandon | N      |
++----+---------+--------+
 2 rows in set (0.00 sec)
 ```
 
@@ -181,101 +149,71 @@ If we delete any of the two records the status will be updated instead of delete
 ```php
 <?php
 
-Invoices::findFirst(2)->delete();
+Users::findFirst(2)->delete();
 ```
 
 The operation will result in the following data in the table:
 
 ```sql
-mysql> select * from co_invoices;
-+--------+------------------+-----------------------------+
-| inv_id | inv_deleted_flag | inv_title                   |
-+--------+------------------+-----------------------------+
-|  1     | 0                | Invoice for ACME Inc.       |
-|  2     | 1                | Invoice for Spaceballs Inc. |
-+--------+------------------+-----------------------------+
-2 rows in set (0.00 sec)
+mysql> select * from users;
++----+---------+--------+
+| id | name    | status |
++----+---------+--------+
+|  1 | Lana    | N      |
+|  2 | Brandon | D      |
++----+---------+--------+
+2 rows in set (0.01 sec)
 ```
 
-!!! warning "NOTE"
+Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
 
-    You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
 
-## Custom
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] or extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior] which exposes most of the methods required for implementing custom behaviors.
+## Creating your own behaviors
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_Behavior.md). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior.md) provides most of the methods needed to ease the implementation of behaviors.
 
-The [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] requires two methods to be present in your custom behavior:
-
-```php 
-public function missingMethod(
-    ModelInterface $model, 
-    string $method, 
-    array $arguments = []
-)
-```
-
-This method acts as a fallback when a missing method is called on the model
-
-```php
-public function notify(
-    string $type, 
-    ModelInterface $model
-)
-```
-
-This method receives the notifications from the [Events Manager][events].
-
-Additionally, if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], you have access to:
-
-| Method                                 | Description                                                   |
-|----------------------------------------|---------------------------------------------------------------|
-| `getOptions(string $eventName = null)` | Returns the behavior options related to an event              |
-| `mustTakeAction(string $eventName)`    | Checks whether the behavior must take action on certain event |
-
-The following behavior is an example, it implements the `Blameable` behavior which helps identify the user that is performed operations on a model:
+The following behavior is an example, it implements the Blameable behavior which helps identify the user that is performed operations over a model:
 
 ```php
 <?php
 
-use Phalcon\Di\Di;
-use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
+use Phalcon\Mvc\Model\BehaviorInterface;
 
-class Blameable extends Behavior
+class Blameable extends Behavior implements BehaviorInterface
 {
-    public function notify(string $eventType, ModelInterface $model)
+    public function notify($eventType, $model)
     {
-        $container = Di::getDefault();
-        $userName  = $container->get('auth')->getFullName();
-
         switch ($eventType) {
 
             case 'afterCreate':
             case 'afterDelete':
             case 'afterUpdate':
 
+                $userName = // ... get the current user from session
+
+                // Store in a log the username, event type and primary key
                 file_put_contents(
                     'logs/blamable-log.txt',
-                    $userName . ' ' . $eventType . ' ' . $model->inv_id
+                    $userName . ' ' . $eventType . ' ' . $model->id
                 );
 
                 break;
 
             default:
-                // ...
+                /* ignore the rest of events */
         }
     }
 }
 ```
 
-The above is a very simple behavior, but it illustrates how to create a behavior. Adding the behavior to a model is illustrated below:
+The former is a very simple behavior, but it illustrates how to create a behavior, now let's add this behavior to a model:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Profiles extends Model
 {
     public function initialize()
     {
@@ -286,23 +224,20 @@ class Invoices extends Model
 }
 ```
 
-A behavior is also capable of intercepting missing methods on your models, and offering functionality for them:
+A behavior is also capable of intercepting missing methods on your models:
 
 ```php
 <?php
 
 use Phalcon\Tag;
-use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
 use Phalcon\Mvc\Model\BehaviorInterface;
 
-class Sluggable extends Behavior
+class Sluggable extends Behavior implements BehaviorInterface
 {
-    public function missingMethod(
-        ModelInterface $model,
-        string $method,
-        $arguments = []
-    ) {
+    public function missingMethod($model, $method, $arguments = [])
+    {
+        // If the method is 'getSlug' convert the title
         if ($method === 'getSlug') {
             return Tag::friendlyTitle($model->title);
         }
@@ -310,30 +245,31 @@ class Sluggable extends Behavior
 }
 ```
 
-Calling that method on a model that implements `Sluggable` returns a SEO friendly title:
+Call that method on a model that implements Sluggable returns a SEO friendly title:
 
 ```php
 <?php
 
-$title = $invoice->getSlug();
+$title = $post->getSlug();
 ```
 
-## Traits
-You can use [Traits][traits] to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the `Timestampable` behavior:
+
+## Using Traits as behaviors
+You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
 ```php
 <?php
 
-trait Timestampable
+trait MyTimestampable
 {
     public function beforeCreate()
     {
-        $this->inv_created_at = date('r');
+        $this->created_at = date('r');
     }
 
     public function beforeUpdate()
     {
-        $this->inv_updated_at = date('r');
+        $this->updated_at = date('r');
     }
 }
 ```
@@ -345,22 +281,8 @@ Then you can use it in your model as follows:
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Products extends Model
 {
-    use Timestampable;
+    use MyTimestampable;
 }
 ```
-
-!!! info "NOTE"
-
-    You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also, if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
-
-[date]: https://php.net/manual/en/function.date.php
-[events-list]: events.md#list-of-events
-[mvc-model-behavior]: api/phalcon_mvc.md#mvc-model-behavior
-[mvc-model-behavior-softdelete]: api/phalcon_mvc.md#mvc-model-behavior-softdelete
-[mvc-model-behavior-timestampable]: api/phalcon_mvc.md#mvc-model-behavior-timestampable
-[mvc-model-behaviorinterface]: api/phalcon_mvc.md#mvc-model-behaviorinterface
-[time]: https://php.net/manual/en/function.time.php
-[traits]: https://php.net/manual/en/language.oop5.traits.php
-[events]: events.md

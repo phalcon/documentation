@@ -1,91 +1,80 @@
 # Model Transactions
-- - -
-
-## Overview
-When a process performs multiple database operations, it is important to perform all these operations as a single unit of work. This way if one of the operations fails, we do not end up with corrupted data or orphaned records. Database transactions offer this functionality and ensure that all database operations have been executed successfully prior to storing the data in the database. 
+When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data
+is committed to the database.
 
 Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 
-## Manual
-If an application only uses one connection and the transactions are not very complex, a transaction can be created by beginning a transaction on the connection and if everything is OK commit the transaction or roll it back:
+
+## Manual Transactions
+If an application only uses one connection and the transactions are not very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Controller;
-use Phalcon\Db\Adapter\Pdo\Mysql;
-/**
- * @property Mysql $db
- */
-class InvoicesController extends Controller
+
+class RobotsController extends Controller
 {
     public function saveAction()
     {
+        // Start a transaction
         $this->db->begin();
-        
-        try {
-            $customer = Customers::findFirst(
-                [
-                    'conditions' => 'cst_id = :cst_id:',
-                    'bind'       => [
-                        'cst_id' => 10,
-                    ]    
-                ]  
-            );
-            
-            $customer->cst_has_unpaid = true;
-            $result = $customer->save();
 
-            if (false === $result) {
-                throw new \Exception('Error saving file');
-            }
-    
-            $invoice = new Invoices();
-            $invoice->inv_cst_id     = $customer->cst_id;
-            $invoice->inv_number     = 'INV-00001';
-            $invoice->inv_name       = 'Invoice for Goods';
-            $invoice->inv_created_at = date('Y-m-d');
-            
-            $result = $invoice->save();
-            
-            if (false === $result) {
-                throw new \Exception('Error saving file');
-            }
-    
-            $this->db->commit();
-        } catch (\Exception $ex) {
+        $robot = new Robots();
+
+        $robot->name       = 'WALL-E';
+        $robot->created_at = date('Y-m-d');
+
+        // The model failed to save, so rollback the transaction
+        if ($robot->save() === false) {
             $this->db->rollback();
-            echo $ex->getMessage();
+            return;
         }
+
+        $robotPart = new RobotParts();
+
+        $robotPart->robots_id = $robot->id;
+        $robotPart->type      = 'head';
+
+        // The model failed to save, so rollback the transaction
+        if ($robotPart->save() === false) {
+            $this->db->rollback();
+
+            return;
+        }
+
+        // Commit the transaction
+        $this->db->commit();
     }
 }
 ```
 
-## Implicit 
-Existing relationships can be used to store records and their related instances. An operation like this implicitly creates a transaction to ensure that data is correctly stored:
+
+## Implicit Transactions
+Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
-use MyApp\Models\Customers;
+$robotPart = new RobotParts();
 
-$invoice = new Invoices();
-$invoice->inv_cst_id     = $customer->cst_id;
-$invoice->inv_number     = 'INV-00001';
-$invoice->inv_name       = 'Invoice for Goods';
-$invoice->inv_created_at = date('Y-m-d');
+$robotPart->type = 'head';
 
-$customer = new Customers();
-$customer->cst_name       = 'John Wick';
-$customer->cst_has_unpaid = true;
-$customer->invoices       = $invoice;
 
-$customer->save();
+
+$robot = new Robots();
+
+$robot->name       = 'WALL-E';
+$robot->created_at = date('Y-m-d');
+$robot->robotPart  = $robotPart;
+
+// Creates an implicit transaction to store both records
+$robot->save();
 ```
 
-## Isolated 
-Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back or committed before ending the request:
+
+## Isolated Transactions
+Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back/committed before ending the request:
 
 ```php
 <?php
@@ -93,47 +82,47 @@ Isolated transactions are executed in a new connection ensuring that all the gen
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
-$manager = new TxManager();
-
-$transaction = $manager->get();
-
 try {
-    $customer = Customers::findFirst(
-        [
-            'conditions' => 'cst_id = :cst_id:',
-            'bind'       => [
-                'cst_id' => 10,
-            ]    
-        ]  
-    );
-    
-    $customer->cst_has_unpaid = true;
-    $result = $customer->save();
+    // Create a transaction manager
+    $manager = new TxManager();
 
-    if (false === $result) {
-        throw new \Exception('Error saving file');
+    // Request a transaction
+    $transaction = $manager->get();
+
+    $robot = new Robots();
+
+    $robot->setTransaction($transaction);
+
+    $robot->name       = 'WALL·E';
+    $robot->created_at = date('Y-m-d');
+
+    if ($robot->save() === false) {
+        $transaction->rollback(
+            'Cannot save robot'
+        );
     }
 
-    $invoice = new Invoices();
-    $invoice->inv_cst_id     = $customer->cst_id;
-    $invoice->inv_number     = 'INV-00001';
-    $invoice->inv_name       = 'Invoice for Goods';
-    $invoice->inv_created_at = date('Y-m-d');
-    
-    $result = $invoice->save();
-    
-    if (false === $result) {
-        throw new \Exception('Error saving file');
+    $robotPart = new RobotParts();
+
+    $robotPart->setTransaction($transaction);
+
+    $robotPart->robots_id = $robot->id;
+    $robotPart->type      = 'head';
+
+    if ($robotPart->save() === false) {
+        $transaction->rollback(
+            'Cannot save robot part'
+        );
     }
 
+    // Everything's gone fine, let's commit the transaction
     $transaction->commit();
-} catch (TxFailed $ex) {
-    $transaction->rollback();
-    echo $ex->getMessage();
+} catch (TxFailed $e) {
+    echo 'Failed, reason: ', $e->getMessage();
 }
 ```
 
-Transactions can be used to delete a number of records, ensuring that everything is deleted correctly:
+Transactions can be used to delete many records in a consistent way:
 
 ```php
 <?php
@@ -141,24 +130,24 @@ Transactions can be used to delete a number of records, ensuring that everything
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 
-$manager = new TxManager();
-
-$transaction = $manager->get();
-
 try {
-    $invoices = Invoices::find(
-        [
-            'conditions' => 'inv_cst_id = :cst_id:',
-            'bind'       => [
-                'cst_id' => 10,
-            ]    
-        ]  
+    // Create a transaction manager
+    $manager = new TxManager();
+
+    // Request a transaction
+    $transaction = $manager->get();
+
+    // Get the robots to be deleted
+    $robots = Robots::find(
+        "type = 'mechanical'"
     );
-    
-    foreach ($invoices as $invoice) {
-        $invoice->setTransaction($transaction);
-        if (false === $invoice->delete()) {
-            $messages = $invoice->getMessages();
+
+    foreach ($robots as $robot) {
+        $robot->setTransaction($transaction);
+
+        // Something's gone wrong, we should rollback the transaction
+        if ($robot->delete() === false) {
+            $messages = $robot->getMessages();
 
             foreach ($messages as $message) {
                 $transaction->rollback(
@@ -168,72 +157,26 @@ try {
         }
     }
 
+    // Everything's gone fine, let's commit the transaction
     $transaction->commit();
-} catch (TxFailed $ex) {
-    echo $ex->getMessage();
+
+    echo 'Robots were deleted successfully!';
+} catch (TxFailed $e) {
+    echo 'Failed, reason: ', $e->getMessage();
 }
 ```
 
-## Exceptions
-Any exceptions thrown in the Logger component will be of type [Phalcon\Mvc\Model\Transaction\Exception][mvc-model-transaction-exception] or [Phalcon\Mvc\Model\Transaction\Failed][mvc-model-transaction-failed]. You can use these exceptions to selectively catch exceptions thrown only from this component.
-
-Additionally, you can throw an exception if the rollback was not successful, by using the `throwRollbackException(true)` method.
-
+Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or :code:`rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
 
 ```php
 <?php
 
-use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
-use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
+use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;
 
-$manager = new TxManager();
-
-$transaction = $manager
-    ->get()
-    ->throwRollbackException(true)
-;
-
-try {
-    $invoices = Invoices::find(
-        [
-            'conditions' => 'inv_cst_id = :cst_id:',
-            'bind'       => [
-                'cst_id' => 10,
-            ]    
-        ]  
-    );
-    
-    foreach ($invoices as $invoice) {
-        $invoice->setTransaction($transaction);
-        if (false === $invoice->delete()) {
-            $messages = $invoice->getMessages();
-
-            foreach ($messages as $message) {
-                $transaction->rollback(
-                    $message->getMessage()
-                );
-            }
-        }
-    }
-
-    $transaction->commit();
-} catch (TxFailed $ex) {
-    echo $ex->getMessage();
-}
-```
-
-## Dependency Injection
-Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or `rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
-
-```php
-<?php
-
-use Phalcon\Mvc\Model\Transaction\Manager;
-
-$container->setShared(
+$di->setShared(
     'transactions',
     function () {
-        return new Manager();
+        return new TransactionManager();
     }
 );
 ```
@@ -244,19 +187,18 @@ Then access it from a controller or view:
 <?php
 
 use Phalcon\Mvc\Controller;
-use Phalcon\Mvc\Model\Transaction\Manager;
 
-/**
- * @property Manager $transactions
- */
 class ProductsController extends Controller
 {
     public function saveAction()
     {
+        // Obtain the TransactionsManager from the services container
         $manager = $this->di->getTransactions();
 
+        // Or
         $manager = $this->transactions;
 
+        // Request a transaction
         $transaction = $manager->get();
 
         // ...
@@ -264,13 +206,4 @@ class ProductsController extends Controller
 }
 ```
 
-!!! info "NOTE"
-
-    While a transaction is active, the transaction manager will always return the same transaction across the application.
-
-[mvc-model-transaction]: api/phalcon_mvc.md#mvc-model-transaction
-[mvc-model-transaction-exception]: api/phalcon_mvc.md#mvc-model-transaction-exception
-[mvc-model-transaction-failed]: api/phalcon_mvc.md#mvc-model-transaction-failed
-[mvc-model-transaction-manager]: api/phalcon_mvc.md#mvc-model-transaction-manager
-[mvc-model-transaction-managerinterface]: api/phalcon_mvc.md#mvc-model-transaction-managerinterface
-[mvc-model-transactioninterface]: api/phalcon_mvc.md#mvc-model-transactioninterface
+While a transaction is active, the transaction manager will always return the same transaction across the application.

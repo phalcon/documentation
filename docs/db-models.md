@@ -1,1476 +1,66 @@
-# Models
-- - -
 
-## Overview
-The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. It is a class that connects business objects and database tables, to create a persistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).
-
+# Working with Models
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
-The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) is the base for all models in a Phalcon application. It provides database independence, basic
+CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) avoids the need of having to use SQL statements because it translates
+methods dynamically to the respective database engine operations.
 
 !!! warning "NOTE"
 
-    Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db\Db][db] component documentation.
+    Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/Phalcon_Db.md) component documentation.
 
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-
-}
-```
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = new Invoices();
-
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-$result = $invoice->save();
-
-if (false === $result) {
-    
-    echo 'Error saving Invoice: ';
-
-    $messages = $invoice->getMessages();
-
-    foreach ($messages as $message) {
-        echo $message . PHP_EOL;
-    }
-} else {
-
-    echo 'Record Saved';
-
-}
-```
-
-!!! info "NOTE"
-
-    For information on how to create a model please check the [Creating Models][creating-models] section
-
-
-## Constants
-
-| Constant               |     Value     |
-|------------------------|:-------------:|
-| DIRTY_STATE_DETACHED   |       2       |
-| DIRTY_STATE_PERSISTENT |       0       |
-| DIRTY_STATE_TRANSIENT  |       1       |
-| OP_CREATE              |       1       |
-| OP_DELETE              |       3       |
-| OP_NONE                |       0       |
-| OP_UPDATE              |       2       |
-| TRANSACTION_INDEX      | 'transaction' |
-
-## Methods
-
-```php
-final public function __construct(
-    mixed $data = null, 
-    DiInterface $container = null,
-    ManagerInterface $modelsManager = null
-)
-```
-Constructs the model object. The method accepts an array of data that are used to populate the object by internally using `assign`. Optionally you can pass a DI container and a Models Manager object. If they are not passed, the defaults will be used. 
-
-
-```php
-public function __call(string $method, array $arguments): mixed
-```
-Handles method calls when a method is not implemented. Throws [Phalcon\Mvc\Model\Exception][mvc-model-exception] if the method doesn't exist
-
-```php
-public static function __callStatic(
-    string $method, 
-    array $arguments
-): mixed
-```
-Handles method calls when a static method is not implemented. Throws [Phalcon\Mvc\Model\Exception][mvc-model-exception] if the method doesn't exist
-
-```php
-public function __get(string $property)
-```
-Magic method to get related records using the relation alias as a property
-
-```php
-public function __isset(string $property): bool
-```
- Magic method to check if a property is a valid relation
-
-```php
-public function __set(string $property, mixed $value)
-```
-Magic method to assign values to the model
-
-```php
-public function addBehavior(
-    BehaviorInterface $behavior
-): void
-```
-Setups a behavior in a model
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Behavior\Timestampable;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->addBehavior(
-            new Timestampable(
-                [
-                    'onCreate' => [
-                        'field'  => 'inv_created_at',
-                        'format' => 'Y-m-d H:i:s',
-                    ],
-                ]
-            )
-        );
-    }
-}
-```
-
-```php
-public function appendMessage(
-    MessageInterface $message
-): ModelInterface
-```
-Appends a customized message on the validation process
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-use Phalcon\Messages\Message as Message;
-
-class Invoices extends Model
-{
-    public function beforeSave()
-    {
-        if (0 === $this->inv_status_flag) {
-            $message = new Message(
-                'Sorry, an invoice cannot be unpaid'
-            );
-
-            $this->appendMessage($message);
-        }
-    }
-}
-```
-
-```php
-public function assign(
-    mixed $data, 
-    array $whiteList = null, 
-    array $dataColumnMap = null
-): ModelInterface
-```
-Assigns data to the model. The `data` parameter can be an array or a database row. The `whitelist` is an array of model properties that will be updated during the assignment process. Omitted properties will NOT be accepted even if they are included in the array or database row; nevertheless if one of them is required by the model, the data will not be saved and the model will produce an error. The `dataColumnMap` is an array that maps columns from the `data` to the actual model. This helps when you want to map input from an array such as `$_POST` to fields in the database.
-
-
-Assign values to a model from an array
-```php
-<?php
-
-$invoice->assign(
-    [
-        'inv_cst_id'      => 1,
-        'inv_status_flag' => 1,
-        'inv_title'       => 'Invoice for ACME Inc.',
-        'inv_total'       => 100,
-        'inv_created_at'  => '2019-12-25 01:02:03',
-    ]
-);
-```
-
-`assign` with a database row. - Requires a Column Map
-```php
-<?php
-
-$invoice->assign(
-    $row,
-    null,
-    [
-        'inv_cst_id'      => 'customerId',
-        'inv_status_flag' => 'status',
-        'inv_title'       => 'title',
-        'inv_total'       => 'total',
-    ]
-);
-```
-
-Update only the `inv_status_flag`, `inv_title`, `inv_total` fields.
-```php
-<?php
-
-$invoice->assign(
-    $_POST,
-    [
-        'inv_status_flag',
-        'inv_title',
-        'inv_total',
-    ]
-);
-```
-
-By default `assign` will use setters if they exist, you can disable it by using `ini_set` to directly use properties
-
-```php
-ini_set('phalcon.orm.disable_assign_setters', true);
-```
-
-```php
-<?php
-
-$invoice->assign(
-    $_POST,
-    null,
-    [
-        'inv_status_flag',
-        'inv_title',
-        'inv_total',
-    ]
-);
-```
-
-```php
-public static function average(
-    mixed $parameters = null
-): float
-```
-Returns the average value on a column for a result-set of rows matching the specified conditions
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$average = Invoices::average(
-    [
-        'column' => 'inv_total',
-    ]
-);
-
-echo 'AVG: ', $average, PHP_EOL;
-
-$average = Invoices::average(
-    [
-        'inv_cst_id = 1',
-        'column' => 'inv_total',
-    ]
-);
-
-echo 'AVG [Customer: 1] ', $average, PHP_EOL;
-```
-
-```php
-public static function cloneResult(
-    ModelInterface $base, 
-    array $data, 
-    int $dirtyState = 0
-): ModelInterface
-```
-Assigns values to a model from an array returning a new model
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::cloneResult(
-     new Invoices(),
-    [
-        'inv_cst_id'      => 1,
-        'inv_status_flag' => 0,
-        'inv_title'       => 'Invoice for ACME Inc. #2',
-        'inv_total'       => 400,
-        'inv_created_at'  => '2019-12-25 01:02:03',
-    ]
- );
-```
-
-```php
-public static function cloneResultMap(
-    mixed $base, 
-    array $data, 
-    array $columnMap, 
-    int $dirtyState = 0, 
-    bool $keepSnapshots = null
-): ModelInterface
-```
-Assign values to a model from an array, returning a new model, using the column map.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::cloneResultMap(
-     new Invoices(),
-     [
-        'customerId' => 1,
-        'status'     => 0,
-        'title'      => 'Invoice for ACME Inc. #2',
-        'total'      => 400,
-        'created'    => '2019-12-25 01:02:03',
-     ]
-);
-```
-
-```php
-public static function cloneResultMapHydrate(
-    array $data, 
-    array $columnMap, 
-    int $hydrationMode
-): mixed
-```
-Returns a hydrated result based on the data and the column map
-
-```php
-public static function count(
-    mixed $parameters = null
-): int
-```
-Returns a count of how many records match the specified conditions
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$average = Invoices::count();
-
-echo 'COUNT: ', $average, PHP_EOL;
-
-$average = Invoices::count(
-    'inv_cst_id = 1'
-);
-
-echo 'COUNT [Customer: 1] ', $average, PHP_EOL;
-```
-
-
-```php
-public function create(): bool
-```
-Inserts a model in the database. If the record exists in the database, `create()` will throw an exception. It will return `true` on success, `false` otherwise.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = new Invoices();
-$invoice->assign(
-    [
-        'inv_cst_id'      => 1,
-        'inv_status_flag' => 1,
-        'inv_title'       => 'Invoice for ACME Inc.',
-        'inv_total'       => 100,
-        'inv_created_at'  => '2019-12-25 01:02:03',
-    ]
-);
-
-$result = $invoice->create();
-```
-
-```php
-public function delete(): bool
-```
-Deletes a model instance. Returning true on success or false otherwise.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('inv_id = 4');
-$result  = $invoice->delete();
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 1,
-        ]
-    ]
-);
-
-foreach ($invoices as $invoice) {
-    $invoice->delete();
-}
-```
-
-```php
-public function dump(): array
-```
-Returns a simple representation of the object that can be used with `var_dump()`
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('inv_id = 4');
-
-var_dump(
-    $invoice->dump()
-);
-```
-
-```php
-public static function find(
-    mixed $parameters = null
-): ResultsetInterface
-```
-Query for a set of records that match the specified conditions. `find()` is flexible enough to accept a variety of parameters to find the data required. You can check the [Finding Records][finding-records] section for more information.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::find();
-```
-
-```php
-public static function findFirst(
-    mixed $parameters = null
-): ModelInterface | null
-```
-Query the first record that matches the specified conditions. It will return a resultset or `null` if the record was not found.
-
-!!! warning "NOTE"
-
-    `findFirst()` no longer returns `false` if records were not found.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst();
-```
-
-```php
-public function fireEvent(string $eventName): bool
-```
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified
-
-```php
-public function fireEventCancel(string $eventName): bool
-```
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified. This method stops if one of the callbacks/listeners returns `false`
-
-```php
-public function getChangedFields(): array
-```
-Returns a list of changed values.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst();
-
-print_r(
-    $invoice->getChangedFields()
-); 
-// []
-
-$invoice->inv_total = 120;;
-
-$invoice->getChangedFields();
-
-print_r(
-    $invoice->getChangedFields()
-);
-// ['inv_total']
-```
-
-```php
-public function getDirtyState(): int
-```
-Returns one of the `DIRTY_STATE_*` constants telling if the record exists in the database or not
-
-```php
-public function getMessages(
-    mixed $filter = null
-): MessageInterface[]
-```
-Returns array of validation messages
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = new Invoices();
-
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-$result = $invoice->save();
-
-if (false === $result) {
-    
-    echo 'Error saving Invoice: ';
-
-    $messages = $invoice->getMessages();
-
-    foreach ($messages as $message) {
-        echo $message . PHP_EOL;
-    }
-} else {
-
-    echo 'Record Saved';
-
-}
-```
-
-!!! warning "NOTE"
-
-    `save()` no longer accepts parameters to set data. You can use `assign` instead.
-
-```php
-public function getModelsManager(): ManagerInterface
-```
-Returns the models manager related to the entity instance
-
-```php
-public function getModelsMetaData(): MetaDataInterface
-```
-Returns the model's meta-data service related to the entity instance
-
-```php
-public function getOperationMade(): int
-```
-Returns the type of the latest operation performed by the ORM. Returns one of the `OP_*` class constants
-
-```php
-public function getOldSnapshotData(): array
-```
-Returns the internal old snapshot data
-
-```php
-final public function getReadConnection(): AdapterInterface
-```
-Gets the connection used to read data for the model
-
-```php
-final public function getReadConnectionService(): string
-```
-Returns the DependencyInjection connection service name used to read data related the model
-
-```php
-public function getRelated(
-    string $alias, 
-    mixed $arguments = null
-): Phalcon\Mvc\Model\Resultset\Simple | null
-```
-Returns related records based on defined relations. If the relationship is one to one and no records have been found, it will return `null`
-
-!!! warning "NOTE"
-
-    `getRelated()` no longer returns `false` if a record was not found on a one-to-one relationship.
-
-```php
-<?php
-
-use MyApp\Models\Customers;
-
-$customer = Customers::findFirst('cst_id = 1');
-$invoices = $customer->getRelated('invoices');
-```
-
-```php
-public function isRelationshipLoaded(
-    string $relationshipAlias
-): bool
-```
-Checks if saved related records have already been loaded. Only returns `true` if the records were previously fetched through the model without any additional parameters.
-
-```php
-<?php
-
-use MyApp\Models\Customers;
-
-$customer = Customers::findFirst('cst_id = 1');
-$invoices = $customer->isRelationshipLoaded('invoices'); // false
-
-$invoices = $customer->getRelated('invoices');
-$invoices = $customer->isRelationshipLoaded('invoices'); // true
-```
-
-```php
-final public function getSchema(): string
-```
-Returns schema name where the mapped table is located
-
-```php
-public function getSnapshotData(): array
-```
-Returns the internal snapshot data
-
-```php
-final public function getSource(): string
-```
-Returns the table name mapped in the model
-
-```php
-public function getUpdatedFields(): array
-```
-Returns a list of updated values.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst();
-
-print_r(
-    $invoice->getChangedFields()
-); 
-// []
-
-$invoice->inv_total = 120;;
-
-$invoice->getChangedFields();
-
-print_r(
-    $invoice->getChangedFields()
-);
-// ['inv_total']
-
-$invoice->save();
-
-print_r(
-    $invoice->getChangedFields()
-);
-// []
-
-print_r(
-    $invoice->getUpdatedFields()
-);
-// ['inv_total']
-```
-
-```php
-final public function getWriteConnection(): AdapterInterface
-```
-Gets the connection used to write data to the model
-
-```php
-final public function getWriteConnectionService(): string
-```
-Returns the DependencyInjection connection service name used to write data related to the model
-
-```php
-public function hasChanged(
-    string | array $fieldName = null, 
-    bool $allFields = false
-): bool
-```
-Check if a specific attribute has changed. This only works if the model is keeping data snapshots
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = new Invoices();
-
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-$result = $invoice->create();
-
-$invoice->inv_total = 120;
-
-$hasChanged = $invoice->hasChanged('inv_title');
-// false
-$hasChanged = $invoice->hasChanged(
-    [
-        'inv_total',
-    ]
-);
-// true
-$hasChanged = $invoice->hasChanged(
-    [
-        'inv_title', 
-        'inv_total'
-    ], 
-    true
-);
-// false
-```
-
-```php
-public function hasSnapshotData(): bool
-```
-Checks if the object has internal snapshot data
-
-```php
-public function hasUpdated(
-    string | array $fieldName = null, 
-    bool $allFields = false
-): bool
-```
-Check if a specific attribute was updated. This only works if the model is keeping data snapshots.
-
-```php
-public function jsonSerialize(): array
-```
-Serializes the object for json_encode
-
-```php
-echo json_encode($invoice);
-```
-
-```php
-public static function maximum(
-    mixed $parameters = null
-): mixed
-```
-Returns the maximum value of a column for a result-set of rows that match the specified conditions
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$id = Invoices::maximum(
-    [
-        'column' => 'inv_id',
-    ]
-);
-
-echo 'MAX: ', $id, PHP_EOL;
-
-$max = Invoices::maximum(
-    [
-        'inv_cst_id = 1',
-        'column' => 'inv_total',
-    ]
-);
-
-echo 'MAX [Customer: 1] ', $max, PHP_EOL;
-```
-
-```php
-public static function minimum(
-    mixed parameters = null
-): mixed 
-```
-Returns the minimum value of a column for a result-set of rows that match the specified conditions
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$id = Invoices::minimum(
-    [
-        'column' => 'inv_id',
-    ]
-);
-
-echo 'MIN: ', $id, PHP_EOL;
-
-$max = Invoices::minimum(
-    [
-        'inv_cst_id = 1',
-        'column' => 'inv_total',
-    ]
-);
-
-echo 'MIN [Customer: 1] ', $max, PHP_EOL;
-```
-
-```php
-public static function query(
-    DiInterface $container = null
-): CriteriaInterface
-```
- Create a criteria for a specific model
-
-```php
-public function readAttribute(
-    string $attribute
-): mixed | null
-```
-Reads an attribute value by its name
-
-```php
-echo $invoice->readAttribute('inv_title');
-```
-
-```php
-public function refresh(): ModelInterface
-```
-Refreshes the model attributes re-querying the record from the database
-
-```php
-public function save(): bool
-```
-Inserts or updates a model instance. Returning `true` on success or `false` otherwise.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = new Invoices();
-
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-$result = $invoice->save();
-
-$invoice = Invoices::findFirst('inv_id = 100');
-
-$invoice->inv_total = 120;
-
-$invoice->save();
-```
-
-!!! warning "NOTE"
-
-    `save()` no longer accepts parameters to set data. You can use `assign` instead.
-
-```php
-public function serialize(): string
-```
-Serializes the object ignoring connections, services, related objects or static properties
-
-```php
-public function unserialize(mixed $data)
-```
-Unserializes the object from a serialized string
-
-```php
-final public function setConnectionService(
-    string $connectionService
-): void
-```
-Sets the DependencyInjection connection service name
-
-```php
-public function setDirtyState(
-    int $dirtyState
-): ModelInterface | bool
-```
-Sets the dirty state of the object using one of the `DIRTY_STATE_*` constants
-
-```php
-public function setEventsManager(
-    EventsManagerInterface $eventsManager
-)
-```
-Sets a custom events manager
-
-```php
-final public function setReadConnectionService(
-    string $connectionService
-): void
-```
-Sets the DependencyInjection connection service name used to read data
-
-```php
-public function setOldSnapshotData(
-    array $data, 
-    array $columnMap = null
-)
-```
-Sets the record's old snapshot data. This method is used internally to set old snapshot data when the model was set up to keep snapshot data
-
-```php
-public function setSnapshotData(
-    array $data, 
-    array $columnMap = null
-): void
-```
-Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
-
-```php
-public function setTransaction(
-    TransactionInterface $transaction
-): ModelInterface
-```
-Sets a transaction related to the Model instance
-
-```php
-<?php
-
-use MyApp\Models\Customers;
-use MyApp\Models\Invoices;
-use Phalcon\Mvc\Model\Transaction\Manager;
-use Phalcon\Mvc\Model\Transaction\Failed;
-
-try {
-    $txManager   = new Manager();
-    $transaction = $txManager->get();
-    
-    $customer = new Customers();
-    $customer->setTransaction($transaction);
-    $customer->cst_name_last  = 'Vader';
-    $customer->cst_name_first = 'Darth';
-
-    if (false === $customer->save()) {
-        $transaction->rollback('Cannot save Customer');
-    }
-
-    $invoice = new Invoices();
-    $invoice->setTransaction($transaction);
-
-    $invoice->inv_cst_id      = $customer->cst_id;
-    $invoice->inv_status_flag = 1;
-    $invoice->inv_title       = 'Invoice for ACME Inc.';
-    $invoice->inv_total       = 100;
-    $invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-    if (false === $invoice->save()) {
-        $transaction->rollback('Cannot save record');
-    }
-
-    $transaction->commit();
-} catch (Failed $ex) {
-    echo 'ERROR: ', $ex->getMessage();
-}
-```
-
-```php
-public static function setup(
-    array $options
-): void
-```
-Enables / disables options in the ORM such as events, column renaming etc.
-
-```php
-final public function setWriteConnectionService(
-    string $connectionService
-): void
-```
-Sets the DependencyInjection connection service name used to write data
-
-```php
-public function skipOperation(bool $skip): void
-```
-Skips the current operation forcing a success state
-
-```php
-public static function sum(
-    array $parameters = null
-): float
-```
-Calculates the sum on a column for a result-set of rows that match the specified conditions
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$total = Invoices::sum(
-    [
-        'column' => 'inv_total',
-    ]
-);
-
-echo 'SUM: ', $total, PHP_EOL;
-
-$total = Invoices::sum(
-    [
-        'inv_cst_id = 1',
-        'column' => 'inv_total',
-    ]
-);
-
-echo 'SUM [Customer: 1] ', $total, PHP_EOL;
-```
-
-```php
-public function toArray(
-    array $columns = null
-): array
-```
-Returns the instance as an array representation. Accepts an array with column names to include in the result
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('inv_id = 4');
-
-print_r(
-    $invoice->toArray()
-);
-
-//  [
-//      'inv_id'          => 4,
-//      'inv_cst_id'      = $customer->cst_id,
-//      'inv_status_flag' = 1,
-//      'inv_title'       = 'Invoice for ACME Inc.',
-//      'inv_total'       = 100,
-//      'inv_created_at'  = '2019-12-25 01:02:03',
-//  ]
-
-print_r(
-    $invoice->toArray(
-        [
-            'inv_status_flag',
-            'inv_title',
-            'inv_total',
-        ]
-    )
-);
-
-//  [
-//      'inv_status_flag' = 1,
-//      'inv_title'       = 'Invoice for ACME Inc.',
-//      'inv_total'       = 100,
-//  ]
-```
-
-```php
-public function update(): bool
-```
-Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or `false` otherwise.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('inv_id = 4');
-
-$invoice->inv_total = 120;
-
-$invoice->update();
-```
-
-```php
-public function writeAttribute(
-    string $attribute, 
-    mixed $value
-): void
-```
-Writes an attribute value by its name
-
-```php
-$invoice->writeAttribute('inv_total', 120);
-```
-
-```php
-protected function allowEmptyStringValues(
-    array $attributes
-): void
-```
-Sets a list of attributes that must be skipped from the generated `UPDATE` statement
-
-```php
-<?php 
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->allowEmptyStringValues(
-            [
-                'inv_created_at',
-            ]
-        );
-    }
-}
-```
-
-```php
-protected function belongsTo(
-    string | array $fields, 
-    string $referenceModel, 
-    string | array $referencedFields, 
-    array options = null
-): Relation
-```
-Set up a reverse 1-1 or n-1 relation between two models
-
-```php
-<?php 
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class InvoicesXProducts extends Model
-{
-    public function initialize()
-    {
-        $this->belongsTo(
-            'ixp_inv_id',
-            Invoices::class,
-            'inv_id'
-        );
-    }
-}
-```
-
-```php
-protected function hasMany(
-    string | array $fields, 
-    string $referenceModel, 
-    string | array $referencedFields, 
-    array options = null
-): Relation
-```
-Setup a 1-n relation between two models
-
-```php
-<?php 
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Customers extends Model
-{
-    public function initialize()
-    {
-        $this->hasMany(
-            'cst_id',
-            Invoices::class,
-            'inv_cst_id'
-        );
-    }
-}
-```
-
-```php
-protected function hasManyToMany(
-    string | array $fields,
-    string $intermediateModel, 
-    string | array $intermediateFields,
-    string | array $intermediateReferencedFields,
-    string $referenceModel, 
-    string | array $referencedFields,
-    array $options = null
-): Relation
-```
-Set up an n-n relation between two models, through an intermediate relation
-
-```php
-<?php 
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->hasManyToMany(
-            'inv_id',
-            InvoicesXProducts::class,
-            'ixp_inv_id',
-            'ixp_prd_id',
-            Products::class,
-            'prd_id'
-        );
-    }
-}
-```
-
-```php
-protected function hasOne(
-    string | array $fields, 
-    string $referenceModel, 
-    string | array $referencedFields, 
-    array options = null
-): Relation
-```
-Setup a 1-1 relation between two models
-
-```php
-<?php 
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->hasOne(
-            'inv_cst_id',
-            Customers::class,
-            'cst_id'
-        );
-    }
-}
-```
-
-```php
-protected function keepSnapshots(
-    bool $keepSnapshot
-): void
-```
-Sets if the model must keep the original record snapshot in memory
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->keepSnapshots(true);
-    }
-}
-```
-
-```php
-final protected function setSchema(
-    string $schema
-): ModelInterface
-```
-Sets schema name where the mapped table is located
-
-```php
-final protected function setSource(
-    string $source
-): ModelInterface
-```
-Sets the table name to which model should be mapped 
-
-```php
-protected function skipAttributes(array $attributes)
-```
-Sets a list of attributes that must be skipped from the generated `INSERT`/`UPDATE` statement
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->skipAttributes(
-            [
-                'inv_created_at',
-            ]
-        );
-    }
-}
-```
-
-```php
-protected function skipAttributesOnCreate(
-    array $attributes
-): void
-```
-Sets a list of attributes that must be skipped from the generated `INSERT` statement
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->skipAttributesOnCreate(
-            [
-                'inv_created_at',
-            ]
-        );
-    }
-}
-```
-
-```php
-protected function skipAttributesOnUpdate(
-    array $attributes
-): void
-```
-Sets a list of attributes that must be skipped from the generated `UPDATE` statement
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->skipAttributesOnUpdate(
-            [
-                'inv_modified_at',
-            ]
-        );
-    }
-}
-```
-
-```php
-protected function useDynamicUpdate(
-    bool dynamicUpdate
-): void
-```
-Sets if a model must use dynamic update instead of the all-field update
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function initialize()
-    {
-        $this->useDynamicUpdate(true);
-    }
-}
-```
-
-```php
-protected function validate(
-    ValidationInterface $validator
-): bool
-```
-Executes validators on every validation call
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Validator\ExclusionIn;
-
-class Invoices extends Model
-{
-    public function validation()
-    {
-        $validator = new Validation();
-
-        $validator->add(
-            'inv_status_flag',
-            new ExclusionIn(
-                [
-                    'domain' => [
-                        0,
-                        1,
-                    ],
-                ]
-            )
-        );
-
-        return $this->validate($validator);
-    }
-}
-```
-
-```php
-public function validationHasFailed(): bool
-```
-Check whether validation process has generated any messages
 
 ## Creating Models
-A model is a class that extends from [Phalcon\Mvc\Model][mvc-model]. Its class name should be in camel case notation:
+A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md). Its class name should be in camel case notation:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class RobotParts extends Model
 {
 
 }
 ```
 
-By default, the model `MyApp\Models\Invoices` will map to the table `invoices`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
+!!! warning "NOTE"
+
+    If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. 
+
+By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class RobotParts extends Model
 {
     public function initialize()
     {
-        $this->setSource('co_invoices');
+        $this->setSource('toys_robot_parts');
     }
 }
 ```
 
-The model `Invoices` now maps to `co_invoices` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
+The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
 
 The `initialize()` method is only called once during the request. This method is intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can use the `onConstruct()` method:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class RobotParts extends Model
 {
     public function onConstruct()
     {
@@ -1479,156 +69,114 @@ class Invoices extends Model
 }
 ```
 
-**Properties vs. Setters/Getters**
 
-!!! warning "NOTE"
-
-    The model class uses some properties internally for services. The names of those properties are reserved and cannot be used as fields in the database. Please keep that in mind when naming the fields of your tables. If there are collisions, your models will not update properly.
-
-    `container`, `dirtyState`, `dirtyRelated`, `errorMessages`, `modelsManager`, `modelsMetaData`, `related`, `operationMade`, `oldSnapshot`, `skipped`, `snapshot`, `transaction`, `uniqueKey`, `uniqueParams`, `uniqueTypes`
-
-Models can be implemented with public properties, meaning that each property can be read and updated from any part of the code that has instantiated that model class:
+### Public properties vs. Setters/Getters
+Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
-    public $inv_id;
-    public $inv_cst_id;
-    public $inv_status_flag;
-    public $inv_title;
-    public $inv_total;
-    public $inv_created_at;
+    public $id;
+
+    public $name;
+
+    public $price;
 }
 ```
 
-Another implementation is to use getter and setter functions, which control which properties are publicly available for that model. 
-
-The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set or retrieved for the model, which is impossible when using public properties. 
-
-Additionally, getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
+Another implementation is to use getters and setter functions, which control which properties are publicly available for that model. The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set for the model, which is impossible when using public properties. Additionally getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use InvalidArgumentException;
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
-    protected $inv_id;
-    protected $inv_cst_id;
-    protected $inv_status_flag;
-    protected $inv_title;
-    protected $inv_total;
-    protected $inv_created_at;
+    protected $id;
 
-    public function getId(): int
-    {
-        return (int) $this->inv_id;
-    }
+    protected $name;
 
-    public function getCustomerId(): int
+    protected $price;
+
+    public function getId()
     {
-        return (int) $this->inv_cst_id;
-    }
-    
-    public function getStatus(): int
-    {
-        return (int) $this->inv_status_flag;
-    }
-    
-    public function getTitle(): string
-    {
-        return (string) $this->inv_title;
-    }
-    
-    public function getTotal(): float
-    {
-        return (float) $this->inv_total;
-    }
-    
-    public function getCreatedAt(): string
-    {
-        return (string) $this->inv_created_at;
+        return $this->id;
     }
 
-    public function setCustomerId(int $customerId): Invoices
+    public function setName($name)
     {
-        $this->inv_cst_id = $customerId;
-        
-        return $this;
-    }
-    
-    public function setStatus(int $status): Invoices
-    {
-        $this->inv_status_flag = $status;
-        
-        return $this;
-    }
-    
-    public function setTitle(string $title): Invoices
-    {
-        $this->inv_title = $title;
-        
-        return $this;
-    }
-    
-    public function setTotal(float $total): Invoices
-    {
-        if ($total < 0) {
+        // The name is too short?
+        if (strlen($name) < 10) {
             throw new InvalidArgumentException(
-                'Incorrect total'
+                'The name is too short'
             );
         }
 
-        $this->inv_total = $total;
-        
-        return $this;
+        $this->name = $name;
     }
-    
-    public function setCreatedAt(string $date): Invoices
+
+    public function getName()
     {
-        $this->inv_created_at = $date;
-    
-        return $this;
+        return $this->name;
+    }
+
+    public function setPrice($price)
+    {
+        // Negative prices aren't allowed
+        if ($price < 0) {
+            throw new InvalidArgumentException(
+                "Price can't be negative"
+            );
+        }
+
+        $this->price = $price;
+    }
+
+    public function getPrice()
+    {
+        // Convert the value to double before be used
+        return (double) $this->price;
     }
 }
 ```
 
-Public properties provide less complexity in development. However, getters/setters can heavily increase the testability, extensibility and maintainability of applications. You will need to decide which strategy is best for you depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
+Public properties provide less complexity in development. However getters/setters can heavily increase the testability,
+extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the
+application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
 !!! warning "NOTE"
 
-    Underscores in property names can be problematic when using getters and setters.
+    Underscores in property names can be problematic when using getters and setters. 
 
-!!! warning "NOTE"
+If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use
+with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName`
+instead of `$model->findByProperty_name`, etc.). As much of the system expects camel case, and underscores are commonly
+removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
+column map (as described above) to ensure proper mapping of your properties to their database counterparts.
 
-    When using the getters/setters approach, you will need to define your properties as `protected`.
 
-If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). 
-
-The ORM expects camel case naming and underscores are commonly removed. It is therefore recommended naming your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
-
-## Records To Objects
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'co_customers' with the records:
+## Understanding Records To Objects
+Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
 ```sql
-mysql> select * from co_customers;
-+--------+---------------+----------------+
-| cst_id | cst_name_last | cst_name_first |
-+--------+---------------+----------------+
-|      1 | Vader         | Darth          |
-|      2 | Skywalker     | Like           |
-|      3 | Skywalker     | Leia           |
-+--------+---------------+----------------+
+mysql> select * from robots;
++----+------------+------------+------+
+| id | name       | type       | year |
++----+------------+------------+------+
+|  1 | Robotina   | mechanical | 1972 |
+|  2 | Astro Boy  | mechanical | 1952 |
+|  3 | Terminator | cyborg     | 2029 |
++----+------------+------------+------+
 3 rows in set (0.00 sec)
 ```
 
@@ -1637,13 +185,13 @@ You could find a certain record by its primary key and then print its name:
 ```php
 <?php
 
-use MyApp\Models\Customers;
+use Store\Toys\Robots;
 
-// cst_id = 3
-$customer = Customers::findFirst(3);
+// Find record with id = 3
+$robot = Robots::findFirst(3);
 
-// 'Leia'
-echo $customer->cst_name_first;
+// Prints 'Terminator'
+echo $robot->name;
 ```
 
 Once the record is in memory, you can make modifications to its data and then save changes:
@@ -1651,660 +199,291 @@ Once the record is in memory, you can make modifications to its data and then sa
 ```php
 <?php
 
-use MyApp\Models\Customers;
+use Store\Toys\Robots;
 
-// cst_id = 3
-$customer = Customers::findFirst(3);
+$robot = Robots::findFirst(3);
 
-$customer->cst_name_last = 'Princess';
+$robot->name = 'RoboCop';
 
-$customer->save();
+$robot->save();
 ```
 
-As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model][mvc-model] provides high database abstraction for web applications, simplifying database operations.
+As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) provides high database abstraction for web applications.
+
 
 ## Finding Records
-[Phalcon\Mvc\Model][mvc-model] also offers several methods for querying records.
- 
-### `find` 
-The method returns a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], [Phalcon\Mvc\Model\Resultset\Complex][mvc-model-resultset-complex] or [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple] collection of records even if the result returned is only one record.
-  
- The method accept a variety of parameters to retrieve data:
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
 ```php
 <?php
 
-use MyApp\Models\Customers;
+use Store\Toys\Robots;
 
-$invoice = Invoices::findFirst('inv_id = 3');
-```
-You can also pass a string with a `WHERE` clause. In the above example we are getting the same record, instructing the ORM to give us a record with `inv_cst_id = 3`
+// How many robots are there?
+$robots = Robots::find();
+echo 'There are ', count($robots), "\n";
 
-The most flexible syntax is to pass an array with different parameters:
+// How many mechanical robots are there?
+$robots = Robots::find("type = 'mechanical'");
+echo 'There are ', count($robots), "\n";
 
-```php
-<?php
-
-use MyApp\Models\Customers;
-
-$invoice = Invoices::findFirst(
+// Get and print virtual robots ordered by name
+$robots = Robots::find(
     [
-        'inv_id = 3',
+        "type = 'virtual'",
+        'order' => 'name',
     ]
 );
-```
-The first parameter of the array (without a key) is treated the same way as the example above (passing a string). The array accepts additional parameters that offer additional options to customize the find operation. 
+foreach ($robots as $robot) {
+    echo $robot->name, "\n";
+}
 
-### `findFirst` 
+// Get first 100 virtual robots ordered by name
+$robots = Robots::find(
+    [
+        "type = 'virtual'",
+        'order' => 'name',
+        'limit' => 100,
+    ]
+);
+foreach ($robots as $robot) {
+   echo $robot->name, "\n";
+}
+```
+
+!!! warning "NOTE"
+
+    If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.
+
 You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = Invoices::findFirst();
-```
-Calling `findFirst` without a parameter will return the first record the ORM finds. Usually this is the first record in the table. 
+// What's the first robot in robots table?
+$robot = Robots::findFirst();
+echo 'The robot name is ', $robot->name, "\n";
 
-```php
-<?php
+// What's the first mechanical robot in robots table?
+$robot = Robots::findFirst("type = 'mechanical'");
+echo 'The first mechanical robot name is ', $robot->name, "\n";
 
-use MyApp\Models\Invoices;
-
-// cst_id = 3
-$invoice = Invoices::findFirst(3);
-```
-Passing a number, will query the underlying model using the primary key matching the number parameter passed. If there is no primary key defined or there is a compound key, you will not get any results. 
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('inv_id = 3');
-```
-You can also pass a string with a `WHERE` clause. In the above example we are getting the same record, instructing the ORM to give us a record with `inv_cst_id = 3`
-
-!!! warning "NOTE"
-
-    If primary key of table is not numeric, use condition. See examples below.
- 
-```php
-$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
-$invoice = Invoices::findFirst([
-    'uuid = ?0',
-    'bind' => [$uuid],
-]);
-
-// OR
-
-$uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
-$invoice = Invoices::findFirst([
-    'uuid = :primary:',
-    'bind' => ['primary' => $uuid],
-]);
-```
-
-!!! warning "NOTE"
-
-    If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
- 
-```php
-<?php
-
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
-```
-
-
-### Parameters
-
-!!! warning "NOTE"
-
-    It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria come from user input. For more information check the [Binding Parameters][binding-parameters]` section.
-
-Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria. 
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
+// Get first virtual robot ordered by name
+$robot = Robots::findFirst(
     [
-        'inv_cst_id = 3',
-        'order' => 'inv_total desc'
+        "type = 'virtual'",
+        'order' => 'name',
     ]
 );
+
+echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
-You can (and should) use the `conditions` and `bind` array elements which bind parameters to the query parameters. Using this implementation will ensure that your parameters are bound and thus reducing the possibility of SQL injections:
+Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoices = Invoices::find(
+$robot = Robots::findFirst(
     [
-        'conditions' => 'inv_cst_id = :cst_id:',
+        "type = 'virtual'",
+        'order' => 'name DESC',
+        'limit' => 30,
+    ]
+);
+
+$robots = Robots::find(
+    [
+        'conditions' => 'type = ?1',
         'bind'       => [
-            'cst_id' => 3,
-        ],
-        'order'      => 'inv_total desc',
+            1 => 'virtual',
+        ]
     ]
 );
 ```
 
 The available query options are:
 
-**`bind`**
+| Parameter     | Description                                                                                                                                                                                        | Example                                                           |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
+| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                          | `'columns' => 'id, name'`                                         |
+| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                         | `'bind' => ['status' => 'A', 'type' => 'some-time']`              |
+| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                         | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                         | `'order' => 'name DESC, status'`                                  |
+| `limit`       | Limit the results of the query to results to certain range                                                                                                                                         | `'limit' => 10`                                                   |
+| `offset`      | Offset the results of the query by a certain amount                                                                                                                                                | `'offset' => 5`                                                   |
+| `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                        | `'group' => 'name, status'`                                       |
+| `for_update`  | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
+| `shared_lock` | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
+| `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                       | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`         |
+| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                        | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
-Bind is used together with `conditions`, by replacing placeholders and escaping values thus increasing security
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoice = Invoices::findFirst(
-    [
-        'conditions' => 'inv_id = :inv_id:',
-        'bind'       => [
-            'inv_id' => 3,
-        ],
-    ]
-);
-```
-
-**`bindTypes`**
-
-When binding parameters, you can use this option to define additional casting to the bound parameters increasing even more the security of your query.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-use Phalcon\Mvc\Model\Column;
-
-$invoice = Invoices::findFirst(
-    [
-        'conditions' => 'inv_id = :inv_id:',
-        'bind'       => [
-            'inv_id' => 3,
-        ],
-        'bindTypes'  => [
-            Column::BIND_PARAM_INT,
-        ],
-    ]
-);
-```
-
-**`cache`**
-
-Cache the resultset, reducing the continuous access to the relational system.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-        'cache'      => [
-            'key'      => 'customer.3',
-            'lifetime' => 84600,
-        ],
-        'order'      => 'inv_total desc',
-    ]
-);
-```
-
-**`columns`**
-     
-Return specific columns in the model. 
-
-!!! info "NOTE"
-
-    When using this option an incomplete object is returned, and therefore you cannot call methods such as `update()`, `getRelated()` etc.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'columns'    => [
-            'inv_id',
-            'total' => 'inv_total'
-        ],
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-    ]
-);
-```
-
-The columns array can return the columns directly if only a value has been set for one of the array elements. However, if you choose to specify a key, it will be used as an alias for that field. In the above example, the `cst_name_first` is aliased as `first`.
-
-**`conditions`**
-  
-Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default, [Phalcon\Mvc\Model][mvc-model] assumes the first parameter are the conditions. 
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-    ]
-);
-```
-
-**`for_update`**
-
-With this option, [Phalcon\Mvc\Model][mvc-model] reads the latest available data, setting exclusive locks on each row it reads
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-        'for_update' => true,
-    ]
-);
-```
-
-**`group`**
-
-Allows to collect data across multiple records and group the results by one or more columns
-`'group' => 'name, status'`
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-        'group'      => 'inv_status_flag',
-    ]
-);
-```
-
-**`hydration`**
-
-Sets the hydration strategy to represent each returned record in the result
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-use Phalcon\Mvc\Model\Resultset;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-        'hydration' => Resultset::HYDRATE_OBJECTS,
-    ]
-);
-```
-
-
-**`limit`**
-
-Limit the results of the query to results to certain range
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-        'limit'      => 10,
-    ]
-);
-```
-
-**`offset`**
-
-Offset the results of the query by a certain amount
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-        'limit'      => 10,
-        'offset'     => 100,
-    ]
-);
-```
-
-**`order`**
-
-Is used to sort the resultset. Use one or more fields separated by commas.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 3,
-        ],
-        'order'      => 'inv_status_flag, inv_total desc',
-    ]
-);
-```
-
-**`shared_lock`**
-
-With this option, [Phalcon\Mvc\Model][mvc-model] reads the latest available data, setting shared locks on each row it reads
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions'  => 'inv_cst_id = :cst_id:',
-        'bind'        => [
-            'cst_id' => 3,
-        ],
-        'shared_lock' => true,
-    ]
-);
-```
-
-### `query`
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoices = Invoices::query()
-    ->where('inv_cst_id = :cst_id:')
-    ->andWhere('inv_total > :total:')
-    ->bind(
-        [
-            'cst_id' => 3,
-            'total'  => 1000,
-        ]
-    )
-    ->orderBy('inv_status_flag, inv_total desc')
-    ->execute()
-;
+$robots = Robots::query()
+    ->where('type = :type:')
+    ->andWhere('year < 2000')
+    ->bind(['type' => 'mechanical'])
+    ->order('name')
+    ->execute();
 ```
 
-The static method `query()` returns a [Phalcon\Mvc\Model\Criteria][mvc-model-criteria] object that is friendly with IDE auto complete. 
+The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria.md) object that is friendly with IDE autocompleters.
 
-All the queries are internally handled as [PHQL][db-phql] queries. PHQL is a high-level, object-oriented and SQL-like language. This language offers more features to perform queries such as joining other models, group records, aggregations etc.
+All the queries are internally handled as [PHQL](db-phql.md) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
 
-### `findBy*`
-You can use the `findBy<property-name>()` method. This method expands on the `find()` method mentioned above. It allows you to quickly perform a select query from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
-
-For the following model:
+Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
-{
-    public $inv_cst_id;
-    public $inv_id;
-    public $inv_status_flag;
-    public $inv_title;
-    public $inv_created_at;
-}
-```
-
-We have the properties `inv_cst_id`, `inv_id`, `inv_status_flag`, `inv_title`, `inv_created_at`. If we want to find all the invoices with `inv_total = 100` we can use: 
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    [
-        'conditions'  => 'inv_total = :total:',
-        'bind'        => [
-            'total' => 100,
-        ],
-    ]
-);
-```
-
-but we can also use:
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::findByInvTotal(100);
-```
-
-!!! info "NOTE"
-
-    The property names are changed to camel case if they have underscores. `inv_total` becomes `InvTotal`
-
-You can also pass parameters in an array as the second parameter. These parameters are the same as the ones you can pass in the `find` method.
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::findByInvTotal(
-    100,
-    [
-        'order' => `inv_cst_id, inv_created_at`
-    ]
-);
-```
-
-### `findFirstBy*`
-Finally, you can use the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned above. It allows you to quickly perform a select from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
-
-For the following model:
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Guestbook extends Model
+class Robots extends Model
 {
     public $id;
-    public $email;
+
     public $name;
-    public $text;
+
+    public $price;
 }
 ```
 
-We have the properties `id`, `email`, `name` and `text`. If we want to find the guest book entry for `Darth Vader` we can:
+We have three properties to work with here: `$id`, `$name` and `$price`. So, let's say you want to retrieve the first record in the table with the name 'Terminator'. This could be written like:
 
 ```php
 <?php
 
-use MyApp\Models\Guestbook;
+use Store\Toys\Robots;
 
-$guest = Guestbook::findFirst(
-    [
-        'conditions'  => 'name = :name:',
-        'bind'        => [
-            'name' => 'Darth Vader',
-        ],
-    ]
-);
+$name = 'Terminator';
+
+$robot = Robots::findFirstByName($name);
+
+if ($robot) {
+    echo 'The first robot with the name ' . $name . ' cost ' . $robot->price . '.';
+} else {
+    echo 'There were no robots found in our table with the name ' . $name . '.';
+}
 ```
 
-but we can also use:
+Notice that we used 'Name' in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
 
-```php
-<?php
-
-use MyApp\Models\Guestbook;
-
-$name  = 'Darth Vader';
-$guest = Guestbook::findFirstByName($name);
-```
-
-!!! info "NOTE"
-
-    Notice that we used `Name` in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
 
 ### Model Resultsets
-While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple][mvc-model-resultset-simple]. This is an object that encapsulates all the functionality a resultset has, such as seeking, traversing, counting etc.
+While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset.md). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
-These objects are more powerful than standard arrays. One of the greatest features of the [Phalcon\Mvc\Model\Resultset][mvc-model-resultset] is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
-
-Some examples of traversing resultsets are:
+These objects are more powerful than standard arrays. One of the greatest features of the [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset.md) is that at any time there is only one record in memory. This greatly helps in memory management especially when working with large amounts of data.
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoices = Invoices::find();
+// Get all robots
+$robots = Robots::find();
 
-// foreach
-foreach ($invoices as $invoice) {
-    echo $invoice->inv_title, PHP_EOL;
+// Traversing with a foreach
+foreach ($robots as $robot) {
+    echo $robot->name, "\n";
 }
 
-// while
-$invoices->rewind();
-while ($invoices->valid()) {
-    $invoice = $invoices->current();
+// Traversing with a while
+$robots->rewind();
 
-    echo $invoice->inv_title, PHP_EOL;
+while ($robots->valid()) {
+    $robot = $robots->current();
 
-    $invoices->next();
+    echo $robot->name, "\n";
+
+    $robots->next();
 }
 
-// count
-echo count($invoices);
-echo $invoices->count();
+// Count the resultset
+echo count($robots);
 
-// seek
-$invoices->seek(2);
-$invoice = $invoices->current();
+// Alternative way to count the resultset
+echo $robots->count();
 
-// array
-$invoice = $invoices[5];
+// Move the internal cursor to the third robot
+$robots->seek(2);
 
-// array - isset
-if (true === isset($invoices[3])) {
-   $invoice = $invoices[3];
+$robot = $robots->current();
+
+// Access a robot by its position in the resultset
+$robot = $robots[5];
+
+// Check if there is a record in certain position
+if (isset($robots[3])) {
+   $robot = $robots[3];
 }
 
-// First
-$invoice = $invoices->getFirst();
+// Get the first record in the resultset
+$robot = $robots->getFirst();
 
-// Last
-$invoice = $invoices->getLast();
+// Get the last record
+$robot = $robots->getLast();
 ```
 
-Phalcon's resultsets emulate scrollable cursors. You can get any row just by accessing its position, or seeking the internal pointer to a specific position.
+Phalcon's resultsets emulate scrollable cursors, you can get any row just by accessing its position, or seeking the internal pointer to a specific position. Note that some database systems don't support scrollable cursors, this forces to re-execute the query in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 
-!!! info "NOTE"
+As storing large query results in memory could consume many resources, resultsets are obtained from the database in chunks of 32 rows - reducing the need to re-execute the request in several cases.
 
-    Some database systems do not support scrollable cursors. This forces Phalcon to re-execute the query, in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
-
-Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#disablingenabling-features) section.
-
-Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache\Cache][cache] can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](api/Phalcon_Cache.md) can help with that task. However, serializing data causes [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+// Query all records from model parts
+$parts = Parts::find();
 
-$invoices = Invoices::find();
-
+// Store the resultset into a file
 file_put_contents(
-    'invoices.cache',
-    serialize($invoices)
+    'cache.txt',
+    serialize($parts)
 );
 
-$invoices = unserialize(
-    file_get_contents('invoices.cache')
+// Get parts from file
+$parts = unserialize(
+    file_get_contents('cache.txt')
 );
 
-foreach ($invoices as $invoice) {
-    echo $invoice->inv_title;
+// Traverse the parts
+foreach ($parts as $part) {
+    echo $part->id;
 }
 ```
-### Custom Resultsets
-There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning to the caller usually an array of transformed data. 
 
-With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality, that otherwise would be in the model, and can be reused by other models, thus keeping the code [DRY][dry]. This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset][mvc-model-resultset], but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
+### Custom Resultsets
+There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data. 
+
+With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset.md), but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
+
 
 First we need to define the resultset class:
 ```php
 <?php
 
-namespace MyApp\Mvc\Model\Resultset;
+namespace Application\Mvc\Model\Resultset;
 
 use \Phalcon\Mvc\Model\Resultset\Simple;
 
 class Custom extends Simple
 {
-    public function calculate() {
-        // ....
+    public function getSomeData() {
+        /** CODE */
     }
 }
 ```
@@ -2316,19 +495,18 @@ In the model, we set the class in the `getResultsetClass()` as follows:
 
 namespace Phalcon\Test\Models\Statistics;
 
-use MyApp\Mvc\Model\Resultset\Custom;
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
-    public function initialize()
+    public function getSource()
     {
-        $this->setSource('co_invoices');
+        return 'robots';
     }
     
     public function getResultsetClass()
     {
-        return Custom::class;
+    return 'Application\Mvc\Model\Resultset\Custom';
     }
 }
 ```
@@ -2338,231 +516,227 @@ and finally in your code you will have something like this:
 ```php
 <?php
 
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
+/**
+ * Find the robots 
+ */
+$robots = Robots::find(
     [
-        'conditions'  => 'inv_cst_id = :cst_id:',
-        'bind'        => [
-            'cst_id' => 3,
-        ],
+        'conditions' => 'date between "2017-01-01" AND "2017-12-31"',
+        'order'      => 'date'
     ]
 );
 
-$calculated = $invoices->calculate();
+/**
+ * Pass the data to the view
+ */
+$this->view->mydata = $robots->getSomeData();
 ```
 
+
 ### Filtering Resultsets
-The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP:
+The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
 ```php
 <?php
 
-$invoices = Invoices::find();
+$customers = Customers::find();
 
-$invoices = $invoices->filter(
-    function ($invoice) {
-        if (1 === $invoice->inv_status_flag) {
-            return $invoice;
+$customers = $customers->filter(
+    function ($customer) {
+        // Return only customers with a valid e-mail
+        if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
+            return $customer;
         }
     }
 );
 ```
 
-The above example will return only the paid invoices from our table (`inv_status_flag = 1`);
 
 ### Binding Parameters
-Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. You are encouraged to use this methodology to eliminate the possibility of your code being subject to SQL injection attacks. Both `string` and `integer` placeholders are supported. 
-
-!!! info "NOTE"
-
-    When using `integer` placeholders you must prefix them with `?` (`?0`, `?1`). When using `string` placeholders you must enclose the string in `:` (`:name:`, `:total:`). 
-
-Some examples:
+Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoices = Invoices::find(
+// Query robots binding parameters with string placeholders
+// Parameters whose keys are the same as placeholders
+$robots = Robots::find(
     [
-        'conditions'  => 'inv_title LIKE :title: AND ' .
-                         'inv_total > :total:',
-        'bind'        => [
-            'title' => '%ACME%',
-            'total' => 1000,
+        'name = :name: AND type = :type:',
+        'bind' => [
+            'name' => 'Robotina',
+            'type' => 'maid',
         ],
     ]
 );
 
-$invoices = Invoices::find(
+// Query robots binding parameters with integer placeholders
+$robots = Robots::find(
     [
-        'conditions'  => 'inv_title LIKE ?0 = ?0 AND ' .
-                         'inv_total > ?1',
-        'bind'        => [
-            0 => '%ACME%',
-            1 => 1000,
+        'name = ?1 AND type = ?2',
+        'bind' => [
+            1 => 'Robotina',
+            2 => 'maid',
         ],
     ]
 );
 
-$invoices = Invoices::find(
+// Query robots binding parameters with both string and integer placeholders
+// Parameters whose keys are the same as placeholders
+$robots = Robots::find(
     [
-        'conditions'  => 'inv_title = ?0 AND ' .
-                         'inv_total > :total:',
-        'bind'        => [
-            0       => '%ACME%',
-            'total' => 1000,
+        'name = :name: AND type = ?1',
+        'bind' => [
+            'name' => 'Robotina',
+            1      => 'maid',
         ],
     ]
 );
 ```
 
-Strings are automatically escaped using [PDO][pdo-statements]. This function takes into account the connection charset, therefore it is recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+When using numeric placeholders, you will need to define them as integers i.e. `1` or `2`. In this case `'1'` or `'2'` are considered strings and not numbers, so the placeholder could not be successfully replaced.
 
-Additionally, you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to their data type:
+Strings are automatically escaped using [PDO](https://php.net/manual/en/pdo.prepared-statements.php). This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+
+Additionally you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to its data type:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
 use Phalcon\Db\Column;
+use Store\Toys\Robots;
 
+// Bind parameters
 $parameters = [
-    'title' => '%ACME%',
-    'total' => 1000,
+    'name' => 'Robotina',
+    'year' => 2008,
 ];
 
+// Casting Types
 $types = [
-    'title' => Column::BIND_PARAM_STR,
-    'total' => Column::BIND_PARAM_INT,
+    'name' => Column::BIND_PARAM_STR,
+    'year' => Column::BIND_PARAM_INT,
 ];
 
-$invoices = Invoices::find(
+// Query robots binding parameters with string placeholders
+$robots = Robots::find(
     [
-        'conditions'  => 'inv_title LIKE :title: AND ' .
-                         'inv_total > :total:',
-        'bind'        => $parameters,
-        'bindTypes'   => $types,
+        'name = :name: AND year = :year:',
+        'bind'      => $parameters,
+        'bindTypes' => $types,
     ]
 );
 ```
 
-!!! info "NOTE"
+!!! warning "NOTE"
 
-    Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all the columns are strings
+    Since the default bind-type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are of that type.
 
-You can also bind arrays in the parameters, especially when using the `IN` SQL keyword. 
-
-!!! info "NOTE"
-
-    You need to use a zero based array for arrays without missing elements 
+If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$customerIds = [1, 3, 4]; // $array: [[0] => 1, [1] => 2, [2] => 4]
+$array = ['a','b','c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
 
-$invoices = Invoices::find(
+unset($array[1]); // $array: [[0] => 'a', [2] => 'c']
+
+// Now we have to renumber the keys
+$array = array_values($array); // $array: [[0] => 'a', [1] => 'c']
+
+$robots = Robots::find(
     [
-        'conditions'  => 'inv_cst_id IN ({customerId:array})',
-        'bind'        => [
-            'customerId' => $customerIds,
+        'letter IN ({letter:array})',
+        'bind' => [
+            'letter' => $array
+        ]
+    ]
+);
+```
+
+!!! warning "NOTE"
+
+    Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc. 
+
+If you're using "finders" e.g. `find()`, `findFirst()`, etc., bound parameters are automatically used:
+
+```php
+<?php
+
+use Store\Toys\Robots;
+
+// Explicit query using bound parameters
+$robots = Robots::find(
+    [
+        'name = ?0',
+        'bind' => [
+            'Ultron',
         ],
     ]
 );
 
-unset($customerIds[1]);  // $array: [[0] => 1, [2] => 4]
-
-$customerIds = array_values($customerIds);  // $array: [[0] => 1, [1] => 4]
-
-$invoices = Invoices::find(
-    [
-        'conditions'  => 'inv_cst_id IN ({customerId:array})',
-        'bind'        => [
-            'customerId' => $customerIds,
-        ],
-    ]
-);
+// Implicit query using bound parameters
+$robots = Robots::findByName('Ultron');
 ```
 
-!!! info "NOTE"
 
-    Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
-
-If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. Also, when using `findFirstBy*` the parameters are automatically bound.
+## Initializing/Preparing fetched records
+May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
-
-$invoices = Invoices::find(
-    'inv_total > ?0',
-    'bind'        => [
-        1000,
-    ]
-);
-
-$invoices = Invoices::findByInvTotal(1000);
-```
-
-## Before/After Fetching 
-There are cases where we need to manipulate the data after it has been fetched from the database so that our model contains what we need in the application layer. As seen in the [events][events] document, models act as listeners, so we can implement some events as methods in the model.
-
-Such methods include `beforeSave`, `afterSave` and `afterFetch` as shown in our example below. The `afterFetch` method will run right after the data populates the model from the database. We can utilize this method to modify or transform the data in the model.
-
-```php
-<?php
-
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
-    public $inv_id;
-    public $inv_cst_id;
-    public $inv_status_flag;
-    public $inv_total;
+    public $id;
+
+    public $name;
+
     public $status;
 
     public function beforeSave()
     {
+        // Convert the array into a string
         $this->status = join(',', $this->status);
     }
 
     public function afterFetch()
     {
+        // Convert the string to an array
         $this->status = explode(',', $this->status);
     }
     
     public function afterSave()
     {
+        // Convert the string to an array
         $this->status = explode(',', $this->status);
     }
 }
 ```
-In the above example we receive a comma delimited string from the database and `explode` it to an array so that it can be used from our application. After that, you can add or remove elements in the array; before the model saves it, `implode` will be called to store the array as a string in the database.
 
 If you use getters/setters instead of/or together with public properties, you can initialize the field once it is accessed:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
-    public $inv_id;
-    public $inv_cst_id;
-    public $inv_status_flag;
-    public $inv_total;
+    public $id;
+
+    public $name;
+
     public $status;
 
     public function getStatus()
@@ -2572,317 +746,306 @@ class Invoices extends Model
 }
 ```
 
-## Calculations
-Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model][mvc-model] allows to use these functions directly from the exposed methods.
 
-**`COUNT`**
+## Generating Calculations
+Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) allows to use these functions directly from the exposed methods.
+
+Count examples:
 
 ```php
 <?php
 
-$rowcount = Invoices::count();
+// How many employees are?
+$rowcount = Employees::count();
 
-// inv_cst_id = 3
-$rowcount = Invoices::count(
+// How many different areas are assigned to employees?
+$rowcount = Employees::count(
     [
-        'inv_cst_id = ?0',
-        'bind'        => [
-            3,
-        ],
+        'distinct' => 'area',
     ]
 );
-```
 
-We can also use the `group` parameter to group our results. The count results appear in the `rowcount` property of each object in the collection returned.
+// How many employees are in the Testing area?
+$rowcount = Employees::count(
+    'area = 'Testing''
+);
 
-```php
-<?php
-
-$group = Invoices::count(
+// Count employees grouping results by their area
+$group = Employees::count(
     [
-        'group' => 'inv_cst_id',
+        'group' => 'area',
     ]
 );
 foreach ($group as $row) {
-   echo 'Count: ', $row->rowcount, ' - Customer: ', $row->inv_cst_id;
+   echo 'There are ', $row->rowcount, ' in ', $row->area;
 }
 
-$group = Invoices::count(
+// Count employees grouping by their area and ordering the result by count
+$group = Employees::count(
     [
-        'group' => 'inv_cst_id',
+        'group' => 'area',
         'order' => 'rowcount',
     ]
 );
+
+// Avoid SQL injections using bound parameters
+$group = Employees::count(
+    [
+        'type > ?0',
+        'bind' => [
+            $type
+        ],
+    ]
+);
 ```
 
-**`SUM`**
+Sum examples:
 
 ```php
 <?php
 
-$total = Invoices::sum(
+// How much are the salaries of all employees?
+$total = Employees::sum(
     [
-        'column' => 'inv_total',
+        'column' => 'salary',
     ]
 );
 
-$total = Invoices::sum(
+// How much are the salaries of all employees in the Sales area?
+$total = Employees::sum(
     [
-        'column'     => 'total',
-        'conditions' => 'inv_cst_id = ?0',
-        'bind'       => [
-            3
-        ]
-    ]
-);
-```
-You can also group results. The count results appear in the `sumatory` property of each object in the collection returned.
-
-```php
-<?php
-
-$group = Invoices::sum(
-    [
-        'column' => 'inv_total',
-        'group'  => 'inv_cst_id',
+        'column'     => 'salary',
+        'conditions' => "area = 'Sales'",
     ]
 );
 
+// Generate a grouping of the salaries of each area
+$group = Employees::sum(
+    [
+        'column' => 'salary',
+        'group'  => 'area',
+    ]
+);
 foreach ($group as $row) {
-   echo 'Customer: ', $row->inv_cst_id, ' - Total: ', $row->sumatory;
+   echo 'The sum of salaries of the ', $row->area, ' is ', $row->sumatory;
 }
 
-$group = Invoices::sum(
+// Generate a grouping of the salaries of each area ordering
+// salaries from higher to lower
+$group = Employees::sum(
     [
-        'column' => 'inv_total',
-        'group'  => 'inv_cst_id',
+        'column' => 'salary',
+        'group'  => 'area',
         'order'  => 'sumatory DESC',
     ]
 );
-```
 
-**`AVERAGE`**
-
-```php
-<?php
-
-$average = Invoices::average(
+// Avoid SQL injections using bound parameters
+$group = Employees::sum(
     [
-        'column' => 'inv_total',
-    ]
-);
-
-$average = Invoices::average(
-    [
-        'column'     => 'inv_total',
-        'conditions' => 'inv_status_flag = ?0',
+        'conditions' => 'area > ?0',
         'bind'       => [
-            0
-        ]
-    ]
-);
-```
-
-**`MAX` - `MIN`**
-
-```php
-<?php
-
-$max = Invoices::maximum(
-    [
-        'column' => 'inv_total',
-    ]
-);
-
-$max = Invoices::maximum(
-    [
-        'column'     => 'inv_total',
-        'conditions' => 'inv_status_flag = ?0',
-        'bind'       => [
-            0
-        ],
-    ]
-);
-
-$min = Invoices::minimum(
-    [
-        'column' => 'inv_total',
-    ]
-);
-
-$min = Invoices::minimum(
-    [
-        'column'     => 'inv_total',
-        'conditions' => 'inv_status_flag = ?0',
-        'bind'       => [
-            0
+            $area
         ],
     ]
 );
 ```
 
-## Creating - Updating 
-The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model][mvc-model]. For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be created or updated.
-
-The method also executes associated validators, virtual foreign keys and events that are defined in the model:
+Average examples:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+// What is the average salary for all employees?
+$average = Employees::average(
+    [
+        'column' => 'salary',
+    ]
+);
 
-$invoice = new Invoices();
+// What is the average salary for the Sales's area employees?
+$average = Employees::average(
+    [
+        'column'     => 'salary',
+        'conditions' => "area = 'Sales'",
+    ]
+);
 
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
+// Avoid SQL injections using bound parameters
+$average = Employees::average(
+    [
+        'column'     => 'age',
+        'conditions' => 'area > ?0',
+        'bind'       => [
+            $area
+        ],
+    ]
+);
+```
 
-$result = $invoice->save();
+Max/Min examples:
 
-if (false === $result) {
-    
-    echo 'Error saving Invoice: ';
+```php
+<?php
 
-    $messages = $invoice->getMessages();
+// What is the oldest age of all employees?
+$age = Employees::maximum(
+    [
+        'column' => 'age',
+    ]
+);
+
+// What is the oldest of employees from the Sales area?
+$age = Employees::maximum(
+    [
+        'column'     => 'age',
+        'conditions' => "area = 'Sales'",
+    ]
+);
+
+// What is the lowest salary of all employees?
+$salary = Employees::minimum(
+    [
+        'column' => 'salary',
+    ]
+);
+```
+
+
+## Creating/Updating Records
+The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
+
+Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
+
+```php
+<?php
+
+use Store\Toys\Robots;
+
+$robot = new Robots();
+
+$robot->type = 'mechanical';
+$robot->name = 'Astro Boy';
+$robot->year = 1952;
+
+if ($robot->save() === false) {
+    echo "Umh, We can't store robots right now: \n";
+
+    $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo $message . PHP_EOL;
+        echo $message, "\n";
     }
 } else {
-
-    echo 'Record Saved';
+    echo 'Great, a new robot was saved successfully!';
 }
 ```
 
-You can also use the `assign()` method and pass an array of `field => value` elements, to avoid assigning each column manually. [Phalcon\Mvc\Model][mvc-model] will check if there are setters implemented for the columns passed in the array, giving priority to them, instead of assign directly the values of the attributes:
+An array could be passed to `save` to avoid assign every column manually. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = new Invoices();
+$robot = new Robots();
 
-$invoice->assign(
+$robot->save(
     [
-        'inv_cst_id'      => 1,
-        'inv_status_flag' => 1,
-        'inv_title'       => 'Invoice for ACME Inc.',
-        'inv_total'       => 100,
-        'inv_created_at'  => '2019-12-25 01:02:03',
+        'type' => 'mechanical',
+        'name' => 'Astro Boy',
+        'year' => 1952,
     ]
 );
-
-$result = $invoice->save();
 ```
 
-Values assigned directly, or via the array of attributes, are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
+Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = new Invoices();
+$robot = new Robots();
 
-$invoice->assign($_POST);
-
-$result = $invoice->save();
+$robot->save($_POST);
 ```
 
-!!! danger "NOTE"
+!!! warning "NOTE"
 
-    Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
+    Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form. 
 
-You can set an additional parameter in `assign` to set a whitelist of fields that are only taken into account when doing the mass assignment:
+You can set an additional parameter in `save` to set a whitelist of fields that only must taken into account when doing the mass assignment:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = new Invoices();
+$robot = new Robots();
 
-$invoice->assign(
+$robot->save(
     $_POST,
     [
-        'inv_cst_id',
-        'inv_status_flag',
-        'inv_title',
-        'inv_total',
+        'name',
+        'type',
     ]
 );
-
-$result = $invoice->save();
 ```
 
-!!! info "NOTE"
 
-    On really busy applications, you can use `create` or `update` for the respective operations. By using those two methods instead of save, we ensure that data will be saved or not in the database, since those throw exceptions on `create` if the record already exists, and on `update` if the record does not exist.
+### Create/Update with Confidence
+When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = new Invoices();
+$robot = new Robots();
 
-$invoice->inv_id          = 1234;
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
+$robot->type = 'mechanical';
+$robot->name = 'Astro Boy';
+$robot->year = 1952;
 
-$result = $invoice->update();
+// This record only must be created
+if ($robot->create() === false) {
+    echo "Umh, We can't store robots right now: \n";
 
-if (false === $result) {
-    
-    echo 'Error saving Invoice: ';
-
-    $messages = $invoice->getMessages();
+    $messages = $robot->getMessages();
 
     foreach ($messages as $message) {
-        echo $message . PHP_EOL;
+        echo $message, "\n";
     }
 } else {
-
-    echo 'Record Updated';
-
+    echo 'Great, a new robot was created successfully!';
 }
 ```
 
 The methods `create` and `update` also accept an array of values as parameter.
 
-## Deleting 
-The `delete()` method allows you to delete a record. It returns a boolean signifying success or failure
+
+## Deleting Records
+The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = Invoices::findFirst(
-    [
-        'conditions' => 'inv_id = :id:',
-        'bind'       => [
-            'id' => 4,
-        ]
-    ]
-);
+$robot = Robots::findFirst(11);
 
-if (false !== $invoice) {
-    if (false === $invoice->delete()) {
-        $messages = $invoice->getMessages();
-    
+if ($robot !== false) {
+    if ($robot->delete() === false) {
+        echo "Sorry, we can't delete the robot right now: \n";
+
+        $messages = $robot->getMessages();
+
         foreach ($messages as $message) {
-            echo $message . PHP_EOL;
+            echo $message, "\n";
         }
     } else {
-
-        echo 'Record Deleted';
+        echo 'The robot was deleted successfully!';
     }
 }
 ```
@@ -2892,281 +1055,283 @@ You can also delete many records by traversing a resultset with a `foreach`:
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :id:',
-        'bind'       => [
-            'id' => 3,
-        ]
-    ]
+$robots = Robots::find(
+    "type = 'mechanical'"
 );
 
-foreach ($invoices as $invoice) {
-    if (false === $invoice->delete()) {
-        $messages = $invoice->getMessages();
-    
+foreach ($robots as $robot) {
+    if ($robot->delete() === false) {
+        echo "Sorry, we can't delete the robot right now: \n";
+
+        $messages = $robot->getMessages();
+
         foreach ($messages as $message) {
-            echo $message . PHP_EOL;
+            echo $message, "\n";
         }
     } else {
-
-        echo 'Record Deleted';
+        echo 'The robot was deleted successfully!';
     }
 }
 ```
 
-!!! info "NOTE"
+The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-    Check the [transactions][transactions] section on how you can delete all the records in a loop with one operation
+| Operation | Name         | Can stop operation? | Explanation                              |
+| --------- | ------------ | :-----------------: | ---------------------------------------- |
+| Deleting  | afterDelete  | No                  | Runs after the delete operation was made |
+| Deleting  | beforeDelete | Yes                 | Runs before the delete operation is made |
 
-## Hydration Modes
-As mentioned earlier, resultsets are collections of complete objects. This means that every returned result is an object, representing a row in the database. These documents can be modified and later on saved to persist the changes in the database.
-
-However, there are times that you will need to get the data in a read only mode, such as in cases of just viewing data. In these cases, it is useful to change the way the records are returned to save resources and increase performance. The strategy used to represent these objects returned in a resultset is called `hydration`.
-
-Phalcon offers three ways of hydrating data:
-
-| Result  | Mode                                           |
-|---------|------------------------------------------------|
-| Arrays  | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
-| Objects | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
-| Records | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
-
-The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
+With the above events can also define business rules in the models:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public function beforeDelete()
+    {
+        if ($this->status === 'A') {
+            echo "The robot is active, it can't be deleted";
+
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+
+## Hydration Modes
+As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
+
+```php
+<?php
+
+use Store\Toys\Robots;
+
+$robots = Robots::find();
+
+// Manipulating a resultset of complete objects
+foreach ($robots as $robot) {
+    $robot->year = 2000;
+
+    $robot->save();
+}
+```
+
+Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful to change the way in which records are represented to facilitate their handling. The strategy used to represent objects returned in a resultset is called 'hydration mode':
+
+```php
+<?php
+
 use Phalcon\Mvc\Model\Resultset;
+use Store\Toys\Robots;
 
-$invoices = Invoices::findFirst(
-    [
-        'conditions' => 'inv_id = :id:',
-        'bind'       => [
-            'id' => 4,
-        ]
-    ]
-);
+$robots = Robots::find();
 
-// Array
-$invoices->setHydrateMode(
+// Return every robot as an array
+$robots->setHydrateMode(
     Resultset::HYDRATE_ARRAYS
 );
 
-foreach ($invoices as $invoice) {
-    echo $invoice['inv_total'], PHP_EOL;
+foreach ($robots as $robot) {
+    echo $robot['year'], PHP_EOL;
 }
 
-// \stdClass
-$invoices->setHydrateMode(
+// Return every robot as a stdClass
+$robots->setHydrateMode(
     Resultset::HYDRATE_OBJECTS
 );
 
-foreach ($invoices as $invoice) {
-    echo $invoice->inv_total, PHP_EOL;
+foreach ($robots as $robot) {
+    echo $robot->year, PHP_EOL;
 }
 
-// Invoices
-$invoices->setHydrateMode(
+// Return every robot as a Robots instance
+$robots->setHydrateMode(
     Resultset::HYDRATE_RECORDS
 );
 
-foreach ($invoices as $invoice) {
-    echo $invoice->inv_total, PHP_EOL;
+foreach ($robots as $robot) {
+    echo $robot->year, PHP_EOL;
 }
 ```
 
-Hydration mode can also be passed as a parameter of `find`, `findFirst`, `findFirstBy*` etc.:
+Hydration mode can also be passed as a parameter of `find`:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
 use Phalcon\Mvc\Model\Resultset;
+use Store\Toys\Robots;
 
-$invoices = Invoices::findFirst(
+$robots = Robots::find(
     [
-        'hydration'  => Resultset::HYDRATE_ARRAYS,
-        'conditions' => 'inv_id = :id:',
-        'bind'       => [
-            'id' => 4,
-        ],
+        'hydration' => Resultset::HYDRATE_ARRAYS,
     ]
 );
 
-foreach ($invoices as $invoice) {
-    echo $invoice['inv_total'], PHP_EOL;
+foreach ($robots as $robot) {
+    echo $robot['year'], PHP_EOL;
 }
 ```
 
-## Table Prefixes
-If you want all your tables to have certain prefix and without setting the source in all models, you can use the [Phalcon\Mvc\Model\Manager][mvc-model-manager] and the method `setModelPrefix()`:
+## Table prefixes
+If you want all your tables to have certain prefix and without setting source in all models you can use the  `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
   
 ```php
 <?php
 
-namespace MyApp\Models;
-
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
 
 }
 
 $manager = new Manager();
-
-$manager->setModelPrefix('co_');
-
-$invoices = new Invoices(null, null, $manager);
-
-echo $invoices->getSource(); // will return co_invoices
+$manager->setModelPrefix('wp_');
+$robots = new Robots(null, null, $manager);
+echo $robots->getSource(); // will return wp_robots
 ```
 
-## Identity Columns
-Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model][mvc-model] can recognize the identity column omitting it in the generated `INSERT` SQL statements, to allow the database system to correctly generate a new value for that field. After creating a new record, the identity field will always be registered with the value generated in the database system for it:
+
+## Auto-generated identity columns
+Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
 ```php
 <?php
 
-$invoice->save();
+$robot->save();
 
-echo $invoice->inv_id; // 4
+echo 'The generated id is: ', $robot->id;
 ```
 
-[Phalcon\Mvc\Model][mvc-model] attempts to recognize the identity column from each table. However, depending on the database system, these columns might be serial columns, such as in the case of PostgreSQL or `auto_increment` columns in the case of MySQL.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) is able to recognize the identity column. Depending on the database system, those columns may be serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.
 
-PostgreSQL uses sequences to generate automatically numeric values for the primary key. Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `co_invoices_id_seq`. If the sequence name is different, you can always use the `getSequenceName()` method in the model, instructing Phalcon the sequence it needs to use for the primary key:
+PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `robots_id_seq`, if that sequence has a different name, the `getSequenceName()` method needs to be implemented:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function getSequenceName()
     {
-        return 'invoices_sequence_name';
+        return 'robots_sequence_name';
     }
 }
 ```
 
+
 ## Skipping Columns
-Depending on how you implement business rules or model rules in your database, certain fields could very well be ignored in database operations. For instance, if we have a `inv_created_date` in our model, we can instruct the database system to inject the current timestamp on it:
-
-```php
-CREATE TABLE co_invoices (
-    // ...
-    inv_created_at datetime DEFAULT CURRENT_TIMESTAMP
-)
-```
-
-The code above (for MySQL) instructs the RDBMS to assign the current timestamp on the `inv_created_at` field when the record is created. We can therefore omit this field when creating a record. Similarly, we might want to ignore some fields when we are updating records.
-
-To achieve this task we can use the `skipAttributes` (for any operation), `skipAttributesOnCreate` (create) or `skipAttributesOnUpdate` (update)
-
-To tell [Phalcon\Mvc\Model][mvc-model] that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
+To tell [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function initialize()
     {
+        // Skips fields/columns on both INSERT/UPDATE operations
         $this->skipAttributes(
             [
-                'inv_total',
-                'inv_created_at',
+                'year',
+                'price',
             ]
         );
 
+        // Skips only when inserting
         $this->skipAttributesOnCreate(
             [
-                'inv_created_at',
+                'created_at',
             ]
         );
 
+        // Skips only when updating
         $this->skipAttributesOnUpdate(
             [
-                'inv_modified_at',
+                'modified_in',
             ]
         );
     }
 }
 ```
 
-If you want to set default values in your model properties (such as the `inv_created_at`) you can use the [Phalcon\Db\RawValue][db-rawvalue]:
+This will ignore globally these fields on each `INSERT`/`UPDATE` operation on the whole application. If you want to ignore different attributes on different `INSERT`/`UPDATE` operations, you can specify the second parameter (boolean) - `true` for replacement. Forcing a default value can be done as follows:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
+
 use Phalcon\Db\RawValue;
 
-$invoice = new Invoices();
-$invoice->inv_id          = 1234;
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = new RawValue('default');
+$robot = new Robots();
 
-$invoice->create();
+$robot->name       = 'Bender';
+$robot->year       = 1999;
+$robot->created_at = new RawValue('default');
+
+$robot->create();
 ```
 
-We can also take advantage of the `beforeCreate` event in the model to assign the default value there:
+A callback also can be used to create a conditional assignment of automatic default values:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Db\RawValue;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function beforeCreate()
     {
-        $this->inv_created_at = new RawValue('default');
+        if ($this->price > 10000) {
+            $this->type = new RawValue('default');
+        }
     }
 }
 ```
 
 !!! warning "NOTE"
 
-    Never use a [Phalcon\Db\RawValue][db-rawvalue] to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used for SQL injection attacks.
+    Never use a [Phalcon\Db\RawValue](api/Phalcon_Db.md) to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used to attack the application injecting SQL. 
+
 
 ## Dynamic Updates
+SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
-!!! warning "NOTE"
-
-    Dynamic Update is now enabled by default, you can disable it by changing the "phalcon.orm.dynamic_update" in the php.ini or by ini_set.
-
-If the system-wide dynamic update is disabled, the SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
-
-In some cases this could improve the performance by reducing the traffic between the application and the database server, especially when the target table has blob/text fields:
+In some cases this could improve the performance by reducing the traffic between the application and the database server, this specially helps when the table has blob/text fields:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function initialize()
     {
@@ -3175,110 +1340,100 @@ class Invoices extends Model
 }
 ```
 
-## Column Mapping
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. 
+
+## Independent Column Mapping
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
-    public $inv_id;
-    public $inv_cst_id;
-    public $inv_status_flag;
-    public $inv_title;
-    public $inv_total;
-    public $inv_created_at;
+    public $code;
+
+    public $theName;
+
+    public $theType;
+
+    public $theYear;
 
     public function columnMap()
     {
+        // Keys are the real names in the table and
+        // the values their names in the application
         return [
-            'inv_id'          => 'id',
-            'inv_cst_id'      => 'customerId',
-            'inv_status_flag' => 'status',
-            'inv_title'       => 'title',
-            'inv_total'       => 'total',
-            'inv_created_at'  => 'createdAt',
+            'id'       => 'code',
+            'the_name' => 'theName',
+            'the_type' => 'theType',
+            'the_year' => 'theYear',
         ];
     }
 }
 ```
 
-!!! info "NOTE"
-
-    In the array defined in the column map, the keys are the actual names of the fields in the database, and the values are the _virtual_ fields we can use in your code
-
-Now we can use those _virtual_ fields (or column map) in your code:
+Then you can use the new names naturally in your code:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = Invoices::findFirst(
+// Find a robot by its name
+$robot = Robots::findFirst(
+    "theName = 'Voltron'"
+);
+
+echo $robot->theName, "\n";
+
+// Get robots ordered by type
+$robot = Robots::find(
     [
-        'conditions' => 'inv_id = :id:',
-        'bind'       => [
-            'id' => 4,
-        ]
+        'order' => 'theType DESC',
     ]
 );
 
-echo $invoice->customerId, PHP_EOL,
-     $invoice->total, PHP_EOL,
-     $invoice->createdAt, PHP_EOL;
-
-$invoices = Invoices::find(
-    [
-        'order' => 'createdAt DESC',
-    ]
-);
-
-foreach ($invoices as $invoice) {
-    echo $invoice->customerId, PHP_EOL,
-         $invoice->total, PHP_EOL,
-         $invoice->createdAt, PHP_EOL;
+foreach ($robots as $robot) {
+    echo 'Code: ', $robot->code, "\n";
 }
 
-$invoice = new Invoices();
+// Create a robot
+$robot = new Robots();
 
-$invoice->customerId = 1;
-$invoice->status     = 1;
-$invoice->title      = 'Invoice for ACME Inc.';
-$invoice->total      = 100;
-$invoice->createdAt  = '2019-12-25 01:02:03';
+$robot->code    = '10101';
+$robot->theName = 'Bender';
+$robot->theType = 'Industrial';
+$robot->theYear = 2999;
 
-$invoice->save();
+$robot->save();
 ```
-
-**Considerations**
 
 Consider the following when renaming your columns:
 
-* References to attributes in relationships/validators **must use the virtual names**
+* References to attributes in relationships/validators must use the new names
 * Refer the real column names will result in an exception by the ORM
 
 The independent column map allows you to:
 
 * Write applications using your own conventions
 * Eliminate vendor prefixes/suffixes in your code
-* Change column names without changes your application code
+* Change column names without change your application code
+
 
 ## Record Snapshots
-Specific models could be set to maintain a record snapshot when they are queried. You can use this feature to implement auditing or just to know what fields have been changed in the model compared to the data in the database.
+Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function initialize()
     {
@@ -3287,31 +1442,31 @@ class Invoices extends Model
 }
 ```
 
-When activating this feature, the application consumes a bit more of memory, to keep track of the original values obtained from the database. In models that have this feature activated, you can check what fields changed as follows:
+When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence. In models that have this feature activated you can check what fields changed as follows:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = Invoices::findFirst();
+// Get a record from the database
+$robot = Robots::findFirst();
 
-$invoice->inv_total = 120;
+// Change a column
+$robot->name = 'Other name';
 
-var_dump($invoice->getChangedFields()); // ['inv_total']
+var_dump($robot->getChangedFields()); // ['name']
 
-var_dump($invoice->hasChanged('inv_total')); // true
+var_dump($robot->hasChanged('name')); // true
 
-var_dump($invoice->hasChanged('inv_cst_id')); // false
+var_dump($robot->hasChanged('type')); // false
 ```
 
-Snapshots are updated on model creation/update. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update, but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`. 
+Snapshots are updated on model creation/update. Using `hasUpdated()` and `getUpdatedFields()` can be used to check if fields were updated after a create/save/update but it could potentially cause problems to your application if you execute `getChangedFields()` in `afterUpdate()`, `afterSave()` or `afterCreate()`. 
 
 You can disable this functionality by using:
 
 ```php
-<?php
-
 Phalcon\Mvc\Model::setup(
     [
         'updateSnapshotOnSave' => false,
@@ -3329,277 +1484,112 @@ Using this functionality will have the following effect:
 ```php
 <?php
 
-namespace MyApp\Models;
-
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class User extends Model
 {
-    public $inv_id;
-    public $inv_cst_id;
-    public $inv_status_flag;
-    public $inv_title;
-    public $inv_total;
-    public $inv_created_at;
-
-    public function initialize()
-    {
-        $this->keepSnapshots(true);
-    }
+  public function initialize()
+  {
+      $this->keepSnapshots(true);
+  }
 }
 
-$invoice = new Invoices();
-
-$invoice->inv_id          = 1234;
-$invoice->inv_cst_id      = 1;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-$invoice->create();
-
-var_dump(
-    $invoice->getChangedFields() // []
-);
-
-$invoice->inv_total = 120;
-
-var_dump(
-    $invoice->getChangedFields() // ['inv_total']
-);
-
-$invoice->update();
-
-var_dump(
-    $invoice->getChangedFields() // []
-);
+$user       = new User();
+$user->name = 'Test User';
+$user->create();
+var_dump($user->getChangedFields());
+$user->login = 'testuser';
+var_dump($user->getChangedFields());
+$user->update();
+var_dump($user->getChangedFields());
 ```
 
+On Phalcon 3.4.0 and later it is:
+
+```php
+array(0) {
+}
+array(1) {
+[0]=> 
+    string(5) "login"
+}
+array(0) {
+}
+```
+  
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
-## Events
-As mentioned before [Phalcon\Mvc\Model][mvc-model] acts as a listener to events. Therefore, all the events that the model is listening to can be implemented as methods in the model itself. You can check the [events][events] document for additional information.
 
-The events supported are:
-
-- `afterCreate`
-- `afterDelete`
-- `afterFetch`
-- `afterSave`
-- `afterUpdate`
-- `afterValidation`
-- `afterValidationOnCreate`
-- `afterValidationOnUpdate`
-- `beforeDelete`
-- `beforeCreate`
-- `beforeSave`
-- `beforeUpdate`
-- `beforeValidation`
-- `beforeValidationOnCreate`
-- `beforeValidationOnUpdate`
-- `notDeleted`
-- `notSaved`
-- `onValidationFails`
-- `prepareSave`
-- `validation`
+## Pointing to a different schema
+If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
 ```php
 <?php
 
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-use Phalcon\Messages\Message as Message;
-
-class Invoices extends Model
-{
-    public function beforeSave()
-    {
-        if (0 === $this->inv_status_flag) {
-            $message = new Message(
-                'Sorry, an invoice cannot be unpaid'
-            );
-
-            $this->appendMessage($message);
-        }
-    }
-}
-```
-
-## Transactions
-[Transactions][db-models-transactions] are necessary to ensure data integrity, when we need to insert or update data in more than one table during the same operation. [Phalcon\Mvc\Model][mvc-model] exposes the `setTransaction` method that allows you to bind each model to an active transaction.
-
-
-```php
-<?php
-
-use MyApp\Models\Customers;
-use MyApp\Models\Invoices;
-use Phalcon\Mvc\Model\Transaction\Manager;
-use Phalcon\Mvc\Model\Transaction\Failed;
-
-try {
-    $txManager   = new Manager();
-    $transaction = $txManager->get();
-    
-    $customer = new Customers();
-    $customer->setTransaction($transaction);
-    $customer->cst_name_last  = 'Vader';
-    $customer->cst_name_first = 'Darth';
-
-    if (false === $customer->save()) {
-        $transaction->rollback('Cannot save Customer');
-    }
-
-    $invoice = new Invoices();
-    $invoice->setTransaction($transaction);
-
-    $invoice->inv_cst_id      = $customer->cst_id;
-    $invoice->inv_status_flag = 1;
-    $invoice->inv_title       = 'Invoice for ACME Inc.';
-    $invoice->inv_total       = 100;
-    $invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-    if (false === $invoice->save()) {
-        $transaction->rollback('Cannot save record');
-    }
-
-    $transaction->commit();
-} catch (Failed $ex) {
-    echo 'ERROR: ', $ex->getMessage();
-}
-```
-
-You can also include _finder_ results in your transactions or even have multiple transactions running at the same time:
-
-
-```php
-<?php
-
-use MyApp\Models\Customers;
-use MyApp\Models\Invoices;
-use Phalcon\Mvc\Model\Transaction\Manager;
-use Phalcon\Mvc\Model\Transaction\Failed;
-
-try {
-    $txManager   = new Manager();
-    $transaction = $txManager->get();
-    
-    $customer = new Customers();
-    $customer->setTransaction($transaction);
-    $customer->cst_name_last  = 'Vader';
-    $customer->cst_name_first = 'Darth';
-
-    if (false === $customer->save()) {
-        $transaction->rollback('Cannot save Customer');
-    }
-    
-    $average = Invoices::average(
-        [
-            Model::TRANSACTION_INDEX => $transaction,
-            'column'     => 'inv_total',
-            'conditions' => 'inv_cst_id = :customerId:',
-            'bind'       => [
-                'customerId' => 3,
-            ],
-        ]
-    );
-
-    $invoice = new Invoices();
-    $invoice->setTransaction($transaction);
-
-    $invoice->inv_cst_id      = $customer->cst_id;
-    $invoice->inv_status_flag = 1;
-    $invoice->inv_title       = 'Invoice for ACME Inc.';
-    $invoice->inv_total       = 100 + $average;
-    $invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-    if (false === $invoice->save()) {
-        $transaction->rollback('Cannot save record');
-    }
-
-    $transaction->commit();
-} catch (Failed $ex) {
-    echo 'ERROR: ', $ex->getMessage();
-}
-```
-
-## Changing Schema
-If a model is mapped to a table that is located in a different schema than the default, you can use the `setSchema()` to point to the correct location:
-
-```php
-<?php
-
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function initialize()
     {
-        $this->setSchema('invoices');
+        $this->setSchema('toys');
     }
 }
 ```
 
-## Multiple Databases
-Phalcon models by default connect to the same database connection (`db` service) that has been defined in the dependency injection container. However, you might need to connect specific models to different connections, which could be connections to different databases.
 
-We can define which model connects to which database in the `initialize` method of each model:
+## Setting multiple databases
+In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
 ```php
 <?php
 
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Db\Adapter\Pdo\Mysql;
-use Phalcon\Db\Adapter\Pdo\PostgreSQL;
+use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
+use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
 
-$container = new FactoryDefault();
-
-// MySQL
-$container->set(
+// This service returns a MySQL database
+$di->set(
     'dbMysql',
     function () {
-        return new Mysql(
+        return new MysqlPdo(
             [
                 'host'     => 'localhost',
                 'username' => 'root',
                 'password' => 'secret',
-                'dbname'   => 'tutorial',
+                'dbname'   => 'invo',
             ]
         );
-    },
-    true
+    }
 );
 
-// PostgreSQL
-$container->set(
+// This service returns a PostgreSQL database
+$di->set(
     'dbPostgres',
     function () {
-        return new PostgreSQL(
+        return new PostgreSQLPdo(
             [
                 'host'     => 'localhost',
                 'username' => 'postgres',
                 'password' => '',
-                'dbname'   => 'tutorial',
+                'dbname'   => 'invo',
             ]
         );
     }
 );
 ```
 
-and in the `initialize()` method:
+Then, in the `initialize()` method, we define the connection service for the model:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function initialize()
     {
@@ -3608,82 +1598,36 @@ class Invoices extends Model
 }
 ```
 
-Additional flexibility is available regarding database connections. You can specify a different connection for `read` operations and a different one for `write` operations. This is particularly useful when you have memory databases that can be used for read operations and different, more powerful databases that are used for `write` operations.
-
-You can set two different connections and utilize each database in each model transparently
+But Phalcon offers you more flexibility, you can define the connection that must be used to `read` and for `write`. This is specially useful to balance the load to your databases implementing a master-slave architecture:
 
 ```php
 <?php
 
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Db\Adapter\Pdo\Mysql;
-use Phalcon\Db\Adapter\Pdo\PostgreSQL;
-
-$container = new FactoryDefault();
-
-// MySQL - read
-$container->set(
-    'mysqlRead',
-    function () {
-        return new Mysql(
-            [
-                'host'     => '10.0.4.100',
-                'username' => 'root',
-                'password' => 'secret',
-                'dbname'   => 'tutorial',
-            ]
-        );
-    },
-    true
-);
-
-// MySQL - write
-$container->set(
-    'mysqlWrite',
-    function () {
-        return new Mysql(
-            [
-                'host'     => '10.0.4.200',
-                'username' => 'root',
-                'password' => 'secret',
-                'dbname'   => 'tutorial',
-            ]
-        );
-    },
-    true
-);
-```
-
-and in the `initialize()` method:
-
-```php
-<?php
-
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function initialize()
     {
-        $this->setReadConnectionService('mysqlRead');
+        $this->setReadConnectionService('dbSlave');
 
-        $this->setWriteConnectionService('mysqlWrite');
+        $this->setWriteConnectionService('dbMaster');
     }
 }
 ```
 
-The ORM also provides Horizontal Sharding features, by allowing you to implement a `shard` selection according to the query conditions:
+The ORM also provides Horizontal Sharding facilities, by allowing you to implement a 'shard' selection according to the current query conditions:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     /**
      * Dynamically selects a shard
@@ -3691,17 +1635,14 @@ class Invoices extends Model
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
-     *
-     * @return Phalcon\Db\Adapter\AdapterInterface
      */
-    public function selectReadConnection(
-        array $intermediate, 
-        array $bindParams, 
-        array $bindTypes
-    ) {
-        if (true === isset($intermediate['where'])) {
+    public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+    {
+        // Check if there is a 'where' clause in the select
+        if (isset($intermediate['where'])) {
             $conditions = $intermediate['where'];
 
+            // Choose the possible shard according to the conditions
             if ($conditions['left']['name'] === 'id') {
                 $id = $conditions['right']['value'];
 
@@ -3715,37 +1656,43 @@ class Invoices extends Model
             }
         }
 
+        // Use a default shard
         return $this->getDI()->get('dbShard0');
     }
 }
 ```
 
-In the above example, we are checking the `$intermediate` array, which is an array constructed internally in Phalcon, offering the intermediate representation of the query. We check if we have any `where` conditions. If not, we just use the default shard `dbShard0`. 
-
-If conditions have been defined, we are checking if we have the `id` as a field in the conditions, and retrieve its value. If the `id` is between `0` and `100000` then we use `dbShard1`, alternatively `dbShard2`.
-
-The `selectReadConnection()` method is called every time we need to get data from the database, and returns the correct connection to be used.
-
-## Dependency Injection
-[Phalcon\Mvc\Model][mvc-model] is tightly bound to the DI container. You can retrieve the container by using the `getDI` method. Therefore, you have access to all services registered in the DI container. 
-
-The following example shows you how you can print any messages generated by an unsuccessful `save` operation in the model, and show these messages in the [flash][flash] messenger. To do this, we use the `notSaved` event:
-
+The `selectReadConnection()` method is called to choose the right connection, this method intercepts any new query executed:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+use Store\Toys\Robots;
+
+$robot = Robots::findFirst('id = 101');
+```
+
+
+## Injecting services into Models
+You may be required to access the application services within a model, the following example explains how to do that:
+
+```php
+<?php
+
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function notSaved()
     {
-        $flash    = $this->getDI()->getFlash();
+        // Obtain the flash service from the DI container
+        $flash = $this->getDI()->getFlash();
+
         $messages = $this->getMessages();
 
+        // Show validation messages
         foreach ($messages as $message) {
             $flash->error($message);
         }
@@ -3753,15 +1700,11 @@ class Invoices extends Model
 }
 ```
 
-## Model Features
-The ORM has several options that control specific behaviors globally. You can enable or disable these features by adding specific lines to your `php.ini` file or use the `setup` static method on the model. You can enable or disable these features temporarily in your code or permanently.
+The `notSaved` event is triggered every time that a `create` or `update` action fails. So we're flashing the validation messages obtaining the `flash` service from the DI container. By doing this, we don't have to print messages after each save.
 
-```ini
-phalcon.orm.column_renaming = false
-phalcon.orm.events          = false
-```
 
-or by using the `Model`:
+## Disabling/Enabling Features
+In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
 ```php
 <?php
@@ -3770,212 +1713,83 @@ use Phalcon\Mvc\Model;
 
 Model::setup(
     [
-        'columnRenaming' => false,
         'events'         => false,
+        'columnRenaming' => false,
     ]
 );
 ```
 
 The available options are:
 
-| Option                          | Default | Description                                                            |
-|---------------------------------|:-------:|------------------------------------------------------------------------|
-| `caseInsensitiveColumnMap`      | `false` | Case insensitive column map                                            |
-| `castLastInsertIdToInt`         | `false` | Casts the `lastInsertId` to an integer                                 |
-| `castOnHydrate`                 | `false` | Automatic cast to original types on hydration                          |
-| `columnRenaming`                | `true`  | Column renaming                                                        |
-| `disableAssignSetters`          | `false` | Disable setters                                                        |
-| `enableImplicitJoins`           | `true`  | Enable implicit joins                                                  |
-| `events`                        | `true`  | Callbacks, hooks and event notifications from all the models           |
-| `exceptionOnFailedMetaDataSave` | `false` | Throw an exception when there is a failed meta-data save               |
-| `exceptionOnFailedSave`         | `false` | Throw an exception when there is a failed `save()`                     |
-| `forceCasting`                  | `false` | Force casting bound parameters to their native types                   |
-| `ignoreUnknownColumns`          | `false` | Ignore unknown columns on the model                                    |
-| `lateStateBinding`              | `false` | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |
-| `notNullValidations`            | `true`  | Automatically validate the not `null` columns present                  |
-| `phqlLiterals`                  | `true`  | Literals in the PHQL parser                                            |
-| `prefetchRecords`               |   `0`   | The number of records to prefetch when getting data from the ORM       |                       
-| `updateSnapshotOnSave`          | `true`  | Update snapshots on `save()`                                           |
-| `virtualForeignKeys`            | `true`  | Virtual foreign keys                                                   |
-
-`ini` options:
-
-```
-; phalcon.orm.cache_level = 3
-; phalcon.orm.case_insensitive_column_map = false
-; phalcon.orm.cast_last_insert_id_to_int = false
-; phalcon.orm.cast_on_hydrate = false
-; phalcon.orm.column_renaming = true
-; phalcon.orm.disable_assign_setters = false
-; phalcon.orm.enable_implicit_joins = true
-; phalcon.orm.enable_literals = true
-; phalcon.orm.events = true
-; phalcon.orm.exception_on_failed_metadata_save = true
-; phalcon.orm.exception_on_failed_save = false
-; phalcon.orm.force_casting = false
-; phalcon.orm.ignore_unknown_columns = false
-; phalcon.orm.late_state_binding = false
-; phalcon.orm.not_null_validations = true
-; phalcon.orm.resultset_prefetch_records = "0"
-; phalcon.orm.unique_cache_id = 3
-; phalcon.orm.update_snapshot_on_save = true
-; phalcon.orm.virtual_foreign_keys = true
-; phalcon.db.escape_identifiers = On
-; phalcon.db.force_casting = Off
-```
+| Option                | Description                                                                             | Default |
+| --------------------- | --------------------------------------------------------------------------------------- | :-----: |
+| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models           | `null`  |
+| cacheLevel            | Sets the cache level for the ORM                                                        | `3`     |
+| castOnHydrate         |                                                                                         | `false` |
+| columnRenaming        | Enables/Disables the column renaming                                                    | `true`  |
+| disableAssignSetters  | Allow disabling setters in your model                                                                                        | `false` |
+| enableImplicitJoins   |                                                                                         | `true`  |
+| enableLiterals        |                                                                                         | `true`  |
+| escapeIdentifiers     |                                                                                         | `true`  |
+| events                | Enables/Disables callbacks, hooks and event notifications from all the models           | `true`  |
+| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                  | `false` |
+| forceCasting          |                                                                                         | `false` |
+| ignoreUnknownColumns  | Enables/Disables ignoring unknown columns on the model                                  | `false` |
+| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
+| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table         | `true`  |
+| parserCache           |                                                                                         | `null`  |
+| phqlLiterals          | Enables/Disables literals in the PHQL parser                                            | `true`  |
+| uniqueCacheId         |                                                                                         | `3`     |
+| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                         | `true`  |
+| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                               | `true`  |
 
 !!! warning "NOTE"
 
-    `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`.
+    <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
 
-## Integers vs. Strings
-If you want to get integer values back from `int` related database fields, you will need to do the following:
-- Make sure that the `castOnHydrate` (or set `ini_set('phalcon.orm.cast_on_hydrate', 'on')`) is enabled
+
+## Stand-Alone component
+Using [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) in a stand-alone mode can be demonstrated below:
 
 ```php
 <?php
 
+use Phalcon\Di;
 use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Manager as ModelsManager;
+use Phalcon\Db\Adapter\Pdo\Sqlite as Connection;
+use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 
-Model::setup(
-    [
-        'castOnHydrate' => true,
-    ]
-);
-```
+$di = new Di();
 
-- Ensure that you are using the `mysqlnd` driver on your server. You can check that using `phpinfo()` (pdo_mysql > Client API version)
-- In your database connection provider you need to pass the following options:
-
-```php
-[
-    PDO::ATTR_EMULATE_PREPARES  => false,
-    PDO::ATTR_STRINGIFY_FETCHES => false,
-]
-```
-
-Registering the provider should look like this:
-
-```php 
-<?php
-
-$parameters = [
-  // ....
-];
-
-/** @var Manager $eventsManager */
-$eventsManager = $container->getShared('eventsManager');
-
-$container->setShared(
+// Setup a connection
+$di->set(
     'db',
-    function () use ($eventsManager, $parameters) {
-        $options = [
-            'host'     => $parameters['host'] ?? 'localhost',
-            'dbname'   => $parameters['dbname'] ?? 'phalcon',
-            'username' => $parameters['user'] ?? 'root',
-            'password' => $parameters['pass'] ?? 'secret',
-            'encoding' => $parameters['encoding'] ?? 'utf8',
-            'options'  => [
-                PDO::ATTR_EMULATE_PREPARES  => false,
-                PDO::ATTR_STRINGIFY_FETCHES => false,
-            ]
-        ];
-
-        $connection = new Mysql($options);
-        $connection->setEventsManager($eventsManager);
-
-        return $connection;
-    );
-}
-```
-
-## Invalid parameter number
-In v5, the parameters used to instantiate PDO have changed. More specifically the `PDO::ATTR_EMULATE_PREPARES` now defaults to `false`. As a result, you might encounter the following message in your code, when a bound parameter is used more than once in a query:
-
-!!! warning "Error"
-
-    Invalid parameter number
-
-You can change the name of the parameters, or you can change the `PDO::ATTR_EMULATE_PREPARES` to `true`, when registering your database provider.
-
-## Stand-Alone Component 
-You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary setup on your own if you wish. The example below demonstrates how you can achieve that.
-
-```php
-<?php
-
-use Phalcon\Di\Di;
-use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Manager;
-use Phalcon\Db\Adapter\Pdo\Sqlite;
-use Phalcon\Mvc\Model\Metadata\Memory;
-
-$container = new Di();
-
-$container->set(
-    'db',
-    new Sqlite(
+    new Connection(
         [
             'dbname' => 'sample.db',
         ]
     )
 );
 
-$container->set(
+// Set a models manager
+$di->set(
     'modelsManager',
-    new Manager()
+    new ModelsManager()
 );
 
-$container->set(
+// Use the memory meta-data adapter or other
+$di->set(
     'modelsMetadata',
-    new Memory()
+    new MetaData()
 );
 
-
-class Invoices extends Model
+// Create a model
+class Robots extends Model
 {
 
 }
 
-echo Invoices::count();
+// Use the model
+echo Robots::count();
 ```
-
-[db-rawvalue]: api/phalcon_db.md#db-rawvalue
-[DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
-[mvc-model]: api/phalcon_mvc.md#mvc-model
-[mvc-model-binder]: api/phalcon_mvc.md#mvc-model-binder
-[mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvc-model-binder-bindableinterface
-[mvc-model-binderinterface]: api/phalcon_mvc.md#mvc-model-binderinterface
-[mvc-model-criteria]: api/phalcon_mvc.md#mvc-model-criteria
-[mvc-model-criteriainterface]: api/phalcon_mvc.md#mvc-model-criteriainterface
-[mvc-model-exception]: api/phalcon_mvc.md#mvc-model-exception
-[mvc-model-manager]: api/phalcon_mvc.md#mvc-model-manager
-[mvc-model-managerinterface]: api/phalcon_mvc.md#mvc-model-managerinterface
-[mvc-model-query]: api/phalcon_mvc.md#mvc-model-query
-[mvc-model-query-builder]: api/phalcon_mvc.md#mvc-model-query-builder
-[mvc-model-query-builderinterface]: api/phalcon_mvc.md#mvc-model-query-builderinterface
-[mvc-model-query-lang]: api/phalcon_mvc.md#mvc-model-query-lang
-[mvc-model-query-status]: api/phalcon_mvc.md#mvc-model-query-status
-[mvc-model-query-statusinterface]: api/phalcon_mvc.md#mvc-model-query-statusinterface
-[mvc-model-queryinterface]: api/phalcon_mvc.md#mvc-model-queryinterface
-[mvc-model-relation]: api/phalcon_mvc.md#mvc-model-relation
-[mvc-model-relationinterface]: api/phalcon_mvc.md#mvc-model-relationinterface
-[mvc-model-resultinterface]: api/phalcon_mvc.md#mvc-model-resultinterface
-[mvc-model-resultset]: api/phalcon_mvc.md#mvc-model-resultset
-[mvc-model-resultset-complex]: api/phalcon_mvc.md#mvc-model-resultset-complex
-[mvc-model-resultset-simple]: api/phalcon_mvc.md#mvc-model-resultset-simple
-[mvc-model-resultsetinterface]: api/phalcon_mvc.md#mvc-model-resultsetinterface
-[mvc-model-row]: api/phalcon_mvc.md#mvc-model-row
-[mvc-model-validationfailed]: api/phalcon_mvc.md#mvc-model-validationfailed
-[mvc-modelinterface]: api/phalcon_mvc.md#mvc-modelinterface
-[pdo-statements]: https://php.net/manual/en/pdo.prepared-statements.php
-[db]: db-layer.md
-[creating-models]: #creating-models
-[finding-records]: #finding-records
-[binding-parameters]: #binding-parameters
-[transactions]: #transactions
-[db-models-transactions]: db-models-transactions.md
-[db-phql]: db-phql.md
-[cache]: cache.md
-[events]: events.md
-[flash]: flash.md

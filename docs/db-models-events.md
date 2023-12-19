@@ -1,92 +1,45 @@
+
 # Model Events
-- - -
 
-## Overview
-Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model][mvc-model-query] and their order of execution:
+## Events and Events Manager
+Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) and their order of execution:
 
-| Operation     | Name                       | Stop? | Explanation                                                                                           |
-|---------------|----------------------------|:-----:|-------------------------------------------------------------------------------------------------------|
-| Insert        | `afterCreate`              |  No   | Runs after creating a record                                                                          |
-| Delete        | `afterDelete`              |  No   | Runs after deleting records                                                                           |
-| Fetch         | `afterFetch`               |  No   | Runs after fetching records                                                                           |
-| Insert/Update | `afterSave`                |  No   | Runs after saving a record                                                                            |
-| Update        | `afterUpdate`              |  No   | Runs after updating a record                                                                          |
-| Insert/Update | `afterValidation`          |  Yes  | Is executed after the fields are validated for not `null`/empty strings or foreign keys               |
-| Insert        | `afterValidationOnCreate`  |  Yes  | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an insert  |
-| Update        | `afterValidationOnUpdate`  |  Yes  | Is executed after the fields are validated for not `null`/empty strings or foreign keys on an update  |
-| Insert        | `beforeCreate`             |  Yes  | Runs before creating a record                                                                         |
-| Delete        | `beforeDelete`             |  Yes  | Runs before deleting records                                                                          |
-| Insert/Update | `beforeSave`               |  Yes  | Runs before saving a record                                                                           |
-| Update        | `beforeUpdate`             |  Yes  | Runs before updating a record                                                                         |
-| Insert/Update | `beforeValidation`         |  Yes  | Is executed before the fields are validated for not `null`/empty strings or foreign keys              |
-| Insert        | `beforeValidationOnCreate` |  Yes  | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an insert |
-| Update        | `beforeValidationOnUpdate` |  Yes  | Is executed before the fields are validated for not `null`/empty strings or foreign keys on an update |
-| Delete        | `notDeleted`               |  No   | Runs when records are not deleted (fail)                                                              |
-| Save          | `notSaved`                 |  No   | Runs when records are not saved (fail)                                                                |
-| Insert/Update | `onValidationFails`        |  Yes  | Is executed after an integrity validator fails                                                        |
-| Insert/Update | `prepareSave`              |  No   | Is executed before saving and allows data manipulation                                                |
-| Insert/Update | `validation`               |  Yes  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
+| Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
+| ------------------ | ------------------------ | :-------------------: |---------------------------------------------------------------------------------------------------------------------------------- |
+| Inserting          | afterCreate              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Inserting/Updating | afterSave                | NO                    | Runs after the required operation over the database system                                                                        |
+| Updating           | afterUpdate              | NO                    | Runs after the required operation over the database system only when an updating operation is being made                          |
+| Inserting/Updating | afterValidation          | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  | YES                   | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting          | beforeCreate             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Inserting/Updating | beforeSave               | YES                   | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             | YES                   | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeValidationOnCreate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | beforeValidationOnUpdate | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              | NO                    | Is executed before saving and allows data manipulation                                                                            |
+| Inserting/Updating | validation               | YES                   | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
-### Events
-Models act as listeners to the events manager. Therefore, we only need to implement the events above in the models directly as public methods:
+
+### Implementing Events in the Model's class
+The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
-/**
- * Class Invoices
- *
- * @property string $inv_created_at
- * @property int    $inv_cst_id
- * @property int    $inv_id
- * @property string $inv_number
- * @property string $inv_title
- * @property float  $inv_total
- */
-class Invoices extends Model
+class Robots extends Model
 {
-    /**
-     * @var int
-     */
-    public $inv_cst_id;
-
-    /**
-     * @var string
-     */
-    public $inv_created_at;
-
-    /**
-     * @var int
-     */
-    public $inv_id;
-
-    /**
-     * @var string
-     */
-    public $inv_number;
-
-    /**
-     * @var string
-     */
-    public $inv_title;
-
-    /**
-     * @var float
-     */
-    public $inv_total;
-
     public function beforeValidationOnCreate()
     {
-        if ($this->inv_total < 1) {
-            $this->inv_total = 0;
-        }
+        echo 'This is executed before creating a Robot!';
     }
 }
-
 ```
 
 Events can be used to assign values before performing an operation, for example:
@@ -94,129 +47,50 @@ Events can be used to assign values before performing an operation, for example:
 ```php
 <?php
 
-namespace MyApp\Models;
-
 use Phalcon\Mvc\Model;
-use function str_pad;
 
-/**
- * Class Invoices
- *
- * @property string $inv_created_at
- * @property int    $inv_cst_id
- * @property int    $inv_id
- * @property string $inv_number
- * @property string $inv_title
- * @property float  $inv_total
- */
-class Invoices extends Model
+class Products extends Model
 {
-    /**
-     * @var int
-     */
-    public $inv_cst_id;
-
-    /**
-     * @var string
-     */
-    public $inv_created_at;
-
-    /**
-     * @var int
-     */
-    public $inv_id;
-
-    /**
-     * @var string
-     */
-    public $inv_number;
-
-    /**
-     * @var string
-     */
-    public $inv_title;
-
-    /**
-     * @var float
-     */
-    public $inv_total;
-
     public function beforeCreate()
     {
-        $date     = date('YmdHis');
-        $customer = substr(
-            str_pad(
-                $this->inv_cst_id, 6, '0', STR_PAD_LEFT
-            ),
-            -6
-        );
+        // Set the creation date
+        $this->created_at = date('Y-m-d H:i:s');
+    }
 
-        $this->inv_number = 'INV-' . $customer . '-' . $date;
+    public function beforeUpdate()
+    {
+        // Set the modification date
+        $this->modified_in = date('Y-m-d H:i:s');
     }
 }
 ```
 
-### Custom Events Manager
-Additionally, this component is integrated with [Phalcon\Events\Manager][events-manager], this means we can create listeners that run when an event is triggered.
+
+### Using a custom Events Manager
+Additionally, this component is integrated with [Phalcon\Events\Manager](api/Phalcon_Events.md), this means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Events\Manager;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager as EventsManager;
 
-/**
- * Class Invoices
- *
- * @property string $inv_created_at
- * @property int    $inv_cst_id
- * @property int    $inv_id
- * @property string $inv_number
- * @property string $inv_title
- * @property float  $inv_total
- */
-class Invoices extends Model
+class Robots extends Model
 {
-    /**
-     * @var int
-     */
-    public $inv_cst_id;
-
-    /**
-     * @var string
-     */
-    public $inv_created_at;
-
-    /**
-     * @var int
-     */
-    public $inv_id;
-
-    /**
-     * @var string
-     */
-    public $inv_number;
-
-    /**
-     * @var string
-     */
-    public $inv_title;
-
-    /**
-     * @var float
-     */
-    public $inv_total;
-
     public function initialize()
     {
-        $eventsManager = new Manager();
+        $eventsManager = new EventsManager();
 
+        // Attach an anonymous function as a listener for 'model' events
         $eventsManager->attach(
             'model:beforeSave',
-            function (Event $event, $invoice) {
-                if ($invoice->inv_total < 1) {
+            function (Event $event, $robot) {
+                if ($robot->name === 'Scooby Doo') {
+                    echo "Scooby Doo isn't a robot!";
+
                     return false;
                 }
 
@@ -224,47 +98,50 @@ class Invoices extends Model
             }
         );
 
+        // Attach the events manager to the event
         $this->setEventsManager($eventsManager);
     }
 }
 ```
 
-In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `Invoices` are saved:
+In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `robots` are saved:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = new Invoices();
-$invoice->inv_cst_id = 10;
-$invoice->inv_title = 'Invoice for ACME Inc.';
+$robot = new Robots();
 
-$invoice->save();
+$robot->name = 'Scooby Doo';
+$robot->year = 1969;
+
+$robot->save();
 ```
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager when setting it in the DI container:
+If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
-use Phalcon\Di\FactoryDefault;
 use Phalcon\Events\Event;
-use Phalcon\Events\Manager;
-use Phalcon\Mvc\Model\Manager as ModelsManager;
+use Phalcon\Events\Manager as EventsManager;
 
-$container = new FactoryDefault();
-$container->setShared(
+// Registering the modelsManager service
+$di->setShared(
     'modelsManager',
     function () {
-        $eventsManager = new Manager();
+        $eventsManager = new EventsManager();
 
+        // Attach an anonymous function as a listener for 'model' events
         $eventsManager->attach(
             'model:beforeSave',
             function (Event $event, $model) {
-                if (get_class($model) === Invoices::class) {
-                    if ($model->inv_total < 1) {
+                // Catch events produced by the Robots model
+                if (get_class($model) === 'Store\Toys\Robots') {
+                    if ($model->name === 'Scooby Doo') {
+                        echo "Scooby Doo isn't a robot!";
+
                         return false;
                     }
                 }
@@ -273,7 +150,9 @@ $container->setShared(
             }
         );
 
+        // Setting a default EventsManager
         $modelsManager = new ModelsManager();
+
         $modelsManager->setEventsManager($eventsManager);
 
         return $modelsManager;
@@ -283,49 +162,46 @@ $container->setShared(
 
 If a listener returns false that will stop the operation that is executing currently.
 
-## Logging SQL Statements
-When using high-level abstraction components such as [Phalcon\Mvc\Model][mvc-model] to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model][mvc-model] is supported internally by [Phalcon\Db][db]. [Phalcon\Logger\Logger][logger] interacts with [Phalcon\Db][db], providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+
+## Logging Low-Level SQL Statements
+When using high-level abstraction components such as [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) is supported internally by [Phalcon\Db](api/Phalcon_Db.md). [Phalcon\Logger](api/Phalcon_Logger.md) interacts with [Phalcon\Db](api/Phalcon_Db.md), providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\Mysql;
-use Phalcon\Di\FactoryDefault;
+use Phalcon\Logger;
 use Phalcon\Events\Manager;
-use Phalcon\Logger\Logger;
-use Phalcon\Logger\Adapter\Stream;
+use Phalcon\Logger\Adapter\File as FileLogger;
+use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
-$container = new FactoryDefault();
-$container->set(
+$di->set(
     'db',
     function () {
-        $eventsManager = new Manager();
-        $adapter = new Stream('/storage/logs/db.log');
-        $logger  = new Logger(
-            'messages',
-            [
-                'main' => $adapter,
-            ]
-        );
+        $eventsManager = new EventsManager();
 
+        $logger = new FileLogger('app/logs/debug.log');
+
+        // Listen all the database events
         $eventsManager->attach(
             'db:beforeQuery',
             function ($event, $connection) use ($logger) {
-                $logger->info(
-                    $connection->getSQLStatement()
+                $logger->log(
+                    $connection->getSQLStatement(),
+                    Logger::INFO
                 );
             }
         );
 
-        $connection = new Mysql\(
+        $connection = new Connection(
             [
                 'host'     => 'localhost',
                 'username' => 'root',
                 'password' => 'secret',
-                'dbname'   => 'phalcon',
+                'dbname'   => 'invo',
             ]
         );
 
+        // Assign the eventsManager to the db adapter instance
         $connection->setEventsManager($eventsManager);
 
         return $connection;
@@ -338,52 +214,53 @@ As models access the default database connection, all SQL statements that are se
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-$invoice = new Invoices();
-$invoice->inv_cst_id = 10;
-$invoice->inv_title  = 'Invoice for ACME Inc.';
-$invoice->inv_total  = 10000;
+$robot = new Robots();
 
-if ($invoice->save() === false) {
+$robot->name       = 'Robby the Robot';
+$robot->created_at = '1956-07-21';
+
+if ($robot->save() === false) {
     echo 'Cannot save robot';
 }
 ```
 
-As above, the file */storage/logs/db.log* will contain something like this:
+As above, the file *app/logs/db.log* will contain something like this:
 
-!!! info "Log"
 
-    `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO co_invoices`
-    `(inv_cst_id, inv_title, inv_total) VALUES (10, 'Invoice for ACME Inc.', 10000)`
+> `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots`
+> `(name, created_at) VALUES ('Robby the Robot', '1956-07-21')`
+
 
 ## Profiling SQL Statements
-Using the [Phalcon\Db][db], the underlying component of [Phalcon\Mvc\Model][mvc-model], it is possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. Analyzing the logs will help in identifying bottlenecks in your SQL code:
+Thanks to [Phalcon\Db](api/Phalcon_Db.md), the underlying component of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md), it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 
 ```php
 <?php
 
-use Phalcon\Db\Profiler;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Events\Manager;
-use Phalcon\Db\Adapter\Pdo;
+use Phalcon\Db\Profiler as ProfilerDb;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Db\Adapter\Pdo\Mysql as MysqlPdo;
 
-$container = new FactoryDefault();
-$container->set(
+$di->set(
     'profiler',
     function () {
-        return new Profiler();
+        return new ProfilerDb();
     },
     true
 );
 
-$container->set(
+$di->set(
     'db',
-    function () use ($container) {
-        $manager  = new Manager();
-        $profiler = $container->getProfiler();
+    function () use ($di) {
+        $eventsManager = new EventsManager();
 
-        $manager->attach(
+        // Get a shared instance of the DbProfiler
+        $profiler = $di->getProfiler();
+
+        // Listen all the database events
+        $eventsManager->attach(
             'db',
             function ($event, $connection) use ($profiler) {
                 if ($event->getType() === 'beforeQuery') {
@@ -398,16 +275,17 @@ $container->set(
             }
         );
 
-        $connection = new Mysql(
+        $connection = new MysqlPdo(
             [
                 'host'     => 'localhost',
                 'username' => 'root',
                 'password' => 'secret',
-                'dbname'   => 'phalcon',
+                'dbname'   => 'invo',
             ]
         );
 
-        $connection->setEventsManager($manager);
+        // Assign the eventsManager to the db adapter instance
+        $connection->setEventsManager($eventsManager);
 
         return $connection;
     }
@@ -419,43 +297,32 @@ Profiling some queries:
 ```php
 <?php
 
-use MyApp\Models\Invoices;
+use Store\Toys\Robots;
 
-Invoices::find();
-Invoices::find(
+// Send some SQL statements to the database
+Robots::find();
+
+Robots::find(
     [
-        'order' => 'inv_cst_id, inv_title',
+        'order' => 'name',
     ]
 );
-Invoices::find(
+
+Robots::find(
     [
         'limit' => 30,
     ]
 );
 
-$profiles = $container->get('profiler')->getProfiles();
+// Get the generated profiles from the profiler
+$profiles = $di->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-    echo 'SQL: ', 
-        $profile->getSQLStatement(), 
-        PHP_EOL,
-        'Start: ',
-        $profile->getInitialTime(),
-        PHP_EOL,
-        'Final: ',
-        $profile->getFinalTime(),
-        PHP_EOL,
-        'Elapsed: ',
-        $profile->getTotalElapsedSeconds(),
-        PHP_EOL
-    );
+   echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
+   echo 'Start Time: ', $profile->getInitialTime(), '\n';
+   echo 'Final Time: ', $profile->getFinalTime(), '\n';
+   echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
 }
 ```
 
 Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
-
-[db]: api/phalcon_db.md
-[events-manager]: api/phalcon_events.md#events-manager
-[logger]: logger.md
-[mvc-model]: api/phalcon_mvc.md#mvc-model
-[mvc-model-query]: api/phalcon_mvc.md#mvc-model-query

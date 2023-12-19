@@ -1,833 +1,600 @@
-# Cache
 
-## Overview
-The [Phalcon\Cache\Cache][cache-cache] is a component that offers a lightweight yet flexible caching mechanism to be used with your Phalcon applications. 
+# Improving Performance with Cache
 
-Frequently used data or already processed/calculated data, can be stored in a cache storage for easier and faster retrieval. Since [Phalcon\Cache\Cache][cache-cache] is written in Zephir, and therefore compiled as C code, it can achieve higher performance, while reducing the overhead that comes with getting data from any storage container. Some examples that warrant the use of cache are: 
+Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
-* You are making complex calculations and the output does not change frequently
-* You are producing HTML using the same data all the time (same HTML)
-* You are accessing database data constantly which does not change often.
 
-!!! info "NOTE"
+## When to implement cache?
+Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
-    Even after implementing the cache, you should always check the hit ratio of your cache backend over a period of time, to ensure that your cache strategy is optimal.
+* You are making complex calculations that every time return the same result (changing infrequently)
+* You are using a lot of helpers and the output generated is almost always the same
+* You are accessing database data constantly and these data rarely change
 
-[Phalcon\Cache\Cache][cache-cache] components rely on `Phalcon\Storage` components. `Phalcon\Storage` is split into two categories: Serializers and Adapters.
+!!! warning "NOTE"
 
-## Cache
-In order to instantiate a new [Phalcon\Cache\Cache][cache-cache] component, you will need to pass a `Phalcon\Cache\Adapter\*` class in it or one that implements the [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface]. For a detailed explanation on adapters and serializers, see below.
+    Even after implementing the cache, you should check the hit ratio of your cache over a period of time. This can easily be done, especially in the case of Memcache or Apc, with the relevant tools that the backends provide.
 
-```php
-<?php
 
-use Phalcon\Cache\Cache;
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Storage\SerializerFactory;
+## Caching Behavior
+The caching process is divided into 2 parts:
 
-$serializerFactory = new SerializerFactory();
-$adapterFactory    = new AdapterFactory($serializerFactory);
+* **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
+* **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
 
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200
-];
-
-$adapter = $adapterFactory->newInstance('apcu', $options);
-
-$cache = new Cache($adapter);
-```
-
-### Operations
-The cache component implements methods that are inline with [PSR-16][psr-16], but does not implement the particular interface. A package that implements [PSR-16][psr-16] is available, that uses [Phalcon\Cache\Cache][cache-cache]. The package is located [here][proxy-psr16]. To use it, you will need to have Phalcon installed and then using composer you can install the proxy package. 
-
-```sh
-composer require phalcon/proxy-psr16
-```
-
-Using the proxy classes allows you to follow [PSR-16][psr-16] and use it with any other package that needs that interface.
-
-Each Cache component contains a supplied Cache adapter which in turn is responsible for all operations.  
-
-### `get` - `getMultiple`
-To get data from the cache you need to call the `get()` method with a key and a default value. If the key exists, or it has not been expired, the data stored in it will be returned. Alternatively the passed `defaultValue` will be returned (default `null`).
-
-```php
-$value = $cache->get('my-key');
-
-$value = $cache->get('my-key', 'default');
-```
-
-If you wish to retrieve more than one key with one call, you can call `getMultiple()`, passing an array with the keys needed. The method will return an array of `key` => `value` pairs. Cache keys that do not exist or have expired will have `defaultValue` as a value (default `null`).
- 
-```php
-$value = $cache->getMultiple(['my-key1', 'my-key2']);
-
-$value = $cache->getMultiple(['my-key1', 'my-key2'], 'default');
-```
-
-### `has`
-To check whether a key exists in the cache (or it has not expired) you can call the `has()` method. The method will return `true` if the key exists, or `false` otherwise.
-
-```php
-$exists = $cache->has('my-key');
-```
-
-### `set` - `setMultiple`
-To save the data in the cache, you will need to use the `set()` method. The method accepts the key we wish to store the data under and the value of the item to store. The data needs to be of a type that supports serialization i.e. PHP type or an object that implements serialization. The last (optional) parameter is the TTL (time to live) value for this item. This option might not always be available, if the underlying adapter does not support it. The method will return `true` if the key exists, or `false` otherwise. If even one key is not successfully stored, the method will return `false`.
-
-```php
-$result = $cache->set('my-key', $data);
-```
-
-If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). The method will return `true` if the key exists, or `false` otherwise.
-
-```php
-$value = $cache->setMultiple(
-    [
-        'my-key1' => $data1, 
-        'my-key2' => $data2,
-    ],
-    9600
-);
-```
-
-### `delete` - `deleteMultiple` - `clear`
-To delete an item from the cache you need to call the `delete()` method with a key. The method returns `true` on success and `false` on failure.
-` 
-```php
-$result = $cache->delete('my-key');
-```
-
-If you wish to delete more than one key with one call, you can call `deleteMultiple()`, passing an array with the keys needed. The method returns `true` on success and `false` on failure. If even one key is not successfully deleted, the method will return `false`.
-` 
-```php
-$result = $cache->deleteMultiple(['my-key1', 'my-key2']);
-```
-
-If you wish to clear all the keys, you can call the `clear()` method. The method returns `true` on success and `false` on failure.
 
 ## Factory
-### `newInstance`
-We can easily create a [Phalcon\Cache\Cache][cache-cache] class using the `new` keyword. However, Phalcon offers the [Phalcon\Cache\CacheFactory][cache-cachefactory] class, so that developers can easily instantiate cache objects. The factory accepts a [Phalcon\Cache\AdapterFactory][cache-adapterfactory] object (which in turn requires a `Phalcon\Storage\SerializerFactory` object) and can instantiate the necessary Cache class with the selected adapter and options. The factory always returns a new instance of [Phalcon\Cache\Cache][cache-cache].
+Instantiating frontend or backend adapters can be achieved by two ways:
 
-The example below shows how you can create a cache object using the `Apcu` adapter and `Json` serializer:
+Traditional way
 
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Storage\SerializerFactory;
+use Phalcon\Cache\Backend\File as BackFile;
+use Phalcon\Cache\Frontend\Data as FrontData;
 
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-];
-
-$serializerFactory = new SerializerFactory();
-$adapterFactory    = new AdapterFactory(
-    $serializerFactory,
-    $options
+// Create an Output frontend. Cache the files for 2 days
+$frontCache = new FrontData(
+    [
+        'lifetime' => 172800,
+    ]
 );
 
-$cacheFactory = new CacheFactory($adapterFactory);
-
-$cache = $cacheFactory->newInstance('apcu');
+// Create the component that will cache from the 'Output' to a 'File' backend
+// Set the cache file directory - it's important to keep the '/' at the end of
+// the value for the folder
+$cache = new BackFile(
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
+);
 ```
 
-### `load`
-The Cache Factory also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config\Config][config] object, with directives that are used to set up the cache. The object requires the `adapter` element, as well as the `options` element with the necessary directives.
+or using the Factory object as follows:
 
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Storage\SerializerFactory;
-
+use Phalcon\Cache\Frontend\Factory as FFactory;
+use Phalcon\Cache\Backend\Factory as BFactory;
+ 
+ $options = [
+     'lifetime' => 172800,
+     'adapter'  => 'data',
+ ];
+ $frontendCache = FFactory::load($options);
+ 
+ 
 $options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
+    'cacheDir' => '../app/cache/',
+    'prefix'   => 'app-data',
+    'frontend' => $frontendCache,
+    'adapter'  => 'file',
 ];
 
-$serializerFactory = new SerializerFactory();
-$adapterFactory    = new AdapterFactory(
-    $serializerFactory,
-    $options
+$backendCache = BFactory::load($options);
+```
+
+
+## Caching Output Fragments
+An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured
+from the `ob_*` functions or the PHP output so that it can be saved in the cache. The following example demonstrates such usage. It receives the output generated by PHP and stores it into a file. The contents of the file are refreshed every 172,800 seconds (2 days).
+
+The implementation of this caching mechanism allows us to gain performance by not executing the helper `Phalcon\Tag::linkTo()` call whenever this piece of code is called.
+
+```php
+<?php
+
+use Phalcon\Tag;
+use Phalcon\Cache\Backend\File as BackFile;
+use Phalcon\Cache\Frontend\Output as FrontOutput;
+
+// Create an Output frontend. Cache the files for 2 days
+$frontCache = new FrontOutput(
+    [
+        'lifetime' => 172800,
+    ]
 );
 
-$cacheFactory = new CacheFactory($adapterFactory);
+// Create the component that will cache from the 'Output' to a 'File' backend
+// Set the cache file directory - it's important to keep the '/' at the end of
+// the value for the folder
+$cache = new BackFile(
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
+);
 
-$cacheOptions = [
-    'adapter' => 'apcu',
-    'options' => [
-        'prefix' => 'my-prefix',
-    ],
-];
+// Get/Set the cache file to ../app/cache/my-cache.html
+$content = $cache->start('my-cache.html');
 
-$cache = $cacheFactory->load($cacheOptions);
-```
+// If $content is null then the content will be generated for the cache
+if ($content === null) {
+    // Print date and time
+    echo date('r');
 
-## Exceptions
-Any exceptions thrown in the Cache component will be of type [Phalcon\Cache\Exception\Exception][cache-exception-exception] which implements [Psr\SimpleCache\CacheException][psr-cache-exception]. Additionally the [Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception] which implements also the [Psr\SimpleCache\CacheException][psr-invalidargumentexception]. It is thrown when the data supplied to the component or any subcomponents is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
+    // Generate a link to the sign-up action
+    echo Tag::linkTo(
+        [
+            'user/signup',
+            'Sign Up',
+            'class' => 'signup-button',
+        ]
+    );
 
-```php
-<?php
-
-use Phalcon\Cache\Exception\Exception;
-use Phalcon\Mvc\Controller;
-
-class IndexController extends Controller
-{
-    public function index()
-    {
-        try {
-            $content = $this->cache->get('some-key');
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
-    }
+    // Store the output into the cache file
+    $cache->save();
+} else {
+    // Echo the cached output
+    echo $content;
 }
 ```
 
-## Serializers
-The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable][serializable] interface and thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before saving it to the storage and after retrieving it from the storage.
+!!! warning "NOTE"
 
-!!! info "NOTE"
-
-    The default serializer for all adapters is `Phalcon\Storage\Serializer\Php` which uses PHP's `serialize` and `unserialize` methods. These methods can suit most applications. However, the developer might want to use something more efficient such as [igbinary][igbinary] which is faster and achieves a better compression. 
-
-The cache adapter can be configured to use a different serializer. The available serializers are:
-
-### `Base64`
-This serializer uses the `base64_encode` and `base64_decode` methods to serialize data. The input must be of type `string`, therefore this serializer has obvious limitations
-
-### `Igbinary`
-The `igbinary` serializes relies on the `igbinary_serialize` and `igbinary_unserialize` methods. Those methods are exposed via the [igbinary][igbinary] PHP extension, which has to be installed and loaded on the target system.
-  
-### `Json`
-The `JSON` serializer uses `json_encode` and `json_decode`. The target system must have JSON support available for PHP.
-
-### `MemcachedIgbinary`
-This serializer can be used when using `Memcached`. It corresponds to the built-in Igbinary serializer that `Memcached` has.
-
-### `MemcachedJson`
-This serializer can be used when using `Memcached`. It corresponds to the built-in JSON serializer that `Memcached` has.
-
-### `MemcachedPhp`
-This serializer can be used when using `Memcached`. It corresponds to the built-in PHP serializer that `Memcached` has.
-
-### `Msgpack`
-Similar to `igbinary` the `msgpack` serializer uses `msgpack_pack` and `msgpack_unpack` for serializing and unserializing data. This, along with `igbinary` is one of the fastest and most efficient serializers. However, it requires that the [msgpack][msgpack] PHP extension is loaded on the target system.  
-
-### `None`
-This serializer does not transform the data at all. Both its `serialize` and `unserialize` get and set the data without altering it.
-
-### `Php`
-This is the default serializer. It uses PHP's `serialize` and `unserialize` methods for data transformations.
-
-### `RedisIgbinary`
-This serializer can be used when using `Redis`. It corresponds to the built-in Igbinary serializer that `Redis` has.
-
-### `RedisJson`
-This serializer can be used when using `Redis`. It corresponds to the built-in JSON serializer that `Redis` has.
-
-### `RedisMsgpack`
-This serializer can be used when using `Redis`. It corresponds to the built-in Msgpack serializer that `Redis` has.
-
-### `RedisNone`
-This serializer can be used when using `Redis`. It corresponds to the built-in None serializer that `Redis` has.
-
-### `RedisPhp`
-This serializer can be used when using `Redis`. It corresponds to the built-in PHP serializer that `Redis` has.
+    In the example above, our code remains the same, echoing output to the user as it has been doing before. Our cache component transparently captures that output and stores it in the cache file (when the cache is generated) or it sends it back to the user pre-compiled from a previous call, thus avoiding expensive operations.
 
 
-### Custom
-Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface][storage-serializer-serializerinterface]` which can be implemented in a custom class. The class can offer the serialization you require.
+## Caching Arbitrary Data
+Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data, thus speeding up your application.
+
+
+### File Backend Example
+One of the caching adapters is `File`. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
 
 ```php
 <?php
 
-namespace MyApp\Storage\Serializer;
+use Phalcon\Cache\Backend\File as BackFile;
+use Phalcon\Cache\Frontend\Data as FrontData;
 
-use Phalcon\Storage\SerializerInterface;
+// Cache the files for 2 days using a Data frontend
+$frontCache = new FrontData(
+    [
+        'lifetime' => 172800,
+    ]
+);
 
-class Garble implements SerializerInterface
-{
-    /**
-     * Data storage
-     * 
-     * @var string
-     */
-    private $data = '';
-    
-    /**
-     * Return the stored data
-     * 
-     * @return string
-     */
-    public function getData(): string
-    {
-        return $this->data;
-    }       
+// Create the component that will cache 'Data' to a 'File' backend
+// Set the cache file directory - important to keep the `/` at the end of
+// the value for the folder
+$cache = new BackFile(
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
+);
 
-    /**
-     * Serializes data
-     */
-    public function serialize(): string
-    {
-        return rot13($this->data);
-    }
+$cacheKey = 'robots_order_id.cache';
 
-    /**
-     * Set the data
-     * 
-     * @var Garble
-     *
-     * @return Garble
-     */
-    public function setData($data): Garble
-    {
-        $this->data = (string) $data;
-        
-        return $this;
-    }       
+// Try to get cached records
+$robots = $cache->get($cacheKey);
 
-    /**
-     * Unserializes data
-     */
-    public function unserialize($data): void
-    {
-        $this->data = str_rot13($data);
-    }
+if ($robots === null) {
+    // $robots is null because of cache expiration or data does not exist
+    // Make the database call and populate the variable
+    $robots = Robots::find(
+        [
+            'order' => 'id',
+        ]
+    );
+
+    // Store it in the cache
+    $cache->save($cacheKey, $robots);
+}
+
+// Use $robots :)
+foreach ($robots as $robot) {
+   echo $robot->name, '\n';
 }
 ```
 
-Using it:
-```php
-<?php
 
-namespace MyApp;
-
-use MyApp\Storage\Serializer\Garble;
-
-$data = 'I came, I saw, I conquered.';
-$garble = new Garble();
-
-$garble
-    ->setData($data)
-    ->serialize()  
-;
-
-echo $garble->getData(); // "V pnzr, V fnj, V pbadhrerq."
-
-$encrypted = 'V pnzr, V fnj, V pbadhrerq.';
-
-$garble->unserialize($encrypted);
-
-echo $garble->getData(); // "I came, I saw, I conquered."
-``` 
-
-## Serializer Factory
-Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\SerializerFactory][storage-serializerfactory] class, so that developers can easily instantiate serializer classes. All the above serializers are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) serializer classes. The only thing to consider is choosing the name of the serializer in comparison to the existing ones. If you define the same name, you will overwrite the built-in one.The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
-
-The example below shows how you can create a `Json` serializer either using the `new` keyword or the factory:
+### Memcached Backend Example
+The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
 
 ```php
 <?php
 
-use Phalcon\Storage\Serializer\Json; 
-use Phalcon\Storage\SerializerFactory;
+use Phalcon\Cache\Frontend\Data as FrontData;
+use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
 
-$jsonSerializer = new Json();
+// Cache data for one hour
+$frontCache = new FrontData(
+    [
+        'lifetime' => 3600,
+    ]
+);
 
-$factory        = new SerializerFactory();
-$jsonSerializer = $factory->newInstance('json');
+// Create the component that will cache 'Data' to a 'Memcached' backend
+// Memcached connection settings
+$cache = new BackMemCached(
+    $frontCache,
+    [
+        'servers' => [
+            [
+                'host'   => '127.0.0.1',
+                'port'   => '11211',
+                'weight' => '1',
+            ]
+        ]
+    ]
+);
+
+$cacheKey = 'robots_order_id.cache';
+
+// Try to get cached records
+$robots = $cache->get($cacheKey);
+
+if ($robots === null) {
+    // $robots is null because of cache expiration or data does not exist
+    // Make the database call and populate the variable
+    $robots = Robots::find(
+        [
+            'order' => 'id',
+        ]
+    );
+
+    // Store it in the cache
+    $cache->save($cacheKey, $robots);
+}
+
+// Use $robots :)
+foreach ($robots as $robot) {
+   echo $robot->name, '\n';
+}
 ```
-The parameters you can use for the factory are:
 
-| **Name**             | **Class**                                                                             |
-|----------------------|---------------------------------------------------------------------------------------|
-| `base64`             | [Phalcon\Storage\Serializer\Base64][storage-serializer-base64]                        |
-| `igbinary`           | [Phalcon\Storage\Serializer\Igbinary][storage-serializer-igbinary]                    |
-| `json`               | [Phalcon\Storage\Serializer\Json][storage-serializer-json]                            |
-| `memcached_igbinary` | [Phalcon\Storage\Serializer\MemcachedIgbinary][storage-serializer-memcached-igbinary] |
-| `memcached_json`     | [Phalcon\Storage\Serializer\MemcachedJson][storage-serializer-memcached-json]         |
-| `memcached_php`      | [Phalcon\Storage\Serializer\MemcachedPhp][storage-serializer-memcached-php]           |
-| `msgpack`            | [Phalcon\Storage\Serializer\Msgpack][storage-serializer-msgpack]                      |
-| `none`               | [Phalcon\Storage\Serializer\None][storage-serializer-none]                            |
-| `php`                | [Phalcon\Storage\Serializer\Php][storage-serializer-php]                              |
-| `redis_igbinary`     | [Phalcon\Storage\Serializer\RedisIgbinary][storage-serializer-redis-igbinary]         |
-| `redis_json`         | [Phalcon\Storage\Serializer\RedisJson][storage-serializer-redis-json]                 |
-| `redis_msgpack`      | [Phalcon\Storage\Serializer\RedisMsgpack][storage-serializer-redis-msgpack]           |
-| `redis_none`         | [Phalcon\Storage\Serializer\RedisNone][storage-serializer-redis-none]                 |
-| `redis_php`          | [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php]                   |
+!!! warning "NOTE"
 
-## Adapters
-The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface] interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code. 
+    Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.
 
-The available methods are:
 
-| Method       | Description                                                                |
-|--------------|----------------------------------------------------------------------------|
-| `clear`      | Flushes/clears the cache                                                   |
-| `decrement`  | Decrements a stored number                                                 |
-| `delete`     | Deletes data from the adapter                                              |
-| `get`        | Reads data from the adapter                                                |
-| `getAdapter` | Returns the already connected adapter or connects to the backend server(s) |
-| `getKeys`    | Returns all the keys stored (optional filter parameter)                    |
-| `getPrefix`  | Returns the prefix for the keys                                            |
-| `has`        | Checks if an element exists in the cache                                   |
-| `increment`  | Increments a stored number                                                 |
-| `set`        | Stores data in the adapter                                                 |
-
-!!! info "NOTE"
-
-    The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer, since it can be used to execute additional methods that each adapter offers. For instance for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange` and other methods not exposed by the Phalcon adapter.
-
-To construct one of these objects, you will need to pass a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the constructor and optionally some parameters required for the adapter of your choice. The list of options is outlined below.
-
-The available adapters are:
-
-### `Apcu`
-This adapter uses `Apcu` to store the data. In order to use this adapter, you will need to have [apcu][apcu] enabled in your target system. This class does not use an actual _adapter_, since the `apcu` functionality is exposed using the `apcu_*` PHP functions. 
-
-| Option              | Default    |
-|---------------------|------------|
-| `defaultSerializer` | `Php`      |
-| `lifetime`          | `3600`     |
-| `serializer`        | `null`     |
-| `prefix`            | `ph-apcu-` |
-
-The following example demonstrates how to create a new `Apcu` cache adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200.  
+## Querying the cache
+The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does not exist, the get method will return null.
 
 ```php
 <?php
 
-use Phalcon\Cache\Adapter\Apcu;
-use Phalcon\Storage\SerializerFactory;
+// Retrieve products by key 'myProducts'
+$products = $cache->get('myProducts');
+```
 
-$serializerFactory = new SerializerFactory();
+If you want to know which keys are stored in the cache you could call the `queryKeys` method:
+
+```php
+<?php
+
+// Query all keys used in the cache
+$keys = $cache->queryKeys();
+
+foreach ($keys as $key) {
+    $data = $cache->get($key);
+
+    echo 'Key=', $key, ' Data=', $data;
+}
+
+// Query keys in the cache that begins with 'my-prefix'
+$keys = $cache->queryKeys('my-prefix');
+```
+
+
+## Deleting data from the cache
+There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
+
+```php
+<?php
+
+// Delete an item with a specific key
+$cache->delete('someKey');
+
+$keys = $cache->queryKeys();
+
+// Delete all items from the cache
+foreach ($keys as $key) {
+    $cache->delete($key);
+}
+```
+
+
+## Checking cache existence
+It is possible to check if a cache already exists with a given key:
+
+```php
+<?php
+
+if ($cache->exists('someKey')) {
+    echo $cache->get('someKey');
+} else {
+    echo 'Cache does not exists!';
+}
+```
+
+
+## Lifetime
+A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
+
+Setting the lifetime when retrieving:
+
+```php
+<?php
+
+$cacheKey = 'my.cache';
+
+// Setting the cache when getting a result
+$robots = $cache->get($cacheKey, 3600);
+
+if ($robots === null) {
+    $robots = 'some robots';
+
+    // Store it in the cache
+    $cache->save($cacheKey, $robots);
+}
+```
+
+Setting the lifetime when saving:
+
+```php
+<?php
+
+$cacheKey = 'my.cache';
+
+$robots = $cache->get($cacheKey);
+
+if ($robots === null) {
+    $robots = 'some robots';
+
+    // Setting the cache when saving data
+    $cache->save($cacheKey, $robots, 3600);
+}
+```
+
+
+## Multi-Level Cache
+This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful because you can save the same data in several cache locations with different lifetimes, reading first from the one with the faster adapter and ending with the slowest one until the data expires:
+
+```php
+<?php
+
+use Phalcon\Cache\Multiple;
+use Phalcon\Cache\Backend\Apc as ApcCache;
+use Phalcon\Cache\Backend\File as FileCache;
+use Phalcon\Cache\Frontend\Data as DataFrontend;
+use Phalcon\Cache\Backend\Memcache as MemcacheCache;
+
+$ultraFastFrontend = new DataFrontend(
+    [
+        'lifetime' => 3600,
+    ]
+);
+
+$fastFrontend = new DataFrontend(
+    [
+        'lifetime' => 86400,
+    ]
+);
+
+$slowFrontend = new DataFrontend(
+    [
+        'lifetime' => 604800,
+    ]
+);
+
+// Backends are registered from the fastest to the slower
+$cache = new Multiple(
+    [
+        new ApcCache(
+            $ultraFastFrontend,
+            [
+                'prefix' => 'cache',
+            ]
+        ),
+        new MemcacheCache(
+            $fastFrontend,
+            [
+                'prefix' => 'cache',
+                'host'   => 'localhost',
+                'port'   => '11211',
+            ]
+        ),
+        new FileCache(
+            $slowFrontend,
+            [
+                'prefix'   => 'cache',
+                'cacheDir' => '../app/cache/',
+            ]
+        ),
+    ]
+);
+
+// Save, saves in every backend
+$cache->save('my-key', $data);
+```
+
+
+## Frontend Adapters
+The available frontend adapters that are used as interfaces or input sources to the cache are:
+
+| Adapter                           | Description                                                                                                                                                    |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache.md)   | Read input data from standard PHP output.                                                                                                                      |
+| [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache.md)     | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
+| [Phalcon\Cache\Frontend\Base64](api/Phalcon_Cache.md)   | It's used to cache binary data. The data is serialized using `base64_encode` before be stored in the backend.                                                  |
+| [Phalcon\Cache\Frontend\Json](api/Phalcon_Cache.md)     | Data is encoded in JSON before be stored in the backend. Decoded after be retrieved. This frontend is useful to share data with other languages or frameworks. |
+| [Phalcon\Cache\Frontend\Igbinary](api/Phalcon_Cache.md) | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
+| [Phalcon\Cache\Frontend\None](api/Phalcon_Cache.md)     | It's used to cache any kind of PHP data without serializing them.                                                                                              |
+
+
+### Implementing your own Frontend adapters
+The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache.md) interface must be implemented in order to create your own frontend adapters or extend the existing ones.
+
+
+## Backend Adapters
+The backend adapters available to store cache data are:
+
+| Adapter                              | Description                                          | Info                                      | Required Extensions                                |
+|--------------------------------------|------------------------------------------------      |-------------------------------------------|----------------------------------------------------|
+| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache.md)          | Stores data to the Alternative PHP Cache (APC).      | [APC](https://php.net/apc)                 | [APC](https://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\Apcu`         | Stores data to the APCu (APC without opcode caching) | [APCu](https://php.net/apcu)               | [APCu](https://pecl.php.net/package/APCu)           |
+| [Phalcon\Cache\Backend\File](api/Phalcon_Cache.md)         | Stores data to local plain files.                    |                                           |                                                    |
+| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache.md) | Stores data to a memcached server.                   | [Memcached](https://www.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
+| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache.md)     | Stores data to a memcached server.                   | [Memcache](https://www.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
+| [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache.md)       | Stores data in memory                                |                                           |                                                    |
+| [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache.md)        | Stores data to Mongo Database.                       | [MongoDB](https://mongodb.org/)            | [Mongo](https://mongodb.org/)                       |
+| [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache.md)        | Stores data in Redis.                                | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
+| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache.md)       | Stores data in XCache.                               | XCache                         | XCache                           |
+
+##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.4.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### {.alert .alert-warning}
+
+
+### Factory
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+
+```php
+<?php
+
+use Phalcon\Cache\Backend\Factory;
+use Phalcon\Cache\Frontend\Data;
 
 $options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
 ];
-
-$adapter = new Apcu($serializerFactory, $options);
+$backendCache = Factory::load($options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
-### `Libmemcached`
-This adapter utilizes PHP's [memcached][memcached] extension to connect to Memcached servers. The adapter used is an instance of the `Memcached` class, created after the first event that requires the connection to be active. 
+### Implementing your own Backend adapters
+The [Phalcon\Cache\BackendInterface](api/Phalcon_Cache.md) interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
-| Option                                          | Default                               |
-|-------------------------------------------------|---------------------------------------|
-| `defaultSerializer`                             | `Php`                                 |
-| `lifetime`                                      | `3600`                                |
-| `serializer`                                    | `null`                                |
-| `prefix`                                        | `ph-memc-`                            |
-| `servers[0]['host']`                            | `127.0.0.1`                           |
-| `servers[0]['port']`                            | `11211`                               |
-| `servers[0]['weight']`                          | `1`                                   |
-| `persistentId`                                  | `ph-mcid-`                            |
-| `saslAuthData['user']`                          |                                       |
-| `saslAuthData['pass']`                          |                                       |
-| `client[\Memcached::OPT_CONNECT_TIMEOUT]`       | `10`                                  |
-| `client[\Memcached::OPT_DISTRIBUTION]`          | `\Memcached::DISTRIBUTION_CONSISTENT` |
-| `client[\Memcached::OPT_SERVER_FAILURE_LIMIT]`  | `2`                                   |
-| `client[\Memcached::OPT_REMOVE_FAILED_SERVERS]` | `true`                                |
-| `client[\Memcached::OPT_RETRY_TIMEOUT]`         | `1`                                   |
 
-You can specify more than one server in the options array passed in the constructor. If `SASL` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the options or the class cannot add one or more servers in the pool, a `Phalcon\Storage\Exception` will be thrown.
+### File Backend Options
+This backend will store cached content into files in the local server. The available options for this backend are:
 
-The following example demonstrates how to create a new `Libmemcached` cache adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the first server with weight `1` connecting to port `11211` and `10.4.13.110` as the second server with weight `5` again connecting to port `11211`.  
+| Option     | Description                                                 |
+|------------|-------------------------------------------------------------|
+| `prefix`   | A prefix that is automatically prepended to the cache keys. |
+| `cacheDir` | A writable directory on which cached files will be placed.  |
+
+
+### Libmemcached Backend Options
+This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
+
+**General options**
+
+| Option          | Description                                                                                                        |
+|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| `statsKey`      | Used to tracking of cached keys.                                                                                   |
+| `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
+| `persistent_id` | To create an instance that persists between requests, use `persistent_id` to specify a unique ID for the instance. |
+
+**Servers options**
+
+| Option          | Description                                                                                                        |
+|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| `host`          | The `memcached` host.                                                                                              |
+| `port`          | The `memcached` port.                                                                                              |
+| `weight`        | The weight parameter effects the consistent hashing used to determine which server to read/write keys from.        |
+
+**Client options**
+
+Used for setting Memcached options. See [Memcached::setOptions](https://php.net/manual/en/memcached.setoptions.php) for more.
+
+**Example**
 
 ```php
 <?php
+use Phalcon\Cache\Backend\Libmemcached;
+use Phalcon\Cache\Frontend\Data as FrontData;
 
-use Phalcon\Cache\Adapter\Libmemcached;
-use Phalcon\Storage\SerializerFactory;
+// Cache data for 2 days
+$frontCache = new FrontData(
+    [
+        'lifetime' => 172800,
+    ]
+);
 
-$serializerFactory = new SerializerFactory();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'servers'           => [
-        0 => [
-            'host'   => '10.4.13.100',
-            'port'   => 11211,
-            'weight' => 1,
+// Create the Cache setting memcached connection options
+$cache = new Libmemcached(
+    $frontCache,
+    [
+        'servers' => [
+            [
+                'host'   => '127.0.0.1',
+                'port'   => 11211,
+                'weight' => 1,
+            ],
         ],
-        1 => [
-            'host'   => '10.4.13.110',
-            'port'   => 11211,
-            'weight' => 5,
+        'client' => [
+            \Memcached::OPT_HASH       => \Memcached::HASH_MD5,
+            \Memcached::OPT_PREFIX_KEY => 'prefix.',
         ],
-    ],
-];
-
-$adapter = new Libmemcached($serializerFactory, $options);
+        'persistent_id' => 'my_app_cache',
+    ]
+);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
-**Serializers**: The `Memcached` class which is the adapter that the [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached] uses, offers support for serializing out of the box. The built-in serializers are: 
+### Memcache Backend Options
+This backend will store cached content on a memcached server. The available options for this backend are:
 
-* `\Memcached::SERIALIZER_PHP`
-* `\Memcached::SERIALIZER_JSON`
-* `\Memcached::SERIALIZER_IGBINARY`
+| Option       | Description                                                 |
+|--------------|-------------------------------------------------------------|
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `host`       | The memcached host.                                         |
+| `port`       | The memcached port.                                         |
+| `persistent` | Create a persistent connection to memcached?                |
 
-The [igbinary][igbinary] built-in serializer is only available if `igbinary` is present in the target system and [Memcached][memcached] extension is compiled with it. To enable these serializers, you can use the [Phalcon\Storage\Serializer\MemcachedIgbinary][storage-serializer-memcached-igbinary], [Phalcon\Storage\Serializer\MemcachedJson][storage-serializer-memcached-json] or [Phalcon\Storage\Serializer\MemcachedPhp][storage-serializer-memcached-php]
 
-### `Memory`
-This adapter uses the computer's memory to store the data. As all data is stored in memory, there is no persistence, meaning that once the request is completed, the data is lost. This adapter can be used for testing or temporary storage during a particular request. The options available for the constructor are:
+### APC Backend Options
+This backend will store cached content on Alternative PHP Cache ([APC](https://php.net/apc)). The available options for this backend are:
 
-| Option              | Default    |
-|---------------------|------------|
-| `defaultSerializer` | `Php`      |
-| `lifetime`          | `3600`     |
-| `serializer`        | `null`     |
-| `prefix`            | `ph-memo-` |
+| Option   | Description                                                 |
+|----------|-------------------------------------------------------------|
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
 
-The following example demonstrates how to create a new `Memory` cache adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200.   
 
-```php
-<?php
+### APCU Backend Options
+This backend will store cached content on Alternative PHP Cache ([APCU](https://php.net/apcu)). The available options for this backend are:
 
-use Phalcon\Cache\Adapter\Memory;
-use Phalcon\Storage\SerializerFactory;
+| Option   | Description                                                 |
+|----------|-------------------------------------------------------------|
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
 
-$serializerFactory = new SerializerFactory();
 
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-];
+### Mongo Backend Options
+This backend will store cached content on a MongoDB server ([MongoDB](https://mongodb.org/)). The available options for this backend are:
 
-$adapter = new Memory($serializerFactory, $options);
-```
+| Option       | Description                                                 |
+|--------------|-------------------------------------------------------------|
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `server`     | A MongoDB connection string.                                |
+| `db`         | Mongo database name.                                        |
+| `collection` | Mongo collection in the database.                           |
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
 
-### `Redis`
-This adapter utilizes PHP's [redis][redis] extension to connect to a Redis server. The adapter used is an instance of the `Redis` class, created after the first event that requires the connection to be active. 
+### XCache Backend Options
+This backend will store cached content on XCache (XCache                    ). The available options for this backend are:
 
-| Option              | Default     |
-|---------------------|-------------|
-| `defaultSerializer` | `Php`       |
-| `lifetime`          | `3600`      |
-| `serializer`        | `null`      |
-| `prefix`            | `ph-reds-`  |
-| `host`              | `127.0.0.1` |
-| `port`              | `6379`      |
-| `index`             | `1`         |
-| `persistent`        | `false`     |
-| `auth`              |             |
-| `socket`            |             |
+| Option   | Description                                                 |
+|----------|-------------------------------------------------------------|
+| `prefix` | A prefix that is automatically prepended to the cache keys. |
 
-If `auth` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the options, or the server cannot connect or authenticate, a `Phalcon\Storage\Exception` will be thrown.
 
-The following example demonstrates how to create a new `Redis` cache adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the host, connect to port `6379` and select the index `1`.  
+### Redis Backend Options
+This backend will store cached content on a Redis server ([Redis](https://redis.io/)). The available options for this backend are:
 
-```php
-<?php
+| Option       | Description                                                    |
+|--------------|----------------------------------------------------------------|
+| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
+| `host`       | Redis host.                                                    |
+| `port`       | Redis port.                                                    |
+| `auth`       | Password to authenticate to a password-protected Redis server. |
+| `persistent` | Create a persistent connection to Redis.                       |
+| `index`      | The index of the Redis database to use.                        |
 
-use Phalcon\Cache\Adapter\Redis;
-use Phalcon\Storage\SerializerFactory;
-
-$serializerFactory = new SerializerFactory();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'host'              => '10.4.13.100',
-    'port'              => 6379,
-    'index'             => 1,
-];
-
-$adapter = new Redis($serializerFactory, $options);
-```
-
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
-
-**Serializers**: The `Redis` class which is the adapter that the [Phalcon\Cache\Adapter\Redis][cache-adapter-redis] uses, offers support for serializing out of the box. The built-in serializers are: 
-
-* `\Redis::SERIALIZER_NONE`
-* `\Redis::SERIALIZER_PHP`
-* `\Redis::SERIALIZER_IGBINARY`
-* `\Redis::SERIALIZER_MSGPACK`
-
-The [igbinary][igbinary] and built-in serializer is only available if `igbinary` is present in the target system and [Redis][redis] extension is compiled with it. The same applies to [msgpack][msgpack] built-in serializer. It is only available if `msgpack` is present in the target system and the [Redis][redis] extension is compiled with it. To enable these serializers, you can use the [Phalcon\Storage\Serializer\RedisIgbinary][storage-serializer-redis-igbinary], [Phalcon\Storage\Serializer\RedisJson][storage-serializer-redis-json], [Phalcon\Storage\Serializer\RedisMsgpack][storage-serializer-redis-msgpack], [Phalcon\Storage\Serializer\RedisNone][storage-serializer-redis-none] or [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php]. 
-
-**NOTE** `increment` - `decrement`
-
-At this point in time there is an issue with `Redis`, where the internal `Redis` serializer does not skip scalar values because it can only store strings. As a result, if you use `increment` after a `set` for a number, will not return a number: 
-
-The way to store numbers and use the `increment` (or `decrement`) is to either remove the internal serializer for `Redis`
-
-```php
-$cache->getAdapter()->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_NONE);
-```
-
-or you could use `increment` instead of using `set` at the first setting of the value to the key:
-
-```php
-$cache->delete('my-key');
-$cache->increment('my-key', 2);
-echo $cache->get('my-key');      // 2
-$cache->increment('my-key', 3);
-echo $cache->get('my-key');      // 3
-```
-
-### `Stream`
-This adapter is the simplest to set up since it uses the target system's file system (it only requires a cache path that is writeable). It is one of the slowest cache adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the cache element, resulting in additional reads and writes to the file system.
-
-| Option              | Default   |
-|---------------------|-----------|
-| `defaultSerializer` | `Php`     |
-| `lifetime`          | `3600`    |
-| `serializer`        | `null`    |
-| `prefix`            | `phstrm-` |
-| `storageDir`        |           |
-
-If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
-
-!!! info "NOTE"
-
-    The adapter utilizes logic to store files in separate subdirectories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
-
-The following example demonstrates how to create a new `Stream` cache adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will store the cached data in `/data/storage/cache`.  
-
-```php
-<?php
-
-use Phalcon\Cache\Adapter\Stream;
-use Phalcon\Storage\SerializerFactory;
-
-$serializerFactory = new SerializerFactory();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'storageDir'        => '/data/storage/cache',
-];
-
-$adapter = new Stream($serializerFactory, $options);
-```
-
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. 
-
-### Custom
-Phalcon also offers the [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface] which can be implemented in a custom class. The class can offer the cache adapter functionality you require.
-
-```php
-<?php
-
-namespace MyApp\Cache\Adapter;
-
-use Phalcon\Cache\Adapter\AdapterInterface;
-
-class Custom implements AdapterInterface
-{
-    /**
-     * Flushes/clears the cache
-     */
-    public function clear(): bool
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Decrements a stored number
-     */
-    public function decrement(string $key, int $value = 1)
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Deletes data from the adapter
-     */
-    public function delete(string $key): bool
-    {
-        Custom implementation
-    }
-
-    /**
-     * Reads data from the adapter
-     */
-    public function get(string $key)
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Returns the already connected adapter or connects to the backend server(s)
-     */
-    public function getAdapter()
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Returns all the keys stored. If a filter has been passed the 
-     * keys that match the filter will be returned
-     */
-    public function getKeys(string $prefix = ""): array
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Returns the prefix for the keys
-     */
-    public function getPrefix(): string
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Checks if an element exists in the cache
-     */
-    public function has(string $key): bool
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Increments a stored number
-     */
-    public function increment(string $key, int $value = 1)
-    {
-        // Custom implementation
-    }
-
-    /**
-     * Stores data in the adapter
-     */
-    public function set(string $key, $value, $ttl = null): bool
-    {
-        // Custom implementation
-    }
-}
-```
-
-Using it:
-```php
-<?php
-
-namespace MyApp;
-
-use MyApp\Cache\Adapter\Custom;
-
-$custom = new Custom();
-
-$custom->set('my-key', $data);
-``` 
-
-## Adapter Factory
-Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Cache\AdapterFactory][cache-adapterfactory] class, so that you can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
-
-The example below shows how you can create a `Apcu` cache adapter with the `new` keyword or the factory:
-```php
-<?php
-
-use Phalcon\Cache\Adapter\Apcu;
-use Phalcon\Storage\Serializer\Json;
-
-$jsonSerializer = new Json();
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-    'serializer'        => $jsonSerializer,
-];
-
-$adapter = new Apcu(null, $options);
-```
-
-```php
-<?php
-
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Storage\SerializerFactory;
-
-$serializerFactory = new SerializerFactory();
-$adapterFactory    = new AdapterFactory($serializerFactory);
-
-$options = [
-    'defaultSerializer' => 'Json',
-    'lifetime'          => 7200,
-];
-
-$adapter = $adapterFactory->newInstance('apcu', $options);
-```
-
-The parameters you can use for the factory are:
-
-| Name           | Adapter                                                          |
-|----------------|------------------------------------------------------------------|
-| `apcu`         | [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]                 |
-| `libmemcached` | [Phalcon\Cache\Adapter\Libmemcached][cache-adapter-libmemcached] |
-| `memory`       | [Phalcon\Cache\Adapter\Memory][cache-adapter-memory]             |
-| `redis`        | [Phalcon\Cache\Adapter\Redis][cache-adapter-redis]               |
-| `stream`       | [Phalcon\Cache\Adapter\Stream][cache-adapter-stream]             |
-
-[psr-16]: https://www.php-fig.org/psr/psr-16/
-[serializable]: https://www.php.net/manual/en/class.serializable.php
-[igbinary]: https://github.com/igbinary/igbinary7
-[msgpack]: https://msgpack.org/
-[apcu]: https://www.php.net/manual/en/book.apcu.php
-[memcached]: https://www.php.net/manual/en/book.memcached.php
-[redis]: https://github.com/phpredis/phpredis
-[psr-cache-exception]: https://www.php-fig.org/psr/psr-16/#22-cacheexception
-[psr-invalidargumentexception]: https://www.php-fig.org/psr/psr-16/#23-invalidargumentexception 
-[cache-cache]: api/phalcon_cache.md#cache
-[cache-adapter-adapterinterface]: api/phalcon_cache.md#cache-adapter-adapterinterface
-[cache-adapter-apcu]: api/phalcon_cache.md#cache-adapter-apcu
-[cache-adapter-libmemcached]: api/phalcon_cache.md#cache-adapter-libmemcached
-[cache-adapter-memory]: api/phalcon_cache.md#cache-adapter-memory
-[cache-adapter-redis]: api/phalcon_cache.md#cache-adapter-redis
-[cache-adapter-stream]: api/phalcon_cache.md#cache-adapter-stream
-[cache-adapterfactory]: api/phalcon_cache.md#cache-adapterfactory
-[cache-cachefactory]: api/phalcon_cache.md#cache-cachefactory
-[cache-exception-exception]: api/phalcon_cache.md#cache-exception-exception
-[cache-exception-invalidargumentexception]: api/phalcon_cache.md#cache-exception-invalidargumentexception
-[proxy-psr16]: https://github.com/phalcon/proxy-psr16
-[storage-adapter-abstractadapter]: api/phalcon_storage.md#storage-adapter-abstractadapter
-[storage-adapter-adapterinterface]: api/phalcon_storage.md#storage-adapter-adapterinterface
-[storage-adapter-apcu]: api/phalcon_storage.md#storage-adapter-apcu
-[storage-adapter-libmemcached]: api/phalcon_storage.md#storage-adapter-libmemcached
-[storage-adapter-memory]: api/phalcon_storage.md#storage-adapter-memory
-[storage-adapter-redis]: api/phalcon_storage.md#storage-adapter-redis
-[storage-adapter-stream]: api/phalcon_storage.md#storage-adapter-stream
-[storage-adapterfactory]: api/phalcon_storage.md#storage-adapterfactory
-[storage-exception]: api/phalcon_storage.md#storage-exception
-[storage-serializer-abstractserializer]: api/phalcon_storage.md#storage-serializer-abstractserializer
-[storage-serializer-base64]: api/phalcon_storage.md#storage-serializer-base64
-[storage-serializer-igbinary]: api/phalcon_storage.md#storage-serializer-igbinary
-[storage-serializer-json]: api/phalcon_storage.md#storage-serializer-json
-[storage-serializer-msgpack]: api/phalcon_storage.md#storage-serializer-msgpack
-[storage-serializer-none]: api/phalcon_storage.md#storage-serializer-none
-[storage-serializer-php]: api/phalcon_storage.md#storage-serializer-php
-[storage-serializer-base64]: api/phalcon_storage.md#storage-serializer-base64
-[storage-serializer-igbinary]: api/phalcon_storage.md#storage-serializer-igbinary
-[storage-serializer-json]: api/phalcon_storage.md#storage-serializer-json
-[storage-serializer-memcached-igbinary]: api/phalcon_storage.md#storage-serializer-memcached-igbinary
-[storage-serializer-memcached-json]: api/phalcon_storage.md#storage-serializer-memcached-json
-[storage-serializer-memcached-php]: api/phalcon_storage.md#storage-serializer-memcached-php
-[storage-serializer-msgpack]: api/phalcon_storage.md#storage-serializer-msgpack
-[storage-serializer-none]: api/phalcon_storage.md#storage-serializer-none
-[storage-serializer-php]: api/phalcon_storage.md#storage-serializer-php
-[storage-serializer-redis-igbinary]: api/phalcon_storage.md#storage-serializer-redis-igbinary
-[storage-serializer-redis-json]: api/phalcon_storage.md#storage-serializer-redis-json
-[storage-serializer-redis-msgpack]: api/phalcon_storage.md#storage-serializer-redis-msgpack
-[storage-serializer-redis-none]: api/phalcon_storage.md#storage-serializer-redis-none
-[storage-serializer-redis-php]: api/phalcon_storage.md#storage-serializer-redis-php
-[storage-serializer-serializerinterface]: api/phalcon_storage.md#storage-serializer-serializerinterface
-[storage-serializerfactory]: api/phalcon_storage.md#storage-serializerfactory
-[config]: config.md
+There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)

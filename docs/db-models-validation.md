@@ -1,78 +1,44 @@
-# Model Validation
-- - -
+# Validating Models
 
-## Overview
-[Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules. 
+
+## Validating Data Integrity
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+
+The following example shows how to use it:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\Uniqueness;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+use Phalcon\Validation\Validator\InclusionIn;
 
-class Customers extends Model
+class Robots extends Model
 {
     public function validation()
     {
         $validator = new Validation();
 
         $validator->add(
-            'cst_email',
-            new Uniqueness(
-                [
-                    'message' => 'The customer email must be unique',
-                ]
-            )
-        );
-
-        return $this->validate($validator);
-    }
-}
-```
-
-## Data Integrity
-Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforce your business rules. 
- 
-The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation][filter-validation] namespace.
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\Uniqueness;
-use Phalcon\Filter\Validation\Validator\InclusionIn;
-
-class Invoices extends Model
-{
-    public function validation()
-    {
-        $validator = new Validation();
-
-        $validator->add(
-            'inv_status_flag',
+            'type',
             new InclusionIn(
                 [
-                    'domain'  => [
-                        'Paid',
-                        'Unpaid',
-                    ],
-                    'message' => 'The invoice must be ' .
-                                 'either paid or unpaid',
+                    'domain' => [
+                        'Mechanical',
+                        'Virtual',
+                    ]
                 ]
             )
         );
 
         $validator->add(
-            'inv_number',
+            'name',
             new Uniqueness(
                 [
-                    'message' => 'The invoice number must be unique',
+                    'message' => 'The robot name must be unique',
                 ]
             )
         );
@@ -82,110 +48,31 @@ class Invoices extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
+The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
 
 !!! warning "NOTE"
 
-    For more information on validators, see the [Validation documentation][filter-validation]
+    For more information on validators, see the [Validation documentation](validation.md)
 
-## Messages
-[Phalcon\Mvc\Model][mvc-model] utilizes the [Phalcon\Messages\Messages][messages-messages] collection to store any validation messages that have been generated during the validation process.
-
-Each message is an instance of [Phalcon\Messages\Message][messages-message] and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides additional information such as the field name that generated the message or the message type:
+The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
 ```php
 <?php
 
-if (false === $invoice->save()) {
-    $messages = $invoice->getMessages();
-
-    foreach ($messages as $message) {
-        echo 'Message: ', $message->getMessage();
-        echo 'Field: ', $message->getField();
-        echo 'Type: ', $message->getType();
-    }
-}
-```
-
-[Phalcon\Mvc\Model][mvc-model] can generate the following types of validation messages:
-
-| Type                   | Generated when                                                                                                         |
-|------------------------|------------------------------------------------------------------------------------------------------------------------|
-| `ConstraintViolation`  | A field, part of a virtual foreign key, is trying to insert/update a value that does not exist in the referenced model |
-| `InvalidCreateAttempt` | Trying to create a record that already exists                                                                          |
-| `InvalidUpdateAttempt` | Trying to update a record that does not exist                                                                          |
-| `InvalidValue`         | A validator failed because of an invalid value                                                                         |
-| `PresenceOf`           | A field with a non `null` attribute on the database is trying to insert/update a `null` value                          |
-
-The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
-
-```php
-<?php
-
-namespace MyApp\Models;
-
-use Phalcon\Mvc\Model;
-
-class Invoices extends Model
-{
-    public function getMessages()
-    {
-        $messages = [];
-
-        foreach (parent::getMessages() as $message) {
-            switch ($message->getType()) {
-                case 'InvalidCreateAttempt':
-                    $messages[] = 'The record cannot be created '
-                                . 'because it already exists';
-                    break;
-
-                case 'InvalidUpdateAttempt':
-                    $messages[] = "The record cannot be updated '
-                                . 'because it doesn't exist";
-                    break;
-
-                case 'PresenceOf':
-                    $messages[] = 'The field ' 
-                                . $message->getField() 
-                                . ' is mandatory';
-                    break;
-            }
-        }
-
-        return $messages;
-    }
-}
-```
-
-## Failed Events
-Additional events are available when the data validation process finds any inconsistencies:
-
-| Operation                | Name                | Explanation                                                            |
-|--------------------------|---------------------|------------------------------------------------------------------------|
-| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
-
-
-## Custom
-The [validation][filter-validation] document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
-
-```php
-<?php
-
-namespace MyApp\Models;
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Message;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function validation()
     {
-        if ('Unpaid' === $this->inv_type_flag) {
+        if ($this->type === 'Old') {
             $message = new Message(
-                'Unpaid invoices are not allowed',
-                'inv_type_flag',
-                'UnpaidInvoiceType'
+                'Sorry, old robots are not allowed anymore',
+                'type',
+                'MyType'
             );
 
             $this->appendMessage($message);
@@ -198,9 +85,77 @@ class Invoices extends Model
 }
 ```
 
-[mvc-model]: api/phalcon_mvc.md#mvc-model
-[mvc-model-validationfailed]: api/phalcon_mvc.md#mvc-model-validationfailed
-[validation-validator-inclusionin]: api/phalcon_filter.md#filter-validation-validator-inclusionin
-[messages-message]: api/phalcon_messages.md#messages-message
-[messages-messages]: api/phalcon_messages.md#messages-messages
-[filter-validation]: filter-validation.md
+
+## Validation Messages
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+
+Each message is an instance of [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message.md) and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
+
+```php
+<?php
+
+if ($robot->save() === false) {
+    $messages = $robot->getMessages();
+
+    foreach ($messages as $message) {
+        echo 'Message: ', $message->getMessage();
+        echo 'Field: ', $message->getField();
+        echo 'Type: ', $message->getType();
+    }
+}
+```
+
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) can generate the following types of validation messages:
+
+| Type                   | Description                                                                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
+| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
+| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+
+The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+
+```php
+<?php
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public function getMessages()
+    {
+        $messages = [];
+
+        foreach (parent::getMessages() as $message) {
+            switch ($message->getType()) {
+                case 'InvalidCreateAttempt':
+                    $messages[] = 'The record cannot be created because it already exists';
+                    break;
+
+                case 'InvalidUpdateAttempt':
+                    $messages[] = "The record cannot be updated because it doesn't exist";
+                    break;
+
+                case 'PresenceOf':
+                    $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+                    break;
+            }
+        }
+
+        return $messages;
+    }
+}
+```
+
+
+## Validation Failed Events
+Another type of events are available when the data validation process finds any inconsistency:
+
+| Operation                | Name                 | Explanation                                                            |
+| ------------------------ | -------------------- | ---------------------------------------------------------------------- |
+| Insert or Update         | `notSaved`           | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
+| Insert, Delete or Update | `onValidationFails`  | Triggered when any data manipulation operation fails                   |

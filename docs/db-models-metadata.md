@@ -1,711 +1,126 @@
-# Model Metadata
-- - -
 
-## Overview
-When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
+# Models Metadata
+To speed up development [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model.md) helps you to query fields and constraints from tables related to models. To achieve this, [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData.md) is available to manage and cache table metadata.
 
-!!! warning "NOTE"
-
-    During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
+Sometimes it is necessary to get those attributes when working with models. You can get a metadata instance as follows:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
-use Phalcon\Mvc\Model\MetaData;
+$robot = new Robots();
 
-$invoice = new Invoices();
+// Get Phalcon\Mvc\Model\Metadata instance
+$metadata = $robot->getModelsMetaData();
 
-/** @var MetaData $metadata */
-$metadata = $invoice->getModelsMetaData();
-
-$attributes = $metadata->getAttributes($invoice);
+// Get robots fields names
+$attributes = $metadata->getAttributes($robot);
 print_r($attributes);
 
-$dataTypes = $metadata->getDataTypes($invoice);
+// Get robots fields data types
+$dataTypes = $metadata->getDataTypes($robot);
 print_r($dataTypes);
 ```
 
-The above code will print the field names and also the fields to field types array. We use `attributes` as an alias of `fields`.
+
+## Caching Metadata
+Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
+
+| Adapter      | Description                                                                                                                                                                                                                                                                                                              | API                                       |
+|--------------| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                     | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData.md)          |
+| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData.md)        |
+| Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData.md) |
+| Memcache     | This adapter uses [Memcache](https://php.net/manual/en/book.memcache.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production)                                                                                                                            | `Phalcon\Mvc\Model\MetaData\MEmcache`     |
+| Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData.md)       |
+| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production).                                                                                                                                | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData.md)        |
+| Session      | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData.md)      |
+| XCache       | This adapter uses XCache                     to store the table metadata. You can specify the lifetime of the metadata with options. This is one of the recommended ways to store metadata when the application is in production.                                                                             | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData.md)       |
+
+As other ORM's dependencies, the metadata manager is requested from the services container:
 
 ```php
-[
-    [0] => inv_id
-    [1] => inv_cst_id
-    [2] => inv_status_flag
-    [3] => inv_title
-    [4] => inv_total
-    [5] => inv_created_at
-    [6] => inv_created_by
-    [7] => inv_updated_at
-    [8] => inv_updated_by
-]
+<?php
 
-[
-    [inv_id]          => 0,
-    [inv_cst_id]      => 0,
-    [inv_status_flag] => 0,
-    [inv_title]       => 2,
-    [inv_total]       => 0,
-    [inv_created_at]  => 4,
-    [inv_created_by]  => 0,
-    [inv_updated_at]  => 4,
-    [inv_updated_by]  => 0,
-]
-```
+use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-## Constants
-[Phalcon\Mvc\Model\MetaData][mvc-model-metadata] exposes a number of constants that can be used to retrieve attributes from the internal collection.
-
-| Name                              | Description                                                                |
-|-----------------------------------|----------------------------------------------------------------------------|
-| `MODELS_ATTRIBUTES`               | Every column in the mapped table                                           |
-| `MODELS_AUTOMATIC_DEFAULT_INSERT` | Fields that must be ignored from `INSERT` SQL statements                   |
-| `MODELS_AUTOMATIC_DEFAULT_UPDATE` | Fields that must be ignored from `UPDATE` SQL statements                   |
-| `MODELS_COLUMN_MAP`               | Column map (aliases)                                                       |
-| `MODELS_DATA_TYPES`               | Every column and its data type                                             |
-| `MODELS_DATA_TYPES_BIND`          | How every column must be bound/casted                                      |
-| `MODELS_DATA_TYPES_NUMERIC`       | The columns that have numeric data types                                   |
-| `MODELS_DEFAULT_VALUES`           | Default values for columns                                                 |
-| `MODELS_EMPTY_STRING_VALUES`      | Columns that allow empty strings                                           |
-| `MODELS_IDENTITY_COLUMN`          | The identity column. `false` if the model does not have an identity column |
-| `MODELS_NON_PRIMARY_KEY`          | Every column that is not part of the primary key                           |
-| `MODELS_NOT_NULL`                 | Every column that does not allow `null` values                             |
-| `MODELS_PRIMARY_KEY`              | Every column part of the primary key                                       |
-| `MODELS_REVERSE_COLUMN_MAP`       | Reverse column map (aliases)                                               |
-
-
-## Methods
-
-```php
-public function getAttributes(ModelInterface $model): array
-```
-Returns table attributes names (fields)
-
-```php
-print_r(
-    $metaData->getAttributes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getAutomaticCreateAttributes(
-    ModelInterface $model
-): array
-```
-Return attributes that must be ignored from the `INSERT` SQL generation
-
-```php
-print_r(
-    $metaData->getAutomaticCreateAttributes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getAutomaticUpdateAttributes(
-    ModelInterface $model
-): array
-```
-Return attributes that must be ignored from the `UPDATE` SQL generation
-
-```php
-print_r(
-    $metaData->getAutomaticUpdateAttributes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getBindTypes(ModelInterface $model): array
-```
-Return attributes and their bind data types
-
-```php
-print_r(
-    $metaData->getBindTypes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getColumnMap(ModelInterface $model): array
-```
-
-Returns the column map if any
-
-```php
-print_r(
-    $metaData->getColumnMap(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getDefaultValues(ModelInterface $model): array
-```
-Return attributes (which have default values) and their default values
-
-```php
- print_r(
-     $metaData->getDefaultValues(
-         new Invoices()
-     )
- );
-```
-
-```php
-public function getDataTypes(ModelInterface $model): array
-```
-Return attributes and their data types
-
-```php
-print_r(
-    $metaData->getDataTypes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getDataTypesNumeric(ModelInterface $model): array
-```
-Return attributes which types are numerical
-
-```php
-print_r(
-    $metaData->getDataTypesNumeric(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getEmptyStringAttributes(
-    ModelInterface $model
-): array
-```
-Return attributes allow empty strings
-
-```php
-print_r(
-    $metaData->getEmptyStringAttributes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getIdentityField(ModelInterface $model): string
-```
-Returns the name of identity field (if one is present)
-
-```php
-print_r(
-    $metaData->getIdentityField(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getNonPrimaryKeyAttributes(
-    ModelInterface $model
-): array
-```
-Returns an array of fields which are not part of the primary key
-
-```php
-print_r(
-    $metaData->getNonPrimaryKeyAttributes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getNotNullAttributes(ModelInterface $model): array
-```
-Returns an array of not null attributes
-
-```php
-print_r(
-    $metaData->getNotNullAttributes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getPrimaryKeyAttributes(
-    ModelInterface $model
-): array
-```
-Returns an array of fields which are part of the primary key
-
-```php
-print_r(
-    $metaData->getPrimaryKeyAttributes(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getReverseColumnMap(
-    ModelInterface $model
-): array
-```
-Returns the reverse column map if any
-
-```php
-print_r(
-    $metaData->getReverseColumnMap(
-        new Invoices()
-    )
-);
-```
-
-```php
-public function getStrategy(): StrategyInterface
-```
-Return the strategy to obtain the meta-data
-
-```php
-public function hasAttribute(
-    ModelInterface $model, 
-    string $attribute
-): bool
-```
-Check if a model has certain attribute
-
-```php
-print_r(
-    $metaData->hasAttribute(
-        new Invoices(),
-        "inv_title"
-    )
-);
-```
-
-```php
-public function isEmpty(): bool
-```
-Checks if the internal meta-data container is empty
-
-```php
-print_r(
-    $metaData->isEmpty()
-);
-```
-
-```php
-public function read(string $key): array | null
-```
-
-Reads metadata from the adapter
-
-```php
-final public function readColumnMap(
-    ModelInterface $model
-): array | null
-```
-Reads the ordered/reversed column map for certain model
-
-```php
-print_r(
-    $metaData->readColumnMap(
-        new Invoices()
-    )
-);
-```
-
-```php
-final public function readColumnMapIndex(
-    ModelInterface $model, 
-    int $index
-)
-```
-Reads column-map information for certain model using a `MODEL_*` constant
-
-```php
-print_r(
-    $metaData->readColumnMapIndex(
-        new Invoices(),
-        MetaData::MODELS_REVERSE_COLUMN_MAP
-    )
-);
-```
-
-```php
-final public function readMetaData(ModelInterface $model): array
-```
-Reads the complete meta-data for certain model
-
-```php
-print_r(
-    $metaData->readMetaData(
-        new Invoices()
-    )
-);
-```
-
-```php
-final public function readMetaDataIndex(
-    ModelInterface $model, 
-    int $index
-)
-```
-Reads meta-data for certain model
-
-```php
-print_r(
-    $metaData->readMetaDataIndex(
-        new Invoices(),
-        0
-    )
-);
-```
-
-```php
-public function reset(): void
-```
-Resets internal meta-data in order to regenerate it
-
-```php
- $metaData->reset();
-```
-
-```php
-public function setAutomaticCreateAttributes(
-    ModelInterface $model, 
-    array $attributes
-): void
-```
-Set the attributes that must be ignored from the INSERT SQL generation
-
-```php
-$metaData->setAutomaticCreateAttributes(
-    new Invoices(),
-    [
-        "inv_created_at" => true,
-    ]
-);
-```
-
-```php
-public function setAutomaticUpdateAttributes(
-    ModelInterface $model, 
-    array $attributes
-): void
-```
-Set the attributes that must be ignored from the UPDATE SQL generation
-
-```php
-$metaData->setAutomaticUpdateAttributes(
-    new Invoices(),
-    [
-        "inv_updated_at" => true,
-    ]
-);
-```
-
-```php
-public function setEmptyStringAttributes(
-    ModelInterface $model, 
-    array $attributes
-): void
-```
-Set the attributes that allow empty string values
-
-```php
-$metaData->setEmptyStringAttributes(
-    new Invoices(),
-    [
-        "inv_title" => true,
-    ]
-);
-```
-
-```php
-public function setStrategy(StrategyInterface $strategy): void
-```
-Set the meta-data extraction strategy
-
-```php
-public function write(string $key, array $data): void
-```
-Writes the metadata to adapter
-
-```php
-final public function writeMetaDataIndex(
-    ModelInterface $model, 
-    int $index, 
-    mixed $data
-): void
-```
-Writes meta-data for certain model using a MODEL_* constant
-
-```php
-print_r(
-    $metaData->writeColumnMapIndex(
-        new Invoices(),
-        MetaData::MODELS_REVERSE_COLUMN_MAP,
+$di['modelsMetadata'] = function () {
+    // Create a metadata manager with APC
+    $metadata = new ApcMetaData(
         [
-            "title" => "inv_title",
+            'lifetime' => 86400,
+            'prefix'   => 'my-prefix',
         ]
-    )
-);
+    );
+
+    return $metadata;
+};
 ```
 
-```php
-final protected function initialize(
-    ModelInterface $model, 
-    mixed $key, 
-    mixed $table, 
-    mixed $schema
-)
-```
-Initialize the metadata for certain table
 
-## Adapters
-Retrieving the metadata is an expensive database operation, and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
+## Metadata Strategies
+As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
 
-!!! info "NOTE"
-
-    For local development, the [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory] adapter is recommended so that any changes to the database can be reflected immediately. 
- 
-| Adapter                                                                     | Description                                                                                         |
-|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| [Phalcon\Mvc\Models\MetaData\Apcu][mvc-model-metadata-apcu]                 | This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. (production) |
-| [Phalcon\Mvc\Models\MetaData\Libmemcached][mvc-model-metadata-libmemcached] | This adapter uses the [Memcached Server][memcached] to store the table metadata. (production)       | 
-| [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory]             | This adapter uses memory. The metadata is cached only during the request. (development)             |   
-| [Phalcon\Mvc\Models\MetaData\Redis][mvc-model-metadata-redis]               | This adapter uses [Redis][redis] to store the table metadata. (production)                          |
-| [Phalcon\Mvc\Models\MetaData\Stream][mvc-model-metadata-stream]             | This adapter uses plain files to store metadata. (not for production)                               | 
-
-### APCu
-This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. The extension must be present in your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable for production applications.
-
-The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
-
-The default prefix is `ph-mm-apcu-` and the lifetime is `172,000` (48 hours).
+You can change the default metadata introspection in the following way:
 
 ```php
 <?php
 
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\MetaData\Apcu;
-use Phalcon\Storage\SerializerFactory;
+use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
 
-$container = new FactoryDefault();
-$container->set(
-    'modelsMetadata',
-    function () {
-        $serializerFactory = new SerializerFactory();
-        $adapterFactory    = new AdapterFactory($serializerFactory);
-        $options = [
+$di['modelsMetadata'] = function () {
+    // Instantiate a metadata adapter
+    $metadata = new ApcMetaData(
+        [
             'lifetime' => 86400,
             'prefix'   => 'my-prefix',
-        ];
+        ]
+    );
 
-        return new Apcu($adapterFactory, $options);
-    }
-);
+    // Set a custom metadata introspection strategy
+    $metadata->setStrategy(
+        new MyIntrospectionStrategy()
+    );
+
+    return $metadata;
+};
 ```
 
-### Libmemcached
-This adapter uses the [Memcached Server][memcached] to store the table metadata. The extension must be present in your system for this metadata cache to work.  This adapter is suitable for production applications.
 
-The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
-
-The default prefix is `ph-mm-memc-` and the lifetime is `172,000` (48 hours). The `persistenId` is preset to `php-mm-mcid-`.
-
-```php
-<?php
-
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\MetaData\Libmemcached;
-use Phalcon\Storage\SerializerFactory;
-
-$container = new FactoryDefault();
-$container->set(
-    'modelsMetadata',
-    function () {
-        $serializerFactory = new SerializerFactory();
-        $adapterFactory    = new AdapterFactory($serializerFactory);
-        $options = [
-            'servers' => [
-                0 => [
-                    'host'   => '127.0.0.1',
-                    'port'   => 11211,
-                    'weight' => 1
-                ],   
-            ],
-            'lifetime' => 86400,
-            'prefix'   => 'my-prefix',
-        ];
-
-        return new Libmemcached($adapterFactory, $options);
-    }
-);
-```
-
-### Memory
-This adapter uses the server's memory to store the metadata cache. The cache is available only during the request, and then the cache is lost. This cache is more suitable for development, since it accommodates the frequent changes in the database during development. 
-
-```php
-<?php
-
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\MetaData\Memory;
-
-$container = new FactoryDefault();
-$container->set(
-    'modelsMetadata',
-    function () {
-        return new Memory();
-    }
-);
-```
-
-### Redis
-This adapter uses the [Redis][redis] to store the table metadata. The extension must be present in your system for this metadata cache to work.  This adapter is suitable for production applications.
-
-The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
-
-The default prefix is `ph-mm-reds-` and the lifetime is `172,000` (48 hours).
-
-```php
-<?php
-
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\MetaData\Redis;
-use Phalcon\Storage\SerializerFactory;
-
-$container = new FactoryDefault();
-$container->set(
-    'modelsMetadata',
-    function () {
-        $serializerFactory = new SerializerFactory();
-        $adapterFactory    = new AdapterFactory($serializerFactory);
-        $options = [
-            'host'     => '127.0.0.1',
-            'port'     => 6379,
-            'index'    => 1,
-            'lifetime' => 86400,
-            'prefix'   => 'my-prefix',
-        ];
-
-        return new Redis($adapterFactory, $options);
-    }
-);
-```
-
-### Stream
-This adapter uses the file system to store the table metadata. This adapter is suitable for production applications but not recommended since it introduces an increase in I/O. 
-
-The adapter can accept a `metaDadaDir` option with a directory on where the metadata will be stored. The default directory is the current directory.
+### Database Introspection Strategy
+This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
 
 
-```php
-<?php
-
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\MetaData\Stream;
-
-$container = new FactoryDefault();
-$container->set(
-    'modelsMetadata',
-    function () {
-        $options = [
-            'metaDataDir' => '/app/storage/cache/metaData',
-        ];
-
-        return new Stream($options);
-    }
-);
-```
-
-You can use the `orm.exception_on_failed_metadata_save` option in your `php.ini` file to force the component to throw an exception if there is an error storing the metadata or if the target directory is not writeable.
-
-```ini
-orm.exception_on_failed_metadata_save = true
-```
-
-## Strategies
-The default strategy to obtain the model's metadata is database introspection. Using this strategy, the information schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
-
-```php
-<?php
-
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\MetaData\Apcu;
-use Phalcon\Mvc\Model\MetaData\Strategy\Introspection;
-use Phalcon\Storage\SerializerFactory;
-
-$container = new FactoryDefault();
-$container->set(
-    'modelsMetadata',
-    function () {
-        $serializerFactory = new SerializerFactory();
-        $adapterFactory    = new AdapterFactory($serializerFactory);
-        $options = [
-            'lifetime' => 86400,
-            'prefix'   => 'my-prefix',
-        ];
-
-        $metadata = new Apcu($adapterFactory, $options);
-        $metadata->setStrategy(new Introspection());
-
-        return $metadata;
-    }
-);
-```
-
-### Introspection 
-This strategy does not require any customization and is implicitly used by all the metadata adapters.
-
-### Annotations 
-This strategy makes use of [annotations][annotations] to describe the columns in a model. 
+### Annotations Strategy
+This strategy makes use of `annotations <annotations>` to describe the columns in a model:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+class Robots extends Model
 {
     /**
      * @Primary
      * @Identity
      * @Column(type='integer', nullable=false)
      */
-    public $inv_id;
-
-    /**
-     * @Column(type='integer', nullable=false)
-     */
-    public $inv_cst_id;
+    public $id;
 
     /**
      * @Column(type='string', length=70, nullable=false)
      */
-    public $inv_title;
+    public $name;
 
     /**
-     * @Column(type='double', nullable=false)
+     * @Column(type='string', length=32, nullable=false)
      */
-    public $inv_total;
+    public $type;
+
+    /**
+     * @Column(type='integer', nullable=false)
+     */
+    public $year;
 }
 ```
 
@@ -713,59 +128,58 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name        | Description                                       |
-|-------------|---------------------------------------------------|
-| `@Primary`  | Mark the field as part of the table's primary key |
-| `@Identity` | The field is an auto_increment/serial column      |
-| `@Column`   | This marks an attribute as a mapped column        |
+| Name     | Description                                       |
+| -------- | ------------------------------------------------- |
+| Primary  | Mark the field as part of the table's primary key |
+| Identity | The field is an auto_increment/serial column      |
+| Column   | This marks an attribute as a mapped column        |
 
 The annotation `@Column` supports the following parameters:
 
-| Name                 | Description                                                                                                                                                                                                    |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `column`             | Real column name                                                                                                                                                                                               |
-| `type`               | The column's type: `char`, `biginteger`, `blob`, `boolean`, `date`, `datetime`, `decimal`, `integer`, `float`, `json`, `longblob`, `mediumblob`, `timestamp`, `tinyblob`, `text`, `varchar`/`string` (default) |
-| `length`             | The column's length if any                                                                                                                                                                                     |
-| `nullable`           | Set whether the column accepts `null` values or not                                                                                                                                                            |
-| `skip_on_insert`     | Skip this column on insert                                                                                                                                                                                     |
-| `skip_on_update`     | Skip this column on updates                                                                                                                                                                                    |
-| `allow_empty_string` | Column allow empty strings                                                                                                                                                                                     |
-| `default`            | Default value                                                                                                                                                                                                  |
+| Name               | Description                                           |
+| ------------------ | ----------------------------------------------------- |
+| column             | Real column name                                      |
+| type               | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| length             | The column's length if any                            |
+| nullable           | Set whether the column accepts null values or not     |
+| skip_on_insert     | Skip this column on insert                            |
+| skip_on_update     | Skip this column on updates                           |
+| allow_empty_string | Column allow empty strings                            |
+| default            | Default value                                         |
 
-The annotations strategy could be set up as follows:
+The annotations strategy could be set up this way:
 
 ```php
 <?php
 
-use Phalcon\Cache\AdapterFactory;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\MetaData\Apcu;
-use Phalcon\Mvc\Model\MetaData\Strategy\Annotations;
-use Phalcon\Storage\SerializerFactory;
+use Phalcon\Mvc\Model\MetaData\Apc as ApcMetaData;
+use Phalcon\Mvc\Model\MetaData\Strategy\Annotations as StrategyAnnotations;
 
-$container = new FactoryDefault();
-$container->set(
-    'modelsMetadata',
-    function () {
-        $serializerFactory = new SerializerFactory();
-        $adapterFactory    = new AdapterFactory($serializerFactory);
-        $options = [
+$di['modelsMetadata'] = function () {
+    // Instantiate a metadata adapter
+    $metadata = new ApcMetaData(
+        [
             'lifetime' => 86400,
             'prefix'   => 'my-prefix',
-        ];
+        ]
+    );
 
-        $metadata = new Apcu($adapterFactory, $options);
-        $metadata->setStrategy(new Annotations());
+    // Set a custom metadata database introspection
+    $metadata->setStrategy(
+        new StrategyAnnotations()
+    );
 
-        return $metadata;
-    }
-);
+    return $metadata;
+};
 ```
 
-### Manual
-Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically. However, you have the option to define the metadata manually. This strategy overrides any strategy that has been set on the metadata manager. Columns added, modified or removed from the mapped table must be manually updated in the model for everything to work properly.
 
-To set the metadata, we use the `metaData` method in a model:
+## Manual Metadata
+Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
+
+The developer also has the option of define the metadata manually. This strategy overrides any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped table must be added/modified/removed also for everything to work properly.
+
+The following example shows how to define the metadata manually:
 
 ```php
 <?php
@@ -774,150 +188,84 @@ use Phalcon\Mvc\Model;
 use Phalcon\Db\Column;
 use Phalcon\Mvc\Model\MetaData;
 
-class Invoices extends Model
+class Robots extends Model
 {
     public function metaData()
     {
         return array(
+            // Every column in the mapped table
             MetaData::MODELS_ATTRIBUTES => [
-                'inv_id',
-                'inv_cst_id',
-                'inv_status_flag',
-                'inv_title',
-                'inv_total',
-                'inv_created_at',
-                'inv_created_by',
-                'inv_updated_at',
-                'inv_updated_by',
+                'id',
+                'name',
+                'type',
+                'year',
             ],
 
+            // Every column part of the primary key
             MetaData::MODELS_PRIMARY_KEY => [
-                'inv_id',
+                'id',
             ],
 
+            // Every column that isn't part of the primary key
             MetaData::MODELS_NON_PRIMARY_KEY => [
-                'inv_cst_id',
-                'inv_status_flag',
-                'inv_title',
-                'inv_total',
-                'inv_created_at',
-                'inv_created_by',
-                'inv_updated_at',
-                'inv_updated_by',
+                'name',
+                'type',
+                'year',
             ],
 
+            // Every column that doesn't allows null values
             MetaData::MODELS_NOT_NULL => [
-                'inv_id',
-                'inv_cst_id',
-                'inv_status_flag',
-                'inv_title',
-                'inv_total',
-                'inv_created_at',
-                'inv_created_by',
-                'inv_updated_at',
-                'inv_updated_by',
+                'id',
+                'name',
+                'type',
+            ],
 
+            // Every column and their data types
             MetaData::MODELS_DATA_TYPES => [
-                'inv_id'          => Column::TYPE_INTEGER,
-                'inv_cst_id'      => Column::TYPE_INTEGER,
-                'inv_status_flag' => Column::TYPE_INTEGER,
-                'inv_title'       => Column::TYPE_VARCHAR,
-                'inv_total'       => Column::TYPE_FLOAT,
-                'inv_created_at'  => Column::TYPE_DATETIME,
-                'inv_created_by'  => Column::TYPE_INTEGER,
-                'inv_updated_at'  => Column::TYPE_DATETIME,
-                'inv_updated_by'  => Column::TYPE_INTEGER,
+                'id'   => Column::TYPE_INTEGER,
+                'name' => Column::TYPE_VARCHAR,
+                'type' => Column::TYPE_VARCHAR,
+                'year' => Column::TYPE_INTEGER,
             ],
 
+            // The columns that have numeric data types
             MetaData::MODELS_DATA_TYPES_NUMERIC => [
-                'inv_id'          => true,
-                'inv_cst_id'      => true,
-                'inv_status_flag' => true,
-                'inv_total'       => true,
-                'inv_created_by'  => true,
-                'inv_updated_by'  => true,
+                'id'   => true,
+                'year' => true,
             ],
 
-            MetaData::MODELS_IDENTITY_COLUMN => 'inv_id',
+            // The identity column, use boolean false if the model doesn't have
+            // an identity column
+            MetaData::MODELS_IDENTITY_COLUMN => 'id',
 
+            // How every column must be bound/casted
             MetaData::MODELS_DATA_TYPES_BIND => [
-                'inv_id'          => Column::BIND_PARAM_INT,
-                'inv_cst_id'      => Column::BIND_PARAM_INT,
-                'inv_status_flag' => Column::BIND_PARAM_INT,
-                'inv_title'       => Column::BIND_PARAM_INT,
-                'inv_total'       => Column::BIND_PARAM_DECIMAL,
-                'inv_created_at'  => Column::BIND_PARAM_STR,
-                'inv_created_by'  => Column::BIND_PARAM_INT,
-                'inv_updated_at'  => Column::BIND_PARAM_STR,
-                'inv_updated_by'  => Column::BIND_PARAM_INT,
+                'id'   => Column::BIND_PARAM_INT,
+                'name' => Column::BIND_PARAM_STR,
+                'type' => Column::BIND_PARAM_STR,
+                'year' => Column::BIND_PARAM_INT,
             ],
 
+            // Fields that must be ignored from INSERT SQL statements
             MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => [
-                'inv_created_at' => true,
-                'inv_created_by' => true,
-                'inv_updated_at' => true,
-                'inv_updated_by' => true,
+                'year' => true,
             ],
 
+            // Fields that must be ignored from UPDATE SQL statements
             MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => [
-                'inv_created_at' => true,
-                'inv_created_by' => true,
-                'inv_updated_at' => true,
-                'inv_updated_by' => true,
+                'year' => true,
             ],
 
+            // Default values for columns
             MetaData::MODELS_DEFAULT_VALUES => [
-                'inv_status_flag' => 0,
+                'year' => '2015',
             ],
 
+            // Fields that allow empty strings
             MetaData::MODELS_EMPTY_STRING_VALUES => [
-                'inv_created_at' => true,
-                'inv_updated_at' => true,
+                'name' => true,
             ],
         );
     }
 }
 ```
-
-### Custom
-Phalcon offers the [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface][mvc-model-metadata-strategyinterface] interface, allowing you to create your own Strategy class.
-
-```php
-<?php
-
-namespace MyApp\Components\Strategy;
-
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Di\DiInterface;
-
-class MyStrategy StrategyInterface
-{
-    public function getColumnMaps(
-        ModelInterface $model, 
-        DiInterface $container
-    ): array;
-
-    public function getMetaData(
-        ModelInterface $model, 
-        DiInterface $container
-    ): array;
-}
-
-```
-
-[apcu]: https://www.php.net/manual/en/book.apcu.php
-[memcached]: https://www.memcached.org
-[redis]: https://redis.io
-[mvc-model]: api/phalcon_mvc.md#mvc-model
-[mvc-model-metadata]: api/phalcon_mvc.md#mvc-model-metadata
-[mvc-model-metadata-apcu]: api/phalcon_mvc.md#mvc-model-metadata-apcu
-[mvc-model-metadata-libmemcached]: api/phalcon_mvc.md#mvc-model-metadata-libmemcached
-[mvc-model-metadata-memory]: api/phalcon_mvc.md#mvc-model-metadata-memory
-[mvc-model-metadata-redis]: api/phalcon_mvc.md#mvc-model-metadata-redis
-[mvc-model-metadata-strategy-annotations]: api/phalcon_mvc.md#mvc-model-metadata-strategy-annotations
-[mvc-model-metadata-strategy-introspection]: api/phalcon_mvc.md#mvc-model-metadata-strategy-introspection
-[mvc-model-metadata-strategyinterface]: api/phalcon_mvc.md#mvc-model-metadata-strategyinterface
-[mvc-model-metadata-stream]: api/phalcon_mvc.md#mvc-model-metadata-stream
-[mvc-model-metadatainterface]: api/phalcon_mvc.md#mvc-model-metadatainterface
-[cache-adapter-factory]: cache.md#adapter-factory
-[annotations]: annotations.md
