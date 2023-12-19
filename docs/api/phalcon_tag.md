@@ -510,7 +510,7 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 
 
-## Tag\Select ![Abstract](/assets/images/abstract-green.svg) 
+## Tag\Select ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Select.zep)
 

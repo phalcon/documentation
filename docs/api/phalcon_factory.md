@@ -9,7 +9,7 @@ hide:
 
 
 
-## Factory\AbstractConfigFactory ![Abstract](/assets/images/abstract-green.svg) 
+## Factory\AbstractConfigFactory ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractConfigFactory.zep)
 
@@ -64,7 +64,7 @@ protected function getExceptionClass(): string;
 
 
 
-## Factory\AbstractFactory ![Abstract](/assets/images/abstract-green.svg) 
+## Factory\AbstractFactory ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractFactory.zep)
 

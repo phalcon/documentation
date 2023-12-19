@@ -9,7 +9,7 @@ hide:
 
 
 
-## Session\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
+## Session\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep)
 
@@ -527,7 +527,7 @@ Sets the DependencyInjector container
 
 
 
-## Session\BagInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Session\BagInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep)
 
@@ -839,7 +839,7 @@ Checks if or where headers have been sent
 
 
 
-## Session\ManagerInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Session\ManagerInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep)
 

@@ -9,7 +9,7 @@ hide:
 
 
 
-## Db\AbstractDb ![Abstract](/assets/images/abstract-green.svg) 
+## Db\AbstractDb ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/AbstractDb.zep)
 
@@ -81,7 +81,7 @@ Enables/disables options in the Database component
 
 
 
-## Db\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
+## Db\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Adapter/AbstractAdapter.zep)
 
@@ -794,7 +794,7 @@ var_dump(
 
 
 
-## Db\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Db\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Adapter/AdapterInterface.zep)
 
@@ -1299,7 +1299,7 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-## Db\Adapter\Pdo\AbstractPdo ![Abstract](/assets/images/abstract-green.svg) 
+## Db\Adapter\Pdo\AbstractPdo ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
 
@@ -2425,7 +2425,7 @@ Returns true if number column is unsigned
 
 
 
-## Db\ColumnInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Db\ColumnInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ColumnInterface.zep)
 
@@ -2546,7 +2546,7 @@ Returns true if number column is unsigned
 
 
 
-## Db\Dialect ![Abstract](/assets/images/abstract-green.svg) 
+## Db\Dialect ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Dialect.zep)
 
@@ -3532,7 +3532,7 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-## Db\DialectInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Db\DialectInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/DialectInterface.zep)
 
@@ -3931,7 +3931,7 @@ Index type
 
 
 
-## Db\IndexInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Db\IndexInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/IndexInterface.zep)
 
@@ -4492,7 +4492,7 @@ Schema name
 
 
 
-## Db\ReferenceInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Db\ReferenceInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ReferenceInterface.zep)
 
@@ -4792,7 +4792,7 @@ $result->setFetchMode(
 
 
 
-## Db\ResultInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Db\ResultInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ResultInterface.zep)
 

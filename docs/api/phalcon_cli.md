@@ -268,7 +268,7 @@ Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 
 
 
-## Cli\DispatcherInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Cli\DispatcherInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/DispatcherInterface.zep)
 
@@ -832,7 +832,7 @@ $router->add(
 
 
 
-## Cli\Router\RouteInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Cli\Router\RouteInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/RouteInterface.zep)
 
@@ -942,7 +942,7 @@ Sets the route's name
 
 
 
-## Cli\RouterInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Cli\RouterInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/RouterInterface.zep)
 
@@ -1150,7 +1150,7 @@ Sets the events manager
 
 
 
-## Cli\TaskInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Cli\TaskInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/TaskInterface.zep)
 
