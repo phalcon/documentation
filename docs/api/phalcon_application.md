@@ -9,7 +9,7 @@ hide:
 
 
 
-## Application\AbstractApplication ![Abstract](/assets/images/abstract-green.svg) 
+## Application\AbstractApplication ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Application/AbstractApplication.zep)
 

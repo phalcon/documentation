@@ -271,7 +271,7 @@ Internal method to set data
 
 
 
-## Support\Collection\CollectionInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Support\Collection\CollectionInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/CollectionInterface.zep)
 
@@ -867,7 +867,7 @@ Phalcon\Support\Exception
 
 
 
-## Support\Helper\Arr\AbstractArr ![Abstract](/assets/images/abstract-green.svg) 
+## Support\Helper\Arr\AbstractArr ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/AbstractArr.zep)
 
@@ -1787,7 +1787,7 @@ public function __invoke( int $value, int $start, int $end ): bool;
 
 
 
-## Support\Helper\Str\AbstractStr ![Abstract](/assets/images/abstract-green.svg) 
+## Support\Helper\Str\AbstractStr ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/AbstractStr.zep)
 
@@ -3033,7 +3033,7 @@ Returns the available adapters
 
 
 
-## Support\Registry ![Abstract](/assets/images/final-red.svg) 
+## Support\Registry ![Abstract](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Registry.zep)
 

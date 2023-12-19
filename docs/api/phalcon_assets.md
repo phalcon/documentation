@@ -330,7 +330,7 @@ Phalcon\Assets\Asset\Js constructor
 
 
 
-## Assets\AssetInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Assets\AssetInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/AssetInterface.zep)
 
@@ -753,7 +753,7 @@ Exceptions thrown in Phalcon\Assets will use this class
 
 
 
-## Assets\FilterInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Assets\FilterInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/FilterInterface.zep)
 

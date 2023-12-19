@@ -9,7 +9,7 @@ hide:
 
 
 
-## Forms\Element\AbstractElement ![Abstract](/assets/images/abstract-green.svg) 
+## Forms\Element\AbstractElement ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/AbstractElement.zep)
 
@@ -381,7 +381,7 @@ protected method = inputDate;
 ```
 
 
-## Forms\Element\ElementInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Forms\Element\ElementInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/ElementInterface.zep)
 

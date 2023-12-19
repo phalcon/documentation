@@ -76,7 +76,7 @@ Disconnects from the database.
 
 
 
-## DataMapper\Pdo\Connection\AbstractConnection ![Abstract](/assets/images/abstract-green.svg) 
+## DataMapper\Pdo\Connection\AbstractConnection ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection/AbstractConnection.zep)
 
@@ -373,7 +373,7 @@ Bind a value using the proper PDO::PARAM_* type.
 
 
 
-## DataMapper\Pdo\Connection\ConnectionInterface ![Abstract](/assets/images/interface-blue.svg) 
+## DataMapper\Pdo\Connection\ConnectionInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection/ConnectionInterface.zep)
 
@@ -583,7 +583,7 @@ Disconnects from the database; disallowed with decorated PDO connections.
 
 
 
-## DataMapper\Pdo\Connection\PdoInterface ![Abstract](/assets/images/interface-blue.svg) 
+## DataMapper\Pdo\Connection\PdoInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Connection/PdoInterface.zep)
 
@@ -814,7 +814,7 @@ Returns a connection by name.
 
 
 
-## DataMapper\Pdo\ConnectionLocatorInterface ![Abstract](/assets/images/interface-blue.svg) 
+## DataMapper\Pdo\ConnectionLocatorInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/ConnectionLocatorInterface.zep)
 
@@ -1197,7 +1197,7 @@ Starts a profile entry.
 
 
 
-## DataMapper\Pdo\Profiler\ProfilerInterface ![Abstract](/assets/images/interface-blue.svg) 
+## DataMapper\Pdo\Profiler\ProfilerInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Profiler/ProfilerInterface.zep)
 
@@ -1277,7 +1277,7 @@ Starts a profile entry.
 
 
 
-## DataMapper\Query\AbstractConditions ![Abstract](/assets/images/abstract-green.svg) 
+## DataMapper\Query\AbstractConditions ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/AbstractConditions.zep)
 
@@ -1405,7 +1405,7 @@ Processes a value (array or string) and merges it with the store
 
 
 
-## DataMapper\Query\AbstractQuery ![Abstract](/assets/images/abstract-green.svg) 
+## DataMapper\Query\AbstractQuery ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Query/AbstractQuery.zep)
 

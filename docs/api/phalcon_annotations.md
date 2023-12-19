@@ -9,7 +9,7 @@ hide:
 
 
 
-## Annotations\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
+## Annotations\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/AbstractAdapter.zep)
 
@@ -108,7 +108,7 @@ Sets the annotations parser
 
 
 
-## Annotations\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Annotations\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/AdapterInterface.zep)
 
@@ -724,7 +724,7 @@ Parses a raw doc block returning the annotations found
 
 
 
-## Annotations\ReaderInterface ![Abstract](/assets/images/interface-blue.svg) 
+## Annotations\ReaderInterface ![Abstract](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/ReaderInterface.zep)
 
