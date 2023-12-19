@@ -78,7 +78,7 @@ jobs:
           git config user.name niden
           git config user.email nikos@niden.net
           git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
-          mile delete --all
+          mike delete --all
           mike deploy \
             --update-aliases \
             --branch production \
