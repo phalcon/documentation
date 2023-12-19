@@ -9,7 +9,7 @@ hide:
 
 
 
-## Factory\AbstractConfigFactory ![Abstract](assets/images/abstract-green.png) 
+## Factory\AbstractConfigFactory ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractConfigFactory.zep)
 
@@ -64,7 +64,7 @@ protected function getExceptionClass(): string;
 
 
 
-## Factory\AbstractFactory ![Abstract](assets/images/abstract-green.png) 
+## Factory\AbstractFactory ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractFactory.zep)
 
@@ -153,3 +153,4 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
+

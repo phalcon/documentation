@@ -9,7 +9,7 @@ hide:
 
 
 
-## Dispatcher\AbstractDispatcher ![Abstract](assets/images/abstract-green.png) 
+## Dispatcher\AbstractDispatcher ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/AbstractDispatcher.zep)
 
@@ -456,7 +456,7 @@ protected function toCamelCase( string $input ): string;
 
 
 
-## Dispatcher\DispatcherInterface ![Abstract](assets/images/interface-blue.png) 
+## Dispatcher\DispatcherInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/DispatcherInterface.zep)
 

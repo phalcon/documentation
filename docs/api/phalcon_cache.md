@@ -9,7 +9,7 @@ hide:
 
 
 
-## Cache\AbstractCache ![Abstract](assets/images/abstract-green.png) 
+## Cache\AbstractCache ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/AbstractCache.zep)
 
@@ -129,7 +129,7 @@ Returns the exception class that will be used for exceptions thrown
 
 
 
-## Cache\Adapter\AdapterInterface ![Abstract](assets/images/interface-blue.png) 
+## Cache\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/AdapterInterface.zep)
 
@@ -520,7 +520,7 @@ protected function getExceptionClass(): string;
 
 
 
-## Cache\CacheInterface ![Abstract](assets/images/interface-blue.png) 
+## Cache\CacheInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/CacheInterface.zep)
 
@@ -639,3 +639,4 @@ Exceptions thrown in Phalcon\Cache will use this class
     
 
 Exceptions thrown in Phalcon\Cache will use this class
+

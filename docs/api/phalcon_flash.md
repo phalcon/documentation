@@ -9,7 +9,7 @@ hide:
 
 
 
-## Flash\AbstractFlash ![Abstract](assets/images/abstract-green.png) 
+## Flash\AbstractFlash ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/AbstractFlash.zep)
 
@@ -310,7 +310,7 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 
 
 
-## Flash\FlashInterface ![Abstract](assets/images/interface-blue.png) 
+## Flash\FlashInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/FlashInterface.zep)
 
@@ -451,3 +451,5 @@ Returns the messages stored in session
 protected function setSessionMessages( array $messages ): array;
 ```
 Stores the messages in session
+
+

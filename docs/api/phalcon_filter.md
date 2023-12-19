@@ -210,7 +210,7 @@ Returns the available adapters
 
 
 
-## Filter\FilterInterface ![Abstract](assets/images/interface-blue.png) 
+## Filter\FilterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/FilterInterface.zep)
 
@@ -1178,7 +1178,7 @@ Internal validations, if it returns true, then skip the current validator
 
 
 
-## Filter\Validation\AbstractCombinedFieldsValidator ![Abstract](assets/images/abstract-green.png) 
+## Filter\Validation\AbstractCombinedFieldsValidator ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractCombinedFieldsValidator.zep)
 
@@ -1201,7 +1201,7 @@ This is a base class for combined fields validators
 
 
 
-## Filter\Validation\AbstractValidator ![Abstract](assets/images/abstract-green.png) 
+## Filter\Validation\AbstractValidator ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractValidator.zep)
 
@@ -1339,7 +1339,7 @@ Prepares a label for the field.
 
 
 
-## Filter\Validation\AbstractValidatorComposite ![Abstract](assets/images/abstract-green.png) 
+## Filter\Validation\AbstractValidatorComposite ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractValidatorComposite.zep)
 
@@ -1411,7 +1411,7 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 
 
 
-## Filter\Validation\ValidationInterface ![Abstract](assets/images/interface-blue.png) 
+## Filter\Validation\ValidationInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidationInterface.zep)
 
@@ -2499,7 +2499,7 @@ Constructor
 
 
 
-## Filter\Validation\Validator\File\AbstractFile ![Abstract](assets/images/abstract-green.png) 
+## Filter\Validation\Validator\File\AbstractFile ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/AbstractFile.zep)
 
@@ -4285,7 +4285,7 @@ Executes the validation
 
 
 
-## Filter\Validation\ValidatorCompositeInterface ![Abstract](assets/images/interface-blue.png) 
+## Filter\Validation\ValidatorCompositeInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorCompositeInterface.zep)
 
@@ -4379,7 +4379,7 @@ Returns the available adapters
 
 
 
-## Filter\Validation\ValidatorInterface ![Abstract](assets/images/interface-blue.png) 
+## Filter\Validation\ValidatorInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorInterface.zep)
 
@@ -4444,3 +4444,5 @@ Clear current template and set new from an array,
 public function validate( Validation $validation, mixed $field ): bool;
 ```
 Executes the validation
+
+

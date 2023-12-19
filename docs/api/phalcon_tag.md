@@ -510,7 +510,7 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 
 
-## Tag\Select ![Abstract](assets/images/abstract-green.png) 
+## Tag\Select ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Select.zep)
 
@@ -543,3 +543,5 @@ Phalcon\Mvc\Model resultset
 public static function selectField( mixed $parameters, mixed $data = null ): string;
 ```
 Generates a SELECT tag
+
+

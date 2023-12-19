@@ -9,7 +9,7 @@ hide:
 
 
 
-## Storage\Adapter\AbstractAdapter ![Abstract](assets/images/abstract-green.png) 
+## Storage\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AbstractAdapter.zep)
 
@@ -226,7 +226,7 @@ Initializes the serializer
 
 
 
-## Storage\Adapter\AdapterInterface ![Abstract](assets/images/interface-blue.png) 
+## Storage\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/AdapterInterface.zep)
 
@@ -1159,7 +1159,7 @@ Exceptions thrown in Phalcon\Storage will use this class
 
 
 
-## Storage\Serializer\AbstractSerializer ![Abstract](assets/images/abstract-green.png) 
+## Storage\Serializer\AbstractSerializer ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/AbstractSerializer.zep)
 
@@ -1735,7 +1735,7 @@ Serializer using the built-in Redis 'php' serializer
 
 
 
-## Storage\Serializer\SerializerInterface ![Abstract](assets/images/interface-blue.png) 
+## Storage\Serializer\SerializerInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/SerializerInterface.zep)
 
@@ -1832,3 +1832,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
+
+

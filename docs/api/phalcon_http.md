@@ -277,7 +277,7 @@ Assert the cookie's key is enough long.
 
 
 
-## Http\Cookie\CookieInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\Cookie\CookieInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/CookieInterface.zep)
 
@@ -443,7 +443,7 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 
 
-## Http\Message\RequestMethodInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\Message\RequestMethodInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/RequestMethodInterface.zep)
 
@@ -483,7 +483,7 @@ const METHOD_TRACE = TRACE;
 ```
 
 
-## Http\Message\ResponseStatusCodeInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\Message\ResponseStatusCodeInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
 
@@ -1468,7 +1468,7 @@ Moves the temporary file to a destination within the application
 
 
 
-## Http\Request\FileInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\Request\FileInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/FileInterface.zep)
 
@@ -1536,7 +1536,7 @@ Move the temporary file to a destination
 
 
 
-## Http\RequestInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\RequestInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/RequestInterface.zep)
 
@@ -2573,7 +2573,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-## Http\Response\CookiesInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\Response\CookiesInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/CookiesInterface.zep)
 
@@ -2771,7 +2771,7 @@ Returns the current headers as an array
 
 
 
-## Http\Response\HeadersInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\Response\HeadersInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/HeadersInterface.zep)
 
@@ -2834,7 +2834,7 @@ Sets a raw header to be sent at the end of the request
 
 
 
-## Http\ResponseInterface ![Abstract](assets/images/interface-blue.png) 
+## Http\ResponseInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/ResponseInterface.zep)
 
@@ -2993,3 +2993,5 @@ Send a raw header to the response
 public function setStatusCode( int $code, string $message = null ): ResponseInterface;
 ```
 Sets the HTTP response code
+
+
