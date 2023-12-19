@@ -45,7 +45,7 @@ require_once __DIR__ . '/public/index.php';
 
 If your entry point is not `public/index.php`, then adjust the `.htrouter.php` file accordingly (last line) as well as the script call. You can also change the port if you like as well as the network interface that it binds to. 
 
-After executing the command above, navigating to `http://localhost:8000/` will show your your site.
+After executing the command above, navigating to `http://localhost:8000/` will show your site.
 
 
 ## PHP-FPM
@@ -63,7 +63,7 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
 ## nginx
-[nginx][nginx] is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[nginx][nginx] is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, nginx doesn't rely on threads to handle requests. Instead, it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
 Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
@@ -71,7 +71,7 @@ Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximu
 [nginx Official Site][nginx_installation]
 
 ### Phalcon Configuration
-You can use following potential configuration to setup nginx with Phalcon:
+You can use following potential configuration to set up nginx with Phalcon:
 
 ```
 server {
@@ -169,7 +169,7 @@ service nginx start
 [Apache][apache] is a popular and well known web server available on many platforms.
 
 ### Phalcon Configuration
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing.md). A common directory structure for an application is:
+The following are potential configurations you can use to set up Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing.md). A common directory structure for an application is:
 
 ```bash
 tutorial/
@@ -282,7 +282,7 @@ The configuration below is for when you want to install your application in a vi
 
 [lighttpd Official Site](https://redmine.lighttpd.net/projects/lighttpd/wiki/GetLighttpd)
 
-You can use following potencial configuration to setup lighttpd with Phalcon:
+You can use following potential configuration to set up lighttpd with Phalcon:
 
 ```nginx
 server.modules = (
