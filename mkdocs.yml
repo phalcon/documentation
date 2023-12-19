@@ -17,7 +17,7 @@ copyright: Copyright &copy; 2012 - present Phalcon Team
 # Configuration
 theme:
   name: material
-  #  custom_dir: material/overrides
+  custom_dir: overrides
   features:
     - announce.dismiss
     - content.action.edit
@@ -71,6 +71,7 @@ theme:
 
 # Plugins
 plugins:
+  - include
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
