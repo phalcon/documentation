@@ -42,7 +42,7 @@ This component offers caching capabilities for your application.
  *
  * @var AdapterInterface
  */
-protected adapter;
+protected $adapter;
 
 ```
 
@@ -129,7 +129,7 @@ Returns the exception class that will be used for exceptions thrown
 
 
 
-## Cache\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Cache\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/AdapterInterface.zep)
 
@@ -340,7 +340,7 @@ Factory to create Cache adapters
 /**
  * @var SerializerFactory
  */
-private serializerFactory;
+private $serializerFactory;
 
 ```
 
@@ -488,7 +488,7 @@ Creates a new Cache class
 /**
  * @var AdapterFactory
  */
-protected adapterFactory;
+protected $adapterFactory;
 
 ```
 
@@ -520,7 +520,7 @@ protected function getExceptionClass(): string;
 
 
 
-## Cache\CacheInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Cache\CacheInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/CacheInterface.zep)
 

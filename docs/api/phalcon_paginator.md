@@ -41,28 +41,28 @@ Phalcon\Paginator\Adapter\AbstractAdapter
  *
  * @var array
  */
-protected config;
+protected $config;
 
 /**
  * Number of rows to show in the paginator. By default is null
  *
  * @var int|null
  */
-protected limitRows;
+protected $limitRows;
 
 /**
  * Current page in paginate
  *
  * @var int|null
  */
-protected page;
+protected $page;
 
 /**
  * Repository for pagination
  *
  * @var RepositoryInterface
  */
-protected repository;
+protected $repository;
 
 ```
 
@@ -106,7 +106,7 @@ Gets current repository for pagination
 
 
 
-## Paginator\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Paginator\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AdapterInterface.zep)
 
@@ -364,14 +364,14 @@ $paginator = new QueryBuilder(
  *
  * @var Builder
  */
-protected builder;
+protected $builder;
 
 /**
  * Columns for count query if builder has having
  *
  * @var array|string
  */
-protected columns;
+protected $columns;
 
 ```
 
@@ -548,12 +548,12 @@ Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 /**
  * @var array
  */
-protected aliases;
+protected $aliases;
 
 /**
  * @var array
  */
-protected properties;
+protected $properties;
 
 ```
 
@@ -651,7 +651,7 @@ Resolve alias property name
 
 
 
-## Paginator\RepositoryInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Paginator\RepositoryInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/RepositoryInterface.zep)
 

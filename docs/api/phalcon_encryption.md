@@ -69,65 +69,65 @@ const PADDING_ZERO = 5;
 /**
  * @var string
  */
-protected authData = ;
+protected $authData = ;
 
 /**
  * @var string
  */
-protected authTag = ;
+protected $authTag = ;
 
 /**
  * @var int
  */
-protected authTagLength = 16;
+protected $authTagLength = 16;
 
 /**
  * Available cipher methods.
  *
  * @var array
  */
-protected availableCiphers;
+protected $availableCiphers;
 
 /**
  * @var string
  */
-protected cipher;
+protected $cipher;
 
 /**
  * The name of hashing algorithm.
  *
  * @var string
  */
-protected hashAlgorithm;
+protected $hashAlgorithm;
 
 /**
  * The cipher iv length.
  *
  * @var int
  */
-protected ivLength = 16;
+protected $ivLength = 16;
 
 /**
  * @var string
  */
-protected key = ;
+protected $key = ;
 
 /**
  * @var int
  */
-protected padding = 0;
+protected $padding = ;
 
 /**
  * @var PadFactory
  */
-protected padFactory;
+protected $padFactory;
 
 /**
  * Whether calculating message digest enabled or not.
  *
  * @var bool
  */
-protected useSigning = true;
+protected $useSigning = true;
 
 ```
 
@@ -364,7 +364,7 @@ protected function phpOpensslRandomPseudoBytes( int $length );
 
 
 
-## Encryption\Crypt\CryptInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Encryption\Crypt\CryptInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/CryptInterface.zep)
 
@@ -570,7 +570,7 @@ Class PadFactory
 /**
  * @var string
  */
-protected exception = Phalcon\\Encryption\\Crypt\\Exception\\Exception;
+protected $exception = Phalcon\\Encryption\\Crypt\\Exception\\Exception;
 
 ```
 
@@ -763,7 +763,7 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-## Encryption\Crypt\Padding\PadInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Encryption\Crypt\Padding\PadInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/PadInterface.zep)
 
@@ -984,57 +984,57 @@ const CRYPT_STD_DES = 1;
 /**
  * @var int
  */
-protected defaultHash;
+protected $defaultHash;
 
 /**
  * @var int
  */
-protected numberBytes = 16;
+protected $numberBytes = 16;
 
 /**
  * @var Random
  */
-protected random;
+protected $random;
 
 /**
  * @var string|null
  */
-protected requestToken;
+protected $requestToken;
 
 /**
  * @var string|null
  */
-protected token;
+protected $token;
 
 /**
  * @var string|null
  */
-protected tokenKey;
+protected $tokenKey;
 
 /**
  * @var string
  */
-protected tokenKeySessionId = $PHALCON/CSRF/KEY$;
+protected $tokenKeySessionId = $PHALCON/CSRF/KEY$;
 
 /**
  * @var string
  */
-protected tokenValueSessionId = $PHALCON/CSRF$;
+protected $tokenValueSessionId = $PHALCON/CSRF$;
 
 /**
  * @var int
  */
-protected workFactor = 10;
+protected $workFactor = 10;
 
 /**
  * @var SessionInterface|null
  */
-private localSession;
+private $localSession;
 
 /**
  * @var RequestInterface|null
  */
-private localRequest;
+private $localRequest;
 
 ```
 
@@ -1244,27 +1244,27 @@ The builder offers
 /**
  * @var CollectionInterface
  */
-private claims;
+private $claims;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 /**
  * @var CollectionInterface
  */
-private jose;
+private $jose;
 
 /**
  * @var string
  */
-private passphrase;
+private $passphrase;
 
 /**
  * @var SignerInterface
  */
-private signer;
+private $signer;
 
 ```
 
@@ -1544,7 +1544,7 @@ Abstract class helping with the signer classes
 /**
  * @var string
  */
-protected algorithm = ;
+protected $algorithm = ;
 
 ```
 
@@ -1659,7 +1659,7 @@ Verify a passed source with a payload and passphrase
 
 
 
-## Encryption\Security\JWT\Signer\SignerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Encryption\Security\JWT\Signer\SignerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/SignerInterface.zep)
 
@@ -1734,7 +1734,7 @@ Abstract helper class for Tokens
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 ```
 
@@ -1868,7 +1868,7 @@ signature. It returns a token object populated with the decoded information.
 /**
  * @var Decode
  */
-private decode;
+private $decode;
 
 ```
 
@@ -1959,17 +1959,17 @@ and payload. It also calculates and returns the token string.
 /**
  * @var Item
  */
-private claims;
+private $claims;
 
 /**
  * @var Item
  */
-private headers;
+private $headers;
 
 /**
  * @var Signature
  */
-private signature;
+private $signature;
 
 ```
 
@@ -2055,22 +2055,22 @@ Class Validator
 /**
  * @var array
  */
-private claims;
+private $claims;
 
 /**
  * @var array
  */
-private errors;
+private $errors;
 
 /**
  * @var int
  */
-private timeShift = 0;
+private $timeShift = ;
 
 /**
  * @var Token
  */
-private token;
+private $token;
 
 ```
 

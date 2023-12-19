@@ -36,7 +36,7 @@ This abstract class offers access to the events manager
 /**
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 ```
 
@@ -101,35 +101,35 @@ if ($event->isCancelable()) {
  *
  * @var bool
  */
-protected cancelable;
+protected $cancelable;
 
 /**
  * Event data
  *
  * @var mixed
  */
-protected data;
+protected $data;
 
 /**
  * Event source
  *
  * @var object|null
  */
-protected source;
+protected $source;
 
 /**
  * Is event propagation stopped?
  *
  * @var bool
  */
-protected stopped = false;
+protected $stopped = false;
 
 /**
  * Event type
  *
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
@@ -203,7 +203,7 @@ if ($event->isCancelable()) {
 
 
 
-## Events\EventInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Events\EventInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventInterface.zep)
 
@@ -270,7 +270,7 @@ Stops the event preventing propagation
 
 
 
-## Events\EventsAwareInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Events\EventsAwareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventsAwareInterface.zep)
 
@@ -368,22 +368,22 @@ const DEFAULT_PRIORITY = 100;
 /**
  * @var bool
  */
-protected collect = false;
+protected $collect = false;
 
 /**
  * @var bool
  */
-protected enablePriorities = false;
+protected $enablePriorities = false;
 
 /**
  * @var array
  */
-protected events;
+protected $events;
 
 /**
  * @var array
  */
-protected responses;
+protected $responses;
 
 ```
 
@@ -485,7 +485,7 @@ public function isValidHandler( mixed $handler ): bool;
 
 
 
-## Events\ManagerInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Events\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/ManagerInterface.zep)
 

@@ -43,21 +43,21 @@ Adapter for Phalcon\Acl adapters
  *
  * @var bool
  */
-protected accessGranted = false;
+protected $accessGranted = false;
 
 /**
  * Active access which the list is checking if some role can access it
  *
  * @var string|null
  */
-protected activeAccess;
+protected $activeAccess;
 
 /**
  * Component which the list is checking if some role can access it
  *
  * @var string|null
  */
-protected activeComponent;
+protected $activeComponent;
 
 /**
  * Role which the list is checking if it's allowed to certain
@@ -65,14 +65,14 @@ protected activeComponent;
  *
  * @var string|null
  */
-protected activeRole;
+protected $activeRole;
 
 /**
  * Default access
  *
  * @var int
  */
-protected defaultAccess;
+protected $defaultAccess;
 
 ```
 
@@ -111,7 +111,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 
 
-## Acl\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Acl\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AdapterInterface.zep)
 
@@ -368,77 +368,77 @@ foreach ($privateComponents as $component => $actions) {
  *
  * @var mixed
  */
-protected access;
+protected $access;
 
 /**
  * Access List
  *
  * @var mixed
  */
-protected accessList;
+protected $accessList;
 
 /**
  * Returns the latest function used to acquire access
  *
  * @var mixed
  */
-protected activeFunction;
+protected $activeFunction;
 
 /**
  * Returns number of additional arguments(excluding role and resource) for active function
  *
  * @var int
  */
-protected activeFunctionCustomArgumentsCount = 0;
+protected $activeFunctionCustomArgumentsCount = ;
 
 /**
  * Returns the latest key used to acquire access
  *
  * @var string|null
  */
-protected activeKey;
+protected $activeKey;
 
 /**
  * Components
  *
  * @var mixed
  */
-protected components;
+protected $components;
 
 /**
  * Component Names
  *
  * @var mixed
  */
-protected componentsNames;
+protected $componentsNames;
 
 /**
  * Function List
  *
  * @var mixed
  */
-protected func;
+protected $func;
 
 /**
  * Default action for no arguments is `allow`
  *
  * @var mixed
  */
-protected noArgumentsDefaultAction;
+protected $noArgumentsDefaultAction;
 
 /**
  * Roles
  *
  * @var mixed
  */
-protected roles;
+protected $roles;
 
 /**
  * Role Inherits
  *
  * @var mixed
  */
-protected roleInherits;
+protected $roleInherits;
 
 ```
 
@@ -537,6 +537,7 @@ $acl->allow("*", "products", "browse");
 
 // Allow access to any role to browse on any component
 $acl->allow("*", "*", "browse");
+```
 
 
 ```php
@@ -675,14 +676,14 @@ This class defines component entity and its description
  *
  * @var string
  */
-private description;
+private $description;
 
 /**
  * Component name
  *
  * @var string
  */
-private name;
+private $name;
 
 ```
 
@@ -714,7 +715,7 @@ public function getName(): string;
 
 
 
-## Acl\ComponentAwareInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Acl\ComponentAwareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentAwareInterface.zep)
 
@@ -745,7 +746,7 @@ Returns component name
 
 
 
-## Acl\ComponentInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Acl\ComponentInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentInterface.zep)
 
@@ -868,14 +869,14 @@ This class defines role entity and its description
  *
  * @var string
  */
-private description;
+private $description;
 
 /**
  * Role name
  *
  * @var string
  */
-private name;
+private $name;
 
 ```
 
@@ -907,7 +908,7 @@ public function getName(): string;
 
 
 
-## Acl\RoleAwareInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Acl\RoleAwareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleAwareInterface.zep)
 
@@ -938,7 +939,7 @@ Returns role name
 
 
 
-## Acl\RoleInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Acl\RoleInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleInterface.zep)
 

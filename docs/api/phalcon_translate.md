@@ -44,12 +44,12 @@ Class AbstractAdapter
 /**
  * @var string
  */
-protected defaultInterpolator = ;
+protected $defaultInterpolator = ;
 
 /**
     * @var InterpolatorFactory
     */
-protected interpolatorFactory;
+protected $interpolatorFactory;
 
 ```
 
@@ -105,7 +105,7 @@ Replaces placeholders by the values passed
 
 
 
-## Translate\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Translate\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AdapterInterface.zep)
 
@@ -185,7 +185,7 @@ Class Csv
 /**
  * @var array
  */
-protected translate;
+protected $translate;
 
 ```
 
@@ -280,22 +280,22 @@ Allows translate using gettext
 /**
  * @var int
  */
-protected category;
+protected $category;
 
 /**
  * @var string
  */
-protected defaultDomain;
+protected $defaultDomain;
 
 /**
  * @var string|array
  */
-protected directory;
+protected $directory;
 
 /**
  * @var string
  */
-protected locale;
+protected $locale;
 
 ```
 
@@ -470,12 +470,12 @@ Defines translation lists using PHP arrays
 /**
  * @var array
  */
-private translate;
+private $translate;
 
 /**
  * @var bool
  */
-private triggerError = false;
+private $triggerError = false;
 
 ```
 
@@ -613,7 +613,7 @@ Replaces placeholders by the values passed
 
 
 
-## Translate\Interpolator\InterpolatorInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Translate\Interpolator\InterpolatorInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
 
@@ -737,7 +737,7 @@ Class TranslateFactory
 /**
  * @var InterpolatorFactory
  */
-private interpolator;
+private $interpolator;
 
 ```
 

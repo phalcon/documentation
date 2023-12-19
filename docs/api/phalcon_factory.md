@@ -97,12 +97,12 @@ file that was distributed with this source code.
 /**
  * @var array
  */
-protected mapper;
+protected $mapper;
 
 /**
  * @var array
  */
-protected services;
+protected $services;
 
 ```
 

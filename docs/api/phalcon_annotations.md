@@ -41,12 +41,12 @@ This is the base class for Phalcon\Annotations adapters
 /**
  * @var array
  */
-protected annotations;
+protected $annotations;
 
 /**
  * @var Reader
  */
-protected reader;
+protected $reader;
 
 ```
 
@@ -108,7 +108,7 @@ Sets the annotations parser
 
 
 
-## Annotations\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Annotations\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Adapter/AdapterInterface.zep)
 
@@ -224,12 +224,12 @@ $annotations = new Apcu();
 /**
  * @var string
  */
-protected prefix = ;
+protected $prefix = ;
 
 /**
  * @var int
  */
-protected ttl = 172800;
+protected $ttl = 172800;
 
 ```
 
@@ -284,7 +284,7 @@ development/testing
 /**
  * @var mixed
  */
-protected data;
+protected $data;
 
 ```
 
@@ -344,7 +344,7 @@ $annotations = new Stream(
 /**
  * @var string
  */
-protected annotationsDir = ./;
+protected $annotationsDir = ./;
 
 ```
 
@@ -398,21 +398,21 @@ Represents a single annotation in an annotations collection
  *
  * @var array
  */
-protected arguments;
+protected $arguments;
 
 /**
  * Annotation ExprArguments
  *
  * @var array
  */
-protected exprArguments;
+protected $exprArguments;
 
 /**
  * Annotation Name
  *
  * @var string|null
  */
-protected name;
+protected $name;
 
 ```
 
@@ -583,12 +583,12 @@ $annotation = $classAnnotations->get("Cacheable");
 /**
  * @var array
  */
-protected annotations;
+protected $annotations;
 
 /**
  * @var int
  */
-protected position = 0;
+protected $position = ;
 
 ```
 
@@ -724,7 +724,7 @@ Parses a raw doc block returning the annotations found
 
 
 
-## Annotations\ReaderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Annotations\ReaderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/ReaderInterface.zep)
 
@@ -802,27 +802,27 @@ $classAnnotations = $reflection->getClassAnnotations();
 /**
  * @var Collection|null
  */
-protected classAnnotations;
+protected $classAnnotations;
 
 /**
  * @var array
  */
-protected constantAnnotations;
+protected $constantAnnotations;
 
 /**
  * @var array
  */
-protected propertyAnnotations;
+protected $propertyAnnotations;
 
 /**
  * @var array
  */
-protected methodAnnotations;
+protected $methodAnnotations;
 
 /**
  * @var array
  */
-protected reflectionData;
+protected $reflectionData;
 
 ```
 

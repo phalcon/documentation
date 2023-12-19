@@ -38,7 +38,7 @@ This abstract class offers common access to the DI in a class
  *
  * @var DiInterface
  */
-protected container;
+protected $container;
 
 ```
 
@@ -134,28 +134,28 @@ $request = $di->getRequest();
  *
  * @var ServiceInterface[]
  */
-protected services;
+protected $services;
 
 /**
  * List of shared instances
  *
  * @var array
  */
-protected sharedInstances;
+protected $sharedInstances;
 
 /**
  * Events Manager
  *
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * Latest DI build
  *
  * @var DiInterface|null
  */
-protected static defaultDi;
+protected static $defaultDi;
 
 ```
 
@@ -409,7 +409,7 @@ Loads services from a Config object.
 
 
 
-## Di\DiInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Di\DiInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/DiInterface.zep)
 
@@ -645,7 +645,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 
 
-## Di\InitializationAwareInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Di\InitializationAwareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InitializationAwareInterface.zep)
 
@@ -735,7 +735,7 @@ accessing a public property with the same name of a registered service
  *
  * @var DiInterface|null
  */
-protected container;
+protected $container;
 
 ```
 
@@ -767,7 +767,7 @@ Sets the dependency injector
 
 
 
-## Di\InjectionAwareInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Di\InjectionAwareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InjectionAwareInterface.zep)
 
@@ -844,22 +844,22 @@ $request = service->resolve();
 /**
  * @var mixed
  */
-protected definition;
+protected $definition;
 
 /**
  * @var bool
  */
-protected resolved = false;
+protected $resolved = false;
 
 /**
  * @var bool
  */
-protected shared = false;
+protected $shared = false;
 
 /**
  * @var mixed|null
  */
-protected sharedInstance;
+protected $sharedInstance;
 
 ```
 
@@ -962,7 +962,7 @@ Builds a service using a complex service definition
 
 
 
-## Di\ServiceInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Di\ServiceInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceInterface.zep)
 
@@ -1035,7 +1035,7 @@ Sets if the service is shared or not
 
 
 
-## Di\ServiceProviderInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Di\ServiceProviderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceProviderInterface.zep)
 

@@ -61,58 +61,58 @@ const XHTML5 = 11;
 /**
  * @var bool
  */
-protected static autoEscape = true;
+protected static $autoEscape = true;
 
 /**
  * DI Container
  *
  * @var DiInterface|null
  */
-protected static container;
+protected static $container;
 
 /**
  * Pre-assigned values for components
  *
  * @var array
  */
-protected static displayValues;
+protected static $displayValues;
 
 /**
  * @var array
  */
-protected static documentAppendTitle;
+protected static $documentAppendTitle;
 
 /**
  * @var array
  */
-protected static documentPrependTitle;
+protected static $documentPrependTitle;
 
 /**
  * HTML document title
  *
  * @var string|null
  */
-protected static documentTitle;
+protected static $documentTitle;
 
 /**
  * @var string|null
  */
-protected static documentTitleSeparator;
+protected static $documentTitleSeparator;
 
 /**
  * @var int
  */
-protected static documentType = 11;
+protected static $documentType = 11;
 
 /**
  * @var EscaperInterface|null
  */
-protected static escaperService;
+protected static $escaperService;
 
 /**
  * @var UrlInterface|null
  */
-protected static urlService;
+protected static $urlService;
 
 ```
 

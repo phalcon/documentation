@@ -41,22 +41,22 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 /**
  * @var DiInterface|null
  */
-protected container;
+protected $container;
 
 /**
  * @var string
  */
-protected defaultModule = ;
+protected $defaultModule = ;
 
 /**
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * @var array
  */
-protected modules;
+protected $modules;
 
 ```
 

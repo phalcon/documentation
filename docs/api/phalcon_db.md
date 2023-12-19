@@ -122,91 +122,91 @@ Base class for Phalcon\Db\Adapter adapters
  *
  * @var int
  */
-protected static connectionConsecutive = 0;
+protected static $connectionConsecutive = ;
 
 /**
  * Active connection ID
  *
  * @var int
  */
-protected connectionId;
+protected $connectionId;
 
 /**
  * Descriptor used to connect to a database
  *
  * @var array
  */
-protected descriptor;
+protected $descriptor;
 
 /**
  * Dialect instance
  *
  * @var object
  */
-protected dialect;
+protected $dialect;
 
 /**
  * Name of the dialect used
  *
  * @var string
  */
-protected dialectType;
+protected $dialectType;
 
 /**
  * Event Manager
  *
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * The real SQL statement - what was executed
  *
  * @var string
  */
-protected realSqlStatement;
+protected $realSqlStatement;
 
 /**
  * Active SQL Bind Types
  *
  * @var array
  */
-protected sqlBindTypes;
+protected $sqlBindTypes;
 
 /**
  * Active SQL Statement
  *
  * @var string
  */
-protected sqlStatement;
+protected $sqlStatement;
 
 /**
  * Active SQL bound parameter variables
  *
  * @var array
  */
-protected sqlVariables;
+protected $sqlVariables;
 
 /**
  * Current transaction level
  *
  * @var int
  */
-protected transactionLevel = 0;
+protected $transactionLevel = ;
 
 /**
  * Whether the database supports transactions with save points
  *
  * @var bool
  */
-protected transactionsWithSavepoints = false;
+protected $transactionsWithSavepoints = false;
 
 /**
  * Type of database system the adapter is used for
  *
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
@@ -794,7 +794,7 @@ var_dump(
 
 
 
-## Db\Adapter\AdapterInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Adapter/AdapterInterface.zep)
 
@@ -1349,14 +1349,14 @@ $connection = new Mysql($config);
  *
  * @var int
  */
-protected affectedRows = 0;
+protected $affectedRows = ;
 
 /**
  * PDO Handler
  *
  * @var \PDO
  */
-protected pdo;
+protected $pdo;
 
 ```
 
@@ -1681,12 +1681,12 @@ $connection = new Mysql($config);
 /**
  * @var string
  */
-protected dialectType = mysql;
+protected $dialectType = mysql;
 
 /**
  * @var string
  */
-protected type = mysql;
+protected $type = mysql;
 
 ```
 
@@ -1798,12 +1798,12 @@ $connection = new Postgresql($config);
 /**
  * @var string
  */
-protected dialectType = postgresql;
+protected $dialectType = postgresql;
 
 /**
  * @var string
  */
-protected type = pgsql;
+protected $type = pgsql;
 
 ```
 
@@ -1950,12 +1950,12 @@ $connection = new Sqlite(
 /**
  * @var string
  */
-protected dialectType = sqlite;
+protected $dialectType = sqlite;
 
 /**
  * @var string
  */
-protected type = sqlite;
+protected $type = sqlite;
 
 ```
 
@@ -2202,56 +2202,56 @@ const TYPE_VARCHAR = 2;
  *
  * @var string|null
  */
-protected after;
+protected $after;
 
 /**
  * Column is autoIncrement?
  *
  * @var bool
  */
-protected autoIncrement = false;
+protected $autoIncrement = false;
 
 /**
  * Bind Type
  *
  * @var int
  */
-protected bindType = 2;
+protected $bindType = 2;
 
 /**
  * Column's comment
  *
  * @var string|null
  */
-protected comment;
+protected $comment;
 
 /**
  * Default column value
  *
  * @var mixed|null
  */
-protected defaultValue;
+protected $defaultValue;
 
 /**
  * Position is first
  *
  * @var bool
  */
-protected first = false;
+protected $first = false;
 
 /**
  * The column have some numeric type?
  *
  * @var bool
  */
-protected isNumeric = false;
+protected $isNumeric = false;
 
 /**
  * Column's name
  *
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * Column not nullable?
@@ -2260,56 +2260,56 @@ protected name;
  *
  * @var bool
  */
-protected notNull = true;
+protected $notNull = true;
 
 /**
  * Column is part of the primary key?
  *
  * @var bool
  */
-protected primary = false;
+protected $primary = false;
 
 /**
  * Integer column number scale
  *
  * @var int
  */
-protected scale = 0;
+protected $scale = ;
 
 /**
  * Integer column size
  *
  * @var int|string
  */
-protected size = 0;
+protected $size = ;
 
 /**
  * Column data type
  *
  * @var int
  */
-protected type;
+protected $type;
 
 /**
  * Column data type reference
  *
  * @var int
  */
-protected typeReference = -1;
+protected $typeReference = -1;
 
 /**
  * Column data type values
  *
  * @var array|string
  */
-protected typeValues;
+protected $typeValues;
 
 /**
  * Integer column unsigned?
  *
  * @var bool
  */
-protected unsigned = false;
+protected $unsigned = false;
 
 ```
 
@@ -2425,7 +2425,7 @@ Returns true if number column is unsigned
 
 
 
-## Db\ColumnInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\ColumnInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ColumnInterface.zep)
 
@@ -2574,12 +2574,12 @@ common methods to transform intermediate code into its RDBMS related syntax
 /**
  * @var string
  */
-protected escapeChar;
+protected $escapeChar;
 
 /**
  * @var array
  */
-protected customFunctions;
+protected $customFunctions;
 
 ```
 
@@ -2897,7 +2897,7 @@ Generates database specific SQL for the MySQL RDBMS
 /**
  * @var string
  */
-protected escapeChar = `;
+protected $escapeChar = `;
 
 ```
 
@@ -3119,7 +3119,7 @@ Generates database specific SQL for the PostgreSQL RDBMS
 /**
  * @var string
  */
-protected escapeChar = \";
+protected $escapeChar = \";
 
 ```
 
@@ -3336,7 +3336,7 @@ Generates database specific SQL for the SQLite RDBMS
 /**
  * @var string
  */
-protected escapeChar = \";
+protected $escapeChar = \";
 
 ```
 
@@ -3532,7 +3532,7 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-## Db\DialectInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\DialectInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/DialectInterface.zep)
 
@@ -3885,21 +3885,21 @@ $connection->addIndex("robots", null, $index_primary);
  *
  * @var array
  */
-protected columns;
+protected $columns;
 
 /**
  * Index name
  *
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * Index type
  *
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
@@ -3931,7 +3931,7 @@ Index type
 
 
 
-## Db\IndexInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\IndexInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/IndexInterface.zep)
 
@@ -4051,21 +4051,21 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
  *
  * @var Item
  */
-protected activeProfile;
+protected $activeProfile;
 
 /**
  * All the Items in the active profile
  *
  * @var Item[]
  */
-protected allProfiles;
+protected $allProfiles;
 
 /**
  * Total time spent by all profiles to complete in nanoseconds
  *
  * @var float
  */
-protected totalNanoseconds = 0;
+protected $totalNanoseconds = ;
 
 ```
 
@@ -4155,35 +4155,35 @@ This class identifies each profile in a Phalcon\Db\Profiler
  *
  * @var double
  */
-protected finalTime;
+protected $finalTime;
 
 /**
  * Timestamp when the profile started
  *
  * @var double
  */
-protected initialTime;
+protected $initialTime;
 
 /**
  * SQL bind types related to the profile
  *
  * @var array
  */
-protected sqlBindTypes;
+protected $sqlBindTypes;
 
 /**
  * SQL statement related to the profile
  *
  * @var string
  */
-protected sqlStatement;
+protected $sqlStatement;
 
 /**
  * SQL variables related to the profile
  *
  * @var array
  */
-protected sqlVariables;
+protected $sqlVariables;
 
 ```
 
@@ -4308,7 +4308,7 @@ $subscriber->save();
  *
  * @var string
  */
-protected value;
+protected $value;
 
 ```
 
@@ -4381,56 +4381,56 @@ $reference = new \Phalcon\Db\Reference(
  *
  * @var array
  */
-protected columns;
+protected $columns;
 
 /**
  * Constraint name
  *
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * Referenced Columns
  *
  * @var array
  */
-protected referencedColumns;
+protected $referencedColumns;
 
 /**
  * Referenced Schema
  *
  * @var string
  */
-protected referencedSchema;
+protected $referencedSchema;
 
 /**
  * Referenced Table
  *
  * @var string
  */
-protected referencedTable;
+protected $referencedTable;
 
 /**
  * Schema name
  *
  * @var string
  */
-protected schemaName;
+protected $schemaName;
 
 /**
  * ON DELETE
  *
  * @var string
  */
-protected onDelete;
+protected $onDelete;
 
 /**
  * ON UPDATE
  *
  * @var string
  */
-protected onUpdate;
+protected $onUpdate;
 
 ```
 
@@ -4492,7 +4492,7 @@ Schema name
 
 
 
-## Db\ReferenceInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\ReferenceInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ReferenceInterface.zep)
 
@@ -4607,47 +4607,47 @@ while ($robot = $result->fetchArray()) {
 /**
  * @var array
  */
-protected bindParams;
+protected $bindParams;
 
 /**
  * @var array
  */
-protected bindTypes;
+protected $bindTypes;
 
 /**
  * @var AdapterInterface
  */
-protected connection;
+protected $connection;
 
 /**
  * Active fetch mode
  *
  * @var int
  */
-protected fetchMode;
+protected $fetchMode;
 
 /**
  * Internal resultset
  *
  * @var \PDOStatement
  */
-protected pdoStatement;
+protected $pdoStatement;
 
 /**
  * @var mixed
  * TODO: Check if this property is used
  */
-protected result;
+protected $result;
 
 /**
  * @var bool
  */
-protected rowCount = false;
+protected $rowCount = false;
 
 /**
  * @var string|null
  */
-protected sqlStatement;
+protected $sqlStatement;
 
 ```
 
@@ -4792,7 +4792,7 @@ $result->setFetchMode(
 
 
 
-## Db\ResultInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Db\ResultInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ResultInterface.zep)
 

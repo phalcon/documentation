@@ -63,17 +63,17 @@ etc.
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 /**
  * @var bool
  */
-protected insensitive = true;
+protected $insensitive = true;
 
 /**
  * @var array
  */
-protected lowerKeys;
+protected $lowerKeys;
 
 ```
 
@@ -271,7 +271,7 @@ Internal method to set data
 
 
 
-## Support\Collection\CollectionInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Support\Collection\CollectionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/CollectionInterface.zep)
 
@@ -477,47 +477,47 @@ Provides debug capabilities to Phalcon applications
 /**
  * @var array
  */
-protected blacklist;
+protected $blacklist;
 
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 /**
  * @var bool
  */
-protected hideDocumentRoot = false;
+protected $hideDocumentRoot = false;
 
 /**
  * @var bool
  */
-protected static isActive = false;
+protected static $isActive = false;
 
 /**
  * @var bool
  */
-protected showBackTrace = true;
+protected $showBackTrace = true;
 
 /**
  * @var bool
  */
-protected showFileFragment = false;
+protected $showFileFragment = false;
 
 /**
  * @var bool
  */
-protected showFiles = true;
+protected $showFiles = true;
 
 /**
  * @var string
     */
-protected uri = https://assets.phalcon.io/debug/5.0.x/;
+protected $uri = https://assets.phalcon.io/debug/5.0.x/;
 
 /**
  * @var Version
  */
-private version;
+private $version;
 
 ```
 
@@ -706,22 +706,22 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 /**
  * @var bool
  */
-protected detailed = false;
+protected $detailed = false;
 
 /**
  * @var array
  */
-protected methods;
+protected $methods;
 
 /**
  * @var array
  */
-protected styles;
+protected $styles;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 ```
 
@@ -3033,7 +3033,7 @@ Returns the available adapters
 
 
 
-## Support\Registry ![Abstract](../assets/images/final-red.svg) 
+## Support\Registry ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Registry.zep)
 

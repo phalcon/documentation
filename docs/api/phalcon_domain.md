@@ -39,42 +39,42 @@ Holds the payload
  *
  * @var Throwable|null
  */
-protected exception;
+protected $exception;
 
 /**
  * Extra information
  *
  * @var mixed
  */
-protected extras;
+protected $extras;
 
 /**
  * Input
  *
  * @var mixed
  */
-protected input;
+protected $input;
 
 /**
  * Messages
  *
  * @var mixed
  */
-protected messages;
+protected $messages;
 
 /**
  * Status
  *
  * @var mixed
  */
-protected status;
+protected $status;
 
 /**
  * Output
  *
  * @var mixed
  */
-protected output;
+protected $output;
 
 ```
 
@@ -185,7 +185,7 @@ Instantiate a new object
 
 
 
-## Domain\Payload\PayloadInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Domain\Payload\PayloadInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadInterface.zep)
 
@@ -208,7 +208,7 @@ This interface is used for consumers
 
 
 
-## Domain\Payload\ReadableInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Domain\Payload\ReadableInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/ReadableInterface.zep)
 
@@ -325,7 +325,7 @@ Instantiation not allowed.
 
 
 
-## Domain\Payload\WriteableInterface ![Abstract](../assets/images/interface-blue.svg) 
+## Domain\Payload\WriteableInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/WriteableInterface.zep)
 
