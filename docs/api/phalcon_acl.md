@@ -118,17 +118,29 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 
 
-<h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
+## Acl\Adapter\AdapterInterface
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Acl/Adapter/AdapterInterface.zep)
 
-| Namespace  | Phalcon\Acl\Adapter |
-| Uses       | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
+-   __Namespace__
+
+    - `Phalcon\Acl\Adapter`
+
+-   __Uses__
+
+    - `Phalcon\Acl\ComponentInterface`
+    - `Phalcon\Acl\RoleInterface`
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Interface for Phalcon\Acl adapters
 
 
-## Methods
+### Methods
 
 ```php
 public function addComponent( mixed $componentValue, mixed $accessList ): bool;
@@ -262,14 +274,33 @@ accessKey
 
 
 
-
-<h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
+## Acl\Adapter\Memory
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Acl/Adapter/Memory.zep)
 
-| Namespace  | Phalcon\Acl\Adapter |
-| Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Acl\RoleAwareInterface, Phalcon\Acl\ComponentAwareInterface, Phalcon\Acl\ComponentInterface, ReflectionClass, ReflectionFunction |
-| Extends    | AbstractAdapter |
+-   __Namespace__
+
+    - `Phalcon\Acl\Adapter`
+
+-   __Uses__
+
+    - `Phalcon\Acl\Component`
+    - `Phalcon\Acl\ComponentAwareInterface`
+    - `Phalcon\Acl\ComponentInterface`
+    - `Phalcon\Acl\Enum`
+    - `Phalcon\Acl\Exception`
+    - `Phalcon\Acl\Role`
+    - `Phalcon\Acl\RoleInterface`
+    - `Phalcon\Acl\RoleAwareInterface`
+    - `ReflectionClass`
+    - `ReflectionFunction`
+
+-   __Extends__
+
+    `AbstractAdapter`
+
+-   __Implements__
+
 
 Manages ACL lists in memory
 
