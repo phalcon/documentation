@@ -9,7 +9,7 @@ hide:
 
 
 
-## Paginator\Adapter\AbstractAdapter ![Abstract](assets/images/abstract-green.png) 
+## Paginator\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AbstractAdapter.zep)
 
@@ -106,7 +106,7 @@ Gets current repository for pagination
 
 
 
-## Paginator\Adapter\AdapterInterface ![Abstract](assets/images/interface-blue.png) 
+## Paginator\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AdapterInterface.zep)
 
@@ -651,7 +651,7 @@ Resolve alias property name
 
 
 
-## Paginator\RepositoryInterface ![Abstract](assets/images/interface-blue.png) 
+## Paginator\RepositoryInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/RepositoryInterface.zep)
 
@@ -753,3 +753,5 @@ Sets the aliases for properties repository
 public function setProperties( array $properties ): RepositoryInterface;
 ```
 Sets values for properties of the repository
+
+

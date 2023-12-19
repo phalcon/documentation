@@ -9,7 +9,7 @@ hide:
 
 
 
-## Translate\Adapter\AbstractAdapter ![Abstract](assets/images/abstract-green.png) 
+## Translate\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AbstractAdapter.zep)
 
@@ -105,7 +105,7 @@ Replaces placeholders by the values passed
 
 
 
-## Translate\Adapter\AdapterInterface ![Abstract](assets/images/interface-blue.png) 
+## Translate\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AdapterInterface.zep)
 
@@ -613,7 +613,7 @@ Replaces placeholders by the values passed
 
 
 
-## Translate\Interpolator\InterpolatorInterface ![Abstract](assets/images/interface-blue.png) 
+## Translate\Interpolator\InterpolatorInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
 
@@ -771,3 +771,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
+
+

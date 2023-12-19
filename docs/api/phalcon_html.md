@@ -56,7 +56,7 @@ protected function renderAttributes( array $attributes ): string;
 
 
 
-## Html\Attributes\AttributesInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Attributes\AttributesInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Attributes/AttributesInterface.zep)
 
@@ -96,7 +96,7 @@ Set Attributes
 
 
 
-## Html\Attributes\RenderInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Attributes\RenderInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Attributes/RenderInterface.zep)
 
@@ -454,7 +454,7 @@ Proxy method for testing
 
 
 
-## Html\Escaper\EscaperInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Escaper\EscaperInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/EscaperInterface.zep)
 
@@ -608,7 +608,7 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 
 
 
-## Html\Helper\AbstractHelper ![Abstract](assets/images/abstract-green.png) 
+## Html\Helper\AbstractHelper ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/AbstractHelper.zep)
 
@@ -723,7 +723,7 @@ Produces a self close tag i.e. <img />
 
 
 
-## Html\Helper\AbstractList ![Abstract](assets/images/abstract-green.png) 
+## Html\Helper\AbstractList ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/AbstractList.zep)
 
@@ -787,7 +787,7 @@ Returns the tag name.
 
 
 
-## Html\Helper\AbstractSeries ![Abstract](assets/images/abstract-green.png) 
+## Html\Helper\AbstractSeries ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/AbstractSeries.zep)
 
@@ -1193,7 +1193,7 @@ Produce a <img> tag.
 
 
 
-## Html\Helper\Input\AbstractInput ![Abstract](assets/images/abstract-green.png) 
+## Html\Helper\Input\AbstractInput ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/AbstractInput.zep)
 
@@ -2487,7 +2487,7 @@ protected function getTag(): string;
 
 
 
-## Html\Link\AbstractLink ![Abstract](assets/images/abstract-green.png) 
+## Html\Link\AbstractLink ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/AbstractLink.zep)
 
@@ -2619,7 +2619,7 @@ Determines if a href is a templated link or not.
 
 
 
-## Html\Link\AbstractLinkProvider ![Abstract](assets/images/abstract-green.png) 
+## Html\Link\AbstractLinkProvider ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/AbstractLinkProvider.zep)
 
@@ -2832,7 +2832,7 @@ object already in the collection.
 
 
 
-## Html\Link\Interfaces\EvolvableLinkInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Link\Interfaces\EvolvableLinkInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/EvolvableLinkInterface.zep)
 
@@ -2900,7 +2900,7 @@ normally without errors.
 
 
 
-## Html\Link\Interfaces\EvolvableLinkProviderInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Link\Interfaces\EvolvableLinkProviderInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/EvolvableLinkProviderInterface.zep)
 
@@ -2946,7 +2946,7 @@ object already in the collection.
 
 
 
-## Html\Link\Interfaces\LinkInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Link\Interfaces\LinkInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/LinkInterface.zep)
 
@@ -3006,7 +3006,7 @@ Returns whether this is a templated link.
 
 
 
-## Html\Link\Interfaces\LinkProviderInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Link\Interfaces\LinkProviderInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Interfaces/LinkProviderInterface.zep)
 
@@ -3195,7 +3195,7 @@ Serializes all the passed links to a HTTP link header
 
 
 
-## Html\Link\Serializer\SerializerInterface ![Abstract](assets/images/interface-blue.png) 
+## Html\Link\Serializer\SerializerInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Link/Serializer/SerializerInterface.zep)
 
@@ -3389,3 +3389,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available services
+
+

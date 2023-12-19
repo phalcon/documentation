@@ -9,7 +9,7 @@ hide:
 
 
 
-## Events\AbstractEventsAware ![Abstract](assets/images/abstract-green.png) 
+## Events\AbstractEventsAware ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/AbstractEventsAware.zep)
 
@@ -203,7 +203,7 @@ if ($event->isCancelable()) {
 
 
 
-## Events\EventInterface ![Abstract](assets/images/interface-blue.png) 
+## Events\EventInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventInterface.zep)
 
@@ -270,7 +270,7 @@ Stops the event preventing propagation
 
 
 
-## Events\EventsAwareInterface ![Abstract](assets/images/interface-blue.png) 
+## Events\EventsAwareInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventsAwareInterface.zep)
 
@@ -485,7 +485,7 @@ public function isValidHandler( mixed $handler ): bool;
 
 
 
-## Events\ManagerInterface ![Abstract](assets/images/interface-blue.png) 
+## Events\ManagerInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/ManagerInterface.zep)
 
@@ -543,3 +543,5 @@ Returns all the attached listeners of a certain type
 public function hasListeners( string $type ): bool;
 ```
 Check whether certain type of event has listeners
+
+

@@ -9,7 +9,7 @@ hide:
 
 
 
-## Di\AbstractInjectionAware ![Abstract](assets/images/abstract-green.png) 
+## Di\AbstractInjectionAware ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/AbstractInjectionAware.zep)
 
@@ -409,7 +409,7 @@ Loads services from a Config object.
 
 
 
-## Di\DiInterface ![Abstract](assets/images/interface-blue.png) 
+## Di\DiInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/DiInterface.zep)
 
@@ -645,7 +645,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 
 
-## Di\InitializationAwareInterface ![Abstract](assets/images/interface-blue.png) 
+## Di\InitializationAwareInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InitializationAwareInterface.zep)
 
@@ -676,7 +676,7 @@ public function initialize(): void;
 
 
 
-## Di\Injectable ![Abstract](assets/images/abstract-green.png) 
+## Di\Injectable ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Injectable.zep)
 
@@ -767,7 +767,7 @@ Sets the dependency injector
 
 
 
-## Di\InjectionAwareInterface ![Abstract](assets/images/interface-blue.png) 
+## Di\InjectionAwareInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/InjectionAwareInterface.zep)
 
@@ -962,7 +962,7 @@ Builds a service using a complex service definition
 
 
 
-## Di\ServiceInterface ![Abstract](assets/images/interface-blue.png) 
+## Di\ServiceInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceInterface.zep)
 
@@ -1035,7 +1035,7 @@ Sets if the service is shared or not
 
 
 
-## Di\ServiceProviderInterface ![Abstract](assets/images/interface-blue.png) 
+## Di\ServiceProviderInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/ServiceProviderInterface.zep)
 
@@ -1083,3 +1083,5 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function register( DiInterface $di ): void;
 ```
 Registers a service provider.
+
+

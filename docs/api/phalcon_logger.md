@@ -9,7 +9,7 @@ hide:
 
 
 
-## Logger\AbstractLogger ![Abstract](assets/images/abstract-green.png) 
+## Logger\AbstractLogger ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/AbstractLogger.zep)
 
@@ -177,7 +177,7 @@ Returns an array of log levels with integer to string conversion
 
 
 
-## Logger\Adapter\AbstractAdapter ![Abstract](assets/images/abstract-green.png) 
+## Logger\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/AbstractAdapter.zep)
 
@@ -319,7 +319,7 @@ Returns the formatted item
 
 
 
-## Logger\Adapter\AdapterInterface ![Abstract](assets/images/interface-blue.png) 
+## Logger\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/AdapterInterface.zep)
 
@@ -743,7 +743,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 
 
 
-## Logger\Formatter\AbstractFormatter ![Abstract](assets/images/abstract-green.png) 
+## Logger\Formatter\AbstractFormatter ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/AbstractFormatter.zep)
 
@@ -818,7 +818,7 @@ protected function getInterpolatedMessage( Item $item, string $message ): string
 
 
 
-## Logger\Formatter\FormatterInterface ![Abstract](assets/images/interface-blue.png) 
+## Logger\Formatter\FormatterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Formatter/FormatterInterface.zep)
 
@@ -1222,7 +1222,7 @@ protected function getExceptionClass(): string;
 
 
 
-## Logger\LoggerInterface ![Abstract](assets/images/interface-blue.png) 
+## Logger\LoggerInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/LoggerInterface.zep)
 
@@ -1330,3 +1330,5 @@ Normal but significant events.
 public function warning( string $message, array $context = [] ): void;
 ```
 Normal but significant events.
+
+

@@ -594,7 +594,7 @@ protected function parseConfig( mixed $config ): array;
 
 
 
-## Config\ConfigInterface ![Abstract](assets/images/interface-blue.png) 
+## Config\ConfigInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/ConfigInterface.zep)
 
@@ -667,3 +667,4 @@ public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
     
 
 Exceptions thrown in Phalcon\Config will use this class
+

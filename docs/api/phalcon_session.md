@@ -9,7 +9,7 @@ hide:
 
 
 
-## Session\Adapter\AbstractAdapter ![Abstract](assets/images/abstract-green.png) 
+## Session\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep)
 
@@ -527,7 +527,7 @@ Sets the DependencyInjector container
 
 
 
-## Session\BagInterface ![Abstract](assets/images/interface-blue.png) 
+## Session\BagInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep)
 
@@ -839,7 +839,7 @@ Checks if or where headers have been sent
 
 
 
-## Session\ManagerInterface ![Abstract](assets/images/interface-blue.png) 
+## Session\ManagerInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep)
 
@@ -1002,3 +1002,5 @@ started)
 public function status(): int;
 ```
 Returns the status of the current session.
+
+

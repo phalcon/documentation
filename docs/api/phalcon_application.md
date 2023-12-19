@@ -9,7 +9,7 @@ hide:
 
 
 
-## Application\AbstractApplication ![Abstract](assets/images/abstract-green.png) 
+## Application\AbstractApplication ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Application/AbstractApplication.zep)
 
@@ -147,3 +147,4 @@ Sets the events manager
     
 
 Exceptions thrown in Phalcon\Application class will use this class
+

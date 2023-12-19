@@ -9,7 +9,7 @@ hide:
 
 
 
-## Acl\Adapter\AbstractAdapter ![Abstract](assets/images/abstract-green.png) 
+## Acl\Adapter\AbstractAdapter ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AbstractAdapter.zep)
 
@@ -111,7 +111,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 
 
-## Acl\Adapter\AdapterInterface ![Abstract](assets/images/interface-blue.png) 
+## Acl\Adapter\AdapterInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Adapter/AdapterInterface.zep)
 
@@ -714,7 +714,7 @@ public function getName(): string;
 
 
 
-## Acl\ComponentAwareInterface ![Abstract](assets/images/interface-blue.png) 
+## Acl\ComponentAwareInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentAwareInterface.zep)
 
@@ -745,7 +745,7 @@ Returns component name
 
 
 
-## Acl\ComponentInterface ![Abstract](assets/images/interface-blue.png) 
+## Acl\ComponentInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/ComponentInterface.zep)
 
@@ -907,7 +907,7 @@ public function getName(): string;
 
 
 
-## Acl\RoleAwareInterface ![Abstract](assets/images/interface-blue.png) 
+## Acl\RoleAwareInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleAwareInterface.zep)
 
@@ -938,7 +938,7 @@ Returns role name
 
 
 
-## Acl\RoleInterface ![Abstract](assets/images/interface-blue.png) 
+## Acl\RoleInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/RoleInterface.zep)
 
@@ -977,3 +977,5 @@ Returns role description
 public function getName(): string;
 ```
 Returns the role name
+
+

@@ -185,7 +185,7 @@ Instantiate a new object
 
 
 
-## Domain\Payload\PayloadInterface ![Abstract](assets/images/interface-blue.png) 
+## Domain\Payload\PayloadInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadInterface.zep)
 
@@ -208,7 +208,7 @@ This interface is used for consumers
 
 
 
-## Domain\Payload\ReadableInterface ![Abstract](assets/images/interface-blue.png) 
+## Domain\Payload\ReadableInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/ReadableInterface.zep)
 
@@ -325,7 +325,7 @@ Instantiation not allowed.
 
 
 
-## Domain\Payload\WriteableInterface ![Abstract](assets/images/interface-blue.png) 
+## Domain\Payload\WriteableInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/WriteableInterface.zep)
 
@@ -383,3 +383,5 @@ Sets the output produced from the domain layer.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Sets the status of this payload.
+
+

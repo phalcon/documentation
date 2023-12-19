@@ -169,7 +169,7 @@ Sets message type
 
 
 
-## Messages\MessageInterface ![Abstract](assets/images/interface-blue.png) 
+## Messages\MessageInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/MessageInterface.zep)
 
@@ -431,3 +431,5 @@ Rewinds the internal iterator
 public function valid(): bool;
 ```
 Check if the current message in the iterator is valid
+
+

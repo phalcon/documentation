@@ -9,7 +9,7 @@ hide:
 
 
 
-## Forms\Element\AbstractElement ![Abstract](assets/images/abstract-green.png) 
+## Forms\Element\AbstractElement ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/AbstractElement.zep)
 
@@ -381,7 +381,7 @@ protected method = inputDate;
 ```
 
 
-## Forms\Element\ElementInterface ![Abstract](assets/images/interface-blue.png) 
+## Forms\Element\ElementInterface ![Abstract](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/ElementInterface.zep)
 
@@ -1382,3 +1382,5 @@ Checks if a form is registered in the forms manager
 public function set( string $name, Form $form ): Manager;
 ```
 Registers a form in the Forms Manager
+
+
