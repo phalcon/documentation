@@ -208,7 +208,7 @@ nav:
       - Config: config.md
       - Escaper: escaper.md
       - HTTP:
-          - Cookies: response#cookies
+          - Cookies: response/#cookies
           - Request: request.md
           - Response: response.md
       - Loader: loader.md
