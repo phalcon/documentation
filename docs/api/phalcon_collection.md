@@ -1,21 +1,46 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Collection'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Collection](#collection)
-* [Phalcon\Collection\CollectionInterface](#collection-collectioninterface)
-* [Phalcon\Collection\Exception](#collection-exception)
-* [Phalcon\Collection\ReadOnly](#collection-readonly)
+!!! info "NOTE"
 
-<h1 id="collection">Class Phalcon\Collection</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Collection 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Collection.zep)
 
-| Namespace  | Phalcon |
-| Uses       | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Json, Serializable, Traversable |
-| Implements | ArrayAccess, CollectionInterface, Countable, IteratorAggregate, JsonSerializable, Serializable |
+
+-   __Namespace__
+
+    - `Phalcon\Support`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `ArrayIterator`
+    - `Countable`
+    - `InvalidArgumentException`
+    - `IteratorAggregate`
+    - `JsonSerializable`
+    - `Phalcon\Collection\CollectionInterface`
+    - `Serializable`
+    - `Traversable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ArrayAccess`
+    - `CollectionInterface`
+    - `Countable`
+    - `IteratorAggregate`
+    - `JsonSerializable`
+    - `Serializable`
 
 `Phalcon\Collection` is a supercharged object oriented array. It implements:
 - [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php)
@@ -29,26 +54,27 @@ Such implementations are for instance accessing globals `$_GET`, `$_POST`
 etc.
 
 
-## Properties
+
+### Properties
 ```php
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 /**
  * @var bool
  */
-protected insensitive = true;
+protected $insensitive = true;
 
 /**
  * @var array
  */
-protected lowerKeys;
+protected $lowerKeys;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $data = [], bool $insensitive = bool );
@@ -108,13 +134,13 @@ Returns the iterator of the class
 ```php
 public function getKeys( bool $insensitive = bool ): array;
 ```
-
+Return the keys as an array
 
 
 ```php
 public function getValues(): array;
 ```
-
+Return the values as an array
 
 
 ```php
@@ -217,18 +243,30 @@ Internal method to set data
 
 
 
-<h1 id="collection-collectioninterface">Interface Phalcon\Collection\CollectionInterface</h1>
+## Collection\CollectionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Collection/CollectionInterface.zep)
 
-| Namespace  | Phalcon\Collection |
+
+-   __Namespace__
+
+    - `Phalcon\Collection`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Collection\CollectionInterface
 
 Interface for Phalcon\Collection class
 
 
-## Methods
+### Methods
 
 ```php
 public function __get( string $element ): mixed;
@@ -316,31 +354,54 @@ public function toJson( int $options = int ): string;
 
 
 
-<h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
+## Collection\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Collection/Exception.zep)
 
-| Namespace  | Phalcon\Collection |
-| Uses       | Throwable |
-| Extends    | \Phalcon\Exception |
-| Implements | Throwable |
+
+-   __Namespace__
+
+    - `Phalcon\Collection`
+
+-   __Uses__
+    
+    - `Throwable`
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions for the Collection object
 
 
 
-<h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
+## Collection\ReadOnly
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Collection/ReadOnly.zep)
 
-| Namespace  | Phalcon\Collection |
-| Uses       | Phalcon\Collection |
-| Extends    | Collection |
 
-Phalcon\Collection\ReadOnly is a read only Collection object
+-   __Namespace__
+
+    - `Phalcon\Collection`
+
+-   __Uses__
+    
+    - `Phalcon\Collection`
+
+-   __Extends__
+    
+    `Collection`
+
+-   __Implements__
+    
+
+A read only Collection object
 
 
-## Methods
+### Methods
 
 ```php
 public function remove( string $element ): void;

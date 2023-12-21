@@ -1,21 +1,37 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Url'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Url](#url)
-* [Phalcon\Url\Exception](#url-exception)
-* [Phalcon\Url\UrlInterface](#url-urlinterface)
+!!! info "NOTE"
 
-<h1 id="url">Class Phalcon\Url</h1>
+    All classes are prefixed with `Phalcon`
+
+## Url 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Url.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface |
-| Extends    | AbstractInjectionAware |
-| Implements | UrlInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\RouterInterface`
+    - `Phalcon\Mvc\Router\RouteInterface`
+    - `Phalcon\Mvc\Url\Exception`
+    - `Phalcon\Mvc\Url\UrlInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `UrlInterface`
 
 This components helps in the generation of: URIs, URLs and Paths
 
@@ -34,31 +50,31 @@ echo $url->get(
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var null | string
  */
-protected baseUri;
+protected $baseUri;
 
 /**
  * @var null | string
  */
-protected basePath;
+protected $basePath;
 
 /**
  * @var RouterInterface | null
  */
-protected router;
+protected $router;
 
 /**
  * @var null | string
  */
-protected staticBaseUri;
+protected $staticBaseUri;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( RouterInterface $router = null );
@@ -178,29 +194,53 @@ $url->setStaticBaseUri("/invo/");
 
 
 
-<h1 id="url-exception">Class Phalcon\Url\Exception</h1>
+## Mvc\Url\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Url/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Url/Exception.zep)
 
-| Namespace  | Phalcon\Url |
-| Extends    | \Phalcon\Exception |
 
-Phalcon\Url\Exception
+-   __Namespace__
+
+    - `Phalcon\Mvc\Url`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
+
+Phalcon\Mvc\Url\Exception
 
 Exceptions thrown in Phalcon\Url will use this class
 
 
 
-<h1 id="url-urlinterface">Interface Phalcon\Url\UrlInterface</h1>
+## Mvc\Url\UrlInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Url/UrlInterface.zep)
-
-| Namespace  | Phalcon\Url |
-
-Interface for Phalcon\Url\UrlInterface
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Url/UrlInterface.zep)
 
 
-## Methods
+-   __Namespace__
+
+    - `Phalcon\Mvc\Url`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Interface for Phalcon\Mvc\Url\UrlInterface
+
+
+### Methods
 
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;

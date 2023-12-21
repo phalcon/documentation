@@ -1,45 +1,47 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Session'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Session\Adapter\AbstractAdapter](#session-adapter-abstractadapter)
-* [Phalcon\Session\Adapter\Libmemcached](#session-adapter-libmemcached)
-* [Phalcon\Session\Adapter\Noop](#session-adapter-noop)
-* [Phalcon\Session\Adapter\Redis](#session-adapter-redis)
-* [Phalcon\Session\Adapter\Stream](#session-adapter-stream)
-* [Phalcon\Session\Bag](#session-bag)
-* [Phalcon\Session\Exception](#session-exception)
-* [Phalcon\Session\Manager](#session-manager)
-* [Phalcon\Session\ManagerInterface](#session-managerinterface)
+!!! info "NOTE"
 
-<h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Session\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Adapter/AbstractAdapter.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface |
-| Implements | SessionHandlerInterface |
 
-This file is part of the Phalcon.
+-   __Namespace__
 
-(c) Phalcon Team <team@phalcon.com>
+    - `Phalcon\Session\Adapter`
 
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
+-   __Uses__
+    
+    - `Phalcon\Storage\Adapter\AdapterInterface`
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SessionHandlerInterface`
 
 
-## Properties
+
+### Properties
 ```php
 /**
  * @var AdapterInterface
  */
-protected adapter;
+protected $adapter;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function close(): bool;
@@ -79,18 +81,32 @@ Write
 
 
 
-<h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
+
+
+## Session\Adapter\Libmemcached 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Adapter/Libmemcached.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\AdapterFactory`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
 
 Phalcon\Session\Adapter\Libmemcached
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -100,13 +116,25 @@ Constructor
 
 
 
-<h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
+## Session\Adapter\Noop 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Adapter/Noop.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | SessionHandlerInterface |
-| Implements | SessionHandlerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SessionHandlerInterface`
 
 Phalcon\Session\Adapter\Noop
 
@@ -124,37 +152,37 @@ $session->setAdapter(new Noop());
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * The connection of some adapters
  */
-protected connection;
+protected $connection;
 
 /**
  * Session options
  *
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * Session prefix
  *
  * @var string
  */
-protected prefix = ;
+protected $prefix = '';
 
 /**
  * Time To Live
  *
  * @var int
  */
-protected ttl = 8600;
+protected $ttl = 8600;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -206,18 +234,30 @@ Helper method to get the name prefixed
 
 
 
-<h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
+## Session\Adapter\Redis 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Adapter/Redis.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Helper\Arr |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\AdapterFactory`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
 
 Phalcon\Session\Adapter\Redis
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -227,13 +267,25 @@ Constructor
 
 
 
-<h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
+## Session\Adapter\Stream 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Adapter/Stream.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Helper\Str, Phalcon\Session\Exception |
-| Extends    | Noop |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Noop`
+
+-   __Implements__
+    
 
 Phalcon\Session\Adapter\Stream
 
@@ -255,7 +307,8 @@ $session->setAdapter($files);
 ```
 
 
-## Properties
+
+### Properties
 ```php
 /**
  * @var string
@@ -264,7 +317,7 @@ private path = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -306,16 +359,31 @@ public function write( mixed $id, mixed $data ): bool;
 
 
 
-<h1 id="session-bag">Class Phalcon\Session\Bag</h1>
+## Session\Bag 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Bag.zep)
 
-| Namespace  | Phalcon\Session |
-| Uses       | Phalcon\Collection, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
-| Extends    | Collection |
-| Implements | InjectionAwareInterface |
 
-Phalcon\Session\Bag
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Session\ManagerInterface`
+    - `Phalcon\Collection`
+
+-   __Extends__
+    
+    `Collection`
+
+-   __Implements__
+    
+    - `BagInterface`
+    - `InjectionAwareInterface`
 
 This component helps to separate session data into "namespaces". Working by
 this way you can easily create groups of session variables into the
@@ -329,25 +397,26 @@ $user->age  = 22;
 ```
 
 
-## Properties
+
+### Properties
 ```php
 //
-private container;
+private $container;
 
 //
-private name;
+private $name;
 
 //
-private session;
+private $session;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name );
 ```
-Phalcon\Session\Bag constructor
+
 
 
 ```php
@@ -388,12 +457,24 @@ Sets the DependencyInjector container
 
 
 
-<h1 id="session-exception">Class Phalcon\Session\Exception</h1>
+## Session\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Exception.zep)
 
-| Namespace  | Phalcon\Session |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Session\Exception
 
@@ -401,45 +482,60 @@ Exceptions thrown in Phalcon\Session will use this class
 
 
 
-<h1 id="session-manager">Class Phalcon\Session\Manager</h1>
+## Session\Manager 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/Manager.zep)
 
-| Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr |
-| Extends    | AbstractInjectionAware |
-| Implements | ManagerInterface |
 
-Phalcon\Session\Manager
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Helper\Arr\Get`
+    - `RuntimeException`
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `ManagerInterface`
 
 Session manager class
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var SessionHandlerInterface|null
  */
-private adapter;
+private $adapter;
 
 /**
  * @var string
  */
-private name = ;
+private $name = '';
 
 /**
  * @var array
  */
-private options;
+private $options;
 
 /**
  * @var string
  */
-private uniqueId = ;
+private $uniqueId = '';
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -577,26 +673,42 @@ Returns the status of the current session.
 
 
 
-<h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
+
+
+## Session\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Session/ManagerInterface.zep)
 
-| Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `RuntimeException`
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Session
 
 Interface for the Phalcon\Session\Manager
 
 
-## Constants
+### Constants
 ```php
 const SESSION_ACTIVE = 2;
 const SESSION_DISABLED = 0;
 const SESSION_NONE = 1;
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __get( string $key ): mixed;

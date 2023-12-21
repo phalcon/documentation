@@ -1,21 +1,36 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Crypt'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Crypt](#crypt)
-* [Phalcon\Crypt\CryptInterface](#crypt-cryptinterface)
-* [Phalcon\Crypt\Exception](#crypt-exception)
-* [Phalcon\Crypt\Mismatch](#crypt-mismatch)
+!!! info "NOTE"
 
-<h1 id="crypt">Class Phalcon\Crypt</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Crypt 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Crypt.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch |
-| Implements | CryptInterface |
+
+-   __Namespace__
+
+    - `Phalcon`
+
+-   __Uses__
+    
+    - `Phalcon\Crypt\CryptInterface`
+    - `Phalcon\Crypt\Exception\Exception`
+    - `Phalcon\Crypt\Exception\Mismatch`
+    - `Phalcon\Crypt\PadFactory`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `CryptInterface`
 
 Provides encryption capabilities to Phalcon applications.
 
@@ -35,7 +50,7 @@ echo $crypt->decrypt($encrypted, $key);
 ```
 
 
-## Constants
+### Constants
 ```php
 const PADDING_ANSI_X_923 = 1;
 const PADDING_DEFAULT = 0;
@@ -46,62 +61,62 @@ const PADDING_SPACE = 6;
 const PADDING_ZERO = 5;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected authTag;
+protected $authTag;
 
 /**
  * @var string
  */
-protected authData = ;
+protected $authData = '';
 
 /**
  * @var int
  */
-protected authTagLength = 16;
+protected $authTagLength = 16;
 
 /**
  * @var string
  */
-protected key = ;
+protected $key = ;
 
 /**
  * @var int
  */
-protected padding = 0;
+protected $padding = 0;
 
 /**
  * @var string
  */
-protected cipher = aes-256-cfb;
+protected $cipher = 'aes-256-cfb';
 
 /**
  * Available cipher methods.
  * @var array
  */
-protected availableCiphers;
+protected $availableCiphers;
 
 /**
  * The cipher iv length.
  * @var int
  */
-protected ivLength = 16;
+protected $ivLength = 16;
 
 /**
  * The name of hashing algorithm.
  * @var string
  */
-protected hashAlgo = sha256;
+protected $hashAlgo = 'sha256';
 
 /**
  * Whether calculating message digest enabled or not.
  *
  * @var bool
  */
-protected useSigning = true;
+protected $useSigning = true;
 
 ```
 
@@ -131,7 +146,6 @@ public function decryptBase64( string $text, mixed $key = null, bool $safe = boo
 ```
 Decrypt a text that is coded as a base64 string.
 
-@throws \Phalcon\Crypt\Mismatch
 
 
 ```php
@@ -154,21 +168,21 @@ Encrypts a text returning the result as a base64 string.
 
 
 ```php
-public function getAuthData(): string
+public function getAuthData(): string;
 ```
-
+Returns the auth data
 
 
 ```php
-public function getAuthTag(): string
+public function getAuthTag(): string;
 ```
-
+Returns the auth tag
 
 
 ```php
-public function getAuthTagLength(): int
+public function getAuthTagLength(): int;
 ```
-
+Returns the auth tag length
 
 
 ```php
@@ -236,7 +250,6 @@ public function setHashAlgo( string $hashAlgo ): CryptInterface;
 ```
 Set the name of hashing algorithm.
 
-@throws \Phalcon\Crypt\Exception
 
 
 ```php
@@ -310,16 +323,28 @@ Initialize available cipher algorithms.
 
 
 
-<h1 id="crypt-cryptinterface">Interface Phalcon\Crypt\CryptInterface</h1>
+## Crypt\CryptInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Crypt/CryptInterface.zep)
 
-| Namespace  | Phalcon\Crypt |
+
+-   __Namespace__
+
+    - `Phalcon\Crypt`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Crypt
 
 
-## Methods
+### Methods
 
 ```php
 public function decrypt( string $text, string $key = null ): string;
@@ -419,22 +444,48 @@ Changes the padding scheme used.
 
 
 
-<h1 id="crypt-exception">Class Phalcon\Crypt\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Crypt/Exception.zep)
 
-| Namespace  | Phalcon\Crypt |
-| Extends    | \Phalcon\Exception |
+## Crypt\Exception\Exception 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Crypt/Exception/Exception.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Crypt use this class
 
 
 
-<h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
+## Crypt\Exception\Mismatch 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Crypt/Mismatch.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Crypt/Exception/Mismatch.zep)
 
-| Namespace  | Phalcon\Crypt |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Crypt will use this class.

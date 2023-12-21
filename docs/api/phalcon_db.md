@@ -1,42 +1,32 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Db'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Db\AbstractDb](#db-abstractdb)
-* [Phalcon\Db\Adapter\AbstractAdapter](#db-adapter-abstractadapter)
-* [Phalcon\Db\Adapter\AdapterInterface](#db-adapter-adapterinterface)
-* [Phalcon\Db\Adapter\Pdo\AbstractPdo](#db-adapter-pdo-abstractpdo)
-* [Phalcon\Db\Adapter\Pdo\Mysql](#db-adapter-pdo-mysql)
-* [Phalcon\Db\Adapter\Pdo\Postgresql](#db-adapter-pdo-postgresql)
-* [Phalcon\Db\Adapter\Pdo\Sqlite](#db-adapter-pdo-sqlite)
-* [Phalcon\Db\Adapter\PdoFactory](#db-adapter-pdofactory)
-* [Phalcon\Db\Column](#db-column)
-* [Phalcon\Db\ColumnInterface](#db-columninterface)
-* [Phalcon\Db\Dialect](#db-dialect)
-* [Phalcon\Db\Dialect\Mysql](#db-dialect-mysql)
-* [Phalcon\Db\Dialect\Postgresql](#db-dialect-postgresql)
-* [Phalcon\Db\Dialect\Sqlite](#db-dialect-sqlite)
-* [Phalcon\Db\DialectInterface](#db-dialectinterface)
-* [Phalcon\Db\Enum](#db-enum)
-* [Phalcon\Db\Exception](#db-exception)
-* [Phalcon\Db\Index](#db-index)
-* [Phalcon\Db\IndexInterface](#db-indexinterface)
-* [Phalcon\Db\Profiler](#db-profiler)
-* [Phalcon\Db\Profiler\Item](#db-profiler-item)
-* [Phalcon\Db\RawValue](#db-rawvalue)
-* [Phalcon\Db\Reference](#db-reference)
-* [Phalcon\Db\ReferenceInterface](#db-referenceinterface)
-* [Phalcon\Db\Result\Pdo](#db-result-pdo)
-* [Phalcon\Db\ResultInterface](#db-resultinterface)
+!!! info "NOTE"
 
-<h1 id="db-abstractdb">Abstract Class Phalcon\Db\AbstractDb</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Db\AbstractDb ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/AbstractDb.zep)
 
-| Namespace  | Phalcon\Db |
-| Uses       | \PDO |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+    - `\PDO`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Db and its related classes provide a simple SQL database interface
 for Phalcon Framework. The Phalcon\Db is the basic class you use to connect
@@ -81,7 +71,7 @@ try {
 ```
 
 
-## Methods
+### Methods
 
 ```php
 public static function setup( array $options ): void;
@@ -91,103 +81,136 @@ Enables/disables options in the Database component
 
 
 
-<h1 id="db-adapter-abstractadapter">Abstract Class Phalcon\Db\Adapter\AbstractAdapter</h1>
+## Db\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/AbstractAdapter.zep)
 
-| Namespace  | Phalcon\Db\Adapter |
-| Uses       | Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
-| Implements | AdapterInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\DialectInterface`
+    - `Phalcon\Db\Enum`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Index`
+    - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\RawValue`
+    - `Phalcon\Db\Reference`
+    - `Phalcon\Db\ReferenceInterface`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `AdapterInterface`
+    - `EventsAwareInterface`
 
 Base class for Phalcon\Db\Adapter adapters
 
 
-## Properties
+### Properties
 ```php
 /**
  * Connection ID
+ *
+ * @var int
  */
-protected static connectionConsecutive = 0;
+protected $static $connectionConsecutive = ;
 
 /**
  * Active connection ID
  *
  * @var long
  */
-protected connectionId;
+protected $connectionId;
 
 /**
  * Descriptor used to connect to a database
+ *
+ * @var array
  */
-protected descriptor;
+protected $descriptor;
 
 /**
  * Dialect instance
+ *
+ * @var object
  */
-protected dialect;
+protected $dialect;
 
 /**
  * Name of the dialect used
  *
  * @var string
  */
-protected dialectType;
+protected $dialectType;
 
 /**
  * Event Manager
  *
  * @var ManagerInterface
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * The real SQL statement - what was executed
  *
  * @var string
  */
-protected realSqlStatement;
+protected $realSqlStatement;
 
 /**
  * Active SQL Bind Types
  *
  * @var array
  */
-protected sqlBindTypes;
+protected $sqlBindTypes;
 
 /**
  * Active SQL Statement
  *
  * @var string
  */
-protected sqlStatement;
+protected $sqlStatement;
 
 /**
  * Active SQL bound parameter variables
  *
  * @var array
  */
-protected sqlVariables;
+protected $sqlVariables;
 
 /**
  * Current transaction level
+ *
+ * @var int
  */
-protected transactionLevel = 0;
+protected $transactionLevel = ;
 
 /**
  * Whether the database supports transactions with save points
+ *
+ * @var bool
  */
-protected transactionsWithSavepoints = false;
+protected $transactionsWithSavepoints = false;
 
 /**
  * Type of database system the adapter is used for
  *
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $descriptor );
@@ -485,9 +508,9 @@ Returns internal dialect instance
 
 
 ```php
-public function getDialectType(): string
+public function getDialectType(): string;
 ```
-
+Name of the dialect used
 
 
 ```php
@@ -521,15 +544,15 @@ Active SQL statement in the object
 
 
 ```php
-public function getSqlVariables(): array
+public function getSQLVariables(): array;
 ```
-
+Active SQL variables in the object
 
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
-
+Type of database system the adapter is used for
 
 
 ```php
@@ -771,17 +794,34 @@ var_dump(
 
 
 
-<h1 id="db-adapter-adapterinterface">Interface Phalcon\Db\Adapter\AdapterInterface</h1>
+## Db\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/AdapterInterface.zep)
 
-| Namespace  | Phalcon\Db\Adapter |
-| Uses       | Phalcon\Db\DialectInterface, Phalcon\Db\ResultInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\ReferenceInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\DialectInterface`
+    - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\RawValue`
+    - `Phalcon\Db\ReferenceInterface`
+    - `Phalcon\Db\ResultInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Db adapters
 
 
-## Methods
+### Methods
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): bool;
@@ -1259,13 +1299,30 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-<h1 id="db-adapter-pdo-abstractpdo">Abstract Class Phalcon\Db\Adapter\Pdo\AbstractPdo</h1>
+## Db\Adapter\Pdo\AbstractPdo ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/AbstractPdo.zep)
 
-| Namespace  | Phalcon\Db\Adapter\Pdo |
-| Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\Pdo, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Adapter\Pdo`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AbstractAdapter`
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\ResultInterface`
+    - `Phalcon\Db\Result\PdoResult`
+    - `Phalcon\Events\ManagerInterface`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
 
 Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect
 to a database
@@ -1285,23 +1342,25 @@ $connection = new Mysql($config);
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Last affected rows
+ *
+ * @var int
  */
-protected affectedRows;
+protected $affectedRows;
 
 /**
  * PDO Handler
  *
  * @var \PDO
  */
-protected pdo;
+protected $pdo;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $descriptor );
@@ -1572,13 +1631,33 @@ Constructs the SQL statement (with parameters)
 
 
 
-<h1 id="db-adapter-pdo-mysql">Class Phalcon\Db\Adapter\Pdo\Mysql</h1>
+## Db\Adapter\Pdo\Mysql 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/Mysql.zep)
 
-| Namespace  | Phalcon\Db\Adapter\Pdo |
-| Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
-| Extends    | PdoAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Adapter\Pdo`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\Pdo\AbstractPdo`
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\Enum`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Index`
+    - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\Reference`
+    - `Phalcon\Db\ReferenceInterface`
+
+-   __Extends__
+    
+    `PdoAdapter`
+
+-   __Implements__
+    
 
 Specific functions for the MySQL database system
 
@@ -1597,21 +1676,27 @@ $connection = new Mysql($config);
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected dialectType = mysql;
+protected $dialectType = mysql;
 
 /**
  * @var string
  */
-protected type = mysql;
+protected $type = mysql;
 
 ```
 
-## Methods
+### Methods
+
+```php
+public function __construct( array $descriptor );
+```
+Constructor for Phalcon\Db\Adapter\Pdo
+
 
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
@@ -1663,13 +1748,33 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 
 
-<h1 id="db-adapter-pdo-postgresql">Class Phalcon\Db\Adapter\Pdo\Postgresql</h1>
+## Db\Adapter\Pdo\Postgresql 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/Postgresql.zep)
 
-| Namespace  | Phalcon\Db\Adapter\Pdo |
-| Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Throwable |
-| Extends    | PdoAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Adapter\Pdo`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\Pdo\AbstractPdo`
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\Enum`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\RawValue`
+    - `Phalcon\Db\Reference`
+    - `Phalcon\Db\ReferenceInterface`
+    - `Throwable`
+
+-   __Extends__
+    
+    `PdoAdapter`
+
+-   __Implements__
+    
 
 Specific functions for the PostgreSQL database system
 
@@ -1688,21 +1793,21 @@ $connection = new Postgresql($config);
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected dialectType = postgresql;
+protected $dialectType = 'postgresql';
 
 /**
  * @var string
  */
-protected type = pgsql;
+protected $type = 'pgsql';
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $descriptor );
@@ -1798,13 +1903,34 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 
 
-<h1 id="db-adapter-pdo-sqlite">Class Phalcon\Db\Adapter\Pdo\Sqlite</h1>
+## Db\Adapter\Pdo\Sqlite 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/Pdo/Sqlite.zep)
 
-| Namespace  | Phalcon\Db\Adapter\Pdo |
-| Uses       | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface |
-| Extends    | PdoAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Adapter\Pdo`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\Pdo\AbstractPdo`
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\Enum`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Index`
+    - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\RawValue`
+    - `Phalcon\Db\Reference`
+    - `Phalcon\Db\ReferenceInterface`
+
+-   __Extends__
+    
+    `PdoAdapter`
+
+-   __Implements__
+    
 
 Specific functions for the SQLite database system
 
@@ -1819,21 +1945,21 @@ $connection = new Sqlite(
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected dialectType = sqlite;
+protected $dialectType = 'sqlite';
 
 /**
  * @var string
  */
-protected type = sqlite;
+protected $type = 'sqlite';
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $descriptor );
@@ -1923,13 +2049,26 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 
 
-<h1 id="db-adapter-pdofactory">Class Phalcon\Db\Adapter\PdoFactory</h1>
+## Db\Adapter\PdoFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Adapter/PdoFactory.zep)
 
-| Namespace  | Phalcon\Db\Adapter |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
-| Extends    | AbstractFactory |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Factory\AbstractFactory`
+    - `Phalcon\Helper\Arr\Get`
+
+-   __Extends__
+    
+    `AbstractFactory`
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -1939,7 +2078,7 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $services = [] );
@@ -1967,12 +2106,24 @@ Returns the available adapters
 
 
 
-<h1 id="db-column">Class Phalcon\Db\Column</h1>
+## Db\Column 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Column.zep)
 
-| Namespace  | Phalcon\Db |
-| Implements | ColumnInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ColumnInterface`
 
 Allows to define columns to be used on create or alter table operations
 
@@ -1998,7 +2149,7 @@ $connection->addColumn("robots", null, $column);
 ```
 
 
-## Constants
+### Constants
 ```php
 const BIND_PARAM_BLOB = 3;
 const BIND_PARAM_BOOL = 5;
@@ -2036,57 +2187,59 @@ const TYPE_TINYTEXT = 25;
 const TYPE_VARCHAR = 2;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * Column Position
  *
  * @var string|null
  */
-protected after;
+protected $after;
 
 /**
  * Column is autoIncrement?
  *
  * @var bool
  */
-protected autoIncrement = false;
+protected $autoIncrement = false;
 
 /**
  * Bind Type
+ *
+ * @var int
  */
-protected bindType = 2;
+protected $bindType = 2;
 
 /**
  * Default column value
  */
-protected _default;
+protected $_default;
 
 /**
  * Position is first
  *
  * @var bool
  */
-protected first = false;
+protected $first = false;
 
 /**
  * The column have some numeric type?
  */
-protected isNumeric = false;
+protected $isNumeric = false;
 
 /**
  * Column's name
  *
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * Column's comment
  *
  * @var string
  */
-protected comment;
+protected $comment;
 
 /**
  * Column not nullable?
@@ -2095,58 +2248,60 @@ protected comment;
  *
  * @var bool
  */
-protected notNull = true;
+protected $notNull = true;
 
 /**
  * Column is part of the primary key?
+ *
+ * @var bool
  */
-protected primary = false;
+protected $primary = false;
 
 /**
  * Integer column number scale
  *
  * @var int
  */
-protected scale = 0;
+protected $scale = 0;
 
 /**
  * Integer column size
  *
- * @var int | string
+ * @var int|string
  */
-protected size = 0;
+protected $size = 0;
 
 /**
  * Column data type
  *
  * @var int
  */
-protected type;
+protected $type;
 
 /**
  * Column data type reference
  *
  * @var int
  */
-protected typeReference = -1;
+protected $typeReference = -1;
 
 /**
  * Column data type values
  *
  * @var array|string
  */
-protected typeValues;
+protected $typeValues;
 
 /**
  * Integer column unsigned?
  *
  * @var bool
  */
-protected unsigned = false;
+protected $unsigned = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, array $definition );
@@ -2169,13 +2324,12 @@ Returns the type of bind handling
 ```php
 public function getComment(): string
 ```
-
+Column's comment
 
 
 ```php
 public function getName(): string
 ```
-
 
 
 ```php
@@ -2258,16 +2412,28 @@ Returns true if number column is unsigned
 
 
 
-<h1 id="db-columninterface">Interface Phalcon\Db\ColumnInterface</h1>
+## Db\ColumnInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/ColumnInterface.zep)
 
-| Namespace  | Phalcon\Db |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Db\Column
 
 
-## Methods
+### Methods
 
 ```php
 public function getAfterPosition(): string | null;
@@ -2367,28 +2533,44 @@ Returns true if number column is unsigned
 
 
 
-<h1 id="db-dialect">Abstract Class Phalcon\Db\Dialect</h1>
+## Db\Dialect ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect.zep)
 
-| Namespace  | Phalcon\Db |
-| Implements | DialectInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `DialectInterface`
 
 This is the base class to each database dialect. This implements
 common methods to transform intermediate code into its RDBMS related syntax
 
 
-## Properties
+### Properties
 ```php
-//
-protected escapeChar;
+/**
+ * @var string
+ */
+protected $escapeChar;
 
-//
-protected customFunctions;
+/**
+ * @var array
+ */
+protected $customFunctions;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function createSavepoint( string $name ): string;
@@ -2668,27 +2850,45 @@ Prepares table for this RDBMS
 
 
 
-<h1 id="db-dialect-mysql">Class Phalcon\Db\Dialect\Mysql</h1>
+## Db\Dialect\Mysql 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect/Mysql.zep)
 
-| Namespace  | Phalcon\Db\Dialect |
-| Uses       | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface |
-| Extends    | Dialect |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Dialect`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\Dialect`
+    - `Phalcon\Db\DialectInterface`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\ReferenceInterface`
+
+-   __Extends__
+    
+    `Dialect`
+
+-   __Implements__
+    
 
 Generates database specific SQL for the MySQL RDBMS
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected escapeChar = `;
+protected $escapeChar = '`';
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2872,27 +3072,45 @@ Generates SQL to add the table creation options
 
 
 
-<h1 id="db-dialect-postgresql">Class Phalcon\Db\Dialect\Postgresql</h1>
+## Db\Dialect\Postgresql 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect/Postgresql.zep)
 
-| Namespace  | Phalcon\Db\Dialect |
-| Uses       | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface |
-| Extends    | Dialect |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Dialect`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\Dialect`
+    - `Phalcon\Db\DialectInterface`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\ReferenceInterface`
+
+-   __Extends__
+    
+    `Dialect`
+
+-   __Implements__
+    
 
 Generates database specific SQL for the PostgreSQL RDBMS
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected escapeChar = \";
+protected $escapeChar = "\"";
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3071,27 +3289,45 @@ protected function getTableOptions( array $definition ): string;
 
 
 
-<h1 id="db-dialect-sqlite">Class Phalcon\Db\Dialect\Sqlite</h1>
+## Db\Dialect\Sqlite 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Dialect/Sqlite.zep)
 
-| Namespace  | Phalcon\Db\Dialect |
-| Uses       | Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\Dialect, Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface |
-| Extends    | Dialect |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Dialect`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\ColumnInterface`
+    - `Phalcon\Db\Dialect`
+    - `Phalcon\Db\DialectInterface`
+    - `Phalcon\Db\Exception`
+    - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\ReferenceInterface`
+
+-   __Extends__
+    
+    `Dialect`
+
+-   __Implements__
+    
 
 Generates database specific SQL for the SQLite RDBMS
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected escapeChar = \";
+protected $escapeChar = "\"";
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3283,16 +3519,28 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-<h1 id="db-dialectinterface">Interface Phalcon\Db\DialectInterface</h1>
+## Db\DialectInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/DialectInterface.zep)
 
-| Namespace  | Phalcon\Db |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Db dialects
 
 
-## Methods
+### Methods
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3501,16 +3749,28 @@ Generates SQL checking for the existence of a schema.view
 
 
 
-<h1 id="db-enum">Class Phalcon\Db\Enum</h1>
+## Db\Enum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Enum.zep)
 
-| Namespace  | Phalcon\Db |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Constants for Phalcon\Db
 
 
-## Constants
+### Constants
 ```php
 const FETCH_ASSOC;
 const FETCH_BOTH;
@@ -3532,23 +3792,47 @@ const FETCH_UNIQUE;
 ```
 
 
-<h1 id="db-exception">Class Phalcon\Db\Exception</h1>
+## Db\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Exception.zep)
 
-| Namespace  | Phalcon\Db |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Db will use this class
 
 
 
-<h1 id="db-index">Class Phalcon\Db\Index</h1>
+## Db\Index 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Index.zep)
 
-| Namespace  | Phalcon\Db |
-| Implements | IndexInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `IndexInterface`
 
 Allows to define indexes to be used on tables. Indexes are a common way
 to enhance database performance. An index allows the database server to find
@@ -3579,32 +3863,32 @@ $connection->addIndex("robots", null, $index_primary);
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Index columns
  *
  * @var array
  */
-protected columns;
+protected $columns;
 
 /**
  * Index name
  *
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * Index type
  *
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, array $columns, string $type = string );
@@ -3613,35 +3897,47 @@ Phalcon\Db\Index constructor
 
 
 ```php
-public function getColumns(): array
+public function getColumns(): array;
 ```
-
+Index columns
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
-
+Index name
 
 
 ```php
-public function getType(): string
+public function getType(): string;
 ```
+Index type
 
 
 
 
-
-<h1 id="db-indexinterface">Interface Phalcon\Db\IndexInterface</h1>
+## Db\IndexInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/IndexInterface.zep)
 
-| Namespace  | Phalcon\Db |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Db\Index
 
 
-## Methods
+### Methods
 
 ```php
 public function getColumns(): array;
@@ -3663,12 +3959,24 @@ Gets the index type
 
 
 
-<h1 id="db-profiler">Class Phalcon\Db\Profiler</h1>
+## Db\Profiler 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Profiler.zep)
 
-| Namespace  | Phalcon\Db |
-| Uses       | Phalcon\Db\Profiler\Item |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Profiler\Item`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Instances of Phalcon\Db can generate execution profiles
 on SQL statements sent to the relational database. Profiled
@@ -3721,32 +4029,32 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
- * Active Phalcon\Db\Profiler\Item
+ * Active Item
  *
- * @var Phalcon\Db\Profiler\Item
+ * @var Item
  */
-protected activeProfile;
+protected $activeProfile;
 
 /**
- * All the Phalcon\Db\Profiler\Item in the active profile
+ * All the Items in the active profile
  *
- * @var \Phalcon\Db\Profiler\Item[]
+ * @var Item[]
  */
-protected allProfiles;
+protected $allProfiles;
 
 /**
  * Total time spent by all profiles to complete
  *
  * @var float
  */
-protected totalSeconds = 0;
+protected $totalSeconds = 0;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getLastProfile(): Item;
@@ -3792,83 +4100,96 @@ Stops the active profile
 
 
 
-<h1 id="db-profiler-item">Class Phalcon\Db\Profiler\Item</h1>
+## Db\Profiler\Item 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Profiler/Item.zep)
 
-| Namespace  | Phalcon\Db\Profiler |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Profiler`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This class identifies each profile in a Phalcon\Db\Profiler
 
 
-## Properties
+### Properties
 ```php
 /**
  * Timestamp when the profile ended
  *
  * @var double
  */
-protected finalTime;
+protected $finalTime;
 
 /**
  * Timestamp when the profile started
  *
  * @var double
  */
-protected initialTime;
+protected $initialTime;
 
 /**
  * SQL bind types related to the profile
  *
  * @var array
  */
-protected sqlBindTypes;
+protected $sqlBindTypes;
 
 /**
  * SQL statement related to the profile
  *
  * @var string
  */
-protected sqlStatement;
+protected $sqlStatement;
 
 /**
  * SQL variables related to the profile
  *
  * @var array
  */
-protected sqlVariables;
+protected $sqlVariables;
 
 ```
 
-## Methods
+### Methods
 
 ```php
-public function getFinalTime(): double
+public function getFinalTime(): double;
 ```
-
-
-
-```php
-public function getInitialTime(): double
-```
-
+Return the timestamp when the profile ended
 
 
 ```php
-public function getSqlBindTypes(): array
+public function getInitialTime(): double;
 ```
-
+Return the timestamp when the profile started
 
 
 ```php
-public function getSqlStatement(): string
+public function getSqlBindTypes(): array;
 ```
-
+Return the SQL bind types related to the profile
 
 
 ```php
-public function getSqlVariables(): array
+public function getSqlStatement(): string;
 ```
+Return the SQL statement related to the profile
+
+
+```php
+public function getSqlVariables(): array;
+```
+Return the SQL variables related to the profile
 
 
 
@@ -3881,40 +4202,52 @@ Returns the total time in seconds spent by the profile
 ```php
 public function setFinalTime( double $finalTime )
 ```
-
+Return the timestamp when the profile ended
 
 
 ```php
 public function setInitialTime( double $initialTime )
 ```
-
+Return the timestamp when the profile started
 
 
 ```php
 public function setSqlBindTypes( array $sqlBindTypes )
 ```
-
+Return the SQL bind types related to the profile
 
 
 ```php
 public function setSqlStatement( string $sqlStatement )
 ```
-
+Return the SQL statement related to the profile
 
 
 ```php
 public function setSqlVariables( array $sqlVariables )
 ```
+Return the SQL variables related to the profile
 
 
 
 
-
-<h1 id="db-rawvalue">Class Phalcon\Db\RawValue</h1>
+## Db\RawValue 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/RawValue.zep)
 
-| Namespace  | Phalcon\Db |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This class allows to insert/update raw data without quoting or formatting.
 
@@ -3930,18 +4263,18 @@ $subscriber->save();
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Raw value without quoting or formatting
  *
  * @var string
  */
-protected value;
+protected $value;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $value );
@@ -3950,25 +4283,37 @@ Phalcon\Db\RawValue constructor
 
 
 ```php
-public function __toString(): string
+public function __toString(): string;
 ```
 
 
 
 ```php
-public function getValue(): string
+public function getValue(): string;
 ```
 
 
 
 
 
-<h1 id="db-reference">Class Phalcon\Db\Reference</h1>
+## Db\Reference 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Reference.zep)
 
-| Namespace  | Phalcon\Db |
-| Implements | ReferenceInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ReferenceInterface`
 
 Allows to define reference constraints on tables
 
@@ -3991,67 +4336,67 @@ $reference = new \Phalcon\Db\Reference(
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Local reference columns
  *
  * @var array
  */
-protected columns;
+protected $columns;
 
 /**
  * Constraint name
  *
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * Referenced Columns
  *
  * @var array
  */
-protected referencedColumns;
+protected $referencedColumns;
 
 /**
  * Referenced Schema
  *
  * @var string
  */
-protected referencedSchema;
+protected $referencedSchema;
 
 /**
  * Referenced Table
  *
  * @var string
  */
-protected referencedTable;
+protected $referencedTable;
 
 /**
  * Schema name
  *
  * @var string
  */
-protected schemaName;
+protected $schemaName;
 
 /**
  * ON DELETE
  *
  * @var string
  */
-protected onDelete;
+protected $onDelete;
 
 /**
  * ON UPDATE
  *
  * @var string
  */
-protected onUpdate;
+protected $onUpdate;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, array $definition );
@@ -4060,65 +4405,77 @@ Phalcon\Db\Reference constructor
 
 
 ```php
-public function getColumns(): array
+public function getColumns(): array;
 ```
-
+Local reference columns
 
 
 ```php
-public function getName(): string
+public function getName(): string;
 ```
-
+Constraint name
 
 
 ```php
-public function getOnDelete(): string
+public function getOnDelete(): string;
 ```
-
+ON DELETE
 
 
 ```php
-public function getOnUpdate(): string
+public function getOnUpdate(): string;
 ```
-
+ON UPDATE
 
 
 ```php
-public function getReferencedColumns(): array
+public function getReferencedColumns(): array;
 ```
-
+Referenced Columns
 
 
 ```php
-public function getReferencedSchema(): string
+public function getReferencedSchema(): string;
 ```
-
+Referenced Schema
 
 
 ```php
-public function getReferencedTable(): string
+public function getReferencedTable(): string;
 ```
-
+Referenced Table
 
 
 ```php
-public function getSchemaName(): string
+public function getSchemaName(): string;
 ```
+Schema name
 
 
 
 
-
-<h1 id="db-referenceinterface">Interface Phalcon\Db\ReferenceInterface</h1>
+## Db\ReferenceInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/ReferenceInterface.zep)
 
-| Namespace  | Phalcon\Db |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Db\Reference
 
 
-## Methods
+### Methods
 
 ```php
 public function getColumns(): array;
@@ -4170,13 +4527,27 @@ Gets the schema where referenced table is
 
 
 
-<h1 id="db-result-pdo">Class Phalcon\Db\Result\Pdo</h1>
+## Db\Result\PdoResult 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Result/Pdo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/Result/PdoResult.zep)
 
-| Namespace  | Phalcon\Db\Result |
-| Uses       | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface |
-| Implements | ResultInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Db\Result`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Db\Enum`
+    - `Phalcon\Db\ResultInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ResultInterface`
 
 Encapsulates the resultset internals
 
@@ -4193,41 +4564,41 @@ while ($robot = $result->fetchArray()) {
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected bindParams;
+protected $bindParams;
 
 //
-protected bindTypes;
+protected $bindTypes;
 
 //
-protected connection;
+protected $connection;
 
 /**
  * Active fetch mode
  */
-protected fetchMode;
+protected $fetchMode;
 
 /**
  * Internal resultset
  *
  * @var \PDOStatement
  */
-protected pdoStatement;
+protected $pdoStatement;
 
 //
-protected result;
+protected $result;
 
 //
-protected rowCount = false;
+protected $rowCount = false;
 
 //
-protected sqlStatement;
+protected $sqlStatement;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null );
@@ -4368,16 +4739,28 @@ $result->setFetchMode(
 
 
 
-<h1 id="db-resultinterface">Interface Phalcon\Db\ResultInterface</h1>
+## Db\ResultInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Db/ResultInterface.zep)
 
-| Namespace  | Phalcon\Db |
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Db\Result objects
 
 
-## Methods
+### Methods
 
 ```php
 public function dataSeek( long $number );

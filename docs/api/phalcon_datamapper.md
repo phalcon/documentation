@@ -1,58 +1,51 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\DataMapper'
+hide:
+    - navigation
 ---
 
-* [Phalcon\DataMapper\Pdo\Connection](#datamapper-pdo-connection)
-* [Phalcon\DataMapper\Pdo\Connection\AbstractConnection](#datamapper-pdo-connection-abstractconnection)
-* [Phalcon\DataMapper\Pdo\Connection\ConnectionInterface](#datamapper-pdo-connection-connectioninterface)
-* [Phalcon\DataMapper\Pdo\Connection\Decorated](#datamapper-pdo-connection-decorated)
-* [Phalcon\DataMapper\Pdo\Connection\PdoInterface](#datamapper-pdo-connection-pdointerface)
-* [Phalcon\DataMapper\Pdo\ConnectionLocator](#datamapper-pdo-connectionlocator)
-* [Phalcon\DataMapper\Pdo\ConnectionLocatorInterface](#datamapper-pdo-connectionlocatorinterface)
-* [Phalcon\DataMapper\Pdo\Exception\CannotDisconnect](#datamapper-pdo-exception-cannotdisconnect)
-* [Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound](#datamapper-pdo-exception-connectionnotfound)
-* [Phalcon\DataMapper\Pdo\Exception\Exception](#datamapper-pdo-exception-exception)
-* [Phalcon\DataMapper\Pdo\Profiler\MemoryLogger](#datamapper-pdo-profiler-memorylogger)
-* [Phalcon\DataMapper\Pdo\Profiler\Profiler](#datamapper-pdo-profiler-profiler)
-* [Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface](#datamapper-pdo-profiler-profilerinterface)
-* [Phalcon\DataMapper\Query\AbstractConditions](#datamapper-query-abstractconditions)
-* [Phalcon\DataMapper\Query\AbstractQuery](#datamapper-query-abstractquery)
-* [Phalcon\DataMapper\Query\Bind](#datamapper-query-bind)
-* [Phalcon\DataMapper\Query\Delete](#datamapper-query-delete)
-* [Phalcon\DataMapper\Query\Insert](#datamapper-query-insert)
-* [Phalcon\DataMapper\Query\QueryFactory](#datamapper-query-queryfactory)
-* [Phalcon\DataMapper\Query\Select](#datamapper-query-select)
-* [Phalcon\DataMapper\Query\Update](#datamapper-query-update)
+!!! info "NOTE"
+
+    All classes are prefixed with `Phalcon`
 
 
-<h1 id="datamapper-pdo-connection">Class Phalcon\DataMapper\Pdo\Connection</h1>
+
+## DataMapper\Pdo\Connection 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Connection.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo |
-| Uses       | InvalidArgumentException, Phalcon\DataMapper\Pdo\Connection\AbstractConnection, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface |
-| Extends    | AbstractConnection |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Phalcon\DataMapper\Pdo\Connection\AbstractConnection`
+    - `Phalcon\DataMapper\Pdo\Profiler\Profiler`
+    - `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
+-   __Extends__
+    
+    `AbstractConnection`
+
+-   __Implements__
+    
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
-@property array             $arguments
-@property PDO               $pdo
-@property ProfilerInterface $profiler
 
-
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected arguments;
+protected $arguments;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $dsn, string $username = null, string $password = null, array $options = [], array $queries = [], ProfilerInterface $profiler = null );
@@ -83,36 +76,47 @@ Disconnects from the database.
 
 
 
-<h1 id="datamapper-pdo-connection-abstractconnection">Abstract Class Phalcon\DataMapper\Pdo\Connection\AbstractConnection</h1>
+## DataMapper\Pdo\Connection\AbstractConnection ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Connection/AbstractConnection.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Connection |
-| Uses       | BadMethodCallException, Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface |
-| Implements | ConnectionInterface |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Uses__
+    
+    - `BadMethodCallException`
+    - `Phalcon\DataMapper\Pdo\Exception\CannotBindValue`
+    - `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ConnectionInterface`
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
-@property PDO               $pdo
-@property ProfilerInterface $profiler
 
-
-## Properties
+### Properties
 ```php
 /**
- * @var PDO
+ * @var \PDO
  */
-protected pdo;
+protected $pdo;
 
 /**
  * @var ProfilerInterface
  */
-protected profiler;
+protected $profiler;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __call( mixed $name, array $arguments );
@@ -369,24 +373,33 @@ Bind a value using the proper PDO::PARAM_* type.
 
 
 
-<h1 id="datamapper-pdo-connection-connectioninterface">Interface Phalcon\DataMapper\Pdo\Connection\ConnectionInterface</h1>
+## DataMapper\Pdo\Connection\ConnectionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Connection/ConnectionInterface.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Connection |
-| Uses       | Phalcon\DataMapper\Pdo\Exception\CannotBindValue, Phalcon\DataMapper\Pdo\Parser\ParserInterface, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface |
-| Extends    | PdoInterface |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Exception\CannotBindValue`
+    - `Phalcon\DataMapper\Pdo\Parser\ParserInterface`
+    - `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
+-   __Extends__
+    
+    `PdoInterface`
+
+-   __Implements__
+    
 
 Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
-@property array             $args
-@property PDO               $pdo
-@property ProfilerInterface $profiler
-@property array             $quote
 
-
-## Methods
+### Methods
 
 ```php
 public function connect(): void;
@@ -518,18 +531,32 @@ Sets the Profiler instance.
 
 
 
-<h1 id="datamapper-pdo-connection-decorated">Class Phalcon\DataMapper\Pdo\Connection\Decorated</h1>
+## DataMapper\Pdo\Connection\Decorated 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Connection/Decorated.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Connection |
-| Uses       | Phalcon\DataMapper\Pdo\Exception\CannotDisconnect, Phalcon\DataMapper\Pdo\Profiler\Profiler, Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface |
-| Extends    | AbstractConnection |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`
+    - `Phalcon\DataMapper\Pdo\Profiler\Profiler`
+    - `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
+-   __Extends__
+    
+    `AbstractConnection`
+
+-   __Implements__
+    
 
 Decorates an existing PDO instance with the extended methods.
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( \PDO $pdo, ProfilerInterface $profiler = null );
@@ -556,16 +583,28 @@ Disconnects from the database; disallowed with decorated PDO connections.
 
 
 
-<h1 id="datamapper-pdo-connection-pdointerface">Interface Phalcon\DataMapper\Pdo\Connection\PdoInterface</h1>
+## DataMapper\Pdo\Connection\PdoInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Connection/PdoInterface.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Connection |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 An interface to the native PDO object.
 
 
-## Methods
+### Methods
 
 ```php
 public function beginTransaction(): bool;
@@ -663,54 +702,63 @@ Set a database connection attribute
 
 
 
-<h1 id="datamapper-pdo-connectionlocator">Class Phalcon\DataMapper\Pdo\ConnectionLocator</h1>
+## DataMapper\Pdo\ConnectionLocator 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/ConnectionLocator.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo |
-| Uses       | Phalcon\DataMapper\Pdo\Connection\ConnectionInterface, Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound |
-| Implements | ConnectionLocatorInterface |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`
+    - `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ConnectionLocatorInterface`
 
 Manages Connection instances for default, read, and write connections.
 
-@property callable $master
-@property array    $read
-@property array    $write
 
-
-## Properties
+### Properties
 ```php
 /**
  * A default Connection connection factory/instance.
  *
  * @var ConnectionInterface
  */
-protected master;
+protected $master;
 
 /**
  * A registry of Connection "read" factories/instances.
  *
  * @var array
  */
-protected read;
+protected $read;
 
 /**
  * A registry of Connection "write" factories/instances.
  *
  * @var array
  */
-protected write;
+protected $write;
 
 /**
  * A collection of resolved instances
  *
  * @var array
  */
-private instances;
+private $instances;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( ConnectionInterface $master, array $read = [], array $write = [] );
@@ -766,17 +814,29 @@ Returns a connection by name.
 
 
 
-<h1 id="datamapper-pdo-connectionlocatorinterface">Interface Phalcon\DataMapper\Pdo\ConnectionLocatorInterface</h1>
+## DataMapper\Pdo\ConnectionLocatorInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/ConnectionLocatorInterface.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo |
-| Uses       | Phalcon\DataMapper\Pdo\Connection\ConnectionInterface |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Locates PDO connections for default, read, and write databases.
 
 
-## Methods
+### Methods
 
 ```php
 public function getMaster(): ConnectionInterface;
@@ -820,125 +880,260 @@ Sets a write connection registry entry by name.
 
 
 
-<h1 id="datamapper-pdo-exception-cannotdisconnect">Class Phalcon\DataMapper\Pdo\Exception\CannotDisconnect</h1>
+## DataMapper\Pdo\Exception\CannotDisconnect 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Exception/CannotDisconnect.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Exception |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 ExtendedPdo could not disconnect; e.g., because its PDO connection was
 created externally and then injected.
 
 
 
-<h1 id="datamapper-pdo-exception-connectionnotfound">Class Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound</h1>
+## DataMapper\Pdo\Exception\ConnectionNotFound 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Exception/ConnectionNotFound.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Exception |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 Locator could not find a named connection.
 
 
 
-<h1 id="datamapper-pdo-exception-exception">Class Phalcon\DataMapper\Pdo\Exception\Exception</h1>
+## DataMapper\Pdo\Exception\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Exception/Exception.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Exception |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Base Exception class
 
 
 
-<h1 id="datamapper-pdo-profiler-memorylogger">Class Phalcon\DataMapper\Pdo\Profiler\MemoryLogger</h1>
+## DataMapper\Pdo\Profiler\MemoryLogger 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Profiler/MemoryLogger.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler |
-| Uses       | Psr\Log\AbstractLogger |
-| Extends    | AbstractLogger |
 
-A naive memory-based logger.
+-   __Namespace__
 
-@property array $messages
+    - `Phalcon\DataMapper\Pdo\Profiler`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Adapter\AdapterInterface`
+    - `Phalcon\Logger\Adapter\Noop`
+    - `Phalcon\Logger\Enum`
+    - `Phalcon\Logger\LoggerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `LoggerInterface`
+
+A memory-based logger.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected messages;
+protected $messages;
 
 ```
 
-## Methods
+### Methods
 
 ```php
-public function getMessages();
+public function alert( string $message, array $context = [] ): void;
+```
+
+
+
+```php
+public function critical( string $message, array $context = [] ): void;
+```
+
+
+
+```php
+public function debug( string $message, array $context = [] ): void;
+```
+
+
+
+```php
+public function emergency( string $message, array $context = [] ): void;
+```
+
+
+
+```php
+public function error( string $message, array $context = [] ): void;
+```
+
+
+
+```php
+public function getAdapter( string $name ): AdapterInterface;
+```
+Returns an adapter from the stack
+
+
+```php
+public function getAdapters(): array;
+```
+Returns the adapter stack array
+
+
+```php
+public function getLogLevel(): int;
+```
+Returns the log level
+
+
+```php
+public function getMessages(): array;
 ```
 Returns the logged messages.
 
 
 ```php
-public function log( mixed $level, mixed $message, array $context = [] );
+public function getName(): string;
+```
+Returns the name of the logger
+
+
+```php
+public function info( string $message, array $context = [] ): void;
+```
+
+
+
+```php
+public function log( mixed $level, string $message, array $context = [] ): void;
 ```
 Logs a message.
 
 
+```php
+public function notice( string $message, array $context = [] ): void;
+```
 
 
-<h1 id="datamapper-pdo-profiler-profiler">Class Phalcon\DataMapper\Pdo\Profiler\Profiler</h1>
+
+```php
+public function warning( string $message, array $context = [] ): void;
+```
+
+
+
+
+
+## DataMapper\Pdo\Profiler\Profiler 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Profiler/Profiler.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler |
-| Uses       | Phalcon\DataMapper\Pdo\Exception\Exception, Phalcon\Helper\Json, Psr\Log\LoggerInterface, Psr\Log\LogLevel |
-| Implements | ProfilerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Profiler`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Exception\Exception`
+    - `Phalcon\Logger\Enum`
+    - `Phalcon\Logger\LoggerInterface`
+    - `Phalcon\Helper\Json\Encode`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ProfilerInterface`
 
 Sends query profiles to a logger.
 
-@property bool            $active
-@property array           $context
-@property string          $logFormat
-@property string          $logLevel
-@property LoggerInterface $logger
 
-
-## Properties
+### Properties
 ```php
 /**
  * @var bool
  */
-protected active = false;
+protected $active = false;
 
 /**
  * @var array
  */
-protected context;
+protected $context;
 
 /**
  * @var string
  */
-protected logFormat = ;
+protected $logFormat = ;
 
 /**
  * @var int
  */
-protected logLevel = 0;
+protected $logLevel = ;
 
 /**
  * @var LoggerInterface
  */
-protected logger;
+protected $logger;
+
+/**
+ * @var Encode
+ */
+private $encode;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( LoggerInterface $logger = null );
@@ -1002,17 +1197,29 @@ Starts a profile entry.
 
 
 
-<h1 id="datamapper-pdo-profiler-profilerinterface">Interface Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface</h1>
+## DataMapper\Pdo\Profiler\ProfilerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Pdo/Profiler/ProfilerInterface.zep)
 
-| Namespace  | Phalcon\DataMapper\Pdo\Profiler |
-| Uses       | Psr\Log\LoggerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Profiler`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\LoggerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface to send query profiles to a logger.
 
 
-## Methods
+### Methods
 
 ```php
 public function finish( string $statement = null, array $values = [] ): void;
@@ -1070,18 +1277,29 @@ Starts a profile entry.
 
 
 
-<h1 id="datamapper-query-abstractconditions">Abstract Class Phalcon\DataMapper\Query\AbstractConditions</h1>
+## DataMapper\Query\AbstractConditions ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/AbstractConditions.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
-| Uses       | Phalcon\Helper\Arr |
-| Extends    | AbstractQuery |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Query`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractQuery`
+
+-   __Implements__
+    
 
 Class AbstractConditions
 
 
-## Methods
+### Methods
 
 ```php
 public function andWhere( string $condition, mixed $value = null, int $type = int ): AbstractConditions;
@@ -1187,40 +1405,48 @@ Processes a value (array or string) and merges it with the store
 
 
 
-<h1 id="datamapper-query-abstractquery">Abstract Class Phalcon\DataMapper\Query\AbstractQuery</h1>
+## DataMapper\Query\AbstractQuery ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/AbstractQuery.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
-| Uses       | Phalcon\DataMapper\Pdo\Connection |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Query`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Class AbstractQuery
 
-@property Bind       $bind
-@property Connection $connection
-@property array      $store
 
-
-## Properties
+### Properties
 ```php
 /**
  * @var Bind
  */
-protected bind;
+protected $bind;
 
 /**
  * @var Connection
  */
-protected connection;
+protected $connection;
 
 /**
  * @var array
  */
-protected store;
+protected $store;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Connection $connection, Bind $bind );
@@ -1302,33 +1528,42 @@ Indents a collection
 
 
 
-<h1 id="datamapper-query-bind">Class Phalcon\DataMapper\Query\Bind</h1>
+## DataMapper\Query\Bind 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/Bind.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Query`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Class Bind
 
-@property int   $inlineCount
-@property array $store
 
-
-## Properties
+### Properties
 ```php
 /**
  * @var int
  */
-protected inlineCount = 0;
+protected $inlineCount = ;
 
 /**
  * @var array
  */
-protected store;
+protected $store;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function bindInline( mixed $value, int $type = int ): string;
@@ -1374,28 +1609,30 @@ Processes an array - if passed as an `inline` parameter
 
 
 
-<h1 id="datamapper-query-delete">Class Phalcon\DataMapper\Query\Delete</h1>
+## DataMapper\Query\Delete 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/Delete.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
-| Uses       | Phalcon\DataMapper\Pdo\Connection |
-| Extends    | AbstractConditions |
 
-This file is part of the Phalcon Framework.
+-   __Namespace__
 
-(c) Phalcon Team <team@phalcon.io>
+    - `Phalcon\DataMapper\Query`
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Connection`
 
-Implementation of this file has been influenced by AtlasPHP
+-   __Extends__
+    
+    `AbstractConditions`
 
-@link    https://github.com/atlasphp/Atlas.Query
-@license https://github.com/atlasphp/Atlas.Qyert/blob/1.x/LICENSE.md
+-   __Implements__
+    
+
+Delete Query
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Connection $connection, Bind $bind );
@@ -1429,18 +1666,30 @@ Adds the `RETURNING` clause
 
 
 
-<h1 id="datamapper-query-insert">Class Phalcon\DataMapper\Query\Insert</h1>
+## DataMapper\Query\Insert 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/Insert.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
-| Uses       | Phalcon\DataMapper\Pdo\Connection |
-| Extends    | AbstractQuery |
 
-Class Insert
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Query`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Extends__
+    
+    `AbstractQuery`
+
+-   __Implements__
+    
+
+Insert Query
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Connection $connection, Bind $bind );
@@ -1498,28 +1747,38 @@ Sets a column = value condition
 
 
 
-<h1 id="datamapper-query-queryfactory">Class Phalcon\DataMapper\Query\QueryFactory</h1>
+## DataMapper\Query\QueryFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/QueryFactory.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
-| Uses       | Phalcon\DataMapper\Pdo\Connection |
 
-Class QueryFactory
+-   __Namespace__
 
-@property string $class
+    - `Phalcon\DataMapper\Query`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+QueryFactory
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected selectClass = ;
+protected $selectClass = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $selectClass = string );
@@ -1559,32 +1818,30 @@ Create a new Update object
 
 
 
-<h1 id="datamapper-query-select">Class Phalcon\DataMapper\Query\Select</h1>
+## DataMapper\Query\Select 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/Select.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
-| Uses       | BadMethodCallException, Phalcon\Helper\Arr |
-| Extends    | AbstractConditions |
 
-Class Select
+-   __Namespace__
 
-@property string $asAlias
-@property bool   $forUpdate
+    - `Phalcon\DataMapper\Query`
 
-@method int    fetchAffected()
-@method array  fetchAll()
-@method array  fetchAssoc()
-@method array  fetchColumn(int $column = 0)
-@method array  fetchGroup(int $flags = PDO::FETCH_ASSOC)
-@method object fetchObject(string $class = 'stdClass', array $arguments = [])
-@method array  fetchObjects(string $class = 'stdClass', array $arguments = [])
-@method array  fetchOne()
-@method array  fetchPairs()
-@method mixed  fetchValue()
+-   __Uses__
+    
+    - `BadMethodCallException`
+
+-   __Extends__
+    
+    `AbstractConditions`
+
+-   __Implements__
+    
+
+Select Query
 
 
-## Constants
+### Constants
 ```php
 const JOIN_INNER = INNER;
 const JOIN_LEFT = LEFT;
@@ -1592,21 +1849,21 @@ const JOIN_NATURAL = NATURAL;
 const JOIN_RIGHT = RIGHT;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected asAlias = ;
+protected $asAlias = ;
 
 /**
  * @var bool
  */
-protected forUpdate = false;
+protected $forUpdate = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __call( string $method, array $params );
@@ -1639,9 +1896,9 @@ The `AS` statement for the query - useful in sub-queries
 
 
 ```php
-public function columns(): Select;
+public function columns( array $columns ): Select;
 ```
-The columns to select from. If a key is set in an array element, the
+The columns to select from. If a key is set in the array element, the
 key will be used as the alias
 
 
@@ -1731,18 +1988,30 @@ Statement builder
 
 
 
-<h1 id="datamapper-query-update">Class Phalcon\DataMapper\Query\Update</h1>
+## DataMapper\Query\Update 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/DataMapper/Query/Update.zep)
 
-| Namespace  | Phalcon\DataMapper\Query |
-| Uses       | Phalcon\DataMapper\Pdo\Connection |
-| Extends    | AbstractConditions |
 
-Class Update
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Query`
+
+-   __Uses__
+    
+    - `Phalcon\DataMapper\Pdo\Connection`
+
+-   __Extends__
+    
+    `AbstractConditions`
+
+-   __Implements__
+    
+
+Update Query
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Connection $connection, Bind $bind );

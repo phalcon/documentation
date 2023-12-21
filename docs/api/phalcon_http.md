@@ -1,127 +1,116 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Http'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Http\Cookie](#http-cookie)
-* [Phalcon\Http\Cookie\CookieInterface](#http-cookie-cookieinterface)
-* [Phalcon\Http\Cookie\Exception](#http-cookie-exception)
-* [Phalcon\Http\Message\AbstractCommon](#http-message-abstractcommon)
-* [Phalcon\Http\Message\AbstractMessage](#http-message-abstractmessage)
-* [Phalcon\Http\Message\AbstractRequest](#http-message-abstractrequest)
-* [Phalcon\Http\Message\Exception\InvalidArgumentException](#http-message-exception-invalidargumentexception)
-* [Phalcon\Http\Message\Request](#http-message-request)
-* [Phalcon\Http\Message\RequestFactory](#http-message-requestfactory)
-* [Phalcon\Http\Message\Response](#http-message-response)
-* [Phalcon\Http\Message\ResponseFactory](#http-message-responsefactory)
-* [Phalcon\Http\Message\ServerRequest](#http-message-serverrequest)
-* [Phalcon\Http\Message\ServerRequestFactory](#http-message-serverrequestfactory)
-* [Phalcon\Http\Message\Stream](#http-message-stream)
-* [Phalcon\Http\Message\Stream\Input](#http-message-stream-input)
-* [Phalcon\Http\Message\Stream\Memory](#http-message-stream-memory)
-* [Phalcon\Http\Message\Stream\Temp](#http-message-stream-temp)
-* [Phalcon\Http\Message\StreamFactory](#http-message-streamfactory)
-* [Phalcon\Http\Message\UploadedFile](#http-message-uploadedfile)
-* [Phalcon\Http\Message\UploadedFileFactory](#http-message-uploadedfilefactory)
-* [Phalcon\Http\Message\Uri](#http-message-uri)
-* [Phalcon\Http\Message\UriFactory](#http-message-urifactory)
-* [Phalcon\Http\Request](#http-request)
-* [Phalcon\Http\Request\Exception](#http-request-exception)
-* [Phalcon\Http\Request\File](#http-request-file)
-* [Phalcon\Http\Request\FileInterface](#http-request-fileinterface)
-* [Phalcon\Http\RequestInterface](#http-requestinterface)
-* [Phalcon\Http\Response](#http-response)
-* [Phalcon\Http\Response\Cookies](#http-response-cookies)
-* [Phalcon\Http\Response\CookiesInterface](#http-response-cookiesinterface)
-* [Phalcon\Http\Response\Exception](#http-response-exception)
-* [Phalcon\Http\Response\Headers](#http-response-headers)
-* [Phalcon\Http\Response\HeadersInterface](#http-response-headersinterface)
-* [Phalcon\Http\ResponseInterface](#http-responseinterface)
-* [Phalcon\Http\Server\AbstractMiddleware](#http-server-abstractmiddleware)
-* [Phalcon\Http\Server\AbstractRequestHandler](#http-server-abstractrequesthandler)
+!!! info "NOTE"
 
-<h1 id="http-cookie">Class Phalcon\Http\Cookie</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Http\Cookie 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Cookie.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Helper\Arr, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
-| Extends    | AbstractInjectionAware |
-| Implements | CookieInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Encryption\Crypt\CryptInterface`
+    - `Phalcon\Encryption\Crypt\Mismatch`
+    - `Phalcon\Filter\FilterInterface`
+    - `Phalcon\Http\Cookie\CookieInterface`
+    - `Phalcon\Http\Cookie\Exception`
+    - `Phalcon\Http\Response\Exception`
+    - `Phalcon\Session\ManagerInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `CookieInterface`
 
 Provide OO wrappers to manage a HTTP cookie.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected domain;
+protected $domain;
 
 /**
  * @var int
  */
-protected expire;
+protected $expire;
 
 //
-protected filter;
+protected $filter;
 
 /**
  * @var bool
  */
-protected httpOnly;
+protected $httpOnly;
 
 /**
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var string
  */
-protected path;
+protected $path;
 
 /**
  * @var bool
  */
-protected read = false;
+protected $read = false;
 
 /**
  * @var bool
  */
-protected restored = false;
+protected $restored = false;
 
 /**
  * @var bool
  */
-protected secure;
+protected $secure;
 
 /**
  * The cookie's sign key.
+ *
  * @var string|null
  */
-protected signKey;
+protected $signKey;
 
 /**
  * @var bool
  */
-protected useEncryption = false;
+protected $useEncryption = false;
 
 /**
  * @var mixed
  */
-protected value;
+protected $value;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = bool, array $options = [] );
@@ -255,13 +244,10 @@ public function setSignKey( string $signKey = null ): CookieInterface;
 ```
 Sets the cookie's sign key.
 
-The `$signKey' MUST be at least 32 characters long
+The `$signKey` MUST be at least 32 characters long
 and generated using a cryptographically secure pseudo random generator.
 
 Use NULL to disable cookie signing.
-
-@see \Phalcon\Security\Random
-@throws \Phalcon\Http\Cookie\Exception
 
 
 ```php
@@ -286,16 +272,28 @@ Assert the cookie's key is enough long.
 
 
 
-<h1 id="http-cookie-cookieinterface">Interface Phalcon\Http\Cookie\CookieInterface</h1>
+## Http\Cookie\CookieInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Cookie/CookieInterface.zep)
 
-| Namespace  | Phalcon\Http\Cookie |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Http\Cookie
 
 
-## Methods
+### Methods
 
 ```php
 public function delete();
@@ -415,12 +413,24 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 
 
-<h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
+## Http\Cookie\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Cookie/Exception.zep)
 
-| Namespace  | Phalcon\Http\Cookie |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Http\Cookie\Exception
 
@@ -428,17 +438,29 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 
 
-<h1 id="http-message-abstractcommon">Abstract Class Phalcon\Http\Message\AbstractCommon</h1>
+## Http\Message\AbstractCommon ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/AbstractCommon.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Message`
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Common methods
 
 
-## Methods
+### Methods
 
 ```php
 final protected function checkStringParameter( mixed $element ): void;
@@ -461,30 +483,45 @@ clone of the object back
 
 
 
-<h1 id="http-message-abstractmessage">Abstract Class Phalcon\Http\Message\AbstractMessage</h1>
+## Http\Message\AbstractMessage ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/AbstractMessage.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
-| Extends    | AbstractCommon |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Collection`
+    - `Phalcon\Collection\CollectionInterface`
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Psr\Http\Message\StreamInterface`
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+    
+    - `AbstractCommon`
+    
+-   __Implements__
+
 
 Message methods
 
 
-## Properties
+### Properties
 ```php
 /**
  * Gets the body of the message.
  *
  * @var StreamInterface
  */
-protected body;
+protected $body;
 
 /**
  * @var Collection|CollectionInterface
  */
-protected headers;
+protected $headers;
 
 /**
  * Retrieves the HTTP protocol version as a string.
@@ -496,7 +533,7 @@ protected headers;
  *
  * @var string
  */
-protected protocolVersion = 1.1;
+protected $protocolVersion = 1.1;
 
 /**
  * Retrieves the URI instance.
@@ -507,11 +544,11 @@ protected protocolVersion = 1.1;
  *
  * @var UriInterface
  */
-protected uri;
+protected $uri;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getBody(): StreamInterface
@@ -757,33 +794,43 @@ Checks the protocol
 
 
 
-
-<h1 id="http-message-abstractrequest">Abstract Class Phalcon\Http\Message\AbstractRequest</h1>
+## Http\Message\AbstractRequest ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/AbstractRequest.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface |
-| Extends    | AbstractMessage |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+    
+    - `AbstractMessage`
+    
+-   __Implements__
 
 Request methods
 
 
-## Properties
+### Properties
 ```php
 /**
  * Retrieves the HTTP method of the request.
  *
  * @var string
  */
-protected method = GET;
+protected $method = 'GET';
 
 /**
  * The request-target, if it has been provided or calculated.
  *
  * @var null|string
  */
-protected requestTarget;
+protected $requestTarget;
 
 /**
  * Retrieves the URI instance.
@@ -794,11 +841,11 @@ protected requestTarget;
  *
  * @var UriInterface
  */
-protected uri;
+protected $uri;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getMethod(): string
@@ -903,37 +950,55 @@ Sets a valid Uri
 
 
 
-<h1 id="http-message-exception-invalidargumentexception">Class Phalcon\Http\Message\Exception\InvalidArgumentException</h1>
+## Http\Message\Exception\InvalidArgumentException
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Exception/InvalidArgumentException.zep)
 
-| Namespace  | Phalcon\Http\Message\Exception |
-| Uses       | Throwable |
-| Extends    | \InvalidArgumentException |
-| Implements | Throwable |
+-   __Namespace__
 
-This file is part of the Phalcon Framework.
+    - `Phalcon\Http\Message\Exception`
 
-(c) Phalcon Team <team@phalcon.io>
+-   __Uses__
+    
+    - `Throwable`
+    
+-   __Extends__
+    
+    - `InvalidArgumentException`
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+-   __Implements__
 
+    - `Throwable`
+    
 
-
-<h1 id="http-message-request">Final Class Phalcon\Http\Message\Request</h1>
+## Http\Message\Request ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Request.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Http\Message\Stream\Input, Phalcon\Http\Message\AbstractRequest, Psr\Http\Message\RequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
-| Extends    | AbstractRequest |
-| Implements | RequestInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Message\Stream\Input`
+    - `Phalcon\Http\Message\AbstractRequest`
+    - `Psr\Http\Message\RequestInterface`
+    - `Psr\Http\Message\StreamInterface`
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+    
+    - `AbstractRequest`
+    
+-   __Implements__
+
+    - `RequestInterface`
 
 PSR-7 Request
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $method = string, mixed $uri = null, mixed $body = string, mixed $headers = [] );
@@ -942,19 +1007,32 @@ Request constructor.
 
 
 
-
-<h1 id="http-message-requestfactory">Final Class Phalcon\Http\Message\RequestFactory</h1>
+## Http\Message\RequestFactory ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/RequestFactory.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Psr\Http\Message\RequestInterface, Psr\Http\Message\RequestFactoryInterface, Psr\Http\Message\UriInterface |
-| Implements | RequestFactoryInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Psr\Http\Message\RequestInterface`
+    - `Psr\Http\Message\RequestFactoryInterface`    
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+    
+    
+-   __Implements__
+
+    - `RequestFactoryInterface`
+    
 
 PSR-17 RequestFactory
 
 
-## Methods
+### Methods
 
 ```php
 public function createRequest( string $method, mixed $uri ): RequestInterface;
@@ -963,20 +1041,34 @@ Create a new request.
 
 
 
-
-<h1 id="http-message-response">Final Class Phalcon\Http\Message\Response</h1>
+## Http\Message\Response ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Response.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Helper\Number, Phalcon\Http\Message\AbstractMessage, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ResponseInterface |
-| Extends    | AbstractMessage |
-| Implements | ResponseInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Helper\Number`
+    - `Phalcon\Http\Message\AbstractMessage`
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Psr\Http\Message\ResponseInterface`
+    
+-   __Extends__
+    
+    - `AbstractMessage`
+    
+-   __Implements__
+
+    - `ResponseInterface`
+
 
 PSR-7 Response
 
 
-## Properties
+### Properties
 ```php
 /**
  * Gets the response reason phrase associated with the status code.
@@ -993,7 +1085,7 @@ PSR-7 Response
  *
  * @var string
  */
-protected reasonPhrase = ;
+protected $reasonPhrase = '';
 
 /**
  * Gets the response status code.
@@ -1003,11 +1095,11 @@ protected reasonPhrase = ;
  *
  * @var int
  */
-protected statusCode = 200;
+protected $statusCode = 200;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $body = string, int $code = int, array $headers = [] );
@@ -1059,18 +1151,30 @@ Set a valid status code and phrase
 
 
 
-<h1 id="http-message-responsefactory">Final Class Phalcon\Http\Message\ResponseFactory</h1>
+## Http\Message\ResponseFactory ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/ResponseFactory.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ResponseFactoryInterface |
-| Implements | ResponseFactoryInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Psr\Http\Message\ResponseInterface`
+    - `Psr\Http\Message\ResponseFactoryInterface`
+    
+-   __Extends__
+    
+-   __Implements__
+
+    - `ResponseFactoryInterface`
+
 
 PSR-17 ResponseFactory
 
 
-## Methods
+### Methods
 
 ```php
 public function createResponse( int $code = int, string $reasonPhrase = string ): ResponseInterface;
@@ -1079,25 +1183,43 @@ Create a new response.
 
 
 
-
-<h1 id="http-message-serverrequest">Final Class Phalcon\Http\Message\ServerRequest</h1>
+## Http\Message\ServerRequest ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/ServerRequest.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface |
-| Extends    | AbstractRequest |
-| Implements | ServerRequestInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Collection`
+    - `Phalcon\Collection\CollectionInterface`
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Phalcon\Http\Message\Stream\Input`
+    - `Psr\Http\Message\ServerRequestInterface`
+    - `Psr\Http\Message\StreamInterface`
+    - `Psr\Http\Message\UploadedFileInterface`
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+
+    - `AbstractRequest
+    
+-   __Implements__
+
+    - `ServerRequestInterface`
+
 
 PSR-7 ServerRequest
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var Collection|CollectionInterface
  */
-protected attributes;
+protected $attributes;
 
 /**
  * Retrieve cookies.
@@ -1109,7 +1231,7 @@ protected attributes;
  *
  * @var array
  */
-protected cookieParams;
+protected $cookieParams;
 
 /**
  * Retrieve any parameters provided in the request body.
@@ -1125,7 +1247,7 @@ protected cookieParams;
  *
  * @var mixed
  */
-protected parsedBody;
+protected $parsedBody;
 
 /**
  * Retrieve query string arguments.
@@ -1139,7 +1261,7 @@ protected parsedBody;
  *
  * @var array
  */
-protected queryParams;
+protected $queryParams;
 
 /**
  * Retrieve server parameters.
@@ -1150,7 +1272,7 @@ protected queryParams;
  *
  * @var array
  */
-protected serverParams;
+protected $serverParams;
 
 /**
  * Retrieve normalized file upload data.
@@ -1163,11 +1285,11 @@ protected serverParams;
  *
  * @var array
  */
-protected uploadedFiles;
+protected $uploadedFiles;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $method = string, mixed $uri = null, array $serverParams = [], mixed $body = string, mixed $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], mixed $parsedBody = null, string $protocol = string );
@@ -1330,19 +1452,37 @@ the attribute.
 
 
 
-
-<h1 id="http-message-serverrequestfactory">Class Phalcon\Http\Message\ServerRequestFactory</h1>
+## Http\Message\ServerRequestFactory ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/ServerRequestFactory.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface |
-| Implements | ServerRequestFactoryInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Collection`
+    - `Phalcon\Collection\CollectionInterface`
+    - `Phalcon\Helper\Arr`
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Psr\Http\Message\ServerRequestFactoryInterface`
+    - `Psr\Http\Message\ServerRequestInterface`
+    - `Psr\Http\Message\UploadedFileInterface`
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+
+    
+-   __Implements__
+
+    - `ServerRequestFactoryInterface`
+
 
 PSR-17 ServerRequestFactory
 
 
-## Methods
+### Methods
 
 ```php
 public function createServerRequest( string $method, mixed $uri, array $serverParams = [] ): ServerRequestInterface;
@@ -1372,32 +1512,46 @@ Returns the apache_request_headers if it exists
 
 
 
-<h1 id="http-message-stream">Class Phalcon\Http\Message\Stream</h1>
+## Http\Message\Stream
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Stream.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Helper\Arr, Exception, Psr\Http\Message\StreamInterface, RuntimeException |
-| Implements | StreamInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Exception`
+    - `Phalcon\Helper\Arr`
+    - `Psr\Http\Message\StreamInterface`
+    - `RuntimeException`
+    
+-   __Extends__
+
+    
+-   __Implements__
+
+    - `StreamInterface`
 
 PSR-7 Stream
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var resource | null
  */
-protected handle;
+protected $handle;
 
 /**
  * @var resource | string
  */
-protected stream;
+protected $stream;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $stream, string $mode = string );
@@ -1526,14 +1680,24 @@ Write data to the stream.
 
 
 
-
-<h1 id="http-message-stream-input">Class Phalcon\Http\Message\Stream\Input</h1>
+## Http\Message\Stream\Input
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Stream/Input.zep)
 
-| Namespace  | Phalcon\Http\Message\Stream |
-| Uses       | Phalcon\Http\Message\Stream |
-| Extends    | Stream |
+-   __Namespace__
+
+    - `Phalcon\Http\Message\Stream`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Message\Stream`
+    
+-   __Extends__
+
+    - `Stream`
+    
+-   __Implements__
+
 
 Describes a data stream from "php://input"
 
@@ -1542,21 +1706,21 @@ a wrapper around the most common operations, including serialization of
 the entire stream to a string.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-private data = ;
+private data = '';
 
 /**
  * @var bool
  */
-private eof = false;
+private $eof = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct();
@@ -1602,14 +1766,24 @@ Read data from the stream.
 
 
 
-
-<h1 id="http-message-stream-memory">Class Phalcon\Http\Message\Stream\Memory</h1>
+## Http\Message\Stream\Memory
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Stream/Memory.zep)
 
-| Namespace  | Phalcon\Http\Message\Stream |
-| Uses       | Phalcon\Http\Message\Stream |
-| Extends    | Stream |
+-   __Namespace__
+
+    - `Phalcon\Http\Message\Stream`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Message\Stream`
+    
+-   __Extends__
+
+    - `Stream`
+    
+-   __Implements__
+
 
 Describes a data stream from "php://memory"
 
@@ -1618,7 +1792,7 @@ a wrapper around the most common operations, including serialization of
 the entire stream to a string.
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $mode = string );
@@ -1627,14 +1801,24 @@ Constructor
 
 
 
-
-<h1 id="http-message-stream-temp">Class Phalcon\Http\Message\Stream\Temp</h1>
+## Http\Message\Stream\Temp
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Stream/Temp.zep)
 
-| Namespace  | Phalcon\Http\Message\Stream |
-| Uses       | Phalcon\Http\Message\Stream |
-| Extends    | Stream |
+-   __Namespace__
+
+    - `Phalcon\Http\Message\Stream`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Message\Stream`
+    
+-   __Extends__
+
+    - `Stream`
+    
+-   __Implements__
+
 
 Describes a data stream from "php://temp"
 
@@ -1643,7 +1827,7 @@ a wrapper around the most common operations, including serialization of
 the entire stream to a string.
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $mode = string );
@@ -1653,18 +1837,32 @@ Constructor
 
 
 
-<h1 id="http-message-streamfactory">Final Class Phalcon\Http\Message\StreamFactory</h1>
+## Http\Message\StreamFactory
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/StreamFactory.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamFactoryInterface, Psr\Http\Message\StreamInterface |
-| Implements | StreamFactoryInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Psr\Http\Message\StreamFactoryInterface`
+    - `Psr\Http\Message\StreamInterface`
+    
+-   __Extends__
+
+    
+-   __Implements__
+
+    - `StreamFactoryInterface`
+
 
 PSR-17 StreamFactory
 
 
-## Methods
+### Methods
 
 ```php
 public function createStream( string $content = string ): StreamInterface;
@@ -1694,26 +1892,43 @@ The stream MUST be readable and may be writable.
 
 
 
-
-<h1 id="http-message-uploadedfile">Final Class Phalcon\Http\Message\UploadedFile</h1>
+## Http\Message\UploadedFile ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/UploadedFile.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Helper\Number, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, RuntimeException |
-| Implements | UploadedFileInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Helper\Number`
+    - `Phalcon\Helper\Arr`
+    - `Phalcon\Helper\Str`
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Psr\Http\Message\StreamInterface`
+    - `Psr\Http\Message\UploadedFileInterface`
+    - `RuntimeException`
+    
+-   __Extends__
+
+    
+-   __Implements__
+
+    - `UploadedFileInterface`
+
 
 PSR-7 UploadedFile
 
 
-## Properties
+### Properties
 ```php
 /**
  * If the file has already been moved, we hold that status here
  *
  * @var bool
  */
-private alreadyMoved = false;
+private $alreadyMoved = false;
 
 /**
  * Retrieve the filename sent by the client.
@@ -1727,7 +1942,7 @@ private alreadyMoved = false;
  *
  * @var string | null
  */
-private clientFilename;
+private $clientFilename;
 
 /**
  * Retrieve the media type sent by the client.
@@ -1741,7 +1956,7 @@ private clientFilename;
  *
  * @var string | null
  */
-private clientMediaType;
+private $clientMediaType;
 
 /**
  * Retrieve the error associated with the uploaded file.
@@ -1758,14 +1973,14 @@ private clientMediaType;
  *
  * @var int
  */
-private error = 0;
+private $error = 0;
 
 /**
  * If the stream is a string (file name) we store it here
  *
  * @var string
  */
-private fileName = ;
+private $fileName = '';
 
 /**
  * Retrieve the file size.
@@ -1776,18 +1991,18 @@ private fileName = ;
  *
  * @var int | null
  */
-private size;
+private $size;
 
 /**
  * Holds the stream/string for the uploaded file
  *
  * @var StreamInterface|string|null
  */
-private stream;
+private $stream;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null );
@@ -1866,19 +2081,32 @@ cannot guarantee writing to stream destinations.
 
 
 
-
-<h1 id="http-message-uploadedfilefactory">Final Class Phalcon\Http\Message\UploadedFileFactory</h1>
+## Http\Message\UploadedFileFactory ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/UploadedFileFactory.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UploadedFileFactoryInterface |
-| Implements | UploadedFileFactoryInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Psr\Http\Message\StreamInterface`
+    - `Psr\Http\Message\UploadedFileInterface`
+    - `Psr\Http\Message\UploadedFileFactoryInterface`
+    
+-   __Extends__
+
+    
+-   __Implements__
+
+    - `UploadedFileFactoryInterface`
+
 
 PSR-17 UploadedFileFactory
 
 
-## Methods
+### Methods
 
 ```php
 public function createUploadedFile( StreamInterface $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null ): UploadedFileInterface;
@@ -1894,26 +2122,41 @@ the stream.
 
 
 
-<h1 id="http-message-uri">Final Class Phalcon\Http\Message\Uri</h1>
+## Http\Message\Uri ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/Uri.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface |
-| Extends    | AbstractCommon |
-| Implements | UriInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Phalcon\Helper\Arr`
+    - `Phalcon\Helper\Str`
+    - `Phalcon\Http\Message\Exception\InvalidArgumentException`
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+
+    - `AbstractCommon`
+    
+-   __Implements__
+
+    - `UriInterface`
+
 
 PSR-7 Uri
 
 
-## Properties
+### Properties
 ```php
 /**
  * Returns the fragment of the URL
  *
  * @return string
  */
-protected fragment = ;
+protected $fragment = '';
 
 /**
  * Retrieve the host component of the URI.
@@ -1927,19 +2170,19 @@ protected fragment = ;
  *
  * @return string
  */
-protected host = ;
+protected $host = '';
 
 /**
  * @var string
  */
-protected pass = ;
+protected $pass = '';
 
 /**
  * Returns the path of the URL
  *
  * @return string
  */
-protected path = ;
+protected $path = '';
 
 /**
  * Retrieve the port component of the URI.
@@ -1956,14 +2199,14 @@ protected path = ;
  *
  * @return int|null
  */
-protected port;
+protected $port;
 
 /**
  * Returns the query of the URL
  *
  * @return string
  */
-protected query = ;
+protected $query = '';
 
 /**
  * Retrieve the scheme component of the URI.
@@ -1980,16 +2223,16 @@ protected query = ;
  *
  * @return string
  */
-protected scheme = https;
+protected $scheme = 'https';
 
 /**
  * @var string
  */
-protected user = ;
+protected $user = '';
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $uri = string );
@@ -2162,19 +2405,31 @@ Return an instance with the specified user information.
 
 
 
-
-<h1 id="http-message-urifactory">Final Class Phalcon\Http\Message\UriFactory</h1>
+## Http\Message\UriFactory ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Message/UriFactory.zep)
 
-| Namespace  | Phalcon\Http\Message |
-| Uses       | Psr\Http\Message\UriFactoryInterface, Psr\Http\Message\UriInterface |
-| Implements | UriFactoryInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+    - `Psr\Http\Message\UriFactoryInterface`
+    - `Psr\Http\Message\UriInterface`
+    
+-   __Extends__
+
+    
+-   __Implements__
+
+    - `UriFactoryInterface`
+
 
 PSR-17 UriFactory
 
 
-## Methods
+### Methods
 
 ```php
 public function createUri( string $uri = string ): UriInterface;
@@ -2185,14 +2440,37 @@ functions
 
 
 
-<h1 id="http-request">Class Phalcon\Http\Request</h1>
+## Http\Request 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Request.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Helper\Json, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass |
-| Extends    | AbstractInjectionAware |
-| Implements | RequestInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Filter\FilterInterface`
+    - `Phalcon\Http\Message\RequestMethodInterface`
+    - `Phalcon\Http\Request\Exception`
+    - `Phalcon\Http\Request\File`
+    - `Phalcon\Http\Request\FileInterface`
+    - `Phalcon\Helper\Json\Decode`
+    - `UnexpectedValueException`
+    - `stdClass`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `RequestInterface`
+    - `RequestMethodInterface`
 
 Encapsulates request information for easy and secure access from application
 controllers.
@@ -2220,7 +2498,7 @@ $request->getLanguages();
 ```
 
 
-## Properties
+### Properties
 ```php
 //
 private filterService;
@@ -2248,7 +2526,7 @@ private strictHostCheck = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
@@ -2413,9 +2691,9 @@ $request->getHttpHost(); // example.com
 
 
 ```php
-public function getHttpMethodParameterOverride(): bool
+public function getHttpMethodParameterOverride(): bool;
 ```
-
+Return the HTTP method parameter override flag
 
 
 ```php
@@ -2727,7 +3005,7 @@ Returns the number of files available
 ```php
 public function setHttpMethodParameterOverride( bool $httpMethodParameterOverride )
 ```
-
+Set the HTTP method parameter override flag
 
 
 ```php
@@ -2783,12 +3061,24 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 
 
-<h1 id="http-request-exception">Class Phalcon\Http\Request\Exception</h1>
+## Http\Request\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Request/Exception.zep)
 
-| Namespace  | Phalcon\Http\Request |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Http\Request\Exception
 
@@ -2796,13 +3086,24 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 
 
-<h1 id="http-request-file">Class Phalcon\Http\Request\File</h1>
+## Http\Request\File 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Request/File.zep)
 
-| Namespace  | Phalcon\Http\Request |
-| Uses       | Phalcon\Helper\Arr |
-| Implements | FileInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `FileInterface`
 
 Phalcon\Http\Request\File
 
@@ -2827,41 +3128,41 @@ class PostsController extends Controller
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string|null
  */
-protected error;
+protected $error;
 
 /**
  * @var string
  */
-protected extension;
+protected $extension;
 
 /**
  * @var string|null
  */
-protected key;
+protected $key;
 
 //
-protected name;
+protected $name;
 
 //
-protected realType;
+protected $realType;
 
 //
-protected size;
+protected $size;
 
 //
-protected tmp;
+protected $tmp;
 
 //
-protected type;
+protected $type;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $file, mixed $key = null );
@@ -2870,19 +3171,19 @@ Phalcon\Http\Request\File constructor
 
 
 ```php
-public function getError(): string|null
+public function getError(): string | null;
 ```
 
 
 
 ```php
-public function getExtension(): string
+public function getExtension(): string;
 ```
 
 
 
 ```php
-public function getKey(): string|null
+public function getKey(): string | null;
 ```
 
 
@@ -2932,19 +3233,28 @@ Moves the temporary file to a destination within the application
 
 
 
-<h1 id="http-request-fileinterface">Interface Phalcon\Http\Request\FileInterface</h1>
+## Http\Request\FileInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Request/FileInterface.zep)
 
-| Namespace  | Phalcon\Http\Request |
 
-Phalcon\Http\Request\FileInterface
+-   __Namespace__
+
+    - `Phalcon\Http\Request`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Http\Request\File
 
 
-
-## Methods
+### Methods
 
 ```php
 public function getError(): string | null;
@@ -2991,17 +3301,30 @@ Move the temporary file to a destination
 
 
 
-<h1 id="http-requestinterface">Interface Phalcon\Http\RequestInterface</h1>
+## Http\RequestInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/RequestInterface.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Http\Request\FileInterface, stdClass |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Request\FileInterface`
+    - `stdClass`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Http\Request
 
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
@@ -3413,13 +3736,42 @@ Returns the number of files available
 
 
 
-<h1 id="http-response">Class Phalcon\Http\Response</h1>
+## Http\Response 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Response.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Helper\Fs, Phalcon\Helper\Json, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
-| Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `DateTime`
+    - `DateTimeZone`
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Http\Message\ResponseStatusCodeInterface`
+    - `Phalcon\Http\Response\CookiesInterface`
+    - `Phalcon\Http\Response\Exception`
+    - `Phalcon\Http\Response\Headers`
+    - `Phalcon\Http\Response\HeadersInterface`
+    - `Phalcon\Mvc\Url\UrlInterface`
+    - `Phalcon\Mvc\ViewInterface`
+    - `Phalcon\Helper\Json\Encode`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
+    - `InjectionAwareInterface`
+    - `ResponseInterface`
+    - `ResponseStatusCodeInterface`
 
 Part of the HTTP cycle is return responses to the clients.
 Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task.
@@ -3435,37 +3787,37 @@ $response->send();
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected container;
+protected $container;
 
 //
-protected content;
+protected $content;
 
 //
-protected cookies;
+protected $cookies;
 
 //
-protected eventsManager;
+protected $eventsManager;
 
 //
-protected file;
+protected $file;
 
 //
-protected headers;
+protected $headers;
 
 /**
  * @var bool
  */
-protected sent = false;
+protected $sent = false;
 
 //
-protected statusCodes;
+protected $statusCodes;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $content = null, mixed $code = null, mixed $status = null );
@@ -3763,14 +4115,29 @@ $response->setStatusCode(404, "Not Found");
 
 
 
-<h1 id="http-response-cookies">Class Phalcon\Http\Response\Cookies</h1>
+## Http\Response\Cookies 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Response/Cookies.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\Cookie\Exception, Phalcon\Http\Cookie\CookieInterface |
-| Extends    | AbstractInjectionAware |
-| Implements | CookiesInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Http\Cookie\CookieInterface`
+    - `Phalcon\Http\Cookie\Exception`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `CookiesInterface`
 
 Phalcon\Http\Response\Cookies
 
@@ -3820,26 +4187,26 @@ $di->set(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected cookies;
+protected $cookies;
 
 //
-protected registered = false;
+protected $registered = false;
 
 /**
  * The cookie's sign key.
  * @var string|null
  */
-protected signKey;
+protected $signKey;
 
 //
-protected useEncryption = true;
+protected $useEncryption = true;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( bool $useEncryption = bool, string $signKey = null );
@@ -3935,19 +4302,31 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-<h1 id="http-response-cookiesinterface">Interface Phalcon\Http\Response\CookiesInterface</h1>
+## Http\Response\CookiesInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Response/CookiesInterface.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Http\Cookie\CookieInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Cookie\CookieInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Http\Response\CookiesInterface
 
 Interface for Phalcon\Http\Response\Cookies
 
 
-## Methods
+### Methods
 
 ```php
 public function delete( string $name ): bool;
@@ -4000,12 +4379,24 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-<h1 id="http-response-exception">Class Phalcon\Http\Response\Exception</h1>
+## Http\Response\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Response/Exception.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Http\Response\Exception
 
@@ -4013,26 +4404,38 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 
 
-<h1 id="http-response-headers">Class Phalcon\Http\Response\Headers</h1>
+## Http\Response\Headers 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Response/Headers.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Implements | HeadersInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `HeadersInterface`
 
 Phalcon\Http\Response\Headers
 
 This class is a bag to manage the response headers
 
 
-## Properties
+### Properties
 ```php
 //
-protected headers;
+protected $headers;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name ): string | bool;
@@ -4084,18 +4487,30 @@ Returns the current headers as an array
 
 
 
-<h1 id="http-response-headersinterface">Interface Phalcon\Http\Response\HeadersInterface</h1>
+## Http\Response\HeadersInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Response/HeadersInterface.zep)
 
-| Namespace  | Phalcon\Http\Response |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Http\Response\HeadersInterface
 
 Interface for Phalcon\Http\Response\Headers compatible bags
 
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name ): string | bool;
@@ -4135,19 +4550,32 @@ Sets a raw header to be sent at the end of the request
 
 
 
-<h1 id="http-responseinterface">Interface Phalcon\Http\ResponseInterface</h1>
+## Http\ResponseInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/ResponseInterface.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | DateTime, Phalcon\Http\Response\HeadersInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `DateTime`
+    - `Phalcon\Http\Response\HeadersInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Http\Response
 
 Interface for Phalcon\Http\Response
 
 
-## Methods
+### Methods
 
 ```php
 public function appendContent( mixed $content ): ResponseInterface;
@@ -4284,14 +4712,29 @@ Sets the HTTP response code
 
 
 
+## Http\Server\AbstractMiddleware ![Abstract](../assets/images/abstract-green.svg) 
 
-<h1 id="http-server-abstractmiddleware">Abstract Class Phalcon\Http\Server\AbstractMiddleware</h1>
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Server\AbstractMiddleware.zep)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Server/AbstractMiddleware.zep)
 
-| Namespace  | Phalcon\Http\Server |
-| Uses       | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Server\MiddlewareInterface, Psr\Http\Server\RequestHandlerInterface |
-| Implements | MiddlewareInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Server`
+
+-   __Uses__
+    
+    - `Psr\Http\Message\ResponseInterface`
+    - `Psr\Http\Message\ServerRequestInterface`
+    - `Psr\Http\Server\MiddlewareInterface`
+    - `Psr\Http\Server\RequestHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `MiddlewareInterface`
+
 
 Participant in processing a server request and response.
 
@@ -4300,7 +4743,7 @@ by acting on the request, generating the response, or forwarding the
 request to a subsequent middleware and possibly acting on its response.
 
 
-## Methods
+### Methods
 
 ```php
 abstract public function process( ServerRequestInterface $request, RequestHandlerInterface $handler ): ResponseInterface;
@@ -4313,14 +4756,28 @@ request handler to do so.
 
 
 
+## Http\Server\AbstractRequestHandler ![Abstract](../assets/images/abstract-green.svg) 
 
-<h1 id="http-server-abstractrequesthandler">Abstract Class Phalcon\Http\Server\AbstractRequestHandler</h1>
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Server\AbstractRequestHandler.zep)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Http/Server/AbstractRequestHandler.zep)
 
-| Namespace  | Phalcon\Http\Server |
-| Uses       | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Server\RequestHandlerInterface |
-| Implements | RequestHandlerInterface |
+-   __Namespace__
+
+    - `Phalcon\Http\Server`
+
+-   __Uses__
+    
+    - `Psr\Http\Message\ResponseInterface`
+    - `Psr\Http\Message\ServerRequestInterface`
+    - `Psr\Http\Server\RequestHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `RequestHandlerInterface`
+
 
 Handles a server request and produces a response.
 
@@ -4328,7 +4785,7 @@ An HTTP request handler process an HTTP request in order to produce an
 HTTP response.
 
 
-## Methods
+### Methods
 
 ```php
 abstract public function handle( ServerRequestInterface $request ): ResponseInterface;

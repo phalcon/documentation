@@ -1,28 +1,36 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Helper'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Helper\Arr](#helper-arr)
-* [Phalcon\Helper\Base64](#helper-base64)
-* [Phalcon\Helper\Exception](#helper-exception)
-* [Phalcon\Helper\Fs](#helper-fs)
-* [Phalcon\Helper\Json](#helper-json)
-* [Phalcon\Helper\Number](#helper-number)
-* [Phalcon\Helper\Str](#helper-str)
+!!! info "NOTE"
 
-<h1 id="helper-arr">Class Phalcon\Helper\Arr</h1>
+    All classes are prefixed with `Phalcon`
+
+
+## Helper\Arr
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Helper/Arr.zep)
 
-| Namespace  | Phalcon\Helper |
-| Uses       | stdClass |
+
+-   __Namespace__
+
+    - `Phalcon\Helper`
+
+-   __Uses__
+
+    - `stdClass`
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 This class offers quick array functions throughout the framework
 
 
-## Methods
+### Methods
 
 ```php
 final public static function blackList( array $collection, array $blackList ): array;
@@ -168,18 +176,28 @@ by the keys obtained from the elements of a whitelist
 
 
 
-<h1 id="helper-base64">Class Phalcon\Helper\Base64</h1>
+## Helper\Base64
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Helper/Base64.zep)
 
-| Namespace  | Phalcon\Helper |
 
-Phalcon\Helper\Base64
+-   __Namespace__
+
+    - `Phalcon\Helper`
+
+-   __Uses__
+
+   
+-   __Extends__
+
+
+-   __Implements__
+
 
 This class offers quick string base64 functions
 
 
-## Methods
+### Methods
 
 ```php
 final public static function decodeUrl( string $input ): string;
@@ -194,28 +212,49 @@ Encode a json string in Base64 Url format.
 
 
 
-
-<h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
+## Helper\Exception
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Helper/Exception.zep)
 
-| Namespace  | Phalcon\Helper |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Helper`
+
+-   __Uses__
+
+
+-   __Extends__
+
+    - `Phalcon\Exception`
+     
+-   __Implements__
 
 Exceptions thrown in Phalcon\Helper will use this class
 
 
-
-<h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
+## Helper\Fs
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Helper/Fs.zep)
 
-| Namespace  | Phalcon\Helper |
+
+-   __Namespace__
+
+    - `Phalcon\Helper`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 This class offers file operation helper
 
 
-## Methods
+### Methods
 
 ```php
 final public static function basename( string $uri, mixed $suffix = null ): string;
@@ -226,18 +265,29 @@ see https://bugs.php.net/bug.php?id=37738
 
 
 
-
-<h1 id="helper-json">Class Phalcon\Helper\Json</h1>
+## Helper\Json
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Helper/Json.zep)
 
-| Namespace  | Phalcon\Helper |
-| Uses       | InvalidArgumentException |
+
+-   __Namespace__
+
+    - `Phalcon\Helper`
+
+-   __Uses__
+
+    - `InvalidArgumentException`
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 This class offers a wrapper for JSON methods to serialize and unserialize
 
 
-## Methods
+### Methods
 
 ```php
 final public static function decode( string $data, bool $associative = bool, int $depth = int, int $options = int ): mixed;
@@ -277,20 +327,29 @@ echo Json::encode($data);
 ```
 
 
-
-
-<h1 id="helper-number">Class Phalcon\Helper\Number</h1>
+## Helper\Number
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Helper/Number.zep)
 
-| Namespace  | Phalcon\Helper |
 
-Phalcon\Helper\number
+-   __Namespace__
+
+    - `Phalcon\Helper`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
+
 
 This class offers numeric functions for the framework
 
 
-## Methods
+### Methods
 
 ```php
 final public static function between( int $value, int $from, int $to ): bool;
@@ -299,18 +358,29 @@ Helper method to get an array element or a default
 
 
 
-
-<h1 id="helper-str">Class Phalcon\Helper\Str</h1>
+## Helper\Str
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Helper/Str.zep)
 
-| Namespace  | Phalcon\Helper |
-| Uses       | RuntimeException |
+
+-   __Namespace__
+
+    - `Phalcon\Helper`
+
+-   __Uses__
+
+    - `RuntimeException`
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 This class offers quick string functions throughout the framework
 
 
-## Constants
+### Constants
 ```php
 const RANDOM_ALNUM = 0;
 const RANDOM_ALPHA = 1;
@@ -320,7 +390,7 @@ const RANDOM_NOZERO = 4;
 const RANDOM_NUMERIC = 3;
 ```
 
-## Methods
+### Methods
 
 ```php
 final public static function camelize( string $text, mixed $delimiter = null ): string;

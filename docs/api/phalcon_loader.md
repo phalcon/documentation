@@ -1,20 +1,31 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Loader'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Loader](#loader)
-* [Phalcon\Loader\Exception](#loader-exception)
+!!! info "NOTE"
 
-<h1 id="loader">Class Phalcon\Loader</h1>
+    All classes are prefixed with `Phalcon`
+
+## Loader 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Loader.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Loader\Exception, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface |
-| Implements | EventsAwareInterface |
 
+-   __Namespace__
+
+    - `Phalcon\Autoload`
+
+-   __Uses__
+    
+    - `Phalcon\Events\AbstractEventsAware`
+
+-   __Extends__
+    
+    `AbstractEventsAware`
+
+-   __Implements__
+    
 This component helps to load your project classes automatically based on some
 conventions
 
@@ -44,48 +55,52 @@ $adapter = new \Example\Adapter\Some();
 ## Properties
 ```php
 //
-protected checkedPath;
+protected $checkedPath;
 
 /**
  * @var array
  */
-protected classes;
+protected $classes;
 
 /**
  * @var array
  */
-protected directories;
-
-//
-protected eventsManager;
+protected $directories;
 
 /**
  * @var array
  */
-protected extensions;
-
-//
-protected fileCheckingCallback = is_file;
+protected $directories;
 
 /**
  * @var array
  */
-protected files;
+protected $extensions;
+
+/**
+ * @var string|callable
+ */
+protected $fileCheckingCallback = 'is_file';
+
+/**
+ * @var array
+ */
+protected $files;
 
 /**
  * @var bool
  */
-protected foundPath;
+protected $foundPath;
 
 /**
  * @var array
  */
-protected namespaces;
+protected $namespaces;
 
 /**
  * @var bool
  */
-protected registered = false;
+protected $registered = false;
 
 ```
 
@@ -227,13 +242,21 @@ protected function prepareNamespace( array $namespaceName ): array;
 
 
 
-<h1 id="loader-exception">Class Phalcon\Loader\Exception</h1>
+## Loader\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Loader/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Autoload/Exception.zep)
 
-| Namespace  | Phalcon\Loader |
-| Extends    | \Phalcon\Exception |
 
-Phalcon\Loader\Exception
+-   __Namespace__
 
+    - `Phalcon\Autoload`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
 Exceptions thrown in Phalcon\Loader will use this class

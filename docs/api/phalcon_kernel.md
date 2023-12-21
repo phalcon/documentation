@@ -1,21 +1,32 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Kernel'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Kernel](#kernel)
+!!! info "NOTE"
 
-<h1 id="kernel">Class Phalcon\Kernel</h1>
+    All classes are prefixed with `Phalcon`
+
+## Kernel
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Kernel.zep)
 
-| Namespace  | Phalcon |
+
+-   __Namespace__
+
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
 
 This class allows to change the internal behavior of the framework in runtime
 
 
-## Methods
+### Methods
 
 ```php
 public static function preComputeHashKey( string $key );

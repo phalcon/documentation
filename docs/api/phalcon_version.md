@@ -1,21 +1,35 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Version'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Version](#version)
+!!! info "NOTE"
 
-<h1 id="version">Class Phalcon\Version</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Version.zep)
 
-| Namespace  | Phalcon |
+## Version 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Support/Version.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This class allows to get the installed version of the framework
 
 
-## Constants
+### Constants
 ```php
 const VERSION_MAJOR = 0;
 const VERSION_MEDIUM = 1;
@@ -24,7 +38,7 @@ const VERSION_SPECIAL = 3;
 const VERSION_SPECIAL_NUMBER = 4;
 ```
 
-## Methods
+### Methods
 
 ```php
 public static function get(): string;
@@ -60,7 +74,7 @@ echo Phalcon\Version::getPart(
 
 
 ```php
-protected static function _getVersion(): array;
+protected $static function _getVersion(): array;
 ```
 Area where the version number is set. The format is as follows:
 ABBCCDE
@@ -76,7 +90,7 @@ E - Special release version i.e. RC1, Beta2 etc.
 
 
 ```php
-protected static function getVersion(): array;
+protected $static function getVersion(): array;
 ```
 Area where the version number is set. The format is as follows:
 ABBCCDE

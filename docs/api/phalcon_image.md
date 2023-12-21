@@ -1,57 +1,65 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Image'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Image\Adapter\AbstractAdapter](#image-adapter-abstractadapter)
-* [Phalcon\Image\Adapter\AdapterInterface](#image-adapter-adapterinterface)
-* [Phalcon\Image\Adapter\Gd](#image-adapter-gd)
-* [Phalcon\Image\Adapter\Imagick](#image-adapter-imagick)
-* [Phalcon\Image\Enum](#image-enum)
-* [Phalcon\Image\Exception](#image-exception)
-* [Phalcon\Image\ImageFactory](#image-imagefactory)
+!!! info "NOTE"
 
-<h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Image\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Image/Adapter/AbstractAdapter.zep)
 
-| Namespace  | Phalcon\Image\Adapter |
-| Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
-| Implements | AdapterInterface |
 
-Phalcon\Image\Adapter
+-   __Namespace__
+
+    - `Phalcon\Image\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Enum`
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `AdapterInterface`
 
 All image adapters must use this class
 
 
-## Properties
+### Properties
 ```php
 //
-protected static checked = false;
+protected $static $checked = false;
 
 //
-protected file;
+protected $file;
 
 /**
  * Image height
  *
  * @var int
  */
-protected height;
+protected $height;
 
 //
-protected image;
+protected $image;
 
 /**
  * Image mime type
  *
  * @var string
  */
-protected mime;
+protected $mime;
 
 //
-protected realpath;
+protected $realpath;
 
 /**
  * Image type
@@ -60,18 +68,18 @@ protected realpath;
  *
  * @var int
  */
-protected type;
+protected $type;
 
 /**
  * Image width
  *
  * @var int
  */
-protected width;
+protected $width;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
@@ -102,37 +110,37 @@ public function flip( int $direction ): AdapterInterface;
 
 
 ```php
-public function getHeight(): int
+public function getHeight(): int;
 ```
 
 
 
 ```php
-public function getImage()
+public function getImage();
 ```
 
 
 
 ```php
-public function getMime(): string
+public function getMime(): string;
 ```
 
 
 
 ```php
-public function getRealpath()
+public function getRealpath();
 ```
 
 
 
 ```php
-public function getType(): int
+public function getType(): int;
 ```
 
 
 
 ```php
-public function getWidth(): int
+public function getWidth(): int;
 ```
 
 
@@ -216,22 +224,31 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 
 
-<h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
+
+
+## Image\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Image/Adapter/AdapterInterface.zep)
 
-| Namespace  | Phalcon\Image\Adapter |
-| Uses       | Phalcon\Image\Enum |
 
-This file is part of the Phalcon Framework.
+-   __Namespace__
 
-(c) Phalcon Team <team@phalcon.io>
+    - `Phalcon\Image\Adapter`
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+-   __Uses__
+    
+    - `Phalcon\Image\Enum`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Interface for Phalcon\Image\Adapter classes
 
 
-## Methods
+### Methods
 
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
@@ -319,13 +336,26 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 
 
-<h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
+## Image\Adapter\Gd 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Image/Adapter/Gd.zep)
 
-| Namespace  | Phalcon\Image\Adapter |
-| Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Image\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Enum`
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -338,11 +368,11 @@ file that was distributed with this source code.
 ## Properties
 ```php
 //
-protected static checked = false;
+protected $static $checked = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
@@ -460,13 +490,32 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 
 
-<h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
+## Image\Adapter\Imagick 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Image/Adapter/Imagick.zep)
 
-| Namespace  | Phalcon\Image\Adapter |
-| Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Image\Adapter`
+
+-   __Uses__
+    
+    - `Imagick`
+    - `ImagickDraw`
+    - `ImagickDrawException`
+    - `ImagickException`
+    - `ImagickPixel`
+    - `ImagickPixelException`
+    - `Phalcon\Image\Enum`
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
 
 Phalcon\Image\Adapter\Imagick
 
@@ -484,17 +533,17 @@ if ($image->save()) {
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected static checked = false;
+protected $static $checked = false;
 
 //
-protected static version = 0;
+protected $static $version = 0;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
@@ -621,11 +670,23 @@ Execute a watermarking.
 
 
 
-<h1 id="image-enum">Class Phalcon\Image\Enum</h1>
+## Image\Enum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Image/Enum.zep)
 
-| Namespace  | Phalcon\Image |
+
+-   __Namespace__
+
+    - `Phalcon\Image`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -635,7 +696,7 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-## Constants
+### Constants
 ```php
 const AUTO = 4;
 const HEIGHT = 3;
@@ -649,39 +710,59 @@ const WIDTH = 2;
 ```
 
 
-<h1 id="image-exception">Class Phalcon\Image\Exception</h1>
+## Image\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Image/Exception.zep)
 
-| Namespace  | Phalcon\Image |
-| Extends    | \Phalcon\Exception |
 
-This file is part of the Phalcon Framework.
+-   __Namespace__
 
-(c) Phalcon Team <team@phalcon.io>
+    - `Phalcon\Image`
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
+
+Exceptions thrown in Phalcon\Image will use this class
 
 
 
-<h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
+## Image\ImageFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Image/ImageFactory.zep)
 
-| Namespace  | Phalcon\Image |
-| Uses       | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface |
-| Extends    | AbstractFactory |
 
+-   __Namespace__
+
+    - `Phalcon\Image`
+
+-   __Uses__
+    
+    - `Phalcon\Factory\AbstractFactory`
+    - `Phalcon\Image\Adapter\AdapterInterface`
+
+-   __Extends__
+    
+    `AbstractFactory`
+
+-   __Implements__
+    
 Phalcon\Image/ImageFactory
 
 
-## Methods
+
+### Methods
 
 ```php
 public function __construct( array $services = [] );
 ```
-TagFactory constructor.
+Constructor
 
 
 ```php

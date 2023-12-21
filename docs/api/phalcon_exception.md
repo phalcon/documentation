@@ -1,25 +1,37 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Exception'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Exception](#exception)
+!!! info "NOTE"
 
-<h1 id="exception">Class Phalcon\Exception</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Exception.zep)
+## Events\Event
 
-| Namespace  | Phalcon |
-| Extends    | \Exception |
-| Implements | \Throwable |
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Events/Event.zep)
 
-Phalcon\Exception
+
+-   __Namespace__
+
+    - `Phalcon`
+
+-   __Uses__
+
+
+-   __Extends__
+
+    - `Exception`
+     
+-   __Implements__
+
+    - `Throwable`
+
 
 All framework exceptions should use or extend this exception
 
 
-## Methods
+### Methods
 
 ```php
 public static function containerServiceNotFound( string $service ): string;

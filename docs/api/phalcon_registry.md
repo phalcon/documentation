@@ -1,18 +1,32 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Registry'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Registry](#registry)
+!!! info "NOTE"
 
-<h1 id="registry">Final Class Phalcon\Registry</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Registry.zep)
+## Registry ![Final](../assets/images/final-red.svg) 
 
-| Namespace  | Phalcon |
-| Uses       | Traversable |
-| Extends    | Collection |
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Support/Registry.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support`
+
+-   __Uses__
+    
+    - `Phalcon\Collection`
+    - `Traversable`
+
+-   __Extends__
+    
+    `Collection`
+
+-   __Implements__
+    
 
 Phalcon\Registry
 
@@ -64,7 +78,7 @@ are implemented using object handlers or similar techniques: this allows to
 bypass relatively slow method calls.
 
 
-## Methods
+### Methods
 
 ```php
 final public function __construct( array $data = null );

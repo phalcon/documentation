@@ -1,22 +1,37 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Text'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Text](#text)
+!!! info "NOTE"
 
-<h1 id="text">Class Phalcon\Text</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Text
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Text.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Helper\Str |
+
+-   __Namespace__
+
+    - `Phalcon`
+
+-   __Uses__
+
+    - `Phalcon\Helper\Str`
+
+-   __Extends__
+
+
+-   __Implements__
+
 
 Provides utilities to work with texts
 
 
-## Constants
+### Constants
 ```php
 const RANDOM_ALNUM = 0;
 const RANDOM_ALPHA = 1;
@@ -26,7 +41,7 @@ const RANDOM_NOZERO = 4;
 const RANDOM_NUMERIC = 3;
 ```
 
-## Methods
+### Methods
 
 ```php
 public static function camelize( string $text, mixed $delimiter = null ): string;

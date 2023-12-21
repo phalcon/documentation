@@ -1,98 +1,40 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Mvc'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Mvc\Application](#mvc-application)
-* [Phalcon\Mvc\Application\Exception](#mvc-application-exception)
-* [Phalcon\Mvc\Controller](#mvc-controller)
-* [Phalcon\Mvc\Controller\BindModelInterface](#mvc-controller-bindmodelinterface)
-* [Phalcon\Mvc\ControllerInterface](#mvc-controllerinterface)
-* [Phalcon\Mvc\Dispatcher](#mvc-dispatcher)
-* [Phalcon\Mvc\Dispatcher\Exception](#mvc-dispatcher-exception)
-* [Phalcon\Mvc\DispatcherInterface](#mvc-dispatcherinterface)
-* [Phalcon\Mvc\EntityInterface](#mvc-entityinterface)
-* [Phalcon\Mvc\Micro](#mvc-micro)
-* [Phalcon\Mvc\Micro\Collection](#mvc-micro-collection)
-* [Phalcon\Mvc\Micro\CollectionInterface](#mvc-micro-collectioninterface)
-* [Phalcon\Mvc\Micro\Exception](#mvc-micro-exception)
-* [Phalcon\Mvc\Micro\LazyLoader](#mvc-micro-lazyloader)
-* [Phalcon\Mvc\Micro\MiddlewareInterface](#mvc-micro-middlewareinterface)
-* [Phalcon\Mvc\Model](#mvc-model)
-* [Phalcon\Mvc\Model\Behavior](#mvc-model-behavior)
-* [Phalcon\Mvc\Model\Behavior\SoftDelete](#mvc-model-behavior-softdelete)
-* [Phalcon\Mvc\Model\Behavior\Timestampable](#mvc-model-behavior-timestampable)
-* [Phalcon\Mvc\Model\BehaviorInterface](#mvc-model-behaviorinterface)
-* [Phalcon\Mvc\Model\Binder](#mvc-model-binder)
-* [Phalcon\Mvc\Model\Binder\BindableInterface](#mvc-model-binder-bindableinterface)
-* [Phalcon\Mvc\Model\BinderInterface](#mvc-model-binderinterface)
-* [Phalcon\Mvc\Model\Criteria](#mvc-model-criteria)
-* [Phalcon\Mvc\Model\CriteriaInterface](#mvc-model-criteriainterface)
-* [Phalcon\Mvc\Model\Exception](#mvc-model-exception)
-* [Phalcon\Mvc\Model\Manager](#mvc-model-manager)
-* [Phalcon\Mvc\Model\ManagerInterface](#mvc-model-managerinterface)
-* [Phalcon\Mvc\Model\MetaData](#mvc-model-metadata)
-* [Phalcon\Mvc\Model\MetaData\Apcu](#mvc-model-metadata-apcu)
-* [Phalcon\Mvc\Model\MetaData\Libmemcached](#mvc-model-metadata-libmemcached)
-* [Phalcon\Mvc\Model\MetaData\Memory](#mvc-model-metadata-memory)
-* [Phalcon\Mvc\Model\MetaData\Redis](#mvc-model-metadata-redis)
-* [Phalcon\Mvc\Model\MetaData\Strategy\Annotations](#mvc-model-metadata-strategy-annotations)
-* [Phalcon\Mvc\Model\MetaData\Strategy\Introspection](#mvc-model-metadata-strategy-introspection)
-* [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface](#mvc-model-metadata-strategy-strategyinterface)
-* [Phalcon\Mvc\Model\MetaData\Stream](#mvc-model-metadata-stream)
-* [Phalcon\Mvc\Model\MetaDataInterface](#mvc-model-metadatainterface)
-* [Phalcon\Mvc\Model\Query](#mvc-model-query)
-* [Phalcon\Mvc\Model\Query\Builder](#mvc-model-query-builder)
-* [Phalcon\Mvc\Model\Query\BuilderInterface](#mvc-model-query-builderinterface)
-* [Phalcon\Mvc\Model\Query\Lang](#mvc-model-query-lang)
-* [Phalcon\Mvc\Model\Query\Status](#mvc-model-query-status)
-* [Phalcon\Mvc\Model\Query\StatusInterface](#mvc-model-query-statusinterface)
-* [Phalcon\Mvc\Model\QueryInterface](#mvc-model-queryinterface)
-* [Phalcon\Mvc\Model\Relation](#mvc-model-relation)
-* [Phalcon\Mvc\Model\RelationInterface](#mvc-model-relationinterface)
-* [Phalcon\Mvc\Model\ResultInterface](#mvc-model-resultinterface)
-* [Phalcon\Mvc\Model\Resultset](#mvc-model-resultset)
-* [Phalcon\Mvc\Model\Resultset\Complex](#mvc-model-resultset-complex)
-* [Phalcon\Mvc\Model\Resultset\Simple](#mvc-model-resultset-simple)
-* [Phalcon\Mvc\Model\ResultsetInterface](#mvc-model-resultsetinterface)
-* [Phalcon\Mvc\Model\Row](#mvc-model-row)
-* [Phalcon\Mvc\Model\Transaction](#mvc-model-transaction)
-* [Phalcon\Mvc\Model\Transaction\Exception](#mvc-model-transaction-exception)
-* [Phalcon\Mvc\Model\Transaction\Failed](#mvc-model-transaction-failed)
-* [Phalcon\Mvc\Model\Transaction\Manager](#mvc-model-transaction-manager)
-* [Phalcon\Mvc\Model\Transaction\ManagerInterface](#mvc-model-transaction-managerinterface)
-* [Phalcon\Mvc\Model\TransactionInterface](#mvc-model-transactioninterface)
-* [Phalcon\Mvc\Model\ValidationFailed](#mvc-model-validationfailed)
-* [Phalcon\Mvc\ModelInterface](#mvc-modelinterface)
-* [Phalcon\Mvc\ModuleDefinitionInterface](#mvc-moduledefinitioninterface)
-* [Phalcon\Mvc\Router](#mvc-router)
-* [Phalcon\Mvc\Router\Annotations](#mvc-router-annotations)
-* [Phalcon\Mvc\Router\Exception](#mvc-router-exception)
-* [Phalcon\Mvc\Router\Group](#mvc-router-group)
-* [Phalcon\Mvc\Router\GroupInterface](#mvc-router-groupinterface)
-* [Phalcon\Mvc\Router\Route](#mvc-router-route)
-* [Phalcon\Mvc\Router\RouteInterface](#mvc-router-routeinterface)
-* [Phalcon\Mvc\RouterInterface](#mvc-routerinterface)
-* [Phalcon\Mvc\View](#mvc-view)
-* [Phalcon\Mvc\View\Engine\AbstractEngine](#mvc-view-engine-abstractengine)
-* [Phalcon\Mvc\View\Engine\EngineInterface](#mvc-view-engine-engineinterface)
-* [Phalcon\Mvc\View\Engine\Php](#mvc-view-engine-php)
-* [Phalcon\Mvc\View\Engine\Volt](#mvc-view-engine-volt)
-* [Phalcon\Mvc\View\Engine\Volt\Compiler](#mvc-view-engine-volt-compiler)
-* [Phalcon\Mvc\View\Engine\Volt\Exception](#mvc-view-engine-volt-exception)
-* [Phalcon\Mvc\View\Exception](#mvc-view-exception)
-* [Phalcon\Mvc\View\Simple](#mvc-view-simple)
-* [Phalcon\Mvc\ViewBaseInterface](#mvc-viewbaseinterface)
-* [Phalcon\Mvc\ViewInterface](#mvc-viewinterface)
+!!! info "NOTE"
 
-<h1 id="mvc-application">Class Phalcon\Mvc\Application</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Mvc\Application 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Application.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Closure, Phalcon\Application\AbstractApplication, Phalcon\Di\DiInterface, Phalcon\Http\ResponseInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\Application\Exception, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\ModuleDefinitionInterface |
-| Extends    | AbstractApplication |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Application\AbstractApplication`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Http\ResponseInterface`
+    - `Phalcon\Mvc\Application\Exception`
+    - `Phalcon\Mvc\ModuleDefinitionInterface`
+    - `Phalcon\Mvc\Router\RouteInterface`
+
+-   __Extends__
+    
+    `AbstractApplication`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Application
 
@@ -105,16 +47,15 @@ use Phalcon\Mvc\Application;
 
 class MyApp extends Application
 {
-Register the services here to make them general or register
-in the ModuleDefinition to make them module-specific
-\/
+    // Register the services here to make them general or register
+    // in the ModuleDefinition to make them module-specific
+    //
     protected function registerServices()
     {
 
     }
 
-This method registers all the modules in the application
-\/
+    // This method registers all the modules in the application
     public function main()
     {
         $this->registerModules(
@@ -138,16 +79,16 @@ $application->main();
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected implicitView = true;
+protected $implicitView = true;
 
 //
-protected sendCookies = true;
+protected $sendCookies = true;
 
 //
-protected sendHeaders = true;
+protected $sendHeaders = true;
 
 ```
 
@@ -180,12 +121,24 @@ You can full disable the view component using this method
 
 
 
-<h1 id="mvc-application-exception">Class Phalcon\Mvc\Application\Exception</h1>
+## Mvc\Application\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Application/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\Application |
-| Extends    | \Phalcon\Application\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Application`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Phalcon\Application\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Application\Exception
 
@@ -193,14 +146,26 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 
 
-<h1 id="mvc-controller">Abstract Class Phalcon\Mvc\Controller</h1>
+## Mvc\Controller ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Controller.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Di\Injectable |
-| Extends    | Injectable |
-| Implements | ControllerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Injectable`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `ControllerInterface`
 
 Phalcon\Mvc\Controller
 
@@ -242,7 +207,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 ```
 
 
-## Methods
+### Methods
 
 ```php
 final public function __construct();
@@ -252,18 +217,28 @@ Phalcon\Mvc\Controller constructor
 
 
 
-<h1 id="mvc-controller-bindmodelinterface">Interface Phalcon\Mvc\Controller\BindModelInterface</h1>
+## Mvc\Controller\BindModelInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Controller/BindModelInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Controller |
 
-Phalcon\Mvc\Controller\BindModelInterface
+-   __Namespace__
+
+    - `Phalcon\Mvc\Controller`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Mvc\Controller
 
 
-## Methods
+### Methods
 
 ```php
 public static function getModelName(): string;
@@ -273,26 +248,51 @@ Return the model name associated with this controller
 
 
 
-<h1 id="mvc-controllerinterface">Interface Phalcon\Mvc\ControllerInterface</h1>
+## Mvc\ControllerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/ControllerInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
 
-Phalcon\Mvc\ControllerInterface
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for controller handlers
 
 
 
-<h1 id="mvc-dispatcher">Class Phalcon\Mvc\Dispatcher</h1>
+## Mvc\Dispatcher 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Dispatcher.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Mvc\Dispatcher\Exception, Phalcon\Events\ManagerInterface, Phalcon\Http\ResponseInterface, Phalcon\Dispatcher\AbstractDispatcher |
-| Extends    | BaseDispatcher |
-| Implements | DispatcherInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Dispatcher\AbstractDispatcher`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Http\ResponseInterface`
+    - `Phalcon\Mvc\Dispatcher\Exception`
+
+-   __Extends__
+    
+    `BaseDispatcher`
+
+-   __Implements__
+    
+    - `DispatcherInterface`
 
 Dispatching is the process of taking the request object, extracting the
 module name, controller name, action name, and optional parameters contained
@@ -314,20 +314,20 @@ $controller = $dispatcher->dispatch();
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected defaultAction = index;
+protected $defaultAction = index;
 
 //
-protected defaultHandler = index;
+protected $defaultHandler = index;
 
 //
-protected handlerSuffix = Controller;
+protected $handlerSuffix = Controller;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function forward( array $forward ): void;
@@ -464,12 +464,24 @@ Throws an internal exception
 
 
 
-<h1 id="mvc-dispatcher-exception">Class Phalcon\Mvc\Dispatcher\Exception</h1>
+## Mvc\Dispatcher\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Dispatcher/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\Dispatcher |
-| Extends    | \Phalcon\Dispatcher\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Dispatcher`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Phalcon\Dispatcher\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Dispatcher\Exception
 
@@ -477,20 +489,30 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 
 
-<h1 id="mvc-dispatcherinterface">Interface Phalcon\Mvc\DispatcherInterface</h1>
+## Mvc\DispatcherInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/DispatcherInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Dispatcher\DispatcherInterface |
-| Extends    | DispatcherInterfaceBase |
 
-Phalcon\Mvc\DispatcherInterface
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Dispatcher\DispatcherInterface`
+
+-   __Extends__
+    
+    `DispatcherInterfaceBase`
+
+-   __Implements__
+    
 
 Interface for Phalcon\Mvc\Dispatcher
 
 
-## Methods
+### Methods
 
 ```php
 public function getActiveController(): ControllerInterface;
@@ -530,18 +552,30 @@ Sets the default controller name
 
 
 
-<h1 id="mvc-entityinterface">Interface Phalcon\Mvc\EntityInterface</h1>
+## Mvc\EntityInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/EntityInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\EntityInterface
 
 Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 
 
-## Methods
+### Methods
 
 ```php
 public function readAttribute( string $attribute ): mixed | null;
@@ -557,14 +591,43 @@ Writes an attribute value by its name
 
 
 
-<h1 id="mvc-micro">Class Phalcon\Mvc\Micro</h1>
+## Mvc\Micro 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Micro.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | ArrayAccess, Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface, Throwable |
-| Extends    | Injectable |
-| Implements | ArrayAccess, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `Closure`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\FactoryDefault`
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Di\ServiceInterface`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Http\ResponseInterface`
+    - `Phalcon\Mvc\Micro\Collection`
+    - `Phalcon\Mvc\Micro\CollectionInterface`
+    - `Phalcon\Mvc\Micro\Exception`
+    - `Phalcon\Mvc\Micro\LazyLoader`
+    - `Phalcon\Mvc\Micro\MiddlewareInterface`
+    - `Phalcon\Mvc\Model\BinderInterface`
+    - `Phalcon\Mvc\Router\RouteInterface`
+    - `Throwable`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `ArrayAccess`
+    - `EventsAwareInterface`
 
 Phalcon\Mvc\Micro
 
@@ -587,56 +650,56 @@ $app->handle("/say/welcome/Phalcon");
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected activeHandler;
+protected $activeHandler;
 
 //
-protected afterBindingHandlers;
+protected $afterBindingHandlers;
 
 //
-protected afterHandlers;
+protected $afterHandlers;
 
 //
-protected beforeHandlers;
+protected $beforeHandlers;
 
 //
-protected container;
+protected $container;
 
 //
-protected errorHandler;
+protected $errorHandler;
 
 //
-protected eventsManager;
+protected $eventsManager;
 
 //
-protected finishHandlers;
+protected $finishHandlers;
 
 //
-protected handlers;
+protected $handlers;
 
 //
-protected modelBinder;
+protected $modelBinder;
 
 //
-protected notFoundHandler;
+protected $notFoundHandler;
 
 //
-protected responseHandler;
+protected $responseHandler;
 
 //
-protected returnedValue;
+protected $returnedValue;
 
 //
-protected router;
+protected $router;
 
 //
-protected stopped;
+protected $stopped;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( DiInterface $container = null );
@@ -895,12 +958,24 @@ executed
 
 
 
-<h1 id="mvc-micro-collection">Class Phalcon\Mvc\Micro\Collection</h1>
+## Mvc\Micro\Collection 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Micro/Collection.zep)
 
-| Namespace  | Phalcon\Mvc\Micro |
-| Implements | CollectionInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `CollectionInterface`
 
 Phalcon\Mvc\Micro\Collection
 
@@ -921,23 +996,23 @@ $app->mount($collection);
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected handler;
+protected $handler;
 
 //
-protected handlers;
+protected $handlers;
 
 //
-protected lazy;
+protected $lazy;
 
 //
-protected prefix;
+protected $prefix;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function delete( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
@@ -1053,18 +1128,30 @@ Internal function to add a handler to the group.
 
 
 
-<h1 id="mvc-micro-collectioninterface">Interface Phalcon\Mvc\Micro\CollectionInterface</h1>
+## Mvc\Micro\CollectionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Micro/CollectionInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Micro |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Micro\CollectionInterface
 
 Interface for Phalcon\Mvc\Micro\Collection
 
 
-## Methods
+### Methods
 
 ```php
 public function delete( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
@@ -1158,40 +1245,64 @@ Sets a prefix for all routes added to the collection
 
 
 
-<h1 id="mvc-micro-exception">Class Phalcon\Mvc\Micro\Exception</h1>
+## Mvc\Micro\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Micro/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\Micro |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Phalcon\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
 
 
-<h1 id="mvc-micro-lazyloader">Class Phalcon\Mvc\Micro\LazyLoader</h1>
+## Mvc\Micro\LazyLoader 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Micro/LazyLoader.zep)
 
-| Namespace  | Phalcon\Mvc\Micro |
-| Uses       | Phalcon\Mvc\Model\BinderInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\BinderInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Micro\LazyLoader
 
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 
 
-## Properties
+### Properties
 ```php
 //
-protected handler;
+protected $handler;
 
 //
-protected definition;
+protected $definition;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $definition );
@@ -1219,17 +1330,29 @@ public function getHandler()
 
 
 
-<h1 id="mvc-micro-middlewareinterface">Interface Phalcon\Mvc\Micro\MiddlewareInterface</h1>
+## Mvc\Micro\MiddlewareInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Micro/MiddlewareInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Micro |
-| Uses       | Phalcon\Mvc\Micro |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Allows to implement Phalcon\Mvc\Micro middleware in classes
 
 
-## Methods
+### Methods
 
 ```php
 public function call( Micro $application );
@@ -1239,14 +1362,63 @@ Calls the middleware
 
 
 
-<h1 id="mvc-model">Abstract Class Phalcon\Mvc\Model</h1>
+## Mvc\Model ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractInjectionAware, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Serializable |
-| Extends    | AbstractInjectionAware |
-| Implements | EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `JsonSerializable`
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\DialectInterface`
+    - `Phalcon\Db\Enum`
+    - `Phalcon\Db\RawValue`
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Filter\Validation\ValidationInterface`
+    - `Phalcon\Messages\Message`
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\BehaviorInterface`
+    - `Phalcon\Mvc\Model\Criteria`
+    - `Phalcon\Mvc\Model\CriteriaInterface`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\ManagerInterface`
+    - `Phalcon\Mvc\Model\MetaDataInterface`
+    - `Phalcon\Mvc\Model\Query`
+    - `Phalcon\Mvc\Model\QueryInterface`
+    - `Phalcon\Mvc\Model\Query\Builder`
+    - `Phalcon\Mvc\Model\Query\BuilderInterface`
+    - `Phalcon\Mvc\Model\Relation`
+    - `Phalcon\Mvc\Model\RelationInterface`
+    - `Phalcon\Mvc\Model\ResultInterface`
+    - `Phalcon\Mvc\Model\Resultset`
+    - `Phalcon\Mvc\Model\ResultsetInterface`
+    - `Phalcon\Mvc\Model\TransactionInterface`
+    - `Phalcon\Mvc\Model\ValidationFailed`
+    - `Phalcon\Collection`
+    - `Phalcon\Collection\CollectionInterface`
+    - `Serializable`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `EntityInterface`
+    - `JsonSerializable`
+    - `ModelInterface`
+    - `ResultInterface`
+    - `Serializable`
 
 Phalcon\Mvc\Model
 
@@ -1285,7 +1457,7 @@ if ($robot->save() === false) {
 ```
 
 
-## Constants
+### Constants
 ```php
 const DIRTY_STATE_DETACHED = 2;
 const DIRTY_STATE_PERSISTENT = 0;
@@ -1297,61 +1469,61 @@ const OP_UPDATE = 2;
 const TRANSACTION_INDEX = transaction;
 ```
 
-## Properties
+### Properties
 ```php
 //
-protected dirtyState = 1;
+protected $dirtyState = 1;
 
 /**
  * @var array
  */
-protected dirtyRelated;
+protected $dirtyRelated;
 
 /**
  * @var array
  */
-protected errorMessages;
+protected $errorMessages;
 
 //
-protected modelsManager;
+protected $modelsManager;
 
 //
-protected modelsMetaData;
+protected $modelsMetaData;
 
 /**
  * @var array
  */
-protected related;
+protected $related;
 
 //
-protected operationMade = 0;
+protected $operationMade = 0;
 
 /**
  * @var array
  */
-protected oldSnapshot;
+protected $oldSnapshot;
 
 //
-protected skipped;
+protected $skipped;
 
 //
-protected snapshot;
+protected $snapshot;
 
 //
-protected transaction;
+protected $transaction;
 
 //
-protected uniqueKey;
+protected $uniqueKey;
 
 //
-protected uniqueParams;
+protected $uniqueParams;
 
 //
-protected uniqueTypes;
+protected $uniqueTypes;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __call( string $method, array $arguments );
@@ -2515,7 +2687,7 @@ Returns false if the relation is non-existent.
 
 
 ```php
-protected static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
+protected $static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
 ```
 Generate a PHQL SELECT statement for an aggregate
 
@@ -2645,7 +2817,7 @@ Returns false if the relation is non-existent.
 
 
 ```php
-protected static function groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
+protected $static function groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
 ```
 Generate a PHQL SELECT statement for an aggregate
 
@@ -2911,29 +3083,41 @@ class Subscriptors extends Model
 
 
 
-<h1 id="mvc-model-behavior">Abstract Class Phalcon\Mvc\Model\Behavior</h1>
+## Mvc\Model\Behavior ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Behavior.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface |
-| Implements | BehaviorInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `BehaviorInterface`
 
 Phalcon\Mvc\Model\Behavior
 
 This is an optional base class for ORM behaviors
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -2967,13 +3151,27 @@ Checks whether the behavior must take action on certain event
 
 
 
-<h1 id="mvc-model-behavior-softdelete">Class Phalcon\Mvc\Model\Behavior\SoftDelete</h1>
+## Mvc\Model\Behavior\SoftDelete 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Behavior/SoftDelete.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Behavior |
-| Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception |
-| Extends    | Behavior |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Behavior`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Behavior`
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Behavior`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Behavior\SoftDelete
 
@@ -2981,7 +3179,7 @@ Instead of permanently delete a record it marks the record as deleted
 changing the value of a flag column
 
 
-## Methods
+### Methods
 
 ```php
 public function notify( string $type, ModelInterface $model );
@@ -2991,13 +3189,28 @@ Listens for notifications from the models manager
 
 
 
-<h1 id="mvc-model-behavior-timestampable">Class Phalcon\Mvc\Model\Behavior\Timestampable</h1>
+## Mvc\Model\Behavior\Timestampable 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Behavior/Timestampable.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Behavior |
-| Uses       | Closure, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception |
-| Extends    | Behavior |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Behavior`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Behavior`
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Behavior`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Behavior\Timestampable
 
@@ -3005,7 +3218,7 @@ Allows to automatically update a model’s attribute saving the datetime when a
 record is created or updated
 
 
-## Methods
+### Methods
 
 ```php
 public function notify( string $type, ModelInterface $model );
@@ -3015,19 +3228,31 @@ Listens for notifications from the models manager
 
 
 
-<h1 id="mvc-model-behaviorinterface">Interface Phalcon\Mvc\Model\BehaviorInterface</h1>
+## Mvc\Model\BehaviorInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/BehaviorInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\BehaviorInterface
 
 Interface for Phalcon\Mvc\Model\Behavior
 
 
-## Methods
+### Methods
 
 ```php
 public function missingMethod( ModelInterface $model, string $method, array $arguments = [] );
@@ -3043,46 +3268,63 @@ This method receives the notifications from the EventsManager
 
 
 
-<h1 id="mvc-model-binder">Class Phalcon\Mvc\Model\Binder</h1>
+## Mvc\Model\Binder 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Binder.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Closure, Phalcon\Mvc\Controller\BindModelInterface, Phalcon\Mvc\Model\Binder\BindableInterface, Phalcon\Cache\Adapter\AdapterInterface, ReflectionFunction, ReflectionMethod |
-| Implements | BinderInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Cache\Adapter\AdapterInterface`
+    - `Phalcon\Mvc\Controller\BindModelInterface`
+    - `Phalcon\Mvc\Model\Binder\BindableInterface`
+    - `ReflectionFunction`
+    - `ReflectionMethod`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `BinderInterface`
 
 Phalcon\Mvc\Model\Binder
 
 This is an class for binding models into params for handler
 
 
-## Properties
+### Properties
 ```php
 /**
  * Array for storing active bound models
  *
  * @var array
  */
-protected boundModels;
+protected $boundModels;
 
 /**
  * Cache object used for caching parameters for model binding
  */
-protected cache;
+protected $cache;
 
 /**
  * Internal cache for caching parameters for model binding during request
  */
-protected internalCache;
+protected $internalCache;
 
 /**
  * Array for original values
  */
-protected originalValues;
+protected $originalValues;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterInterface $cache = null );
@@ -3097,7 +3339,7 @@ Bind models into params in proper handler
 
 
 ```php
-public function getBoundModels(): array
+public function getBoundModels(): array;
 ```
 
 
@@ -3140,18 +3382,30 @@ Get modified params for handler using reflection
 
 
 
-<h1 id="mvc-model-binder-bindableinterface">Interface Phalcon\Mvc\Model\Binder\BindableInterface</h1>
+## Mvc\Model\Binder\BindableInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Binder/BindableInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Binder |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Binder`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Binder\BindableInterface
 
 Interface for bindable classes
 
 
-## Methods
+### Methods
 
 ```php
 public function getModelName(): string | array;
@@ -3162,19 +3416,31 @@ this class
 
 
 
-<h1 id="mvc-model-binderinterface">Interface Phalcon\Mvc\Model\BinderInterface</h1>
+## Mvc\Model\BinderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/BinderInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Cache\Adapter\AdapterInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\BinderInterface
 
 Interface for Phalcon\Mvc\Model\Binder
 
 
-## Methods
+### Methods
 
 ```php
 public function bindToHandler( object $handler, array $params, string $cacheKey, string $methodName = null ): array;
@@ -3202,13 +3468,30 @@ Sets cache instance
 
 
 
-<h1 id="mvc-model-criteria">Class Phalcon\Mvc\Model\Criteria</h1>
+## Mvc\Model\Criteria 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Criteria.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Query\BuilderInterface |
-| Implements | CriteriaInterface, InjectionAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Column`
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\Model\Query\BuilderInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `CriteriaInterface`
+    - `InjectionAwareInterface`
 
 Phalcon\Mvc\Model\Criteria
 
@@ -3227,26 +3510,26 @@ $robots = Robots::query()
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected bindParams;
+protected $bindParams;
 
 //
-protected bindTypes;
+protected $bindTypes;
 
 //
-protected hiddenParamNumber = 0;
+protected $hiddenParamNumber = 0;
 
 //
-protected model;
+protected $model;
 
 //
-protected params;
+protected $params;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
@@ -3580,19 +3863,31 @@ Sets the conditions parameter in the criteria
 
 
 
-<h1 id="mvc-model-criteriainterface">Interface Phalcon\Mvc\Model\CriteriaInterface</h1>
+## Mvc\Model\CriteriaInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/CriteriaInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Di\DiInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Di\DiInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\CriteriaInterface
 
 Interface for Phalcon\Mvc\Model\Criteria
 
 
-## Methods
+### Methods
 
 ```php
 public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
@@ -3844,12 +4139,24 @@ Sets the conditions parameter in the criteria
 
 
 
-<h1 id="mvc-model-exception">Class Phalcon\Mvc\Model\Exception</h1>
+## Mvc\Model\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Exception
 
@@ -3857,13 +4164,37 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 
 
-<h1 id="mvc-model-manager">Class Phalcon\Mvc\Model\Manager</h1>
+## Mvc\Model\Manager 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Manager.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface |
-| Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Query\Builder`
+    - `Phalcon\Mvc\Model\Query\BuilderInterface`
+    - `Phalcon\Mvc\Model\Query\StatusInterface`
+    - `ReflectionClass`
+    - `ReflectionProperty`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
+    - `InjectionAwareInterface`
+    - `ManagerInterface`
 
 Phalcon\Mvc\Model\Manager
 
@@ -3890,124 +4221,124 @@ $robot = new Robots($di);
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected aliases;
+protected $aliases;
 
 /**
  * Models' behaviors
  */
-protected behaviors;
+protected $behaviors;
 
 /**
  * Belongs to relations
  */
-protected belongsTo;
+protected $belongsTo;
 
 /**
  * All the relationships by model
  */
-protected belongsToSingle;
+protected $belongsToSingle;
 
 //
-protected container;
+protected $container;
 
 //
-protected customEventsManager;
+protected $customEventsManager;
 
 /**
  * Does the model use dynamic update, instead of updating all rows?
  */
-protected dynamicUpdate;
+protected $dynamicUpdate;
 
 //
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * Has many relations
  */
-protected hasMany;
+protected $hasMany;
 
 /**
  * Has many relations by model
  */
-protected hasManySingle;
+protected $hasManySingle;
 
 /**
  * Has many-Through relations
  */
-protected hasManyToMany;
+protected $hasManyToMany;
 
 /**
  * Has many-Through relations by model
  */
-protected hasManyToManySingle;
+protected $hasManyToManySingle;
 
 /**
  * Has one relations
  */
-protected hasOne;
+protected $hasOne;
 
 /**
  * Has one relations by model
  */
-protected hasOneSingle;
+protected $hasOneSingle;
 
 /**
  * Has one through relations
  */
-protected hasOneThrough;
+protected $hasOneThrough;
 
 /**
  * Has one through relations by model
  */
-protected hasOneThroughSingle;
+protected $hasOneThroughSingle;
 
 /**
  * Mark initialized models
  */
-protected initialized;
+protected $initialized;
 
 //
-protected keepSnapshots;
+protected $keepSnapshots;
 
 /**
  * Last model initialized
  */
-protected lastInitialized;
+protected $lastInitialized;
 
 /**
  * Last query created/executed
  */
-protected lastQuery;
+protected $lastQuery;
 
 //
-protected modelVisibility;
+protected $modelVisibility;
 
 //
-protected prefix = ;
+protected $prefix = ;
 
 //
-protected readConnectionServices;
+protected $readConnectionServices;
 
 //
-protected sources;
+protected $sources;
 
 //
-protected schemas;
+protected $schemas;
 
 //
-protected writeConnectionServices;
+protected $writeConnectionServices;
 
 /**
  * Stores a list of reusable instances
  */
-protected reusable;
+protected $reusable;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __destruct();
@@ -4477,19 +4808,34 @@ Returns the connection to read or write data related to a model depending on the
 
 
 
-<h1 id="mvc-model-managerinterface">Interface Phalcon\Mvc\Model\ManagerInterface</h1>
+## Mvc\Model\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/ManagerInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\Query\StatusInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Query\BuilderInterface`
+    - `Phalcon\Mvc\Model\Query\StatusInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\ManagerInterface
 
 Interface for Phalcon\Mvc\Model\Manager
 
 
-## Methods
+### Methods
 
 ```php
 public function addBehavior( ModelInterface $model, BehaviorInterface $behavior ): void;
@@ -4803,13 +5149,31 @@ Sets if a model must use dynamic update instead of the all-field update
 
 
 
-<h1 id="mvc-model-metadata">Abstract Class Phalcon\Mvc\Model\MetaData</h1>
+## Mvc\Model\MetaData ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface, Phalcon\Mvc\ModelInterface |
-| Implements | InjectionAwareInterface, MetaDataInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Cache\Adapter\AdapterInterface`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\MetaData\Strategy\Introspection`
+    - `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `InjectionAwareInterface`
+    - `MetaDataInterface`
 
 Phalcon\Mvc\Model\MetaData
 
@@ -4831,7 +5195,7 @@ print_r($attributes);
 ```
 
 
-## Constants
+### Constants
 ```php
 const MODELS_ATTRIBUTES = 0;
 const MODELS_AUTOMATIC_DEFAULT_INSERT = 10;
@@ -4851,28 +5215,29 @@ const MODELS_PRIMARY_KEY = 1;
 const MODELS_REVERSE_COLUMN_MAP = 1;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var CacheAdapterInterface
  */
-protected adapter;
+protected $adapter;
 
 //
-protected columnMap;
+protected $columnMap;
 
 //
-protected container;
+protected $container;
 
 //
-protected metaData;
+protected $metaData;
 
 //
-protected strategy;
+protected $strategy;
 
 ```
 
-## Methods
+### Methods
+
 
 ```php
 public function getAttributes( ModelInterface $model ): array;
@@ -5272,13 +5637,28 @@ Initialize the metadata for certain table
 
 
 
-<h1 id="mvc-model-metadata-apcu">Class Phalcon\Mvc\Model\MetaData\Apcu</h1>
+## Mvc\Model\MetaData\Apcu 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Apcu.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory |
-| Extends    | MetaData |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Uses__
+    
+    - `Phalcon\Helper\Arr`
+    - `Phalcon\Mvc\Model\MetaData`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Cache\AdapterFactory`
+
+-   __Extends__
+    
+    `MetaData`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\MetaData\Apcu
 
@@ -5298,7 +5678,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
 ```
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = null );
@@ -5308,13 +5688,28 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 
 
 
-<h1 id="mvc-model-metadata-libmemcached">Class Phalcon\Mvc\Model\MetaData\Libmemcached</h1>
+## Mvc\Model\MetaData\Libmemcached 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Libmemcached.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
-| Extends    | MetaData |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Uses__
+    
+    - `Phalcon\Helper\Arr`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\MetaData`
+    - `Phalcon\Cache\AdapterFactory`
+
+-   __Extends__
+    
+    `MetaData`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\MetaData\Libmemcached
 
@@ -5323,7 +5718,7 @@ Stores model meta-data in the Memcache.
 By default meta-data is stored for 48 hours (172800 seconds)
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -5339,13 +5734,26 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 
 
 
-<h1 id="mvc-model-metadata-memory">Class Phalcon\Mvc\Model\MetaData\Memory</h1>
+## Mvc\Model\MetaData\Memory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Memory.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
-| Extends    | MetaData |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Extends__
+    
+    `MetaData`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\MetaData\Memory
 
@@ -5353,7 +5761,7 @@ Stores model meta-data in memory. Data will be erased when the request finishes
 
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $options = null );
@@ -5375,13 +5783,27 @@ Writes the meta-data to temporal memory
 
 
 
-<h1 id="mvc-model-metadata-redis">Class Phalcon\Mvc\Model\MetaData\Redis</h1>
+## Mvc\Model\MetaData\Redis 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Redis.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
-| Extends    | MetaData |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Uses__
+    
+    - `Phalcon\Cache\AdapterFactory`
+    - `Phalcon\Helper\Arr`
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Extends__
+    
+    `MetaData`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\MetaData\Redis
 
@@ -5404,7 +5826,7 @@ $metaData = new Redis(
 ```
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -5420,13 +5842,29 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 
 
-<h1 id="mvc-model-metadata-strategy-annotations">Class Phalcon\Mvc\Model\MetaData\Strategy\Annotations</h1>
+## Mvc\Model\MetaData\Strategy\Annotations 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Strategy/Annotations.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData\Strategy |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
-| Implements | StrategyInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Strategy`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Column`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `StrategyInterface`
 
 This file is part of the Phalcon Framework.
 
@@ -5436,7 +5874,7 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-## Methods
+### Methods
 
 ```php
 final public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
@@ -5452,20 +5890,37 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 
 
-<h1 id="mvc-model-metadata-strategy-introspection">Class Phalcon\Mvc\Model\MetaData\Strategy\Introspection</h1>
+## Mvc\Model\MetaData\Strategy\Introspection 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Strategy/Introspection.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData\Strategy |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData |
-| Implements | StrategyInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Strategy`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Db\Column`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `StrategyInterface`
 
 Phalcon\Mvc\Model\MetaData\Strategy\Introspection
 
 Queries the table meta-data in order to introspect the model's metadata
 
 
-## Methods
+### Methods
 
 ```php
 final public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
@@ -5481,12 +5936,25 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 
 
-<h1 id="mvc-model-metadata-strategy-strategyinterface">Interface Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface</h1>
+## Mvc\Model\MetaData\Strategy\StrategyInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Strategy/StrategyInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData\Strategy |
-| Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Di\DiInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Strategy`
+
+-   __Uses__
+    
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -5496,7 +5964,7 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-## Methods
+### Methods
 
 ```php
 public function getColumnMaps( ModelInterface $model, DiInterface $container ): array;
@@ -5514,13 +5982,26 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 
 
-<h1 id="mvc-model-metadata-stream">Class Phalcon\Mvc\Model\MetaData\Stream</h1>
+## Mvc\Model\MetaData\Stream 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaData/Stream.zep)
 
-| Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
-| Extends    | MetaData |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\MetaData`
+
+-   __Extends__
+    
+    `MetaData`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\MetaData\Stream
 
@@ -5535,14 +6016,14 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected metaDataDir = ./;
+protected $metaDataDir = ./;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $options = null );
@@ -5564,19 +6045,32 @@ Writes the meta-data to files
 
 
 
-<h1 id="mvc-model-metadatainterface">Interface Phalcon\Mvc\Model\MetaDataInterface</h1>
+## Mvc\Model\MetaDataInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/MetaDataInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\MetaDataInterface
 
 Interface for Phalcon\Mvc\Model\MetaData
 
 
-## Methods
+### Methods
 
 ```php
 public function getAttributes( ModelInterface $model ): array;
@@ -5754,13 +6248,39 @@ Writes meta-data for certain model using a MODEL_* constant
 
 
 
-<h1 id="mvc-model-query">Class Phalcon\Mvc\Model\Query</h1>
+## Mvc\Model\Query 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Query.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang |
-| Implements | QueryInterface, InjectionAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Db\Column`
+    - `Phalcon\Db\DialectInterface`
+    - `Phalcon\Db\RawValue`
+    - `Phalcon\Db\ResultInterface`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Query\Lang`
+    - `Phalcon\Mvc\Model\Query\Status`
+    - `Phalcon\Mvc\Model\Query\StatusInterface`
+    - `Phalcon\Mvc\Model\ResultsetInterface`
+    - `Phalcon\Mvc\Model\Resultset\Complex`
+    - `Phalcon\Mvc\Model\Resultset\Simple`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `InjectionAwareInterface`
+    - `QueryInterface`
 
 Phalcon\Mvc\Model\Query
 
@@ -5812,7 +6332,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 ```
 
 
-## Constants
+### Constants
 ```php
 const TYPE_DELETE = 303;
 const TYPE_INSERT = 306;
@@ -5820,76 +6340,76 @@ const TYPE_SELECT = 309;
 const TYPE_UPDATE = 300;
 ```
 
-## Properties
+### Properties
 ```php
 //
-protected ast;
+protected $ast;
 
 //
-protected bindParams;
+protected $bindParams;
 
 //
-protected bindTypes;
+protected $bindTypes;
 
 //
-protected cache;
+protected $cache;
 
 //
-protected cacheOptions;
+protected $cacheOptions;
 
 //
-protected container;
+protected $container;
 
 //
-protected enableImplicitJoins;
+protected $enableImplicitJoins;
 
 //
-protected intermediate;
+protected $intermediate;
 
 //
-protected manager;
+protected $manager;
 
 //
-protected metaData;
+protected $metaData;
 
 //
-protected models;
+protected $models;
 
 //
-protected modelsInstances;
+protected $modelsInstances;
 
 //
-protected nestingLevel = -1;
+protected $nestingLevel = -1;
 
 //
-protected phql;
+protected $phql;
 
 //
-protected sharedLock;
+protected $sharedLock;
 
 //
-protected sqlAliases;
+protected $sqlAliases;
 
 //
-protected sqlAliasesModels;
+protected $sqlAliasesModels;
 
 //
-protected sqlAliasesModelsInstances;
+protected $sqlAliasesModelsInstances;
 
 //
-protected sqlColumnAliases;
+protected $sqlColumnAliases;
 
 //
-protected sqlModelsAliases;
+protected $sqlModelsAliases;
 
 //
-protected type;
+protected $type;
 
 //
-protected uniqueRow;
+protected $uniqueRow;
 
 //
-static protected _irPhqlCache;
+static protected $_irPhqlCache;
 
 /**
  * TransactionInterface so that the query can wrap a transaction
@@ -5897,11 +6417,11 @@ static protected _irPhqlCache;
  * however if a model got a transaction set inside it will use the local
  * transaction instead of this one
  */
-protected _transaction;
+protected $_transaction;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $phql = null, DiInterface $container = null, array $options = [] );
@@ -6231,13 +6751,31 @@ inside the query object
 
 
 
-<h1 id="mvc-model-query-builder">Class Phalcon\Mvc\Model\Query\Builder</h1>
+## Mvc\Model\Query\Builder 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Query/Builder.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Query |
-| Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface |
-| Implements | BuilderInterface, InjectionAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Column`
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\QueryInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `BuilderInterface`
+    - `InjectionAwareInterface`
 
 Phalcon\Mvc\Model\Query\Builder
 
@@ -6275,63 +6813,63 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected bindParams;
+protected $bindParams;
 
 //
-protected bindTypes;
+protected $bindTypes;
 
 //
-protected columns;
+protected $columns;
 
 //
-protected conditions;
+protected $conditions;
 
 //
-protected container;
+protected $container;
 
 //
-protected distinct;
+protected $distinct;
 
 //
-protected forUpdate;
+protected $forUpdate;
 
 /**
  * @var array
  */
-protected group;
+protected $group;
 
 //
-protected having;
+protected $having;
 
 //
-protected hiddenParamNumber = 0;
+protected $hiddenParamNumber = 0;
 
 //
-protected joins;
+protected $joins;
 
 //
-protected limit;
+protected $limit;
 
 /**
  * @var array|string
  */
-protected models;
+protected $models;
 
 //
-protected offset;
+protected $offset;
 
 //
-protected order;
+protected $order;
 
 //
-protected sharedLock;
+protected $sharedLock;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $params = null, DiInterface $container = null );
@@ -6901,25 +7439,37 @@ Appends a NOT IN condition
 
 
 
-<h1 id="mvc-model-query-builderinterface">Interface Phalcon\Mvc\Model\Query\BuilderInterface</h1>
+## Mvc\Model\Query\BuilderInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Query/BuilderInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Query |
-| Uses       | Phalcon\Mvc\Model\QueryInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\QueryInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Query\BuilderInterface
 
 Interface for Phalcon\Mvc\Model\Query\Builder
 
 
-## Constants
+### Constants
 ```php
 const OPERATOR_AND = and;
 const OPERATOR_OR = or;
 ```
 
-## Methods
+### Methods
 
 ```php
 public function addFrom( string $model, string $alias = null ): BuilderInterface;
@@ -7160,11 +7710,23 @@ Sets conditions for the query
 
 
 
-<h1 id="mvc-model-query-lang">Abstract Class Phalcon\Mvc\Model\Query\Lang</h1>
+## Mvc\Model\Query\Lang ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Query/Lang.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Query |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Query\Lang
 
@@ -7187,7 +7749,7 @@ $intermediate = Lang::parsePHQL(
 ```
 
 
-## Methods
+### Methods
 
 ```php
 public static function parsePHQL( string $phql ): array;
@@ -7197,13 +7759,26 @@ Parses a PHQL statement returning an intermediate representation (IR)
 
 
 
-<h1 id="mvc-model-query-status">Class Phalcon\Mvc\Model\Query\Status</h1>
+## Mvc\Model\Query\Status 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Query/Status.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Query |
-| Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
-| Implements | StatusInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query`
+
+-   __Uses__
+    
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `StatusInterface`
 
 Phalcon\Mvc\Model\Query\Status
 
@@ -7232,17 +7807,17 @@ if ($status->success()) {
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected model;
+protected $model;
 
 //
-protected success;
+protected $success;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( bool $success, ModelInterface $model = null );
@@ -7270,19 +7845,32 @@ Allows to check if the executed operation was successful
 
 
 
-<h1 id="mvc-model-query-statusinterface">Interface Phalcon\Mvc\Model\Query\StatusInterface</h1>
+## Mvc\Model\Query\StatusInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Query/StatusInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Query |
-| Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query`
+
+-   __Uses__
+    
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Query\StatusInterface
 
 Interface for Phalcon\Mvc\Model\Query\Status
 
 
-## Methods
+### Methods
 
 ```php
 public function getMessages(): MessageInterface[];
@@ -7304,19 +7892,31 @@ Allows to check if the executed operation was successful
 
 
 
-<h1 id="mvc-model-queryinterface">Interface Phalcon\Mvc\Model\QueryInterface</h1>
+## Mvc\Model\QueryInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/QueryInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\QueryInterface
 
 Interface for Phalcon\Mvc\Model\Query
 
 
-## Methods
+### Methods
 
 ```php
 public function cache( array $cacheOptions ): QueryInterface;
@@ -7399,19 +7999,31 @@ Tells to the query if only the first row in the resultset must be returned
 
 
 
-<h1 id="mvc-model-relation">Class Phalcon\Mvc\Model\Relation</h1>
+## Mvc\Model\Relation 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Relation.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Implements | RelationInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `RelationInterface`
 
 Phalcon\Mvc\Model\Relation
 
 This class represents a relationship between two models
 
 
-## Constants
+### Constants
 ```php
 const ACTION_CASCADE = 2;
 const ACTION_RESTRICT = 1;
@@ -7423,35 +8035,35 @@ const HAS_ONE_THROUGH = 3;
 const NO_ACTION = 0;
 ```
 
-## Properties
+### Properties
 ```php
 //
-protected fields;
+protected $fields;
 
 //
-protected intermediateFields;
+protected $intermediateFields;
 
 //
-protected intermediateModel;
+protected $intermediateModel;
 
 //
-protected intermediateReferencedFields;
+protected $intermediateReferencedFields;
 
 //
-protected options;
+protected $options;
 
 //
-protected referencedFields;
+protected $referencedFields;
 
 //
-protected referencedModel;
+protected $referencedModel;
 
 //
-protected type;
+protected $type;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [] );
@@ -7552,18 +8164,30 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-<h1 id="mvc-model-relationinterface">Interface Phalcon\Mvc\Model\RelationInterface</h1>
+## Mvc\Model\RelationInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/RelationInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\RelationInterface
 
 Interface for Phalcon\Mvc\Model\Relation
 
 
-## Methods
+### Methods
 
 ```php
 public function getFields();
@@ -7658,19 +8282,31 @@ Sets the intermediate model data for has-*-through relations
 
 
 
-<h1 id="mvc-model-resultinterface">Interface Phalcon\Mvc\Model\ResultInterface</h1>
+## Mvc\Model\ResultInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/ResultInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\ResultInterface
 
 All single objects passed as base objects to Resultsets must implement this interface
 
 
-## Methods
+### Methods
 
 ```php
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
@@ -7680,13 +8316,43 @@ Sets the object's state
 
 
 
-<h1 id="mvc-model-resultset">Abstract Class Phalcon\Mvc\Model\Resultset</h1>
+## Mvc\Model\Resultset ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Resultset.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | ArrayAccess, Closure, Countable, Iterator, JsonSerializable, Phalcon\Db\Enum, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, SeekableIterator, Serializable |
-| Implements | ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `Closure`
+    - `Countable`
+    - `Iterator`
+    - `JsonSerializable`
+    - `Phalcon\Cache\CacheInterface`
+    - `Phalcon\Db\Enum`
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Mvc\Model`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Storage\Serializer\SerializerInterface`
+    - `SeekableIterator`
+    - `Serializable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ArrayAccess`
+    - `Countable`
+    - `Iterator`
+    - `JsonSerializable`
+    - `ResultsetInterface`
+    - `SeekableIterator`
+    - `Serializable`
 
 Phalcon\Mvc\Model\Resultset
 
@@ -7729,7 +8395,7 @@ while ($robots->valid()) {
 ```
 
 
-## Constants
+### Constants
 ```php
 const HYDRATE_ARRAYS = 1;
 const HYDRATE_OBJECTS = 2;
@@ -7738,43 +8404,43 @@ const TYPE_RESULT_FULL = 0;
 const TYPE_RESULT_PARTIAL = 1;
 ```
 
-## Properties
+### Properties
 ```php
 //
-protected activeRow;
+protected $activeRow;
 
 //
-protected cache;
+protected $cache;
 
 //
-protected count = 0;
+protected $count = 0;
 
 //
-protected errorMessages;
+protected $errorMessages;
 
 //
-protected hydrateMode = 0;
+protected $hydrateMode = 0;
 
 //
-protected isFresh = true;
+protected $isFresh = true;
 
 //
-protected pointer = 0;
+protected $pointer = 0;
 
 //
-protected row;
+protected $row;
 
 //
-protected rows;
+protected $rows;
 
 /**
  * Phalcon\Db\ResultInterface or false for empty resultset
  */
-protected result;
+protected $result;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $result, AdapterInterface $cache = null );
@@ -7960,14 +8626,36 @@ Check whether internal resource has rows to fetch
 
 
 
-<h1 id="mvc-model-resultset-complex">Class Phalcon\Mvc\Model\Resultset\Complex</h1>
+## Mvc\Model\Resultset\Complex 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Resultset/Complex.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Resultset |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass |
-| Extends    | Resultset |
-| Implements | ResultsetInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Resultset`
+
+-   __Uses__
+    
+    - `Phalcon\Db\ResultInterface`
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\Model`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\Resultset`
+    - `Phalcon\Mvc\Model\ResultsetInterface`
+    - `Phalcon\Mvc\Model\Row`
+    - `Phalcon\Storage\Serializer\SerializerInterface`
+    - `stdClass`
+
+-   __Extends__
+    
+    `Resultset`
+
+-   __Implements__
+    
+    - `ResultsetInterface`
 
 Phalcon\Mvc\Model\Resultset\Complex
 
@@ -7975,20 +8663,20 @@ Complex resultsets may include complete objects and scalar values.
 This class builds every complex row as it is required
 
 
-## Properties
+### Properties
 ```php
 //
-protected columnTypes;
+protected $columnTypes;
 
 /**
  * Unserialised result-set hydrated all rows already. unserialise() sets
  * disableHydration to true
  */
-protected disableHydration = false;
+protected $disableHydration = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $columnTypes, ResultInterface $result = null, AdapterInterface $cache = null );
@@ -8023,13 +8711,32 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 
 
-<h1 id="mvc-model-resultset-simple">Class Phalcon\Mvc\Model\Resultset\Simple</h1>
+## Mvc\Model\Resultset\Simple 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Resultset/Simple.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Resultset |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface |
-| Extends    | Resultset |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Resultset`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\Model`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\Resultset`
+    - `Phalcon\Mvc\Model\Row`
+    - `Phalcon\Storage\Serializer\SerializerInterface`
+
+-   __Extends__
+    
+    `Resultset`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Resultset\Simple
 
@@ -8037,22 +8744,22 @@ Simple resultsets only contains a complete objects
 This class builds every complete object as it is required
 
 
-## Properties
+### Properties
 ```php
 //
-protected columnMap;
+protected $columnMap;
 
 //
-protected model;
+protected $model;
 
 /**
  * @var bool
  */
-protected keepSnapshots = false;
+protected $keepSnapshots = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $columnMap, mixed $model, mixed $result, AdapterInterface $cache = null, bool $keepSnapshots = null );
@@ -8090,19 +8797,33 @@ the saved state
 
 
 
-<h1 id="mvc-model-resultsetinterface">Interface Phalcon\Mvc\Model\ResultsetInterface</h1>
+## Mvc\Model\ResultsetInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/ResultsetInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Closure, Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\ResultsetInterface
 
 Interface for Phalcon\Mvc\Model\Resultset
 
 
-## Methods
+### Methods
 
 ```php
 public function delete( Closure $conditionCallback = null ): bool;
@@ -8195,21 +8916,37 @@ Updates every record in the resultset
 
 
 
-<h1 id="mvc-model-row">Class Phalcon\Mvc\Model\Row</h1>
+## Mvc\Model\Row 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Row.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | ArrayAccess, JsonSerializable, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\ModelInterface |
-| Implements | EntityInterface, ResultInterface, ArrayAccess, JsonSerializable |
 
-Phalcon\Mvc\Model\Row
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `JsonSerializable`
+    - `Phalcon\Mvc\EntityInterface`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ArrayAccess`
+    - `EntityInterface`
+    - `JsonSerializable`
+    - `ResultInterface`
 
 This component allows Phalcon\Mvc\Model to return rows without an associated entity.
 This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
 
-## Methods
+### Methods
 
 ```php
 public function jsonSerialize(): array;
@@ -8276,13 +9013,30 @@ $robot->writeAttribute("name", "Rosey");
 
 
 
-<h1 id="mvc-model-transaction">Class Phalcon\Mvc\Model\Transaction</h1>
+## Mvc\Model\Transaction 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Transaction.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface |
-| Implements | TransactionInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\TransactionInterface`
+    - `Phalcon\Mvc\Model\Transaction\Failed`
+    - `Phalcon\Mvc\Model\Transaction\ManagerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `TransactionInterface`
 
 Phalcon\Mvc\Model\Transaction
 
@@ -8328,35 +9082,35 @@ try {
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected activeTransaction = false;
+protected $activeTransaction = false;
 
 //
-protected connection;
+protected $connection;
 
 //
-protected isNewTransaction = true;
+protected $isNewTransaction = true;
 
 //
-protected manager;
+protected $manager;
 
 //
-protected messages;
+protected $messages;
 
 //
-protected rollbackRecord;
+protected $rollbackRecord;
 
 //
-protected rollbackOnAbort = false;
+protected $rollbackOnAbort = false;
 
 //
-protected rollbackThrowException = false;
+protected $rollbackThrowException = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( DiInterface $container, bool $autoBegin = bool, string $service = string );
@@ -8377,7 +9131,7 @@ Commits the transaction
 
 
 ```php
-public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface;
+public function getConnection(): AdapterInterface;
 ```
 Returns the connection related to transaction
 
@@ -8438,12 +9192,24 @@ Enables throwing exception
 
 
 
-<h1 id="mvc-model-transaction-exception">Class Phalcon\Mvc\Model\Transaction\Exception</h1>
+## Mvc\Model\Transaction\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Transaction/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Transaction |
-| Extends    | \Phalcon\Mvc\Model\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Transaction`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Phalcon\Mvc\Model\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Transaction\Exception
 
@@ -8451,27 +9217,40 @@ Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 
 
-<h1 id="mvc-model-transaction-failed">Class Phalcon\Mvc\Model\Transaction\Failed</h1>
+## Mvc\Model\Transaction\Failed 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Transaction/Failed.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Transaction |
-| Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Transaction`
+
+-   __Uses__
+    
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Transaction\Failed
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
 
-## Properties
+### Properties
 ```php
 //
-protected record;
+protected $record;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $message, ModelInterface $record = null );
@@ -8493,13 +9272,30 @@ Returns validation record messages which stop the transaction
 
 
 
-<h1 id="mvc-model-transaction-manager">Class Phalcon\Mvc\Model\Transaction\Manager</h1>
+## Mvc\Model\Transaction\Manager 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Transaction/Manager.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Transaction |
-| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface |
-| Implements | ManagerInterface, InjectionAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Transaction`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\Model\Transaction`
+    - `Phalcon\Mvc\Model\TransactionInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `InjectionAwareInterface`
+    - `ManagerInterface`
 
 Phalcon\Mvc\Model\Transaction\Manager
 
@@ -8548,31 +9344,31 @@ try {
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected container;
+protected $container;
 
 //
-protected initialized = false;
+protected $initialized = false;
 
 //
-protected number = 0;
+protected $number = 0;
 
 //
-protected rollbackPendent = true;
+protected $rollbackPendent = true;
 
 //
-protected service = db;
+protected $service = db;
 
 /**
  * @var array
  */
-protected transactions;
+protected $transactions;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( DiInterface $container = null );
@@ -8682,19 +9478,31 @@ Removes transactions from the TransactionManager
 
 
 
-<h1 id="mvc-model-transaction-managerinterface">Interface Phalcon\Mvc\Model\Transaction\ManagerInterface</h1>
+## Mvc\Model\Transaction\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/Transaction/ManagerInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model\Transaction |
-| Uses       | Phalcon\Mvc\Model\TransactionInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Transaction`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\TransactionInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\Transaction\ManagerInterface
 
 Interface for Phalcon\Mvc\Model\Transaction\Manager
 
 
-## Methods
+### Methods
 
 ```php
 public function collectTransactions(): void;
@@ -8771,19 +9579,32 @@ Set if the transaction manager must register a shutdown function to clean up pen
 
 
 
-<h1 id="mvc-model-transactioninterface">Interface Phalcon\Mvc\Model\TransactionInterface</h1>
+## Mvc\Model\TransactionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/TransactionInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\ManagerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Transaction\ManagerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\TransactionInterface
 
 Interface for Phalcon\Mvc\Model\Transaction
 
 
-## Methods
+### Methods
 
 ```php
 public function begin(): bool;
@@ -8859,13 +9680,26 @@ Enables throwing exception
 
 
 
-<h1 id="mvc-model-validationfailed">Class Phalcon\Mvc\Model\ValidationFailed</h1>
+## Mvc\Model\ValidationFailed 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Model/ValidationFailed.zep)
 
-| Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Mvc\ModelInterface |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model`
+
+-   __Uses__
+    
+    - `Phalcon\Messages\Message`
+    - `Phalcon\Mvc\ModelInterface`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Model\ValidationFailed
 
@@ -8873,17 +9707,17 @@ This exception is generated when a model fails to save a record
 Phalcon\Mvc\Model must be set up to have this behavior
 
 
-## Properties
+### Properties
 ```php
 //
-protected messages;
+protected $messages;
 
 //
-protected model;
+protected $model;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( ModelInterface $model, array $validationMessages );
@@ -8905,19 +9739,37 @@ Returns the model that generated the messages
 
 
 
-<h1 id="mvc-modelinterface">Interface Phalcon\Mvc\ModelInterface</h1>
+## Mvc\ModelInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/ModelInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Adapter\AdapterInterface`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Messages\MessageInterface`
+    - `Phalcon\Mvc\Model\CriteriaInterface`
+    - `Phalcon\Mvc\Model\MetaDataInterface`
+    - `Phalcon\Mvc\Model\ResultsetInterface`
+    - `Phalcon\Mvc\Model\TransactionInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\ModelInterface
 
 Interface for Phalcon\Mvc\Model
 
 
-## Methods
+### Methods
 
 ```php
 public function appendMessage( MessageInterface $message ): ModelInterface;
@@ -9174,19 +10026,31 @@ Check whether validation process has generated any messages
 
 
 
-<h1 id="mvc-moduledefinitioninterface">Interface Phalcon\Mvc\ModuleDefinitionInterface</h1>
+## Mvc\ModuleDefinitionInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/ModuleDefinitionInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Di\DiInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Di\DiInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\ModuleDefinitionInterface
 
 This interface must be implemented by class module definitions
 
 
-## Methods
+### Methods
 
 ```php
 public function registerAutoloaders( DiInterface $container = null );
@@ -9202,14 +10066,35 @@ Registers services related to the module
 
 
 
-<h1 id="mvc-router">Class Phalcon\Mvc\Router</h1>
+## Mvc\Router 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Router.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\Exception, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\RouteInterface |
-| Extends    | AbstractInjectionAware |
-| Implements | RouterInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Http\RequestInterface`
+    - `Phalcon\Mvc\Router\Exception`
+    - `Phalcon\Mvc\Router\GroupInterface`
+    - `Phalcon\Mvc\Router\Route`
+    - `Phalcon\Mvc\Router\RouteInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
+    - `RouterInterface`
 
 Phalcon\Mvc\Router
 
@@ -9239,74 +10124,74 @@ echo $router->getControllerName();
 ```
 
 
-## Constants
+### Constants
 ```php
 const POSITION_FIRST = 0;
 const POSITION_LAST = 1;
 ```
 
-## Properties
+### Properties
 ```php
 //
-protected action;
+protected $action;
 
 //
-protected controller;
+protected $controller;
 
 //
-protected defaultAction;
+protected $defaultAction;
 
 //
-protected defaultController;
+protected $defaultController;
 
 //
-protected defaultModule;
+protected $defaultModule;
 
 //
-protected defaultNamespace;
+protected $defaultNamespace;
 
 //
-protected defaultParams;
+protected $defaultParams;
 
 //
-protected eventsManager;
+protected $eventsManager;
 
 //
-protected keyRouteNames;
+protected $keyRouteNames;
 
 //
-protected keyRouteIds;
+protected $keyRouteIds;
 
 //
-protected matchedRoute;
+protected $matchedRoute;
 
 //
-protected matches;
+protected $matches;
 
 //
-protected module;
+protected $module;
 
 //
-protected namespaceName;
+protected $namespaceName;
 
 //
-protected notFoundPaths;
+protected $notFoundPaths;
 
 //
-protected params;
+protected $params;
 
 //
-protected removeExtraSlashes;
+protected $removeExtraSlashes;
 
 //
-protected routes;
+protected $routes;
 
 //
-protected wasMatched = false;
+protected $wasMatched = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( bool $defaultRoutes = bool );
@@ -9615,13 +10500,27 @@ Checks if the router matches any of the defined routes
 
 
 
-<h1 id="mvc-router-annotations">Class Phalcon\Mvc\Router\Annotations</h1>
+## Mvc\Router\Annotations 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Router/Annotations.zep)
 
-| Namespace  | Phalcon\Mvc\Router |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\Router, Phalcon\Annotations\Annotation |
-| Extends    | Router |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router`
+
+-   __Uses__
+    
+    - `Phalcon\Annotations\Annotation`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Mvc\Router`
+
+-   __Extends__
+    
+    `Router`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Router\Annotations
 
@@ -9645,26 +10544,26 @@ $di->setShared(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected actionSuffix = Action;
+protected $actionSuffix = Action;
 
 //
-protected actionPreformatCallback;
+protected $actionPreformatCallback;
 
 //
-protected controllerSuffix = Controller;
+protected $controllerSuffix = Controller;
 
 //
-protected handlers;
+protected $handlers;
 
 //
-protected routePrefix;
+protected $routePrefix;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function addModuleResource( string $module, string $handler, string $prefix = null ): Annotations;
@@ -9748,12 +10647,24 @@ Changes the controller class suffix
 
 
 
-<h1 id="mvc-router-exception">Class Phalcon\Mvc\Router\Exception</h1>
+## Mvc\Router\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Router/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\Router |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Router\Exception
 
@@ -9761,12 +10672,24 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 
 
-<h1 id="mvc-router-group">Class Phalcon\Mvc\Router\Group</h1>
+## Mvc\Router\Group 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Router/Group.zep)
 
-| Namespace  | Phalcon\Mvc\Router |
-| Implements | GroupInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `GroupInterface`
 
 Phalcon\Mvc\Router\Group
 
@@ -9816,26 +10739,26 @@ $router->mount($blog);
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected beforeMatch;
+protected $beforeMatch;
 
 //
-protected hostname;
+protected $hostname;
 
 //
-protected paths;
+protected $paths;
 
 //
-protected prefix;
+protected $prefix;
 
 //
-protected routes;
+protected $routes;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( mixed $paths = null );
@@ -9983,11 +10906,23 @@ Adds a route applying the common attributes
 
 
 
-<h1 id="mvc-router-groupinterface">Interface Phalcon\Mvc\Router\GroupInterface</h1>
+## Mvc\Router\GroupInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Router/GroupInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Router |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Router\GroupInterface
 
@@ -10035,7 +10970,7 @@ $router->mount($blog);
 ```
 
 
-## Methods
+### Methods
 
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
@@ -10171,55 +11106,67 @@ Set a common uri prefix for all the routes in this group
 
 
 
-<h1 id="mvc-router-route">Class Phalcon\Mvc\Router\Route</h1>
+## Mvc\Router\Route 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Router/Route.zep)
 
-| Namespace  | Phalcon\Mvc\Router |
-| Implements | RouteInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `RouteInterface`
 
 Phalcon\Mvc\Router\Route
 
 This class represents every route added to the router
 
 
-## Properties
+### Properties
 ```php
 //
-protected beforeMatch;
+protected $beforeMatch;
 
 //
-protected compiledPattern;
+protected $compiledPattern;
 
 //
-protected converters;
+protected $converters;
 
 //
-protected group;
+protected $group;
 
 //
-protected hostname;
+protected $hostname;
 
 //
-protected id;
+protected $id;
 
 //
-protected methods;
+protected $methods;
 
 //
-protected match;
+protected $match;
 
 //
-protected name;
+protected $name;
 
 //
-protected paths;
+protected $paths;
 
 //
-protected pattern;
+protected $pattern;
 
 //
-protected static uniqueId = 0;
+protected $static uniqueId = 0;
 
 ```
 
@@ -10456,18 +11403,30 @@ $route->via(
 
 
 
-<h1 id="mvc-router-routeinterface">Interface Phalcon\Mvc\Router\RouteInterface</h1>
+## Mvc\Router\RouteInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/Router/RouteInterface.zep)
 
-| Namespace  | Phalcon\Mvc\Router |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\Router\RouteInterface
 
 Interface for Phalcon\Mvc\Router\Route
 
 
-## Methods
+### Methods
 
 ```php
 public function compilePattern( string $pattern ): string;
@@ -10567,17 +11526,30 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-<h1 id="mvc-routerinterface">Interface Phalcon\Mvc\RouterInterface</h1>
+## Mvc\RouterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/RouterInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Router\GroupInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\GroupInterface`
+    - `Phalcon\Mvc\Router\RouteInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Mvc\Router
 
 
-## Methods
+### Methods
 
 ```php
 public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
@@ -10762,14 +11734,33 @@ Check if the router matches any of the defined routes
 
 
 
-<h1 id="mvc-view">Class Phalcon\Mvc\View</h1>
+## Mvc\View 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\View\Engine\Php |
-| Extends    | Injectable |
-| Implements | ViewInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Mvc\View\Engine\Php`
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
+    - `ViewInterface`
 
 Phalcon\Mvc\View
 
@@ -10797,7 +11788,7 @@ echo $view->getContent();
 ```
 
 
-## Constants
+### Constants
 ```php
 const LEVEL_ACTION_VIEW = 1;
 const LEVEL_AFTER_TEMPLATE = 4;
@@ -10807,80 +11798,80 @@ const LEVEL_MAIN_LAYOUT = 5;
 const LEVEL_NO_RENDER = 0;
 ```
 
-## Properties
+### Properties
 ```php
 //
-protected actionName;
+protected $actionName;
 
 //
-protected activeRenderPaths;
+protected $activeRenderPaths;
 
 //
-protected basePath = ;
+protected $basePath = ;
 
 //
-protected content = ;
+protected $content = ;
 
 //
-protected controllerName;
+protected $controllerName;
 
 //
-protected currentRenderLevel = 0;
+protected $currentRenderLevel = 0;
 
 //
-protected disabled = false;
+protected $disabled = false;
 
 //
-protected disabledLevels;
+protected $disabledLevels;
 
 //
-protected engines = false;
+protected $engines = false;
 
 //
-protected eventsManager;
+protected $eventsManager;
 
 //
-protected layout;
+protected $layout;
 
 //
-protected layoutsDir = ;
+protected $layoutsDir = ;
 
 //
-protected mainView = index;
+protected $mainView = index;
 
 //
-protected options;
+protected $options;
 
 //
-protected params;
+protected $params;
 
 //
-protected pickView;
+protected $pickView;
 
 //
-protected partialsDir = ;
+protected $partialsDir = ;
 
 //
-protected registeredEngines;
+protected $registeredEngines;
 
 //
-protected renderLevel = 5;
+protected $renderLevel = 5;
 
 //
-protected templatesAfter;
+protected $templatesAfter;
 
 //
-protected templatesBefore;
+protected $templatesBefore;
 
 //
-protected viewsDirs;
+protected $viewsDirs;
 
 //
-protected viewParams;
+protected $viewParams;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -11366,27 +12357,41 @@ Phalcon\Mvc\View\Engine\Php
 
 
 
-<h1 id="mvc-view-engine-abstractengine">Abstract Class Phalcon\Mvc\View\Engine\AbstractEngine</h1>
+## Mvc\View\Engine\AbstractEngine ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Engine/AbstractEngine.zep)
 
-| Namespace  | Phalcon\Mvc\View\Engine |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\ViewBaseInterface |
-| Extends    | Injectable |
-| Implements | EngineInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine`
+
+-   __Uses__
+    
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Mvc\ViewBaseInterface`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `EngineInterface`
 
 All the template engine adapters must inherit this class. This provides
 basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 
-## Properties
+### Properties
 ```php
 //
-protected view;
+protected $view;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( ViewBaseInterface $view, DiInterface $container = null );
@@ -11414,16 +12419,28 @@ Renders a partial inside another view
 
 
 
-<h1 id="mvc-view-engine-engineinterface">Interface Phalcon\Mvc\View\Engine\EngineInterface</h1>
+## Mvc\View\Engine\EngineInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Engine/EngineInterface.zep)
 
-| Namespace  | Phalcon\Mvc\View\Engine |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Mvc\View engine adapters
 
 
-## Methods
+### Methods
 
 ```php
 public function getContent(): string;
@@ -11445,17 +12462,30 @@ Renders a view using the template engine
 
 
 
-<h1 id="mvc-view-engine-php">Class Phalcon\Mvc\View\Engine\Php</h1>
+
+## Mvc\View\Engine\Php 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Engine/Php.zep)
 
-| Namespace  | Phalcon\Mvc\View\Engine |
-| Extends    | AbstractEngine |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractEngine`
+
+-   __Implements__
+    
 
 Adapter to use PHP itself as templating engine
 
 
-## Methods
+### Methods
 
 ```php
 public function render( string $path, mixed $params, bool $mustClean = bool );
@@ -11465,35 +12495,53 @@ Renders a view using the template engine
 
 
 
-<h1 id="mvc-view-engine-volt">Class Phalcon\Mvc\View\Engine\Volt</h1>
+## Mvc\View\Engine\Volt 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Engine/Volt.zep)
 
-| Namespace  | Phalcon\Mvc\View\Engine |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception |
-| Extends    | AbstractEngine |
-| Implements | EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine`
+
+-   __Uses__
+    
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Html\Link\Link`
+    - `Phalcon\Html\Link\Serializer\Header`
+    - `Phalcon\Mvc\View\Engine\Volt\Compiler`
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `AbstractEngine`
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
 
-## Properties
+### Properties
 ```php
 //
-protected compiler;
+protected $compiler;
 
 //
-protected eventsManager;
+protected $eventsManager;
 
 //
-protected macros;
+protected $macros;
 
 //
-protected options;
+protected $options;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function callMacro( string $name, array $arguments = [] ): mixed;
@@ -11569,13 +12617,28 @@ Sorts an array
 
 
 
-<h1 id="mvc-view-engine-volt-compiler">Class Phalcon\Mvc\View\Engine\Volt\Compiler</h1>
+## Mvc\View\Engine\Volt\Compiler 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Engine/Volt/Compiler.zep)
 
-| Namespace  | Phalcon\Mvc\View\Engine\Volt |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Mvc\ViewBaseInterface, Phalcon\Di\InjectionAwareInterface |
-| Implements | InjectionAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\ViewBaseInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `InjectionAwareInterface`
 
 This class reads and compiles Volt templates into PHP plain code
 
@@ -11588,74 +12651,74 @@ require $compiler->getCompiledTemplatePath();
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected autoescape = false;
+protected $autoescape = false;
 
 //
-protected blockLevel = 0;
+protected $blockLevel = 0;
 
 //
-protected blocks;
+protected $blocks;
 
 //
-protected container;
+protected $container;
 
 //
-protected compiledTemplatePath;
+protected $compiledTemplatePath;
 
 //
-protected currentBlock;
+protected $currentBlock;
 
 //
-protected currentPath;
+protected $currentPath;
 
 //
-protected exprLevel = 0;
+protected $exprLevel = 0;
 
 //
-protected extended = false;
+protected $extended = false;
 
 //
-protected extensions;
+protected $extensions;
 
 //
-protected extendedBlocks;
+protected $extendedBlocks;
 
 //
-protected filters;
+protected $filters;
 
 //
-protected foreachLevel = 0;
+protected $foreachLevel = 0;
 
 //
-protected forElsePointers;
+protected $forElsePointers;
 
 //
 protected functions;
 
 //
-protected level = 0;
+protected $level = 0;
 
 //
-protected loopPointers;
+protected $loopPointers;
 
 //
-protected macros;
+protected $macros;
 
 //
-protected options;
+protected $options;
 
 //
-protected prefix;
+protected $prefix;
 
 //
-protected view;
+protected $view;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( ViewBaseInterface $view = null );
@@ -11963,25 +13026,37 @@ Compiles a block of statements
 
 
 
-<h1 id="mvc-view-engine-volt-exception">Class Phalcon\Mvc\View\Engine\Volt\Exception</h1>
+## Mvc\View\Engine\Volt\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Engine/Volt/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\View\Engine\Volt |
-| Uses       | Phalcon\Mvc\View\Exception |
-| Extends    | BaseException |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `BaseException`
+
+-   __Implements__
+    
 
 Class for exceptions thrown by Phalcon\Mvc\View
 
 
-## Properties
+### Properties
 ```php
 //
-protected statement;
+protected $statement;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $message = string, array $statement = [], int $code = int, \Exception $previous = null );
@@ -11997,12 +13072,24 @@ Gets currently parsed statement (if any).
 
 
 
-<h1 id="mvc-view-exception">Class Phalcon\Mvc\View\Exception</h1>
+## Mvc\View\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Exception.zep)
 
-| Namespace  | Phalcon\Mvc\View |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\View\Exception
 
@@ -12010,14 +13097,34 @@ Class for exceptions thrown by Phalcon\Mvc\View
 
 
 
-<h1 id="mvc-view-simple">Class Phalcon\Mvc\View\Simple</h1>
+## Mvc\View\Simple 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/View/Simple.zep)
 
-| Namespace  | Phalcon\Mvc\View |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php |
-| Extends    | Injectable |
-| Implements | ViewBaseInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\Injectable`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Mvc\ViewBaseInterface`
+    - `Phalcon\Mvc\View\Engine\EngineInterface`
+    - `Phalcon\Mvc\View\Engine\Php`
+
+-   __Extends__
+    
+    `Injectable`
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
+    - `ViewBaseInterface`
 
 Phalcon\Mvc\View\Simple
 
@@ -12046,38 +13153,38 @@ echo $view->render(
 ```
 
 
-## Properties
+### Properties
 ```php
 //
-protected activeRenderPath;
+protected $activeRenderPath;
 
 //
-protected content;
+protected $content;
 
 /**
  * @var \Phalcon\Mvc\View\EngineInterface[]|false
  */
-protected engines = false;
+protected $engines = false;
 
 //
-protected eventsManager;
+protected $eventsManager;
 
 //
-protected options;
+protected $options;
 
 //
-protected partialsDir;
+protected $partialsDir;
 
 /**
  * @var array|null
  */
-protected registeredEngines;
+protected $registeredEngines;
 
 //
-protected viewsDir;
+protected $viewsDir;
 
 //
-protected viewParams;
+protected $viewParams;
 
 ```
 
@@ -12265,19 +13372,31 @@ Phalcon\Mvc\View\Engine\Php
 
 
 
-<h1 id="mvc-viewbaseinterface">Interface Phalcon\Mvc\ViewBaseInterface</h1>
+## Mvc\ViewBaseInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/ViewBaseInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Uses       | Phalcon\Cache\Adapter\AdapterInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+    - `Phalcon\Cache\Adapter\AdapterInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Mvc\ViewInterface
 
 Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 
 
-## Methods
+### Methods
 
 ```php
 public function getContent(): string;
@@ -12330,19 +13449,31 @@ slash or backslash
 
 
 
-<h1 id="mvc-viewinterface">Interface Phalcon\Mvc\ViewInterface</h1>
+## Mvc\ViewInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Mvc/ViewInterface.zep)
 
-| Namespace  | Phalcon\Mvc |
-| Extends    | ViewBaseInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Mvc`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ViewBaseInterface`
+
+-   __Implements__
+    
 
 Phalcon\Mvc\ViewInterface
 
 Interface for Phalcon\Mvc\View
 
 
-## Methods
+### Methods
 
 ```php
 public function cleanTemplateAfter();

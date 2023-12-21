@@ -1,129 +1,157 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Dispatcher'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Dispatcher\AbstractDispatcher](#dispatcher-abstractdispatcher)
-* [Phalcon\Dispatcher\DispatcherInterface](#dispatcher-dispatcherinterface)
-* [Phalcon\Dispatcher\Exception](#dispatcher-exception)
+!!! info "NOTE"
 
-<h1 id="dispatcher-abstractdispatcher">Abstract Class Phalcon\Dispatcher\AbstractDispatcher</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Dispatcher\AbstractDispatcher ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Dispatcher/AbstractDispatcher.zep)
 
-| Namespace  | Phalcon\Dispatcher |
-| Uses       | Exception, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface |
-| Extends    | AbstractInjectionAware |
-| Implements | DispatcherInterface, EventsAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Dispatcher`
+
+-   __Uses__
+    
+    - `Exception`
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Dispatcher\Exception`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Filter\FilterInterface`
+    - `Phalcon\Mvc\Model\Binder`
+    - `Phalcon\Mvc\Model\BinderInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `DispatcherInterface`
+    - `EventsAwareInterface`
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher.
 This class can't be instantiated directly, you can use it to create your own
 dispatchers.
 
 
-## Properties
+### Properties
 ```php
 //
-protected activeHandler;
+protected $activeHandler;
 
 /**
  * @var array
  */
-protected activeMethodMap;
+protected $activeMethodMap;
 
 //
-protected actionName;
+protected $actionName = '';
 
 /**
  * @var string
  */
-protected actionSuffix = Action;
+protected $actionSuffix = 'Action';
 
 /**
  * @var array
  */
-protected camelCaseMap;
+protected $camelCaseMap;
 
 /**
  * @var string
  */
-protected defaultAction = ;
+protected $defaultAction = '';
 
 //
-protected defaultNamespace;
+protected $defaultNamespace;
 
 //
-protected defaultHandler;
+protected $defaultHandler;
 
 /**
  * @var array
  */
-protected handlerHashes;
+protected $handlerHashes;
 
 //
-protected handlerName;
+protected $handlerName;
 
 /**
  * @var string
  */
-protected handlerSuffix = ;
+protected $handlerSuffix = '';
 
-//
-protected eventsManager;
+/**
+ * @var ManagerInterface|null
+ */
+protected $eventsManager;
 
 /**
  * @var bool
  */
-protected finished = false;
+protected $finished = false;
 
 /**
  * @var bool
  */
-protected forwarded = false;
+protected $forwarded = false;
 
 /**
  * @var bool
  */
-protected isControllerInitialize = false;
+protected $isControllerInitialize = false;
 
 //
-protected lastHandler;
+protected $lastHandler;
 
 //
-protected modelBinder;
+protected $modelBinder;
 
 /**
  * @var bool
  */
-protected modelBinding = false;
+protected $modelBinding = false;
 
-//
-protected moduleName;
+/**
+ * @var string
+ */
+protected $moduleName = '';
 
-//
-protected namespaceName;
+/**
+ * @var string
+ */
+protected $namespaceName = '';
 
 /**
  * @var array
  */
-protected params;
+protected $params;
 
 //
-protected previousActionName;
+protected $previousActionName = '';
 
 //
-protected previousHandlerName;
+protected $previousHandlerName = '';
 
 //
-protected previousNamespaceName;
+protected $previousNamespaceName = '';
 
 //
-protected returnedValue;
+protected $returnedValue;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] );
@@ -152,7 +180,6 @@ $this->dispatcher->forward(
 );
 ```
 
-@throws \Phalcon\Exception
 
 
 ```php
@@ -371,16 +398,28 @@ protected function toCamelCase( string $input ): string;
 
 
 
-<h1 id="dispatcher-dispatcherinterface">Interface Phalcon\Dispatcher\DispatcherInterface</h1>
+## Dispatcher\DispatcherInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Dispatcher/DispatcherInterface.zep)
 
-| Namespace  | Phalcon\Dispatcher |
+
+-   __Namespace__
+
+    - `Phalcon\Dispatcher`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Dispatcher\AbstractDispatcher
 
 
-## Methods
+### Methods
 
 ```php
 public function dispatch(): mixed | bool;
@@ -499,17 +538,29 @@ Sets action params to be dispatched
 
 
 
-<h1 id="dispatcher-exception">Class Phalcon\Dispatcher\Exception</h1>
+## Dispatcher\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Dispatcher/Exception.zep)
 
-| Namespace  | Phalcon\Dispatcher |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Dispatcher`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Dispatcher/* will use this class
 
 
-## Constants
+### Constants
 ```php
 const EXCEPTION_ACTION_NOT_FOUND = 5;
 const EXCEPTION_CYCLIC_ROUTING = 1;

@@ -1,34 +1,38 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Security'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Security](#security)
-* [Phalcon\Security\Exception](#security-exception)
-* [Phalcon\Security\JWT\Builder](#security-jwt-builder)
-* [Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException](#security-jwt-exceptions-unsupportedalgorithmexception)
-* [Phalcon\Security\JWT\Exceptions\ValidatorException](#security-jwt-exceptions-validatorexception)
-* [Phalcon\Security\JWT\Signer\AbstractSigner](#security-jwt-signer-abstractsigner)
-* [Phalcon\Security\JWT\Signer\Hmac](#security-jwt-signer-hmac)
-* [Phalcon\Security\JWT\Signer\None](#security-jwt-signer-none)
-* [Phalcon\Security\JWT\Signer\SignerInterface](#security-jwt-signer-signerinterface)
-* [Phalcon\Security\JWT\Token\AbstractItem](#security-jwt-token-abstractitem)
-* [Phalcon\Security\JWT\Token\Enum](#security-jwt-token-enum)
-* [Phalcon\Security\JWT\Token\Item](#security-jwt-token-item)
-* [Phalcon\Security\JWT\Token\Parser](#security-jwt-token-parser)
-* [Phalcon\Security\JWT\Token\Signature](#security-jwt-token-signature)
-* [Phalcon\Security\JWT\Token\Token](#security-jwt-token-token)
-* [Phalcon\Security\JWT\Validator](#security-jwt-validator)
-* [Phalcon\Security\Random](#security-random)
+!!! info "NOTE"
 
-<h1 id="security">Class Phalcon\Security</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Security 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\RequestInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Session\ManagerInterface |
-| Extends    | AbstractInjectionAware |
+
+-   __Namespace__
+
+    - `Phalcon`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Security\Exception`
+    - `Phalcon\Security\Random`
+    - `Phalcon\Http\RequestInterface`
+    - `Phalcon\Session\ManagerInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
 
 This component provides a set of functions to improve the security in Phalcon
 applications
@@ -47,7 +51,7 @@ if ($user) {
 ```
 
 
-## Constants
+### Constants
 ```php
 const CRYPT_BLOWFISH = 4;
 const CRYPT_BLOWFISH_A = 5;
@@ -61,52 +65,52 @@ const CRYPT_SHA512 = 9;
 const CRYPT_STD_DES = 1;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var int|null
  */
-protected defaultHash;
+protected $defaultHash;
 
 /**
  * @var int
  */
-protected numberBytes = 16;
+protected $numberBytes = 16;
 
 /**
  * @var Random
  */
-protected random;
+protected $random;
 
 /**
  * @var string}null
  */
-protected requestToken;
+protected $requestToken;
 
 /**
  * @var string|null
  */
-protected token;
+protected $token;
 
 /**
  * @var string|null
  */
-protected tokenKey;
+protected $tokenKey;
 
 /**
  * @var string
  */
-protected tokenKeySessionId = $PHALCON/CSRF/KEY$;
+protected $tokenKeySessionId = $PHALCON/CSRF/KEY$;
 
 /**
  * @var string
  */
-protected tokenValueSessionId = $PHALCON/CSRF$;
+protected $tokenValueSessionId = $PHALCON/CSRF$;
 
 /**
  * @var int
  */
-protected workFactor = 10;
+protected $workFactor = 10;
 
 /**
  * @var SessionInterface|null
@@ -120,7 +124,7 @@ private localRequest;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( SessionInterface $session = null, RequestInterface $request = null );
@@ -247,41 +251,72 @@ Sets the work factor
 
 
 
-<h1 id="security-exception">Class Phalcon\Security\Exception</h1>
+
+
+
+## Security\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/Exception.zep)
 
-| Namespace  | Phalcon\Security |
-| Extends    | \Phalcon\Exception |
 
-Phalcon\Security\Exception
+-   __Namespace__
+
+    - `Phalcon\Security`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Security will use this class
 
 
-<h1 id="security-jwt-builder">Class Phalcon\Security\JWT\Builder</h1>
+
+## Security\JWT\Builder 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Builder.zep)
 
-| Namespace  | Phalcon\Security\JWT |
-| Uses       | Phalcon\Collection, Phalcon\Collection\CollectionInterface, Phalcon\Helper\Base64, Phalcon\Helper\Json, Phalcon\Security\JWT\Exceptions\ValidatorException, Phalcon\Security\JWT\Signer\SignerInterface, Phalcon\Security\JWT\Token\Enum, Phalcon\Security\JWT\Token\Item, Phalcon\Security\JWT\Token\Signature, Phalcon\Security\JWT\Token\Token |
 
-Class Builder
+-   __Namespace__
 
-@property CollectionInterface  $claims
-@property CollectionInterface  $jose
-@property string               $passphrase
-@property SignerInterface      $signer
+    - `Phalcon\Security\JWT`
+
+-   __Uses__
+    
+    - `Phalcon\Collection`
+    - `Phalcon\Collection\CollectionInterface`
+    - `Phalcon\Helper\Base64`
+    - `Phalcon\Helper\Json`
+    - `Phalcon\Security\JWT\Exceptions\ValidatorException`
+    - `Phalcon\Security\JWT\Signer\SignerInterface`
+    - `Phalcon\Security\JWT\Token\Enum`
+    - `Phalcon\Security\JWT\Token\Item`
+    - `Phalcon\Security\JWT\Token\Signature`
+    - `Phalcon\Security\JWT\Token\Token`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Builder
+
 
 @link https://tools.ietf.org/html/rfc7519
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var CollectionInterface
  */
-private claims;
+private $claims;
 
 /**
  * @var CollectionInterface
@@ -291,16 +326,16 @@ private jose;
 /**
  * @var string
  */
-private passphrase;
+private $passphrase;
 
 /**
  * @var SignerInterface
  */
-private signer;
+private $signer;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( SignerInterface $signer );
@@ -483,60 +518,84 @@ value.  Use of this claim is OPTIONAL.
 
 
 
-<h1 id="security-jwt-exceptions-unsupportedalgorithmexception">Class Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException</h1>
+
+
+## Security\JWT\Exceptions\UnsupportedAlgorithmException 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
 
-| Namespace  | Phalcon\Security\JWT\Exceptions |
-| Uses       | Exception, Throwable |
-| Extends    | Exception |
-| Implements | Throwable |
 
-This file is part of the Phalcon Framework.
+-   __Namespace__
 
-(c) Phalcon Team <team@phalcon.io>
+    - `Phalcon\Security\JWT\Exceptions`
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+-   __Uses__
+    
+    - `Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+Exception thrown when the algorithm is not supported for JWT
 
 
 
-<h1 id="security-jwt-exceptions-validatorexception">Class Phalcon\Security\JWT\Exceptions\ValidatorException</h1>
+## Security\JWT\Exceptions\ValidatorException 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Exceptions/ValidatorException.zep)
 
-| Namespace  | Phalcon\Security\JWT\Exceptions |
-| Uses       | Exception, Throwable |
-| Extends    | Exception |
-| Implements | Throwable |
 
-This file is part of the Phalcon Framework.
+-   __Namespace__
 
-(c) Phalcon Team <team@phalcon.io>
+    - `Phalcon\Security\JWT\Exceptions`
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+-   __Uses__
+    
+    - `Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+Exception thrown when the validation does not pass for JWT
 
 
 
-<h1 id="security-jwt-signer-abstractsigner">Abstract Class Phalcon\Security\JWT\Signer\AbstractSigner</h1>
+## Security\JWT\Signer\AbstractSigner ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Signer/AbstractSigner.zep)
 
-| Namespace  | Phalcon\Security\JWT\Signer |
-| Implements | SignerInterface |
 
-Class AbstractSigner
+-   __Namespace__
 
-@property string $algo
+    - `Phalcon\Security\JWT\Signer`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SignerInterface`
+
+Abstract class helping with the signer classes
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected algorithm;
+protected $algorithm;
 
 ```
 
@@ -550,18 +609,30 @@ public function getAlgorithm(): string
 
 
 
-<h1 id="security-jwt-signer-hmac">Class Phalcon\Security\JWT\Signer\Hmac</h1>
+## Security\JWT\Signer\Hmac 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Signer/Hmac.zep)
 
-| Namespace  | Phalcon\Security\JWT\Signer |
-| Uses       | Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException |
-| Extends    | AbstractSigner |
 
-Class Hmac
+-   __Namespace__
+
+    - `Phalcon\Security\JWT\Signer`
+
+-   __Uses__
+    
+    - `Phalcon\Security\JWT\Exceptions\UnsupportedAlgorithmException`
+
+-   __Extends__
+    
+    `AbstractSigner`
+
+-   __Implements__
+    
+
+HMAC signing class
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $algo = string );
@@ -589,17 +660,29 @@ Verify a passed source with a payload and passphrase
 
 
 
-<h1 id="security-jwt-signer-none">Class Phalcon\Security\JWT\Signer\None</h1>
+## Security\JWT\Signer\None 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Signer/None.zep)
 
-| Namespace  | Phalcon\Security\JWT\Signer |
-| Implements | SignerInterface |
 
-Class None
+-   __Namespace__
+
+    - `Phalcon\Security\JWT\Signer`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SignerInterface`
+
+No signing class
 
 
-## Methods
+### Methods
 
 ```php
 public function getAlgHeader(): string;
@@ -627,21 +710,28 @@ Verify a passed source with a payload and passphrase
 
 
 
-<h1 id="security-jwt-signer-signerinterface">Interface Phalcon\Security\JWT\Signer\SignerInterface</h1>
+## Security\JWT\Signer\SignerInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Signer/SignerInterface.zep)
 
-| Namespace  | Phalcon\Security\JWT\Signer |
 
-This file is part of the Phalcon Framework.
+-   __Namespace__
 
-(c) Phalcon Team <team@phalcon.io>
+    - `Phalcon\Security\JWT\Signer`
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Interface for JWT Signer classes
 
 
-## Methods
+### Methods
 
 ```php
 public function getAlgHeader(): string;
@@ -669,27 +759,37 @@ Verify a passed source with a payload and passphrase
 
 
 
-<h1 id="security-jwt-token-abstractitem">Abstract Class Phalcon\Security\JWT\Token\AbstractItem</h1>
+## Security\JWT\Token\AbstractItem ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Token/AbstractItem.zep)
 
-| Namespace  | Phalcon\Security\JWT\Token |
 
-Class AbstractItem
+-   __Namespace__
 
-@property array $data
+    - `Phalcon\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Abstract helper class for Tokens
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getEncoded(): string;
@@ -699,18 +799,30 @@ public function getEncoded(): string;
 
 
 
-<h1 id="security-jwt-token-enum">Class Phalcon\Security\JWT\Token\Enum</h1>
+## Security\JWT\Token\Enum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Token/Enum.zep)
 
-| Namespace  | Phalcon\Security\JWT\Token |
 
-Class Enum
+-   __Namespace__
+
+    - `Phalcon\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Constants for Tokens. It offers constants for Headers as well as Claims
 
 @link https://tools.ietf.org/html/rfc7519
 
 
-## Constants
+### Constants
 ```php
 const ALGO            = 'alg';
 const AUDIENCE        = 'aud';
@@ -725,17 +837,29 @@ const TYPE            = 'typ';
 ```
 
 
-<h1 id="security-jwt-token-item">Class Phalcon\Security\JWT\Token\Item</h1>
+## Security\JWT\Token\Item 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Token/Item.zep)
 
-| Namespace  | Phalcon\Security\JWT\Token |
-| Extends    | AbstractItem |
 
-Class Item
+-   __Namespace__
+
+    - `Phalcon\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractItem`
+
+-   __Implements__
+    
+
+Storage class for a Token Item
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $payload, string $encoded );
@@ -763,17 +887,33 @@ public function has( string $name ): bool;
 
 
 
-<h1 id="security-jwt-token-parser">Class Phalcon\Security\JWT\Token\Parser</h1>
+## Security\JWT\Token\Parser 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Token/Parser.zep)
 
-| Namespace  | Phalcon\Security\JWT\Token |
-| Uses       | InvalidArgumentException, Phalcon\Helper\Arr, Phalcon\Helper\Base64, Phalcon\Helper\Json |
 
-Class Parser
+-   __Namespace__
+
+    - `Phalcon\Security\JWT\Token`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Phalcon\Helper\Arr`
+    - `Phalcon\Helper\Base64`
+    - `Phalcon\Helper\Json`
+    - `Phalcon\Helper\Json\Decode`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Token Parser class.
 
 
-## Methods
+### Methods
 
 ```php
 public function parse( string $token ): Token;
@@ -783,17 +923,28 @@ Parse a token and return it
 
 
 
-<h1 id="security-jwt-token-signature">Class Phalcon\Security\JWT\Token\Signature</h1>
+## Security\JWT\Token\Signature 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Token/Signature.zep)
 
-| Namespace  | Phalcon\Security\JWT\Token |
-| Extends    | AbstractItem |
 
-Class Item
+-   __Namespace__
+
+    - `Phalcon\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractItem`
+
+-   __Implements__
+    
 
 
-## Methods
+
+### Methods
 
 ```php
 public function __construct( string $hash = string, string $encoded = string );
@@ -809,22 +960,33 @@ public function getHash(): string;
 
 
 
-<h1 id="security-jwt-token-token">Class Phalcon\Security\JWT\Token\Token</h1>
+## Security\JWT\Token\Token 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Token/Token.zep)
 
-| Namespace  | Phalcon\Security\JWT\Token |
 
-Class Token
+-   __Namespace__
 
-@property Item      $claims
-@property Item      $headers
-@property Signature $signature
+    - `Phalcon\Security\JWT\Token`
+
+-   __Uses__
+    
+    - `Phalcon\Security\JWT\Signer\SignerInterface`
+    - `Phalcon\Security\JWT\Validator`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Token Class.
+
 
 @link https://tools.ietf.org/html/rfc7519
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var Item
@@ -843,7 +1005,7 @@ private signature;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Item $headers, Item $claims, Signature $signature );
@@ -852,13 +1014,13 @@ Token constructor.
 
 
 ```php
-public function getClaims(): Item
+public function getClaims(): Item;
 ```
 
 
 
 ```php
-public function getHeaders(): Item
+public function getHeaders(): Item;
 ```
 
 
@@ -883,34 +1045,46 @@ public function getToken(): string;
 
 
 
-<h1 id="security-jwt-validator">Class Phalcon\Security\JWT\Validator</h1>
+## Security\JWT\Validator 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/JWT/Validator.zep)
 
-| Namespace  | Phalcon\Security\JWT |
-| Uses       | Phalcon\Security\JWT\Exceptions\ValidatorException, Phalcon\Security\JWT\Signer\SignerInterface, Phalcon\Security\JWT\Token\Enum, Phalcon\Security\JWT\Token\Token |
+
+-   __Namespace__
+
+    - `Phalcon\Security\JWT`
+
+-   __Uses__
+    
+    - `Phalcon\Security\JWT\Exceptions\ValidatorException`
+    - `Phalcon\Security\JWT\Signer\SignerInterface`
+    - `Phalcon\Security\JWT\Token\Enum`
+    - `Phalcon\Security\JWT\Token\Token`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Class Validator
 
-@property int   $timeShift
-@property Token $token
 
-
-## Properties
+### Properties
 ```php
 /**
  * @var int
  */
-private timeShift = 0;
+private $timeShift = 0;
 
 /**
  * @var Token
  */
-private token;
+private $token;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Token $token, int $timeShift = int );
@@ -968,13 +1142,23 @@ public function validateSignature( SignerInterface $signer, string $passphrase )
 
 
 
-<h1 id="security-random">Class Phalcon\Security\Random</h1>
+## Security\Random 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Security/Random.zep)
 
-| Namespace  | Phalcon\Security |
 
-Phalcon\Security\Random
+-   __Namespace__
+
+    - `Phalcon\Security`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Secure random number generator class.
 
@@ -1039,7 +1223,7 @@ This class partially borrows SecureRandom library from Ruby
 @link https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
 
-## Methods
+### Methods
 
 ```php
 public function base58( int $len = null ): string;

@@ -1,62 +1,81 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Debug'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Debug](#debug)
-* [Phalcon\Debug\Dump](#debug-dump)
-* [Phalcon\Debug\Exception](#debug-exception)
+!!! info "NOTE"
 
-<h1 id="debug">Class Phalcon\Debug</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Debug.zep)
 
-| Namespace  | Phalcon |
-| Uses       | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
+## Debug 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Support/Debug.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support`
+
+-   __Uses__
+    
+    - `ErrorException`
+    - `Phalcon\Debug\Exception`
+    - `ReflectionClass`
+    - `ReflectionException`
+    - `ReflectionFunction`
+    - `Throwable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Provides debug capabilities to Phalcon applications
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
-    */
-protected blacklist;
+ */
+protected $blacklist;
 
-//
-protected data;
+/**
+ * @var array
+ */
+protected $data;
 
 /**
  * @var bool
  */
-protected hideDocumentRoot = false;
+protected $hideDocumentRoot = false;
 
 /**
  * @var bool
  */
-protected static isActive;
+protected $static $isActive;
 
 /**
  * @var bool
  */
-protected showBackTrace = true;
+protected $showBackTrace = true;
 
 /**
  * @var bool
  */
-protected showFileFragment = false;
+protected $showFileFragment = false;
 
 /**
  * @var bool
  */
-protected showFiles = true;
+protected $showFiles = true;
 
 /**
  * @var string
     */
-protected uri = https://assets.phalcon.io/debug/4.0.x/;
+protected $uri = https://assets.phalcon.io/debug/4.0.x/;
 
 ```
 
@@ -101,7 +120,7 @@ Halts the request showing a backtrace
 ```php
 public function listen( bool $exceptions = bool, bool $lowSeverity = bool ): Debug;
 ```
-Listen for uncaught exceptions and unsilent notices or warnings
+Listen for uncaught exceptions and non silent notices or warnings
 
 
 ```php
@@ -113,7 +132,7 @@ Listen for uncaught exceptions
 ```php
 public function listenLowSeverity(): Debug;
 ```
-Listen for unsilent notices or warnings
+Listen for non silent notices or warnings
 
 
 ```php
@@ -131,7 +150,7 @@ Throws an exception when a notice or warning is raised
 ```php
 public function renderHtml( \Throwable $exception ): string;
 ```
-
+Render exception to html format.
 
 
 ```php
@@ -191,12 +210,29 @@ Shows a backtrace item
 
 
 
-<h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
+## Debug\Dump 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Debug/Dump.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Support/Debug/Dump.zep)
 
-| Namespace  | Phalcon\Debug |
-| Uses       | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
+
+-   __Namespace__
+
+    - `Phalcon\Debug`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Di`
+    - `Phalcon\Helper\Json\Encode`
+    - `Reflection`
+    - `ReflectionClass`
+    - `ReflectionProperty`
+    - `stdClass`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Dumps information about a variable(s)
 
@@ -215,26 +251,26 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var bool
  */
-protected detailed = false;
+protected $detailed = false;
 
 /**
  * @var array
  */
-protected methods;
+protected $methods;
 
 /**
  * @var array
  */
-protected styles;
+protected $styles;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $styles = [], bool $detailed = bool );
@@ -249,7 +285,7 @@ Alias of variables() method
 
 
 ```php
-public function getDetailed(): bool
+public function getDetailed(): bool;
 ```
 
 
@@ -330,11 +366,23 @@ Prepare an HTML string of information about a single variable.
 
 
 
-<h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
+## Debug\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Debug/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Support/Debug/Exception.zep)
 
-| Namespace  | Phalcon\Debug |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Debug`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Debug will use this class

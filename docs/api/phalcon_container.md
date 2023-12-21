@@ -1,28 +1,44 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Container'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Container](#container)
+!!! info "NOTE"
 
-<h1 id="container">Class Phalcon\Container</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Container
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Container.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface |
-| Implements | ContainerInterface |
+
+-   __Namespace__
+
+    - `Phalcon`
+
+-   __Uses__
+
+    - `Psr\Container\ContainerInterface`
+    - `Phalcon\Di\DiInterface`
+
+-   __Extends__
+
+
+-   __Implements__
+
+    - `ContainerInterface`
 
 PSR-11 Wrapper for `Phalcon\Di`
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var DiInterface
  */
-protected container;
+protected $container;
 
 ```
 

@@ -1,20 +1,33 @@
 ---
-layout: default
-version: '4.0'
-title: 'Phalcon\Escaper'
+hide:
+    - navigation
 ---
 
-* [Phalcon\Escaper](#escaper)
-* [Phalcon\Escaper\EscaperInterface](#escaper-escaperinterface)
-* [Phalcon\Escaper\Exception](#escaper-exception)
+!!! info "NOTE"
 
-<h1 id="escaper">Class Phalcon\Escaper</h1>
+    All classes are prefixed with `Phalcon`
+
+
+
+## Escaper 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Escaper.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Escaper\Exception |
-| Implements | EscaperInterface |
+
+-   __Namespace__
+
+    - `Phalcon`
+
+-   __Uses__
+    
+    - `Phalcon\Escaper\EscaperInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `EscaperInterface`
 
 Phalcon\Escaper
 
@@ -33,22 +46,22 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var bool
  */
-protected doubleEncode = true;
+protected $doubleEncode = true;
 
 /**
  * @var string
  */
-protected encoding = utf-8;
+protected $encoding = utf-8;
 
 /**
  * @var int
  */
-protected flags = 3;
+protected $flags = 3;
 
 ```
 
@@ -186,11 +199,25 @@ Escapes a URL. Internally uses rawurlencode
 
 
 
-<h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
+
+
+## Escaper\EscaperInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Escaper/EscaperInterface.zep)
 
-| Namespace  | Phalcon\Escaper |
+
+-   __Namespace__
+
+    - `Phalcon\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Escaper
 
@@ -249,11 +276,23 @@ Sets the HTML quoting type for htmlspecialchars
 
 
 
-<h1 id="escaper-exception">Class Phalcon\Escaper\Exception</h1>
+## Html\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Escaper/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Html/Exception.zep)
 
-| Namespace  | Phalcon\Escaper |
-| Extends    | \Phalcon\Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Html`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Escaper will use this class
