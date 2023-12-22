@@ -5,6 +5,12 @@
 }
 
 .phalcon-blog__sponsors-items img {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.phalcon-blog__sponsors-items img {
     margin-bottom: 0;
 }
 
