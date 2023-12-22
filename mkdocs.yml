@@ -44,6 +44,8 @@ theme:
     - search.suggest
     - toc.follow
     # - toc.integrate
+
+
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -102,6 +104,9 @@ extra:
       link: https://github.com/phalcon
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/phalconphp
+
+extra_css:
+  - assets/css/extra.css
 
 # Extensions
 markdown_extensions:

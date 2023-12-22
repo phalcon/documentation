@@ -93,14 +93,3 @@ Feel free to connect with us using our social media accounts:
 [reddit]: https://phalcon.io/reddit
 [fb]: https://phalcon.io/fb
 [t]: https://phalcon.io/t
-
-
--   :octicons-video-16:{ .lg .middle } __Videos__
-
-    ---
-
-    [:octicons-chevron-right-12: BitChute](https://phalcon.io/bitchute)
-
-    [:octicons-chevron-right-12: LBRY](https://phalcon.io/lbry)
-
-    [:octicons-chevron-right-12: YouTube](https://phalcon.io/youtube)
