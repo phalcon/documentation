@@ -53,6 +53,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Get sponsors and fanart
+        run: |
+          wget -O docs/assets/sponsors.md \
+            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors-fragment.html
+          wget -O docs/assets/fanart.md \
+            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors-fanart.html
+
       - name: Determine versioning parameters
         id: determine-versioning
         run: |
