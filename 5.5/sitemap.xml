@@ -625,4 +625,14 @@
          <lastmod>2023-12-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://docs.phalcon.io/5.5/assets/fanart/</loc>
+         <lastmod>2023-12-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.phalcon.io/5.5/assets/sponsors/</loc>
+         <lastmod>2023-12-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
