@@ -93,3 +93,6 @@ Feel free to connect with us using our social media accounts:
 [reddit]: https://phalcon.io/reddit
 [fb]: https://phalcon.io/fb
 [t]: https://phalcon.io/t
+[bitchute]: https://phalcon.io/bitchute
+[lbry]: https://phalcon.io/lbry
+[youtube]: https://phalcon.io/youtube
