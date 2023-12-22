@@ -3,3 +3,11 @@
     --md-primary-fg-color--light: #4b6786;
     --md-primary-fg-color--dark: #0c1015;
 }
+
+.phalcon-blog__sponsors-items img {
+    margin-bottom: 0;
+}
+
+.phalcon-blog__sponsors-items a:hover {
+    border-bottom-color: #273646;
+}
