@@ -4,14 +4,19 @@
     --md-primary-fg-color--dark: #1c2631;
 }
 
-.phalcon-blog__sponsors-items img {
-    box-sizing: border-box;
+.phalcon-blog__sponsors-items {
     display: flex;
     flex-wrap: wrap;
 }
 
 .phalcon-blog__sponsors-items img {
-    margin-bottom: 0;
+    max-width: 140px;
+    width: 100%;
+}
+
+.phalcon-blog__sponsors-items a {
+    margin-bottom: 30px;
+    margin-right: 20px;
 }
 
 .phalcon-blog__sponsors-items a:hover {
