@@ -1,0 +1,19 @@
+:root {
+    --md-primary-fg-color:        #273646;
+    --md-primary-fg-color--light: #374c62;
+    --md-primary-fg-color--dark: #1c2631;
+}
+
+.phalcon-blog__sponsors-items img {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.phalcon-blog__sponsors-items img {
+    margin-bottom: 0;
+}
+
+.phalcon-blog__sponsors-items a:hover {
+    border-bottom-color: #273646;
+}
