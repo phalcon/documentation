@@ -19,7 +19,7 @@ for details about contributions to this repository.
 
 ## Sponsors
 
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/phalcon#sponsor)]
+Become a sponsor and get your logo on our README on GitHub with a link to your site. [[Become a sponsor](https://opencollective.com/phalcon#sponsor)]
 
 <a href="https://opencollective.com/phalcon/#contributors">
 <img src="https://opencollective.com/phalcon/tiers/sponsors.svg?avatarHeight=48&width=800">
