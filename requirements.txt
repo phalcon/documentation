@@ -3,4 +3,5 @@ mkdocs-material
 mkdocs-material-extensions
 mkdocs-minify-plugin
 mkdocs-redirects
+markdown-include
 mike
