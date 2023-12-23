@@ -57,7 +57,7 @@ jobs:
         run: |
           wget -O docs/assets/sponsors.md \
             https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors-fragment.html
-          wget -O docs/assets/fanart.md \
+          wget -O overrides/fanart.md \
             https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html
 
       - name: Determine versioning parameters
