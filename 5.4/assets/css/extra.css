@@ -7,6 +7,7 @@
 .phalcon-blog__sponsors-items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .phalcon-blog__sponsors-items img {
@@ -16,7 +17,22 @@
 
 .phalcon-blog__sponsors-items a {
     margin-bottom: 30px;
-    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(39,54,70,.4);
+    padding: 10px 15px;
+    border-radius: 4px;
+    width: 46%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .phalcon-blog__sponsors-items a {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 .phalcon-blog__sponsors-items a:hover {
