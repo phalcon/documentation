@@ -17,7 +17,7 @@ copyright: Copyright &copy; 2012 - present Phalcon Team
 # Configuration
 theme:
   name: material
-  #  custom_dir: material/overrides
+  custom_dir: overrides
   features:
     - announce.dismiss
     - content.action.edit
@@ -44,6 +44,8 @@ theme:
     - search.suggest
     - toc.follow
     # - toc.integrate
+
+
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -51,14 +53,14 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
+      primary: custom
       accent: teal
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
+      primary: custom
       accent: teal
       toggle:
         icon: material/toggle-switch-off
@@ -97,16 +99,44 @@ extra:
   annotate:
     json: [ .s2 ]
   social:
+    - icon: fontawesome/brands/discord
+      link: https://phalcon.io/discord
+      name: Discord
+    - icon: material/comment
+      link: https://phalcon.io/discussions
+      name: GitHub Discussions
     - icon: fontawesome/brands/github
-      link: https://github.com/phalcon
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/phalconphp
+      link: https://phalcon.io/github
+      name: GitHub Project
+    - icon: fontawesome/brands/telegram
+      link: https://phalcon.io/telegram
+      name: Telegram
+    - icon: fontawesome/solid/frog
+      link: https://phalcon.io/gab
+      name: Gab
+    - icon: fontawesome/brands/x-twitter
+      link: https://phalcon.io/t
+      name: Twitter
+    - icon: fontawesome/brands/facebook
+      link: https://phalcon.io/fb
+      name: Facebook
+    - icon: fontawesome/brands/linkedin
+      link: https://phalcon.io/linkedin
+      name: LinkedIn
+    - icon: fontawesome/brands/youtube
+      link: https://phalcon.io/youtube
+      name: LinkedIn
+
+extra_css:
+  - assets/css/extra.css
 
 # Extensions
 markdown_extensions:
   - admonition
   - attr_list
   - footnotes
+  - markdown_include.include:
+      base_path: docs
   - md_in_html
   - pymdownx.inlinehilite
   - pymdownx.snippets

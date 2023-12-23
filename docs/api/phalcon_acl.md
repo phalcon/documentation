@@ -978,5 +978,3 @@ Returns role description
 public function getName(): string;
 ```
 Returns the role name
-
-
