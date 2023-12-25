@@ -173,12 +173,6 @@ Returns the translation string of the given key
     
     - `ArrayAccess`
 
-Class Csv
-
-@package Phalcon\Translate\Adapter
-
-@property array $translate
-
 
 ### Properties
 ```php

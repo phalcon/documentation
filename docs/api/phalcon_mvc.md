@@ -8823,7 +8823,7 @@ Gets row in a specific position of the resultset
 
 
 ```php
-public function offsetSet( mixed $index, mixed $value ): void;
+public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
@@ -9248,7 +9248,7 @@ Gets a record in a specific position of the row
 
 
 ```php
-public function offsetSet( mixed $index, mixed $value ): void;
+public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 

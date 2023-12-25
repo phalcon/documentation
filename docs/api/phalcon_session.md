@@ -62,13 +62,13 @@ Destroy
 
 
 ```php
-public function gc( int $maxlifetime ): int | bool;
+public function gc( int $maxlifetime ): int | false;
 ```
 Garbage Collector
 
 
 ```php
-public function open( mixed $savePath, mixed $sessionName ): bool;
+public function open( mixed $path, mixed $name ): bool;
 ```
 Open
 
@@ -80,7 +80,7 @@ Read
 
 
 ```php
-public function write( mixed $sessionId, mixed $data ): bool;
+public function write( mixed $id, mixed $data ): bool;
 ```
 Write
 
@@ -215,13 +215,13 @@ Destroy
 
 
 ```php
-public function gc( int $maxlifetime ): int | bool;
+public function gc( int $maxlifetime ): int | false;
 ```
 Garbage Collector
 
 
 ```php
-public function open( mixed $savePath, mixed $sessionName ): bool;
+public function open( mixed $path, mixed $name ): bool;
 ```
 Open
 
@@ -233,7 +233,7 @@ Read
 
 
 ```php
-public function write( mixed $sessionId, mixed $data ): bool;
+public function write( mixed $id, mixed $data ): bool;
 ```
 Write
 
@@ -347,13 +347,13 @@ public function destroy( mixed $sessionId ): bool;
 
 
 ```php
-public function gc( int $maxlifetime ): int | bool;
+public function gc( int $maxlifetime ): int | false;
 ```
 Garbage Collector
 
 
 ```php
-public function open( mixed $savePath, mixed $sessionName ): bool;
+public function open( mixed $path, mixed $name ): bool;
 ```
    Ignore the savePath and use local defined path
    
@@ -367,7 +367,7 @@ Reads data from the adapter
 
 
 ```php
-public function write( mixed $sessionId, mixed $data ): bool;
+public function write( mixed $id, mixed $data ): bool;
 ```
 
 

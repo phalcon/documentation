@@ -167,7 +167,7 @@ Ini constructor.
 
 
 ```php
-protected function cast( mixed $ini ): bool | null | double | int | string;
+protected function cast( mixed $ini ): mixed;
 ```
 We have to cast values manually because parse_ini_file() has a poor
 implementation.

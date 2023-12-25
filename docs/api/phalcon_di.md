@@ -318,7 +318,7 @@ var_dump($di["request"]);
 
 
 ```php
-public function offsetSet( mixed $name, mixed $definition ): void;
+public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Allows to register a shared service using the array syntax
 

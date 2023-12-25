@@ -402,7 +402,7 @@ print_r(
 
 
 ```php
-public function offsetSet( mixed $index, mixed $message ): void;
+public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Sets an attribute using the array-syntax
 

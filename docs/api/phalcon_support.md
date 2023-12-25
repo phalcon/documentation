@@ -192,7 +192,7 @@ See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
 
 
 ```php
-public function offsetSet( mixed $element, mixed $value ): void;
+public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Offset to set
 See [offsetSet](https://php.net/manual/en/arrayaccess.offsetset.php)
@@ -3199,7 +3199,7 @@ Offset to retrieve
 
 
 ```php
-final public function offsetSet( mixed $element, mixed $value ): void;
+final public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Offset to set
 
