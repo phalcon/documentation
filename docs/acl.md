@@ -175,9 +175,9 @@ $acl->addComponent(
 ## Defining Access Controls
 After defining both the `Roles` and `Components`, the next step is to tie them together to create the access list. This is a critical step, as a small mistake here can inadvertently allow access to roles for components that the developer did not intend to. As mentioned earlier, the default access action for [Phalcon\Acl][acl-acl] is `Phalcon\Acl\Enum::DENY`, following the [white list][whitelist] approach.
 
-To associate Roles and Components, you use the allow() and deny() methods provided by the [Phalcon\Acl\Memory][acl-adapter-memory] class.
+To associate Roles and Components, you use the `allow()` and `deny()` methods provided by the [Phalcon\Acl\Memory][acl-adapter-memory] class.
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -246,7 +246,7 @@ $acl->deny('guest', '*', 'view');
 ## Querying
 Once the list is defined, you can query it to check if a particular role has access to a specific component and action using the isAllowed() method.
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -274,7 +274,7 @@ Depending on the needs of your application, you might require an additional laye
 
 To take advantage of this functionality, you need to define your function when calling the `allow()` method for the role and component you need. For example, assume you need to allow access to all `manager` roles to the `admin` component except if their name is 'Bob'. To achieve this, you register an anonymous function that checks this condition.
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -311,7 +311,7 @@ $acl->allow(
 
 Now that the callable is defined in the ACL, you need to call the `isAllowed()` method with an array as the fourth parameter:
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -372,7 +372,7 @@ $acl->isAllowed(
     
 You can also omit passing the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl\Enum::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -562,7 +562,7 @@ The second call for `$levelTwo` evaluates `true` since the `getUserId()` returns
 ## Roles Inheritance
 To remove duplication and increase efficiency in your application, the ACL offers inheritance in roles. This means that you can define one [Phalcon\Acl\Role][acl-role] as a base and then inherit from it, offering access to supersets or subsets of components. To use role inheritance, you need to pass the inherited role as the second parameter of the method call when adding that role to the list.
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -592,7 +592,7 @@ Whatever access `guests` have will be propagated to `accounting`, and in turn, `
 ## Roles Relationships
 Based on the application design, you might prefer to add all the roles first and then define the relationships between them.
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -620,7 +620,7 @@ $acl->addInherit($accounting, $guest);
 ## Serialization
 [Phalcon\Acl][acl-acl] can be serialized and stored in a cache system to improve efficiency. You can store the serialized object in APC, session, the file system, database, Redis, etc. This way, you can retrieve the ACL quickly without having to read the underlying data that creates the ACL, nor will you have to compute the ACL in every request.
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -667,7 +667,7 @@ It is a good practice to not use serialization of the ACL during development to 
 | `afterCheckAccess`  | Triggered after checking if a role/component has access  |       No       |
 | `beforeCheckAccess` | Triggered before checking if a role/component has access |      Yes       |
 
-### Example:
+**Example:**
 
 ```php
 <?php
@@ -705,7 +705,7 @@ $acl->setEventsManager($eventsManager);
 ## Exceptions
 Any exceptions thrown in the [Phalcon\Acl][acl-acl] namespace will be of type [Phalcon\Acl\Exception][acl-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
-### Example:
+**Example:**
 
 ```php
 <?php
