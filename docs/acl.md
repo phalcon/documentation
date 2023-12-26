@@ -13,15 +13,21 @@ In the context of programming, ACLs typically involve two key entities: the obje
     **Role**
 
     - Administrator Access
+
     - Accounting Department Access
+
     - Manager Access
+
     - Guest Access
     
     **Component**
 
     - Login page
+
     - Admin page
+
     - Invoices page
+
     - Reports page
 
 
