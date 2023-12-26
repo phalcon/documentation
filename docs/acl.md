@@ -366,7 +366,7 @@ $acl->isAllowed(
 );
 ```
 
-!!! info "NOTE":
+!!! info "NOTE"
 
     The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that parameter to the function.
     
