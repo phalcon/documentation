@@ -180,7 +180,7 @@ plugins:
         'en/generating-backtrace.md': generating-backtrace.md
         'en/i18n.md': i18n.md
         'en/image.md': image.md
-        'en/index.html': index.html
+        'en/index.md': introduction.md
         'en/installation.md': installation.md
         'en/introduction.md': introduction.md
         'en/loader.md': loader.md
@@ -312,7 +312,7 @@ plugins:
         'cs-cz/generating-backtrace.md': generating-backtrace.md
         'cs-cz/i18n.md': i18n.md
         'cs-cz/image.md': image.md
-        'cs-cz/index.html': index.html
+        'cs-cz/index.md': introduction.md
         'cs-cz/installation.md': installation.md
         'cs-cz/introduction.md': introduction.md
         'cs-cz/loader.md': loader.md
@@ -444,7 +444,7 @@ plugins:
         'de-de/generating-backtrace.md': generating-backtrace.md
         'de-de/i18n.md': i18n.md
         'de-de/image.md': image.md
-        'de-de/index.html': index.html
+        'de-de/index.md': introduction.md
         'de-de/installation.md': installation.md
         'de-de/introduction.md': introduction.md
         'de-de/loader.md': loader.md
@@ -576,7 +576,7 @@ plugins:
         'es-es/generating-backtrace.md': generating-backtrace.md
         'es-es/i18n.md': i18n.md
         'es-es/image.md': image.md
-        'es-es/index.html': index.html
+        'es-es/index.md': introduction.md
         'es-es/installation.md': installation.md
         'es-es/introduction.md': introduction.md
         'es-es/loader.md': loader.md
@@ -708,7 +708,7 @@ plugins:
         'fa-ir/generating-backtrace.md': generating-backtrace.md
         'fa-ir/i18n.md': i18n.md
         'fa-ir/image.md': image.md
-        'fa-ir/index.html': index.html
+        'fa-ir/index.md': introduction.md
         'fa-ir/installation.md': installation.md
         'fa-ir/introduction.md': introduction.md
         'fa-ir/loader.md': loader.md
@@ -840,7 +840,7 @@ plugins:
         'fr-fr/generating-backtrace.md': generating-backtrace.md
         'fr-fr/i18n.md': i18n.md
         'fr-fr/image.md': image.md
-        'fr-fr/index.html': index.html
+        'fr-fr/index.md': introduction.md
         'fr-fr/installation.md': installation.md
         'fr-fr/introduction.md': introduction.md
         'fr-fr/loader.md': loader.md
@@ -972,7 +972,7 @@ plugins:
         'id-id/generating-backtrace.md': generating-backtrace.md
         'id-id/i18n.md': i18n.md
         'id-id/image.md': image.md
-        'id-id/index.html': index.html
+        'id-id/index.md': introduction.md
         'id-id/installation.md': installation.md
         'id-id/introduction.md': introduction.md
         'id-id/loader.md': loader.md
@@ -1104,7 +1104,7 @@ plugins:
         'it-it/generating-backtrace.md': generating-backtrace.md
         'it-it/i18n.md': i18n.md
         'it-it/image.md': image.md
-        'it-it/index.html': index.html
+        'it-it/index.md': introduction.md
         'it-it/installation.md': installation.md
         'it-it/introduction.md': introduction.md
         'it-it/loader.md': loader.md
@@ -1236,7 +1236,7 @@ plugins:
         'ja-jp/generating-backtrace.md': generating-backtrace.md
         'ja-jp/i18n.md': i18n.md
         'ja-jp/image.md': image.md
-        'ja-jp/index.html': index.html
+        'ja-jp/index.md': introduction.md
         'ja-jp/installation.md': installation.md
         'ja-jp/introduction.md': introduction.md
         'ja-jp/loader.md': loader.md
@@ -1368,7 +1368,7 @@ plugins:
         'pl-pl/generating-backtrace.md': generating-backtrace.md
         'pl-pl/i18n.md': i18n.md
         'pl-pl/image.md': image.md
-        'pl-pl/index.html': index.html
+        'pl-pl/index.md': introduction.md
         'pl-pl/installation.md': installation.md
         'pl-pl/introduction.md': introduction.md
         'pl-pl/loader.md': loader.md
@@ -1500,7 +1500,7 @@ plugins:
         'ru-ru/generating-backtrace.md': generating-backtrace.md
         'ru-ru/i18n.md': i18n.md
         'ru-ru/image.md': image.md
-        'ru-ru/index.html': index.html
+        'ru-ru/index.md': introduction.md
         'ru-ru/installation.md': installation.md
         'ru-ru/introduction.md': introduction.md
         'ru-ru/loader.md': loader.md
@@ -1632,7 +1632,7 @@ plugins:
         'tr-tr/generating-backtrace.md': generating-backtrace.md
         'tr-tr/i18n.md': i18n.md
         'tr-tr/image.md': image.md
-        'tr-tr/index.html': index.html
+        'tr-tr/index.md': introduction.md
         'tr-tr/installation.md': installation.md
         'tr-tr/introduction.md': introduction.md
         'tr-tr/loader.md': loader.md
@@ -1764,7 +1764,7 @@ plugins:
         'uk-ua/generating-backtrace.md': generating-backtrace.md
         'uk-ua/i18n.md': i18n.md
         'uk-ua/image.md': image.md
-        'uk-ua/index.html': index.html
+        'uk-ua/index.md': introduction.md
         'uk-ua/installation.md': installation.md
         'uk-ua/introduction.md': introduction.md
         'uk-ua/loader.md': loader.md
@@ -1896,7 +1896,7 @@ plugins:
         'ur-in/generating-backtrace.md': generating-backtrace.md
         'ur-in/i18n.md': i18n.md
         'ur-in/image.md': image.md
-        'ur-in/index.html': index.html
+        'ur-in/index.md': introduction.md
         'ur-in/installation.md': installation.md
         'ur-in/introduction.md': introduction.md
         'ur-in/loader.md': loader.md
@@ -2028,7 +2028,7 @@ plugins:
         'zh-cn/generating-backtrace.md': generating-backtrace.md
         'zh-cn/i18n.md': i18n.md
         'zh-cn/image.md': image.md
-        'zh-cn/index.html': index.html
+        'zh-cn/index.md': introduction.md
         'zh-cn/installation.md': installation.md
         'zh-cn/introduction.md': introduction.md
         'zh-cn/loader.md': loader.md
