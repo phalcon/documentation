@@ -11,12 +11,14 @@ In the context of programming, ACLs typically involve two key entities: the obje
     An accounting application needs to have different groups of users have access to various areas of the application.
 
     **Role**
+
     - Administrator Access
     - Accounting Department Access
     - Manager Access
     - Guest Access
     
     **Component**
+
     - Login page
     - Admin page
     - Invoices page
