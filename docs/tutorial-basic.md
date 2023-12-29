@@ -77,7 +77,7 @@ To start, lets register our app's `controllers` and `models` directories using [
 
 use Phalcon\Autoload\Loader;
 
-define('BASE_PATH', dirname(__DIR__));
+define('BASE_PATH', dirname(__DIR__ . '/..'));
 define('APP_PATH', BASE_PATH . '/app');
 // ...
 
