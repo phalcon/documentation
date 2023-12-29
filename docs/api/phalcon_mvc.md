@@ -14441,5 +14441,3 @@ Appends template before controller layout
 public function start();
 ```
 Starts rendering process enabling the output buffering
-
-
