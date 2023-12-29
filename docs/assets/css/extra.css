@@ -38,3 +38,9 @@
 .phalcon-blog__sponsors-items a:hover {
     border-bottom-color: #273646;
 }
+
+[data-md-color-scheme="state"] {
+    .phalcon-blog__sponsors-items a {
+        background-color: #ffffffb3;
+    }
+}
