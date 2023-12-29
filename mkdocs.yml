@@ -177,8 +177,6 @@ plugins:
         'en/installation.md': installation.md
         'en/introduction.md': introduction.md
         'en/logger.md': logger.md
-        'en/meta-home.json': meta-home.json
-        'en/meta-topics.json': meta-topics.json
         'en/mvc.md': mvc.md
         'en/mvc-url.md': mvc-url.md
         'en/namespaces.md': namespaces.md
@@ -305,8 +303,6 @@ plugins:
         'cs-cz/installation.md': installation.md
         'cs-cz/introduction.md': introduction.md
         'cs-cz/logger.md': logger.md
-        'cs-cz/meta-home.json': meta-home.json
-        'cs-cz/meta-topics.json': meta-topics.json
         'cs-cz/mvc.md': mvc.md
         'cs-cz/mvc-url.md': mvc-url.md
         'cs-cz/namespaces.md': namespaces.md
@@ -433,8 +429,6 @@ plugins:
         'de-de/installation.md': installation.md
         'de-de/introduction.md': introduction.md
         'de-de/logger.md': logger.md
-        'de-de/meta-home.json': meta-home.json
-        'de-de/meta-topics.json': meta-topics.json
         'de-de/mvc.md': mvc.md
         'de-de/mvc-url.md': mvc-url.md
         'de-de/namespaces.md': namespaces.md
@@ -561,8 +555,6 @@ plugins:
         'el-gr/installation.md': installation.md
         'el-gr/introduction.md': introduction.md
         'el-gr/logger.md': logger.md
-        'el-gr/meta-home.json': meta-home.json
-        'el-gr/meta-topics.json': meta-topics.json
         'el-gr/mvc.md': mvc.md
         'el-gr/mvc-url.md': mvc-url.md
         'el-gr/namespaces.md': namespaces.md
@@ -689,8 +681,6 @@ plugins:
         'es-es/installation.md': installation.md
         'es-es/introduction.md': introduction.md
         'es-es/logger.md': logger.md
-        'es-es/meta-home.json': meta-home.json
-        'es-es/meta-topics.json': meta-topics.json
         'es-es/mvc.md': mvc.md
         'es-es/mvc-url.md': mvc-url.md
         'es-es/namespaces.md': namespaces.md
@@ -817,8 +807,6 @@ plugins:
         'fa-ir/installation.md': installation.md
         'fa-ir/introduction.md': introduction.md
         'fa-ir/logger.md': logger.md
-        'fa-ir/meta-home.json': meta-home.json
-        'fa-ir/meta-topics.json': meta-topics.json
         'fa-ir/mvc.md': mvc.md
         'fa-ir/mvc-url.md': mvc-url.md
         'fa-ir/namespaces.md': namespaces.md
@@ -945,8 +933,6 @@ plugins:
         'fr-fr/installation.md': installation.md
         'fr-fr/introduction.md': introduction.md
         'fr-fr/logger.md': logger.md
-        'fr-fr/meta-home.json': meta-home.json
-        'fr-fr/meta-topics.json': meta-topics.json
         'fr-fr/mvc.md': mvc.md
         'fr-fr/mvc-url.md': mvc-url.md
         'fr-fr/namespaces.md': namespaces.md
@@ -1073,8 +1059,6 @@ plugins:
         'id-id/installation.md': installation.md
         'id-id/introduction.md': introduction.md
         'id-id/logger.md': logger.md
-        'id-id/meta-home.json': meta-home.json
-        'id-id/meta-topics.json': meta-topics.json
         'id-id/mvc.md': mvc.md
         'id-id/mvc-url.md': mvc-url.md
         'id-id/namespaces.md': namespaces.md
@@ -1201,8 +1185,6 @@ plugins:
         'it-it/installation.md': installation.md
         'it-it/introduction.md': introduction.md
         'it-it/logger.md': logger.md
-        'it-it/meta-home.json': meta-home.json
-        'it-it/meta-topics.json': meta-topics.json
         'it-it/mvc.md': mvc.md
         'it-it/mvc-url.md': mvc-url.md
         'it-it/namespaces.md': namespaces.md
@@ -1329,8 +1311,6 @@ plugins:
         'ja-jp/installation.md': installation.md
         'ja-jp/introduction.md': introduction.md
         'ja-jp/logger.md': logger.md
-        'ja-jp/meta-home.json': meta-home.json
-        'ja-jp/meta-topics.json': meta-topics.json
         'ja-jp/mvc.md': mvc.md
         'ja-jp/mvc-url.md': mvc-url.md
         'ja-jp/namespaces.md': namespaces.md
@@ -1457,8 +1437,6 @@ plugins:
         'ko-kr/installation.md': installation.md
         'ko-kr/introduction.md': introduction.md
         'ko-kr/logger.md': logger.md
-        'ko-kr/meta-home.json': meta-home.json
-        'ko-kr/meta-topics.json': meta-topics.json
         'ko-kr/mvc.md': mvc.md
         'ko-kr/mvc-url.md': mvc-url.md
         'ko-kr/namespaces.md': namespaces.md
@@ -1585,8 +1563,6 @@ plugins:
         'pl-pl/installation.md': installation.md
         'pl-pl/introduction.md': introduction.md
         'pl-pl/logger.md': logger.md
-        'pl-pl/meta-home.json': meta-home.json
-        'pl-pl/meta-topics.json': meta-topics.json
         'pl-pl/mvc.md': mvc.md
         'pl-pl/mvc-url.md': mvc-url.md
         'pl-pl/namespaces.md': namespaces.md
@@ -1713,8 +1689,6 @@ plugins:
         'pt-br/installation.md': installation.md
         'pt-br/introduction.md': introduction.md
         'pt-br/logger.md': logger.md
-        'pt-br/meta-home.json': meta-home.json
-        'pt-br/meta-topics.json': meta-topics.json
         'pt-br/mvc.md': mvc.md
         'pt-br/mvc-url.md': mvc-url.md
         'pt-br/namespaces.md': namespaces.md
@@ -1841,8 +1815,6 @@ plugins:
         'ru-ru/installation.md': installation.md
         'ru-ru/introduction.md': introduction.md
         'ru-ru/logger.md': logger.md
-        'ru-ru/meta-home.json': meta-home.json
-        'ru-ru/meta-topics.json': meta-topics.json
         'ru-ru/mvc.md': mvc.md
         'ru-ru/mvc-url.md': mvc-url.md
         'ru-ru/namespaces.md': namespaces.md
@@ -1969,8 +1941,6 @@ plugins:
         'tr-tr/installation.md': installation.md
         'tr-tr/introduction.md': introduction.md
         'tr-tr/logger.md': logger.md
-        'tr-tr/meta-home.json': meta-home.json
-        'tr-tr/meta-topics.json': meta-topics.json
         'tr-tr/mvc.md': mvc.md
         'tr-tr/mvc-url.md': mvc-url.md
         'tr-tr/namespaces.md': namespaces.md
@@ -2097,8 +2067,6 @@ plugins:
         'uk-ua/installation.md': installation.md
         'uk-ua/introduction.md': introduction.md
         'uk-ua/logger.md': logger.md
-        'uk-ua/meta-home.json': meta-home.json
-        'uk-ua/meta-topics.json': meta-topics.json
         'uk-ua/mvc.md': mvc.md
         'uk-ua/mvc-url.md': mvc-url.md
         'uk-ua/namespaces.md': namespaces.md
@@ -2225,8 +2193,6 @@ plugins:
         'zh-cn/installation.md': installation.md
         'zh-cn/introduction.md': introduction.md
         'zh-cn/logger.md': logger.md
-        'zh-cn/meta-home.json': meta-home.json
-        'zh-cn/meta-topics.json': meta-topics.json
         'zh-cn/mvc.md': mvc.md
         'zh-cn/mvc-url.md': mvc-url.md
         'zh-cn/namespaces.md': namespaces.md
