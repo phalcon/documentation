@@ -117,7 +117,6 @@ plugins:
         'en/escaper.md': escaper.md
         'en/events.md': events.md
         'en/filter.md': filter.md
-        'en/firewall.md': firewall.md
         'en/flash.md': flash.md
         'en/forms.md': forms.md
         'en/generating-backtrace.md': generating-backtrace.md
@@ -139,8 +138,6 @@ plugins:
         'en/latest/index.md': introduction.md
         'en/loader.md': loader.md
         'en/logger.md': logger.md
-        'en/meta-home.json': meta-home.json
-        'en/meta-topics.json': meta-topics.json
         'en/mvc.md': mvc.md
         'en/namespaces.md': namespaces.md
         'en/new-feature-request-list.md': new-feature-request-list.md
@@ -197,7 +194,6 @@ plugins:
         'en/api/phalcon_exception.md': api/phalcon_exception.md
         'en/api/phalcon_factory.md': api/phalcon_factory.md
         'en/api/phalcon_filter.md': api/phalcon_filter.md
-        'en/api/phalcon_firewall.md': api/phalcon_firewall.md
         'en/api/phalcon_flash.md': api/phalcon_flash.md
         'en/api/phalcon_forms.md': api/phalcon_forms.md
         'en/api/phalcon_helper.md': api/phalcon_helper.md
@@ -257,7 +253,6 @@ plugins:
         'cs-cz/escaper.md': escaper.md
         'cs-cz/events.md': events.md
         'cs-cz/filter.md': filter.md
-        'cs-cz/firewall.md': firewall.md
         'cs-cz/flash.md': flash.md
         'cs-cz/forms.md': forms.md
         'cs-cz/generating-backtrace.md': generating-backtrace.md
@@ -278,8 +273,6 @@ plugins:
         'cs-cz/introduction.md': introduction.md
         'cs-cz/loader.md': loader.md
         'cs-cz/logger.md': logger.md
-        'cs-cz/meta-home.json': meta-home.json
-        'cs-cz/meta-topics.json': meta-topics.json
         'cs-cz/mvc.md': mvc.md
         'cs-cz/namespaces.md': namespaces.md
         'cs-cz/new-feature-request-list.md': new-feature-request-list.md
@@ -336,7 +329,6 @@ plugins:
         'cs-cz/api/phalcon_exception.md': api/phalcon_exception.md
         'cs-cz/api/phalcon_factory.md': api/phalcon_factory.md
         'cs-cz/api/phalcon_filter.md': api/phalcon_filter.md
-        'cs-cz/api/phalcon_firewall.md': api/phalcon_firewall.md
         'cs-cz/api/phalcon_flash.md': api/phalcon_flash.md
         'cs-cz/api/phalcon_forms.md': api/phalcon_forms.md
         'cs-cz/api/phalcon_helper.md': api/phalcon_helper.md
@@ -396,7 +388,6 @@ plugins:
         'de-de/escaper.md': escaper.md
         'de-de/events.md': events.md
         'de-de/filter.md': filter.md
-        'de-de/firewall.md': firewall.md
         'de-de/flash.md': flash.md
         'de-de/forms.md': forms.md
         'de-de/generating-backtrace.md': generating-backtrace.md
@@ -417,8 +408,6 @@ plugins:
         'de-de/introduction.md': introduction.md
         'de-de/loader.md': loader.md
         'de-de/logger.md': logger.md
-        'de-de/meta-home.json': meta-home.json
-        'de-de/meta-topics.json': meta-topics.json
         'de-de/mvc.md': mvc.md
         'de-de/namespaces.md': namespaces.md
         'de-de/new-feature-request-list.md': new-feature-request-list.md
@@ -475,7 +464,6 @@ plugins:
         'de-de/api/phalcon_exception.md': api/phalcon_exception.md
         'de-de/api/phalcon_factory.md': api/phalcon_factory.md
         'de-de/api/phalcon_filter.md': api/phalcon_filter.md
-        'de-de/api/phalcon_firewall.md': api/phalcon_firewall.md
         'de-de/api/phalcon_flash.md': api/phalcon_flash.md
         'de-de/api/phalcon_forms.md': api/phalcon_forms.md
         'de-de/api/phalcon_helper.md': api/phalcon_helper.md
@@ -535,7 +523,6 @@ plugins:
         'el-gr/escaper.md': escaper.md
         'el-gr/events.md': events.md
         'el-gr/filter.md': filter.md
-        'el-gr/firewall.md': firewall.md
         'el-gr/flash.md': flash.md
         'el-gr/forms.md': forms.md
         'el-gr/generating-backtrace.md': generating-backtrace.md
@@ -556,8 +543,6 @@ plugins:
         'el-gr/introduction.md': introduction.md
         'el-gr/loader.md': loader.md
         'el-gr/logger.md': logger.md
-        'el-gr/meta-home.json': meta-home.json
-        'el-gr/meta-topics.json': meta-topics.json
         'el-gr/mvc.md': mvc.md
         'el-gr/namespaces.md': namespaces.md
         'el-gr/new-feature-request-list.md': new-feature-request-list.md
@@ -614,7 +599,6 @@ plugins:
         'el-gr/api/phalcon_exception.md': api/phalcon_exception.md
         'el-gr/api/phalcon_factory.md': api/phalcon_factory.md
         'el-gr/api/phalcon_filter.md': api/phalcon_filter.md
-        'el-gr/api/phalcon_firewall.md': api/phalcon_firewall.md
         'el-gr/api/phalcon_flash.md': api/phalcon_flash.md
         'el-gr/api/phalcon_forms.md': api/phalcon_forms.md
         'el-gr/api/phalcon_helper.md': api/phalcon_helper.md
@@ -674,7 +658,6 @@ plugins:
         'es-es/escaper.md': escaper.md
         'es-es/events.md': events.md
         'es-es/filter.md': filter.md
-        'es-es/firewall.md': firewall.md
         'es-es/flash.md': flash.md
         'es-es/forms.md': forms.md
         'es-es/generating-backtrace.md': generating-backtrace.md
@@ -695,8 +678,6 @@ plugins:
         'es-es/introduction.md': introduction.md
         'es-es/loader.md': loader.md
         'es-es/logger.md': logger.md
-        'es-es/meta-home.json': meta-home.json
-        'es-es/meta-topics.json': meta-topics.json
         'es-es/mvc.md': mvc.md
         'es-es/namespaces.md': namespaces.md
         'es-es/new-feature-request-list.md': new-feature-request-list.md
@@ -753,7 +734,6 @@ plugins:
         'es-es/api/phalcon_exception.md': api/phalcon_exception.md
         'es-es/api/phalcon_factory.md': api/phalcon_factory.md
         'es-es/api/phalcon_filter.md': api/phalcon_filter.md
-        'es-es/api/phalcon_firewall.md': api/phalcon_firewall.md
         'es-es/api/phalcon_flash.md': api/phalcon_flash.md
         'es-es/api/phalcon_forms.md': api/phalcon_forms.md
         'es-es/api/phalcon_helper.md': api/phalcon_helper.md
@@ -813,7 +793,6 @@ plugins:
         'fa-ir/escaper.md': escaper.md
         'fa-ir/events.md': events.md
         'fa-ir/filter.md': filter.md
-        'fa-ir/firewall.md': firewall.md
         'fa-ir/flash.md': flash.md
         'fa-ir/forms.md': forms.md
         'fa-ir/generating-backtrace.md': generating-backtrace.md
@@ -834,8 +813,6 @@ plugins:
         'fa-ir/introduction.md': introduction.md
         'fa-ir/loader.md': loader.md
         'fa-ir/logger.md': logger.md
-        'fa-ir/meta-home.json': meta-home.json
-        'fa-ir/meta-topics.json': meta-topics.json
         'fa-ir/mvc.md': mvc.md
         'fa-ir/namespaces.md': namespaces.md
         'fa-ir/new-feature-request-list.md': new-feature-request-list.md
@@ -892,7 +869,6 @@ plugins:
         'fa-ir/api/phalcon_exception.md': api/phalcon_exception.md
         'fa-ir/api/phalcon_factory.md': api/phalcon_factory.md
         'fa-ir/api/phalcon_filter.md': api/phalcon_filter.md
-        'fa-ir/api/phalcon_firewall.md': api/phalcon_firewall.md
         'fa-ir/api/phalcon_flash.md': api/phalcon_flash.md
         'fa-ir/api/phalcon_forms.md': api/phalcon_forms.md
         'fa-ir/api/phalcon_helper.md': api/phalcon_helper.md
@@ -952,7 +928,6 @@ plugins:
         'fr-fr/escaper.md': escaper.md
         'fr-fr/events.md': events.md
         'fr-fr/filter.md': filter.md
-        'fr-fr/firewall.md': firewall.md
         'fr-fr/flash.md': flash.md
         'fr-fr/forms.md': forms.md
         'fr-fr/generating-backtrace.md': generating-backtrace.md
@@ -973,8 +948,6 @@ plugins:
         'fr-fr/introduction.md': introduction.md
         'fr-fr/loader.md': loader.md
         'fr-fr/logger.md': logger.md
-        'fr-fr/meta-home.json': meta-home.json
-        'fr-fr/meta-topics.json': meta-topics.json
         'fr-fr/mvc.md': mvc.md
         'fr-fr/namespaces.md': namespaces.md
         'fr-fr/new-feature-request-list.md': new-feature-request-list.md
@@ -1031,7 +1004,6 @@ plugins:
         'fr-fr/api/phalcon_exception.md': api/phalcon_exception.md
         'fr-fr/api/phalcon_factory.md': api/phalcon_factory.md
         'fr-fr/api/phalcon_filter.md': api/phalcon_filter.md
-        'fr-fr/api/phalcon_firewall.md': api/phalcon_firewall.md
         'fr-fr/api/phalcon_flash.md': api/phalcon_flash.md
         'fr-fr/api/phalcon_forms.md': api/phalcon_forms.md
         'fr-fr/api/phalcon_helper.md': api/phalcon_helper.md
@@ -1091,7 +1063,6 @@ plugins:
         'id-id/escaper.md': escaper.md
         'id-id/events.md': events.md
         'id-id/filter.md': filter.md
-        'id-id/firewall.md': firewall.md
         'id-id/flash.md': flash.md
         'id-id/forms.md': forms.md
         'id-id/generating-backtrace.md': generating-backtrace.md
@@ -1112,8 +1083,6 @@ plugins:
         'id-id/introduction.md': introduction.md
         'id-id/loader.md': loader.md
         'id-id/logger.md': logger.md
-        'id-id/meta-home.json': meta-home.json
-        'id-id/meta-topics.json': meta-topics.json
         'id-id/mvc.md': mvc.md
         'id-id/namespaces.md': namespaces.md
         'id-id/new-feature-request-list.md': new-feature-request-list.md
@@ -1170,7 +1139,6 @@ plugins:
         'id-id/api/phalcon_exception.md': api/phalcon_exception.md
         'id-id/api/phalcon_factory.md': api/phalcon_factory.md
         'id-id/api/phalcon_filter.md': api/phalcon_filter.md
-        'id-id/api/phalcon_firewall.md': api/phalcon_firewall.md
         'id-id/api/phalcon_flash.md': api/phalcon_flash.md
         'id-id/api/phalcon_forms.md': api/phalcon_forms.md
         'id-id/api/phalcon_helper.md': api/phalcon_helper.md
@@ -1230,7 +1198,6 @@ plugins:
         'it-it/escaper.md': escaper.md
         'it-it/events.md': events.md
         'it-it/filter.md': filter.md
-        'it-it/firewall.md': firewall.md
         'it-it/flash.md': flash.md
         'it-it/forms.md': forms.md
         'it-it/generating-backtrace.md': generating-backtrace.md
@@ -1251,8 +1218,6 @@ plugins:
         'it-it/introduction.md': introduction.md
         'it-it/loader.md': loader.md
         'it-it/logger.md': logger.md
-        'it-it/meta-home.json': meta-home.json
-        'it-it/meta-topics.json': meta-topics.json
         'it-it/mvc.md': mvc.md
         'it-it/namespaces.md': namespaces.md
         'it-it/new-feature-request-list.md': new-feature-request-list.md
@@ -1309,7 +1274,6 @@ plugins:
         'it-it/api/phalcon_exception.md': api/phalcon_exception.md
         'it-it/api/phalcon_factory.md': api/phalcon_factory.md
         'it-it/api/phalcon_filter.md': api/phalcon_filter.md
-        'it-it/api/phalcon_firewall.md': api/phalcon_firewall.md
         'it-it/api/phalcon_flash.md': api/phalcon_flash.md
         'it-it/api/phalcon_forms.md': api/phalcon_forms.md
         'it-it/api/phalcon_helper.md': api/phalcon_helper.md
@@ -1369,7 +1333,6 @@ plugins:
         'ja-jp/escaper.md': escaper.md
         'ja-jp/events.md': events.md
         'ja-jp/filter.md': filter.md
-        'ja-jp/firewall.md': firewall.md
         'ja-jp/flash.md': flash.md
         'ja-jp/forms.md': forms.md
         'ja-jp/generating-backtrace.md': generating-backtrace.md
@@ -1390,8 +1353,6 @@ plugins:
         'ja-jp/introduction.md': introduction.md
         'ja-jp/loader.md': loader.md
         'ja-jp/logger.md': logger.md
-        'ja-jp/meta-home.json': meta-home.json
-        'ja-jp/meta-topics.json': meta-topics.json
         'ja-jp/mvc.md': mvc.md
         'ja-jp/namespaces.md': namespaces.md
         'ja-jp/new-feature-request-list.md': new-feature-request-list.md
@@ -1448,7 +1409,6 @@ plugins:
         'ja-jp/api/phalcon_exception.md': api/phalcon_exception.md
         'ja-jp/api/phalcon_factory.md': api/phalcon_factory.md
         'ja-jp/api/phalcon_filter.md': api/phalcon_filter.md
-        'ja-jp/api/phalcon_firewall.md': api/phalcon_firewall.md
         'ja-jp/api/phalcon_flash.md': api/phalcon_flash.md
         'ja-jp/api/phalcon_forms.md': api/phalcon_forms.md
         'ja-jp/api/phalcon_helper.md': api/phalcon_helper.md
@@ -1508,7 +1468,6 @@ plugins:
         'ko-kr/escaper.md': escaper.md
         'ko-kr/events.md': events.md
         'ko-kr/filter.md': filter.md
-        'ko-kr/firewall.md': firewall.md
         'ko-kr/flash.md': flash.md
         'ko-kr/forms.md': forms.md
         'ko-kr/generating-backtrace.md': generating-backtrace.md
@@ -1529,8 +1488,6 @@ plugins:
         'ko-kr/introduction.md': introduction.md
         'ko-kr/loader.md': loader.md
         'ko-kr/logger.md': logger.md
-        'ko-kr/meta-home.json': meta-home.json
-        'ko-kr/meta-topics.json': meta-topics.json
         'ko-kr/mvc.md': mvc.md
         'ko-kr/namespaces.md': namespaces.md
         'ko-kr/new-feature-request-list.md': new-feature-request-list.md
@@ -1587,7 +1544,6 @@ plugins:
         'ko-kr/api/phalcon_exception.md': api/phalcon_exception.md
         'ko-kr/api/phalcon_factory.md': api/phalcon_factory.md
         'ko-kr/api/phalcon_filter.md': api/phalcon_filter.md
-        'ko-kr/api/phalcon_firewall.md': api/phalcon_firewall.md
         'ko-kr/api/phalcon_flash.md': api/phalcon_flash.md
         'ko-kr/api/phalcon_forms.md': api/phalcon_forms.md
         'ko-kr/api/phalcon_helper.md': api/phalcon_helper.md
@@ -1647,7 +1603,6 @@ plugins:
         'pl-pl/escaper.md': escaper.md
         'pl-pl/events.md': events.md
         'pl-pl/filter.md': filter.md
-        'pl-pl/firewall.md': firewall.md
         'pl-pl/flash.md': flash.md
         'pl-pl/forms.md': forms.md
         'pl-pl/generating-backtrace.md': generating-backtrace.md
@@ -1668,8 +1623,6 @@ plugins:
         'pl-pl/introduction.md': introduction.md
         'pl-pl/loader.md': loader.md
         'pl-pl/logger.md': logger.md
-        'pl-pl/meta-home.json': meta-home.json
-        'pl-pl/meta-topics.json': meta-topics.json
         'pl-pl/mvc.md': mvc.md
         'pl-pl/namespaces.md': namespaces.md
         'pl-pl/new-feature-request-list.md': new-feature-request-list.md
@@ -1726,7 +1679,6 @@ plugins:
         'pl-pl/api/phalcon_exception.md': api/phalcon_exception.md
         'pl-pl/api/phalcon_factory.md': api/phalcon_factory.md
         'pl-pl/api/phalcon_filter.md': api/phalcon_filter.md
-        'pl-pl/api/phalcon_firewall.md': api/phalcon_firewall.md
         'pl-pl/api/phalcon_flash.md': api/phalcon_flash.md
         'pl-pl/api/phalcon_forms.md': api/phalcon_forms.md
         'pl-pl/api/phalcon_helper.md': api/phalcon_helper.md
@@ -1786,7 +1738,6 @@ plugins:
         'pt-br/escaper.md': escaper.md
         'pt-br/events.md': events.md
         'pt-br/filter.md': filter.md
-        'pt-br/firewall.md': firewall.md
         'pt-br/flash.md': flash.md
         'pt-br/forms.md': forms.md
         'pt-br/generating-backtrace.md': generating-backtrace.md
@@ -1807,8 +1758,6 @@ plugins:
         'pt-br/introduction.md': introduction.md
         'pt-br/loader.md': loader.md
         'pt-br/logger.md': logger.md
-        'pt-br/meta-home.json': meta-home.json
-        'pt-br/meta-topics.json': meta-topics.json
         'pt-br/mvc.md': mvc.md
         'pt-br/namespaces.md': namespaces.md
         'pt-br/new-feature-request-list.md': new-feature-request-list.md
@@ -1865,7 +1814,6 @@ plugins:
         'pt-br/api/phalcon_exception.md': api/phalcon_exception.md
         'pt-br/api/phalcon_factory.md': api/phalcon_factory.md
         'pt-br/api/phalcon_filter.md': api/phalcon_filter.md
-        'pt-br/api/phalcon_firewall.md': api/phalcon_firewall.md
         'pt-br/api/phalcon_flash.md': api/phalcon_flash.md
         'pt-br/api/phalcon_forms.md': api/phalcon_forms.md
         'pt-br/api/phalcon_helper.md': api/phalcon_helper.md
@@ -1925,7 +1873,6 @@ plugins:
         'ru-ru/escaper.md': escaper.md
         'ru-ru/events.md': events.md
         'ru-ru/filter.md': filter.md
-        'ru-ru/firewall.md': firewall.md
         'ru-ru/flash.md': flash.md
         'ru-ru/forms.md': forms.md
         'ru-ru/generating-backtrace.md': generating-backtrace.md
@@ -1946,8 +1893,6 @@ plugins:
         'ru-ru/introduction.md': introduction.md
         'ru-ru/loader.md': loader.md
         'ru-ru/logger.md': logger.md
-        'ru-ru/meta-home.json': meta-home.json
-        'ru-ru/meta-topics.json': meta-topics.json
         'ru-ru/mvc.md': mvc.md
         'ru-ru/namespaces.md': namespaces.md
         'ru-ru/new-feature-request-list.md': new-feature-request-list.md
@@ -2004,7 +1949,6 @@ plugins:
         'ru-ru/api/phalcon_exception.md': api/phalcon_exception.md
         'ru-ru/api/phalcon_factory.md': api/phalcon_factory.md
         'ru-ru/api/phalcon_filter.md': api/phalcon_filter.md
-        'ru-ru/api/phalcon_firewall.md': api/phalcon_firewall.md
         'ru-ru/api/phalcon_flash.md': api/phalcon_flash.md
         'ru-ru/api/phalcon_forms.md': api/phalcon_forms.md
         'ru-ru/api/phalcon_helper.md': api/phalcon_helper.md
@@ -2064,7 +2008,6 @@ plugins:
         'tr-tr/escaper.md': escaper.md
         'tr-tr/events.md': events.md
         'tr-tr/filter.md': filter.md
-        'tr-tr/firewall.md': firewall.md
         'tr-tr/flash.md': flash.md
         'tr-tr/forms.md': forms.md
         'tr-tr/generating-backtrace.md': generating-backtrace.md
@@ -2085,8 +2028,6 @@ plugins:
         'tr-tr/introduction.md': introduction.md
         'tr-tr/loader.md': loader.md
         'tr-tr/logger.md': logger.md
-        'tr-tr/meta-home.json': meta-home.json
-        'tr-tr/meta-topics.json': meta-topics.json
         'tr-tr/mvc.md': mvc.md
         'tr-tr/namespaces.md': namespaces.md
         'tr-tr/new-feature-request-list.md': new-feature-request-list.md
@@ -2143,7 +2084,6 @@ plugins:
         'tr-tr/api/phalcon_exception.md': api/phalcon_exception.md
         'tr-tr/api/phalcon_factory.md': api/phalcon_factory.md
         'tr-tr/api/phalcon_filter.md': api/phalcon_filter.md
-        'tr-tr/api/phalcon_firewall.md': api/phalcon_firewall.md
         'tr-tr/api/phalcon_flash.md': api/phalcon_flash.md
         'tr-tr/api/phalcon_forms.md': api/phalcon_forms.md
         'tr-tr/api/phalcon_helper.md': api/phalcon_helper.md
@@ -2203,7 +2143,6 @@ plugins:
         'uk-ua/escaper.md': escaper.md
         'uk-ua/events.md': events.md
         'uk-ua/filter.md': filter.md
-        'uk-ua/firewall.md': firewall.md
         'uk-ua/flash.md': flash.md
         'uk-ua/forms.md': forms.md
         'uk-ua/generating-backtrace.md': generating-backtrace.md
@@ -2224,8 +2163,6 @@ plugins:
         'uk-ua/introduction.md': introduction.md
         'uk-ua/loader.md': loader.md
         'uk-ua/logger.md': logger.md
-        'uk-ua/meta-home.json': meta-home.json
-        'uk-ua/meta-topics.json': meta-topics.json
         'uk-ua/mvc.md': mvc.md
         'uk-ua/namespaces.md': namespaces.md
         'uk-ua/new-feature-request-list.md': new-feature-request-list.md
@@ -2282,7 +2219,6 @@ plugins:
         'uk-ua/api/phalcon_exception.md': api/phalcon_exception.md
         'uk-ua/api/phalcon_factory.md': api/phalcon_factory.md
         'uk-ua/api/phalcon_filter.md': api/phalcon_filter.md
-        'uk-ua/api/phalcon_firewall.md': api/phalcon_firewall.md
         'uk-ua/api/phalcon_flash.md': api/phalcon_flash.md
         'uk-ua/api/phalcon_forms.md': api/phalcon_forms.md
         'uk-ua/api/phalcon_helper.md': api/phalcon_helper.md
@@ -2342,7 +2278,6 @@ plugins:
         'zh-cn/escaper.md': escaper.md
         'zh-cn/events.md': events.md
         'zh-cn/filter.md': filter.md
-        'zh-cn/firewall.md': firewall.md
         'zh-cn/flash.md': flash.md
         'zh-cn/forms.md': forms.md
         'zh-cn/generating-backtrace.md': generating-backtrace.md
@@ -2363,8 +2298,6 @@ plugins:
         'zh-cn/introduction.md': introduction.md
         'zh-cn/loader.md': loader.md
         'zh-cn/logger.md': logger.md
-        'zh-cn/meta-home.json': meta-home.json
-        'zh-cn/meta-topics.json': meta-topics.json
         'zh-cn/mvc.md': mvc.md
         'zh-cn/namespaces.md': namespaces.md
         'zh-cn/new-feature-request-list.md': new-feature-request-list.md
@@ -2421,7 +2354,6 @@ plugins:
         'zh-cn/api/phalcon_exception.md': api/phalcon_exception.md
         'zh-cn/api/phalcon_factory.md': api/phalcon_factory.md
         'zh-cn/api/phalcon_filter.md': api/phalcon_filter.md
-        'zh-cn/api/phalcon_firewall.md': api/phalcon_firewall.md
         'zh-cn/api/phalcon_flash.md': api/phalcon_flash.md
         'zh-cn/api/phalcon_forms.md': api/phalcon_forms.md
         'zh-cn/api/phalcon_helper.md': api/phalcon_helper.md
@@ -2527,6 +2459,7 @@ nav:
       - Introduction: introduction.md
       - Changelog:
         - Current Version: https://github.com/phalcon/cphalcon/tree/master/resources
+        - Releases: releases.md
         - How to upgrade: upgrade.md
       - Contributing:
         - Contributions: contributions.md
