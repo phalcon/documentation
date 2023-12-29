@@ -336,6 +336,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.phalcon.io/5.4/releases/</loc>
+         <lastmod>2023-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.phalcon.io/5.4/reproducible-tests/</loc>
          <lastmod>2023-12-29</lastmod>
          <changefreq>daily</changefreq>
