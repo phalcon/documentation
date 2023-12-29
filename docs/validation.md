@@ -1776,7 +1776,7 @@ class IpValidator extends AbstractValidator
             }
 
             $validator->appendMessage(
-                new Message($message, $attribute, 'Ip')
+                $this->messageFactory($message, $attribute, 'Ip')
             );
 
             return false;
