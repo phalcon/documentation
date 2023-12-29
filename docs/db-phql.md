@@ -350,45 +350,6 @@ ORDER BY
 LIMIT 100
 ```
 
-**Aliases in Namespaces**
-
-You can define aliases in namespaces to make your code a bit more readable. This is set up when you register the `modelsManager` in your DI container:
-
-```php
-<?php
-
-use MyApp\Models\Invoices;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Model\Manager;
-
-$container = new FactoryDefault();
-$container->set(
-    'modelsManager',
-    function () {
-        $modelsManager = new Manager();
-        $modelsManager->registerNamespaceAlias(
-            'inv',
-             Invoices::class
-        );
-
-        return $modelsManager;
-    }
-);
-```
-
-and now our query can be written as:
-
-```sql
-SELECT 
-    i.inv_id 
-FROM   
-    inv:Invoices i
-WHERE  
-    i.inv_status_flag = 1  
-```
-
-The above _shortens_ the whole namespace for the model, replacing it with an alias.
-
 **Subqueries**
 
 PHQL also supports subqueries. The syntax is similar to the one offered by PDO.
