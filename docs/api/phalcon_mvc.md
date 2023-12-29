@@ -8583,10 +8583,10 @@ Sets the object's state
 
 Phalcon\Mvc\Model\Resultset
 
-This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption
+This component allows to `Phalcon\Mvc\Model` returns large resultsets with the minimum memory consumption
 Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized
-it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before
-serializing.
+it will dump all the rows into a big array, serialize it and return the resulting string. Then 
+`unserialize` will retrieve the rows as they were before serializing.
 
 ```php
 
@@ -8956,7 +8956,8 @@ Returns current row in the resultset
 ```php
 public function serialize(): string;
 ```
-Serializing a resultset will dump all related rows into a big array
+Serializing a resultset will dump all related rows into a big array,
+serialize it and return the resulting string
 
 
 ```php
@@ -14441,5 +14442,3 @@ Appends template before controller layout
 public function start();
 ```
 Starts rendering process enabling the output buffering
-
-
