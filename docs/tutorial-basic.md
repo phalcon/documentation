@@ -67,7 +67,7 @@ Don't forget to include the loader from `Phalcon\Loader`.
 use Phalcon\Loader;
 
 // Define some absolute path constants to aid in locating resources
-define('BASE_PATH', dirname(__DIR__));
+define('BASE_PATH', dirname(__DIR__ . '/..'));
 define('APP_PATH', BASE_PATH . '/app');
 // ...
 
