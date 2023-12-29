@@ -30,6 +30,9 @@ class Invoices extends Model
 
 use MyApp\Models\Invoices;
 
+/**
+ * Create an invoice 
+ */
 $invoice = new Invoices();
 
 $invoice->inv_cst_id      = 1;
