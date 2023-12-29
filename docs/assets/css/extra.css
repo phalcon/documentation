@@ -44,3 +44,41 @@
         background-color: #ffffffb3;
     }
 }
+
+.version-th-center, .version-td-center {
+    text-align: center;
+}
+.version-th-right, .version-td-right {
+    text-align: right;
+}
+.current-version {
+    background-color: #D4F4B4;
+}
+.previous-version {
+    background-color: #FEF8C6;
+}
+
+.legend {
+    padding-left: 0.3em;
+    white-space: nowrap;
+}
+
+.legend-old-version {
+    border-left: 1.2em solid #FDB3AB;
+}
+
+.legend-old-version-supported {
+    border-left: 1.2em solid #FEF8C6;
+}
+
+.legend-latest {
+    border-left: 1.2em solid #D4F4B4;
+}
+
+.legend-preview {
+    border-left: 1.2em solid #FED1A0;
+}
+
+.legend-future {
+    border-left: 1.2em solid #C1E6F5;
+}

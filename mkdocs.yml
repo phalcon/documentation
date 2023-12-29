@@ -2309,6 +2309,7 @@ nav:
       - Introduction: introduction.md
       - Changelog:
         - Current Version: https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG-5.0.md
+        - Releases: releases.md
         - How to upgrade: upgrade.md
       - Contributing:
         - Contributions: contributions.md
