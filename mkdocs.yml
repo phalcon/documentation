@@ -136,6 +136,7 @@ plugins:
         'en/index.md': introduction.md
         'en/installation.md': installation.md
         'en/introduction.md': introduction.md
+        'en/latest/index.md': introduction.md
         'en/loader.md': loader.md
         'en/logger.md': logger.md
         'en/meta-home.json': meta-home.json
