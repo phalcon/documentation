@@ -184,6 +184,7 @@ plugins:
         'en/installation.md': installation.md
         'en/introduction.md': introduction.md
         'en/loader.md': loader.md
+        'en/latest/index.md': introduction.md
         'en/logging.md': logging.md
         'en/mvc.md': mvc.md
         'en/namespaces.md': namespaces.md
