@@ -45,6 +45,7 @@
     }
 }
 
+/* Releases page table */
 .version-th-center, .version-td-center {
     text-align: center;
 }
@@ -58,6 +59,7 @@
     background-color: #FEF8C6;
 }
 
+/* Releases page legend */
 .legend {
     padding-left: 0.3em;
     white-space: nowrap;
