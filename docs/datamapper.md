@@ -5,6 +5,10 @@
 
     These components have been heavily influenced by [Aura PHP][auraphp] and [Atlas PHP][atlasphp] 
 
+!!! warning "NOTE"
+
+    The full implementation of a DataMapper is not yet complete. There are however a few components that can be used in any project, such as the `Connection` and `Query/Select` 
+
 ## Overview
 
 The Data Mapper pattern as described by [Martin Fowler][datamapper] in [Patterns of Enterprise Application Architecture][eaa] is:

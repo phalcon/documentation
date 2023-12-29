@@ -2361,6 +2361,7 @@ nav:
       - Validators: db-models-validation.md
       - Pagination: db-pagination.md
       - Migrations: db-migrations.md
+      - DataMapper: datamapper.md
   - Front End:
       - Assets: assets.md
       - Flash Messenger: flash.md
