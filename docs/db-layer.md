@@ -17,6 +17,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 ### Constants
 The [Phalcon\Db\Enum][db-enum] class exposes a number of constants that can be used on the DB layer.
+
 - `FETCH_ASSOC`      = `\Pdo::FETCH_ASSOC`
 - `FETCH_BOTH`       = `\Pdo::FETCH_BOTH`
 - `FETCH_BOUND`      = `\Pdo::FETCH_BOUND`
