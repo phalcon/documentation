@@ -450,8 +450,8 @@ You can add text to your image by calling `text()`. The available parameters are
 | Property                  | Description                                                 |
 |---------------------------|-------------------------------------------------------------|
 | `string $text`            | the text                                                    |
-| `int&vert;false $offsetX` | the X offset, `false` to disable                            | 
-| `int&vert;false $offsetY` | the Y offset, `false` to disable                            | 
+| `int|false $offsetX` | the X offset, `false` to disable                            | 
+| `int|false $offsetY` | the Y offset, `false` to disable                            | 
 | `int $opacity`            | the opacity of the text (optional - default `100`)          |
 | `string $color`           | the color for the text (optional - default `"000000"`)      |
 | `int $size`               | the size of the font for the text (optional - default `12`) |

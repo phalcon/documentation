@@ -968,7 +968,7 @@ Additional operators seen the following operators are available:
 | Operator          | Description                                                                                               |
 |-------------------|-----------------------------------------------------------------------------------------------------------|
 | `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}`                              |
-| `&vert;`          | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' &vert; uppercase }}` |
+| `|`          | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' | uppercase }}` |
 | `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}` `{%- raw -%}{{ 1..10 }}`              |
 | `is`              | Same as == (equals), also performs tests                                                                  |
 | `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'`                           |

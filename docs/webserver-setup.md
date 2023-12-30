@@ -470,7 +470,32 @@ Execute the application in a browser:
 ![](assets/images/content/webserver-cherokee-9.jpg)
 
 
+## Caddy
+
+[Caddy][caddy] is the ultimate server that makes your sites more secure, more reliable and more scalable than any other solution.
+
+### Phalcon Configuration
+Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
+
+You will need to make sure that PHP is available for your server using the `php_fastcgi` directive from Caddy.
+
+For your site setup you can use the following:
+
+```json
+https://example.cc {
+    gzip
+    tls /ssl/example.cc/cert.pem /ssl/example.cc/key.pem
+    root /path/to/phalcon/public
+    fastcgi / unix:/run/php/php8.0-fpm.sock php
+    rewrite {
+        r (.*)
+        to {path} {path}/ /index.php?_url={1}
+    }
+}
+```
+
 [apache]: https://httpd.apache.org/
+[caddy]: https://caddyserver.com
 [cherokee]: https://www.cherokee-project.com/
 [htrouter]: https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php
 [nginx]: https://wiki.nginx.org/Main
