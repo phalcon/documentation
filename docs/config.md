@@ -3,8 +3,12 @@
 
 ## Overview
 
-Almost all applications require configuration data for proper operation. This configuration includes parameters and initial settings such as the location of log files, database connection values, registered services, etc. The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy, object-oriented way. This component can be instantiated using a PHP array directly or by reading configuration files from various formats, as described further down in the adapters section. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object, inheriting its functionality. 
- 
+Almost all applications require configuration data for proper operation. This configuration includes parameters and initial settings such as the location of log files, database connection values, registered services, etc. The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy, object-oriented way. 
+
+It represents a tree whose leaves are configuration values. Each child node of a [Phalcon\Config\Config][config] is named, and is either an external node which contains a configuration value or a sub-collection which is itself a [Phalcon\Config\Config][config] instance holding nested values. It provides methods to access such configuration collections. Each [Phalcon\Config\Config][config] instance represents a virtual object which can be traversed in the fashion of true object properties.
+
+This component can be instantiated using a PHP array directly or by reading configuration files from various formats, as described further down in the adapters section. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object, inheriting its functionality.
+
 ```php
 <?php
 
@@ -169,8 +173,8 @@ $config = new Config(
 );
 ```
 
-### Get
-#### Magic
+## Get
+### Magic
 
 Retrieve data using the key as a property (magic method):
 
@@ -180,14 +184,30 @@ Retrieve data using the key as a property (magic method):
 echo $config->app->name; // PHALCON
 ```
 
-#### Path
+### Get
 
-Use the `path()` method with a delimiter to pass a string with keys separated by the delimiter:
+Use the `get()` method and chain it to traverse nested objects:
 
 ```php
 <?php
 
-echo $config->path('app.name'); // PHALCON
+echo $config
+        ->get('app')
+        ->get('name');  // PHALCON
+```
+
+Since [Phalcon\Config\Config][config] extends [Phalcon\Support\Collection][collection], you can also pass a second parameter in `get()` that will act as the default value returned if the config element is not defined.
+
+## Path
+
+Using `path()` allows for easy retrieval of the value of a nested key, however deep that might be. A delimited string is passed, representing each level of the object, separating nesting with the use of a delimiter (by default `.`). As such, with one call, we can retrieve a value that is nested deep within the Config object.
+
+```php
+<?php
+
+echo $config->get('app')->get('name');  // PHALCON
+
+echo $config->path('app.name');  // PHALCON
 ```
 
 `path()` also accepts a `defaultValue` which, if set, will be returned if the element is not found or is not set in the config object. The last parameter of `path()` is the delimiter to be used for splitting the passed string (`path`) which also denotes the nesting level.
@@ -236,21 +256,7 @@ echo config('app-name', 'default', '-');     // PHALCON
 echo config('app-unknown', 'default', '-');  // default
 ```
 
-#### Get
-
-Use the `get()` method and chain it to traverse nested objects:
-
-```php
-<?php
-
-echo $config
-        ->get('app')
-        ->get('name');  // PHALCON
-```
-
-Since [Phalcon\Config\Config][config] extends [Phalcon\Support\Collection][collection], you can also pass a second parameter in `get()` that will act as the default value returned if the config element is not defined.
-
-### Merge
+## Merge
 
 There are times that we might need to merge configuration data coming from two different config objects. For instance, we might have one config object that contains our base/default settings, while a second config object loads options that are specific to the system the application is running on (i.e. test, development, production etc.). The system specific data can come from a `.env` file and loaded with a [DotEnv][dotenv] library.
 
@@ -332,16 +338,16 @@ Phalcon\Config Object
 )
 ``` 
 
-### Has
+## Has
 Using `has()` you can determine if a particular key exists in the collection.
 
-### Set
+## Set
 The component also supports `set()` which allows you to programmatically add or change loaded data.
 
-### Serialization
+## Serialization
 The object can be serialized and saved in a file or a cache service using the `serialize()` method. The reverse can be achieved using the `unserialize` method
 
-### `toArray` / `toJson`
+## `toArray` / `toJson`
 If you need to get the object back as an array `toArray()` and `toJson()` are available.
 
 For additional information, you can check the [Phalcon\Support\Collection][support-collection] documentation.
@@ -360,7 +366,7 @@ In addition to the core component [Phalcon\Config\Config][config], designed to a
 | [Phalcon\Config\Adapter\Php][php]         | Loads configuration from PHP multidimensional arrays. This adapter offers the best performance.     |
 | [Phalcon\Config\Adapter\Yaml][yaml]       | Loads configuration from YAML files. Requires the PHP `yaml` extension to be present in the system. |
 
-## Grouped
+### Grouped
 
 The [Phalcon\Config\Adapter\Grouped][grouped] adapter allows the creation of a [Phalcon\Config\Config][config] object from multiple sources without creating each object separately. It accepts an array configuration with necessary data, defaulting to php as the default adapter.
 
@@ -460,7 +466,7 @@ $options = [
 $config = new Grouped($options);
 ```
 
-## Ini
+### Ini
 
 The [Phalcon\Config\Adapter\Ini][ini] adapter uses the optimized PHP function [parse_ini_file][parse-ini-file] to read configuration from INI files. Each section represents a top-level element, and sub-elements are nested if keys contain the . separator. The default scanning method is `INI_SCANNER_RAW`, but this can be overridden by passing a different mode in the constructor.
 
@@ -539,7 +545,7 @@ $params = [
 $config = $factory->newinstance('ini', $fileName, $params);
 ```
 
-## Json
+### Json
 
 !!! info "NOTE"
 
@@ -616,7 +622,7 @@ $factory  = new ConfigFactory();
 $config = $factory->newinstance('json', $fileName);
 ```
 
-## Php
+### Php
 
 The [Phalcon\Config\Adapter\Php][php] adapter reads a PHP file that returns an array, loading it into the [Phalcon\Config\Config][config] object. Configuration can be stored as a PHP array in a file, and the adapter will read and parse it accordingly.
 
@@ -691,7 +697,7 @@ $factory  = new ConfigFactory();
 $config = $factory->newinstance('php', $fileName);
 ```
 
-## Yaml
+### Yaml
 
 !!! info "NOTE"
 
@@ -791,7 +797,7 @@ $callbacks = [
 $config = $factory->newinstance('yaml', $fileName, $callbacks);
 ```
 
-## Custom Adapters
+### Custom
 For additional adapters, explore the [Phalcon Incubator][phalcon-incubator].
 
 ## Dependency Injection
