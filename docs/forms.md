@@ -858,6 +858,49 @@ $telephone->addValidator(
 
 $form->add($telephone);
 ```
+### Cancel on Failure
+If you wish to stop the validation chain as soon as one validation fails, you will need to pass the `cancelOnFail` option. This is particularly useful if many validators have been attached to an element and you need to inform the user if the first validator has failed and not move further, adding more errors to the messages.
+
+```php
+<?php
+
+use Phalcon\Forms\Form;
+use Phalcon\Forms\Element\Text;
+
+$form = new Form();
+
+$lastName = new Text('lastName');
+$lastName->addValidators(
+    [
+        new PresenceOf(
+            [
+                'message'      => 'Last Name is required',
+                'cancelOnFail' => true,
+            ]
+        ),
+        new StringLength(
+            [
+                'min'            => 3,
+                'max'            => 255,
+                'messageMaximum' => 'Last Name cannot be more than 255 characters',
+                'messageMinimum' => 'Last Name cannot be less than 3 characters',
+            ]
+        ),
+    ]
+);
+
+// Empty data
+$form->isValid($_POST);
+
+// Get the messages from the form
+$messages = $form->getMessages();
+
+echo count($messages); 
+// 1 message
+
+echo $messages[0]->getMessage();
+// 'Last Name is required'
+```
 
 ## Rendering
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
