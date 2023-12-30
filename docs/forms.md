@@ -774,28 +774,38 @@ use Phalcon\Forms\Element\Text;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength;
 
-$name = new Text(
-    'nameLast'
-);
-
-$name->addValidator(
+$nameLast = new Text('nameLast');
+$nameLast->addValidator(
     new PresenceOf(
         [
-            'message' => 'The name is required',
+            'message' => 'The last name is required',
         ]
     )
 );
 
-$name->addValidator(
+$nameLast->addValidator(
     new StringLength(
         [
             'min'            => 10,
-            'messageMinimum' => 'The name is too short',
+            'messageMinimum' => 'The last name is too short',
         ]
     )
 );
 
-$form->add($name);
+$form->add($nameLast);
+
+$nameFirst = new Text('nameFirst');
+$nameFirst->addValidator(
+    new StringLength(
+        [
+            'max'            => 20,
+            'messageMaximum' => 'The first name is too long',
+            'allowEmpty'     => true,
+        ]
+    )
+);
+
+$form->add($nameFirst);
 ```
 
 Then you can validate the form according to the input entered by the user:
@@ -824,6 +834,29 @@ $messages = $form->getMessagesFor('nameLast');
 foreach ($messages as $message) {
     echo $message, '<br>';
 }
+```
+
+### Empty Values
+You can pass the option `allowEmpty` to any of the built-in validators to ignore empty values. The `allowEmpty` option can also be an array of field names. The fields matching the elements of the array will validate `true` if they have empty values.
+
+```php
+<?php
+
+use Phalcon\Forms\Element\Text;
+use Phalcon\Filter\Validation\Validator\Regex;
+
+$telephone = new Text('telephone');
+$telephone->addValidator(
+    new Regex(
+        [
+            'message'    => 'The telephone is required',
+            'pattern'    => '/\+1 [0-9]+/',
+            'allowEmpty' => true,
+        ]
+    )
+);
+
+$form->add($telephone);
 ```
 
 ## Rendering
