@@ -940,6 +940,11 @@ class InvoicesController extends Controller
 ```
 
 ## Simple Rendering
+
+!!! warning "NOTE"
+
+    You can use `echo` when calling `$view->render()`, which will output the contents of the rendering process on screen. This **only works** with [Phalcon\Mvc\View\Simple][mvc-view-simple] and **not** with [Phalcon\Mvc\View][mvc-view]. Using `echo` with the latter will produce a warning.
+
 [Phalcon\Mvc\View\Simple][mvc-view-simple] is an alternative component to [Phalcon\Mvc\View][mvc-view]. It keeps most of the philosophy of [Phalcon\Mvc\View][mvc-view] but lacks of a hierarchy of files which is, in fact, the main feature of its counterpart.
 
 This component allows you to have control of when a view is rendered and its location. In addition, this component can leverage of view inheritance available in template engines such as [Volt][volt] and others.
@@ -1045,7 +1050,7 @@ $params = [
 
 // Phalcon\Mvc\View
 $view = new View();
-echo $view->render('invoices', 'view', $params);
+$view->render('invoices', 'view', $params);
 
 // Phalcon\Mvc\View\Simple
 $simpleView = new Simple();
@@ -1356,7 +1361,7 @@ $.ajax({
 </script>
 ```
 
-In the example above, we are utilizing the [Phalcon\Url][mvc-url] component in our javascript code, to correctly set up the URL in our application. The service is available in the view by accessing `$this->url`.
+In the example above, we are utilizing the [Phalcon\Mvc\Url][mvc-url] component in our javascript code, to correctly set up the URL in our application. The service is available in the view by accessing `$this->url`.
 
 ## Stand Alone
 You can also use the view as a _glue_ component in your application. You will only need to have the proper setup and then use the view to return processed results back.
@@ -1412,6 +1417,11 @@ echo $view->getRender(
 ```
 
 ### Simple Rendering
+
+!!! warning "NOTE"
+
+    You can use `echo` when calling `$view->render()`, which will output the contents of the rendering process on screen. This **only works** with [Phalcon\Mvc\View\Simple][mvc-view-simple] and **not** with [Phalcon\Mvc\View][mvc-view]. Using `echo` with the latter will produce a warning.
+
 You can also use the much smaller [Phalcon\Mvc\View\Simple][mvc-view-simple] as a stand-alone component. This component is extremely useful when you want to render a template that is not always tied to your application structure. An example is rendering HTML code required by emails.
 
 ```php
