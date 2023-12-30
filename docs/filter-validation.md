@@ -1600,7 +1600,7 @@ $validator->add(
 );
 ```
 
-#### Using except for fields (SQL operation "value NOT IN (except)")
+#### Using except for fields (SQL operation "`value NOT IN (except)`")
 Single field
 ```php
 <?php
