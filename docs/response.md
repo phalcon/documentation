@@ -66,8 +66,8 @@ The [Phalcon\Http\Response][http-response] offers several getters, allowing you 
 |---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | `getContent(): string`                |  Returns the HTTP response body.                                                                                                             |
 | `getHeaders(): HeadersInterface`      | Returns the headers object, containing headers set by the user.                                                                              |
-| `getReasonPhrase(): string&vert;null` | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
-| `getStatusCode(): int&vert;null`      | Returns the status code (e.g. `200`).                                                                                                        |
+| `getReasonPhrase(): string|null` | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
+| `getStatusCode(): int|null`      | Returns the status code (e.g. `200`).                                                                                                        |
 
 
 ## Content
@@ -259,7 +259,7 @@ The [Phalcon\Http\Response\Headers][http-response-headers] object offers the fol
 
 | Name                                    | Description                                             |
 |-----------------------------------------|---------------------------------------------------------|
-| `get( string $name ): string&vert;bool` | Gets a header value from the object                     |
+| `get( string $name ): string|bool` | Gets a header value from the object                     |
 | `has( string $name ): bool`             | Checks if a header already exists in the reponse        |             
 | `remove( string $header )`              | Removes a header from the response                      |                            
 | `reset()`                               | Resets all headers                                      |
