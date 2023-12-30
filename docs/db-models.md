@@ -114,7 +114,7 @@ public function __isset(string $property): bool
 ```php
 public function __set(string $property, mixed $value)
 ```
-Magic method to assign values to the the model
+Magic method to assign values to the model
 
 ```php
 public function addBehavior(
@@ -236,7 +236,7 @@ $invoice->assign(
 
 By default `assign` will use setters if they exist, you can disable it by using `ini_set` to directly use properties
 
-```
+```php
 ini_set('phalcon.orm.disable_assign_setters', true);
 ```
 
@@ -319,7 +319,7 @@ public static function cloneResultMap(
     bool $keepSnapshots = null
 ): ModelInterface
 ```
-Assigns values to a model from an array, returning a new model, using the column map.
+Assign values to a model from an array, returning a new model, using the column map.
 
 ```php
 <?php
@@ -345,7 +345,7 @@ public static function cloneResultMapHydrate(
     int $hydrationMode
 ): mixed
 ```
-Returns an hydrated result based on the data and the column map
+Returns a hydrated result based on the data and the column map
 
 ```php
 public static function count(
@@ -985,7 +985,7 @@ Sets the DependencyInjection connection service name used to write data
 
 ```php
 public function skipOperation(bool $skip): void
-```php
+```
 Skips the current operation forcing a success state
 
 ```php
@@ -1764,7 +1764,7 @@ $invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
 
 !!! warning "NOTE"
 
-    It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria comes from user input. For more information check the [Binding Parameters](#binding-parameters)` section.
+    It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria come from user input. For more information check the [Binding Parameters][binding-parameters]` section.
 
 Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria. 
 
@@ -1894,11 +1894,11 @@ $invoices = Invoices::find(
 );
 ```
 
-The columns array can return the columns directly if only a value has been set for one of the array elements. However if you choose to specify a key, it will be used as an alias for that field. In the above example, the `cst_name_first` is aliased as `first`.
+The columns array can return the columns directly if only a value has been set for one of the array elements. However, if you choose to specify a key, it will be used as an alias for that field. In the above example, the `cst_name_first` is aliased as `first`.
 
 **`conditions`**
   
-Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model][mvc-model] assumes the first parameter are the conditions. 
+Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default, [Phalcon\Mvc\Model][mvc-model] assumes the first parameter are the conditions. 
 
 ```php
 <?php
@@ -2086,7 +2086,7 @@ The static method `query()` returns a [Phalcon\Mvc\Model\Criteria][mvc-model-cri
 All the queries are internally handled as [PHQL](db-phql.md) queries. PHQL is a high-level, object-oriented and SQL-like language. This language offers more features to perform queries such as joining other models, group records, aggregations etc.
 
 ### `findBy*`
-You can use the `findBy<property-name>()` method. This method expands on the `find()` method mentioned above. It allows you to quickly perform a select of records from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
+You can use the `findBy<property-name>()` method. This method expands on the `find()` method mentioned above. It allows you to quickly perform a select query from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
 
 For the following model:
 
@@ -2266,7 +2266,7 @@ Phalcon's resultsets emulate scrollable cursors. You can get any row just by acc
 
 Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#disablingenabling-features) section.
 
-Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](cache.md) can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
+Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache\Cache][cache] can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
 <?php
@@ -2372,7 +2372,7 @@ $invoices = $invoices->filter(
 The above example will return only the paid invoices from our table (`inv_status_flag = 1`);
 
 ### Binding Parameters
-Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both `string` and `integer` placeholders are supported. 
+Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. You are encouraged to use this methodology to eliminate the possibility of your code being subject to SQL injection attacks. Both `string` and `integer` placeholders are supported. 
 
 !!! info "NOTE"
 
@@ -2419,9 +2419,9 @@ $invoices = Invoices::find(
 );
 ```
 
-Strings are automatically escaped using [PDO][pdo-statements]. This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+Strings are automatically escaped using [PDO][pdo-statements]. This function takes into account the connection charset, therefore it is recommended to define the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
 
-Additionally you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to their data type:
+Additionally, you can set the parameter `bindTypes`, this allows defining how the parameters should be bound according to their data type:
 
 ```php
 <?php
@@ -2451,7 +2451,7 @@ $invoices = Invoices::find(
 
 !!! info "NOTE"
 
-    Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all of the columns are strings
+    Since the default bind type is `Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the 'bindTypes' parameter if all the columns are strings
 
 You can also bind arrays in the parameters, especially when using the `IN` SQL keyword. 
 
@@ -2493,7 +2493,7 @@ $invoices = Invoices::find(
 
     Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
 
-If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. Also when using `findFirstBy*` the parameters are automatically bound.
+If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. Also, when using `findFirstBy*` the parameters are automatically bound.
 
 ```php
 <?php
@@ -2778,7 +2778,7 @@ $invoice->assign(
 $result = $invoice->save();
 ```
 
-Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
+Values assigned directly, or via the array of attributes, are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
 
 ```php
 <?php
@@ -2796,7 +2796,7 @@ $result = $invoice->save();
 
     Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
 
-You can set an additional parameter in `assign` to set a whitelist of fields that only must taken into account when doing the mass assignment:
+You can set an additional parameter in `assign` to set a whitelist of fields that are only taken into account when doing the mass assignment:
 
 ```php
 <?php
@@ -2924,14 +2924,17 @@ foreach ($invoices as $invoice) {
 ## Hydration Modes
 As mentioned earlier, resultsets are collections of complete objects. This means that every returned result is an object, representing a row in the database. These documents can be modified and later on saved to persist the changes in the database.
 
-However, there are times that you will need to get the data in a read only mode, such as in cases of just viewing data. In these cases, it is useful to change the way the records are returned to save resources and increase performance. The strategy used to represent these objects returned in an resultset is called `hydration`.
+However, there are times that you will need to get the data in a read only mode, such as in cases of just viewing data. In these cases, it is useful to change the way the records are returned to save resources and increase performance. The strategy used to represent these objects returned in a resultset is called `hydration`.
 
 Phalcon offers three ways of hydrating data:
-- Arrays : `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`
-- Objects : `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS`
-- Records : `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS`
 
-The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return back objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
+| Result  | Mode                                           |
+|---------|------------------------------------------------|
+| Arrays  | `Phalcon\Mvc\Model\Resultset::HYDRATE_ARRAYS`  |
+| Objects | `Phalcon\Mvc\Model\Resultset::HYDRATE_OBJECTS` |
+| Records | `Phalcon\Mvc\Model\Resultset::HYDRATE_RECORDS` |
+
+The default hydration mode is to return records (`HYDRATE_RECORDS`). We can easily change the hydration mode to get arrays or objects back. Changing the hydration mode to anything other than `HYDRATE_RECORDS` will return objects (or arrays) that have no connection to the database i.e. we will not be able to perform any operations on those objects such as `save()`, `create()`, `delete()` etc.
 
 ```php
 <?php
@@ -3037,7 +3040,7 @@ echo $invoice->inv_id; // 4
 
 [Phalcon\Mvc\Model][mvc-model] attempts to recognize the identity column from each table. However, depending on the database system, these columns might be serial columns, such as in the case of PostgreSQL or `auto_increment` columns in the case of MySQL.
 
-PostgreSQL uses sequences to generate automatically numeric values for the primary key. Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `co_invoices_id_seq`. If the sequence name is different, you can always use the `getSequenceName()` method method in the model, instructing Phalcon the sequence it needs to use for the primary key:
+PostgreSQL uses sequences to generate automatically numeric values for the primary key. Phalcon tries to obtain the generated value from the sequence `table_field_seq`, for example: `co_invoices_id_seq`. If the sequence name is different, you can always use the `getSequenceName()` method in the model, instructing Phalcon the sequence it needs to use for the primary key:
 
 ```php
 <?php
@@ -3065,7 +3068,7 @@ CREATE TABLE co_invoices (
 )
 ```
 
-The code above (for MySQL) instructs the RDBMS to assign the current timestamp on the `inv_created_at` field when the record is created. We can therefore omit this field when creating a record. Similarly we might want to ignore some fields when we are updating records.
+The code above (for MySQL) instructs the RDBMS to assign the current timestamp on the `inv_created_at` field when the record is created. We can therefore omit this field when creating a record. Similarly, we might want to ignore some fields when we are updating records.
 
 To achieve this task we can use the `skipAttributes` (for any operation), `skipAttributesOnCreate` (create) or `skipAttributesOnUpdate` (update)
 
