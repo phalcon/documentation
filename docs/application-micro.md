@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
+Phalcon provides a lightweight application structure known as `Micro` to facilitate the creation of applications with minimal PHP code and reduced overhead. `Micro` applications are well-suited for small-scale projects, such as APIs and prototypes, where efficiency and low overhead are crucial.
 
 ```php
 <?php
@@ -24,7 +24,7 @@ $app->handle(
 ```
 
 ## Activation
-The [Phalcon\Mvc\Micro][mvc-micro] class is the one responsible for creating a Micro application.
+To initialize a Micro application, use the [Phalcon\Mvc\Micro][mvc-micro] class.
 
 ```php
 <?php
@@ -38,7 +38,7 @@ $app       = new Micro($container);
 
 !!! warning "NOTE"
 
-    Prior to Phalcon v5.3.0, the `Micro` object was automatically registered in the dependency injection container with the name `application`. This is no longer the case. 
+    Starting from Phalcon v5.3.0, the `Micro` object is no longer automatically registered in the dependency injection container with the name `application`. Developers are required to manage the application instance explicitly.
 
 ## Methods
 
@@ -299,20 +299,20 @@ public function stop()
 Stops the middleware execution
 
 ## Routes
-Defining routes in a [Phalcon\Mvc\Micro][mvc-micro] application is very easy. Routes are defined as follows:
+Defining routes in a [Phalcon\Mvc\Micro][mvc-micro] application is straightforward. Routes are defined in the format:
 
 ```text
    Application : (http method): (route url/regex, callable PHP function/handler)
 ```
 
 ### Activation
-Routing is handled by the [Phalcon\Mvc\Router][mvc-router] object. 
+Routing is managed by the [Phalcon\Mvc\Router][mvc-router] object. 
 
 !!! warning "NOTE"
 
     Routes must always start with `/`
 
-Usually, the starting route for an application is `/`, accessed via the `GET` HTTP method:
+Usually, the initial route for an application is `/`, accessible via the `GET` HTTP method:
 
 ```php
 <?php
@@ -327,7 +327,7 @@ $application->get(
 
 !!! info "NOTE"
 
-    Check our [routing][routing] document for more information for the [Phalcon\Mvc\Router][mvc-router]
+    Refer to our [routing][routing] document for more information about the [Phalcon\Mvc\Router][mvc-router].
 
 **Application object**
 
@@ -350,7 +350,7 @@ $app->get(
 
 **Router object**
 
-You can also create a [Phalcon\Mvc\Router][mvc-router] object, setting the routes there and then injecting it in the dependency injection container.
+Alternatively, you can create a [Phalcon\Mvc\Router][mvc-router] object, define the routes, and then inject it into the dependency injection container.
 
 ```php
 <?php
@@ -372,16 +372,16 @@ $application = new Micro($container);
 $application->setService('router', $router, true);
 ```
 
-Setting up your routes using the [Phalcon\Mvc\Micro][mvc-micro] applications http methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application. Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+Setting up routes using the [Phalcon\Mvc\Micro][mvc-micro] application's HTTP methods (`get`, `post`, etc.) is simpler than configuring a router object with relevant routes and injecting it into the application. The choice between the two approaches depends on the design and requirements of your application.
 
 ### Rewrite Rules
-In order for routes to work, your web server needs to be configured with specific instructions. Please refer to the [webserver setup][webserver-setup] document for more information.
+For routes to function correctly, your web server needs specific configurations. Refer to the [webserver setup][webserver-setup] document for detailed information.
 
 ### Handlers
-Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any valid PHP `callable`. 
+Handlers are callable pieces of code attached to a route. When the route is matched, the handler executes with all the defined parameters. A handler is any valid PHP `callable`. 
 
 #### Registration
-Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
+Phalcon offers several ways to attach a handler to a route. The choice depends on your application needs, design, and coding style.
 
 **Anonymous Function**
 
@@ -398,7 +398,7 @@ $app->get(
 );
 ```
 
-Accessing the `$app` object inside the anonymous function can be achieved by injecting it as follows:
+Accessing the `$app` object inside the anonymous function is achieved by injecting it as follows:
 
 ```php
 <?php
@@ -417,7 +417,7 @@ $app->get(
 
 **Function**
 
-You can define a function as the handler and attach it to a specific route.
+Define a function as the handler and attach it to a specific route.
 
 ```php
 <?php
@@ -434,7 +434,7 @@ $app->get(
 
 **Static Method**
 
-You can also use a static method as the handler.
+Use a static method as the handler.
 
 ```php
 <?php
@@ -454,7 +454,7 @@ $app->get(
 
 **Method in an Object**
 
-You can also use a method in an object as the handler.
+Use a method in an object as the handler.
 
 ```php
 <?php
@@ -478,7 +478,7 @@ $app->get(
 
 **Controllers**
 
-With the [Phalcon\Mvc\Micro][mvc-micro] you can create micro or _medium_ applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application. In medium applications you can organize handlers in controllers.
+For medium applications, which expand on the micro architecture, you can organize handlers in controllers.
 
 ```php
 <?php
@@ -515,7 +515,7 @@ class InvoicesController extends Controller
 }
 ```
 
-Since our controllers extend the [Phalcon\Mvc\Controller][mvc-controller], all the dependency injection services are available with their respective registration names.
+Since controllers extend [Phalcon\Mvc\Controller][mvc-controller], all dependency injection services are available with their respective registration names.
 
 ```php
 <?php
@@ -545,9 +545,8 @@ class InvoicesController extends Controller
 ```
 
 #### Lazy Loading
-In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
 
-Lazy loading can be easily achieved when setting your handler in your [Phalcon\Mvc\Micro\Collection][mvc-micro-collection] using the second parameter, or by using the `setLazy` method.
+To enhance performance, consider implementing lazy loading for your controllers (handlers). Lazy loading ensures that the controller is loaded only when the relevant route is matched. Achieve lazy loading by setting your handler in your [Phalcon\Mvc\Micro\Collection][mvc-micro-collection] using the second parameter or by utilizing the `setLazy` method.
 
 ```php
 <?php
@@ -573,9 +572,9 @@ $app->mount($invoices);
 
 **Use case**
 
-We are developing an API for an online store. The endpoints are `/users`, `/invoices` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
+Consider an API development scenario for an online store with endpoints `/users`, `/invoices`, and `/products`. Each endpoint is registered using handlers, where each handler is a controller with relevant actions.
 
-The controllers that we use as handlers are as follows:
+Register the controllers:
 
 ```php
 <?php
@@ -622,7 +621,7 @@ class ProductsController extends Controller
 }
 ```
 
-We register the handlers:
+Register the handlers:
 
 ```php
 <?php
@@ -678,9 +677,10 @@ $products
 $app->mount($products);
 ```
 
-This implementation loads each handler in turn and mounts it in our application object. The issue with this approach is that each request will result to only one endpoint and therefore one class method executed. The remaining methods/handlers will just remain in memory without being used.
+In the above approach, each handler is loaded sequentially and mounted in our application object. The drawback is that each request results in only one endpoint and, consequently, one class method executed. The remaining methods/handlers stay in memory without being utilized.
 
-Using lazy loading we reduce the number of objects loaded in memory and as a result our application uses less memory. The above implementation changes if we want to use lazy loading as follows:
+By incorporating lazy loading, we reduce the number of objects loaded in memory, resulting in more efficient resource usage. The implementation changes as follows:
+
 ```php
 <?php
 
@@ -743,10 +743,10 @@ $products
 $app->mount($products);   
 ```
 
-Using this simple change in implementation, all handlers remain non instantiated until requested by a caller. Therefore, whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Our application now uses less resources than before.
+With this simple change, all handlers remain uninstantiated until requested by a caller. Consequently, when a caller requests `/invoices/get/2`, our application instantiates the `InvoicesController` and calls the `get` method. The application now utilizes fewer resources.
 
 #### Extra performance tip
-If you are working on a large application, there is no need to mount all the collections, even if they are lazy loaded: Phalcon will use regex to match the routes. To speed up the routing process it is possible to run a _pre-filter_ like this, using the previous example:
+For large applications, there's no need to mount all collections, even if they are lazy-loaded. Phalcon uses `regex` to match routes, and to speed up the routing process, a _pre-filter_ can be run. For instance:
 
 ```php
 $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
@@ -824,10 +824,13 @@ switch ($collection) {
     // ...
 }
 ```
-In this way, Phalcon can handle tens (or hundreds) of routes without regex performance penalty: using `explode()` is faster than regex. 
+
+This approach allows Phalcon to handle numerous routes without a regex performance penalty. Using `explode()` proves faster than regex. 
 
 #### Not found (404)
-Any route that has not been matched in our [Phalcon\Mvc\Micro][mvc-micro] application will cause it to try and execute the handler defined with the `notFound` method. Similar to other http methods (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
+
+Any route not matched in our [Phalcon\Mvc\Micro][mvc-micro] application triggers the execution of the handler defined with the `notFound` method. Similar to other HTTP methods (`get`, `post`, etc.), you can register a handler in the `notFound` method, which can be any callable PHP function.
+
 ```php
 <?php
 
@@ -845,10 +848,10 @@ $app->notFound(
 );
 ```
 
-You can also handle routes that have not been matched (404) with Middleware discussed below.  
+Routes that have not been matched (404) can also be handled with Middleware, discussed below.  
 
 ### HTTP methods
-The [Phalcon\Mvc\Micro][mvc-micro] application provides a set of methods to bind the HTTP method with the route it is intended to.
+The [Phalcon\Mvc\Micro][mvc-micro] application provides a set of methods to bind the HTTP method with the intended route:
 
 **delete**
 
@@ -962,7 +965,7 @@ $app->put(
 ```
 
 ### Collections
-Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/invoices` endpoint we could have the following routes:
+Collections are a convenient way to group routes attached to a handler and a common prefix (if needed). For a hypothetical /invoices endpoint, you could have the following routes:
 
 ```text
 /invoices/get/{id}
@@ -971,7 +974,7 @@ Collections are a handy way to group collections attached to a handler and a com
 /invoices/delete/{id}
 ```
 
-All of those routes are handled by our `InvoicesController`. We set up our routes with a collection as follows:
+All of those routes are handled by our `InvoicesController`. Set up your routes with a collection as follows:
 
 ```php
 <?php
@@ -1137,7 +1140,8 @@ public function setPrefix(
 Sets a prefix for all routes added to the collection
 
 ### Parameters
-We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
+
+Parameters in routes are defined by enclosing the parameter name in curly braces {}:
 
 ```php
 <?php
@@ -1150,7 +1154,7 @@ $app->get(
 );
 ```
 
-We can also enforce certain rules for each parameter by using regular expressions. The regular expression is set after the name of the parameter, separating it with `:`.
+You can enforce rules for parameters using regular expressions. The regular expression is set after the name of the parameter, separating it with `:`.
 
 ```php
 <?php
@@ -1174,9 +1178,10 @@ $app->get(
 
 !!! info "NOTE"
 
-    Check our [routing][routing] document for more information for the [Phalcon\Mvc\Router][mvc-router]
+    For more information, refer to the [routing][routing] documentation
 
 ### Redirections
+
 You can redirect one matched route to another using the [Phalcon\Http\Response][http-response] object, just like in a full application.
 
 ```php
@@ -1203,9 +1208,9 @@ $app->get('/invoices/view/{id}',
 
 !!! info "NOTE"
 
-    We have to pass the `$app` object in our anonymous function to have access to the `request` object.
+    Make sure to pass the $app object in your anonymous function to have access to the response object.
 
-When using controllers as handlers, you can perform the redirect just as easy:
+When using controllers as handlers, you can perform the redirect just as easily:
 
 ```php
 <?php
@@ -1238,9 +1243,10 @@ class InvoicesController extends Controller
 Finally, you can perform redirections in your middleware (if you are using it). An example is below in the relevant section.
 
 ### URLs
-Another feature of the routes is setting up named routes and generating URLs for those routes. 
 
-You will need to name your routes to take advantage of this feature. This can be achieved with the `setName()` method that is exposed from the http methods in our application (`get`, `post`, etc.);
+Another feature of the routes is setting up named routes and generating URLs for those routes.
+
+You will need to name your routes to take advantage of this feature. This can be achieved with the `setName()` method that is exposed from the HTTP methods in our application (`get`, `post`, etc.).
 
 ```php
 <?php
@@ -1283,7 +1289,7 @@ $invoices
 $app->mount($invoices);
 ```
 
-Lastly you need the [Phalcon\Url][mvc-url] component to generate URLs for the named routes.
+Lastly, you need the [Phalcon\Url][mvc-url] component to generate URLs for the named routes.
 
 ```php
 <?php
@@ -1309,6 +1315,7 @@ $app->get(
 ```
 
 ## Dependency Injector
+
 When a micro application is created, a [Phalcon\Di\FactoryDefault][di-factorydefault] services container is created automatically. 
 
 ```php
@@ -1330,7 +1337,7 @@ $app->get(
 );
 ```
 
-You can also create a DI container yourself, and assign it to the micro application, therefore manipulating the services depending on the needs of your application.
+You can also create a DI container yourself and assign it to the micro application, therefore manipulating the services depending on the needs of your application.
 
 ```php
 <?php
@@ -1408,9 +1415,10 @@ $app->get(
 ```
 
 ## Responses
-A micro application can return many types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 
-Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object or a custom-built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
+A micro application can return many types of responses: direct output, use a template engine, calculated data, view-based data, JSON, etc.
+
+Handlers may return raw responses using plain text, [Phalcon\Http\Response][http-response] object, or a custom-built component that implements the [Phalcon\Http\ResponseInterface][http-responseinterface].
 
 ### Direct
 ```php
@@ -1454,6 +1462,7 @@ $app->get(
 ```
 
 ### New Response
+
 You can use the `setContent` method of a new [Phalcon\Http\Response][http-response] object to return the response back.
 
 ```php
@@ -1475,6 +1484,7 @@ $app->get(
 ```
 
 ### Application Response
+
 You can also use the [Phalcon\Http\Response][http-response] from the application to return responses to the caller.
 
 ```php
@@ -1495,7 +1505,8 @@ $app->get(
 ```
 
 ### Return Response
-A different approach returning data back to the caller is to return the [Phalcon\Http\Response][http-response] object directly from the application. When responses are returned by handlers they are automatically sent by the application.
+
+A different approach returning data back to the caller is to return the [Phalcon\Http\Response][http-response] object directly from the application. When responses are returned by handlers, they are automatically sent by the application.
 
 ```php
 <?php
@@ -1522,7 +1533,8 @@ $app->get(
 ```
 
 ### JSON
-JSON can be sent back just as easy using the [Phalcon\Http\Response][http-response] object.
+
+JSON can be sent back just as easily using the [Phalcon\Http\Response][http-response] object.
 
 ```php
 <?php
@@ -1547,7 +1559,8 @@ $app->get(
 ```
 
 ## Events
-A [Phalcon\Mvc\Micro][mvc-micro] application works closely with an [Events Manager][events] if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
+
+A [Phalcon\Mvc\Micro][mvc-micro] application works closely with an [Events Manager][events] if it is present, to trigger events that can be used throughout your application. The type of those events is `micro`. These events trigger in your application and can be attached to relevant handlers that will perform actions needed by your application.
 
 ### Available events
 The following events are supported:
@@ -1562,6 +1575,7 @@ The following events are supported:
 | `beforeNotFound`     | Route has not been found                                          |   Yes    |
 
 ### Authentication example
+
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. The following example demonstrates such a scenario:
 
 ```php
@@ -1595,6 +1609,7 @@ $app->setEventsManager($manager);
 ```
 
 ### Not found example
+
 You can also create a redirect for a route that does not exist (404). To do so you can use the `beforeNotFound` event. The following example demonstrates such a scenario:
 
 ```php
@@ -1622,7 +1637,8 @@ $app->setEventsManager($manager);
 ```
 
 ## Middleware
-Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve maintainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business rule has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
+
+Middleware refers to classes that can be attached to your application, introducing another layer where business logic can exist. They run sequentially, following the order in which they are registered. This not only enhances maintainability by encapsulating specific functionality but also improves performance. A middleware class can halt execution when a particular business rule has not been satisfied, allowing the application to exit early without executing the full cycle of a request.
 
 !!! info "NOTE"
 
@@ -1645,7 +1661,7 @@ Middleware can be attached to a micro application in 3 different events. Those a
 
 **before**
 
-This event is perfect for stopping execution of the application if certain criteria is not met. In the below example we are checking if the user has been authenticated and stop execution with the necessary redirect.
+This event is perfect for stopping the execution of the application if certain criteria are not met. In the example below, we check if the user has been authenticated and stop execution with the necessary redirect.
 
 ```php
 <?php
