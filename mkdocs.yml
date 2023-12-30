@@ -8,8 +8,8 @@ site_description: >-
   offering lower resource consumption and high performance.
 
 # Repository
-repo_name: phalcon/docs
-repo_url: https://github.com/phalcon/docs
+repo_name: phalcon/documentation
+repo_url: https://github.com/phalcon/documentation
 
 # Copyright
 copyright: Copyright &copy; 2012 - present Phalcon Team
