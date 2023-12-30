@@ -1068,7 +1068,9 @@ print_r(
 ```php
 public function update(): bool
 ```
-Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or `false` otherwise.
+Updates a model instance. If the instance doesn't exist in the
+persistence it will throw an exception. Returning `true` on success or
+`false` otherwise.
 
 ```php
 <?php
@@ -1081,6 +1083,12 @@ $invoice->inv_total = 120;
 
 $invoice->update();
 ```
+
+!!! warning "NOTE"
+
+    When retrieving the record with `findFirst()`, you need to get the full 
+    object back (no `columns` definition) but also retrieve it using the 
+    primary key. If not, the ORM will issue an `INSERT` instead of `UPDATE`.
 
 ```php
 public function writeAttribute(
