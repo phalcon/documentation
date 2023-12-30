@@ -2239,6 +2239,9 @@ extra:
   version:
     default: 5.4.0
     provider: mike
+  analytics:
+    provider: google
+    property: G-JR4REKBKH3
   annotate:
     json: [ .s2 ]
   social:
@@ -2363,6 +2366,7 @@ nav:
       - Validators: db-models-validation.md
       - Pagination: db-pagination.md
       - Migrations: db-migrations.md
+      - DataMapper: datamapper.md
   - Front End:
       - Assets: assets.md
       - Flash Messenger: flash.md

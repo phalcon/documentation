@@ -49,7 +49,7 @@ You can clone the repository to your machine (or download it) from [GitHub][gith
         ├── cache
         └── logs
 ```
-Since Phalcon does not impose a particular directory structure, the particular structure is just our implementation. You will need to set up your webserver with instructions from the [webserver setup][webserver-setup] page.
+Since Phalcon does not impose a particular directory structure, the particular structure is just our implementation. You will need to set up your webserver with instructions from the [webserver setup][webserver-setup] page. The entry point will be `public/index.php`
 
 Once the application is set up, you can open it in your browser by navigating to the following URL `https://localhost/invo`. You will see a screen similar to the one below:
 

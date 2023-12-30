@@ -2654,17 +2654,26 @@ Unserializes the object from a serialized string
 public function update(): bool;
 ```
 Updates a model instance. If the instance doesn't exist in the
-persistence it will throw an exception. Returning true on success or
-false otherwise.
+persistence it will throw an exception. Returning `true` on success or
+`false` otherwise.
 
 ```php
-// Updating a robot name
-$robot = Robots::findFirst("id = 100");
+<?php
 
-$robot->name = "Biomass";
+use MyApp\Models\Invoices;
 
-$robot->update();
+$invoice = Invoices::findFirst('inv_id = 4');
+
+$invoice->inv_total = 120;
+
+$invoice->update();
 ```
+
+!!! warning "NOTE"
+
+    When retrieving the record with `findFirst()`, you need to get the full 
+    object back (no `columns` definition) but also retrieve it using the 
+    primary key. If not, the ORM will issue an `INSERT` instead of `UPDATE`.
 
 
 ```php
@@ -13743,7 +13752,58 @@ Compiles a "return" statement returning PHP code
 ```php
 public function compileSet( array $statement ): string;
 ```
-Compiles a "set" statement returning PHP code
+Compiles a "set" statement returning PHP code. The method accepts an
+array produced by the Volt parser and creates the `set` statement in PHP.
+This method is not particularly useful in development, since it requires
+advanced knowledge of the Volt parser.
+
+```php
+<?php
+
+use Phalcon\Mvc\View\Engine\Volt\Compiler;
+
+$compiler = new Compiler();
+
+// {% set a = ['first': 1] %}
+$source = [
+    "type" => 306,
+    "assignments" => [
+        [
+            "variable" => [
+                "type" => 265,
+                "value" => "a",
+                "file" => "eval code",
+                "line" => 1
+            ],
+            "op" => 61,
+            "expr" => [
+                "type" => 360,
+                "left" => [
+                    [
+                        "expr" => [
+                            "type" => 258,
+                            "value" => "1",
+                            "file" => "eval code",
+                            "line" => 1
+                        ],
+                        "name" => "first",
+                        "file" => "eval code",
+                        "line" => 1
+                    ]
+                ],
+                "file" => "eval code",
+                "line" => 1
+            ],
+            "file" => "eval code",
+            "line" => 1
+        ]
+    ]
+];
+
+echo $compiler->compileSet($source);
+// <?php $a = ['first' => 1]; ?>
+```
+
 
 
 ```php

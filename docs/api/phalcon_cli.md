@@ -137,7 +137,9 @@ $handle = $dispatcher->dispatch();
 
 ### Properties
 ```php
-//
+/**
+ * @var string
+ */
 protected $defaultHandler = main;
 
 /**

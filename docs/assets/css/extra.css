@@ -1,5 +1,5 @@
 :root {
-    --md-primary-fg-color:        #273646;
+    --md-primary-fg-color: #273646;
     --md-primary-fg-color--light: #374c62;
     --md-primary-fg-color--dark: #1c2631;
 }
@@ -45,6 +45,7 @@
     }
 }
 
+/* Releases page table */
 .version-th-center, .version-td-center {
     text-align: center;
 }
@@ -52,33 +53,34 @@
     text-align: right;
 }
 .current-version {
-    background-color: #D4F4B4;
+    background-color: #d4f4b4;
 }
 .previous-version {
-    background-color: #FEF8C6;
+    background-color: #fef8c6;
 }
 
+/* Releases page legend */
 .legend {
     padding-left: 0.3em;
     white-space: nowrap;
 }
 
 .legend-old-version {
-    border-left: 1.2em solid #FDB3AB;
+    border-left: 1.2em solid #fdb3ab;
 }
 
 .legend-old-version-supported {
-    border-left: 1.2em solid #FEF8C6;
+    border-left: 1.2em solid #fef8c6;
 }
 
 .legend-latest {
-    border-left: 1.2em solid #D4F4B4;
+    border-left: 1.2em solid #d4f4b4;
 }
 
 .legend-preview {
-    border-left: 1.2em solid #FED1A0;
+    border-left: 1.2em solid #fed1a0;
 }
 
 .legend-future {
-    border-left: 1.2em solid #C1E6F5;
+    border-left: 1.2em solid #c1e6f5;
 }

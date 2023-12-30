@@ -1600,7 +1600,7 @@ $validator->add(
 );
 ```
 
-#### Using except for fields (SQL operation "value NOT IN (except)")
+#### Using except for fields (SQL operation "`value NOT IN (except)`")
 Single field
 ```php
 <?php
@@ -2020,6 +2020,8 @@ $validation->add(
     )
 );
 ```
+
+The `allowEmpty` option can also be an array of field names. The fields matching the elements of the array will validate `true` if they have empty values.
 
 ## Recursive Validation
 You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
