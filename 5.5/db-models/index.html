@@ -711,7 +711,7 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-93-33 name=__codelineno-93-33 href=#__codelineno-93-33></a><span class=c1>//      &#39;inv_total&#39;       = 100,</span>
 <a id=__codelineno-93-34 name=__codelineno-93-34 href=#__codelineno-93-34></a><span class=c1>//  ]</span>
 </code></pre></div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-94-1 name=__codelineno-94-1 href=#__codelineno-94-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>update</span><span class=p>()</span><span class=o>:</span> <span class=nx>bool</span>
-</code></pre></div> Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or <code>false</code> otherwise.</p> <div class=highlight><pre><span></span><code><a id=__codelineno-95-1 name=__codelineno-95-1 href=#__codelineno-95-1></a><span class=o>&lt;?</span><span class=nx>php</span>
+</code></pre></div> Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception. Returning <code>true</code> on success or <code>false</code> otherwise.</p> <div class=highlight><pre><span></span><code><a id=__codelineno-95-1 name=__codelineno-95-1 href=#__codelineno-95-1></a><span class=o>&lt;?</span><span class=nx>php</span>
 <a id=__codelineno-95-2 name=__codelineno-95-2 href=#__codelineno-95-2></a>
 <a id=__codelineno-95-3 name=__codelineno-95-3 href=#__codelineno-95-3></a><span class=k>use</span> <span class=nx>MyApp\Models\Invoices</span><span class=p>;</span>
 <a id=__codelineno-95-4 name=__codelineno-95-4 href=#__codelineno-95-4></a>
@@ -720,7 +720,7 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-95-7 name=__codelineno-95-7 href=#__codelineno-95-7></a><span class=nv>$invoice</span><span class=o>-&gt;</span><span class=na>inv_total</span> <span class=o>=</span> <span class=mi>120</span><span class=p>;</span>
 <a id=__codelineno-95-8 name=__codelineno-95-8 href=#__codelineno-95-8></a>
 <a id=__codelineno-95-9 name=__codelineno-95-9 href=#__codelineno-95-9></a><span class=nv>$invoice</span><span class=o>-&gt;</span><span class=na>update</span><span class=p>();</span>
-</code></pre></div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-96-1 name=__codelineno-96-1 href=#__codelineno-96-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>writeAttribute</span><span class=p>(</span>
+</code></pre></div> <div class="admonition warning"> <p class=admonition-title>NOTE</p> <p>When retrieving the record with <code>findFirst()</code>, you need to get the full object back (no <code>columns</code> definition) but also retrieve it using the primary key. If not, the ORM will issue an <code>INSERT</code> instead of <code>UPDATE</code>.</p> </div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-96-1 name=__codelineno-96-1 href=#__codelineno-96-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>writeAttribute</span><span class=p>(</span>
 <a id=__codelineno-96-2 name=__codelineno-96-2 href=#__codelineno-96-2></a>    <span class=nx>string</span> <span class=nv>$attribute</span><span class=p>,</span> 
 <a id=__codelineno-96-3 name=__codelineno-96-3 href=#__codelineno-96-3></a>    <span class=nx>mixed</span> <span class=nv>$value</span>
 <a id=__codelineno-96-4 name=__codelineno-96-4 href=#__codelineno-96-4></a><span class=p>)</span><span class=o>:</span> <span class=nx>void</span>
