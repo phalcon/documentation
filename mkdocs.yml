@@ -2238,6 +2238,9 @@ extra:
   version:
     default: 5.4.0
     provider: mike
+  analytics:
+    provider: google
+    property: G-JR4REKBKH3
   annotate:
     json: [ .s2 ]
   social:
