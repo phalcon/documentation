@@ -74,13 +74,13 @@ brew install pcre
 Without `brew`, you need to go to the [PCRE][pcre] website and download the latest pcre:
 
 ```bash
-tar -xzvf pcre-8.42.tar.gz
-cd pcre-8.42
-./configure --prefix=/usr/local/pcre-8.42
+tar -xzvf pcre2-10.42.tar.gz
+cd pcre2-10.42
+./configure --prefix=/usr/local/pcre-10.42
 make
 make install
-ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
-ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
+ln -s /usr/local/pcre2-10.42 /usr/sbin/pcre
+ln -s /usr/local/pcre2-10.42/include/pcre.h /usr/include/pcre.h
 ```
 
 For Maverick
@@ -138,7 +138,7 @@ yum install php80-php-phalcon5
 Additional versions are available both architecture specific (x86/x64) and PHP version specific
 
 
-### FreeBSD
+### FreeBSD/GhostBSD
 Binary package (pkg) and compile from source (ports) are available for FreeBSD. To install it you will need to issue the following commands:
 
 ##### pkg
@@ -287,6 +287,10 @@ chmod a+x zephir
 ```
 You might also need to change the ownership of the file, depending on your environment.
 
+!!! note "NOTE"
+
+    Zephir can also be installed using `composer require phalcon/zephir:dev-development`
+
 Clone the repository to a location on your file system.
 
 ```bash
@@ -332,10 +336,6 @@ make && make install
 ```
 
 If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
-
-!!! warning "NOTE"
-
-    If you are installing Phalcon with PHP 8.+, the paths will vary slightly.
 
 #### Tuning Build
 
