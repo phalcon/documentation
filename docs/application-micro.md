@@ -1638,16 +1638,16 @@ $app->setEventsManager($manager);
 
 ## Middleware
 
-Middleware refers to classes that can be attached to your application, introducing another layer where business logic can exist. They run sequentially, following the order in which they are registered. This not only enhances maintainability by encapsulating specific functionality but also improves performance. A middleware class can halt execution when a particular business rule has not been satisfied, allowing the application to exit early without executing the full cycle of a request.
+Middleware in the context of the Micro application refers to classes that can be attached to enhance the application's architecture. These classes introduce an additional layer where business logic can be encapsulated, running sequentially based on their registration order. This not only contributes to maintainability by modularizing specific functionality but also enhances performance. Middleware classes can interrupt the execution flow when a specific business rule is not satisfied, allowing the application to exit early without completing the full request cycle.
 
 !!! info "NOTE"
 
-    The middleware handled by the Micro application **are not** compatible with [PSR-15][psr-15]. In future versions of Phalcon, the whole HTTP layer will be rewritten to align with PSR-7 and PSR-15.
+    The middleware managed by the Micro application is not compatible with [PSR-15][psr-15]. Future versions of Phalcon are expected to align the entire HTTP layer with PSR-7 and PSR-15.
 
-The presence of a [Phalcon\Events\Manager][events-manager] is essential for middleware to operate, so it has to be registered in our DI container.
+The presence of a [Phalcon\Events\Manager][events-manager] is crucial for middleware to operate; therefore, it must be registered in our Dependency Injection (DI) container.
 
 ### Attached events
-Middleware can be attached to a micro application in 3 different events. Those are:
+Middleware can be attached to a Micro application in three different events:
 
 | Event    | Description                                    |
 |----------|------------------------------------------------|
@@ -1657,11 +1657,11 @@ Middleware can be attached to a micro application in 3 different events. Those a
 
 !!! warning "NOTE"
 
-    You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
+    Multiple middleware classes can be attached to each of the above events, and they will be executed sequentially when the relevant event fires.
 
-**before**
+`before` Event
+This event is ideal for halting the execution of the application if certain criteria are not met. In the following example, we check if the user is authenticated and halt execution with the necessary redirect.
 
-This event is perfect for stopping the execution of the application if certain criteria are not met. In the example below, we check if the user has been authenticated and stop execution with the necessary redirect.
 
 ```php
 <?php
@@ -1687,11 +1687,11 @@ $app->before(
 );
 ```
 
-The code above executes before every route is executed. Returning `false` cancels the route execution.
+The code above executes before every route and returning `false` cancels the route execution.
 
-**after**
+`after` Event
 
-This event can be used to manipulate data or perform actions that are needed after the handler has finished executing. 
+This event can be used to manipulate data or perform actions needed after the handler has finished executing. 
 
 ```php
 <?php
@@ -1717,15 +1717,15 @@ $app->after(
     }
 );
 ```
-In the above example, the handler returns an array of data. The `after` event calls `json_encode` on it, thus returning valid JSON.
+In the above example, the handler returns an array of data, and the after event calls `json_encode`, returning valid JSON.
 
 !!! info "NOTE"
 
-    You will need to do a bit more work here to set the necessary headers for JSON. An alternative to the above code would be to use the Response object and `setJsonContent`
+    Additional work may be needed to set the necessary headers for JSON. An alternative to the above code would be to use the Response object and `setJsonContent`.
 
-**finish**
+`finish` Event
 
-This even will fire up when the whole request cycle has been completed. 
+This event fires when the entire request cycle is completed. 
 
 ```php
 <?php
@@ -1738,10 +1738,11 @@ $app->finish(
     }
 );
 ```
-In the above example we utilize the `finish` event to do some cache cleaning.
+In the above example, the `finish` event is utilized for cache cleaning.
 
 ### Activation
-Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
+
+Attaching middleware to your application is straightforward using the `before`, `after`, and `finish` method calls.
 
 ```php
 <?php
@@ -1773,7 +1774,7 @@ $app->after(
 );
 ```
 
-You can also use classes and attach them to the Events Manager as listener. Using this approach offers more flexibility and reduces the bootstrap file size, since the middleware logic is encapsulated in one file per middleware.
+Alternatively, classes can be used and attached to the Events Manager as listeners, providing more flexibility and reducing the bootstrap file size.
 
 ```php
 <?php
@@ -1823,14 +1824,11 @@ $application->after(
 $application->setEventsManager($manager);
 ```
 
-We need a [Phalcon\Events\Manager][events-manager] object. This can be a newly instantiated object, or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one, or if you have not set up a DI container, since it will be automatically created for you).
-
-We attach every middleware class in the `micro` hook in the Events Manager. We could also be a bit more specific and attach it to say the `micro:beforeExecuteRoute` event.
-
-We then attach the middleware class in our application on one of the three listening events discussed above (`before`, `after`, `finish`).
+A [Phalcon\Events\Manager][events-manager] object is required, and middleware classes are attached to the `micro` hook in the Events Manager. More specificity can be achieved by attaching classes to specific events, such as `micro:beforeExecuteRoute`.
 
 ### Implementation
-Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the [Phalcon\Mvc\Micro\MiddlewareInterface][mvc-micro-middlewareinterface]
+
+Middleware can be any PHP callable function, and you have the flexibility to organize your code according to your preferences. If you choose to use classes for your middleware, they need to implement the [Phalcon\Mvc\Micro\MiddlewareInterface][mvc-micro-middlewareinterface].
 
 ```php
 <?php
@@ -1874,13 +1872,11 @@ class CacheMiddleware implements MiddlewareInterface
 ```
 
 ### Middleware Events
-The [events](#events) that are triggered for our application also trigger inside a class that implements the [Phalcon\Mvc\Micro\MiddlewareInterface][mvc-micro-middlewareinterface]. This offers great flexibility and power for developers since we can interact with the request process.
+The [events](#events) triggered for our application also apply inside a class implementing the [Phalcon\Mvc\Micro\MiddlewareInterface][mvc-micro-middlewareinterface]. This provides flexibility and power for developers to interact with the request process.
 
-**API example**
+#### API Example
 
-Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
-
-The middleware that we will use are:
+Suppose we have implemented an API with the Micro application. Different Middleware classes are attached to better control the execution of the application. The middleware used include:
 
 * Firewall
 * NotFound
@@ -1889,9 +1885,9 @@ The middleware that we will use are:
 * Request
 * Response
 
-**Firewall Middleware**
+##### Firewall
 
-This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
+This middleware, attached to the `before` event, checks the caller's identity against a whitelist.
 
 ```php
 <?php
@@ -1957,9 +1953,9 @@ class FirewallMiddleware implements MiddlewareInterface
 }
 ```
 
-**Not Found (404) Middleware**
+##### Not Found (404)
 
-When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try to match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
+This middleware is executed when the requesting IP is allowed to access our application. If the application fails to find a matching route, the `beforeNotFound` event is triggered. At this point, the processing is halted, and a relevant 404 response is sent back to the user. This middleware is attached to the `before` event of our Micro application.
 
 ```php
 <?php
@@ -2004,9 +2000,9 @@ class NotFoundMiddleware implements MiddlewareInterface
 }
 ```
 
-**Redirect Middleware**
+##### Redirect
 
-We attach this middleware again to the `before` event of our Micro application because we do not want the request to proceed if the requested endpoint needs to be redirected.
+This middleware is attached to the `before` event of our Micro application. It prevents the request from proceeding if the requested endpoint requires redirection.
 
 ```php
 <?php
@@ -2062,8 +2058,9 @@ class RedirectMiddleware implements MiddlewareInterface
 }
 ```
 
-#### CORS Middleware
-Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
+##### CORS
+
+This middleware, attached to the `before` event of our Micro application, ensures that it fires before anything happens with our application.
 
 ```php
 <?php
@@ -2135,9 +2132,9 @@ class CORSMiddleware implements MiddlewareInterface
 }
 ```
 
-**Request Middleware**
+##### Request
 
-This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
+This middleware receives a JSON payload and validates it. If the JSON payload is not valid, it halts the execution.
 
 ```php
 <?php
@@ -2198,13 +2195,13 @@ class RequestMiddleware implements MiddlewareInterface
 }
 ```
 
-**Response Middleware**
+##### Response
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore, we need to attach it to the `after` event of our Micro application.
 
 !!! warning "NOTE"
 
-    We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.
+    We are using the `call` method for this middleware since we have nearly executed the whole request cycle.
 
 ```php
 <?php
@@ -2246,7 +2243,8 @@ class ResponseMiddleware implements MiddlewareInterface
 ```
 
 ### Models
-Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
+
+Models can be utilized in Micro applications by instructing the application on how to find the relevant classes through an autoloader.
 
 !!! warning "NOTE"
 
@@ -2287,6 +2285,7 @@ $app->handle(
 ```
 
 ### Model injection
+
 By using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] class you can inject model instances into your routes:
 
 ```php
@@ -2322,12 +2321,14 @@ $app->handle(
     $_SERVER["REQUEST_URI"]
 );
 ```
-Since the Binder object is using internally PHP's Reflection API which requires additional CPU cycles, there is an option to set a cache to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
 
-Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/invoices/view/1`.
+Since the Binder object uses PHP's Reflection API internally, which requires additional CPU cycles, there is an option to set a cache to speed up the process. This can be done by using the second argument of `setModelBinder()`, which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+
+Currently, the binder will only use the model's primary key to perform a `findFirst()`. An example route for the above would be `/invoices/view/1`.
 
 ### Views
-[Phalcon\Mvc\Micro][mvc-micro] does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple][mvc-view-simple] component to render views.
+
+[Phalcon\Mvc\Micro][mvc-micro] does not inherently have a view service. However, you can use the [Phalcon\Mvc\View\Simple][mvc-view-simple] component to render views.
 
 ```php
 <?php
@@ -2365,7 +2366,7 @@ $app->get(
 
 !!! warning "NOTE"
 
-    The above example uses the [Phalcon\Mvc\View\Simple][mvc-view-simple] component, which uses relative paths instead of controllers and actions. You can use the [Phalcon\Mvc\View][mvc-view] component instead, but to do so you will need to change the parameters passed to `render()`.
+    The above example uses the [Phalcon\Mvc\View\Simple][mvc-view-simple] component, which uses relative paths instead of controllers and actions. You can use the [Phalcon\Mvc\View][mvc-view] component instead, but to do so, you will need to change the parameters passed to `render()`.
 
 ```php
 <?php
@@ -2402,6 +2403,7 @@ $app->get(
 ```
 
 ## Exceptions
+
 Any exceptions thrown in the [Phalcon\Mvc\Micro][mvc-micro] component will be of type [Phalcon\Mvc\Micro\Exception][mvc-micro-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
@@ -2423,6 +2425,7 @@ try {
 ```
 
 ### Error Handling
+
 The [Phalcon\Mvc\Micro][mvc-micro] application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
 
 ```php
