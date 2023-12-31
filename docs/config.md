@@ -7,7 +7,7 @@ Almost all applications require configuration data for proper operation. This co
 
 It represents a tree whose leaves are configuration values. Each child node of a [Phalcon\Config\Config][config] is named, and is either an external node which contains a configuration value or a sub-collection which is itself a [Phalcon\Config\Config][config] instance holding nested values. It provides methods to access such configuration collections. Each [Phalcon\Config\Config][config] instance represents a virtual object which can be traversed in the fashion of true object properties.
 
-This component can be instantiated using a PHP array directly or by reading configuration files from various formats, as described further down in the adapters section. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object, inheriting its functionality.
+This class can be instantiated using a PHP array directly or by reading configuration files from various formats, as described further down in the adapters section. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object, inheriting its functionality.
 
 ```php
 <?php
@@ -184,7 +184,7 @@ Retrieve data using the key as a property (magic method):
 echo $config->app->name; // PHALCON
 ```
 
-### Get
+### `get()`
 
 Use the `get()` method and chain it to traverse nested objects:
 
@@ -200,7 +200,7 @@ Since [Phalcon\Config\Config][config] extends [Phalcon\Support\Collection][colle
 
 ## Path
 
-Using `path()` allows for easy retrieval of the value of a nested key, however deep that might be. A delimited string is passed, representing each level of the object, separating nesting with the use of a delimiter (by default `.`). As such, with one call, we can retrieve a value that is nested deep within the Config object.
+Using `path()` allows for easy retrieval of a sub-item, however deep it might be. The mandatory argument is a string indicating the requested node's path. The string is a pathname containing the names of each of the node's ancestors and its own, starting from level 1. The root node's pathname is the empty string and a level 1 node's pathname is its own name. The pathname of a node at level 2 or more consists of its parent's pathname followed by the delimiter (by default `.`) followed by its name.
 
 ```php
 <?php
@@ -210,7 +210,7 @@ echo $config->get('app')->get('name');  // PHALCON
 echo $config->path('app.name');  // PHALCON
 ```
 
-`path()` also accepts a `defaultValue` which, if set, will be returned if the element is not found or is not set in the config object. The last parameter of `path()` is the delimiter to be used for splitting the passed string (`path`) which also denotes the nesting level.
+`path()` also accepts a `defaultValue` which, if set, will be returned if the element is not found or is not set in the config object. The last parameter `path()` accepts is the delimiter which separates the names in the pathname (mandatory argument).
 
 ```php
 <?php
@@ -219,7 +219,7 @@ echo $config->path('app-name', 'default', '-');     // PHALCON
 echo $config->path('app-unknown', 'default', '-');  // default
 ```
 
-Use the `getPathDelimiter()` and `setPathDelimiter()` methods to get or set the delimiter that the component will use. The `delimiter` parameter in the `path()` method can then be used as an override for a special case, while the default delimiter is set using the getter and setter. The default delimiter is `.`.
+Use the `getPathDelimiter()` and `setPathDelimiter()` methods to get and set the delimiter that the Config will use by default.
 
 Functional programming in conjunction with `path()` can be used to obtain configuration data:
 
@@ -255,6 +255,10 @@ and then you can use it:
 echo config('app-name', 'default', '-');     // PHALCON
 echo config('app-unknown', 'default', '-');  // default
 ```
+
+!!! warning "NOTE"
+
+    If the keys from your data contain special characters such as `.`, `-` etc., and you choose to use the same character for your delimiter when using the `path()` method, you will not get the desired results back, since `path()` will interpret the delimiter as a new nested level.
 
 ## Merge
 
