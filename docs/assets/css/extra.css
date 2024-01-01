@@ -39,10 +39,8 @@
     border-bottom-color: #273646;
 }
 
-[data-md-color-scheme="state"] {
-    .phalcon-blog__sponsors-items a {
-        background-color: #ffffffb3;
-    }
+[data-md-color-scheme="state"] .phalcon-blog__sponsors-items a {
+    background-color: #ffffffb3;
 }
 
 /* Releases page table */
