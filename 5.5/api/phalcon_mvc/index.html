@@ -1438,35 +1438,36 @@ offering lower resource consumption and high performance.
 </code></pre></div> Sets the bound parameters in the criteria This method replaces all previously set bound parameters</p> <p><div class=highlight><pre><span></span><code><a id=__codelineno-290-1 name=__codelineno-290-1 href=#__codelineno-290-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>bindTypes</span><span class=p>(</span> <span class=k>array</span> <span class=nv>$bindTypes</span> <span class=p>)</span><span class=o>:</span> <span class=nx>CriteriaInterface</span><span class=p>;</span>
 </code></pre></div> Sets the bind types in the criteria This method replaces all previously set bound parameters</p> <p><div class=highlight><pre><span></span><code><a id=__codelineno-291-1 name=__codelineno-291-1 href=#__codelineno-291-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>cache</span><span class=p>(</span> <span class=k>array</span> <span class=nv>$cache</span> <span class=p>)</span><span class=o>:</span> <span class=nx>CriteriaInterface</span><span class=p>;</span>
 </code></pre></div> Sets the cache options in the criteria This method replaces all previously set cache options</p> <div class=highlight><pre><span></span><code><a id=__codelineno-292-1 name=__codelineno-292-1 href=#__codelineno-292-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>columns</span><span class=p>(</span> <span class=nx>mixed</span> <span class=nv>$columns</span> <span class=p>)</span><span class=o>:</span> <span class=nx>CriteriaInterface</span><span class=p>;</span>
-</code></pre></div> <p>Sets the columns to be queried. The columns can be either a <code>string</code> or an <code>array</code>. The string can specify one or more columns, separated by commas, the same way that one uses the SQL select statement. You can use aliases, aggregate functions etc. If you need to reference other models you will need to reference them with their namespaces.</p> <p>When using an array as a parameter, you will need to specify one field per element. If a key is defined in our array, it will be used as the alias in the query</p> <div class=highlight><pre><span></span><code><a id=__codelineno-293-1 name=__codelineno-293-1 href=#__codelineno-293-1></a><span class=o>&lt;?</span><span class=nx>php</span>
+</code></pre></div> <p>Sets the columns to be queried. The columns can be either a <code>string</code> or an <code>array</code> of strings. The string can specify one or more columns, separated by commas, the same way that one uses the SQL select statement. You can use aliases, aggregate functions, etc. If you need to reference other models you will need to reference them with their namespaces.</p> <p>When using an array as a parameter, you will need to specify one field per array element. If a non-numeric key is defined in the array, it will be used as the alias in the query</p> <div class=highlight><pre><span></span><code><a id=__codelineno-293-1 name=__codelineno-293-1 href=#__codelineno-293-1></a><span class=o>&lt;?</span><span class=nx>php</span>
 <a id=__codelineno-293-2 name=__codelineno-293-2 href=#__codelineno-293-2></a>
 <a id=__codelineno-293-3 name=__codelineno-293-3 href=#__codelineno-293-3></a><span class=c1>// String, comma separated values</span>
-<a id=__codelineno-293-4 name=__codelineno-293-4 href=#__codelineno-293-4></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span><span class=s2>&quot;id, name&quot;</span><span class=p>);</span>
+<a id=__codelineno-293-4 name=__codelineno-293-4 href=#__codelineno-293-4></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span><span class=s2>&quot;id, category&quot;</span><span class=p>);</span>
 <a id=__codelineno-293-5 name=__codelineno-293-5 href=#__codelineno-293-5></a>
 <a id=__codelineno-293-6 name=__codelineno-293-6 href=#__codelineno-293-6></a><span class=c1>// Array, one column per element</span>
 <a id=__codelineno-293-7 name=__codelineno-293-7 href=#__codelineno-293-7></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
 <a id=__codelineno-293-8 name=__codelineno-293-8 href=#__codelineno-293-8></a>    <span class=p>[</span>
-<a id=__codelineno-293-9 name=__codelineno-293-9 href=#__codelineno-293-9></a>        <span class=s2>&quot;id&quot;</span><span class=p>,</span>
-<a id=__codelineno-293-10 name=__codelineno-293-10 href=#__codelineno-293-10></a>        <span class=s2>&quot;name&quot;</span><span class=p>,</span>
+<a id=__codelineno-293-9 name=__codelineno-293-9 href=#__codelineno-293-9></a>        <span class=s2>&quot;inv_id&quot;</span><span class=p>,</span>
+<a id=__codelineno-293-10 name=__codelineno-293-10 href=#__codelineno-293-10></a>        <span class=s2>&quot;inv_total&quot;</span><span class=p>,</span>
 <a id=__codelineno-293-11 name=__codelineno-293-11 href=#__codelineno-293-11></a>    <span class=p>]</span>
 <a id=__codelineno-293-12 name=__codelineno-293-12 href=#__codelineno-293-12></a><span class=p>);</span>
 <a id=__codelineno-293-13 name=__codelineno-293-13 href=#__codelineno-293-13></a>
-<a id=__codelineno-293-14 name=__codelineno-293-14 href=#__codelineno-293-14></a><span class=c1>// Array, named keys. The name of the key acts as an alias (`AS` clause)</span>
-<a id=__codelineno-293-15 name=__codelineno-293-15 href=#__codelineno-293-15></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
-<a id=__codelineno-293-16 name=__codelineno-293-16 href=#__codelineno-293-16></a>    <span class=p>[</span>
-<a id=__codelineno-293-17 name=__codelineno-293-17 href=#__codelineno-293-17></a>        <span class=s2>&quot;name&quot;</span><span class=p>,</span>
-<a id=__codelineno-293-18 name=__codelineno-293-18 href=#__codelineno-293-18></a>        <span class=s2>&quot;number&quot;</span> <span class=o>=&gt;</span> <span class=s2>&quot;COUNT(*)&quot;</span><span class=p>,</span>
-<a id=__codelineno-293-19 name=__codelineno-293-19 href=#__codelineno-293-19></a>    <span class=p>]</span>
-<a id=__codelineno-293-20 name=__codelineno-293-20 href=#__codelineno-293-20></a><span class=p>);</span>
-<a id=__codelineno-293-21 name=__codelineno-293-21 href=#__codelineno-293-21></a>
-<a id=__codelineno-293-22 name=__codelineno-293-22 href=#__codelineno-293-22></a><span class=c1>// Different models</span>
-<a id=__codelineno-293-23 name=__codelineno-293-23 href=#__codelineno-293-23></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
-<a id=__codelineno-293-24 name=__codelineno-293-24 href=#__codelineno-293-24></a>    <span class=p>[</span>
-<a id=__codelineno-293-25 name=__codelineno-293-25 href=#__codelineno-293-25></a>        <span class=s2>&quot;\Phalcon\Models\Invoices.*&quot;</span><span class=p>,</span>
-<a id=__codelineno-293-26 name=__codelineno-293-26 href=#__codelineno-293-26></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_first&quot;</span><span class=p>,</span>
-<a id=__codelineno-293-27 name=__codelineno-293-27 href=#__codelineno-293-27></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_last&quot;</span><span class=p>,</span>
-<a id=__codelineno-293-28 name=__codelineno-293-28 href=#__codelineno-293-28></a>    <span class=p>]</span>
-<a id=__codelineno-293-29 name=__codelineno-293-29 href=#__codelineno-293-29></a><span class=p>);</span>
+<a id=__codelineno-293-14 name=__codelineno-293-14 href=#__codelineno-293-14></a><span class=c1>// Array with named key. The name of the key acts as an</span>
+<a id=__codelineno-293-15 name=__codelineno-293-15 href=#__codelineno-293-15></a><span class=c1>// alias (`AS` clause)</span>
+<a id=__codelineno-293-16 name=__codelineno-293-16 href=#__codelineno-293-16></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
+<a id=__codelineno-293-17 name=__codelineno-293-17 href=#__codelineno-293-17></a>    <span class=p>[</span>
+<a id=__codelineno-293-18 name=__codelineno-293-18 href=#__codelineno-293-18></a>        <span class=s2>&quot;inv_cst_id&quot;</span><span class=p>,</span>
+<a id=__codelineno-293-19 name=__codelineno-293-19 href=#__codelineno-293-19></a>        <span class=s2>&quot;total_invoices&quot;</span> <span class=o>=&gt;</span> <span class=s2>&quot;COUNT(*)&quot;</span><span class=p>,</span>
+<a id=__codelineno-293-20 name=__codelineno-293-20 href=#__codelineno-293-20></a>    <span class=p>]</span>
+<a id=__codelineno-293-21 name=__codelineno-293-21 href=#__codelineno-293-21></a><span class=p>);</span>
+<a id=__codelineno-293-22 name=__codelineno-293-22 href=#__codelineno-293-22></a>
+<a id=__codelineno-293-23 name=__codelineno-293-23 href=#__codelineno-293-23></a><span class=c1>// Different models</span>
+<a id=__codelineno-293-24 name=__codelineno-293-24 href=#__codelineno-293-24></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
+<a id=__codelineno-293-25 name=__codelineno-293-25 href=#__codelineno-293-25></a>    <span class=p>[</span>
+<a id=__codelineno-293-26 name=__codelineno-293-26 href=#__codelineno-293-26></a>        <span class=s2>&quot;\Phalcon\Models\Invoices.*&quot;</span><span class=p>,</span>
+<a id=__codelineno-293-27 name=__codelineno-293-27 href=#__codelineno-293-27></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_first&quot;</span><span class=p>,</span>
+<a id=__codelineno-293-28 name=__codelineno-293-28 href=#__codelineno-293-28></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_last&quot;</span><span class=p>,</span>
+<a id=__codelineno-293-29 name=__codelineno-293-29 href=#__codelineno-293-29></a>    <span class=p>]</span>
+<a id=__codelineno-293-30 name=__codelineno-293-30 href=#__codelineno-293-30></a><span class=p>);</span>
 </code></pre></div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-294-1 name=__codelineno-294-1 href=#__codelineno-294-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>conditions</span><span class=p>(</span> <span class=nx>string</span> <span class=nv>$conditions</span> <span class=p>)</span><span class=o>:</span> <span class=nx>CriteriaInterface</span><span class=p>;</span>
 </code></pre></div> Adds the conditions parameter to the criteria</p> <p><div class=highlight><pre><span></span><code><a id=__codelineno-295-1 name=__codelineno-295-1 href=#__codelineno-295-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>createBuilder</span><span class=p>()</span><span class=o>:</span> <span class=nx>BuilderInterface</span><span class=p>;</span>
 </code></pre></div> Creates a query builder from criteria.</p> <div class=highlight><pre><span></span><code><a id=__codelineno-296-1 name=__codelineno-296-1 href=#__codelineno-296-1></a><span class=nv>$builder</span> <span class=o>=</span> <span class=nx>Robots</span><span class=o>::</span><span class=na>query</span><span class=p>()</span>
@@ -2613,35 +2614,36 @@ offering lower resource consumption and high performance.
 </code></pre></div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-682-1 name=__codelineno-682-1 href=#__codelineno-682-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>betweenWhere</span><span class=p>(</span> <span class=nx>string</span> <span class=nv>$expr</span><span class=p>,</span> <span class=nx>mixed</span> <span class=nv>$minimum</span><span class=p>,</span> <span class=nx>mixed</span> <span class=nv>$maximum</span><span class=p>,</span> <span class=nx>string</span> <span class=nv>$operator</span> <span class=o>=</span> <span class=k>static</span><span class=o>-</span><span class=nb>constant</span><span class=o>-</span><span class=nx>access</span> <span class=p>)</span><span class=o>:</span> <span class=nx>BuilderInterface</span><span class=p>;</span>
 </code></pre></div> Appends a BETWEEN condition to the current WHERE conditions</p> <div class=highlight><pre><span></span><code><a id=__codelineno-683-1 name=__codelineno-683-1 href=#__codelineno-683-1></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>betweenWhere</span><span class=p>(</span><span class=s2>&quot;price&quot;</span><span class=p>,</span> <span class=mf>100.25</span><span class=p>,</span> <span class=mf>200.50</span><span class=p>);</span>
 </code></pre></div> <div class=highlight><pre><span></span><code><a id=__codelineno-684-1 name=__codelineno-684-1 href=#__codelineno-684-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>columns</span><span class=p>(</span> <span class=nx>mixed</span> <span class=nv>$columns</span> <span class=p>)</span><span class=o>:</span> <span class=nx>BuilderInterface</span><span class=p>;</span>
-</code></pre></div> <p>Sets the columns to be queried. The columns can be either a <code>string</code> or an <code>array</code>. The string can specify one or more columns, separated by commas, the same way that one uses the SQL select statement. You can use aliases, aggregate functions etc. If you need to reference other models you will need to reference them with their namespaces.</p> <p>When using an array as a parameter, you will need to specify one field per element. If a key is defined in our array, it will be used as the alias in the query</p> <div class=highlight><pre><span></span><code><a id=__codelineno-685-1 name=__codelineno-685-1 href=#__codelineno-685-1></a><span class=o>&lt;?</span><span class=nx>php</span>
+</code></pre></div> <p>Sets the columns to be queried. The columns can be either a <code>string</code> or an <code>array</code> of strings. The string can specify one or more columns, separated by commas, the same way that one uses the SQL select statement. You can use aliases, aggregate functions, etc. If you need to reference other models you will need to reference them with their namespaces.</p> <p>When using an array as a parameter, you will need to specify one field per array element. If a non-numeric key is defined in the array, it will be used as the alias in the query</p> <div class=highlight><pre><span></span><code><a id=__codelineno-685-1 name=__codelineno-685-1 href=#__codelineno-685-1></a><span class=o>&lt;?</span><span class=nx>php</span>
 <a id=__codelineno-685-2 name=__codelineno-685-2 href=#__codelineno-685-2></a>
 <a id=__codelineno-685-3 name=__codelineno-685-3 href=#__codelineno-685-3></a><span class=c1>// String, comma separated values</span>
-<a id=__codelineno-685-4 name=__codelineno-685-4 href=#__codelineno-685-4></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span><span class=s2>&quot;id, name&quot;</span><span class=p>);</span>
+<a id=__codelineno-685-4 name=__codelineno-685-4 href=#__codelineno-685-4></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span><span class=s2>&quot;id, category&quot;</span><span class=p>);</span>
 <a id=__codelineno-685-5 name=__codelineno-685-5 href=#__codelineno-685-5></a>
 <a id=__codelineno-685-6 name=__codelineno-685-6 href=#__codelineno-685-6></a><span class=c1>// Array, one column per element</span>
-<a id=__codelineno-685-7 name=__codelineno-685-7 href=#__codelineno-685-7></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
+<a id=__codelineno-685-7 name=__codelineno-685-7 href=#__codelineno-685-7></a><span class=nv>$criteria</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
 <a id=__codelineno-685-8 name=__codelineno-685-8 href=#__codelineno-685-8></a>    <span class=p>[</span>
-<a id=__codelineno-685-9 name=__codelineno-685-9 href=#__codelineno-685-9></a>        <span class=s2>&quot;id&quot;</span><span class=p>,</span>
-<a id=__codelineno-685-10 name=__codelineno-685-10 href=#__codelineno-685-10></a>        <span class=s2>&quot;name&quot;</span><span class=p>,</span>
+<a id=__codelineno-685-9 name=__codelineno-685-9 href=#__codelineno-685-9></a>        <span class=s2>&quot;inv_id&quot;</span><span class=p>,</span>
+<a id=__codelineno-685-10 name=__codelineno-685-10 href=#__codelineno-685-10></a>        <span class=s2>&quot;inv_total&quot;</span><span class=p>,</span>
 <a id=__codelineno-685-11 name=__codelineno-685-11 href=#__codelineno-685-11></a>    <span class=p>]</span>
 <a id=__codelineno-685-12 name=__codelineno-685-12 href=#__codelineno-685-12></a><span class=p>);</span>
 <a id=__codelineno-685-13 name=__codelineno-685-13 href=#__codelineno-685-13></a>
-<a id=__codelineno-685-14 name=__codelineno-685-14 href=#__codelineno-685-14></a><span class=c1>// Array, named keys. The name of the key acts as an alias (`AS` clause)</span>
-<a id=__codelineno-685-15 name=__codelineno-685-15 href=#__codelineno-685-15></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
-<a id=__codelineno-685-16 name=__codelineno-685-16 href=#__codelineno-685-16></a>    <span class=p>[</span>
-<a id=__codelineno-685-17 name=__codelineno-685-17 href=#__codelineno-685-17></a>        <span class=s2>&quot;name&quot;</span><span class=p>,</span>
-<a id=__codelineno-685-18 name=__codelineno-685-18 href=#__codelineno-685-18></a>        <span class=s2>&quot;number&quot;</span> <span class=o>=&gt;</span> <span class=s2>&quot;COUNT(*)&quot;</span><span class=p>,</span>
-<a id=__codelineno-685-19 name=__codelineno-685-19 href=#__codelineno-685-19></a>    <span class=p>]</span>
-<a id=__codelineno-685-20 name=__codelineno-685-20 href=#__codelineno-685-20></a><span class=p>);</span>
-<a id=__codelineno-685-21 name=__codelineno-685-21 href=#__codelineno-685-21></a>
-<a id=__codelineno-685-22 name=__codelineno-685-22 href=#__codelineno-685-22></a><span class=c1>// Different models</span>
-<a id=__codelineno-685-23 name=__codelineno-685-23 href=#__codelineno-685-23></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
-<a id=__codelineno-685-24 name=__codelineno-685-24 href=#__codelineno-685-24></a>    <span class=p>[</span>
-<a id=__codelineno-685-25 name=__codelineno-685-25 href=#__codelineno-685-25></a>        <span class=s2>&quot;\Phalcon\Models\Invoices.*&quot;</span><span class=p>,</span>
-<a id=__codelineno-685-26 name=__codelineno-685-26 href=#__codelineno-685-26></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_first&quot;</span><span class=p>,</span>
-<a id=__codelineno-685-27 name=__codelineno-685-27 href=#__codelineno-685-27></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_last&quot;</span><span class=p>,</span>
-<a id=__codelineno-685-28 name=__codelineno-685-28 href=#__codelineno-685-28></a>    <span class=p>]</span>
-<a id=__codelineno-685-29 name=__codelineno-685-29 href=#__codelineno-685-29></a><span class=p>);</span>
+<a id=__codelineno-685-14 name=__codelineno-685-14 href=#__codelineno-685-14></a><span class=c1>// Array with named key. The name of the key acts as an</span>
+<a id=__codelineno-685-15 name=__codelineno-685-15 href=#__codelineno-685-15></a><span class=c1>// alias (`AS` clause)</span>
+<a id=__codelineno-685-16 name=__codelineno-685-16 href=#__codelineno-685-16></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
+<a id=__codelineno-685-17 name=__codelineno-685-17 href=#__codelineno-685-17></a>    <span class=p>[</span>
+<a id=__codelineno-685-18 name=__codelineno-685-18 href=#__codelineno-685-18></a>        <span class=s2>&quot;inv_cst_id&quot;</span><span class=p>,</span>
+<a id=__codelineno-685-19 name=__codelineno-685-19 href=#__codelineno-685-19></a>        <span class=s2>&quot;total_invoices&quot;</span> <span class=o>=&gt;</span> <span class=s2>&quot;COUNT(*)&quot;</span><span class=p>,</span>
+<a id=__codelineno-685-20 name=__codelineno-685-20 href=#__codelineno-685-20></a>    <span class=p>]</span>
+<a id=__codelineno-685-21 name=__codelineno-685-21 href=#__codelineno-685-21></a><span class=p>);</span>
+<a id=__codelineno-685-22 name=__codelineno-685-22 href=#__codelineno-685-22></a>
+<a id=__codelineno-685-23 name=__codelineno-685-23 href=#__codelineno-685-23></a><span class=c1>// Different models</span>
+<a id=__codelineno-685-24 name=__codelineno-685-24 href=#__codelineno-685-24></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>columns</span><span class=p>(</span>
+<a id=__codelineno-685-25 name=__codelineno-685-25 href=#__codelineno-685-25></a>    <span class=p>[</span>
+<a id=__codelineno-685-26 name=__codelineno-685-26 href=#__codelineno-685-26></a>        <span class=s2>&quot;\Phalcon\Models\Invoices.*&quot;</span><span class=p>,</span>
+<a id=__codelineno-685-27 name=__codelineno-685-27 href=#__codelineno-685-27></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_first&quot;</span><span class=p>,</span>
+<a id=__codelineno-685-28 name=__codelineno-685-28 href=#__codelineno-685-28></a>        <span class=s2>&quot;\Phalcon\Models\Customers.cst_name_last&quot;</span><span class=p>,</span>
+<a id=__codelineno-685-29 name=__codelineno-685-29 href=#__codelineno-685-29></a>    <span class=p>]</span>
+<a id=__codelineno-685-30 name=__codelineno-685-30 href=#__codelineno-685-30></a><span class=p>);</span>
 </code></pre></div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-686-1 name=__codelineno-686-1 href=#__codelineno-686-1></a><span class=k>public</span> <span class=k>function</span> <span class=nf>distinct</span><span class=p>(</span> <span class=nx>mixed</span> <span class=nv>$distinct</span> <span class=p>)</span><span class=o>:</span> <span class=nx>BuilderInterface</span><span class=p>;</span>
 </code></pre></div> Sets SELECT DISTINCT / SELECT ALL flag</p> <div class=highlight><pre><span></span><code><a id=__codelineno-687-1 name=__codelineno-687-1 href=#__codelineno-687-1></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>distinct</span><span class=p>(</span><span class=s2>&quot;status&quot;</span><span class=p>);</span>
 <a id=__codelineno-687-2 name=__codelineno-687-2 href=#__codelineno-687-2></a><span class=nv>$builder</span><span class=o>-&gt;</span><span class=na>distinct</span><span class=p>(</span><span class=k>null</span><span class=p>);</span>
