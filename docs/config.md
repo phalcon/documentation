@@ -258,7 +258,7 @@ echo config('app-unknown', 'default', '-');  // default
 
 !!! warning "NOTE"
 
-    If the keys from your data contain special characters such as `.`, `-` etc., and you choose to use the same character for your delimiter when using the `path()` method, you will not get the desired results back, since `path()` will interpret the delimiter as a new nested level.
+    If the keys from your data contain special characters such as `.` or `-`, and you choose to use the same character for your delimiter when using the `path()` method, you will not get the desired results back, since `path()` will interpret the delimiter as a new nested level.
 
 ## Merge
 
