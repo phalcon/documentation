@@ -3606,7 +3606,7 @@ You can use aliases, aggregate functions, etc. If you need to reference
 other models you will need to reference them with their namespaces.
 
 When using an array as a parameter, you will need to specify one field
-per array element. If a non numeric key is defined in the array, it will
+per array element. If a non-numeric key is defined in the array, it will
 be used as the alias in the query
 
 ```php
