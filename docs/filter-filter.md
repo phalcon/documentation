@@ -11,7 +11,7 @@ Sanitizing user input is a critical part of software development. Trusting or ne
 Sanitizing content can be achieved using the [Phalcon\Filter\Filter][filter-filter] and [Phalcon\Filter\FilterFactory][filter-filterfactory] classes.
 
 ## FilterFactory
-This component creates a new locator with predefined filters attached to it. Each filter is lazy loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter\Filter][filter-filter] with the preset sanitizers you need to call `newInstance()`
+This component creates a new locator with predefined filters attached to it. Each filter is lazy-loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter\Filter][filter-filter] with the preset sanitizers you need to call `newInstance()`
 
 ```php
 <?php
@@ -23,10 +23,10 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
 
-You can now use the locator wherever you need and sanitize content as per the needs of your application. 
+You can now use the locator wherever you need and sanitize content as per the needs of your application.
 
 ## Filter
-The [Phalcon\Filter\Filter][filter-filter] component implements a locator service and can be used as a stand-alone component, without initializing the built-in filters. 
+The [Phalcon\Filter\Filter][filter-filter] component implements a locator service and can be used as a stand-alone component, without initializing the built-in filters.
 
 ```php
 <?php
@@ -51,11 +51,11 @@ $text = $locator->hello('World');
 
 !!! warning "NOTE"
 
-    Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non-numeric characters from the input, cast the input to an integer and return its absolute value.
+    Where appropriate, the sanitizers will cast the value to the type expected. For example, the `absint` sanitizer will remove all non-numeric characters from the input, cast the input to an integer, and return its absolute value.
 
 !!! warning "NOTE"
 
-    To use the prefedined filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory` as shown above.
+    To use the predefined filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory` as shown above.
 
 The following are the built-in filters provided by this component:
 
@@ -63,25 +63,25 @@ The following are the built-in filters provided by this component:
 ```php
 AbsInt( mixed $input ): int
 ```
-Removes any non-numeric characters, casts the value to integer and returns its absolute value. Internally it uses [filter_var] for the integer part, [intval][intval] for casting and [absint][absint].
+Removes any non-numeric characters, casts the value to an integer, and returns its absolute value. Internally it uses [filter_var] for the integer part, [intval][intval] for casting, and [absint][absint].
 
 #### `alnum`
 ```php
 Alnum( mixed $input ): string | array
 ```
-Removes all characters that are not numbers or characters of the alphabet. It uses [preg_replace][preg_replace] which can also accept arrays of strings as the parameters. 
+Removes all characters that are not numbers or characters of the alphabet. It uses [preg_replace][preg_replace] which can also accept arrays of strings as the parameters.
 
 #### `alpha`
 ```php
 Alpha( mixed $input ): string | array
 ```
-Removes all characters that are not characters of the alphabet. It uses [preg_replace][preg_replace] which can also accept arrays of strings as the parameters. 
+Removes all characters that are not characters of the alphabet. It uses [preg_replace][preg_replace] which can also accept arrays of strings as the parameters.
 
 #### `bool`
 ```php
 BoolVal( mixed $input ): bool
 ```
-Casts the value to a boolean. 
+Casts the value to a boolean.
 
 It also returns `true` if the value is:
 
@@ -109,25 +109,25 @@ Removes all characters except letters, digits and ``!#$%&*+-/=?^_`{\|}~@.[]``. I
 ```php
 FloatVal( mixed $input ): float
 ```
-Removes all characters except digits, dot, plus and minus sign and casts the value as a `double`. Internally it uses [filter_var][filter_var] and `(double)`.
+Removes all characters except digits, dots, plus and minus signs and casts the value as a `double`. Internally it uses [filter_var][filter_var] and `(double)`.
 
 #### `int`
 ```php
 IntVal( mixed $input ): int
 ```
-Remove all characters except digits, plus and minus sign and casts the value as an integer. Internally it uses [filter_var][filter_var] and `(int)`.
+Remove all characters except digits, plus and minus sign, and casts the value as an integer. Internally it uses [filter_var][filter_var] and `(int)`.
 
 #### `lower`
 ```php
 Lower( mixed $input ): string
 ```
-Converts all characters to lowercase. If the [mbstring][mbstring] extension is loaded, it will use [mb_convert_case][mb_convert_case] to perform the transformation. As a fallback it uses the [strtolower][strtolower] PHP function, with [utf8_decode][utf8_decode].
+Converts all characters to lowercase. If the [mbstring][mbstring] extension is loaded, it will use [mb_convert_case][mb_convert_case] to perform the transformation. As a fallback, it uses the [strtolower][strtolower] PHP function, with [utf8_decode][utf8_decode].
 
 #### `lowerFirst`
 ```php
 LowerFirst( mixed $input ): string
 ```
-Converts the first character of the input to lower case. Internally it uses [lcfirst][lcfirst].
+Converts the first character of the input to lowercase. Internally it uses [lcfirst][lcfirst].
 
 #### `regex`
 ```php
@@ -151,7 +151,7 @@ Performs a replacement on the input based on the `from` and `to` passed paramete
 ```php
 Special( mixed $input ): string
 ```
-Escapes all HTML characters of the input, as well as `'"<>&` and characters with ASCII value less than 32. Internally it uses [filter_var][filter_var].
+Escapes all HTML characters of the input, as well as `'"<>&`, and characters with ASCII values less than 32. Internally it uses [filter_var][filter_var].
 
 #### `specialFull`
 ```php
@@ -169,7 +169,7 @@ Encode HTML entities. Internally it uses [htmlspecialchars][htmlspecialchars].
 ```php
 StringValLegacy( mixed $input ): string
 ```
-This filter will work only for PHP versions lower than 8.1. It is available for backwards compatibility. Internally it uses [filter_var][filter_var].
+This filter will work only for PHP versions lower than 8.1. It is available for backward compatibility. Internally it uses [filter_var][filter_var].
 
 #### `striptags`
 ```php
@@ -187,7 +187,7 @@ Removes all leading and trailing whitespace from the input. Internally it uses [
 ```php
 Upper( mixed $input ): string
 ```
-Converts all characters to uppercase. If the [mbstring][mbstring] extension is loaded, it will use [mb_convert_case][mb_convert_case] to perform the transformation. As a fallback it uses the [strtoupper][strtoupper] PHP function, with [utf8_decode][utf8_decode].
+Converts all characters to uppercase. If the [mbstring][mbstring] extension is loaded, it will use [mb_convert_case][mb_convert_case] to perform the transformation. As a fallback, it uses the [strtoupper][strtoupper] PHP function, with [utf8_decode][utf8_decode].
 
 #### `upperFirst`
 ```php
@@ -238,7 +238,7 @@ const FILTER_URL           = 'url';
 ```
 
 ## Methods
-The [Phalcon\Filter\Filter][filter-filter] acts as a service locator and implements the `__call()` method. As a result, you can use any filter as a method directly on the locator. The names of the methods are the same as the ones defined by the constants. To use the built-in filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory`. 
+The [Phalcon\Filter\Filter][filter-filter] acts as a service locator and implements the `__call()` method. As a result, you can use any filter as a method directly on the locator. The names of the methods are the same as the ones defined by the constants. To use the built-in filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory`.
 
 ```php
 <?php
@@ -278,9 +278,9 @@ $filter->upperfirst(string $input): string
 $filter->upperwords(string $input): string|null
 $filter->url(string $input): string|null
  ```
- 
+
 ## Sanitizing Data
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
+Sanitizing is the process that removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input, we ensure that application integrity will be intact.
 
 ```php
 <?php
@@ -304,7 +304,7 @@ $locator->sanitize('!100a019.01a', 'float');
 ```
 
 ## Controllers
-You can access the [Phalcon\Filter\Filter][filter-filter] object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply. 
+You can access the [Phalcon\Filter\Filter][filter-filter] object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply.
 
 ```php
 <?php
@@ -361,7 +361,7 @@ class ProductsController extends Controller
 ```
 
 ## Filtering Data
-The [Phalcon\Filter\Filter][filter-filter] both filters and sanitizes data, depending on the sanitizers used. For instance the `trim` sanitizer will remove all leading and trailing whitespace, leaving the remaining input unchanged. The description of each sanitizer (see [Built-in Sanitizers](#built-in)) can help you to understand and use the sanitizers according to your needs.
+The [Phalcon\Filter\Filter][filter-filter] both filters and sanitizes data, depending on the sanitizers used. For instance, the `trim` sanitizer will remove all leading and trailing whitespace, leaving the remaining input unchanged. The description of each sanitizer (see [Built-in Sanitizers](#built-in)) can help you to understand and use the sanitizers according to your needs.
 
 ```php
 <?php
@@ -450,7 +450,7 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 
 
 ## Combining Sanitizers
-There are times when one sanitizer is not enough for your data. For instance a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter\Filter][filter-filter] component offers the ability to accept an array of names for sanitizers to be applied on the input value. The following example demonstrates this:
+There are times when one sanitizer is not enough for your data. For instance, a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter\Filter][filter-filter] component offers the ability to accept an array of names for sanitizers to be applied to the input value. The following example demonstrates this:
 
 ```php
 <?php
@@ -504,7 +504,7 @@ class ProductsController extends Controller
 ```
 
 ## Custom Sanitizer
-A custom sanitizer can be implemented as an anonymous function. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke][invoke] method with the relevant parameters.
+A custom sanitizer can be implemented as an anonymous function. If however, you prefer to use a class per sanitizer, all you need to do is make it callable by implementing the [__invoke][invoke] method with the relevant parameters.
 
 ```php
 <?php
@@ -574,28 +574,28 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 [utf8_decode]: https://www.php.net/manual/en/function.utf8-decode.php
 [filter-exception]: api/phalcon_filter.md#filter-exception
 [filter-filter]: api/phalcon_filter.md#filter
-[filter-filterfactory]: api/phalcon_filter.md#filter-filterfactory
-[filter-filterinterface]: api/phalcon_filter.md#filter-filterinterface
-[filter-sanitize-absint]: api/phalcon_filter.md#filter-sanitize-absint
-[filter-sanitize-alnum]: api/phalcon_filter.md#filter-sanitize-alnum
-[filter-sanitize-alpha]: api/phalcon_filter.md#filter-sanitize-alpha
-[filter-sanitize-boolval]: api/phalcon_filter.md#filter-sanitize-boolval
-[filter-sanitize-email]: api/phalcon_filter.md#filter-sanitize-email
-[filter-sanitize-floatval]: api/phalcon_filter.md#filter-sanitize-floatval
-[filter-sanitize-intval]: api/phalcon_filter.md#filter-sanitize-intval
-[filter-sanitize-lower]: api/phalcon_filter.md#filter-sanitize-lower
-[filter-sanitize-lowerfirst]: api/phalcon_filter.md#filter-sanitize-lowerfirst
-[filter-sanitize-regex]: api/phalcon_filter.md#filter-sanitize-regex
-[filter-sanitize-remove]: api/phalcon_filter.md#filter-sanitize-remove
-[filter-sanitize-replace]: api/phalcon_filter.md#filter-sanitize-replace
-[filter-sanitize-special]: api/phalcon_filter.md#filter-sanitize-special
-[filter-sanitize-specialfull]: api/phalcon_filter.md#filter-sanitize-specialfull
-[filter-sanitize-stringval]: api/phalcon_filter.md#filter-sanitize-stringval
-[filter-sanitize-striptags]: api/phalcon_filter.md#filter-sanitize-striptags
-[filter-sanitize-trim]: api/phalcon_filter.md#filter-sanitize-trim
-[filter-sanitize-upper]: api/phalcon_filter.md#filter-sanitize-upper
-[filter-sanitize-upperfirst]: api/phalcon_filter.md#filter-sanitize-upperfirst
-[filter-sanitize-upperwords]: api/phalcon_filter.md#filter-sanitize-upperwords
-[filter-sanitize-url]: api/phalcon_filter.md#filter-sanitize-url
-[factorydefault]: api/phalcon_di.md#di-factorydefault
-[http-request]: api/phalcon_html.md#http-request
+[filter-filterfactory]: api/phalcon_filter.md#filterfilterfactory-
+[filter-filterinterface]: api/phalcon_filter.md#filterfilterinterface--
+[filter-sanitize-absint]: api/phalcon_filter.md#filtersanitizeabsint-
+[filter-sanitize-alnum]: api/phalcon_filter.md#filtersanitizealnum-
+[filter-sanitize-alpha]: api/phalcon_filter.md#filtersanitizealpha-
+[filter-sanitize-boolval]: api/phalcon_filter.md#filtersanitizeboolval-
+[filter-sanitize-email]: api/phalcon_filter.md#filtersanitizeemail-
+[filter-sanitize-floatval]: api/phalcon_filter.md#filtersanitizefloatval-
+[filter-sanitize-intval]: api/phalcon_filter.md#filtersanitizeintval-
+[filter-sanitize-lower]: api/phalcon_filter.md#filtersanitizelower-
+[filter-sanitize-lowerfirst]: api/phalcon_filter.md#filtersanitizelowerfirst-
+[filter-sanitize-regex]: api/phalcon_filter.md#filtersanitizeregex-
+[filter-sanitize-remove]: api/phalcon_filter.md#filtersanitizeremove-
+[filter-sanitize-replace]: api/phalcon_filter.md#filtersanitizereplace-
+[filter-sanitize-special]: api/phalcon_filter.md#filtersanitizespecial-
+[filter-sanitize-specialfull]: api/phalcon_filter.md#filtersanitizespecialfull-
+[filter-sanitize-stringval]: api/phalcon_filter.md#filtersanitizestringval-
+[filter-sanitize-striptags]: api/phalcon_filter.md#filtersanitizestriptags-
+[filter-sanitize-trim]: api/phalcon_filter.md#filtersanitizetrim-
+[filter-sanitize-upper]: api/phalcon_filter.md#filtersanitizeupper-
+[filter-sanitize-upperfirst]: api/phalcon_filter.md#filtersanitizeupperfirst-
+[filter-sanitize-upperwords]: api/phalcon_filter.md#filtersanitizeupperwords-
+[filter-sanitize-url]: api/phalcon_filter.md#filtersanitizeurl-
+[factorydefault]: api/phalcon_di.md#difactorydefault-
+[http-request]: api/phalcon_http.md#httprequest-

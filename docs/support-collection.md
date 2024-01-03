@@ -48,7 +48,7 @@ $collection = new Collection($data);
 ```
 
 ## Case sensitivity
-When instantiating the object you can specify a second `bool` parameter, which will control the key searching in the object. By default `$insensitive` is set to `true`, making searches in the collection case-insensitive. Setting this value to `false` will make the search for the element in a case-sensitive manner. 
+When instantiating the object you can specify a second `bool` parameter, which will control the key searching in the object. By default `$insensitive` is set to `true`, making searches in the collection case-insensitive. Setting this value to `false` will make the search for the element in a case-sensitive manner.
 
 ```php
 <?php
@@ -70,7 +70,7 @@ echo $collection->has('COLORS'); // false
 ```
 
 ## Reusing
-You can also reuse the component, by repopulating it. `Phalcon\Support\Collection` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively, 
+You can also reuse the component, by repopulating it. `Phalcon\Support\Collection` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
@@ -104,7 +104,7 @@ echo $collection->count(); // 1
 As mentioned above, `Phalcon\Support\Collection` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 - Property
 - `__get()`
-- array based get (`$collection[$element]`)
+- array-based get (`$collection[$element]`)
 - `offsetGet()`
 - `get()`
 
@@ -146,10 +146,10 @@ public function get(
 ):  mixed
 ```
 
-Using `get()` offers three parameters. 
+Using `get()` offers three parameters.
 `$key` is the key of the element we want to retrieve
 
-If `$defaultValue` is set, it will be returned if the `$key` is not set or the `$key` is set and its value is `null` 
+If `$defaultValue` is set, it will be returned if the `$key` is not set or the `$key` is set and its value is `null`
 
 The `cast` parameter accepts a string that defines what the returned value will be cast. The available values are:
 
@@ -165,12 +165,12 @@ The `cast` parameter accepts a string that defines what the returned value will 
 - `string`
 
 The collection object also offers two more getters `getKeys` and `getValues` `getKeys( bool $insensitive = true )` returns all the keys stored internally in the collection. By default, it will return the keys case-insensitive manner i.e. all lowercase. If `false` is passed in the call, it will return the keys exactly as they have been stored. `getValues` returns the values stored in the internal collection.
- 
+
 ## Has
 To check whether an element exists or not in the collection, you can use the following:
 - `isset()` on the property
 - `__isset()`
-- array based isset (`isset($coollection[$element])`)
+- array-based isset (`isset($coollection[$element])`)
 - `offsetExists()`
 - `has()`
 
@@ -212,7 +212,7 @@ public function has(string $element):  bool
 To set an element in the collection, you can use the following:
 - assign the value to the property
 - `__set()`
-- array based assignment 
+- array-based assignment
 - `offsetSet()`
 - `set()`
 
@@ -249,7 +249,7 @@ $collection->set('year', 1987);
 To remove an element in the collection, you can use the following:
 - unset the property
 - `__unset()`
-- array based unset 
+- array-based unset
 - `offsetUnset()`
 - `remove()`
 
@@ -362,7 +362,7 @@ echo $collection->jsonSerialize(); // $data
 ## Transformations
 `Phalcon\Support\Collection` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
-	 
+
 ```php
 <?php
 
@@ -391,7 +391,7 @@ echo $collection->toArray();  // $data
 - `JSON_UNESCAPED_SLASHES`
 
 You can pass any valid flags to the method according to your needs.
-	 
+
 ```php
 <?php
 
@@ -424,7 +424,7 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 ```
 
 ## Read Only Collection
-Phalcon also offers a component that can be used in a read-only fashion. `Phalcon\Support\Collection\ReadOnlyCollection` can serve as a collection in your application that can only be populated with initial data but not allowing its contents to be changed throughout the application.
+Phalcon also offers a component that can be used in a read-only fashion. `Phalcon\Support\Collection\ReadOnlyCollection` can serve as a collection in your application that can only be populated with initial data but not allow its contents to be changed throughout the application.
 
 !!! info "NOTE"
 
@@ -499,4 +499,4 @@ class MyCollection implements CollectionInterface
 ```
 
 
-[support-collection-collectioninterface]: api/phalcon_support.md#support-collection-collectioninterface
+[support-collection-collectioninterface]: api/phalcon_support.md#supportcollectioncollectioninterface--

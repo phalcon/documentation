@@ -54,7 +54,7 @@ public function getModule(
     string $name
 ): array | object
 ```
-Gets the module definition registered in the application via module name
+Gets the module definition registered in the application via the module name
 
 ```php
 public function getModules(): array
@@ -679,8 +679,8 @@ try {
 | Event Name            | Triggered                                                    |
 |-----------------------|--------------------------------------------------------------|
 | `boot`                | Executed when the application handles its first request      |
-| `beforeStartModule`   | Before initialize a module, only when modules are registered |
-| `afterStartModule`    | After initialize a module, only when modules are registered  |
+| `beforeStartModule`   | Before initializing a module, only when modules are registered |
+| `afterStartModule`    | After initializing a module, only when modules are registered  |
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
@@ -707,10 +707,10 @@ $manager->attach(
 ## External Resources
 * [MVC examples on GitHub][mvc-examples]
 
-[application-abstractapplication]: api/phalcon_application.md#application-abstractapplication
-[application-exception]: api/phalcon_application.md#application-exception
-[mvc-application]: api/phalcon_mvc.md#mvc-application
-[mvc-application-exception]: api/phalcon_mvc.md#mvc-application-exception
-[mvc-moduledefinitioninterface]: api/phalcon_mvc.md#mvc-moduledefinitioninterface
+[application-abstractapplication]: api/phalcon_application.md#applicationabstractapplication--
+[application-exception]: api/phalcon_application.md#applicationexception-
+[mvc-application]: api/phalcon_mvc.md#mvcapplication-
+[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception-
+[mvc-moduledefinitioninterface]: api/phalcon_mvc.md#mvcmoduledefinitioninterface--
 [mvc-examples]: https://github.com/phalcon/mvc
 [events]: events.md

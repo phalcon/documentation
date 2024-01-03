@@ -3,9 +3,9 @@
 
 ## Overview
 
-Almost all applications require configuration data for proper operation. This configuration includes parameters and initial settings such as the location of log files, database connection values, registered services, etc. The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy, object-oriented way. 
+Almost all applications require configuration data for proper operation. This configuration includes parameters and initial settings such as the location of log files, database connection values, registered services, etc. The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy, object-oriented way.
 
-It represents a tree whose leaves are configuration values. Each child node of a [Phalcon\Config\Config][config] is named, and is either an external node which contains a configuration value or a sub-collection which is itself a [Phalcon\Config\Config][config] instance holding nested values. It provides methods to access such configuration collections. Each [Phalcon\Config\Config][config] instance represents a virtual object which can be traversed in the fashion of true object properties.
+It represents a tree whose leaves are configuration values. Each child node of a [Phalcon\Config\Config][config] is named and is either an external node that contains a configuration value or a sub-collection which is itself a [Phalcon\Config\Config][config] instance holding nested values. It provides methods to access such configuration collections. Each [Phalcon\Config\Config][config] instance represents a virtual object that can be traversed in the fashion of true object properties.
 
 This class can be instantiated using a PHP array directly or by reading configuration files from various formats, as described further down in the adapters section. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object, inheriting its functionality.
 
@@ -151,7 +151,7 @@ class IndexController extends Controller
 ```
 
 ## Native Array
-The [Phalcon\Config\Config][config] component accepts a PHP array in the constructor and loads it up. 
+The [Phalcon\Config\Config][config] component accepts a PHP array in the constructor and loads it up.
 
 ```php
 <?php
@@ -262,7 +262,7 @@ echo config('app-unknown', 'default', '-');  // default
 
 ## Merge
 
-There are times that we might need to merge configuration data coming from two different config objects. For instance, we might have one config object that contains our base/default settings, while a second config object loads options that are specific to the system the application is running on (i.e. test, development, production etc.). The system specific data can come from a `.env` file and loaded with a [DotEnv][dotenv] library.
+There are times when we might need to merge configuration data coming from two different config objects. For instance, we might have one config object that contains our base/default settings, while a second config object loads options that are specific to the system the application is running on (i.e. test, development, production, etc.). The system-specific data can come from a `.env` file and loaded with a [DotEnv][dotenv] library.
 
 In the above scenario, we will need to merge the second configuration object with the first one. `merge()` allows us to do this, merging the two config objects recursively.
 
@@ -435,7 +435,7 @@ $options = [
 $config = new Grouped($options);
 ```
 
-Lastly, a [Phalcon\Config\Config][config] object can be used as an option to the grouped object.
+Lastly, a [Phalcon\Config\Config][config] object can be used as an option for the grouped object.
 
 ```php
 <?php
@@ -472,7 +472,7 @@ $config = new Grouped($options);
 
 ### Ini
 
-The [Phalcon\Config\Adapter\Ini][ini] adapter uses the optimized PHP function [parse_ini_file][parse-ini-file] to read configuration from INI files. Each section represents a top-level element, and sub-elements are nested if keys contain the . separator. The default scanning method is `INI_SCANNER_RAW`, but this can be overridden by passing a different mode in the constructor.
+The [Phalcon\Config\Adapter\Ini][ini] adapter uses the optimized PHP function [parse_ini_file][parse-ini-file] to read configuration from INI files. Each section represents a top-level element, and sub-elements are nested if keys contain the `.` separator. The default scanning method is `INI_SCANNER_RAW`, but this can be overridden by passing a different mode in the constructor.
 
 Example INI file:
 
@@ -561,18 +561,18 @@ Example JSON file:
 
 ```json
 {
-    "database": {
-        "adapter": "Mysql",
-        "host": "localhost",
-        "username": "scott",
-        "password": "cheetah",
-        "dbname": "test_db"  
-    },
-    "models": {
-        "metadata": {
-            "adapter": "Memory"
-        }
+  "database": {
+    "adapter": "Mysql",
+    "host": "localhost",
+    "username": "scott",
+    "password": "cheetah",
+    "dbname": "test_db"
+  },
+  "models": {
+    "metadata": {
+      "adapter": "Memory"
     }
+  }
 }
 ```
 
@@ -713,13 +713,13 @@ Example YAML file:
 
 ```yaml
 app:
-  baseUri: /     
-  env: 3         
-  name: PHALCON        
-  timezone: UTC    
-  url: http://127.0.0.1         
+  baseUri: /
+  env: 3
+  name: PHALCON
+  timezone: UTC
+  url: http://127.0.0.1
   version: 0.1
-  time: 1562960897.712697          
+  time: 1562960897.712697
 models:
   metadata:
     adapter: Memory
@@ -858,14 +858,14 @@ Also in views (Volt syntax)
 [config]: api/phalcon_config.md
 [collection]: support-collection.md
 [phalcon-incubator]: https://github.com/phalcon/incubator
-[grouped]: api/phalcon_config.md#config-adapter-grouped
-[ini]: api/phalcon_config.md#config-adapter-ini
-[json]: api/phalcon_config.md#config-adapter-json
-[php]: api/phalcon_config.md#config-adapter-php
-[yaml]: api/phalcon_config.md#config-adapter-yaml
-[config-config]: api/phalcon_config.md#config-config
-[config-configfactory]: api/phalcon_config.md#config-configfactory
-[config-exception]: api/phalcon_config.md#config-exception
+[grouped]: api/phalcon_config.md#configadaptergrouped-
+[ini]: api/phalcon_config.md#configadapterini-
+[json]: api/phalcon_config.md#configadapterjson-
+[php]: api/phalcon_config.md#configadapterphp-
+[yaml]: api/phalcon_config.md#configadapteryaml-
+[config-config]: api/phalcon_config.md#configconfig-
+[config-configfactory]: api/phalcon_config.md#configconfigfactory-
+[config-exception]: api/phalcon_config.md#configexception-
 [dotenv]: https://github.com/josegonzalez/php-dotenv
 [parse-ini-file]: https://www.php.net/manual/en/function.parse-ini-file.php
 [yaml-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php

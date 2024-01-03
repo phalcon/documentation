@@ -44,7 +44,7 @@ Assets are added to the manager or a collection using the Asset-related classes.
 
 **type**
 
-can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
+can be `css`, `js`, or something else, depending on whether you want to extend the functionality of the component.
 
 **path**
 
@@ -68,7 +68,7 @@ version of the asset
 
 **autoVersion**
 
-let the component auto version this asset or not
+let the component auto-version this asset or not
 
 Each asset has a unique key assigned to it. The key is computed using `sha256`, calculated as:
 
@@ -134,12 +134,12 @@ $asset = new Js(
 
 ### Inline
 
-There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Phalcon\Assets\Inline][asset-inline] class to generate this content. The object can be created with the following parameters:
+There are times when the application needs generated CSS or JS to be injected into the view. You can use the [Phalcon\Assets\Inline][asset-inline] class to generate this content. The object can be created with the following parameters:
 
 **type**
 
-can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
- 
+can be `css`, `js`, or something else, depending on whether you want to extend the functionality of the component.
+
 **content**
 
 the content to be injected
@@ -147,7 +147,7 @@ the content to be injected
 **filter**
 
 any filter attached to this asset
- 
+
 **attributes**
 
 attributes relative to the asset
@@ -221,7 +221,7 @@ class IndexController extends Controller
 ## Adding Assets
 ### Files
 
-[Phalcon\Assets\Manager][assets-manager] supports two built-in assets: CSS and JavaScript assets. You can also create other asset types if you need. The assets manager internally stores two default collections of assets - one for JavaScript and another for CSS. 
+[Phalcon\Assets\Manager][assets-manager] supports two built-in assets: CSS and JavaScript assets. You can also create other asset types if you need to. The assets manager internally stores two default collections of assets - one for JavaScript and another for CSS.
 
 You can easily add assets to these collections:
 
@@ -402,7 +402,7 @@ $footerCollection->addJs('js/jquery.js');
 $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
-You can also chain the method calls if that syntax is more preferable:
+You can also chain the method calls if that syntax is preferable:
 
 ```php
 <?php
@@ -524,7 +524,7 @@ class LicenseStamper implements FilterInterface
 
 After all the assets have been added to their relevant collections you can use the output methods to _print_ HTML in your views. These methods are `output()`, `outputCss()`, `outputJs()`, `outputInline()`, `outputInlineCss()` and `outputInlineJs()`.
 
-To output files: 
+To output files:
 
 ```php
 <?php
@@ -714,7 +714,7 @@ You can store the version in your configuration file or any other storage and up
 
 ### Auto Versioning
 
-You can also use the file time of the asset file to control the versioning of your assets: 
+You can also use the file time of the asset file to control the versioning of your assets:
 
 ```php
 <?php
@@ -837,7 +837,7 @@ class AssetsController extends ControllerBase
             ->setTargetUri($targetPath)
             ->setTargetPath($targetPath);
 
-        // Store content to the disk and return fully qualified file path
+        // Store content to the disk and return a fully qualified file path
         $contentPath = $this->assets->output(
             $collection,
             function (array $parameters) {
@@ -857,7 +857,7 @@ class AssetsController extends ControllerBase
 }
 ```
 
-If precompiled assets exist in the file system they must be served directly by web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache, it will be a little different:
+If precompiled assets exist in the file system they must be served directly by the web server. So to get the benefit of static assets we have to update our server configuration. We will use an example configuration for Nginx. For Apache, it will be a little different:
 
 ```nginx
 location ~ ^/assets/ {
@@ -883,29 +883,29 @@ location @phalcon {
 
 We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
-Every time the application requests assets such as `/assets/js/global.js` the application will check whether the asset exists. If yes, it will be handled by the web server. Alternatively it will be redirected to the `AssetsController` for handling from the application.
+Every time the application requests assets such as `/assets/js/global.js` the application will check whether the asset exists. If yes, it will be handled by the web server. Alternatively, it will be redirected to the `AssetsController` for handling from the application.
 
-This method is not recommended for production environments and high-load applications. However, the example does show what is possible using this component. The implementation you choose depends on the needs of your application. 
+This method is not recommended for production environments and high-load applications. However, the example does show what is possible using this component. The implementation you choose depends on the needs of your application.
 
-In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cache][varnish] would be more preferable.
+In most cases, your web server, [CDN][cdn], or services such as [Varnish HTTP Cache][varnish] would be preferable.
 
-[asset]: api/phalcon_assets.md#assets-asset
-[asset-css]: api/phalcon_assets.md#assets-asset-css
-[asset-js]: api/phalcon_assets.md#assets-asset-js
-[asset-interface]: api/phalcon_assets.md#assets-assetinterface
-[asset-inline]: api/phalcon_assets.md#assets-inline
-[asset-inline-css]: api/phalcon_assets.md#assets-inline-css
-[asset-inline-js]: api/phalcon_assets.md#assets-inline-js
-[asset-exception]: api/phalcon_assets.md#assets-exception
-[assets-manager]: api/phalcon_assets.md#assets-manager
+[asset]: api/phalcon_assets.md#assetsasset-
+[asset-css]: api/phalcon_assets.md#assetsassetcss-
+[asset-js]: api/phalcon_assets.md#assetsassetjs-
+[asset-interface]: api/phalcon_assets.md#assetsassetinterface--
+[asset-inline]: api/phalcon_assets.md#assetsinline-
+[asset-inline-css]: api/phalcon_assets.md#assetsinlinecss-
+[asset-inline-js]: api/phalcon_assets.md#assetsinlinejs-
+[asset-exception]: api/phalcon_assets.md#assetsexception-
+[assets-manager]: api/phalcon_assets.md#assetsmanager-
 [bootstrap]: https://getbootstrap.com
 [cache-busting]: https://www.keycdn.com/support/what-is-cache-busting
 [cdn]: https://en.wikipedia.org/wiki/Content_delivery_network
 [closure]: https://developers.google.com/closure/compiler
-[collections]: api/phalcon_assets.md#assets-collection
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[filter-interface]: api/phalcon_assets.md#assets-filterinterface
-[filter-none]: api/phalcon_assets.md#assets-filters-none
+[collections]: api/phalcon_assets.md#assetscollection-
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[filter-interface]: api/phalcon_assets.md#assetsfilterinterface--
+[filter-none]: api/phalcon_assets.md#assetsfiltersnone-
 [jquery]: https://jquery.com
 [sass]: https://sass-lang.com
 [html-tagfactory]: html-tagfactory.md

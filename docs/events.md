@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event. 
+The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These hooks allow developers to obtain status information, manipulate data, or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
 
 ```php
 <?php
@@ -41,7 +41,7 @@ Phalcon events use namespaces to avoid naming collisions. Each component in Phal
 When attaching event listeners to the events manager, you can use `component` to catch all events from that component (e.g. `db` to catch all the [Phalcon\Db][db] events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
 ## Manager
-The [Phalcon\Events\Manager][events-manager] is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as _a handler_. Regardless of the name, the functionality and purpose are the same. 
+The [Phalcon\Events\Manager][events-manager] is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as _a handler_. Regardless of the name, the functionality and purpose are the same.
 
 The component wraps a queue of objects using [SplPriorityQueue][splpriorityqueue] internally. It registers those objects with a priority (default `100`) and then when the time comes, executes them.
 
@@ -64,7 +64,7 @@ Returns if priorities are enabled
 ```php
 public function collectResponses(bool $collect)
 ```
-Tells the event manager if it needs to collect all the responses returned by every registered listener in a single `fire` call
+Tell the event manager if it needs to collect all the responses returned by every registered listener in a single `fire` call
 
 ```php
 public function detach(string $eventType, mixed $handler)
@@ -104,7 +104,7 @@ Returns all the responses returned by every handler executed by the last `fire` 
 ```php
 public function hasListeners(string $type): bool
 ```
-Check whether certain type of event has listeners
+Check whether a certain type of event has listeners
 
 ```php
 public function isCollecting(): bool
@@ -185,12 +185,12 @@ $connection->query(
 );
 ```
 
-In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
+In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case, MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
 
 !!! warning "NOTE"
 
     You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component, or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
-  
+
 ## Handlers
 The events manager wires a handler to an event. A handler is a piece of code that will do something when the event fires. As seen in the above example, you can use an anonymous function as your handler:
 
@@ -348,18 +348,18 @@ $eventsManager->attach(
 );
 ```
 
-First we attach the listener to the `dispatcher` component and the `beforeException` event. This means that the events manager will fire only for that event calling our listener. We could have just changed the hook point to `dispatcher` so that we are able in the future to add more dispatcher events in the same listener.
+First, we attach the listener to the `dispatcher` component and the `beforeException` event. This means that the events manager will fire only for that event calling our listener. We could have just changed the hook point to `dispatcher` so that we are able in the future to add more dispatcher events in the same listener.
 
-The `beforeException` function accepts the `$event` as the first parameter, the `$dispatcher` as the second and the `$ex` exception thrown from the dispatcher component. Using those, we can then figure out if a handler (or controller) or an action were not found. If that is the case, we forward the user to a specific module, controller and action. If our user is not logged in, then we send them to the login page. Alternatively, we just log the exception message in our logger.
+The `beforeException` function accepts the `$event` as the first parameter, the `$dispatcher` as the second, and the `$ex` exception thrown from the dispatcher component. Using those, we can then figure out if a handler (or controller) or an action was not found. If that is the case, we forward the user to a specific module, controller, and action. If our user is not logged in, then we send them to the login page. Alternatively, we just log the exception message in our logger.
 
-The example demonstrates clearly the power of the events manager, and how you can alter the flow of the application using listeners. 
+The example demonstrates clearly the power of the events manager, and how you can alter the flow of the application using listeners.
 
 ## Events: Trigger
 You can create components in your application that trigger events to an events manager. Listeners attached to those events will be invoked when the events are fired. In order to create a component that triggers events, we need to implement the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface].
- 
+
 ### Custom Component
 Let's consider the following example:
- 
+
 ```php
 <?php
 
@@ -399,7 +399,7 @@ class NotificationsAware extends Injectable implements EventsAwareInterface
 }
 ```
 
-The above component implements the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface] and as a result it uses the `getEventsManager` and `setEventsManager`. The last method is what does the work. In this example we want to send some notifications to users and want to fire an event before and after the notification is sent. 
+The above component implements the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface] and as a result, it uses the `getEventsManager` and `setEventsManager`. The last method is what does the work. In this example we want to send some notifications to users and want to fire an event before and after the notification is sent.
 
 We chose to name the component `notification` and the events are called `beforeSend` and `afterSend`. In the `process` method, you can add any code you need in between the calls to fire the relevant events. Additionally, you can inject more data in this component that would help with your implementation and processing of the notifications.
 
@@ -671,7 +671,7 @@ try {
 ## Controllers
 Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event, and it will be fired.
 
-For instance if we want to send a user to the `/login` page if they are not logged in, we can add the following code in our master controller:
+For instance, if we want to send a user to the `/login` page if they are not logged in, we can add the following code in our master controller:
 
 ```php
 <?php
@@ -716,7 +716,7 @@ Execute the code before the router, so we can determine if the user is logged in
 ## Models
 Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event, and it will be fired.
 
-In the following example, we are use the `beforeCreate` event, to automatically calculate an invoice number:
+In the following example, we are using the `beforeCreate` event, to automatically calculate an invoice number:
 
 ```php
 <?php
@@ -938,26 +938,26 @@ The events available in Phalcon are:
 | [Volt][volt]                | `resolveExpression`                  | Volt, [expression]                                      |
 
 [db]: api/phalcon_db.md
-[di-factorydefaul]: api/phalcon_di.md#di-factorydefault
-[events-event]: api/phalcon_events.md#events-event
-[events-eventinterface]: api/phalcon_events.md#events-eventinterface
-[events-eventsawareinterface]: api/phalcon_events.md#events-eventsawareinterface
-[events-exception]: api/phalcon_events.md#events-exception
-[events-manager]: api/phalcon_events.md#events-manager
-[events-managerinterface]: api/phalcon_events.md#events-managerinterface
-[mvc-controller]: api/phalcon_mvc.md#mvc-controller
-[mvc-model]: api/phalcon_mvc.md#mvc-model
+[di-factorydefaul]: api/phalcon_di.md#difactorydefault-
+[events-event]: api/phalcon_events.md#eventsevent-
+[events-eventinterface]: api/phalcon_events.md#eventseventinterface--
+[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface--
+[events-exception]: api/phalcon_events.md#eventsexception-
+[events-manager]: api/phalcon_events.md#eventsmanager-
+[events-managerinterface]: api/phalcon_events.md#eventsmanagerinterface--
+[mvc-controller]: api/phalcon_mvc.md#mvccontroller--
+[mvc-model]: api/phalcon_mvc.md#mvcmodel--
 [splpriorityqueue]: https://www.php.net/manual/en/class.splpriorityqueue.php
-[acl]: acl.md                  
-[application]: application.md  
-[application-cli]: application-cli.md  
-[db-layer]: db-layer.md              
-[dispatcher]: dispatcher.md    
-[autoload]: autoload.md          
-[application-micro]: application-micro.md  
-[db-models]: db-models.md          
-[request]: request.md          
-[response]: response.md        
-[routing]: routing.md           
-[views]: views.md               
+[acl]: acl.md
+[application]: application.md
+[application-cli]: application-cli.md
+[db-layer]: db-layer.md
+[dispatcher]: dispatcher.md
+[autoload]: autoload.md
+[application-micro]: application-micro.md
+[db-models]: db-models.md
+[request]: request.md
+[response]: response.md
+[routing]: routing.md
+[views]: views.md
 [volt]: volt.md                

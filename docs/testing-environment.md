@@ -5,7 +5,7 @@
 Phalcon, historically characterized by a modest development community and limited pull requests, faced challenges due to developers' unfamiliarity with C, the language in which the framework was originally written. To encourage contributions, we introduced [Zephir][zephir], a language closely resembling PHP and Javascript syntax. In [2003][2003], we unveiled this initiative, subsequently releasing the language and transitioning all Phalcon code to Zephir. Since then, Zephir has been integral to Phalcon's development.
 
 # The Challenge
-Building a feature-rich framework necessitates a comprehensive development environment supporting various features and associated services. For example, validating ORM functionality across different database adapters (e.g., `MySQL`, `Postgresql`, `Sqlite`) requires installations of relevant PHP extensions and databases. Similarly, to execute the testing suite for Phalcon's extensive functionality, developers must install numerous extensions and services such as Redis and Memcached.
+Building a feature-rich framework necessitates a comprehensive development environment supporting various features and associated services. For example, validating ORM functionality across different database adapters (e.g., `MySQL`, `Postgresql`, `Sqlite`) requires the installation of relevant PHP extensions and databases. Similarly, to execute the testing suite for Phalcon's extensive functionality, developers must install numerous extensions and services such as Redis and Memcached.
 
 Considering the diverse PHP versions (e.g., PHP 8.0, 8.1), Phalcon's development becomes intricate due to these prerequisites.
 
@@ -16,7 +16,7 @@ This Docker-based approach simplifies the setup, ensuring a more accessible and 
 
 
 # Installation
-Before you begin, ensure that docker is installed on your machine. If you haven't installed it yet, follow the instructions [here][docker_installation]. Additionally, you'll need docker compose—installation details can be found [here][docker_compose].
+Before you begin, ensure that docker is installed on your machine. If you haven't installed it yet, follow the instructions [here][docker_installation]. Additionally, you'll need `docker compose` - installation details can be found [here][docker_compose].
 
 # Running the Development Environment
 1. Fork the Repository

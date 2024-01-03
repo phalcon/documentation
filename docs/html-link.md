@@ -6,10 +6,10 @@
 
 !!! info "NOTE"
 
-    This component does not generate any HTML links. It just stores the links. You will need to create your own serializers that will parse these objects and generate the necessary output. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use.
+    This component does not generate any HTML links. It just stores the links. You will need to create your serializers that will parse these objects and generate the necessary output. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use.
 
 ### Operations
-The `Phalcon\Html\Link\*` components implement methods that are inline with [PSR-13][psr-13], but do not implement the particular interface. A package that implements [PSR-13][psr-13] is available, that uses the `Phalcon\Html\Link\*` components. The package is located [here][proxy-psr13]. To use it, you will need to have Phalcon installed and then using composer you can install the proxy package.
+The `Phalcon\Html\Link\*` components implement methods that are in line with [PSR-13][psr-13], but do not implement the particular interface. A package that implements [PSR-13][psr-13] is available, that uses the `Phalcon\Html\Link\*` components. The package is located [here][proxy-psr13]. To use it, you will need to have Phalcon installed and then using composer you can install the proxy package.
 
 ```sh
 composer require phalcon/proxy-psr13
@@ -148,7 +148,7 @@ echo $serializer->serialize([$link]);
 ```
 
 ### Custom
-You can create your own serializers for relevant links by extending the [Phalcon\Html\Link\Serializer\SerializerInterface][html-link-serializer-serializerinterface]
+You can create your serializers for relevant links by extending the [Phalcon\Html\Link\Serializer\SerializerInterface][html-link-serializer-serializerinterface]
 
 ```php
 <?php
@@ -169,9 +169,9 @@ class Custom implements SerializerInterface
 [php-fig]: https://www.php-fig.org/
 [proxy-psr13]: https://github.com/phalcon/proxy-psr13
 [psr-13]: https://www.php-fig.org/psr/psr-13/
-[html-link-evolvablelink]: api/phalcon_html.md#html-link-evolvablelink
-[html-link-evolvablelinkprovider]: api/phalcon_html.md#html-link-evolvablelinkprovider
-[html-link-link]: api/phalcon_html.md#html-link-link
-[html-link-linkprovider]: api/phalcon_html.md#html-link-linkprovider
-[html-link-serializer-header]: api/phalcon_html.md#html-link-serializer-header
-[html-link-serializer-serializerinterface]: api/phalcon_html.md#html-link-serializer-serializerinterface
+[html-link-evolvablelink]: api/phalcon_html.md#htmllinkevolvablelink-
+[html-link-evolvablelinkprovider]: api/phalcon_html.md#htmllinkevolvablelink-
+[html-link-link]: api/phalcon_html.md#htmllinklink-
+[html-link-linkprovider]: api/phalcon_html.md#htmllinklinkprovider-
+[html-link-serializer-header]: api/phalcon_html.md#htmllinkserializerheader-
+[html-link-serializer-serializerinterface]: api/phalcon_html.md#htmllinkserializerserializerinterface--

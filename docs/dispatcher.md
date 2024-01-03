@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
+The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling the action of that controller.
 
 ```php
 <?php
@@ -42,7 +42,7 @@ public function forward(
     array $forward
 ): void
 ```
-Forwards the execution flow to another controller/action.
+Forwards the execution flows to another controller/action.
 
 ```php
 <?php
@@ -236,7 +236,7 @@ Check if a param exists
 ```php
 public function isFinished(): bool
 ```
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+Check if the dispatch loop is finished or has more pending controllers/tasks to dispatch
 
 ```php
 public function setActionName(
@@ -384,10 +384,10 @@ while (true !== $finished) {
     $finished = true;
 }
 ```
-In the code above, we are calculating the controller name, instantiate it and call the relevant action. After that we finish the loop. The example is very simplified and lacks validations, filters and additional checks, but it demonstrates the normal flow of operation within the dispatcher.
+In the code above, we calculate the controller name, instantiate it, and call the relevant action. After that, we finish the loop. The example is very simplified and lacks validations, filters, and additional checks, but it demonstrates the normal flow of operation within the dispatcher.
 
 ## Forwarding
-The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in situations when checking if the user has access to certain areas, and if not allowed to be forwarded to other controllers and actions, thus allowing you to reuse code.
+The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in situations when checking if the user has access to certain areas and if not allowed to be forwarded to other controllers and actions, thus allowing you to reuse code.
 
 ```php
 <?php
@@ -455,12 +455,12 @@ A `forward` action accepts the following parameters:
 ## Parameters
 ### Preparing
 By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance, you might want your URLs to be:
- 
+
 ```
 https://domain.com/controller/key1/value1/key2/value
 ```
 
-Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to the desired schema:
+Since parameters are passed in the order that they are defined in the URL to actions, you can transform them into the desired schema:
 
 ```php
 <?php
@@ -501,7 +501,7 @@ $container->set(
 );
 ```
 
-If the desired schema is: 
+If the desired schema is:
 
 ```
 https://example.com/controller/key1:value1/key2:value
@@ -549,7 +549,7 @@ $container->set(
 ```
 
 ## Getting
-When a route provides named parameters you can receive them in a controller, a view or any other component that extends [Phalcon\Di\Injectable][di-factorydefault]
+When a route provides named parameters you can receive them in a controller, a view, or any other component that extends [Phalcon\Di\Injectable][di-factorydefault]
 
 ```php
 <?php
@@ -577,7 +577,7 @@ class InvoicesController extends Controller
     }
 }
 ```
-In the example above, we get the `invoiceId` as the first parameter passed and automatically sanitize it as an `integer`. The second parameter is the `filter` one, which is sanitized as a `string` 
+In the example above, we get the `invoiceId` as the first parameter passed and automatically sanitize it as an `integer`. The second parameter is the `filter` one, which is sanitized as a `string`
 
 ## Actions
 You can also define an arbitrary schema for actions `before` the dispatch loop is invoked.
@@ -589,7 +589,7 @@ If the original URL is
 https://example.com/admin/invoices/show-unpaid
 ```
 
-and for example you want to camelize `show-unpaid` to `ShowUnpaid`, the `beforeDispatchLoop` can be used to achieve that.
+for example you want to camelize `show-unpaid` to `ShowUnpaid`, the `beforeDispatchLoop` can be used to achieve that.
 
 ```php
 <?php
@@ -631,7 +631,7 @@ https://example.com/admin/invoices/show-unpaid.php
 https://example.com/admin/invoices/index.php
 ```
 
-You can remove it before dispatch the controller/action combination:
+You can remove it before dispatching the controller/action combination:
 
 ```php
 <?php
@@ -668,7 +668,7 @@ $container->set(
     The code above can be used as is or adjusted to help with legacy URL transformations or other use cases where we need to manipulate the action name.
 
 ### Model Injection
-There are instances that you might want to inject automatically model instances that have been matched with the parameters passed in the URL. 
+There are instances that you might want to inject automatically model instances that have been matched with the parameters passed in the URL.
 
 Our controller is:
 
@@ -746,9 +746,9 @@ $container->set(
     }
 );
 ```
-In the example above, we get the controller class and active method from the dispatcher. Looping through the parameters, we use reflection to check the method to be executed. We calculate the model name and also check if the parameter is expecting a model name. If yes, we override the parameter by passing the model found. If an exception was thrown, we can handle that accordingly, for instance if the class or action do not exist or the record has not been found.
+In the example above, we get the controller class and active method from the dispatcher. Looping through the parameters, we use reflection to check the method to be executed. We calculate the model name and also check if the parameter is expecting a model name. If yes, we override the parameter by passing the model found. If an exception was thrown, we can handle that accordingly, for instance, if the class or action does not exist or the record has not been found.
 
-The above example has been simplified. You can adjust it according to your needs and inject any kind of dependency or model to an action before it gets executed.
+The above example has been simplified. You can adjust it according to your needs and inject any kind of dependency or model into an action before it gets executed.
 
 The dispatcher also comes with an option to handle this internally for all models passed into a controller action by using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] object.
 
@@ -773,7 +773,7 @@ return $dispatcher;
 
 Also, by using the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface] in controllers, you can define the models binding in base controllers.
 
-In the example below, we have a base controller `CrudController` which `InvoicesController` extends from. 
+In the example below, we have a base controller `CrudController` which `InvoicesController` extends from.
 
 ```php
 <?php
@@ -794,7 +794,7 @@ class CrudController extends Controller
 }
 ```
 
-In the `InvoicesController` we will define which model the controller is associated with. This is done by implementing the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface], which will make the `getModelName()` method available. This method is used to return the model name. It can return string with just one model name or an associative array with the key is the parameter name.
+In the `InvoicesController` we will define which model the controller is associated with. This is done by implementing the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface], which will make the `getModelName()` method available. This method is used to return the model name. It can return a string with just one model name or an associative array with the key as the parameter name.
 
 ```php
 <?php
@@ -834,10 +834,10 @@ class InvoicesController extends Controller
 
 !!! warning "NOTE"
 
-    Currently, the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
+    Currently, the binder will only use the model's primary key to perform a `findFirst()`. An example route for the above would be `/posts/show/{1}`
 
-## Not-Found (404) 
-If an [Events Manager][events] has been defined, you can use it to intercept exceptions that are thrown when the controller/action pair are not found.
+## Not-Found (404)
+If an [Events Manager][events] has been defined, you can use it to intercept exceptions that are thrown when the controller/action pair is not found.
 
 ```php
 <?php
@@ -930,7 +930,7 @@ $container->setShared(
 );
 ```
 
-We can move this method in a plugin class:
+We can move this method to a plugin class:
 
 ```php
 <?php
@@ -982,7 +982,7 @@ class ExceptionsPlugin
 | `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Yes    |
 | `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |   Yes    |
 | `beforeException`      | Before the dispatcher throws any exception                                                                                  |   Yes    |
-| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exist. |   Yes    |
+| `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exists. |   Yes    |
 | `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |    No    |
 | `beforeNotFoundAction` | when the action was not found in the controller                                                                             |   Yes    |
 
@@ -1047,7 +1047,7 @@ class InvoicesController extends Controller
     Methods on event listeners accept a [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
 
 ## Events Manager
-You can use the `dispatcher::beforeForward` event to change modules and perform redirections easier.
+You can use the `dispatcher::beforeForward` event to change modules and perform redirections more easily.
 
 ```php
 <?php
@@ -1179,7 +1179,7 @@ class MyDispatcher implements DispatcherInterface
     public function hasParam($param): bool;
 
     /**
-     * Checks if the dispatch loop is finished or has more pendent
+     * Checks if the dispatch loop is finished or has more pending
      * controllers/tasks to dispatch
      */
     public function isFinished(): bool;
@@ -1230,7 +1230,7 @@ class MyDispatcher implements DispatcherInterface
     public function setModuleName(string $moduleName): void;
 
     /**
-     * Sets the namespace which the controller belongs to
+     * Sets the namespace to which the controller belongs to
      */
     public function setNamespaceName(string $namespaceName): void;
 
@@ -1247,14 +1247,14 @@ class MyDispatcher implements DispatcherInterface
     public function setParams(array $params): void;
 }
 ```
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[events-event]: api/phalcon_events.md#events-event
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[events-event]: api/phalcon_events.md#eventsevent-
 [invo]: https://github.com/phalcon/invo
-[mvc-dispatcher]: api/phalcon_mvc.md#mvc-dispatcher
-[mvc-dispatcher-exception]: api/phalcon_mvc.md#mvc-dispatcher-exception
-[mvc-dispatcherinterface]: api/phalcon_mvc.md#mvc-dispatcherinterface
-[mvc-model-binder]: api/phalcon_mvc.md#mvc-model-binder
-[mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvc-model-binder-bindableinterface
-[mvc-model-binderinterface]: api/phalcon_mvc.md#mvc-model-binderinterface
+[mvc-dispatcher]: api/phalcon_mvc.md#mvcdispatcher-
+[mvc-dispatcher-exception]: api/phalcon_mvc.md#mvcdispatcherexception-
+[mvc-dispatcherinterface]: api/phalcon_mvc.md#mvcdispatcherinterface--
+[mvc-model-binder]: api/phalcon_mvc.md#mvcmodelbinder-
+[mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvcmodelbinderbindableinterface--
+[mvc-model-binderinterface]: api/phalcon_mvc.md#mvcmodelbinderinterface--
 [events]: events.md
 [acl]: acl.md

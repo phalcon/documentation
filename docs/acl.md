@@ -2,9 +2,12 @@
 - - -
 
 ## Overview
-The [Phalcon\Acl][acl-acl] component offers a lightweight and straightforward method for managing Access Control Lists (ACLs) and associated permissions. ACLs play a crucial role in regulating access to areas and underlying objects within an application.
+The [Phalcon\Acl][acl-acl] component offers a lightweight and straightforward
+method for managing Access Control Lists (ACLs) and associated permissions.
+ACLs play a crucial role in regulating access to areas and underlying objects
+within an application.
 
-In the context of programming, ACLs typically involve two key entities: the object seeking access (Role) and the object being accessed (Component or Resource). In Phalcon, these are referred to as [Roles][acl-role] and [Components][acl-component]. In a practical scenario, [Roles][acl-role] define the groups of users, and [Components][acl-component] represent areas of the application.
+In programming, ACLs typically involve two key entities: the object seeking access (Role) and the object being accessed (Component or Resource). For Phalcon, these are called [Roles][acl-role] and [Components][acl-component]. Looking at a practical scenario, [Roles][acl-role] define the groups of users, and [Components][acl-component] represent areas of the application.
 
 !!! info "Use Case"
 
@@ -64,7 +67,7 @@ $acl->setDefaultAction(Enum::ALLOW);
 The [Phalcon\Acl\Enum][acl-enum] class provides two constants for defining access levels:
 
 - `Phalcon\Acl\Enum::ALLOW` (`1`)
-- `Phalcon\Acl\Enum::DENY` (`0` - default)
+- `Phalcon\Acl\Enum::DENY` (`0` – default)
 
 These constants help specify access levels within your ACL.
 
@@ -107,7 +110,7 @@ $acl->addRole('guest');
 ```
 
 ## Adding Components
-A [Component][acl-component] in the context of Phalcon\Acl represents an area of the application where access is controlled. In an MVC application, this typically corresponds to a Controller. Although it's not mandatory, you can use the [Phalcon\Acl\Component][acl-component] class to define components in the application. It's also important to add related actions to a component so that the ACL understands what it should control.
+A [Component][acl-component] in the context of Phalcon\Acl represents an area of the application where access is controlled. In an MVC application, this typically corresponds to a Controller. Although it is not mandatory, you can use the [Phalcon\Acl\Component][acl-component] class to define components in the application. It is important to add related actions to a component so that the ACL understands what it should control.
 
 There are two ways to add components to our list:
 
@@ -173,7 +176,7 @@ $acl->addComponent(
 ```
 
 ## Defining Access Controls
-After defining both the `Roles` and `Components`, the next step is to tie them together to create the access list. This is a critical step, as a small mistake here can inadvertently allow access to roles for components that the developer did not intend to. As mentioned earlier, the default access action for [Phalcon\Acl][acl-acl] is `Phalcon\Acl\Enum::DENY`, following the [white list][whitelist] approach.
+After defining both the `Roles` and `Components`, the next step is to tie them together to create the access list. This is a critical step, as a small mistake here can inadvertently allow access to roles for components that the developer did not intend to. As mentioned earlier, the default access action for [Phalcon\Acl][acl-acl] is `Phalcon\Acl\Enum::DENY`, following the [whitelist][whitelist] approach.
 
 To associate Roles and Components, you use the `allow()` and `deny()` methods provided by the [Phalcon\Acl\Memory][acl-adapter-memory] class.
 
@@ -260,19 +263,24 @@ $acl = new Memory();
 // (Roles and Components setup...)
 
 // Check permissions
-$acl->isAllowed('manager', 'admin', 'dashboard'); // true - explicitly defined
-$acl->isAllowed('manager', 'session', 'login');   // true - defined with wildcard
-$acl->isAllowed('accounting', 'reports', 'view'); // true - defined with wildcard
-$acl->isAllowed('guest', 'reports', 'view');      // false - explicitly defined
-$acl->isAllowed('guest', 'reports', 'add');       // false - default access level
+$acl->isAllowed('manager', 'admin', 'dashboard'); // true – explicitly defined
+$acl->isAllowed('manager', 'session', 'login');   // true – defined with wildcard
+$acl->isAllowed('accounting', 'reports', 'view'); // true – defined with wildcard
+$acl->isAllowed('guest', 'reports', 'view');      // false – explicitly defined
+$acl->isAllowed('guest', 'reports', 'add');       // false – default access level
 ```
 
 In the above example, the `isAllowed()` method checks whether a role has permission to access a specific component and action. It returns `true` if access is allowed, and `false` otherwise. This method is valuable for implementing role-based access control in your application.
 
 ## Function-Based Access
-Depending on the needs of your application, you might require an additional layer of calculations to allow or deny access to users through the ACL. The `isAllowed()` method in Phalcon's ACL accepts a fourth parameter, which is a callable such as an anonymous function.
-
-To take advantage of this functionality, you need to define your function when calling the `allow()` method for the role and component you need. For example, assume you need to allow access to all `manager` roles to the `admin` component except if their name is 'Bob'. To achieve this, you register an anonymous function that checks this condition.
+Depending on the needs of your application, you might require an additional layer
+of calculations to allow or deny access to users through the ACL. The `isAllowed()`
+method in Phalcon's ACL accepts a fourth parameter, which is a `callable` such as
+an anonymous function. To take advantage of this functionality, you need to define
+your function when calling the `allow()` method for the role and component you need.
+For example, assume you need to allow access to all `manager` roles to the
+`admin` component except if their name is 'Bob.' To achieve this, you register
+an anonymous function that checks this condition.
 
 **Example:**
 
@@ -298,7 +306,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with a custom function
+// Set access level for `role` into `components` with a custom function
 $acl->allow(
     'manager',
     'admin',
@@ -335,7 +343,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with a custom function
+// Set access level for `role` into `components` with a custom function
 $acl->allow(
     'manager',
     'admin',
@@ -369,8 +377,8 @@ $acl->isAllowed(
 !!! info "NOTE"
 
     The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that parameter to the function.
-    
-You can also omit passing the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl\Enum::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
+
+You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl\Enum::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
 
 **Example:**
 
@@ -397,7 +405,7 @@ $acl->addComponent(
     ]
 );
 
-// Set access level for role into components with a custom function
+// Set access level for `role` into `components` with a custom function
 $acl->allow(
     'manager',
     'admin',
@@ -432,7 +440,7 @@ You can implement the [Phalcon\Acl\RoleAwareInterface][acl-roleaware] in your cu
 
 use Phalcon\Acl\RoleAwareInterface;
 
-// Create our class which will be used as roleName
+// Create our class, which will be used as roleName
 class ManagerRole implements RoleAwareInterface
 {
     protected $id;
@@ -466,7 +474,7 @@ You can implement the [Phalcon\Acl\ComponentAwareInterface][acl-componentaware] 
 
 use Phalcon\Acl\ComponentAwareInterface;
 
-// Create our class which will be used as componentName
+// Create our class, which will be used as componentName
 class ReportsComponent implements ComponentAwareInterface
 {
     protected $id;
@@ -544,7 +552,7 @@ $levelOne = new ManagerRole(1, 'manager-1');
 $levelTwo = new ManagerRole(2, 'manager');
 $admin    = new ManagerRole(3, 'manager');
 
-// id - name - userId
+// id – name – userId
 $reports  = new ReportsComponent(2, 'reports', 2);
 
 // Check whether our user objects have access. Returns `false`
@@ -631,7 +639,7 @@ $aclFile = 'app/security/acl.cache';
 
 // Check whether ACL data already exist
 if (!is_file($aclFile)) {
-    // The ACL does not exist - build it
+    // The ACL does not exist – build it
     $acl = new Memory();
 
     // Define roles, components, access, etc.
@@ -728,17 +736,17 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 
 [acl]: https://en.wikipedia.org/wiki/Access_control_list
 [acl-acl]: api/phalcon_acl.md
-[acl-adapter-abstractadapter]: api/phalcon_acl.md#acl-adapter-abstractadapter
-[acl-adapter-adapterinterface]: api/phalcon_acl.md#acl-adapter-adapterinterface
-[acl-adapter-memory]: api/phalcon_acl.md#acl-adapter-memory
-[acl-component]: api/phalcon_acl.md#acl-component
-[acl-componentaware]: api/phalcon_acl.md#acl-componentaware
-[acl-componentinterface]: api/phalcon_acl.md#acl-componentinterface
-[acl-enum]: api/phalcon_acl.md#acl-enum
-[acl-exception]: api/phalcon_acl.md#acl-exception
-[acl-role]: api/phalcon_acl.md#acl-role
-[acl-roleaware]: api/phalcon_acl.md#acl-roleaware
-[acl-roleinterface]: api/phalcon_acl.md#acl-roleinterface
+[acl-adapter-abstractadapter]: api/phalcon_acl.md#acladapterabstractadapter--
+[acl-adapter-adapterinterface]: api/phalcon_acl.md#acladapteradapterinterface--
+[acl-adapter-memory]: api/phalcon_acl.md#acladaptermemory-
+[acl-component]: api/phalcon_acl.md#aclcomponent-
+[acl-componentaware]: api/phalcon_acl.md#aclcomponentawareinterface--
+[acl-componentinterface]: api/phalcon_acl.md#aclcomponentinterface--
+[acl-enum]: api/phalcon_acl.md#aclenum-
+[acl-exception]: api/phalcon_acl.md#aclexception-
+[acl-role]: api/phalcon_acl.md#aclrole-
+[acl-roleaware]: api/phalcon_acl.md#aclroleawareinterface--
+[acl-roleinterface]: api/phalcon_acl.md#aclroleawareinterface--
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
 [events]: events.md

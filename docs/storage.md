@@ -1,21 +1,15 @@
----
-layout: default
-title: 'Storage'
-upgrade: '#storage'
-keywords: 'storage, stream, redis, memcached'
----
 # Storage Component
 - - -
 
 ## Overview
-The `Phalcon\Storage` namespace contains components that help with storing data in different storages. The component is heavily integrated in [Phalcon\Cache\Cache][cache] as well as [Phalcon\Session][session]. It offers serialization of data based on various serialization adapters, and storage of data based on various storage adapters. Factories help with the creation of all necessary objects for the component to work.
+The `Phalcon\Storage` namespace contains components that help with storing data in different storages. The component is heavily integrated into [Phalcon\Cache\Cache][cache] as well as [Phalcon\Session][session]. It offers serialization of data based on various serialization adapters, and storage of data based on various storage adapters. Factories help with the creation of all necessary objects for the component to work.
 
 ## Serializers
 The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable][serializable] interface and thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before saving it to the storage and after retrieving it from the storage.
 
 !!! info "NOTE"
 
-    The default serializer for all adapters is `Phalcon\Storage\Serializer\Php` which uses PHP's `serialize` and `unserialize` methods. These methods can suit most applications. However, the developer might want to use something more efficient such as [igbinary][igbinary] which is faster and achieves a better compression.
+    The default serializer for all adapters is `Phalcon\Storage\Serializer\Php` which uses PHP's `serialize` and `unserialize` methods. These methods can suit most applications. However, the developer might want to use something more efficient such as [igbinary][igbinary] which is faster and achieves better compression.
 
 The storage adapter can be configured to use a different serializer. The available serializers are:
 
@@ -203,7 +197,7 @@ The available methods are:
 
 !!! info "NOTE"
 
-    The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer, since it can be used to execute additional methods that each adapter offers. For instance for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange` and other methods not exposed by the Phalcon adapter.
+    The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer since it can be used to execute additional methods that each adapter offers. For instance, for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange`, and other methods not exposed by the Phalcon adapter.
 
 To construct one of these objects, you will need to pass a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the constructor and optionally some parameters required for the adapter of your choice. The list of options is outlined below.
 
@@ -350,7 +344,7 @@ This adapter utilizes PHP's [redis][redis] extension to connect to a Redis serve
 
 If `auth` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the options, or the server cannot connect or authenticate, a `Phalcon\Storage\Exception` will be thrown.
 
-The following example demonstrates how to create a new `Redis` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the host, connect to port `6379` and select the index `1`.
+The following example demonstrates how to create a new `Redis` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the host, connect to port `6379`, and select the index `1`.
 
 ```php
 <?php
@@ -380,11 +374,11 @@ The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerf
 * `\Redis::SERIALIZER_IGBINARY`
 * `\Redis::SERIALIZER_MSGPACK`
 
-The [igbinary][igbinary] and built-in serializer is only available if `igbinary` is present in the target system and [Redis][redis] extension is compiled with it. The same applies to [msgpack][msgpack] built-in serializer. It is only available if `msgpack` is present in the target system and the [Redis][redis] extension is compiled with it. To enable these serializers, you can use the [Phalcon\Storage\Serializer\RedisIgbinary][storage-serializer-redis-igbinary], [Phalcon\Storage\Serializer\RedisJson][storage-serializer-redis-json], [Phalcon\Storage\Serializer\RedisMsgpack][storage-serializer-redis-msgpack], [Phalcon\Storage\Serializer\RedisNone][storage-serializer-redis-none] or [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php].
+The [igbinary][igbinary] and built-in serializer are only available if `igbinary` is present in the target system and [Redis][redis] extension is compiled with it. The same applies to [msgpack][msgpack] built-in serializer. It is only available if `msgpack` is present in the target system and the [Redis][redis] extension is compiled with it. To enable these serializers, you can use the [Phalcon\Storage\Serializer\RedisIgbinary][storage-serializer-redis-igbinary], [Phalcon\Storage\Serializer\RedisJson][storage-serializer-redis-json], [Phalcon\Storage\Serializer\RedisMsgpack][storage-serializer-redis-msgpack], [Phalcon\Storage\Serializer\RedisNone][storage-serializer-redis-none] or [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php].
 
 **NOTE** `increment` - `decrement`
 
-At this point in time there is an issue with `Redis`, where the internal `Redis` serializer does not skip scalar values because it can only store strings. As a result, if you use `increment` after a `set` for a number, will not return a number:
+At this point in time, there is an issue with `Redis`, where the internal `Redis` serializer does not skip scalar values because it can only store strings. As a result, if you use `increment` after a `set` for a number, will not return a number:
 
 The way to store numbers and use the `increment` (or `decrement`) is to either remove the internal serializer for `Redis`
 
@@ -417,7 +411,7 @@ If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 
 !!! info "NOTE"
 
-    The adapter utilizes logic to store files in separate subdirectories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
+    The adapter utilizes logic to store files in separate subdirectories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux-based systems.
 
 The following example demonstrates how to create a new `Stream` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will store the data in `/data/storage`.
 
@@ -551,7 +545,7 @@ $custom->set('my-key', $data);
 ## Adapter Factory
 Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\AdapterFactory][cache-adapterfactory] class, so that you can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
-The example below shows how you can create a `Apcu` cache adapter with the `new` keyword or the factory:
+The example below shows how you can create an `Apcu` cache adapter with the `new` keyword or the factory:
 ```php
 <?php
 
@@ -603,37 +597,31 @@ The parameters you can use for the factory are:
 [apcu]: https://www.php.net/manual/en/book.apcu.php
 [memcached]: https://www.php.net/manual/en/book.memcached.php
 [redis]: https://github.com/phpredis/phpredis
-[storage-adapter-abstractadapter]: api/phalcon_storage.md#storage-adapter-abstractadapter
-[storage-adapter-adapterinterface]: api/phalcon_storage.md#storage-adapter-adapterinterface
-[storage-adapter-apcu]: api/phalcon_storage.md#storage-adapter-apcu
-[storage-adapter-libmemcached]: api/phalcon_storage.md#storage-adapter-libmemcached
-[storage-adapter-memory]: api/phalcon_storage.md#storage-adapter-memory
-[storage-adapter-redis]: api/phalcon_storage.md#storage-adapter-redis
-[storage-adapter-stream]: api/phalcon_storage.md#storage-adapter-stream
-[storage-adapterfactory]: api/phalcon_storage.md#storage-adapterfactory
-[storage-exception]: api/phalcon_storage.md#storage-exception
-[storage-serializer-abstractserializer]: api/phalcon_storage.md#storage-serializer-abstractserializer
-[storage-serializer-base64]: api/phalcon_storage.md#storage-serializer-base64
-[storage-serializer-igbinary]: api/phalcon_storage.md#storage-serializer-igbinary
-[storage-serializer-json]: api/phalcon_storage.md#storage-serializer-json
-[storage-serializer-msgpack]: api/phalcon_storage.md#storage-serializer-msgpack
-[storage-serializer-none]: api/phalcon_storage.md#storage-serializer-none
-[storage-serializer-php]: api/phalcon_storage.md#storage-serializer-php
-[storage-serializer-base64]: api/phalcon_storage.md#storage-serializer-base64
-[storage-serializer-igbinary]: api/phalcon_storage.md#storage-serializer-igbinary
-[storage-serializer-json]: api/phalcon_storage.md#storage-serializer-json
-[storage-serializer-memcached-igbinary]: api/phalcon_storage.md#storage-serializer-memcached-igbinary
-[storage-serializer-memcached-json]: api/phalcon_storage.md#storage-serializer-memcached-json
-[storage-serializer-memcached-php]: api/phalcon_storage.md#storage-serializer-memcached-php
-[storage-serializer-msgpack]: api/phalcon_storage.md#storage-serializer-msgpack
-[storage-serializer-none]: api/phalcon_storage.md#storage-serializer-none
-[storage-serializer-php]: api/phalcon_storage.md#storage-serializer-php
-[storage-serializer-redis-igbinary]: api/phalcon_storage.md#storage-serializer-redis-igbinary
-[storage-serializer-redis-json]: api/phalcon_storage.md#storage-serializer-redis-json
-[storage-serializer-redis-msgpack]: api/phalcon_storage.md#storage-serializer-redis-msgpack
-[storage-serializer-redis-none]: api/phalcon_storage.md#storage-serializer-redis-none
-[storage-serializer-redis-php]: api/phalcon_storage.md#storage-serializer-redis-php
-[storage-serializer-serializerinterface]: api/phalcon_storage.md#storage-serializer-serializerinterface
-[storage-serializerfactory]: api/phalcon_storage.md#storage-serializerfactory
+[storage-adapter-abstractadapter]: api/phalcon_storage.md#storageadapterabstractadapter--
+[storage-adapter-adapterinterface]: api/phalcon_storage.md#storageadapteradapterinterface--
+[storage-adapter-apcu]: api/phalcon_storage.md#storageadapterapcu-
+[storage-adapter-libmemcached]: api/phalcon_storage.md#storageadapterlibmemcached-
+[storage-adapter-memory]: api/phalcon_storage.md#storageadaptermemory-
+[storage-adapter-redis]: api/phalcon_storage.md#storageadapterredis-
+[storage-adapter-stream]: api/phalcon_storage.md#storageadapterstream-
+[storage-adapterfactory]: api/phalcon_storage.md#storageadapterfactory-
+[storage-exception]: api/phalcon_storage.md#storageexception-
+[storage-serializer-abstractserializer]: api/phalcon_storage.md#storageserializerabstractserializer--
+[storage-serializer-base64]: api/phalcon_storage.md#storageserializerbase64-
+[storage-serializer-igbinary]: api/phalcon_storage.md#storageserializerigbinary-
+[storage-serializer-json]: api/phalcon_storage.md#storageserializerjson-
+[storage-serializer-msgpack]: api/phalcon_storage.md#storageserializermsgpack-
+[storage-serializer-none]: api/phalcon_storage.md#storageserializernone-
+[storage-serializer-php]: api/phalcon_storage.md#storageserializerphp-
+[storage-serializer-memcached-igbinary]: api/phalcon_storage.md#storageserializermemcachedigbinary-
+[storage-serializer-memcached-json]: api/phalcon_storage.md#storageserializermemcachedjson-
+[storage-serializer-memcached-php]: api/phalcon_storage.md#storageserializermemcachedphp-
+[storage-serializer-redis-igbinary]: api/phalcon_storage.md#storageserializerredisigbinary-
+[storage-serializer-redis-json]: api/phalcon_storage.md#storageserializerredisjson-
+[storage-serializer-redis-msgpack]: api/phalcon_storage.md#storageserializerredismsgpack-
+[storage-serializer-redis-none]: api/phalcon_storage.md#storageserializerredisnone-
+[storage-serializer-redis-php]: api/phalcon_storage.md#storageserializerredisphp-
+[storage-serializer-serializerinterface]: api/phalcon_storage.md#storageserializerserializerinterface--
+[storage-serializerfactory]: api/phalcon_storage.md#storageserializerfactory-
 [cache]: cache.md
 [session]: session.md

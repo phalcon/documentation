@@ -2,33 +2,33 @@
 - - -
 
 ## Overview
-A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
+A poorly written application will always have poor performance. A very common way for developers to increase the performance of their applications is:
 
 !!! info ":facepalm:"
 
-    just throw more hardware to it
+    just throw more hardware into it
 
-The problem with the above approach is twofold. For starters, in most cases the owner is the one that will incur the additional costs. The second issue is that there comes a time that one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms etc. which will skyrocket costs.
+The problem with the above approach is twofold. For starters, in most cases, the owner is the one that will incur the additional costs. The second issue is that there comes a time when one can no longer upgrade the hardware and will have to resort to load balancers, docker swarms, etc. which will skyrocket costs.
 
 The problem will remain: _the poorly written application_
 
-In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfills its requirements. Nothing beats a good design. After that, there are many aspects to consider:
+In order to speed up your application, you first need to ensure that your application is written in the best way possible that fulfills its requirements. Nothing beats a good design. After that, there are many aspects to consider:
 - server hardware
 - clients connecting (location, browsers)
 - network latency
 - database hardware
 
-and many more. In this article we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
+and many more. In this article, we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
 
 !!! danger "NOTE"
 
-    These are **recommendations** and good practices. You are by no means obligated to follow the advice on this document, and by no means is this list exhaustive. Your performance enhancing strategies rely primarily on the needs of your application.
+    These are **recommendations** and good practices. You are by no means obligated to follow the advice in this document, and by no means is this list exhaustive. Your performance-enhancing strategies rely primarily on the needs of your application.
 
 ## Server
-[Profiling][profiling] is a form of dynamic application analysis that offers metrics regarding your application. Profiling offers the real picture on what is really going on at any given time in your application, and thus guide you to areas where you application needs attention. Profiling should be continuous in a production application.
+[Profiling][profiling] is a form of dynamic application analysis that offers metrics regarding your application. Profiling offers the real picture of what is really going on at any given time in your application and thus guides you to areas where your application needs attention. Profiling should be continuous in a production application.
 
 It does have an overhead so that has to be taken into account. The most verbose profiling happens on every request, but it will all depend on your traffic. We certainly do not want to increase the load on the server just because we are profiling the application. A common way of profiling is one request per 100 or one per 1,000. After a while you will have enough data to draw conclusions as to where slowdowns occur, why peaks occurred etc.
- 
+
 ### XDebug
 [XDebug][xdebug] offers a very handy profiler right out of the box. All you have to do is install the extension and enable profiling in your `php.ini`:
 
@@ -83,17 +83,17 @@ long_query_time = 1.5
 ```
 
 ## Client
-Another area to focus on is the client. Improving the loading of assets such as images, stylesheets, javascript files can significantly improve performance and enhance user experience. There are a number of tools that can help with identifying bottlenecks on the client:
+Another area to focus on is the client. Improving the loading of assets such as images, stylesheets, javascript files can significantly improve performance and enhance user experience. There are a number of tools that can help with identifying bottlenecks for the client:
 
 ### Browsers
-Most modern browsers have tools to profile a page's loading time. Those are easily called _web inspectors_ or _developer tools_. For instance when using Brave or any Chromium based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the current page (files), how much time it took and the total loading time:
+Most modern browsers have tools to profile a page's loading time. Those are easily called _web inspectors_ or _developer tools_. For instance, when using Brave or any Chromium-based browser you can inspect the page and the developer tools will show a waterfall of what has loaded for the current page (files), how much time it took, and the total loading time:
 
 ![](assets/images/content/performance-chrome-1.jpg)
 
 A relatively easy fix for increasing client performance is to set the correct headers for assets so that they expire in the future vs. being loaded from the server on every request. Additionally, [CDN][cdn] providers can help with distributing assets from their distribution centers that are closest to the client originating the request.
 
 ### Yahoo! YSlow
-[YSlow][yslow] analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages][yslow_rules]
+[YSlow][yslow] analyzes web pages and suggests ways to improve their performance based on a set of [rules for high-performance web pages][yslow_rules]
 
 ![](assets/images/content/performance-yslow-1.jpg)
 
@@ -101,8 +101,8 @@ A relatively easy fix for increasing client performance is to set the correct he
 PHP is becoming faster with every new version. Using the latest version improves the performance of your applications and also of Phalcon.
 
 ### Bytecode Cache
-[OPcache][opcache] as many other bytecode caches helps applications reduce the overhead of read, tokenize and parse PHP files in each request. The interpreted results are kept in
-RAM between requests as long as PHP runs as fcgi (fpm) or mod_php. OPcache is bundled with php starting 5.5.0. To check if it is activated, look for the following entry in php.ini:
+[OPcache][opcache] as many other bytecode caches help applications reduce the overhead of reading, tokenizing, and parsing PHP files in each request. The interpreted results are kept in
+RAM between requests as long as PHP runs as fcgi (fpm) or mod_php. OPcache is bundled with PHP starting at 5.5.0. To check if it is activated, look for the following entry in php.ini:
 
 ```ini
 opcache.enable = On
@@ -111,8 +111,8 @@ opcache.memory_consumption = 128    ;default
 Furthermore, the amount of memory available for opcode caching needs to be enough to hold all files of your applications. The default of 128MB is usually enough for even larger codebases.
 
 ### Serverside cache
-[APCu][apcu] can be used to cache the results of computational expensive operations or otherwise slow data sources like webservices with high latency. What makes a result cacheable
-is another topic, as a rule of thumb: the operations needs to be executed often and yield identical results. Make sure to measure through profiling
+[APCu][apcu] can be used to cache the results of computationally expensive operations or otherwise slow data sources like web services with high latency. What makes a result cacheable
+is another topic, as a rule of thumb: the operations need to be executed often and yield identical results. Make sure to measure through profiling
 that the optimizations actually improved execution time.
 
 ```ini
@@ -126,14 +126,14 @@ on your server or another machine.
 
 
 ## Slow Tasks
-Based on the requirements of your application, there maybe times that you will need to perform long-running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is:
+Based on the requirements of your application, there may be times that you will need to perform long-running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents, etc. These tasks should be processed using background jobs. The usual process is:
 - The application initiates a task by sending a message to a queue service
 - The user sees a message that the task has been scheduled
 - In the background (or different server), worker scripts peek at the queue
 - When a message arrives, the worker script detects the type of message and calls the relevant task script
 - Once the task finishes, the user is notified that their data is ready.
 
-The above is a simplistic view of how a queue service for background processing works, but can offer ideas on how background tasks can be executed. There are also a variety of queue services available that you can leverage using the relevant PHP libraries:
+The above is a simplistic view of how a queue service for background processing works but can offer ideas on how background tasks can be executed. There are also a variety of queue services available that you can leverage using the relevant PHP libraries:
 
 * [NATS][nats]
 * [RabbitMQ][rabbitmq]

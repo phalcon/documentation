@@ -4,7 +4,7 @@
 ## Overview
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called _actions_ that contain such business logic and handle user requests.
 
-An action is any public method in a controller with the `Action` suffix. These _actions_ are accessible by a URL and are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
+An action is any public method in a controller with the `Action` suffix. These _actions_ are accessible by a URL and are responsible for interpreting the request and creating the response. Usually, responses are in the form of a rendered view, but there are other ways to create responses as well.
 
 Controllers in Phalcon **must** have the suffix `Controller` in their file and class name and **must** extend the [Phalcon\Mvc\Controller][mvc-controller] class.
 
@@ -43,7 +43,7 @@ will have:
 
 The above will call the `InvoicesController` and `listAction`. The parameters will be available through the [request][request] in the controller and action.
 
-Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Autoload\Loader][autoload] has numerous options for registering directories, namespaces etc. to help with the discovery of the controllers.
+Controller classes can be in any folder in your application, so long as your autoloader knows where to look for them when called. [Phalcon\Autoload\Loader][autoload] has numerous options for registering directories, namespaces, etc. to help with the discovery of the controllers.
 
 A sample controller is as follows:
 
@@ -67,7 +67,7 @@ class InvoicesController extends Controller
 ```
 
 ## Initialization
-[Phalcon\Mvc\Controller][mvc-controller] calls the  `initialize()` method (if present) first, before any action is executed on a controller. 
+[Phalcon\Mvc\Controller][mvc-controller] calls the  `initialize()` method (if present) first, before any action is executed on a controller.
 
 ```php
 <?php
@@ -123,7 +123,7 @@ class InvoicesController extends Controller
 ## Dispatch Loop
 The dispatch loop will be executed within the [Dispatcher][dispatcher] until there are no actions left to be executed. In the examples above we showed code in only one action, which will be executed with the appropriate request.
 
-We can utilize the [Dispatcher][dispatcher] object to forward the request to a different module, controller or action, thus creating a more complex flow of operations in the dispatch loop. 
+We can utilize the [Dispatcher][dispatcher] object to forward the request to a different module, controller, or action, thus creating a more complex flow of operations in the dispatch loop.
 
 ```php
 <?php
@@ -181,12 +181,12 @@ class UsersController extends Controller
 }
 ```
 
-The above is a simple example of forwarding for users that are not logged in or do not have access. You can check the Events section below on how you can leverage events to do the same thing globally for your application.
+The above is a simple example of forwarding for users who are not logged in or do not have access. You can check the Events section below on how you can leverage events to do the same thing globally for your application.
 
 There is no limit on the `forward` calls you can have in your application. You have to be careful though, since forwarding could lead to circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View][views].
 
 ## Actions
-Actions are methods that are called to execute the necessary functionality for our application. Actions **must** be suffixed by `Action` and they match a route request from the user. 
+Actions are methods that are called to execute the necessary functionality for our application. Actions **must** be suffixed by `Action` and they match a route request from the user.
 
 ```php
 <?php
@@ -219,10 +219,10 @@ will tell the dispatcher to call the `listAction` method with any parameters pas
 /invoices/other
 ```
 
-will result in a `404` - page not found. 
+will result in a `404` - page not found.
 
 ## Parameters
-Additional URI parameters are defined as action parameters, so that they can be easily accessed using local variables. A controller can optionally extend [Phalcon\Mvc\Controller][mvc-controller]. By doing this, the controller can have easy access to the application services.
+Additional URI parameters are defined as action parameters so that they can be easily accessed using local variables. A controller can optionally extend [Phalcon\Mvc\Controller][mvc-controller]. By doing this, the controller can have easy access to the application services.
 
 Parameters without a default value are handled as required. Setting optional values for parameters is done as in PHP:
 
@@ -354,7 +354,7 @@ class InvoicesController extends Controller
 ## Request - Response
 If you have already registered a [Request][request] and [Response][response] services to your DI container or have simply instantiated the [Phalcon\Di\FactoryDefault][di-factorydefault] one, you can access these objects as properties in your controller.
 
-For [Phalcon\Di\FactoryDefault][di-factorydefault], your objects will be [Phalcon\Http\Request][request] for `request` and [Phalcon\Http\Response][response] for response. The `request` contains the request from the user, including all the variables set by the method use (`GET`, `POST` etc.) along with additional information regarding the request. The `response` contains data that we need to send back such as `content-type`, status code, payload etc.
+For [Phalcon\Di\FactoryDefault][di-factorydefault], your objects will be [Phalcon\Http\Request][request] for `request` and [Phalcon\Http\Response][response] for response. The `request` contains the request from the user, including all the variables set by the method used (`GET`, `POST` etc.) along with additional information regarding the request. The `response` contains data that we need to send back such as `content-type`, status code, payload etc.
 
 !!! info "NOTE"
 
@@ -399,7 +399,7 @@ The code above first checks if the request is a `POST` request. If yes, then it 
 
 Using this technique, we ensure that all input is properly sanitized and defaults are set.
 
-The response object is not called directly in most cases, rather it is built gradually or attached to the `afterDispatch` event. If for instance we need to send JSON back to the user as a result of an AJAX request, we can do so directly in the action, interacting with the response:
+The response object is not called directly in most cases, rather it is built gradually or attached to the `afterDispatch` event. If for instance, we need to send JSON back to the user as a result of an AJAX request, we can do so directly in the action, interacting with the response:
 
 ```php
 <?php
@@ -534,7 +534,7 @@ class UserController extends Controller
 
 !!! info "NOTE"
 
-    Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
+    Note that the `persistent` service is automatically registered for any component (including controllers) that extends the `Phalcon\Di\Injectable` class
 
 ## Dependency Injection
 You can create a controller as a stand-alone class. However, you can extend the [Phalcon\Mvc\Controller][mvc-controller] class which will expose the whole DI container to you. Each service will be available using its name as a property of the controller:
@@ -596,7 +596,7 @@ class InvoicesController extends Controller
 }
 ```
 
-In the above example, we access the `request`, `response` and `view` services that are automatically injected in our controller.
+In the above example, we access the `request`, `response`, and `view` services that are automatically injected into our controller.
 
 ## Services as Controllers
 Services can act as controllers. Controllers are classes that are always requested from the DI container. As a result, any other class registered with the correct name can easily replace a controller:
@@ -614,13 +614,13 @@ $container->set(
     }
 );
 ```
-[mvc-controller]: api/phalcon_mvc.md#mvc-controller
-[mvc-controller-bindmodelinterface]: api/phalcon_mvc.md#mvc-controller-bindmodelinterface
-[mvc-controllerinterface]: api/phalcon_mvc.md#mvc-controllerinterface
+[mvc-controller]: api/phalcon_mvc.md#mvccontroller--
+[mvc-controller-bindmodelinterface]: api/phalcon_mvc.md#mvccontrollerbindmodelinterface--
+[mvc-controllerinterface]: api/phalcon_mvc.md#mvccontrollerinterface--
 [di-factorydefault]: api/phalcon_di.md#di-factorydefault
 [request]: request.md
 [response]: response.md
-[session-bag]: api/phalcon_session.md#session-bag
+[session-bag]: api/phalcon_session.md#sessionbag-
 [dispatcher]: dispatcher.md
 [events]: events.md
 [application]: application.md

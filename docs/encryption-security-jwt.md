@@ -7,7 +7,7 @@
 
     Currently, only symmetric algorithms are supported 
 
-`Phalcon\Encryption\Security\JWT` is a namespace that contains components that allow you to issue, parse and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. These components are:
+`Phalcon\Encryption\Security\JWT` is a namespace that contains components that allow you to issue, parse, and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. These components are:
 
 - Builder ([Phalcon\Encryption\Security\JWT\Builder][security-jwt-builder])
 - Parser ([Phalcon\Encryption\Security\JWT\Token\Parser][security-jwt-token-parser])
@@ -105,11 +105,11 @@ $validator
 var_dump($validator->getErrors())
 ```
 
-The above example gives a general view on how the component can be used to generate, parse and validate JSON Web Tokens. 
+The above example gives a general view on how the component can be used to generate, parse, and validate JSON Web Tokens.
 
 ## Objects
 
-There are several utility components that live in the `Phalcon\Encryption\Security\JWT\Token` namespace, that help with the issuing, parsing and validating JWT tokens
+There are several utility components that live in the `Phalcon\Encryption\Security\JWT\Token` namespace, that help with the issuing, parsing, and validating of JWT tokens
 
 ### Enum
 
@@ -150,7 +150,7 @@ class Enum
 
 ### Token
 
-[Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] is the component responsible for storing and calculating the JWT token. It accepts the headers, claims (as [Phalcon\Encryption\Security\JWT\Token\Item][security-jwt-token-item] objects) and signature objects in its constructor and exposes:
+[Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] is the component responsible for storing and calculating the JWT token. It accepts the headers, claims (as [Phalcon\Encryption\Security\JWT\Token\Item][security-jwt-token-item] objects), and signature objects in its constructor and exposes:
 
 ```php
 public function getClaims(): Item
@@ -203,11 +203,11 @@ $signer  = new Hmac();
 
 **None**
 
-This signer is provided mostly for development purposes. You should always sign your JWT tokens. 
+This signer is provided mostly for development purposes. You should always sign your JWT tokens.
 
 **HMAC**
 
-The HMAC signer supports the `sha512`, `sha384`, and `sha256` algorithms. If none is supplied, the `sha512` is automatically selected. If you supply a different algorithm, a [Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception] will be raised. The algorithm is set in the constructor. 
+The HMAC signer supports the `sha512`, `sha384`, and `sha256` algorithms. If none is supplied, the `sha512` is automatically selected. If you supply a different algorithm, a [Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception] will be raised. The algorithm is set in the constructor.
 
 
 ```php
@@ -228,7 +228,7 @@ The component utilizes the [hmac_equals][hmac_equals] and [hash_hmac][hash_hmac]
 public function getAlgHeader(): string
 ```
 
-Returns a string identifying the algorithm. For the HMAC algorithms it will return:
+Returns a string identifying the algorithm. For the HMAC algorithms, it will return:
 
 | Algorithm | `getAlgHeader` |
 |:---------:|:--------------:|
@@ -250,7 +250,7 @@ Verifies that the hashed source string is the same as the hash of the payload wi
 
 ## Issuing Tokens
 
-A Builder component ([Phalcon\Encryption\Security\JWT\Builder][security-jwt-builder]) is available, utilizing chained methods, and ready to be used to create JWT tokens. All you have to do is instantiate the Builder object, configure your token and call `getToken()`. This will return a [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token] object which contains all the necessary information for your token. When instantiating the builder component, you have to supply the signer class. In the example below we use the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] signer.
+A Builder component ([Phalcon\Encryption\Security\JWT\Builder][security-jwt-builder]) is available, utilizing chained methods, and ready to be used to create JWT tokens. All you have to do is instantiate the Builder object, configure your token, and call `getToken()`. This will return a [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token] object which contains all the necessary information for your token. When instantiating the builder component, you have to supply the signer class. In the example below we use the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] signer.
 
 All setters in this component are chainable.
 
@@ -362,7 +362,7 @@ Sets the audience (`exp`). If the `$timestamp` is less than the current time, a 
 ```php
 public function setId(string $id): Builder
 ```
-Sets the id (`jti`). 
+Sets the id (`jti`).
 
 ```php
 public function setIssuedAt(int $timestamp): Builder
@@ -498,7 +498,7 @@ Validates the id. If it is not the same as the `jti` value stored in the token, 
 ```php
 public function validateIssuedAt(int $timestamp): Validator
 ```
-Validates the issued at time. If the `iat` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the `issued at` time. If the `iat` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
 ```php
 public function validateIssuer(string $issuer): Validator
@@ -648,7 +648,7 @@ var_dump($errors);
 
 ## Exceptions
 
-Any exceptions thrown in the Security component will be of the namespace `Phalcon\Encryption\Security\JWT\*`. You can use this exception to selectively catch exceptions thrown only from this component. There are two exceptions raised. First if you supply the wrong algoritm string when instantiating the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] component. This exception is [Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
+Any exceptions thrown in the Security component will be of the namespace `Phalcon\Encryption\Security\JWT\*`. You can use this exception to selectively catch exceptions thrown only from this component. There are two exceptions raised. First, if you supply the wrong algorithm string when instantiating the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] component. This exception is [Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException][security-jwt-exceptions-unsupportedalgorithmexception].
 
 The second exception is thrown when validating a JWT. This exception is [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
 
@@ -697,17 +697,17 @@ class IndexController extends Controller
 [rfc-7519]: https://datatracker.ietf.org/doc/html/rfc7519
 [hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
 [hash-equals]: https://www.php.net/manual/en/function.hash-hmac.php
-[security-jwt-builder]: api/phalcon_encryption.md#encryption-security-jwt-builder
-[security-jwt-exceptions-unsupportedalgorithmexception]: api/phalcon_encryption.md#encryption-security-jwt-exceptions-unsupportedalgorithmexception
-[security-jwt-exceptions-validatorexception]: api/phalcon_encryption.md#encryption-security-jwt-exceptions-validatorexception
-[security-jwt-signer-abstractsigner]: api/phalcon_encryption.md#encryption-security-jwt-signer-abstractsigner
-[security-jwt-signer-hmac]: api/phalcon_encryption.md#encryption-security-jwt-signer-hmac
-[security-jwt-signer-none]: api/phalcon_encryption.md#encryption-security-jwt-signer-none
-[security-jwt-signer-signerinterface]: api/phalcon_encryption.md#encryption-security-jwt-signer-signerinterface
-[security-jwt-token-abstractitem]: api/phalcon_encryption.md#encryption-security-jwt-token-abstractitem
-[security-jwt-token-enum]: api/phalcon_encryption.md#encryption-security-jwt-token-enum
-[security-jwt-token-item]: api/phalcon_encryption.md#encryption-security-jwt-token-item
-[security-jwt-token-parser]: api/phalcon_encryption.md#encryption-security-jwt-token-parser
-[security-jwt-token-signature]: api/phalcon_encryption.md#encryption-security-jwt-token-signature
-[security-jwt-token-token]: api/phalcon_encryption.md#encryption-security-jwt-token-token
-[security-jwt-validator]: api/phalcon_encryption.md#encryption-security-jwt-validator
+[security-jwt-builder]: api/phalcon_encryption.md#encryptionsecurityjwtbuilder-
+[security-jwt-exceptions-unsupportedalgorithmexception]: api/phalcon_encryption.md#encryptionsecurityjwtexceptionsunsupportedalgorithmexception-
+[security-jwt-exceptions-validatorexception]: api/phalcon_encryption.md#encryptionsecurityjwtexceptionsvalidatorexception-
+[security-jwt-signer-abstractsigner]: api/phalcon_encryption.md#encryptionsecurityjwtsignerabstractsigner--
+[security-jwt-signer-hmac]: api/phalcon_encryption.md#encryptionsecurityjwtsignerhmac-
+[security-jwt-signer-none]: api/phalcon_encryption.md#encryptionsecurityjwtsignernone-
+[security-jwt-signer-signerinterface]: api/phalcon_encryption.md#encryptionsecurityjwtsignersignerinterface--
+[security-jwt-token-abstractitem]: api/phalcon_encryption.md#encryptionsecurityjwttokenabstractitem--
+[security-jwt-token-enum]: api/phalcon_encryption.md#encryptionsecurityjwttokenenum-
+[security-jwt-token-item]: api/phalcon_encryption.md#encryptionsecurityjwttokenitem-
+[security-jwt-token-parser]: api/phalcon_encryption.md#encryptionsecurityjwttokenparser-
+[security-jwt-token-signature]: api/phalcon_encryption.md#encryptionsecurityjwttokensignature-
+[security-jwt-token-token]: api/phalcon_encryption.md#encryptionsecurityjwttokentoken-
+[security-jwt-validator]: api/phalcon_encryption.md#encryptionsecurityjwtvalidator-

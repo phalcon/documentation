@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-When a process performs multiple database operations, it is important to perform all these operations as a single unit of work. This way if one of the operations fails, we do not end up with corrupted data or orphaned records. Database transactions offer this functionality and ensure that all database operations have been executed successfully prior to storing the data in the database. 
+When a process performs multiple database operations, it is important to perform all these operations as a single unit of work. This way if one of the operations fails, we do not end up with corrupted data or orphaned records. Database transactions offer this functionality and ensure that all database operations have been executed successfully prior to storing the data in the database.
 
 Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
 
@@ -61,7 +61,7 @@ class InvoicesController extends Controller
 }
 ```
 
-## Implicit 
+## Implicit
 Existing relationships can be used to store records and their related instances. An operation like this implicitly creates a transaction to ensure that data is correctly stored:
 
 ```php
@@ -84,8 +84,8 @@ $customer->invoices       = $invoice;
 $customer->save();
 ```
 
-## Isolated 
-Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back or committed before ending the request:
+## Isolated
+Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks, and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back or committed before ending the request:
 
 ```php
 <?php
@@ -268,9 +268,9 @@ class ProductsController extends Controller
 
     While a transaction is active, the transaction manager will always return the same transaction across the application.
 
-[mvc-model-transaction]: api/phalcon_mvc.md#mvc-model-transaction
-[mvc-model-transaction-exception]: api/phalcon_mvc.md#mvc-model-transaction-exception
-[mvc-model-transaction-failed]: api/phalcon_mvc.md#mvc-model-transaction-failed
-[mvc-model-transaction-manager]: api/phalcon_mvc.md#mvc-model-transaction-manager
-[mvc-model-transaction-managerinterface]: api/phalcon_mvc.md#mvc-model-transaction-managerinterface
-[mvc-model-transactioninterface]: api/phalcon_mvc.md#mvc-model-transactioninterface
+[mvc-model-transaction]: api/phalcon_mvc.md#mvcmodeltransaction-
+[mvc-model-transaction-exception]: api/phalcon_mvc.md#mvcmodeltransactionexception-
+[mvc-model-transaction-failed]: api/phalcon_mvc.md#mvcmodeltransactionfailed-
+[mvc-model-transaction-manager]: api/phalcon_mvc.md#mvcmodeltransactionmanager-
+[mvc-model-transaction-managerinterface]: api/phalcon_mvc.md#mvcmodeltransactionmanagerinterface--
+[mvc-model-transactioninterface]: api/phalcon_mvc.md#mvcmodeltransactioninterface--

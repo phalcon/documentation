@@ -12,7 +12,7 @@ Your pull request must include:
 * Update the relevant `CHANGELOG.md`
 * Contain unit tests
 * Updates to the documentation and usage examples as necessary
-* Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-12][psr-12] while for Zephir code, we have an `.editorconfig` file available at the root of the repository to help you follow the standards.
+* Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-12][psr-12] while for Zephir code, we have a `.editorconfig` file available at the root of the repository to help you follow the standards.
 
 !!! danger "NOTE"
 
@@ -20,11 +20,11 @@ Your pull request must include:
 
 If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in GitHub to present this information. If no issue exists, please create one.
 
-For new functionality, **we will need to have an issue created and referenced**. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected. 
+For new functionality, **we will need to have an issue created and referenced**. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
 
-Additionally, any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version. 
+Additionally, any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version.
 
-It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community to get feedback, guidance and to work on a release plan that will benefit everyone.
+It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community to get feedback, and guidance and to work on a release plan that will benefit everyone.
 
 ## Branch and Commits
 The following steps are recommended but not mandatory.
@@ -33,14 +33,14 @@ If you are working on an issue, note the number of the issue down. Let us assume
 
 `#12345 - Create New Object`
 
-- Checkout the `5.0.x` branch
+- Check out the `5.0.x` branch
 - Create a branch: `T12345-create-new-object`
 
 The name of the branch starts with `T`, followed by the number of the issue and then the title of the issue as a slug.
 
 In your `cphalcon` folder navigate to `.git/hooks`
 
-Create a new file called `commit-msg` and paste the code below in it and save it:
+Create a new file called `commit-msg` paste the code below in it and save it:
 
 ```bash
 #!/bin/bash

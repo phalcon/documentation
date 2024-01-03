@@ -48,7 +48,7 @@ $collection = new Registry($data);
 ```
 
 ## Reusing
-You can also reuse the component, by repopulating it. [Phalcon\Support\Registry][registry] exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively, 
+You can also reuse the component, by repopulating it. [Phalcon\Support\Registry][registry] exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
@@ -83,7 +83,7 @@ echo $collection->count(); // 1
 As mentioned above, [Phalcon\Support\Registry][registry] implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 - Property
 - `__get()`
-- array based get (`$collection[$element]`)
+- array-based get (`$collection[$element]`)
 - `offsetGet()`
 - `get()`
 
@@ -142,7 +142,7 @@ Using `get()` offers three extra parameters. When `$defaultValue` is defined in 
 To check whether an element exists or not in the collection, you can use the following:
 - `isset()` on the property
 - `__isset()`
-- array based isset (`isset($collection[$element])`)
+- array-based isset (`isset($collection[$element])`)
 - `offsetExists()`
 - `has()`
 
@@ -184,7 +184,7 @@ public function has(string $element):  bool
 To set an element in the collection, you can use the following:
 - assign the value to the property
 - `__set()`
-- array based assignment 
+- array-based assignment
 - `offsetSet()`
 - `set()`
 
@@ -221,7 +221,7 @@ $collection->set('year', 1987);
 To remove an element in the collection, you can use the following:
 - unset the property
 - `__unset()`
-- array based unset 
+- array-based unset
 - `offsetUnset()`
 - `remove()`
 
@@ -337,7 +337,7 @@ echo $collection->jsonSerialize(); // $data
 ## Transformations
 [Phalcon\Support\Registry][registry] also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
-	 
+
 ```php
 <?php
 
@@ -365,7 +365,7 @@ echo $collection->toArray(); // $data
 - `JSON_UNESCAPED_SLASHES`
 
 You can pass any valid flags to the method according to your needs.
-	 
+
 ```php
 <?php
 
@@ -397,6 +397,6 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 */
 ```
 
-[registry]: api/phalcon_support.md#support-registry
+[registry]: api/phalcon_support.md#supportregistry--
 [support-collection]: support-collection.md
 [rfc4327]: https://www.ietf.org/rfc/rfc4627.txt

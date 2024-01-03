@@ -102,7 +102,7 @@ public function getLabel(
     string $field
 ): string
 ```
-Get label for field
+Get a label for the field
 
 ```php
 public function getMessages(): Messages
@@ -346,7 +346,7 @@ $validator->add(
 ```
 
 ### Between
-Validates that a value is between an inclusive range of two values. The validation passes if for a value `L`, minimum is less or equal than `L` and `L` is less or equal than the maximum. The boundaries are included in this validation. The formula is:
+Validates that a value is between an inclusive range of two values. The validation passes if for a value `L`, the minimum is less or equal to `L`, and `L` is less or equal to the maximum. The boundaries are included in this validation. The formula is:
 
 ```
 minimum <= value <= maximum
@@ -395,8 +395,8 @@ $validator->add(
 );
 ```
 
-### Callback                        
-By using [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending on what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
+### Callback
+By using [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] you can execute a custom function that must return boolean or a new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending on what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then the entity will be passed, otherwise data (i.e. an array like `$_POST`). There is an example:
 
 ```php
 <?php
@@ -693,7 +693,7 @@ $validator->add(
 ```
 
 ### ExclusionIn
-Check if a value is not included into a list of values
+Check if a value is not included in a list of values
 
 ```php
 <?php
@@ -810,7 +810,7 @@ $validator->add(
 
 ### File MimeType
 Checks if a value has a correct file mime type
- 
+
 ```php
 <?php
 
@@ -857,9 +857,9 @@ $validator->add(
     )
 );
 ```
- 
+
 ### File Resolution Equal
-Checks if a file has the right resolution
+Check if a file has the right resolution
 
 ```php
 <?php
@@ -900,7 +900,7 @@ $validator->add(
 ```
 
 ### File Resolution Max
-Checks if a file has the right resolution
+Check if a file has the right resolution
 
 ```php
 <?php
@@ -946,7 +946,7 @@ $validator->add(
 ```
 
 ### File Resolution Min
-Checks if a file has the right resolution
+Check if a file has the right resolution
 
 ```php
 <?php
@@ -1153,17 +1153,17 @@ $validator->add(
 $validator->add(
     [
         "terms",
-        "anotherTerms",
+        "otherTerms",
     ],
     new Identical(
         [
             "accepted" => [
                 "terms"        => "yes",
-                "anotherTerms" => "yes",
+                "otherTerms" => "yes",
             ],
             "message" => [
                 "terms"        => "Terms and conditions must be accepted",
-                "anotherTerms" => "Another terms  must be accepted",
+                "otherTerms" => "Other terms must be accepted",
             ],
         ]
     )
@@ -1171,7 +1171,7 @@ $validator->add(
 ```
 
 ### InclusionIn
-Check if a value is included into a list of values
+Check if a value is included in a list of values
 
 ```php
 <?php
@@ -1269,7 +1269,7 @@ $validator->add(
     )
 );
 ```
-   
+
 ### Numericality
 Check for a valid numeric value
 
@@ -1351,7 +1351,7 @@ $validation->add(
 ```
 
 ### StringLength
-Validates that a string has the specified maximum and minimum constraints. The validation passes if for a string length `L`, minimum is less or equal than `L` and `L` is less or equal than the maximum. The boundaries are included in this validation. The formula is:
+Validates that a string has the specified maximum and minimum constraints. The validation passes if for a string length `L`, the minimum is less or equal to `L` and `L` is less or equal to the maximum. The boundaries are included in this validation. The formula is:
 
 ```
 minimum <= string length <= maximum
@@ -1418,7 +1418,7 @@ $validation->add(
 ```
 
 ### StringLength Max
-Validates that a string has the specified maximum constraints. The validation passes if for a string length `L` it is less or equal than the maximum. The formula is:
+Validates that a string has the specified maximum constraints. The validation passes if for a string length `L` it is less or equal to the maximum. The formula is:
 
 ```
 string length <= maximum
@@ -1468,7 +1468,7 @@ $validation->add(
 ```
 
 ### StringLength Min
-Validates that a string has the specified minimum constraints. The validation passes if for a string length `L` it is more or equal than the minimum. The formula is:
+Validates that a string has the specified minimum constraints. The validation passes if for a string length `L` it is more or equal to the minimum. The formula is:
 
 ```
 minimum <= string length 
@@ -1517,7 +1517,7 @@ $validation->add(
 );
 ```
 
-### Uniqueness 
+### Uniqueness
 Check that a field is unique in the related table
 
 ```php
@@ -1540,7 +1540,7 @@ $validator->add(
 );
 ```
 
-Different attribute from the field:
+Different attributes from the field:
 
 ```php
 <?php
@@ -1567,7 +1567,7 @@ $validator->add(
 );
 ```
 
-Combination of fields in model:
+Combination of fields in the model:
 
 ```php
 <?php
@@ -1614,7 +1614,7 @@ $validator->add(
     )
 );
 ```
-Multiple fields with keys (each except will be applied to value it defined by key)
+Multiple fields with keys (each except will be applied to the value defined by the key)
 ```php
 <?php
 
@@ -1660,8 +1660,8 @@ $validator->add(
 );
 ```
 
-### Url      
-Checks if a value has an url format
+### Url
+Checks if a value has a url format
 
 ```php
 <?php
@@ -1675,7 +1675,7 @@ $validator->add(
     "url",
     new Url(
         [
-            "message" => ":field must be a url",
+            "message" => ":field must be a URL",
         ]
     )
 );
@@ -1886,10 +1886,10 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the [filter][filter-filter] component. You can add more filters to this component or use the built-in ones.
+Filtering and sanitizing are performed using the [filter][filter-filter] component. You can add more filters to this component or use the built-in ones.
 
 ## Events
-When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically canceled:
 
 ```php
 <?php
@@ -1931,7 +1931,7 @@ class LoginValidation extends Validation
 ```
 
 ## Cancelling Validations
-By default, all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
+By default, all validators assigned to a field are tested regardless if one of them has failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
 ```php
 <?php
@@ -1988,7 +1988,7 @@ class MyValidator extends Validator
 {
     public function validate(Validation $validator, $attribute)
     {
-        // If the attribute value is name we must stop the chain
+        // If the attribute value is `name` we must stop the chain
         if ($attribute === 'name') {
             $validator->setOption('cancelOnFail', true);
         }
@@ -2084,46 +2084,46 @@ try {
 ```
 
 
-[messages-message]: api/phalcon_messages.md#messages-message
-[messages-messages]: api/phalcon_messages.md#messages-messages
-[validation]: api/phalcon_filter.md#filter-validation
-[validation-abstractcombinedfieldsvalidator]: api/phalcon_filter.md#filter-validation-abstractcombinedfieldsvalidator
-[validation-abstractvalidator]: api/phalcon_filter.md#filter-validation-abstractvalidator
-[validation-abstractvalidatorcomposite]: api/phalcon_filter.md#filter-validation-abstractvalidatorcomposite
-[validation-exception]: api/phalcon_filter.md#filter-validation-exception
-[validation-validationinterface]: api/phalcon_filter.md#filter-validation-validationinterface
-[validation-validator-alnum]: api/phalcon_filter.md#filter-validation-validator-alnum
-[validation-validator-alpha]: api/phalcon_filter.md#filter-validation-validator-alpha
-[validation-validator-between]: api/phalcon_filter.md#filter-validation-validator-between
-[validation-validator-callback]: api/phalcon_filter.md#filter-validation-validator-callback
-[validation-validator-confirmation]: api/phalcon_filter.md#filter-validation-validator-confirmation
-[validation-validator-creditcard]: api/phalcon_filter.md#filter-validation-validator-creditcard
-[validation-validator-date]: api/phalcon_filter.md#filter-validation-validator-date
-[validation-validator-digit]: api/phalcon_filter.md#filter-validation-validator-digit
-[validation-validator-email]: api/phalcon_filter.md#filter-validation-validator-email
-[validation-validator-exception]: api/phalcon_filter.md#filter-validation-validator-exception
-[validation-validator-exclusionin]: api/phalcon_filter.md#filter-validation-validator-exclusionin
-[validation-validator-file]: api/phalcon_filter.md#filter-validation-validator-file
-[validation-validator-file-abstractfile]: api/phalcon_filter.md#filter-validation-validator-file-abstractfile
-[validation-validator-file-mimetype]: api/phalcon_filter.md#filter-validation-validator-file-mimetype
-[validation-validator-file-resolution-equal]: api/phalcon_filter.md#filter-validation-validator-file-resolution-equal
-[validation-validator-file-resolution-max]: api/phalcon_filter.md#filter-validation-validator-file-resolution-max
-[validation-validator-file-resolution-min]: api/phalcon_filter.md#filter-validation-validator-file-resolution-min
-[validation-validator-file-size-equal]: api/phalcon_filter.md#filter-validation-validator-file-size-equal
-[validation-validator-file-size-max]: api/phalcon_filter.md#filter-validation-validator-file-size-max
-[validation-validator-file-size-min]: api/phalcon_filter.md#filter-validation-validator-file-size-min
-[validation-validator-identical]: api/phalcon_filter.md#filter-validation-validator-identical
-[validation-validator-inclusionin]: api/phalcon_filter.md#filter-validation-validator-inclusionin
-[validation-validator-ip]: api/phalcon_filter.md#filter-validation-validator-ip
-[validation-validator-numericality]: api/phalcon_filter.md#filter-validation-validator-numericality
-[validation-validator-presenceof]: api/phalcon_filter.md#filter-validation-validator-presenceof
-[validation-validator-regex]: api/phalcon_filter.md#filter-validation-validator-regex
-[validation-validator-stringlength]: api/phalcon_filter.md#filter-validation-validator-stringlength
-[validation-validator-stringlength-max]: api/phalcon_filter.md#filter-validation-validator-stringlength-max
-[validation-validator-stringlength-min]: api/phalcon_filter.md#filter-validation-validator-stringlength-min
-[validation-validator-uniqueness]: api/phalcon_filter.md#filter-validation-validator-uniqueness
-[validation-validator-url]: api/phalcon_filter.md#filter-validation-validator-url
-[validation-validatorcompositeinterface]: api/phalcon_filter.md#filter-validation-validatorcompositeinterface
-[validation-validatorfactory]: api/phalcon_filter.md#filter-validation-validatorfactory
-[validation-validatorinterface]: api/phalcon_filter.md#filter-validation-validatorinterface
+[messages-message]: api/phalcon_messages.md#messagesmessage-
+[messages-messages]: api/phalcon_messages.md#messagesmessages-
+[validation]: api/phalcon_filter.md#filtervalidation-
+[validation-abstractcombinedfieldsvalidator]: api/phalcon_filter.md#filtervalidationabstractcombinedfieldsvalidator--
+[validation-abstractvalidator]: api/phalcon_filter.md#filtervalidationabstractvalidator--
+[validation-abstractvalidatorcomposite]: api/phalcon_filter.md#filtervalidationabstractvalidatorcomposite--
+[validation-exception]: api/phalcon_filter.md#filtervalidationexception-
+[validation-validationinterface]: api/phalcon_filter.md#filtervalidationvalidationinterface--
+[validation-validator-alnum]: api/phalcon_filter.md#filtervalidationvalidatoralnum-
+[validation-validator-alpha]: api/phalcon_filter.md#filtervalidationvalidatoralpha-
+[validation-validator-between]: api/phalcon_filter.md#filtervalidationvalidatorbetween-
+[validation-validator-callback]: api/phalcon_filter.md#filtervalidationvalidatorcallback-
+[validation-validator-confirmation]: api/phalcon_filter.md#filtervalidationvalidatorconfirmation-
+[validation-validator-creditcard]: api/phalcon_filter.md#filtervalidationvalidatorcreditcard-
+[validation-validator-date]: api/phalcon_filter.md#filtervalidationvalidatordate-
+[validation-validator-digit]: api/phalcon_filter.md#filtervalidationvalidatordigit-
+[validation-validator-email]: api/phalcon_filter.md#filtervalidationvalidatoremail-
+[validation-validator-exception]: api/phalcon_filter.md#filtervalidationvalidatorexception-
+[validation-validator-exclusionin]: api/phalcon_filter.md#filtervalidationvalidatorexclusionin-
+[validation-validator-file]: api/phalcon_filter.md#filtervalidationvalidatorfile-
+[validation-validator-file-abstractfile]: api/phalcon_filter.md#filtervalidationvalidatorfileabstractfile--
+[validation-validator-file-mimetype]: api/phalcon_filter.md#filtervalidationvalidatorfilemimetype-
+[validation-validator-file-resolution-equal]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionequal-
+[validation-validator-file-resolution-max]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionmax-
+[validation-validator-file-resolution-min]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionmin-
+[validation-validator-file-size-equal]: api/phalcon_filter.md#filtervalidationvalidatorfilesizeequal-
+[validation-validator-file-size-max]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemax-
+[validation-validator-file-size-min]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemin-
+[validation-validator-identical]: api/phalcon_filter.md#filtervalidationvalidatoridentical-
+[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin-
+[validation-validator-ip]: api/phalcon_filter.md#filtervalidationvalidatorip-
+[validation-validator-numericality]: api/phalcon_filter.md#filtervalidationvalidatornumericality-
+[validation-validator-presenceof]: api/phalcon_filter.md#filtervalidationvalidatorpresenceof-
+[validation-validator-regex]: api/phalcon_filter.md#filtervalidationvalidatorregex-
+[validation-validator-stringlength]: api/phalcon_filter.md#filtervalidationvalidatorstringlength-
+[validation-validator-stringlength-max]: api/phalcon_filter.md#filtervalidationvalidatorstringlengthmax-
+[validation-validator-stringlength-min]: api/phalcon_filter.md#filtervalidationvalidatorstringlengthmin-
+[validation-validator-uniqueness]: api/phalcon_filter.md#filtervalidationvalidatoruniqueness-
+[validation-validator-url]: api/phalcon_filter.md#filtervalidationvalidatorurl-
+[validation-validatorcompositeinterface]: api/phalcon_filter.md#filtervalidationvalidatorcompositeinterface
+[validation-validatorfactory]: api/phalcon_filter.md#filtervalidationvalidatorfactory
+[validation-validatorinterface]: api/phalcon_filter.md#filtervalidationvalidatorinterface
 [filter-filter]: filter-filter.md

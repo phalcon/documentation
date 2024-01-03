@@ -15,9 +15,9 @@ or by manually adding it to `composer.json`:
 
 ```json
 {
-    "require-dev": {
-        "phpunit/phpunit": "^9.0"
-    }
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  }
 }
 ```
 
@@ -36,11 +36,11 @@ In order to autoload our test directory, we must add our test namespace to compo
 
 ```json
 {
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests"
-        }
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
     }
+  }
 }
 ```
 
@@ -71,7 +71,7 @@ Modify the `phpunit.xml` below to fit your needs and save it in your project roo
 
 ### Phalcon Incubator Test
 
-Phalcon provides a test library that provides few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
+Phalcon provides a test library that provides a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
 
 You can use the Incubator test library by adding it as a dependency:
 
@@ -91,12 +91,12 @@ or by manually adding it to `composer.json`:
 
 ## Creating a Unit Test
 
-It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
+It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files, and phpunit will run the tests for you.
 
-This example does not contain a config file, as most cases you should be mocking your dependencies. If you happen to need one, you can add to the `DI` in the `AbstractUnitTest`.
+This example does not contain a config file, as in most cases you should be mocking your dependencies. If you happen to need one, you can add it to the `DI` in the `AbstractUnitTest`.
 
 ### Abstract Unit Test
-First create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
+First, create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
 
 ```php
 <?php
@@ -139,7 +139,7 @@ abstract class AbstractUnitTest extends UnitTestCase
 
 ### Your First Test
 
-Create the test below and save it in your `tests/Unit` directory.  
+Create the test below and save it in your `tests/Unit` directory.
 
 ```php
 <?php
@@ -180,7 +180,7 @@ If you need to overload the `setUp` method, it is important you call the parent 
 
 ### Running Unit Tests
 
-When you execute `vendor/bin/phpunit` in your command-line, you will get the following output:
+When you execute `vendor/bin/phpunit` in your command line, you will get the following output:
 
 ```bash
 $ phpunit

@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-CLI stands for Command Line Interface. CLI applications are executed from the command line or a shell prompt. One of the benefits of CLI applications is that they do not have a view layer (only potentially echoing output on the screen) and can be run more than one at a time. Some common usages are cron job tasks, manipulation scripts, import data scripts, command utilities, and more.
+CLI stands for Command Line Interface. CLI applications are executed from the command line or a shell prompt. One of the benefits of CLI applications is that they do not have a view layer (only potentially echoing output on the screen) and can be run more than once at a time. Some common usages are cron job tasks, manipulation scripts, import data scripts, command utilities, and more.
 
 ### Structure
 You can create a CLI application in Phalcon, using the `Phalcon\Cli\Console` class. This class extends from the main abstract application class and uses a directory in which the `Task` scripts are located. `Task` scripts are classes that extend `Phalcon\Cli\Task` and contain the code that needs to be executed.
@@ -20,7 +20,7 @@ In the above example, the `cli.php` is the entry point of our application, while
     Each task file and class **must** be suffixed with `Task`. The default task (if no parameters have been passed) is `MainTask`, and the default method to be executed inside a task is `main`
 
 ## Bootstrap
-As seen above, the entry point of our CLI application is the `cli.php`. In that script, we need to bootstrap our application with relevant services, directives, etc. This is similar to the all familiar `index.php` that we use for MVC applications.
+As seen above, the entry point of our CLI application is the `cli.php`. In that script, we need to bootstrap our application with relevant services, directives, etc. This is similar to the all-familiar `index.php` that we use for MVC applications.
 
 ```php
 <?php
@@ -115,7 +115,7 @@ $dispatcher = new Dispatcher();
 $dispatcher->setDefaultNamespace('MyApp\Tasks');
 $container->setShared('dispatcher', $dispatcher);
 ```
-CLI applications need a specific dispatcher. `Phalcon\Cli\Dispatcher` offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace, and then register it in the DI container.
+CLI applications need a specific dispatcher. `Phalcon\Cli\Dispatcher` offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, set our default namespace, and then register it in the DI container.
 
 **Config**
 
@@ -136,7 +136,7 @@ Make sure to update the include path to be relative to where your `cli.php` file
 ```php
 $console = new Console($container);
 ```
-As mentioned above, a CLI application is handled by the `Phalcon\Cli\Console` class. Here we instantiate it and pass in it the DI container.
+As mentioned above, a CLI application is handled by the `Phalcon\Cli\Console` class. Here we instantiate it and pass it to the DI container.
 
 **Arguments**
 
@@ -284,7 +284,7 @@ php cli.php users add 4 5
 
 9
 ```
-Parameters can also be accessed through the `Phalcon\Cli\Dispatcher` which is helpful when passing flags in, or an unknown number of parameters.
+Parameters can also be accessed through the `Phalcon\Cli\Dispatcher` which is helpful when passing flags in or an unknown number of parameters.
 
 ```php
 <?php
@@ -533,19 +533,19 @@ If you are using the [Phalcon\Cli\Dispatcher][cli-dispatcher], you can also leve
 
 These events offer hooks into different stages of the CLI application's lifecycle, enabling you to execute custom logic at specific points in the application flow.
 
-[cli-console]: api/phalcon_cli.md#cli-console
-[cli-console-exception]: api/phalcon_cli.md#cli-console-exception
-[cli-dispatcher]: api/phalcon_cli.md#cli-dispatcher
-[cli-dispatcher-exception]: api/phalcon_cli.md#cli-dispatcher-exception
-[cli-dispatcherinterface]: api/phalcon_cli.md#cli-dispatcherinterface
-[cli-router]: api/phalcon_cli.md#cli-router
-[cli-router-exception]: api/phalcon_cli.md#cli-router-exception
-[cli-router-route]: api/phalcon_cli.md#cli-router-route
-[cli-router-routeinterface]: api/phalcon_cli.md#cli-router-routeinterface
-[cli-routerinterface]: api/phalcon_cli.md#cli-routerinterface
-[cli-task]: api/phalcon_cli.md#cli-task
-[cli-taskinterface]: api/phalcon_cli.md#cli-taskinterface
-[di]: api/phalcon_di.md#di
-[di-factorydefault-cli]: api/phalcon_di.md#di-factorydefault-cli
+[cli-console]: api/phalcon_cli.md#cliconsole-
+[cli-console-exception]: api/phalcon_cli.md#cliconsoleexception-
+[cli-dispatcher]: api/phalcon_cli.md#clidispatcher-
+[cli-dispatcher-exception]: api/phalcon_cli.md#clidispatcherexception-
+[cli-dispatcherinterface]: api/phalcon_cli.md#clidispatcherinterface--
+[cli-router]: api/phalcon_cli.md#clirouter-
+[cli-router-exception]: api/phalcon_cli.md#clirouterexception-
+[cli-router-route]: api/phalcon_cli.md#clirouterroute-
+[cli-router-routeinterface]: api/phalcon_cli.md#clirouterrouteinterface--
+[cli-routerinterface]: api/phalcon_cli.md#clirouterinterface--
+[cli-task]: api/phalcon_cli.md#clitask-
+[cli-taskinterface]: api/phalcon_cli.md#clitaskinterface--
+[di]: api/phalcon_di.md#didi-
+[di-factorydefault-cli]: api/phalcon_di.md#difactorydefaultcli-
 [routing]: routing.md
 [events]: events.md

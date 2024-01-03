@@ -17,7 +17,7 @@ Phalcon provides encryption facilities via the [Phalcon\Encryption\Crypt][crypt]
 
 By default, this component utilizes the `AES-256-CFB` cipher.
 
-The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory, it is not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory, it is not crackable since the combinations of keys are massive. Although the NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
 
 !!! warning "NOTE"
 
@@ -155,13 +155,13 @@ $encrypted = $crypt->decrypt($text, $key);
 The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
 
 ## Base64 Encrypt
-The `encryptBase64()` can be used to encrypt a string in a URL friendly way. It uses `encrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for non URL _friendly_ characters such as `+` or `/`.
+The `encryptBase64()` can be used to encrypt a string in a URL-friendly way. It uses `encrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for non URL _friendly_ characters such as `+` or `/`.
 
 ## Base64 Decrypt
-The `decryptBase64()` can be used to decrypt a string in a URL friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL _friendly_  characters such as `+` or `/`.
+The `decryptBase64()` can be used to decrypt a string in a URL-friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL _friendly_  characters such as `+` or `/`.
 
 ## Exceptions
-Exceptions thrown in the [Phalcon\Encryption\Crypt][crypt] component will be of type [Phalcon\Encryption\Crypt\Exception][config-exception]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Encryption\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Exceptions thrown in the [Phalcon\Encryption\Crypt][crypt] component will be of type [Phalcon\Encryption\Crypt\Exception][config-exception]. If however, you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Encryption\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -190,8 +190,8 @@ The getter `getCipher()` returns the currently selected cipher. If none has been
 You can always get an array of all the available ciphers for your system by calling  `getAvailableCiphers()`.
 
 ### Hash Algorithm
-The getter `getHashAlgo()` returns the hashing algorithm use by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Encryption\Crypt\Exception][crypt=exception] will be thrown.
-   
+The getter `getHashAlgo()` returns the hashing algorithm used by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Encryption\Crypt\Exception][crypt=exception] will be thrown.
+
 You can always get an array of all the available hashing algorithms for your system by calling  `getAvailableHashAlgos()`.
 
 ### Keys
@@ -202,9 +202,9 @@ The component offers a getter and a setter for the key to be used. Once the key 
 
 !!! danger "NOTE"
 
-    You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
+    You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application, you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
 
-    Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security][encryption-security] component, which can offer a strong key by hashing a string.
+    Several online services can generate random and strong text that can be used for a key. Alternatively, you can always use the `hash()` methods from the [Phalcon\Security][encryption-security] component, which can offer a strong key by hashing a string.
 
 ### Signing
 To instruct the component to use signing or not, `useSigning` is available. It accepts a boolean which sets a flag internally, specifying whether signing will be used or not.
@@ -228,7 +228,7 @@ You can also set the padding used by the component by using `setPadding()`. By d
 * `PADDING_ZERO`
 
 ## Dependency Injection
-As with most Phalcon components, you can store the [Phalcon\Encryption\Crypt][crypt] object in your [Phalcon\Di][di] container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+As with most Phalcon components, you can store the [Phalcon\Encryption\Crypt][crypt] object in your [Phalcon\Di][di] container. By doing so, you will be able to access your configuration object from controllers, models, views, and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -373,7 +373,7 @@ Return a list of registered hashing algorithms suitable for `hash_hmac`
 ```php
 public function getHashAlgorithm(): string
 ```
-Get the name of hashing algorithm.
+Get the name of the hashing algorithm.
 
 ```php
 public function getCipher(): string
@@ -417,7 +417,7 @@ public function setKey(string $key): CryptInterface
 ```php
 public function setHashAlgorithm(string $hashAlgorithm): CryptInterface
 ```
-Set the name of hashing algorithm.
+Set the name of the hashing algorithm.
 
 ```php
 public function setPadding(int $scheme): CryptInterface
@@ -442,7 +442,7 @@ The [Phalcon\Encryption\Crypt\PadFactory][pad-factory] is an object that instant
 | `space`    | `Phalcon\Encryption\Crypt\Padding\Space`    |
 | `zero`     | `Phalcon\Encryption\Crypt\Padding\Zero`     |
 
-[Phalcon\Encryption\Crypt\Padding\PadInterface][pad-interface] is also available, should you need to create your own padding strategy. Note that you will need to register the new padding class in the [Phalcon\Encryption\Crypt\PadFactory][pad-factory] and inject it to the constructor of the [Phalcon\Encryption\Crypt][crypt] component.
+[Phalcon\Encryption\Crypt\Padding\PadInterface][pad-interface] is also available, should you need to create your own padding strategy. Note that you will need to register the new padding class in the [Phalcon\Encryption\Crypt\PadFactory][pad-factory] and inject it into the constructor of the [Phalcon\Encryption\Crypt][crypt] component.
 
 ## Links
 
@@ -457,11 +457,11 @@ The [Phalcon\Encryption\Crypt\PadFactory][pad-factory] is an object that instant
 [cipher_methods]: https://www.php.net/manual/en/function.openssl-get-cipher-methods.php
 [openssl]: https://www.php.net/manual/en/book.openssl.php
 [suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
-[crypt]: api/phalcon_encryption.md#crypt
-[crypt-cryptinterface]: api/phalcon_encryption.md#crypt-cryptinterface
-[crypt-exception]: api/phalcon_encryption.md#crypt-exception
-[crypt-mismatch]: api/phalcon_encryption.md#crypt-mismatch
-[pad-factory]: api/phalcon_encryption.md#encryption-crypt-padfactory
-[pad-interface]: api/phalcon_encryption.md#encryption-crypt-padding-padinterface
+[crypt]: api/phalcon_encryption.md#encryptioncrypt-
+[crypt-cryptinterface]: api/phalcon_encryption.md#encryptioncryptcryptinterface--
+[crypt-exception]: api/phalcon_encryption.md#encryptioncryptexceptionexception-
+[crypt-mismatch]: api/phalcon_encryption.md#encryptioncryptexceptionmismatch-
+[pad-factory]: api/phalcon_encryption.md#encryptioncryptpadfactory-
+[pad-interface]: api/phalcon_encryption.md#encryptioncryptpaddingpadinterface--
 [di]: di.md
 [encryption-security]: encryption-security.md

@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-[Phalcon\Support\HelperFactory][support-helper] offers support methods that manipulate arrays, files, JSON, numbers and strings. The factory replaces the `Phalcon\Text` component, offering the same functionality and more.
+[Phalcon\Support\HelperFactory][support-helper] offers support methods that manipulate arrays, files, JSON, numbers, and strings. The factory replaces the `Phalcon\Text` component, offering the same functionality and more.
 
 ```php
 <?php
@@ -12,7 +12,7 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
  ```
 
-The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper class, or calling the helper class directly as a method on the helper factory. The factory acts as a service locator, caching the objects to be reused if need be, in the same request.
+The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper class or by calling the helper class directly as a method on the helper factory. The factory acts as a service locator, caching the objects to be reused if need be, in the same request.
 
 ## Available Classes
 
@@ -235,7 +235,7 @@ var_dump($result);
 `first(array $collection, callable $method = null): mixed`
 
 Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
- 
+
 ```php
 <?php
 
@@ -803,7 +803,7 @@ echo $result; // true
 
 `validateAny(array $collection, callable $method): bool`
 
-Returns `true` if the provided function returns `true` for at least one  element of the collection, `false` otherwise.
+Returns `true` if the provided function returns `true` for at least one element of the collection, `false` otherwise.
 
 ```php
 <?php
@@ -927,7 +927,7 @@ var_dump($result);
 
 Encodes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
 
-The following options are used if none specified for `json_encode`
+The following options are used if none are specified for `json_encode`
 
 - JSON_HEX_TAG
 - JSON_HEX_APOS
@@ -1021,7 +1021,7 @@ echo $result; // '@test.test2.test.34'
 
 `countVowels(string $text): int`
 
-Returns number of vowels in provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string
+Returns the number of vowels in a provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string
 
 ```php
 <?php
@@ -1041,7 +1041,7 @@ echo $result; // 9
 
 `decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
 
-Decapitalizes the first letter of the string and then adds it with rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
+Decapitalizes the first letter of the string and then adds it with the rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
 
 ```php
 <?php
@@ -1185,7 +1185,7 @@ echo $result; // 'custom'
 
 `friendly(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null): string`
 
-Changes a text to a URL friendly one. Replaces commonly known accented characters with their Latin equivalents. If a `replace` string or array is passed, it will also be used to replace those characters with a space.
+Changes a text to a URL-friendly one. Replaces commonly known accented characters with their Latin equivalents. If a `replace` string or array is passed, it will also be used to replace those characters with a space.
 
 ```php
 <?php
@@ -1579,7 +1579,7 @@ echo $result; // 'PhalconFramework'
 
 `ucwords(string $text, string $encoding = 'UTF-8'): string`
 
-Capitalizes the first letter of each word
+Capitalize the first letter of each word
 
 ```php
 <?php
@@ -1655,4 +1655,4 @@ $result = $helper->upper($source);
 echo $result; // 'PHALCON FRAMEWORK'
 ```
 
-[support-helper]: api/phalcon_support.md#support-helperfactory
+[support-helper]: api/phalcon_support.md#supporthelperfactory-

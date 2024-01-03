@@ -1,10 +1,10 @@
-# Escaper 
+# Escaper
 - - -
 
 ## Overview
-Websites and web applications are vulnerable to [XSS][xss] attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Html\Escaper][escaper] provides contextual escaping and is written in [Zephir][zephir], providing the minimal overhead when escaping different kinds of texts.
+Websites and web applications are vulnerable to [XSS][xss] attacks and although PHP provides escaping functionality, in some contexts, it is not sufficient/appropriate. [Phalcon\Html\Escaper][escaper] provides contextual escaping and is written in [Zephir][zephir], providing minimal overhead when escaping different kinds of texts.
 
-We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset. To illustrate how this component works and why it is important, consider the following example:
+We designed this component based on the [XSS (Cross-Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset. To illustrate how this component works and why it is important, consider the following example:
 
 ```php
 <?php
@@ -31,7 +31,7 @@ echo $escaper->js($js);
 ```
 
 ## HTML
-You can escape text prior to printing it to your views using `html()`. Without escaping you could potentially echo unsafe data in your HTML output.
+You can escape text before printing it to your views using `html()`. Without escaping you could potentially echo unsafe data in your HTML output.
 
 ```php
 <?php
@@ -56,7 +56,7 @@ Volt syntax:
 ```
 
 ## HTML Attributes
-Escaping attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric character to a safe format. It uses [htmlspecialchars][htmlspecialchars] internally. This kind of escaping is intended escape excluding complex ones such as `href` or `url`. To escape attributes, you can use the `attributes()` method. This method has been renamed. The old method `escapeHtmlAttr()` will be removed in the future and emits a `@deprecated` warning.
+Escaping attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric character to a safe format. It uses [htmlspecialchars][htmlspecialchars] internally. This kind of escaping is intended escape excluding complex ones such as `href` or `url`. To escape attributes, you can use the `attributes()` method. This method has been renamed. The old method `escapeHtmlAttr()` will be removed in the future and emit a `@deprecated` warning.
 
 The method also accepts an array as a parameter. The keys are the attribute names and the values are attribute values. If a value is boolean (`true`/`false`) then the attribute will have no value:
 
@@ -89,7 +89,7 @@ Volt syntax:
 ```
 
 ## URLs
-`url()` can be used to escape attributes such as `href` or `url`. This method has been renamed. The old method `escapeUrl()` will be removed in the future and emits a `@deprecated` warning.
+`url()` can be used to escape attributes such as `href` or `url`. This method has been renamed. The old method `escapeUrl()` will be removed in the future and emit a `@deprecated` warning.
 
 ```php
 <?php
@@ -229,7 +229,7 @@ $escaper->setDoubleEncode(false);
 ```
 
 ### `setFlags(int $flags)`
-You can set the quote type to be used by the escaper. This method has been renamed. The old method `setHtmlQuoteType()` will be removed in the future and emits a `@deprecated` warning.
+You can set the quote type to be used by the escaper. This method has been renamed. The old method `setHtmlQuoteType()` will be removed in the future and emit a `@deprecated` warning.
 
 The passed variable is one of the constants that [htmlspecialchars][htmlspecialchars] accepts:
 - `ENT_COMPAT`
@@ -241,7 +241,7 @@ The passed variable is one of the constants that [htmlspecialchars][htmlspecialc
 - `ENT_HTML401`
 - `ENT_XML1`
 - `ENT_XHTML`
-- `ENT_HTML5`	
+- `ENT_HTML5`
 
 ```php
 <?php
@@ -359,10 +359,10 @@ class Custom extends EscaperInterface
 }
 ```
 
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[escaper]: api/phalcon_html.md#html-escaper
-[escaper-escaperinterface]: api/phalcon_html.md#html-escaper-escaperinterface
-[escaper-exception]: api/phalcon_html.md#html-escaper-exception
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[escaper]: api/phalcon_html.md#htmlescaper-
+[escaper-escaperinterface]: api/phalcon_html.md#htmlescaperescaperinterface--
+[escaper-exception]: api/phalcon_html.md#htmlescaperexception-
 [zephir]: https://zephir-lang.com
 [htmlspecialchars]: https://www.php.net/manual/en/function.htmlspecialchars.php
 [mb_detect_encoding]: https://www.php.net/manual/en/function.mb-detect-encoding.php

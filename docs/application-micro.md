@@ -54,21 +54,21 @@ public function after(
     callable $handler
 ): Micro
 ```
-Appends an `after` middleware to be called after execute the route
+Appends an `after` middleware to be called after executing the route
 
 ```php
 public function afterBinding(
     callable $handler
 ): Micro
 ```
-Appends a afterBinding middleware to be called after model binding
+Appends an `afterBinding` middleware to be called after model binding
 
 ```php
 public function before(
     callable $handler
 ): Micro
 ```
-Appends a before middleware to be called before execute the route
+Appends a before middleware to be called before executing the route
 
 ```php
 public function delete(
@@ -306,7 +306,7 @@ Defining routes in a [Phalcon\Mvc\Micro][mvc-micro] application is straightforwa
 ```
 
 ### Activation
-Routing is managed by the [Phalcon\Mvc\Router][mvc-router] object. 
+Routing is managed by the [Phalcon\Mvc\Router][mvc-router] object.
 
 !!! warning "NOTE"
 
@@ -378,7 +378,7 @@ Setting up routes using the [Phalcon\Mvc\Micro][mvc-micro] application's HTTP me
 For routes to function correctly, your web server needs specific configurations. Refer to the [webserver setup][webserver-setup] document for detailed information.
 
 ### Handlers
-Handlers are callable pieces of code attached to a route. When the route is matched, the handler executes with all the defined parameters. A handler is any valid PHP `callable`. 
+Handlers are callable pieces of code attached to a route. When the route is matched, the handler executes with all the defined parameters. A handler is any valid PHP `callable`.
 
 #### Registration
 Phalcon offers several ways to attach a handler to a route. The choice depends on your application needs, design, and coding style.
@@ -478,7 +478,7 @@ $app->get(
 
 **Controllers**
 
-For medium applications, which expand on the micro architecture, you can organize handlers in controllers.
+For medium applications, which expand on the microarchitecture, you can organize handlers in controllers.
 
 ```php
 <?php
@@ -746,7 +746,7 @@ $app->mount($products);
 With this simple change, all handlers remain uninstantiated until requested by a caller. Consequently, when a caller requests `/invoices/get/2`, our application instantiates the `InvoicesController` and calls the `get` method. The application now utilizes fewer resources.
 
 #### Extra performance tip
-For large applications, there's no need to mount all collections, even if they are lazy-loaded. Phalcon uses `regex` to match routes, and to speed up the routing process, a _pre-filter_ can be run. For instance:
+For large applications, there's no need to mount all collections, even if they are lazy-loaded. Phalcon uses `regex` to match routes and to speed up the routing process, a _pre-filter_ can be run. For instance:
 
 ```php
 $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
@@ -825,7 +825,7 @@ switch ($collection) {
 }
 ```
 
-This approach allows Phalcon to handle numerous routes without a regex performance penalty. Using `explode()` proves faster than regex. 
+This approach allows Phalcon to handle numerous routes without a regex performance penalty. Using `explode()` proves faster than regex.
 
 #### Not found (404)
 
@@ -848,7 +848,7 @@ $app->notFound(
 );
 ```
 
-Routes that have not been matched (404) can also be handled with Middleware, discussed below.  
+Routes that have not been matched (404) can also be handled with Middleware, discussed below.
 
 ### HTTP methods
 The [Phalcon\Mvc\Micro][mvc-micro] application provides a set of methods to bind the HTTP method with the intended route:
@@ -894,7 +894,7 @@ $app->get(
 
 **map**
 
-Map allows you to attach the same endpoint to more than one HTTP method. The example below matches if the HTTP method is `GET` or `POST` and the route is `/repos/store/refs`
+`map` allows you to attach the same endpoint to more than one HTTP method. The example below matches if the HTTP method is `GET` or `POST` and the route is `/repos/store/refs`
 
 ```php
 <?php
@@ -1130,7 +1130,7 @@ public function setLazy(
     bool $lazy
 ): CollectionInterface
 ```
-Sets if the main handler must be lazy loaded
+Sets if the main handler must be lazy-loaded
 
 ```php
 public function setPrefix(
@@ -1316,7 +1316,7 @@ $app->get(
 
 ## Dependency Injector
 
-When a micro application is created, a [Phalcon\Di\FactoryDefault][di-factorydefault] services container is created automatically. 
+When a micro application is created, a [Phalcon\Di\FactoryDefault][di-factorydefault] services container is created automatically.
 
 ```php
 <?php
@@ -1506,7 +1506,7 @@ $app->get(
 
 ### Return Response
 
-A different approach returning data back to the caller is to return the [Phalcon\Http\Response][http-response] object directly from the application. When responses are returned by handlers, they are automatically sent by the application.
+A different approach to returning data back to the caller is to return the [Phalcon\Http\Response][http-response] object directly from the application. When responses are returned by handlers, they are automatically sent by the application.
 
 ```php
 <?php
@@ -1691,7 +1691,7 @@ The code above executes before every route and returning `false` cancels the rou
 
 `after` Event
 
-This event can be used to manipulate data or perform actions needed after the handler has finished executing. 
+This event can be used to manipulate data or perform actions needed after the handler has finished executing.
 
 ```php
 <?php
@@ -1725,7 +1725,7 @@ In the above example, the handler returns an array of data, and the after event 
 
 `finish` Event
 
-This event fires when the entire request cycle is completed. 
+This event fires when the entire request cycle is completed.
 
 ```php
 <?php
@@ -2322,7 +2322,7 @@ $app->handle(
 );
 ```
 
-Since the Binder object uses PHP's Reflection API internally, which requires additional CPU cycles, there is an option to set a cache to speed up the process. This can be done by using the second argument of `setModelBinder()`, which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
+Since the Binder object uses PHP's Reflection API internally, which requires additional CPU cycles, there is an option to set a cache to speed up the process. This can be done by using the second argument of `setModelBinder()`, which can also accept a service name, or just by passing a cache instance to the `Binder` constructor.
 
 Currently, the binder will only use the model's primary key to perform a `findFirst()`. An example route for the above would be `/invoices/view/1`.
 
@@ -2426,7 +2426,7 @@ try {
 
 ### Error Handling
 
-The [Phalcon\Mvc\Micro][mvc-micro] application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+The [Phalcon\Mvc\Micro][mvc-micro] application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows the basic usage of this feature:
 
 ```php
 <?php
@@ -2458,23 +2458,23 @@ $app->error(
 );
 ```
 
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[events-manager]: api/phalcon_events.md#events-manager
-[http-response]: api/phalcon_http.md#http-response
-[http-responseinterface]: api/phalcon_http.md#http-responseinterface
-[mvc-application]: api/phalcon_mvc.md#mvc-application
-[mvc-application-exception]: api/phalcon_mvc.md#mvc-application-exception
-[mvc-controller]: api/phalcon_mvc.md#mvc-controller
-[mvc-model-binder]: api/phalcon_mvc.md#mvc-model-binder
-[mvc-micro]: api/phalcon_mvc.md#mvc-micro
-[mvc-micro-collection]: api/phalcon_mvc.md#mvc-micro-collection
-[mvc-micro-collectioninterface]: api/phalcon_mvc.md#mvc-micro-collectioninterface
-[mvc-micro-exception]: api/phalcon_mvc.md#mvc-micro-exception
-[mvc-micro-lazyloader]: api/phalcon_mvc.md#mvc-micro-lazyloader
-[mvc-micro-middlewareinterface]: api/phalcon_mvc.md#mvc-micro-middlewareinterface
-[mvc-router]: api/phalcon_mvc.md#mvc-router
-[mvc-view]: api/phalcon_mvc.md#mvc-view
-[mvc-view-simple]: api/phalcon_mvc.md#mvc-view-simple
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[events-manager]: api/phalcon_events.md#eventsmanager-
+[http-response]: api/phalcon_http.md#httpresponse-
+[http-responseinterface]: api/phalcon_http.md#httpresponseinterface--
+[mvc-application]: api/phalcon_mvc.md#mvcapplication-
+[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception-
+[mvc-controller]: api/phalcon_mvc.md#mvccontroller--
+[mvc-model-binder]: api/phalcon_mvc.md#mvcmodelbinder-
+[mvc-micro]: api/phalcon_mvc.md#mvcmicro-
+[mvc-micro-collection]: api/phalcon_mvc.md#mvcmicrocollection-
+[mvc-micro-collectioninterface]: api/phalcon_mvc.md#mvcmicrocollectioninterface--
+[mvc-micro-exception]: api/phalcon_mvc.md#mvcmicroexception-
+[mvc-micro-lazyloader]: api/phalcon_mvc.md#mvcmicrolazyloader-
+[mvc-micro-middlewareinterface]: api/phalcon_mvc.md#mvcmicromiddlewareinterface--
+[mvc-router]: api/phalcon_mvc.md#mvcrouter-
+[mvc-view]: api/phalcon_mvc.md#mvcview-
+[mvc-view-simple]: api/phalcon_mvc.md#mvcviewsimple-
 [psr-15]: https://www.php-fig.org/psr/psr-15/
 [routing]: routing.md
 [webserver-setup]: webserver-setup.md

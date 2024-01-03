@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
+The `Phalcon\Image` namespace exposes an adapter that offers image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
 ## Adapters
 This component uses adapters that offer methods to manipulate images. You can easily create your own adapter using the [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface].
@@ -237,7 +237,7 @@ echo $image->render('jpg', 90);
 ```
 
 ### `resize()`
-Resizes the image based on the passed parameters. The method accepts the following parameters:
+Resize the image based on the passed parameters. The method accepts the following parameters:
 
 | Parameter     | Description                                              |
 |---------------|----------------------------------------------------------|
@@ -293,7 +293,7 @@ $image->save('resize-inverse-image.jpg');
 **NONE**
 
 - The `NONE` constant ignores the original image's ratio.
-- Neither width and height are required.
+- Neither width nor height are required.
 - If a dimension is not specified, the original dimension will be used.
 - If the new proportions differ from the original proportions, the image may be distorted and stretched.
 
@@ -373,7 +373,7 @@ The `save()` method accepts the filename and quality as parameters:
 | `string $file` | the target file name (optional)                    |
 | `int $quality` | the quality of the image (optional - default `-1`) |
 
-If a file name is not specified, the manipulated image will overwrite the original image. 
+If a file name is not specified, the manipulated image will overwrite the original image.
 
 ```php
 <?php
@@ -430,7 +430,7 @@ $image->save('rotate-image.jpg', 90);
 ```
 
 ### `sharpen()`
-Sharpens the image. The passed integer parameter specifies the amount for the sharpen operation. The range is between 0 (no effect) and 100 (very sharp):
+Sharpens the image. The passed integer parameter specifies the amount for the sharpening operation. The range is between 0 (no effect) and 100 (very sharp):
 
 ```php
 <?php
@@ -511,7 +511,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-You can also manipulate the watermarked image before applying it to the main image. In the following example we resize, rotate and sharpen the watermark and put it in the bottom right corner with a 10px margin:
+You can also manipulate the watermarked image before applying it to the main image. In the following example, we resize, rotate, and sharpen the watermark and put it in the bottom right corner with a 10px margin:
 
 ```php
 <?php
@@ -540,12 +540,12 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-## Factory 
+## Factory
 ### `newInstance`
 
 The [Phalcon\Image\ImageFactory][image-imagefactory] offers an easy way to create image adapter objects. There are two adapters already preset for you:
 
-- `gd`- [Phalcon\Image\Adapter\Gd][image-adapter-gd]          
+- `gd`- [Phalcon\Image\Adapter\Gd][image-adapter-gd]
 - `imagick` - [Phalcon\Image\Adapter\Imagick][image-adapter-imagick]
 
 Calling `newInstance()` with the relevant key as well as parameters will return the relevant adapter. The factory always returns a new instance of [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface].
@@ -589,7 +589,7 @@ $image = $factory->load($options);
 ```
 
 ## Exceptions
-Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception][image-exception]. You can use this exception to selectively catch exceptions thrown only from this component. 
+Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception][image-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -732,12 +732,12 @@ class MyImageAdapter implements AdapterInterface
 
 [gd]: https://php.net/manual/en/book.image.php
 [imagick]: https://php.net/manual/en/book.imagick.php
-[image-adapter-abstractadapter]: api/phalcon_image.md#image-adapter-abstractadapter
-[image-adapter-adapterinterface]: api/phalcon_image.md#image-adapter-adapterinterface
-[image-adapter-gd]: api/phalcon_image.md#image-adapter-gd
-[image-adapter-imagick]: api/phalcon_image.md#image-adapter-imagick
-[image-enum]: api/phalcon_image.md#image-enum
-[image-exception]: api/phalcon_image.md#image-exception
-[image-imagefactory]: api/phalcon_image.md#image-imagefactory
-[imagick-liquidrescale]: https://www.php.net/manual/en/imagick.liquidrescaleimage.php 
+[image-adapter-abstractadapter]: api/phalcon_image.md#imageadapterabstractadapter--
+[image-adapter-adapterinterface]: api/phalcon_image.md#imageadapteradapterinterface--
+[image-adapter-gd]: api/phalcon_image.md#imageadaptergd-
+[image-adapter-imagick]: api/phalcon_image.md#imageadapterimagick-
+[image-enum]: api/phalcon_image.md#imageenum-
+[image-exception]: api/phalcon_image.md#imageexception-
+[image-imagefactory]: api/phalcon_image.md#imageimagefactory-
+[imagick-liquidrescale]: https://www.php.net/manual/en/imagick.liquidrescaleimage.php
 [config]: config.md

@@ -213,7 +213,7 @@ return $result;
 ```
 
 ### Memory
-[Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes, while developing your application.
+[Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes while developing your application.
 
 ```php
 <?php

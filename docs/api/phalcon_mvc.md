@@ -3600,10 +3600,11 @@ public function columns( mixed $columns ): CriteriaInterface;
 ```
 
 Sets the columns to be queried. The columns can be either a `string` or
-an `array` of strings. The string can specify one or more columns,
-separated by commas, the same way that one uses the SQL select statement.
-You can use aliases, aggregate functions, etc. If you need to reference
-other models you will need to reference them with their namespaces.
+an `array` of strings. If the argument is a (single, non-embedded) string, 
+its content can specify one or more columns, separated by commas, the same 
+way that one uses the SQL select statement. You can use aliases, aggregate 
+functions, etc. If you need to reference other models you will need to 
+reference them with their namespaces.
 
 When using an array as a parameter, you will need to specify one field
 per array element. If a non-numeric key is defined in the array, it will
@@ -7209,10 +7210,11 @@ public function columns( mixed $columns ): BuilderInterface;
 ```
 
 Sets the columns to be queried. The columns can be either a `string` or
-an `array` of strings. The string can specify one or more columns,
-separated by commas, the same way that one uses the SQL select statement.
-You can use aliases, aggregate functions, etc. If you need to reference
-other models you will need to reference them with their namespaces.
+an `array` of strings. If the argument is a (single, non-embedded) string,
+its content can specify one or more columns, separated by commas, the same
+way that one uses the SQL select statement. You can use aliases, aggregate
+functions, etc. If you need to reference other models you will need to
+reference them with their namespaces.
 
 When using an array as a parameter, you will need to specify one field
 per array element. If a non-numeric key is defined in the array, it will

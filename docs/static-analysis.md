@@ -15,9 +15,9 @@ or by manually adding it to `composer.json`:
 
 ```json
 {
-    "require-dev": {
-        "vimeo/psalm": "^4.7"
-    }
+  "require-dev": {
+    "vimeo/psalm": "^4.7"
+  }
 }
 ```
 
@@ -35,15 +35,15 @@ or by manually adding it to `composer.json`:
 
 ```json
 {
-    "require-dev": {
-        "phalcon/ide-stubs": ",^v5.0"
-    }
+  "require-dev": {
+    "phalcon/ide-stubs": ",^v5.0"
+  }
 }
 ```
 
 ## Initializing Psalm
 
-Run the command `vendor/bin/psalm --init` in the root of your project to initialize Psalm. Psalm will create a default project configuration file called `psalm.xml` at the root of your project. 
+Run the command `vendor/bin/psalm --init` in the root of your project to initialize Psalm. Psalm will create a default project configuration file called `psalm.xml` at the root of your project.
 
 ### Sample Configuration with Phalcon Stubs
 
@@ -54,13 +54,13 @@ If you find that you need to stub additional Phalcon components, add them to the
 ```xml
 <?xml version="1.0"?>
 <psalm
-    name="Phalcon - Psalm Config"
-    totallyTyped="true"
-    errorLevel="3"
-    resolveFromConfigFile="true"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="https://getpsalm.org/schema/config"
-    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        name="Phalcon - Psalm Config"
+        totallyTyped="true"
+        errorLevel="3"
+        resolveFromConfigFile="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
     <stubs>
         <file name="vendor/phalcon/ide-stubs/src/Phalcon/Di/Injectable.php" />
@@ -96,7 +96,7 @@ If you find that you need to stub additional Phalcon components, add them to the
 
 ### Running Psalm
 
-When you execute `vendor/bin/psalm` in your command-line, you will a get similar output depending on your errors:
+When you execute `vendor/bin/psalm` in your command line, you will a get similar output depending on your errors:
 
 ```bash
 Scanning files...
