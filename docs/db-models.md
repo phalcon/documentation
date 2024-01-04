@@ -1020,10 +1020,11 @@ echo 'SUM [Customer: 1] ', $total, PHP_EOL;
 
 ```php
 public function toArray(
-    array $columns = null
+    array $columns = null,
+    bool $useGetters = true
 ): array
 ```
-Returns the instance as an array representation. Accepts an array with column names to include in the result
+Returns the instance as an array representation. Accepts an array with column names to include in the result, it will use getters by default.
 
 ```php
 <?php
@@ -1059,6 +1060,60 @@ print_r(
 //      'inv_status_flag' = 1,
 //      'inv_title'       = 'Invoice for ACME Inc.',
 //      'inv_total'       = 100,
+//  ]
+
+```
+
+`toArray` uses getters by default, to disable this behavior, set `$useGetters` to `false`
+
+```php
+<?php
+
+use MyApp\Models\InvoicesGetters;
+
+$invoice = InvoicesGetters::findFirst('inv_id = 4');
+
+print_r(
+    $invoice->inv_title
+);
+
+// 'Invoice for ACME Inc.'
+
+
+print_r(
+    $invoice->getInvTitle()
+);
+
+// 'Invoice for ACME Inc. - Status 1'
+
+print_r(
+    $invoice->toArray()
+);
+
+//  [
+//      'inv_id'          => 4,
+//      'inv_cst_id'      = $customer->cst_id,
+//      'inv_status_flag' = 1,
+//      'inv_title'       = 'Invoice for ACME Inc. - Status 1' ,
+//      'inv_total'       = 100,
+//      'inv_created_at'  = '2019-12-25 01:02:03',
+//  ]
+
+print_r(
+    $invoice->toArray(
+        null,
+        false
+    )
+);
+
+
+//  [
+//      'inv_id'          => 4,
+//      'inv_cst_id'      = $customer->cst_id,
+//      'inv_status_flag' = 1,
+//      'inv_title'       = 'Invoice for ACME Inc.' ,
+//      'inv_total'       = 100,
+//      'inv_created_at'  = '2019-12-25 01:02:03',
 //  ]
 ```
 
