@@ -2054,6 +2054,53 @@ public function reset(): void;
 ```
 Resets the internal store
 
+```php
+public function resetColumns();
+```
+Resets the `columns`
+
+
+```php
+public function resetFrom();
+```
+Resets the `from`
+
+
+```php
+public function resetWhere();
+```
+Resets the `wheew`
+
+
+```php
+public function resetGroupBy();
+```
+Resets the `groupBy`
+
+
+```php
+public function resetHaving();
+```
+Resets the `having`
+
+
+```php
+public function resetOrderBy();
+```
+Resets the `orderBy`
+
+
+```php
+public function resetLimit();
+```
+Resets the `limit` and `offset`
+
+
+```php
+public function resetFlags();
+```
+Resets the `flags`
+
 
 ```php
 public function returning( array $columns ): Update;

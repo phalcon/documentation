@@ -3956,13 +3956,15 @@ $container->setShared(
 ```
 
 ## Invalid parameter number
-In v5, the parameters used to instantiate PDO have changed. More specifically the `PDO::ATTR_EMULATE_PREPARES` now defaults to `false`. As a result, you might encounter the following message in your code, when a bound parameter is used more than once in a query:
+In v5.6, the parameters used to instantiate PDO have reverted to the default settings. Therefore, `PDO::ATTR_EMULATE_PREPARES` defaults to `true`.
+
+However, if you encounter the following message in your code, when a bound parameter is used more than once in a query:
 
 !!! warning "Error"
 
     Invalid parameter number
 
-You can change the name of the parameters, or you can change the `PDO::ATTR_EMULATE_PREPARES` to `true`, when registering your database provider.
+You can check the PDO parameters and ensure that `PDO::ATTR_EMULATE_PREPARES` is set to `true`, when registering your database provider.
 
 ## Stand-Alone Component
 You can use [Phalcon\Mvc\Model][mvc-model] on its own, performing the necessary setup on your own if you wish. The example below demonstrates how you can achieve that.

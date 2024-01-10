@@ -2633,9 +2633,9 @@ echo "The total price of mechanical robots is  ", $sum, "\n";
 
 
 ```php
-public function toArray( mixed $columns = null ): array;
+public function toArray( mixed $columns = null, bool $useGetter = true ): array;
 ```
-Returns the instance as an array representation
+Returns the instance as an array representation. By default, it will take into account getters, when constructing the resulting array. If the second parameter is set to `false`, getter methods for properties will be ignored.
 
 ```php
 print_r(
