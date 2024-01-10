@@ -79,13 +79,18 @@ hide:
         <td class="version-td-right">7.4-8.2</td>
     </tr>
     <tr>
-        <td class="version-td-center previous-version">5.4</td>
+        <td class="version-td-center">5.4</td>
         <td class="version-td-center">Ocrober 25, 2023</td>
         <td class="version-td-right">7.4-8.2</td>
     </tr>
     <tr>
-        <td class="version-td-center current-version">5.5</td>
+        <td class="version-td-center previous-version">5.5</td>
         <td class="version-td-center">December 25, 2023</td>
+        <td class="version-td-right">8.0-8.3</td>
+    </tr>
+    <tr>
+        <td class="version-td-center current-version">5.6</td>
+        <td class="version-td-center">January 01, 2024</td>
         <td class="version-td-right">8.0-8.3</td>
     </tr>
     </tbody>
