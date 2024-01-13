@@ -6,7 +6,7 @@
     The `Phalcon\Autoload\Loader` class has been renamed `Phalcon\Autoload\Loader`. The functionality remains the same.
 
 ## Overview
-[Phalcon\Autoload\Loader][loader] is an autoloader that implements [PSR-4][psr-4]. Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace, etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
+[Phalcon\Autoload\Loader][loader] is an autoloader that implements [PSR-4][psr-4]. Just like any autoloader, depending on its setup, it will try to find the files your code is looking for based on file, class, namespace, etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
 
 ![](assets/images/implements-psr--4-blue.svg)
 
@@ -15,7 +15,7 @@ This component relies on PHP's [autoloading classes][autoloading] capability. If
 The component offers options for loading files based on their class, file name, directories on your file system as well as file extensions.
 
 ## Registration
-Usually, we would use the [spl_autoload_register()][spl-autoload-register] to register a custom autoloader for our application. [Phalcon\Autoload\Loader][loader] hides this complexity. After you define all your namespaces, classes, directories, and files you will need to call the `register()` function, and the autoloader is ready to be used.
+Usually, we would use the [spl_autoload_register()][spl-autoload-register] to register a custom autoloader for our application. [Phalcon\Autoload\Loader][loader] hides this complexity. After you define all your namespaces, classes, directories and files you will need to call the `register()` function, and the autoloader is ready to be used.
 
 ```php
 <?php
@@ -115,7 +115,7 @@ if (class_exists($className)) {
 }
 ```
 
-In the above snippet, if `../processes/important-process.php` is a valid file, that could have been uploaded by a hacker or from a not-so-careful upload process, then an external user could execute the code without any authorization and subsequently get access to the whole application if not the server.
+In the above snippet, if `../processes/important-process.php` is a valid file, that could have been uploaded by a hacker or from a not-so-careful upload process, then an external user could execute the code without any authorization and subsequently get access to the application if not the server.
 
 To avoid most of these kinds of attacks, [Phalcon\Autoload\Loader][loader] removes invalid characters from the class name.
 
@@ -339,7 +339,7 @@ Another way to let [Phalcon\Autoload\Loader][loader] know where your application
 
 The `setDirectories()` method accepts an array with each element being a directory in the file system containing the files that will be required by the application.
 
-This type of registration is not recommended in terms of performance. Additionally, the order of declared directories matters, since the autoloader tries to locate the files by searching directories sequentially. As a result, the directory that contains the most referenced files should be declared first, etc.
+This type of registration is not recommended for performance. Additionally, the order of declared directories matters, since the autoloader tries to locate the files by searching directories sequentially. As a result, the directory that contains the most referenced files should be declared first, etc.
 
 ```php
 <?php
@@ -640,7 +640,7 @@ Get the path the loader is checking for a path
 ```php
 public function getClasses(): array
 ```
-Returns the class map currently registered in the autoloader
+Returns the class map registered in the autoloader
 
 ```php
 public function getDebug(): array
@@ -650,7 +650,7 @@ Returns debug information collected
 ```php
 public function getDirectories(): array
 ```
-Returns the directories currently registered in the autoloader
+Returns the directories registered in the autoloader
 
 ```php
 public function getExtensions(): array
@@ -660,7 +660,7 @@ Returns the file extensions registered in the loader
 ```php
 public function getFiles(): array
 ```
-Returns the files currently registered in the autoloader
+Returns the files registered in the autoloader
 
 ```php
 public function getFoundPath(): string | null
@@ -670,7 +670,7 @@ Get the path when a class was found
 ```php
 public function getNamespaces(): array
 ```
-Returns the namespaces currently registered in the autoloader
+Returns the namespaces registered in the autoloader
 
 ```php
 public function loadFiles(): void
@@ -719,7 +719,7 @@ public function setFiles(
     bool $merge = false
 ): Loader
 ```
-Register files that are "non-classes" and hence need a "require". This is very useful for including files that only have functions
+Register files that are "non-classes" and hence need a "require". This is useful for including files that only have functions
 
 ```php
 public function setNamespaces(
