@@ -18,7 +18,7 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
 ```text
 .
 └── tutorial
-    ├── app
+    ├── src
     │   ├── controllers
     │   │   ├── IndexController.php
     │   │   └── SignupController.php
