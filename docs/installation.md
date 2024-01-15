@@ -101,6 +101,10 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
     The preferred method of installation is through [PECL][install-pecl].
 
+!!! warning "NOTE"
+
+    To install phalcon with PECL you will need at least 4GB of RAM, otherwise the PECL build command will fail. 
+
 ### PECL
 The PECL installation method is available for Windows, Linux, and macOS. Under Windows pre-compiled dll files are available, while under Linux and macOS, Phalcon will be compiled locally. To install Phalcon using PECL make sure you have [pecl/pear][install-pecl] installed.
 ```
