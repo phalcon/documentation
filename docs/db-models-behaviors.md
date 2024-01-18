@@ -201,6 +201,10 @@ mysql> select * from co_invoices;
 
     You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
 
+!!! warning "NOTE"
+
+    Adding this behaviour to a model prevents its _afterDelete_ event from being triggered, since the record isn't actually deleted.
+
 ## Custom
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] or extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior] which exposes most of the methods required for implementing custom behaviors.
 
