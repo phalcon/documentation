@@ -203,7 +203,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
     public function saveAction()
     {
         // Forwards flow to the index action
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 "controller" => "people",
                 "action"     => "index",
