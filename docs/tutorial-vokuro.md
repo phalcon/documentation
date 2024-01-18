@@ -1146,7 +1146,7 @@ class SessionController extends ControllerBase
                 );
 
                 if ($user->save()) {
-                    return $this->dispatcher->forward([
+                    $this->dispatcher->forward([
                         'controller' => 'index',
                         'action'     => 'index',
                     ]);
@@ -1212,7 +1212,7 @@ $user = new Users(
 );
 
 if ($user->save()) {
-    return $this
+    $this
         ->dispatcher
         ->forward(
             [

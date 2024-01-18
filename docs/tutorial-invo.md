@@ -430,7 +430,7 @@ If the user is not found, we forward them to the login page with a `Wrong email/
 ```php
 <?php
 
-return $this->dispatcher->forward(
+$this->dispatcher->forward(
     [
         'controller' => 'session',
         'action'     => 'index',
@@ -1120,7 +1120,7 @@ if (count($products) === 0) {
         'The search did not find any products'
     );
 
-    return $this->dispatcher->forward(
+    $this->dispatcher->forward(
         [
             'controller' => 'products',
             'action'     => 'index',
@@ -1405,7 +1405,7 @@ In the creation case, we get the data submitted and assign them to a new `Produc
 public function createAction()
 {
     if (true !== $this->request->isPost()) {
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 'controller' => 'products',
                 'action'     => 'index',
@@ -1493,7 +1493,7 @@ if (true !== $form->isValid($data, $product)) {
         $this->flash->error($message->getMessage());
     }
 
-    return $this->dispatcher->forward(
+    $this->dispatcher->forward(
         [
             'controller' => 'products',
             'action'     => 'new',
@@ -1518,7 +1518,7 @@ if ($product->save() === false) {
         $this->flash->error($message->getMessage());
     }
 
-    return $this->dispatcher->forward(
+    $this->dispatcher->forward(
         [
             'controller' => 'products',
             'action'     => 'new',
@@ -1532,7 +1532,7 @@ $this->flash->success(
     'Product was created successfully'
 );
 
-return $this->dispatcher->forward(
+$this->dispatcher->forward(
     [
         'controller' => 'products',
         'action'     => 'index',
@@ -1557,7 +1557,7 @@ public function editAction($id)
                 'Product was not found'
             );
 
-            return $this->dispatcher->forward(
+            $this->dispatcher->forward(
                 [
                     'controller' => 'products',
                     'action'     => 'index',
@@ -1583,7 +1583,7 @@ The data found is bound to the form by passing the model as the first parameter.
 public function saveAction()
 {
     if (true !== $this->request->isPost()) {
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 'controller' => 'products',
                 'action'     => 'index',
@@ -1599,7 +1599,7 @@ public function saveAction()
             'Product does not exist'
         );
 
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 'controller' => 'products',
                 'action'     => 'index',
@@ -1617,7 +1617,7 @@ public function saveAction()
             $this->flash->error($message->getMessage());
         }
 
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 'controller' => 'products',
                 'action'     => 'new',
@@ -1632,7 +1632,7 @@ public function saveAction()
             $this->flash->error($message->getMessage());
         }
 
-        return $this->dispatcher->forward(
+        $this->dispatcher->forward(
             [
                 'controller' => 'products',
                 'action'     => 'new',
@@ -1646,7 +1646,7 @@ public function saveAction()
         'Product was updated successfully'
     );
 
-    return $this->dispatcher->forward(
+    $this->dispatcher->forward(
         [
             'controller' => 'products',
             'action'     => 'index',
