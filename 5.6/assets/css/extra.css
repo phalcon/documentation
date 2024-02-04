@@ -47,6 +47,10 @@
     color: #00bda4 !important;
 }
 
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active {
+    color: #00bda4 !important;
+}
+
 /* Releases page table */
 .version-th-center, .version-td-center {
     text-align: center;
