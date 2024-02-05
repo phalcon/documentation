@@ -31,6 +31,14 @@
     background-color: #FEF8C6;
 }
 
+[data-md-color-scheme="slate"] .md-typeset a {
+    color: #00bda4 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active {
+    color: #00bda4 !important;
+}
+
 .legend {
     padding-left: 0.3em;
     white-space: nowrap;
