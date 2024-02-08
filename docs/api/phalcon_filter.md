@@ -1165,7 +1165,7 @@ public function setValidators( array $validators ): Validation;
 
 
 ```php
-public function validate( mixed $data = null, mixed $entity = null ): Messages;
+public function validate( mixed $data = null, mixed $entity = null ): Messages | bool;
 ```
 Validate a set of data according to a set of rules
 
@@ -1517,7 +1517,7 @@ Adds labels for fields
 
 
 ```php
-public function validate( mixed $data = null, mixed $entity = null ): Messages;
+public function validate( mixed $data = null, mixed $entity = null ): Messages | bool;
 ```
 Validate a set of data according to a set of rules
 

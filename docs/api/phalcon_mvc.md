@@ -2671,8 +2671,8 @@ $invoice->update();
 
 !!! warning "NOTE"
 
-    When retrieving the record with `findFirst()`, you need to get the full 
-    object back (no `columns` definition) but also retrieve it using the 
+    When retrieving the record with `findFirst()`, you need to get the full
+    object back (no `columns` definition) but also retrieve it using the
     primary key. If not, the ORM will issue an `INSERT` instead of `UPDATE`.
 
 
@@ -3510,19 +3510,19 @@ Sets cache instance
     - `CriteriaInterface`
     - `InjectionAwareInterface`
 
-Phalcon\Mvc\Model\Criteria
-
 This class is used to build the array parameter required by
 Phalcon\Mvc\Model::find() and Phalcon\Mvc\Model::findFirst() using an
 object-oriented interface.
 
 ```php
-$robots = Robots::query()
-    ->where("type = :type:")
-    ->andWhere("year < 2000")
-    ->bind(["type" => "mechanical"])
+<?php
+
+$invoices = Invoices::query()
+    ->where("inv_cst_id = :customerId:")
+    ->andWhere("inv_created_date < '2000-01-01'")
+    ->bind(["customerId" => 1])
     ->limit(5, 10)
-    ->orderBy("name")
+    ->orderBy("inv_title")
     ->execute();
 ```
 
@@ -3598,12 +3598,11 @@ This method replaces all previously set cache options
 ```php
 public function columns( mixed $columns ): CriteriaInterface;
 ```
-
 Sets the columns to be queried. The columns can be either a `string` or
-an `array` of strings. If the argument is a (single, non-embedded) string, 
-its content can specify one or more columns, separated by commas, the same 
-way that one uses the SQL select statement. You can use aliases, aggregate 
-functions, etc. If you need to reference other models you will need to 
+an `array` of strings. If the argument is a (single, non-embedded) string,
+its content can specify one or more columns, separated by commas, the same
+way that one uses the SQL select statement. You can use aliases, aggregate
+functions, etc. If you need to reference other models you will need to
 reference them with their namespaces.
 
 When using an array as a parameter, you will need to specify one field
@@ -3655,10 +3654,11 @@ public function createBuilder(): BuilderInterface;
 ```
 Creates a query builder from criteria.
 
-```php
-$builder = Robots::query()
-    ->where("type = :type:")
-    ->bind(["type" => "mechanical"])
+<?php
+
+$invoices = Invoices::query()
+    ->where("inv_cst_id = :customerId:")
+    ->bind(["customerId" => 1])
     ->createBuilder();
 ```
 
@@ -3779,19 +3779,21 @@ public function innerJoin( string $model, mixed $conditions = null, mixed $alias
 Adds an INNER join to the query
 
 ```php
+<?php
+
 $criteria->innerJoin(
-    Robots::class
+    Invoices::class
 );
 
 $criteria->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id"
+    Invoices::class,
+    "inv_cst_id = Customers.cst_id"
 );
 
 $criteria->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
-    "r"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -3802,25 +3804,27 @@ public function join( string $model, mixed $conditions = null, mixed $alias = nu
 Adds an INNER join to the query
 
 ```php
+<?php
+
 $criteria->join(
-    Robots::class
+    Invoices::class
 );
 
 $criteria->join(
-    Robots::class,
-    "r.id = RobotsParts.robots_id"
+    Invoices::class,
+    "inv_cst_id = Customers.cst_id"
 );
 
 $criteria->join(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
-    "r"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 
 $criteria->join(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
-    "r",
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i",
     "LEFT"
 );
 ```
@@ -3832,10 +3836,12 @@ public function leftJoin( string $model, mixed $conditions = null, mixed $alias 
 Adds a LEFT join to the query
 
 ```php
+<?php
+
 $criteria->leftJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
-    "r"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -3890,10 +3896,12 @@ public function rightJoin( string $model, mixed $conditions = null, mixed $alias
 Adds a RIGHT join to the query
 
 ```php
+<?php
+
 $criteria->rightJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
-    "r"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -7208,7 +7216,6 @@ $builder->betweenWhere("price", 100.25, 200.50);
 ```php
 public function columns( mixed $columns ): BuilderInterface;
 ```
-
 Sets the columns to be queried. The columns can be either a `string` or
 an `array` of strings. If the argument is a (single, non-embedded) string,
 its content can specify one or more columns, separated by commas, the same
@@ -7227,7 +7234,7 @@ be used as the alias in the query
 $builder->columns("id, category");
 
 // Array, one column per element
-$criteria->columns(
+$builder->columns(
     [
         "inv_id",
         "inv_total",
@@ -7766,14 +7773,15 @@ Appends a BETWEEN condition to the current conditions
 public function columns( mixed $columns ): BuilderInterface;
 ```
 Sets the columns to be queried. The columns can be either a `string` or
-an `array`. The string can specify one or more columns, separated by
-commas, the same way that one uses the SQL select statement. You can
-use aliases, aggregate functions etc. If you need to reference other
-models you will need to reference them with their namespaces.
+an `array` of strings. If the argument is a (single, non-embedded) string,
+its content can specify one or more columns, separated by commas, the same
+way that one uses the SQL select statement. You can use aliases, aggregate
+functions, etc. If you need to reference other models you will need to
+reference them with their namespaces.
 
 When using an array as a parameter, you will need to specify one field
-per element. If a key is defined in our array, it will be used as the
-alias in the query
+per array element. If a non-numeric key is defined in the array, it will
+be used as the alias in the query
 
 ```php
 <?php
@@ -7806,7 +7814,6 @@ $builder->columns(
     ]
 );
 ```
-
 
 
 ```php
@@ -8690,10 +8697,10 @@ Sets the object's state
 
 Phalcon\Mvc\Model\Resultset
 
-This component allows to `Phalcon\Mvc\Model` returns large resultsets with the minimum memory consumption
+This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption
 Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized
-it will dump all the rows into a big array, serialize it and return the resulting string. Then 
-`unserialize` will retrieve the rows as they were before serializing.
+it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before
+serializing.
 
 ```php
 
@@ -13769,6 +13776,7 @@ use Phalcon\Mvc\View\Engine\Volt\Compiler;
 $compiler = new Compiler();
 
 // {% set a = ['first': 1] %}
+
 $source = [
     "type" => 306,
     "assignments" => [
@@ -13807,7 +13815,6 @@ $source = [
 echo $compiler->compileSet($source);
 // <?php $a = ['first' => 1]; ?>
 ```
-
 
 
 ```php

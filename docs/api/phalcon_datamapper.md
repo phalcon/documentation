@@ -1497,9 +1497,57 @@ Quotes the identifier
 
 
 ```php
-public function reset();
+public function reset(): void;
 ```
 Resets the internal array
+
+
+```php
+public function resetColumns(): void;
+```
+Resets the columns
+
+
+```php
+public function resetFlags(): void;
+```
+Resets the flags
+
+
+```php
+public function resetFrom(): void;
+```
+Resets the from
+
+
+```php
+public function resetGroupBy(): void;
+```
+Resets the group by
+
+
+```php
+public function resetHaving(): void;
+```
+Resets the having
+
+
+```php
+public function resetLimit(): void;
+```
+Resets the limit and offset
+
+
+```php
+public function resetOrderBy(): void;
+```
+Resets the order by
+
+
+```php
+public function resetWhere(): void;
+```
+Resets the where
 
 
 ```php
@@ -1957,7 +2005,7 @@ Sets a `OR` for a `HAVING` condition
 
 
 ```php
-public function reset(): Select;
+public function reset(): void;
 ```
 Resets the internal collections
 
@@ -2054,53 +2102,6 @@ public function reset(): void;
 ```
 Resets the internal store
 
-```php
-public function resetColumns();
-```
-Resets the `columns`
-
-
-```php
-public function resetFrom();
-```
-Resets the `from`
-
-
-```php
-public function resetWhere();
-```
-Resets the `wheew`
-
-
-```php
-public function resetGroupBy();
-```
-Resets the `groupBy`
-
-
-```php
-public function resetHaving();
-```
-Resets the `having`
-
-
-```php
-public function resetOrderBy();
-```
-Resets the `orderBy`
-
-
-```php
-public function resetLimit();
-```
-Resets the `limit` and `offset`
-
-
-```php
-public function resetFlags();
-```
-Resets the `flags`
-
 
 ```php
 public function returning( array $columns ): Update;
@@ -2112,3 +2113,5 @@ Adds the `RETURNING` clause
 public function set( string $column, mixed $value = null ): Update;
 ```
 Sets a column = value condition
+
+

@@ -9,78 +9,6 @@ hide:
 
 
 
-## Db\AbstractDb ![Abstract](../assets/images/abstract-green.svg) 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/AbstractDb.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Db`
-
--   __Uses__
-    
-    - `\PDO`
-
--   __Extends__
-    
-
--   __Implements__
-    
-
-Phalcon\Db and its related classes provide a simple SQL database interface
-for Phalcon Framework. The Phalcon\Db is the basic class you use to connect
-your PHP application to an RDBMS. There is a different adapter class for each
-brand of RDBMS.
-
-This component is intended to lower level database operations. If you want to
-interact with databases using higher level of abstraction use
-Phalcon\Mvc\Model.
-
-Phalcon\Db\AbstractDb is an abstract class. You only can use it with a
-database adapter like Phalcon\Db\Adapter\Pdo
-
-```php
-use Phalcon\Db;
-use Phalcon\Db\Exception;
-use Phalcon\Db\Adapter\Pdo\Mysql as MysqlConnection;
-
-try {
-    $connection = new MysqlConnection(
-        [
-            "host"     => "192.168.0.11",
-            "username" => "sigma",
-            "password" => "secret",
-            "dbname"   => "blog",
-            "port"     => "3306",
-        ]
-    );
-
-    $result = $connection->query(
-        "SELECTFROM robots LIMIT 5"
-    );
-
-    $result->setFetchMode(Enum::FETCH_NUM);
-
-    while ($robot = $result->fetch()) {
-        print_r($robot);
-    }
-} catch (Exception $e) {
-    echo $e->getMessage(), PHP_EOL;
-}
-```
-
-
-### Methods
-
-```php
-public static function setup( array $options ): void;
-```
-Enables/disables options in the Database component
-
-
-
-
 ## Db\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Adapter/AbstractAdapter.zep)
@@ -112,7 +40,49 @@ Enables/disables options in the Database component
     - `AdapterInterface`
     - `EventsAwareInterface`
 
-Base class for Phalcon\Db\Adapter adapters
+Base class for Phalcon\Db\Adapter adapters.
+
+This class and its related classes provide a simple SQL database interface
+for Phalcon Framework. The Phalcon\Db is the basic class you use to connect
+your PHP application to an RDBMS. There is a different adapter class for each
+brand of RDBMS.
+
+This component is intended to lower level database operations. If you want to
+interact with databases using higher level of abstraction use
+Phalcon\Mvc\Model.
+
+Phalcon\Db\AbstractDb is an abstract class. You only can use it with a
+database adapter like Phalcon\Db\Adapter\Pdo
+
+```php
+use Phalcon\Db;
+use Phalcon\Db\Exception;
+use Phalcon\Db\Adapter\Pdo\Mysql as MysqlConnection;
+
+try {
+    $connection = new MysqlConnection(
+        [
+            "host"     => "192.168.0.11",
+            "username" => "sigma",
+            "password" => "secret",
+            "dbname"   => "blog",
+            "port"     => "3306",
+        ]
+    );
+
+    $result = $connection->query(
+        "SELECTFROM co_invoices LIMIT 5"
+    );
+
+    $result->setFetchMode(Enum::FETCH_NUM);
+
+    while ($invoice = $result->fetch()) {
+        print_r($invoice);
+    }
+} catch (Exception $e) {
+    echo $e->getMessage(), PHP_EOL;
+}
+```
 
 
 ### Properties
@@ -667,6 +637,12 @@ Sets the event manager
 public function setNestedTransactionsWithSavepoints( bool $nestedTransactionsWithSavepoints ): AdapterInterface;
 ```
 Set if nested transactions should use savepoints
+
+
+```php
+public static function setup( array $options ): void;
+```
+Enables/disables options in the Database component
 
 
 ```php
@@ -1691,12 +1667,6 @@ protected $type = mysql;
 ```
 
 ### Methods
-
-```php
-public function __construct( array $descriptor );
-```
-Constructor for Phalcon\Db\Adapter\Pdo
-
 
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;

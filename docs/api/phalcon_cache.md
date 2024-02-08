@@ -91,13 +91,13 @@ Deletes multiple cache items in a single operation.
 
 
 ```php
-protected function doGet( string $key, mixed $defaultValue = null );
+protected function doGet( string $key, mixed $defaultValue = null ): mixed;
 ```
 Fetches a value from the cache.
 
 
 ```php
-protected function doGetMultiple( mixed $keys, mixed $defaultValue = null );
+protected function doGetMultiple( mixed $keys, mixed $defaultValue = null ): array;
 ```
 Obtains multiple cache items by their unique keys.
 

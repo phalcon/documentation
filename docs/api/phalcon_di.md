@@ -262,7 +262,7 @@ return [
 ];
 ```
 
-@link https://docs.phalcon.io/en/latest/reference/di.html
+@link https://docs.phalcon.io/latest/di/
 
 
 ```php
@@ -298,7 +298,7 @@ user:
    className: \Acme\User
 ```
 
-@link https://docs.phalcon.io/en/latest/reference/di.html
+@link https://docs.phalcon.io/latest/di/
 
 
 ```php

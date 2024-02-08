@@ -1793,10 +1793,6 @@ protected $type = search;
 
 Class Select
 
-@property string $elementTag
-@property bool   $inOptGroup
-@property string $selected
-
 
 ### Properties
 ```php

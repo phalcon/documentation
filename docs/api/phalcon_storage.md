@@ -430,7 +430,7 @@ protected function doGet( string $key );
 
 
 ```php
-protected function phpApcuDec( mixed $key, int $step = int, mixed $success = null, int $ttl = int ): bool | int;
+protected function phpApcuDec( mixed $key, int $step = int ): bool | int;
 ```
 @todo Remove the below once we get traits
 
@@ -448,13 +448,13 @@ protected function phpApcuExists( mixed $key ): bool | array;
 
 
 ```php
-protected function phpApcuFetch( mixed $key, mixed $success = null ): mixed;
+protected function phpApcuFetch( mixed $key ): mixed;
 ```
 
 
 
 ```php
-protected function phpApcuInc( mixed $key, int $step = int, mixed $success = null, int $ttl = int ): bool | int;
+protected function phpApcuInc( mixed $key, int $step = int ): bool | int;
 ```
 
 

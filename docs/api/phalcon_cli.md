@@ -546,13 +546,13 @@ Handles routing information received from command-line arguments
 
 
 ```php
-public function setDefaultAction( string $actionName );
+public function setDefaultAction( string $actionName ): Router;
 ```
 Sets the default action name
 
 
 ```php
-public function setDefaultModule( string $moduleName );
+public function setDefaultModule( string $moduleName ): Router;
 ```
 Sets the name of the default module
 
