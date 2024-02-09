@@ -39,6 +39,14 @@
     color: #00bda4 !important;
 }
 
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+    color: #02d3b8 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active:hover {
+    color: #02d3b8 !important;
+}
+
 .legend {
     padding-left: 0.3em;
     white-space: nowrap;
