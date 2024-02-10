@@ -1,0 +1,73 @@
+:root {
+    --md-primary-fg-color:        #273646;
+    --md-primary-fg-color--light: #374c62;
+    --md-primary-fg-color--dark: #1c2631;
+}
+
+.phalcon-blog__sponsors-items img {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.phalcon-blog__sponsors-items img {
+    margin-bottom: 0;
+}
+
+.phalcon-blog__sponsors-items a:hover {
+    border-bottom-color: #273646;
+}
+
+.version-th-center, .version-td-center {
+    text-align: center;
+}
+.version-th-right, .version-td-right {
+    text-align: right;
+}
+.current-version {
+    background-color: #D4F4B4;
+}
+.previous-version {
+    background-color: #FEF8C6;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a {
+    color: #00bda4 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active {
+    color: #00bda4 !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+    color: #02d3b8 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active:hover {
+    color: #02d3b8 !important;
+}
+
+.legend {
+    padding-left: 0.3em;
+    white-space: nowrap;
+}
+
+.legend-old-version {
+    border-left: 1.2em solid #FDB3AB;
+}
+
+.legend-old-version-supported {
+    border-left: 1.2em solid #FEF8C6;
+}
+
+.legend-latest {
+    border-left: 1.2em solid #D4F4B4;
+}
+
+.legend-preview {
+    border-left: 1.2em solid #FED1A0;
+}
+
+.legend-future {
+    border-left: 1.2em solid #C1E6F5;
+}
