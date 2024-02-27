@@ -82,7 +82,7 @@ class InvoicesController extends Controller
 {
     public function initialize()
     {
-        $this->tag->setTitle('Invoices Management');
+        $this->tag->title()->set('Invoices Management');
     }
 
     public function listAction(int $page = 1, int $perPage = 25)
