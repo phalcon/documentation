@@ -42,7 +42,7 @@ You will only need to substitute the values in `<>` with the respective values f
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
 
 $host     = '127.0.0.1';
 $database = 'phalon_test';
@@ -546,7 +546,7 @@ The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] can
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
 use Phalcon\DataMapper\Profiler\MemoryLogger;
 use Phalcon\DataMapper\Profiler\Profiler;
 
@@ -627,17 +627,708 @@ The parameters available are:
 
 ## Query
 ### Factory
-### Delete
-### Insert
-### Select
+The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick and easy creation of query objects, whether this is `select`, `insert`, `update` or `delete. The methods exposed by the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection], binding the resulting object with the connection.  
 
-#### Activation
-To instantiate a `Phalcon\DataMapper\Query\Select` builder, you can use the `Phalcon\DataMapper\Query\QueryFactory` with a `Phalcon\DataMapper\Connection`.
+#### Methods
+
+```php
+public function __construct(string selectClass = "")
+```
+QueryFactory constructor. Optionally accepts the name of a class that can be used for `Select` statements. By default, it is [Phalcon\DataMapper\Query\Select][datamapper-query-select].
+
+```php
+public function newBind(): Bind
+```
+Create a new Bind object
+
+```php
+public function newDelete(Connection $connection): Delete
+```
+Create a new Delete object
+
+```php
+public function newInsert(Connection $connection): Insert
+```
+Create a new Insert object
+
+```php
+public function newSelect(Connection $connection): Select
+```
+Create a new Select object
+
+```php
+public function newUpdate(Connection $connection): Update
+```
+Create a new Update object
+
 
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
+use Phalcon\DataMapper\Query\QueryFactory;
+
+$host     = '127.0.0.1';
+$database = 'phalon_test';
+$charset  = 'utf8mb4';
+$port     = 3306;
+$username = 'phalcon';
+$password = 'secret';
+
+$dsn = sprintf(
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
+);
+
+$connection = new Connection($dsn, $username, $password);
+$factory    = new QueryFactory();
+$select     = $factory->newSelect($connection);
+```
+
+### Delete
+
+#### Methods
+
+
+```php
+public function __construct(Connection $connection, Bind $bind)
+```
+Delete constructor.
+
+```php
+public function andWhere(
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
+): Delete
+```
+Sets a `AND` for a `WHERE` condition
+
+```php
+public function appendWhere(
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
+): Delete
+```
+Concatenates to the most recent `WHERE` clause
+
+```php
+public function bindInline(mixed $value, int $type = -1): string
+```
+Binds a value inline
+
+```php
+public function bindValue(string key, mixed $value, int $type = -1): Delete
+```
+Binds a value - auto-detects the type if necessary
+
+```php
+public function bindValues(array values): Delete
+```
+Binds an array of values
+
+```php
+public function from(string table): Delete
+```
+Adds table(s) in the query
+
+```php
+public function getBindValues(): array
+```
+Returns all the bound values
+
+```php
+public function getStatement(): string
+```
+@return string
+
+```php
+public function limit(int $limit): Delete
+```
+Sets the `LIMIT` clause
+
+```php
+public function offset(int $offset): Delete
+```
+Sets the `OFFSET` clause
+
+```php
+public function orderBy(var $orderBy): Delete
+```
+Sets the `ORDER BY`
+
+```php
+public function orWhere(
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
+): Delete
+```
+Sets a `OR` for a `WHERE` condition
+
+```php
+public function perform()
+```
+Performs a statement in the connection
+
+```php
+public function quoteIdentifier(
+    string $name, 
+    int $type = \PDO::PARAM_STR
+): string 
+```
+Quotes the identifier
+
+```php
+public function reset(): Delete
+```
+Resets the internal array
+
+```php
+public function resetColumns(): Delete
+```
+Resets the columns
+
+```php
+public function resetFlags(): Delete
+```
+Resets the flags
+
+```php
+public function resetFrom(): Delete
+```
+Resets the from
+
+```php
+public function resetGroupBy(): Delete
+```
+Resets the group by
+
+```php
+public function resetHaving(): Delete
+```
+Resets the having
+
+```php
+public function resetLimit(): Delete
+```
+Resets the limit and offset
+
+```php
+public function resetOrderBy(): Delete
+```
+Resets the order by
+
+```php
+public function resetWhere(): Delete
+```
+Resets the where
+
+```php
+public function returning(array $columns): Delete
+```
+Adds the `RETURNING` clause
+
+```php
+public function setFlag(string $flag, bool $enable = true): void
+```
+Sets a flag for the query such as "DISTINCT"
+
+```php
+public function where(
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
+): Delete
+```
+Sets a `WHERE` condition
+
+```php
+public function whereEquals(array $columnsValues): Delete
+```
+sw
+
+```php
+protected function addCondition(
+    string $store, 
+    string $andor, 
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
+): void 
+```
+Appends a conditional
+
+```php
+protected function appendCondition(
+    string $store, 
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
+): void 
+```
+Concatenates a conditional
+
+```php
+protected function buildBy(string $type): string
+```
+Builds a `BY` list
+
+```php
+protected function buildCondition(string $type): string
+```
+Builds the conditional string
+
+```php
+protected function buildFlags()
+```
+Builds the flags statement(s)
+
+```php
+protected function buildLimitEarly(): string
+```
+Builds the early `LIMIT` clause - MS SQLServer
+
+```php
+protected function buildLimit(): string
+```
+Builds the `LIMIT` clause
+
+```php
+protected function buildLimitCommon(): string
+```
+Builds the `LIMIT` clause for all drivers
+
+```php
+protected function buildLimitSqlsrv(): string
+```
+Builds the `LIMIT` clause for MSSQLServer
+
+```php
+protected function buildReturning(): string
+```
+Builds the `RETURNING` clause
+
+```php
+protected function indent(array $collection, string $glue = ""): string
+```
+Indents a collection
+
+```php
+protected function processValue(string $store, mixed $data): void
+```
+Processes a value (array or string) and merges it with the store
+
+
+
+
+1.2.7. DELETE
+1.2.7.1. Building The Statement
+1.2.7.1.1. FROM
+Use the from() method to specify FROM expression.
+
+$delete->from('foo');
+1.2.7.1.2. WHERE
+(All WHERE methods support implicit and sprintf() inline value binding.)
+
+The Delete WHERE methods work just like their equivalent Select methods:
+
+where() and andWhere() AND a WHERE condition
+orWhere() ORs a WHERE condition
+catWhere() concatenates onto the end of the most-recent WHERE condition
+whereSprintf() and andWhereSprintf() AND a WHERE condition with sprintf()
+orWhereSprintf() ORs a WHERE condition with sprintf()
+catWhereSprintf() concatenates onto the end of the most-recent WHERE condition with sprintf()
+1.2.7.1.3. ORDER BY
+Some databases (notably MySQL) recognize an ORDER BY clause. You can add one to the Delete with the orderBy() method; pass each expression as a variadic argument.
+
+// DELETE ... ORDER BY foo, bar, baz
+$delete
+->orderBy('foo')
+->orderBy('bar', 'baz');
+1.2.7.1.4. LIMIT and OFFSET
+Some databases (notably MySQL and SQLite) recognize a LIMIT clause; others (notably SQLite) recognize an additional OFFSET. You can add these to the Delete with the limit() and offset() methods:
+
+// LIMIT 10 OFFSET 40
+$delete
+->limit(10)
+->offset(40);
+1.2.7.1.5. RETURNING
+Some databases (notably PostgreSQL) recognize a RETURNING clause. You can add one to the Delete using the returning() method, specifying columns as variadic arguments.
+
+// DELETE ... RETURNING foo, bar, baz
+$delete
+->returning('foo')
+->returning('bar', 'baz');
+1.2.7.1.6. Flags
+You can set flags recognized by your database server using the setFlag() method. For example, you can set a MySQL LOW_PRIORITY flag like so:
+
+// DELETE LOW_PRIORITY foo WHERE baz = :_1_1_
+$delete
+->from('foo')
+->where('baz = ', $baz_value)
+->setFlag('LOW_PRIORITY');
+
+
+
+
+
+### Insert
+
+#### Methods
+
+```php
+public function __construct(Connection $connection, Bind $bind)
+```
+Insert constructor.
+
+```php
+public function bindInline(mixed $value, int $type = -1): string
+```
+Binds a value inline
+
+```php
+public function bindValue(string $key, mixed $value, int $type = -1): Insert
+```
+Binds a value - auto-detects the type if necessary
+
+```php
+public function bindValues(array $values): Insert
+```
+Binds an array of values
+
+```php
+public function column(string $column, mixed $value = null, int $type = -1): Insert
+```
+Sets a column for the `INSERT` query
+
+```php
+public function columns(array $columns): Insert
+```
+Mass sets columns and values for the `INSERT`
+
+```php
+public function getBindValues(): array
+```
+Returns all the bound values
+
+```php
+public function getLastInsertId(string $name = null): string
+```
+Returns the id of the last inserted record
+
+```php
+public function getStatement(): string
+```
+Returns the statement produced
+
+```php
+public function into(string $table): Insert
+```
+Adds table(s) in the query
+
+```php
+public function perform()
+```
+Performs a statement in the connection
+
+```php
+public function quoteIdentifier(string $name, int $type = \PDO::PARAM_STR): string {
+```
+Quotes the identifier
+
+```php
+public function reset(): Insert
+```
+Resets the internal array
+
+```php
+public function resetColumns(): Insert
+```
+Resets the `columns`
+
+```php
+public function resetFlags(): Insert
+```
+Resets the `flags`
+
+```php
+public function resetFrom(): Insert
+```
+Resets the `from`
+
+```php
+public function resetGroupBy(): Insert
+```
+Resets the `group by`
+
+```php
+public function resetHaving(): Insert
+```
+Resets the `having`
+
+```php
+public function resetLimit(): Insert
+```
+Resets the `limit` and `offset`
+
+```php
+public function resetOrderBy(): Insert
+```
+Resets the `order by`
+
+```php
+public function resetWhere(): Insert
+```
+Resets the `where`
+
+```php
+public function returning(array $columns): Insert
+```
+Adds the `RETURNING` clause
+
+```php
+public function set(string $column, mixed $value = null): Insert
+```
+Sets a `column = value` condition
+
+```php
+public function setFlag(string $flag, bool $enable = true): void
+```
+Sets a flag for the query such as `DISTINCT`
+
+```php
+protected function buildFlags()
+```
+Builds the flags statement(s)
+
+```php
+protected function buildReturning(): string
+```
+Builds the `RETURNING` clause
+
+```php
+protected function indent(array $collection, string $glue = ""): string
+```
+Indents a collection
+
+
+#### Activation
+To instantiate a [Phalcon\DataMapper\Query\Insert][datamapper-query-insert] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
+
+```php
+<?php
+
+use Phalcon\DataMapper\Pdo\Connection;
+use Phalcon\DataMapper\Query\QueryFactory;
+
+$host     = '127.0.0.1';
+$database = 'phalon_test';
+$charset  = 'utf8mb4';
+$port     = 3306;
+$username = 'phalcon';
+$password = 'secret';
+
+$dsn = sprintf(
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
+);
+
+$connection = new Connection($dsn, $username, $password);
+$factory    = new QueryFactory();
+$insert     = $factory->newInsert($connection);
+```
+
+#### Build
+
+The `into()` method is used to specify the table to insert data to.
+
+```php
+$insert->into('co_invoices');
+```
+
+##### Columns
+You can use the `column()` method to specify a column and its bound value. The last optional parameter is the bind type used by `PDO`. This is set automatically for `string`, `integer`, `float` and `null` values.
+
+```php
+$insert
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
+;
+// INSERT INTO co_invoices (inv_total) VALUES (:inv_total)
+```
+
+The `columns()` method returns the object back, thus offering a fluent interface:
+
+```php
+$insert
+    ->into('co_invoices')
+    ->column('inv_cst_id', 2)
+    ->column('inv_total', 100.12);
+    ->column('inv_status_flag', 0, PDO::PARAM_BOOL)
+;
+// INSERT INTO co_invoices (
+//      inv_cst_id,
+//      inv_total,
+//      inv_status_flag
+// ) VALUES (
+//      :inv_cst_id,
+//      :inv_total,
+//      :inv_status_flag
+// )
+```
+
+You can also use the `columns()` method which accepts an array of elements. If the key is a `string` it is considered the field name, and its value will be the value of the field. Alternatively, for an array element with a numeric key, the value of that element will be the field name.
+
+```php
+$insert
+    ->into('co_invoices')
+    ->columns(
+        [
+            'inv_cst_id', 
+            'inv_total' => 100.12
+        ]
+    )
+;
+// INSERT INTO co_invoices (
+//      inv_cst_id,
+//      inv_total
+// ) VALUES (
+//      :inv_cst_id,
+//      :inv_total
+// )
+```
+
+!!! info "NOTE"
+
+    When using the `columns()` method, you cannot define the `PDO` type of each field/value pair.
+
+##### Values
+Bound values are automatically quoted and escaped. There are however cases, where we need to set a specific value to a field without it being escaped. A common example is to utilize the `NOW()` keyword assigned to a date field. For that purpose, we can use the `set()` method.
+
+```php
+$insert
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
+    ->set('inv_created_date', 'NOW()')
+;
+// INSERT INTO co_invoices (
+//      inv_total,
+//      inv_created_date
+// ) VALUES (
+//      :inv_total,
+//      NOW()
+// )
+```
+
+##### Statement
+The object can return the constructed statement by calling the `getStatement()` method.
+
+```php
+$insert
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
+    ->set('inv_created_date', 'NOW()')
+;
+
+echo $insert->getStatement();
+// INSERT INTO co_invoices (
+//      inv_total,
+//      inv_created_date
+// ) VALUES (
+//      :inv_total,
+//      NOW()
+// )
+```
+
+##### Returning
+Some databases (notably PostgreSQL) recognize a `RETURNING` clause. You can use the `returning()` method to do so, passing an array of fields to be returned.
+
+```php
+$insert
+    ->into('co_invoices')
+    ->columns(
+        [
+            'inv_cst_id', 
+            'inv_total' => 100.12
+        ]
+    )
+    ->set('inv_id', null)
+    ->set('inv_status_flag', 1)
+    ->set('inv_created_date', 'NOW()')
+    ->columns(
+        [
+            'inv_cst_id' => 1
+        ]
+    )
+    ->returning(
+        [
+            'inv_id', 
+            'inv_cst_id'
+        ]
+    )
+    ->returning(
+        [
+            'inv_total'
+        ]
+    )
+    ->set('inv_created_date', 'NOW()')
+;
+
+echo $insert->getStatement();
+// INSERT INTO co_invoices (
+//      inv_cst_id, 
+//      inv_total, 
+//      inv_id, 
+//      inv_status_flag, 
+//      inv_created_date
+// ) VALUES (
+//      :inv_cst_id, 
+//      :inv_total, 
+//      NULL, 
+//      1, 
+//      NOW()
+// ) 
+// RETURNING inv_id, inv_cst_id, inv_total
+```
+
+##### Flags
+You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `LOW_PRIORITY` flag as follows:
+
+```php
+$insert
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
+    ->set('inv_created_date', 'NOW()')
+    ->setFlag('LOW_PRIORITY')
+;
+
+echo $insert->getStatement();
+// INSERT LOW_PRIORITY INTO co_invoices (
+//      inv_total,
+//      inv_created_date
+// ) VALUES (
+//      :inv_total,
+//      NOW()
+// )
+```
+
+### Select
+
+#### Activation
+To instantiate a [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
+
+```php
+<?php
+
+use Phalcon\DataMapper\Pdo\Connection;
 use Phalcon\DataMapper\Query\QueryFactory;
 
 $host     = '127.0.0.1';
@@ -1075,7 +1766,7 @@ $select
 
     The method accepts an optional boolean parameter to enable (`true`) or disable (`false`) the flag.
 
-##### Additional Flags
+##### Flags
 
 You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `HIGH_PRIORITY` flag like so:
 
@@ -1126,6 +1817,16 @@ $select
 #### Reset
 The `Select` class exposes the `reset()` method, that allows you to reset the object to its original state and reuse it (e.g., to re-issue a statement to get a `COUNT(*)` without a `LIMIT`, to find the total number of rows to be paginated over).
 
+Additionally, the following methods allow you to reset specific areas of the query:
+
+- `resetColumns()` - Resets the `columns`
+- `resetFrom()` - Resets the `from`
+- `resetWhere()` - Resets the `where`
+- `resetGroupBy()` - Resets the `group by`
+- `resetHaving()` - Resets the `having`
+- `resetOrderBy()` - Resets the `order by`
+- `resetLimit()` - Resets the `limit` and `offset`
+- `resetFlags()` - Resets the `flags`
 
 #### Subselect Objects
 If you want to create a subselect, call the `subSelect()` method. When you are done building the subselect, give it an alias using the `asAlias()` method; the object itself can be used in the desired condition or expression.
