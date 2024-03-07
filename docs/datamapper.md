@@ -42,7 +42,7 @@ You will only need to substitute the values in `<>` with the respective values f
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
 
 $host     = '127.0.0.1';
 $database = 'phalon_test';
@@ -546,7 +546,7 @@ The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] can
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
 use Phalcon\DataMapper\Profiler\MemoryLogger;
 use Phalcon\DataMapper\Profiler\Profiler;
 
@@ -627,7 +627,7 @@ The parameters available are:
 
 ## Query
 ### Factory
-The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick and easy creation of query objects, whether this is `select`, `insert`, `update` or `delete. The methods exposed by the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept a [Phalcon\DataMapper\Connection][datamapper-pdo-connection], binding the resulting object with the connection.  
+The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick and easy creation of query objects, whether this is `select`, `insert`, `update` or `delete. The methods exposed by the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection], binding the resulting object with the connection.  
 
 #### Methods
 
@@ -665,7 +665,7 @@ Create a new Update object
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
 use Phalcon\DataMapper\Query\QueryFactory;
 
 $host     = '127.0.0.1';
@@ -1118,12 +1118,12 @@ Indents a collection
 
 
 #### Activation
-To instantiate a [Phalcon\DataMapper\Query\Insert][datamapper-query-insert] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Connection][datamapper-pdo-connection].
+To instantiate a [Phalcon\DataMapper\Query\Insert][datamapper-query-insert] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
 
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
 use Phalcon\DataMapper\Query\QueryFactory;
 
 $host     = '127.0.0.1';
@@ -1323,12 +1323,12 @@ echo $insert->getStatement();
 ### Select
 
 #### Activation
-To instantiate a [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Connection][datamapper-pdo-connection].
+To instantiate a [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
 
 ```php
 <?php
 
-use Phalcon\DataMapper\Connection;
+use Phalcon\DataMapper\Pdo\Connection;
 use Phalcon\DataMapper\Query\QueryFactory;
 
 $host     = '127.0.0.1';
