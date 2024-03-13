@@ -69,7 +69,7 @@ theme:
     text: Titillium Web
     code: Source Code Pro
   favicon: assets/images/favicon.ico
-  logo: https://assets.phalcon.io/phalcon/images/svg/phalcon-logo-white-105x40.svg
+  logo: https://assets.phalcon.io/phalcon/images/svg/phalcon-logo-35x39.svg
 
 # Plugins
 plugins:
