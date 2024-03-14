@@ -20,9 +20,11 @@ hide:
 
 -   __Uses__
     
+    - `stdClass`
 
 -   __Extends__
     
+    `stdClass`
 
 -   __Implements__
     
