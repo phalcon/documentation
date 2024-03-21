@@ -216,6 +216,28 @@ echo $url->get(
 
 The above will produce `/portal/invoices/edit/1`.
 
+If you pass additional parameters as a second argument in the array, these key/value pairs will be automatically added to the generated URL's query string:
+
+```php
+<?php
+
+use Phalcon\Mvc\Url;
+
+$url = new Url();
+
+echo $url->get(
+    [
+        'for' => 'invoices-edit',
+        'id'  => 1,
+    ], [
+        'is_paymented' => 'true',
+        'some_key'     => 'some_value'
+    ]
+);
+
+// /portal/invoices/edit/1?is_paymented=true&some_key=some_value
+```
+
 ### mod_rewrite
 For developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Mvc\Url][url] offers the necessary functionality to replace `mod_rewrite`. This is especially useful if the target system does not have the module installed, or you cannot install it yourself.
 
