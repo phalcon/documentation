@@ -98,3 +98,8 @@
 .legend-future {
     border-left: 1.2em solid #c1e6f5;
 }
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+    height: 2rem !important;
+}
