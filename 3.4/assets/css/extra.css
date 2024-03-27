@@ -33,3 +33,8 @@
 [data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active:hover {
     color: #02d3b8 !important;
 }
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+    height: 2rem !important;
+}
