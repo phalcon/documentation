@@ -76,8 +76,3 @@
 .md-header__button.md-logo svg {
     height: 2rem !important;
 }
-
-.md-header__button.md-logo img,
-.md-header__button.md-logo svg {
-    height: 2rem !important;
-}
