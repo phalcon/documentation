@@ -3,4 +3,4 @@ For those that wish to sponsor our work and further the development of Phalcon, 
 
 # Sponsors and Supporters
 
-{% include sponsors.html %}
+{!assets/sponsors.md!}
