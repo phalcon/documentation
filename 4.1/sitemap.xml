@@ -665,4 +665,9 @@
          <lastmod>2024-04-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://docs.phalcon.io/4.1/assets/sponsors/</loc>
+         <lastmod>2024-04-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
