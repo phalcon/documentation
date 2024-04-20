@@ -993,8 +993,8 @@ In the view:
 ```php
 <?php
 
-echo $element->renderDecorated('nameLast');
-echo $element->renderDecorated('nameFirst');
+echo $form->renderDecorated('nameLast');
+echo $form->renderDecorated('nameFirst');
 ```
 
 ## Events
