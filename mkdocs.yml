@@ -2430,8 +2430,8 @@ markdown_extensions:
   - admonition
   - attr_list
   - footnotes
-  - markdown_include.include:
-      base_path: docs
+#  - markdown_include.include:
+#      base_path: docs
   - md_in_html
   - pymdownx.inlinehilite
   - pymdownx.snippets
