@@ -2,672 +2,667 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.phalcon.io/4.1/acl/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/annotations/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/application-cli/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/application-micro/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/application/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/assets/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/cache/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/coding-standard/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/collection/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/config/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/container/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/contributions/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/controllers/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/crypt/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-layer/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-migrations/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models-behaviors/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models-cache/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models-events/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models-metadata/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models-relationships/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models-transactions/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models-validation/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-models/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-odm/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/db-phql/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/debug/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/devtools/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/di/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/dispatcher/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/domain/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/environments-devilbox/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/environments-nanobox/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/escaper/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/events/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/filter/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/flash/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/forms/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/generating-backtrace/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/helper/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/html-link/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/html/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/http-factories/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/http-request/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/http-response/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/http-server-request/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/http-stream/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/http-uploaded-file/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/http-uri/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/i18n/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/image/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/installation/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/introduction/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/loader/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/logger/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/mvc/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/namespaces/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/new-feature-request-list/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/new-feature-request/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/new-pull-request/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/pagination/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/performance/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/queue/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/registry/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/reproducible-tests/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/request/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/response/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/routing/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/security-jwt/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/security/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/session/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/sponsors/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/static-analysis/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/tag/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/testing-environment/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/translate/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/tutorial-basic/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/tutorial-invo/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/tutorial-rest-advanced/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/tutorial-rest/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/tutorial-vokuro/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/unit-testing/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/upgrade/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/url/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/use-case/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/validation/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/views/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/volt/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/webserver-setup/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_acl/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_annotations/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_application/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_assets/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_cache/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_cli/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_collection/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_config/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_container/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_crypt/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_datamapper/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_db/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_debug/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_di/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_dispatcher/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_domain/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_escaper/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_events/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_exception/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_factory/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_filter/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_flash/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_forms/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_helper/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_html/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_http/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_image/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_kernel/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_loader/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_logger/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_messages/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_mvc/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_paginator/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_registry/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_security/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_session/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_storage/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_tag/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_text/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_translate/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_url/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_validation/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.phalcon.io/4.1/api/phalcon_version/</loc>
-         <lastmod>2024-04-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://docs.phalcon.io/4.1/assets/sponsors/</loc>
-         <lastmod>2024-04-21</lastmod>
+         <lastmod>2024-04-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
