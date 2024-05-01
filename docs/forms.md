@@ -662,6 +662,11 @@ class Preferences
 ```
 For the above entity class, the `getReceiveEmails` and `getTimezone` methods will be used instead of the `receiveEmails` and `timezone` properties.
 
+!!! warning "NOTE"
+
+    The default behavior of `Phalcon\Forms\Form::bind()` is to bind all form fields to the Model. To only bind the 
+    fields that exist in the model, set `phalcon.form.strict_entity_property_check` value to `1`. 
+
 
 ## Elements
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
