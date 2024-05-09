@@ -2230,3 +2230,4 @@ nav:
       - Security:
           - Cryptography: crypt.md
           - Security: security.md
+  - Blog: https://blog.phalcon.io/
