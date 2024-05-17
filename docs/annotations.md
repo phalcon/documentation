@@ -519,16 +519,16 @@ class Invoices extends BaseController
 ## Additional Resources
 * [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalcon.io/post/tutorial-creating-a-custom-models-initializer)
 
-[annotations-adapter-abstractadapter]: api/phalcon_annotations.md#annotations-adapter-abstractadapter
-[annotations-adapter-adapterinterface]: api/phalcon_annotations.md#annotations-adapter-adapterinterface
-[annotations-adapter-apcu]: api/phalcon_annotations.md#annotations-adapter-apcu
-[annotations-adapter-memory]: api/phalcon_annotations.md#annotations-adapter-memory
-[annotations-adapter-stream]: api/phalcon_annotations.md#annotations-adapter-stream
-[annotations-annotation]: api/phalcon_annotations.md#annotations-annotation
-[annotations-annotationsfactory]: api/phalcon_annotations.md#annotations-annotationsfactory
-[annotations-collection]: api/phalcon_annotations.md#annotations-collection
-[annotations-exception]: api/phalcon_annotations.md#annotations-exception
-[annotations-reader]: api/phalcon_annotations.md#annotations-reader
-[annotations-readerinterface]: api/phalcon_annotations.md#annotations-readerinterface
-[annotations-reflection]: api/phalcon_annotations.md#annotations-reflection
+[annotations-adapter-abstractadapter]: api/phalcon_annotations.md#annotationsadapterabstractadapter
+[annotations-adapter-adapterinterface]: api/phalcon_annotations.md#annotationsadapteradapterinterface
+[annotations-adapter-apcu]: api/phalcon_annotations.md#annotationsadapterapcu
+[annotations-adapter-memory]: api/phalcon_annotations.md#annotationsadaptermemory
+[annotations-adapter-stream]: api/phalcon_annotations.md#annotationsadapterstream
+[annotations-annotation]: api/phalcon_annotations.md#annotationsannotation
+[annotations-annotationsfactory]: api/phalcon_annotations.md#annotationsannotationsfactory
+[annotations-collection]: api/phalcon_annotations.md#annotationscollection
+[annotations-exception]: api/phalcon_annotations.md#annotationsexception
+[annotations-reader]: api/phalcon_annotations.md#annotationsreader
+[annotations-readerinterface]: api/phalcon_annotations.md#annotationsreaderinterface
+[annotations-reflection]: api/phalcon_annotations.md#annotationsreflection
 [config]: config.md

@@ -2397,7 +2397,7 @@ nav:
       - Loader: autoload.md
       - Logger: logger.md
       - HTTP:
-          - Cookies: response/#cookies
+          - Cookies: response.md#cookies
           - Request: request.md
           - Response: response.md
       - i18n:

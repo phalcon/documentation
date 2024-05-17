@@ -533,19 +533,19 @@ If you are using the [Phalcon\Cli\Dispatcher][cli-dispatcher], you can also leve
 
 These events offer hooks into different stages of the CLI application's lifecycle, enabling you to execute custom logic at specific points in the application flow.
 
-[cli-console]: api/phalcon_cli.md#cliconsole-
-[cli-console-exception]: api/phalcon_cli.md#cliconsoleexception-
-[cli-dispatcher]: api/phalcon_cli.md#clidispatcher-
-[cli-dispatcher-exception]: api/phalcon_cli.md#clidispatcherexception-
-[cli-dispatcherinterface]: api/phalcon_cli.md#clidispatcherinterface--
-[cli-router]: api/phalcon_cli.md#clirouter-
-[cli-router-exception]: api/phalcon_cli.md#clirouterexception-
-[cli-router-route]: api/phalcon_cli.md#clirouterroute-
-[cli-router-routeinterface]: api/phalcon_cli.md#clirouterrouteinterface--
-[cli-routerinterface]: api/phalcon_cli.md#clirouterinterface--
-[cli-task]: api/phalcon_cli.md#clitask-
-[cli-taskinterface]: api/phalcon_cli.md#clitaskinterface--
-[di]: api/phalcon_di.md#didi-
-[di-factorydefault-cli]: api/phalcon_di.md#difactorydefaultcli-
+[cli-console]: api/phalcon_cli.md#cliconsole
+[cli-console-exception]: api/phalcon_cli.md#cliconsoleexception
+[cli-dispatcher]: api/phalcon_cli.md#clidispatcher
+[cli-dispatcher-exception]: api/phalcon_cli.md#clidispatcherexception
+[cli-dispatcherinterface]: api/phalcon_cli.md#clidispatcherinterface
+[cli-router]: api/phalcon_cli.md#clirouter
+[cli-router-exception]: api/phalcon_cli.md#clirouterexception
+[cli-router-route]: api/phalcon_cli.md#clirouterroute
+[cli-router-routeinterface]: api/phalcon_cli.md#clirouterrouteinterface
+[cli-routerinterface]: api/phalcon_cli.md#clirouterinterface
+[cli-task]: api/phalcon_cli.md#clitask
+[cli-taskinterface]: api/phalcon_cli.md#clitaskinterface
+[di]: api/phalcon_di.md#didi
+[di-factorydefault-cli]: api/phalcon_di.md#difactorydefaultcli
 [routing]: routing.md
 [events]: events.md

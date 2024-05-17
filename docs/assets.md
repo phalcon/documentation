@@ -889,23 +889,23 @@ This method is not recommended for production environments and high-load applica
 
 In most cases, your web server, [CDN][cdn], or services such as [Varnish HTTP Cache][varnish] would be preferable.
 
-[asset]: api/phalcon_assets.md#assetsasset-
-[asset-css]: api/phalcon_assets.md#assetsassetcss-
-[asset-js]: api/phalcon_assets.md#assetsassetjs-
-[asset-interface]: api/phalcon_assets.md#assetsassetinterface--
-[asset-inline]: api/phalcon_assets.md#assetsinline-
-[asset-inline-css]: api/phalcon_assets.md#assetsinlinecss-
-[asset-inline-js]: api/phalcon_assets.md#assetsinlinejs-
-[asset-exception]: api/phalcon_assets.md#assetsexception-
-[assets-manager]: api/phalcon_assets.md#assetsmanager-
+[asset]: api/phalcon_assets.md#assetsasset
+[asset-css]: api/phalcon_assets.md#assetsassetcss
+[asset-js]: api/phalcon_assets.md#assetsassetjs
+[asset-interface]: api/phalcon_assets.md#assetsassetinterface
+[asset-inline]: api/phalcon_assets.md#assetsinline
+[asset-inline-css]: api/phalcon_assets.md#assetsinlinecss
+[asset-inline-js]: api/phalcon_assets.md#assetsinlinejs
+[asset-exception]: api/phalcon_assets.md#assetsexception
+[assets-manager]: api/phalcon_assets.md#assetsmanager
 [bootstrap]: https://getbootstrap.com
 [cache-busting]: https://www.keycdn.com/support/what-is-cache-busting
 [cdn]: https://en.wikipedia.org/wiki/Content_delivery_network
 [closure]: https://developers.google.com/closure/compiler
 [collections]: api/phalcon_assets.md#assetscollection-
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
-[filter-interface]: api/phalcon_assets.md#assetsfilterinterface--
-[filter-none]: api/phalcon_assets.md#assetsfiltersnone-
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
+[filter-interface]: api/phalcon_assets.md#assetsfilterinterface
+[filter-none]: api/phalcon_assets.md#assetsfiltersnone
 [jquery]: https://jquery.com
 [sass]: https://sass-lang.com
 [html-tagfactory]: html-tagfactory.md

@@ -2458,23 +2458,23 @@ $app->error(
 );
 ```
 
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
-[events-manager]: api/phalcon_events.md#eventsmanager-
-[http-response]: api/phalcon_http.md#httpresponse-
-[http-responseinterface]: api/phalcon_http.md#httpresponseinterface--
-[mvc-application]: api/phalcon_mvc.md#mvcapplication-
-[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception-
-[mvc-controller]: api/phalcon_mvc.md#mvccontroller--
-[mvc-model-binder]: api/phalcon_mvc.md#mvcmodelbinder-
-[mvc-micro]: api/phalcon_mvc.md#mvcmicro-
-[mvc-micro-collection]: api/phalcon_mvc.md#mvcmicrocollection-
-[mvc-micro-collectioninterface]: api/phalcon_mvc.md#mvcmicrocollectioninterface--
-[mvc-micro-exception]: api/phalcon_mvc.md#mvcmicroexception-
-[mvc-micro-lazyloader]: api/phalcon_mvc.md#mvcmicrolazyloader-
-[mvc-micro-middlewareinterface]: api/phalcon_mvc.md#mvcmicromiddlewareinterface--
-[mvc-router]: api/phalcon_mvc.md#mvcrouter-
-[mvc-view]: api/phalcon_mvc.md#mvcview-
-[mvc-view-simple]: api/phalcon_mvc.md#mvcviewsimple-
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
+[events-manager]: api/phalcon_events.md#eventsmanager
+[http-response]: api/phalcon_http.md#httpresponse
+[http-responseinterface]: api/phalcon_http.md#httpresponseinterface
+[mvc-application]: api/phalcon_mvc.md#mvcapplication
+[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception
+[mvc-controller]: api/phalcon_mvc.md#mvccontroller
+[mvc-model-binder]: api/phalcon_mvc.md#mvcmodelbinder
+[mvc-micro]: api/phalcon_mvc.md#mvcmicro
+[mvc-micro-collection]: api/phalcon_mvc.md#mvcmicrocollection
+[mvc-micro-collectioninterface]: api/phalcon_mvc.md#mvcmicrocollectioninterface
+[mvc-micro-exception]: api/phalcon_mvc.md#mvcmicroexception
+[mvc-micro-lazyloader]: api/phalcon_mvc.md#mvcmicrolazyloader
+[mvc-micro-middlewareinterface]: api/phalcon_mvc.md#mvcmicromiddlewareinterface
+[mvc-router]: api/phalcon_mvc.md#mvcrouter
+[mvc-view]: api/phalcon_mvc.md#mvcview
+[mvc-view-simple]: api/phalcon_mvc.md#mvcviewsimple
 [psr-15]: https://www.php-fig.org/psr/psr-15/
 [routing]: routing.md
 [webserver-setup]: webserver-setup.md

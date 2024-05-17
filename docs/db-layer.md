@@ -2050,7 +2050,7 @@ Drop the table `co_invoices` from the database `phalcon_db`
 
 [pdo_quote]: https://www.php.net/manual/en/pdo.quote.php
 [nested_transactions]: https://en.wikipedia.org/wiki/Nested_transaction
-[db-abstractdb]: api/phalcon_db.md#dbabstractdb--
+[db-abstractdb]: api/phalcon_db.md#dbabstractdb
 [db-adapter-abstractadapter]: api/phalcon_db.md#dbadapterabstractadapter
 [db-adapter-adapterinterface]: api/phalcon_db.md#dbadapteradapterinterface
 [db-adapter-pdo-abstractpdo]: api/phalcon_db.md#dbadapterpdoabstractpdo
@@ -2076,7 +2076,7 @@ Drop the table `co_invoices` from the database `phalcon_db`
 [db-referenceinterface]: api/phalcon_db.md#dbreferenceinterface
 [db-result-pdo]: api/phalcon_db.md#dbresultpdoresult
 [db-resultinterface]: api/phalcon_db.md#dbresultinterface
-[mvc-model]: api/phalcon_mvc/#mvcmodel
+[mvc-model]: api/phalcon_mvc.md#mvcmodel
 [events]: events.md
 [db-phql]: db-phql.md
 [logger]: logger.md
