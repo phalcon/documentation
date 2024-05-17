@@ -19,7 +19,7 @@ Phalcon can be installed using PECL.
 
 ```
 pecl install phalcon
-// pecl install phalcon-5.6.0
+// pecl install phalcon-5.7.0
 ```
 
 **Alternative installation**
@@ -36,7 +36,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/5.6.0 ./
+git checkout tags/5.7.0 ./
 zephir fullclean
 zephir build
 ```
