@@ -203,7 +203,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
     public function saveAction()
     {
         // Forwards flow to the index action
-        $this->dispatcher->forward(
+        return $this->dispatcher->forward(
             [
                 "controller" => "people",
                 "action"     => "index",
@@ -1924,7 +1924,7 @@ var_dump(
 
 
 ```php
-public static function find( mixed $parameters = null ): ResultsetInterface;
+public static function find( mixed $parameters = null );
 ```
 Query for a set of records that match the specified conditions
 
@@ -2633,9 +2633,9 @@ echo "The total price of mechanical robots is  ", $sum, "\n";
 
 
 ```php
-public function toArray( mixed $columns = null, bool $useGetter = true ): array;
+public function toArray( mixed $columns = null, mixed $useGetter = bool ): array;
 ```
-Returns the instance as an array representation. By default, it will take into account getters, when constructing the resulting array. If the second parameter is set to `false`, getter methods for properties will be ignored.
+Returns the instance as an array representation
 
 ```php
 print_r(
@@ -10182,6 +10182,7 @@ Returns the model that generated the messages
     - `Phalcon\Messages\MessageInterface`
     - `Phalcon\Mvc\Model\CriteriaInterface`
     - `Phalcon\Mvc\Model\MetaDataInterface`
+    - `Phalcon\Mvc\Model\Resultset`
     - `Phalcon\Mvc\Model\ResultsetInterface`
     - `Phalcon\Mvc\Model\TransactionInterface`
 
@@ -10260,7 +10261,7 @@ Deletes a model instance. Returning true on success or false otherwise.
 
 
 ```php
-public static function find( mixed $parameters = null ): ResultsetInterface;
+public static function find( mixed $parameters = null );
 ```
 Allows to query a set of records that match the specified conditions
 
@@ -13813,7 +13814,7 @@ $source = [
 ];
 
 echo $compiler->compileSet($source);
-// <?php $a = ['first' => 1]; ?>
+// <?php $a = ['first' => 1]; ?>";
 ```
 
 
@@ -14607,3 +14608,5 @@ Appends template before controller layout
 public function start();
 ```
 Starts rendering process enabling the output buffering
+
+

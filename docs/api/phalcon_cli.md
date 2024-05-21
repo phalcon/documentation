@@ -362,6 +362,7 @@ Sets the default task suffix
 
 -   __Uses__
     
+    - `Phalcon\Cli\RouterInterface`
     - `Phalcon\Cli\Router\Exception`
     - `Phalcon\Cli\Router\Route`
     - `Phalcon\Cli\Router\RouteInterface`
@@ -374,6 +375,7 @@ Sets the default task suffix
 
 -   __Implements__
     
+    - `RouterInterface`
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process
 of taking a command-line arguments and decomposing it into parameters to
@@ -546,13 +548,13 @@ Handles routing information received from command-line arguments
 
 
 ```php
-public function setDefaultAction( string $actionName ): Router;
+public function setDefaultAction( string $actionName ): RouterInterface;
 ```
 Sets the default action name
 
 
 ```php
-public function setDefaultModule( string $moduleName ): Router;
+public function setDefaultModule( string $moduleName ): RouterInterface;
 ```
 Sets the name of the default module
 
@@ -564,7 +566,7 @@ Sets the default controller name
 
 
 ```php
-public function setDefaults( array $defaults ): Router;
+public function setDefaults( array $defaults ): RouterInterface;
 ```
 Sets an array of default paths. If a route is missing a path the router
 will use the defined here. This method must not be used to set a 404
@@ -1012,13 +1014,13 @@ Returns processed extra params
 
 
 ```php
-public function getRouteById( mixed $id ): RouteInterface;
+public function getRouteById( mixed $id ): RouteInterface | bool;
 ```
 Returns a route object by its id
 
 
 ```php
-public function getRouteByName( string $name ): RouteInterface;
+public function getRouteByName( string $name ): RouteInterface | bool;
 ```
 Returns a route object by its name
 
@@ -1042,13 +1044,13 @@ Handles routing information received from the rewrite engine
 
 
 ```php
-public function setDefaultAction( string $actionName ): void;
+public function setDefaultAction( string $actionName ): RouterInterface;
 ```
 Sets the default action name
 
 
 ```php
-public function setDefaultModule( string $moduleName ): void;
+public function setDefaultModule( string $moduleName ): RouterInterface;
 ```
 Sets the name of the default module
 
@@ -1060,7 +1062,7 @@ Sets the default task name
 
 
 ```php
-public function setDefaults( array $defaults ): void;
+public function setDefaults( array $defaults ): RouterInterface;
 ```
 Sets an array of default paths
 

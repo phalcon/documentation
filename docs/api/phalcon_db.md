@@ -2135,7 +2135,7 @@ const BIND_PARAM_NULL = 0;
 const BIND_PARAM_STR = 2;
 const BIND_SKIP = 1024;
 const TYPE_BIGINTEGER = 14;
-const TYPE_BINARY = 26;
+const TYPE_BINARY = 27;
 const TYPE_BIT = 19;
 const TYPE_BLOB = 11;
 const TYPE_BOOLEAN = 8;
@@ -2161,7 +2161,7 @@ const TYPE_TIMESTAMP = 17;
 const TYPE_TINYBLOB = 10;
 const TYPE_TINYINTEGER = 26;
 const TYPE_TINYTEXT = 25;
-const TYPE_VARBINARY = 27;
+const TYPE_VARBINARY = 28;
 const TYPE_VARCHAR = 2;
 ```
 
