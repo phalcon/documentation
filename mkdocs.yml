@@ -2416,3 +2416,4 @@ nav:
           - Registry: support-registry.md
           - Version: support-version.md
   - API: api/index.md
+  - Blog: https://blog.phalcon.io/
