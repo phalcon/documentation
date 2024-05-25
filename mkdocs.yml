@@ -2569,4 +2569,5 @@ nav:
           - Domain: domain.md
           - Helper: helper.md
           - Registry: registry.md
+  - Discussions: https://github.com/orgs/phalcon/discussions
   - Blog: https://blog.phalcon.io/
