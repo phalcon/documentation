@@ -2416,4 +2416,5 @@ nav:
           - Helper: support-helper.md
           - Registry: support-registry.md
           - Version: support-version.md
+  - Discussions: https://github.com/orgs/phalcon/discussions
   - Blog: https://blog.phalcon.io/
