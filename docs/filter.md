@@ -4,7 +4,7 @@ Sanitizing user input is a critical part of software development. Trusting or ne
 
 ![](assets/images/content/filter-sql.png)
 
-[Full image on XKCD](http://xkcd.com/327)
+[Full image on XKCD](https://xkcd.com/327)
 
 The [Phalcon\Filter](api/Phalcon_Filter.md) component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
@@ -21,11 +21,11 @@ The following are the built-in filters provided by this component:
 | float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
 | int       | Remove all characters except digits, plus and minus sign.                                     |
 | int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
-| lower     | Applies the [strtolower](http://www.php.net/manual/en/function.strtolower.php) function       |
+| lower     | Applies the [strtolower](https://www.php.net/manual/en/function.strtolower.php) function      |
 | string    | Strip tags and encode HTML entities, including single and double quotes.                      |
-| striptags | Applies the [strip_tags](http://www.php.net/manual/en/function.strip-tags.php) function       |
-| trim      | Applies the [trim](http://www.php.net/manual/en/function.trim.php) function                   |
-| upper     | Applies the [strtoupper](http://www.php.net/manual/en/function.strtoupper.php) function       |
+| striptags | Applies the [strip_tags](https://www.php.net/manual/en/function.strip-tags.php) function      |
+| trim      | Applies the [trim](https://www.php.net/manual/en/function.trim.php) function                  |
+| upper     | Applies the [strtoupper](https://www.php.net/manual/en/function.strtoupper.php) function      |
 
 Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
 
@@ -212,7 +212,7 @@ $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 
 
 ## Complex Sanitizing and Filtering
-PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](http://www.php.net/manual/en/book.filter.php)
+PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)
 
 
 ## Implementing your own Filter

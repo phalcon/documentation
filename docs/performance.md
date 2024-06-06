@@ -6,7 +6,7 @@ Each application is different, the permanent profiling is important to understan
 
 Profiling with XDebug
 
-[XDebug](http://xdebug.org/docs) provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
+[XDebug](https://xdebug.org/docs) provides an easier way to profile PHP applications, just install the extension and enable profiling in the php.ini:
 
 ```ini
 xdebug.profiler_enable = On
@@ -66,13 +66,13 @@ Most modern browsers have tools to profile the page loading time. In Chrome you 
 
 ![](assets/images/content/performance-chrome-1.jpg)
 
-[Firebug](http://getfirebug.com/) provides a similar functionality:
+[Firebug](https://getfirebug.com/) provides a similar functionality:
 
 ![](assets/images/content/performance-firefox-1.jpg)
 
 
 ### Yahoo! YSlow
-[YSlow](http://developer.yahoo.com/yslow/) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](http://developer.yahoo.com/performance/rules.html)
+[YSlow](https://developer.yahoo.com/yslow/) analyzes web pages and suggests ways to improve their performance based on a set of [rules for high performance web pages](https://developer.yahoo.com/performance/rules.html)
 
 ![](assets/images/content/performance-yslow-1.jpg)
 
@@ -91,7 +91,7 @@ PHP is faster every day, using the latest version improves the performance of yo
 
 
 ## Use a PHP Bytecode Cache
-[APC](http://php.net/manual/en/book.apc.php) as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request. Once the extension is installed use the following setting to enable APC:
+[APC](https://php.net/manual/en/book.apc.php) as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request. Once the extension is installed use the following setting to enable APC:
 
 ```ini
 apc.enabled = On
@@ -101,12 +101,12 @@ apc.enabled = On
 ## Do blocking work in the background
 Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
 
-* [Beanstalkd](http://kr.github.io/beanstalkd/)
-* [Redis](http://redis.io/)
-* [RabbitMQ](http://www.rabbitmq.com/)
+* [Beanstalkd](https://kr.github.io/beanstalkd/)
+* [Redis](https://redis.io/)
+* [RabbitMQ](https://www.rabbitmq.com/)
 * [Resque](https://github.com/chrisboulton/php-resque)
-* [Gearman](http://gearman.org/)
-* [ZeroMQ](http://www.zeromq.org/)
+* [Gearman](https://gearman.org/)
+* [ZeroMQ](https://www.zeromq.org/)
 
 
 ## Google Page Speed
