@@ -140,7 +140,7 @@ Usually `start nginx` from the command line but this depends on your installatio
 
 
 ## Apache
-[Apache](http://httpd.apache.org/) is a popular and well known web server available on many platforms.
+[Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
 
 
 ### Phalcon configuration
@@ -250,7 +250,7 @@ And this second configuration allows you to install a Phalcon application in a v
 
 ## Cherokee
 
-[Cherokee](http://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
+[Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 ### Phalcon configuration
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.

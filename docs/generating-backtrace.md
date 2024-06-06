@@ -6,4 +6,4 @@ Please follow this guide to understand how to generate the backtrace.
 
 [https://bugs.php.net/bugs-generating-backtrace.php](https://bugs.php.net/bugs-generating-backtrace.php)
 
-[https://bugs.php.net/bugs-generating-backtrace-win32.php](http://bugs.php.net/bugs-generating-backtrace-win32.php)
+[https://bugs.php.net/bugs-generating-backtrace-win32.php](https://bugs.php.net/bugs-generating-backtrace-win32.php)
