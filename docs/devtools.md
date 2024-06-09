@@ -371,7 +371,7 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 </div>
 
 ### Phalcon plug-in for CodeLobster IDE
-Codelobster IDE includes a [special plug-in for Phalcon development](http://www.codelobster.com/phalcon.html)
+Codelobster IDE includes a [special plug-in for Phalcon development](https://www.codelobster.com/phalcon.html)
 
 [blog_devtools]: https://blog.phalcon.io/post/dont-like-command-line-and-consoles-no-problem
 [github_devtools]: https://github.com/phalcon/phalcon-devtools
