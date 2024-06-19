@@ -749,7 +749,7 @@ Retrieves a query/get value always sanitized with the preset filters
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: http://www.google.com
+Gets web page that refers active request. ie: https://www.google.com
 
 
 ```php
@@ -1510,7 +1510,7 @@ $_SERVER["PHP_AUTH_DIGEST"]
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: http://www.google.com
+Gets web page that refers active request. ie: https://www.google.com
 
 
 ```php
