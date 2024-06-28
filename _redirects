@@ -1,6 +1,6 @@
-/en/*                           /:splat                      301
-/                               /latest/introduction         301
-/latest                         /latest/introduction         301
+/                               /5.7/introduction            301
+/latest                         /5.7/introduction            301
+/latest/*                       /5.7/:splat                  301
 
 /index                          /introduction                301
 /loader                         /autoload                    301
