@@ -31,6 +31,7 @@ hide:
 -   __Implements__
     
     - `CacheInterface`
+    - `Phalcon\Events\EventsAwareInterface`
 
 This component offers caching capabilities for your application.
 
@@ -639,4 +640,3 @@ Exceptions thrown in Phalcon\Cache will use this class
     
 
 Exceptions thrown in Phalcon\Cache will use this class
-

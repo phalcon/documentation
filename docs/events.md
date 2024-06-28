@@ -858,6 +858,18 @@ The events available in Phalcon are:
 | [Application][application]  | `application:beforeStartModule`      | Application, Module                                     |
 | [Application][application]  | `application:boot`                   | Application                                             |
 | [Application][application]  | `application:viewRender`             | Application, View                                       |
+| [Cache][cache]              | `cache:afterSet`                     | Cache                                                   |
+| [Cache][cache]              | `cache:afterGet`                     | Cache                                                   |
+| [Cache][cache]              | `cache:afterHas`                     | Cache                                                   |
+| [Cache][cache]              | `cache:afterIncrement`               | Cache                                                   |
+| [Cache][cache]              | `cache:afterDecrement`               | Cache                                                   |
+| [Cache][cache]              | `cache:afterDelete`                  | Cache                                                   |
+| [Cache][cache]              | `cache:beforeSet`                    | Cache                                                   |
+| [Cache][cache]              | `cache:beforeGet`                    | Cache                                                   |
+| [Cache][cache]              | `cache:beforeHas`                    | Cache                                                   |
+| [Cache][cache]              | `cache:beforeIncrement`              | Cache                                                   |
+| [Cache][cache]              | `cache:beforeDecrement`              | Cache                                                   |
+| [Cache][cache]              | `cache:beforeDelete`                 | Cache                                                   |
 | [CLI][application-cli]      | `dispatch:beforeException`           | Console, Exception                                      |
 | [Console][application-cli]  | `console:afterHandleTask`            | Console, Task                                           |
 | [Console][application-cli]  | `console:afterStartModule`           | Console, Module                                         |
@@ -925,6 +937,18 @@ The events available in Phalcon are:
 | [Router][routing]           | `router:beforeMount`                 | Router, Group                                           |
 | [Router][routing]           | `router:matchedRoute`                | Router, Route                                           |
 | [Router][routing]           | `router:notMatchedRoute`             | Router, Route                                           |
+| [Storage][storage]          | `storage:afterSet`                   | Storage                                                 |
+| [Storage][storage]          | `storage:afterGet`                   | Storage                                                 |
+| [Storage][storage]          | `storage:afterHas`                   | Storage                                                 |
+| [Storage][storage]          | `storage:afterIncrement`             | Storage                                                 |
+| [Storage][storage]          | `storage:afterDecrement`             | Storage                                                 |
+| [Storage][storage]          | `storage:afterDelete`                | Storage                                                 |
+| [Storage][storage]          | `storage:beforeSet`                  | Storage                                                 |
+| [Storage][storage]          | `storage:beforeGet`                  | Storage                                                 |
+| [Storage][storage]          | `storage:beforeHas`                  | Storage                                                 |
+| [Storage][storage]          | `storage:beforeIncrement`            | Storage                                                 |
+| [Storage][storage]          | `storage:beforeDecrement`            | Storage                                                 |
+| [Storage][storage]          | `storage:beforeDelete`               | Storage                                                 |
 | [View][views]               | `view:afterCompile`                  | Volt                                                    |
 | [View][views]               | `view:afterRender`                   | View                                                    |
 | [View][views]               | `view:afterRenderView`               | View                                                    |
@@ -951,6 +975,8 @@ The events available in Phalcon are:
 [acl]: acl.md
 [application]: application.md
 [application-cli]: application-cli.md
+[cache]: cache.md
+[storage]: storage.md
 [db-layer]: db-layer.md
 [dispatcher]: dispatcher.md
 [autoload]: autoload.md
