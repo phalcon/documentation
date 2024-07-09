@@ -590,6 +590,26 @@ The parameters you can use for the factory are:
 | `redis`        | [Phalcon\Storage\Adapter\Redis][cache-adapter-redis]               |
 | `stream`       | [Phalcon\Storage\Adapter\Stream][cache-adapter-stream]             |
 
+## Events
+
+The [Phalcon\Storage\AbstractAdapter][storage-adapter-abstractadapter] object implements the
+[Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces.
+As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
+
+| Event             | Description                                 | Can stop operation |
+|-------------------|---------------------------------------------|:------------------:|
+| `beforeSet`       | Fires before the value is set               |         No         |
+| `afterSet`        | Fires after the value has been set          |         No         |
+| `beforeGet`       | Fires before the value is requested         |         No         |
+| `afterGet`        | Fires after the value has been requested    |         No         |
+| `beforeHas`       | Fires before the value is requested         |         No         |
+| `afterHas`        | Fires after the value has been requested    |         No         |
+| `beforeDelete`    | Fires before the value is deleted           |         No         |
+| `afterDelete`     | Fires after the value has been deleted      |         No         |
+| `beforeIncrement` | Fires before the value has been incremented |         No         |
+| `afterIncrement`  | Fires after the value has been incremented  |         No         |
+| `beforeDecrement` | Fires before the value has been decremented |         No         |
+| `afterDecrement`  | Fires after the value has been decremented  |         No         |
 
 [serializable]: https://www.php.net/manual/en/class.serializable.php
 [igbinary]: https://github.com/igbinary/igbinary7
@@ -625,3 +645,4 @@ The parameters you can use for the factory are:
 [storage-serializerfactory]: api/phalcon_storage.md#storageserializerfactory-
 [cache]: cache.md
 [session]: session.md
+[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface--

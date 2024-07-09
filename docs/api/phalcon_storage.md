@@ -33,6 +33,7 @@ hide:
 -   __Implements__
     
     - `AdapterInterface`
+    - `Phalcon\Events\EventsAwareInterface`
 
 Class AbstractAdapter
 
@@ -1832,5 +1833,3 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
-
-
