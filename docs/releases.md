@@ -94,8 +94,13 @@ hide:
         <td class="version-td-right">8.0-8.3</td>
     </tr>
     <tr>
-        <td class="version-td-center current-version">5.7</td>
+        <td class="version-td-center previous-version">5.7</td>
         <td class="version-td-center">May 17, 2024</td>
+        <td class="version-td-right">8.0-8.3</td>
+    </tr>
+    <tr>
+        <td class="version-td-center current-version">5.8</td>
+        <td class="version-td-center">Jun 09, 2024</td>
         <td class="version-td-right">8.0-8.3</td>
     </tr>
     </tbody>
