@@ -4,7 +4,7 @@
 ## Requirements
 
 ### PHP 8.0
-Phalcon v5.7 supports only PHP 8.0 and above.
+Phalcon v5.8 supports only PHP 8.0 and above.
 
 Although PHP 8.0 was released several years ago and it's [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications. We will continue to support PHP 8.0 for v5 for another year. Phalcon v6 and later will support PHP 8.1+.
 
@@ -166,7 +166,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.7.0 ./
+git checkout tags/v5.8.0 ./
 zephir fullclean
 zephir build
 ```
@@ -305,7 +305,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.7.0 ./
+git checkout tags/v5.8.0 ./
 zephir fullclean
 zephir build
 ```
@@ -330,7 +330,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.7.0 ./
+git checkout tags/v5.8.0 ./
 zephir fullclean
 zephir compile
 cd ext
