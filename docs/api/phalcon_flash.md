@@ -1,18 +1,39 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Flash\AbstractFlash](#flash-abstractflash)
-* [Phalcon\Flash\Direct](#flash-direct)
-* [Phalcon\Flash\Exception](#flash-exception)
-* [Phalcon\Flash\FlashInterface](#flash-flashinterface)
-* [Phalcon\Flash\Session](#flash-session)
+!!! info "NOTE"
 
-<h1 id="flash-abstractflash">Abstract Class Phalcon\Flash\AbstractFlash</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/AbstractFlash.zep)
 
-| Namespace  | Phalcon\Flash |
-| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Session\ManagerInterface, Phalcon\Support\Helper\Str\Interpolate |
-| Extends    | AbstractInjectionAware |
-| Implements | FlashInterface |
+
+## Flash\AbstractFlash ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/AbstractFlash.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Flash`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Session\ManagerInterface`
+    - `Phalcon\Support\Helper\Str\Interpolate`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `FlashInterface`
 
 Shows HTML notifications related to different circumstances. Classes can be
 stylized using CSS
@@ -27,61 +48,61 @@ Class AbstractFlash
 @package Phalcon\Flash
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var bool
  */
-protected autoescape = true;
+protected $autoescape = true;
 
 /**
  * @var bool
  */
-protected automaticHtml = true;
+protected $automaticHtml = true;
 
 /**
  * @var array
  */
-protected cssClasses;
+protected $cssClasses;
 
 /**
  * @var array
  */
-protected cssIconClasses;
+protected $cssIconClasses;
 
 /**
  * @var string
  */
-protected customTemplate = ;
+protected $customTemplate = ;
 
 /**
  * @var EscaperInterface | null
  */
-protected escaperService;
+protected $escaperService;
 
 /**
  * @var bool
  */
-protected implicitFlush = true;
+protected $implicitFlush = true;
 
 /**
  * @var Interpolate
  */
-protected interpolator;
+protected $interpolator;
 
 /**
  * @var array
  */
-protected messages;
+protected $messages;
 
 /**
  * @var SessionInterface|null
  */
-protected sessionService;
+protected $sessionService;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
@@ -226,19 +247,31 @@ $flash->warning("Hey, this is important");
 
 
 
-<h1 id="flash-direct">Class Phalcon\Flash\Direct</h1>
+## Flash\Direct 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/Direct.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Direct.zep)
 
-| Namespace  | Phalcon\Flash |
-| Extends    | AbstractFlash |
+
+-   __Namespace__
+
+    - `Phalcon\Flash`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractFlash`
+
+-   __Implements__
+    
 
 Class Direct
 
 @package Phalcon\Flash
 
 
-## Methods
+### Methods
 
 ```php
 public function message( string $type, mixed $message ): string | null;
@@ -254,29 +287,53 @@ Prints the messages accumulated in the flasher
 
 
 
-<h1 id="flash-exception">Class Phalcon\Flash\Exception</h1>
+## Flash\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exception.zep)
 
-| Namespace  | Phalcon\Flash |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Flash`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Flash classes will use this class
 
 
 
-<h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
+## Flash\FlashInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/FlashInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/FlashInterface.zep)
 
-| Namespace  | Phalcon\Flash |
+
+-   __Namespace__
+
+    - `Phalcon\Flash`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface FlashInterface
 
 @package Phalcon\Flash
 
 
-## Methods
+### Methods
 
 ```php
 public function error( string $message ): string | null;
@@ -310,13 +367,25 @@ Shows a HTML warning message
 
 
 
-<h1 id="flash-session">Class Phalcon\Flash\Session</h1>
+## Flash\Session 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Flash/Session.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Session.zep)
 
-| Namespace  | Phalcon\Flash |
-| Uses       | Phalcon\Session\ManagerInterface |
-| Extends    | AbstractFlash |
+
+-   __Namespace__
+
+    - `Phalcon\Flash`
+
+-   __Uses__
+    
+    - `Phalcon\Session\ManagerInterface`
+
+-   __Extends__
+    
+    `AbstractFlash`
+
+-   __Implements__
+    
 
 This is an implementation of the Phalcon\Flash\FlashInterface that
 temporarily stores the messages in session, then messages can be printed in
@@ -327,12 +396,12 @@ Class Session
 @package Phalcon\Flash
 
 
-## Constants
+### Constants
 ```php
 const SESSION_KEY = _flashMessages;
 ```
 
-## Methods
+### Methods
 
 ```php
 public function clear(): void;
@@ -382,3 +451,5 @@ Returns the messages stored in session
 protected function setSessionMessages( array $messages ): array;
 ```
 Stores the messages in session
+
+

@@ -2,9 +2,9 @@
 - - -
 
 ## Overview
-Throughout this tutorial, we will create an application with a simple registration form, while introducing the main design aspects of Phalcon. 
+Throughout this tutorial, we will create an application with a simple registration form, while introducing the main design aspects of Phalcon.
 
-This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. Once developed, you can use this application and extend it to suit your needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas.
+This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. Once developed, you can use this application and extend it to suit your needs. The code in this tutorial can also be used as a playground to learn other Phalcon-specific concepts and ideas.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen></iframe>
 
@@ -13,12 +13,12 @@ If you just want to get started you can skip this and create a Phalcon project a
 The best way to use this guide is to follow along and try to have fun. You can get the complete code [here][github_tutorial]. If you get stuck or have questions, please visit us on [Discord][discord] or in our [Discussions][discussions].
 
 ## File Structure
-One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a _standard_ directory structure, commonly used in MVC applications.
+One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient for you. In this tutorial, we will use a _standard_ directory structure, commonly used in MVC applications.
 
 ```text
 .
 └── tutorial
-    ├── app
+    ├── src
     │   ├── controllers
     │   │   ├── IndexController.php
     │   │   └── SignupController.php
@@ -34,7 +34,7 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
 
 !!! warning "NOTE"
 
-    Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the [installation][installation] page and complete the installation prior to continuing with this tutorial.
+    Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing the Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the [installation][installation] page and complete the installation prior to continuing with this tutorial.
 
 If this is all brand new it is recommended that you install the [Phalcon Devtools][devtools] also. The DevTools leverage PHP's built-in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
 
@@ -56,10 +56,10 @@ require_once __DIR__ . '/public/index.php';
 
 In the case of our tutorial, this file must be located in the `tutorial` directory.
 
-You can also use nginX, apache, cherokee or other web servers. You can check the [webserver setup][webserver-setup] page for instructions.
+You can also use nginX, apache, cherokee, or other web servers. You can check the [webserver setup][webserver-setup] page for instructions.
 
 ## Bootstrap
-The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well define application behavior.
+The first file you need to create is the bootstrap file. This file acts as the entry point and configuration for your application. In this file, you can implement the initialization of components as well as define application behavior.
 
 This file handles 3 things:
 - Registration of component autoloaders
@@ -69,7 +69,7 @@ This file handles 3 things:
 ### Autoloader
 We are going to use [Phalcon\Autoload\Loader][autoload] a [PSR-4][psr-4] compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
 
-To start, lets register our app's `controllers` and `models` directories using [Phalcon\Autoload\Loader][autoload]:
+To start, let's register our app's `controllers` and `models` directories using [Phalcon\Autoload\Loader][autoload]:
 
 `public/index.php`
 ```php
@@ -77,7 +77,7 @@ To start, lets register our app's `controllers` and `models` directories using [
 
 use Phalcon\Autoload\Loader;
 
-define('BASE_PATH', dirname(__DIR__));
+define('BASE_PATH', dirname(__DIR__ . '/..'));
 define('APP_PATH', BASE_PATH . '/app');
 // ...
 
@@ -94,11 +94,11 @@ $loader->register();
 ```
 
 ### Dependency Management
-Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager, so they can be injected automatically to components and services wrapped in the [IoC][ioc] container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound complex but Phalcon ensures that their use is simple, practical and efficient. Phalcon's IoC container consists of the following concepts:
+Since Phalcon is loosely coupled, services are registered with the framework's Dependency Manager, so they can be injected automatically into components and services wrapped in the [IoC][ioc] container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound complex but Phalcon ensures that their use is simple, practical, and efficient. Phalcon's IoC container consists of the following concepts:
 - Service Container: a "bag" where we globally store the services that our application needs to function.
-- Service or Component: Data processing object which will be injected into components
+- Service or Component: Data processing object that will be injected into components
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection etc.
+Each time the framework requires a component or service, it will ask the container to use an agreed-upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection, etc.
 
 !!! warning "NOTE"
 
@@ -140,7 +140,7 @@ $container->set(
 );
 ```
 
-Now we need to register a base URI, that will offer the functionality to create all URIs by Phalcon. The component will ensure that whether you run your application through the top directory or a subdirectory, all your URIs will be correct. For this tutorial our base path is `/`. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate hyperlinks.
+Now we need to register a base URI, that will offer the functionality to create all URIs by Phalcon. The component will ensure that whether you run your application through the top directory or a subdirectory, all your URIs will be correct. For this tutorial, our base path is `/`. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate hyperlinks.
 
 `public/index.php`
 ```php
@@ -162,7 +162,7 @@ $container->set(
 ```
 
 ### Handling the Application Request
-In order to handle any requests, the [Phalcon\Mvc\Application][application] object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning the results.
+In order to handle any requests, the [Phalcon\Mvc\Application][application] object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes dispatch the controller, and render the view returning the results.
 
 `public/index.php`
 ```php
@@ -249,7 +249,7 @@ try {
 As you can see, the bootstrap file is very short, and we do not need to include any additional files. You are well on your way to creating a flexible MVC application in less than 30 lines of code.
 
 ## Creating a Controller
-By default, Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (e.g. `https://localhost/`). An `IndexController` and its `IndexAction` should resemble the following example:
+By default, Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added to the request (e.g. `https://localhost/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
 `app/controllers/IndexController.php`
 ```php
@@ -266,7 +266,7 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix `Controller` and controller actions must have the suffix `Action`. For more information you can read our document about [controllers][controllers]. If you access the application from your browser, you should see something like this:
+The controller classes must have the suffix `Controller` and controller actions must have the suffix `Action`. For more information, you can read our document about [controllers][controllers]. If you access the application from your browser, you should see something like this:
 
 ![](assets/images/content/tutorial-basic-1.png)
 
@@ -275,7 +275,7 @@ The controller classes must have the suffix `Controller` and controller actions 
     **Congratulations, you are Phlying with Phalcon!**
 
 ## Sending Output to a View
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. 
+Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on the screen. Phalcon will look for a view with the same name as the last executed action inside a directory named the last executed controller.
 
 Therefore, in our case if the URL is:
 
@@ -340,7 +340,7 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 <a href="/signup">Sign Up Here!</a>
 ```
 
-To generate the link for the `<a>` tag, we use the [Phalcon\Html\TagFactory][html-tagfactory] component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector, so we can use `$this->tag` to access its functionality. 
+To generate the link for the `<a>` tag, we use the [Phalcon\Html\TagFactory][html-tagfactory] component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector, so we can use `$this->tag` to access its functionality.
 
 !!! info "NOTE"
 
@@ -394,7 +394,7 @@ Viewing the form in your browser will display the following:
 
 ![](assets/images/content/tutorial-basic-3.png)
 
-As mentioned above, the [Phalcon\Html\TagFactory][html-tagfactory] utility class, exposes useful methods allowing you to build form HTML elements with ease. The `form()` method receives an array of key/value pairs that set up the form, for example a relative URI to a controller/action in the application. The `inputText()` creates a text HTML element with the name as the passed parameter, while the `inputSubmit()` creates a submit HTML button. Finally, a call to `close()` will close our `<form>` tag.
+As mentioned above, the [Phalcon\Html\TagFactory][html-tagfactory] utility class, exposes useful methods allowing you to build form HTML elements with ease. The `form()` method receives an array of key/value pairs that set up the form, for example, a relative URI to a controller/action in the application. The `inputText()` creates a text HTML element with the name as the passed parameter, while the `inputSubmit()` creates a submit HTML button. Finally, a call to `close()` will close our `<form>` tag.
 
 By clicking the _Register_ button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
 
@@ -488,7 +488,7 @@ $container->set(
 );
 ```
 
-Adjust the code snippet above as appropriate for your database. 
+Adjust the code snippet above as appropriate for your database.
 
 With the correct database parameters, our model is ready to interact with the rest of the application, so we can save the user's input. First, let's take a moment and create a view for `SignupController::registerAction()` that will display a message letting the user know the outcome of the _save_ operation.
 
@@ -555,7 +555,7 @@ Additional validation happens automatically on fields that are defined as not nu
 ## List the Registered Users
 Now we will need to get and display all the registered users in our database
 
-The first thing that we are going to do in our `indexAction` of the` IndexController` is to show the result of the search of all the users, which is done simply by calling the static method `find()` on our model (`Users::find()`). 
+The first thing that we are going to do in our `indexAction` of the` IndexController` is to show the result of the search of all the users, which is done simply by calling the static method `find()` on our model (`Users::find()`).
 
 `indexAction` would change as follows:
 
@@ -649,10 +649,10 @@ We can now add small design touches to our application. We can add the [Bootstra
 
 In the above template, the most important line is the call to the `getContent()` method. This method returns all the content that has been generated from our view. Our application will now show:
 
-![](assets/images/content/tutorial-basic-6.png) 
+![](assets/images/content/tutorial-basic-6.png)
 
 ## Conclusion
-As you can see, it is easy to start building an application using Phalcon. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time you will enjoy a nice performance boost. 
+As you can see, it is easy to start building an application using Phalcon. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time, you will enjoy a nice performance boost.
 
 If you are ready to learn more check out the [Vökuró Tutorial][tutorial-vokuro] next.
 
@@ -665,7 +665,7 @@ If you are ready to learn more check out the [Vökuró Tutorial][tutorial-vokuro
 [ioc]: https://en.wikipedia.org/wiki/Inversion_of_control
 [psr-4]: https://www.php-fig.org/psr/psr-4/
 [di]: api/phalcon_di.md
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault 
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
 [bootstrap]: https://getbootstrap.com/
 [devtools]: devtools.md
 [tutorial-vokuro]: tutorial-vokuro.md

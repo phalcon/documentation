@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-[Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
+[Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, methods, variables, etc.
 
 ```php
 <?php
@@ -23,12 +23,12 @@ if (true === $request->isPost()) {
 ## Getting Values
 PHP automatically fills the superglobal arrays [$_GET][get], [$_POST][post] and [$_REQUEST][request] depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection][sql-injection] or [Cross Site Scripting (XSS)][xss] attacks.
 
-[Phalcon\Http\Request][http-request] allows you to access the values stored in the [$_GET][get], [$_POST][post] and [$_REQUEST][request] arrays and sanitize or filter them with the [filter][filter-filter] service. 
+[Phalcon\Http\Request][http-request] allows you to access the values stored in the [$_GET][get], [$_POST][post] and [$_REQUEST][request] arrays and sanitize or filter them with the [filter][filter-filter] service.
 
 There are 5 methods that allow you to retrieve submitted data from a request:
 - `get()`
 - `getQuery()`
-- `getPost()` 
+- `getPost()`
 - `getPut()`
 - `getServer()`
 
@@ -61,7 +61,7 @@ $request->get(
 `getServer()` accepts only a `name` (string) variable, representing the name of the server variable that you need to retrieve.
 
 ### $_REQUEST
-The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request][http-request] object as follows: 
+The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request][http-request] object as follows:
 
 **Examples**
 
@@ -102,7 +102,7 @@ $email = $request->get('userEmail', null, 'some@example.com');
 ```
 
 ### $_GET
-The [$_GET][get] superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). You can retrieve the data stored in the array by calling the `getQuery()` method as follows: 
+The [$_GET][get] superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). You can retrieve the data stored in the array by calling the `getQuery()` method as follows:
 
 **Examples**
 
@@ -144,7 +144,7 @@ $email = $request->getQuery('userEmail', null, 'some@example.com');
 
 
 ### $_POST
-The [$_POST][post] superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. You can retrieve the data stored in the array by calling the `getPost()` method as follows: 
+The [$_POST][post] superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. You can retrieve the data stored in the array by calling the `getPost()` method as follows:
 
 **Examples**
 
@@ -185,7 +185,7 @@ $email = $request->getPost('userEmail', null, 'some@example.com');
 ```
 
 ### Put
-The request object parses the PUT stream that has been received internally. You can retrieve the data stored in the array by calling the `getPut()` method as follows: 
+The request object parses the PUT stream that has been received internally. You can retrieve the data stored in the array by calling the `getPut()` method as follows:
 
 **Examples**
 
@@ -226,7 +226,7 @@ $email = $request->getPut('userEmail', null, 'some@example.com');
 ```
 
 ### $_SERVER
-The [$_SERVER][server] superglobal contains an array containing information such as headers, paths, and script locations. You can retrieve the data stored in the array by calling the `getServer()` method as follows: 
+The [$_SERVER][server] superglobal contains an array containing information such as headers, paths, and script locations. You can retrieve the data stored in the array by calling the `getServer()` method as follows:
 
 **Examples**
 
@@ -243,7 +243,7 @@ $name = $request->getServer('SERVER_NAME');
 ```
 
 ## Preset Sanitizers
-It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function with another form in a different area. Examples of this behavior could be `id` fields, `name` etc.
+It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function as another form in a different area. Examples of this behavior could be `id` fields, `name` etc.
 
 To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request][http-request] offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
 
@@ -291,10 +291,10 @@ The above will automatically sanitize any parameter that is POSTed from a form t
 - `getFilteredPut()`
 - `getFilteredQuery()`
 
-These methods accept the same parameters as the `getPost()`, `getPut()` and `getQuery()` but without the `$filter` parameter.
+These methods accept the same parameters as the `getPost()`, `getPut()`, and `getQuery()` but without the `$filter` parameter.
 
 ## Controllers
-If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Http\Request][http-request] is already registered for you. The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request][http-request] object from a controller you will need to use the `$this->request` public property of the controller:
+If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Http\Request][http-request] is already registered for you. The most common place to access the request environment is in the action of a controller. To access the [Phalcon\Http\Request][http-request] object from a controller you will need to use the `$this->request` public property of the controller:
 
 ```php
 <?php
@@ -311,7 +311,7 @@ class PostsController extends Controller
 {
     public function saveAction()
     {
-        // Check if request has made with POST
+        // Check if the request has been made with POST
         if (true === $this->request->isPost()) {
             // Access POST data
             $customerName = $this
@@ -326,28 +326,28 @@ class PostsController extends Controller
 ```
 
 ## Checking Operations
-The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
+The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. For instance, if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
 
 | Name                  | Description                                                     |
 |-----------------------|-----------------------------------------------------------------|
-| `isAjax()`            | Checks whether request has been made using AJAX                 |
+| `isAjax()`            | Checks whether the request has been made using AJAX                 |
 | `isConnect()`         | Checks whether HTTP method is CONNECT                           |
 | `isDelete()`          | Checks whether HTTP method is DELETE                            |
 | `isGet()`             | Checks whether HTTP method is GET                               |
 | `isHead()`            | Checks whether HTTP method is HEAD                              |
-| `isMethod()`          | Check if HTTP method match any of the passed methods            |
+| `isMethod()`          | Check if HTTP method matches any of the passed methods            |
 | `isOptions()`         | Checks whether HTTP method is OPTIONS                           |
 | `isPatch()`           | Checks whether HTTP method is PATCH                             |
 | `isPost()`            | Checks whether HTTP method is POST                              |
 | `isPurge()`           | Checks whether HTTP method is PURGE (Squid and Varnish support) |
 | `isPut()`             | Checks whether HTTP method is PUT                               |
-| `isSecure()`          | Checks whether request has been made using any secure layer     |
-| `isSoap()`            | Checks whether request has been made using SOAP                 |
+| `isSecure()`          | Checks whether the request has been made using any secure layer     |
+| `isSoap()`            | Checks whether the request has been made using SOAP                 |
 | `isTrace()`           | Checks whether HTTP method is TRACE                             |
 | `isValidHttpMethod()` | Checks if a method is a valid HTTP method                       |
 
 ## Checking Existence
-There are a number of methods available that allow you to check the existence of elements in the request. These methods are prefixed with `has`. Depending on the method used, you can check if an element exists in the `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, PUT cache and the request headers. 
+There are a number of methods available that allow you to check the existence of elements in the request. These methods are prefixed with `has`. Depending on the method used, you can check if an element exists in the `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, PUT cache and the request headers.
 
 | Name          | Description                                                    |
 |---------------|----------------------------------------------------------------|
@@ -361,7 +361,7 @@ There are a number of methods available that allow you to check the existence of
 | `numFiles()`  | Returns the number of files present in the request             |
 
 ## Request Information
-The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request. 
+The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request.
 ### Authentication
 
 | Name              | Description                                   |
@@ -375,7 +375,7 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 |-----------------------|------------------------------------------------------------------------|
 | `getClientAddress()`  | Gets most possible client IPv4 Address                                 |
 | `getClientCharsets()` | Gets a charsets array and their quality accepted by the browser/client |
-| `getUserAgent()`      | Gets HTTP user agent used to made the request                          |
+| `getUserAgent()`      | Gets HTTP user agent used to make the request                          |
 | `getHTTPReferer()`    | Gets web page that refers active request                               |
 
 ### Content
@@ -383,7 +383,7 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 | Name                     | Description                                                                    |
 |--------------------------|--------------------------------------------------------------------------------|
 | `getAcceptableContent()` | Gets an array with mime/types and their quality accepted by the browser/client |
-| `getBestAccept()`        | Gets best mime/type accepted by the browser/client                             |
+| `getBestAccept()`        | Gets the best mime/type accepted by the browser/client                             |
 | `getContentType()`       | Gets content type which request has been made                                  |
 | `getJsonRawBody()`       | Gets decoded JSON HTTP raw request body                                        |
 | `getRawBody()`           | Gets HTTP raw request body                                                     |
@@ -392,8 +392,8 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 
 | Name                | Description                                                           |
 |---------------------|-----------------------------------------------------------------------|
-| `getBestCharset()`  | Gets best charset accepted by the browser/client                      |
-| `getBestLanguage()` | Gets best language accepted by the browser/client                     |
+| `getBestCharset()`  | Gets the best charset accepted by the browser/client                      |
+| `getBestLanguage()` | Gets the best language accepted by the browser/client                     |
 | `getLanguages()`    | Gets languages array and their quality accepted by the browser/client |
 
 ### Server
@@ -428,7 +428,7 @@ Some methods:
 ```php
 $ipAddress = $request->getServerAddress();
 ```
-Get the servers's IP address. ie. `192.168.0.100`
+Get the server's IP address. ie. `192.168.0.100`
 
 ```php
 $ipAddress = $request->getClientAddress();
@@ -457,7 +457,7 @@ Get the best language accepted configured in the browser. ie. `en-us`
 
 
 ### Method
-`getMethod()` returns the HTTP method which request has been made. If the `X-HTTP-Method-Override` header is set, and if the method is a `POST`, then it is used to determine the "real" intended HTTP method. The `_method` request parameter can also be used to determine the HTTP method, `setHttpMethodParameterOverride(true)` has been called. The method always returns an uppercase string.
+`getMethod()` returns the HTTP method in which the request has been made. If the `X-HTTP-Method-Override` header is set, and if the method is a `POST`, then it is used to determine the "real" intended HTTP method. The `_method` request parameter can also be used to determine the HTTP method, `setHttpMethodParameterOverride(true)` has been called. The method always returns an uppercase string.
 
 ```php
 <?php
@@ -488,7 +488,7 @@ echo $request->getMethod();
 The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
 ## Working with Headers
-Request headers contain useful information, allowing you to take necessary steps to send the proper response back to the user. The [Phalcon\Http\Request][http-request] exposes the `getHeader()` and `getHeaders()` methods.
+Request headers contain useful information, allowing you to take the necessary steps to send the proper response back to the user. The [Phalcon\Http\Request][http-request] exposes the `getHeader()` and `getHeaders()` methods.
 
 ```php
 <?php
@@ -511,15 +511,15 @@ $_SERVER["HTTP_HOST"] = "ExAmPlE.com";
 $request->getHttpHost(); // example.com
 ```
 
-The `getHttpHost()` method will return the host name used by the request. The method will try to find host name in following order:
+The `getHttpHost()` method will return the hostname used by the request. The method will try to find hostname in following order:
 - `$_SERVER["HTTP_HOST"]`
 - `$_SERVER["SERVER_NAME"]`
 - `$_SERVER["SERVER_ADDR"]`
 
-Optionally `getHttpHost()` validates and performs a strict check on the host name. To achieve that you can use the `setStrictHostCheck()` method.
+Optionally `getHttpHost()` validates and performs a strict check on the hostname. To achieve that you can use the `setStrictHostCheck()` method.
 
 ## Uploaded Files
-Another common task is file uploading. [Phalcon\Http\Request][http-request] offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
+Another common task is file uploading. [Phalcon\Http\Request][http-request] offers an object-oriented way to work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
 
 ```php
 <?php
@@ -577,7 +577,7 @@ The method returns an array of [Phalcon\Http\Request\File][http-request-file] ob
 | `moveTo(string $destination): bool` | Moves the temporary file to a destination within the application                                                    |
 
 ## Events
- The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
+The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 | Event                        | Description                                      | Can stop operation |
 |------------------------------|--------------------------------------------------|:------------------:|
@@ -603,9 +603,9 @@ where `<type>` is an authentication type. A common type is `Basic`. Additional a
 * `SCRAM-SHA-256`
 * `vapid`
 
-You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves. 
+You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves.
 
-The `request:beforeAuthorizationResolve` receives the `SERVER` array with the key `server` as the second parameter of the event. 
+The `request:beforeAuthorizationResolve` receives the `SERVER` array with the key `server` as the second parameter of the event.
 
 The `request:afterAuthorizationResolve` receives the `SERVER` array with the key `server` as well as the headers with the key `headers`.
 
@@ -623,7 +623,7 @@ $request = new Request();
 print_r($request->getHeaders());
 ```
 
-Result: 
+Result:
 
 ```bash
 Array
@@ -696,7 +696,7 @@ print_r(
 );
 ```
 
-Result: 
+Result:
 
 ```bash
 Array
@@ -718,19 +718,15 @@ Credentials: a87421000492aa874209af8bc028
 [server]: https://www.php.net/manual/en/reserved.variables.server.php
 [sql-injection]: https://en.wikipedia.org/wiki/SQL_injection
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-[http-cookie]: api/phalcon_http.md#http-cookie
-[http-cookie-exception]: api/phalcon_http.md#http-cookie-exception
-[http-cookieinterface]: api/phalcon_http.md#http-cookieinterface
-[http-message-abstractcommon]: api/phalcon_http.md#http-message-abstractcommon
-[http-message-abstractmessage]: api/phalcon_http.md#http-message-abstractmessage
-[http-message-abstractrequest]: api/phalcon_http.md#http-message-abstractrequest
-[http-message-exception-invalidargumentexception]: api/phalcon_http.md#http-message-exception-invalidargumentexception
-[http-request]: api/phalcon_http.md#http-request
-[http-request-exception]: api/phalcon_http.md#http-request-exception
-[http-request-file]: api/phalcon_http.md#http-request-file
-[http-request-fileinterface]: api/phalcon_http.md#http-request-fileinterface
-[http-requestinterface]: api/phalcon_http.md#http-requestinterface
-[di-injectionawareinterface]: api/phalcon_di.md#di-injectionawareinterface
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[events-eventsawareinterface]: api/phalcon_events.md#events-eventsawareinterface
+[http-cookie]: api/phalcon_http.md#httpcookie-
+[http-cookie-exception]: api/phalcon_http.md#httpcookieexception-
+[http-cookieinterface]: api/phalcon_http.md#httpcookiecookieinterface--
+[http-request]: api/phalcon_http.md#httprequest-
+[http-request-exceotuib]: api/phalcon_http.md#httprequestexception-
+[http-request-file]: api/phalcon_http.md#httprequestfile-
+[http-request-fileinterface]: api/phalcon_http.md#httprequestfileinterface--
+[http-requestinterface]: api/phalcon_http.md#httprequestinterface--
+[di-injectionawareinterface]: api/phalcon_di.md#diinitializationawareinterface--
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface--
 [filter-filter]: filter-filter.md

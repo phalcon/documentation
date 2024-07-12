@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-[Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules. 
+[Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules.
 
 ```php
 <?php
@@ -34,8 +34,8 @@ class Customers extends Model
 ```
 
 ## Data Integrity
-Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforce your business rules. 
- 
+Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforces your business rules.
+
 The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation][filter-validation] namespace.
 
 ```php
@@ -199,8 +199,8 @@ class Invoices extends Model
 ```
 
 [mvc-model]: api/phalcon_mvc.md#mvc-model
-[mvc-model-validationfailed]: api/phalcon_mvc.md#mvc-model-validationfailed
-[validation-validator-inclusionin]: api/phalcon_filter.md#filter-validation-validator-inclusionin
-[messages-message]: api/phalcon_messages.md#messages-message
-[messages-messages]: api/phalcon_messages.md#messages-messages
+[mvc-model-validationfailed]: api/phalcon_mvc.md#mvcmodelvalidationfailed-
+[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin-
+[messages-message]: api/phalcon_messages.md#messagesmessage-
+[messages-messages]: api/phalcon_messages.md#messagesmessages-
 [filter-validation]: filter-validation.md

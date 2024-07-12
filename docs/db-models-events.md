@@ -157,7 +157,7 @@ class Invoices extends Model
 ```
 
 ### Custom Events Manager
-Additionally, this component is integrated with [Phalcon\Events\Manager][events-manager], this means we can create listeners that run when an event is triggered.
+Additionally, this component is integrated with [Phalcon\Events\Manager][events-manager], which means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -243,7 +243,7 @@ $invoice->inv_title = 'Invoice for ACME Inc.';
 $invoice->save();
 ```
 
-If we want all objects created in our application use the same EventsManager, then we need to assign it to the Models Manager when setting it in the DI container:
+If we want all objects created in our application to use the same EventsManager, then we need to assign it to the Models Manager when setting it in the DI container:
 
 ```php
 <?php
@@ -455,7 +455,7 @@ foreach ($profiles as $profile) {
 Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
 
 [db]: api/phalcon_db.md
-[events-manager]: api/phalcon_events.md#events-manager
+[events-manager]: api/phalcon_events.md#eventsmanager-
 [logger]: logger.md
-[mvc-model]: api/phalcon_mvc.md#mvc-model
-[mvc-model-query]: api/phalcon_mvc.md#mvc-model-query
+[mvc-model]: api/phalcon_mvc.md#mvcmodel--
+[mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery-

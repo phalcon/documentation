@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-[Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. This component creates a new class locator with predefined HTML tag classes attached to it. Each tag class is lazy loaded for maximum performance. To instantiate the factory and retrieve a tag helper, you need to call `newInstance()` by passing a `Phalcon\Html\Escaper` object to it.
+[Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. This component creates a new class locator with predefined HTML tag classes attached to it. Each tag class is lazy-loaded for maximum performance. To instantiate the factory and retrieve a tag helper, you need to call `newInstance()` by passing a `Phalcon\Html\Escaper` object to it.
 
 If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault] container for your application, the [Phalcon\Html\TagFactory][html-tagfactory] is already registered for you with the name `tag`.
 
@@ -339,14 +339,14 @@ $result = $container
 ```
 
 ### Helpers
-All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above. 
+All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above.
 
 !!! info "NOTE"
 
-    The code and output below has been formatted for readability
+    The code and output below have been formatted for readability
 
 ### `a`
-[Phalcon\Html\Helper\Anchor][html-helper-anchor] creates a `<a>` (anchor) tag. 
+[Phalcon\Html\Helper\Anchor][html-helper-anchor] creates a `<a>` (anchor) tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -379,7 +379,7 @@ echo $helper('/myurl', 'click<>me', $options);
 ```
 
 ### `base`
-[Phalcon\Html\Helper\Base][html-helper-base] creates a `<base>` tag. 
+[Phalcon\Html\Helper\Base][html-helper-base] creates a `<base>` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -464,7 +464,7 @@ echo $helper('click<>me', $options);
 ```
 
 ### `close`
-[Phalcon\Html\Helper\Close][html-helper-close] creates a closing tag. 
+[Phalcon\Html\Helper\Close][html-helper-close] creates a closing tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -485,7 +485,7 @@ echo $helper('form');
 ```
 
 ### `doctype`
-[Phalcon\Html\Helper\Doctype][html-helper-doctype] creates a `<doctype>` tag. 
+[Phalcon\Html\Helper\Doctype][html-helper-doctype] creates a `<doctype>` tag.
 
 | Parameter           | Description                       |
 |---------------------|-----------------------------------|
@@ -1528,7 +1528,7 @@ Add an element to the list
 ```php
 public function addHttp(string $httpEquiv, string $content): Meta
 ```
-Adds a HTTP meta tag
+Adds an HTTP meta tag
 
 ```php
 public function addName(string name, string content) -> <Meta>
@@ -1716,7 +1716,7 @@ public function append(
     bool $raw = false
 ): Title
 ```
-Appends text to current document title
+Appends text to the current document title
 
 ```php
 public function get(): string
@@ -1745,7 +1745,7 @@ public function prepend(
     bool $raw = false
 ): Title
 ```
-Prepends text to current document title
+Prepends text to the current document title
 
 ```php
 <?php
@@ -1826,55 +1826,55 @@ echo $result;
 
 
 
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[html-attributes]: api/phalcon_html.md#html-attributes
-[html-attributes-attributesinterface]: api/phalcon_html.md#html-attributes-attributesinterface
-[html-attributes-renderinterface]: api/phalcon_html.md#html-attributes-renderinterface
-[html-breadcrumbs]: api/phalcon_html.md#html-breadcrumbs
-[html-exception]: api/phalcon_html.md#html-exception
-[html-helper-abstracthelper]: api/phalcon_html.md#html-helper-abstracthelper
-[html-helper-abstractlist]: api/phalcon_html.md#html-helper-abstractlist
-[html-helper-abstractseries]: api/phalcon_html.md#html-helper-abstractseries
-[html-helper-anchor]: api/phalcon_html.md#html-helper-anchor
-[html-helper-base]: api/phalcon_html.md#html-helper-base
-[html-helper-body]: api/phalcon_html.md#html-helper-body
-[html-helper-button]: api/phalcon_html.md#html-helper-button
-[html-helper-close]: api/phalcon_html.md#html-helper-close
-[html-helper-doctype]: api/phalcon_html.md#html-helper-doctype
-[html-helper-element]: api/phalcon_html.md#html-helper-element
-[html-helper-form]: api/phalcon_html.md#html-helper-form
-[html-helper-img]: api/phalcon_html.md#html-helper-img
-[html-helper-input-abstractinput]: api/phalcon_html.md#html-helper-input-abstractinput
-[html-helper-input-checkbox]: api/phalcon_html.md#html-helper-input-checkbox
-[html-helper-input-color]: api/phalcon_html.md#html-helper-input-color
-[html-helper-input-date]: api/phalcon_html.md#html-helper-input-date
-[html-helper-input-datetime]: api/phalcon_html.md#html-helper-input-datetime
-[html-helper-input-datetimelocal]: api/phalcon_html.md#html-helper-input-datetimelocal
-[html-helper-input-email]: api/phalcon_html.md#html-helper-input-email
-[html-helper-input-file]: api/phalcon_html.md#html-helper-input-file
-[html-helper-input-hidden]: api/phalcon_html.md#html-helper-input-hidden
-[html-helper-input-image]: api/phalcon_html.md#html-helper-input-image
-[html-helper-input-input]: api/phalcon_html.md#html-helper-input-input
-[html-helper-input-month]: api/phalcon_html.md#html-helper-input-month
-[html-helper-input-numeric]: api/phalcon_html.md#html-helper-input-numeric
-[html-helper-input-password]: api/phalcon_html.md#html-helper-input-password
-[html-helper-input-radio]: api/phalcon_html.md#html-helper-input-radio
-[html-helper-input-range]: api/phalcon_html.md#html-helper-input-range
-[html-helper-input-search]: api/phalcon_html.md#html-helper-input-search
-[html-helper-input-select]: api/phalcon_html.md#html-helper-input-select
-[html-helper-input-submit]: api/phalcon_html.md#html-helper-input-submit
-[html-helper-input-tel]: api/phalcon_html.md#html-helper-input-tel
-[html-helper-input-text]: api/phalcon_html.md#html-helper-input-text
-[html-helper-input-textarea]: api/phalcon_html.md#html-helper-input-textarea
-[html-helper-input-time]: api/phalcon_html.md#html-helper-input-time
-[html-helper-input-url]: api/phalcon_html.md#html-helper-input-url
-[html-helper-input-week]: api/phalcon_html.md#html-helper-input-week
-[html-helper-label]: api/phalcon_html.md#html-helper-label
-[html-helper-link]: api/phalcon_html.md#html-helper-link
-[html-helper-meta]: api/phalcon_html.md#html-helper-meta
-[html-helper-ol]: api/phalcon_html.md#html-helper-ol
-[html-helper-script]: api/phalcon_html.md#html-helper-script
-[html-helper-style]: api/phalcon_html.md#html-helper-style
-[html-helper-title]: api/phalcon_html.md#html-helper-title
-[html-helper-ul]: api/phalcon_html.md#html-helper-ul
-[html-tagfactory]: api/phalcon_html.md#html-tagfactory
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[html-attributes]: api/phalcon_html.md#htmlattributes-
+[html-attributes-attributesinterface]: api/phalcon_html.md#htmlattributesattributesinterface--
+[html-attributes-renderinterface]: api/phalcon_html.md#htmlattributesrenderinterface--
+[html-breadcrumbs]: api/phalcon_html.md#htmlbreadcrumbs-
+[html-exception]: api/phalcon_html.md#htmlexception-
+[html-helper-abstracthelper]: api/phalcon_html.md#htmlhelperabstracthelper--
+[html-helper-abstractlist]: api/phalcon_html.md#htmlhelperabstractlist--
+[html-helper-abstractseries]: api/phalcon_html.md#htmlhelperabstractseries--
+[html-helper-anchor]: api/phalcon_html.md#htmlhelperanchor-
+[html-helper-base]: api/phalcon_html.md#htmlhelperbase-
+[html-helper-body]: api/phalcon_html.md#htmlhelperbody-
+[html-helper-button]: api/phalcon_html.md#htmlhelperbutton-
+[html-helper-close]: api/phalcon_html.md#htmlhelperclose-
+[html-helper-doctype]: api/phalcon_html.md#htmlhelperdoctype-
+[html-helper-element]: api/phalcon_html.md#htmlhelperelement-
+[html-helper-form]: api/phalcon_html.md#htmlhelperform-
+[html-helper-img]: api/phalcon_html.md#htmlhelperimg-
+[html-helper-input-abstractinput]: api/phalcon_html.md#htmlhelperinputabstractinput--
+[html-helper-input-checkbox]: api/phalcon_html.md#htmlhelperinputcheckbox-
+[html-helper-input-color]: api/phalcon_html.md#htmlhelperinputcolor-
+[html-helper-input-date]: api/phalcon_html.md#htmlhelperinputdate-
+[html-helper-input-datetime]: api/phalcon_html.md#htmlhelperinputdatetime-
+[html-helper-input-datetimelocal]: api/phalcon_html.md#htmlhelperinputdatetimelocal-
+[html-helper-input-email]: api/phalcon_html.md#htmlhelperinputemail-
+[html-helper-input-file]: api/phalcon_html.md#htmlhelperinputfile-
+[html-helper-input-hidden]: api/phalcon_html.md#htmlhelperinputhidden-
+[html-helper-input-image]: api/phalcon_html.md#htmlhelperinputimage-
+[html-helper-input-input]: api/phalcon_html.md#htmlhelperinputinput-
+[html-helper-input-month]: api/phalcon_html.md#htmlhelperinputmonth-
+[html-helper-input-numeric]: api/phalcon_html.md#htmlhelperinputnumeric-
+[html-helper-input-password]: api/phalcon_html.md#htmlhelperinputpassword-
+[html-helper-input-radio]: api/phalcon_html.md#htmlhelperinputradio-
+[html-helper-input-range]: api/phalcon_html.md#htmlhelperinputrange-
+[html-helper-input-search]: api/phalcon_html.md#htmlhelperinputsearch-
+[html-helper-input-select]: api/phalcon_html.md#htmlhelperinputselect-
+[html-helper-input-submit]: api/phalcon_html.md#htmlhelperinputsubmit-
+[html-helper-input-tel]: api/phalcon_html.md#htmlhelperinputtel-
+[html-helper-input-text]: api/phalcon_html.md#htmlhelperinputtext-
+[html-helper-input-textarea]: api/phalcon_html.md#htmlhelperinputtextarea-
+[html-helper-input-time]: api/phalcon_html.md#htmlhelperinputtime-
+[html-helper-input-url]: api/phalcon_html.md#htmlhelperinputurl-
+[html-helper-input-week]: api/phalcon_html.md#htmlhelperinputweek-
+[html-helper-label]: api/phalcon_html.md#htmlhelperlabel-
+[html-helper-link]: api/phalcon_html.md#htmlhelperlink-
+[html-helper-meta]: api/phalcon_html.md#htmlhelpermeta-
+[html-helper-ol]: api/phalcon_html.md#htmlhelperol-
+[html-helper-script]: api/phalcon_html.md#htmlhelperscript-
+[html-helper-style]: api/phalcon_html.md#htmlhelperstyle-
+[html-helper-title]: api/phalcon_html.md#htmlhelpertitle-
+[html-helper-ul]: api/phalcon_html.md#htmlhelperul-
+[html-tagfactory]: api/phalcon_html.md#htmltagfactory-

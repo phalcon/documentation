@@ -1,63 +1,93 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Messages\Exception](#messages-exception)
-* [Phalcon\Messages\Message](#messages-message)
-* [Phalcon\Messages\MessageInterface](#messages-messageinterface)
-* [Phalcon\Messages\Messages](#messages-messages)
+!!! info "NOTE"
 
-<h1 id="messages-exception">Class Phalcon\Messages\Exception</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Exception.zep)
 
-| Namespace  | Phalcon\Messages |
-| Extends    | \Exception |
+
+## Messages\Exception 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exception.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 
 
-<h1 id="messages-message">Class Phalcon\Messages\Message</h1>
+## Messages\Message 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Message.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Message.zep)
 
-| Namespace  | Phalcon\Messages |
-| Uses       | JsonSerializable |
-| Implements | MessageInterface, JsonSerializable |
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+    - `JsonSerializable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `JsonSerializable`
+    - `MessageInterface`
 
 Phalcon\Messages\Message
 
 Stores a message from various components
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var int
  */
-protected code;
+protected $code;
 
 /**
  * @var string
  */
-protected field;
+protected $field;
 
 /**
  * @var string
  */
-protected message;
+protected $message;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 /**
  * @var array
  */
-protected metaData;
+protected $metaData;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] );
@@ -139,18 +169,30 @@ Sets message type
 
 
 
-<h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
+## Messages\MessageInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/MessageInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/MessageInterface.zep)
 
-| Namespace  | Phalcon\Messages |
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Messages\MessageInterface
 
 Interface for Phalcon\Messages\MessageInterface
 
 
-## Methods
+### Methods
 
 ```php
 public function __toString(): string;
@@ -220,32 +262,50 @@ Sets message type
 
 
 
-<h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
+## Messages\Messages 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Messages/Messages.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Messages.zep)
 
-| Namespace  | Phalcon\Messages |
-| Uses       | ArrayAccess, Countable, Iterator, JsonSerializable |
-| Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
+
+-   __Namespace__
+
+    - `Phalcon\Messages`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `Countable`
+    - `Iterator`
+    - `JsonSerializable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ArrayAccess`
+    - `Countable`
+    - `Iterator`
+    - `JsonSerializable`
 
 Represents a collection of messages
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var int
  */
-protected position = 0;
+protected $position = ;
 
 /**
  * @var array
  */
-protected messages;
+protected $messages;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $messages = [] );
@@ -342,7 +402,7 @@ print_r(
 
 
 ```php
-public function offsetSet( mixed $index, mixed $message ): void;
+public function offsetSet( mixed $offset, mixed $value ): void;
 ```
 Sets an attribute using the array-syntax
 
@@ -371,3 +431,5 @@ Rewinds the internal iterator
 public function valid(): bool;
 ```
 Check if the current message in the iterator is valid
+
+

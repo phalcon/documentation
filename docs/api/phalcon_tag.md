@@ -1,21 +1,47 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Tag](#tag)
-* [Phalcon\Tag\Exception](#tag-exception)
-* [Phalcon\Tag\Select](#tag-select)
+!!! info "NOTE"
 
-<h1 id="tag">Class Phalcon\Tag</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Html\Link\Link, Phalcon\Html\Link\Serializer\Header, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Mvc\Url\UrlInterface, Phalcon\Support\Helper\Str\Friendly |
+
+## Tag 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Link\Link`
+    - `Phalcon\Html\Link\Serializer\Header`
+    - `Phalcon\Mvc\Url\UrlInterface`
+    - `Phalcon\Support\Helper\Str\Friendly`
+    - `Phalcon\Tag\Exception`
+    - `Phalcon\Tag\Select`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Tag is designed to simplify building of HTML tags.
 It provides a set of helpers to generate HTML in a dynamic way.
 This component is a class that you can extend to add more helpers.
 
 
-## Constants
+### Constants
 ```php
 const HTML32 = 1;
 const HTML401_FRAMESET = 4;
@@ -30,67 +56,67 @@ const XHTML20 = 10;
 const XHTML5 = 11;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var bool
  */
-protected static autoEscape = true;
+protected static $autoEscape = true;
 
 /**
  * DI Container
  *
  * @var DiInterface|null
  */
-protected static container;
+protected static $container;
 
 /**
  * Pre-assigned values for components
  *
  * @var array
  */
-protected static displayValues;
+protected static $displayValues;
 
 /**
  * @var array
  */
-protected static documentAppendTitle;
+protected static $documentAppendTitle;
 
 /**
  * @var array
  */
-protected static documentPrependTitle;
+protected static $documentPrependTitle;
 
 /**
  * HTML document title
  *
  * @var string|null
  */
-protected static documentTitle;
+protected static $documentTitle;
 
 /**
  * @var string|null
  */
-protected static documentTitleSeparator;
+protected static $documentTitleSeparator;
 
 /**
  * @var int
  */
-protected static documentType = 11;
+protected static $documentType = 11;
 
 /**
  * @var EscaperInterface|null
  */
-protected static escaperService;
+protected static $escaperService;
 
 /**
  * @var UrlInterface|null
  */
-protected static urlService;
+protected static $urlService;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public static function appendTitle( mixed $title ): void;
@@ -459,12 +485,24 @@ Builds INPUT tags that implements the checked attribute
 
 
 
-<h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
+## Tag\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Exception.zep)
 
-| Namespace  | Phalcon\Tag |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Tag`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Tag\Exception
 
@@ -472,12 +510,26 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 
 
-<h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
+## Tag\Select ![Abstract](../assets/images/abstract-green.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Tag/Select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Tag/Select.zep)
 
-| Namespace  | Phalcon\Tag |
-| Uses       | Phalcon\Tag, Phalcon\Html\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Tag`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Mvc\Model\ResultsetInterface`
+    - `Phalcon\Tag`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Tag\Select
 
@@ -485,9 +537,11 @@ Generates a SELECT HTML tag using a static array of values or a
 Phalcon\Mvc\Model resultset
 
 
-## Methods
+### Methods
 
 ```php
 public static function selectField( mixed $parameters, mixed $data = null ): string;
 ```
 Generates a SELECT tag
+
+

@@ -4,7 +4,7 @@
 # Upgrading to V5
 So you have decided to upgrade to v5! **Congratulations**!!
 
-Phalcon v5 contains a lot of changes in components and interfaces. Upgrading is going to be a time-consuming task, depending on how big and complex your application is. We hope that this document will make your upgrade journey smoother and also offer insight as to why certain changes were made and how it will help the framework in the future.
+Phalcon v5 contains a lot of changes in components and interfaces. Upgrading is going to be a time-consuming task, depending on how big and complex your application is. We hope that this document will make your upgrade journey smoother and also offer insight as to why certain changes were made and how they will help the framework in the future.
 
 We will outline the areas that you need to pay attention to and make necessary changes so that your code can run as smoothly as it has been with v4. Although the changes are significant, it is more of a methodical task than a daunting one.
 
@@ -19,7 +19,7 @@ Phalcon can be installed using PECL.
 
 ```
 pecl install phalcon
-// pecl install phalcon-5.4.0
+// pecl install phalcon-5.7.0
 ```
 
 **Alternative installation**
@@ -36,7 +36,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/5.3.0 ./
+git checkout tags/5.7.0 ./
 zephir fullclean
 zephir build
 ```
@@ -53,13 +53,13 @@ Check the module
 php -m | grep phalcon
 ```
 
-If the above does not work, check the `php.ini` that your CLI is looking for. If you are using `phpinfo()` and a web browser to check if Phalcon has been loaded, make sure that your `php.ini` file that your web server is looking for contains the `extension=phalcon.so`. You will need to restart your web server after you added the new line in `php.ini`.
+If the above does not work, check the `php.ini` that your CLI is looking for. If you are using `phpinfo()` and a web browser to check if Phalcon has been loaded, make sure that your `php.ini` file that your web server is looking for contains the `extension=phalcon.so`. You will need to restart your web server after you add the new line in `php.ini`.
 
 - - -
 
 ## General Notes
 
-One of the biggest changes with this release is that we no longer have top level classes. All top level classes have been moved into relevant namespaces (except `Phalcon\Tag`). For instance `Phalcon\Loader` has been moved to `Phalcon\Autoload\Loader`. This change was necessary for the future expansion of the project.
+One of the biggest changes with this release is that we no longer have top-level classes. All top-level classes have been moved into relevant namespaces (except `Phalcon\Tag`). For instance `Phalcon\Loader` has been moved to `Phalcon\Autoload\Loader`. This change was necessary for the future expansion of the project.
 
 **Summary**
 
@@ -121,7 +121,7 @@ The [ACL][phalcon-acl] component has had some methods and components renamed. Th
 
 ![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)][phalcon-assets]
 
-The [Assets][phalcon-assets] component has had changes to the interface as well as some methods were renamed. The functionality remains the same as in previous versions.
+The [Assets][phalcon-assets] component has had changes to the interface as well and some methods were renamed. The functionality remains the same as in previous versions.
 
 #### `Phalcon\Assets\Asset`
 - `getAssetKey()` now uses `sha256` to compute the key
@@ -207,7 +207,7 @@ The [Autoload\Loader][phalcon-autoload] component has been moved from the parent
 
 #### `Phalcon\Autoload\Loader`
 - `__construct(bool $isDebug = false)`
-  The constructor now accepts a boolean, which allows the loader to collect and store debug information during the discovery and loading process of files, classes etc. If the variable is set to `true`, `getDebug()` will return an array with all the debugging information during the autoload operation. This mode is only for debugging purposes and must not be used in production environments.
+  The constructor now accepts a boolean, which allows the loader to collect and store debug information during the discovery and loading process of files, classes, etc. If the variable is set to `true`, `getDebug()` will return an array with all the debugging information during the autoload operation. This mode is only for debugging purposes and must not be used in production environments.
 
 ```php
 
@@ -309,7 +309,7 @@ The [Config][phalcon-config] component has been moved to the `Config` namespace.
 
 ![](assets/images/status-changes-required-red.svg)
 
-The `Container` component has been removed from the framework. It is in our roadmap to develop a new container that will support auto wiring, as well as providers. Additionally, the container will be designed and implemented in such a way that could be used as a PSR-11 container (with the help of a Proxy class). 
+The `Container` component has been removed from the framework. It is in our roadmap to develop a new container that will support auto wiring, as well as providers. Additionally, the container will be designed and implemented in such a way that could be used as a PSR-11 container (with the help of a Proxy class).
 
 ---
 
@@ -343,7 +343,7 @@ The [Crypt][phalcon-encryption-crypt] component has been moved to the `Encryptio
 
 #### `Phalcon\Db\Adapter\Pdo\Mysql`
 - Changed bind type for `Column::TYPE_BIGINT` to be `Column::BIND_PARAM_STR`
-- Added bind type for `Column::TYPE_BINARY` to cater for `VARBINARY` and `BINARY` fields
+- Added bind type for `Column::TYPE_BINARY` to cater to `VARBINARY` and `BINARY` fields
 - Added support for comments
 
 #### `Phalcon\Db\Adapter\Pdo\Postgresql`
@@ -466,7 +466,7 @@ $padFactory = new PadFactory();
 $crypt      = new Crypt("aes-256-cfb", true, $padFactory);
 ```
 
-If no `padFactory` is passed, a new one will be created in the component. 
+If no `padFactory` is passed, a new one will be created in the component.
 
 - `Phalcon\Encryption\Crypt::getAvailableHashAlgos()` was renamed to `Phalcon\Encryption\Crypt::getAvailableHashAlgorithms()`
 - `Phalcon\Encryption\Crypt::getHashAlgo()` was renamed to `Phalcon\Encryption\Crypt::getHashAlgorithm()`
@@ -539,7 +539,7 @@ The class has been removed.
 
 ### Factory
 
-![](assets/images/status-changes-required-red.svg) 
+![](assets/images/status-changes-required-red.svg)
 
 #### `Phalcon\Factory\AbstractConfigFactory`
 - Added abstract `Phalcon\Factory\AbstractConfigFactory` to check configuration elements
@@ -613,7 +613,7 @@ The [Filter][phalcon-filter-filter] component has been moved to the `Filter` nam
 
 ![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)][phalcon-forms]
 
-`Phalcon\Forms\Element\*` classes now use the new `Phalcon\Html\TagFactory` to generate HTML code. As a result, the functionality has changed slightly. The main difference is that a `Phalcon\Html\TagFactory` has to be set in the form object, so that elements can be rendered. If the `Phalcon\Html\TagFactory` is not set, then the component will search the Di container (`Phalcon\Di\DiInterface`) for a service with the name `tag`. If you are using `Phalcon\Di\FactoryDefault` as your container, then the `tag` service is already defined for you.
+`Phalcon\Forms\Element\*` classes now use the new `Phalcon\Html\TagFactory` to generate HTML code. As a result, the functionality has changed slightly. The main difference is that a `Phalcon\Html\TagFactory` has to be set in the form object so that elements can be rendered. If the `Phalcon\Html\TagFactory` is not set, then the component will search the Di container (`Phalcon\Di\DiInterface`) for a service with the name `tag`. If you are using `Phalcon\Di\FactoryDefault` as your container, then the `tag` service is already defined for you.
 
 #### `Phalcon\Forms\Element\AbstractElement`
 - Added `getTagFactory()` to return the `Phalcon\Html\TagFactory` object used internally, as well as `setTagFactory(TagFactory $tagFactory): AbstractElement` to set it.
@@ -638,7 +638,7 @@ The [Helper][phalcon-support-helper] component has been moved to the `Support` n
 
 #### `Phalcon\Html\Escaper`
 - Moved `Phalcon\Escaper` to `Phalcon\Html\Escaper`
-- Changed the `flags` property that controls the flags for `htmlspecialchars()` is set to `11` which corresponds to `ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401`. 
+- Changed the `flags` property that controls the flags for `htmlspecialchars()` is set to `11` which corresponds to `ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401`.
 - Method names changed to be more verbose.
   - Added `attributes(string input)` for escaping HTML attributes (replaces `escapeHtmlAttr()`)
   - Added `css(string $input)` for escaping CSS (replaces `escapeCss()`
@@ -655,16 +655,16 @@ The [Helper][phalcon-support-helper] component has been moved to the `Support` n
 #### `Phalcon\Html\Escaper\EscaperInterface`
 - Moved `Phalcon\Escaper\EscaperInterface` to `Phalcon\Html\Escaper\EscaperInterface`
 - Added `attributes(string input)`
-- Added `css(string $input)` 
-- Added `html(string $input = null)` 
-- Added `js(string $input)` 
-- Added `setFlags(int $flags)` 
-- Added `url(string $input)` 
-- Removed `escapeCss()` 
-- Removed `escapeJs()` 
-- Removed `escapeHtml()` 
-- Removed `escapeUrl()` 
-- Removed `setHtmlQuoteType()` 
+- Added `css(string $input)`
+- Added `html(string $input = null)`
+- Added `js(string $input)`
+- Added `setFlags(int $flags)`
+- Added `url(string $input)`
+- Removed `escapeCss()`
+- Removed `escapeJs()`
+- Removed `escapeHtml()`
+- Removed `escapeUrl()`
+- Removed `setHtmlQuoteType()`
 
 #### `Phalcon\Html\Escaper\Exception`
 - This class has been moved to this namespace `Phalcon\Escaper`.
@@ -683,7 +683,7 @@ The [Helper][phalcon-support-helper] component has been moved to the `Support` n
   Added `set(string $name, mixed $method): void`
 - The `getAdapters()` protected method has been renamed to `getServices()`
 - A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
- 
+
 #### `Phalcon\Html\Exception`
 - Changed `Phalcon\Html\Exception` to extend `\Exception`
 
@@ -757,7 +757,7 @@ The [Logger][phalcon-logger] component has been moved to the `Logger` namespace.
 - Changed `process(Item $item): string` (previously it returned `array|string`)
 
 #### `Phalcon\Logger\Formatter\Json`
-- Changed `format()` to encode JSON with the following options by default: `JSON_HEX_TAG`, `JSON_HEX_APOS`, `JSON_HEX_AMP`, `JSON_HEX_QUOT`, `JSON_UNESCAPED_SLASHES`, `JSON_THROW_ON_ERROR`,  
+- Changed `format()` to encode JSON with the following options by default: `JSON_HEX_TAG`, `JSON_HEX_APOS`, `JSON_HEX_AMP`, `JSON_HEX_QUOT`, `JSON_UNESCAPED_SLASHES`, `JSON_THROW_ON_ERROR`,
 
 #### `Phalcon\Logger\AdapterFactory`
 - The constructor now requires a `Phalcon\Storage\SerializerFactory` to be passed as the first parameter
@@ -768,7 +768,7 @@ The [Logger][phalcon-logger] component has been moved to the `Logger` namespace.
 - Changed `Phalcon\Logger\Exception` to extend `\Exception`
 
 #### `Phalcon\Logger\Item`
-- Changed `__construct(string $message, string $levelName, int $level, DateTimeImmutable $dateTime, array $context = [])` (`dateTtime` accepts a `DateTimeImmutable` object)
+- Changed `__construct(string $message, string $levelName, int $level, DateTimeImmutable $dateTime, array $context = [])` (`dateTime` accepts a `DateTimeImmutable` object)
 
 #### `Phalcon\Logger\LoggerInterface`
 - A new interface has been introduced (`Phalcon\Logger\LoggerInterface`) to offer more flexibility when extending the cache object.
@@ -818,7 +818,7 @@ The [Logger][phalcon-logger] component has been moved to the `Logger` namespace.
 - Added `__serialize()` and `__unserialize()` methods
 
 #### `Phalcon\Mvc\Model\Resultset\Simple`
-- Changed the constructor to accept `mixed` for `$cache` : `__construct(mixed $columnMap, mixed $model, mixed $result, mixed $cache = null, bool $keepSnapshots = false)`
+- Changed the constructor to accept `mixed` for `$cache`: `__construct(mixed $columnMap, mixed $model, mixed $result, mixed $cache = null, bool $keepSnapshots = false)`
 - Added `__serialize()` and `__unserialize()` methods
 
 #### `Phalcon\Mvc\Model\CriteriaInterface`
@@ -829,18 +829,18 @@ The [Logger][phalcon-logger] component has been moved to the `Logger` namespace.
 
 #### `Phalcon\Mvc\Model\ManagerInterface`
 - Changed `$options` parameter to be an array:
-    - `addBelongsTo(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
-    - `addHasMany(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
-    - `addHasOne(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
-    - `addHasOneThrough(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
-    - `addHasManyToMany(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addBelongsTo(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasMany(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasOne(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasOneThrough(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
+  - `addHasManyToMany(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array options = []): RelationInterface`
 - Changed `getModelSchema(ModelInterface $model)` to return `string` or `null`
-- Renamed: 
-    - `existsBelongsTo()` to `hasBelongsTo()`
-    - `existsMany()` to `hasHasMany()`
-    - `existsOne()` to `hasHasOne()`
-    - `existsOneThrough()` to `hasHasOneThrough()`
-    - `existsManyToMany()` to `hasHasManyToMany()`
+- Renamed:
+  - `existsBelongsTo()` to `hasBelongsTo()`
+  - `existsMany()` to `hasHasMany()`
+  - `existsOne()` to `hasHasOne()`
+  - `existsOneThrough()` to `hasHasOneThrough()`
+  - `existsManyToMany()` to `hasHasManyToMany()`
 
 #### `Phalcon\Mvc\Model\Manager`
 - Changed `getEventsManager()` to return `EventManagerInterface` or `null`
@@ -952,10 +952,10 @@ The [Security][phalcon-encryption-security] component has been moved to the `Enc
 
 #### `Phalcon\Session\Adapter\AbstractAdapter`
 - Changed `gc(int $maxlifetime): int | bool` to accept only `int` for the parameter
- 
+
 #### `Phalcon\Session\Adapter\Noop`
 - Changed `gc(int $maxlifetime): int | bool` to accept only `int` for the parameter
- 
+
 #### `Phalcon\Session\Adapter\Stream`
 - Changed `__construct()` to throw an exception if the save path is empty
 
@@ -1057,7 +1057,7 @@ The `Support` namespace contains classes that are used throughout the framework.
 - Changed `Phalcon\Support\Helper\Exception` to extend `\Exception`
 
 #### `Phalcon\Helper\*`
-- `Arr`, `Fs`, `Json`, `Number` and `Str` static classes have been removed and replaced with one class per method in the relevant namespace. For example `Phalcon\Helper\Arr::has()` is not `Phalcon\Support\Helper\Arr\Has::__invoke()` 
+- `Arr`, `Fs`, `Json`, `Number`, and `Str` static classes have been removed and replaced with one class per method in the relevant namespace. For example `Phalcon\Helper\Arr::has()` is not `Phalcon\Support\Helper\Arr\Has::__invoke()`
 - Added `Phalcon\Support\Helper\HelperFactory` service locator to easily create objects from the `Phalcon\Support\Helper` namespace
 - Added `__call()` in `Phalcon\Support\Helper\HelperFactory` to offer an easier access to objects i.e. `$this->helperFactory->dirFromFile()`
 
@@ -1067,7 +1067,7 @@ The `Support` namespace contains classes that are used throughout the framework.
 
 ![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)][phalcon-tag]
 
-Note, this component will be removed in future versions of the framework.
+Note, that this component will be removed in future versions of the framework.
 
 #### `Phalcon\Tag`
 - Added `preload(mixed $parameters): string` to parse preloading link headers
@@ -1082,10 +1082,10 @@ The `Phalcon\Text` component has been deprecated. It has been replaced with the 
 
 ---
 
-### Translate 
+### Translate
 
 ![](assets/images/status-changes-required-red.svg) [![](assets/images/status-docs.svg)][phalcon-translate]
- 
+
 #### `Phalcon\Translate\Adapter\AbstractAdapter`
 - Changed `__construct(InterpolatorFactory $interpolator, array $options = []` to default to an empty array for `$options`
 

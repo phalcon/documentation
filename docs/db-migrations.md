@@ -22,15 +22,15 @@ composer require --dev phalcon/migrations
 
 ## Quick start
 
-What you need for quick start:
+What you need for a quick start:
 
-* Configuration file in root of your project (you can also pass them as parameters inside CLI environment)
-* Create database tables structure
+* Configuration file in the root of your project (you can also pass them as parameters inside CLI environment)
+* Create database table structure
 * Execute command to generate migrations
 
-After that you can execute that migrations (run) in another environment to create same DB structure.
+After that, you can execute that migration (run) in another environment to create the same DB structure.
 
-### Create configuration file
+### Create the configuration file
 
 ```php
 <?php
@@ -70,7 +70,7 @@ return new Config([
 vendor/bin/phalcon-migrations generate
 ```
 
-**Generate specific table and export data from it
+**Generate a specific table and export data from it
 
 ```
 vendor/bin/phalcon-migrations generate \
@@ -120,8 +120,8 @@ $migration::run([
 
 ## Migration methods
 
-Each migration is a separate class that works as an entity for specific database table.
-Inside each class there are different methods that can occur during migration running.
+Each migration is a separate class that works as an entity for a specific database table.
+Inside each class, different methods can occur during migration running.
 
 Each migration file (and class) can implement specific methods, that will be executed based on the operation requested.
 There are no restrictions on the logic encapsulated in each method.
@@ -133,7 +133,7 @@ The tables below show the Migration Class methods. They are stored by order of e
 | Method name        | Description                                        |
 |--------------------|----------------------------------------------------|
 | `morph`            | Morph table structure                              |
-| `afterCreateTable` | Make something immediately after table was created |
+| `afterCreateTable` | Make something immediately after the table was created |
 | `up`               | Table is created and ready to work with            |
 | `afterUp`          | Extra method to work for some specific cases       |
 
@@ -144,7 +144,7 @@ The tables below show the Migration Class methods. They are stored by order of e
 |-------------|--------------------------------------------------------------------------------------------------------------------|
 | `down`      | Normally you put here table drop or data truncation                                                                |
 | `aferDown`  | Extra method to work after all was cleaned up                                                                      |
-| `morph`     | (**from previous migration**) As the migration was moved backward, there need to be all returned to previous state |
+| `morph`     | (**from previous migration**) As the migration was moved backward, there need to be all returned to the previous state |
 
 ## CLI Arguments and options
 
@@ -163,17 +163,17 @@ The tables below show the Migration Class methods. They are stored by order of e
 | `--config=s`               | Configuration file                                                                       |
 | `--migrations=s`           | Migrations directory. Use comma separated string to specify multiple directories         |
 | `--directory=s`            | Directory where the project was created                                                  |
-| `--table=s`                | Table to migrate. Table name or table prefix with asterisk. Default: all                 |
+| `--table=s`                | Table to migrate. Table name or table prefix with an asterisk. Default: all                 |
 | `--version=s`              | Version to migrate                                                                       |
-| `--descr=s`                | Migration description (used for timestamp based migration)                               |
+| `--descr=s`                | Migration description (used for timestamp-based migration)                               |
 | `--data=s`                 | Export data ['always' or 'oncreate'] (Data is imported during migration run)             |
-| `--exportDataFromTables=s` | Export data from specific tables, use comma separated string                             |
+| `--exportDataFromTables=s` | Export data from specific tables, use comma-separated string                             |
 | `--force`                  | Forces to overwrite existing migrations                                                  |
 | `--ts-based`               | Timestamp based migration version                                                        |
-| `--log-in-db`              | Keep migrations log in the database table rather then in file                            |
+| `--log-in-db`              | Keep migrations log in the database table rather than in file                            |
 | `--dry`                    | Attempt requested operation without making changes to system (Generating only)           |
 | `--verbose`                | Output of debugging information during operation (Running only)                          |
-| `--no-auto-increment`      | Disable auto increment (Generating only)                                                 |
+| `--no-auto-increment`      | Disable auto-increment (Generating only)                                                 |
 | `--skip-ref-schema`        | Skip referencedSchema inside generated migration (Generating only)                       |
 | `--skip-foreign-checks`    | Wrap `SET FOREIGN_KEY_CHECKS` query before and after execution of a query (Running only) |
 | `--help`                   | Shows this help                                                                          |
@@ -181,15 +181,15 @@ The tables below show the Migration Class methods. They are stored by order of e
 ## Timestamp based migrations
 
 Using this approach is useful when more than one developer is participating in the database structure management.
-Use `'migrationsTsBased' => true` in config file or `--ts-based` option in CLI environment.
-Also, you need to specify suffix `descr`, which could be anything you want, for example: semantic version.
+Use `'migrationsTsBased' => true` in the config file or `--ts-based` option in CLI environment.
+Also, you need to specify the suffix `descr`, which could be anything you want, for example: semantic version.
 
 Current command
 ```
 vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
 ```
 
-Will produce folder name with such names
+Will produce folder names with such names
 
 ```sh
 * 1582539287636860_1.0.0

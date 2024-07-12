@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-[Phalcon\Http\Response][http-response] is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not _only_ the actual response payload. The component acts as a constructor of the response and as an HTTP client to send the response back to the caller. 
+[Phalcon\Http\Response][http-response] is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not _only_ the actual response payload. The component acts as a constructor of the response and as an HTTP client to send the response back to the caller.
 
 ```php
 <?php
@@ -17,11 +17,11 @@ $response->setContent("Sorry, the page doesn't exist");
 $response->send();
 ```
 
-The above example demonstrates how we can send a 404-page back to the user.
+The above example demonstrates how we can send a 404 page back to the user.
 
 The component implements the [Phalcon\Http\ResponseInterface][http-responseinterface], [Phalcon\Di\InjectionAware][di-injectionawareinterface] and [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces.
 
-Upon instantiation, you can use the constructor to set your content, the code as well as the status if you need to. 
+Upon instantiation, you can use the constructor to set your content, the code as well as the status if you need to.
 
 ```php
 <?php
@@ -38,7 +38,7 @@ $response = new Response(
 $response->send();
 ```
 
-After we set up all the necessary information, we can call the `send()` method to send the response back. There are however instances that due to errors or application workflow, that our response might have already been sent back to the caller. Calling `send()` will therefore introduce the dreaded `headers already sent` message on screen.
+After we set up all the necessary information, we can call the `send()` method to send the response back. There are however instances that due to errors or application workflow, our response might have already been sent back to the caller. Calling `send()` will therefore introduce the dreaded `headers already sent` message on the screen.
 
 To avoid this we can use the `isSent()` method to check if the response has already sent the data back to the caller.
 
@@ -66,8 +66,8 @@ The [Phalcon\Http\Response][http-response] offers several getters, allowing you 
 |---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | `getContent(): string`                |  Returns the HTTP response body.                                                                                                             |
 | `getHeaders(): HeadersInterface`      | Returns the headers object, containing headers set by the user.                                                                              |
-| `getReasonPhrase(): string&vert;null` | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
-| `getStatusCode(): int&vert;null`      | Returns the status code (e.g. `200`).                                                                                                        |
+| `getReasonPhrase(): string|null` | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
+| `getStatusCode(): int|null`      | Returns the status code (e.g. `200`).                                                                                                        |
 
 
 ## Content
@@ -85,7 +85,7 @@ $response->setContent("<h1>Hello World!</h1>");
 $response->send();
 ```
 
-You can also accompany that with `setContentLength()` which allows you to set the length or number of bytes that the response has, as well as the `setContentType()` which tells the recipient what type the data is. This is especially handy to use, because the recipient (often a browser) will treat different types of content differently. 
+You can also accompany that with `setContentLength()` which allows you to set the length or number of bytes that the response has, as well as the `setContentType()` which tells the recipient what type the data is. This is especially handy to use because the recipient (often a browser) will treat different types of content differently.
 
 !!! info "NOTE"
 
@@ -136,7 +136,7 @@ $response
     ->send();
 ```
 
-Note that in the above JSON example we used the `setJsonContent()` instead of the `setContent()`. `setJsonContent()` allows us to send a payload to the method, and it will automatically set the content type header to `application/json` and call `json_encode` on the payload. You can also pass options and depth as the last two parameters of the method, which will be used by [json_encode][json-encode] internally:
+Note that in the above JSON example, we used the `setJsonContent()` instead of the `setContent()`. `setJsonContent()` allows us to send a payload to the method, and it will automatically set the content type header to `application/json` and call `json_encode` on the payload. You can also pass options and depth as the last two parameters of the method, which will be used by [json_encode][json-encode] internally:
 
 ```php
 <?php
@@ -161,7 +161,7 @@ $response
 For applications that need to add content to the response based on certain criteria (various `if` statements for instance), you can use the `appendContent()` method, which will just add the new content to the existing one stored in the component.
 
 ## Headers
-The HTTP headers are a very important part of the HTTP response, since they contain information regarding the response. Information such as the status, content type, cache etc. is wrapped in the headers. The [Phalcon\Http\Response][http-response] object offers methods that allow you to manipulate those headers based on your application workflow and needs. 
+The HTTP headers are a very important part of the HTTP response since they contain information regarding the response. Information such as the status, content type, cache, etc. is wrapped in the headers. The [Phalcon\Http\Response][http-response] object offers methods that allow you to manipulate those headers based on your application workflow and needs.
 
 Setting headers using the response object only requires you to call the `setHeader()` method.
 
@@ -186,7 +186,7 @@ $response
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
-You can also use the `setRawHeader()` method to set the header using the raw syntax. 
+You can also use the `setRawHeader()` method to set the header using the raw syntax.
 
 You can check whether a header exists using `hasHeader()`, remove it using `removeHeader()` method, or clear the headers completely using `resetHeaders()`.
 
@@ -259,8 +259,8 @@ The [Phalcon\Http\Response\Headers][http-response-headers] object offers the fol
 
 | Name                                    | Description                                             |
 |-----------------------------------------|---------------------------------------------------------|
-| `get( string $name ): string&vert;bool` | Gets a header value from the object                     |
-| `has( string $name ): bool`             | Checks if a header already exists in the reponse        |             
+| `get( string $name ): string|bool` | Gets a header value from the object                     |
+| `has( string $name ): bool`             | Checks if a header already exists in the response        |             
 | `remove( string $header )`              | Removes a header from the response                      |                            
 | `reset()`                               | Resets all headers                                      |
 | `send(): bool`                          | Sends the headers to the client                         |                                           
@@ -324,10 +324,10 @@ $cookie  = new Cookie(
 
 !!! info "NOTE"
 
-    If your DI container contains the `session` service, the cookies will be stored in the session automatically. If not, they will not be stored, and you are responsible to persist them if you wish to.
+    If your DI container contains the `session` service, the cookies will be stored in the session automatically. If not, they will not be stored, and you are responsible for persisting them if you wish to.
 
 ### Encryption
-The cookies collection is automatically registered as part of the `response` service that is registered in the DI container. By default, cookies are automatically encrypted prior to sending them to the client and are decrypted when retrieved from the user.  
+The cookies collection is automatically registered as part of the `response` service that is registered in the DI container. By default, cookies are automatically encrypted prior to sending them to the client and are decrypted when retrieved from the user.
 
 In order to set the sign key used to generate a message you can either set it in the constructor:
 
@@ -365,11 +365,11 @@ $response->setCookies($cookies);
 
 !!! danger "NOTE"
 
-    The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo random generator. You can always use the `Crypt` component to generate a good `signKey`.
+    The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo-random generator. You can always use the `Crypt` component to generate a good `signKey`.
 
 !!! danger "NOTE"
 
-    Cookies can contain complex structures such as service information, resultsets etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
+    Cookies can contain complex structures such as service information, resultsets, etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
 
 ### Methods
 
@@ -378,14 +378,14 @@ There are several methods available to help you retrieve data from the component
 | Method                                                   | Description                                                                                                                                                                                                                                                                                                        |
 |----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `delete( string $name ): bool`                           | Deletes a cookie by name. This method **does not remove** cookies from the `$_COOKIE` superglobal                                                                                                                                                                                                                  |
-| `get( string $name ): CookieInterface`                   | Gets a cookie by name. It checks the internal collection and if the cookie is found, it will return it back. If not found, it will pick up the cookie from the superglobal, create an object and then return it back. It **will not** store it in the internal collection because it will be sent twice otherwise. |
+| `get( string $name ): CookieInterface`                   | Gets a cookie by name. It checks the internal collection and if the cookie is found, it will return it back. If not found, it will pick up the cookie from the superglobal, create an object, and then return it back. It **will not** store it in the internal collection because it will be sent twice otherwise. |
 | `getCookies(): array`                                    | Returns an array of all available cookies in the object                                                                                                                                                                                                                                                            |
 | `has( string $name ): bool`                              | Checks the internal cookie collection **or** the `$_COOKIE` superglobal. It returns `true` if the cookie exists in either collections, `false` otherwise.                                                                                                                                                          |
 | `isUsingEncryption(): bool`                              | Returns if the collection is automatically encrypting/decrypting cookies.                                                                                                                                                                                                                                          |
 | `reset(): CookiesInterface`                              | Reset all set cookies from the internal collection                                                                                                                                                                                                                                                                 |
 | `send(): bool`                                           | Sends all the cookies to the client. Cookies are not sent if headers are already sent during the current request                                                                                                                                                                                                   |
 | `setSignKey( string $signKey = null ): CookieInterface`  | Sets the cookie's sign key. If set to `NULL` the signing is disabled.                                                                                                                                                                                                                                              |
-| `useEncryption( bool $useEncryption ): CookiesInterface` | Set if cookies in the bag must be automatically encrypted/decrypted                                                                                                                                                                                                                                                |
+| `useEncryption( bool $useEncryption ): CookiesInterface` | Set of cookies in the bag must be automatically encrypted/decrypted                                                                                                                                                                                                                                                |
 | `set()`                                                  | Sets a cookie to be sent at the end of the request                                                                                                                                                                                                                                                                 |
 
 `set(): CookiesInterface` accepts the following parameters:
@@ -399,7 +399,7 @@ There are several methods available to help you retrieve data from the component
 | `bool $secure = null`    | Whether the cookie is secure or not |
 | `string $domain = null`  | The domain of the cookie            |
 | `bool $httpOnly = false` | Whether to set http only or not     |
- 
+
 ```php
 <?php
 
@@ -421,7 +421,7 @@ $cookies->set(
 ```
 
 ## Files
-The `setFileToSend()` helper method allows you to easily set a file to be sent back to the caller using the response object. This is particularly useful when we want to introduce download files functionality in our application.
+The `setFileToSend()` helper method allows you to easily set a file to be sent back to the caller using the response object. This is particularly useful when we want to introduce download file functionality in our application.
 
 The method accepts the following parameters:
 
@@ -534,11 +534,11 @@ return $response->redirect(
     Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
 ## HTTP Cache
-One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. The [Phalcon\Http\Response][http-response] object exposes methods that help with this task.
+One of the easiest ways to improve the performance of your applications and reduce the traffic is using HTTP Cache. The [Phalcon\Http\Response][http-response] object exposes methods that help with this task.
 
 !!! info "NOTE"
 
-    Depending on the needs of your application, you might not want to control HTTP caching using Phalcon. There are several services available on the Internet that can help with that and could potentially be cheaper and easier to maintain (BitMitigate, Varnish etc.). Implementing HTTP Cache in your application will definitely help, but it will have a small impact in the performance of your application. It is up to you to decide which strategy is best for your application and audience.
+    Depending on the needs of your application, you might not want to control HTTP caching using Phalcon. There are several services available on the Internet that can help with that and could potentially be cheaper and easier to maintain (BitMitigate, Varnish, etc.). Implementing HTTP Cache in your application will definitely help, but it will have a small impact on the performance of your application. It is up to you to decide which strategy is best for your application and audience.
 
 HTTP Cache is implemented by setting certain headers in the response. The cache is set (using the headers) upon the first visit of the user to our application. The following headers help with HTTP Cache:
 
@@ -566,7 +566,7 @@ $expiryDate->modify('+2 months');
 $response->setExpires($expiryDate);
 ```
 
-The [Phalcon\Http\Response][http-response] component automatically formats the date to the `GMT` timezone as expected in an `Expires` header. Irrespective of the timezone of your application, the component converts the time first to `UTC` and then sets the `Expires` header. Setting the expiry with a date in the past will instruct the browser to always request a fresh copy of the page. This is particularly useful if we want to force the client browsers to request a new copy of our page.
+The [Phalcon\Http\Response][http-response] component automatically formats the date to the `GMT` timezone as expected in an `Expires` header. Irrespective of the timezone of your application, the component converts the time first to `UTC` and then sets the `Expires` header. Setting the expiry date in the past will instruct the browser to always request a fresh copy of the page. This is particularly useful if we want to force the client browsers to request a new copy of our page.
 
 ```php
 <?php
@@ -583,7 +583,7 @@ $response->setExpires($expiryDate);
 
 !!! warning "NOTE"
 
-    Browsers rely on the client machine's clock to identify if the date has passed or not. Therefore, this caching mechanism has some limitations that the developer must account for (different timezones, clock skew etc.)
+    Browsers rely on the client machine's clock to identify if the date has passed or not. Therefore, this caching mechanism has some limitations that the developer must account for (different timezones, clock skew, etc.)
 
 ### `Cache-Control`
 This header provides a better to cache the pages served. We simply specify a time in seconds, instructing the browser that our content is cached for that amount of time.
@@ -645,7 +645,7 @@ $expiryDate->modify('+2 months');
 $response->setLastModified($expiryDate);
 ```
 
-The [Phalcon\Http\Response][http-response] component automatically formats the date to the `GMT` timezone as expected in an `Last-Modified` header. Irrespective of the timezone of your application, the component converts the time first to `UTC` and then sets the `Last-Modified` header. Setting the expiry with a date in the past will instruct the browser to always request a fresh copy of the page. This is particularly useful if we want to force the client browsers to request a new copy of our page.
+The [Phalcon\Http\Response][http-response] component automatically formats the date to the `GMT` timezone as expected in a `Last-Modified` header. Irrespective of the timezone of your application, the component converts the time first to `UTC` and then sets the `Last-Modified` header. Setting the expiry with date in the past will instruct the browser to always request a fresh copy of the page. This is particularly useful if we want to force the client browsers to request a new copy of our page.
 
 ```php
 <?php
@@ -661,7 +661,7 @@ $response->setLastModified($expiryDate);
 ```
 
 ### `E-Tag`
-An `entity-tag` or `E-tag` is a unique identifier that helps the browser identify if the page has changed or not between requests. The identifier is usually calculated taking into account the last modified date, the contents and other identifying parameters for the page:
+An `entity-tag` or `E-tag` is a unique identifier that helps the browser identify if the page has changed or not between requests. The identifier is usually calculated taking into account the last modified date, the contents, and other identifying parameters for the page:
 
 ```php
 <?php
@@ -682,7 +682,7 @@ $eTag = sha1($mostRecentDate);
 $response->setHeader('E-Tag', $eTag);
 ```
 
-### `304`
+### Not Modified - `304`
 Generating a `not-modified` response also helps with caching, by instructing the browser that the contents have not been modified, and therefore the locally cached copy of the data on the browser should be used.
 
 
@@ -701,7 +701,7 @@ $response->setNotModified();
 The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
 
-If you have used the [Phalcon\Di\FactoryDefault][di-factorydefault] DI container for your application, the service is already registered for you. You can access it using the `response` name. The example below shows the usage in a controller
+If you have used the [Phalcon\Di\FactoryDefault][di-factorydefault] DI container for your application, the service is already registered for you. You can access it using the `response` name. The example below shows the usage of a controller
 
 ```php
 <?php
@@ -719,14 +719,14 @@ class PostsController extends Controller
         return $this
             ->response
             ->setStatusCode(404, 'Not Found')
-            ->setContent("Sorry, the page doesn't exist")
+            ->setContent("Sorry, the page does not exist")
             ->send();
     }
 }
 ```
 
 ## Events
- The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
+The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 
 | Event               | Description                             | Can stop operation |
@@ -734,21 +734,20 @@ class PostsController extends Controller
 | `afterSendHeaders`  | Fires after the headers have been sent  |         No         |
 | `beforeSendHeaders` | Fires before the headers have been sent |        Yes         |
 
-[http-cookie]: api/phalcon_http.md#http-cookie
-[http-cookie-exception]: api/phalcon_http.md#http-cookie-exception
-[http-cookieinterface]: api/phalcon_http.md#http-cookieinterface
-[http-response]: api/phalcon_http.md#http-response
-[http-response-cookies]: api/phalcon_http.md#http-response-cookies
-[http-response-cookiesinterface]: api/phalcon_http.md#http-response-cookiesinterface
-[http-response-exception]: api/phalcon_http.md#http-response-exception
-[http-response-headers]: api/phalcon_http.md#http-response-headers
-[http-response-headersinterface]: api/phalcon_http.md#http-response-headersinterface
-[http-responseinterface]: api/phalcon_http.md#http-responseinterface
-[di-injectionawareinterface]: api/phalcon_di.md#di-injectionawareinterface
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[url]: api/phalcon_mvc.md#mvc-url
+[http-cookie]: api/phalcon_http.md#httpcookie-
+[http-cookie-exception]: api/phalcon_http.md#httpcookieexception-
+[http-cookieinterface]: api/phalcon_http.md#httpcookiecookieinterface--
+[http-response]: api/phalcon_http.md#httpresponse-
+[http-response-cookies]: api/phalcon_http.md#httpresponsecookies-
+[http-response-cookiesinterface]: api/phalcon_http.md#httpresponsecookiesinterface--
+[http-response-exception]: api/phalcon_http.md#httpresponseexception-
+[http-response-headers]: api/phalcon_http.md#httpresponseheaders-
+[http-response-headersinterface]: api/phalcon_http.md#httpresponseheadersinterface--
+[http-responseinterface]: api/phalcon_http.md#httpresponseinterface--
+[di-injectionawareinterface]: api/phalcon_di.md#diinjectionawareinterface--
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[url]: api/phalcon_mvc.md#mvcurl-
 [json-encode]: https://www.php.net/manual/en/function.json-encode.php
 [status-codes]: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-[events-eventsawareinterface]: api/phalcon_events.md#events-eventsawareinterface
+[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface--
 [readfile]: https://www.php.net/manual/en/function.readfile.php
-[http-message-response]: api/phalcon_http.md#http-message-response

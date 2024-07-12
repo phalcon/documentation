@@ -4,7 +4,7 @@
 ## Overview
 A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space or by the `/` character usually, that represent the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application.
 
-An example is an application that has an `admin` module, an `invoices` area and a `view invoice` page. Usually, you would select the `admin` module, then from the links you will choose `invoices` (list) and then clicking on one of the invoices in the list, you can view it. To represent this tree like structure, the breadcrumbs displayed could be:
+An example is an application that has an `admin` module, an `invoices` area, and a `view invoice` page. Usually, you would select the `admin` module, then from the links you will choose `invoices` (list), and then clicking on one of the invoices in the list, you can view it. To represent this tree-like structure, the breadcrumbs displayed could be:
 
 ```php
 Home / Admin / Invoices / Viewing Invoice [1234]
@@ -48,9 +48,9 @@ Returns the separator used for the breadcrumbs
 ```php
 public function remove(string $link): void
 ```
-Removes crumb by url.
+Removes crumb by URL.
 
-In the example below remove a crumb by URL and also remove a crumb without an url (last link)
+In the example below remove a crumb by URL and also remove a crumb without an URL (last link)
 
 ```php
 $breadcrumbs->remove("/admin/user/create");
@@ -60,12 +60,12 @@ $breadcrumbs->remove();
 ```php
 public function render(): string
 ```
-Renders and outputs breadcrumbs HTML. The template used is:
+Renders and outputs breadcrumb HTML. The template used is:
 
 ```html
 <dl>
-    <dt><a href="Hyperlink">Text</a></dt> / 
-    <dt><a href="Hyperlink">Text</a></dt> / 
+    <dt><a href="Hyperlink">Text</a></dt> /
+    <dt><a href="Hyperlink">Text</a></dt> /
     <dt>Text</dt>
 </dl>
 ```
@@ -89,6 +89,6 @@ public function toArray(): array
 ```
 Returns the internal breadcrumbs array
 
-[html-breadcrumbs]: api/phalcon_html.md#html-breadcrumbs
-[html-exception]: api/phalcon_html.md#html-exception
-[html-tagfactory]: api/phalcon_html.md#html-tagfactory
+[html-breadcrumbs]: api/phalcon_html.md#htmlbreadcrumbs-
+[html-exception]: api/phalcon_html.md#htmlexception-
+[html-tagfactory]: api/phalcon_html.md#htmltagfactory-

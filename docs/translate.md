@@ -5,7 +5,7 @@
 The component [Phalcon\Translate][translate] offers multilingual capabilities to applications. This component allows you to display content in different languages, based on the user's choice of language, available by the application.
 
 ## Usage
-Introducing translations in your application is a relatively simple task. However, no two implementations are the same and of course the implementation will depend on the needs of your application. Some options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request][request] object).
+Introducing translations in your application is a relatively simple task. However, no two implementations are the same and of course, the implementation will depend on the needs of your application. Some options available can be automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request][request] object).
 
 ```php
 <?php
@@ -96,7 +96,7 @@ and for Volt:
 ```
 
 ### Plugin
-The implementation above can be extended to offer translation capabilities throughout the application. We can of course move the `getTranslator()` method in a base controller and change its visibility to `protected`. However, we might want to use translations in other components that are outside the scope of a controller. 
+The implementation above can be extended to offer translation capabilities throughout the application. We can of course move the `getTranslator()` method in a base controller and change its visibility to `protected`. However, we might want to use translations in other components that are outside the scope of a controller.
 
 To achieve this, we can implement a new component as a Plugin and register it in our [Di][di] container.
 
@@ -117,7 +117,7 @@ class Locale extends Injectable
      */
     public function getTranslator(): NativeArray
     {
-        // Ask browser what is the best language
+        // Ask the browser what is the best language
         $language = $this->request->getBestLanguage();
         $messages = [];
         
@@ -142,7 +142,7 @@ class Locale extends Injectable
 }
 ``` 
 
-Then we can register it in the Di container, when setting up services during bootstrap:
+Then we can register it in the Di container when setting up services during bootstrap:
 
 ```php
 <?php
@@ -221,7 +221,7 @@ $options = [
 
 $translator = $factory->newInstance('array', $options);
 ```
- 
+
 ## Adapters
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
@@ -253,7 +253,7 @@ $options = [
 $translator = $factory->newInstance('array', $options);
 ```
 
-The recommended usage would be to create one file per language and store it in the file system. After that you can load the relevant file, based on the language selected. A sample structure can be: 
+The recommended usage would be to create one file per language and store it in the file system. After that, you can load the relevant file, based on the language selected. A sample structure can be:
 
 ```bash
 app/messages/en.php
@@ -268,7 +268,7 @@ app/messages/es.json
 app/messages/fr.json
 app/messages/zh.json
 ```
-Each file contains PHP arrays, where key is the key of the translated string and value the translated message. Each file contains the same keys but the values are of course the message translated in the respective language.
+Each file contains PHP arrays, where the key is the key of the translated string and the value of the translated message. Each file contains the same keys but the values are of course the message translated in the respective language.
 
 ```php
 <?php
@@ -367,7 +367,7 @@ $options = [
 $translator = $factory->newInstance('csv', $options);
 ```
 
-In the above example you can see the usage of `delimiter` and `enclosure`. In most cases you will not need to supply these options but in case your CSV files are somewhat different, you have the option to instruct the adapter as to how it will parse the contents of the translation file.
+In the above example, you can see the usage of `delimiter` and `enclosure`. In most cases, you will not need to supply these options but in case your CSV files are somewhat different, you have the option to instruct the adapter as to how it will parse the contents of the translation file.
 
 Creating this adapter can be achieved by using the [Translate Factory][translate-factory], but you can instantiate it directly:
 ```php
@@ -452,7 +452,7 @@ $options      = [
 $translator = new Gettext($interpolator, $options);
 ```
 
-## Custom 
+## Custom
 The [Phalcon\Translate\Adapter\AdapterInterface][adapterinterface] interface must be implemented in order to create your own translation adapters or extend the existing ones:
 
 ```php
@@ -564,7 +564,7 @@ $translator->_(
         'name' => $name,
         'time' => 'day',
     ]
-); // Hello Henry, good day !
+); // Hello Henry, good day!
 
 $translator->_(
     'hi-name',
@@ -572,7 +572,7 @@ $translator->_(
         'name' => $name,
         'time' => 'night',
     ]
-); // Hello Henry, good night !
+); // Hello Henry, good night!
 ```
 
 ### IndexedArray
@@ -611,7 +611,7 @@ $translator->_(
 The [Phalcon\Translate\Interpolator\InterpolatorInterface][interpolatorinterface] interface must be implemented in order to create your own interpolators or extend the existing ones:
 
 ### Interpolator Factory
-The [Phalcon\Translate\InterpolatorFactory][interpolatorfactory] factory offers an easy way to create interpolators. It is an object required to be passed to the translation adapters and translate factory, so that in turn can create the relevant interpolation class that the adapter will use.
+The [Phalcon\Translate\InterpolatorFactory][interpolatorfactory] factory offers an easy way to create interpolators. It is an object required to be passed to the translation adapters and translate factory so that in turn can create the relevant interpolation class that the adapter will use.
 
 ```php
 <?php
@@ -633,23 +633,23 @@ $translator = $factory->newInstance(
 );
 ```
 
-[abstractadapter]: api/phalcon_translate.md#translate-adapter-abstractadapter
-[adapterinterface]: api/phalcon_translate.md#translate-adapter-adapterinterface
-[associativearray]: api/phalcon_translate.md#translate-interpolator-associativearray
-[csv]: api/phalcon_translate.md#translate-adapter-csv
-[exception]: api/phalcon_translate.md#translate-exception
-[gettext]: api/phalcon_translate.md#translate-adapter-gettext
+[abstractadapter]: api/phalcon_translate.md#translateadapterabstractadapter--
+[adapterinterface]: api/phalcon_translate.md#translateadapteradapterinterface--
+[associativearray]: api/phalcon_translate.md#translateinterpolatorassociativearray-
+[csv]: api/phalcon_translate.md#translateadaptercsv-
+[exception]: api/phalcon_translate.md#translateexception-
+[gettext]: api/phalcon_translate.md#translateadaptergettext-
 [incubator]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter
-[indexedarray]: api/phalcon_translate.md#translate-interpolator-indexedarray
-[interpolatorinterface]: api/phalcon_translate.md#translate-interpolator-interpolatorinterface
-[interpolatorfactory]: api/phalcon_translate.md#translate-interpolatorfactory
-[nativearray]: api/phalcon_translate.md#translate-adapter-nativearray
+[indexedarray]: api/phalcon_translate.md#translateinterpolatorindexedarray-
+[interpolatorinterface]: api/phalcon_translate.md#translateinterpolatorinterpolatorinterface--
+[interpolatorfactory]: api/phalcon_translate.md#translateinterpolatorfactory-
+[nativearray]: api/phalcon_translate.md#translateadapternativearray-
 [php-gettext]: https://www.php.net/manual/book.gettext.php
 [poedit]: https://poedit.net/
-[request]: api/phalcon_http.md#request
+[request]: api/phalcon_http.md#httprequest-
 [sprintf]: https://www.php.net/manual/en/function.sprintf.php
 [translate]: api/phalcon_translate.md
-[translatefactory]: api/phalcon_translate.md#translate-translatefactory
+[translatefactory]: api/phalcon_translate.md#translatetranslatefactory-
 [wiki-gettext]: https://en.wikipedia.org/wiki/Gettext
 [di]: di.md
 [routing]: routing.md

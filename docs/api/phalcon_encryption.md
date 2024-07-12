@@ -1,42 +1,36 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Encryption\Crypt](#encryption-crypt)
-* [Phalcon\Encryption\Crypt\CryptInterface](#encryption-crypt-cryptinterface)
-* [Phalcon\Encryption\Crypt\Exception\Exception](#encryption-crypt-exception-exception)
-* [Phalcon\Encryption\Crypt\Exception\Mismatch](#encryption-crypt-exception-mismatch)
-* [Phalcon\Encryption\Crypt\PadFactory](#encryption-crypt-padfactory)
-* [Phalcon\Encryption\Crypt\Padding\Ansi](#encryption-crypt-padding-ansi)
-* [Phalcon\Encryption\Crypt\Padding\Iso10126](#encryption-crypt-padding-iso10126)
-* [Phalcon\Encryption\Crypt\Padding\IsoIek](#encryption-crypt-padding-isoiek)
-* [Phalcon\Encryption\Crypt\Padding\Noop](#encryption-crypt-padding-noop)
-* [Phalcon\Encryption\Crypt\Padding\PadInterface](#encryption-crypt-padding-padinterface)
-* [Phalcon\Encryption\Crypt\Padding\Pkcs7](#encryption-crypt-padding-pkcs7)
-* [Phalcon\Encryption\Crypt\Padding\Space](#encryption-crypt-padding-space)
-* [Phalcon\Encryption\Crypt\Padding\Zero](#encryption-crypt-padding-zero)
-* [Phalcon\Encryption\Security](#encryption-security)
-* [Phalcon\Encryption\Security\Exception](#encryption-security-exception)
-* [Phalcon\Encryption\Security\JWT\Builder](#encryption-security-jwt-builder)
-* [Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException](#encryption-security-jwt-exceptions-unsupportedalgorithmexception)
-* [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException](#encryption-security-jwt-exceptions-validatorexception)
-* [Phalcon\Encryption\Security\JWT\Signer\AbstractSigner](#encryption-security-jwt-signer-abstractsigner)
-* [Phalcon\Encryption\Security\JWT\Signer\Hmac](#encryption-security-jwt-signer-hmac)
-* [Phalcon\Encryption\Security\JWT\Signer\None](#encryption-security-jwt-signer-none)
-* [Phalcon\Encryption\Security\JWT\Signer\SignerInterface](#encryption-security-jwt-signer-signerinterface)
-* [Phalcon\Encryption\Security\JWT\Token\AbstractItem](#encryption-security-jwt-token-abstractitem)
-* [Phalcon\Encryption\Security\JWT\Token\Enum](#encryption-security-jwt-token-enum)
-* [Phalcon\Encryption\Security\JWT\Token\Item](#encryption-security-jwt-token-item)
-* [Phalcon\Encryption\Security\JWT\Token\Parser](#encryption-security-jwt-token-parser)
-* [Phalcon\Encryption\Security\JWT\Token\Signature](#encryption-security-jwt-token-signature)
-* [Phalcon\Encryption\Security\JWT\Token\Token](#encryption-security-jwt-token-token)
-* [Phalcon\Encryption\Security\JWT\Validator](#encryption-security-jwt-validator)
-* [Phalcon\Encryption\Security\Random](#encryption-security-random)
+!!! info "NOTE"
 
-<h1 id="encryption-crypt">Class Phalcon\Encryption\Crypt</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt.zep)
 
-| Namespace  | Phalcon\Encryption |
-| Uses       | Phalcon\Encryption\Crypt\CryptInterface, Phalcon\Encryption\Crypt\Exception\Exception, Phalcon\Encryption\Crypt\Exception\Mismatch, Phalcon\Encryption\Crypt\PadFactory |
-| Implements | CryptInterface |
+
+## Encryption\Crypt 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Crypt\CryptInterface`
+    - `Phalcon\Encryption\Crypt\Exception\Exception`
+    - `Phalcon\Encryption\Crypt\Exception\Mismatch`
+    - `Phalcon\Encryption\Crypt\PadFactory`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `CryptInterface`
 
 Provides encryption capabilities to Phalcon applications.
 
@@ -57,7 +51,7 @@ echo $crypt->decrypt($encrypted, $key);
 ```
 
 
-## Constants
+### Constants
 ```php
 const DEFAULT_ALGORITHM = sha256;
 const DEFAULT_CIPHER = aes-256-cfb;
@@ -70,74 +64,74 @@ const PADDING_SPACE = 6;
 const PADDING_ZERO = 5;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected authData = ;
+protected $authData = ;
 
 /**
  * @var string
  */
-protected authTag = ;
+protected $authTag = ;
 
 /**
  * @var int
  */
-protected authTagLength = 16;
+protected $authTagLength = 16;
 
 /**
  * Available cipher methods.
  *
  * @var array
  */
-protected availableCiphers;
+protected $availableCiphers;
 
 /**
  * @var string
  */
-protected cipher;
+protected $cipher;
 
 /**
  * The name of hashing algorithm.
  *
  * @var string
  */
-protected hashAlgorithm;
+protected $hashAlgorithm;
 
 /**
  * The cipher iv length.
  *
  * @var int
  */
-protected ivLength = 16;
+protected $ivLength = 16;
 
 /**
  * @var string
  */
-protected key = ;
+protected $key = ;
 
 /**
  * @var int
  */
-protected padding = 0;
+protected $padding = ;
 
 /**
  * @var PadFactory
  */
-protected padFactory;
+protected $padFactory;
 
 /**
  * Whether calculating message digest enabled or not.
  *
  * @var bool
  */
-protected useSigning = true;
+protected $useSigning = true;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $cipher = static-constant-access, bool $useSigning = bool, PadFactory $padFactory = null );
@@ -370,16 +364,28 @@ protected function phpOpensslRandomPseudoBytes( int $length );
 
 
 
-<h1 id="encryption-crypt-cryptinterface">Interface Phalcon\Encryption\Crypt\CryptInterface</h1>
+## Encryption\Crypt\CryptInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/CryptInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/CryptInterface.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Crypt
 
 
-## Methods
+### Methods
 
 ```php
 public function decrypt( string $input, string $key = null ): string;
@@ -485,51 +491,90 @@ Sets if the calculating message digest must be used.
 
 
 
-<h1 id="encryption-crypt-exception-exception">Class Phalcon\Encryption\Crypt\Exception\Exception</h1>
+## Encryption\Crypt\Exception\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Exception/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/Exception.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Exception |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Crypt use this class
 
 
 
-<h1 id="encryption-crypt-exception-mismatch">Class Phalcon\Encryption\Crypt\Exception\Mismatch</h1>
+## Encryption\Crypt\Exception\Mismatch 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Exception/Mismatch.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/Mismatch.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Exception |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Crypt will use this class.
 
 
 
-<h1 id="encryption-crypt-padfactory">Class Phalcon\Encryption\Crypt\PadFactory</h1>
+## Encryption\Crypt\PadFactory 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/PadFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/PadFactory.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt |
-| Uses       | Phalcon\Encryption\Crypt, Phalcon\Encryption\Crypt\Padding\PadInterface, Phalcon\Factory\AbstractFactory, Phalcon\Support\Helper\Arr\Get |
-| Extends    | AbstractFactory |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Crypt`
+    - `Phalcon\Encryption\Crypt\Padding\PadInterface`
+    - `Phalcon\Factory\AbstractFactory`
+    - `Phalcon\Support\Helper\Arr\Get`
+
+-   __Extends__
+    
+    `AbstractFactory`
+
+-   __Implements__
+    
 
 Class PadFactory
 
 @package Phalcon\Crypt
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected exception = Phalcon\\Encryption\\Crypt\\Exception\\Exception;
+protected $exception = Phalcon\\Encryption\\Crypt\\Exception\\Exception;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $services = [] );
@@ -558,19 +603,31 @@ protected function getServices(): array;
 
 
 
-<h1 id="encryption-crypt-padding-ansi">Class Phalcon\Encryption\Crypt\Padding\Ansi</h1>
+## Encryption\Crypt\Padding\Ansi 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/Ansi.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Ansi.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
-| Implements | PadInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PadInterface`
 
 Class Ansi
 
 @package Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -586,19 +643,31 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-crypt-padding-iso10126">Class Phalcon\Encryption\Crypt\Padding\Iso10126</h1>
+## Encryption\Crypt\Padding\Iso10126 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/Iso10126.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Iso10126.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
-| Implements | PadInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PadInterface`
 
 Class Iso10126
 
 @package Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -614,19 +683,31 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-crypt-padding-isoiek">Class Phalcon\Encryption\Crypt\Padding\IsoIek</h1>
+## Encryption\Crypt\Padding\IsoIek 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/IsoIek.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/IsoIek.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
-| Implements | PadInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PadInterface`
 
 Class IsoIek
 
 @package Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -642,19 +723,31 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-crypt-padding-noop">Class Phalcon\Encryption\Crypt\Padding\Noop</h1>
+## Encryption\Crypt\Padding\Noop 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/Noop.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Noop.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
-| Implements | PadInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PadInterface`
 
 Class Noop
 
 @package Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -670,16 +763,28 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-crypt-padding-padinterface">Interface Phalcon\Encryption\Crypt\Padding\PadInterface</h1>
+## Encryption\Crypt\Padding\PadInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/PadInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/PadInterface.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -695,19 +800,31 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-crypt-padding-pkcs7">Class Phalcon\Encryption\Crypt\Padding\Pkcs7</h1>
+## Encryption\Crypt\Padding\Pkcs7 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/Pkcs7.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Pkcs7.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
-| Implements | PadInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PadInterface`
 
 Class Pkcs7
 
 @package Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -723,19 +840,31 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-crypt-padding-space">Class Phalcon\Encryption\Crypt\Padding\Space</h1>
+## Encryption\Crypt\Padding\Space 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/Space.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Space.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
-| Implements | PadInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PadInterface`
 
 Class Space
 
 @package Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -751,19 +880,31 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-crypt-padding-zero">Class Phalcon\Encryption\Crypt\Padding\Zero</h1>
+## Encryption\Crypt\Padding\Zero 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Crypt/Padding/Zero.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Zero.zep)
 
-| Namespace  | Phalcon\Encryption\Crypt\Padding |
-| Implements | PadInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Padding`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PadInterface`
 
 Class Zero
 
 @package Phalcon\Encryption\Crypt\Padding
 
 
-## Methods
+### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
@@ -779,13 +920,30 @@ public function unpad( string $input, int $blockSize ): int;
 
 
 
-<h1 id="encryption-security">Class Phalcon\Encryption\Security</h1>
+## Encryption\Security 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security.zep)
 
-| Namespace  | Phalcon\Encryption |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\RequestInterface, Phalcon\Encryption\Security\Random, Phalcon\Encryption\Security\Exception, Phalcon\Session\ManagerInterface |
-| Extends    | AbstractInjectionAware |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Encryption\Security\Exception`
+    - `Phalcon\Encryption\Security\Random`
+    - `Phalcon\Http\RequestInterface`
+    - `Phalcon\Session\ManagerInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
 
 This component provides a set of functions to improve the security in Phalcon
 applications
@@ -804,7 +962,7 @@ if ($user) {
 ```
 
 
-## Constants
+### Constants
 ```php
 const CRYPT_ARGON2I = 10;
 const CRYPT_ARGON2ID = 11;
@@ -821,66 +979,66 @@ const CRYPT_SHA512 = 9;
 const CRYPT_STD_DES = 1;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var int
  */
-protected defaultHash;
+protected $defaultHash;
 
 /**
  * @var int
  */
-protected numberBytes = 16;
+protected $numberBytes = 16;
 
 /**
  * @var Random
  */
-protected random;
+protected $random;
 
 /**
  * @var string|null
  */
-protected requestToken;
+protected $requestToken;
 
 /**
  * @var string|null
  */
-protected token;
+protected $token;
 
 /**
  * @var string|null
  */
-protected tokenKey;
+protected $tokenKey;
 
 /**
  * @var string
  */
-protected tokenKeySessionId = $PHALCON/CSRF/KEY$;
+protected $tokenKeySessionId = $PHALCON/CSRF/KEY$;
 
 /**
  * @var string
  */
-protected tokenValueSessionId = $PHALCON/CSRF$;
+protected $tokenValueSessionId = $PHALCON/CSRF$;
 
 /**
  * @var int
  */
-protected workFactor = 10;
+protected $workFactor = 10;
 
 /**
  * @var SessionInterface|null
  */
-private localSession;
+private $localSession;
 
 /**
  * @var RequestInterface|null
  */
-private localRequest;
+private $localRequest;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( SessionInterface $session = null, RequestInterface $request = null );
@@ -1017,12 +1175,24 @@ protected function getLocalService( string $name, string $property );
 
 
 
-<h1 id="encryption-security-exception">Class Phalcon\Encryption\Security\Exception</h1>
+## Encryption\Security\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Exception.zep)
 
-| Namespace  | Phalcon\Encryption\Security |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Encryption\Security\Exception
 
@@ -1030,48 +1200,75 @@ Exceptions thrown in Phalcon\Security will use this class
 
 
 
-<h1 id="encryption-security-jwt-builder">Class Phalcon\Encryption\Security\JWT\Builder</h1>
+## Encryption\Security\JWT\Builder 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Builder.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT |
-| Uses       | Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Item, Phalcon\Encryption\Security\JWT\Token\Signature, Phalcon\Encryption\Security\JWT\Token\Token, Phalcon\Support\Collection, Phalcon\Support\Collection\CollectionInterface, Phalcon\Support\Helper\Json\Encode |
 
-JWT Builder
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`
+    - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
+    - `Phalcon\Encryption\Security\JWT\Token\Enum`
+    - `Phalcon\Encryption\Security\JWT\Token\Item`
+    - `Phalcon\Encryption\Security\JWT\Token\Signature`
+    - `Phalcon\Encryption\Security\JWT\Token\Token`
+    - `Phalcon\Support\Collection`
+    - `Phalcon\Support\Collection\CollectionInterface`
+    - `Phalcon\Support\Helper\Json\Encode`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Builder
+
+The builder offers
+
+@property CollectionInterface $claims
+@property CollectionInterface $jose
+@property string              $passphrase
+@property SignerInterface     $signer
 
 @link https://tools.ietf.org/html/rfc7519
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var CollectionInterface
  */
-private claims;
+private $claims;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 /**
  * @var CollectionInterface
  */
-private jose;
+private $jose;
 
 /**
  * @var string
  */
-private passphrase;
+private $passphrase;
 
 /**
  * @var SignerInterface
  */
-private signer;
+private $signer;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( SignerInterface $signer );
@@ -1088,7 +1285,7 @@ Adds a custom claim
 ```php
 public function addHeader( string $name, mixed $value ): Builder;
 ```
-Adds a custom header
+Adds a custom claim
 
 
 ```php
@@ -1272,50 +1469,86 @@ Sets a registered claim
 
 
 
-<h1 id="encryption-security-jwt-exceptions-unsupportedalgorithmexception">Class Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException</h1>
+## Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Exceptions |
-| Uses       | Exception |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+    - `Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 Exception thrown when the algorithm is not supported for JWT
 
 
 
-<h1 id="encryption-security-jwt-exceptions-validatorexception">Class Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException</h1>
+## Encryption\Security\JWT\Exceptions\ValidatorException 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Exceptions/ValidatorException.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/ValidatorException.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Exceptions |
-| Uses       | Exception |
-| Extends    | Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+    - `Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
 
 Exception thrown when the validation does not pass for JWT
 
 
 
-<h1 id="encryption-security-jwt-signer-abstractsigner">Abstract Class Phalcon\Encryption\Security\JWT\Signer\AbstractSigner</h1>
+## Encryption\Security\JWT\Signer\AbstractSigner ![Abstract](../assets/images/abstract-green.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Signer/AbstractSigner.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/AbstractSigner.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Signer |
-| Implements | SignerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Signer`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SignerInterface`
 
 Abstract class helping with the signer classes
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected algorithm = "";
+protected $algorithm = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getAlgorithm(): string;
@@ -1325,18 +1558,30 @@ public function getAlgorithm(): string;
 
 
 
-<h1 id="encryption-security-jwt-signer-hmac">Class Phalcon\Encryption\Security\JWT\Signer\Hmac</h1>
+## Encryption\Security\JWT\Signer\Hmac 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Signer/Hmac.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/Hmac.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Signer |
-| Uses       | Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException |
-| Extends    | AbstractSigner |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Signer`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`
+
+-   __Extends__
+    
+    `AbstractSigner`
+
+-   __Implements__
+    
 
 HMAC signing class
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $algo = string );
@@ -1364,17 +1609,29 @@ Verify a passed source with a payload and passphrase
 
 
 
-<h1 id="encryption-security-jwt-signer-none">Class Phalcon\Encryption\Security\JWT\Signer\None</h1>
+## Encryption\Security\JWT\Signer\None 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Signer/None.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/None.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Signer |
-| Implements | SignerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Signer`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SignerInterface`
 
 No signing class
 
 
-## Methods
+### Methods
 
 ```php
 public function getAlgHeader(): string;
@@ -1402,16 +1659,28 @@ Verify a passed source with a payload and passphrase
 
 
 
-<h1 id="encryption-security-jwt-signer-signerinterface">Interface Phalcon\Encryption\Security\JWT\Signer\SignerInterface</h1>
+## Encryption\Security\JWT\Signer\SignerInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Signer/SignerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/SignerInterface.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Signer |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Signer`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for JWT Signer classes
 
 
-## Methods
+### Methods
 
 ```php
 public function getAlgHeader(): string;
@@ -1439,25 +1708,37 @@ Verify a passed source with a payload and passphrase
 
 
 
-<h1 id="encryption-security-jwt-token-abstractitem">Abstract Class Phalcon\Encryption\Security\JWT\Token\AbstractItem</h1>
+## Encryption\Security\JWT\Token\AbstractItem ![Abstract](../assets/images/abstract-green.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Token/AbstractItem.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/AbstractItem.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Token |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Abstract helper class for Tokens
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected data;
+protected $data;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getEncoded(): string;
@@ -1467,18 +1748,30 @@ public function getEncoded(): string;
 
 
 
-<h1 id="encryption-security-jwt-token-enum">Class Phalcon\Encryption\Security\JWT\Token\Enum</h1>
+## Encryption\Security\JWT\Token\Enum 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Token/Enum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Enum.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Token |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Constants for Tokens. It offers constants for Headers as well as Claims
 
 @link https://tools.ietf.org/html/rfc7519
 
 
-## Constants
+### Constants
 ```php
 const ALGO = alg;
 const AUDIENCE = aud;
@@ -1493,17 +1786,29 @@ const TYPE = typ;
 ```
 
 
-<h1 id="encryption-security-jwt-token-item">Class Phalcon\Encryption\Security\JWT\Token\Item</h1>
+## Encryption\Security\JWT\Token\Item 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Token/Item.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Item.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Token |
-| Extends    | AbstractItem |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractItem`
+
+-   __Implements__
+    
 
 Storage class for a Token Item
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $payload, string $encoded );
@@ -1531,12 +1836,25 @@ public function has( string $name ): bool;
 
 
 
-<h1 id="encryption-security-jwt-token-parser">Class Phalcon\Encryption\Security\JWT\Token\Parser</h1>
+## Encryption\Security\JWT\Token\Parser 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Token/Parser.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Parser.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Token |
-| Uses       | InvalidArgumentException, Phalcon\Support\Helper\Json\Decode |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Token`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Phalcon\Support\Helper\Json\Decode`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Token Parser class.
 
@@ -1545,16 +1863,16 @@ three parts. The headers are decoded, then the claims and finally the
 signature. It returns a token object populated with the decoded information.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var Decode
  */
-private decode;
+private $decode;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Decode $decode = null );
@@ -1570,17 +1888,29 @@ Parse a token and return it
 
 
 
-<h1 id="encryption-security-jwt-token-signature">Class Phalcon\Encryption\Security\JWT\Token\Signature</h1>
+## Encryption\Security\JWT\Token\Signature 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Token/Signature.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Signature.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Token |
-| Extends    | AbstractItem |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Token`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractItem`
+
+-   __Implements__
+    
 
 Signature class containing the encoded data and the hash.
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $hash = string, string $encoded = string );
@@ -1596,12 +1926,25 @@ public function getHash(): string;
 
 
 
-<h1 id="encryption-security-jwt-token-token">Class Phalcon\Encryption\Security\JWT\Token\Token</h1>
+## Encryption\Security\JWT\Token\Token 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Token/Token.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Token.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT\Token |
-| Uses       | Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Validator |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Token`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
+    - `Phalcon\Encryption\Security\JWT\Validator`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Token Class.
 
@@ -1611,26 +1954,26 @@ and payload. It also calculates and returns the token string.
 @link https://tools.ietf.org/html/rfc7519
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var Item
  */
-private claims;
+private $claims;
 
 /**
  * @var Item
  */
-private headers;
+private $headers;
 
 /**
  * @var Signature
  */
-private signature;
+private $signature;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Item $headers, Item $claims, Signature $signature );
@@ -1682,41 +2025,56 @@ Verify the signature
 
 
 
-<h1 id="encryption-security-jwt-validator">Class Phalcon\Encryption\Security\JWT\Validator</h1>
+## Encryption\Security\JWT\Validator 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/JWT/Validator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Validator.zep)
 
-| Namespace  | Phalcon\Encryption\Security\JWT |
-| Uses       | Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException, Phalcon\Encryption\Security\JWT\Signer\SignerInterface, Phalcon\Encryption\Security\JWT\Token\Enum, Phalcon\Encryption\Security\JWT\Token\Token |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`
+    - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
+    - `Phalcon\Encryption\Security\JWT\Token\Enum`
+    - `Phalcon\Encryption\Security\JWT\Token\Token`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Class Validator
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-private claims;
+private $claims;
 
 /**
  * @var array
  */
-private errors;
+private $errors;
 
 /**
  * @var int
  */
-private timeShift = 0;
+private $timeShift = ;
 
 /**
  * @var Token
  */
-private token;
+private $token;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( Token $token, int $timeShift = int );
@@ -1792,11 +2150,23 @@ Validate the signature of the token
 
 
 
-<h1 id="encryption-security-random">Class Phalcon\Encryption\Security\Random</h1>
+## Encryption\Security\Random 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Encryption/Security/Random.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Random.zep)
 
-| Namespace  | Phalcon\Encryption\Security |
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Encryption\Security\Random
 
@@ -1863,7 +2233,7 @@ This class partially borrows SecureRandom library from Ruby
 @link https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
 
-## Methods
+### Methods
 
 ```php
 public function base58( int $len = null ): string;
@@ -2040,3 +2410,5 @@ Generates a random string based on the number ($base) of characters
 If $n is not specified, 16 is assumed. It may be larger in future.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
+
+

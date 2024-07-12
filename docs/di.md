@@ -36,7 +36,7 @@ $invoice = new InvoiceComponent();
 $invoice->calculate();
 ```
 
-We use the `calculate` method to get our data. Inside the method, we create a new database connection to MySQL with set credentials and after that we execute a query. Although this is a perfectly valid implementation, it is impractical and will hinder the maintenance of our application later on, due to the fact that our connection parameters or type of the database are hard coded in the component. If in the future we need to change those, we will have to change them in this component and any other component designed in this manner.
+We use the `calculate` method to get our data. Inside the method, we create a new database connection to MySQL with set credentials and after that, we execute a query. Although this is a perfectly valid implementation, it is impractical and will hinder the maintenance of our application later on, due to the fact that our connection parameters or type of the database are hardcoded in the component. If in the future we need to change those, we will have to change them in this component and any other component designed in this manner.
 
 ```php
 <?php
@@ -84,9 +84,9 @@ $invoice
 ;
 ```
 
-To improve flexibility, we could create the database connection outside the component, and set it in the `InvoiceComponent` using a setter. Using this approach, we can _inject_ the database connection to any component that requires it, using the setter. Again this is a perfectly valid implementation, but it does have some shortcomings. We will need for instance to construct the database connection every time we need to use any of our components that require database connectivity.  
+To improve flexibility, we could create the database connection outside the component and set it in the `InvoiceComponent` using a setter. Using this approach, we can _inject_ the database connection to any component that requires it, using the setter. Again this is a perfectly valid implementation, but it does have some shortcomings. We will need for instance to construct the database connection every time we need to use any of our components that require database connectivity.
 
-In order to centralize this functionality, we can implement a global registry pattern and store the connection object there. After that we can reuse it wherever we need to.
+In order to centralize this functionality, we can implement a global registry pattern and store the connection object there. After that, we can reuse it wherever we need to.
 
 ```php
 <?php
@@ -217,9 +217,9 @@ $invoice
 ;
 ```
 
-In the above example we changed the `Registry` class, exposing `getNewConnection` which creates a brand-new database connection. It also exposes the `getSharedConnection` which will store the connection internally and reuse it for any other component that requires it.
+In the above example, we changed the `Registry` class, exposing `getNewConnection` which creates a brand-new database connection. It also exposes the `getSharedConnection` which will store the connection internally and reuse it for any other component that requires it.
 
-Injecting dependencies to our components solves the issues outlined above. Passing dependencies as arguments instead of creating them internally in methods makes our code more maintainable and decoupled. However, in the long term, this form of dependency injection has some disadvantages. If for instance the component has many dependencies, we will need to create multiple setter arguments to pass the dependencies or create a constructor that will be used to pass all the dependencies required as arguments. We would also need to create those dependencies before using the component. This makes our code not as maintainable as we would like:
+Injecting dependencies to our components solves the issues outlined above. Passing dependencies as arguments instead of creating them internally in methods makes our code more maintainable and decoupled. However, in the long term, this form of dependency injection has some disadvantages. If for instance, the component has many dependencies, we will need to create multiple setter arguments to pass the dependencies or create a constructor that will be used to pass all the dependencies required as arguments. We would also need to create those dependencies before using the component. This makes our code not as maintainable as we would like:
 
 ```php
 <?php
@@ -372,7 +372,7 @@ $invoice->calculate();
 
 The component now can simply access the dependencies it requires when it needs them. If a dependency is not required, it will not be initialized ensuring minimum usage of memory. Our component is now highly decoupled. For instance, if we change the database connection in any way, it will not affect the component, while as far as maintenance is concerned, we only need to change the code in one place.
 
-[Phalcon\Di\Di][di] is a component implementing Dependency Injection and a Service Locator. Since Phalcon is highly decoupled, [Phalcon\Di\Di][di] is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application. It also implements the [Inversion of Control][ioc] pattern. Because of this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the required dependencies within a component.
+[Phalcon\Di\Di][di] is a component implementing Dependency Injection and a Service Locator. Since Phalcon is highly decoupled, [Phalcon\Di\Di][di] is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application. It also implements the [Inversion of Control][ioc] pattern. Because of this, the objects do not receive their dependencies using setters or constructors but request a service dependency injector. This reduces the overall complexity since there is only one way to get the required dependencies within a component.
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
@@ -604,7 +604,7 @@ public function setShared(
 Registers an _always shared_ service in the services container
 
 ## Registering Services
-The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance component B.
+The framework itself or the developer can register services. When component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance of component B.
 
 This approach offers the following advantages:
 * We can easily replace a component with one created by ourselves or a third party.
@@ -628,7 +628,7 @@ $container->set(
 ```
 
 ### Class Instances
-This type expects an object. Due to the fact that object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however it is useful if you want to force the returned dependency to always be the same object/value:
+This type expects an object. Due to the fact that the object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however, it is useful if you want to force the returned dependency to always be the same object/value:
 
 ```php
 <?php
@@ -780,7 +780,7 @@ $container->set(
 );
 ```
 
-Both service registrations above produce the same result. The array definition however, allows you to change the service parameters if you need to:
+Both service registrations above produce the same result. The array definition, however, allows you to change the service parameters if you need to:
 
 ```php
 <?php
@@ -808,7 +808,7 @@ $container
 In addition, by using the array syntax you can use three types of dependency injection:
 
 #### Constructor Injection
-This injection type passes the dependencies/arguments to the class constructor. Let's pretend we have the following component:
+This injection type passes the dependencies/arguments to the class constructor. Let's pretend we have the following components:
 
 ```php
 <?php
@@ -1020,7 +1020,7 @@ Supported parameter types include the following:
 | `parameter` | Represents a literal value to be passed as parameter | `['type' => 'parameter', 'value' => 1234]`                                        |
 | `service`   | Represents another service in the service container  | `['type' => 'service', 'name' => 'request']`                                      |
 
-Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However, these provide a more robust approach to define and inject services. Mixing different types of definitions is allowed, and you can decide which way is the most appropriate for you to register the services according to the application needs.
+Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However, these provide a more robust approach to defining and injecting services. Mixing different types of definitions is allowed, and you can decide which way is the most appropriate for you to register the services according to the application needs.
 
 ### Array Syntax
 The array syntax is also available to register services:
@@ -1048,18 +1048,18 @@ $container['request'] = [
 
 In the examples above, when the framework needs to access the request data, it will ask for the service identified as `request` in the container. The container in turn will return an instance of the required service. The component can be easily replaced with a different class if a need arises.
 
-As shown in the above examples, each of the ways used to set/register a service has advantages and disadvantages. It is up to the developer and the particular requirements that will designate which one is used. Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
+As shown in the above examples, each of the ways used to set/register a service has advantages and disadvantages. It is up to the developer and the particular requirements that will designate which one is used. Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the code more complicated. The lambda function is a good balance between the two but could lead to more maintenance than one would expect.
 
 !!! info "NOTE"
 
-    [Phalcon\Di\Di][di] offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
+    [Phalcon\Di\Di][di] offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy-loaded i.e. instantiated only when requested.
 
 ### Load From Config
 
 **YAML**
 
 This feature will load services by parsing a YAML file:
- 
+
 ```yaml
 ; /app/config/services.yml
 
@@ -1085,7 +1085,7 @@ $container->get('/app/config/services.yml');
 **PHP**
 
 You can also load services using a PHP array:
- 
+
 ```php
 // /app/config/services.php
 
@@ -1183,7 +1183,7 @@ $session = $container->getSession();
 
 The first call to `get` in the container resolves the service and returns the object back. The subsequent call to `getSession` will return the same object.
 
-An alternative way to register shared services is to pass `true` as third parameter of `set`:
+An alternative way to register shared services is to pass `true` as the third parameter of `set`:
 
 ```php
 <?php
@@ -1267,11 +1267,11 @@ $container->set(
 
 $component = $container->get('IndexController');
 ```
-In the above example we are _replacing_ the `IndexController` with another component of our choosing. 
+In the above example we are _replacing_ the `IndexController` with another component of our choosing.
 Also, you can adjust your code to always instantiate your classes using the service container, even if they are not registered as services. The container will fall back to the autoloader you have defined to load the class itself. By using this technique, you can replace any class in the future by implementing a different definition for it.
 
 ## Automatic Injecting
-If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates. To take advantage of this, all you need is to implement the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] in your classes:
+If a class or component requires the DI itself to locate services, the DI can automatically inject itself into the instances it creates. To take advantage of this, all you need is to implement the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] in your classes:
 
 ```php
 <?php
@@ -1312,7 +1312,7 @@ $invoiceComponent = $container->get('inv-component');
 
     `$invoiceComponent->setDi($container)` is automatically called
 
-For your convenience you can also extend the [Phalcon\Di\AbstractInjectionAware][di-abstractinjectionaware] class which contains the above code and exposes the protected `$container` property for you to use.
+For your convenience, you can also extend the [Phalcon\Di\AbstractInjectionAware][di-abstractinjectionaware] class which contains the above code and exposes the protected `$container` property for you to use.
 
 ```php
 <?php
@@ -1327,7 +1327,7 @@ class InvoiceComponent extends AbstractInjectionAware
 ```
 
 ## Organizing Services in Files
-You can better organize your application by moving the service registration to individual files instead of register everything in the application's bootstrap:
+You can better organize your application by moving the service registration to individual files instead of registering everything in the application's bootstrap:
 
 ```php
 <?php
@@ -1372,7 +1372,7 @@ class InvoicesComponent
 ```
 
 ## Service Providers
-Another method of registering services is by putting each service in its own file and registering all the services one after another with a simple loop. Each file will contain a class or `Provider` that implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface]. The reason you might want to do this is to have tiny files, each handling one service registration which will offer great flexibility, short code and finally the ability to add/remove services whenever you wish to, without having to sift through a large file such as your bootstap.
+Another method of registering services is by putting each service in its own file and registering all the services one after another with a simple loop. Each file will contain a class or `Provider` that implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface]. The reason you might want to do this is to have tiny files, each handling one service registration which will offer great flexibility, shortcode, and finally the ability to add/remove services whenever you wish to, without having to sift through a large file such as your bootstap.
 
 **Example**
 
@@ -1387,7 +1387,7 @@ return [
 ];    
 ```
 
-`app/library/Providers/ConfigProvider.php` 
+`app/library/Providers/ConfigProvider.php`
 ```php
 <?php
 
@@ -1416,7 +1416,7 @@ class ConfigProvider implements ServiceProviderInterface
 }
 ```
 
-`app/library/Providers/RegistryProvider.php` 
+`app/library/Providers/RegistryProvider.php`
 ```php
 <?php
 
@@ -1513,7 +1513,7 @@ foreach ($services as $service) {
 ```
 
 ## Factory Default
-For convenience to developers, the [Phalcon\Di\FactoryDefault][di-factorydefault] is available with several preset services for you. Nothing stops you from registering all the services your application requires one by one. However, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault], which contains a list of services ready to be used. The list of services registered allows you to have a container suitable for a full stack application.
+For convenience to developers, the [Phalcon\Di\FactoryDefault][di-factorydefault] is available with several preset services for you. Nothing stops you from registering all the services your application requires one by one. However, you can use the [Phalcon\Di\FactoryDefault][di-factorydefault], which contains a list of services ready to be used. The list of services registered allows you to have a container suitable for a full-stack application.
 
 !!! info "NOTE"
 
@@ -1581,21 +1581,21 @@ try {
 ```
 
 ## Custom
-The [Phalcon\Di\DiInterface][di-diinterface] interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one. You can also utilize the [Phalcon\Di\ServiceInterface][di-serviceinterface] to create your own implementations of services and how they resolve in the DI container.
+The [Phalcon\Di\DiInterface][di-diinterface] interface must be implemented to create your own DI replacing the one provided by Phalcon or extending the current one. You can also utilize the [Phalcon\Di\ServiceInterface][di-serviceinterface] to create your own implementations of services and how they resolve in the DI container.
 
-[di]: api/phalcon_di.md#di
-[di-abstractinjectionaware]: api/phalcon_di.md#di-abstractinjectionaware
-[di-diinterface]: api/phalcon_di.md#di-diinterface
-[di-exception]: api/phalcon_di.md#di-exception
-[di-exception-serviceresolutionexception]: api/phalcon_di.md#di-exception-serviceresolutionexception
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[di-factorydefault-cli]: api/phalcon_di.md#di-factorydefault-cli
-[di-injectable]: api/phalcon_di.md#di-injectable
-[di-injectionawareinterface]: api/phalcon_di.md#di-injectionawareinterface
-[di-service]: api/phalcon_di.md#di-service
-[di-service-builder]: api/phalcon_di.md#di-service-builder
-[di-serviceinterface]: api/phalcon_di.md#di-serviceinterface
-[di-serviceproviderinterface]: api/phalcon_di.md#di-serviceproviderinterface
+[di]: api/phalcon_di.md#didi-
+[di-abstractinjectionaware]: api/phalcon_di.md#diabstractinjectionaware--
+[di-diinterface]: api/phalcon_di.md#didiinterface--
+[di-exception]: api/phalcon_di.md#diexception-
+[di-exception-serviceresolutionexception]: api/phalcon_di.md#diexceptionserviceresolutionexception-
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[di-factorydefault-cli]: api/phalcon_di.md#difactorydefaultcli-
+[di-injectable]: api/phalcon_di.md#diinjectable--
+[di-injectionawareinterface]: api/phalcon_di.md#diinjectionawareinterface--
+[di-service]: api/phalcon_di.md#diservice-
+[di-service-builder]: api/phalcon_di.md#diservicebuilder-
+[di-serviceinterface]: api/phalcon_di.md#diserviceinterface--
+[di-serviceproviderinterface]: api/phalcon_di.md#diserviceproviderinterface--
 [ioc]: https://en.wikipedia.org/wiki/Inversion_of_control
 [singleton]: https://en.wikipedia.org/wiki/Singleton_pattern
 [yaml]: https://php.net/manual/book.yaml.php

@@ -1,4 +1,7 @@
-name: Deploy Documents
+# Workflow inspiration and adaptation came from Andruino-Cli
+# https://github.com/arduino/arduino-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
+
+name: Deploy Documents 5.7
 
 env:
   PYTHON_VERSION: "3.9"
@@ -25,15 +28,16 @@ jobs:
           if [[ "${{ github.event_name }}" == "push" || ( "${{ github.event_name }}" == "create" && "${{ github.ref }}" =~ $RELEASE_BRANCH_REGEX ) ]]; then
             RESULT="true"
           else
-            RESULT="true"
+            RESULT="false"
           fi
 
           echo "result=$RESULT" >> $GITHUB_OUTPUT
+          echo "Deploy documents: $RESULT"
 
   publish:
     runs-on: ubuntu-latest
     needs: pre-publish
-    if: needs.publish-determination.outputs.result == 'true'
+    if: needs.pre-publish.outputs.result == 'true'
 
     steps:
       - name: Checkout repository
@@ -49,23 +53,41 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Create all generated documentation content
-        run: mkdocs build
+      - name: Get sponsors and fanart
+        run: |
+          wget -O docs/assets/sponsors.md \
+            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors-fragment.html
+          wget -O overrides/fanart.md \
+            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html
 
       - name: Determine versioning parameters
         id: determine-versioning
-        run: echo "data={"version":"5.4.0", "alias"="latest"}" >> $GITHUB_OUTPUT
+        run: |
+          # Read the first line from the VERSION file
+          LINE=$(head -n 1 ./VERSION)
+          
+          # Extract version and alias using parameter expansion
+          VERSION="${LINE%%|*}"
+          ALIAS="${LINE#*|}"
+          
+          # Print the extracted values for verification
+          echo "Version: $VERSION"
+          echo "Alias: $ALIAS"
+          
+          echo "PH_DOCS_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "PH_DOCS_ALIAS=$ALIAS" >> $GITHUB_ENV
 
       - name: Deploy
-        if: fromJson(steps.determine-versioning.outputs.data).version != null
+        if: ${{ env.PH_DOCS_VERSION }} != null
         run: |
-          # Publishing implies creating a git commit on the gh-pages branch, we let @ArduinoBot own these commits.
-          git config --global user.email "deploy@phalcon.io"
-          git config --global user.name "Phalcon Team Deploy Bot"
+          # Publishing implies creating a git commit on the production branch, 
+          # We will need to create a user for this at some point
+          git config user.name niden
+          git config user.email nikos@niden.net
           git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
-          poetry run mike deploy \
+          mike deploy \
             --update-aliases \
+            --branch production \
             --push \
-            --remote origin \
-            ${{ fromJson(steps.determine-versioning.outputs.data).version }} \
-            ${{ fromJson(steps.determine-versioning.outputs.data).alias }}
+            ${{ env.PH_DOCS_VERSION }} \
+            ${{ env.PH_DOCS_ALIAS }}

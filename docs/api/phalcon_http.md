@@ -1,106 +1,118 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Http\Cookie](#http-cookie)
-* [Phalcon\Http\Cookie\CookieInterface](#http-cookie-cookieinterface)
-* [Phalcon\Http\Cookie\Exception](#http-cookie-exception)
-* [Phalcon\Http\Message\RequestMethodInterface](#http-message-requestmethodinterface)
-* [Phalcon\Http\Message\ResponseStatusCodeInterface](#http-message-responsestatuscodeinterface)
-* [Phalcon\Http\Request](#http-request)
-* [Phalcon\Http\Request\Exception](#http-request-exception)
-* [Phalcon\Http\Request\File](#http-request-file)
-* [Phalcon\Http\Request\FileInterface](#http-request-fileinterface)
-* [Phalcon\Http\RequestInterface](#http-requestinterface)
-* [Phalcon\Http\Response](#http-response)
-* [Phalcon\Http\Response\Cookies](#http-response-cookies)
-* [Phalcon\Http\Response\CookiesInterface](#http-response-cookiesinterface)
-* [Phalcon\Http\Response\Exception](#http-response-exception)
-* [Phalcon\Http\Response\Headers](#http-response-headers)
-* [Phalcon\Http\Response\HeadersInterface](#http-response-headersinterface)
-* [Phalcon\Http\ResponseInterface](#http-responseinterface)
+!!! info "NOTE"
 
-<h1 id="http-cookie">Class Phalcon\Http\Cookie</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Cookie.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Encryption\Crypt\CryptInterface, Phalcon\Encryption\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
-| Extends    | AbstractInjectionAware |
-| Implements | CookieInterface |
+
+## Http\Cookie 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Encryption\Crypt\CryptInterface`
+    - `Phalcon\Encryption\Crypt\Mismatch`
+    - `Phalcon\Filter\FilterInterface`
+    - `Phalcon\Http\Cookie\CookieInterface`
+    - `Phalcon\Http\Cookie\Exception`
+    - `Phalcon\Http\Response\Exception`
+    - `Phalcon\Session\ManagerInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `CookieInterface`
 
 Provide OO wrappers to manage a HTTP cookie.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string
  */
-protected domain;
+protected $domain;
 
 /**
  * @var int
  */
-protected expire;
+protected $expire;
 
 /**
  * @var FilterInterface|null
  */
-protected filter;
+protected $filter;
 
 /**
  * @var bool
  */
-protected httpOnly;
+protected $httpOnly;
 
 /**
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var string
  */
-protected path;
+protected $path;
 
 /**
  * @var bool
  */
-protected read = false;
+protected $read = false;
 
 /**
  * @var bool
  */
-protected restored = false;
+protected $restored = false;
 
 /**
  * @var bool
  */
-protected secure = true;
+protected $secure = true;
 
 /**
  * The cookie's sign key.
  *
  * @var string|null
  */
-protected signKey;
+protected $signKey;
 
 /**
  * @var bool
  */
-protected useEncryption = false;
+protected $useEncryption = false;
 
 /**
  * @var mixed|null
  */
-protected value;
+protected $value;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] );
@@ -265,16 +277,28 @@ Assert the cookie's key is enough long.
 
 
 
-<h1 id="http-cookie-cookieinterface">Interface Phalcon\Http\Cookie\CookieInterface</h1>
+## Http\Cookie\CookieInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Cookie/CookieInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/CookieInterface.zep)
 
-| Namespace  | Phalcon\Http\Cookie |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Http\Cookie
 
 
-## Methods
+### Methods
 
 ```php
 public function delete();
@@ -394,12 +418,24 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 
 
-<h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
+## Http\Cookie\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Cookie/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exception.zep)
 
-| Namespace  | Phalcon\Http\Cookie |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Http\Cookie\Exception
 
@@ -407,11 +443,23 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 
 
-<h1 id="http-message-requestmethodinterface">Interface Phalcon\Http\Message\RequestMethodInterface</h1>
+## Http\Message\RequestMethodInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Message/RequestMethodInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/RequestMethodInterface.zep)
 
-| Namespace  | Phalcon\Http\Message |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Request methods
 
@@ -420,7 +468,7 @@ Implementation of this file has been influenced by PHP FIG
 @license https://github.com/php-fig/http-message-util/blob/master/LICENSE
 
 
-## Constants
+### Constants
 ```php
 const METHOD_CONNECT = CONNECT;
 const METHOD_DELETE = DELETE;
@@ -435,11 +483,23 @@ const METHOD_TRACE = TRACE;
 ```
 
 
-<h1 id="http-message-responsestatuscodeinterface">Interface Phalcon\Http\Message\ResponseStatusCodeInterface</h1>
+## Http\Message\ResponseStatusCodeInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
 
-| Namespace  | Phalcon\Http\Message |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Message`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Request methods
 
@@ -469,7 +529,7 @@ Defines constants for common HTTP status code.
 @see https://tools.ietf.org/html/rfc8470#section-7
 
 
-## Constants
+### Constants
 ```php
 const STATUS_ACCEPTED = 202;
 const STATUS_ALREADY_REPORTED = 208;
@@ -562,14 +622,37 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
 ```
 
 
-<h1 id="http-request">Class Phalcon\Http\Request</h1>
+## Http\Request 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Message\RequestMethodInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, Phalcon\Support\Helper\Json\Decode, UnexpectedValueException, stdClass |
-| Extends    | AbstractInjectionAware |
-| Implements | RequestInterface, RequestMethodInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Filter\FilterInterface`
+    - `Phalcon\Http\Message\RequestMethodInterface`
+    - `Phalcon\Http\Request\Exception`
+    - `Phalcon\Http\Request\File`
+    - `Phalcon\Http\Request\FileInterface`
+    - `Phalcon\Support\Helper\Json\Decode`
+    - `UnexpectedValueException`
+    - `stdClass`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `RequestInterface`
+    - `RequestMethodInterface`
 
 Encapsulates request information for easy and secure access from application
 controllers.
@@ -597,46 +680,46 @@ $request->getLanguages();
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var FilterInterface|null
  */
-private filterService;
+private $filterService;
 
 /**
  * @var bool
  */
-private httpMethodParameterOverride = false;
+private $httpMethodParameterOverride = false;
 
 /**
  * @var array
  */
-private queryFilters;
+private $queryFilters;
 
 /**
  * @var array|null
  */
-private patchCache;
+private $patchCache;
 
 /**
  * @var array|null
  */
-private putCache;
+private $putCache;
 
 /**
  * @var string
  */
-private rawBody = ;
+private $rawBody = ;
 
 /**
  * @var bool
  */
-private strictHostCheck = false;
+private $strictHostCheck = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
@@ -1203,12 +1286,24 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 
 
-<h1 id="http-request-exception">Class Phalcon\Http\Request\Exception</h1>
+## Http\Request\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exception.zep)
 
-| Namespace  | Phalcon\Http\Request |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Http\Request\Exception
 
@@ -1216,12 +1311,24 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 
 
-<h1 id="http-request-file">Class Phalcon\Http\Request\File</h1>
+## Http\Request\File 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request/File.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/File.zep)
 
-| Namespace  | Phalcon\Http\Request |
-| Implements | FileInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `FileInterface`
 
 Phalcon\Http\Request\File
 
@@ -1246,51 +1353,51 @@ class PostsController extends Controller
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var string|null
  */
-protected error;
+protected $error;
 
 /**
  * @var string
  */
-protected extension;
+protected $extension;
 
 /**
  * @var string|null
  */
-protected key;
+protected $key;
 
 /**
  * @var string
  */
-protected name;
+protected $name;
 
 /**
  * @var string
  */
-protected realType;
+protected $realType;
 
 /**
  * @var int
  */
-protected size = 0;
+protected $size = ;
 
 /**
  * @var string|null
  */
-protected tmp;
+protected $tmp;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $file, mixed $key = null );
@@ -1361,16 +1468,28 @@ Moves the temporary file to a destination within the application
 
 
 
-<h1 id="http-request-fileinterface">Interface Phalcon\Http\Request\FileInterface</h1>
+## Http\Request\FileInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Request/FileInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/FileInterface.zep)
 
-| Namespace  | Phalcon\Http\Request |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Http\Request\File
 
 
-## Methods
+### Methods
 
 ```php
 public function getError(): string | null;
@@ -1417,17 +1536,30 @@ Move the temporary file to a destination
 
 
 
-<h1 id="http-requestinterface">Interface Phalcon\Http\RequestInterface</h1>
+## Http\RequestInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/RequestInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/RequestInterface.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Http\Request\FileInterface, stdClass |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Request\FileInterface`
+    - `stdClass`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Http\Request
 
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
@@ -1839,13 +1971,42 @@ Returns the number of files available
 
 
 
-<h1 id="http-response">Class Phalcon\Http\Response</h1>
+## Http\Response 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | DateTime, DateTimeZone, Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\Message\ResponseStatusCodeInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Mvc\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Support\Helper\Json\Encode |
-| Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface, ResponseStatusCodeInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `DateTime`
+    - `DateTimeZone`
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Http\Message\ResponseStatusCodeInterface`
+    - `Phalcon\Http\Response\CookiesInterface`
+    - `Phalcon\Http\Response\Exception`
+    - `Phalcon\Http\Response\Headers`
+    - `Phalcon\Http\Response\HeadersInterface`
+    - `Phalcon\Mvc\Url\UrlInterface`
+    - `Phalcon\Mvc\ViewInterface`
+    - `Phalcon\Support\Helper\Json\Encode`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `EventsAwareInterface`
+    - `InjectionAwareInterface`
+    - `ResponseInterface`
+    - `ResponseStatusCodeInterface`
 
 Part of the HTTP cycle is return responses to the clients.
 Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task.
@@ -1861,56 +2022,56 @@ $response->send();
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var DiInterface|null
  */
-protected container;
+protected $container;
 
 /**
  * @var string|null
  */
-protected content;
+protected $content;
 
 /**
  * @var CookiesInterface|null
  */
-protected cookies;
+protected $cookies;
 
 /**
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 /**
  * @var string|null
  */
-protected file;
+protected $file;
 
 /**
  * @var Headers
  */
-protected headers;
+protected $headers;
 
 /**
  * @var bool
  */
-protected sent = false;
+protected $sent = false;
 
 /**
  * @var array
  */
-protected statusCodes;
+protected $statusCodes;
 
 /**
  * @var Encode
  */
-private encode;
+private $encode;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $content = null, mixed $code = null, mixed $status = null );
@@ -2208,14 +2369,29 @@ $response->setStatusCode(404, "Not Found");
 
 
 
-<h1 id="http-response-cookies">Class Phalcon\Http\Response\Cookies</h1>
+## Http\Response\Cookies 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/Cookies.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Cookies.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\Cookie\Exception, Phalcon\Http\Cookie\CookieInterface |
-| Extends    | AbstractInjectionAware |
-| Implements | CookiesInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Http\Cookie\CookieInterface`
+    - `Phalcon\Http\Cookie\Exception`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `CookiesInterface`
 
 Phalcon\Http\Response\Cookies
 
@@ -2265,37 +2441,37 @@ $di->set(
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected cookies;
+protected $cookies;
 
 /**
  * @var bool
  */
-protected isSent = false;
+protected $isSent = false;
 
 /**
  * @var bool
  */
-protected registered = false;
+protected $registered = false;
 
 /**
  * The cookie's sign key.
  * @var string|null
  */
-protected signKey;
+protected $signKey;
 
 /**
  * @var bool
  */
-protected useEncryption = true;
+protected $useEncryption = true;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( bool $useEncryption = bool, string $signKey = null );
@@ -2397,19 +2573,31 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-<h1 id="http-response-cookiesinterface">Interface Phalcon\Http\Response\CookiesInterface</h1>
+## Http\Response\CookiesInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/CookiesInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/CookiesInterface.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Http\Cookie\CookieInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Cookie\CookieInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Http\Response\CookiesInterface
 
 Interface for Phalcon\Http\Response\Cookies
 
 
-## Methods
+### Methods
 
 ```php
 public function delete( string $name ): bool;
@@ -2462,12 +2650,24 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-<h1 id="http-response-exception">Class Phalcon\Http\Response\Exception</h1>
+## Http\Response\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exception.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Http\Response\Exception
 
@@ -2475,33 +2675,45 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 
 
-<h1 id="http-response-headers">Class Phalcon\Http\Response\Headers</h1>
+## Http\Response\Headers 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/Headers.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Headers.zep)
 
-| Namespace  | Phalcon\Http\Response |
-| Implements | HeadersInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `HeadersInterface`
 
 Phalcon\Http\Response\Headers
 
 This class is a bag to manage the response headers
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected headers;
+protected $headers;
 
 /**
  * @var bool
  */
-protected isSent = false;
+protected $isSent = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name ): string | bool;
@@ -2559,18 +2771,30 @@ Returns the current headers as an array
 
 
 
-<h1 id="http-response-headersinterface">Interface Phalcon\Http\Response\HeadersInterface</h1>
+## Http\Response\HeadersInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/Response/HeadersInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/HeadersInterface.zep)
 
-| Namespace  | Phalcon\Http\Response |
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Http\Response\HeadersInterface
 
 Interface for Phalcon\Http\Response\Headers compatible bags
 
 
-## Methods
+### Methods
 
 ```php
 public function get( string $name ): string | bool;
@@ -2610,19 +2834,32 @@ Sets a raw header to be sent at the end of the request
 
 
 
-<h1 id="http-responseinterface">Interface Phalcon\Http\ResponseInterface</h1>
+## Http\ResponseInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Http/ResponseInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/ResponseInterface.zep)
 
-| Namespace  | Phalcon\Http |
-| Uses       | DateTime, Phalcon\Http\Response\HeadersInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Http`
+
+-   __Uses__
+    
+    - `DateTime`
+    - `Phalcon\Http\Response\HeadersInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Http\Response
 
 Interface for Phalcon\Http\Response
 
 
-## Methods
+### Methods
 
 ```php
 public function appendContent( mixed $content ): ResponseInterface;
@@ -2756,3 +2993,5 @@ Send a raw header to the response
 public function setStatusCode( int $code, string $message = null ): ResponseInterface;
 ```
 Sets the HTTP response code
+
+

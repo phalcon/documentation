@@ -2,14 +2,14 @@
 - - -
 
 ## Overview
-Sessions are used in PHP to persist data between requests. This enables developers to build better applications and increase the user experience. A very common usage of sessions is to keep whether a user is logged in or not. [Phalcon\Session\Manager][session-manager] is an object-oriented approach to handle sessions using Phalcon. There are several reasons to use this component instead of raw sessions or accessing the `$_SESSION` superglobal:
+Sessions are used in PHP to persist data between requests. This enables developers to build better applications and increase the user experience. A very common usage of sessions is to keep whether a user is logged in or not. [Phalcon\Session\Manager][session-manager] is an object-oriented approach to handling sessions using Phalcon. There are several reasons to use this component instead of raw sessions or accessing the `$_SESSION` superglobal:
 
 - You can easily isolate session data across applications on the same domain
 - Intercept where session data is set/get in your application
 - Change the session adapter according to the application needs
 
 ## Manager
-[Phalcon\Session\Manager][session-manager] is a component that allows you to manipulate sessions in your application. This manager accepts an adapter which is the way the data will be communicated to a particular store. 
+[Phalcon\Session\Manager][session-manager] is a component that allows you to manipulate sessions in your application. This manager accepts an adapter which is the way the data will be communicated to a particular store.
 
 !!! warning "NOTE"
 
@@ -30,16 +30,16 @@ $files = new Stream(
 $session->setAdapter($files);
 ```
 
-First we need to create an adapter object. The object can be one of the adapters distributed with Phalcon (see below) but it can also be an object that implements [SessionHandlerInterface][sessionhandlerinterface]. Once we instantiate the new [Phalcon\Session\Manager][session-manager] object and pass the adapter in it. After that you can start working with the session.
+First, we need to create an adapter object. The object can be one of the adapters distributed with Phalcon (see below) but it can also be an object that implements [SessionHandlerInterface][sessionhandlerinterface]. Once we instantiate the new [Phalcon\Session\Manager][session-manager] object and pass the adapter in it. After that, you can start working with the session.
 
 ### Constructor
 ```php
 public function __construct(array $options = [])
 ```
-The constructor accepts an array of options that relate to the session. You can set a unique id for your session using `uniqueId` as a key and your chosen id string. This allows you to create more than one of these objects, each with its own unique id, if necessary. This parameter is optional, but it is advisable to set it always. Doing so will help you with potential session leaks.
+The constructor accepts an array of options that relate to the session. You can set a unique ID for your session using `uniqueId` as a key and your chosen ID string. This allows you to create more than one of these objects, each with its own unique ID, if necessary. This parameter is optional, but it is advisable to set it always. Doing so will help you with potential session leaks.
 
 ### Start
-In order to work with the session, you need to start it. `start()` performs this task. Usually this call is made when the component is registered or at the very top of your application's workflow. `start()` returns a boolean value indicating success or failure. 
+In order to work with the session, you need to start it. `start()` performs this task. Usually, this call is made when the component is registered or at the very top of your application's workflow. `start()` returns a boolean value indicating success or failure.
 
 !!! info "NOTE"
 
@@ -66,7 +66,7 @@ $session->start();
 ```
 
 ### Destroy
-Similarly, you can call `destroy()` to kill the session. Usually this happens when a user logs out.
+Similarly, you can call `destroy()` to kill the session. Usually, this happens when a user logs out.
 
 ```php
 <?php
@@ -121,7 +121,7 @@ var_dump(
 ```
 
 ### Regenerate Id
-[Phalcon\Session\Manager][session-manager] supports regenerating the session id. This allows you to replace the current session id with a new one and keep the current session information intact. To achieve this you can call `regenerateId()`. The method also accepts a `bool` parameter, which if `true` will instruct the component to remove old session file.
+[Phalcon\Session\Manager][session-manager] supports regenerating the session id. This allows you to replace the current session ID with a new one and keep the current session information intact. To achieve this you can call `regenerateId()`. The method also accepts a `bool` parameter, which if `true` will instruct the component to remove the old session file.
 
 ```php
 <?php
@@ -198,7 +198,7 @@ You can also set the session id. The session id is set in an HTTP cookie. You ca
 
 !!! info "NOTE"
 
-    You need call this method before calling `start()` for the id to take effect
+    You need to call this method before calling `start()` for the id to take effect
 
 ```php
 <?php
@@ -325,7 +325,7 @@ unset($session->userId);
 
 ## Adapters
 ### Libmemcached
-[Phalcon\Session\Adapter\Libmemcached][session-adapter-libmemcached] uses the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] internally to store data in Memcached. In order to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.  
+[Phalcon\Session\Adapter\Libmemcached][session-adapter-libmemcached] uses the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] internally to store data in Memcached. In order to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
 
 The available options for Memcached are:
 
@@ -372,7 +372,7 @@ $session
 ```
 
 ### Noop
-[Phalcon\Session\Adapter\Noop][session-adapter-noop] is an "empty" or `null` adapter. It can be used for testing, a joke for your colleagues or any other purpose that no session needs to be invoked.
+[Phalcon\Session\Adapter\Noop][session-adapter-noop] is an "empty" or `null` adapter. It can be used for testing, a joke for your colleagues, or any other purpose that no session needs to be invoked.
 
 ```php
 <?php
@@ -387,7 +387,7 @@ $session
 ```
 
 ### Redis
-[Phalcon\Session\Adapter\Redis][session-adapter-redis] uses the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis] internally to store data in Redis. In order to use this adapter you need the settings for Redis and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.  
+[Phalcon\Session\Adapter\Redis][session-adapter-redis] uses the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis] internally to store data in Redis. In order to use this adapter you need the settings for Redis and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
 
 The available options for Redis are:
 
@@ -446,7 +446,7 @@ $session
 ```
 
 ### Custom
-The adapters implement PHP's [SessionHandlerInterface][sessionhandlerinterface]. As a result you can create any adapter you need by extending this interface. You can also use any adapter that implements this interface and set the adapter to [Phalcon\Session\Manager][session-manager]. There are more adapters available for this component in the [Phalcon Incubator][incubator].
+The adapters implement PHP's [SessionHandlerInterface][sessionhandlerinterface]. As a result, you can create any adapter you need by extending this interface. You can also use any adapter that implements this interface and set the adapter to [Phalcon\Session\Manager][session-manager]. There are more adapters available for this component in the [Phalcon Incubator][incubator].
 
 ```php
 <?php
@@ -551,7 +551,7 @@ $container->set(
 );
 ```
 
-After registering the manager you can access your session from controllers, views or any other components that extend [Phalcon\Di\Injectable][di-injectable] as follows:
+After registering the manager you can access your session from controllers, views, or any other components that extend [Phalcon\Di\Injectable][di-injectable] as follows:
 
 ```php
 <?php
@@ -636,19 +636,18 @@ class InvoicesController extends Controller
 }
 ```
 
-[di-factorydefault]: api/phalcon_di.md#di-factorydefault
-[di-injectable]: api/phalcon_di.md#di-injectable
-[incubator]: https://github.com/phalcon/incubator/
-[session-adapter-abstractadapter]: api/phalcon_session.md#session-adapter-abstractadapter
-[session-adapter-libmemcached]: api/phalcon_session.md#session-adapter-libmemcached
-[session-adapter-noop]: api/phalcon_session.md#session-adapter-noop
-[session-adapter-redis]: api/phalcon_session.md#session-adapter-redis
-[session-adapter-stream]: api/phalcon_session.md#session-adapter-stream
-[session-bag]: api/phalcon_session.md#session-bag
-[session-exception]: api/phalcon_session.md#session-exception
-[session-manager]: api/phalcon_session.md#session-manager
-[session-managerinterface]: api/phalcon_session.md#session-managerinterface
+[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[di-injectable]: api/phalcon_di.md#diinjectable--
+[session-adapter-abstractadapter]: api/phalcon_session.md#sessionadapterabstractadapter--
+[session-adapter-libmemcached]: api/phalcon_session.md#sessionadapterlibmemcached-
+[session-adapter-noop]: api/phalcon_session.md#sessionadapternoop-
+[session-adapter-redis]: api/phalcon_session.md#sessionadapterredis-
+[session-adapter-stream]: api/phalcon_session.md#sessionadapterstream-
+[session-bag]: api/phalcon_session.md#sessionbag-
+[session-exception]: api/phalcon_session.md#sessionexception-
+[session-manager]: api/phalcon_session.md#sessionmanager-
+[session-managerinterface]: api/phalcon_session.md#sessionmanagerinterface--
 [sessionhandlerinterface]: https://www.php.net/manual/en/class.sessionhandlerinterface.php
-[storage-adapter]: api/phalcon_storage.md#storage-adapterfactory
-[storage-adapter-libmemcached]: api/phalcon_storage.md#storage-adapter-libmemcached
-[storage-adapter-redis]: api/phalcon_storage.md#storage-adapter-redis
+[storage-adapter]: api/phalcon_storage.md#storageadapterabstractadapter--
+[storage-adapter-libmemcached]: api/phalcon_storage.md#storageadapterlibmemcached-
+[storage-adapter-redis]: api/phalcon_storage.md#storageadapterredis-

@@ -1,14 +1,32 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Factory\AbstractConfigFactory](#factory-abstractconfigfactory)
-* [Phalcon\Factory\AbstractFactory](#factory-abstractfactory)
-* [Phalcon\Factory\Exception](#factory-exception)
+!!! info "NOTE"
 
-<h1 id="factory-abstractconfigfactory">Abstract Class Phalcon\Factory\AbstractConfigFactory</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Factory/AbstractConfigFactory.zep)
 
-| Namespace  | Phalcon\Factory |
-| Uses       | Phalcon\Config\ConfigInterface |
+
+## Factory\AbstractConfigFactory ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractConfigFactory.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Factory`
+
+-   __Uses__
+    
+    - `Phalcon\Config\ConfigInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -18,7 +36,7 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-## Methods
+### Methods
 
 ```php
 protected function checkConfig( mixed $config ): array;
@@ -46,13 +64,25 @@ protected function getExceptionClass(): string;
 
 
 
-<h1 id="factory-abstractfactory">Abstract Class Phalcon\Factory\AbstractFactory</h1>
+## Factory\AbstractFactory ![Abstract](../assets/images/abstract-green.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Factory/AbstractFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/AbstractFactory.zep)
 
-| Namespace  | Phalcon\Factory |
-| Uses       | Phalcon\Config\ConfigInterface |
-| Extends    | AbstractConfigFactory |
+
+-   __Namespace__
+
+    - `Phalcon\Factory`
+
+-   __Uses__
+    
+    - `Phalcon\Config\ConfigInterface`
+
+-   __Extends__
+    
+    `AbstractConfigFactory`
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -62,21 +92,21 @@ For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected mapper;
+protected $mapper;
 
 /**
  * @var array
  */
-protected services;
+protected $services;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 protected function getService( string $name ): mixed;
@@ -98,12 +128,24 @@ Initialize services/add new services
 
 
 
-<h1 id="factory-exception">Class Phalcon\Factory\Exception</h1>
+## Factory\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Factory/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Factory/Exception.zep)
 
-| Namespace  | Phalcon\Factory |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Factory`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -111,3 +153,4 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
+

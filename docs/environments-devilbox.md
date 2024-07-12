@@ -3,11 +3,11 @@
 
 ## Overview
 
-[Devilbox][devilbox] is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
+[Devilbox][devilbox] is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates, and DNS records are created automatically. Reverse proxies per project are supported to ensure listening servers such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 
 Furthermore, the Devilbox provides an identical and reproducible development environment for different host operating systems.
 
-This example will use `phalcon` to install Phalcon from within the Devilbox PHP container. After completing the steps listed below, you will have a working Phalcon setup ready to be served via http and https.
+This example will use `phalcon` to install Phalcon from within the Devilbox PHP container. After completing the steps listed below, you will have a working Phalcon setup ready to be served via HTTP and HTTPS.
 
 
 ## Configuration
@@ -80,7 +80,7 @@ devilbox@php-8.0 in /shared/httpd/my-phalcon $ tree -L 1
 
 Symlinking the actual webroot directory to `htdocs` is important. The web server expects every project's document root to be in `<vhost dir>/htdocs/`. This is the path where it will serve the files. This is also the path where the entry point of your application (usually `index.php`) needs to reside.
 
-Some frameworks however, store files and content in nested directories of unknown levels. It is therefore impossible to set this as a pre-set for the environment. You will therefore have to manually set a symlink back to the expected path that your framework requires.
+Some frameworks, however, store files and content in nested directories of unknown levels. It is therefore impossible to set this as a pre-set for the environment. You will therefore have to manually set a symlink back to the expected path that your framework requires.
 
 ```bash
 devilbox@php-8.0 in /shared/httpd/my-phalcon $ ln -s phalconphp/public/ htdocs
@@ -105,22 +105,22 @@ As you can see in the above listing, the `htdocs` folder that is required by the
 
 ### DNS Record
 
-If you **have** Auto DNS configured already, you can skip this section, because DNS entries will be available automatically by the bundled DNS server.
+If you **have** Auto DNS configured already, you can skip this section because DNS entries will be available automatically by the bundled DNS server.
 
 If you **do not have** Auto DNS configured, you will need to add the following line to your host operating system `/etc/hosts` file (or `C:\Windows\System32\drivers\etc` on Windows):
 
 ```bash
 127.0.0.1 my-phalcon.loc
 ```
- 
-### Open your Browser 
+
+### Open your Browser
 
 Open your browser and navigate to `http://my-phalcon.loc` or `https://my-phalcon.loc`
 
 
 ### Create Custom Vhost Config File (Nginx Only)
 
-By default routes will not work if using Nginx. To fix this, you will need to create a custom vhost configuration. 
+By default, routes will not work if using Nginx. To fix this, you will need to create a custom vhost configuration.
 
 In your project folder, you will need to create a folder called `.devilbox` unless you changed `HTTPD_TEMPLATE_DIR` in your `.env`
 
@@ -148,9 +148,9 @@ Save the file as `nginx.yml` and ensure not to use any tabs in the file or devil
 - [Devilbox.com][devilbox]
 - [Devilbox Documentation][devilbox-documentation]
 - [HOST_PATH_HTTPD_DATADIR][host-path-httpd-datadir]
-- [Enter the PHP container][enter-container] 
+- [Enter the PHP container][enter-container]
 - [Work inside the PHP container][work-in-container]
-- [Available tools][available-tools] 
+- [Available tools][available-tools]
 - [TLD_SUFFIX][tld-suffix]
 - [Docker Toolbox and Symlinks][docker-toolbox-symlinks]
 - [Add project hosts entry on MacOS][hosts-mac]

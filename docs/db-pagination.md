@@ -2,7 +2,7 @@
 - - -
 
 ## Overview
-A paginator is a component which helps with splitting a large amount of data gradually. An example would be displaying all the posts of a blog, 5 at a time. The Phalcon Paginator accepts parameters and based on those returns the relevant _slice_ of the whole resultset so that the developer can present the paginated data. 
+A paginator is a component that helps with splitting a large amount of data gradually. An example would be displaying all the posts of a blog, 5 at a time. The Phalcon Paginator accepts parameters and based on those returns the relevant _slice_ of the whole resultset so that the developer can present the paginated data.
 
 ```php
 <?php 
@@ -29,10 +29,10 @@ $paginator   = new NativeArray(
 $paginate = $paginator->paginate();
 ```
 
-The example above uses an array as the source, and limits the results to 2 records at a time. It will return elements with id `3` and `4` because the `page` has been set to `2`. 
+The example above uses an array as the source and limits the results to 2 records at a time. It will return elements with id `3` and `4` because the `page` has been set to `2`.
 
 ## Adapters
-For the source of the data, the component uses adapters. It comes with the following adapters: 
+For the source of the data, the component uses adapters. It comes with the following adapters:
 
 | Adapter                                                                  | Description                                                                            |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
@@ -72,7 +72,7 @@ The methods exposed are:
 
 ### Model
 The [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter uses a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset] as the source of the data. This is the result of the `find()` method on a model.
- 
+
 ```php
 <?php
 declare(strict_types=1);
@@ -129,7 +129,7 @@ $paginate = $paginator->paginate();
 ```
 
 ### Query Builder
-The [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] adapter uses a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object to perform a PHQL query against the database. 
+The [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] adapter uses a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object to perform a PHQL query against the database.
 
 ```php
 <?php
@@ -435,7 +435,7 @@ class InvoicesController extends Controller
 }
 ```
 
-In the example above `$currentPage` contains an integer, user supplied variable, for the page to be displayed. The `$paginator->paginate()` returns a [Phalcon\Paginator\Repository][paginator-repository] object that contains the paginated data. It can be used for generating the pagination in a view for instance:
+In the example above `$currentPage` contains an integer, user-supplied variable, for the page to be displayed. The `$paginator->paginate()` returns a [Phalcon\Paginator\Repository][paginator-repository] object that contains the paginated data. It can be used for generating the pagination in a view for instance:
 
 ```php
 <table>
@@ -641,15 +641,15 @@ class MyPaginator implements PaginatorInterface
 }
 ```
 
-[mvc-model-query-builder]: api/phalcon_mvc.md#mvc-model-query-builder
-[mvc-model-resultset]: api/phalcon_mvc.md#mvc-model-resultset
-[paginator-adapter-abstractadapter]: api/phalcon_paginator.md#paginator-adapter-abstractadapter
-[paginator-adapter-adapterinterface]: api/phalcon_paginator.md#paginator-adapter-adapterinterface
-[paginator-adapter-model]: api/phalcon_paginator.md#paginator-adapter-model
-[paginator-adapter-nativearray]: api/phalcon_paginator.md#paginator-adapter-nativearray
-[paginator-adapter-querybuilder]: api/phalcon_paginator.md#paginator-adapter-querybuilder
-[paginator-exception]: api/phalcon_paginator.md#paginator-exception
-[paginator-paginatorfactory]: api/phalcon_paginator.md#paginator-paginatorfactory
-[paginator-repository]: api/phalcon_paginator.md#paginator-repository
-[paginator-repositoryinterface]: api/phalcon_paginator.md#paginator-repositoryinterface
+[mvc-model-query-builder]: api/phalcon_mvc.md#mvcmodelquerybuilder-
+[mvc-model-resultset]: api/phalcon_mvc.md#mvcmodelresultset--
+[paginator-adapter-abstractadapter]: api/phalcon_paginator.md#paginatoradapterabstractadapter--
+[paginator-adapter-adapterinterface]: api/phalcon_paginator.md#paginatoradapteradapterinterface--
+[paginator-adapter-model]: api/phalcon_paginator.md#paginatoradaptermodel-
+[paginator-adapter-nativearray]: api/phalcon_paginator.md#paginatoradapternativearray-
+[paginator-adapter-querybuilder]: api/phalcon_paginator.md#paginatoradapterquerybuilder-
+[paginator-exception]: api/phalcon_paginator.md#paginatorexception-
+[paginator-paginatorfactory]: api/phalcon_paginator.md#paginatorpaginatorfactory-
+[paginator-repository]: api/phalcon_paginator.md#paginatorrepository-
+[paginator-repositoryinterface]: api/phalcon_paginator.md#paginatorrepositoryinterface--
 [config]: config.md

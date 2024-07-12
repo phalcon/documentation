@@ -1,31 +1,46 @@
-* [Phalcon\Events\AbstractEventsAware](#events-abstracteventsaware)
-* [Phalcon\Events\Event](#events-event)
-* [Phalcon\Events\EventInterface](#events-eventinterface)
-* [Phalcon\Events\EventsAwareInterface](#events-eventsawareinterface)
-* [Phalcon\Events\Exception](#events-exception)
-* [Phalcon\Events\Manager](#events-manager)
-* [Phalcon\Events\ManagerInterface](#events-managerinterface)
+---
+hide:
+    - navigation
+---
 
-<h1 id="events-abstracteventsaware">Abstract Class Phalcon\Events\AbstractEventsAware</h1>
+!!! info "NOTE"
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Events/AbstractEventsAware.zep)
+    All classes are prefixed with `Phalcon`
 
-| Namespace  | Phalcon\Events |
-| Uses       | Phalcon\Events\ManagerInterface |
+
+
+## Events\AbstractEventsAware ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/AbstractEventsAware.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Events`
+
+-   __Uses__
+    
+    - `Phalcon\Events\ManagerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This abstract class offers access to the events manager
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var ManagerInterface|null
  */
-protected eventsManager;
+protected $eventsManager;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getEventsManager(): ManagerInterface | null;
@@ -47,12 +62,24 @@ Helper method to fire an event
 
 
 
-<h1 id="events-event">Class Phalcon\Events\Event</h1>
+## Events\Event 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Events/Event.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Event.zep)
 
-| Namespace  | Phalcon\Events |
-| Implements | EventInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Events`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `EventInterface`
 
 This class offers contextual information of a fired event in the
 EventsManager
@@ -67,46 +94,46 @@ if ($event->isCancelable()) {
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * Is event cancelable?
  *
  * @var bool
  */
-protected cancelable;
+protected $cancelable;
 
 /**
  * Event data
  *
  * @var mixed
  */
-protected data;
+protected $data;
 
 /**
  * Event source
  *
  * @var object|null
  */
-protected source;
+protected $source;
 
 /**
  * Is event propagation stopped?
  *
  * @var bool
  */
-protected stopped = false;
+protected $stopped = false;
 
 /**
  * Event type
  *
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $type, mixed $source = null, mixed $data = null, bool $cancelable = bool );
@@ -176,16 +203,28 @@ if ($event->isCancelable()) {
 
 
 
-<h1 id="events-eventinterface">Interface Phalcon\Events\EventInterface</h1>
+## Events\EventInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Events/EventInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventInterface.zep)
 
-| Namespace  | Phalcon\Events |
+
+-   __Namespace__
+
+    - `Phalcon\Events`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Events\Event class
 
 
-## Methods
+### Methods
 
 ```php
 public function getData(): mixed;
@@ -231,17 +270,29 @@ Stops the event preventing propagation
 
 
 
-<h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
+## Events\EventsAwareInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Events/EventsAwareInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventsAwareInterface.zep)
 
-| Namespace  | Phalcon\Events |
+
+-   __Namespace__
+
+    - `Phalcon\Events`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This interface must for those classes that accept an EventsManager and
 dispatch events
 
 
-## Methods
+### Methods
 
 ```php
 public function getEventsManager(): ManagerInterface | null;
@@ -257,24 +308,49 @@ Sets the events manager
 
 
 
-<h1 id="events-exception">Class Phalcon\Events\Exception</h1>
+## Events\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Events/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exception.zep)
 
-| Namespace  | Phalcon\Events |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Events`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Events will use this class
 
 
 
-<h1 id="events-manager">Class Phalcon\Events\Manager</h1>
+## Events\Manager 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Events/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Manager.zep)
 
-| Namespace  | Phalcon\Events |
-| Uses       | Closure, SplPriorityQueue |
-| Implements | ManagerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Events`
+
+-   __Uses__
+    
+    - `Closure`
+    - `SplPriorityQueue`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `ManagerInterface`
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if
 needed, the normal flow of operation. With the EventsManager the developer
@@ -282,36 +358,36 @@ can create hooks or plugins that will offer monitoring of data, manipulation,
 conditional execution and much more.
 
 
-## Constants
+### Constants
 ```php
 const DEFAULT_PRIORITY = 100;
 ```
 
-## Properties
+### Properties
 ```php
 /**
  * @var bool
  */
-protected collect = false;
+protected $collect = false;
 
 /**
  * @var bool
  */
-protected enablePriorities = false;
+protected $enablePriorities = false;
 
 /**
  * @var array
  */
-protected events;
+protected $events;
 
 /**
  * @var array
  */
-protected responses;
+protected $responses;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function arePrioritiesEnabled(): bool;
@@ -409,16 +485,28 @@ public function isValidHandler( mixed $handler ): bool;
 
 
 
-<h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
+## Events\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Events/ManagerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/ManagerInterface.zep)
 
-| Namespace  | Phalcon\Events |
+
+-   __Namespace__
+
+    - `Phalcon\Events`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for Phalcon\Events managers.
 
 
-## Methods
+### Methods
 
 ```php
 public function attach( string $eventType, mixed $handler ): void;
@@ -455,3 +543,5 @@ Returns all the attached listeners of a certain type
 public function hasListeners( string $type ): bool;
 ```
 Check whether certain type of event has listeners
+
+

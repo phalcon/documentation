@@ -1,41 +1,59 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Translate\Adapter\AbstractAdapter](#translate-adapter-abstractadapter)
-* [Phalcon\Translate\Adapter\AdapterInterface](#translate-adapter-adapterinterface)
-* [Phalcon\Translate\Adapter\Csv](#translate-adapter-csv)
-* [Phalcon\Translate\Adapter\Gettext](#translate-adapter-gettext)
-* [Phalcon\Translate\Adapter\NativeArray](#translate-adapter-nativearray)
-* [Phalcon\Translate\Exception](#translate-exception)
-* [Phalcon\Translate\Interpolator\AssociativeArray](#translate-interpolator-associativearray)
-* [Phalcon\Translate\Interpolator\IndexedArray](#translate-interpolator-indexedarray)
-* [Phalcon\Translate\Interpolator\InterpolatorInterface](#translate-interpolator-interpolatorinterface)
-* [Phalcon\Translate\InterpolatorFactory](#translate-interpolatorfactory)
-* [Phalcon\Translate\TranslateFactory](#translate-translatefactory)
+!!! info "NOTE"
 
-<h1 id="translate-adapter-abstractadapter">Abstract Class Phalcon\Translate\Adapter\AbstractAdapter</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/AbstractAdapter.zep)
 
-| Namespace  | Phalcon\Translate\Adapter |
-| Uses       | Phalcon\Support\Helper\Arr\Get, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
-| Implements | AdapterInterface |
+
+## Translate\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AbstractAdapter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Support\Helper\Arr\Get`
+    - `Phalcon\Translate\Exception`
+    - `Phalcon\Translate\InterpolatorFactory`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `AdapterInterface`
 
 Class AbstractAdapter
 
-## Properties
+@package Phalcon\Translate\Adapter
+
+@property string              $defaultInterpolator
+@property InterpolatorFactory $interpolatorFactory
+
+
+### Properties
 ```php
 /**
  * @var string
  */
-protected defaultInterpolator = ;
+protected $defaultInterpolator = ;
 
 /**
     * @var InterpolatorFactory
     */
-protected interpolatorFactory;
+protected $interpolatorFactory;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options = [] );
@@ -87,18 +105,30 @@ Replaces placeholders by the values passed
 
 
 
-<h1 id="translate-adapter-adapterinterface">Interface Phalcon\Translate\Adapter\AdapterInterface</h1>
+## Translate\Adapter\AdapterInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AdapterInterface.zep)
 
-| Namespace  | Phalcon\Translate\Adapter |
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Adapter`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Translate\Adapter\AdapterInterface
 
 Interface for Phalcon\Translate adapters
 
 
-## Methods
+### Methods
 
 ```php
 public function has( string $index ): bool;
@@ -120,27 +150,40 @@ Returns the translation string of the given key
 
 
 
-<h1 id="translate-adapter-csv">Class Phalcon\Translate\Adapter\Csv</h1>
+## Translate\Adapter\Csv 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/Csv.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/Csv.zep)
 
-| Namespace  | Phalcon\Translate\Adapter |
-| Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
-| Extends    | AbstractAdapter |
-| Implements | ArrayAccess |
 
-Class Csv
+-   __Namespace__
 
-## Properties
+    - `Phalcon\Translate\Adapter`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `Phalcon\Translate\Exception`
+    - `Phalcon\Translate\InterpolatorFactory`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
+    - `ArrayAccess`
+
+
+### Properties
 ```php
 /**
  * @var array
  */
-protected translate;
+protected $translate;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -180,14 +223,28 @@ protected function phpFopen( string $filename, string $mode );
 
 
 
-<h1 id="translate-adapter-gettext">Class Phalcon\Translate\Adapter\Gettext</h1>
+## Translate\Adapter\Gettext 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/Gettext.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/Gettext.zep)
 
-| Namespace  | Phalcon\Translate\Adapter |
-| Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
-| Extends    | AbstractAdapter |
-| Implements | ArrayAccess |
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Adapter`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `Phalcon\Translate\Exception`
+    - `Phalcon\Translate\InterpolatorFactory`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
+    - `ArrayAccess`
 
 Phalcon\Translate\Adapter\Gettext
 
@@ -206,31 +263,37 @@ $adapter = new Gettext(
 
 Allows translate using gettext
 
-## Properties
+@property int          $category
+@property string       $defaultDomain
+@property string|array $directory
+@property string|false $locale
+
+
+### Properties
 ```php
 /**
  * @var int
  */
-protected category;
+protected $category;
 
 /**
  * @var string
  */
-protected defaultDomain;
+protected $defaultDomain;
 
 /**
  * @var string|array
  */
-protected directory;
+protected $directory;
 
 /**
  * @var string
  */
-protected locale;
+protected $locale;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -363,34 +426,54 @@ Validator for constructor
 
 
 
-<h1 id="translate-adapter-nativearray">Class Phalcon\Translate\Adapter\NativeArray</h1>
+## Translate\Adapter\NativeArray 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Adapter/NativeArray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/NativeArray.zep)
 
-| Namespace  | Phalcon\Translate\Adapter |
-| Uses       | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory |
-| Extends    | AbstractAdapter |
-| Implements | ArrayAccess |
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Adapter`
+
+-   __Uses__
+    
+    - `ArrayAccess`
+    - `Phalcon\Translate\Exception`
+    - `Phalcon\Translate\InterpolatorFactory`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
+    - `ArrayAccess`
 
 Class NativeArray
 
 Defines translation lists using PHP arrays
 
-## Properties
+@package Phalcon\Translate\Adapter
+
+@property array $translate
+@property bool  $triggerError
+
+
+### Properties
 ```php
 /**
  * @var array
  */
-private translate;
+private $translate;
 
 /**
  * @var bool
  */
-private triggerError = false;
+private $triggerError = false;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -430,12 +513,24 @@ Returns the internal array
 
 
 
-<h1 id="translate-exception">Class Phalcon\Translate\Exception</h1>
+## Translate\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exception.zep)
 
-| Namespace  | Phalcon\Translate |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Translate`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Translate\Exception
 
@@ -443,20 +538,32 @@ Class for exceptions thrown by Phalcon\Translate
 
 
 
-<h1 id="translate-interpolator-associativearray">Class Phalcon\Translate\Interpolator\AssociativeArray</h1>
+## Translate\Interpolator\AssociativeArray 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Interpolator/AssociativeArray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/AssociativeArray.zep)
 
-| Namespace  | Phalcon\Translate\Interpolator |
-| Uses       | Phalcon\Support\Helper\Str\Interpolate |
-| Implements | InterpolatorInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Interpolator`
+
+-   __Uses__
+    
+    - `Phalcon\Support\Helper\Str\Interpolate`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `InterpolatorInterface`
 
 Class AssociativeArray
 
 @package Phalcon\Translate\Interpolator
 
 
-## Methods
+### Methods
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -466,19 +573,31 @@ Replaces placeholders by the values passed
 
 
 
-<h1 id="translate-interpolator-indexedarray">Class Phalcon\Translate\Interpolator\IndexedArray</h1>
+## Translate\Interpolator\IndexedArray 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Interpolator/IndexedArray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/IndexedArray.zep)
 
-| Namespace  | Phalcon\Translate\Interpolator |
-| Implements | InterpolatorInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Interpolator`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `InterpolatorInterface`
 
 Class IndexedArray
 
 @package Phalcon\Translate\Interpolator
 
 
-## Methods
+### Methods
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -488,18 +607,30 @@ Replaces placeholders by the values passed
 
 
 
-<h1 id="translate-interpolator-interpolatorinterface">Interface Phalcon\Translate\Interpolator\InterpolatorInterface</h1>
+## Translate\Interpolator\InterpolatorInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/InterpolatorInterface.zep)
 
-| Namespace  | Phalcon\Translate\Interpolator |
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Interpolator`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Translate\InterpolatorInterface
 
 Interface for Phalcon\Translate interpolators
 
 
-## Methods
+### Methods
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -509,13 +640,26 @@ Replaces placeholders by the values passed
 
 
 
-<h1 id="translate-interpolatorfactory">Class Phalcon\Translate\InterpolatorFactory</h1>
+## Translate\InterpolatorFactory 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/InterpolatorFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/InterpolatorFactory.zep)
 
-| Namespace  | Phalcon\Translate |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Translate\Interpolator\InterpolatorInterface |
-| Extends    | AbstractFactory |
+
+-   __Namespace__
+
+    - `Phalcon\Translate`
+
+-   __Uses__
+    
+    - `Phalcon\Factory\AbstractFactory`
+    - `Phalcon\Translate\Interpolator\InterpolatorInterface`
+
+-   __Extends__
+    
+    `AbstractFactory`
+
+-   __Implements__
+    
 
 This file is part of the Phalcon Framework.
 
@@ -525,7 +669,7 @@ For the full copyright and license information, please view the
 LICENSE.txt file that was distributed with this source code.
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $services = [] );
@@ -553,26 +697,45 @@ Returns the available adapters
 
 
 
-<h1 id="translate-translatefactory">Class Phalcon\Translate\TranslateFactory</h1>
+## Translate\TranslateFactory 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Translate/TranslateFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/TranslateFactory.zep)
 
-| Namespace  | Phalcon\Translate |
-| Uses       | Phalcon\Config\ConfigInterface, Phalcon\Factory\AbstractFactory, Phalcon\Translate\Adapter\AdapterInterface |
-| Extends    | AbstractFactory |
+
+-   __Namespace__
+
+    - `Phalcon\Translate`
+
+-   __Uses__
+    
+    - `Phalcon\Config\ConfigInterface`
+    - `Phalcon\Factory\AbstractFactory`
+    - `Phalcon\Translate\Adapter\AdapterInterface`
+
+-   __Extends__
+    
+    `AbstractFactory`
+
+-   __Implements__
+    
 
 Class TranslateFactory
 
-## Properties
+@package Phalcon\Translate
+
+@property InterpolatorFactory $interpolator
+
+
+### Properties
 ```php
 /**
  * @var InterpolatorFactory
  */
-private interpolator;
+private $interpolator;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $services = [] );
@@ -602,3 +765,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
+
+

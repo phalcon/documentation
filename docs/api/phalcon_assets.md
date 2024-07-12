@@ -1,25 +1,32 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Assets\Asset](#assets-asset)
-* [Phalcon\Assets\Asset\Css](#assets-asset-css)
-* [Phalcon\Assets\Asset\Js](#assets-asset-js)
-* [Phalcon\Assets\AssetInterface](#assets-assetinterface)
-* [Phalcon\Assets\Collection](#assets-collection)
-* [Phalcon\Assets\Exception](#assets-exception)
-* [Phalcon\Assets\FilterInterface](#assets-filterinterface)
-* [Phalcon\Assets\Filters\CssMin](#assets-filters-cssmin)
-* [Phalcon\Assets\Filters\JsMin](#assets-filters-jsmin)
-* [Phalcon\Assets\Filters\None](#assets-filters-none)
-* [Phalcon\Assets\Inline](#assets-inline)
-* [Phalcon\Assets\Inline\Css](#assets-inline-css)
-* [Phalcon\Assets\Inline\Js](#assets-inline-js)
-* [Phalcon\Assets\Manager](#assets-manager)
+!!! info "NOTE"
 
-<h1 id="assets-asset">Class Phalcon\Assets\Asset</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Asset.zep)
 
-| Namespace  | Phalcon\Assets |
-| Implements | AssetInterface |
+
+## Assets\Asset 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Asset.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `AssetInterface`
 
 Represents an asset
 
@@ -28,63 +35,63 @@ $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var bool
  */
-protected isAutoVersion = false;
+protected $isAutoVersion = false;
 
 /**
  * @var bool
  */
-protected filter;
+protected $filter;
 
 /**
  * @var bool
  */
-protected isLocal;
+protected $isLocal;
 
 /**
  * @var string
  */
-protected path;
+protected $path;
 
 /**
  * @var string
  */
-protected sourcePath;
+protected $sourcePath;
 
 /**
  * @var string
  */
-protected targetPath;
+protected $targetPath;
 
 /**
  * @var string
  */
-protected targetUri;
+protected $targetUri;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 /**
  * Version of resource
  *
  * @var string|null
  */
-protected version;
+protected $version;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $type, string $path, bool $isLocal = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $isAutoVersion = bool );
@@ -257,18 +264,30 @@ protected function phpFileGetContents( string $filename );
 
 
 
-<h1 id="assets-asset-css">Class Phalcon\Assets\Asset\Css</h1>
+## Assets\Asset\Css 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Asset/Css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Asset/Css.zep)
 
-| Namespace  | Phalcon\Assets\Asset |
-| Uses       | Phalcon\Assets\Asset |
-| Extends    | AssetBase |
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Asset`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Asset`
+
+-   __Extends__
+    
+    `AssetBase`
+
+-   __Implements__
+    
 
 Represents CSS assets
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool );
@@ -278,18 +297,30 @@ Phalcon\Assets\Asset\Css constructor
 
 
 
-<h1 id="assets-asset-js">Class Phalcon\Assets\Asset\Js</h1>
+## Assets\Asset\Js 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Asset/Js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Asset/Js.zep)
 
-| Namespace  | Phalcon\Assets\Asset |
-| Uses       | Phalcon\Assets\Asset |
-| Extends    | AssetBase |
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Asset`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Asset`
+
+-   __Extends__
+    
+    `AssetBase`
+
+-   __Implements__
+    
 
 Represents JavaScript assets
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool );
@@ -299,16 +330,28 @@ Phalcon\Assets\Asset\Js constructor
 
 
 
-<h1 id="assets-assetinterface">Interface Phalcon\Assets\AssetInterface</h1>
+## Assets\AssetInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/AssetInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/AssetInterface.zep)
 
-| Namespace  | Phalcon\Assets |
+
+-   __Namespace__
+
+    - `Phalcon\Assets`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for custom Phalcon\Assets resources
 
 
-## Methods
+### Methods
 
 ```php
 public function getAssetKey(): string;
@@ -354,89 +397,104 @@ Sets the asset's type.
 
 
 
-<h1 id="assets-collection">Class Phalcon\Assets\Collection</h1>
+## Assets\Collection 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Collection.zep)
 
-| Namespace  | Phalcon\Assets |
-| Uses       | ArrayIterator, Countable, IteratorAggregate |
-| Implements | Countable, IteratorAggregate |
+
+-   __Namespace__
+
+    - `Phalcon\Assets`
+
+-   __Uses__
+    
+    - `ArrayIterator`
+    - `Countable`
+    - `IteratorAggregate`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `Countable`
+    - `IteratorAggregate`
 
 Collection of asset objects
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected assets;
+protected $assets;
 
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * Should version be determined from file modification time
  *
  * @var bool
  */
-protected autoVersion = false;
+protected $autoVersion = false;
 
 /**
  * @var array
  */
-protected codes;
+protected $codes;
 
 /**
  * @var array
  */
-protected filters;
+protected $filters;
 
 /**
  * @var bool
  */
-protected isLocal = true;
+protected $isLocal = true;
 
 /**
  * @var bool
  */
-protected join = true;
+protected $join = true;
 
 /**
  * @var string
  */
-protected prefix = ;
+protected $prefix = ;
 
 /**
  * @var string
  */
-protected sourcePath = ;
+protected $sourcePath = ;
 
 /**
  * @var bool
  */
-protected targetIsLocal = true;
+protected $targetIsLocal = true;
 
 /**
  * @var string
  */
-protected targetPath = ;
+protected $targetPath = ;
 
 /**
  * @var string
  */
-protected targetUri = ;
+protected $targetUri = ;
 
 /**
  * @var string
  */
-protected version = ;
+protected $version = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function add( AssetInterface $asset ): Collection;
@@ -672,27 +730,51 @@ Adds an asset or inline-code to the collection
 
 
 
-<h1 id="assets-exception">Class Phalcon\Assets\Exception</h1>
+## Assets\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exception.zep)
 
-| Namespace  | Phalcon\Assets |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Assets`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Exceptions thrown in Phalcon\Assets will use this class
 
 
 
-<h1 id="assets-filterinterface">Interface Phalcon\Assets\FilterInterface</h1>
+## Assets\FilterInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/FilterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/FilterInterface.zep)
 
-| Namespace  | Phalcon\Assets |
+
+-   __Namespace__
+
+    - `Phalcon\Assets`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Interface for custom Phalcon\Assets filters
 
 
-## Methods
+### Methods
 
 ```php
 public function filter( string $content ): string;
@@ -702,71 +784,105 @@ Filters the content returning a string with the filtered content
 
 
 
-<h1 id="assets-filters-cssmin">Class Phalcon\Assets\Filters\Cssmin</h1>
+## Assets\Filters\Cssmin 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Filters/CssMin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/CssMin.zep)
 
-| Namespace  | Phalcon\Assets\Filters |
-| Uses       | Phalcon\Assets\FilterInterface |
-| Implements | FilterInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Filters`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\FilterInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `FilterInterface`
 
 Minify the CSS - removes comments removes newlines and line feeds keeping
 removes last semicolon from last property
 
 
-## Methods
+### Methods
 
 ```php
 public function filter( string $content ): string;
 ```
 Filters the content using CSSMIN
 
-!!! info "NOTE"
-
-    This functionality is not currently available
-
+> NOTE: This functionality is not currently available
+{: .alert .alert-info }
 
 
 
-<h1 id="assets-filters-jsmin">Class Phalcon\Assets\Filters\Jsmin</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Filters/JsMin.zep)
+## Assets\Filters\Jsmin 
 
-| Namespace  | Phalcon\Assets\Filters |
-| Uses       | Phalcon\Assets\FilterInterface |
-| Implements | FilterInterface |
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/JsMin.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Filters`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\FilterInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `FilterInterface`
 
 Deletes the characters which are insignificant to JavaScript. Comments will
 be removed. Tabs will be replaced with spaces. Carriage returns will be
 replaced with linefeeds. Most spaces and linefeeds will be removed.
 
 
-## Methods
+### Methods
 
 ```php
 public function filter( string $content ): string;
 ```
 Filters the content using JSMIN
 
-!!! info "NOTE"
-
-    This functionality is not currently available
-
+> NOTE: This functionality is not currently available
+{: .alert .alert-info }
 
 
 
-<h1 id="assets-filters-none">Class Phalcon\Assets\Filters\None</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Filters/None.zep)
+## Assets\Filters\None 
 
-| Namespace  | Phalcon\Assets\Filters |
-| Uses       | Phalcon\Assets\FilterInterface |
-| Implements | FilterInterface |
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/None.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Filters`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\FilterInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `FilterInterface`
 
 Returns the content without make any modification to the original source
 
 
-## Methods
+### Methods
 
 ```php
 public function filter( string $content ): string;
@@ -776,12 +892,24 @@ Returns the content as is
 
 
 
-<h1 id="assets-inline">Class Phalcon\Assets\Inline</h1>
+## Assets\Inline 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Inline.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Inline.zep)
 
-| Namespace  | Phalcon\Assets |
-| Implements | AssetInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Assets`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `AssetInterface`
 
 Represents an inline asset
 
@@ -790,31 +918,31 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected attributes;
+protected $attributes;
 
 /**
  * @var string
  */
-protected content;
+protected $content;
 
 /**
  * @var bool
  */
-protected filter;
+protected $filter;
 
 /**
  * @var string
  */
-protected type;
+protected $type;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $type, string $content, bool $filter = bool, array $attributes = [] );
@@ -872,18 +1000,30 @@ Sets the inline's type
 
 
 
-<h1 id="assets-inline-css">Class Phalcon\Assets\Inline\Css</h1>
+## Assets\Inline\Css 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Inline/Css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Inline/Css.zep)
 
-| Namespace  | Phalcon\Assets\Inline |
-| Uses       | Phalcon\Assets\Inline |
-| Extends    | InlineBase |
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Inline`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Inline`
+
+-   __Extends__
+    
+    `InlineBase`
+
+-   __Implements__
+    
 
 Represents an inlined CSS
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $content, bool $filter = bool, array $attributes = [] );
@@ -893,18 +1033,30 @@ Phalcon\Assets\Inline\Css constructor
 
 
 
-<h1 id="assets-inline-js">Class Phalcon\Assets\Inline\Js</h1>
+## Assets\Inline\Js 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Inline/Js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Inline/Js.zep)
 
-| Namespace  | Phalcon\Assets\Inline |
-| Uses       | Phalcon\Assets\Inline |
-| Extends    | InlineBase |
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Inline`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Inline`
+
+-   __Extends__
+    
+    `InlineBase`
+
+-   __Implements__
+    
 
 Represents an inline JavaScript
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( string $content, bool $filter = bool, array $attributes = [] );
@@ -914,42 +1066,62 @@ Phalcon\Assets\Inline\Js constructor
 
 
 
-<h1 id="assets-manager">Class Phalcon\Assets\Manager</h1>
+## Assets\Manager 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Assets/Manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Manager.zep)
 
-| Namespace  | Phalcon\Assets |
-| Uses       | Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\AbstractInjectionAware, Phalcon\Html\Helper\Element, Phalcon\Html\Helper\Link, Phalcon\Html\Helper\Script, Phalcon\Html\TagFactory |
-| Extends    | AbstractInjectionAware |
+
+-   __Namespace__
+
+    - `Phalcon\Assets`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Asset\Css`
+    - `Phalcon\Assets\Asset\Js`
+    - `Phalcon\Assets\Inline\Css`
+    - `Phalcon\Assets\Inline\Js`
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Html\Helper\Element`
+    - `Phalcon\Html\Helper\Link`
+    - `Phalcon\Html\Helper\Script`
+    - `Phalcon\Html\TagFactory`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
 
 Manages collections of CSS/JavaScript assets
 
 
-## Properties
+### Properties
 ```php
 /**
  * @var array
  */
-protected collections;
+protected $collections;
 
 /**
  * @var bool
  */
-protected implicitOutput = true;
+protected $implicitOutput = true;
 
 /**
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * @var TagFactory
  */
-protected tagFactory;
+protected $tagFactory;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( TagFactory $tagFactory, array $options = [] );
@@ -1138,3 +1310,5 @@ Sets the manager options
 public function useImplicitOutput( bool $implicitOutput ): Manager;
 ```
 Sets if the HTML generated must be directly printed or returned
+
+

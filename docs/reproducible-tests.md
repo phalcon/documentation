@@ -74,7 +74,7 @@ var_dump($_COOKIE);
 
 !!! info "NOTE"
 
-    Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
+    Remember to include the register information for your `db` service, i.e. adapter, connection parameters, etc.
 
 ```php
 <?php

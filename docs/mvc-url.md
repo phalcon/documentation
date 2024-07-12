@@ -27,7 +27,7 @@ echo $url->get(
 The [Phalcon\Mvc\Url][url] component can generate URLs that are static as well as dynamic ones. Dynamic URLs can be generated also based on parameters or routes of your application, as defined using the [Router][routing] component.
 
 ## Static URLs
-Static URLs are the ones that refer to static resources. Those can be images, CSS/JS assets, videos etc. The [Phalcon\Mvc\Url][url] component offers an easy way to generate those URLs. 
+Static URLs are the ones that refer to static resources. Those can be images, CSS/JS assets, videos, etc. The [Phalcon\Mvc\Url][url] component offers an easy way to generate those URLs.
 
 ```php
 <?php
@@ -39,7 +39,7 @@ $url = new Url();
 echo $url->getStatic("img/logo.png");
 ```
 
-Along with `getStatic()`, the component also offers the getter `getStaticBaseUri()` and setter `setStaticBaseUri()` methods, which allow you to set a prefix for all of your static URLs. This functionality can be especially helpful when you need to set up a CDN or a different location on where your assets are stored. 
+Along with `getStatic()`, the component also offers the getter `getStaticBaseUri()` and setter `setStaticBaseUri()` methods, which allow you to set a prefix for all of your static URLs. This functionality can be especially helpful when you need to set up a CDN or a different location on where your assets are stored.
 
 ```php
 <?php
@@ -75,7 +75,7 @@ The above code will prefix all the static assets with `https://assets.phalcon.io
 
     The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 
-Finally, depending on the routes you have specified, you can retrieve a static resource which is defined in a named route by passing an array to `getStatic()` and using `for` keyword as a key and the name of the route as a value.
+Finally, depending on the routes you have specified, you can retrieve a static resource that is defined in a named route by passing an array to `getStatic()` and using `for` keyword as a key and the name of the route as a value.
 
 ```php
 <?php
@@ -92,9 +92,9 @@ echo $url->getStatic(
 ```
 
 ## Dynamic URLs
-Dynamic URLs are URLs that are generated dynamically i.e. based on the routes or URLs of your application. The [Phalcon\Mvc\Url][url] component offers an easy way to generate those URLs. 
+Dynamic URLs are URLs that are generated dynamically i.e. based on the routes or URLs of your application. The [Phalcon\Mvc\Url][url] component offers an easy way to generate those URLs.
 
-Depending on which directory of your document root your application is installed, it may have a base URI or not. For example, if your document root is `/var/www/htdocs` and your application is installed in `/var/www/htdocs/app` then your baseUri will be `/app/`. If you are using a VirtualHost or your application is installed on the document root, then your base URI is `/`. 
+Depending on which directory of your document root your application is installed, it may have a base URI or not. For example, if your document root is `/var/www/htdocs` and your application is installed in `/var/www/htdocs/app` then your baseUri will be `/app/`. If you are using a VirtualHost or your application is installed on the document root, then your base URI is `/`.
 
 If you are unsure and want to find out what your base URI is, you can execute the following code in your application's folder:
 
@@ -120,7 +120,7 @@ $url = new Url();
 echo $url->get("/portal/invoices/edit/1");
 ```
 
-Along with `get()`, the component also offers the getter `getBaseUri()` and setter `setBaseUri()` methods, which allow you to set a prefix for all of your URLs. This functionality can be especially helpful when you need to set up a `prefix` for your URLs i.e. if you are working with modules that have a specific prefix for all routes. 
+Along with `get()`, the component also offers the getter `getBaseUri()` and setter `setBaseUri()` methods, which allow you to set a prefix for all of your URLs. This functionality can be especially helpful when you need to set up a `prefix` for your URLs i.e. if you are working with modules that have a specific prefix for all routes.
 
 ```php
 <?php
@@ -136,7 +136,7 @@ echo $url->getBaseUri(); // /portal/
 echo $url->get('invoices/edit/1'); // /portal/invoices/edit/1
 ```
 
-The above code will prefix all the URLs with `/portal/`, allowing you to _group_ URLs easier. For instance if you have the `InvoicesController` and you want the URLs to be prefixed with `/portal/`, you can use `setBaseUri()` in the `initialize()` method: 
+The above code will prefix all the URLs with `/portal/`, allowing you to _group_ URLs easier. For instance, if you have the `InvoicesController` and you want the URLs to be prefixed with `/portal/`, you can use `setBaseUri()` in the `initialize()` method:
 
 ```php
 <?php
@@ -164,19 +164,19 @@ And now we can generate any URL using `get()` in subsequent actions, that will b
 
 
 ### Routing
-If you are using the [Router][routing] with its default behavior, your application is able to match routes based on the following pattern: 
+If you are using the [Router][routing] with its default behavior, your application is able to match routes based on the following pattern:
 
 !!! info "Pattern"
 
     `/:controller/:action/:params`
 
-Therefore, it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get()`:
+Therefore, it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) by passing a string to the method `get()`:
 
 ```php
 <?php echo $url->get('products/save'); ?>
 ```
 
-Note that is not necessary to prepend the base URI. If you have named routes you can easily define it dynamically. For instance for the following route:
+Note that is not necessary to prepend the base URI. If you have named routes you can easily define them dynamically. For instance for the following route:
 
 ```php
 <?php
@@ -216,8 +216,30 @@ echo $url->get(
 
 The above will produce `/portal/invoices/edit/1`.
 
+If you pass additional parameters as a second argument in the array, these key/value pairs will be automatically added to the generated URL's query string:
+
+```php
+<?php
+
+use Phalcon\Mvc\Url;
+
+$url = new Url();
+
+echo $url->get(
+    [
+        'for' => 'invoices-edit',
+        'id'  => 1,
+    ], [
+        'is_paymented' => 'true',
+        'some_key'     => 'some_value'
+    ]
+);
+
+// /portal/invoices/edit/1?is_paymented=true&some_key=some_value
+```
+
 ### mod_rewrite
-Developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Mvc\Url][url] offers the necessary functionality to replace `mod_rewrite`. This is especially useful if the target system does not have the module installed, or you cannot install it yourself.  
+For developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Mvc\Url][url] offers the necessary functionality to replace `mod_rewrite`. This is especially useful if the target system does not have the module installed, or you cannot install it yourself.
 
 The following example shows you how to replace `mod_rewrite` with [Phalcon\Mvc\Url][url]:
 
@@ -233,7 +255,7 @@ $url->setBaseUri('/app/public/index.php?_url=/'); // $_GET['_url']
 echo $url->get('products/save'); // /app/public/index.php?_url=/portal/invoices/save
 ```
 
-You can also use `$_SERVER['REQUEST_URI']`. This requires a bit more work, since we need to utilize the [Router][routing] component to populate the `$_SERVER['REQUEST_URI']`. Our routes setup needs to change to:
+You can also use `$_SERVER['REQUEST_URI']`. This requires a bit more work, since we need to utilize the [Router][routing] component to populate the `$_SERVER['REQUEST_URI']`. Our route setup needs to change to:
 
 ```php
 <?php
@@ -265,10 +287,10 @@ echo $url->get('products/save'); // /app/public/index.php/portal/invoices/save
 
 !!! info "NOTE"
 
-    If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route matching mechanism handled by the web server is much faster than handling things in your own application.
+    If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route-matching mechanism handled by the web server is much faster than handling things in your own application.
 
 ### View/Volt
-The function `url` is available in volt to generate URLs using this component:
+The function `url` is available in Volt to generate URLs using this component:
 
 ```twig
 
@@ -285,7 +307,7 @@ Generate static routes:
 ```
 
 ## Path
-Although a `path` is not really a URL, the [Phalcon\Mvc\Url][url] offers methods that allow you to create paths for your application, the same way as URLs.
+Although a `path` is not really a URL, the [Phalcon\Mvc\Url][url] offers methods that allow you to create paths for your application, in the same way as URLs.
 
 ```php
 <?php
@@ -346,7 +368,7 @@ class IndexController extends Controller
 The [Phalcon\Mvc\Url\UrlInterface][url-interface] is available if you wish to implement your own `Url` component. Implementing this interface will ensure that your custom component will work with the Phalcon.
 
 ## Dependency Injection
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Mvc\Url][url] is already registered for you. However, you might want to override the default registration in order to set your own `setBaseUri()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di][di] the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Mvc\Url][url] is already registered for you. However, you might want to override the default registration in order to set your own `setBaseUri()`. Alternatively, if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di][di] the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views, and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -404,9 +426,9 @@ You can of course access the object the same way as any registered service in th
 {{ url.get('/portal/invoices/link') }}
 ```
 
-[url]: api/phalcon_mvc.md#mvc-url
-[url-exception]: api/phalcon_mvc.md#mvc-url-exception
-[urlinterface]: api/phalcon_mvc.md#mvc-url-urlinterface
-[factorydefault]: api/phalcon_di.md#di-factorydefault
+[url]: api/phalcon_mvc.md#mvcurl-
+[url-exception]: api/phalcon_mvc.md#mvcurlexception-
+[urlinterface]: api/phalcon_mvc.md#mvcurlurlinterface--
+[factorydefault]: api/phalcon_di.md#difactorydefault-
 [routing]: routing.md
 [di]: di.md

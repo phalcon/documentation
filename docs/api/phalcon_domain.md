@@ -1,69 +1,84 @@
+---
+hide:
+    - navigation
+---
 
-* [Phalcon\Domain\Payload\Payload](#domain-payload-payload)
-* [Phalcon\Domain\Payload\PayloadFactory](#domain-payload-payloadfactory)
-* [Phalcon\Domain\Payload\PayloadInterface](#domain-payload-payloadinterface)
-* [Phalcon\Domain\Payload\ReadableInterface](#domain-payload-readableinterface)
-* [Phalcon\Domain\Payload\Status](#domain-payload-status)
-* [Phalcon\Domain\Payload\WriteableInterface](#domain-payload-writeableinterface)
+!!! info "NOTE"
 
-<h1 id="domain-payload-payload">Class Phalcon\Domain\Payload\Payload</h1>
+    All classes are prefixed with `Phalcon`
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Domain/Payload/Payload.zep)
 
-| Namespace  | Phalcon\Domain\Payload |
-| Uses       | Throwable |
-| Implements | PayloadInterface |
+
+## Domain\Payload\Payload 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Payload.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Domain\Payload`
+
+-   __Uses__
+    
+    - `Throwable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `PayloadInterface`
 
 Holds the payload
 
 
-## Properties
+### Properties
 ```php
 /**
  * Exception if any
  *
  * @var Throwable|null
  */
-protected exception;
+protected $exception;
 
 /**
  * Extra information
  *
  * @var mixed
  */
-protected extras;
+protected $extras;
 
 /**
  * Input
  *
  * @var mixed
  */
-protected input;
+protected $input;
 
 /**
  * Messages
  *
  * @var mixed
  */
-protected messages;
+protected $messages;
 
 /**
  * Status
  *
  * @var mixed
  */
-protected status;
+protected $status;
 
 /**
  * Output
  *
  * @var mixed
  */
-protected output;
+protected $output;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function getException(): Throwable | null;
@@ -139,16 +154,28 @@ Sets the payload status.
 
 
 
-<h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
+## Domain\Payload\PayloadFactory 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Domain/Payload/PayloadFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadFactory.zep)
 
-| Namespace  | Phalcon\Domain\Payload |
+
+-   __Namespace__
+
+    - `Phalcon\Domain\Payload`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Factory to create payload objects
 
 
-## Methods
+### Methods
 
 ```php
 public function newInstance(): PayloadInterface;
@@ -158,28 +185,52 @@ Instantiate a new object
 
 
 
-<h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
+## Domain\Payload\PayloadInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Domain/Payload/PayloadInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadInterface.zep)
 
-| Namespace  | Phalcon\Domain\Payload |
-| Extends    | ReadableInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Domain\Payload`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ReadableInterface`
+
+-   __Implements__
+    
 
 This interface is used for consumers
 
 
 
-<h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
+## Domain\Payload\ReadableInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Domain/Payload/ReadableInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/ReadableInterface.zep)
 
-| Namespace  | Phalcon\Domain\Payload |
-| Uses       | Throwable |
+
+-   __Namespace__
+
+    - `Phalcon\Domain\Payload`
+
+-   __Uses__
+    
+    - `Throwable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This interface is used for consumers (read only)
 
 
-## Methods
+### Methods
 
 ```php
 public function getException(): Throwable | null;
@@ -219,16 +270,28 @@ Gets the status of this payload.
 
 
 
-<h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
+## Domain\Payload\Status 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Domain/Payload/Status.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Status.zep)
 
-| Namespace  | Phalcon\Domain\Payload |
+
+-   __Namespace__
+
+    - `Phalcon\Domain\Payload`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Holds the status codes for the payload
 
 
-## Constants
+### Constants
 ```php
 const ACCEPTED = ACCEPTED;
 const AUTHENTICATED = AUTHENTICATED;
@@ -252,7 +315,7 @@ const UPDATED = UPDATED;
 const VALID = VALID;
 ```
 
-## Methods
+### Methods
 
 ```php
 final private function __construct();
@@ -262,17 +325,29 @@ Instantiation not allowed.
 
 
 
-<h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
+## Domain\Payload\WriteableInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Domain/Payload/WriteableInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/WriteableInterface.zep)
 
-| Namespace  | Phalcon\Domain\Payload |
-| Uses       | Throwable |
+
+-   __Namespace__
+
+    - `Phalcon\Domain\Payload`
+
+-   __Uses__
+    
+    - `Throwable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 This interface is used for consumers (write)
 
 
-## Methods
+### Methods
 
 ```php
 public function setException( Throwable $exception ): PayloadInterface;
@@ -308,3 +383,5 @@ Sets the output produced from the domain layer.
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 Sets the status of this payload.
+
+

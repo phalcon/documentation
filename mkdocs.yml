@@ -8,8 +8,8 @@ site_description: >-
   offering lower resource consumption and high performance.
 
 # Repository
-repo_name: phalcon/docs
-repo_url: https://github.com/phalcon/docs
+repo_name: phalcon/documentation
+repo_url: https://github.com/phalcon/documentation
 
 # Copyright
 copyright: Copyright &copy; 2012 - present Phalcon Team
@@ -17,7 +17,7 @@ copyright: Copyright &copy; 2012 - present Phalcon Team
 # Configuration
 theme:
   name: material
-  #  custom_dir: material/overrides
+  custom_dir: overrides
   features:
     - announce.dismiss
     - content.action.edit
@@ -44,6 +44,8 @@ theme:
     - search.suggest
     - toc.follow
     # - toc.integrate
+
+
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -51,14 +53,14 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
+      primary: custom
       accent: teal
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
+      primary: custom
       accent: teal
       toggle:
         icon: material/toggle-switch-off
@@ -67,7 +69,7 @@ theme:
     text: Titillium Web
     code: Source Code Pro
   favicon: assets/images/favicon.ico
-  logo: https://assets.phalcon.io/phalcon/images/svg/phalcon-logo-white-105x40.svg
+  logo: https://assets.phalcon.io/phalcon/images/svg/phalcon-logo-35x39.svg
 
 # Plugins
 plugins:
@@ -83,6 +85,132 @@ plugins:
         'helper.md': 'support-helper.md'
         'registry.md': 'support-registry.md'
         'version.md': 'support-version.md'
+        'en/acl.md': acl.md
+        'en/annotations.md': annotations.md
+        'en/api/index.md': api/index.md
+        'en/api/phalcon_acl.md': api/phalcon_acl.md
+        'en/api/phalcon_annotations.md': api/phalcon_annotations.md
+        'en/api/phalcon_application.md': api/phalcon_application.md
+        'en/api/phalcon_assets.md': api/phalcon_assets.md
+        'en/api/phalcon_autoload.md': api/phalcon_autoload.md
+        'en/api/phalcon_cache.md': api/phalcon_cache.md
+        'en/api/phalcon_cli.md': api/phalcon_cli.md
+        'en/api/phalcon_config.md': api/phalcon_config.md
+        'en/api/phalcon_datamapper.md': api/phalcon_datamapper.md
+        'en/api/phalcon_db.md': api/phalcon_db.md
+        'en/api/phalcon_di.md': api/phalcon_di.md
+        'en/api/phalcon_dispatcher.md': api/phalcon_dispatcher.md
+        'en/api/phalcon_domain.md': api/phalcon_domain.md
+        'en/api/phalcon_encryption.md': api/phalcon_encryption.md
+        'en/api/phalcon_events.md': api/phalcon_events.md
+        'en/api/phalcon_factory.md': api/phalcon_factory.md
+        'en/api/phalcon_filter.md': api/phalcon_filter.md
+        'en/api/phalcon_flash.md': api/phalcon_flash.md
+        'en/api/phalcon_forms.md': api/phalcon_forms.md
+        'en/api/phalcon_html.md': api/phalcon_html.md
+        'en/api/phalcon_http.md': api/phalcon_http.md
+        'en/api/phalcon_image.md': api/phalcon_image.md
+        'en/api/phalcon_logger.md': api/phalcon_logger.md
+        'en/api/phalcon_messages.md': api/phalcon_messages.md
+        'en/api/phalcon_mvc.md': api/phalcon_mvc.md
+        'en/api/phalcon_paginator.md': api/phalcon_paginator.md
+        'en/api/phalcon_session.md': api/phalcon_session.md
+        'en/api/phalcon_storage.md': api/phalcon_storage.md
+        'en/api/phalcon_support.md': api/phalcon_support.md
+        'en/api/phalcon_tag.md': api/phalcon_tag.md
+        'en/api/phalcon_translate.md': api/phalcon_translate.md
+        'en/application-cli.md': application-cli.md
+        'en/application.md': application.md
+        'en/application-micro.md': application-micro.md
+        'en/assets.md': assets.md
+        'en/autoload.md': autoload.md
+        'en/cache.md': cache.md
+        'en/coding-standard.md': coding-standard.md
+        'en/config.md': config.md
+        'en/contributions.md': contributions.md
+        'en/controllers.md': controllers.md
+        'en/datamapper.md': datamapper.md
+        'en/db-layer.md': db-layer.md
+        'en/db-migrations.md': db-migrations.md
+        'en/db-models-behaviors.md': db-models-behaviors.md
+        'en/db-models-cache.md': db-models-cache.md
+        'en/db-models-events.md': db-models-events.md
+        'en/db-models.md': db-models.md
+        'en/db-models-metadata.md': db-models-metadata.md
+        'en/db-models-relationships.md': db-models-relationships.md
+        'en/db-models-transactions.md': db-models-transactions.md
+        'en/db-models-validation.md': db-models-validation.md
+        'en/db-odm.md': db-odm.md
+        'en/db-pagination.md': db-pagination.md
+        'en/db-phql.md': db-phql.md
+        'en/devtools.md': devtools.md
+        'en/di.md': di.md
+        'en/dispatcher.md': dispatcher.md
+        'en/domain.md': domain.md
+        'en/encryption-crypt.md': encryption-crypt.md
+        'en/encryption-security-jwt.md': encryption-security-jwt.md
+        'en/encryption-security.md': encryption-security.md
+        'en/environments-devilbox.md': environments-devilbox.md
+        'en/environments-nanobox.md': environments-nanobox.md
+        'en/events.md': events.md
+        'en/filter-filter.md': filter-filter.md
+        'en/filter-validation.md': filter-validation.md
+        'en/flash.md': flash.md
+        'en/forms.md': forms.md
+        'en/generating-backtrace.md': generating-backtrace.md
+        'en/html-attributes.md': html-attributes.md
+        'en/html-breadcrumbs.md': html-breadcrumbs.md
+        'en/html-escaper.md': html-escaper.md
+        'en/html-link.md': html-link.md
+        'en/html.md': html.md
+        'en/html-tagfactory.md': html-tagfactory.md
+        'en/http-factories.md': http-factories.md
+        'en/http-request.md': http-request.md
+        'en/http-response.md': http-response.md
+        'en/http-server-request.md': http-server-request.md
+        'en/http-stream.md': http-stream.md
+        'en/http-uploaded-file.md': http-uploaded-file.md
+        'en/http-uri.md': http-uri.md
+        'en/i18n.md': i18n.md
+        'en/image.md': image.md
+        'en/index.md': introduction.md
+        'en/installation.md': installation.md
+        'en/introduction.md': introduction.md
+        'en/logger.md': logger.md
+        'en/mvc.md': mvc.md
+        'en/mvc-url.md': mvc-url.md
+        'en/namespaces.md': namespaces.md
+        'en/new-feature-request-list.md': new-feature-request-list.md
+        'en/new-feature-request.md': new-feature-request.md
+        'en/new-pull-request.md': new-pull-request.md
+        'en/performance.md': performance.md
+        'en/queue.md': queue.md
+        'en/reproducible-tests.md': reproducible-tests.md
+        'en/request.md': request.md
+        'en/response.md': response.md
+        'en/routing.md': routing.md
+        'en/session.md': session.md
+        'en/sponsors.md': sponsors.md
+        'en/static-analysis.md': static-analysis.md
+        'en/storage.md': storage.md
+        'en/support-collection.md': support-collection.md
+        'en/support-debug.md': support-debug.md
+        'en/support-helper.md': support-helper.md
+        'en/support-registry.md': support-registry.md
+        'en/support-version.md': support-version.md
+        'en/tag.md': tag.md
+        'en/testing-environment.md': testing-environment.md
+        'en/translate.md': translate.md
+        'en/tutorial-basic.md': tutorial-basic.md
+        'en/tutorial-invo.md': tutorial-invo.md
+        'en/tutorial-rest.md': tutorial-rest.md
+        'en/tutorial-vokuro.md': tutorial-vokuro.md
+        'en/unit-testing.md': unit-testing.md
+        'en/upgrade.md': upgrade.md
+        'en/use-case.md': use-case.md
+        'en/views.md': views.md
+        'en/volt.md': volt.md
+        'en/webserver-setup.md': webserver-setup.md
 
 # Hooks
 #hooks:
@@ -94,19 +222,50 @@ extra:
   version:
     default: 5.4.0
     provider: mike
+  analytics:
+    provider: google
+    property: G-JR4REKBKH3
   annotate:
     json: [ .s2 ]
   social:
+    - icon: fontawesome/brands/discord
+      link: https://phalcon.io/discord
+      name: Discord
+    - icon: material/comment
+      link: https://phalcon.io/discussions
+      name: GitHub Discussions
     - icon: fontawesome/brands/github
-      link: https://github.com/phalcon
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/phalconphp
+      link: https://phalcon.io/github
+      name: GitHub Project
+    - icon: fontawesome/brands/telegram
+      link: https://phalcon.io/telegram
+      name: Telegram
+    - icon: fontawesome/solid/frog
+      link: https://phalcon.io/gab
+      name: Gab
+    - icon: fontawesome/brands/x-twitter
+      link: https://phalcon.io/t
+      name: Twitter
+    - icon: fontawesome/brands/facebook
+      link: https://phalcon.io/fb
+      name: Facebook
+    - icon: fontawesome/brands/linkedin
+      link: https://phalcon.io/linkedin
+      name: LinkedIn
+    - icon: fontawesome/brands/youtube
+      link: https://phalcon.io/youtube
+      name: LinkedIn
+
+extra_css:
+  - assets/css/extra.css
 
 # Extensions
 markdown_extensions:
   - admonition
   - attr_list
   - footnotes
+  - markdown_include.include:
+      base_path: docs
   - md_in_html
   - pymdownx.inlinehilite
   - pymdownx.snippets
@@ -137,6 +296,7 @@ nav:
       - Introduction: introduction.md
       - Changelog:
         - Current Version: https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG-5.0.md
+        - Releases: releases.md
         - How to upgrade: upgrade.md
       - Contributing:
         - Contributions: contributions.md
@@ -147,6 +307,7 @@ nav:
         - Backtrace Generation: generating-backtrace.md
         - Reproducible Tests: reproducible-tests.md
         - Testing environment: testing-environment.md
+        - Coding Standard: coding-standard.md
       - Sponsoring: sponsors.md
   - Getting Started:
       - Installation: installation.md
@@ -173,7 +334,6 @@ nav:
       - DI Container: di.md
       - MVC: mvc.md
       - Namespaces: namespaces.md
-      - API Index: api/index.md
   - Database:
       - Layer: db-layer.md
       - PHQL: db-phql.md
@@ -188,6 +348,7 @@ nav:
       - Validators: db-models-validation.md
       - Pagination: db-pagination.md
       - Migrations: db-migrations.md
+      - DataMapper: datamapper.md
   - Front End:
       - Assets: assets.md
       - Flash Messenger: flash.md
@@ -217,12 +378,12 @@ nav:
       - Cache: cache.md
       - Config: config.md
       - Escaper: html-escaper.md
+      - Loader: autoload.md
+      - Logger: logger.md
       - HTTP:
           - Cookies: response.md#cookies
           - Request: request.md
           - Response: response.md
-      - Loader: autoload.md
-      - Logger: logger.md
       - i18n:
           - Internationalization: i18n.md
           - Translate: translate.md
@@ -238,5 +399,6 @@ nav:
           - Helper: support-helper.md
           - Registry: support-registry.md
           - Version: support-version.md
+  - API: api/index.md
   - Discussions: https://github.com/orgs/phalcon/discussions
   - Blog: https://blog.phalcon.io/

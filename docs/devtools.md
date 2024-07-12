@@ -2,13 +2,13 @@
 - - -
 
 ## Overview
-These tools help you to generate skeleton code, maintain your database structure and helps to speedup development. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
+These tools help you to generate skeleton code, maintain your database structure, and helps to speed up development. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
 You can use the Phalcon Devtools either from the command line (terminal) or the web interface.
 
 ## Installation
 
-Phalcon Devtools can be installed using [composer][composer]. Make sure you have installed first. 
+Phalcon Devtools can be installed using [composer][composer]. Make sure you have installed it first.
 
 Install Phalcon Devtools globally
 ```bash
@@ -19,7 +19,7 @@ Or only inside your project
 composer require phalcon/devtools
 ```
 
-Test your installation by typing: `phalcon` 
+Test your installation by typing: `phalcon`
 ```bash
 $ phalcon
 
@@ -73,7 +73,7 @@ You can use Phalcon tools to generate pre-defined project skeletons for your app
 $ phalcon create-project store
 ```
 
-The above recommended project structure was generated:
+The above-recommended project structure was generated:
 
 ![](assets/images/content/v4/devtools-store-dirstructure.png)
 
@@ -91,7 +91,7 @@ Usage:
   project [name] [type] [directory] [enable-webtools]
 
 Arguments:
-  help	Shows this help text
+  help  Shows this help text
 
 Example
   phalcon project store simple
@@ -155,11 +155,13 @@ defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 return new \Phalcon\Config([
     'database' => [
         'adapter'     => 'Mysql',
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '',
-        'dbname'      => 'test',
-        'charset'     => 'utf8',
+        'options' => [
+            'host'        => 'localhost',
+            'username'    => 'root',
+            'password'    => '',
+            'dbname'      => 'test',
+            'charset'     => 'utf8',
+        ],
     ],
     'application' => [
         'appDir'         => APP_PATH . '/',
@@ -186,7 +188,7 @@ Options:
  --namespace=s        Model's namespace [optional]
  --get-set            Attributes will be protected and have setters/getters [optional]
  --extends=s          Model extends the class name supplied [optional]
- --excludefields=l    Excludes fields defined in a comma separated list [optional]
+ --excludefields=l    Excludes fields defined in a comma-separated list [optional]
  --doc                Helps to improve code completion on IDEs [optional]
  --directory=s        Base path on which project is located [optional]
  --output=s           Folder where models are located [optional]
@@ -304,7 +306,7 @@ class Customers extends Model
 }
 ```
 
-Options for generating different type of model blueprints can be found using
+Options for generating different types of model blueprints can be found using
 
 ```bash
 phalcon model --help
@@ -313,7 +315,7 @@ phalcon model --help
 ### Scaffold a CRUD
 Scaffolding is a quick way to generate some major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
 
-Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `customers`:
+Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand how the framework works or develop prototypes. The code below shows a scaffold based on the table `customers`:
 
 ```bash
 $ phalcon scaffold --table-name customers
@@ -334,7 +336,7 @@ When browsing the recently generated controller, you will see a search form and 
 
 ![](assets/images/content/devtools-usage-03.png)
 
-The `create page` allows you to create products applying validations on the Products model. Phalcon will automatically validate not null fields producing warnings if any of them is required.
+The `create page` allows you to create products by applying validations on the Products model. Phalcon will automatically validate not null fields producing warnings if any of them is required.
 
 ![](assets/images/content/devtools-usage-04.png)
 

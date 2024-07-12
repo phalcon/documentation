@@ -1,34 +1,53 @@
-* [Phalcon\Session\Adapter\AbstractAdapter](#session-adapter-abstractadapter)
-* [Phalcon\Session\Adapter\Libmemcached](#session-adapter-libmemcached)
-* [Phalcon\Session\Adapter\Noop](#session-adapter-noop)
-* [Phalcon\Session\Adapter\Redis](#session-adapter-redis)
-* [Phalcon\Session\Adapter\Stream](#session-adapter-stream)
-* [Phalcon\Session\Bag](#session-bag)
-* [Phalcon\Session\BagInterface](#session-baginterface)
-* [Phalcon\Session\Exception](#session-exception)
-* [Phalcon\Session\Manager](#session-manager)
-* [Phalcon\Session\ManagerInterface](#session-managerinterface)
+---
+hide:
+    - navigation
+---
 
-<h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
+!!! info "NOTE"
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Adapter/AbstractAdapter.zep)
-
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface |
-| Implements | SessionHandlerInterface |
+    All classes are prefixed with `Phalcon`
 
 
 
-## Properties
+## Session\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Adapter\AdapterInterface`
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SessionHandlerInterface`
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+### Properties
 ```php
 /**
  * @var AdapterInterface
  */
-protected adapter;
+protected $adapter;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function close(): bool;
@@ -43,13 +62,13 @@ Destroy
 
 
 ```php
-public function gc( int $maxlifetime ): int | bool;
+public function gc( int $maxlifetime ): int | false;
 ```
 Garbage Collector
 
 
 ```php
-public function open( mixed $savePath, mixed $sessionName ): bool;
+public function open( mixed $path, mixed $name ): bool;
 ```
 Open
 
@@ -61,7 +80,7 @@ Read
 
 
 ```php
-public function write( mixed $sessionId, mixed $data ): bool;
+public function write( mixed $id, mixed $data ): bool;
 ```
 Write
 
@@ -74,18 +93,30 @@ protected function getArrVal( array $collection, mixed $index, mixed $defaultVal
 
 
 
-<h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
+## Session\Adapter\Libmemcached 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Adapter/Libmemcached.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Libmemcached.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\AdapterFactory`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
 
 Phalcon\Session\Adapter\Libmemcached
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -95,13 +126,25 @@ Libmemcached constructor.
 
 
 
-<h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
+## Session\Adapter\Noop 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Adapter/Noop.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Noop.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | SessionHandlerInterface |
-| Implements | SessionHandlerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SessionHandlerInterface`
 
 Phalcon\Session\Adapter\Noop
 
@@ -119,39 +162,39 @@ $session->setAdapter(new Noop());
 ```
 
 
-## Properties
+### Properties
 ```php
 /**
  * The connection of some adapters
  *
  * @var null
  */
-protected connection;
+protected $connection;
 
 /**
  * Session options
  *
  * @var array
  */
-protected options;
+protected $options;
 
 /**
  * Session prefix
  *
  * @var string
  */
-protected prefix = ;
+protected $prefix = ;
 
 /**
  * Time To Live
  *
  * @var int
  */
-protected ttl = 8600;
+protected $ttl = 8600;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -172,13 +215,13 @@ Destroy
 
 
 ```php
-public function gc( int $maxlifetime ): int | bool;
+public function gc( int $maxlifetime ): int | false;
 ```
 Garbage Collector
 
 
 ```php
-public function open( mixed $savePath, mixed $sessionName ): bool;
+public function open( mixed $path, mixed $name ): bool;
 ```
 Open
 
@@ -190,7 +233,7 @@ Read
 
 
 ```php
-public function write( mixed $sessionId, mixed $data ): bool;
+public function write( mixed $id, mixed $data ): bool;
 ```
 Write
 
@@ -203,18 +246,30 @@ Helper method to get the name prefixed
 
 
 
-<h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
+## Session\Adapter\Redis 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Adapter/Redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Redis.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory |
-| Extends    | AbstractAdapter |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\AdapterFactory`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
 
 Phalcon\Session\Adapter\Redis
 
 
-## Methods
+### Methods
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -224,13 +279,25 @@ Constructor
 
 
 
-<h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
+## Session\Adapter\Stream 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Adapter/Stream.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Stream.zep)
 
-| Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Session\Exception |
-| Extends    | Noop |
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Noop`
+
+-   __Implements__
+    
 
 Phalcon\Session\Adapter\Stream
 
@@ -251,17 +318,21 @@ $files = new Stream(
 $session->setAdapter($files);
 ```
 
+@property array  $options
+@property string $prefix
+@property string $path
 
-## Properties
+
+### Properties
 ```php
 /**
  * @var string
  */
-private path = ;
+private $path = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -276,13 +347,13 @@ public function destroy( mixed $sessionId ): bool;
 
 
 ```php
-public function gc( int $maxlifetime ): int | bool;
+public function gc( int $maxlifetime ): int | false;
 ```
 Garbage Collector
 
 
 ```php
-public function open( mixed $savePath, mixed $sessionName ): bool;
+public function open( mixed $path, mixed $name ): bool;
 ```
    Ignore the savePath and use local defined path
    
@@ -296,7 +367,7 @@ Reads data from the adapter
 
 
 ```php
-public function write( mixed $sessionId, mixed $data ): bool;
+public function write( mixed $id, mixed $data ): bool;
 ```
 
 
@@ -345,14 +416,31 @@ Tells whether the filename is writable
 
 
 
-<h1 id="session-bag">Class Phalcon\Session\Bag</h1>
+## Session\Bag 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Bag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Bag.zep)
 
-| Namespace  | Phalcon\Session |
-| Uses       | Phalcon\Di\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface, Phalcon\Support\Collection |
-| Extends    | Collection |
-| Implements | BagInterface, InjectionAwareInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Session\ManagerInterface`
+    - `Phalcon\Support\Collection`
+
+-   __Extends__
+    
+    `Collection`
+
+-   __Implements__
+    
+    - `BagInterface`
+    - `InjectionAwareInterface`
 
 Phalcon\Session\Bag
 
@@ -367,29 +455,33 @@ $user->name = "Kimbra Johnson";
 $user->age  = 22;
 ```
 
+@property DiInterface|null $container
+@property string           $name
+@property ManagerInterface $session;
 
-## Properties
+
+### Properties
 ```php
 /**
  * @var DiInterface|null
  */
-private container;
+private $container;
 
 /**
  * Session Bag name
  *
  * @var string
  */
-private name;
+private $name;
 
 /**
  * @var ManagerInterface
  */
-private session;
+private $session;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( ManagerInterface $session, string $name );
@@ -435,18 +527,30 @@ Sets the DependencyInjector container
 
 
 
-<h1 id="session-baginterface">Interface Phalcon\Session\BagInterface</h1>
+## Session\BagInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/BagInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep)
 
-| Namespace  | Phalcon\Session |
+
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Session\BagInterface
 
 Interface for Phalcon\Session\Bag
 
 
-## Methods
+### Methods
 
 ```php
 public function __get( string $element ): mixed;
@@ -510,12 +614,24 @@ public function set( string $element, mixed $value ): void;
 
 
 
-<h1 id="session-exception">Class Phalcon\Session\Exception</h1>
+## Session\Exception 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exception.zep)
 
-| Namespace  | Phalcon\Session |
-| Extends    | \Exception |
+
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\Exception`
+
+-   __Implements__
+    
 
 Phalcon\Session\Exception
 
@@ -523,45 +639,63 @@ Exceptions thrown in Phalcon\Session will use this class
 
 
 
-<h1 id="session-manager">Class Phalcon\Session\Manager</h1>
+## Session\Manager 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/Manager.zep)
-
-| Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Support\Helper\Arr\Get |
-| Extends    | AbstractInjectionAware |
-| Implements | ManagerInterface |
-
-Phalcon\Session\Manager
-
-Session manager class
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Manager.zep)
 
 
-## Properties
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Phalcon\Di\AbstractInjectionAware`
+    - `Phalcon\Di\DiInterface`
+    - `Phalcon\Support\Helper\Arr\Get`
+    - `RuntimeException`
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+    `AbstractInjectionAware`
+
+-   __Implements__
+    
+    - `ManagerInterface`
+
+@property SessionHandlerInterface|null $adapter
+@property string                       $name
+@property array                        $options
+@property string                       $uniqueId
+
+
+### Properties
 ```php
 /**
  * @var SessionHandlerInterface|null
  */
-private adapter;
+private $adapter;
 
 /**
  * @var string
  */
-private name = ;
+private $name = ;
 
 /**
  * @var array
  */
-private options;
+private $options;
 
 /**
  * @var string
  */
-private uniqueId = ;
+private $uniqueId = ;
 
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __construct( array $options = [] );
@@ -705,26 +839,40 @@ Checks if or where headers have been sent
 
 
 
-<h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
+## Session\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/{{ pageVersion }}.x/phalcon/Session/ManagerInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep)
 
-| Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface |
+
+-   __Namespace__
+
+    - `Phalcon\Session`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `RuntimeException`
+    - `SessionHandlerInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
 
 Phalcon\Session
 
 Interface for the Phalcon\Session\Manager
 
 
-## Constants
+### Constants
 ```php
 const SESSION_ACTIVE = 2;
 const SESSION_DISABLED = 0;
 const SESSION_NONE = 1;
 ```
 
-## Methods
+### Methods
 
 ```php
 public function __get( string $key ): mixed;
@@ -854,3 +1002,5 @@ started)
 public function status(): int;
 ```
 Returns the status of the current session.
+
+

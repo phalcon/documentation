@@ -28,7 +28,7 @@ $flash->error('Something went wrong');
 ```
 
 ### Session
-[Phalcon\Flash\Session][flash-session] can be used to output messages set in the component. The component transparently stores the messages in the session to be used after a redirect. 
+[Phalcon\Flash\Session][flash-session] can be used to output messages set in the component. The component transparently stores the messages in the session to be used after a redirect.
 
 ```php
 <?php
@@ -64,7 +64,7 @@ or when using Volt
 {{ flash.output() }}
 ```
 
-Imagine a login form that you need to validate the username and password and inform the user if their credentials are correct. The [Phalcon\Flash\Session][flash-session] can be used to perform this task as follows:  
+Imagine a login form that you need to validate the username and password and inform the user if their credentials are correct. The [Phalcon\Flash\Session][flash-session] can be used to perform this task as follows:
 - User enters credentials and clicks `Login`
 - The application posts the data to the `loginAction` of our controller
 - The application checks the data and the combination is not correct
@@ -89,7 +89,7 @@ use Vokuro\Models\Users;
 use Vokuro\Models\ResetPasswords;
 
 /**
- * Controller used handle non-authenticated session actions like 
+ * Controller used to handle non-authenticated session actions like 
  * login/logout, user signup, and forgotten passwords
  *
  * @property Auth     $auth
@@ -160,7 +160,7 @@ or when using Volt
     In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
 
 ## Styling
-The component (irrespective of adapter) offers automatic styling of messages on screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default, the component uses the following mapping:
+The component (irrespective of the adapter) offers automatic styling of messages on the screen. This means that messages will be wrapped in `<div>` tags. There is also a mapping of message type to CSS class that you can take advantage of based on the stylesheet you use in your application. By default, the component uses the following mapping:
 
 | Type      | Name of CSS class |
 |-----------|-------------------|
@@ -169,7 +169,7 @@ The component (irrespective of adapter) offers automatic styling of messages on 
 | `success` | `successMessage`  |
 | `warning` | `warningMessage`  |
 
-By using the default classes, you can style `errorMessage` accordingly in the stylesheet of your application to make it appear the way you want it to. It is common for error messages to have a red background for instance so that they stand out. 
+By using the default classes, you can style `errorMessage` accordingly in the stylesheet of your application to make it appear the way you want it to. It is common for error messages to have a red background for instance so that they stand out.
 
 An error message:
 
@@ -183,7 +183,7 @@ will produce:
 <div class="errorMessage">Error message</div>
 ```
 
-If you do not wish to use the default classes, you can use the `setCssClasses()` method to replace the mapping of type of message to class name.
+If you do not wish to use the default classes, you can use the `setCssClasses()` method to replace the mapping of the type of message to the class name.
 
 ```php
 <?php
@@ -216,7 +216,7 @@ $cssClasses = [
 $flash->setCssClasses($cssClasses);
 ```
 
-and then calling 
+and then calling
 
 ```php
 $flash->error('Error message');
@@ -253,7 +253,7 @@ $template = '<span class="%cssClass%">%message%</span>';
 $flash->setCustomTemplate($template);
 ```
 
-and then calling 
+and then calling
 
 ```php
 $flash->error('Error message');
@@ -267,7 +267,7 @@ will produce:
 
 !!! info "NOTE"
 
-    The `setCustomTemplate()` returns back the object, so you can use in a more fluent interface by chaining calls.
+    The `setCustomTemplate()` returns back the object, so you can use it in a more fluent interface by chaining calls.
 
 You can also set the icon class for each CSS class by using `setCssIconClasses()`. This is particularly useful when working with CSS libraries such as [Bootstrap][bootstrap].
 
@@ -304,9 +304,9 @@ will produce:
 
 !!! info "NOTE"
 
-    The `setCssIconClasses()` returns back the object, so you can use in a more fluent interface by chaining calls.
+    The `setCssIconClasses()` returns back the object, so you can use it in a more fluent interface by chaining calls.
 
-An example of how the `setCssClasses`, `setCssIconClasses` and `setCustomTemplate` can be used to output flash messages that can be _closed_ is below:
+An example of how the `setCssClasses`, `setCssIconClasses`, and `setCustomTemplate` can be used to output flash messages that can be _closed_ is below:
 
 ```php
 <?php
@@ -375,7 +375,7 @@ As mentioned above, the component has different types of messages. To add a mess
 - `notice`
 - `success`
 - `warning`
- 
+
 ```php
 <?php
 
@@ -405,7 +405,7 @@ $flash->success('Success message');
 $flash->warning('Warning message');
 ```
 
-If your application requires it, you might want to clear the messages at some point when building the response. To do so you can use the `clear()` method. 
+If your application requires it, you might want to clear the messages at some point when building the response. To do so you can use the `clear()` method.
 
 ```php
 <?php
@@ -426,7 +426,7 @@ $flash->clear();
     `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
 
 ## Implicit Flush
-By default, implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
+By default, implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as a string
 
 ```php
 <?php
@@ -449,7 +449,7 @@ echo $flash
 
 !!! info "NOTE"
 
-    The `setImplicitFlush()` returns back the object, so you can use in a more fluent interface by chaining calls.
+    The `setImplicitFlush()` returns back the object, so you can use it in a more fluent interface by chaining calls.
 
 !!! warning "NOTE"
 
@@ -483,10 +483,10 @@ will produce
 
 !!! info "NOTE"
 
-    The `setAutoescape()` returns back the object, so you can use in a more fluent interface by chaining calls.
+    The `setAutoescape()` returns back the object, so you can use it in a more fluent interface by chaining calls.
 
 ## Dependency Injection
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally, the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`. 
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Flash\Direct][flash-direct] is already registered for you with the name `flash`. Additionally, the [Phalcon\Flash\Session][flash-session] is already registered for you with the name `flashSession`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -541,7 +541,7 @@ $container->set(
 
 !!! info "NOTE"
 
-    You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already register in it, they will be used internally. This is another way of instantiating the components.
+    You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already registered in it, they will be used internally. This is another way of instantiating the components.
 
 You can now use the component in a controller (or a component that implements [Phalcon\Di\Injectable][di-injectable])
 

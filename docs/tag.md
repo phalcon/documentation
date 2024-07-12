@@ -12,22 +12,22 @@ This component can be used in a plain HTML+PHP view or in a [Volt][volt] templat
 
 !!! warning "NOTE"
 
-    This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code, since HTML generation touches a lot of areas of the application, the view in particular.
+    This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code since HTML generation touches a lot of areas of the application, the view in particular.
 
 ## DocType
 You can set the doctype for your page using `setDocType()`. The method accepts one of the available constants, generating the necessary `<doctype>` HTML. The method returns the `Tag` component and thus the call can be chained.
 
-- `HTML32`              
-- `HTML401_STRICT`      
+- `HTML32`
+- `HTML401_STRICT`
 - `HTML401_TRANSITIONAL`
-- `HTML401_FRAMESET`    
-- `HTML5`               
-- `XHTML10_STRICT`      
+- `HTML401_FRAMESET`
+- `HTML5`
+- `XHTML10_STRICT`
 - `XHTML10_TRANSITIONAL`
-- `XHTML10_FRAMESET`    
-- `XHTML11`             
-- `XHTML20`             
-- `XHTML5`              
+- `XHTML10_FRAMESET`
+- `XHTML11`
+- `XHTML20`
+- `XHTML5`
 
 ```php
 <?php
@@ -58,7 +58,7 @@ You can output the doctype using `getDocType()` in your views:
 <?php echo $this->tag->getDocType(); ?>
 ```
 
-or in Volt: 
+or in Volt:
 
 ```twig
 {{ get_doctype() }}
@@ -68,11 +68,11 @@ or in Volt:
 [Phalcon\Tag][tag] offers methods to set the tag of the resulting page or HTML sent to the user. There are several methods available:
 
 ### `appendTitle()`
-Appends text to the current title. The method accepts either a `string` or an `array`. 
+Appends text to the current title. The method accepts either a `string` or an `array`.
 
 !!! info "NOTE"
 
-    If a `string` is supplied, it will be added to the internal collection holding the append title text. If however you supply an `array` the internal collection will be replaced.
+    If a `string` is supplied, it will be added to the internal collection holding the append title text. If however, you supply an `array` the internal collection will be replaced.
 
 ```php
 <?php
@@ -141,11 +141,11 @@ echo Tag::friendlyTitle(
 
 ### `getTitle()`
 Returns the current title. The title is automatically escaped. The method accepts two parameters:
- - `prepend` - `bool` Whether to output any text set with `prependTitle()`
- - `append` - `bool` Whether to output any text set with `appendTitle()`
- 
- Both parameters are `true` by default.
- 
+- `prepend` - `bool` Whether to output any text set with `prependTitle()`
+- `append` - `bool` Whether to output any text set with `appendTitle()`
+
+Both parameters are `true` by default.
+
 ```php
 <?php
 
@@ -162,7 +162,7 @@ echo Tag::getTitle(false);        // 'World from Phalcon';
 echo Tag::getTitle(true, false);  // 'Hello World';
 echo Tag::getTitle(false, false); // 'World';
 ```
- 
+
 ### `getTitleSeparator()`
 Returns the current title separator. The default value is an empty string.
 
@@ -175,11 +175,11 @@ echo Tag::getTitleSeparator(); // ''
 ```
 
 ### `prependTitle()`
-Prepends text to the current title. The method accepts either a `string` or an `array`. 
+Prepends text to the current title. The method accepts either a `string` or an `array`.
 
 !!! info "NOTE"
 
-    If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however you supply an `array` the internal collection will be replaced.
+    If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however, you supply an `array` the internal collection will be replaced.
 
 ```php
 <?php
@@ -208,11 +208,11 @@ echo Tag::getTitle(); // 'Phalcon Framework Rocks'
 
 ### `renderTitle()`
 Returns the current title wrapped in `<title>` tags. The title is automatically escaped. The method accepts two parameters:
- - `prepend` - `bool` Whether to output any text set with `prependTitle()`
- - `append` - `bool` Whether to output any text set with `appendTitle()`
- 
- Both parameters are `true` by default.
- 
+- `prepend` - `bool` Whether to output any text set with `prependTitle()`
+- `append` - `bool` Whether to output any text set with `appendTitle()`
+
+Both parameters are `true` by default.
+
 ```php
 <?php
 
@@ -235,7 +235,7 @@ echo Tag::renderTitle(false, false);
 ```
 
 ### `setTitle()`
-Sets the title text. 
+Sets the title text.
 
 ```php
 <?php
@@ -935,13 +935,13 @@ Volt syntax:
 ### `select()`
 `select()` is a helper that allows you to create a `<select>` element based on a `Phalcon\Mvc\Model` resultset. You will need to have a valid database connection set up in your DI container for this method to produce the correct HTML. The component requires parameters and data to operate.
 - `parameters` - `string`/`array`. If a string is passed, it will be the name of the element. If an array is passed, the first element will be the name of the element. There available parameters are:
-    - `id` - `string` - sets the id of the element
-    - `using` - `array` - **required** a two element array defining the key and value fields of the model to populate the select
-    - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
-    - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
-    - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
-    - any additional HTML attributes in a key/value format
-- `data` - `Resultset` the resultset from the model operation. 
+  - `id` - `string` - sets the id of the element
+  - `using` - `array` - **required** a two-element array defining the key and value fields of the model to populate the select
+  - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
+  - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
+  - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
+  - any additional HTML attributes in a key/value format
+- `data` - `Resultset` the resultset from the model operation.
 
 ```php
 <?php
@@ -1017,12 +1017,12 @@ Volt syntax:
 ### `selectStatic()`
 This helper is similar to `select()`, but it uses a PHP array as the source. The component requires parameters and data to operate.
 - `parameters` - `string`/`array`. If a string is passed, it will be the name of the element. If an array is passed, the first element will be the name of the element. There available parameters are:
-    - `id` - `string` - sets the id of the element
-    - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
-    - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
-    - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
-    - any additional HTML attributes in a key/value format
-- `data` - `array` the array of data with key as the id and value as the text 
+  - `id` - `string` - sets the id of the element
+  - `useEmpty` - `bool` - defaults to `false`. If set, it will add an _empty_ option to the select box
+  - `emptyText` - `string` - the text to display for the _empty_ option (i.e. _Choose an option_)
+  - `emptyValue` - `string`/`number` - the value to assign for the _empty_ option
+  - any additional HTML attributes in a key/value format
+- `data` - `array` the array of data with key as the id and value as the text
 
 ```php
 <?php
@@ -1080,7 +1080,7 @@ Volt syntax:
 ```
 
 ### `tagHtml()`
-Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper. The accompanying `tagHtmlClose()` can be used to _close_ the tag if necessary.
+Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name for the helper. The accompanying `tagHtmlClose()` can be used to _close_ the tag if necessary.
 
 The `tagHtml()` accepts the following parameters
 - `name` - `string` - the name of the element
@@ -1147,7 +1147,7 @@ Volt syntax:
 [Phalcon\Tag][tag] offers helper methods to generate stylesheet and javascript HTML tags.
 
 ### `stylesheetLink()`
-The first parameter a `string` or an `array` is the parameters necessary to construct the element. The second parameter is a boolean, dictating whether the link is pointing to a local asset or a remote.
+The first parameter a `string` or an `array` is the parameter necessary to construct the element. The second parameter is a boolean, dictating whether the link is pointing to a local asset or a remote.
 
 ```php
 <?php
@@ -1220,7 +1220,7 @@ Volt Syntax:
 ```
 
 ### `javascriptInclude()`
-The first parameter a `string` or an `array` is the parameters necessary to construct the element. The second parameter is a boolean, dictating whether the link is pointing to a local asset or a remote.
+The first parameter a `string` or an `array` is the parameter necessary to construct the element. The second parameter is a boolean, dictating whether the link is pointing to a local asset or a remote.
 
 ```php
 <?php
@@ -1293,11 +1293,11 @@ Volt Syntax:
 ## Links
 A common task in any web application is to show links that help with the navigation from one area to another. [Phalcon\Tag][tag] offers `linkTo()` to help with this task. The method accepts three parameters.
 - `parameters` - `array`/`string` - The attributes and parameters of the element. If a string is passed it will be treated as the target URL for the link. If an array is passed, the following elements can be sent:
-    - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element
-    - `query` - the base query for the URL
-    - `text` - the text of the link
-    - `local` - whether this is a local or remote link
-    - additional key/value attributes for the link
+  - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element
+  - `query` - the base query for the URL
+  - `text` - the text of the link
+  - `local` - whether this is a local or remote link
+  - additional key/value attributes for the link
 - `text` - `string` - the text of the link
 - `local` - `bool` - whether this is a local or remote link
 
@@ -1429,7 +1429,7 @@ Volt syntax:
 ```
 
 ## Forms
-Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag][tag] offers the `form()` and `endForm()` methods, which create `<form>` elements.
+Forms play an important role in any web application since they are used to collect input from the user. [Phalcon\Tag][tag] offers the `form()` and `endForm()` methods, which create `<form>` elements.
 
 ```php
 <?php
@@ -1545,7 +1545,7 @@ echo Tag::textField(
 ```
 
 ### `getValue()`
-This method is called from every helper in this component, to find whether a value has been set for an element wither by having used `setDefault()` before or in the `$_POST` superglobal.
+This method is called from every helper in this component, to find whether a value has been set for an element whether by having used `setDefault()` before or in the `$_POST` superglobal.
 
 ```php
 <?php
@@ -1626,7 +1626,7 @@ echo Tag::textField(
 ```
 
 ## Dependency Injection
-If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Tag][tag] is already registered for you with the name `tag`.  
+If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Tag][tag] is already registered for you with the name `tag`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -1671,10 +1671,10 @@ class SessionController extends Controller
 ```
 
 ## Custom
-You can easily extend this functionality and create your own helpers. 
+You can easily extend this functionality and create your own helpers.
 
-- First create a new directory in your application's file system that the helper files will be stored.
-- Name it something that will represent it. For instance in this example we use `customhelpers`.
+- First, create a new directory in your application's file system where the helper files will be stored.
+- Name it something that will represent it. For instance, in this example, we use `customhelpers`.
 - Create a file called `MyTags.php` in your `customhelpers` directory.
 - Extend the [Phalcon\Tag][tag] class and implement your own methods.
 
@@ -1688,14 +1688,14 @@ use Phalcon\Tag;
 class MyTags extends Tag
 {
     /**
-     * Generates a widget to show a HTML5 audio tag
+     * Generates a widget to show an HTML5 audio tag
      *
      * @param array
      * @return string
      */
     public static function audioField($parameters)
     {
-        // Converting parameters to array if it is not
+        // Converting parameters to the array if it is not
         if (true !== is_array($parameters)) {
             $parameters = [$parameters];
         }
@@ -1796,10 +1796,10 @@ echo MyTags::audioField(
 ?>
 ```
 
-You can also check out [Volt][volt] a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag][tag].
+You can also check out [Volt][volt] a faster template engine for PHP, where you can use a more developer-friendly syntax for helpers provided by [Phalcon\Tag][tag].
 
-[factorydefault]: api/phalcon_di.md#di-factorydefault
-[injectable]: api/phalcon_di.md#di-injectable
+[factorydefault]: api/phalcon_di.md#difactorydefault-
+[injectable]: api/phalcon_di.md#diinjectable--
 [tag]: api/phalcon_tag.md
 [tagfactory]: html-tagfactory.md
 [volt]: volt.md
