@@ -576,9 +576,6 @@ The method returns an array of [Phalcon\Http\Request\File][http-request-file] ob
 | `isUploadedFile(): bool`            | Checks whether the file has been uploaded via `POST`.                                                               |
 | `moveTo(string $destination): bool` | Moves the temporary file to a destination within the application                                                    |
 
-## Dependency Injection
-The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
-
 ## Events
  The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
