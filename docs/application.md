@@ -339,7 +339,7 @@ use Phalcon\Mvc\Application;
 use Phalcon\Mvc\View;
 
 $loader = new Loader();
-$loader->registerDirs(
+$loader->setDirectories(
     [
         '../apps/controllers/',
         '../apps/models/',

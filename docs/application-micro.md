@@ -2245,7 +2245,7 @@ use Phalcon\Mvc\Micro;
 
 $loader = new Loader();
 $loader
-    ->registerDirs(
+    ->setDirectories(
         [
             __DIR__ . '/models/',
         ]
@@ -2283,7 +2283,7 @@ use Phalcon\Mvc\Model\Binder;
 
 $loader = new Loader();
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         __DIR__ . '/models/',
     ]
