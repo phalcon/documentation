@@ -373,12 +373,15 @@ $loader->register();
 
 $container = new FactoryDefault();
 
-$container->set('view', function () {
-    $view = new View();
-    $view->setViewsDir('../apps/views/');
+$container->set(
+    'view', 
+    function () {
+        $view = new View();
+        $view->setViewsDir('../apps/views/');
     
-    return $view;
-});
+        return $view;
+    }
+);
 
 $application = new Application($container);
 
