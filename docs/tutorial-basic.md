@@ -199,7 +199,7 @@ define('APP_PATH', BASE_PATH . '/app');
 
 $loader = new Loader();
 
-$loader->registerDirs(
+$loader->setDirectories(
     [
         APP_PATH . '/controllers/',
         APP_PATH . '/models/',

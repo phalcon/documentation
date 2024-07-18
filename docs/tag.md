@@ -1748,7 +1748,7 @@ use Phalcon\Exception as PhalconException;
 try {
     $loader = new Loader();
 
-    $loader->registerDirs(
+    $loader->setDirectories(
         [
             '../app/controllers',
             '../app/models',
