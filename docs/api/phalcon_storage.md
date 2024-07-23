@@ -23,6 +23,8 @@ hide:
     - `DateInterval`
     - `DateTime`
     - `Exception`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Storage\SerializerFactory`
     - `Phalcon\Storage\Serializer\SerializerInterface`
     - `Phalcon\Support\Exception`
@@ -33,7 +35,7 @@ hide:
 -   __Implements__
     
     - `AdapterInterface`
-    - `Phalcon\Events\EventsAwareInterface`
+    - `EventsAwareInterface`
 
 Class AbstractAdapter
 
@@ -93,6 +95,20 @@ protected $serializer;
  */
 protected $serializerFactory;
 
+/**
+ * Event Manager
+ *
+ * @var ManagerInterface|null
+ */
+protected $eventsManager;
+
+/**
+ * EventType prefix.
+ *
+ * @var string
+ */
+protected $eventType = storage;
+
 ```
 
 ### Methods
@@ -140,6 +156,12 @@ Name of the default serializer class
 
 
 ```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Get the event manager
+
+
+```php
 abstract public function getKeys( string $prefix = string ): array;
 ```
 Returns all the keys stored
@@ -176,9 +198,24 @@ public function setDefaultSerializer( string $serializer ): void;
 
 
 ```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the event manager
+
+
+```php
 protected function doGet( string $key );
 ```
 
+
+
+```php
+protected function fire( string $eventName, mixed $keys ): void;
+```
+Trigger an event for the eventsManager.
+
+@var string $eventName
+@var mixed $keys
 
 
 ```php
@@ -974,7 +1011,7 @@ protected function phpUnlink( string $filename ): bool;
 /**
  *
  *
- * @var int|null
+ * @var string|null
  */
 protected $fetching;
 

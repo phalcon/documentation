@@ -212,7 +212,7 @@ Delete the element from the collection
 
 
 ```php
-public function serialize(): string;
+public function serialize(): string | null;
 ```
 String representation of object
 See [serialize](https://php.net/manual/en/serializable.serialize.php)
@@ -244,7 +244,7 @@ See [rfc4627](https://www.ietf.org/rfc/rfc4627.txt)
 
 
 ```php
-public function unserialize( string $serialized ): void;
+public function unserialize( string $data ): void;
 ```
 Constructs the object
 See [unserialize](https://php.net/manual/en/serializable.unserialize.php)
@@ -3224,7 +3224,7 @@ Delete the element from the collection
 
 
 ```php
-final public function serialize(): string;
+final public function serialize(): string | null;
 ```
 String representation of object
 
@@ -3256,7 +3256,7 @@ JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
 
 
 ```php
-final public function unserialize( mixed $serialized ): void;
+final public function unserialize( string $data ): void;
 ```
 Constructs the object
 

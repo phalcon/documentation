@@ -23,6 +23,8 @@ hide:
     - `DateInterval`
     - `Phalcon\Cache\Adapter\AdapterInterface`
     - `Phalcon\Cache\Exception\InvalidArgumentException`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
     - `Traversable`
 
 -   __Extends__
@@ -31,7 +33,7 @@ hide:
 -   __Implements__
     
     - `CacheInterface`
-    - `Phalcon\Events\EventsAwareInterface`
+    - `EventsAwareInterface`
 
 This component offers caching capabilities for your application.
 
@@ -44,6 +46,13 @@ This component offers caching capabilities for your application.
  * @var AdapterInterface
  */
 protected $adapter;
+
+/**
+ * Event Manager
+ *
+ * @var ManagerInterface|null
+ */
+protected $eventsManager;
 
 ```
 
@@ -59,6 +68,18 @@ Constructor.
 public function getAdapter(): AdapterInterface;
 ```
 Returns the current adapter
+
+
+```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Get the event manager
+
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the event manager
 
 
 ```php
@@ -123,6 +144,12 @@ Persists a set of key => value pairs in the cache, with an optional TTL.
 
 
 ```php
+protected function fire( string $eventName, mixed $keys ): void;
+```
+Trigger an event for the eventsManager.
+
+
+```php
 abstract protected function getExceptionClass(): string;
 ```
 Returns the exception class that will be used for exceptions thrown
@@ -179,6 +206,13 @@ Interface for Phalcon\Cache adapters
 Apcu adapter
 
 
+### Properties
+```php
+//
+protected $eventType = 'cache';
+
+```
+
 
 ## Cache\Adapter\Libmemcached 
 
@@ -204,6 +238,13 @@ Apcu adapter
 
 Libmemcached adapter
 
+
+### Properties
+```php
+//
+protected $eventType = 'cache';
+
+```
 
 
 ## Cache\Adapter\Memory 
@@ -231,6 +272,13 @@ Libmemcached adapter
 Memory adapter
 
 
+### Properties
+```php
+//
+protected $eventType = 'cache';
+
+```
+
 
 ## Cache\Adapter\Redis 
 
@@ -256,6 +304,13 @@ Memory adapter
 
 Redis adapter
 
+
+### Properties
+```php
+//
+protected $eventType = 'cache';
+
+```
 
 
 ## Cache\Adapter\Stream 
@@ -283,6 +338,13 @@ Redis adapter
 Stream adapter
 
 
+### Properties
+```php
+//
+protected $eventType = 'cache';
+
+```
+
 
 ## Cache\Adapter\Weak 
 
@@ -308,6 +370,13 @@ Stream adapter
 
 * WeakCache implementation based on WeakReference
 */
+
+### Properties
+```php
+//
+protected $eventType = 'cache';
+
+```
 
 
 ## Cache\AdapterFactory 

@@ -2498,7 +2498,7 @@ $robot->save();
 
 
 ```php
-public function serialize(): string;
+public function serialize(): string | null;
 ```
 Serializes the object ignoring connections, services, related objects or
 static properties
@@ -2645,7 +2645,7 @@ print_r(
 
 
 ```php
-public function unserialize( mixed $data );
+public function unserialize( string $data ): void;
 ```
 Unserializes the object from a serialized string
 
@@ -11352,7 +11352,7 @@ Returns the 'before match' callback if any
 
 
 ```php
-public function getHostname(): string;
+public function getHostname(): string | null;
 ```
 Returns the hostname restriction
 
@@ -11558,7 +11558,7 @@ Returns the 'before match' callback if any
 
 
 ```php
-public function getHostname(): string;
+public function getHostname(): string | null;
 ```
 Returns the hostname restriction
 
@@ -13950,7 +13950,7 @@ Set a unique prefix to be used as prefix for compiled variables
 
 
 ```php
-protected function compileSource( string $viewCode, bool $extendsMode = bool ): string;
+protected function compileSource( string $viewCode, bool $extendsMode = bool ): array | string;
 ```
 Compiles a Volt source code returning a PHP plain version
 

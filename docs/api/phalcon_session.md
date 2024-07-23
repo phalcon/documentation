@@ -56,13 +56,13 @@ Close
 
 
 ```php
-public function destroy( mixed $sessionId ): bool;
+public function destroy( mixed $id ): bool;
 ```
 Destroy
 
 
 ```php
-public function gc( int $maxlifetime ): int | false;
+public function gc( int $max_lifetime ): int | false;
 ```
 Garbage Collector
 
@@ -74,7 +74,7 @@ Open
 
 
 ```php
-public function read( mixed $sessionId ): string;
+public function read( mixed $id ): string;
 ```
 Read
 
@@ -209,13 +209,13 @@ Close
 
 
 ```php
-public function destroy( mixed $sessionId ): bool;
+public function destroy( mixed $id ): bool;
 ```
 Destroy
 
 
 ```php
-public function gc( int $maxlifetime ): int | false;
+public function gc( int $max_lifetime ): int | false;
 ```
 Garbage Collector
 
@@ -227,7 +227,7 @@ Open
 
 
 ```php
-public function read( mixed $sessionId ): string;
+public function read( mixed $id ): string;
 ```
 Read
 
@@ -341,13 +341,13 @@ Constructor
 
 
 ```php
-public function destroy( mixed $sessionId ): bool;
+public function destroy( mixed $id ): bool;
 ```
 
 
 
 ```php
-public function gc( int $maxlifetime ): int | false;
+public function gc( int $max_lifetime ): int | false;
 ```
 Garbage Collector
 
@@ -361,7 +361,7 @@ public function open( mixed $path, mixed $name ): bool;
 
 
 ```php
-public function read( mixed $sessionId ): string;
+public function read( mixed $id ): string;
 ```
 Reads data from the adapter
 
