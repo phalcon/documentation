@@ -28,11 +28,11 @@ As seen above, the entry point of our CLI application is the `cli.php`. In that 
 declare(strict_types=1);
 
 use Exception;
+use Phalcon\Autoload\Loader;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
 use Phalcon\Cli\Console\Exception as PhalconException;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
-use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();
@@ -380,11 +380,11 @@ declare(strict_types=1);
 use Exception;
 use MyApp\Modules\Backend\Module as BackendModule;
 use MyApp\Modules\Frontend\Module as FrontendModule;
+use Phalcon\Autoload\Loader;
 use Phalcon\Cli\Console;
 use Phalcon\Cli\Dispatcher;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Exception as PhalconException;
-use Phalcon\Loader\Loader;
 use Throwable;
 
 $loader = new Loader();
