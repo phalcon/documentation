@@ -3,8 +3,10 @@ import json
 
 print("Getting NFR Reactions")
 
+comments = 'https://api.github.com/repos/phalcon/cphalcon/issues/14608/comments?page='
 result = {}
 
+i = 1  # Assuming a page number for the example
 url = f"{comments}{i}"
 headers = {
     'Accept': 'application/vnd.github.squirrel-girl-preview+json',
