@@ -536,7 +536,7 @@ Also in your views (Volt syntax)
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
 [captcha]: https://en.wikipedia.org/wiki/ReCAPTCHA
 [eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
-[factorydefault]: api/phalcon_di.md#di-factorydefault
+[factorydefault]: api/phalcon_di.md#difactorydefault
 [hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
 [md5]: https://php.net/manual/en/function.md5.php
 [openssl]: https://php.net/manual/en/book.openssl.php

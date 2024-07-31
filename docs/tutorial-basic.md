@@ -665,7 +665,7 @@ If you are ready to learn more check out the [Vökuró Tutorial][tutorial-vokuro
 [ioc]: https://en.wikipedia.org/wiki/Inversion_of_control
 [psr-4]: https://www.php-fig.org/psr/psr-4/
 [di]: api/phalcon_di.md
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
 [bootstrap]: https://getbootstrap.com/
 [devtools]: devtools.md
 [tutorial-vokuro]: tutorial-vokuro.md

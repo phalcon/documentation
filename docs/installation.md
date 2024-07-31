@@ -39,8 +39,8 @@ Along with PHP 8.0 or greater, depending on your application needs and the Phalc
 * [curl][curl]
 * [fileinfo][fileinfo]
 * [gettext][gettext]
-* [gd2][gd2] (to use the [Phalcon\Image\Adapter\Gd](api/phalcon_image.md#image-adapter-gd) class)
-* [imagick][imagick] (to use the [Phalcon\Image\Adapter\Imagick](api/phalcon_image.md#image-adapter-imagick) class)
+* [gd2][gd2] (to use the [Phalcon\Image\Adapter\Gd](api/phalcon_image.md#imageadaptergd) class)
+* [imagick][imagick] (to use the [Phalcon\Image\Adapter\Imagick](api/phalcon_image.md#imageadapterimagick) class)
 * [json][json]
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * [PDO][pdo] Extension as well as the relevant RDBMS-specific extension (i.e. [MySQL][mysql], [PostgreSql][postgresql], etc.)

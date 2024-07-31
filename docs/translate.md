@@ -653,4 +653,4 @@ $translator = $factory->newInstance(
 [wiki-gettext]: https://en.wikipedia.org/wiki/Gettext
 [di]: di.md
 [routing]: routing.md
-[translate-factory]: #translate-factory
+[translate-factory]: #translatefactory

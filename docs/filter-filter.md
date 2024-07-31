@@ -572,7 +572,7 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 [ucfirst]: https://www.php.net/manual/en/function.ucfirst.php
 [ucwords]: https://www.php.net/manual/en/function.ucwords.php
 [utf8_decode]: https://www.php.net/manual/en/function.utf8-decode.php
-[filter-exception]: api/phalcon_filter.md#filter-exception
+[filter-exception]: api/phalcon_filter.md#filterexception
 [filter-filter]: api/phalcon_filter.md#filter
 [filter-filterfactory]: api/phalcon_filter.md#filterfilterfactory
 [filter-filterinterface]: api/phalcon_filter.md#filterfilterinterface
