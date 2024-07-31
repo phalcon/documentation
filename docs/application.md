@@ -710,10 +710,10 @@ $manager->attach(
 ## External Resources
 * [MVC examples on GitHub][mvc-examples]
 
-[application-abstractapplication]: api/phalcon_application.md#applicationabstractapplication--
-[application-exception]: api/phalcon_application.md#applicationexception-
-[mvc-application]: api/phalcon_mvc.md#mvcapplication-
-[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception-
-[mvc-moduledefinitioninterface]: api/phalcon_mvc.md#mvcmoduledefinitioninterface--
+[application-abstractapplication]: api/phalcon_application.md#applicationabstractapplication
+[application-exception]: api/phalcon_application.md#applicationexception
+[mvc-application]: api/phalcon_mvc.md#mvcapplication
+[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception
+[mvc-moduledefinitioninterface]: api/phalcon_mvc.md#mvcmoduledefinitioninterface
 [mvc-examples]: https://github.com/phalcon/mvc
 [events]: events.md

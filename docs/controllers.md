@@ -614,13 +614,13 @@ $container->set(
     }
 );
 ```
-[mvc-controller]: api/phalcon_mvc.md#mvccontroller--
-[mvc-controller-bindmodelinterface]: api/phalcon_mvc.md#mvccontrollerbindmodelinterface--
-[mvc-controllerinterface]: api/phalcon_mvc.md#mvccontrollerinterface--
+[mvc-controller]: api/phalcon_mvc.md#mvccontroller
+[mvc-controller-bindmodelinterface]: api/phalcon_mvc.md#mvccontrollerbindmodelinterface
+[mvc-controllerinterface]: api/phalcon_mvc.md#mvccontrollerinterface
 [di-factorydefault]: api/phalcon_di.md#di-factorydefault
 [request]: request.md
 [response]: response.md
-[session-bag]: api/phalcon_session.md#sessionbag-
+[session-bag]: api/phalcon_session.md#sessionbag
 [dispatcher]: dispatcher.md
 [events]: events.md
 [application]: application.md

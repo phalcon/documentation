@@ -743,6 +743,6 @@ Unregister the autoload method
 [lazy_initialization]: https://en.wikipedia.org/wiki/Lazy_initialization
 [psr-4]: https://www.php-fig.org/psr/psr-4/
 [apcu]: https://php.net/manual/en/book.apcu.php
-[loader]: api/phalcon_autoload.md#autoloadloader-
-[loader-exception]: api/phalcon_autoload.md#autoloadexception-
-[eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface--
+[loader]: api/phalcon_autoload.md#autoloadloader
+[loader-exception]: api/phalcon_autoload.md#autoloadexception
+[eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface

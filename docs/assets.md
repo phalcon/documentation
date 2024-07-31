@@ -902,7 +902,7 @@ In most cases, your web server, [CDN][cdn], or services such as [Varnish HTTP Ca
 [cache-busting]: https://www.keycdn.com/support/what-is-cache-busting
 [cdn]: https://en.wikipedia.org/wiki/Content_delivery_network
 [closure]: https://developers.google.com/closure/compiler
-[collections]: api/phalcon_assets.md#assetscollection-
+[collections]: api/phalcon_assets.md#assetscollection
 [di-factorydefault]: api/phalcon_di.md#difactorydefault
 [filter-interface]: api/phalcon_assets.md#assetsfilterinterface
 [filter-none]: api/phalcon_assets.md#assetsfiltersnone
