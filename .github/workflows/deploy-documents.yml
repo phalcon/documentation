@@ -60,6 +60,10 @@ jobs:
           wget -O overrides/fanart.md \
             https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html
 
+      - name: Update NFR list
+        run: |
+          python ./update-nfr.py
+
       - name: Determine versioning parameters
         id: determine-versioning
         run: |
