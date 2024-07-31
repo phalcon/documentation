@@ -62,8 +62,9 @@ jobs:
 
       - name: Update NFR list
         run: |
-          ls -la 
+          ls -la docs/ 
           python ./update-nfr.py
+          ls -la docs/ 
 
       - name: Determine versioning parameters
         id: determine-versioning
