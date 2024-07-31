@@ -44,6 +44,7 @@ for item in sorted_result.values():
 
 output += "\n"
 
-file_name = './docs/new-feature-request-list.md'
+print(output)
+file_name = 'docs/new-feature-request-list.md'
 with open(file_name, 'a') as file:
     file.write(output)
