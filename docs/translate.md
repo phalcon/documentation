@@ -369,7 +369,7 @@ $translator = $factory->newInstance('csv', $options);
 
 In the above example, you can see the usage of `delimiter` and `enclosure`. In most cases, you will not need to supply these options but in case your CSV files are somewhat different, you have the option to instruct the adapter as to how it will parse the contents of the translation file.
 
-Creating this adapter can be achieved by using the [Translate Factory][translate-factory], but you can instantiate it directly:
+Creating this adapter can be achieved by using the [Translate Factory][translatefactory], but you can instantiate it directly:
 ```php
 <?php
 
@@ -434,7 +434,7 @@ translations/
             translations.po
 ```
 
-Creating this adapter can be achieved by using the [Translate Factory][translate-factory], but you can instantiate it directly:
+Creating this adapter can be achieved by using the [Translate Factory][translatefactory], but you can instantiate it directly:
 ```php
 <?php
 
@@ -653,4 +653,3 @@ $translator = $factory->newInstance(
 [wiki-gettext]: https://en.wikipedia.org/wiki/Gettext
 [di]: di.md
 [routing]: routing.md
-[translate-factory]: #translatefactory
