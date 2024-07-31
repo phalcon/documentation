@@ -2185,8 +2185,8 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 [recursivedirectoryiterator]: https://www.php.net/manual/en/class.recursivedirectoryiterator.php
 [recursiveiteratoriterator]: https://www.php.net/manual/en/class.recursiveiteratoriterator.php
 [unlink]: https://www.php.net/manual/en/function.unlink.php
-[mvc-view-engine-volt-compiler]: api/phalcon_mvc.md#mvcviewenginevoltcompiler-
-[mvc-view-engine-volt-exception]: api/phalcon_mvc.md#mvcviewenginevoltexception-
+[mvc-view-engine-volt-compiler]: api/phalcon_mvc.md#mvcviewenginevoltcompiler
+[mvc-view-engine-volt-exception]: api/phalcon_mvc.md#mvcviewenginevoltexception
 [views]: views.md
 [html-tagfactory]: html-tagfactory.md
 [events]: events.md

@@ -1247,14 +1247,14 @@ class MyDispatcher implements DispatcherInterface
     public function setParams(array $params): void;
 }
 ```
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
-[events-event]: api/phalcon_events.md#eventsevent-
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
+[events-event]: api/phalcon_events.md#eventsevent
 [invo]: https://github.com/phalcon/invo
-[mvc-dispatcher]: api/phalcon_mvc.md#mvcdispatcher-
-[mvc-dispatcher-exception]: api/phalcon_mvc.md#mvcdispatcherexception-
-[mvc-dispatcherinterface]: api/phalcon_mvc.md#mvcdispatcherinterface--
-[mvc-model-binder]: api/phalcon_mvc.md#mvcmodelbinder-
-[mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvcmodelbinderbindableinterface--
-[mvc-model-binderinterface]: api/phalcon_mvc.md#mvcmodelbinderinterface--
+[mvc-dispatcher]: api/phalcon_mvc.md#mvcdispatcher
+[mvc-dispatcher-exception]: api/phalcon_mvc.md#mvcdispatcherexception
+[mvc-dispatcherinterface]: api/phalcon_mvc.md#mvcdispatcherinterface
+[mvc-model-binder]: api/phalcon_mvc.md#mvcmodelbinder
+[mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvcmodelbinderbindableinterface
+[mvc-model-binderinterface]: api/phalcon_mvc.md#mvcmodelbinderinterface
 [events]: events.md
 [acl]: acl.md

@@ -734,20 +734,20 @@ The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events
 | `afterSendHeaders`  | Fires after the headers have been sent  |         No         |
 | `beforeSendHeaders` | Fires before the headers have been sent |        Yes         |
 
-[http-cookie]: api/phalcon_http.md#httpcookie-
-[http-cookie-exception]: api/phalcon_http.md#httpcookieexception-
-[http-cookieinterface]: api/phalcon_http.md#httpcookiecookieinterface--
-[http-response]: api/phalcon_http.md#httpresponse-
-[http-response-cookies]: api/phalcon_http.md#httpresponsecookies-
-[http-response-cookiesinterface]: api/phalcon_http.md#httpresponsecookiesinterface--
-[http-response-exception]: api/phalcon_http.md#httpresponseexception-
-[http-response-headers]: api/phalcon_http.md#httpresponseheaders-
-[http-response-headersinterface]: api/phalcon_http.md#httpresponseheadersinterface--
-[http-responseinterface]: api/phalcon_http.md#httpresponseinterface--
-[di-injectionawareinterface]: api/phalcon_di.md#diinjectionawareinterface--
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
-[url]: api/phalcon_mvc.md#mvcurl-
+[http-cookie]: api/phalcon_http.md#httpcookie
+[http-cookie-exception]: api/phalcon_http.md#httpcookieexception
+[http-cookieinterface]: api/phalcon_http.md#httpcookiecookieinterface
+[http-response]: api/phalcon_http.md#httpresponse
+[http-response-cookies]: api/phalcon_http.md#httpresponsecookies
+[http-response-cookiesinterface]: api/phalcon_http.md#httpresponsecookiesinterface
+[http-response-exception]: api/phalcon_http.md#httpresponseexception
+[http-response-headers]: api/phalcon_http.md#httpresponseheaders
+[http-response-headersinterface]: api/phalcon_http.md#httpresponseheadersinterface
+[http-responseinterface]: api/phalcon_http.md#httpresponseinterface
+[di-injectionawareinterface]: api/phalcon_di.md#diinjectionawareinterface
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
+[url]: api/phalcon_mvc.md#mvcurl
 [json-encode]: https://www.php.net/manual/en/function.json-encode.php
 [status-codes]: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface--
+[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface
 [readfile]: https://www.php.net/manual/en/function.readfile.php

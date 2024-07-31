@@ -1583,19 +1583,19 @@ try {
 ## Custom
 The [Phalcon\Di\DiInterface][di-diinterface] interface must be implemented to create your own DI replacing the one provided by Phalcon or extending the current one. You can also utilize the [Phalcon\Di\ServiceInterface][di-serviceinterface] to create your own implementations of services and how they resolve in the DI container.
 
-[di]: api/phalcon_di.md#didi-
-[di-abstractinjectionaware]: api/phalcon_di.md#diabstractinjectionaware--
-[di-diinterface]: api/phalcon_di.md#didiinterface--
-[di-exception]: api/phalcon_di.md#diexception-
-[di-exception-serviceresolutionexception]: api/phalcon_di.md#diexceptionserviceresolutionexception-
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
-[di-factorydefault-cli]: api/phalcon_di.md#difactorydefaultcli-
-[di-injectable]: api/phalcon_di.md#diinjectable--
-[di-injectionawareinterface]: api/phalcon_di.md#diinjectionawareinterface--
-[di-service]: api/phalcon_di.md#diservice-
-[di-service-builder]: api/phalcon_di.md#diservicebuilder-
-[di-serviceinterface]: api/phalcon_di.md#diserviceinterface--
-[di-serviceproviderinterface]: api/phalcon_di.md#diserviceproviderinterface--
+[di]: api/phalcon_di.md#didi
+[di-abstractinjectionaware]: api/phalcon_di.md#diabstractinjectionaware
+[di-diinterface]: api/phalcon_di.md#didiinterface
+[di-exception]: api/phalcon_di.md#diexception
+[di-exception-serviceresolutionexception]: api/phalcon_di.md#diexceptionserviceresolutionexception
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
+[di-factorydefault-cli]: api/phalcon_di.md#difactorydefaultcli
+[di-injectable]: api/phalcon_di.md#diinjectable
+[di-injectionawareinterface]: api/phalcon_di.md#diinjectionawareinterface
+[di-service]: api/phalcon_di.md#diservice
+[di-service-builder]: api/phalcon_di.md#diservicebuilder
+[di-serviceinterface]: api/phalcon_di.md#diserviceinterface
+[di-serviceproviderinterface]: api/phalcon_di.md#diserviceproviderinterface
 [ioc]: https://en.wikipedia.org/wiki/Inversion_of_control
 [singleton]: https://en.wikipedia.org/wiki/Singleton_pattern
 [yaml]: https://php.net/manual/book.yaml.php

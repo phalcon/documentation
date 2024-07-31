@@ -1456,5 +1456,5 @@ if ( false === $customer->save() ) {
 
 
 [db-normalization]: https://en.wikipedia.org/wiki/Database_normalization
-[mvc-model]: api/phalcon_mvc.md#mvcmodel--
-[mvc-model-relation]: api/phalcon_mvc.md#mvcmodelrelation-
+[mvc-model]: api/phalcon_mvc.md#mvcmodel
+[mvc-model-relation]: api/phalcon_mvc.md#mvcmodelrelation

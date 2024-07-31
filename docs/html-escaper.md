@@ -359,10 +359,10 @@ class Custom extends EscaperInterface
 }
 ```
 
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
-[escaper]: api/phalcon_html.md#htmlescaper-
-[escaper-escaperinterface]: api/phalcon_html.md#htmlescaperescaperinterface--
-[escaper-exception]: api/phalcon_html.md#htmlescaperexception-
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
+[escaper]: api/phalcon_html.md#htmlescaper
+[escaper-escaperinterface]: api/phalcon_html.md#htmlescaperescaperinterface
+[escaper-exception]: api/phalcon_html.md#htmlescaperexception
 [zephir]: https://zephir-lang.com
 [htmlspecialchars]: https://www.php.net/manual/en/function.htmlspecialchars.php
 [mb_detect_encoding]: https://www.php.net/manual/en/function.mb-detect-encoding.php

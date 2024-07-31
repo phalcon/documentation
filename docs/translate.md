@@ -633,23 +633,23 @@ $translator = $factory->newInstance(
 );
 ```
 
-[abstractadapter]: api/phalcon_translate.md#translateadapterabstractadapter--
-[adapterinterface]: api/phalcon_translate.md#translateadapteradapterinterface--
-[associativearray]: api/phalcon_translate.md#translateinterpolatorassociativearray-
-[csv]: api/phalcon_translate.md#translateadaptercsv-
-[exception]: api/phalcon_translate.md#translateexception-
-[gettext]: api/phalcon_translate.md#translateadaptergettext-
+[abstractadapter]: api/phalcon_translate.md#translateadapterabstractadapter
+[adapterinterface]: api/phalcon_translate.md#translateadapteradapterinterface
+[associativearray]: api/phalcon_translate.md#translateinterpolatorassociativearray
+[csv]: api/phalcon_translate.md#translateadaptercsv
+[exception]: api/phalcon_translate.md#translateexception
+[gettext]: api/phalcon_translate.md#translateadaptergettext
 [incubator]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter
-[indexedarray]: api/phalcon_translate.md#translateinterpolatorindexedarray-
-[interpolatorinterface]: api/phalcon_translate.md#translateinterpolatorinterpolatorinterface--
-[interpolatorfactory]: api/phalcon_translate.md#translateinterpolatorfactory-
-[nativearray]: api/phalcon_translate.md#translateadapternativearray-
+[indexedarray]: api/phalcon_translate.md#translateinterpolatorindexedarray
+[interpolatorinterface]: api/phalcon_translate.md#translateinterpolatorinterpolatorinterface
+[interpolatorfactory]: api/phalcon_translate.md#translateinterpolatorfactory
+[nativearray]: api/phalcon_translate.md#translateadapternativearray
 [php-gettext]: https://www.php.net/manual/book.gettext.php
 [poedit]: https://poedit.net/
-[request]: api/phalcon_http.md#httprequest-
+[request]: api/phalcon_http.md#httprequest
 [sprintf]: https://www.php.net/manual/en/function.sprintf.php
 [translate]: api/phalcon_translate.md
-[translatefactory]: api/phalcon_translate.md#translatetranslatefactory-
+[translatefactory]: api/phalcon_translate.md#translatetranslatefactory
 [wiki-gettext]: https://en.wikipedia.org/wiki/Gettext
 [di]: di.md
 [routing]: routing.md

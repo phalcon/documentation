@@ -1135,25 +1135,25 @@ class ContactForm extends Form
 ## Additional Resources
 * [Vökuró][vokuro], is a sample application that uses the forms builder to create and manage forms.
 
-[di-injectable]: api/phalcon_di.md#diinjectable--
-[forms-element-abstractelement]: api/phalcon_forms.md#formselementabstractelement--
-[forms-element-check]: api/phalcon_forms.md#formselementcheck-
-[forms-element-date]: api/phalcon_forms.md#formselementdate-
-[forms-element-elementinterface]: api/phalcon_forms.md#formselementelementinterface--
-[forms-element-email]: api/phalcon_forms.md#formselementemail-
-[forms-element-file]: api/phalcon_forms.md#formselementfile-
-[forms-element-hidden]: api/phalcon_forms.md#formselementhidden-
-[forms-element-numeric]: api/phalcon_forms.md#formselementnumeric-
-[forms-element-password]: api/phalcon_forms.md#formselementpassword-
-[forms-element-radio]: api/phalcon_forms.md#formselementradio-
-[forms-element-select]: api/phalcon_forms.md#formselementselect-
-[forms-element-submit]: api/phalcon_forms.md#formselementsubmit-
-[forms-element-text]: api/phalcon_forms.md#formselementtext-
-[forms-element-textarea]: api/phalcon_forms.md#formselementtextarea-
-[forms-exception]: api/phalcon_forms.md#formsexception-
-[forms-form]: api/phalcon_forms.md#formsform-
-[forms-manager]: api/phalcon_forms.md#formsmanager-
-[html-attributes]: api/phalcon_html.md#htmlattributes-
+[di-injectable]: api/phalcon_di.md#diinjectable
+[forms-element-abstractelement]: api/phalcon_forms.md#formselementabstractelement
+[forms-element-check]: api/phalcon_forms.md#formselementcheck
+[forms-element-date]: api/phalcon_forms.md#formselementdate
+[forms-element-elementinterface]: api/phalcon_forms.md#formselementelementinterface
+[forms-element-email]: api/phalcon_forms.md#formselementemail
+[forms-element-file]: api/phalcon_forms.md#formselementfile
+[forms-element-hidden]: api/phalcon_forms.md#formselementhidden
+[forms-element-numeric]: api/phalcon_forms.md#formselementnumeric
+[forms-element-password]: api/phalcon_forms.md#formselementpassword
+[forms-element-radio]: api/phalcon_forms.md#formselementradio
+[forms-element-select]: api/phalcon_forms.md#formselementselect
+[forms-element-submit]: api/phalcon_forms.md#formselementsubmit
+[forms-element-text]: api/phalcon_forms.md#formselementtext
+[forms-element-textarea]: api/phalcon_forms.md#formselementtextarea
+[forms-exception]: api/phalcon_forms.md#formsexception
+[forms-form]: api/phalcon_forms.md#formsform
+[forms-manager]: api/phalcon_forms.md#formsmanager
+[html-attributes]: api/phalcon_html.md#htmlattributes
 [html-helper]: api/phalcon_html.md
 [tagfactory]: html-tagfactory.md
 [db-models]: db-models.md

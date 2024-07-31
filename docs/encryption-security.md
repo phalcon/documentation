@@ -547,9 +547,9 @@ Also in your views (Volt syntax)
 [rfc-3548]: https://www.ietf.org/rfc/rfc3548.txt
 [rfc-4122]: https://www.ietf.org/rfc/rfc4122.txt
 [secure-random]: https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
-[security]: api/phalcon_encryption.md#encryptionsecurity-
-[security-exception]: api/phalcon_encryption.md#encryptionsecurityexception-
-[security-random]: api/phalcon_encryption.md#encryptionsecurityrandom-
+[security]: api/phalcon_encryption.md#encryptionsecurity
+[security-exception]: api/phalcon_encryption.md#encryptionsecurityexception
+[security-random]: api/phalcon_encryption.md#encryptionsecurityrandom
 [sha1]: https://php.net/manual/en/function.sha1.php
 [wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
 [di]: di.md

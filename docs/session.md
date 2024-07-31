@@ -636,18 +636,18 @@ class InvoicesController extends Controller
 }
 ```
 
-[di-factorydefault]: api/phalcon_di.md#difactorydefault-
-[di-injectable]: api/phalcon_di.md#diinjectable--
-[session-adapter-abstractadapter]: api/phalcon_session.md#sessionadapterabstractadapter--
-[session-adapter-libmemcached]: api/phalcon_session.md#sessionadapterlibmemcached-
-[session-adapter-noop]: api/phalcon_session.md#sessionadapternoop-
-[session-adapter-redis]: api/phalcon_session.md#sessionadapterredis-
-[session-adapter-stream]: api/phalcon_session.md#sessionadapterstream-
-[session-bag]: api/phalcon_session.md#sessionbag-
-[session-exception]: api/phalcon_session.md#sessionexception-
-[session-manager]: api/phalcon_session.md#sessionmanager-
-[session-managerinterface]: api/phalcon_session.md#sessionmanagerinterface--
+[di-factorydefault]: api/phalcon_di.md#difactorydefault
+[di-injectable]: api/phalcon_di.md#diinjectable
+[session-adapter-abstractadapter]: api/phalcon_session.md#sessionadapterabstractadapter
+[session-adapter-libmemcached]: api/phalcon_session.md#sessionadapterlibmemcached
+[session-adapter-noop]: api/phalcon_session.md#sessionadapternoop
+[session-adapter-redis]: api/phalcon_session.md#sessionadapterredis
+[session-adapter-stream]: api/phalcon_session.md#sessionadapterstream
+[session-bag]: api/phalcon_session.md#sessionbag
+[session-exception]: api/phalcon_session.md#sessionexception
+[session-manager]: api/phalcon_session.md#sessionmanager
+[session-managerinterface]: api/phalcon_session.md#sessionmanagerinterface
 [sessionhandlerinterface]: https://www.php.net/manual/en/class.sessionhandlerinterface.php
-[storage-adapter]: api/phalcon_storage.md#storageadapterabstractadapter--
-[storage-adapter-libmemcached]: api/phalcon_storage.md#storageadapterlibmemcached-
-[storage-adapter-redis]: api/phalcon_storage.md#storageadapterredis-
+[storage-adapter]: api/phalcon_storage.md#storageadapterabstractadapter
+[storage-adapter-libmemcached]: api/phalcon_storage.md#storageadapterlibmemcached
+[storage-adapter-redis]: api/phalcon_storage.md#storageadapterredis

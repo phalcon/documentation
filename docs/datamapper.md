@@ -1861,11 +1861,11 @@ $select
 [datamapper-pdo-connection-pdointerface]: api/phalcon_datamapper.md#datamapperpdoconnection-pdointerface
 [datamapper-pdo-connectionlocator]: api/phalcon_datamapper.md#datamapperpdoconnectionlocator
 [datamapper-pdo-connectionlocatorinterface]: api/phalcon_datamapper.md#datamapperpdoconnectionlocatorinterface
-[datamapper-pdo-exception-cannotdisconnect]: api/phalcon_datamapper.md#datamapper-pdo-exception-cannotdisconnect
-[datamapper-pdo-exception-connectionnotfound]: api/phalcon_datamapper.md#datamapper-pdo-exception-connectionnotfound
-[datamapper-pdo-exception-exception]: api/phalcon_datamapper.md#datamapperpdoexception-exception
-[datamapper-pdo-profiler-memorylogger]: api/phalcon_datamapper.md#datamapperpdoprofiler-memorylogger
-[datamapper-pdo-profiler-profiler]: api/phalcon_datamapper.md#datamapperpdoprofiler-profiler
+[datamapper-pdo-exception-cannotdisconnect]: api/phalcon_datamapper.md#datamapperpdoexceptioncannotdisconnect
+[datamapper-pdo-exception-connectionnotfound]: api/phalcon_datamapper.md#datamapperpdoexceptionconnectionnotfound
+[datamapper-pdo-exception-exception]: api/phalcon_datamapper.md#datamapperpdoexceptionexception
+[datamapper-pdo-profiler-memorylogger]: api/phalcon_datamapper.md#datamapperpdoprofilermemorylogger
+[datamapper-pdo-profiler-profiler]: api/phalcon_datamapper.md#datamapperpdoprofilerprofiler
 [datamapper-pdo-profiler-profilerinterface]: api/phalcon_datamapper.md#datamapperpdoprofilerprofilerinterface
 [datamapper-query-abstractconditions]: api/phalcon_datamapper.md#datamapperqueryabstractconditions
 [datamapper-query-abstractquery]: api/phalcon_datamapper.md#datamapperqueryabstractquery

@@ -3165,13 +3165,13 @@ Some things to keep in mind when using PHQL:
 * Aliased classes are not replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
 * If column renaming is enabled avoid, using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
 
-[di-injectable]: api/phalcon_di.md#diinjectable--
-[mvc-model-manager]: api/phalcon_mvc.md#mvcmodelmanager-
-[mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery-
-[mvc-model-query-builder]: api/phalcon_mvc.md#mvcmodelquerybuilder-
-[mvc-model-resultset]: api/phalcon_mvc.md#mvcmodelresultset--
-[mvc-model-resultset-complex]: api/phalcon_mvc.md#mvcmodelresultsetcomplex-
-[mvc-model-resultset-simple]: api/phalcon_mvc.md#mvcmodelresultsetsimple-
+[di-injectable]: api/phalcon_di.md#diinjectable
+[mvc-model-manager]: api/phalcon_mvc.md#mvcmodelmanager
+[mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery
+[mvc-model-query-builder]: api/phalcon_mvc.md#mvcmodelquerybuilder
+[mvc-model-resultset]: api/phalcon_mvc.md#mvcmodelresultset
+[mvc-model-resultset-complex]: api/phalcon_mvc.md#mvcmodelresultsetcomplex
+[mvc-model-resultset-simple]: api/phalcon_mvc.md#mvcmodelresultsetsimple
 [pdo-constants]: https://www.php.net/manual/en/pdo.constants.php
 [sqlite]: https://en.wikipedia.org/wiki/Lemon_Parser_Generator
 [db-models]: db-models.md

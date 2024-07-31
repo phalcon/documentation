@@ -455,7 +455,7 @@ foreach ($profiles as $profile) {
 Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
 
 [db]: api/phalcon_db.md
-[events-manager]: api/phalcon_events.md#eventsmanager-
+[events-manager]: api/phalcon_events.md#eventsmanager
 [logger]: logger.md
-[mvc-model]: api/phalcon_mvc.md#mvcmodel--
-[mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery-
+[mvc-model]: api/phalcon_mvc.md#mvcmodel
+[mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery

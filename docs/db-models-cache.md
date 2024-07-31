@@ -936,8 +936,8 @@ for ($i = 1; $i <= 10; $i++) {
 
 Execution plans for queries involving [prepared statements][prepared_statements] are also cached by most database systems reducing the overall execution time, also protecting your application against [SQL Injections][sql_injections].
 
-[mvc-model]: api/phalcon_mvc.md#mvcmodel--
-[mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery-
+[mvc-model]: api/phalcon_mvc.md#mvcmodel
+[mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery
 [prepared_statements]: https://en.wikipedia.org/wiki/Prepared_statement
 [sql_injections]: https://en.wikipedia.org/wiki/SQL_injection
 [n-1]: https://leanpub.com/sn1php

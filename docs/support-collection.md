@@ -499,4 +499,4 @@ class MyCollection implements CollectionInterface
 ```
 
 
-[support-collection-collectioninterface]: api/phalcon_support.md#supportcollectioncollectioninterface--
+[support-collection-collectioninterface]: api/phalcon_support.md#supportcollectioncollectioninterface

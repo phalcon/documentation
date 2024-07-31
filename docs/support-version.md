@@ -66,4 +66,4 @@ echo $version->getId();
 // 5000034
 ```
 
-[version]: api/phalcon_support.md#supportversion-
+[version]: api/phalcon_support.md#supportversion

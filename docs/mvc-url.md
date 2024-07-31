@@ -426,9 +426,9 @@ You can of course access the object the same way as any registered service in th
 {{ url.get('/portal/invoices/link') }}
 ```
 
-[url]: api/phalcon_mvc.md#mvcurl-
-[url-exception]: api/phalcon_mvc.md#mvcurlexception-
-[urlinterface]: api/phalcon_mvc.md#mvcurlurlinterface--
-[factorydefault]: api/phalcon_di.md#difactorydefault-
+[url]: api/phalcon_mvc.md#mvcurl
+[url-exception]: api/phalcon_mvc.md#mvcurlexception
+[urlinterface]: api/phalcon_mvc.md#mvcurlurlinterface
+[factorydefault]: api/phalcon_di.md#difactorydefault
 [routing]: routing.md
 [di]: di.md

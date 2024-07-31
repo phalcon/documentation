@@ -397,6 +397,6 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 */
 ```
 
-[registry]: api/phalcon_support.md#supportregistry--
+[registry]: api/phalcon_support.md#supportregistry
 [support-collection]: support-collection.md
 [rfc4327]: https://www.ietf.org/rfc/rfc4627.txt

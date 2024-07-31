@@ -1655,4 +1655,4 @@ $result = $helper->upper($source);
 echo $result; // 'PHALCON FRAMEWORK'
 ```
 
-[support-helper]: api/phalcon_support.md#supporthelperfactory-
+[support-helper]: api/phalcon_support.md#supporthelperfactory

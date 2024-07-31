@@ -361,10 +361,10 @@ class Invoices extends Model
 
 [date]: https://php.net/manual/en/function.date.php
 [events-list]: events.md#list-of-events
-[mvc-model-behavior]: api/phalcon_mvc.md#mvcmodelbehavior--
-[mvc-model-behavior-softdelete]: api/phalcon_mvc.md#mvcmodelbehaviorsoftdelete-
-[mvc-model-behavior-timestampable]: api/phalcon_mvc.md#mvcmodelbehaviortimestampable-
-[mvc-model-behaviorinterface]: api/phalcon_mvc.md#mvcmodelbehaviorinterface--
+[mvc-model-behavior]: api/phalcon_mvc.md#mvcmodelbehavior
+[mvc-model-behavior-softdelete]: api/phalcon_mvc.md#mvcmodelbehaviorsoftdelete
+[mvc-model-behavior-timestampable]: api/phalcon_mvc.md#mvcmodelbehaviortimestampable
+[mvc-model-behaviorinterface]: api/phalcon_mvc.md#mvcmodelbehaviorinterface
 [time]: https://php.net/manual/en/function.time.php
 [traits]: https://php.net/manual/en/language.oop5.traits.php
 [events]: events.md

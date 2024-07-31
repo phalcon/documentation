@@ -1717,9 +1717,9 @@ Finally, the title is printed in the main view (`themes/invo/views/index.volt`):
 [crud]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
 [jinja]: https://jinja.palletsprojects.com/en/2.10.x/
 [twig]: https://twig.symfony.com/
-[events-event]: api/phalcon_events.md#eventsevent-
-[di-injectable]: api/phalcon_di.md#diinjectable--
-[mvc-model-criteria]: api/phalcon_mvc.md#mvcmodelcriteria-
+[events-event]: api/phalcon_events.md#eventsevent
+[di-injectable]: api/phalcon_di.md#diinjectable
+[mvc-model-criteria]: api/phalcon_mvc.md#mvcmodelcriteria
 [webserver-setup]: webserver-setup.md
 [routing]: routing.md
 [di]: di.md

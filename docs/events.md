@@ -962,15 +962,15 @@ The events available in Phalcon are:
 | [Volt][volt]                | `resolveExpression`                  | Volt, [expression]                                      |
 
 [db]: api/phalcon_db.md
-[di-factorydefaul]: api/phalcon_di.md#difactorydefault-
-[events-event]: api/phalcon_events.md#eventsevent-
-[events-eventinterface]: api/phalcon_events.md#eventseventinterface--
-[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface--
-[events-exception]: api/phalcon_events.md#eventsexception-
-[events-manager]: api/phalcon_events.md#eventsmanager-
-[events-managerinterface]: api/phalcon_events.md#eventsmanagerinterface--
-[mvc-controller]: api/phalcon_mvc.md#mvccontroller--
-[mvc-model]: api/phalcon_mvc.md#mvcmodel--
+[di-factorydefaul]: api/phalcon_di.md#difactorydefault
+[events-event]: api/phalcon_events.md#eventsevent
+[events-eventinterface]: api/phalcon_events.md#eventseventinterface
+[events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface
+[events-exception]: api/phalcon_events.md#eventsexception
+[events-manager]: api/phalcon_events.md#eventsmanager
+[events-managerinterface]: api/phalcon_events.md#eventsmanagerinterface
+[mvc-controller]: api/phalcon_mvc.md#mvccontroller
+[mvc-model]: api/phalcon_mvc.md#mvcmodel
 [splpriorityqueue]: https://www.php.net/manual/en/class.splpriorityqueue.php
 [acl]: acl.md
 [application]: application.md

@@ -169,9 +169,9 @@ class Custom implements SerializerInterface
 [php-fig]: https://www.php-fig.org/
 [proxy-psr13]: https://github.com/phalcon/proxy-psr13
 [psr-13]: https://www.php-fig.org/psr/psr-13/
-[html-link-evolvablelink]: api/phalcon_html.md#htmllinkevolvablelink-
-[html-link-evolvablelinkprovider]: api/phalcon_html.md#htmllinkevolvablelink-
-[html-link-link]: api/phalcon_html.md#htmllinklink-
-[html-link-linkprovider]: api/phalcon_html.md#htmllinklinkprovider-
-[html-link-serializer-header]: api/phalcon_html.md#htmllinkserializerheader-
-[html-link-serializer-serializerinterface]: api/phalcon_html.md#htmllinkserializerserializerinterface--
+[html-link-evolvablelink]: api/phalcon_html.md#htmllinkevolvablelink
+[html-link-evolvablelinkprovider]: api/phalcon_html.md#htmllinkevolvablelink
+[html-link-link]: api/phalcon_html.md#htmllinklink
+[html-link-linkprovider]: api/phalcon_html.md#htmllinklinkprovider
+[html-link-serializer-header]: api/phalcon_html.md#htmllinkserializerheader
+[html-link-serializer-serializerinterface]: api/phalcon_html.md#htmllinkserializerserializerinterface

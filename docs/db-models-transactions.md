@@ -268,9 +268,9 @@ class ProductsController extends Controller
 
     While a transaction is active, the transaction manager will always return the same transaction across the application.
 
-[mvc-model-transaction]: api/phalcon_mvc.md#mvcmodeltransaction-
-[mvc-model-transaction-exception]: api/phalcon_mvc.md#mvcmodeltransactionexception-
-[mvc-model-transaction-failed]: api/phalcon_mvc.md#mvcmodeltransactionfailed-
-[mvc-model-transaction-manager]: api/phalcon_mvc.md#mvcmodeltransactionmanager-
-[mvc-model-transaction-managerinterface]: api/phalcon_mvc.md#mvcmodeltransactionmanagerinterface--
-[mvc-model-transactioninterface]: api/phalcon_mvc.md#mvcmodeltransactioninterface--
+[mvc-model-transaction]: api/phalcon_mvc.md#mvcmodeltransaction
+[mvc-model-transaction-exception]: api/phalcon_mvc.md#mvcmodeltransactionexception
+[mvc-model-transaction-failed]: api/phalcon_mvc.md#mvcmodeltransactionfailed
+[mvc-model-transaction-manager]: api/phalcon_mvc.md#mvcmodeltransactionmanager
+[mvc-model-transaction-managerinterface]: api/phalcon_mvc.md#mvcmodeltransactionmanagerinterface
+[mvc-model-transactioninterface]: api/phalcon_mvc.md#mvcmodeltransactioninterface

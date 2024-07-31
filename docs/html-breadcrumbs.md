@@ -89,6 +89,6 @@ public function toArray(): array
 ```
 Returns the internal breadcrumbs array
 
-[html-breadcrumbs]: api/phalcon_html.md#htmlbreadcrumbs-
-[html-exception]: api/phalcon_html.md#htmlexception-
-[html-tagfactory]: api/phalcon_html.md#htmltagfactory-
+[html-breadcrumbs]: api/phalcon_html.md#htmlbreadcrumbs
+[html-exception]: api/phalcon_html.md#htmlexception
+[html-tagfactory]: api/phalcon_html.md#htmltagfactory

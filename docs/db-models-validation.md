@@ -199,8 +199,8 @@ class Invoices extends Model
 ```
 
 [mvc-model]: api/phalcon_mvc.md#mvc-model
-[mvc-model-validationfailed]: api/phalcon_mvc.md#mvcmodelvalidationfailed-
-[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin-
-[messages-message]: api/phalcon_messages.md#messagesmessage-
-[messages-messages]: api/phalcon_messages.md#messagesmessages-
+[mvc-model-validationfailed]: api/phalcon_mvc.md#mvcmodelvalidationfailed
+[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin
+[messages-message]: api/phalcon_messages.md#messagesmessage
+[messages-messages]: api/phalcon_messages.md#messagesmessages
 [filter-validation]: filter-validation.md

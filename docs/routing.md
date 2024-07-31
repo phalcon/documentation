@@ -1471,15 +1471,15 @@ $router->add(
      Be careful when allowing characters in regular expressions for controllers and namespaces. These will become class names and in turn, they will interact with the file system. As such, it is possible that an attacker can access unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)`
 
 [devtools]: https://phalcon.io/en/download/tools
-[di-injectable]: api/phalcon_di.md#diinjectable--
-[mvc-router]: api/phalcon_mvc.md#mvcrouter-
-[mvc-router-annotations]: api/phalcon_mvc.md#mvcrouterannotations-
-[mvc-router-exception]: api/phalcon_mvc.md#mvcrouterexception-
-[mvc-router-group]: api/phalcon_mvc.md#mvcroutergroup-
-[mvc-router-groupinterface]: api/phalcon_mvc.md#mvcroutergroupinterface--
-[mvc-router-route]: api/phalcon_mvc.md#mvcrouterroute-
-[mvc-router-routeinterface]: api/phalcon_mvc.md#mvcrouterrouteinterface--
-[mvc-routerinterface]: api/phalcon_mvc.md#mvcrouterinterface--
+[di-injectable]: api/phalcon_di.md#diinjectable
+[mvc-router]: api/phalcon_mvc.md#mvcrouter
+[mvc-router-annotations]: api/phalcon_mvc.md#mvcrouterannotations
+[mvc-router-exception]: api/phalcon_mvc.md#mvcrouterexception
+[mvc-router-group]: api/phalcon_mvc.md#mvcroutergroup
+[mvc-router-groupinterface]: api/phalcon_mvc.md#mvcroutergroupinterface
+[mvc-router-route]: api/phalcon_mvc.md#mvcrouterroute
+[mvc-router-routeinterface]: api/phalcon_mvc.md#mvcrouterrouteinterface
+[mvc-routerinterface]: api/phalcon_mvc.md#mvcrouterinterface
 [pcre]: https://www.php.net/manual/en/book.pcre.php
 [transformers]: https://transformers.hasbro.com/en-us
 [mvc-url]: mvc.md

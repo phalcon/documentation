@@ -457,11 +457,11 @@ The [Phalcon\Encryption\Crypt\PadFactory][pad-factory] is an object that instant
 [cipher_methods]: https://www.php.net/manual/en/function.openssl-get-cipher-methods.php
 [openssl]: https://www.php.net/manual/en/book.openssl.php
 [suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
-[crypt]: api/phalcon_encryption.md#encryptioncrypt-
-[crypt-cryptinterface]: api/phalcon_encryption.md#encryptioncryptcryptinterface--
-[crypt-exception]: api/phalcon_encryption.md#encryptioncryptexceptionexception-
-[crypt-mismatch]: api/phalcon_encryption.md#encryptioncryptexceptionmismatch-
-[pad-factory]: api/phalcon_encryption.md#encryptioncryptpadfactory-
-[pad-interface]: api/phalcon_encryption.md#encryptioncryptpaddingpadinterface--
+[crypt]: api/phalcon_encryption.md#encryptioncrypt
+[crypt-cryptinterface]: api/phalcon_encryption.md#encryptioncryptcryptinterface
+[crypt-exception]: api/phalcon_encryption.md#encryptioncryptexceptionexception
+[crypt-mismatch]: api/phalcon_encryption.md#encryptioncryptexceptionmismatch
+[pad-factory]: api/phalcon_encryption.md#encryptioncryptpadfactory
+[pad-interface]: api/phalcon_encryption.md#encryptioncryptpaddingpadinterface
 [di]: di.md
 [encryption-security]: encryption-security.md

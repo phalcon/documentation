@@ -1571,17 +1571,17 @@ try {
 ```
 
 [incubator-engines]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine
-[mvc-view]: api/phalcon_mvc.md#mvcview-
-[mvc-view-engine-abstractengine]: api/phalcon_mvc.md#mvcviewengineabstractengine--
-[mvc-view-engine-engineinterface]: api/phalcon_mvc.md#mvcviewengineengineinterface--
-[mvc-view-engine-php]: api/phalcon_mvc.md#mvcviewenginephp-
-[mvc-view-engine-volt]: api/phalcon_mvc.md#mvcviewenginevolt-
-[mvc-view-engine-volt-compiler]: api/phalcon_mvc.md#mvcviewenginevoltcompiler-
-[mvc-view-engine-volt-exception]: api/phalcon_mvc.md#mvcviewenginevoltexception-
-[mvc-view-exception]: api/phalcon_mvc.md#mvcviewexception-
-[mvc-view-simple]: api/phalcon_mvc.md#mvcviewsimple-
-[mvc-viewbaseinterface]: api/phalcon_mvc.md#mvcviewbaseinterface--
-[mvc-viewinterface]: api/phalcon_mvc.md#mvcviewinterface--
+[mvc-view]: api/phalcon_mvc.md#mvcview
+[mvc-view-engine-abstractengine]: api/phalcon_mvc.md#mvcviewengineabstractengine
+[mvc-view-engine-engineinterface]: api/phalcon_mvc.md#mvcviewengineengineinterface
+[mvc-view-engine-php]: api/phalcon_mvc.md#mvcviewenginephp
+[mvc-view-engine-volt]: api/phalcon_mvc.md#mvcviewenginevolt
+[mvc-view-engine-volt-compiler]: api/phalcon_mvc.md#mvcviewenginevoltcompiler
+[mvc-view-engine-volt-exception]: api/phalcon_mvc.md#mvcviewenginevoltexception
+[mvc-view-exception]: api/phalcon_mvc.md#mvcviewexception
+[mvc-view-simple]: api/phalcon_mvc.md#mvcviewsimple
+[mvc-viewbaseinterface]: api/phalcon_mvc.md#mvcviewbaseinterface
+[mvc-viewinterface]: api/phalcon_mvc.md#mvcviewinterface
 [mustache]: https://github.com/bobthecow/mustache.php
 [smarty]: https://www.smarty.net/
 [tidy]: https://www.php.net/manual/en/book.tidy.php
