@@ -401,4 +401,5 @@ nav:
           - Registry: support-registry.md
           - Version: support-version.md
   - Discussions: https://github.com/orgs/phalcon/discussions
+  - Discussions(v6): https://github.com/phalcon/phalcon/discussions
   - Blog: https://blog.phalcon.io/
