@@ -16,7 +16,7 @@ composer global require phalcon/devtools
 ```
 Or only inside your project
 ```bash
-composer require phalcon/devtools
+composer require phalcon/devtools:"^5.0@dev" --dev
 ```
 
 Test your installation by typing: `phalcon` 
