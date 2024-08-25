@@ -1252,7 +1252,12 @@ $insert     = $factory->newInsert($connection);
 The `into()` method is used to specify the table to insert data to.
 
 ```php
-$insert->into('co_invoices');
+$insert
+->into('co_invoices')
+;
+
+$insert->perform();
+// INSERT INTO co_invoices
 ```
 
 ##### Columns
@@ -1263,6 +1268,8 @@ $insert
     ->into('co_invoices')
     ->column('inv_total', 100.12)
 ;
+
+$insert->perform();
 // INSERT INTO co_invoices (inv_total) VALUES (:inv_total)
 ```
 
@@ -1275,6 +1282,8 @@ $insert
     ->column('inv_total', 100.12);
     ->column('inv_status_flag', 0, PDO::PARAM_BOOL)
 ;
+
+$insert->perform();
 // INSERT INTO co_invoices (
 //      inv_cst_id,
 //      inv_total,
@@ -1298,6 +1307,8 @@ $insert
         ]
     )
 ;
+
+$insert->perform();
 // INSERT INTO co_invoices (
 //      inv_cst_id,
 //      inv_total
@@ -1320,6 +1331,8 @@ $insert
     ->column('inv_total', 100.12)
     ->set('inv_created_date', 'NOW()')
 ;
+
+$insert->perform();
 // INSERT INTO co_invoices (
 //      inv_total,
 //      inv_created_date
@@ -1383,7 +1396,7 @@ $insert
     ->set('inv_created_date', 'NOW()')
 ;
 
-echo $insert->getStatement();
+$insert->perform();
 // INSERT INTO co_invoices (
 //      inv_cst_id, 
 //      inv_total, 
@@ -1411,7 +1424,7 @@ $insert
     ->setFlag('LOW_PRIORITY')
 ;
 
-echo $insert->getStatement();
+$insert->perform();
 // INSERT LOW_PRIORITY INTO co_invoices (
 //      inv_total,
 //      inv_created_date
@@ -1450,6 +1463,36 @@ $dsn = sprintf(
 $connection = new Connection($dsn, $username, $password);
 $factory    = new QueryFactory();
 $select     = $factory->newSelect($connection);
+```
+
+#### Execution
+
+The [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder acts as a proxy to the [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] object. As such, the following methods are available, once the query is built:
+
+- `fetchAffected()`
+- `fetchAll()`
+- `fetchAssoc()`
+- `fetchCol()`
+- `fetchGroup()`
+- `fetchObject()`
+- `fetchObjects()`
+- `fetchOne()`
+- `fetchPairs()`
+- `fetchValue()`
+
+```php
+$records = $select
+    ->from('co_invoices')
+    ->columns(['inv_id', 'inv_title'])
+    ->where('inv_cst_id = 1')
+    ->fetchAssoc()
+;
+
+var_dump($records);
+// [
+//      ['inv_id' => 1, 'inv_title' => 'Invoice 1'],
+//      ['inv_id' => 2, 'inv_title' => 'Invoice 2'],
+// ]
 ```
 
 #### Build
