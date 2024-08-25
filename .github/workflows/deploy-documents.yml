@@ -66,7 +66,7 @@ jobs:
 
       - name: Determine versioning parameters
         id: determine-versioning
-        run: echo "data=$(poetry run python siteversion.py)" >> $GITHUB_OUTPUT
+        run: echo "data=$(python siteversion.py)" >> $GITHUB_OUTPUT
 
       - name: Publish documentation
         if: fromJson(steps.determine-versioning.outputs.data).version != null
