@@ -5,3 +5,4 @@ mkdocs-minify-plugin
 mkdocs-redirects
 markdown-include
 mike
+GitPython
