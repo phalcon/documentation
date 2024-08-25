@@ -46,8 +46,7 @@ def get_rel_branch_names(blist):
 
 def main():
     # Detect repo root folder
-    here = os.path.dirname(os.path.realpath(__file__))
-    repo_dir = os.path.join(here, "..", "..")
+    repo_dir = os.path.dirname(os.path.realpath(__file__))
 
     # Get current repo
     repo = Repo(repo_dir)
