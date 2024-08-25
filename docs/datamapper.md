@@ -1942,8 +1942,10 @@ $select
     ->where('inv_id = 3')
 ;
 
-// SELECT * FROM co_invoices WHERE inv_id = 1 UNION 
-// SELECT * FROM co_invoices WHERE inv_id = 2 UNION
+// SELECT * FROM co_invoices WHERE inv_id = 1
+// UNION 
+// SELECT * FROM co_invoices WHERE inv_id = 2
+// UNION
 // SELECT * FROM co_invoices WHERE inv_id = 3
 
 $select
@@ -1954,7 +1956,8 @@ $select
     ->where('inv_id = 2')
 ;
 
-// SELECT * FROM co_invoices WHERE inv_id = 1 UNION ALL 
+// SELECT * FROM co_invoices WHERE inv_id = 1
+// UNION ALL 
 // SELECT * FROM co_invoices WHERE inv_id = 2 
 ```
 
