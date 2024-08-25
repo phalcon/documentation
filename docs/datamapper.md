@@ -1054,7 +1054,7 @@ $delete->perform();
 
 ##### Flags
 
-Certain databases also accept specific flags. Those can be set using the `setFlags()` method.
+You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `LOW_PRIORITY` flag as follows:
 
 ```php
 $delete
@@ -1216,7 +1216,6 @@ Builds the `RETURNING` clause
 protected function indent(array $collection, string $glue = ""): string
 ```
 Indents a collection
-
 
 #### Activation
 To instantiate a [Phalcon\DataMapper\Query\Insert][datamapper-query-insert] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
@@ -1997,6 +1996,529 @@ $select
 ```
 
 ### Update
+
+#### Methods
+
+```php
+public function andWhere(
+    string condition,
+    mixed $value = null,
+    int $type = -1
+): Update
+```
+
+Sets a `AND` for a `WHERE` condition
+
+```php
+public function appendWhere(
+    string $condition,
+    mixed $value = null,
+    int $type = -1
+): Update
+```
+
+Concatenates to the most recent `WHERE` clause
+
+
+```php
+public function bindInline(mixed $value, int $type = -1): string
+```
+
+Binds a value inline
+
+```php
+public function bindValue(
+    string $key,
+    mixed $value,
+    int $type = -1
+): Update
+```
+
+Binds a value - auto-detects the type if necessary
+
+```php
+public function bindValues(array $values): Update
+```
+
+Binds an array of values
+
+```php
+public function column(
+    string $column, 
+    mixed $value = null, 
+    int $type = -1
+): Update
+```
+
+Sets a column for the `UPDATE` query
+
+```php
+public function columns(array $columns): Update
+```
+
+Mass sets columns and values for the `UPDATE`
+
+```php
+public function from(string $table): Update
+```
+
+Adds a table in the query
+
+```php
+public function getBindValues(): array
+```
+
+Returns all the bound values
+
+```php
+public function getStatement(): string
+```
+
+Returns the SQL statement
+
+```php
+public function hasColumns(): bool
+```
+
+Whether the query has columns or not
+
+```php
+public function limit(int $limit): Update
+```
+
+Sets the `LIMIT` clause
+
+```php
+public function offset(int $offset): Update
+```
+
+Sets the `OFFSET` clause
+
+```php
+public function orderBy(mixed $orderBy): Update
+```
+
+Sets the `ORDER BY`
+
+```php
+public function orWhere(
+    string $condition,
+    mixed $value = null,
+    int $type = -1
+): Update
+```
+
+Sets a `OR` for a `WHERE` condition
+
+```php
+public function perform()
+```
+
+Performs a statement in the connection
+
+```php
+public function quoteIdentifier(
+    string $name,
+    int $type = \PDO::PARAM_STR
+): string
+```
+
+Quotes the identifier
+
+```php
+public function returning(array $columns): Update
+```
+
+Adds the `RETURNING` clause
+
+```php
+public function reset(): void
+```
+
+Resets the internal store
+
+```php
+public function resetColumns(): void
+```
+
+Resets the columns
+
+```php
+public function resetFlags(): void
+```
+
+Resets the flags
+
+```php
+public function resetFrom(): void
+```
+
+Resets the from
+
+```php
+public function resetGroupBy(): void
+```
+
+Resets the group by
+
+```php
+public function resetHaving(): void
+```
+
+Resets the having
+
+```php
+public function resetLimit(): void
+```
+
+Resets the limit and offset
+
+```php
+public function resetOrderBy(): void
+```
+
+Resets the order by
+
+```php
+public function resetWhere(): void
+```
+
+Resets the where
+
+```php
+public function set(string $column, mixed $value = null): Update
+```
+
+Sets a column = value condition
+
+```php
+public function setFlag(string $flag, bool $enable = true): void
+```
+
+Sets a flag for the query such as "DISTINCT"
+
+```php
+public function where(
+    string $condition,
+    mixed $value = null,
+    int $type = -1
+): Update
+```
+
+Sets a `WHERE` condition
+
+```php
+public function whereEquals(array $columnsValues): Update
+```
+
+Sets a `WHERE` condition with equality
+
+
+```php
+protected function addCondition(
+    string $store,
+    string $andor,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
+): void
+```
+
+Appends a conditional
+
+
+```php
+protected function appendCondition(
+    string $store,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
+): void
+```
+
+Concatenates a conditional
+
+```php
+protected function buildBy(string $type): string
+```
+
+Builds a `BY` list
+
+```php
+protected function buildCondition(string $type): string
+```
+
+Builds the conditional string
+
+```php
+protected function buildFlags()
+```
+
+Builds the flags statement(s)
+
+```php
+protected function buildLimitEarly(): string
+```
+
+Builds the early `LIMIT` clause - MS SQLServer
+
+```php
+protected function buildLimit(): string
+```
+
+Builds the `LIMIT` clause
+
+```php
+protected function buildLimitCommon(): string
+```
+
+Builds the `LIMIT` clause for all drivers
+
+```php
+protected function buildLimitSqlsrv(): string
+```
+
+Builds the `LIMIT` clause for MSSQLServer
+
+```php
+protected function buildReturning(): string
+```
+
+Builds the `RETURNING` clause
+
+```php
+protected function indent(array collection, string glue = ""): string
+```
+
+Indents a collection
+
+```php
+protected function processValue(string $store, mixed $data): void
+```
+
+Processes a value (array or string) and merges it with the store
+
+
+#### Activation
+To instantiate a [Phalcon\DataMapper\Query\Update][datamapper-query-update] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
+
+```php
+<?php
+
+use Phalcon\DataMapper\Pdo\Connection;
+use Phalcon\DataMapper\Query\QueryFactory;
+
+$host     = '127.0.0.1';
+$database = 'phalon_test';
+$charset  = 'utf8mb4';
+$port     = 3306;
+$username = 'phalcon';
+$password = 'secret';
+
+$dsn = sprintf(
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
+);
+
+$connection = new Connection($dsn, $username, $password);
+$factory    = new QueryFactory();
+$insert     = $factory->newUpdate($connection);
+```
+
+#### Build
+
+The `table()` method is used to specify the table to insert data to.
+
+```php
+$update
+    ->table('co_invoices');
+
+$update->perform();
+// UPDATE co_invoices
+```
+
+##### Columns
+
+You can use the `column()` method to set a new value to a particular column.
+
+```php
+$update
+    ->table('co_invoices');
+    ->column('inv_cst_id', 2)
+    ->column('inv_total', 100.12);
+    ->column('inv_status_flag', 0, PDO::PARAM_BOOL)
+;
+
+$update->perform();
+// UPDATE co_invoices
+// SET  inv_cst_id = :inv_cst_id,
+//      inv_total = :inv_total,
+//      inv_status_flag = :inv_status_flag
+```
+
+!!! info "NOTE"
+
+    The PDO parameter type will be automatically set for `strings`, `integers`, `floats` and `nulls`. You can utilize the third parameter of `column()` to set the desired type.
+
+Instead of calling the `column()` method multiple times, you can always call `columns()` with an array, where the array keys are the field names and the array values are the desired values to update.
+
+```php
+$update
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+;
+
+$update->perform();
+// UPDATE co_invoices
+// SET  inv_cst_id = :inv_cst_id,
+//      inv_total = :inv_total,
+//      inv_status_flag = :inv_status_flag
+```
+
+!!! warning "NOTE"
+
+    Using the `columns()` method you are not able to set the type of each parameter.
+
+
+#### WHERE
+
+The `WHERE` methods for the `UPDATE` work exactly the same as the ones for `Select`
+
+
+##### ORDER BY
+
+Certain databases (in particular MySQL) accept `ORDER BY` on a delete. You can use the `orderBy()` to specify it.
+
+```php
+$update
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+; 
+
+$update->perform();
+
+// UPDATE co_invoices
+// SET  inv_cst_id = :inv_cst_id,
+//      inv_total = :inv_total,
+//      inv_status_flag = :inv_status_flag
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
+```
+
+##### LIMIT/OFFSET
+
+Certain databases (MySQL, SQLite) accept a `LIMIT` and/or `OFFSET` clause. You can use the `limit()` and `offset()` methods to specify them.
+
+```php
+$update
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+; 
+
+$update->perform();
+
+// UPDATE co_invoices
+// SET  inv_cst_id = :inv_cst_id,
+//      inv_total = :inv_total,
+//      inv_status_flag = :inv_status_flag
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
+// LIMIT 10 OFFSET 40
+```
+
+##### RETURNING
+
+Some databases (notably PostgreSQL) recognize a `RETURNING` clause. You can use the `returning()` method to do so, passing an array of fields to be returned.
+
+```php
+$update
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
+; 
+
+$update->perform();
+
+// UPDATE co_invoices
+// SET  inv_cst_id = :inv_cst_id,
+//      inv_total = :inv_total,
+//      inv_status_flag = :inv_status_flag
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
+// RETURNING inv_id, inv_cst_id
+```
+
+##### Flags
+
+You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `LOW_PRIORITY` flag as follows:
+
+
+```php
+$update
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
+    ->setFlag('LOW_PRIORITY')
+; 
+
+$update->perform();
+
+// UPDATE LOW_PRIORITY co_invoices
+// SET  inv_cst_id = :inv_cst_id,
+//      inv_total = :inv_total,
+//      inv_status_flag = :inv_status_flag
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
+// RETURNING inv_id, inv_cst_id
+```
+
 
 [auraphp]: https://github.com/auraphp
 [atlasphp]: https://github.com/atlasphp
