@@ -12,7 +12,7 @@ Phalcon Devtools can be installed using [composer][composer]. Make sure you have
 
 Install Phalcon Devtools globally
 ```bash
-composer global require phalcon/devtools
+composer global require phalcon/devtools:"^5.0@dev" --dev
 ```
 Or only inside your project
 ```bash
