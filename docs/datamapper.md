@@ -626,7 +626,9 @@ The parameters available are:
     The parameters must be enclosed in curly brackets `{}`
 
 ## Query
+
 ### Factory
+
 The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick and easy creation of query objects, whether this is `select`, `insert`, `update` or `delete. The methods exposed by the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection], binding the resulting object with the connection.  
 
 #### Methods
@@ -661,6 +663,7 @@ public function newUpdate(Connection $connection): Update
 ```
 Create a new Update object
 
+#### Example
 
 ```php
 <?php
@@ -923,58 +926,156 @@ protected function processValue(string $store, mixed $data): void
 ```
 Processes a value (array or string) and merges it with the store
 
+#### Activation
+To instantiate a [Phalcon\DataMapper\Query\Delete][datamapper-query-delete] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
 
+```php
+<?php
 
+use Phalcon\DataMapper\Pdo\Connection;
+use Phalcon\DataMapper\Query\QueryFactory;
 
-1.2.7. DELETE
-1.2.7.1. Building The Statement
-1.2.7.1.1. FROM
-Use the from() method to specify FROM expression.
+$host     = '127.0.0.1';
+$database = 'phalon_test';
+$charset  = 'utf8mb4';
+$port     = 3306;
+$username = 'phalcon';
+$password = 'secret';
 
-$delete->from('foo');
-1.2.7.1.2. WHERE
-(All WHERE methods support implicit and sprintf() inline value binding.)
+$dsn = sprintf(
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
+);
 
-The Delete WHERE methods work just like their equivalent Select methods:
+$connection = new Connection($dsn, $username, $password);
+$factory    = new QueryFactory();
+$delete     = $factory->newDelete($connection);
+```
 
-where() and andWhere() AND a WHERE condition
-orWhere() ORs a WHERE condition
-catWhere() concatenates onto the end of the most-recent WHERE condition
-whereSprintf() and andWhereSprintf() AND a WHERE condition with sprintf()
-orWhereSprintf() ORs a WHERE condition with sprintf()
-catWhereSprintf() concatenates onto the end of the most-recent WHERE condition with sprintf()
-1.2.7.1.3. ORDER BY
-Some databases (notably MySQL) recognize an ORDER BY clause. You can add one to the Delete with the orderBy() method; pass each expression as a variadic argument.
+#### Build
 
-// DELETE ... ORDER BY foo, bar, baz
+The `from()` method is used to specify the table to delete data from.
+
+```php
 $delete
-->orderBy('foo')
-->orderBy('bar', 'baz');
-1.2.7.1.4. LIMIT and OFFSET
-Some databases (notably MySQL and SQLite) recognize a LIMIT clause; others (notably SQLite) recognize an additional OFFSET. You can add these to the Delete with the limit() and offset() methods:
+    ->from('co_invoices')
+; 
 
+$delete->perform();
+// DELETE 
+// FROM co_invoices
+```
+
+##### WHERE
+
+The `where()` method(s) are used to specify conditions for the `DELETE` statement.
+
+```php
+$delete
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+; 
+
+$delete->perform();
+
+// DELETE
+// FROM co_invoices
+// WHERE inv_cst_id = 1
+
+```
+
+##### ORDER BY
+
+Certain databases (in particular MySQL) accept `ORDER BY` on a delete. You can use the `orderBy()` to specify it.
+
+```php
+$delete
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+; 
+
+$delete->perform();
+
+// DELETE
+// FROM co_invoices
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
+```
+
+##### LIMIT/OFFSET
+
+Certain databases (MySQL, SQLite) accept a `LIMIT` and/or `OFFSET` clause. You can use the `limit()` and `offset()` methods to specify them.
+
+```php
+$delete
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+; 
+
+$delete->perform();
+
+// DELETE
+// FROM co_invoices
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
 // LIMIT 10 OFFSET 40
+```
+
+##### RETURNING
+
+Some databases (notably PostgreSQL) accept a `RETURNING` clause. You can use the `returning()` method to specify it.
+
+```php
 $delete
-->limit(10)
-->offset(40);
-1.2.7.1.5. RETURNING
-Some databases (notably PostgreSQL) recognize a RETURNING clause. You can add one to the Delete using the returning() method, specifying columns as variadic arguments.
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
+; 
 
-// DELETE ... RETURNING foo, bar, baz
+$delete->perform();
+
+// DELETE
+// FROM co_invoices
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
+// LIMIT 10 OFFSET 40
+// RETURNING inv_id, inv_cst_id
+```
+
+##### Flags
+
+Certain databases also accept specific flags. Those can be set using the `setFlags()` method.
+
+```php
 $delete
-->returning('foo')
-->returning('bar', 'baz');
-1.2.7.1.6. Flags
-You can set flags recognized by your database server using the setFlag() method. For example, you can set a MySQL LOW_PRIORITY flag like so:
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
+    ->setFlag('LOW_PRIORITY')
+; 
 
-// DELETE LOW_PRIORITY foo WHERE baz = :_1_1_
-$delete
-->from('foo')
-->where('baz = ', $baz_value)
-->setFlag('LOW_PRIORITY');
+$delete->perform();
 
-
-
+// DELETE LOW_PRIORITY
+// FROM co_invoices
+// WHERE inv_cst_id = 1
+// ORDER BY inv_id
+// LIMIT 10 OFFSET 40
+// RETURNING inv_id, inv_cst_id
+```
 
 
 ### Insert
