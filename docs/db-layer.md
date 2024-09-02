@@ -1136,14 +1136,21 @@ foreach ($invoices as $invoice) {
 $invoice = $connection->fetchOne($sql);
 ```
 
-By default, these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+By default, these calls create arrays with both associative and numeric indexes. For methods like
+`fetchArray()`, `fetch()` and `dataSeek()` you can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. For methods like `fetchAll()` or `fetchOne()` you can use the `$fetchMode` argument.
 
-| Constant                       | Description                                               |
-|--------------------------------|-----------------------------------------------------------|
-| `Phalcon\Db\Enum::FETCH_NUM`   | Return an array with numeric indexes                      |
-| `Phalcon\Db\Enum::FETCH_ASSOC` | Return an array with associative indexes                  |
-| `Phalcon\Db\Enum::FETCH_BOTH`  | Return an array with both associative and numeric indexes |
-| `Phalcon\Db\Enum::FETCH_OBJ`   | Return an object instead of an array                      |
+The `fetchMode` receives a constant, defining which kind of index is required.
+
+| Constant                        | Description                                                |
+|---------------------------------|------------------------------------------------------------|
+| `Phalcon\Db\Enum::FETCH_NUM`    | Return an array with numeric indexes                       |
+| `Phalcon\Db\Enum::FETCH_ASSOC`  | Return an array with associative indexes                   |
+| `Phalcon\Db\Enum::FETCH_BOTH`   | Return an array with both associative and numeric indexes  |
+| `Phalcon\Db\Enum::FETCH_GROUP`  | Return an array of grouped associative and numeric indexes |
+| `Phalcon\Db\Enum::FETCH_OBJ`    | Return an object instead of an array                       |
+| `Phalcon\Db\Enum::FETCH_COLUMN` | Returns a string for single row or array multiple rows     |
+
+There are many other constants that can be used similar to PDO:FETCH_* constants
 
 ```php
 <?php
@@ -1166,6 +1173,16 @@ $result->setFetchMode(
 while ($invoice = $result->fetch()) {
    echo $invoice[0];
 }
+
+$invoices = $connection->fetchAll($sql, Phalcon\Db\Enum::FETCH_ASSOC);
+// or using the previous query() method
+$invoices = $result->fetchAll(Phalcon\Db\Enum::FETCH_ASSOC)
+
+foreach ($invoices as $invoice) {
+   echo $invoice['inv_title'];
+}
+
+$invoice = $connection->fetchOne($sql, Phalcon\Db\Enum::FETCH_ASSOC);
 ```
 
 The `query()` method returns an instance of [Phalcon\Db\Result\Pdo][db-result-pdo]. These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
