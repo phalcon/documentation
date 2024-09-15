@@ -334,7 +334,6 @@ nav:
       - DI Container: di.md
       - MVC: mvc.md
       - Namespaces: namespaces.md
-      - API Index: api/index.md
   - Database:
       - Layer: db-layer.md
       - PHQL: db-phql.md
@@ -400,6 +399,7 @@ nav:
           - Helper: support-helper.md
           - Registry: support-registry.md
           - Version: support-version.md
+  - API: api/index.md
   - Discussions: https://github.com/orgs/phalcon/discussions
   - Discussions(v6): https://github.com/phalcon/phalcon/discussions
   - Blog: https://blog.phalcon.io/
