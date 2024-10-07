@@ -48,7 +48,12 @@
 }
 
 [data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a {
-    color: #012b26 !important;
+    color: #000000 !important;
+    font-weight: bold;
+}
+
+[data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a:hover {
+    color: #000000 !important;
 }
 
 [data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active {
