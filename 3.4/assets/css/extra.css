@@ -37,6 +37,7 @@
 
 .phalcon-blog__sponsors-items a:hover {
     border-bottom-color: #273646;
+    text-decoration: none !important;
 }
 
 [data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a {
