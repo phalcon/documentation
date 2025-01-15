@@ -53,7 +53,7 @@ offering lower resource consumption and high performance.
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('versions.json')
+            fetch('https://docs.phalcon.io/versions.json')
                 .then(response => response.json())
                 .then(versions => {
                     const url = window.location.pathname;
