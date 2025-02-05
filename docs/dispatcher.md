@@ -594,21 +594,21 @@ for example you want to camelize `show-unpaid` to `ShowUnpaid`, the `beforeDispa
 ```php
 <?php
 
-use Phalcon\Text;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as Manager;
 
+$helper = $container->getShared('helper');
 $container->set(
     'dispatcher',
-    function () {
+    function () use ($helper) {
         $eventsManager = new Manager();
 
         $eventsManager->attach(
             'dispatch:beforeDispatchLoop',
             function (Event $event, $dispatcher) {
                 $dispatcher->setActionName(
-                    Text::camelize(
+                    $helper->camelize(
                         $dispatcher->getActionName()
                     )
                 );
