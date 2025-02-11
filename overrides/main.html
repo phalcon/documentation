@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
+{% block announce %}
+<!-- Add announcement here, including arbitrary HTML -->
+<div class="admonition info">
+    <p class="admonition-title">NOTE</p>
+    <p>
+        This is a version still under heavy development and not fully functional.
+        Once it is ready for full testing it will be available to install using
+        composer and we will announce it in our blog.
+        <br/>
+        <br/>
+        <3 Phalcon Team
+    </p>
+</div>
+{% endblock %}
+
 {% block site_meta %}
 
 <!-- Fanart -->
