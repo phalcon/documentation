@@ -1763,33 +1763,40 @@ You can create your own validators by implementing the [Phalcon\Filter\Validatio
 ```php
 <?php
 
-use Phalcon\Messages\Message;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidator;
 
 class IpValidator extends AbstractValidator
 {
     /**
+     * Adding the default template error message
+     *
+     * @param array $options
+     */
+    public function __construct(array $options = [])
+    {
+        $this->template = 'The IP :ip_address is not valid';
+
+        parent::__construct($options);
+    }
+
+    /**
      * Executes the validation
      *
-     * @param Validation $validator
-     * @param string     $attribute
+     * @param Validation $validation
+     * @param string     $field
      *
      * @return boolean
      */
-    public function validate(Validation $validator, $attribute)
+    public function validate(Validation $validation, $field)
     {
-        $value = $validator->getValue($attribute);
+        $value = $validation->getValue($field);
 
         if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
-            $message = $this->getOption('message');
+            $replacements = [':ip_address' => $value];
 
-            if (!$message) {
-                $message = 'The IP is not valid';
-            }
-
-            $validator->appendMessage(
-                $this->messageFactory($message, $attribute, 'Ip')
+            $validation->appendMessage(
+                $this->messageFactory($validation, $field, $replacements)
             );
 
             return false;
