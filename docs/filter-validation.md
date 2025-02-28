@@ -1915,10 +1915,10 @@ class LoginValidation extends Validation
         // ...
     }
 
-    public function beforeValidation($data, $entity, $messages)
+    public function beforeValidation($data, $entity)
     {
         if ($this->request->getHttpHost() !== 'admin.mydomain.com') {
-            $messages->appendMessage(
+            $this->appendMessage(
                 new Message(
                     'Only users can log on in the admin domain'
                 )
@@ -1930,7 +1930,7 @@ class LoginValidation extends Validation
         return true;
     }
 
-    public function afterValidation($data, $entity, $messages)
+    public function afterValidation($data, $entity)
     {
         // ... Add additional messages or perform more validations
     }
