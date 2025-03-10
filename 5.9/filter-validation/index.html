@@ -516,7 +516,7 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-30-28 name=__codelineno-30-28 href=#__codelineno-30-28></a>        <span class=p>]</span>
 <a id=__codelineno-30-29 name=__codelineno-30-29 href=#__codelineno-30-29></a>    <span class=p>)</span>
 <a id=__codelineno-30-30 name=__codelineno-30-30 href=#__codelineno-30-30></a><span class=p>);</span>
-</code></pre></div> <h3 id=email>Email<a class=headerlink href=#email title="Permanent link">&para;</a></h3> <p>Checks if a value has a correct e-mail format</p> <div class=highlight><pre><span></span><code><a id=__codelineno-31-1 name=__codelineno-31-1 href=#__codelineno-31-1></a><span class=o>&lt;?</span><span class=nx>php</span>
+</code></pre></div> <h3 id=email>Email<a class=headerlink href=#email title="Permanent link">&para;</a></h3> <p>Checks if a value has a correct e-mail format. If the data to be validated contains UTF-8 characters, you can set the <code>allowUTF8</code> option to <code>true</code> to allow them.</p> <div class=highlight><pre><span></span><code><a id=__codelineno-31-1 name=__codelineno-31-1 href=#__codelineno-31-1></a><span class=o>&lt;?</span><span class=nx>php</span>
 <a id=__codelineno-31-2 name=__codelineno-31-2 href=#__codelineno-31-2></a>
 <a id=__codelineno-31-3 name=__codelineno-31-3 href=#__codelineno-31-3></a><span class=k>use</span> <span class=nx>Phalcon\Filter\Validation</span><span class=p>;</span>
 <a id=__codelineno-31-4 name=__codelineno-31-4 href=#__codelineno-31-4></a><span class=k>use</span> <span class=nx>Phalcon\Filter\Validation\Validator\Email</span><span class=p>;</span>
@@ -546,6 +546,16 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-31-28 name=__codelineno-31-28 href=#__codelineno-31-28></a>        <span class=p>]</span>
 <a id=__codelineno-31-29 name=__codelineno-31-29 href=#__codelineno-31-29></a>    <span class=p>)</span>
 <a id=__codelineno-31-30 name=__codelineno-31-30 href=#__codelineno-31-30></a><span class=p>);</span>
+<a id=__codelineno-31-31 name=__codelineno-31-31 href=#__codelineno-31-31></a>
+<a id=__codelineno-31-32 name=__codelineno-31-32 href=#__codelineno-31-32></a><span class=nv>$validator</span><span class=o>-&gt;</span><span class=na>add</span><span class=p>(</span>
+<a id=__codelineno-31-33 name=__codelineno-31-33 href=#__codelineno-31-33></a>    <span class=s2>&quot;täst@example.com&quot;</span><span class=p>,</span>
+<a id=__codelineno-31-34 name=__codelineno-31-34 href=#__codelineno-31-34></a>    <span class=k>new</span> <span class=nx>Email</span><span class=p>(</span>
+<a id=__codelineno-31-35 name=__codelineno-31-35 href=#__codelineno-31-35></a>        <span class=p>[</span>
+<a id=__codelineno-31-36 name=__codelineno-31-36 href=#__codelineno-31-36></a>            <span class=s2>&quot;message&quot;</span> <span class=o>=&gt;</span> <span class=s2>&quot;The e-mail is not valid&quot;</span><span class=p>,</span>
+<a id=__codelineno-31-37 name=__codelineno-31-37 href=#__codelineno-31-37></a>            <span class=s2>&quot;allowUTF8&quot;</span> <span class=o>=&gt;</span> <span class=k>true</span><span class=p>,</span>
+<a id=__codelineno-31-38 name=__codelineno-31-38 href=#__codelineno-31-38></a>        <span class=p>]</span>
+<a id=__codelineno-31-39 name=__codelineno-31-39 href=#__codelineno-31-39></a>    <span class=p>)</span>
+<a id=__codelineno-31-40 name=__codelineno-31-40 href=#__codelineno-31-40></a><span class=p>);</span>
 </code></pre></div> <h3 id=exclusionin>ExclusionIn<a class=headerlink href=#exclusionin title="Permanent link">&para;</a></h3> <p>Check if a value is not included in a list of values</p> <div class=highlight><pre><span></span><code><a id=__codelineno-32-1 name=__codelineno-32-1 href=#__codelineno-32-1></a><span class=o>&lt;?</span><span class=nx>php</span>
 <a id=__codelineno-32-2 name=__codelineno-32-2 href=#__codelineno-32-2></a>
 <a id=__codelineno-32-3 name=__codelineno-32-3 href=#__codelineno-32-3></a><span class=k>use</span> <span class=nx>Phalcon\Filter\Validation</span><span class=p>;</span>
