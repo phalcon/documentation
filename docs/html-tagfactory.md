@@ -1,6 +1,11 @@
 # Tag Factory
 - - -
 
+!!! info "NOTE"
+
+    The code examples below have been reformatted for readability
+
+
 ## Overview
 [Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. This component creates a new class locator with predefined HTML tag classes attached to it. Each tag class is lazy-loaded for maximum performance. To instantiate the factory and retrieve a tag helper, you need to call `newInstance()` by passing a `Phalcon\Html\Escaper` object to it.
 
@@ -33,6 +38,7 @@ The registered names for respective helpers are:
 |----------------------|-------------------------------------------|
 | `a`                  | `Phalcon\Html\Helper\Anchor`              |
 | `base`               | `Phalcon\Html\Helper\Base`                |
+| `breadcrumbs`        | `Phalcon\Html\Helper\Breadcrumbs`         |
 | `body`               | `Phalcon\Html\Helper\Body`                |
 | `button`             | `Phalcon\Html\Helper\Button`              |
 | `close`              | `Phalcon\Html\Helper\Close`               |
@@ -93,6 +99,11 @@ public function body(
     array $attributes = []
 ): string
 
+public function breadcrumbs(
+    string $indent = '    ',
+    string $delimiter = "\n"
+): Breadcrumbs
+
 public function button(
     string $text, 
     array $attributes = [], 
@@ -107,7 +118,7 @@ public function close(
 public function doctype(
     int $flag, 
     string $delimiter
-): string
+): Doctype
 
 public function element(
     string $tag, 
@@ -129,145 +140,145 @@ public function inputCheckbox(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Checkbox
 
 public function inputColor(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Color
 
 public function inputDate(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Date
 
 public function inputDateTime(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): DateTime
 
 public function inputDateTimeLocal(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): DateTimeLocal
 
 public function inputEmail(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Email
 
 public function inputFile(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): File
 
 public function inputHidden(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Hidden
 
 public function inputImage(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Image
 
 public function inputInput(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Input
 
 public function inputMonth(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Month
 
 public function inputNumeric(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Numeric
 
 public function inputPassword(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Password
 
 public function inputRadio(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Radio
 
 public function inputRange(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Range
 
 public function inputSearch(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Search
 
 public function inputSelect(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Select
 
 public function inputSubmit(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Submit
 
 public function inputTel(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Tel
 
 public function inputText(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Text
 
 public function inputTextarea(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Textarea
 
 public function inputTime(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Time
 
 public function inputUrl(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Url
 
 public function inputWeek(
     string $name, 
     string $value = null, 
     array $attributes = []
-): string
+): Week
 
 public function label(
     string $label, 
@@ -278,39 +289,39 @@ public function label(
 public function link(
     string $indent = '    ', 
     string $delimiter = PHP_EOL
-): string
+): Link
 
 public function meta(
     string $indent = '    ', 
     string $delimiter = PHP_EOL
-): string
+): Meta
 
 public function ol(
     string $text, 
     array $attributes = [], 
     bool $raw = false
-): string
+): Ol
 
 public function script(
     string $indent = '    ', 
     string $delimiter = PHP_EOL
-): string
+): Script
 
 public function style(
     string $indent = '    ', 
     string $delimiter = PHP_EOL
-): string
+): Style
 
 public function title(
     string $indent = '    ', 
     string $delimiter = PHP_EOL
-): string
+): Title
 
 public function ul(
     string $text, 
     array $attributes = [], 
     bool $raw = false
-): string
+): Ul
 
 ```
 
@@ -401,6 +412,337 @@ $options = [
 echo $helper('/myurl', $options);
 // <base href="/myurl" 
 //    target="_blank">
+```
+
+### `breadcrumbs`
+[Phalcon\Html\Helper\Breadcrumbs][html-helper-breadcrumbs] creates HTML for breadcrumbs based on the existing or passed template.
+
+| Parameter           | Description   |
+|---------------------|---------------|
+| `string $indent`    | The indent    |
+| `string $delimiter` | The delimiter |
+
+
+A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space or by the `/` character usually, that represents the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application.
+
+An example is an application that has an `admin` module, an `invoices` area, and a `view invoice` page. Usually, you would select the `admin` module, then from the links you will choose `invoices` (list), and then clicking on one of the invoices in the list, you can view it. To represent this tree-like structure, the breadcrumbs displayed could be:
+
+```php
+Home / Admin / Invoices / Viewing Invoice [1234]
+``` 
+Each of the words above (apart from the last one) are links to the respective pages. This way the user can quickly navigate back to a different area without having to click the back button or use another menu.
+
+[Phalcon\Html\Helper\Breadcrumbs][html-helper-breadcrumbs] offers functionality to add text, URL, icon and attributes to each element. The resulting HTML when calling `render()` will have each breadcrumb formatted and enclosed in the HTML structure defined by the template. Each element will be separated from another using the default separator `<li>/</li>`.
+
+### Methods
+```php
+public function __invoke(
+    string $indent = '    ',
+    string $delimiter = PHP_EOL
+): static 
+```
+
+Sets the indent and delimiter and returns the object back
+
+```php
+public function add(
+    string $text,
+    string $link = '',
+    string $icon = '',
+    array $attributes = []
+): static 
+```
+Adds a new crumb.
+
+```php
+// Adding a crumb with a link
+$breadcrumbs->add("Home", "/");
+
+// Adding a crumb with added attributes
+$breadcrumbs->add("Home", "/", ["class" => "main"]);
+
+// Adding a crumb without a link (normally the last one)
+$breadcrumbs->add("Users");
+```
+
+```php
+public function clear(): void
+```
+
+Clears the crumbs
+
+```php
+$breadcrumbs->clear()
+```
+
+```php
+public function clearAttributes(): static
+```
+
+Clears the attributes of the parent element
+
+```php
+public function getAttributes(): array
+```
+
+Returns the attributes of the parent element
+
+```php
+public function getSeparator(): string
+```
+
+```php
+public function getTemplate(): array
+```
+
+Returns the current template
+
+```php
+public function remove(int $index): void
+```
+
+Removes a crumb by index.
+
+```php
+$breadcrumbs->remove(2);
+```
+
+```php
+public function render(): string
+```
+
+Renders and outputs breadcrumbs based on previously set template.
+
+```php
+echo $breadcrumbs->render();
+```
+
+```php
+public function setAttributes(array $attributes): static
+```
+
+Sets the attributes for the parent element
+
+```php
+public function setSeparator(string $separator): static
+```
+
+Sets the separator
+
+```php
+public function setTemplate(
+    string $main,
+    string $line,
+    string $last
+): static 
+```
+
+Sets the HTML template
+
+```php
+public function toArray(): array
+```
+
+Returns the internal breadcrumbs array
+
+### Templates
+
+The default templates are:
+
+*Main*
+
+```html
+<nav%attributes%>
+<ol>
+%items%
+</ol>
+</nav>
+```
+
+*Line*
+
+```html
+<li%attributes%><a href="%link%">%icon%%text%</a></li>
+```
+
+*Last Element*
+
+```html
+<li><span%attributes%>%text%</span></li>
+```
+
+A different template can be supplied to match the needs of the application. The template can be set using the `setTemplate()` method. The template is a string that can contain placeholders that will be replaced by the actual values when rendering the breadcrumbs.
+
+The available placeholders are:
+
+| Placeholder    | Description                          | Applies to |
+|----------------|--------------------------------------|:----------:|
+| `%attributes%` | The attributes of the parent element |   Parent   |
+| `%items%`      | The list of items                    |   Parent   |
+| `%link%`       | The link of the element              |  Element   |
+| `%text%`       | The text of the element              |  Element   |
+| `%icon%`       | The icon of the element              |  Element   |
+| `%attributes%` | The attributes of the element        |  Element   |
+
+### Separator
+The separator is what is printed between each of the breadcrumbs. By default, the separator is `<li>/</li>`. You can change the separator by calling `setSeparator()`.
+
+### Example
+
+Our application needs to display breadcrumbs in the following format:
+
+```html
+Home > Admin > Invoices > Viewing Invoice [1234]
+```
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\TagFactory;
+
+$escaper = new Escaper();
+$tagFactory = new TagFactory($escaper);
+
+$separator = '
+<span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         class="w-5 h-5" 
+         viewBox="0 0 20 20" 
+         fill="currentColor">
+        <path fill-rule="evenodd" 
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 
+                10 7.293 6.707a1 1 0 011.414-1.414l4 
+                4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
+              clip-rule="evenodd" />
+    </svg>
+</span>
+';
+
+$homeIcon = '
+<svg xmlns="http://www.w3.org/2000/svg" 
+     class="w-5 h-5" viewBox="0 0 20 20" 
+     fill="currentColor">
+    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 
+            0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 
+            0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 
+            0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
+            0 001.414-1.414l-7-7z" />
+</svg>
+';
+
+$mainTemplate = '
+<div%attributes%>
+%items%
+</div>
+';
+$lineTemplate = '
+<a href="%link%"%attributes%>
+    %icon%%text%
+</a>
+';
+$lastTemplate = '
+<a href="%link%"%attributes%>
+    %icon%%text%
+</a>
+';
+
+$homeAttributes = [
+    'class' => 'text-gray-600 dark:text-gray-200',
+];
+$lineAttributes = [
+    'class' => 'text-gray-600 dark:text-gray-200 hover:underline',
+];
+$lastAttributes = [
+    'class' => 'text-blue-600 dark:text-blue-400 hover:underline',
+];
+
+$breadcrumbs
+    ->setTemplate($mainTemplate, $lineTemplate, $lastTemplate)
+    ->setSeparator($separator)
+    ->add('', '#', $homeIcon, $homeAttributes)
+    ->add('Admin', '#', '', $lineAttributes)
+    ->add('Invoices', '#', '', $lineAttributes)
+    ->add('Viewing Invoice [1234]', '#', '', $lastAttributes)
+;
+
+echo $breadcrumbs->render();    
+```
+
+Output HTML:
+```html
+<div class="flex items-center py-4 overflow-x-auto whitespace-nowrap">
+    <a href="#" class="text-gray-600 dark:text-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path d="M10.707 2.293a1 1 
+                0 00-1.414 0l-7 7a1 1 
+                0 001.414 1.414L4 10.414V17a1 1 
+                0 001 1h2a1 1 0 001-1v-2a1 1 
+                0 011-1h2a1 1 0 011 1v2a1 1 
+                0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
+                0 001.414-1.414l-7-7z" />
+        </svg>
+    </a>
+
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
+
+    <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+        Admin
+    </a>
+
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
+
+    <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+        Invoices
+    </a>
+
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
+
+    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">
+        Viewing Invoice [1234]
+    </a>
+</div>
 ```
 
 ### `body`
@@ -1837,6 +2179,7 @@ echo $result;
 [html-helper-abstractseries]: api/phalcon_html.md#htmlhelperabstractseries
 [html-helper-anchor]: api/phalcon_html.md#htmlhelperanchor
 [html-helper-base]: api/phalcon_html.md#htmlhelperbase
+[html-helper-breadcrumbs]: api/phalcon_html.md#htmlhelperbreadcrumbs
 [html-helper-body]: api/phalcon_html.md#htmlhelperbody
 [html-helper-button]: api/phalcon_html.md#htmlhelperbutton
 [html-helper-close]: api/phalcon_html.md#htmlhelperclose
