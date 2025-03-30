@@ -1,6 +1,12 @@
 # HTML Components
 - - -
 
+!!! danger "NOTE"
+
+    This component is going to be deprecated in a future version of Phalcon. You can use the `Phalcon\Html\Helper\Breadcrumbs` one using the `TagFactory`
+
+
+
 ## Overview
 A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space or by the `/` character usually, that represent the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application.
 
