@@ -539,6 +539,16 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-121-26 name=__codelineno-121-26 href=#__codelineno-121-26></a>        <span class=p>]</span>
 <a id=__codelineno-121-27 name=__codelineno-121-27 href=#__codelineno-121-27></a>    <span class=p>)</span>
 <a id=__codelineno-121-28 name=__codelineno-121-28 href=#__codelineno-121-28></a><span class=p>);</span>
+<a id=__codelineno-121-29 name=__codelineno-121-29 href=#__codelineno-121-29></a>
+<a id=__codelineno-121-30 name=__codelineno-121-30 href=#__codelineno-121-30></a><span class=nv>$validator</span><span class=o>-&gt;</span><span class=na>add</span><span class=p>(</span>
+<a id=__codelineno-121-31 name=__codelineno-121-31 href=#__codelineno-121-31></a>    <span class=s2>&quot;täst@example.com&quot;</span><span class=p>,</span>
+<a id=__codelineno-121-32 name=__codelineno-121-32 href=#__codelineno-121-32></a>    <span class=k>new</span> <span class=nx>EmailValidator</span><span class=p>(</span>
+<a id=__codelineno-121-33 name=__codelineno-121-33 href=#__codelineno-121-33></a>        <span class=p>[</span>
+<a id=__codelineno-121-34 name=__codelineno-121-34 href=#__codelineno-121-34></a>            <span class=s2>&quot;message&quot;</span> <span class=o>=&gt;</span> <span class=s2>&quot;The e-mail is not valid&quot;</span><span class=p>,</span>
+<a id=__codelineno-121-35 name=__codelineno-121-35 href=#__codelineno-121-35></a>            <span class=s2>&quot;allowUTF8&quot;</span> <span class=o>=&gt;</span> <span class=k>true</span><span class=p>,</span>
+<a id=__codelineno-121-36 name=__codelineno-121-36 href=#__codelineno-121-36></a>        <span class=p>]</span>
+<a id=__codelineno-121-37 name=__codelineno-121-37 href=#__codelineno-121-37></a>    <span class=p>)</span>
+<a id=__codelineno-121-38 name=__codelineno-121-38 href=#__codelineno-121-38></a><span class=p>);</span>
 </code></pre></div> <h3 id=properties_12>Properties<a class=headerlink href=#properties_12 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><a id=__codelineno-122-1 name=__codelineno-122-1 href=#__codelineno-122-1></a><span class=c1>//</span>
 <a id=__codelineno-122-2 name=__codelineno-122-2 href=#__codelineno-122-2></a><span class=k>protected</span> <span class=nv>$template</span> <span class=o>=</span> <span class=nx>Field</span> <span class=o>:</span><span class=nx>field</span> <span class=nx>must</span> <span class=nx>be</span> <span class=nx>an</span> <span class=nx>email</span> <span class=nx>address</span><span class=p>;</span>
 </code></pre></div> <h3 id=methods_37>Methods<a class=headerlink href=#methods_37 title="Permanent link">&para;</a></h3> <p><div class=highlight><pre><span></span><code><a id=__codelineno-123-1 name=__codelineno-123-1 href=#__codelineno-123-1></a><span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span> <span class=k>array</span> <span class=nv>$options</span> <span class=o>=</span> <span class=p>[]</span> <span class=p>);</span>
