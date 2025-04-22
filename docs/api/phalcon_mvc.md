@@ -10556,6 +10556,8 @@ echo $router->getControllerName();
 ```php
 const POSITION_FIRST = 0;
 const POSITION_LAST = 1;
+const URI_SOURCE_GET_URL = 0;
+const URI_SOURCE_SERVER_REQUEST_URI = 1;
 ```
 
 ### Properties
@@ -10649,6 +10651,11 @@ protected $removeExtraSlashes = false;
  * @var array
  */
 protected $routes;
+
+/**
+    * @var int
+ */
+protected $uriSource;
 
 /**
  * @var bool
@@ -10846,6 +10853,13 @@ Returns the processed parameters
 
 
 ```php
+public function getRewriteUri(): string;
+```
+Get rewrite info. This info is read from $_GET["_url"].
+This returns '/' if the rewrite information cannot be read
+
+
+```php
 public function getRouteById( mixed $id ): RouteInterface | bool;
 ```
 Returns a route object by its id
@@ -10961,9 +10975,27 @@ public function setKeyRouteNames( array $routeNames ): Router;
 
 
 ```php
+public function setUriSource( int $uriSource ): Router;
+```
+Sets the URI source. One of the URI_SOURCE_* constants
+
+```php
+$router->setUriSource(
+    Router::URI_SOURCE_SERVER_REQUEST_URI
+);
+```
+
+
+```php
 public function wasMatched(): bool;
 ```
 Checks if the router matches any of the defined routes
+
+
+```php
+protected function extractRealUri( string $uri ): string;
+```
+
 
 
 
