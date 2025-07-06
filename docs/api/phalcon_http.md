@@ -717,6 +717,11 @@ private $rawBody = ;
  */
 private $strictHostCheck = false;
 
+/**
+ * @var array
+ */
+private $trustedProxies = [];
+
 ```
 
 ### Methods
@@ -1251,6 +1256,18 @@ of host name or not
 final protected function getBestQuality( array $qualityParts, string $name ): string;
 ```
 Process a request header and return the one with best quality
+
+
+```php
+protected function setTrustedProxies(array $trustedProxies): RequestInterface;
+```
+Set trusted proxy list.
+
+
+```php
+protected function isIpAddressInCIDR(string $ip, string $cidr): bool;
+```
+Check if an IP address exists in CIDR range.
 
 
 ```php

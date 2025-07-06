@@ -117,6 +117,21 @@ IntVal( mixed $input ): int
 ```
 Remove all characters except digits, plus and minus sign, and casts the value as an integer. Internally it uses [filter_var][filter_var] and `(int)`.
 
+#### `ip`
+```php
+Ip( string input, int filter = 0 ): int
+```
+Sanitize the IP address or CIDR IP range. Internally it uses [filter_var][filter_var]. You can pass specific filters to sanitize your input:
+
+```
+FILTER_FLAG_IPV4
+FILTER_FLAG_IPV6
+FILTER_FLAG_NO_RES_RANGE
+FILTER_FLAG_NO_PRIV_RANGE
+```
+By default, it will detect the IPv4 or IPv6 protocol if you do not use a predefined filter and sanitize the input.
+It will return `false` for invalid IP address or CIDR IP range.
+
 #### `lower`
 ```php
 Lower( mixed $input ): string
@@ -220,6 +235,7 @@ const FILTER_BOOL          = 'bool';
 const FILTER_EMAIL         = 'email';
 const FILTER_FLOAT         = 'float';
 const FILTER_INT           = 'int';
+const FILTER_IP            = 'ip';
 const FILTER_LOWER         = 'lower';
 const FILTER_LOWERFIRST    = 'lowerfirst';
 const FILTER_REGEX         = 'regex';
@@ -262,6 +278,7 @@ $filter->bool(mixed $input): bool
 $filter->email(string $input): string
 $filter->float(mixed $input): float
 $filter->int(string $input): int
+$filter->ip(string $input, int $filter = FILTER_FLAG_NONE): string|false
 $filter->lower(string $input): string
 $filter->lowerfirst(string $input): string
 $filter->regex(mixed $input, mixed $pattern, mixed $replace): mixed
@@ -583,6 +600,7 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 [filter-sanitize-email]: api/phalcon_filter.md#filtersanitizeemail
 [filter-sanitize-floatval]: api/phalcon_filter.md#filtersanitizefloatval
 [filter-sanitize-intval]: api/phalcon_filter.md#filtersanitizeintval
+[filter-sanitize-ip]: api/phalcon_filter.md#filtersanitizeip
 [filter-sanitize-lower]: api/phalcon_filter.md#filtersanitizelower
 [filter-sanitize-lowerfirst]: api/phalcon_filter.md#filtersanitizelowerfirst
 [filter-sanitize-regex]: api/phalcon_filter.md#filtersanitizeregex
