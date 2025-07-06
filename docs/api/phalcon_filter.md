@@ -66,6 +66,7 @@ const FILTER_BOOL = bool;
 const FILTER_EMAIL = email;
 const FILTER_FLOAT = float;
 const FILTER_INT = int;
+const FILTER_IP = 'ip';
 const FILTER_LOWER = lower;
 const FILTER_LOWERFIRST = lowerfirst;
 const FILTER_REGEX = regex;
@@ -443,6 +444,38 @@ Sanitizes a value to integer
 public function __invoke( mixed $input );
 ```
 
+
+
+
+
+## Filter\Sanitize\Ip
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Ip.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Sanitize`
+
+-   __Uses__
+
+
+-   __Extends__
+
+
+-   __Implements__
+
+
+Phalcon\Filter\Sanitize\Ip
+
+Sanitizes a value to an IP address or CIDR IP range
+
+
+### Methods
+
+```php
+public function __invoke(string input, int filter = 0);
+```
 
 
 
