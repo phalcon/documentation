@@ -115,7 +115,7 @@ protected $value;
 ### Methods
 
 ```php
-public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] );
+public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = bool, string $domain = string, bool $httpOnly = bool, array $options = [] );
 ```
 Phalcon\Http\Cookie constructor.
 
@@ -717,6 +717,11 @@ private $rawBody = ;
  */
 private $strictHostCheck = false;
 
+/**
+ * @var array
+ */
+private $trustedProxies;
+
 ```
 
 ### Methods
@@ -772,11 +777,11 @@ _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 
 ```php
-public function getClientAddress( bool $trustForwardedHeader = bool ): string | bool;
+public function getClientAddress( bool $trustForwardedHeader = bool ): string | false;
 ```
-Gets most possible client IPv4 Address. This method searches in
+Gets most possible client IP Address. This method searches in
 `$_SERVER["REMOTE_ADDR"]` and optionally in
-`$_SERVER["HTTP_X_FORWARDED_FOR"]`
+`$_SERVER["HTTP_X_FORWARDED_FOR"]` and returns the first non-private or non-reserved IP address
 
 
 ```php
@@ -832,7 +837,7 @@ Retrieves a query/get value always sanitized with the preset filters
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
@@ -980,13 +985,13 @@ Note: This method relies on the `$_SERVER["HTTP_ACCEPT_LANGUAGE"]` header.
 ```php
 public function getPut( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
-Gets a variable from put request
+Gets a variable from the PUT request
 
 ```php
-// Returns value from $_PUT["user_email"] without sanitizing
+// Returns value from PUT stream without sanitizing
 $userEmail = $request->getPut("user_email");
 
-// Returns value from $_PUT["user_email"] with sanitizing
+// Returns value from PUT stream with sanitizing
 $userEmail = $request->getPut("user_email", "email");
 ```
 
@@ -1248,6 +1253,12 @@ of host name or not
 
 
 ```php
+public function setTrustedProxies( array $trustedProxies ): RequestInterface;
+```
+Set trusted proxy
+
+
+```php
 final protected function getBestQuality( array $qualityParts, string $name ): string;
 ```
 Process a request header and return the one with best quality
@@ -1270,6 +1281,12 @@ Process a request header and return an array of values with their qualities
 final protected function hasFileHelper( mixed $data, bool $onlySuccessful ): long;
 ```
 Recursively counts file in an array of files
+
+
+```php
+protected function isIpAddressInCIDR( string $ip, string $cidr ): bool;
+```
+Check if an IP address exists in CIDR range
 
 
 ```php
@@ -1642,7 +1659,7 @@ $_SERVER["PHP_AUTH_DIGEST"]
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
@@ -1756,13 +1773,13 @@ $userEmail = $request->getPost("user_email", "email");
 ```php
 public function getPut( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
-Gets a variable from put request
+Gets a variable from the PUT request
 
 ```php
-// Returns value from $_PUT["user_email"] without sanitizing
+// Returns value from PUT stream without sanitizing
 $userEmail = $request->getPut("user_email");
 
-// Returns value from $_PUT["user_email"] with sanitizing
+// Returns value from PUT stream with sanitizing
 $userEmail = $request->getPut("user_email", "email");
 ```
 
@@ -2531,7 +2548,7 @@ Cookies aren't sent if headers are sent in the current request
 
 
 ```php
-public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] ): CookiesInterface;
+public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = bool, string $domain = string, bool $httpOnly = bool, array $options = [] ): CookiesInterface;
 ```
 Sets a cookie to be sent at the end of the request.
 
@@ -2637,7 +2654,7 @@ Sends the cookies to the client
 
 
 ```php
-public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] ): CookiesInterface;
+public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = bool, string $domain = string, bool $httpOnly = bool, array $options = [] ): CookiesInterface;
 ```
 Sets a cookie to be sent at the end of the request
 
