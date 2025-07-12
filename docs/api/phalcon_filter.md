@@ -55,6 +55,32 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 Lazy loads, stores and exposes sanitizer objects
 
+@method int          absint(mixed $input)
+@method string       alnum(mixed $input)
+@method string       alpha(mixed $input)
+@method bool         bool(mixed $input)
+@method string       email(string $input)
+@method float        float(mixed $input)
+@method int          int(string $input)
+@method string|false ip(string $input, int $filter = FILTER_FLAG_NONE)
+@method string       lower(string $input)
+@method string       lowerfirst(string $input)
+@method mixed        regex(mixed $input, mixed $pattern, mixed $replace)
+@method mixed        remove(mixed $input, mixed $replace)
+@method mixed        replace(mixed $input, mixed $source, mixed $target)
+@method string       special(string $input)
+@method string       specialfull(string $input)
+@method string       string(string $input)
+@method string       stringlegacy(mixed $input)
+@method string       striptags(string $input)
+@method string       trim(string $input)
+@method string       upper(string $input)
+@method string       upperFirst(string $input)
+@method null         upperWords(string $input): strin
+@method null         url(string $input): strin
+
+@property array $mapper
+@property array $services
 
 
 ### Constants
@@ -66,7 +92,7 @@ const FILTER_BOOL = bool;
 const FILTER_EMAIL = email;
 const FILTER_FLOAT = float;
 const FILTER_INT = int;
-const FILTER_IP = 'ip';
+const FILTER_IP = ip;
 const FILTER_LOWER = lower;
 const FILTER_LOWERFIRST = lowerfirst;
 const FILTER_REGEX = regex;
@@ -448,7 +474,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\Ip
+## Filter\Sanitize\Ip 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Ip.zep)
 
@@ -458,24 +484,25 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
+    
 
+Phalcon\Filter\Sanitize\IP
 
-Phalcon\Filter\Sanitize\Ip
-
-Sanitizes a value to an IP address or CIDR IP range
+Sanitizes a value to an ip address or CIDR range
 
 
 ### Methods
 
 ```php
-public function __invoke(string input, int filter = 0);
+public function __invoke( string $input, int $filter = int ): string | false;
 ```
+
 
 
 

@@ -720,7 +720,7 @@ private $strictHostCheck = false;
 /**
  * @var array
  */
-private $trustedProxies = [];
+private $trustedProxies;
 
 ```
 
@@ -777,11 +777,11 @@ _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 
 ```php
-public function getClientAddress( bool $trustForwardedHeader = bool ): string | bool;
+public function getClientAddress( bool $trustForwardedHeader = bool ): string | false;
 ```
-Gets most possible client IPv4 Address. This method searches in
+Gets most possible client IP Address. This method searches in
 `$_SERVER["REMOTE_ADDR"]` and optionally in
-`$_SERVER["HTTP_X_FORWARDED_FOR"]`
+`$_SERVER["HTTP_X_FORWARDED_FOR"]` and returns the first non-private or non-reserved IP address
 
 
 ```php
@@ -837,7 +837,7 @@ Retrieves a query/get value always sanitized with the preset filters
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
@@ -1253,21 +1253,15 @@ of host name or not
 
 
 ```php
+public function setTrustedProxies( array $trustedProxies ): RequestInterface;
+```
+Set trusted proxy
+
+
+```php
 final protected function getBestQuality( array $qualityParts, string $name ): string;
 ```
 Process a request header and return the one with best quality
-
-
-```php
-protected function setTrustedProxies(array $trustedProxies): RequestInterface;
-```
-Set trusted proxy list.
-
-
-```php
-protected function isIpAddressInCIDR(string $ip, string $cidr): bool;
-```
-Check if an IP address exists in CIDR range.
 
 
 ```php
@@ -1287,6 +1281,12 @@ Process a request header and return an array of values with their qualities
 final protected function hasFileHelper( mixed $data, bool $onlySuccessful ): long;
 ```
 Recursively counts file in an array of files
+
+
+```php
+protected function isIpAddressInCIDR( string $ip, string $cidr ): bool;
+```
+Check if an IP address exists in CIDR range
 
 
 ```php
@@ -1659,7 +1659,7 @@ $_SERVER["PHP_AUTH_DIGEST"]
 ```php
 public function getHTTPReferer(): string;
 ```
-Gets web page that refers active request. ie: https://www.google.com
+Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
