@@ -1,6 +1,6 @@
 ---
 hide:
-    - navigation
+  - navigation
 ---
 
 !!! info "NOTE"
@@ -9,7 +9,7 @@ hide:
 
 
 
-## Http\Cookie 
+## Http\Cookie
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie.zep)
 
@@ -19,7 +19,7 @@ hide:
     - `Phalcon\Http`
 
 -   __Uses__
-    
+
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Encryption\Crypt\CryptInterface`
@@ -31,11 +31,11 @@ hide:
     - `Phalcon\Session\ManagerInterface`
 
 -   __Extends__
-    
+
     `AbstractInjectionAware`
 
 -   __Implements__
-    
+
     - `CookieInterface`
 
 Provide OO wrappers to manage a HTTP cookie.
@@ -277,7 +277,7 @@ Assert the cookie's key is enough long.
 
 
 
-## Http\Cookie\CookieInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\Cookie\CookieInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/CookieInterface.zep)
 
@@ -287,13 +287,13 @@ Assert the cookie's key is enough long.
     - `Phalcon\Http\Cookie`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Interface for Phalcon\Http\Cookie
 
@@ -418,7 +418,7 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 
 
-## Http\Cookie\Exception 
+## Http\Cookie\Exception
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exception.zep)
 
@@ -428,14 +428,14 @@ Sets if the cookie must be encrypted/decrypted automatically
     - `Phalcon\Http\Cookie`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
     `\Exception`
 
 -   __Implements__
-    
+
 
 Phalcon\Http\Cookie\Exception
 
@@ -443,7 +443,7 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 
 
-## Http\Message\RequestMethodInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\Message\RequestMethodInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/RequestMethodInterface.zep)
 
@@ -453,13 +453,13 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
     - `Phalcon\Http\Message`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Interface for Request methods
 
@@ -483,7 +483,7 @@ const METHOD_TRACE = TRACE;
 ```
 
 
-## Http\Message\ResponseStatusCodeInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\Message\ResponseStatusCodeInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
 
@@ -493,13 +493,13 @@ const METHOD_TRACE = TRACE;
     - `Phalcon\Http\Message`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Interface for Request methods
 
@@ -622,7 +622,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
 ```
 
 
-## Http\Request 
+## Http\Request
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request.zep)
 
@@ -632,7 +632,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
     - `Phalcon\Http`
 
 -   __Uses__
-    
+
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Events\ManagerInterface`
@@ -646,11 +646,11 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
     - `stdClass`
 
 -   __Extends__
-    
+
     `AbstractInjectionAware`
 
 -   __Implements__
-    
+
     - `RequestInterface`
     - `RequestMethodInterface`
 
@@ -720,7 +720,7 @@ private $strictHostCheck = false;
 /**
  * @var array
  */
-private $trustedProxies;
+protected $trustedProxies;
 
 ```
 
@@ -1303,7 +1303,7 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 
 
-## Http\Request\Exception 
+## Http\Request\Exception
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exception.zep)
 
@@ -1313,14 +1313,14 @@ Smooth out $_FILES to have plain array with all files uploaded
     - `Phalcon\Http\Request`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
     `\Exception`
 
 -   __Implements__
-    
+
 
 Phalcon\Http\Request\Exception
 
@@ -1328,7 +1328,7 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 
 
-## Http\Request\File 
+## Http\Request\File
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/File.zep)
 
@@ -1338,13 +1338,13 @@ Exceptions thrown in Phalcon\Http\Request will use this class
     - `Phalcon\Http\Request`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
     - `FileInterface`
 
 Phalcon\Http\Request\File
@@ -1485,7 +1485,7 @@ Moves the temporary file to a destination within the application
 
 
 
-## Http\Request\FileInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\Request\FileInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/FileInterface.zep)
 
@@ -1495,13 +1495,13 @@ Moves the temporary file to a destination within the application
     - `Phalcon\Http\Request`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Interface for Phalcon\Http\Request\File
 
@@ -1553,7 +1553,7 @@ Move the temporary file to a destination
 
 
 
-## Http\RequestInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\RequestInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/RequestInterface.zep)
 
@@ -1563,15 +1563,15 @@ Move the temporary file to a destination
     - `Phalcon\Http`
 
 -   __Uses__
-    
+
     - `Phalcon\Http\Request\FileInterface`
     - `stdClass`
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Interface for Phalcon\Http\Request
 
@@ -1988,7 +1988,7 @@ Returns the number of files available
 
 
 
-## Http\Response 
+## Http\Response
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response.zep)
 
@@ -1998,7 +1998,7 @@ Returns the number of files available
     - `Phalcon\Http`
 
 -   __Uses__
-    
+
     - `DateTime`
     - `DateTimeZone`
     - `Phalcon\Di\Di`
@@ -2016,10 +2016,10 @@ Returns the number of files available
     - `Phalcon\Support\Helper\Json\Encode`
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
     - `EventsAwareInterface`
     - `InjectionAwareInterface`
     - `ResponseInterface`
@@ -2386,7 +2386,7 @@ $response->setStatusCode(404, "Not Found");
 
 
 
-## Http\Response\Cookies 
+## Http\Response\Cookies
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Cookies.zep)
 
@@ -2396,18 +2396,18 @@ $response->setStatusCode(404, "Not Found");
     - `Phalcon\Http\Response`
 
 -   __Uses__
-    
+
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Http\Cookie\CookieInterface`
     - `Phalcon\Http\Cookie\Exception`
 
 -   __Extends__
-    
+
     `AbstractInjectionAware`
 
 -   __Implements__
-    
+
     - `CookiesInterface`
 
 Phalcon\Http\Response\Cookies
@@ -2590,7 +2590,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-## Http\Response\CookiesInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\Response\CookiesInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/CookiesInterface.zep)
 
@@ -2600,14 +2600,14 @@ Set if cookies in the bag must be automatically encrypted/decrypted
     - `Phalcon\Http\Response`
 
 -   __Uses__
-    
+
     - `Phalcon\Http\Cookie\CookieInterface`
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Phalcon\Http\Response\CookiesInterface
 
@@ -2667,7 +2667,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-## Http\Response\Exception 
+## Http\Response\Exception
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exception.zep)
 
@@ -2677,14 +2677,14 @@ Set if cookies in the bag must be automatically encrypted/decrypted
     - `Phalcon\Http\Response`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
     `\Exception`
 
 -   __Implements__
-    
+
 
 Phalcon\Http\Response\Exception
 
@@ -2692,7 +2692,7 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 
 
-## Http\Response\Headers 
+## Http\Response\Headers
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Headers.zep)
 
@@ -2702,13 +2702,13 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
     - `Phalcon\Http\Response`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
     - `HeadersInterface`
 
 Phalcon\Http\Response\Headers
@@ -2788,7 +2788,7 @@ Returns the current headers as an array
 
 
 
-## Http\Response\HeadersInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\Response\HeadersInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/HeadersInterface.zep)
 
@@ -2798,13 +2798,13 @@ Returns the current headers as an array
     - `Phalcon\Http\Response`
 
 -   __Uses__
-    
+
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Phalcon\Http\Response\HeadersInterface
 
@@ -2851,7 +2851,7 @@ Sets a raw header to be sent at the end of the request
 
 
 
-## Http\ResponseInterface ![Interface](../assets/images/interface-blue.svg) 
+## Http\ResponseInterface ![Interface](../assets/images/interface-blue.svg)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/ResponseInterface.zep)
 
@@ -2861,15 +2861,15 @@ Sets a raw header to be sent at the end of the request
     - `Phalcon\Http`
 
 -   __Uses__
-    
+
     - `DateTime`
     - `Phalcon\Http\Response\HeadersInterface`
 
 -   __Extends__
-    
+
 
 -   __Implements__
-    
+
 
 Phalcon\Http\Response
 
