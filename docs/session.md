@@ -651,3 +651,4 @@ class InvoicesController extends Controller
 [storage-adapter]: api/phalcon_storage.md#storageadapterabstractadapter
 [storage-adapter-libmemcached]: api/phalcon_storage.md#storageadapterlibmemcached
 [storage-adapter-redis]: api/phalcon_storage.md#storageadapterredis
+[incubator]: https://github.com/phalcon/incubator-session

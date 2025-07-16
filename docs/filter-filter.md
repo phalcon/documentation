@@ -575,6 +575,7 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 [absint]: https://www.php.net/manual/en/function.absint.php
 [filter]: https://www.php.net/manual/en/book.filter.php
 [filter_var]: https://www.php.net/manual/en/function.filter-var.php
+[htmlspecialchars]: https://www.php.net/manual/en/function.htmlspecialchars.php
 [intval]: https://www.php.net/manual/en/function.intval.php
 [invoke]: https://www.php.net/manual/en/language.oop5.magic.php#object.invoke
 [lcfirst]: https://www.php.net/manual/en/function.lcfirst.php

@@ -870,3 +870,4 @@ Also in views (Volt syntax)
 [parse-ini-file]: https://www.php.net/manual/en/function.parse-ini-file.php
 [yaml-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php
 [di]: di.md
+[support-collection]: support-collection.md

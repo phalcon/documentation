@@ -965,6 +965,7 @@ The events available in Phalcon are:
 
 [db]: api/phalcon_db.md
 [di-factorydefaul]: api/phalcon_di.md#difactorydefault
+[di-injectable]: api/phalcon_di.md#diinjectable
 [events-event]: api/phalcon_events.md#eventsevent
 [events-eventinterface]: api/phalcon_events.md#eventseventinterface
 [events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface

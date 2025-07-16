@@ -1538,3 +1538,5 @@ Vökuró is a sample application that we use to demonstrate some of the features
 [db-models-relationships]: db-models-relationships.md
 [events]: events.md
 [encryption-crypt]: encryption-crypt.md
+[request]: request.md
+[db-models]: db-models.md

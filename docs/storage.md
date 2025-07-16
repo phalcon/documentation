@@ -544,7 +544,7 @@ $custom->set('my-key', $data);
 ``` 
 
 ## Adapter Factory
-Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\AdapterFactory][cache-adapterfactory] class, so that you can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\AdapterFactory][storage-adapterfactory] class, so that you can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
 The example below shows how you can create an `Apcu` cache adapter with the `new` keyword or the factory:
 ```php
@@ -585,11 +585,11 @@ The parameters you can use for the factory are:
 
 | Name           | Adapter                                                            |
 |----------------|--------------------------------------------------------------------|
-| `apcu`         | [Phalcon\Storage\Adapter\Apcu][cache-adapter-apcu]                 |
-| `libmemcached` | [Phalcon\Storage\Adapter\Libmemcached][cache-adapter-libmemcached] |
-| `memory`       | [Phalcon\Storage\Adapter\Memory][cache-adapter-memory]             |
-| `redis`        | [Phalcon\Storage\Adapter\Redis][cache-adapter-redis]               |
-| `stream`       | [Phalcon\Storage\Adapter\Stream][cache-adapter-stream]             |
+| `apcu`         | [Phalcon\Storage\Adapter\Apcu][storage-adapter-apcu]                 |
+| `libmemcached` | [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] |
+| `memory`       | [Phalcon\Storage\Adapter\Memory][storage-adapter-memory]             |
+| `redis`        | [Phalcon\Storage\Adapter\Redis][storage-adapter-redis]               |
+| `stream`       | [Phalcon\Storage\Adapter\Stream][storage-adapter-stream]             |
 
 ## Events
 
