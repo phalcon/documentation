@@ -1398,6 +1398,19 @@ $customer->getInvoices()->delete();
 
 `delete()` also accepts an anonymous function to filter what records must be deleted:
 
+!!! warning "NOTE"
+
+    `delete()` only works safely with `hasMany()` relationships. The deletion callback runs before the actual deletion of the parent model.
+    
+    This makes it safe for:
+    
+    - Deleting child models that hold a foreign key to the parent (e.g., hasMany)
+    
+    But unsafe for:
+    
+    - Deleting related models that the parent depends on via a foreign key (e.g., belongsTo or hasOne where FK is in parent)
+
+
 ```php
 <?php
 
