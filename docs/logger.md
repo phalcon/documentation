@@ -738,6 +738,8 @@ $logger = $container->getShared('logger');
 
 [date-formats]: https://www.php.net/manual/en/function.date.php
 [fifo]: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
+[config]: api/phalcon_config.md/#configconfig
+[factorydefault]: api/phalcon_di.md/#difactorydefault
 [logger-logger]: api/phalcon_logger.md#loggerlogger
 [logger-abstractlogger]: api/phalcon_logger.md#loggerabstractlogger
 [logger-adapter-noop]: api/phalcon_logger.md#loggeradapternoop

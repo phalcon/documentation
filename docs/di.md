@@ -1604,6 +1604,7 @@ The [Phalcon\Di\DiInterface][di-diinterface] interface must be implemented to cr
 [annotations]: annotations.md
 [ssets]: ssets.md
 [encryption-crypt]: encryption-crypt.md
+[assets]: assets.md
 [response-cookies]: response.md#cookies
 [dispatcher]: dispatcher.md
 [html-escaper]: html-escaper.md
@@ -1621,4 +1622,5 @@ The [Phalcon\Di\DiInterface][di-diinterface] interface must be implemented to cr
 [db-models-transactions]: db-models-transactions.md
 [mvc-url]: mvc-url.md
 [db-layer]: db-layer.md
-[session#bag]: session.md#bag
+[session-bag]: session.md#bag
+[singletons]: https://en.wikipedia.org/wiki/Singleton_pattern

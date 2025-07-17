@@ -222,7 +222,7 @@ $signer  = new Hmac('sha256');
 $signer  = new Hmac('sha111'); // exception
 ```
 
-The component utilizes the [hmac_equals][hmac_equals] and [hash_hmac][hash_hmac] PHP methods internally to verify and sign the payload. It exposes the following methods:
+The component utilizes the [hash_equals][hash-equals] and [hash_hmac][hash-hmac] PHP methods internally to verify and sign the payload. It exposes the following methods:
 
 ```php
 public function getAlgHeader(): string

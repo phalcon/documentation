@@ -75,7 +75,7 @@ and for Volt:
 
 ### Placeholders
 
-The `_()` method will return the translated string of the key passed. In the above example, it will return the value stored for the key `hi`. The component can also parse placeholders using [interpolation][#interpolation]. Therefore, for a translation of:
+The `_()` method will return the translated string of the key passed. In the above example, it will return the value stored for the key `hi`. The component can also parse placeholders using [interpolation][interpolation]. Therefore, for a translation of:
 
 ```text
 Hello %name%!
@@ -369,7 +369,7 @@ $translator = $factory->newInstance('csv', $options);
 
 In the above example, you can see the usage of `delimiter` and `enclosure`. In most cases, you will not need to supply these options but in case your CSV files are somewhat different, you have the option to instruct the adapter as to how it will parse the contents of the translation file.
 
-Creating this adapter can be achieved by using the [Translate Factory][translatefactory], but you can instantiate it directly:
+Creating this adapter can be achieved by using the [Translate Factory][translate-factory], but you can instantiate it directly:
 ```php
 <?php
 
@@ -434,7 +434,7 @@ translations/
             translations.po
 ```
 
-Creating this adapter can be achieved by using the [Translate Factory][translatefactory], but you can instantiate it directly:
+Creating this adapter can be achieved by using the [Translate Factory][translate-factory], but you can instantiate it directly:
 ```php
 <?php
 
@@ -643,13 +643,14 @@ $translator = $factory->newInstance(
 [indexedarray]: api/phalcon_translate.md#translateinterpolatorindexedarray
 [interpolatorinterface]: api/phalcon_translate.md#translateinterpolatorinterpolatorinterface
 [interpolatorfactory]: api/phalcon_translate.md#translateinterpolatorfactory
+[interpolation]: api/phalcon_support.md/#supporthelperstrinterpolate
 [nativearray]: api/phalcon_translate.md#translateadapternativearray
 [php-gettext]: https://www.php.net/manual/book.gettext.php
 [poedit]: https://poedit.net/
 [request]: api/phalcon_http.md#httprequest
 [sprintf]: https://www.php.net/manual/en/function.sprintf.php
 [translate]: api/phalcon_translate.md
-[translatefactory]: api/phalcon_translate.md#translatetranslatefactory
+[translate-factory]: api/phalcon_translate.md#translatetranslatefactory
 [wiki-gettext]: https://en.wikipedia.org/wiki/Gettext
 [di]: di.md
 [routing]: routing.md
