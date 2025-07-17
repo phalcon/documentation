@@ -746,3 +746,4 @@ Unregister the autoload method
 [loader]: api/phalcon_autoload.md#autoloadloader
 [loader-exception]: api/phalcon_autoload.md#autoloadexception
 [eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface
+[events]: api/phalcon_events.md#eventsmanager

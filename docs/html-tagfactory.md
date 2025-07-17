@@ -944,7 +944,7 @@ echo $helper('/my-url', $options);
 ```
 
 ### `inputCheckbox`
-[Phalcon\Html\Helper\Checkbox][html-helper-checkbox] creates a `<input type="checkbox">` tag.
+[Phalcon\Html\Helper\Checkbox][html-helper-input-checkbox] creates a `<input type="checkbox">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -988,7 +988,7 @@ echo $result;
 ```
 
 ### `inputColor`
-[Phalcon\Html\Helper\Color][html-helper-color] creates a `<input type="color">` tag.
+[Phalcon\Html\Helper\Color][html-helper-input-color] creates a `<input type="color">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1019,7 +1019,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputDate`
-[Phalcon\Html\Helper\Date][html-helper-date] creates a `<input type="date">` tag.
+[Phalcon\Html\Helper\Date][html-helper-input-date] creates a `<input type="date">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1050,7 +1050,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputDatetime`
-[Phalcon\Html\Helper\DateTime][html-helper-datetime] creates a `<input type="datetime">` tag.
+[Phalcon\Html\Helper\DateTime][html-helper-input-datetime] creates a `<input type="datetime">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1081,7 +1081,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputDatetimeLocal`
-[Phalcon\Html\Helper\DateTimeLocal][html-helper-datetime-local] creates a `<input type="datetime-local">` tag.
+[Phalcon\Html\Helper\DateTimeLocal][html-helper-input-datetime-local] creates a `<input type="datetime-local">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1112,7 +1112,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputEmail`
-[Phalcon\Html\Helper\Email][html-helper-email] creates a `<input type="email">` tag.
+[Phalcon\Html\Helper\Email][html-helper-input-email] creates a `<input type="email">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1143,7 +1143,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputFile`
-[Phalcon\Html\Helper\File][html-helper-file] creates a `<input type="file">` tag.
+[Phalcon\Html\Helper\File][html-helper-input-file] creates a `<input type="file">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1174,7 +1174,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputHidden`
-[Phalcon\Html\Helper\Hidden][html-helper-hidden] creates a `<input type="hidden">` tag.
+[Phalcon\Html\Helper\Hidden][html-helper-input-hidden] creates a `<input type="hidden">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1205,7 +1205,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputImage`
-[Phalcon\Html\Helper\Image][html-helper-image] creates a `<input type="image">` tag.
+[Phalcon\Html\Helper\Image][html-helper-input-image] creates a `<input type="image">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1236,7 +1236,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputMonth`
-[Phalcon\Html\Helper\Month][html-helper-month] creates a `<input type="month">` tag.
+[Phalcon\Html\Helper\Month][html-helper-input-month] creates a `<input type="month">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1267,7 +1267,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `input`
-[Phalcon\Html\Helper\Input][html-helper-input] creates a `<input>` tag.
+[Phalcon\Html\Helper\Input][html-helper-input-input] creates a `<input>` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1309,7 +1309,7 @@ echo $result;
 ```
 
 ### `inputNumeric`
-[Phalcon\Html\Helper\Numeric][html-helper-numeric] creates a `<input type="numeric">` tag.
+[Phalcon\Html\Helper\Numeric][html-helper-input-numeric] creates a `<input type="numeric">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1340,7 +1340,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputPassword`
-[Phalcon\Html\Helper\Password][html-helper-password] creates a `<input type="password">` tag.
+[Phalcon\Html\Helper\Password][html-helper-input-password] creates a `<input type="password">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1371,7 +1371,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputRadio`
-[Phalcon\Html\Helper\Radio][html-helper-radio] creates a `<input type="radio">` tag.
+[Phalcon\Html\Helper\Radio][html-helper-input-radio] creates a `<input type="radio">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1415,7 +1415,7 @@ echo $result;
 ```
 
 ### `inputRange`
-[Phalcon\Html\Helper\Range][html-helper-range] creates a `<input type="range">` tag.
+[Phalcon\Html\Helper\Range][html-helper-input-range] creates a `<input type="range">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1446,7 +1446,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputSearch`
-[Phalcon\Html\Helper\Search][html-helper-search] creates a `<input type="search">` tag.
+[Phalcon\Html\Helper\Search][html-helper-input-search] creates a `<input type="search">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1477,7 +1477,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputSelect`
-[Phalcon\Html\Helper\Select][html-helper-select] creates a `<select>` tag.
+[Phalcon\Html\Helper\Select][html-helper-input-select] creates a `<select>` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1569,7 +1569,7 @@ echo $result;
 ```
 
 ### `inputSubmit`
-[Phalcon\Html\Helper\Submit][html-helper-submit] creates a `<input type="submit">` tag.
+[Phalcon\Html\Helper\Submit][html-helper-input-submit] creates a `<input type="submit">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1600,7 +1600,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputTel`
-[Phalcon\Html\Helper\Tel][html-helper-tel] creates a `<input type="tel">` tag.
+[Phalcon\Html\Helper\Tel][html-helper-input-tel] creates a `<input type="tel">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1631,7 +1631,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputText`
-[Phalcon\Html\Helper\Text][html-helper-text] creates a `<input type="text">` tag.
+[Phalcon\Html\Helper\Text][html-helper-input-text] creates a `<input type="text">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1662,7 +1662,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputTextarea`
-[Phalcon\Html\Helper\TextArea][html-helper-textarea] creates a `<textarea>` tags
+[Phalcon\Html\Helper\TextArea][html-helper-input-textarea] creates a `<textarea>` tags
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1694,7 +1694,7 @@ echo $helper('click<>me', $options);
 ```
 
 ### `inputTime`
-[Phalcon\Html\Helper\Time][html-helper-time] creates a `<input type="time">` tag.
+[Phalcon\Html\Helper\Time][html-helper-input-time] creates a `<input type="time">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1725,7 +1725,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputUrl`
-[Phalcon\Html\Helper\Url][html-helper-url] creates a `<input type="url">` tag.
+[Phalcon\Html\Helper\Url][html-helper-input-url] creates a `<input type="url">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1756,7 +1756,7 @@ echo $helper('test-name', "test-value", $options);
 ```
 
 ### `inputWeek`
-[Phalcon\Html\Helper\Week][html-helper-week] creates a `<input type="week">` tag.
+[Phalcon\Html\Helper\Week][html-helper-input-week] creates a `<input type="week">` tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -2187,7 +2187,7 @@ echo $result;
 [html-helper-input-color]: api/phalcon_html.md#htmlhelperinputcolor
 [html-helper-input-date]: api/phalcon_html.md#htmlhelperinputdate
 [html-helper-input-datetime]: api/phalcon_html.md#htmlhelperinputdatetime
-[html-helper-input-datetimelocal]: api/phalcon_html.md#htmlhelperinputdatetimelocal
+[html-helper-input-datetime-local]: api/phalcon_html.md#htmlhelperinputdatetimelocal
 [html-helper-input-email]: api/phalcon_html.md#htmlhelperinputemail
 [html-helper-input-file]: api/phalcon_html.md#htmlhelperinputfile
 [html-helper-input-hidden]: api/phalcon_html.md#htmlhelperinputhidden
