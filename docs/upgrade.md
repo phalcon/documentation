@@ -19,7 +19,7 @@ Phalcon can be installed using PECL.
 
 ```
 pecl install phalcon
-// pecl install phalcon-5.7.0
+// pecl install phalcon-5.9.3
 ```
 
 **Alternative installation**
@@ -36,7 +36,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/5.7.0 ./
+git checkout tags/5.9.3 ./
 zephir fullclean
 zephir build
 ```
@@ -620,7 +620,7 @@ The [Filter][phalcon-filter-filter] component has been moved to the `Filter` nam
 
 #### `Phalcon\Forms\Element\Check`
 #### `Phalcon\Forms\Element\Radio`
-- The classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more][html-tagfactory]
+- The classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more][phalcon-html-tagfactory]
 
 ---
 
@@ -672,13 +672,13 @@ The [Helper][phalcon-support-helper] component has been moved to the `Support` n
 
 #### `Phalcon\Html\Helper`
 - Moved `Phalcon\Helper` to `Phalcon\Html\Helper`
-- The component has been refactored and offers more functionality now. [more][html-tagfactory]
+- The component has been refactored and offers more functionality now. [more][phalcon-html-tagfactory]
 
 #### `Phalcon\Html\Link`
-- The component has been refactored and the dependency to `PSR` has been removed. [more][html-link]
+- The component has been refactored and the dependency to `PSR` has been removed. [more][phalcon-html-link]
 
 #### `Phalcon\Html\TagFactory`
-- Added `__call(string $name, array $arguments)` to allow calling helper objects as methods. [more][html-tagfactory]
+- Added `__call(string $name, array $arguments)` to allow calling helper objects as methods. [more][phalcon-html-tagfactory]
 - Added `has(string $name) -> bool`
   Added `set(string $name, mixed $method): void`
 - The `getAdapters()` protected method has been renamed to `getServices()`

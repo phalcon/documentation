@@ -625,3 +625,5 @@ $container->set(
 [events]: events.md
 [application]: application.md
 [autoload]: autoload.md
+[routing]: routing.md
+[views]: views.md

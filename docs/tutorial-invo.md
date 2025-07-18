@@ -233,7 +233,7 @@ $di->setShared('db', function () use ($dbConfig) {
 });
 ```
 
-Here, we return an instance of the MySQL connection adapter, because the `$dbConfig['adapter']` setting is `Mysql`. We can also add extra functionality, such as adding a [Logger][logger], a [profiler][db-models-profiler] to measure query execution times or even change the adapter to a different RDBMS.
+Here, we return an instance of the MySQL connection adapter, because the `$dbConfig['adapter']` setting is `Mysql`. We can also add extra functionality, such as adding a [Logger][logger], a profiler to measure query execution times or even change the adapter to a different RDBMS.
 
 The following simple form (`themes/invo/session/index.volt`) produces the necessary HTML so that users can submit login information. Some HTML code has been removed to improve readability:
 
@@ -1733,3 +1733,9 @@ Finally, the title is printed in the main view (`themes/invo/views/index.volt`):
 [dispatcher]: dispatcher.md
 [db-pagination]: db-pagination.md
 [session-persistent-data]: session.md#persistent-data
+[logger]: logger.md
+[events]: events.md
+[acl]: acl.md
+[forms]: forms.md
+[tag]: tag.md
+[request]: request.md

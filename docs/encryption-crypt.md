@@ -161,7 +161,7 @@ The `encryptBase64()` can be used to encrypt a string in a URL-friendly way. It 
 The `decryptBase64()` can be used to decrypt a string in a URL-friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL _friendly_  characters such as `+` or `/`.
 
 ## Exceptions
-Exceptions thrown in the [Phalcon\Encryption\Crypt][crypt] component will be of type [Phalcon\Encryption\Crypt\Exception][config-exception]. If however, you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Encryption\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Exceptions thrown in the [Phalcon\Encryption\Crypt][crypt] component will be of type [Phalcon\Encryption\Crypt\Exception][crypt-exception]. If however, you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Encryption\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -190,7 +190,7 @@ The getter `getCipher()` returns the currently selected cipher. If none has been
 You can always get an array of all the available ciphers for your system by calling  `getAvailableCiphers()`.
 
 ### Hash Algorithm
-The getter `getHashAlgo()` returns the hashing algorithm used by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Encryption\Crypt\Exception][crypt=exception] will be thrown.
+The getter `getHashAlgo()` returns the hashing algorithm used by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Encryption\Crypt\Exception][crypt-exception] will be thrown.
 
 You can always get an array of all the available hashing algorithms for your system by calling  `getAvailableHashAlgos()`.
 

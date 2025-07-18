@@ -1805,3 +1805,4 @@ You can also check out [Volt][volt] a faster template engine for PHP, where you 
 [volt]: volt.md
 [mvc-url]: mvc-url.md
 [forms]: forms.md
+[str_replace]: https://www.php.net/manual/en/function.str-replace.php
