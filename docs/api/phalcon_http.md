@@ -700,12 +700,7 @@ private $queryFilters;
 /**
  * @var array|null
  */
-private $patchCache;
-
-/**
- * @var array|null
- */
-private $putCache;
+private $postCache;
 
 /**
  * @var string
@@ -1150,6 +1145,12 @@ public function isHead(): bool;
 ```
 Checks whether HTTP method is HEAD.
 if _SERVER["REQUEST_METHOD"]==="HEAD"
+
+
+```php
+public function isJson(): bool;
+```
+Checks whether request content type contains json data
 
 
 ```php
