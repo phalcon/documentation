@@ -178,6 +178,11 @@ public function validate(
 ```
 Validate a set of data according to a set of rules
 
+```php
+public function fails(): bool
+```
+Verify if the validation has failed or not. Returns `true` when validation fails, `false` when validation succeeds.
+
 ## Activation
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Filter\Validation][validation] object. You can put your validations in a separate file for better code reuse and organization.
 
