@@ -1296,7 +1296,6 @@ A common task in any web application is to show links that help with the navigat
   - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element
   - `query` - the base query for the URL
   - `text` - the text of the link
-  - `local` - whether this is a local or remote link
   - additional key/value attributes for the link
 - `text` - `string` - the text of the link
 - `local` - `bool` - whether this is a local or remote link
