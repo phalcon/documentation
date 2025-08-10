@@ -9,8 +9,8 @@ Phalcon v5 contains a lot of changes in components and interfaces. Upgrading is 
 We will outline the areas that you need to pay attention to and make necessary changes so that your code can run as smoothly as it has been with v4. Although the changes are significant, it is more of a methodical task than a daunting one.
 
 ## Requirements
-### PHP 8.0
-Phalcon v5 supports only PHP 8.0 and above. PHP 8.0 [active support][php-support] has already expired, including security fixes. We will be supporting this version for a while longer, offering developers more time to upgrade their applications.
+### PHP 8.1
+Phalcon v5.9 supports only PHP 8.1 and above. PHP 8.1 [active support][php-support] has already expired, including security fixes. We will be supporting this version for a while longer, offering developers more time to upgrade their applications.
 
 Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
 

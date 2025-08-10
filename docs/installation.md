@@ -4,9 +4,9 @@
 ## Requirements
 
 ### PHP 8.1
-Phalcon v5.9 supports only PHP 8.0 and above.
+Phalcon v5.9 supports only PHP 8.1 and above.
 
-Although PHP 8.0 was released several years ago and it's [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications. We will continue to support PHP 8.0 for v5 for another year. Phalcon v6 and later will support PHP 8.1+.
+Although PHP 8.1 was released several years ago and it's [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications.
 
 !!! info "NOTE"
 
@@ -34,7 +34,7 @@ We have hosted our website and blog for the last few years on an Amazon VM with 
 
     You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 
-Along with PHP 8.0 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
+Along with PHP 8.1 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
 
 * [curl][curl]
 * [fileinfo][fileinfo]

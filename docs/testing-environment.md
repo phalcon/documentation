@@ -7,7 +7,7 @@ Phalcon, historically characterized by a modest development community and limite
 # The Challenge
 Building a feature-rich framework necessitates a comprehensive development environment supporting various features and associated services. For example, validating ORM functionality across different database adapters (e.g., `MySQL`, `Postgresql`, `Sqlite`) requires the installation of relevant PHP extensions and databases. Similarly, to execute the testing suite for Phalcon's extensive functionality, developers must install numerous extensions and services such as Redis and Memcached.
 
-Considering the diverse PHP versions (e.g., PHP 8.0, 8.1), Phalcon's development becomes intricate due to these prerequisites.
+Considering the diverse PHP versions (e.g., PHP 8.1, 8.2), Phalcon's development becomes intricate due to these prerequisites.
 
 # Solution
 Formerly relying on `nanobox," a solution now discontinued, we intensified our efforts, adopting Docker to streamline development requirements. With just a few commands, developers can seamlessly contribute to Phalcon and execute tests promptly.

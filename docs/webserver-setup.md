@@ -484,7 +484,7 @@ https://example.cc {
     gzip
     tls /ssl/example.cc/cert.pem /ssl/example.cc/key.pem
     root /path/to/phalcon/public
-    fastcgi / unix:/run/php/php8.0-fpm.sock php
+    fastcgi / unix:/run/php/php8.2-fpm.sock php
     rewrite {
         r (.*)
         to {path} {path}/ /index.php?_url={1}
