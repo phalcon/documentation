@@ -80,10 +80,11 @@ Appends a message to the messages list
 ```php
 public function bind(
     object $entity, 
-    array | object $$data
+    array | object $data,
+    array $whitelist = []
 ): ValidationInterface
 ```
-Assigns the data to an entity. The entity is used to obtain the validation values
+Assigns the data to an entity. The entity is used to obtain the validation values. When `$whitelist` is being used, the entity will be mutated using only the fields specified in the `$whitelist` array
 
 ```php
 public function getEntity(): object
@@ -120,7 +121,6 @@ public function getValue(
 ): mixed | null
 ```
 Gets a value to validate in the array/object data source
-
 
 ```php
 public function getValueByEntity(mixed $entity, string $field): mixed | null
@@ -173,10 +173,11 @@ Adds labels for fields
 ```php
 public function validate(
     array | object $data = null, 
-    object $entity = null
+    object $entity = null,
+    array $whitelist = []
 ): Messages
 ```
-Validate a set of data according to a set of rules
+Validate a set of data according to a set of rules. When `$entity` is being used, the validated data will bind to the entity using setters or direct property assignment. When `$whitelist` is being used, only the fields in the `$whitelist` array will bind into your entity.
 
 ```php
 public function fails(): bool
