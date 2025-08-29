@@ -77,7 +77,7 @@ In the template:
 </form>
 ```
 
-Each element in the form can be rendered as required by the developer. Internally, [Phalcon\Tag][tag] is used to produce the correct HTML for each element, and you can pass additional HTML attributes as the second parameter of `render()`:
+Each element in the form can be rendered as required by the developer. Internally, [Phalcon\Html\TagFactory][tagfactory] is used to produce the correct HTML for each element, and you can pass additional HTML attributes as the second parameter of `render()`:
 
 ```php
 <p>
@@ -736,6 +736,84 @@ Because of the way forms work and interact with elements, certain names are rese
 * `value`
 
 These names correspond to getters in the `Form` object or are properties coming from the Di container.
+
+### Radios
+Radio elements are a bit different from other elements. A radio element represents a group of options where only one option can be selected. The `Phalcon\Forms\Element\Radio` element is used to create a single radio button. To create a group of radio buttons, you will need to add multiple `Phalcon\Forms\Element\Radio` elements to your form with the same name but different values:
+
+One thing to note is that the name of the element (first parameter for the `Radio` class) is not the name attribute that will be rendered in the HTML. It is merely a way to identify the specific `Radio` element in the form. 
+
+Assume you have to create two radio elements in your form:
+
+```html
+<input type="radio" id="dt-single" name="dateRange" value="1" checked="checked" />
+<label for="dt-single" class="control-label">Single Date</label>
+&nbsp;&nbsp;&nbsp;
+<input type="radio" id="dt-range" name="dateRange" value="2" />
+<label for="dt-range" class="control-label">Range</label>
+```
+
+The form must be constructed as follows:
+
+```php
+<?php
+
+use Phalcon\Forms\Element\Radio;
+use Phalcon\Forms\Form;
+
+class DatesForm extends Form
+{
+        /**
+         * Radio buttons
+         */
+        $element = new Radio(
+            'first-dt-radio', // identifier for the element in the form
+            [
+                'value'   => '1',
+                'checked' => '1',
+                'name'    => 'dateRange', // group name
+                'id'      => 'dt-single', // HTML id attribute
+            ]
+        );
+
+        $element->setLabel('Single Date');
+        $this->add($element);
+
+        $element = new Radio(
+            'second-dt-radio', // identifier for the element in the form
+            [
+                'value'   => '2',
+                'checked' => '',
+                'name'    => 'dateRange', // group name
+                'id'      => 'dt-range',  // HTML id attribute
+            ]
+        );
+
+        $element->setLabel('Range');
+        $this->add($element);
+    }
+}
+```
+
+Now when it is time to render the form, you can do it as follows:
+
+```php
+// Prints the first radio button
+echo $form->render('first-dt-radio');
+echo $form->get('first-dt-radio')->label(['class' : 'control-label']);
+echo '&nbsp;&nbsp;&nbsp';
+echo $form->render('second-dt-radio');
+echo $form->get('second-dt-radio')->label(['class' : 'control-label']);
+```
+
+or when using Volt:
+
+```twig
+{{ form.render('first-dt-radio') }}
+{{ form.get('first-dt-radio').label(['class' : 'control-label']) }}
+&nbsp;&nbsp;&nbsp;
+{{ form.render('second-dt-radio') }}
+{{ form.get('second-dt-radio').label(['class' : 'control-label']) }}
+```
 
 ## Filtering
 A form is also able to filter data before it is validated. You can set filters in each element:
