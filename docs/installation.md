@@ -105,6 +105,22 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
     To install phalcon with PECL you will need at least 4GB of RAM, otherwise the PECL build command will fail. 
 
+!!! warning "NOTE"
+
+    For newer versions of Linux (for instance Debian 13) Phalcon might not compile. To resolve this issue you will need to issue the following command:
+```
+export CFLAGS="-Wno-incompatible-pointer-types"
+sudo -E pecl install phalcon
+```
+
+!!! warning "NOTE"
+
+    If you are trying to install Phalcon in Docker and you face the same issue as above, you can try:
+```
+ARG CFLAGS="-Wno-incompatible-pointer-types"
+pecl install phalcon
+```
+
 ### PECL
 The PECL installation method is available for Windows, Linux, and macOS. Under Windows pre-compiled dll files are available, while under Linux and macOS, Phalcon will be compiled locally. To install Phalcon using PECL make sure you have [pecl/pear][install-pecl] installed.
 ```
