@@ -70,7 +70,7 @@
 }
 
 [data-md-color-scheme="slate"] .phalcon-blog__sponsors-item a:hover {
-    border: 1px solid #00bda4 !important;
+    border-color: #00bda4 !important;
 }
 
 /* Releases page table */
