@@ -66,10 +66,6 @@
 }
 
 [data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a:hover {
-    color: #000000 !important;
-}
-
-[data-md-color-scheme="slate"] .phalcon-blog__sponsors-item a:hover {
     border-color: #00bda4 !important;
 }
 
