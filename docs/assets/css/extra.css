@@ -67,6 +67,7 @@
 
 [data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a:hover {
     border-color: #00bda4 !important;
+    opacity: .7 !important;
 }
 
 /* Releases page table */
