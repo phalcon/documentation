@@ -65,17 +65,15 @@
 }
 
 [data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a:hover {
+    border-color: #00bda4 !important;
     color: #000000 !important;
+    opacity: .9;
 }
 
 
 [data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a {
     color: #000000 !important;
     font-weight: bold;
-}
-
-[data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a:hover {
-    color: #000000 !important;
 }
 
 /* Releases page table */
