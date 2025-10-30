@@ -736,7 +736,7 @@ The output will include the file modification time in the URL:
 <link rel="stylesheet" href="css/bootstrap.css?ver=1558392141">
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Using the auto version feature is not recommended for production environments due to unnecessary file system read operations.
 

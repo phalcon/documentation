@@ -118,7 +118,7 @@ As demonstrated above, it does not matter that Phalcon is compiled as a PHP exte
 ## Constructor
 [Phalcon\Support\Debug][debug] provides visual aids as well as additional information for developers to easily locate errors produced in an application.
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     Please make sure that this component is not used in production environments, as it can reveal information about your server to attackers
 
@@ -148,7 +148,7 @@ or using a shorter syntax:
 (new Phalcon\Support\Debug())->listen();
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Any `try`/`catch` blocks must be removed or disabled to make this component work properly.
 
@@ -350,7 +350,7 @@ Phalcon\Mvc\Router Object
 
 Once you have Xdebug installed, you can use its API to get more detailed information about exceptions and messages.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     We highly recommend using the latest version of Xdebug for better compatibility with Phalcon
 

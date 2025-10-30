@@ -662,7 +662,7 @@ class Preferences
 ```
 For the above entity class, the `getReceiveEmails` and `getTimezone` methods will be used instead of the `receiveEmails` and `timezone` properties.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The default behavior of `Phalcon\Forms\Form::bind()` is to bind all form fields to the Model. To only bind the 
     fields that exist in the model, set `phalcon.form.strict_entity_property_check` value to `1`. 
@@ -692,7 +692,7 @@ These elements use the [Phalcon\Html\TagFactory][tagfactory] component transpare
 
     For more information regarding HTML elements, you can check our [TagFactory document][tagfactory]
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The `Phalcon\Forms\Element\Check` and `Phalcon\Forms\Element\Radio` classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more][tagfactory]
 

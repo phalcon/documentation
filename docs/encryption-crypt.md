@@ -5,13 +5,11 @@
 
 !!! info "NOTE"
 
-    Requires PHP's [openssl][openssl] extension to be present in the system
+    Requires PHP's [openssl][openssl] extension
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
-    **DOES NOT** support insecure algorithms with modes: 
-
-    `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
+    **DOES NOT** support insecure algorithms or ECB mode: `des*`, `rc2*`, `rc4*`, `*ecb`. 
 
 Phalcon provides encryption facilities via the [Phalcon\Encryption\Crypt][crypt] component. This class offers simple object-oriented wrappers to the [openssl][openssl] PHP's encryption library.
 
@@ -19,7 +17,7 @@ By default, this component utilizes the `AES-256-CFB` cipher.
 
 The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory, it is not crackable since the combinations of keys are massive. Although the NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
 
@@ -31,8 +29,7 @@ This component is designed to be very simple to use:
 
 use Phalcon\Encryption\Crypt;
 
-$key = "12345";
-
+$key       = random_bytes(32);
 $crypt     = new Crypt();
 $text      = 'This is the text that you want to encrypt.';
 $encrypted = $crypt->encrypt($text, $key);
@@ -42,7 +39,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 If no parameters are passed in the constructor, the component will use the `aes-256-cfb` cipher with signing by default. You can always change the cipher as well as disable signing.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The constructor also accepts a parameter for signing requests. For v5, the default value for this parameter has changed to `true`
 
@@ -56,8 +53,7 @@ If no parameters are passed in the constructor, the component will use the `aes-
 use Phalcon\Encryption\Crypt;
 use Phalcon\Encryption\Crypt\PadFactory;
 
-$key = "12345";
-
+$key        = random_bytes(32);
 $padFactory = new PadFactory();
 $crypt      = new Crypt("aes-256-cfb", true, $padFactory);
 
@@ -72,7 +68,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 use Phalcon\Encryption\Crypt;
 
-$key   = "12345";
+$key   = random_bytes(32);
 $crypt = new Crypt();
 
 $crypt
@@ -94,7 +90,7 @@ The `encrypt()` method encrypts a string. The component will use the previously 
 
 use Phalcon\Encryption\Crypt;
 
-$key   = "12345"; 
+$key   = random_bytes(32); 
 $crypt = new Crypt();
 $crypt->setKey($key);
 
@@ -109,7 +105,7 @@ or using the key as the second parameter
 
 use Phalcon\Encryption\Crypt;
 
-$key       = "12345"; 
+$key       = random_bytes(32); 
 $crypt     = new Crypt();
 $text      = 'This is the text that you want to encrypt.';
 $encrypted = $crypt->encrypt($text, $key);
@@ -117,7 +113,7 @@ $encrypted = $crypt->encrypt($text, $key);
 
 The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If you choose `ccm` or `gcm` related ciphers, you must also supply `authData` for them. An exception will be thrown otherwise.
 
@@ -129,7 +125,7 @@ The `decrypt()` method decrypts a string. Similar to `encrypt()` the component w
 
 use Phalcon\Encryption\Crypt;
 
-$key   = "12345"; 
+$key   = random_bytes(32); 
 $crypt = new Crypt();
 $crypt->setKey($key);
 
@@ -144,7 +140,7 @@ or using the key as the second parameter
 
 use Phalcon\Encryption\Crypt;
 
-$key   = "12345"; 
+$key   = random_bytes(32); 
 $crypt = new Crypt();
 $crypt->setKey($key);
 
@@ -200,7 +196,7 @@ The component offers a getter and a setter for the key to be used. Once the key 
 * `getKey()`: Returns the encryption key.
 * `setKey()` Sets the encryption key.
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application, you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
 

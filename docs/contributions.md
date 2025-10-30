@@ -17,11 +17,11 @@ When you create a pull request, we have a handy template to help you describe wh
 * put on hold, if a discussion is necessary (community, core team etc.)
 * rejected
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If your pull request is a new feature, it is best to discuss it with the core team first, to ensure that it will align with the evolution of the framework.
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
 
@@ -35,7 +35,7 @@ We have removed the translations from v5.5.x onward. There was not that much tra
 
 ## Questions and Support
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official discussions page][phalcon-discussions] or our [Discord][phalcon-discord] server.
 

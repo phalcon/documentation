@@ -251,7 +251,7 @@ $headers
 $response->setHeaders($headers);
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Note that using `setHeaders()` merges the passed headers with the ones present in the response object already. The method will not clear the headers before setting them. To clear the headers you need to call `reset()` first (or `resetHeaders()` on the response object).
 
@@ -363,11 +363,11 @@ $cookies->setSignKey($signKey);
 $response->setCookies($cookies);
 ```
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo-random generator. You can always use the `Crypt` component to generate a good `signKey`.
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     Cookies can contain complex structures such as service information, resultsets, etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
 
@@ -529,7 +529,7 @@ return $response->redirect(
 );
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
@@ -581,7 +581,7 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Browsers rely on the client machine's clock to identify if the date has passed or not. Therefore, this caching mechanism has some limitations that the developer must account for (different timezones, clock skew, etc.)
 

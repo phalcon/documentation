@@ -27,7 +27,7 @@ try {
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `handle()` accepts a URI and will not operate without it. You can pass the `$_SERVER["REQUEST_URI"]` as a parameter
 

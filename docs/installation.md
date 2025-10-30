@@ -30,7 +30,7 @@ We have hosted our website and blog for the last few years on an Amazon VM with 
 
 ### Software
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 
@@ -101,11 +101,11 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
     The preferred method of installation is through [PECL][install-pecl].
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     To install phalcon with PECL you will need at least 4GB of RAM, otherwise the PECL build command will fail. 
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     For newer versions of Linux (for instance Debian 13) Phalcon might not compile. To resolve this issue you will need to issue the following command:
 ```
@@ -113,7 +113,7 @@ export CFLAGS="-Wno-incompatible-pointer-types"
 sudo -E pecl install phalcon
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If you are trying to install Phalcon in Docker and you face the same issue as above, you can try:
 ```

@@ -36,7 +36,7 @@ $container = new Di();
 $app       = new Micro($container);
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Starting from Phalcon v5.3.0, the `Micro` object is no longer automatically registered in the dependency injection container with the name `application`. Developers are required to manage the application instance explicitly.
 
@@ -308,7 +308,7 @@ Defining routes in a [Phalcon\Mvc\Micro][mvc-micro] application is straightforwa
 ### Activation
 Routing is managed by the [Phalcon\Mvc\Router][mvc-router] object.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Routes must always start with `/`
 
@@ -994,7 +994,7 @@ $invoices->get('/delete/{id}', 'deleteAction');
 $app->mount($invoices);
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.
 
@@ -1655,7 +1655,7 @@ Middleware can be attached to a Micro application in three different events:
 | `after`  | After the handler has been executed            |
 | `finish` | After the response has been sent to the caller |
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Multiple middleware classes can be attached to each of the above events, and they will be executed sequentially when the relevant event fires.
 
@@ -2199,7 +2199,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore, we need to attach it to the `after` event of our Micro application.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     We are using the `call` method for this middleware since we have nearly executed the whole request cycle.
 
@@ -2246,7 +2246,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 Models can be utilized in Micro applications by instructing the application on how to find the relevant classes through an autoloader.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The relevant `db` service must be registered in your DI container.
 
@@ -2364,7 +2364,7 @@ $app->get(
 );
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The above example uses the [Phalcon\Mvc\View\Simple][mvc-view-simple] component, which uses relative paths instead of controllers and actions. You can use the [Phalcon\Mvc\View][mvc-view] component instead, but to do so, you will need to change the parameters passed to `render()`.
 

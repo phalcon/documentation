@@ -1,7 +1,7 @@
 # Object Document Mapper
 - - -
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The Object Document Mapper functionality has been **temporarily** removed for v4.0+.
 

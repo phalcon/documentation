@@ -20,7 +20,7 @@ In order to speed up your application, you first need to ensure that your applic
 
 and many more. In this article, we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     These are **recommendations** and good practices. You are by no means obligated to follow the advice in this document, and by no means is this list exhaustive. Your performance-enhancing strategies rely primarily on the needs of your application.
 

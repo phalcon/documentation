@@ -1,7 +1,7 @@
 # Domain
 - - -
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     In future versions of Phalcon, this component will be reworked to follow the [Payload Interop][payload-interop] interface.
 

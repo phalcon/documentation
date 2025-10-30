@@ -767,7 +767,7 @@ $dispatcher->setModelBinder(
 return $dispatcher;
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The [Phalcon\Mvc\Model\Binder][mvc-model-binder] component uses PHP's Reflection API internally, which consumes additional processing cycles. For that reason, it has the ability to use a `cache` instance or a cache service name. To use this feature, you can pass the cache service name or instance as the second argument in the `setModelBinder()` method or by just passing the cache instance in the `Binder` constructor.
 
@@ -832,7 +832,7 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Currently, the binder will only use the model's primary key to perform a `findFirst()`. An example route for the above would be `/posts/show/{1}`
 
@@ -965,7 +965,7 @@ class ExceptionsPlugin
 }
 ```
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
 
@@ -1042,7 +1042,7 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Methods on event listeners accept a [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
 

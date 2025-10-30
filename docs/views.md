@@ -941,7 +941,7 @@ class InvoicesController extends Controller
 
 ## Simple Rendering
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You can use `echo` when calling `$view->render()`, which will output the contents of the rendering process on screen. This **only works** with [Phalcon\Mvc\View\Simple][mvc-view-simple] and **not** with [Phalcon\Mvc\View][mvc-view]. Using `echo` with the latter will produce a warning.
 
@@ -1418,7 +1418,7 @@ echo $view->getRender(
 
 ### Simple Rendering
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You can use `echo` when calling `$view->render()`, which will output the contents of the rendering process on screen. This **only works** with [Phalcon\Mvc\View\Simple][mvc-view-simple] and **not** with [Phalcon\Mvc\View][mvc-view]. Using `echo` with the latter will produce a warning.
 

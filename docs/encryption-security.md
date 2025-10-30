@@ -10,8 +10,7 @@
 [Phalcon\Encryption\Security][security] is a component that helps developers with common security-related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
 !!! info "NOTE"
-
-    By default, the component will use `password_hash` to hash a string using the `Phalcon\Encrtyption\Security::CRYPT_DEFAULT` which defaults to `Phalcon\Encryption\Security::CRYPT_BCRYPT` and corresponds to PHP's `PASSWORD_BCRYPT`.
+    By default the component uses PHP's `password_hash()` with `Phalcon\Encryption\Security::CRYPT_DEFAULT` (which maps to `Phalcon\Encryption\Security::CRYPT_BCRYPT` / `PASSWORD_BCRYPT`). Call `setDefaultHash()` to change the default algorithm.
 
 
 ## Password Hashing
@@ -19,7 +18,7 @@ Storing passwords in plain text is a bad security practice. Anyone with access t
 
 The security component uses [bcrypt][bcrypt] as the hashing algorithm. Thanks to the [Eksblowfish][eksblowfish] key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of brute-force attacks.
 
-[Bcrypt][bcrypt], is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
+[Bcrypt][bcrypt] is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
 
 Should hardware become faster in the future, we can increase the work factor to mitigate this. The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes][openssl-random-pseudo-bytes].
 
@@ -51,7 +50,7 @@ $hashed = $security->hash('Phalcon');
 echo $security->checkHash($password, $hashed); // true / false
 ```
 
-The above example simply shows how the `checkHash()` can be used. In production applications, we will definitely need to sanitize input, and also we need to store the hashed password in a data store such as a database. Using controllers, the above example can be shown as:
+The example demonstrates `checkHash()`. In production applications, we will definitely need to sanitize input, and also we need to store the hashed password in a data store such as a database. Using controllers, the above example can be shown as:
 
 ```php
 <?php
@@ -112,7 +111,7 @@ class SessionController extends Controller
 }
 ```
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     The code snippet above is incomplete and **must not be used as is for production applications**
 
@@ -251,7 +250,7 @@ class SessionController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise, the `checkToken()` will not work.
 
@@ -282,8 +281,9 @@ Hashes a string or password and returns the hashed string back. The second param
 Accepts a string (usually the password), an already hashed string (the hashed password), and an optional minimum password length. It checks them both and returns `true` if they are identical and `false` otherwise.
 
 **isLegacyHash()**
+**isLegacyHash()**
 
-Returns `true` if the passed hashed string is a valid [bcrypt][bcrypt] hash.
+Returns `true` if the provided hash is a legacy hash (i.e., not produced by PHP's `password_hash()`), such as an older [bcrypt][bcrypt] variant.
 
 ### HMAC
 
@@ -467,7 +467,7 @@ echo $random->number(16); // 8
 Generates a v4 random UUID (Universally Unique IDentifier). The version 4 UUID is purely random (except the version). It doesn't contain meaningful information such as MAC address, time, etc. See [RFC 4122][rfc-4122] for details of UUID.
 
 This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` where x is any hexadecimal digit and `y` is one of `8`, `9`, `A`, or `B` (e.g., `f47ac10b-58cc-4372-a567-0e02b2c3d479`).
-*
+
 ```php
 <?php
 
@@ -538,6 +538,7 @@ Also in your views (Volt syntax)
 [eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
 [factorydefault]: api/phalcon_di.md#difactorydefault
 [hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
+[hash-equals]: https://www.php.net/manual/en/function.hash-equals.php
 [md5]: https://php.net/manual/en/function.md5.php
 [openssl]: https://php.net/manual/en/book.openssl.php
 [openssl-random-pseudo-bytes]: https://php.net/manual/en/function.openssl-random-pseudo-bytes.php

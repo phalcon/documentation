@@ -1,7 +1,7 @@
 # HTML Components
 - - -
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     This component is going to be deprecated in a future version of Phalcon. You can use the `Phalcon\Html\Helper\Breadcrumbs` one using the `TagFactory`
 

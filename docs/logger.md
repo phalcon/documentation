@@ -240,7 +240,7 @@ $logger
 ```
 Log only to remote and manager
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Internally, the component loops through the registered adapters and calls the relevant logging method to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
 
@@ -307,7 +307,7 @@ The above can be used in situations where you want to log messages above a certa
 
     The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     It is **never** a good idea to suppress logging levels in your application since even warning errors do require CPU cycles to be processed, and neglecting these errors could potentially lead to unintended circumstances 
 
@@ -570,14 +570,14 @@ $context = [
 $logger->info($message, $context);
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     At the moment, changing the interpolation placeholders is not available. We will introduce this feature in future versions of Phalcon.
 
 ## Item
 The formatter classes above accept a [Phalcon\Logger\Item][logger-item] object. The object contains all the necessary data required for the logging process. It is used as a transport of data from the logger to the formatter.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     In v5 the object now accepts a `\DateTimeImmutable` object as the `$dateTime` parameter
 

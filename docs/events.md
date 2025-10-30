@@ -187,7 +187,7 @@ $connection->query(
 
 In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case, MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component, or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
 
@@ -564,7 +564,7 @@ $eventsManager->fire('notifications:afterSend', $this, $data, false);
 
 The `afterSend` event will no longer be cancelable and will execute on all listeners that implement it.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object.
 
@@ -601,7 +601,7 @@ $eventsManager->attach(
 
     In order for the priorities to work `enablePriorities()` has to be called with `true` to enable them. Priorities are disabled by default
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     A high priority number means that the listener will be processed before those with lower priorities
 

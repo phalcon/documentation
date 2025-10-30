@@ -8,7 +8,7 @@ A model represents the information (data) of the application and the rules to ma
 
 The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving developers high performance when interacting with databases while is also easy to use.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db\Db][db] component documentation.
 
@@ -462,7 +462,7 @@ public static function findFirst(
 ```
 Query the first record that matches the specified conditions. It will return a resultset or `null` if the record was not found.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `findFirst()` no longer returns `false` if records were not found.
 
@@ -554,7 +554,7 @@ if (false === $result) {
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `save()` no longer accepts parameters to set data. You can use `assign` instead.
 
@@ -596,7 +596,7 @@ public function getRelated(
 ```
 Returns related records based on defined relations. If the relationship is one to one and no records have been found, it will return `null`
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `getRelated()` no longer returns `false` if a record was not found on a one-to-one relationship.
 
@@ -867,7 +867,7 @@ $invoice->inv_total = 120;
 $invoice->save();
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `save()` no longer accepts parameters to set data. You can use `assign` instead.
 
@@ -1139,7 +1139,7 @@ $invoice->inv_total = 120;
 $invoice->update();
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     When retrieving the record with `findFirst()`, you need to get the full 
     object back (no `columns` definition) but also retrieve it using the 
@@ -1547,7 +1547,7 @@ class Invoices extends Model
 
 **Properties vs. Setters/Getters**
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The model class uses some properties internally for services. The names of those properties are reserved and cannot be used as fields in the database. Please keep that in mind when naming the fields of your tables. If there are collisions, your models will not update properly.
 
@@ -1671,11 +1671,11 @@ class Invoices extends Model
 
 Public properties provide less complexity in development. However, getters/setters can heavily increase the testability, extensibility, and maintainability of applications. You will need to decide which strategy is best for you depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Underscores in property names can be problematic when using getters and setters.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     When using the getters/setters approach, you will need to define your properties as `protected`.
 
@@ -1792,7 +1792,7 @@ $invoice = Invoices::findFirst('inv_id = 3');
 ```
 You can also pass a string with a `WHERE` clause. In the above example, we are getting the same record, instructing the ORM to give us a record with `inv_cst_id = 3`
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If the primary key of the table is not numeric, use condition. See examples below.
 
@@ -1812,7 +1812,7 @@ $invoice = Invoices::findFirst([
 ]);
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If you do not use bound parameters in your conditions, PHQL will create a new plan internally, therefore consuming more memory. Using bound parameters is highly recommended!
 
@@ -1828,7 +1828,7 @@ $invoice = Invoices::findFirst('uuid = "5741bfd7-6870-40b7-adf6-cbacb515b9a9"');
 
 ### Parameters
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria come from user input. For more information check the [Binding Parameters][binding-parameters]` section.
 
@@ -2858,7 +2858,7 @@ $invoice->assign($_POST);
 $result = $invoice->save();
 ```
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
 
@@ -3211,13 +3211,13 @@ class Invoices extends Model
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Never use a [Phalcon\Db\RawValue][db-rawvalue] to assign external data (such as user input) or variable data. The value of these fields is ignored when binding parameters to the query. So it could be used for SQL injection attacks.
 
 ## Dynamic Updates
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Dynamic Update is now enabled by default, you can disable it by changing the "phalcon.orm.dynamic_update" in the php.ini or by ini_set.
 
@@ -3890,7 +3890,7 @@ The available options are:
 ; phalcon.db.force_casting = Off
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when data arguments are passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will just simply use `$this->property = value`.
 

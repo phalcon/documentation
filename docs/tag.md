@@ -1,7 +1,7 @@
 # Tag (View Helpers)
 - - -
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     `Phalcon\Tag` will be removed in a future Phalcon version. The functionality is offered by the [Phalcon\Html\TagFactory][tagfactory] component.
 
@@ -10,7 +10,7 @@ Writing and maintaining HTML markup can quickly become a tedious task because of
 
 This component can be used in a plain HTML+PHP view or in a [Volt][volt] template.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code since HTML generation touches a lot of areas of the application, the view in particular.
 

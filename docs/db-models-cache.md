@@ -39,7 +39,7 @@ $container->set(
 );
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     It is imperative to use a serializer that can properly serialize and unserialize objects without changing their state. `Php` and `Igbinary` are such serializers. `Json` will convert objects to `stdClass` and `Simple`/`Complex` resultsets will become arrays. Choosing a serializer that cannot store objects properly will produce errors when the cache is restored for your models.
 
@@ -387,7 +387,7 @@ class Invoices extends Model
 
 Note that this type of cache works in memory only, this means that cached data are released when the request is terminated.
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     The above example is **for demonstration only** and should not be used in your code because it introduces the [N+1][n-1] problem
 
@@ -528,7 +528,7 @@ class Invoices extends Model
 
 Getting all the invoices will also loop through the resultset and get all related `Customer` records, storing them in the resultset using the `customer` property. Once the operation is completed, the whole resultset is stored in the cache. Any subsequent call to `find` in `Invoices` will use the cached resultset without hitting the database.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries.
 
