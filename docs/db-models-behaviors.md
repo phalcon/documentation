@@ -197,11 +197,11 @@ mysql> select * from co_invoices;
 2 rows in set (0.00 sec)
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Adding this behaviour to a model prevents its _afterDelete_ event from being triggered, since the record isn't actually deleted.
 

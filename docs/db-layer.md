@@ -992,7 +992,7 @@ $success = $connection->update(
 ```
 Dynamic generation
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) are not escaped!
 
@@ -1010,7 +1010,7 @@ $success = $connection->updateAsDict(
 ```
 Dynamic generation (alternative syntax)
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     With the syntax above, the variables for the `where` part of the `update` (`inv_id = 4`) are not escaped!
 

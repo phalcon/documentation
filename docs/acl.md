@@ -38,7 +38,7 @@ In this example, a [Role][acl-role] indicates who needs access to a specific [Co
 Using the [Phalcon\Acl][acl-acl] component, you can establish associations between these [Roles][acl-role] and [Components][acl-component], enhancing the application's security by allowing only specific roles to access designated components.
 
 ## Activation
-[Phalcon\Acl][acl-acl] relies on adapters to manage roles and components. Presently, the only available adapter is [Phalcon\Acl\Adapter\Memory][acl-adapter-memory]. While using the memory adapter significantly enhances ACL access speed, it comes with the trade-off of non-persistent memory. Therefore, developers need to implement a storage strategy for ACL data to avoid regenerating the ACL at every request. This is particularly crucial for large ACLs stored in a database or file system.
+[Phalcon\Acl][acl-acl] uses adapters to manage roles and components. Currently the built-in adapter is [Phalcon\Acl\Adapter\Memory][acl-adapter-memory]. The memory adapter is fast but non-persistent, so you should persist the ACL (cache or file) in production to avoid rebuilding it on every request.
 
 The [Phalcon\Acl][acl-acl] constructor takes an adapter as its first parameter for retrieving information related to the control list.
 
@@ -110,7 +110,7 @@ $acl->addRole('guest');
 ```
 
 ## Adding Components
-A [Component][acl-component] in the context of Phalcon\Acl represents an area of the application where access is controlled. In an MVC application, this typically corresponds to a Controller. Although it is not mandatory, you can use the [Phalcon\Acl\Component][acl-component] class to define components in the application. It is important to add related actions to a component so that the ACL understands what it should control.
+A [Component][acl-component] in the context of Phalcon\Acl represents an area of the application where access is controlled. In an MVC application, this typically corresponds to a Controller. Although not required, you can use the [Phalcon\Acl\Component][acl-component] class to define components in the application. It is important to add related actions to a component so that the ACL understands what it should control.
 
 There are two ways to add components to our list:
 
@@ -225,6 +225,8 @@ $acl->allow('manager', 'admin', 'dashboard');
 $acl->allow('manager', 'reports', ['list', 'add']);
 $acl->allow('accounting', 'reports', '*');
 $acl->allow('*', 'session', '*');
+$acl->allow('*', '*', 'view');
+$acl->deny('guest', '*', 'view');
 ```
 
 In the above example:
@@ -234,13 +236,10 @@ In the above example:
 * `$acl->allow('*', 'session', '*');`: Wildcards can be used for mass matching roles, components, or actions. This line allows every role to access every action in the `session` component.
 * `$acl->allow('*', '*', 'view');`: This line gives access to the `view` action to every role. In MVC terms, it allows any role to access any controller that exposes a `viewAction`.
 * `$acl->deny('guest', '*', 'view');`: For the `guest` role, deny access to all components with the `view` action. Despite the default access level being `Acl\Enum::DENY`, this line specifically denies the `view` action to all roles and components. It ensures that the `guest` role only has access to the `session` component and the `login` and `logout` actions since guests are not logged into the application.
-* `$acl->allow('*', '*', 'view');`: This line gives access to the `view` action to every role. However, the following line excludes the `guest` role from that access:
+* `$acl->allow('*', '*', 'view');`: This line gives access to the `view` action to every role.
+* `$acl->deny('guest', '*', 'view');`: This line excludes the `guest` role from the `view` access:
 
-```php
-$acl->deny('guest', '*', 'view');
-```
-
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
     
@@ -665,7 +664,7 @@ if ($acl->isAllowed('manager', 'admin', 'dashboard')) {
 }
 ```
 
-It is a good practice to not use serialization of the ACL during development to ensure that your ACL is rebuilt with every request, while other adapters or means of serializing and storing the ACL in production.
+It is a good practice to not serialize the ACL during development to ensure that your ACL is rebuilt with every request, while other adapters or means of serializing and storing the ACL in production.
 
 ## Events
 [Phalcon\Acl][acl-acl] can work in conjunction with the [Events Manager][events] if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:

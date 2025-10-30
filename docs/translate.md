@@ -388,7 +388,7 @@ $translator = new Csv($interpolator, $options);
 
 ### Gettext
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     This adapter **requires** the [gettext][php-gettext] PHP extension. Please make sure that your system has it installed so that you can take advantage of this adapter's functionality
 

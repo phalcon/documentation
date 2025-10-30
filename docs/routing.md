@@ -926,7 +926,7 @@ $router->notFound(
 );
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(false);`
 
@@ -1466,7 +1466,7 @@ $router->add(
 );
 ```
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
      Be careful when allowing characters in regular expressions for controllers and namespaces. These will become class names and in turn, they will interact with the file system. As such, it is possible that an attacker can access unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)`
 

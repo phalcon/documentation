@@ -5,7 +5,7 @@
 
     These components have been heavily influenced by [Aura PHP][auraphp] and [Atlas PHP][atlasphp] 
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The full implementation of a DataMapper is not yet complete. There are however a few components that can be used in any project, such as the `Connection` and `Query/Select` 
 
@@ -2461,7 +2461,7 @@ $update->perform();
 //      inv_status_flag = :inv_status_flag
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Using the `columns()` method you are not able to set the type of each parameter.
 

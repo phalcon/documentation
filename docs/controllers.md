@@ -92,11 +92,11 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The use of the `__construct()` method is not recommended.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
 
@@ -116,7 +116,7 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control is implemented in the application).
 
@@ -245,7 +245,7 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     You will need to add additional code to ensure that the data passed is of the correct type and either use the default value or have a correct value. If not, you will end up with errors.
 

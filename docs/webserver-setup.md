@@ -190,7 +190,7 @@ tutorial/
 **Document root**
 The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files.  The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`).
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
 
@@ -345,7 +345,7 @@ url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_ur
 ## WAMP
 [WampServer][wamp] is a Windows web development environment. It allows you to create web applications with Apache2, PHP, and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Paths in this guide should be relative, according to your installation WAMP
 
@@ -378,7 +378,7 @@ extension=php_phalcon.dll
 
 and save it.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The path above might differ depending on the apache installation you have for your web server. Adjust it accordingly.
 
@@ -393,7 +393,7 @@ Open your browser to navigate to `https://localhost`. The WAMP welcome page will
 ## XAMPP
 [XAMPP][xampp] is an easy-to-install Apache distribution containing MySQL, PHP, and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Paths in this guide should be relative, according to your installation WAMP
 

@@ -11,7 +11,7 @@ Sessions are used in PHP to persist data between requests. This enables develope
 ## Manager
 [Phalcon\Session\Manager][session-manager] is a component that allows you to manipulate sessions in your application. This manager accepts an adapter which is the way the data will be communicated to a particular store.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a _handler_ in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
 

@@ -451,7 +451,7 @@ echo $flash
 
     The `setImplicitFlush()` returns back the object, so you can use it in a more fluent interface by chaining calls.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     When using the [Phalcon\Flash\Direct][flash-direct] component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
 

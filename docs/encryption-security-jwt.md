@@ -5,17 +5,19 @@
 
 !!! info "NOTE"
 
-    Currently, only symmetric algorithms are supported 
+    Currently only HMAC-based (symmetric) signers are supported.
 
-`Phalcon\Encryption\Security\JWT` is a namespace that contains components that allow you to issue, parse, and validate JSON Web Tokens as described in [RFC 7915][rfc-7519]. These components are:
+`Phalcon\Encryption\Security\JWT` contains components to issue, parse, and validate JSON Web Tokens as described in [RFC 7519][rfc-7519].
+
+These components are:
 
 - Builder ([Phalcon\Encryption\Security\JWT\Builder][security-jwt-builder])
 - Parser ([Phalcon\Encryption\Security\JWT\Token\Parser][security-jwt-token-parser])
 - Validator ([Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator])
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
-    For the examples below, we have split the output split into different lines for readability
+    For the examples below, we have split the output into different lines for readability
 
 An example of using the component is:
 
@@ -188,8 +190,13 @@ public function verify(SignerInterface $signer, string $key): bool
 Verify the signature of the token
 
 
-
 ### Signer
+
+**Supported signers**
+
+!!! info "NOTE"
+
+    Currently the library supports HMAC signers (symmetric): `sha512`, `sha384`, and `sha256`. The `none` signer is available for development only and should not be used in production.
 
 In order to create a JWT token, we need to supply a Signing algorithm. By default, the builder uses "none" ([Phalcon\Encryption\Security\JWT\Signer\None][security-jwt-signer-none]). You can however use the HMAC signer ([Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]). Also, for further customization, you can utilize the supplied [Phalcon\Encryption\Security\JWT\Signer\SignerInterface][security-jwt-signer-signerinterface] interface.
 
@@ -250,7 +257,7 @@ Verifies that the hashed source string is the same as the hash of the payload wi
 
 ## Issuing Tokens
 
-A Builder component ([Phalcon\Encryption\Security\JWT\Builder][security-jwt-builder]) is available, utilizing chained methods, and ready to be used to create JWT tokens. All you have to do is instantiate the Builder object, configure your token, and call `getToken()`. This will return a [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token] object which contains all the necessary information for your token. When instantiating the builder component, you have to supply the signer class. In the example below we use the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] signer.
+A Builder component ([Phalcon\Encryption\Security\JWT\Builder][security-jwt-builder]) is available, utilizing chained methods, and ready to be used to create JWT tokens. All you have to do is instantiate the Builder object, configure your token, and call `getToken()`. This will return a [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] object which contains all the necessary information for your token. When instantiating the builder component, you have to supply the signer class. In the example below we use the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] signer.
 
 All setters in this component are chainable.
 
@@ -456,7 +463,7 @@ $tokenObject = $parser->parse($tokenReceived);
 
 $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
 ```
-You can use the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] object to validate each claim by calling the `validate*` methods with the necessary parameters (taken from the [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token]). The internal `errors` array in the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] will be populated accordingly, returning the results with the `getErrors()` method.
+You can use the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] object to validate each claim by calling the `validate*` methods with the necessary parameters (taken from the [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token]). The internal `errors` array in the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] will be populated accordingly, returning the results with the `getErrors()` method.
 
 #### Methods
 
@@ -488,7 +495,7 @@ Validates the audience. If it is not included in the token's `aud`, a [Phalcon\E
 ```php
 public function validateExpiration(int $timestamp): Validator
 ```
-Validates the expiration time. If the `exp` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the expiration time. If the `exp` value stored in the token is less than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
 
 ```php
 public function validateId(string $id): Validator
@@ -567,7 +574,7 @@ var_dump($validator->getErrors());
 ```
 
 ### Token
-As an alternative, you can `verify()` and `validate()` your token using the relevant methods in the [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token] object.
+As an alternative, you can `verify()` and `validate()` your token using the relevant methods in the [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] object.
 
 #### Methods
 
@@ -583,7 +590,7 @@ Validate the token claims. The validators that are executed are:
 - `validateIssuer()`
 - `validateNotBefore()`
 
-You can extend the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] and [Phalcon\Encryption\Security\Token\Token][security-jwt-token-token] objects to include more validators and execute them (as seen below).
+You can extend the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] and [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] objects to include more validators and execute them (as seen below).
 
 ```php
 public function verify(SignerInterface $signer, string $key): bool
@@ -632,7 +639,7 @@ $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
 
 $validator
     ->set(Enum::AUDIENCE, $audience)
-    ->set(Enum::EXPIRATION_TIME, $expiry)
+    ->set(Enum::EXPIRATION_TIME, $expires)
     ->set(Enum::ISSUER, $issuer)
     ->set(Enum::ISSUED_AT, $issued)
     ->set(Enum::ID, $id)
@@ -668,14 +675,14 @@ class IndexController extends Controller
         try {
             $signer     = new Hmac();
             $builder    = new Builder($signer);
-            $expiry     = strtotime('+1 day');
+            $expires    = strtotime('+1 day');
             $issued     = strtotime('now') + 100;
             $notBefore  = strtotime('-1 day');
             $passphrase = '&vsJBETaizP3A3VX&TPMJUqi48fJEgN7';
             
             return $builder
                 ->setAudience('my-audience')
-                ->setExpirationTime($expiry)
+                ->setExpirationTime($expires)
                 ->setIssuer('Phalcon JWT')
                 ->setIssuedAt($issued)
                 ->setId('PH-JWT')
@@ -696,7 +703,7 @@ class IndexController extends Controller
 
 [rfc-7519]: https://datatracker.ietf.org/doc/html/rfc7519
 [hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
-[hash-equals]: https://www.php.net/manual/en/function.hash-hmac.php
+[hash-equals]: https://www.php.net/manual/en/function.hash-equals.php
 [security-jwt-builder]: api/phalcon_encryption.md#encryptionsecurityjwtbuilder
 [security-jwt-exceptions-unsupportedalgorithmexception]: api/phalcon_encryption.md#encryptionsecurityjwtexceptionsunsupportedalgorithmexception
 [security-jwt-exceptions-validatorexception]: api/phalcon_encryption.md#encryptionsecurityjwtexceptionsvalidatorexception

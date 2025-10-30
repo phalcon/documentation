@@ -1,7 +1,7 @@
 # Loader
 - - -
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The `Phalcon\Autoload\Loader` class has been renamed `Phalcon\Autoload\Loader`. The functionality remains the same.
 
@@ -38,7 +38,7 @@ $loader->register();
 
 You can always call the `isRegistered()` method to check if your autoloader is registered or not.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If there is an error in registering the autoloader, the component will throw an exception.
 

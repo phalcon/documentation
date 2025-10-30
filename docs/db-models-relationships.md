@@ -1302,7 +1302,7 @@ Although the syntax above is very handy, it is not always ideal to use it, espec
 
 Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages generated during the save process of the whole transaction will be passed back to the user for more information.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Adding related entities by overloading the following methods/events is **not** possible:
     
@@ -1398,7 +1398,7 @@ $customer->getInvoices()->delete();
 
 `delete()` also accepts an anonymous function to filter what records must be deleted:
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `delete()` only works safely with `hasMany()` relationships. The deletion callback runs before the actual deletion of the parent model.
     

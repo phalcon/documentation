@@ -49,11 +49,11 @@ $text = $locator->hello('World');
 
 ## Built-in
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Where appropriate, the sanitizers will cast the value to the type expected. For example, the `absint` sanitizer will remove all non-numeric characters from the input, cast the input to an integer, and return its absolute value.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     To use the predefined filters, you will need to obtain an instance of `Phalcon\Filter\Filter` using the `Phalcon\Filter\FilterFactory` as shown above.
 

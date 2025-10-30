@@ -12,11 +12,11 @@
 
     You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application, and it does not fit all needs.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Note the code below has been formatted to increase readability
 
@@ -325,7 +325,7 @@ First of all, we ensure that we have full error reporting. You can, of course, c
 
 A `try`/`catch` block wraps all operations. This ensures that all errors are caught and displayed on screen.
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     You will need to rework the code to enhance security. Currently, if an error happens with the database, the `catch` code will echo on screen the database credentials with the exception. This code is intended as a tutorial, not a full-scale production application
 
@@ -555,7 +555,7 @@ In the model above, we have defined all the fields of the table as public proper
 echo $successLogin->ipAddress;
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
 

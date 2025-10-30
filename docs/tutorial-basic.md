@@ -32,7 +32,7 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
         └── js
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing the Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the [installation][installation] page and complete the installation prior to continuing with this tutorial.
 
@@ -100,7 +100,7 @@ Since Phalcon is loosely coupled, services are registered with the framework's D
 
 Each time the framework requires a component or service, it will ask the container to use an agreed-upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection, etc.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If you are still interested in the details please see this article by [Martin Fowler][injection]. Also, we have [a great tutorial][di] covering many use cases.
 

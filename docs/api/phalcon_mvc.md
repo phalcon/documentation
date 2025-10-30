@@ -2669,7 +2669,7 @@ $invoice->inv_total = 120;
 $invoice->update();
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     When retrieving the record with `findFirst()`, you need to get the full
     object back (no `columns` definition) but also retrieve it using the
@@ -14640,5 +14640,3 @@ Appends template before controller layout
 public function start();
 ```
 Starts rendering process enabling the output buffering
-
-

@@ -405,7 +405,7 @@ class PostsController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The placeholders for Volt `{{`, `}}`, `{%`, and `%}` cannot be changed or set. 
 
@@ -1476,7 +1476,7 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function, it is possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended to initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
 

@@ -1078,7 +1078,7 @@ $container->loadFromYaml('services.yml');
 $container->get('/app/config/services.yml');
 ```
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     This approach requires that the module Yaml be installed. Please refer to [this document][yaml] for more information.
 

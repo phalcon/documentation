@@ -4,7 +4,7 @@
 ## Overview
 When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object offers this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu, etc.) to ensure that the database is not queried for the schema every time a query is executed.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
 
