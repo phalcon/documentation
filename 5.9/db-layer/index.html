@@ -538,7 +538,7 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-86-12 name=__codelineno-86-12 href=#__codelineno-86-12></a>    <span class=p>],</span>
 <a id=__codelineno-86-13 name=__codelineno-86-13 href=#__codelineno-86-13></a>    <span class=s1>&#39;inv_id = 4&#39;</span>
 <a id=__codelineno-86-14 name=__codelineno-86-14 href=#__codelineno-86-14></a><span class=p>);</span>
-</code></pre></div> Dynamic generation</p> <div class="admonition danger"> <p class=admonition-title>NOTE</p> <p>With the syntax above, the variables for the <code>where</code> part of the <code>update</code> (<code>inv_id = 4</code>) are not escaped!</p> </div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-87-1 name=__codelineno-87-1 href=#__codelineno-87-1></a><span class=o>&lt;?</span><span class=nx>php</span>
+</code></pre></div> Dynamic generation</p> <div class="admonition danger"> <p class=admonition-title>DANGER</p> <p>With the syntax above, the variables for the <code>where</code> part of the <code>update</code> (<code>inv_id = 4</code>) are not escaped!</p> </div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-87-1 name=__codelineno-87-1 href=#__codelineno-87-1></a><span class=o>&lt;?</span><span class=nx>php</span>
 <a id=__codelineno-87-2 name=__codelineno-87-2 href=#__codelineno-87-2></a>
 <a id=__codelineno-87-3 name=__codelineno-87-3 href=#__codelineno-87-3></a><span class=nv>$success</span> <span class=o>=</span> <span class=nv>$connection</span><span class=o>-&gt;</span><span class=na>updateAsDict</span><span class=p>(</span>
 <a id=__codelineno-87-4 name=__codelineno-87-4 href=#__codelineno-87-4></a>    <span class=s1>&#39;co_invoices&#39;</span><span class=p>,</span>
@@ -548,7 +548,7 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-87-8 name=__codelineno-87-8 href=#__codelineno-87-8></a>    <span class=p>],</span>
 <a id=__codelineno-87-9 name=__codelineno-87-9 href=#__codelineno-87-9></a>    <span class=s1>&#39;inv_id = 4&#39;</span>
 <a id=__codelineno-87-10 name=__codelineno-87-10 href=#__codelineno-87-10></a><span class=p>);</span>
-</code></pre></div> Dynamic generation (alternative syntax)</p> <div class="admonition danger"> <p class=admonition-title>NOTE</p> <p>With the syntax above, the variables for the <code>where</code> part of the <code>update</code> (<code>inv_id = 4</code>) are not escaped!</p> </div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-88-1 name=__codelineno-88-1 href=#__codelineno-88-1></a><span class=o>&lt;?</span><span class=nx>php</span>
+</code></pre></div> Dynamic generation (alternative syntax)</p> <div class="admonition danger"> <p class=admonition-title>DANGER</p> <p>With the syntax above, the variables for the <code>where</code> part of the <code>update</code> (<code>inv_id = 4</code>) are not escaped!</p> </div> <p><div class=highlight><pre><span></span><code><a id=__codelineno-88-1 name=__codelineno-88-1 href=#__codelineno-88-1></a><span class=o>&lt;?</span><span class=nx>php</span>
 <a id=__codelineno-88-2 name=__codelineno-88-2 href=#__codelineno-88-2></a>
 <a id=__codelineno-88-3 name=__codelineno-88-3 href=#__codelineno-88-3></a><span class=nv>$success</span> <span class=o>=</span> <span class=nv>$connection</span><span class=o>-&gt;</span><span class=na>update</span><span class=p>(</span>
 <a id=__codelineno-88-4 name=__codelineno-88-4 href=#__codelineno-88-4></a>    <span class=s1>&#39;co_invoices&#39;</span><span class=p>,</span>
