@@ -26,6 +26,7 @@
     width: 46%;
     margin-right: 10px;
     margin-left: 10px;
+    transition: borrder-color .2s;
 }
 
 @media screen and (max-width: 600px) {
@@ -36,7 +37,7 @@
 }
 
 .phalcon-blog__sponsors-items a:hover {
-    border-bottom-color: #273646;
+    border-color: #273646;
     text-decoration: none !important;
 }
 
