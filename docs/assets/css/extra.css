@@ -26,7 +26,7 @@
     width: 46%;
     margin-right: 10px;
     margin-left: 10px;
-    transition: borrder-color .2s;
+    transition: all .2s ease;
 }
 
 @media screen and (max-width: 600px) {
