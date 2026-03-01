@@ -135,6 +135,7 @@ plugins:
         'en/db-models-behaviors.md': db-models-behaviors.md
         'en/db-models-cache.md': db-models-cache.md
         'en/db-models-events.md': db-models-events.md
+        'en/db-models-events-psr.md': db-models-events-psr.md
         'en/db-models.md': db-models.md
         'en/db-models-metadata.md': db-models-metadata.md
         'en/db-models-relationships.md': db-models-relationships.md
@@ -153,6 +154,7 @@ plugins:
         'en/environments-devilbox.md': environments-devilbox.md
         'en/environments-nanobox.md': environments-nanobox.md
         'en/events.md': events.md
+        'en/events-psr.md': events-psr.md
         'en/filter-filter.md': filter-filter.md
         'en/filter-validation.md': filter-validation.md
         'en/flash.md': flash.md
@@ -341,6 +343,7 @@ nav:
       - Behaviors: db-models-behaviors.md
       - Cache: db-models-cache.md
       - Events: db-models-events.md
+      - Events (PSR-14): db-models-events-psr.md
       - Metadata: db-models-metadata.md
       - Relationships: db-models-relationships.md
       - Transactions: db-models-transactions.md
@@ -368,6 +371,7 @@ nav:
       - Controllers: controllers.md
       - Dispatcher: dispatcher.md
       - Event Manager: events.md
+      - Event Manager (PSR-14): events-psr.md
       - Filters: filter-filter.md
       - Routing: routing.md
       - Sessions: session.md
