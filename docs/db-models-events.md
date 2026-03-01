@@ -1,5 +1,9 @@
-# Model Events
+# Model Events (Legacy)
 - - -
+
+!!! danger "Deprecated"
+
+    The string-based model event system (using `fire()` with `model:event` strings and the `Phalcon\Events\Event` object) is **deprecated** as of Phalcon v6.0. It will continue to work for backwards compatibility. New code should use the **PSR-14 compatible model events** with typed event objects. See the [PSR-14 Model Events documentation](db-models-events-psr.md) for the new approach.
 
 ## Overview
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model][mvc-model-query] and their order of execution:

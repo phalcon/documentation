@@ -1,5 +1,9 @@
-# Events Manager
+# Events Manager (Legacy)
 - - -
+
+!!! danger "Deprecated"
+
+    The string-based event system (`fire()` with `component:event` strings) is **deprecated** as of Phalcon v6.0. It will continue to work for backwards compatibility, but new code should use the **PSR-14 compatible event system**. See the [PSR-14 Events documentation](events-psr.md) for the new approach.
 
 ## Overview
 The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These hooks allow developers to obtain status information, manipulate data, or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
@@ -84,7 +88,7 @@ Set if priorities are enabled in the events manager (default `false`).
 ```php
 public function fire(string $eventType, mixed $source, mixed $data = null, bool $cancelable = true)
 ```
-Fires an event in the events manager causing the active listeners to be notified about it
+**Deprecated** - Fires an event in the events manager causing the active listeners to be notified about it. Use `dispatch()` instead for PSR-14 compatible event dispatching. See [PSR-14 Events](events-psr.md).
 
 ```php
 final public function fireQueue(SplPriorityQueue $queue, EventInterface $event): mixed
@@ -785,6 +789,11 @@ class Invoices extends Model
 ``` 
 
 ## Custom
+
+!!! info "NOTE"
+
+    For new custom event manager implementations, consider implementing `Psr\EventDispatcher\EventDispatcherInterface` alongside `Phalcon\Events\ManagerInterface`. See [PSR-14 Events](events-psr.md) for the new approach.
+
 The [Phalcon\Events\ManagerInterface][events-managerinterface] interface must be implemented to create your own events manager replacing the one provided by Phalcon.
 
 ```php
