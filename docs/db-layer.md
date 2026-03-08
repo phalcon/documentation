@@ -318,6 +318,7 @@ $invoice = $connection->fetchColumn(
     'SELECT inv_id, inv_title 
     FROM co_invoices
     ORDER BY inv_created_at DESC',
+    [],
     1
 )
 print_r($invoice)
