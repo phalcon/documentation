@@ -159,15 +159,15 @@ $logger->warning("This is a warning message");
 The log generated is as follows:
 
 ```bash
-[Tue, 25 Dec 18 12:13:14 -0400][ALERT] This is an alert message
-[Tue, 25 Dec 18 12:13:14 -0400][CRITICAL] This is a critical message
-[Tue, 25 Dec 18 12:13:14 -0400][DEBUG] This is a debug message
-[Tue, 25 Dec 18 12:13:14 -0400][ERROR] This is an error message
-[Tue, 25 Dec 18 12:13:14 -0400][EMERGENCY] This is an emergency message
-[Tue, 25 Dec 18 12:13:14 -0400][INFO] This is an info message
-[Tue, 25 Dec 18 12:13:14 -0400][CRITICAL] This is a log message
-[Tue, 25 Dec 18 12:13:14 -0400][NOTICE] This is a notice message
-[Tue, 25 Dec 18 12:13:14 -0400][WARNING] This is warning message
+[Tue, 25 Dec 18 12:13:14 -0400][alert] This is an alert message
+[Tue, 25 Dec 18 12:13:14 -0400][critical] This is a critical message
+[Tue, 25 Dec 18 12:13:14 -0400][debug] This is a debug message
+[Tue, 25 Dec 18 12:13:14 -0400][error] This is an error message
+[Tue, 25 Dec 18 12:13:14 -0400][emergency] This is an emergency message
+[Tue, 25 Dec 18 12:13:14 -0400][info] This is an info message
+[Tue, 25 Dec 18 12:13:14 -0400][critical] This is a log message
+[Tue, 25 Dec 18 12:13:14 -0400][notice] This is a notice message
+[Tue, 25 Dec 18 12:13:14 -0400][warning] This is warning message
 ```
 
 ## Multiple Adapters
@@ -295,10 +295,10 @@ $logger->warning("This is a warning message");
 The log generated is as follows:
 
 ```bash
-[Tue, 25 Dec 18 12:13:14 -0400][ALERT] This is an alert message
-[Tue, 25 Dec 18 12:13:14 -0400][CRITICAL] This is a critical message
-[Tue, 25 Dec 18 12:13:14 -0400][EMERGENCY] This is an emergency message
-[Tue, 25 Dec 18 12:13:14 -0400][CRITICAL] This is a log message
+[Tue, 25 Dec 18 12:13:14 -0400][alert] This is an alert message
+[Tue, 25 Dec 18 12:13:14 -0400][critical] This is a critical message
+[Tue, 25 Dec 18 12:13:14 -0400][emergency] This is an emergency message
+[Tue, 25 Dec 18 12:13:14 -0400][critical] This is a log message
 ```
 
 The above can be used in situations where you want to log messages above a certain severity based on conditions in your application such as development mode vs. production.
@@ -306,6 +306,10 @@ The above can be used in situations where you want to log messages above a certa
 !!! info "NOTE"
 
     The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
+
+!!! info "NOTE"
+
+    Log level names are emitted in lowercase (for example: `error`, `warning`, `info`).
 
 !!! danger "DANGER"
 
@@ -376,11 +380,11 @@ Formats the messages using a one-line string. The default logging format is:
 #### Message Format
 If the default format of the message does not fit the needs of your application you can change it using the `setFormat()` method. The log format variables allowed are:
 
-| Variable    | Description                              |
-|-------------|------------------------------------------|
+| Variable    | Description                                 |
+|-------------|---------------------------------------------|
 | `%message%` | The message itself is expected to be logged |
-| `%date%`    | Date the message was added               |
-| `%level%`   | Uppercase string with message level      |
+| `%date%`    | Date the message was added                  |
+| `%level%`   | Lowercase string with message level         |
 
 The following example demonstrates how to change the message format:
 
@@ -409,7 +413,7 @@ $logger->error('Something went wrong');
 which produces:
 
 ```bash
-[ALERT] - [Tue, 25 Dec 18 12:13:14 -0400] - Something went wrong
+[alert] - [Tue, 25 Dec 18 12:13:14 -0400] - Something went wrong
 ```
 
 If you do not want to use the constructor to change the message, you can always use the `setFormat()` on the formatter:
@@ -473,7 +477,7 @@ $logger->error('Something went wrong');
 which produces:
 
 ```bash
-[ERROR] - [20181225-121314] - Something went wrong
+[error] - [20181225-121314] - Something went wrong
 ```
 
 ### JSON Formatter

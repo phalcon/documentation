@@ -404,6 +404,12 @@ public function get(
 Resolves the service based on its configuration
 
 ```php
+public function getAlias(string $name): string
+```
+Returns the resolved service name for an alias, or an empty string if the alias does not exist.
+public function setAlias(string $name, string|array $aliases): Di
+
+```php
 public static function getDefault(): DiInterface | null
 ```
 Return the latest DI created
@@ -574,6 +580,11 @@ public function set(
 ): ServiceInterface
 ```
 Registers a service in the services container
+
+```php
+public function setAlias(string $name, string|array $aliases): Di
+```
+Registers one or more aliases for an existing service.
 
 ```php
 public static function setDefault(<DiInterface> container)
@@ -1242,6 +1253,38 @@ $requestService->setDefinition(
 $requestService->setShared(true);
 
 $request = $requestService->resolve();
+```
+
+### Service Aliases
+
+!!! warning "WARNING"
+
+    Alias names must be strings, cannot collide with existing services/aliases, and the target service must already exist.
+
+You can register one or more aliases for an existing service name. Once aliases are set, calls such as `get()`, `getShared()`, `getService()`, `set()`, and `remove()` can resolve through the alias chain.
+
+```php
+<?php
+
+use Phalcon\Di\Di;
+use Phalcon\Http\Request;
+
+$container = new Di();
+
+$container->setShared("request", Request::class);
+
+// single alias
+$container->setAlias("request", "httpRequest");
+
+// multiple aliases
+$container->setAlias("request", ["req", "incomingRequest"]);
+
+$requestA = $container->get("request");
+$requestB = $container->get("httpRequest");
+$requestC = $container->get("req");
+
+var_dump($requestA === $requestB); // true
+var_dump($container->getAlias("incomingRequest")); // "request"
 ```
 
 ## Instantiating Classes

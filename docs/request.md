@@ -371,12 +371,35 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 
 ### Client
 
-| Name                  | Description                                                            |
-|-----------------------|------------------------------------------------------------------------|
-| `getClientAddress()`  | Gets most possible client IPv4 Address                                 |
-| `getClientCharsets()` | Gets a charsets array and their quality accepted by the browser/client |
-| `getUserAgent()`      | Gets HTTP user agent used to make the request                          |
-| `getHTTPReferer()`    | Gets web page that refers active request                               |
+| Name                  | Description                                                              |
+|-----------------------|--------------------------------------------------------------------------|
+| `getClientAddress()`  | Gets the most likely client IP address (supports proxy-aware resolution) |
+| `getClientCharsets()` | Gets a charsets array and their quality accepted by the browser/client   |
+| `getUserAgent()`      | Gets HTTP user agent used to make the request                            |
+| `getHTTPReferer()`    | Gets web page that refers active request                                 |
+
+### Trusted Proxy Resolution
+
+When you call `getClientAddress(true)`, the request component can resolve client IPs behind proxies.
+
+Resolution order:
+1. If `trustedProxyHeader` is configured and present, use it first.
+2. If `trustedProxies` is configured and `REMOTE_ADDR` is not trusted, return `REMOTE_ADDR`.
+3. Otherwise, parse `HTTP_X_FORWARDED_FOR` from right to left, skip trusted proxies, and return the first valid public IP.
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$request
+    ->setTrustedProxies(["10.0.0.10", "10.0.0.11"])
+    ->setTrustedProxyHeader("HTTP_CLIENT_IP");
+
+$ipAddress = $request->getClientAddress(true);
+```
 
 ### Content
 

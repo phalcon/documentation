@@ -119,9 +119,9 @@ Remove all characters except digits, plus and minus sign, and casts the value as
 
 #### `ip`
 ```php
-Ip( string input, int filter = 0 ): int
+Ip( string $input, int $filter = 0 ): string|false
 ```
-Sanitize the IP address or CIDR IP range. Internally it uses [filter_var][filter_var]. You can pass specific filters to sanitize your input:
+Sanitizes an IP address or CIDR IP range. Internally it uses [filter_var][filter_var] for IP validation. CIDR masks are validated according to IP family (`0-32` for IPv4, `0-128` for IPv6). Returns `false` for invalid values.
 
 ```
 FILTER_FLAG_IPV4

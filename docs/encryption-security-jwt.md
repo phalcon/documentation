@@ -292,9 +292,10 @@ public function addClaim(string $name, mixed $value): Builder
 Adds a custom claim in the claims collection
 
 ```php
-public function getAudience(): array|string
+public function getAudience(): array
 ```
-Returns the `aud` contents
+---
+Returns the `aud` contents. If `aud` is not set, this method returns an empty array.
 
 ```php
 public function getClaims(): array
@@ -394,7 +395,14 @@ Sets the subject (`sub`).
 ```php
 public function setPassphrase(string $passphrase): Builder
 ```
-Sets the passphrase. If the `$passphrase` is weak, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Sets the passphrase. A weak passphrase raises a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception].
+
+The passphrase must:
+- be at least 16 characters long
+- contain at least one uppercase letter
+- contain at least one lowercase letter
+- contain at least one digit
+- contain at least one special character
 
 ```php
 private function setClaim(string $name, $value): Builder
@@ -491,6 +499,21 @@ Sets the token object.
 public function validateAudience(array|string $audience): Validator
 ```
 Validates the audience. If it is not included in the token's `aud`, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+
+```php
+public function validateClaim(string $name, mixed $value): Validator
+```
+Validates a custom claim by name against an expected value.
+
+In a validator example chain, include one custom claim check, e.g.:
+```php
+$validator
+    ->validateAudience($audience)
+    ->validateIssuer($issuer)
+    ->validateClaim("tenantId", "acme")
+;
+```
+
 
 ```php
 public function validateExpiration(int $timestamp): Validator

@@ -336,6 +336,10 @@ Once the `bind()` process finishes, the modified `entity` will be passed in the 
 
 !!! info "NOTE"
 
+    During `isValid()`, field filters are applied through the form binding flow even when an element has no validators. This keeps entity/input normalization consistent across validated and non-validated fields.
+
+!!! info "NOTE"
+
     Passing an `entity` object will result in the object being modified by the user input as described above. If you do not wish this behavior, you can clone the entity before passing it, to keep a copy of the original object
 
 ```php
