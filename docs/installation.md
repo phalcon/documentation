@@ -4,7 +4,7 @@
 ## Requirements
 
 ### PHP 8.1
-Phalcon v5.9 supports only PHP 8.1 and above.
+Phalcon v5.11 supports only PHP 8.1 and above.
 
 Although PHP 8.1 was released several years ago and it's [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications.
 
@@ -99,18 +99,18 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
 !!! info "NOTE"
 
-    The preferred method of installation is through [PECL][install-pecl].
+    The preferred method of installation is through [PIE][install-pie].
 
 !!! warning "WARNING"
 
-    To install phalcon with PECL you will need at least 4GB of RAM, otherwise the PECL build command will fail. 
+    To install phalcon with PIE you will need at least 4GB of RAM, otherwise the PECL build command will fail. 
 
 !!! warning "WARNING"
 
     For newer versions of Linux (for instance Debian 13) Phalcon might not compile. To resolve this issue you will need to issue the following command:
 ```
 export CFLAGS="-Wno-incompatible-pointer-types"
-sudo -E pecl install phalcon
+sudo -E pie install phalcon
 ```
 
 !!! warning "WARNING"
@@ -118,10 +118,26 @@ sudo -E pecl install phalcon
     If you are trying to install Phalcon in Docker and you face the same issue as above, you can try:
 ```
 ARG CFLAGS="-Wno-incompatible-pointer-types"
-pecl install phalcon
+pie install phalcon
+```
+
+### PIE
+[PIE][install-pie] (PHP Installer for Extensions) is a modern installer for PHP extensions.
+
+If `pie` is not installed on your system, install PIE first by following the official installation instructions.
+
+Once PIE is available, install Phalcon with:
+
+```bash
+pie install phalcon
 ```
 
 ### PECL
+
+!!! warning "WARNING"
+
+    PECL has been deprecated. Please consider installing Phalcon with PIE
+
 The PECL installation method is available for Windows, Linux, and macOS. Under Windows pre-compiled dll files are available, while under Linux and macOS, Phalcon will be compiled locally. To install Phalcon using PECL make sure you have [pecl/pear][install-pecl] installed.
 ```
 pecl channel-update pecl.php.net
@@ -182,7 +198,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.9.2 ./
+git checkout tags/v5.11.0 ./
 zephir fullclean
 zephir build
 ```
@@ -321,7 +337,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.9.2 ./
+git checkout tags/v5.11.0 ./
 zephir fullclean
 zephir build
 ```
@@ -346,7 +362,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.9.2 ./
+git checkout tags/v5.11.0 ./
 zephir fullclean
 zephir compile
 cd ext
@@ -404,5 +420,6 @@ The plesk control panel doesn't have Phalcon support, but you can find installat
 [remi-config]: https://blog.remirepo.net/pages/Config-en
 [zephir-parser]: https://github.com/zephir-lang/php-zephir-parser/releases
 [zephir-phar]: https://github.com/phalcon/zephir/releases
+[install-pie]: https://github.com/php/pie
 [install-pecl]: https://pear.php.net/manual/en/installation.getting.php
 [install-phpbrew]: https://github.com/phpbrew/phpbrew/wiki/Quick-Start

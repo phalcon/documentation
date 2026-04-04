@@ -13,10 +13,10 @@ change those values.
 
 We provide our Docker images on the Docker Hub and GitHub. See the following table for the addresses:
 
-| Provider   | Pull command example                                 |
-|------------|------------------------------------------------------|
-| Docker Hub | `docker pull phalconphp/cphalcon:v5.9.2-php8.4`      |   
-| GitHub     | `docker pull ghcr.io/phalcon/cphalcon:v5.9.2-php8.4` |
+| Provider   | Pull command example                                  |
+|------------|-------------------------------------------------------|
+| Docker Hub | `docker pull phalconphp/cphalcon:v5.11.0-php8.4`      |   
+| GitHub     | `docker pull ghcr.io/phalcon/cphalcon:v5.11.0-php8.4` |
 
 !!! info "NOTE"
 
@@ -62,7 +62,7 @@ For more advanced applications, you maybe need to install another extension.
 Let's say you want to install the `memcached` extension. Phalcon provides an easy way to do so:
 
 ```dockerfile
-FROM phalconphp/cphalcon:v5.9.2-php8.4
+FROM phalconphp/cphalcon:v5.11.2-php8.4
 
 RUN set -eux \
   && install-php-extensions memcached

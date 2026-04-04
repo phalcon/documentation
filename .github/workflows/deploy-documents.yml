@@ -1,7 +1,7 @@
 # Workflow inspiration and adaptation came from Andruino-Cli
 # https://github.com/arduino/arduino-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
 
-name: Deploy Documents 5.9
+name: Deploy Documents 5.11
 
 env:
   PYTHON_VERSION: "3.9"
@@ -41,7 +41,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install Python
         uses: actions/setup-python@v5
