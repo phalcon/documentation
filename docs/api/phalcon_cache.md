@@ -309,6 +309,38 @@ Redis adapter
 ```php
 //
 protected $eventType = 'cache';
+```
+
+
+## Cache\Adapter\RedisCluster 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Adapter/RedisCluster.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cache\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Cache\Adapter\AdapterInterface`
+    - `Phalcon\Storage\Adapter\RedisCluster`
+
+-   __Extends__
+    
+    `StorageRedisCluster`
+
+-   __Implements__
+    
+    - `CacheAdapterInterface`
+
+RedisCluster adapter
+
+
+### Properties
+```php
+//
+protected $eventType = 'cache';
 
 ```
 
@@ -709,3 +741,4 @@ Exceptions thrown in Phalcon\Cache will use this class
     
 
 Exceptions thrown in Phalcon\Cache will use this class
+

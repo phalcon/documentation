@@ -1292,6 +1292,7 @@ Generates SQL checking for the existence of a schema.view
     - `Phalcon\Db\ResultInterface`
     - `Phalcon\Db\Result\PdoResult`
     - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
     
@@ -2170,9 +2171,9 @@ const TYPE_VARCHAR = 2;
 /**
  * Column Position
  *
- * @var string|null
+ * @var string
  */
-protected $after;
+protected $after = "";
 
 /**
  * Column is autoIncrement?
@@ -2292,7 +2293,7 @@ Phalcon\Db\Column constructor
 
 
 ```php
-public function getAfterPosition(): string | null;
+public function getAfterPosition(): string;
 ```
 Check whether field absolute to position in table
 
@@ -2527,6 +2528,7 @@ Returns true if number column is unsigned
 
 -   __Uses__
     
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
     

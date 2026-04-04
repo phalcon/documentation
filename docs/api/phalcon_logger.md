@@ -474,19 +474,23 @@ Adapter to store logs in plain text files
 $logger = new \Phalcon\Logger\Adapter\Stream('app/logs/test.log');
 
 $logger->log('This is a message');
-$logger->log(\Phalcon\Logger::ERROR, 'This is an error');
+$logger->log(\Phalcon\Logger\Enum::ERROR, 'This is an error');
 $logger->error('This is another error');
 
 $logger->close();
 ```
 
-@property string        $mode
-@property string        $name
-@property array         $options
 
 
 ### Properties
 ```php
+/**
+ * Stream handler resource
+ *
+ * @var resource|null
+ */
+protected $handler;
+
 /**
  * The file open mode. Defaults to 'ab'
  *
@@ -537,7 +541,19 @@ Processes the message i.e. writes it to the file
 
 
 ```php
+protected function phpFclose( mixed $handle ): bool;
+```
+@todo to be removed when we get traits
+
+
+```php
 protected function phpFopen( string $filename, string $mode );
+```
+@todo to be removed when we get traits
+
+
+```php
+protected function phpFwrite( mixed $handle, string $message );
 ```
 @todo to be removed when we get traits
 
@@ -556,8 +572,8 @@ protected function phpFopen( string $filename, string $mode );
 -   __Uses__
     
     - `LogicException`
+    - `Phalcon\Logger\Enum`
     - `Phalcon\Logger\Item`
-    - `Phalcon\Logger\Logger`
 
 -   __Extends__
     

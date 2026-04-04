@@ -374,7 +374,6 @@ Sets the default task suffix
 
 -   __Implements__
     
-    - `RouterInterface`
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process
 of taking a command-line arguments and decomposing it into parameters to

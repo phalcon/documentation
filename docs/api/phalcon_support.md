@@ -514,20 +514,9 @@ protected $showFiles = true;
     */
 protected $uri = https://assets.phalcon.io/debug/5.0.x/;
 
-/**
- * @var Version
- */
-private $version;
-
 ```
 
 ### Methods
-
-```php
-public function __construct();
-```
-Constructor setting a reusable version object
-
 
 ```php
 public function clearVars(): Debug;
@@ -653,7 +642,7 @@ Produces an string representation of a variable
 
 
 ```php
-final protected function showTraceItem( int $n, array $trace ): string;
+final protected function showTraceItem( int $number, array $trace ): string;
 ```
 Shows a backtrace item
 
@@ -671,7 +660,7 @@ Shows a backtrace item
 
 -   __Uses__
     
-    - `Phalcon\Di\Di`
+    - `Phalcon\Di\DiInterface`
     - `Phalcon\Support\Helper\Json\Encode`
     - `Reflection`
     - `ReflectionClass`
@@ -752,7 +741,7 @@ Alias of variable() method
 
 
 ```php
-public function setDetailed( bool $detailed ): void;
+public function setDetailed( bool $flag ): void;
 ```
 
 
@@ -832,10 +821,11 @@ Prepare an HTML string of information about a single variable.
 
 -   __Uses__
     
+    - `Phalcon\Support\Exception`
 
 -   __Extends__
     
-    `\Exception`
+    `SupportException`
 
 -   __Implements__
     
@@ -3261,6 +3251,91 @@ final public function unserialize( string $data ): void;
 Constructs the object
 
 @link https://php.net/manual/en/serializable.unserialize.php
+
+
+
+
+## Support\Settings 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Settings.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Phalcon\Support\Settings
+
+Provides a PHP-userland layer for reading and overriding the Phalcon
+extension's ini settings (orm.*, db.*, form.*).
+
+get() checks PHP-level overrides first, then falls back to globals_get()
+which reads the value configured in php.ini / .htaccess / per-virtualhost.
+
+set() stores the value in the PHP-level overrides array only. It does NOT
+call globals_set(), so the change is confined to this static state and never
+modifies the underlying C struct. This prevents settings changed by one
+project from leaking into another project sharing the same PHP worker process.
+
+NOTE: In non-ZTS (non-thread-safe) PHP builds, globals_get() reads from a
+process-level C struct. Because set() does not write to that struct, any
+value set via ini_set("phalcon.orm.*", ...) or globals_set() by other code
+remains visible through get() as the fallback for keys that have no
+PHP-level override. In ZTS builds each thread has its own copy of the struct.
+
+reset() clears only the keys that were previously set via set(), restoring
+those keys to their globals_get() fallback values.
+
+
+### Properties
+```php
+/**
+ * PHP-level overrides. Keys stored here take priority over globals_get().
+ *
+ * @var array
+ */
+protected static $overrides;
+
+```
+
+### Methods
+
+```php
+public static function get( string $key ): mixed;
+```
+Returns the value of a known setting.
+
+Resolution order:
+  1. PHP-level override (set via Settings::set())
+  2. globals_get() — the C-level value, honouring php.ini / .htaccess
+  3. null — for unknown keys
+
+
+```php
+public static function reset(): void;
+```
+Clears all PHP-level overrides, restoring get() to return globals_get()
+fallback values (as configured in php.ini or .htaccess).
+
+
+```php
+public static function set( string $key, mixed $value ): void;
+```
+Overrides a setting at the PHP level.
+
+Does NOT call globals_set(), so the C-level struct is not modified and
+no other project sharing this PHP process is affected.
+
+Unknown keys are silently ignored.
 
 
 

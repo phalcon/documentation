@@ -290,6 +290,7 @@ accessKey
     - `Phalcon\Acl\RoleInterface`
     - `ReflectionClass`
     - `ReflectionFunction`
+    - `ReflectionNamedType`
 
 -   __Extends__
     

@@ -999,6 +999,7 @@ Exceptions thrown in Phalcon\Forms will use this class
     - `Phalcon\Html\Attributes\AttributesInterface`
     - `Phalcon\Html\TagFactory`
     - `Phalcon\Messages\Messages`
+    - `Phalcon\Support\Settings`
     - `Phalcon\Tag`
 
 -   __Extends__

@@ -645,6 +645,11 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 protected $delimiter = ;
 
 /**
+ * @var Doctype|null
+ */
+protected $doctype;
+
+/**
  * @var EscaperInterface
  */
 protected $escaper;
@@ -664,7 +669,7 @@ protected $indentLevel = 1;
 ### Methods
 
 ```php
-public function __construct( EscaperInterface $escaper );
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null );
 ```
 AbstractHelper constructor.
 
@@ -1258,7 +1263,7 @@ private $delimiter;
 /**
  * @var int
  */
-private $flag;
+private $type;
 
 ```
 
@@ -1271,13 +1276,19 @@ public function __construct();
 
 
 ```php
-public function __invoke( int $flag = static-constant-access, string $delimiter = string ): Doctype;
+public function __invoke( int $type = static-constant-access, string $delimiter = string ): Doctype;
 ```
 Produce a <doctype> tag
 
 
 ```php
 public function __toString(): string;
+```
+
+
+
+```php
+public function getType(): int;
 ```
 
 
@@ -1395,6 +1406,7 @@ Produce a <img> tag.
 -   __Uses__
     
     - `Phalcon\Html\Helper\AbstractHelper`
+    - `Phalcon\Html\Helper\Doctype`
 
 -   __Extends__
     
@@ -1458,6 +1470,7 @@ Sets the value of the element
 -   __Uses__
     
     - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Helper\Doctype`
 
 -   __Extends__
     
@@ -1488,7 +1501,7 @@ protected $type = checkbox;
 ### Methods
 
 ```php
-public function __construct( EscaperInterface $escaper );
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null );
 ```
 AbstractHelper constructor.
 

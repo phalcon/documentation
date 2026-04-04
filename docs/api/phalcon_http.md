@@ -1,6 +1,6 @@
 ---
 hide:
-  - navigation
+    - navigation
 ---
 
 !!! info "NOTE"
@@ -9,7 +9,7 @@ hide:
 
 
 
-## Http\Cookie
+## Http\Cookie 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie.zep)
 
@@ -19,7 +19,7 @@ hide:
     - `Phalcon\Http`
 
 -   __Uses__
-
+    
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Encryption\Crypt\CryptInterface`
@@ -31,11 +31,11 @@ hide:
     - `Phalcon\Session\ManagerInterface`
 
 -   __Extends__
-
+    
     `AbstractInjectionAware`
 
 -   __Implements__
-
+    
     - `CookieInterface`
 
 Provide OO wrappers to manage a HTTP cookie.
@@ -81,7 +81,7 @@ protected $path;
 /**
  * @var bool
  */
-protected $read = false;
+protected $isRead = false;
 
 /**
  * @var bool
@@ -277,7 +277,7 @@ Assert the cookie's key is enough long.
 
 
 
-## Http\Cookie\CookieInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\Cookie\CookieInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/CookieInterface.zep)
 
@@ -287,13 +287,13 @@ Assert the cookie's key is enough long.
     - `Phalcon\Http\Cookie`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for Phalcon\Http\Cookie
 
@@ -418,7 +418,7 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 
 
-## Http\Cookie\Exception
+## Http\Cookie\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exception.zep)
 
@@ -428,14 +428,14 @@ Sets if the cookie must be encrypted/decrypted automatically
     - `Phalcon\Http\Cookie`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
-
+    
 
 Phalcon\Http\Cookie\Exception
 
@@ -443,7 +443,7 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 
 
-## Http\Message\RequestMethodInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\Message\RequestMethodInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/RequestMethodInterface.zep)
 
@@ -453,13 +453,13 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
     - `Phalcon\Http\Message`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for Request methods
 
@@ -483,7 +483,7 @@ const METHOD_TRACE = TRACE;
 ```
 
 
-## Http\Message\ResponseStatusCodeInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\Message\ResponseStatusCodeInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Message/ResponseStatusCodeInterface.zep)
 
@@ -493,13 +493,13 @@ const METHOD_TRACE = TRACE;
     - `Phalcon\Http\Message`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for Request methods
 
@@ -622,7 +622,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
 ```
 
 
-## Http\Request
+## Http\Request 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request.zep)
 
@@ -632,7 +632,7 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
     - `Phalcon\Http`
 
 -   __Uses__
-
+    
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Events\ManagerInterface`
@@ -646,11 +646,11 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
     - `stdClass`
 
 -   __Extends__
-
+    
     `AbstractInjectionAware`
 
 -   __Implements__
-
+    
     - `RequestInterface`
     - `RequestMethodInterface`
 
@@ -685,37 +685,42 @@ $request->getLanguages();
 /**
  * @var FilterInterface|null
  */
-private $filterService;
+protected $filterService;
 
 /**
  * @var bool
  */
-private $httpMethodParameterOverride = false;
+protected $httpMethodParameterOverride = false;
 
 /**
  * @var array
  */
-private $queryFilters;
+protected $queryFilters;
 
 /**
  * @var array|null
  */
-private $postCache;
+protected $postCache;
 
 /**
  * @var string
  */
-private $rawBody = ;
+protected $rawBody = ;
 
 /**
  * @var bool
  */
-private $strictHostCheck = false;
+protected $strictHostCheck = false;
 
 /**
  * @var array
  */
 protected $trustedProxies;
+
+/**
+ * @var string
+ */
+protected $trustedProxyHeader = ;
 
 ```
 
@@ -778,6 +783,22 @@ Gets most possible client IP Address. This method searches in
 `$_SERVER["REMOTE_ADDR"]` and optionally in
 `$_SERVER["HTTP_X_FORWARDED_FOR"]` and returns the first non-private or non-reserved IP address
 
+The user provided trusted header takes priority before checking X-Forwarded-For header.
+
+Using trusted proxies list, user has to provide a trusted list of proxy IPs
+```
+$request
+    ->setTrustedProxies($trustedProxies)
+    ->getClientAddress(true);
+```
+Using user provided trusted header, header should only ever contain 1 IP address, eg. HTTP_CLIENT_IP
+```
+$request
+    ->setTrustedProxyHeader('HTTP_CLIENT_IP')
+    ->setTrustedProxies($trustedProxies)
+    ->getClientAddress(true);
+```
+
 
 ```php
 public function getClientCharsets(): array;
@@ -836,7 +857,7 @@ Gets web page that refers active request. ie: http://www.google.com
 
 
 ```php
-final public function getHeader( string $header ): string;
+public function getHeader( string $header ): string;
 ```
 Gets HTTP header from request data
 
@@ -915,7 +936,7 @@ from _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 
 ```php
-final public function getMethod(): string;
+public function getMethod(): string;
 ```
 Gets HTTP method which request has been made
 
@@ -1040,7 +1061,7 @@ Gets active server name
 
 
 ```php
-final public function getURI( bool $onlyPath = bool ): string;
+public function getURI( bool $onlyPath = bool ): string;
 ```
 Gets HTTP URI which request has been made to
 
@@ -1256,30 +1277,37 @@ of host name or not
 ```php
 public function setTrustedProxies( array $trustedProxies ): RequestInterface;
 ```
-Set trusted proxy
+Set a trusted proxy list for X-Forwarded-For header
 
 
 ```php
-final protected function getBestQuality( array $qualityParts, string $name ): string;
+public function setTrustedProxyHeader( string $trustedProxyHeader ): RequestInterface;
+```
+This header takes priority when parsing HTTP headers
+The header return only 1 single IP address, prefixed with HTTP_ eg. HTTP_CLIENT_IP.
+
+
+```php
+protected function getBestQuality( array $qualityParts, string $name ): string;
 ```
 Process a request header and return the one with best quality
 
 
 ```php
-final protected function getHelper( array $source, string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
+protected function getHelper( array $source, string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
 ```
 Helper to get data from superglobals, applying filters if needed.
 If no parameters are given the superglobal is returned.
 
 
 ```php
-final protected function getQualityHeader( string $serverIndex, string $name ): array;
+protected function getQualityHeader( string $serverIndex, string $name ): array;
 ```
 Process a request header and return an array of values with their qualities
 
 
 ```php
-final protected function hasFileHelper( mixed $data, bool $onlySuccessful ): long;
+protected function hasFileHelper( mixed $data, bool $onlySuccessful ): long;
 ```
 Recursively counts file in an array of files
 
@@ -1297,14 +1325,14 @@ Resolve authorization headers.
 
 
 ```php
-final protected function smoothFiles( array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix ): array;
+protected function smoothFiles( array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix ): array;
 ```
 Smooth out $_FILES to have plain array with all files uploaded
 
 
 
 
-## Http\Request\Exception
+## Http\Request\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exception.zep)
 
@@ -1314,14 +1342,14 @@ Smooth out $_FILES to have plain array with all files uploaded
     - `Phalcon\Http\Request`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
-
+    
 
 Phalcon\Http\Request\Exception
 
@@ -1329,7 +1357,7 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 
 
-## Http\Request\File
+## Http\Request\File 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/File.zep)
 
@@ -1339,13 +1367,13 @@ Exceptions thrown in Phalcon\Http\Request will use this class
     - `Phalcon\Http\Request`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
     - `FileInterface`
 
 Phalcon\Http\Request\File
@@ -1486,7 +1514,7 @@ Moves the temporary file to a destination within the application
 
 
 
-## Http\Request\FileInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\Request\FileInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/FileInterface.zep)
 
@@ -1496,13 +1524,13 @@ Moves the temporary file to a destination within the application
     - `Phalcon\Http\Request`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for Phalcon\Http\Request\File
 
@@ -1554,7 +1582,7 @@ Move the temporary file to a destination
 
 
 
-## Http\RequestInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\RequestInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/RequestInterface.zep)
 
@@ -1564,15 +1592,15 @@ Move the temporary file to a destination
     - `Phalcon\Http`
 
 -   __Uses__
-
+    
     - `Phalcon\Http\Request\FileInterface`
     - `stdClass`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for Phalcon\Http\Request
 
@@ -1989,7 +2017,7 @@ Returns the number of files available
 
 
 
-## Http\Response
+## Http\Response 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response.zep)
 
@@ -1999,7 +2027,7 @@ Returns the number of files available
     - `Phalcon\Http`
 
 -   __Uses__
-
+    
     - `DateTime`
     - `DateTimeZone`
     - `Phalcon\Di\Di`
@@ -2017,10 +2045,10 @@ Returns the number of files available
     - `Phalcon\Support\Helper\Json\Encode`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
     - `EventsAwareInterface`
     - `InjectionAwareInterface`
     - `ResponseInterface`
@@ -2085,7 +2113,7 @@ protected $statusCodes;
 /**
  * @var Encode
  */
-private $encode;
+protected $encode;
 
 ```
 
@@ -2387,7 +2415,7 @@ $response->setStatusCode(404, "Not Found");
 
 
 
-## Http\Response\Cookies
+## Http\Response\Cookies 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Cookies.zep)
 
@@ -2397,18 +2425,18 @@ $response->setStatusCode(404, "Not Found");
     - `Phalcon\Http\Response`
 
 -   __Uses__
-
+    
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Http\Cookie\CookieInterface`
     - `Phalcon\Http\Cookie\Exception`
 
 -   __Extends__
-
+    
     `AbstractInjectionAware`
 
 -   __Implements__
-
+    
     - `CookiesInterface`
 
 Phalcon\Http\Response\Cookies
@@ -2591,7 +2619,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-## Http\Response\CookiesInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\Response\CookiesInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/CookiesInterface.zep)
 
@@ -2601,14 +2629,14 @@ Set if cookies in the bag must be automatically encrypted/decrypted
     - `Phalcon\Http\Response`
 
 -   __Uses__
-
+    
     - `Phalcon\Http\Cookie\CookieInterface`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Http\Response\CookiesInterface
 
@@ -2668,7 +2696,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 
 
 
-## Http\Response\Exception
+## Http\Response\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exception.zep)
 
@@ -2678,14 +2706,14 @@ Set if cookies in the bag must be automatically encrypted/decrypted
     - `Phalcon\Http\Response`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
-
+    
 
 Phalcon\Http\Response\Exception
 
@@ -2693,7 +2721,7 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 
 
-## Http\Response\Headers
+## Http\Response\Headers 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Headers.zep)
 
@@ -2703,13 +2731,13 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
     - `Phalcon\Http\Response`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
     - `HeadersInterface`
 
 Phalcon\Http\Response\Headers
@@ -2789,7 +2817,7 @@ Returns the current headers as an array
 
 
 
-## Http\Response\HeadersInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\Response\HeadersInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/HeadersInterface.zep)
 
@@ -2799,13 +2827,13 @@ Returns the current headers as an array
     - `Phalcon\Http\Response`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Http\Response\HeadersInterface
 
@@ -2852,7 +2880,7 @@ Sets a raw header to be sent at the end of the request
 
 
 
-## Http\ResponseInterface ![Interface](../assets/images/interface-blue.svg)
+## Http\ResponseInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/ResponseInterface.zep)
 
@@ -2862,15 +2890,15 @@ Sets a raw header to be sent at the end of the request
     - `Phalcon\Http`
 
 -   __Uses__
-
+    
     - `DateTime`
     - `Phalcon\Http\Response\HeadersInterface`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Http\Response
 

@@ -132,6 +132,27 @@ $request = $di->getRequest();
 ### Properties
 ```php
 /**
+ * List of service aliases
+ *
+ * @var array
+ */
+protected $aliases;
+
+/**
+ * Latest DI build
+ *
+ * @var DiInterface|null
+ */
+protected static $defaultContainer;
+
+/**
+ * Events Manager
+ *
+ * @var ManagerInterface|null
+ */
+protected $eventsManager;
+
+/**
  * List of registered services
  *
  * @var ServiceInterface[]
@@ -144,20 +165,6 @@ protected $services;
  * @var array
  */
 protected $sharedInstances;
-
-/**
- * Events Manager
- *
- * @var ManagerInterface|null
- */
-protected $eventsManager;
-
-/**
- * Latest DI build
- *
- * @var DiInterface|null
- */
-protected static $defaultDi;
 
 ```
 
@@ -187,6 +194,13 @@ with the same name
 public function get( string $name, mixed $parameters = null ): mixed;
 ```
 Resolves the service based on its configuration
+
+
+```php
+public function getAlias( string $name ): string;
+```
+Return the alias based on a passed key. Returns an empty string if
+the alias does not exist
 
 
 ```php
@@ -379,6 +393,12 @@ Registers a service in the services container
 
 
 ```php
+public function setAlias( string $name, mixed $aliases ): Di;
+```
+Sets one or more aliases to the given name.
+
+
+```php
 public static function setDefault( DiInterface $container ): void;
 ```
 Set a default dependency injection container to be obtained into static
@@ -545,6 +565,33 @@ Registers an "always shared" service in the services container
     
 
 Exceptions thrown in Phalcon\Di will use this class
+
+
+### Methods
+
+```php
+public static function serviceCannotBeResolved( string $name ): Exception;
+```
+
+
+
+```php
+public static function serviceNotFound( string $name ): Exception;
+```
+
+
+
+```php
+public static function undefinedMethod( string $method ): Exception;
+```
+
+
+
+```php
+public static function unknownServiceInParameter( int $position ): Exception;
+```
+
+
 
 
 
@@ -724,6 +771,7 @@ accessing a public property with the same name of a registered service
 @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager
 @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata
 @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager
+@property \Phalcon\Support\Settings $settings
 @property \Phalcon\Assets\Manager $assets
 @property \Phalcon\Di\Di|\Phalcon\Di\DiInterface $di
 @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent

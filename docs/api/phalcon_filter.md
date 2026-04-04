@@ -1,6 +1,6 @@
 ---
 hide:
-  - navigation
+    - navigation
 ---
 
 !!! info "NOTE"
@@ -9,7 +9,7 @@ hide:
 
 
 
-## Filter\Exception
+## Filter\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Exception.zep)
 
@@ -19,14 +19,14 @@ hide:
     - `Phalcon\Filter`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Exception
 
@@ -34,7 +34,7 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 
 
-## Filter\Filter
+## Filter\Filter 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Filter.zep)
 
@@ -44,13 +44,13 @@ Exceptions thrown in Phalcon\Filter will use this class
     - `Phalcon\Filter`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
     - `FilterInterface`
 
 Lazy loads, stores and exposes sanitizer objects
@@ -171,7 +171,7 @@ Loads the objects in the internal mapper array
 
 
 
-## Filter\FilterFactory
+## Filter\FilterFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/FilterFactory.zep)
 
@@ -181,14 +181,14 @@ Loads the objects in the internal mapper array
     - `Phalcon\Filter`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Filter`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Class FilterFactory
 
@@ -212,7 +212,7 @@ Returns the available adapters
 
 
 
-## Filter\FilterInterface ![Interface](../assets/images/interface-blue.svg)
+## Filter\FilterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/FilterInterface.zep)
 
@@ -222,13 +222,13 @@ Returns the available adapters
     - `Phalcon\Filter`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Lazy loads, stores and exposes sanitizer objects
 
@@ -243,7 +243,7 @@ Sanitizes a value with a specified single or set of sanitizers
 
 
 
-## Filter\Sanitize\AbsInt
+## Filter\Sanitize\AbsInt 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/AbsInt.zep)
 
@@ -253,13 +253,13 @@ Sanitizes a value with a specified single or set of sanitizers
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\AbsInt
 
@@ -276,7 +276,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\Alnum
+## Filter\Sanitize\Alnum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Alnum.zep)
 
@@ -286,13 +286,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Alnum
 
@@ -309,7 +309,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\Alpha
+## Filter\Sanitize\Alpha 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Alpha.zep)
 
@@ -319,13 +319,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Alpha
 
@@ -342,7 +342,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\BoolVal
+## Filter\Sanitize\BoolVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/BoolVal.zep)
 
@@ -352,13 +352,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\BoolVal
 
@@ -375,7 +375,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\Email
+## Filter\Sanitize\Email 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Email.zep)
 
@@ -385,13 +385,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Email
 
@@ -408,7 +408,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\FloatVal
+## Filter\Sanitize\FloatVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/FloatVal.zep)
 
@@ -418,13 +418,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\FloatVal
 
@@ -441,7 +441,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\IntVal
+## Filter\Sanitize\IntVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/IntVal.zep)
 
@@ -451,13 +451,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\IntVal
 
@@ -474,7 +474,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\Ip
+## Filter\Sanitize\Ip 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Ip.zep)
 
@@ -484,13 +484,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\IP
 
@@ -507,7 +507,7 @@ public function __invoke( string $input, int $filter = int ): string | false;
 
 
 
-## Filter\Sanitize\Lower
+## Filter\Sanitize\Lower 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Lower.zep)
 
@@ -517,13 +517,13 @@ public function __invoke( string $input, int $filter = int ): string | false;
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Lower
 
@@ -540,7 +540,7 @@ public function __invoke( string $input );
 
 
 
-## Filter\Sanitize\LowerFirst
+## Filter\Sanitize\LowerFirst 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/LowerFirst.zep)
 
@@ -550,13 +550,13 @@ public function __invoke( string $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\LowerFirst
 
@@ -573,7 +573,7 @@ public function __invoke( string $input );
 
 
 
-## Filter\Sanitize\Regex
+## Filter\Sanitize\Regex 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Regex.zep)
 
@@ -583,13 +583,13 @@ public function __invoke( string $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Regex
 
@@ -606,7 +606,7 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 
 
 
-## Filter\Sanitize\Remove
+## Filter\Sanitize\Remove 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Remove.zep)
 
@@ -616,13 +616,13 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Remove
 
@@ -639,7 +639,7 @@ public function __invoke( mixed $input, mixed $replace );
 
 
 
-## Filter\Sanitize\Replace
+## Filter\Sanitize\Replace 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Replace.zep)
 
@@ -649,13 +649,13 @@ public function __invoke( mixed $input, mixed $replace );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Replace
 
@@ -672,7 +672,7 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
 
 
 
-## Filter\Sanitize\Special
+## Filter\Sanitize\Special 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Special.zep)
 
@@ -682,13 +682,13 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Special
 
@@ -705,7 +705,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\SpecialFull
+## Filter\Sanitize\SpecialFull 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/SpecialFull.zep)
 
@@ -715,13 +715,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\SpecialFull
 
@@ -738,7 +738,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\StringVal
+## Filter\Sanitize\StringVal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/StringVal.zep)
 
@@ -748,13 +748,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Sanitizes a value to string
 
@@ -769,7 +769,7 @@ public function __invoke( string $input, int $flags = int ): string;
 
 
 
-## Filter\Sanitize\StringValLegacy
+## Filter\Sanitize\StringValLegacy 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/StringValLegacy.zep)
 
@@ -779,13 +779,13 @@ public function __invoke( string $input, int $flags = int ): string;
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Sanitizes a value to string using `filter_var()`. The filter provides
 backwards compatibility with versions prior to v5. For PHP higher or equal to
@@ -803,7 +803,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Sanitize\Striptags
+## Filter\Sanitize\Striptags 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Striptags.zep)
 
@@ -813,13 +813,13 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Striptags
 
@@ -836,7 +836,7 @@ public function __invoke( string $input );
 
 
 
-## Filter\Sanitize\Trim
+## Filter\Sanitize\Trim 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Trim.zep)
 
@@ -846,13 +846,13 @@ public function __invoke( string $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Trim
 
@@ -869,7 +869,7 @@ public function __invoke( string $input );
 
 
 
-## Filter\Sanitize\Upper
+## Filter\Sanitize\Upper 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Upper.zep)
 
@@ -879,13 +879,13 @@ public function __invoke( string $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Upper
 
@@ -902,7 +902,7 @@ public function __invoke( string $input );
 
 
 
-## Filter\Sanitize\UpperFirst
+## Filter\Sanitize\UpperFirst 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/UpperFirst.zep)
 
@@ -912,13 +912,13 @@ public function __invoke( string $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\UpperFirst
 
@@ -935,7 +935,7 @@ public function __invoke( string $input );
 
 
 
-## Filter\Sanitize\UpperWords
+## Filter\Sanitize\UpperWords 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/UpperWords.zep)
 
@@ -945,13 +945,13 @@ public function __invoke( string $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\UpperWords
 
@@ -968,7 +968,7 @@ public function __invoke( string $input );
 
 
 
-## Filter\Sanitize\Url
+## Filter\Sanitize\Url 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Sanitize/Url.zep)
 
@@ -978,13 +978,13 @@ public function __invoke( string $input );
     - `Phalcon\Filter\Sanitize`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Phalcon\Filter\Sanitize\Url
 
@@ -1001,7 +1001,7 @@ public function __invoke( mixed $input );
 
 
 
-## Filter\Validation
+## Filter\Validation 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation.zep)
 
@@ -1011,7 +1011,7 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter`
 
 -   __Uses__
-
+    
     - `Phalcon\Di\Di`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\Injectable`
@@ -1024,11 +1024,11 @@ public function __invoke( mixed $input );
     - `Phalcon\Messages\Messages`
 
 -   __Extends__
-
+    
     `Injectable`
 
 -   __Implements__
-
+    
     - `ValidationInterface`
 
 Allows to validate data using custom or built-in validators
@@ -1055,6 +1055,11 @@ protected $entity;
  * @var array
  */
 protected $filters;
+
+/**
+ * @var array
+ */
+protected $whitelist;
 
 /**
  * @var array
@@ -1103,10 +1108,18 @@ Appends a message to the messages list
 
 
 ```php
-public function bind( mixed $entity, mixed $data ): ValidationInterface;
+public function bind( mixed $entity, mixed $data, array $whitelist = [] ): ValidationInterface;
 ```
 Assigns the data to an entity
 The entity is used to obtain the validation values
+
+```php
+$entity = new Author();
+$fields = ['name', 'email', 'imageUrl'];
+$validation = new AuthorValidation();
+$validation->bind($entity, $_POST, $fields);
+$validation->validate();
+```
 
 
 ```php
@@ -1206,9 +1219,25 @@ public function setValidators( array $validators ): Validation;
 
 
 ```php
-public function validate( mixed $data = null, mixed $entity = null ): Messages | bool;
+public function validate( mixed $data = null, mixed $entity = null, array $whitelist = [] ): Messages | bool;
 ```
 Validate a set of data according to a set of rules
+
+You can use $validation->bind(entity, data, whitelist)->validate()
+When you use bind(), the this->data is already set, so you can reuse it here
+
+```php
+// using bind() with $whitelist fields
+$entity = new Author();
+$fields = ['name', 'email', 'imageUrl'];
+$validation = new AuthorValidation();
+$validation->bind($entity, $_POST, $fields);
+$validation->validate();
+
+// directly using validate
+$validation = new AuthorValidation();
+$validation->validate($_POST, $entity, $fields);
+```
 
 
 ```php
@@ -1219,7 +1248,7 @@ Internal validations, if it returns true, then skip the current validator
 
 
 
-## Filter\Validation\AbstractCombinedFieldsValidator ![Abstract](../assets/images/abstract-green.svg)
+## Filter\Validation\AbstractCombinedFieldsValidator ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractCombinedFieldsValidator.zep)
 
@@ -1229,20 +1258,20 @@ Internal validations, if it returns true, then skip the current validator
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 This is a base class for combined fields validators
 
 
 
-## Filter\Validation\AbstractValidator ![Abstract](../assets/images/abstract-green.svg)
+## Filter\Validation\AbstractValidator ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractValidator.zep)
 
@@ -1252,16 +1281,16 @@ This is a base class for combined fields validators
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Messages\Message`
     - `Phalcon\Support\Helper\Arr\Whitelist`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
     - `ValidatorInterface`
 
 This is a base class for validators
@@ -1380,7 +1409,7 @@ Prepares a label for the field.
 
 
 
-## Filter\Validation\AbstractValidatorComposite ![Abstract](../assets/images/abstract-green.svg)
+## Filter\Validation\AbstractValidatorComposite ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/AbstractValidatorComposite.zep)
 
@@ -1390,15 +1419,15 @@ Prepares a label for the field.
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
     - `ValidatorCompositeInterface`
 
 This is a base class for combined fields validators
@@ -1429,7 +1458,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Exception
+## Filter\Validation\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exception.zep)
 
@@ -1439,20 +1468,20 @@ Executes the validation
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
-
+    
 
 Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 
 
 
-## Filter\Validation\ValidationInterface ![Interface](../assets/images/interface-blue.svg)
+## Filter\Validation\ValidationInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidationInterface.zep)
 
@@ -1462,16 +1491,16 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
     - `Phalcon\Di\Injectable`
     - `Phalcon\Messages\MessageInterface`
     - `Phalcon\Messages\Messages`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for the Phalcon\Filter\Validation component
 
@@ -1491,7 +1520,7 @@ Appends a message to the messages list
 
 
 ```php
-public function bind( mixed $entity, mixed $data ): ValidationInterface;
+public function bind( mixed $entity, mixed $data, array $whitelist = [] ): ValidationInterface;
 ```
 Assigns the data to an entity
 The entity is used to obtain the validation values
@@ -1558,14 +1587,14 @@ Adds labels for fields
 
 
 ```php
-public function validate( mixed $data = null, mixed $entity = null ): Messages | bool;
+public function validate( mixed $data = null, mixed $entity = null, array $whitelist = [] ): Messages | bool;
 ```
 Validate a set of data according to a set of rules
 
 
 
 
-## Filter\Validation\Validator\Alnum
+## Filter\Validation\Validator\Alnum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Alnum.zep)
 
@@ -1575,16 +1604,16 @@ Validate a set of data according to a set of rules
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Check for alphanumeric character(s)
 
@@ -1643,7 +1672,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Alpha
+## Filter\Validation\Validator\Alpha 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Alpha.zep)
 
@@ -1653,17 +1682,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Check for alphabetic character(s)
 
@@ -1722,7 +1751,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Between
+## Filter\Validation\Validator\Between 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Between.zep)
 
@@ -1732,17 +1761,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Validates that a value is between an inclusive range of two values.
 For a value x, the test is passed if minimum<=x<=maximum.
@@ -1812,7 +1841,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Callback
+## Filter\Validation\Validator\Callback 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Callback.zep)
 
@@ -1822,18 +1851,18 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\ValidatorInterface`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Calls user function for validation
 
@@ -1902,7 +1931,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Confirmation
+## Filter\Validation\Validator\Confirmation 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Confirmation.zep)
 
@@ -1912,18 +1941,18 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Checks that two values have the same value
 
@@ -1993,7 +2022,7 @@ Compare strings
 
 
 
-## Filter\Validation\Validator\CreditCard
+## Filter\Validation\Validator\CreditCard 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/CreditCard.zep)
 
@@ -2003,17 +2032,17 @@ Compare strings
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Checks if a value has a valid credit card number
 
@@ -2072,7 +2101,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Date
+## Filter\Validation\Validator\Date 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Date.zep)
 
@@ -2082,18 +2111,18 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `DateTime`
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Checks if a value is a valid date
 
@@ -2157,7 +2186,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Digit
+## Filter\Validation\Validator\Digit 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Digit.zep)
 
@@ -2167,17 +2196,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Check for numeric character(s)
 
@@ -2236,7 +2265,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Email
+## Filter\Validation\Validator\Email 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Email.zep)
 
@@ -2246,17 +2275,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Checks if a value has a correct e-mail format
 
@@ -2325,7 +2354,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Exception
+## Filter\Validation\Validator\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Exception.zep)
 
@@ -2335,21 +2364,21 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
-
+    
 
 Exceptions thrown in Phalcon\Filter\Validation\Validator\* classes will use this
 class
 
 
 
-## Filter\Validation\Validator\ExclusionIn
+## Filter\Validation\Validator\ExclusionIn 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/ExclusionIn.zep)
 
@@ -2359,18 +2388,18 @@ class
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Check if a value is not included into a list of values
 
@@ -2440,7 +2469,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\File
+## Filter\Validation\Validator\File 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File.zep)
 
@@ -2450,7 +2479,7 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidatorComposite`
     - `Phalcon\Filter\Validation\Validator\File\MimeType`
@@ -2464,11 +2493,11 @@ Executes the validation
     - `Phalcon\Support\Helper\Arr\Get`
 
 -   __Extends__
-
+    
     `AbstractValidatorComposite`
 
 -   __Implements__
-
+    
 
 Checks if a value has a correct file
 
@@ -2550,7 +2579,7 @@ Constructor
 
 
 
-## Filter\Validation\Validator\File\AbstractFile ![Abstract](../assets/images/abstract-green.svg)
+## Filter\Validation\Validator\File\AbstractFile ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/AbstractFile.zep)
 
@@ -2560,17 +2589,17 @@ Constructor
     - `Phalcon\Filter\Validation\Validator\File`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Checks if a value has a correct file
 
@@ -2719,7 +2748,7 @@ overridden in a subclass if you do not want to check uploaded files
 
 
 
-## Filter\Validation\Validator\File\MimeType
+## Filter\Validation\Validator\File\MimeType 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/MimeType.zep)
 
@@ -2729,17 +2758,17 @@ overridden in a subclass if you do not want to check uploaded files
     - `Phalcon\Filter\Validation\Validator\File`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\Exception`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractFile`
 
 -   __Implements__
-
+    
 
 Checks if a value has a correct file mime type
 
@@ -2806,7 +2835,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\File\Resolution\Equal
+## Filter\Validation\Validator\File\Resolution\Equal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Resolution/Equal.zep)
 
@@ -2816,17 +2845,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator\File\Resolution`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractFile`
 
 -   __Implements__
-
+    
 
 Checks if a file has the right resolution
 
@@ -2890,7 +2919,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\File\Resolution\Max
+## Filter\Validation\Validator\File\Resolution\Max 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Resolution/Max.zep)
 
@@ -2900,17 +2929,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator\File\Resolution`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractFile`
 
 -   __Implements__
-
+    
 
 Checks if a file has the right resolution
 
@@ -2979,7 +3008,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\File\Resolution\Min
+## Filter\Validation\Validator\File\Resolution\Min 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Resolution/Min.zep)
 
@@ -2989,17 +3018,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator\File\Resolution`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractFile`
 
 -   __Implements__
-
+    
 
 Checks if a file has the right resolution
 
@@ -3068,7 +3097,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\File\Size\Equal
+## Filter\Validation\Validator\File\Size\Equal 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Size/Equal.zep)
 
@@ -3078,16 +3107,16 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator\File\Size`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\Validator\File\AbstractFile`
 
 -   __Extends__
-
+    
     `AbstractFile`
 
 -   __Implements__
-
+    
 
 Checks if a value has a correct file
 
@@ -3158,7 +3187,7 @@ Executes the conditional
 
 
 
-## Filter\Validation\Validator\File\Size\Max
+## Filter\Validation\Validator\File\Size\Max 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Size/Max.zep)
 
@@ -3168,14 +3197,14 @@ Executes the conditional
     - `Phalcon\Filter\Validation\Validator\File\Size`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `Equal`
 
 -   __Implements__
-
+    
 
 Checks if a value has a correct file
 
@@ -3240,7 +3269,7 @@ Executes the conditional
 
 
 
-## Filter\Validation\Validator\File\Size\Min
+## Filter\Validation\Validator\File\Size\Min 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Size/Min.zep)
 
@@ -3250,14 +3279,14 @@ Executes the conditional
     - `Phalcon\Filter\Validation\Validator\File\Size`
 
 -   __Uses__
-
+    
 
 -   __Extends__
-
+    
     `Equal`
 
 -   __Implements__
-
+    
 
 Checks if a value has a correct file
 
@@ -3322,7 +3351,7 @@ Executes the conditional
 
 
 
-## Filter\Validation\Validator\Identical
+## Filter\Validation\Validator\Identical 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Identical.zep)
 
@@ -3332,17 +3361,17 @@ Executes the conditional
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Checks if a value is identical to other
 
@@ -3406,7 +3435,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\InclusionIn
+## Filter\Validation\Validator\InclusionIn 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/InclusionIn.zep)
 
@@ -3416,18 +3445,18 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Check if a value is included into a list of values
 
@@ -3491,7 +3520,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Ip
+## Filter\Validation\Validator\Ip 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Ip.zep)
 
@@ -3501,17 +3530,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Check for IP addresses
 
@@ -3593,7 +3622,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Numericality
+## Filter\Validation\Validator\Numericality 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Numericality.zep)
 
@@ -3603,17 +3632,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Check for a valid numeric value
 
@@ -3672,7 +3701,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\PresenceOf
+## Filter\Validation\Validator\PresenceOf 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/PresenceOf.zep)
 
@@ -3682,17 +3711,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Validates that a value is not null or empty string
 
@@ -3751,7 +3780,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Regex
+## Filter\Validation\Validator\Regex 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Regex.zep)
 
@@ -3761,17 +3790,17 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Allows validate if the value of a field matches a regular expression
 
@@ -3835,7 +3864,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\StringLength
+## Filter\Validation\Validator\StringLength 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/StringLength.zep)
 
@@ -3845,7 +3874,7 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\AbstractValidatorComposite`
     - `Phalcon\Filter\Validation\Exception`
@@ -3854,11 +3883,11 @@ Executes the validation
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidatorComposite`
 
 -   __Implements__
-
+    
 
 Validates that a string has the specified maximum and minimum constraints
 The test is passed if for a string's length L, min<=L<=max, i.e. L must
@@ -3932,7 +3961,7 @@ Constructor
 
 
 
-## Filter\Validation\Validator\StringLength\Max
+## Filter\Validation\Validator\StringLength\Max 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/StringLength/Max.zep)
 
@@ -3942,18 +3971,18 @@ Constructor
     - `Phalcon\Filter\Validation\Validator\StringLength`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Validates that a string has the specified maximum constraints
 The test is passed if for a string's length L, L<=max, i.e. L must
@@ -4024,7 +4053,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\StringLength\Min
+## Filter\Validation\Validator\StringLength\Min 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/StringLength/Min.zep)
 
@@ -4034,18 +4063,18 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator\StringLength`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Validates that a string has the specified minimum constraints
 The test is passed if for a string's length L, min<=L, i.e. L must
@@ -4116,7 +4145,7 @@ Executes the validation
 
 
 
-## Filter\Validation\Validator\Uniqueness
+## Filter\Validation\Validator\Uniqueness 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Uniqueness.zep)
 
@@ -4126,20 +4155,21 @@ Executes the validation
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`
     - `Phalcon\Filter\Validation\Exception`
     - `Phalcon\Messages\Message`
     - `Phalcon\Mvc\Model`
     - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
-
+    
     `AbstractCombinedFieldsValidator`
 
 -   __Implements__
-
+    
 
 Check that a field is unique in the related table
 
@@ -4257,7 +4287,7 @@ Uniqueness method used for model
 
 
 
-## Filter\Validation\Validator\Url
+## Filter\Validation\Validator\Url 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Url.zep)
 
@@ -4267,17 +4297,17 @@ Uniqueness method used for model
     - `Phalcon\Filter\Validation\Validator`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
-
+    
     `AbstractValidator`
 
 -   __Implements__
-
+    
 
 Checks if a value has a url format
 
@@ -4336,7 +4366,7 @@ Executes the validation
 
 
 
-## Filter\Validation\ValidatorCompositeInterface ![Interface](../assets/images/interface-blue.svg)
+## Filter\Validation\ValidatorCompositeInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorCompositeInterface.zep)
 
@@ -4346,14 +4376,14 @@ Executes the validation
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 This is a base class for combined fields validators
 
@@ -4374,7 +4404,7 @@ Executes the validation
 
 
 
-## Filter\Validation\ValidatorFactory
+## Filter\Validation\ValidatorFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorFactory.zep)
 
@@ -4384,15 +4414,15 @@ Executes the validation
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
     - `Phalcon\Factory\AbstractFactory`
 
 -   __Extends__
-
+    
     `AbstractFactory`
 
 -   __Implements__
-
+    
 
 This file is part of the Phalcon Framework.
 
@@ -4430,7 +4460,7 @@ Returns the available adapters
 
 
 
-## Filter\Validation\ValidatorInterface ![Interface](../assets/images/interface-blue.svg)
+## Filter\Validation\ValidatorInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorInterface.zep)
 
@@ -4440,14 +4470,14 @@ Returns the available adapters
     - `Phalcon\Filter\Validation`
 
 -   __Uses__
-
+    
     - `Phalcon\Filter\Validation`
 
 -   __Extends__
-
+    
 
 -   __Implements__
-
+    
 
 Interface for Phalcon\Filter\Validation\AbstractValidator
 

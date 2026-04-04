@@ -358,11 +358,6 @@ can create hooks or plugins that will offer monitoring of data, manipulation,
 conditional execution and much more.
 
 
-### Constants
-```php
-const DEFAULT_PRIORITY = 100;
-```
-
 ### Properties
 ```php
 /**
@@ -506,10 +501,15 @@ public function isValidHandler( mixed $handler ): bool;
 Interface for Phalcon\Events managers.
 
 
+### Constants
+```php
+const DEFAULT_PRIORITY = 100;
+```
+
 ### Methods
 
 ```php
-public function attach( string $eventType, mixed $handler ): void;
+public function attach( string $eventType, mixed $handler, int $priority = 100 ): void;
 ```
 Attach a listener to the events manager
 

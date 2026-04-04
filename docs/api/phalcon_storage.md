@@ -844,6 +844,91 @@ from the adapter.
 
 
 
+## Storage\Adapter\RedisCluster 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/RedisCluster.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Exception`
+    - `Phalcon\Storage\SerializerFactory`
+
+-   __Extends__
+    
+    `Redis`
+
+-   __Implements__
+    
+
+RedisCluster adapter
+
+@property array $options
+
+
+### Properties
+```php
+/**
+ * @var string
+ */
+protected $prefix = ph-redc-;
+
+```
+
+### Methods
+
+```php
+public function __construct( SerializerFactory $factory, array $options = [] );
+```
+You can create and connect to a cluster either by passing it one or more
+'seed' nodes, or by defining these in redis.ini as a 'named' cluster.
+
+If you are connecting with the cluster by offering a name, that is
+configured in redis.ini:
+
+     ```
+     # In redis.ini
+     redis.clusters.seeds = "mycluster[]=localhost:7000&test[]=localhost:7001"
+     redis.clusters.timeout = "mycluster=5"
+     redis.clusters.read_timeout = "mycluster=10"
+     redis.clusters.auth = "mycluster=password"
+     ```
+you can use `$options = ["name" => "mycluster"]`.
+
+If you don't have cluster seeds configured in your redis.ini,
+you should pass hosts as an array,
+eg. `$options = ["hosts" => ["a-host:7000", "b-host:7001"]]`.
+
+You can provide authentication data offering a string `user=password`
+or array `["user" => "name", "password" => "secret"]`.
+
+The `timeout` is the amount of time library will wait when connecting
+or writing to the cluster. `readTimeout` is the amount of time library
+will wait for a result from the cluster.
+
+The `context` is an array of values used for ssl/tls stream context
+options eg `["verify_peer" => 0, "local_cert" => "file:///path/to/cert.pem"]`
+
+
+```php
+public function clear(): bool;
+```
+Flushes/clears the cache
+
+
+```php
+public function getAdapter(): mixed;
+```
+Returns the already connected adapter or connects to the Redis
+Cluster server(s)
+
+
+
+
 ## Storage\Adapter\Stream 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Stream.zep)

@@ -2113,6 +2113,12 @@ Validate the audience
 
 
 ```php
+public function validateClaim( string $name, mixed $value ): Validator;
+```
+Validate a claim
+
+
+```php
 public function validateExpiration( int $timestamp ): Validator;
 ```
 Validate the expiration time of the token
@@ -2236,11 +2242,10 @@ This class partially borrows SecureRandom library from Ruby
 ### Methods
 
 ```php
-public function base58( int $len = null ): string;
+public function base58( int $len = int ): string;
 ```
 Generates a random base58 string
 
-If $len is not specified, 16 is assumed. It may be larger in future.
 The result may contain alphanumeric characters except 0, O, I and l.
 
 It is similar to `Phalcon\Encryption\Security\Random::base64()` but has been
@@ -2259,11 +2264,9 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 
 ```php
-public function base62( int $len = null ): string;
+public function base62( int $len = int ): string;
 ```
 Generates a random base62 string
-
-If $len is not specified, 16 is assumed. It may be larger in future.
 
 It is similar to `Phalcon\Encryption\Security\Random::base58()` but has been
 modified to provide the largest value that can safely be used in URLs
@@ -2281,11 +2284,10 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 
 
 ```php
-public function base64( int $len = null ): string;
+public function base64( int $len = int ): string;
 ```
 Generates a random base64 string
 
-If $len is not specified, 16 is assumed. It may be larger in future.
 The length of the result string is usually greater of $len.
 Size formula: 4($len / 3) rounded up to a multiple of 4.
 
@@ -2299,11 +2301,10 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 
 ```php
-public function base64Safe( int $len = null, bool $padding = bool ): string;
+public function base64Safe( int $len = int, bool $padding = bool ): string;
 ```
 Generates a random URL-safe base64 string
 
-If $len is not specified, 16 is assumed. It may be larger in future.
 The length of the result string is usually greater of $len.
 
 By default, padding is not generated because "=" may be used as a URL
@@ -2344,11 +2345,10 @@ var_dump(bin2hex($bytes));
 
 
 ```php
-public function hex( int $len = null ): string;
+public function hex( int $len = int ): string;
 ```
 Generates a random hex string
 
-If $len is not specified, 16 is assumed. It may be larger in future.
 The length of the result string is usually greater of $len.
 
 ```php
@@ -2402,12 +2402,10 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 
 ```php
-protected function base( string $alphabet, int $base, mixed $n = null ): string;
+protected function base( string $alphabet, int $base, mixed $n = int ): string;
 ```
 Generates a random string based on the number ($base) of characters
 ($alphabet).
-
-If $n is not specified, 16 is assumed. It may be larger in future.
 
 @throws Exception If secure random number generator is not available or unexpected partial read
 
