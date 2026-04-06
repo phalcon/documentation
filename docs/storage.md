@@ -182,18 +182,19 @@ The `Phalcon\Storage\Adapter` namespace offers classes that implement the [Phalc
 
 The available methods are:
 
-| Method       | Description                                                                |
-|--------------|----------------------------------------------------------------------------|
-| `clear`      | Flushes/clears the store                                                   |
-| `decrement`  | Decrements a stored number                                                 |
-| `delete`     | Deletes data from the adapter                                              |
-| `get`        | Reads data from the adapter                                                |
-| `getAdapter` | Returns the already connected adapter or connects to the backend server(s) |
-| `getKeys`    | Returns all the keys stored (optional filter parameter)                    |
-| `getPrefix`  | Returns the prefix for the keys                                            |
-| `has`        | Checks if an element exists in the store                                   |
-| `increment`  | Increments a stored number                                                 |
-| `set`        | Stores data in the adapter                                                 |
+| Method            | Description                                                                |
+|-------------------|----------------------------------------------------------------------------|
+| `clear`           | Flushes/clears the store                                                   |
+| `decrement`       | Decrements a stored number                                                 |
+| `delete`          | Deletes data from the adapter                                              |
+| `deleteMultiple`  | Deletes multiple keys from the adapter in a single operation               |
+| `get`             | Reads data from the adapter                                                |
+| `getAdapter`      | Returns the already connected adapter or connects to the backend server(s) |
+| `getKeys`         | Returns all the keys stored (optional filter parameter)                    |
+| `getPrefix`       | Returns the prefix for the keys                                            |
+| `has`             | Checks if an element exists in the store                                   |
+| `increment`       | Increments a stored number                                                 |
+| `set`             | Stores data in the adapter                                                 |
 
 !!! info "NOTE"
 
@@ -472,6 +473,14 @@ class Custom implements AdapterInterface
     }
 
     /**
+     * Deletes multiple keys from the adapter
+     */
+    public function deleteMultiple(array $keys): bool
+    {
+        // Custom implementation
+    }
+
+    /**
      * Reads data from the adapter
      */
     public function get(string $key)
@@ -605,8 +614,10 @@ As a result `getEventsManager()` and `setEventsManager()` are available for you 
 | `afterGet`        | Fires after the value has been requested    |         No         |
 | `beforeHas`       | Fires before the value is requested         |         No         |
 | `afterHas`        | Fires after the value has been requested    |         No         |
-| `beforeDelete`    | Fires before the value is deleted           |         No         |
-| `afterDelete`     | Fires after the value has been deleted      |         No         |
+| `beforeDelete`         | Fires before the value is deleted                    |         No         |
+| `afterDelete`          | Fires after the value has been deleted               |         No         |
+| `beforeDeleteMultiple` | Fires before multiple values are deleted             |         No         |
+| `afterDeleteMultiple`  | Fires after multiple values have been deleted        |         No         |
 | `beforeIncrement` | Fires before the value has been incremented |         No         |
 | `afterIncrement`  | Fires after the value has been incremented  |         No         |
 | `beforeDecrement` | Fires before the value has been decremented |         No         |

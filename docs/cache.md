@@ -117,15 +117,14 @@ $value = $cache->setMultiple(
 ### `delete` - `deleteMultiple` - `clear`
 
 To delete an item from the cache you need to call the `delete()` method with a key. The method returns `true` on success and `false` on failure.
-`
 
 ```php
 $result = $cache->delete('my-key');
 ```
 
-If you wish to delete more than one key with one call, you can call `deleteMultiple()`, passing an array with the keys needed. The method returns `true` on success and `false` on
-failure. If even one key is not successfully deleted, the method will return `false`.
-`
+If you wish to delete more than one key with one call, you can call `deleteMultiple()`, passing an array with the keys needed. The method returns `true` if all keys were
+successfully deleted, or `false` if any key did not exist or could not be deleted. The keys are validated before deletion — if a key contains invalid characters, a
+`Phalcon\Cache\Exception\InvalidArgumentException` will be thrown.
 
 ```php
 $result = $cache->deleteMultiple(['my-key1', 'my-key2']);
@@ -434,18 +433,19 @@ methods that are used to perform operations on the storage adapter or cache back
 
 The available methods are:
 
-| Method       | Description                                                                |
-|--------------|----------------------------------------------------------------------------|
-| `clear`      | Flushes/clears the cache                                                   |
-| `decrement`  | Decrements a stored number                                                 |
-| `delete`     | Deletes data from the adapter                                              |
-| `get`        | Reads data from the adapter                                                |
-| `getAdapter` | Returns the already connected adapter or connects to the backend server(s) |
-| `getKeys`    | Returns all the keys stored (optional filter parameter)                    |
-| `getPrefix`  | Returns the prefix for the keys                                            |
-| `has`        | Checks if an element exists in the cache                                   |
-| `increment`  | Increments a stored number                                                 |
-| `set`        | Stores data in the adapter                                                 |
+| Method            | Description                                                                |
+|-------------------|----------------------------------------------------------------------------|
+| `clear`           | Flushes/clears the cache                                                   |
+| `decrement`       | Decrements a stored number                                                 |
+| `delete`          | Deletes data from the adapter                                              |
+| `deleteMultiple`  | Deletes multiple keys from the adapter in a single operation               |
+| `get`             | Reads data from the adapter                                                |
+| `getAdapter`      | Returns the already connected adapter or connects to the backend server(s) |
+| `getKeys`         | Returns all the keys stored (optional filter parameter)                    |
+| `getPrefix`       | Returns the prefix for the keys                                            |
+| `has`             | Checks if an element exists in the cache                                   |
+| `increment`       | Increments a stored number                                                 |
+| `set`             | Stores data in the adapter                                                 |
 
 !!! info "NOTE"
 
@@ -756,7 +756,15 @@ class Custom implements AdapterInterface
      */
     public function delete(string $key): bool
     {
-        Custom implementation
+        // Custom implementation
+    }
+
+    /**
+     * Deletes multiple keys from the adapter
+     */
+    public function deleteMultiple(array $keys): bool
+    {
+        // Custom implementation
     }
 
     /**
@@ -899,8 +907,10 @@ As a result `getEventsManager()` and `setEventsManager()` are available for you 
 | `afterGet`        | Fires after the value has been requested    |         No         |
 | `beforeHas`       | Fires before the value is requested         |         No         |
 | `afterHas`        | Fires after the value has been requested    |         No         |
-| `beforeDelete`    | Fires before the value is deleted           |         No         |
-| `afterDelete`     | Fires after the value has been deleted      |         No         |
+| `beforeDelete`         | Fires before the value is deleted                    |         No         |
+| `afterDelete`          | Fires after the value has been deleted               |         No         |
+| `beforeDeleteMultiple` | Fires before multiple values are deleted             |         No         |
+| `afterDeleteMultiple`  | Fires after multiple values have been deleted        |         No         |
 | `beforeIncrement` | Fires before the value has been incremented |         No         |
 | `afterIncrement`  | Fires after the value has been incremented  |         No         |
 | `beforeDecrement` | Fires before the value has been decremented |         No         |
