@@ -2266,6 +2266,7 @@ echo $result;
 [html-helper-doctype]: api/phalcon_html.md#htmlhelperdoctype
 [html-helper-element]: api/phalcon_html.md#htmlhelperelement
 [html-helper-form]: api/phalcon_html.md#htmlhelperform
+[html-helper-friendlytitle]: api/phalcon_html.md#htmlhelperfriendlytitle
 [html-helper-img]: api/phalcon_html.md#htmlhelperimg
 [html-helper-input-abstractinput]: api/phalcon_html.md#htmlhelperinputabstractinput
 [html-helper-input-checkbox]: api/phalcon_html.md#htmlhelperinputcheckbox
@@ -2296,6 +2297,7 @@ echo $result;
 [html-helper-link]: api/phalcon_html.md#htmlhelperlink
 [html-helper-meta]: api/phalcon_html.md#htmlhelpermeta
 [html-helper-ol]: api/phalcon_html.md#htmlhelperol
+[html-helper-preload]: api/phalcon_html.md#htmlhelperpreload
 [html-helper-script]: api/phalcon_html.md#htmlhelperscript
 [html-helper-style]: api/phalcon_html.md#htmlhelperstyle
 [html-helper-title]: api/phalcon_html.md#htmlhelpertitle
