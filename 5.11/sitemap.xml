@@ -2,518 +2,518 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.phalcon.io/5.11/acl/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/annotations/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/application-cli/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/application-micro/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/application/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/assets/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/autoload/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/cache/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/coding-standard/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/config/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/contributions/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/controllers/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/datamapper/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-layer/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-migrations/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models-behaviors/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models-cache/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models-events/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models-metadata/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models-relationships/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models-transactions/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models-validation/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-models/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-odm/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-pagination/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/db-phql/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/devtools/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/di/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/dispatcher/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/domain/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/encryption-crypt/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/encryption-security-jwt/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/encryption-security/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/environments-devilbox/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/environments-docker/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/environments-nanobox/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/events/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/filter-filter/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/filter-validation/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/flash/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/forms/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/generating-backtrace/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/html-attributes/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/html-breadcrumbs/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/html-escaper/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/html-link/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/html-tagfactory/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/html/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/http-factories/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/http-request/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/http-response/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/http-server-request/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/http-stream/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/http-uploaded-file/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/http-uri/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/i18n/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/image/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/installation/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/introduction/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/logger/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/mvc-url/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/mvc/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/namespaces/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/new-feature-request-list/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/new-feature-request/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/new-pull-request/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/performance/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/queue/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/releases/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/reproducible-tests/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/request/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/response/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/routing/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/session/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/sponsors/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/static-analysis/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/storage/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/support-collection/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/support-debug/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/support-helper/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/support-registry/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/support-version/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/tag/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/testing-environment/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/translate/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/tutorial-basic/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/tutorial-invo/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/tutorial-rest/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/tutorial-vokuro/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/unit-testing/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/upgrade/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/use-case/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/views/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/volt/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/webserver-setup/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_acl/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_annotations/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_application/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_assets/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_autoload/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_cache/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_cli/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_config/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_datamapper/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_db/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_di/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_dispatcher/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_domain/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_encryption/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_events/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_factory/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_filter/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_flash/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_forms/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_html/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_http/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_image/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_logger/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_messages/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_mvc/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_paginator/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_session/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_storage/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_support/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_tag/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/api/phalcon_translate/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/assets/fanart/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.11/assets/sponsors/</loc>
-         <lastmod>2026-04-06</lastmod>
+         <lastmod>2026-04-17</lastmod>
     </url>
 </urlset>
