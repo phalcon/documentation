@@ -40,6 +40,7 @@ The registered names for respective helpers are:
 | `doctype`            | `Phalcon\Html\Helper\Doctype`             |
 | `element`            | `Phalcon\Html\Helper\Element`             |
 | `form`               | `Phalcon\Html\Helper\Form`                |
+| `friendlyTitle`      | `Phalcon\Html\Helper\FriendlyTitle`       |
 | `img`                | `Phalcon\Html\Helper\Img`                 |
 | `inputCheckbox`      | `Phalcon\Html\Helper\Input\Checkbox`      |
 | `inputColor`         | `Phalcon\Html\Helper\Input\Color`         |
@@ -69,6 +70,7 @@ The registered names for respective helpers are:
 | `link`               | `Phalcon\Html\Helper\Link`                |
 | `meta`               | `Phalcon\Html\Helper\Meta`                |
 | `ol`                 | `Phalcon\Html\Helper\Ol`                  |
+| `preload`            | `Phalcon\Html\Helper\Preload`             |
 | `script`             | `Phalcon\Html\Helper\Script`              |
 | `style`              | `Phalcon\Html\Helper\Style`               |
 | `title`              | `Phalcon\Html\Helper\Title`               |
@@ -912,6 +914,44 @@ echo $helper($options);
 !!! info "NOTE"
 
     This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag.
+
+### `friendlyTitle`
+[Phalcon\Html\Helper\FriendlyTitle][html-helper-friendlytitle] converts text to a URL-friendly slug.
+
+| Parameter                        | Description                                |
+|----------------------------------|--------------------------------------------|
+| `string $text`                   | The text to convert                        |
+| `string $separator = '-'`        | The separator character                    |
+| `bool $lowercase = true`         | Convert the result to lowercase            |
+| `array\|string $replace = []`    | Characters/strings to replace with a space |
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\FriendlyTitle;
+
+$escaper = new Escaper();
+$helper  = new FriendlyTitle($escaper);
+
+echo $helper('Hello World');
+// hello-world
+
+echo $helper('Hello World', '_');
+// hello_world
+
+echo $helper('Hello World', '-', false);
+// Hello-World
+
+echo $helper('Hello & World');
+// hello-and-world
+
+echo $helper('Héllo Wörld');
+// hello-world
+
+echo $helper('Hello/World', '-', true, ['/']);
+// hello-world
+```
 
 ### `img`
 [Phalcon\Html\Helper\Img][html-helper-img] creates a `<img>` tag.
@@ -1953,6 +1993,51 @@ echo $result;
 //     <li>> Dodge</li>
 //     <li>> Toyota</li>
 // </ol>
+```
+
+### `preload`
+[Phalcon\Html\Helper\Preload][html-helper-preload] creates a `<link rel="preload">` tag for resource hinting. If a `ResponseInterface` is injected into `TagFactory`, it also sets the HTTP `Link:` header.
+
+| Parameter                | Description                                                          |
+|--------------------------|----------------------------------------------------------------------|
+| `string $href`           | The resource URL                                                     |
+| `string $type = 'style'` | The `as` attribute value (`style`, `script`, `font`, `image`, etc.) |
+| `array $attributes = []` | Additional attributes (key/value)                                    |
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Preload;
+
+$escaper = new Escaper();
+$helper  = new Preload($escaper);
+
+echo $helper('/my-style.css');
+// <link rel="preload" href="/my-style.css" as="style" />
+
+echo $helper('/my-script.js', 'script');
+// <link rel="preload" href="/my-script.js" as="script" />
+
+echo $helper('/my-font.woff2', 'font', ['crossorigin' => 'anonymous']);
+// <link rel="preload" href="/my-font.woff2" as="font" crossorigin="anonymous" />
+```
+
+To also set the HTTP `Link:` response header (for HTTP/2 server push), pass a `ResponseInterface` as the third argument to `TagFactory`:
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\TagFactory;
+
+$escaper  = new Escaper();
+$response = $container->get('response');
+$factory  = new TagFactory($escaper, [], $response);
+
+echo $factory->preload('/my-font.woff2', 'font');
+// <link rel="preload" href="/my-font.woff2" as="font" />
+// Also sets header: Link: </my-font.woff2>; rel="preload"; as="font"
 ```
 
 ### `script`
