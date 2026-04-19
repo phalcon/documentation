@@ -143,6 +143,7 @@ plugins:
         'en/db-pagination.md': db-pagination.md
         'en/db-phql.md': db-phql.md
         'en/devtools.md': devtools.md
+        'en/container.md': container.md
         'en/di.md': di.md
         'en/dispatcher.md': dispatcher.md
         'en/domain.md': domain.md
@@ -331,6 +332,7 @@ nav:
       - Micro: application-micro.md
       - CLI: application-cli.md
       - DI Container: di.md
+      - Container: container.md
       - MVC: mvc.md
       - Namespaces: namespaces.md
   - Database:
