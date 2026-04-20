@@ -219,13 +219,13 @@ Use `setArgument()` to override specific constructor parameters by name:
 <?php
 
 use Phalcon\Container\Container;
-use Phalcon\Container\Resolver\Lazy\Lazy;
+use Phalcon\Container\Resolver\Lazy\LazyFactory;
 
 $container = new Container();
 
 $container->set('db', DatabaseConnection::class)
-          ->setArgument('host', Lazy::get('db.host'))
-          ->setArgument('port', Lazy::get('db.port'));
+          ->setArgument('host', LazyFactory::get('db.host'))
+          ->setArgument('port', LazyFactory::get('db.port'));
 ```
 
 ---
@@ -284,49 +284,50 @@ Parameters store scalar values (strings, integers, arrays, environment variables
 <?php
 
 use Phalcon\Container\Container;
-use Phalcon\Container\Resolver\Lazy\Lazy;
+use Phalcon\Container\Resolver\Lazy\LazyFactory;
 
 $container = new Container();
 
 $container
     ->setParameter('db.name', 'my_database')
-    ->setParameter('db.host', Lazy::env('DB_HOST'))
-    ->setParameter('db.port', Lazy::env('DB_PORT', 'int'))
-    ->setParameter('app.allowed_ips', Lazy::csEnv('ALLOWED_IPS'));
+    ->setParameter('db.host', LazyFactory::env('DB_HOST'))
+    ->setParameter('db.port', LazyFactory::env('DB_PORT', 'int'))
+    ->setParameter('app.allowed_ips', LazyFactory::csEnv('ALLOWED_IPS'));
 
 // Retrieve
 $host = $container->get('db.host');
 $port = $container->get('db.port');
 ```
 
-`Resolvable` parameter values (such as `Lazy::env()`) are resolved on first `get()` and their result is cached back.
+`Resolvable` parameter values (such as `LazyFactory::env()`) are resolved on first `get()` and their result is cached back.
 
 ---
 
 ## Lazy Values
 
-`Phalcon\Container\Resolver\Lazy\Lazy` is a static factory that provides convenient construction of all lazy value types. Import one class instead of twelve separate ones.
+`Phalcon\Container\Resolver\Lazy\LazyFactory` is a static factory that provides convenient construction of all lazy value types. Import one class instead of thirteen separate ones.
 
 ```php
 <?php
 
-use Phalcon\Container\Resolver\Lazy\Lazy;
+use Phalcon\Container\Resolver\Lazy\LazyFactory;
 ```
 
-| Factory Method                                                 | Purpose                                                         |
-|----------------------------------------------------------------|-----------------------------------------------------------------|
-| `Lazy::get(string $id)`                                        | Resolves a service by name via `get()`                          |
-| `Lazy::newInstance(string $id)`                                | Creates a fresh instance via `new()`                            |
-| `Lazy::call(callable $callable)`                               | Calls a callable, passing the container                         |
-| `Lazy::getCall(string $id, string $method, array $args)`       | Gets a shared service then calls a method on it                 |
-| `Lazy::newCall(string $id, string $method, array $args)`       | Creates a fresh instance then calls a method on it              |
-| `Lazy::staticCall(string $className, string $method, array $args)` | Calls a static method on a class                                |
-| `Lazy::functionCall(string $function, array $args)`            | Calls a plain PHP function                                      |
-| `Lazy::arrayValues(array $values)`                             | Resolves an array of lazy values recursively                    |
-| `Lazy::callableGet(string $id)`                                | Returns a closure wrapping `get($id)`                           |
-| `Lazy::callableNew(string $id)`                                | Returns a closure wrapping `new($id)`                           |
-| `Lazy::env(string $name, string $type = null)`                 | Reads an environment variable with optional type casting        |
-| `Lazy::csEnv(string $name, string $type = null)`               | Reads a comma-separated environment variable into a typed array |
+| Factory Method                                                              | Purpose                                                                     |
+|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `LazyFactory::get(string $id)`                                              | Resolves a service by name via `get()`                                      |
+| `LazyFactory::newInstance(string $id)`                                      | Creates a fresh instance via `new()`                                        |
+| `LazyFactory::call(callable $callable)`                                     | Calls a callable, passing the container                                     |
+| `LazyFactory::getCall(string $id, string $method, array $args)`             | Gets a shared service then calls a method on it                             |
+| `LazyFactory::newCall(string $id, string $method, array $args)`             | Creates a fresh instance then calls a method on it                          |
+| `LazyFactory::staticCall(string $className, string $method, array $args)`   | Calls a static method on a class                                            |
+| `LazyFactory::functionCall(string $function, array $args)`                  | Calls a plain PHP function                                                  |
+| `LazyFactory::arrayValues(array $values)`                                   | Resolves an array of lazy values recursively                                |
+| `LazyFactory::callableGet(string $id)`                                      | Returns a closure wrapping `get($id)`                                       |
+| `LazyFactory::callableNew(string $id)`                                      | Returns a closure wrapping `new($id)`                                       |
+| `LazyFactory::env(string $name, string $type = null)`                       | Reads an environment variable; throws if not defined                        |
+| `LazyFactory::envDefault(string $name, mixed $default, string $type = null)`| Reads an environment variable; returns `$default` if not defined            |
+| `LazyFactory::csEnv(string $name, string $type = null)`                     | Reads a comma-separated environment variable into a typed array             |
 
 ### Usage
 
@@ -334,20 +335,27 @@ use Phalcon\Container\Resolver\Lazy\Lazy;
 <?php
 
 use Phalcon\Container\Container;
-use Phalcon\Container\Resolver\Lazy\Lazy;
+use Phalcon\Container\Resolver\Lazy\LazyFactory;
 
 $container = new Container();
 
+// Required env var — throws NotFound if absent
 $container
-    ->setParameter('db.host', Lazy::env('DB_HOST'))
-    ->setParameter('db.port', Lazy::env('DB_PORT', 'int'));
+    ->setParameter('db.host', LazyFactory::env('DB_HOST'))
+    ->setParameter('db.port', LazyFactory::env('DB_PORT', 'int'));
+
+// Optional env var — returns the default value if absent
+$container
+    ->setParameter('log.name', LazyFactory::envDefault('LOG_FILENAME', 'app'))
+    ->setParameter('log.path', LazyFactory::envDefault('LOG_PATH', 'storage/logs/'))
+    ->setParameter('db.port',  LazyFactory::envDefault('DB_PORT', 3306, 'int'));
 
 $container->set('db', DatabaseConnection::class)
-          ->setArgument('host', Lazy::get('db.host'))
-          ->setArgument('port', Lazy::get('db.port'));
+          ->setArgument('host', LazyFactory::get('db.host'))
+          ->setArgument('port', LazyFactory::get('db.port'));
 
 // Static factory
-$container->setParameter('app.version', Lazy::staticCall(AppVersion::class, 'current', []));
+$container->setParameter('app.version', LazyFactory::staticCall(AppVersion::class, 'current', []));
 
 // Callable wrappers - useful for passing lazy service references
 $getMailer = $container->callableGet('mailer');  // Closure: fn() => $container->get('mailer')
@@ -420,16 +428,16 @@ Service providers encapsulate related service registrations into a dedicated cla
 
 use Phalcon\Container\Service\Collection;
 use Phalcon\Container\Service\Provider;
-use Phalcon\Container\Resolver\Lazy\Lazy;
+use Phalcon\Container\Resolver\Lazy\LazyFactory;
 
 class DatabaseProvider implements Provider
 {
     public function provide(Collection $services): void
     {
         $services
-            ->setParameter('db.host', Lazy::env('DB_HOST'))
-            ->setParameter('db.port', Lazy::env('DB_PORT', 'int'))
-            ->setParameter('db.name', Lazy::env('DB_NAME'));
+            ->setParameter('db.host', LazyFactory::env('DB_HOST'))
+            ->setParameter('db.port', LazyFactory::env('DB_PORT', 'int'))
+            ->setParameter('db.name', LazyFactory::env('DB_NAME'));
 
         $services->set('db', function (object $c) {
             return new DatabaseConnection(
