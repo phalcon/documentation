@@ -157,6 +157,10 @@ public function getControllerName(): string
 ```
 Gets last dispatched controller name
 
+!!! warning "WARNING"
+
+    `getControllerName()` returns the controller name exactly as it was defined — no case conversion is applied. When using string-based route definitions (e.g. `$router->add('/path', 'Page::action')`), the name returned will match the case used in the route string (`'Page'`). In Phalcon 4, this value was automatically uncamelized (e.g. `'HogeHoge'` became `'hoge_hoge'`). That conversion was removed in Phalcon 5. If your code (or Volt templates) compares `getControllerName()` against a lowercase or uncamelized value, you must update those comparisons to match the exact case used in your route definitions.
+
 ```php
 public function getDefaultNamespace(): string
 ```
