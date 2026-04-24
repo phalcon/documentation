@@ -19,7 +19,7 @@ Phalcon can be installed using PIE.
 
 ```
 pie install phalcon
-// pie install phalcon-5.11.0
+// pie install phalcon/cphalcon-5.11.0
 ```
 
 **Alternative installation**

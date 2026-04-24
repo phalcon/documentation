@@ -110,7 +110,7 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
     For newer versions of Linux (for instance Debian 13) Phalcon might not compile. To resolve this issue you will need to issue the following command:
 ```
 export CFLAGS="-Wno-incompatible-pointer-types"
-sudo -E pie install phalcon
+sudo -E pie install phalcon/cphalcon
 ```
 
 !!! warning "WARNING"
@@ -118,7 +118,7 @@ sudo -E pie install phalcon
     If you are trying to install Phalcon in Docker and you face the same issue as above, you can try:
 ```
 ARG CFLAGS="-Wno-incompatible-pointer-types"
-pie install phalcon
+pie install phalcon/cphalcon
 ```
 
 ### PIE
@@ -129,7 +129,7 @@ If `pie` is not installed on your system, install PIE first by following the off
 Once PIE is available, install Phalcon with:
 
 ```bash
-pie install phalcon
+pie install phalcon/cphalcon
 ```
 
 ### PECL
