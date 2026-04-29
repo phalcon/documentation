@@ -353,6 +353,23 @@ All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are 
 
     The code and output below have been formatted for readability
 
+**Boolean HTML5 attributes**
+
+When an attribute value is set to `true`, the helper renders it as a standalone attribute name (e.g. `async`, `defer`) instead of `async="1"`. This follows the [HTML5 boolean attribute][html5-boolean] specification.
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Script;
+
+$escaper = new Escaper();
+$helper  = new Script($escaper);
+
+echo $helper('/app.js', ['type' => 'text/javascript', 'async' => true]);
+// <script type="text/javascript" async src="/app.js"></script>
+```
+
 ### `a`
 [Phalcon\Html\Helper\Anchor][html-helper-anchor] creates a `<a>` (anchor) tag.
 
@@ -485,6 +502,12 @@ public function getAttributes(): array
 Returns the attributes of the parent element
 
 ```php
+public function getPrefix(): string
+```
+
+Returns the link prefix that is prepended to every non-empty link during rendering.
+
+```php
 public function getSeparator(): string
 ```
 
@@ -521,6 +544,12 @@ public function setAttributes(array $attributes): static
 Sets the attributes for the parent element
 
 ```php
+public function setPrefix(string $prefix): static
+```
+
+Sets a string prefix that is prepended to every non-empty link during rendering. When called, any previously injected `UrlInterface` is replaced by the static prefix string.
+
+```php
 public function setSeparator(string $separator): static
 ```
 
@@ -541,6 +570,57 @@ public function toArray(): array
 ```
 
 Returns the internal breadcrumbs array
+
+### Subdirectory / Prefix Support
+
+When a Phalcon application is installed in a subdirectory (e.g. `https://example.com/myapp/`), links added with `add()` need the subdirectory prepended so they resolve correctly.
+
+**Using `setPrefix()`** — a static string is prepended to every non-empty link:
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\TagFactory;
+
+$escaper    = new Escaper();
+$tagFactory = new TagFactory($escaper);
+
+$breadcrumbs = $tagFactory->breadcrumbs();
+$breadcrumbs->setPrefix('/myapp');
+
+$breadcrumbs
+    ->add('Home', '/')
+    ->add('Admin', '/admin')
+    ->add('Invoices')
+;
+
+// Links rendered as /myapp/, /myapp/admin
+echo $breadcrumbs->render();
+```
+
+**Using `TagFactory` with a `UrlInterface`** — when a URL service is passed to `TagFactory`, it is forwarded to `Breadcrumbs` automatically. Every link is then resolved through `$url->get()`, which handles the base URI and double-slash normalisation:
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Html\TagFactory;
+
+$container  = new FactoryDefault();
+$url        = $container->get('url');
+$tagFactory = new TagFactory($container->get('escaper'), [], null, $url);
+
+$breadcrumbs = $tagFactory->breadcrumbs();
+
+$breadcrumbs
+    ->add('Home', '/')
+    ->add('Invoices', '/invoices')
+    ->add('View')
+;
+
+echo $breadcrumbs->render();
+```
 
 ### Templates
 
@@ -1557,6 +1637,11 @@ public function optGroup(
 Create an option group
 
 ```php
+public function fromData(SelectDataInterface $data): Select
+```
+Populates the select options from a `SelectDataInterface` provider. Flat entries use `value => label` format; nested arrays produce `<optgroup>` sections.
+
+```php
 public function selected(string $selected): Select
 ```
 Set the selected option
@@ -1606,6 +1691,65 @@ echo $result;
 //            <option value="4">Toyota</option>
 //        </optgroup>
 //    </select>"
+```
+
+**Data providers**
+
+`fromData()` accepts any class implementing `Phalcon\Html\Helper\Input\Select\SelectDataInterface`. Two built-in providers are available.
+
+`Phalcon\Html\Helper\Input\Select\ArrayData` wraps a plain PHP array. Flat entries (`value => label`) produce plain options; nested arrays (`groupLabel => [value => label, ...]`) produce `<optgroup>` sections.
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\Select;
+use Phalcon\Html\Helper\Input\Select\ArrayData;
+
+$escaper = new Escaper();
+$helper  = new Select($escaper);
+$result  = $helper('    ', PHP_EOL);
+
+// Flat list
+$data = new ArrayData([
+    '1' => 'Ferrari',
+    '2' => 'Ford',
+    '3' => 'Dodge',
+]);
+
+$result->fromData($data)->selected('2');
+
+echo $result;
+
+// With optgroups
+$grouped = new ArrayData([
+    'European' => ['1' => 'Ferrari', '5' => 'BMW'],
+    'American' => ['2' => 'Ford',    '3' => 'Dodge'],
+]);
+
+$result = $helper('    ', PHP_EOL);
+$result->fromData(new ArrayData($grouped->getOptions()));
+echo $result;
+```
+
+You can implement `SelectDataInterface` yourself to pull options from any data source (database resultset, configuration, etc.):
+
+```php
+<?php
+
+use Phalcon\Html\Helper\Input\Select\SelectDataInterface;
+
+class StatusData implements SelectDataInterface
+{
+    public function getOptions(): array
+    {
+        return [
+            'active'   => 'Active',
+            'inactive' => 'Inactive',
+            'pending'  => 'Pending',
+        ];
+    }
+}
 ```
 
 ### `inputSubmit`
@@ -2303,3 +2447,4 @@ echo $result;
 [html-helper-title]: api/phalcon_html.md#htmlhelpertitle
 [html-helper-ul]: api/phalcon_html.md#htmlhelperul
 [html-tagfactory]: api/phalcon_html.md#htmltagfactory
+[html5-boolean]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes

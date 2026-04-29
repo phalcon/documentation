@@ -977,6 +977,7 @@ Produce a `<body>` tag.
 -   __Uses__
     
     - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Mvc\Url\UrlInterface`
     - `Phalcon\Support\Helper\Str\Interpolate`
 
 -   __Extends__
@@ -1011,6 +1012,22 @@ in `<li>` tags, while the whole string is enclosed in `<nav>` and `<ol>` tags.
 private $attributes;
 
 /**
+ * Link prefix prepended to every non-empty link during rendering.
+ * Auto-populated from the Url service when one is injected.
+ *
+ * @var string
+ */
+private $prefix = "";
+
+/**
+ * Optional Url service used to resolve links via get().
+ * When set, takes priority over the string prefix.
+ *
+ * @var UrlInterface|null
+ */
+private $url;
+
+/**
  * Keeps all the breadcrumbs.
  *
  * @var array<int, TElement>
@@ -1043,7 +1060,7 @@ private $interpolator;
 ### Methods
 
 ```php
-public function __construct( EscaperInterface $escaper );
+public function __construct( EscaperInterface $escaper, UrlInterface $url = null );
 ```
 AbstractHelper constructor.
 
@@ -1094,6 +1111,12 @@ Get the attributes of the parent element.
 
 
 ```php
+public function getPrefix(): string;
+```
+Returns the link prefix.
+
+
+```php
 public function getSeparator(): string;
 ```
 Returns the separator.
@@ -1130,6 +1153,13 @@ echo $breadcrumbs->render();
 public function setAttributes( array $attributes ): Breadcrumbs;
 ```
 Set the attributes for the parent element.
+
+
+```php
+public function setPrefix( string $prefix ): Breadcrumbs;
+```
+Set the link prefix prepended to every non-empty link during rendering.
+When a Url service was injected, calling this method replaces it.
 
 
 ```php
@@ -1357,6 +1387,56 @@ Class Form
 public function __invoke( array $attributes = [] ): string;
 ```
 Produce a `<form>` tag.
+
+
+
+
+## Html\Helper\FriendlyTitle 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/FriendlyTitle.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Exception`
+    - `Phalcon\Support\Helper\Str\Friendly`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
+
+Converts text to a URL-friendly slug.
+
+
+### Properties
+```php
+/**
+ * @var Friendly
+ */
+protected $friendly;
+
+```
+
+### Methods
+
+```php
+public function __construct( EscaperInterface $escaper );
+```
+
+
+
+```php
+public function __invoke( string $text, string $separator = string, bool $lowercase = bool, mixed $replace = null ): string;
+```
+
 
 
 
@@ -1986,6 +2066,7 @@ protected $type = search;
 -   __Uses__
     
     - `Phalcon\Html\Helper\AbstractList`
+    - `Phalcon\Html\Helper\Input\Select\SelectDataInterface`
 
 -   __Extends__
     
@@ -2031,6 +2112,15 @@ Add a placeholder to the element
 
 
 ```php
+public function fromData( SelectDataInterface $data ): Select;
+```
+Populates the select from a data provider.
+
+Flat entries: key = option value, value = label string.
+Optgroup entries: key = group label, value = [value => label] array.
+
+
+```php
 public function optGroup( string $label = null, array $attributes = [] ): Select;
 ```
 Creates an option group
@@ -2056,6 +2146,149 @@ protected function optGroupEnd(): string;
 
 ```php
 protected function optGroupStart( string $label, array $attributes ): string;
+```
+
+
+
+
+
+## Html\Helper\Input\Select\ArrayData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Select/ArrayData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input\Select`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SelectDataInterface`
+
+Wraps a plain PHP array as a SELECT data provider.
+
+Keys are option values; string values are labels;
+array values define optgroups.
+
+
+### Properties
+```php
+/**
+ * @var array
+ */
+protected $data;
+
+```
+
+### Methods
+
+```php
+public function __construct( array $data = [] );
+```
+
+
+
+```php
+public function getOptions(): array;
+```
+
+
+
+
+
+## Html\Helper\Input\Select\ResultsetData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Select/ResultsetData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input\Select`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Phalcon\Mvc\Model\ResultsetInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `SelectDataInterface`
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Properties
+```php
+/**
+ * @var ResultsetInterface
+ */
+protected $resultset;
+
+/**
+ * @var array
+ */
+protected $using;
+
+```
+
+### Methods
+
+```php
+public function __construct( ResultsetInterface $resultset, array $using );
+```
+
+
+
+```php
+public function getOptions(): array;
+```
+
+
+
+
+
+## Html\Helper\Input\Select\SelectDataInterface ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Select/SelectDataInterface.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input\Select`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Interface for SELECT option data providers.
+
+Return format: [value => label] for flat options;
+[groupLabel => [value => label, ...]] for optgroups.
+
+
+### Methods
+
+```php
+public function getOptions(): array;
 ```
 
 
@@ -2443,6 +2676,58 @@ Add an element to the list
 
 ```php
 protected function getTag(): string;
+```
+
+
+
+
+
+## Html\Helper\Preload 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Preload.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Link\Link`
+    - `Phalcon\Html\Link\Serializer\Header`
+    - `Phalcon\Http\ResponseInterface`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
+
+Generates a <link rel="preload"> tag for resource hinting.
+If a ResponseInterface is provided, also sets the HTTP Link header.
+
+
+### Properties
+```php
+/**
+ * @var ResponseInterface|null
+ */
+protected $response;
+
+```
+
+### Methods
+
+```php
+public function __construct( EscaperInterface $escaper, ResponseInterface $response = null );
+```
+
+
+
+```php
+public function __invoke( string $href, string $type = string, array $attributes = [] ): string;
 ```
 
 
@@ -3471,6 +3756,8 @@ Serializer method
     - `Phalcon\Html\Helper\Title`
     - `Phalcon\Html\Helper\Ul`
     - `Phalcon\Html\Link\Link`
+    - `Phalcon\Http\ResponseInterface`
+    - `Phalcon\Mvc\Url\UrlInterface`
 
 -   __Extends__
     
@@ -3499,6 +3786,7 @@ The class implements `__call()` to allow calling helper objects as methods.
 @method Doctype       doctype(int $flag, string $delimiter)
 @method string        element(string $tag, string $text, array $attributes = [], bool $raw = false)
 @method string        form(array $attributes = [])
+@method string        friendlyTitle(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null)
 @method string        img(string $src, array $attributes = [])
 @method Checkbox      inputCheckbox(string $name, string $value = null, array $attributes = [])
 @method Color         inputColor(string $name, string $value = null, array $attributes = [])
@@ -3528,6 +3816,7 @@ The class implements `__call()` to allow calling helper objects as methods.
 @method Link          link(string $indent = '    ', string $delimiter = PHP_EOL)
 @method Meta          meta(string $indent = '    ', string $delimiter = PHP_EOL)
 @method Ol            ol(string $text, array $attributes = [], bool $raw = false)
+@method string        preload(string $href, string $type = 'style', array $attributes = [])
 @method Script        script(string $indent = '    ', string $delimiter = PHP_EOL)
 @method Style         style(string $indent = '    ', string $delimiter = PHP_EOL)
 @method Title         title(string $indent = '    ', string $delimiter = PHP_EOL)
@@ -3540,6 +3829,16 @@ The class implements `__call()` to allow calling helper objects as methods.
  * @var EscaperInterface
  */
 private $escaper;
+
+/**
+ * @var ResponseInterface|null
+ */
+private $response;
+
+/**
+ * @var UrlInterface|null
+ */
+private $url;
 
 /**
  * @var array
@@ -3557,7 +3856,7 @@ Magic call to make the helper objects available as methods.
 
 
 ```php
-public function __construct( EscaperInterface $escaper, array $services = [] );
+public function __construct( EscaperInterface $escaper, array $services = [], ResponseInterface $response = null, UrlInterface $url = null );
 ```
 TagFactory constructor.
 

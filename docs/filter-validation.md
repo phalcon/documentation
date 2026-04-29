@@ -80,10 +80,11 @@ Appends a message to the messages list
 ```php
 public function bind(
     object $entity, 
-    array | object $$data
+    array | object $data,
+    array $whitelist = []
 ): ValidationInterface
 ```
-Assigns the data to an entity. The entity is used to obtain the validation values
+Assigns the data to an entity. The entity is used to obtain the validation values. When `$whitelist` is supplied, only the fields listed in it will be assigned to the entity; all other fields are skipped.
 
 ```php
 public function getEntity(): object
@@ -173,15 +174,34 @@ Adds labels for fields
 ```php
 public function validate(
     array | object $data = null, 
-    object $entity = null
+    object $entity = null,
+    array $whitelist = []
 ): Messages
 ```
-Validate a set of data according to a set of rules
+Validate a set of data according to a set of rules. When `$whitelist` is supplied, only the listed fields are bound to `$entity`; validation itself still runs over all configured fields.
 
 ```php
 public function fails(): bool
 ```
 Verify if the validation has failed or not. Returns `true` when validation fails, `false` when validation succeeds.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+
+$validation = new Validation();
+$validation->add('name', new PresenceOf(['message' => 'Name is required']));
+
+$validation->validate(['name' => '']);
+
+if ($validation->fails()) {
+    foreach ($validation->getMessages() as $message) {
+        echo $message, PHP_EOL;
+    }
+}
+```
 
 ## Activation
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Filter\Validation][validation] object. You can put your validations in a separate file for better code reuse and organization.
@@ -1874,6 +1894,31 @@ if (count($messages)) {
         echo $message;
     }
 }
+```
+
+## Whitelist
+When validating data that will be applied to an entity (e.g. a model), you can restrict which fields are assigned to the entity by passing a `$whitelist` array. Only the fields listed in the whitelist will be bound; all other incoming fields are ignored. Validators still run over all configured fields regardless of the whitelist.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+
+$validation = new Validation();
+
+$validation->add('name',  new PresenceOf(['message' => 'Name is required']));
+$validation->add('email', new PresenceOf(['message' => 'Email is required']));
+$validation->add('role',  new PresenceOf(['message' => 'Role is required']));
+
+$entity = new stdClass();
+
+// Only 'name' and 'email' are assigned to $entity even though 'role' is in the data
+$messages = $validation->validate(
+    ['name' => 'Phalcon', 'email' => 'team@phalcon.io', 'role' => 'admin'],
+    $entity,
+    ['name', 'email']
+);
 ```
 
 ## Filtering of Data

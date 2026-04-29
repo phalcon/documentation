@@ -97,7 +97,7 @@ Blur image
 
 
 ```php
-public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): AdapterInterface;
+public function crop( int $width, int $height, mixed $offsetX = null, mixed $offsetY = null ): AdapterInterface;
 ```
 Crop an image to the given size
 

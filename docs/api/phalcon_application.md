@@ -116,7 +116,7 @@ $this->registerModules(
 ```php
 public function setDefaultModule( string $defaultModule ): AbstractApplication;
 ```
-Sets the module name to be used if the router doesn't return a valid module
+Sets the module name to be used if the router does not return a valid module
 
 
 ```php

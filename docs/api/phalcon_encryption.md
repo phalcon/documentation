@@ -2215,11 +2215,17 @@ echo $random->base64Safe();           // GD8JojhzSTrqX7Q8J6uug
 echo $random->base64Safe(8);          // mGyy0evy3ok
 echo $random->base64Safe(null, true); // DRrAgOFkS4rvRiVHFefcQ==
 
-// Random UUID
+// Random UUID (version 4) — returns a string
 echo $random->uuid(); // db082997-2572-4e2c-a046-5eefe97b1235
 echo $random->uuid(); // da2aa0e2-b4d0-4e3c-99f5-f5ef62c57fe2
-echo $random->uuid(); // 75e6b628-c562-4117-bb76-61c4153455a9
-echo $random->uuid(); // dc446df1-0848-4d05-b501-4af3c220c13d
+
+// For other UUID versions (1, 3, 5, 6, 7) or object-based access use the
+// Phalcon\Encryption\Security\Uuid factory instead:
+//
+// $uuid = new \Phalcon\Encryption\Security\Uuid();
+// echo $uuid->v1(); // time-based
+// echo $uuid->v6(); // reordered time-based (sortable)
+// echo $uuid->v7(); // Unix-timestamp based (sortable)
 
 // Random number between 0 and $len
 echo $random->number(256); // 84
@@ -2381,15 +2387,12 @@ public function uuid(): string;
 ```
 Generates a v4 random UUID (Universally Unique IDentifier)
 
-The version 4 UUID is purely random (except the version). It doesn't
+The version 4 UUID is purely random (except the version). It does not
 contain meaningful information such as MAC address, time, etc. See RFC
 4122 for details of UUID.
 
-This algorithm sets the version number (4 bits) as well as two reserved
-bits. All other bits (the remaining 122 bits) are set using a random or
-pseudorandom data source. Version 4 UUIDs have the form
-xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and
-y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).
+Delegates to `Phalcon\Encryption\Security\Uuid::v4()`. For other UUID
+versions or object-based access use that class directly.
 
 ```php
 $random = new \Phalcon\Encryption\Security\Random();
@@ -2398,7 +2401,6 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 ```
 
 @link https://www.ietf.org/rfc/rfc4122.txt
-@throws Exception If secure random number generator is not available or unexpected partial read
 
 
 ```php
@@ -2408,5 +2410,631 @@ Generates a random string based on the number ($base) of characters
 ($alphabet).
 
 @throws Exception If secure random number generator is not available or unexpected partial read
+
+
+
+
+## Encryption\Security\Uuid 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Security\Uuid\Version1`
+    - `Phalcon\Encryption\Security\Uuid\Version3`
+    - `Phalcon\Encryption\Security\Uuid\Version4`
+    - `Phalcon\Encryption\Security\Uuid\Version5`
+    - `Phalcon\Encryption\Security\Uuid\Version6`
+    - `Phalcon\Encryption\Security\Uuid\Version7`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Factory that generates UUIDs of versions 1 through 7.
+
+Each call creates a new immutable version object. Cast to string for the
+UUID value; use the returned object for additional methods such as
+getDateTime() or getNode().
+
+@method Version1 v1()
+@method Version3 v3(string $namespaceName, string $name)
+@method Version4 v4()
+@method Version5 v5(string $namespaceName, string $name)
+@method Version6 v6()
+@method Version7 v7()
+
+
+### Methods
+
+```php
+public function v1(): Version1;
+```
+Generates a version 1 (time-based) UUID.
+
+
+```php
+public function v3( string $namespaceName, string $name ): Version3;
+```
+Generates a version 3 (name-based MD5) UUID.
+
+
+```php
+public function v4(): Version4;
+```
+Generates a version 4 (random) UUID.
+
+
+```php
+public function v5( string $namespaceName, string $name ): Version5;
+```
+Generates a version 5 (name-based SHA-1) UUID.
+
+
+```php
+public function v6(): Version6;
+```
+Generates a version 6 (reordered time-based) UUID.
+
+
+```php
+public function v7(): Version7;
+```
+Generates a version 7 (Unix timestamp) UUID.
+
+
+
+
+## Encryption\Security\Uuid\AbstractUuid ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/AbstractUuid.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `UuidInterface`
+
+Shared base for all UUID version objects.
+
+
+### Constants
+```php
+const MAX = ffffffff-ffff-ffff-ffff-ffffffffffff;
+const NIL = 00000000-0000-0000-0000-000000000000;
+const TIME_OFFSET_INT = 0x01B21DD213814000;
+```
+
+### Properties
+```php
+/**
+ * Cached SysNodeProvider instance — shared within the request via static.
+ *
+ * @var NodeProviderInterface|null
+ */
+protected static $nodeProvider;
+
+/**
+ * The generated UUID string.
+ *
+ * @var string
+ */
+protected $uid = ;
+
+```
+
+### Methods
+
+```php
+public function __toString(): string;
+```
+Returns the UUID string.
+
+
+```php
+public function jsonSerialize(): string;
+```
+Returns the UUID string for JSON serialisation.
+
+
+```php
+protected function format( string $hex ): string;
+```
+Formats a 32-character hex string as a canonical UUID string.
+
+
+```php
+protected function getNodeProvider(): NodeProviderInterface;
+```
+Returns the shared SysNodeProvider instance, creating it on first call.
+The static property means one discovery per request regardless of how
+many VersionN objects are constructed.
+
+
+```php
+protected function namespaceToBytes( string $uuid ): string;
+```
+Converts a canonical UUID string to its 16-byte binary representation.
+
+
+```php
+protected function uuidTimestampToDateTime( mixed $timestamp ): \DateTimeImmutable;
+```
+Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
+a DateTimeImmutable. Used by Version1 and Version6.
+
+
+
+
+## Encryption\Security\Uuid\NodeProviderInterface ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/NodeProviderInterface.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been influenced by sinbadxiii/cphalcon-uuid
+@link    https://github.com/sinbadxiii/cphalcon-uuid
+
+
+### Methods
+
+```php
+public function getNode(): string;
+```
+
+
+
+
+
+## Encryption\Security\Uuid\RandomNodeProvider 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/RandomNodeProvider.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `NodeProviderInterface`
+
+Generates a random 48-bit node with the multicast bit set.
+
+Used as a fallback when no hardware MAC address is available.
+
+@link https://www.ietf.org/rfc/rfc4122.txt Section 4.5
+
+
+### Methods
+
+```php
+public function getNode(): string;
+```
+Returns a random 12-character hex node with the multicast bit set.
+
+
+
+
+## Encryption\Security\Uuid\SysNodeProvider 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/SysNodeProvider.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `NodeProviderInterface`
+
+Discovers the hardware MAC address and returns it as a 12-character hex node.
+
+Two-layer cache:
+  1. Instance property  — free on all calls after the first within this instance.
+  2. APCu               — cross-request within the same PHP-FPM worker (optional).
+
+Falls back to RandomNodeProvider if no valid MAC address is found.
+
+Platform support:
+  Linux   — reads /sys/class/net/*\/address
+  macOS   — passthru("ifconfig 2>&1")
+  Windows — passthru("ipconfig /all 2>&1")
+  FreeBSD — passthru("netstat -i -f link 2>&1")
+
+
+### Properties
+```php
+/**
+ * @var string|null
+ */
+private $node;
+
+```
+
+### Methods
+
+```php
+public function getNode(): string;
+```
+Returns the hardware MAC address as a 12-character hex string.
+Result is cached in the instance property and optionally in APCu.
+
+
+
+
+## Encryption\Security\Uuid\TimeBasedUuidInterface ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/TimeBasedUuidInterface.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been influenced by sinbadxiii/cphalcon-uuid
+@link    https://github.com/sinbadxiii/cphalcon-uuid
+
+
+### Methods
+
+```php
+public function getDateTime(): \DateTimeImmutable;
+```
+
+
+
+```php
+public function getNode(): string;
+```
+
+
+
+
+
+## Encryption\Security\Uuid\UuidInterface ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/UuidInterface.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Marker interface for UUID version adapters.
+
+Also carries the standard RFC 4122 namespace UUIDs as constants.
+
+
+### Constants
+```php
+const NAMESPACE_DNS = 6ba7b810-9dad-11d1-80b4-00c04fd430c8;
+const NAMESPACE_OID = 6ba7b812-9dad-11d1-80b4-00c04fd430c8;
+const NAMESPACE_URL = 6ba7b811-9dad-11d1-80b4-00c04fd430c8;
+const NAMESPACE_X500 = 6ba7b814-9dad-11d1-80b4-00c04fd430c8;
+```
+
+
+## Encryption\Security\Uuid\Version1 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/Version1.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractUuid`
+
+-   __Implements__
+    
+    - `TimeBasedUuidInterface`
+
+Generates a version 1 (time-based) UUID.
+
+The timestamp is the number of 100-nanosecond intervals since
+October 15, 1582 00:00:00.00 UTC (the UUID epoch). The node is resolved
+via SysNodeProvider (hardware MAC, APCu-cached) with RandomNodeProvider
+as fallback.
+
+@link https://www.ietf.org/rfc/rfc4122.txt
+
+
+### Methods
+
+```php
+public function __construct( \DateTimeInterface $dateTime = null, mixed $node = null );
+```
+
+
+
+```php
+public function getDateTime(): \DateTimeImmutable;
+```
+Returns a DateTimeImmutable built from the UUID's embedded timestamp.
+
+
+```php
+public function getNode(): string;
+```
+Returns the 12-character hex node embedded in the UUID.
+
+
+
+
+## Encryption\Security\Uuid\Version3 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/Version3.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractUuid`
+
+-   __Implements__
+    
+
+Generates a version 3 (name-based MD5) UUID.
+
+Given a namespace UUID and a name string, produces a deterministic UUID
+by hashing namespace bytes + name with MD5, then stamping version/variant.
+
+@link https://www.ietf.org/rfc/rfc4122.txt
+
+
+### Methods
+
+```php
+public function __construct( string $namespaceName, string $name );
+```
+
+
+
+
+
+## Encryption\Security\Uuid\Version4 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/Version4.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractUuid`
+
+-   __Implements__
+    
+
+Generates a version 4 (random) UUID.
+
+All 122 non-fixed bits are random. Identical algorithm to
+Phalcon\Encryption\Security\Random::uuid().
+
+@link https://www.ietf.org/rfc/rfc4122.txt
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\Uuid\Version5 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/Version5.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractUuid`
+
+-   __Implements__
+    
+
+Generates a version 5 (name-based SHA-1) UUID.
+
+Given a namespace UUID and a name string, produces a deterministic UUID
+by hashing namespace bytes + name with SHA-1 (first 16 bytes used),
+then stamping version/variant bits.
+
+@link https://www.ietf.org/rfc/rfc4122.txt
+
+
+### Methods
+
+```php
+public function __construct( string $namespaceName, string $name );
+```
+
+
+
+
+
+## Encryption\Security\Uuid\Version6 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/Version6.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractUuid`
+
+-   __Implements__
+    
+    - `TimeBasedUuidInterface`
+
+Generates a version 6 (reordered time-based) UUID.
+
+Uses the same 60-bit UUID timestamp as version 1 but rearranges the
+fields so the most-significant time bits come first, producing UUIDs
+that sort lexicographically in chronological order.
+
+@link https://www.rfc-editor.org/rfc/rfc9562
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+```php
+public function getDateTime(): \DateTimeImmutable;
+```
+Returns a DateTimeImmutable built from the UUID's embedded timestamp.
+
+
+```php
+public function getNode(): string;
+```
+Returns the 12-character hex node embedded in the UUID.
+
+
+
+
+## Encryption\Security\Uuid\Version7 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/Version7.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Uuid`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractUuid`
+
+-   __Implements__
+    
+
+Generates a version 7 (Unix timestamp) UUID per RFC 9562.
+
+Layout (128 bits):
+  unix_ts_ms (48) | ver=7 (4) | rand_a (12) | var=10 (2) | rand_b (62)
+
+@link https://www.rfc-editor.org/rfc/rfc9562
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
 
 

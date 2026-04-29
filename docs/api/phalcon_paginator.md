@@ -367,7 +367,7 @@ $paginator = new QueryBuilder(
 protected $builder;
 
 /**
- * Columns for count query if builder has having
+ * Columns for count query if builder has having or group by
  *
  * @var array|string
  */

@@ -165,6 +165,8 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 -   __Uses__
     
     - `Phalcon\Di\Injectable`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
 
 -   __Extends__
     
@@ -173,6 +175,7 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 -   __Implements__
     
     - `ControllerInterface`
+    - `EventsAwareInterface`
 
 Phalcon\Mvc\Controller
 
@@ -220,6 +223,24 @@ class PeopleController extends \Phalcon\Mvc\Controller
 final public function __construct();
 ```
 Phalcon\Mvc\Controller constructor
+
+
+```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Returns the internal event manager
+
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the events manager
+
+
+```php
+protected function fireManagerEvent( string $eventName, mixed $data = null, bool $cancellable = bool ): mixed | bool;
+```
+Helper method to fire an event
 
 
 
@@ -880,7 +901,7 @@ Mounts a collection of handlers
 ```php
 public function notFound( mixed $handler ): Micro;
 ```
-Sets a handler that will be called when the router doesn't match any of
+Sets a handler that will be called when the router does not match any of
 the defined routes
 
 
@@ -1461,6 +1482,7 @@ Calls the middleware
     - `Phalcon\Mvc\Model\ValidationFailed`
     - `Phalcon\Support\Collection`
     - `Phalcon\Support\Collection\CollectionInterface`
+    - `Phalcon\Support\Settings`
     - `Serializable`
 
 -   __Extends__
@@ -1565,6 +1587,11 @@ protected $operationMade = ;
  * @var array
  */
 protected $oldSnapshot;
+
+/**
+ * @var array
+ */
+protected $rawValues;
 
 /**
  * @var bool
@@ -2653,7 +2680,7 @@ Unserializes the object from a serialized string
 ```php
 public function update(): bool;
 ```
-Updates a model instance. If the instance doesn't exist in the
+Updates a model instance. If the instance does not exist in the
 persistence it will throw an exception. Returning `true` on success or
 `false` otherwise.
 
@@ -3176,6 +3203,7 @@ Checks whether the behavior must take action on certain event
     - `Phalcon\Mvc\ModelInterface`
     - `Phalcon\Mvc\Model\Behavior`
     - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
     
@@ -4254,6 +4282,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
     - `Phalcon\Mvc\Model\Query\Builder`
     - `Phalcon\Mvc\Model\Query\BuilderInterface`
     - `Phalcon\Mvc\Model\Query\StatusInterface`
+    - `Phalcon\Support\Settings`
     - `ReflectionClass`
     - `ReflectionProperty`
 
@@ -4842,7 +4871,7 @@ Sets if a model must keep snapshots
 ```php
 public function load( string $modelName ): ModelInterface;
 ```
-Loads a model throwing an exception if it doesn't exist
+Loads a model throwing an exception if it does not exist
 
 
 ```php
@@ -5029,6 +5058,12 @@ Setups a 1-1 relation between two models using an intermediate table
 
 
 ```php
+public function clearReusableObjects(): void;
+```
+Clears the internal reusable list
+
+
+```php
 public function createBuilder( mixed $params = null ): BuilderInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query\Builder
@@ -5167,6 +5202,12 @@ Query the relations between two models
 
 
 ```php
+public function getReusableRecords( string $modelName, string $key );
+```
+Returns a reusable object from the internal list
+
+
+```php
 public function getWriteConnection( ModelInterface $model ): AdapterInterface;
 ```
 Returns the connection to write data related to a model
@@ -5254,7 +5295,7 @@ Sets if a model must keep snapshots
 ```php
 public function load( string $modelName ): ModelInterface;
 ```
-Loads a model throwing an exception if it doesn't exist
+Loads a model throwing an exception if it does not exist
 
 
 ```php
@@ -5294,6 +5335,12 @@ Sets the mapped source for a model
 public function setReadConnectionService( ModelInterface $model, string $connectionService ): void;
 ```
 Sets read connection service for a model
+
+
+```php
+public function setReusableRecords( string $modelName, string $key, mixed $records ): void;
+```
+Stores a reusable record in the internal list
 
 
 ```php
@@ -6185,6 +6232,7 @@ The meta-data is obtained by reading the column descriptions from the database i
     
     - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\MetaData`
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
     
@@ -7010,6 +7058,7 @@ inside the query object
     - `Phalcon\Di\InjectionAwareInterface`
     - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\QueryInterface`
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
     
@@ -8458,7 +8507,7 @@ Gets the intermediate referenced fields for has-*-through relations
 public function getOption( string $name );
 ```
 Returns an option by the specified name
-If the option doesn't exist null is returned
+If the option does not exist null is returned
 
 
 ```php
@@ -8576,7 +8625,7 @@ Gets the intermediate referenced fields for has-*-through relations
 public function getOption( string $name );
 ```
 Returns an option by the specified name
-If the option doesn't exist null is returned
+If the option does not exist null is returned
 
 
 ```php
@@ -8691,6 +8740,7 @@ Sets the object's state
     - `Phalcon\Mvc\Model`
     - `Phalcon\Mvc\ModelInterface`
     - `Phalcon\Storage\Serializer\SerializerInterface`
+    - `Phalcon\Support\Settings`
     - `SeekableIterator`
     - `Serializable`
 
@@ -8900,6 +8950,12 @@ Returns the error messages produced by a batch operation
 
 
 ```php
+public function getResult(): mixed;
+```
+
+
+
+```php
 public function getType(): int;
 ```
 Returns the internal type of data retrieval that the resultset is using
@@ -8958,6 +9014,12 @@ Resultsets cannot be changed. It has only been implemented to meet the definitio
 public function offsetUnset( mixed $offset ): void;
 ```
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
+```php
+public function refresh(): bool;
+```
+
 
 
 ```php
@@ -9020,6 +9082,7 @@ Check whether internal resource has rows to fetch
     - `Phalcon\Mvc\Model\ResultsetInterface`
     - `Phalcon\Mvc\Model\Row`
     - `Phalcon\Storage\Serializer\SerializerInterface`
+    - `Phalcon\Support\Settings`
     - `stdClass`
 
 -   __Extends__
@@ -9120,6 +9183,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
     - `Phalcon\Mvc\Model\Resultset`
     - `Phalcon\Mvc\Model\Row`
     - `Phalcon\Storage\Serializer\SerializerInterface`
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
     
@@ -10453,7 +10517,7 @@ Allows to calculate a sum on a column that match the specified conditions
 ```php
 public function update(): bool;
 ```
-Updates a model instance. If the instance doesn't exist in the
+Updates a model instance. If the instance does not exist in the
 persistence it will throw an exception. Returning true on success or
 false otherwise.
 
@@ -13259,6 +13323,8 @@ Phalcon\Mvc\View\Engine\Php
     
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\Injectable`
+    - `Phalcon\Events\EventsAwareInterface`
+    - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Mvc\ViewBaseInterface`
 
 -   __Extends__
@@ -13268,6 +13334,7 @@ Phalcon\Mvc\View\Engine\Php
 -   __Implements__
     
     - `EngineInterface`
+    - `EventsAwareInterface`
 
 All the template engine adapters must inherit this class. This provides
 basic interfacing between the engine and the Phalcon\Mvc\View component.
@@ -13275,6 +13342,11 @@ basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 ### Properties
 ```php
+/**
+ * @var ManagerInterface|null
+ */
+protected $eventsManager;
+
 /**
  * @var ViewBaseInterface
  */
@@ -13297,6 +13369,12 @@ Returns cached output on another view stage
 
 
 ```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Returns the internal event manager
+
+
+```php
 public function getView(): ViewBaseInterface;
 ```
 Returns the view component related to the adapter
@@ -13306,6 +13384,18 @@ Returns the view component related to the adapter
 public function partial( string $partialPath, mixed $params = null ): void;
 ```
 Renders a partial inside another view
+
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the events manager
+
+
+```php
+protected function fireManagerEvent( string $eventName, mixed $data = null, bool $cancellable = bool ): mixed | bool;
+```
+Helper method to fire an event
 
 
 
@@ -13982,7 +14072,7 @@ Sets a single compiler option
 
 
 ```php
-public function setOptions( array $options );
+public function setOptions( array $options ): Compiler;
 ```
 Sets the compiler options
 

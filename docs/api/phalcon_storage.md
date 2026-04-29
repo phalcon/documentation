@@ -126,13 +126,19 @@ Flushes/clears the cache
 
 
 ```php
-abstract public function decrement( string $key, int $value = int ): int | bool;
+public function decrement( string $key, int $value = int ): int | bool;
 ```
 Decrements a stored number
 
 
 ```php
-abstract public function delete( string $key ): bool;
+public function delete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+public function deleteMultiple( array $keys ): bool;
 ```
 Deletes data from the adapter
 
@@ -186,21 +192,25 @@ Get the serializer
 
 
 ```php
-abstract public function has( string $key ): bool;
+public function has( string $key ): bool;
 ```
 Checks if an element exists in the cache
 
 
 ```php
-abstract public function increment( string $key, int $value = int ): int | bool;
+public function increment( string $key, int $value = int ): int | bool;
 ```
 Increments a stored number
 
 
 ```php
-abstract public function set( string $key, mixed $value, mixed $ttl = null ): bool;
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
-Stores data in the adapter
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
 
 
 ```php
@@ -216,9 +226,55 @@ Sets the event manager
 
 
 ```php
-protected function doGet( string $key );
+abstract protected function doDecrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+abstract protected function doDelete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+protected function doDeleteMultiple( array $keys ): bool;
+```
+Deletes multiple keys from the adapter
+
+
+```php
+protected function doGet( string $key, mixed $defaultValue = null ): mixed;
 ```
 
+
+
+```php
+protected function doGetData( string $key ): mixed;
+```
+
+
+
+```php
+abstract protected function doHas( string $key ): bool;
+```
+Checks if an element exists in the cache
+
+
+```php
+abstract protected function doIncrement( string $key, int $value = int ): int | bool;
+```
+Increments a stored number
+
+
+```php
+abstract protected function doSet( string $key, mixed $value, mixed $ttl = null ): bool;
+```
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
 
 
 ```php
@@ -316,6 +372,12 @@ Decrements a stored number
 public function delete( string $key ): bool;
 ```
 Deletes data from the adapter
+
+
+```php
+public function deleteMultiple( array $keys ): bool;
+```
+Deletes multiple data from the adapter
 
 
 ```php
@@ -427,43 +489,9 @@ Flushes/clears the cache
 
 
 ```php
-public function decrement( string $key, int $value = int ): int | bool;
-```
-Decrements a stored number
-
-
-```php
-public function delete( string $key ): bool;
-```
-Reads data from the adapter
-
-
-```php
 public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
-
-
-```php
-public function has( string $key ): bool;
-```
-Checks if an element exists in the cache
-
-
-```php
-public function increment( string $key, int $value = int ): int | bool;
-```
-Increments a stored number
-
-
-```php
-public function set( string $key, mixed $value, mixed $ttl = null ): bool;
-```
-Stores data in the adapter. If the TTL is `null` (default) or not defined
-then the default TTL will be used, as set in this adapter. If the TTL
-is `0` or a negative number, a `delete()` will be issued, since this
-item has expired. If you need to set this key forever, you should use
-the `setForever()` method.
 
 
 ```php
@@ -474,9 +502,49 @@ from the adapter.
 
 
 ```php
-protected function doGet( string $key );
+protected function doDecrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+protected function doDelete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+protected function doDeleteMultiple( array $keys ): bool;
+```
+Deletes multiple keys from APCu in a single call
+
+
+```php
+protected function doGetData( string $key );
 ```
 
+
+
+```php
+protected function doHas( string $key ): bool;
+```
+Checks if an element exists in the cache
+
+
+```php
+protected function doIncrement( string $key, int $value = int ): int | bool;
+```
+Increments a stored number
+
+
+```php
+protected function doSet( string $key, mixed $value, mixed $ttl = null ): bool;
+```
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
 
 
 ```php
@@ -574,18 +642,6 @@ Flushes/clears the cache
 
 
 ```php
-public function decrement( string $key, int $value = int ): int | bool;
-```
-Decrements a stored number
-
-
-```php
-public function delete( string $key ): bool;
-```
-Reads data from the adapter
-
-
-```php
 public function getAdapter(): mixed;
 ```
 Returns the already connected adapter or connects to the Memcached
@@ -599,32 +655,50 @@ Stores data in the adapter
 
 
 ```php
-public function has( string $key ): bool;
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
+
+
+```php
+protected function doDecrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+protected function doDelete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+protected function doDeleteMultiple( array $keys ): bool;
+```
+Deletes multiple keys from Memcached using a single deleteMulti call
+
+
+```php
+protected function doHas( string $key ): bool;
 ```
 Checks if an element exists in the cache
 
 
 ```php
-public function increment( string $key, int $value = int ): int | bool;
+protected function doIncrement( string $key, int $value = int ): int | bool;
 ```
 Increments a stored number
 
 
 ```php
-public function set( string $key, mixed $value, mixed $ttl = null ): bool;
+protected function doSet( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 Stores data in the adapter. If the TTL is `null` (default) or not defined
 then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
-
-
-```php
-public function setForever( string $key, mixed $value ): bool;
-```
-Stores data in the adapter forever. The key needs to manually deleted
-from the adapter.
 
 
 
@@ -682,43 +756,9 @@ Flushes/clears the cache
 
 
 ```php
-public function decrement( string $key, int $value = int ): int | bool;
-```
-Decrements a stored number
-
-
-```php
-public function delete( string $key ): bool;
-```
-Deletes data from the adapter
-
-
-```php
 public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
-
-
-```php
-public function has( string $key ): bool;
-```
-Checks if an element exists in the cache
-
-
-```php
-public function increment( string $key, int $value = int ): int | bool;
-```
-Increments a stored number
-
-
-```php
-public function set( string $key, mixed $value, mixed $ttl = null ): bool;
-```
-Stores data in the adapter. If the TTL is `null` (default) or not defined
-then the default TTL will be used, as set in this adapter. If the TTL
-is `0` or a negative number, a `delete()` will be issued, since this
-item has expired. If you need to set this key forever, you should use
-the `setForever()` method.
 
 
 ```php
@@ -729,9 +769,43 @@ from the adapter.
 
 
 ```php
-protected function doGet( string $key );
+protected function doDecrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+protected function doDelete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+protected function doGetData( string $key );
 ```
 
+
+
+```php
+protected function doHas( string $key ): bool;
+```
+Checks if an element exists in the cache
+
+
+```php
+protected function doIncrement( string $key, int $value = int ): int | bool;
+```
+Increments a stored number
+
+
+```php
+protected function doSet( string $key, mixed $value, mixed $ttl = null ): bool;
+```
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
 
 
 
@@ -789,18 +863,6 @@ Flushes/clears the cache
 
 
 ```php
-public function decrement( string $key, int $value = int ): int | bool;
-```
-Decrements a stored number
-
-
-```php
-public function delete( string $key ): bool;
-```
-Reads data from the adapter
-
-
-```php
 public function getAdapter(): mixed;
 ```
 Returns the already connected adapter or connects to the Redis
@@ -814,32 +876,50 @@ Stores data in the adapter
 
 
 ```php
-public function has( string $key ): bool;
+public function setForever( string $key, mixed $value ): bool;
+```
+Stores data in the adapter forever. The key needs to manually deleted
+from the adapter.
+
+
+```php
+protected function doDecrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+protected function doDelete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+protected function doDeleteMultiple( array $keys ): bool;
+```
+Deletes multiple keys from Redis using a single unlink call
+
+
+```php
+protected function doHas( string $key ): bool;
 ```
 Checks if an element exists in the cache
 
 
 ```php
-public function increment( string $key, int $value = int ): int | bool;
+protected function doIncrement( string $key, int $value = int ): int | bool;
 ```
 Increments a stored number
 
 
 ```php
-public function set( string $key, mixed $value, mixed $ttl = null ): bool;
+protected function doSet( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 Stores data in the adapter. If the TTL is `null` (default) or not defined
 then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
-
-
-```php
-public function setForever( string $key, mixed $value ): bool;
-```
-Stores data in the adapter forever. The key needs to manually deleted
-from the adapter.
 
 
 
@@ -992,49 +1072,9 @@ Flushes/clears the cache
 
 
 ```php
-public function decrement( string $key, int $value = int ): int | bool;
-```
-Decrements a stored number
-
-
-```php
-public function delete( string $key ): bool;
-```
-Reads data from the adapter
-
-
-```php
-public function get( string $key, mixed $defaultValue = null ): mixed;
-```
-Reads data from the adapter
-
-
-```php
 public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
-
-
-```php
-public function has( string $key ): bool;
-```
-Checks if an element exists in the cache and is not expired
-
-
-```php
-public function increment( string $key, int $value = int ): int | bool;
-```
-Increments a stored number
-
-
-```php
-public function set( string $key, mixed $value, mixed $ttl = null ): bool;
-```
-Stores data in the adapter. If the TTL is `null` (default) or not defined
-then the default TTL will be used, as set in this adapter. If the TTL
-is `0` or a negative number, a `delete()` will be issued, since this
-item has expired. If you need to set this key forever, you should use
-the `setForever()` method.
 
 
 ```php
@@ -1042,6 +1082,46 @@ public function setForever( string $key, mixed $value ): bool;
 ```
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
+
+
+```php
+protected function doDecrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number
+
+
+```php
+protected function doDelete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+protected function doGet( string $key, mixed $defaultValue = null ): mixed;
+```
+Reads data from the adapter
+
+
+```php
+protected function doHas( string $key ): bool;
+```
+Checks if an element exists in the cache and is not expired
+
+
+```php
+protected function doIncrement( string $key, int $value = int ): int | bool;
+```
+Increments a stored number
+
+
+```php
+protected function doSet( string $key, mixed $value, mixed $ttl = null ): bool;
+```
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
 
 
 ```php
@@ -1139,53 +1219,9 @@ Flushes/clears the cache
 
 
 ```php
-public function decrement( string $key, int $value = int ): int | bool;
-```
-Decrements a stored number
-
-
-```php
-public function delete( string $key ): bool;
-```
-Deletes data from the adapter
-
-
-```php
-public function get( string $key, mixed $defaultValue = null ): mixed;
-```
-   Reads data from the adapter
-   
-   
-
-
-```php
 public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
-
-
-```php
-public function has( string $key ): bool;
-```
-   Checks if an element exists in the cache
-   
-   
-
-
-```php
-public function increment( string $key, int $value = int ): int | bool;
-```
-Increments a stored number
-
-
-```php
-public function set( string $key, mixed $value, mixed $ttl = null ): bool;
-```
-Stores data in the adapter. If the TTL is `null` (default) or not defined
-then the default TTL will be used, as set in this adapter. If the TTL
-is `0` or a negative number, a `delete()` will be issued, since this
-item has expired. If you need to set this key forever, you should use
-the `setForever()` method.
 
 
 ```php
@@ -1198,6 +1234,46 @@ will never set a serializer, WeakReference cannot be serialized
 public function setForever( string $key, mixed $value ): bool;
 ```
 For compatiblity only, there is no Forever with WeakReference.
+
+
+```php
+protected function doDecrement( string $key, int $value = int ): int | bool;
+```
+Decrements a stored number — not supported for WeakReference
+
+
+```php
+protected function doDelete( string $key ): bool;
+```
+Deletes data from the adapter
+
+
+```php
+protected function doGet( string $key, mixed $defaultValue = null ): mixed;
+```
+Reads data from the adapter
+
+
+```php
+protected function doHas( string $key ): bool;
+```
+Checks if an element exists in the cache
+
+
+```php
+protected function doIncrement( string $key, int $value = int ): int | bool;
+```
+Increments a stored number — not supported for WeakReference
+
+
+```php
+protected function doSet( string $key, mixed $value, mixed $ttl = null ): bool;
+```
+Stores data in the adapter. If the TTL is `null` (default) or not defined
+then the default TTL will be used, as set in this adapter. If the TTL
+is `0` or a negative number, a `delete()` will be issued, since this
+item has expired. If you need to set this key forever, you should use
+the `setForever()` method.
 
 
 
@@ -1967,3 +2043,5 @@ protected function getExceptionClass(): string;
 protected function getServices(): array;
 ```
 Returns the available adapters
+
+

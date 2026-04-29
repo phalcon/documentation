@@ -26,7 +26,6 @@ hide:
     - `Phalcon\Filter\Validation\ValidatorInterface`
     - `Phalcon\Forms\Exception`
     - `Phalcon\Forms\Form`
-    - `Phalcon\Html\Escaper`
     - `Phalcon\Html\TagFactory`
     - `Phalcon\Messages\MessageInterface`
     - `Phalcon\Messages\Messages`
@@ -801,7 +800,11 @@ protected $method = inputRadio;
 
 -   __Uses__
     
-    - `Phalcon\Tag\Select`
+    - `Phalcon\Forms\Exception`
+    - `Phalcon\Html\Helper\Input\Select\ArrayData`
+    - `Phalcon\Html\Helper\Input\Select\ResultsetData`
+    - `Phalcon\Html\TagFactory`
+    - `Phalcon\Mvc\Model\ResultsetInterface`
 
 -   __Extends__
     
@@ -973,6 +976,21 @@ protected $method = inputTextarea;
     
 
 Exceptions thrown in Phalcon\Forms will use this class
+
+
+### Methods
+
+```php
+public static function tagFactoryNotFound(): Exception;
+```
+
+
+
+```php
+public static function usingParameterRequired(): Exception;
+```
+
+
 
 
 

@@ -31,6 +31,7 @@ hide:
     - `Phalcon\Db\ReferenceInterface`
     - `Phalcon\Events\EventsAwareInterface`
     - `Phalcon\Events\ManagerInterface`
+    - `Phalcon\Support\Settings`
 
 -   __Extends__
     
@@ -950,7 +951,7 @@ Escapes a value to avoid SQL injections
 public function execute( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): bool;
 ```
 Sends SQL statements to the database server returning the success state.
-Use this method only when the SQL statement sent to the server doesn't
+Use this method only when the SQL statement sent to the server does not
 return any rows
 
 
@@ -1438,7 +1439,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 public function execute( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): bool;
 ```
 Sends SQL statements to the database server returning the success state.
-Use this method only when the SQL statement sent to the server doesn't
+Use this method only when the SQL statement sent to the server does not
 return any rows
 
 ```php
@@ -4612,9 +4613,9 @@ protected $pdoStatement;
 protected $result;
 
 /**
- * @var bool
+ * @var int|null
  */
-protected $rowCount = false;
+protected $rowCount;
 
 /**
  * @var string|null
