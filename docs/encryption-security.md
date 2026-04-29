@@ -478,6 +478,96 @@ $random = new Random();
 echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 ```
 
+## UUID
+[Phalcon\Encryption\Security\Uuid][security-uuid] is a factory that generates UUIDs (Universally Unique Identifiers) for versions 1 through 7 as defined by [RFC 4122][rfc-4122] and [RFC 9562][rfc-9562]. Each version adapter is instantiated once and cached for reuse.
+
+### Namespace Constants
+[Phalcon\Encryption\Security\Uuid\UuidInterface][security-uuid-interface] defines the four standard RFC 4122 namespace UUIDs as constants:
+
+| Constant          | Value                                  | Use                         |
+|-------------------|----------------------------------------|-----------------------------|
+| `NAMESPACE_DNS`   | `6ba7b810-9dad-11d1-80b4-00c04fd430c8` | DNS names                   |
+| `NAMESPACE_URL`   | `6ba7b811-9dad-11d1-80b4-00c04fd430c8` | URLs                        |
+| `NAMESPACE_OID`   | `6ba7b812-9dad-11d1-80b4-00c04fd430c8` | ISO OIDs                    |
+| `NAMESPACE_X500`  | `6ba7b814-9dad-11d1-80b4-00c04fd430c8` | X.500 distinguished names   |
+
+### Methods
+
+```php
+public function v1(): string
+```
+Generates a version 1 (time-based) UUID using a 60-bit UUID timestamp and a random node/clock-sequence.
+
+```php
+public function v3(string $namespaceName, string $name): string
+```
+Generates a version 3 (name-based MD5) UUID. The same namespace + name pair always produces the same UUID.
+
+```php
+public function v4(): string
+```
+Generates a version 4 (random) UUID.
+
+```php
+public function v5(string $namespaceName, string $name): string
+```
+Generates a version 5 (name-based SHA-1) UUID. The same namespace + name pair always produces the same UUID.
+
+```php
+public function v6(): string
+```
+Generates a version 6 (reordered time-based) UUID. Fields are reordered so that UUIDs sort lexicographically in chronological order.
+
+```php
+public function v7(): string
+```
+Generates a version 7 (Unix timestamp + random) UUID per RFC 9562. Monotonically increasing within the same millisecond window.
+
+### Examples
+
+```php
+<?php
+
+use Phalcon\Encryption\Security\Uuid;
+use Phalcon\Encryption\Security\Uuid\UuidInterface;
+
+$uuid = new Uuid();
+
+// Version 1 - time-based
+echo $uuid->v1(); // e.g. 6ba7b810-9dad-11d1-80b4-00c04fd430c8
+
+// Version 3 - name-based MD5 (deterministic)
+echo $uuid->v3(UuidInterface::NAMESPACE_DNS, 'phalcon.io');
+// always: aeb94720-3f71-35d3-9b9c-c0c7a6f55e1c
+
+// Version 4 - random
+echo $uuid->v4(); // e.g. f47ac10b-58cc-4372-a567-0e02b2c3d479
+
+// Version 5 - name-based SHA-1 (deterministic)
+echo $uuid->v5(UuidInterface::NAMESPACE_URL, 'https://phalcon.io');
+// always produces the same UUID for the same input
+
+// Version 6 - reordered time-based (lexicographically sortable)
+echo $uuid->v6();
+
+// Version 7 - Unix ms timestamp + random (lexicographically sortable)
+echo $uuid->v7();
+```
+
+Because each adapter is instantiated lazily and cached, repeated calls to the same `v*()` method reuse the same adapter instance.
+
+```php
+<?php
+
+use Phalcon\Encryption\Security\Uuid;
+
+$uuid = new Uuid();
+
+// The v4 adapter is created once and reused
+$id1 = $uuid->v4();
+$id2 = $uuid->v4();
+```
+
 ## Dependency Injection
 If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Encryption\Security][security] is already registered for you. However, you might want to override the default registration in order to set your own `workFactor()`. Alternatively, if you are not using the [Phalcon\Di\FactoryDefault][factorydefault] and instead are using the [Phalcon\Di\Di][di] the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views, and any component that implements `Injectable`.
 
@@ -547,10 +637,13 @@ Also in your views (Volt syntax)
 [rainbow-tables]: https://en.wikipedia.org/wiki/Rainbow_table
 [rfc-3548]: https://www.ietf.org/rfc/rfc3548.txt
 [rfc-4122]: https://www.ietf.org/rfc/rfc4122.txt
+[rfc-9562]: https://www.rfc-editor.org/rfc/rfc9562
 [secure-random]: https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 [security]: api/phalcon_encryption.md#encryptionsecurity
 [security-exception]: api/phalcon_encryption.md#encryptionsecurityexception
 [security-random]: api/phalcon_encryption.md#encryptionsecurityrandom
+[security-uuid]: api/phalcon_encryption.md#encryptionsecurityuuid
+[security-uuid-interface]: api/phalcon_encryption.md#encryptionsecurityuuiduuidinterface
 [sha1]: https://php.net/manual/en/function.sha1.php
 [wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
 [di]: di.md

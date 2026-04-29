@@ -310,7 +310,26 @@ class InvoicesController extends Controller
 The above parameters will match the route the way it was defined.
 
 ## Events
-Controllers automatically act as listeners for [dispatcher][dispatcher] [events][events], implementing methods with those event names allowing you to implement hook points before/after the actions are executed:
+Controllers automatically act as listeners for [dispatcher][dispatcher] [events][events], implementing methods with those event names allowing you to implement hook points before/after the actions are executed.
+
+Controllers also implement `Phalcon\Events\EventsAwareInterface`, which means you can attach an events manager directly to any controller instance using `setEventsManager()` and retrieve it with `getEventsManager()`:
+
+```php
+<?php
+
+use Phalcon\Events\Manager;
+use Phalcon\Mvc\Controller;
+
+$controller = new InvoicesController();
+
+$eventsManager = new Manager();
+$eventsManager->attach('controller', function ($event, $controller) {
+    // custom listener logic
+});
+
+$controller->setEventsManager($eventsManager);
+```
+
 
 ```php
 <?php

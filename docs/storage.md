@@ -398,6 +398,64 @@ $storage->increment('my-key', 3);
 echo $storage->get('my-key');      // 3
 ```
 
+### `RedisCluster`
+This adapter utilizes PHP's [redis][redis] extension to connect to a Redis Cluster. It extends the `Redis` adapter and shares its serializer support, but connects to multiple nodes and uses `ph-redc-` as its default key prefix.
+
+You can connect either by supplying seed hosts directly, or by referencing a named cluster configured in `redis.ini`.
+
+| Option              | Default         |
+|---------------------|-----------------|
+| `defaultSerializer` | `Php`           |
+| `lifetime`          | `3600`          |
+| `serializer`        | `null`          |
+| `prefix`            | `ph-redc-`      |
+| `name`              | `null`          |
+| `hosts`             | `['127.0.0.1:6379']` |
+| `timeout`           | `0`             |
+| `readTimeout`       | `0`             |
+| `persistent`        | `false`         |
+| `auth`              | `''`            |
+| `context`           | `null`          |
+
+**Connecting by seed hosts:**
+
+```php
+<?php
+
+use Phalcon\Storage\Adapter\RedisCluster;
+use Phalcon\Storage\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+
+$options = [
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
+    'hosts'             => ['redis-node-1:7000', 'redis-node-2:7001'],
+];
+
+$adapter = new RedisCluster($serializerFactory, $options);
+```
+
+**Connecting by named cluster (configured in `redis.ini`):**
+
+```ini
+; redis.ini
+redis.clusters.seeds = "mycluster[]=localhost:7000&mycluster[]=localhost:7001"
+redis.clusters.timeout = "mycluster=5"
+redis.clusters.read_timeout = "mycluster=10"
+```
+
+```php
+<?php
+
+use Phalcon\Storage\Adapter\RedisCluster;
+use Phalcon\Storage\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+
+$adapter = new RedisCluster($serializerFactory, ['name' => 'mycluster']);
+```
+
 ### `Stream`
 This adapter is the simplest to set up since it uses the target system's file system (it only requires a storage path that is writeable). It is one of the slowest storage adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the storage element, resulting in additional reads and writes to the file system.
 
@@ -598,6 +656,7 @@ The parameters you can use for the factory are:
 | `libmemcached` | [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] |
 | `memory`       | [Phalcon\Storage\Adapter\Memory][storage-adapter-memory]             |
 | `redis`        | [Phalcon\Storage\Adapter\Redis][storage-adapter-redis]               |
+| `redisCluster` | [Phalcon\Storage\Adapter\RedisCluster][storage-adapter-rediscluster] |
 | `stream`       | [Phalcon\Storage\Adapter\Stream][storage-adapter-stream]             |
 
 ## Events
@@ -635,6 +694,7 @@ As a result `getEventsManager()` and `setEventsManager()` are available for you 
 [storage-adapter-libmemcached]: api/phalcon_storage.md#storageadapterlibmemcached
 [storage-adapter-memory]: api/phalcon_storage.md#storageadaptermemory
 [storage-adapter-redis]: api/phalcon_storage.md#storageadapterredis
+[storage-adapter-rediscluster]: api/phalcon_storage.md#storageadapterrediscluster
 [storage-adapter-stream]: api/phalcon_storage.md#storageadapterstream
 [storage-adapterfactory]: api/phalcon_storage.md#storageadapterfactory
 [storage-exception]: api/phalcon_storage.md#storageexception

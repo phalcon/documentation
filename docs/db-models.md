@@ -2332,6 +2332,24 @@ Phalcon's resultsets emulate scrollable cursors. You can get any row just by acc
 
 Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#model-features) section.
 
+You can re-execute the underlying query at any time to update the resultset with fresh data from the database by calling `refresh()`. This is useful in long-running scripts or when you suspect the data may have changed since the resultset was last loaded.
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find(['conditions' => 'inv_status = "new"']);
+
+echo count($invoices); // current count
+
+// ... time passes, other processes may have inserted rows ...
+
+$invoices->refresh();
+
+echo count($invoices); // updated count
+```
+
 Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache\Cache][cache] can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
 ```php
@@ -3820,7 +3838,7 @@ class Invoices extends Model
 ```
 
 ## Model Features
-The ORM has several options that control specific behaviors globally. You can enable or disable these features by adding specific lines to your `php.ini` file or using the `setup` static method on the model. You can enable or disable these features temporarily in your code or permanently.
+The ORM has several options that control specific behaviors globally. You can enable or disable these features by adding specific lines to your `php.ini` file, using the `setup` static method on the model, or using `Phalcon\Support\Settings` for a PHP-level override that does not call `ini_set()`.
 
 ```ini
 phalcon.orm.column_renaming = false
@@ -3889,6 +3907,28 @@ The available options are:
 ; phalcon.db.escape_identifiers = On
 ; phalcon.db.force_casting = Off
 ```
+
+**Using `Phalcon\Support\Settings`**
+
+`Phalcon\Support\Settings` provides PHP-level overrides for all framework settings. Unlike `ini_set()`, changes made with `Settings::set()` are stored in a static array and never modify the underlying `php.ini` configuration, which prevents settings from one project from leaking into another sharing the same PHP process.
+
+```php
+<?php
+
+use Phalcon\Support\Settings;
+
+// Override a setting at the PHP level
+Settings::set('orm.column_renaming', false);
+Settings::set('orm.events', false);
+
+// Read the effective value (PHP override → php.ini → compiled default)
+var_dump(Settings::get('orm.events')); // bool(false)
+
+// Clear all PHP-level overrides and revert to php.ini / compiled defaults
+Settings::reset();
+```
+
+The `get()` method follows this resolution order: PHP-level override → `ini_get('phalcon.<key>')` → compiled-in default.
 
 !!! warning "WARNING"
 
