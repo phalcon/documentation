@@ -199,6 +199,7 @@ plugins:
         'en/support-version.md': support-version.md
         'en/tag.md': tag.md
         'en/testing-environment.md': testing-environment.md
+        'en/time-clock.md': time-clock.md
         'en/translate.md': translate.md
         'en/tutorial-basic.md': tutorial-basic.md
         'en/tutorial-invo.md': tutorial-invo.md
@@ -393,6 +394,7 @@ nav:
           - JWT: encryption-security-jwt.md
       - Storage: storage.md
       - Utility:
+          - Clock: time-clock.md
           - Collection: support-collection.md
           - Domain: domain.md
           - Helper: support-helper.md
