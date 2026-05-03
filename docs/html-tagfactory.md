@@ -29,52 +29,132 @@ $helper = $container->tag->newInstance('a');
 
 The registered names for respective helpers are:
 
-| Name                 | Class                                     |
-|----------------------|-------------------------------------------|
-| `a`                  | `Phalcon\Html\Helper\Anchor`              |
-| `base`               | `Phalcon\Html\Helper\Base`                |
-| `breadcrumbs`        | `Phalcon\Html\Helper\Breadcrumbs`         |
-| `body`               | `Phalcon\Html\Helper\Body`                |
-| `button`             | `Phalcon\Html\Helper\Button`              |
-| `close`              | `Phalcon\Html\Helper\Close`               |
-| `doctype`            | `Phalcon\Html\Helper\Doctype`             |
-| `element`            | `Phalcon\Html\Helper\Element`             |
-| `form`               | `Phalcon\Html\Helper\Form`                |
-| `friendlyTitle`      | `Phalcon\Html\Helper\FriendlyTitle`       |
-| `img`                | `Phalcon\Html\Helper\Img`                 |
-| `inputCheckbox`      | `Phalcon\Html\Helper\Input\Checkbox`      |
-| `inputColor`         | `Phalcon\Html\Helper\Input\Color`         |
-| `inputDate`          | `Phalcon\Html\Helper\Input\Date`          |
-| `inputDateTime`      | `Phalcon\Html\Helper\Input\DateTime`      |
-| `inputDateTimeLocal` | `Phalcon\Html\Helper\Input\DateTimeLocal` |
-| `inputEmail`         | `Phalcon\Html\Helper\Input\Email`         |
-| `inputFile`          | `Phalcon\Html\Helper\Input\File`          |
-| `inputHidden`        | `Phalcon\Html\Helper\Input\Hidden`        |
-| `inputImage`         | `Phalcon\Html\Helper\Input\Image`         |
-| `inputInput`         | `Phalcon\Html\Helper\Input\Input`         |
-| `inputMonth`         | `Phalcon\Html\Helper\Input\Month`         |
-| `inputNumeric`       | `Phalcon\Html\Helper\Input\Numeric`       |
-| `inputPassword`      | `Phalcon\Html\Helper\Input\Password`      |
-| `inputRadio`         | `Phalcon\Html\Helper\Input\Radio`         |
-| `inputRange`         | `Phalcon\Html\Helper\Input\Range`         |
-| `inputSearch`        | `Phalcon\Html\Helper\Input\Search`        |
-| `inputSelect`        | `Phalcon\Html\Helper\Input\Select`        |
-| `inputSubmit`        | `Phalcon\Html\Helper\Input\Submit`        |
-| `inputTel`           | `Phalcon\Html\Helper\Input\Tel`           |
-| `inputText`          | `Phalcon\Html\Helper\Input\Text`          |
-| `inputTextarea`      | `Phalcon\Html\Helper\Input\Textarea`      |
-| `inputTime`          | `Phalcon\Html\Helper\Input\Time`          |
-| `inputUrl`           | `Phalcon\Html\Helper\Input\Url`           |
-| `inputWeek`          | `Phalcon\Html\Helper\Input\Week`          |
-| `label`              | `Phalcon\Html\Helper\Label`               |
-| `link`               | `Phalcon\Html\Helper\Link`                |
-| `meta`               | `Phalcon\Html\Helper\Meta`                |
-| `ol`                 | `Phalcon\Html\Helper\Ol`                  |
-| `preload`            | `Phalcon\Html\Helper\Preload`             |
-| `script`             | `Phalcon\Html\Helper\Script`              |
-| `style`              | `Phalcon\Html\Helper\Style`               |
-| `title`              | `Phalcon\Html\Helper\Title`               |
-| `ul`                 | `Phalcon\Html\Helper\Ul`                  |
+| Name                 | Class                                                  |
+|----------------------|--------------------------------------------------------|
+| `a`                  | `Phalcon\Html\Helper\Anchor`                           |
+| `aRaw`               | `Phalcon\Html\Helper\Anchor` (raw)                     |
+| `base`               | `Phalcon\Html\Helper\Base`                             |
+| `breadcrumbs`        | `Phalcon\Html\Helper\Breadcrumbs`                      |
+| `body`               | `Phalcon\Html\Helper\Body`                             |
+| `button`             | `Phalcon\Html\Helper\Button`                           |
+| `buttonRaw`          | `Phalcon\Html\Helper\Button` (raw)                     |
+| `close`              | `Phalcon\Html\Helper\Close`                            |
+| `doctype`            | `Phalcon\Html\Helper\Doctype`                          |
+| `element`            | `Phalcon\Html\Helper\Element`                          |
+| `elementRaw`         | `Phalcon\Html\Helper\Element` (raw)                    |
+| `form`               | `Phalcon\Html\Helper\Form`                             |
+| `friendlyTitle`      | `Phalcon\Html\Helper\FriendlyTitle`                    |
+| `img`                | `Phalcon\Html\Helper\Img`                              |
+| `inputCheckbox`      | `Phalcon\Html\Helper\Input\Checkbox`                   |
+| `inputColor`         | `Phalcon\Html\Helper\Input\Generic` (`type=color`)         |
+| `inputDate`          | `Phalcon\Html\Helper\Input\Generic` (`type=date`)          |
+| `inputDateTime`      | `Phalcon\Html\Helper\Input\Generic` (`type=datetime`)      |
+| `inputDateTimeLocal` | `Phalcon\Html\Helper\Input\Generic` (`type=datetime-local`)|
+| `inputEmail`         | `Phalcon\Html\Helper\Input\Generic` (`type=email`)         |
+| `inputFile`          | `Phalcon\Html\Helper\Input\Generic` (`type=file`)          |
+| `inputHidden`        | `Phalcon\Html\Helper\Input\Generic` (`type=hidden`)        |
+| `inputImage`         | `Phalcon\Html\Helper\Input\Generic` (`type=image`)         |
+| `inputInput`         | `Phalcon\Html\Helper\Input\Generic` (`type=text`)          |
+| `inputMonth`         | `Phalcon\Html\Helper\Input\Generic` (`type=month`)         |
+| `inputNumeric`       | `Phalcon\Html\Helper\Input\Generic` (`type=number`)        |
+| `inputPassword`      | `Phalcon\Html\Helper\Input\Generic` (`type=password`)      |
+| `inputRadio`         | `Phalcon\Html\Helper\Input\Radio`                      |
+| `inputRange`         | `Phalcon\Html\Helper\Input\Generic` (`type=range`)         |
+| `inputSearch`        | `Phalcon\Html\Helper\Input\Generic` (`type=search`)        |
+| `inputSelect`        | `Phalcon\Html\Helper\Input\Select`                     |
+| `inputSubmit`        | `Phalcon\Html\Helper\Input\Generic` (`type=submit`)        |
+| `inputTel`           | `Phalcon\Html\Helper\Input\Generic` (`type=tel`)           |
+| `inputText`          | `Phalcon\Html\Helper\Input\Generic` (`type=text`)          |
+| `inputTextarea`      | `Phalcon\Html\Helper\Input\Textarea`                   |
+| `inputTime`          | `Phalcon\Html\Helper\Input\Generic` (`type=time`)          |
+| `inputUrl`           | `Phalcon\Html\Helper\Input\Generic` (`type=url`)           |
+| `inputWeek`          | `Phalcon\Html\Helper\Input\Generic` (`type=week`)          |
+| `label`              | `Phalcon\Html\Helper\Label`                            |
+| `labelRaw`           | `Phalcon\Html\Helper\Label` (raw)                      |
+| `link`               | `Phalcon\Html\Helper\Link`                             |
+| `meta`               | `Phalcon\Html\Helper\Meta`                             |
+| `ol`                 | `Phalcon\Html\Helper\Ol`                               |
+| `olRaw`              | `Phalcon\Html\Helper\Ol` (raw)                         |
+| `preload`            | `Phalcon\Html\Helper\Preload`                          |
+| `script`             | `Phalcon\Html\Helper\Script`                           |
+| `style`              | `Phalcon\Html\Helper\Style`                            |
+| `tag`                | `Phalcon\Html\Helper\Tag`                              |
+| `title`              | `Phalcon\Html\Helper\Title`                            |
+| `ul`                 | `Phalcon\Html\Helper\Ul`                               |
+| `ulRaw`              | `Phalcon\Html\Helper\Ul` (raw)                         |
+| `voidTag`            | `Phalcon\Html\Helper\VoidTag`                          |
+
+!!! info "NOTE"
+
+    As of v5.12.2 the per-type input helpers (`Color`, `Date`, `DateTime`, `DateTimeLocal`, `Email`, `File`, `Hidden`, `Image`, `Input`, `Month`, `Numeric`, `Password`, `Range`, `Search`, `Submit`, `Tel`, `Text`, `Time`, `Url`, `Week`) have been removed and replaced with a single `Phalcon\Html\Helper\Input\Generic` helper that takes the `type` through its constructor (or `setType()`). Code that uses the `TagFactory` factory method names (`inputColor`, `inputDate`, ...) keeps working unchanged. See [Generic input](#generic-input) below.
+
+### Registration Pipeline
+Starting with v5.12.2, [Phalcon\Html\TagFactory][html-tagfactory] no longer extends `Phalcon\Factory\AbstractFactory`. The internal recipe map accepts three forms when registering or overriding helpers via `set()`:
+
+- A class-string: `'a' => Phalcon\Html\Helper\Anchor::class`
+- A closure or callable: `'a' => fn($escaper) => new Anchor($escaper)`
+- A tuple `[className, [depKey, ...]]` or `[className, [depKey, ...], [extraArg, ...]]`. Dependency keys are resolved from the factory's internal services (`escaper`, `escaperAttribute`, `response`, `url`, ...) and `extraArg`s are appended verbatim.
+
+Resolved instances are cached lazily per name in a separate `instances` map. Calling `set()` with a new recipe invalidates the previously cached instance, so the next resolution returns a fresh helper. `has()` reports against the recipe map (registered names) instead of the resolved-instance map.
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Anchor;
+use Phalcon\Html\TagFactory;
+
+$factory = new TagFactory(new Escaper());
+
+// Class-string recipe
+$factory->set('a', Anchor::class);
+
+// Closure recipe
+$factory->set('a', function ($escaper) {
+    return new Anchor($escaper);
+});
+
+// Tuple recipe with extra constructor args
+// (this is how `inputColor` is registered: Generic with type='color')
+$factory->set(
+    'inputColor',
+    [
+        \Phalcon\Html\Helper\Input\Generic::class,
+        ['escaper'],
+        ['color'],
+    ]
+);
+
+// Override invalidates the previously cached instance
+$factory->set('a', MyAnchor::class);
+```
+
+### Raw Factory Variants
+Several helpers accept a final `bool $raw = false` argument to skip escaping (useful, for example, when the inner content is itself markup such as an `<img>` inside an `<a>`). To avoid having to remember the parameter position, the factory exposes `Raw` variants that pin `raw = true` for you:
+
+| Raw variant   | Equivalent of                                  |
+|---------------|------------------------------------------------|
+| `aRaw`        | `a($href, $text, $attributes, true)`           |
+| `buttonRaw`   | `button($text, $attributes, true)`             |
+| `elementRaw`  | `element($tag, $text, $attributes, true)`      |
+| `labelRaw`    | `label($label, $attributes, true)`             |
+| `olRaw`       | `ol($text, $attributes, true)`                 |
+| `ulRaw`       | `ul($text, $attributes, true)`                 |
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+$image     = $container->tag->img('https://phalcon.io/img/phalcon.png');
+
+// Without Raw (passing true as 4th arg)
+echo $container->tag->a('https://phalcon.io', $image, [], true);
+
+// Same result with the Raw variant — no need for the trailing true
+echo $container->tag->aRaw('https://phalcon.io', $image);
+```
 
 ### Method call
 If you do not wish to call `newInstance()`, you can always use the method call that corresponds to the name of the helper. Some helpers accept a `bool` `$raw` parameter, which defines whether the input will be escaped or not. This is useful when creating anchor links with images.
@@ -320,6 +400,47 @@ public function ul(
     bool $raw = false
 ): Ul
 
+public function tag(
+    string $tag, 
+    array $attributes = []
+): string
+
+public function voidTag(
+    string $tag, 
+    array $attributes = []
+): string
+
+public function aRaw(
+    string $href, 
+    string $text, 
+    array $attributes = []
+): string
+
+public function buttonRaw(
+    string $text, 
+    array $attributes = []
+): string
+
+public function elementRaw(
+    string $tag, 
+    string $text, 
+    array $attributes = []
+): string
+
+public function labelRaw(
+    string $label, 
+    array $attributes = []
+): string
+
+public function olRaw(
+    string $text, 
+    array $attributes = []
+): Ol
+
+public function ulRaw(
+    string $text, 
+    array $attributes = []
+): Ul
 ```
 
 ```php
@@ -1066,6 +1187,8 @@ echo $helper('/my-url', $options);
 ### `inputCheckbox`
 [Phalcon\Html\Helper\Checkbox][html-helper-input-checkbox] creates a `<input type="checkbox">` tag.
 
+`Checkbox` and `Radio` both extend the shared [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute matches the `value` using a loose comparison (`==`) by default, so mixed `int`/`string` form input still round-trips correctly. Call `strict(true)` to opt back into strict (`===`) matching.
+
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
 | `string $name`           | The name                          |
@@ -1078,6 +1201,11 @@ echo $helper('/my-url', $options);
 public function label(array $attributes)
 ```
 Sets the label for the checkbox
+
+```php
+public function strict(bool $flag = true): Checkbox
+```
+Switches between strict (`===`) and loose (`==`) comparison of `value` against the `checked` attribute. Loose is the default.
 
 ```php
 <?php
@@ -1107,287 +1235,8 @@ echo $result;
 // </label>
 ```
 
-### `inputColor`
-[Phalcon\Html\Helper\Color][html-helper-input-color] creates a `<input type="color">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Color;
-
-$escaper = new Escaper();
-$helper  = new Color($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="color"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputDate`
-[Phalcon\Html\Helper\Date][html-helper-input-date] creates a `<input type="date">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Date;
-
-$escaper = new Escaper();
-$helper  = new Date($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="date"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputDatetime`
-[Phalcon\Html\Helper\DateTime][html-helper-input-datetime] creates a `<input type="datetime">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\DateTime;
-
-$escaper = new Escaper();
-$helper  = new DateTime($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="datetime"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputDatetimeLocal`
-[Phalcon\Html\Helper\DateTimeLocal][html-helper-input-datetime-local] creates a `<input type="datetime-local">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\DateTimeLocal;
-
-$escaper = new Escaper();
-$helper  = new DateTimeLocal($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="datetime-local"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputEmail`
-[Phalcon\Html\Helper\Email][html-helper-input-email] creates a `<input type="email">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Email;
-
-$escaper = new Escaper();
-$helper  = new Email($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="email"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputFile`
-[Phalcon\Html\Helper\File][html-helper-input-file] creates a `<input type="file">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\File;
-
-$escaper = new Escaper();
-$helper  = new File($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="file"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputHidden`
-[Phalcon\Html\Helper\Hidden][html-helper-input-hidden] creates a `<input type="hidden">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Hidden;
-
-$escaper = new Escaper();
-$helper  = new Hidden($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="hidden"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputImage`
-[Phalcon\Html\Helper\Image][html-helper-input-image] creates a `<input type="image">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Image;
-
-$escaper = new Escaper();
-$helper  = new Image($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="image"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `inputMonth`
-[Phalcon\Html\Helper\Month][html-helper-input-month] creates a `<input type="month">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Month;
-
-$escaper = new Escaper();
-$helper  = new Month($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="month"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
-
-### `input`
-[Phalcon\Html\Helper\Input][html-helper-input-input] creates a `<input>` tag.
+### Generic input
+[Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] backs every type-only `<input>` (color, date, email, file, etc.). Pass the HTML5 `type` either as the second constructor argument, or after construction via `setType()`.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1398,100 +1247,111 @@ echo $helper('test-name', "test-value", $options);
 **Methods**
 
 ```php
-public function setType(string $type)
+public function setType(string $type): Generic
 ```
-Sets the type of the input
+Changes the rendered `type=` attribute.
 
 ```php
 <?php
 
 use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Input;
+use Phalcon\Html\Helper\Input\Generic;
 
 $escaper = new Escaper();
-$helper  = new Input($escaper);
+$helper  = new Generic($escaper, 'color');
 $options = [
     'class' => 'my-class',
     'name'  => 'my-name',
     'id'    => 'my-id',
 ];
 
-$result = $helper('test-name', "test-value", $options);
+echo $helper('test-name', 'test-value', $options);
+// <input type="color"
+//    value="test-value"
+//    id="my-id"
+//    name="my-name"
+//    class="my-class">
 
-$result->setType('month');
+// Switch the rendered type at runtime
+$helper->setType('email');
+echo $helper('email-name', 'me@phalcon.io');
+// <input type="email" value="me@phalcon.io" name="email-name">
+```
 
-echo $result;
-// <input type="month"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
+When called via the factory, the `type` is baked into the recipe so you do not need to pass it yourself:
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+
+echo $container->tag->inputColor('test-name', 'test-value');
+// <input type="color" value="test-value" name="test-name">
+
+echo $container->tag->inputDate('start', '2026-01-01');
+// <input type="date" value="2026-01-01" name="start">
+```
+
+### `inputColor`
+The `inputColor` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=color` baked in. See [Generic input](#generic-input).
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+$options   = [
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
+];
+
+echo $container->tag->inputColor('test-name', 'test-value', $options);
+// <input type="color"
+//    value="test-value"
+//    id="my-id"
+//    name="my-name"
 //    class="my-class">
 ```
+
+### `inputDate`
+The `inputDate` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=date` baked in. See [Generic input](#generic-input).
+
+### `inputDatetime`
+The `inputDateTime` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=datetime` baked in. See [Generic input](#generic-input).
+
+### `inputDatetimeLocal`
+The `inputDateTimeLocal` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=datetime-local` baked in. See [Generic input](#generic-input).
+
+### `inputEmail`
+The `inputEmail` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=email` baked in. See [Generic input](#generic-input).
+
+### `inputFile`
+The `inputFile` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=file` baked in. See [Generic input](#generic-input).
+
+### `inputHidden`
+The `inputHidden` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=hidden` baked in. See [Generic input](#generic-input).
+
+### `inputImage`
+The `inputImage` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=image` baked in. See [Generic input](#generic-input).
+
+### `inputMonth`
+The `inputMonth` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=month` baked in. See [Generic input](#generic-input).
+
+### `input`
+The `inputInput` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with the default `type=text`. Call `setType()` on the returned helper to render any other HTML5 type. See [Generic input](#generic-input).
 
 ### `inputNumeric`
-[Phalcon\Html\Helper\Numeric][html-helper-input-numeric] creates a `<input type="numeric">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Numeric;
-
-$escaper = new Escaper();
-$helper  = new Numeric($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="numeric"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputNumeric` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=number` baked in. See [Generic input](#generic-input).
 
 ### `inputPassword`
-[Phalcon\Html\Helper\Password][html-helper-input-password] creates a `<input type="password">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Password;
-
-$escaper = new Escaper();
-$helper  = new Password($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="password"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputPassword` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=password` baked in. See [Generic input](#generic-input).
 
 ### `inputRadio`
-[Phalcon\Html\Helper\Radio][html-helper-input-radio] creates a `<input type="radio">` tag.
+[Phalcon\Html\Helper\Radio][html-helper-input-radio] creates a `<input type="radio">` tag. As of v5.12.2, `Radio` no longer extends `Checkbox`; both share the new [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute matches `value` loosely (`==`) by default — call `strict(true)` to opt into strict (`===`) matching.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1505,6 +1365,11 @@ echo $helper('test-name', "test-value", $options);
 public function label(array $attributes)
 ```
 Sets the label for the radio
+
+```php
+public function strict(bool $flag = true): Radio
+```
+Switches between strict (`===`) and loose (`==`) comparison of `value` against the `checked` attribute. Loose is the default.
 
 ```php
 <?php
@@ -1535,66 +1400,10 @@ echo $result;
 ```
 
 ### `inputRange`
-[Phalcon\Html\Helper\Range][html-helper-input-range] creates a `<input type="range">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Range;
-
-$escaper = new Escaper();
-$helper  = new Range($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="range"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputRange` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=range` baked in. See [Generic input](#generic-input).
 
 ### `inputSearch`
-[Phalcon\Html\Helper\Search][html-helper-input-search] creates a `<input type="search">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Search;
-
-$escaper = new Escaper();
-$helper  = new Search($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="search"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputSearch` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=search` baked in. See [Generic input](#generic-input).
 
 ### `inputSelect`
 [Phalcon\Html\Helper\Select][html-helper-input-select] creates a `<select>` tag.
@@ -1642,9 +1451,19 @@ public function fromData(SelectDataInterface $data): Select
 Populates the select options from a `SelectDataInterface` provider. Flat entries use `value => label` format; nested arrays produce `<optgroup>` sections.
 
 ```php
+public function placeholder(string $text): Select
+```
+Injects `<option value="" disabled selected>$text</option>` as the first entry. Useful as a non-selectable hint in the dropdown.
+
+```php
 public function selected(string $selected): Select
 ```
 Set the selected option
+
+```php
+public function strict(bool $flag = true): Select
+```
+Switches between strict (`===`) and loose (`==`) comparison of an option's `value` against the `selected` value. Loose is the default in v5.12.2 so mixed `int`/`string` form input round-trips correctly.
 
 ```php
 <?php
@@ -1753,97 +1572,13 @@ class StatusData implements SelectDataInterface
 ```
 
 ### `inputSubmit`
-[Phalcon\Html\Helper\Submit][html-helper-input-submit] creates a `<input type="submit">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Submit;
-
-$escaper = new Escaper();
-$helper  = new Submit($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="submit"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputSubmit` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=submit` baked in. See [Generic input](#generic-input).
 
 ### `inputTel`
-[Phalcon\Html\Helper\Tel][html-helper-input-tel] creates a `<input type="tel">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Tel;
-
-$escaper = new Escaper();
-$helper  = new Tel($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="tel"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputTel` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=tel` baked in. See [Generic input](#generic-input).
 
 ### `inputText`
-[Phalcon\Html\Helper\Text][html-helper-input-text] creates a `<input type="text">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Text;
-
-$escaper = new Escaper();
-$helper  = new Text($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="text"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputText` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=text` baked in. See [Generic input](#generic-input).
 
 ### `inputTextarea`
 [Phalcon\Html\Helper\TextArea][html-helper-input-textarea] creates a `<textarea>` tags
@@ -1878,97 +1613,13 @@ echo $helper('click<>me', $options);
 ```
 
 ### `inputTime`
-[Phalcon\Html\Helper\Time][html-helper-input-time] creates a `<input type="time">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Time;
-
-$escaper = new Escaper();
-$helper  = new Time($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="time"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputTime` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=time` baked in. See [Generic input](#generic-input).
 
 ### `inputUrl`
-[Phalcon\Html\Helper\Url][html-helper-input-url] creates a `<input type="url">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Url;
-
-$escaper = new Escaper();
-$helper  = new Url($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="url"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputUrl` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=url` baked in. See [Generic input](#generic-input).
 
 ### `inputWeek`
-[Phalcon\Html\Helper\Week][html-helper-input-week] creates a `<input type="week">` tag.
-
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $name`           | The name                          |
-| `string $value`          | The value                         |
-| `array $attributes = []` | Additional attributes (key/value) |
-
-```php
-<?php
-
-use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Input\Week;
-
-$escaper = new Escaper();
-$helper  = new Week($escaper);
-$options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
-];
-
-echo $helper('test-name', "test-value", $options);
-// <input type="week"
-//    value="test-value" 
-//    id="my-id" 
-//    name="my-name" 
-//    class="my-class">
-```
+The `inputWeek` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=week` baked in. See [Generic input](#generic-input).
 
 ### `label`
 [Phalcon\Html\Helper\Label][html-helper-label] creates a `<label>` tag.
@@ -2197,10 +1848,24 @@ echo $factory->preload('/my-font.woff2', 'font');
 ```php
 public function add(
     string $url,
-    array $attributes = []
+    array $attributes = [],
+    int $pos = -1
 ): Script
 ```
-Add a URL to the list
+Add a URL to the list. The optional `$pos` argument controls the slot in the internal store: a negative value (the default) pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots if necessary. Entries are emitted in numerical key order regardless of registration order.
+
+```php
+public function beginInternal(): void
+```
+Starts an output buffer to capture inline JavaScript.
+
+```php
+public function endInternal(
+    array $attributes = [],
+    int $pos = -1
+): Script
+```
+Stops the buffer started by `beginInternal()`, wraps the captured contents in a `<script>` block (with the supplied attributes), and appends it to the asset stack at the optional `$pos`.
 
 ```php
 <?php
@@ -2225,8 +1890,56 @@ echo $result;
 //            src="/js/print.js" ie="active"></script>
 ```
 
+**Positional inserts**
+
+`add()` accepts a third argument that controls where the entry lands in the internal store. Because `__toString()` `ksort()`s the store before rendering, you can interleave entries deterministically:
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Script;
+
+$helper = new Script(new Escaper());
+$result = $helper();
+
+$result
+    ->add('/js/a.js')                          // slot 0
+    ->add('/js/c.js', [], 5)                   // slot 5
+    ->add('/js/b.js')                          // slot 1 (next auto-increment)
+;
+
+echo $result;
+//    <script type="application/javascript" src="/js/a.js"></script>
+//    <script type="application/javascript" src="/js/b.js"></script>
+//    <script type="application/javascript" src="/js/c.js"></script>
+```
+
+**Inline scripts via output buffering**
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Script;
+
+$helper = new Script(new Escaper());
+$result = $helper();
+
+$result->beginInternal();
+?>
+console.log('hello from phalcon');
+<?php
+$result->endInternal(['type' => 'application/javascript']);
+
+echo $result;
+// <script type="application/javascript">
+// console.log('hello from phalcon');
+// </script>
+```
+
 ### `style`
-[Phalcon\Html\Helper\Script][html-helper-style] creates a `<link>` tag.
+[Phalcon\Html\Helper\Style][html-helper-style] creates a `<link>` tag.
 
 | Parameter           | Description   |
 |---------------------|---------------|
@@ -2238,19 +1951,20 @@ echo $result;
 ```php
 public function add(
     string $url,
-    array $attributes = []
-): Script
+    array $attributes = [],
+    int $pos = -1
+): Style
 ```
-Add a URL to the list
+Add a URL to the list. The optional `$pos` argument controls placement in the internal store the same way it does for `Script::add()`: negative pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots. Output is `ksort()`ed by key before rendering.
 
 ```php
 <?php
 
 use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Script;
+use Phalcon\Html\Helper\Style;
 
 $escaper = new Escaper();
-$helper  = new Script($escaper);
+$helper  = new Style($escaper);
 
 $result = $helper();
 
@@ -2264,6 +1978,73 @@ echo $result;
 //        href="custom.css" media="screen" />
 //    <link rel="stylesheet" type="text/css"
 //        href="print.css" media="print" />
+```
+
+**Positional inserts**
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Style;
+
+$helper = new Style(new Escaper());
+$result = $helper();
+
+$result
+    ->add('reset.css')                       // slot 0
+    ->add('theme.css', [], 10)               // slot 10
+    ->add('layout.css')                      // slot 1
+;
+
+echo $result;
+//    <link rel="stylesheet" type="text/css" href="reset.css" media="screen" />
+//    <link rel="stylesheet" type="text/css" href="layout.css" media="screen" />
+//    <link rel="stylesheet" type="text/css" href="theme.css" media="screen" />
+```
+
+### `tag`
+[Phalcon\Html\Helper\Tag][html-helper-tag] is an escape hatch for opening any arbitrary tag without a dedicated helper. It renders only the opening `<name ...>` tag — pair it with the [`close`](#close) helper for the closing tag.
+
+| Parameter                | Description                       |
+|--------------------------|-----------------------------------|
+| `string $tag`            | The tag name                      |
+| `array $attributes = []` | Additional attributes (key/value) |
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+
+echo $container->tag->tag('section', ['class' => 'hero', 'id' => 'top']);
+// <section id="top" class="hero">
+
+echo $container->tag->close('section');
+// </section>
+```
+
+### `voidTag`
+[Phalcon\Html\Helper\VoidTag][html-helper-voidtag] is an escape hatch for self-closing (void) tags such as `<hr>` or any custom element that does not need a closing tag.
+
+| Parameter                | Description                       |
+|--------------------------|-----------------------------------|
+| `string $tag`            | The tag name                      |
+| `array $attributes = []` | Additional attributes (key/value) |
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+
+echo $container->tag->voidTag('hr', ['class' => 'divider']);
+// <hr class="divider" />
+
+echo $container->tag->voidTag('my-custom-element', ['data-id' => '42']);
+// <my-custom-element data-id="42" />
 ```
 
 ### `title`
@@ -2412,31 +2193,13 @@ echo $result;
 [html-helper-form]: api/phalcon_html.md#htmlhelperform
 [html-helper-friendlytitle]: api/phalcon_html.md#htmlhelperfriendlytitle
 [html-helper-img]: api/phalcon_html.md#htmlhelperimg
+[html-helper-input-abstractchecked]: api/phalcon_html.md#htmlhelperinputabstractchecked
 [html-helper-input-abstractinput]: api/phalcon_html.md#htmlhelperinputabstractinput
 [html-helper-input-checkbox]: api/phalcon_html.md#htmlhelperinputcheckbox
-[html-helper-input-color]: api/phalcon_html.md#htmlhelperinputcolor
-[html-helper-input-date]: api/phalcon_html.md#htmlhelperinputdate
-[html-helper-input-datetime]: api/phalcon_html.md#htmlhelperinputdatetime
-[html-helper-input-datetime-local]: api/phalcon_html.md#htmlhelperinputdatetimelocal
-[html-helper-input-email]: api/phalcon_html.md#htmlhelperinputemail
-[html-helper-input-file]: api/phalcon_html.md#htmlhelperinputfile
-[html-helper-input-hidden]: api/phalcon_html.md#htmlhelperinputhidden
-[html-helper-input-image]: api/phalcon_html.md#htmlhelperinputimage
-[html-helper-input-input]: api/phalcon_html.md#htmlhelperinputinput
-[html-helper-input-month]: api/phalcon_html.md#htmlhelperinputmonth
-[html-helper-input-numeric]: api/phalcon_html.md#htmlhelperinputnumeric
-[html-helper-input-password]: api/phalcon_html.md#htmlhelperinputpassword
+[html-helper-input-generic]: api/phalcon_html.md#htmlhelperinputgeneric
 [html-helper-input-radio]: api/phalcon_html.md#htmlhelperinputradio
-[html-helper-input-range]: api/phalcon_html.md#htmlhelperinputrange
-[html-helper-input-search]: api/phalcon_html.md#htmlhelperinputsearch
 [html-helper-input-select]: api/phalcon_html.md#htmlhelperinputselect
-[html-helper-input-submit]: api/phalcon_html.md#htmlhelperinputsubmit
-[html-helper-input-tel]: api/phalcon_html.md#htmlhelperinputtel
-[html-helper-input-text]: api/phalcon_html.md#htmlhelperinputtext
 [html-helper-input-textarea]: api/phalcon_html.md#htmlhelperinputtextarea
-[html-helper-input-time]: api/phalcon_html.md#htmlhelperinputtime
-[html-helper-input-url]: api/phalcon_html.md#htmlhelperinputurl
-[html-helper-input-week]: api/phalcon_html.md#htmlhelperinputweek
 [html-helper-label]: api/phalcon_html.md#htmlhelperlabel
 [html-helper-link]: api/phalcon_html.md#htmlhelperlink
 [html-helper-meta]: api/phalcon_html.md#htmlhelpermeta
@@ -2444,7 +2207,9 @@ echo $result;
 [html-helper-preload]: api/phalcon_html.md#htmlhelperpreload
 [html-helper-script]: api/phalcon_html.md#htmlhelperscript
 [html-helper-style]: api/phalcon_html.md#htmlhelperstyle
+[html-helper-tag]: api/phalcon_html.md#htmlhelpertag
 [html-helper-title]: api/phalcon_html.md#htmlhelpertitle
 [html-helper-ul]: api/phalcon_html.md#htmlhelperul
+[html-helper-voidtag]: api/phalcon_html.md#htmlhelpervoidtag
 [html-tagfactory]: api/phalcon_html.md#htmltagfactory
 [html5-boolean]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes

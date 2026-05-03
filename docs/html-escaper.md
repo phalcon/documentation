@@ -4,7 +4,21 @@
 ## Overview
 Websites and web applications are vulnerable to [XSS][xss] attacks and although PHP provides escaping functionality, in some contexts, it is not sufficient/appropriate. [Phalcon\Html\Escaper][escaper] provides contextual escaping and is written in [Zephir][zephir], providing minimal overhead when escaping different kinds of texts.
 
-We designed this component based on the [XSS (Cross-Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset. To illustrate how this component works and why it is important, consider the following example:
+We designed this component based on the [XSS (Cross-Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset.
+
+Starting with v5.12.2, [Phalcon\Html\Escaper][escaper] is a façade over five per-context escapers, each living in the `Phalcon\Html\Escaper` namespace:
+
+| Class                                         | Used by         |
+|-----------------------------------------------|-----------------|
+| [Phalcon\Html\Escaper\HtmlEscaper][html-esc]      | `html()`        |
+| [Phalcon\Html\Escaper\AttributeEscaper][attr-esc] | `attributes()`  |
+| [Phalcon\Html\Escaper\CssEscaper][css-esc]        | `css()`         |
+| [Phalcon\Html\Escaper\JsEscaper][js-esc]          | `js()`          |
+| [Phalcon\Html\Escaper\UrlEscaper][url-esc]        | `url()`         |
+
+All five extend [Phalcon\Html\Escaper\AbstractEscaper][abstract-esc], which carries the encoding/flags/double-encode state. The façade exposes `getXxxEscaper()` and `setXxxEscaper()` accessors so individual contexts can be swapped without subclassing the façade itself. The legacy `setEncoding()`, `setFlags()`, and `setDoubleEncode()` setters fan out to all sub-escapers automatically, so existing code keeps working.
+
+To illustrate how this component works and why it is important, consider the following example:
 
 ```php
 <?php
@@ -111,6 +125,8 @@ HTML syntax:
 ## CSS
 CSS identifiers/values can be escaped by using `css()`. This method has been renamed. The old method `escapeCss()` will be removed in the future and emits a `@deprecated` warning.
 
+When the input is an empty string, or contains only the null codepoint, `css()` returns an empty string instead of `false`.
+
 ```php
 <?php
 
@@ -135,6 +151,8 @@ Volt syntax:
 
 ##  JavaScript
 Content printed into javascript code must be properly escaped. `js()` helps with this task. This method has been renamed. The old method `escapeJs()` will be removed in the future and emits a `@deprecated` warning.
+
+When the input is an empty string, or contains only the null codepoint, `js()` returns an empty string instead of `false`.
 
 ```php
 <?php
@@ -253,6 +271,107 @@ $escaper = new Escaper();
 $escaper->setFlags(ENT_XHTML);
 ```
 
+## Per-Context Escapers
+Each method on [Phalcon\Html\Escaper][escaper] delegates to a dedicated sub-escaper. You can read the current sub-escaper, replace it with a custom subclass, or use it directly without going through the façade.
+
+### Accessing a Sub-Escaper
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+
+$escaper = new Escaper();
+
+$htmlEscaper = $escaper->getHtmlEscaper();
+$attrEscaper = $escaper->getAttributeEscaper();
+$cssEscaper  = $escaper->getCssEscaper();
+$jsEscaper   = $escaper->getJsEscaper();
+$urlEscaper  = $escaper->getUrlEscaper();
+
+echo $htmlEscaper->escape('</title><script>alert(1)</script>');
+// &lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+```
+
+### Swapping a Sub-Escaper
+You can replace any single sub-escaper without subclassing the façade. This is useful for adding logging, alternative algorithms, or custom flag handling for one context only.
+
+```php
+<?php
+
+namespace MyApp\Escaper;
+
+use Phalcon\Html\Escaper\HtmlEscaper as PhalconHtmlEscaper;
+
+class LoggingHtmlEscaper extends PhalconHtmlEscaper
+{
+    public function escape(string $input): string
+    {
+        error_log('Escaping HTML: ' . $input);
+
+        return parent::escape($input);
+    }
+}
+```
+
+```php
+<?php
+
+use MyApp\Escaper\LoggingHtmlEscaper;
+use Phalcon\Html\Escaper;
+
+$escaper = new Escaper();
+$escaper->setHtmlEscaper(new LoggingHtmlEscaper());
+
+echo $escaper->html('<b>hello</b>');
+// Logs the input and returns &lt;b&gt;hello&lt;/b&gt;
+```
+
+The available accessor pairs are:
+
+| Sub-escaper        | Getter                  | Setter                  |
+|--------------------|-------------------------|-------------------------|
+| `HtmlEscaper`      | `getHtmlEscaper()`      | `setHtmlEscaper()`      |
+| `AttributeEscaper` | `getAttributeEscaper()` | `setAttributeEscaper()` |
+| `CssEscaper`       | `getCssEscaper()`       | `setCssEscaper()`       |
+| `JsEscaper`        | `getJsEscaper()`        | `setJsEscaper()`        |
+| `UrlEscaper`       | `getUrlEscaper()`       | `setUrlEscaper()`       |
+
+### Shared Configuration
+Calling `setEncoding()`, `setFlags()`, or `setDoubleEncode()` on the façade fans the value out to every sub-escaper, so the change is applied uniformly:
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+
+$escaper = new Escaper();
+
+$escaper->setEncoding('utf-8');
+$escaper->setFlags(ENT_QUOTES | ENT_HTML5);
+$escaper->setDoubleEncode(false);
+
+// All five sub-escapers now share these settings.
+```
+
+### Direct Use Without the Façade
+Each sub-escaper can be used standalone if you do not need the façade aggregation:
+
+```php
+<?php
+
+use Phalcon\Html\Escaper\AttributeEscaper;
+use Phalcon\Html\Escaper\CssEscaper;
+use Phalcon\Html\Escaper\HtmlEscaper;
+use Phalcon\Html\Escaper\JsEscaper;
+use Phalcon\Html\Escaper\UrlEscaper;
+
+$html = (new HtmlEscaper())->escape('<b>hi</b>');
+$attr = (new AttributeEscaper())->escape('"><h1>Hi');
+$css  = (new CssEscaper())->escape(';`(');
+$js   = (new JsEscaper())->escape("'; alert(1)");
+$url  = (new UrlEscaper())->escape('"><script>alert(1)</script>');
+```
+
 ## Exceptions
 Any exceptions thrown in the Escaper component will be of type [Phalcon\Html\Escaper\Exception][escaper-exception]. It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
@@ -359,10 +478,16 @@ class Custom extends EscaperInterface
 }
 ```
 
+[abstract-esc]: api/phalcon_html.md#htmlescaperabstractescaper
+[attr-esc]: api/phalcon_html.md#htmlescaperattributeescaper
+[css-esc]: api/phalcon_html.md#htmlescapercssescaper
 [di-factorydefault]: api/phalcon_di.md#difactorydefault
 [escaper]: api/phalcon_html.md#htmlescaper
 [escaper-escaperinterface]: api/phalcon_html.md#htmlescaperescaperinterface
 [escaper-exception]: api/phalcon_html.md#htmlescaperexception
+[html-esc]: api/phalcon_html.md#htmlescaperhtmlescaper
+[js-esc]: api/phalcon_html.md#htmlescaperjsescaper
+[url-esc]: api/phalcon_html.md#htmlescaperurlescaper
 [zephir]: https://zephir-lang.com
 [htmlspecialchars]: https://www.php.net/manual/en/function.htmlspecialchars.php
 [mb_detect_encoding]: https://www.php.net/manual/en/function.mb-detect-encoding.php
