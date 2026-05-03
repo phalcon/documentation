@@ -29,60 +29,60 @@ $helper = $container->tag->newInstance('a');
 
 The registered names for respective helpers are:
 
-| Name                 | Class                                                  |
-|----------------------|--------------------------------------------------------|
-| `a`                  | `Phalcon\Html\Helper\Anchor`                           |
-| `aRaw`               | `Phalcon\Html\Helper\Anchor` (raw)                     |
-| `base`               | `Phalcon\Html\Helper\Base`                             |
-| `breadcrumbs`        | `Phalcon\Html\Helper\Breadcrumbs`                      |
-| `body`               | `Phalcon\Html\Helper\Body`                             |
-| `button`             | `Phalcon\Html\Helper\Button`                           |
-| `buttonRaw`          | `Phalcon\Html\Helper\Button` (raw)                     |
-| `close`              | `Phalcon\Html\Helper\Close`                            |
-| `doctype`            | `Phalcon\Html\Helper\Doctype`                          |
-| `element`            | `Phalcon\Html\Helper\Element`                          |
-| `elementRaw`         | `Phalcon\Html\Helper\Element` (raw)                    |
-| `form`               | `Phalcon\Html\Helper\Form`                             |
-| `friendlyTitle`      | `Phalcon\Html\Helper\FriendlyTitle`                    |
-| `img`                | `Phalcon\Html\Helper\Img`                              |
-| `inputCheckbox`      | `Phalcon\Html\Helper\Input\Checkbox`                   |
-| `inputColor`         | `Phalcon\Html\Helper\Input\Generic` (`type=color`)         |
-| `inputDate`          | `Phalcon\Html\Helper\Input\Generic` (`type=date`)          |
-| `inputDateTime`      | `Phalcon\Html\Helper\Input\Generic` (`type=datetime`)      |
-| `inputDateTimeLocal` | `Phalcon\Html\Helper\Input\Generic` (`type=datetime-local`)|
-| `inputEmail`         | `Phalcon\Html\Helper\Input\Generic` (`type=email`)         |
-| `inputFile`          | `Phalcon\Html\Helper\Input\Generic` (`type=file`)          |
-| `inputHidden`        | `Phalcon\Html\Helper\Input\Generic` (`type=hidden`)        |
-| `inputImage`         | `Phalcon\Html\Helper\Input\Generic` (`type=image`)         |
-| `inputInput`         | `Phalcon\Html\Helper\Input\Generic` (`type=text`)          |
-| `inputMonth`         | `Phalcon\Html\Helper\Input\Generic` (`type=month`)         |
-| `inputNumeric`       | `Phalcon\Html\Helper\Input\Generic` (`type=number`)        |
-| `inputPassword`      | `Phalcon\Html\Helper\Input\Generic` (`type=password`)      |
-| `inputRadio`         | `Phalcon\Html\Helper\Input\Radio`                      |
-| `inputRange`         | `Phalcon\Html\Helper\Input\Generic` (`type=range`)         |
-| `inputSearch`        | `Phalcon\Html\Helper\Input\Generic` (`type=search`)        |
-| `inputSelect`        | `Phalcon\Html\Helper\Input\Select`                     |
-| `inputSubmit`        | `Phalcon\Html\Helper\Input\Generic` (`type=submit`)        |
-| `inputTel`           | `Phalcon\Html\Helper\Input\Generic` (`type=tel`)           |
-| `inputText`          | `Phalcon\Html\Helper\Input\Generic` (`type=text`)          |
-| `inputTextarea`      | `Phalcon\Html\Helper\Input\Textarea`                   |
-| `inputTime`          | `Phalcon\Html\Helper\Input\Generic` (`type=time`)          |
-| `inputUrl`           | `Phalcon\Html\Helper\Input\Generic` (`type=url`)           |
-| `inputWeek`          | `Phalcon\Html\Helper\Input\Generic` (`type=week`)          |
-| `label`              | `Phalcon\Html\Helper\Label`                            |
-| `labelRaw`           | `Phalcon\Html\Helper\Label` (raw)                      |
-| `link`               | `Phalcon\Html\Helper\Link`                             |
-| `meta`               | `Phalcon\Html\Helper\Meta`                             |
-| `ol`                 | `Phalcon\Html\Helper\Ol`                               |
-| `olRaw`              | `Phalcon\Html\Helper\Ol` (raw)                         |
-| `preload`            | `Phalcon\Html\Helper\Preload`                          |
-| `script`             | `Phalcon\Html\Helper\Script`                           |
-| `style`              | `Phalcon\Html\Helper\Style`                            |
-| `tag`                | `Phalcon\Html\Helper\Tag`                              |
-| `title`              | `Phalcon\Html\Helper\Title`                            |
-| `ul`                 | `Phalcon\Html\Helper\Ul`                               |
-| `ulRaw`              | `Phalcon\Html\Helper\Ul` (raw)                         |
-| `voidTag`            | `Phalcon\Html\Helper\VoidTag`                          |
+| Name                 | Class                                                       |
+|----------------------|-------------------------------------------------------------|
+| `a`                  | `Phalcon\Html\Helper\Anchor`                                |
+| `aRaw`               | `Phalcon\Html\Helper\Anchor` (raw)                          |
+| `base`               | `Phalcon\Html\Helper\Base`                                  |
+| `breadcrumbs`        | `Phalcon\Html\Helper\Breadcrumbs`                           |
+| `body`               | `Phalcon\Html\Helper\Body`                                  |
+| `button`             | `Phalcon\Html\Helper\Button`                                |
+| `buttonRaw`          | `Phalcon\Html\Helper\Button` (raw)                          |
+| `close`              | `Phalcon\Html\Helper\Close`                                 |
+| `doctype`            | `Phalcon\Html\Helper\Doctype`                               |
+| `element`            | `Phalcon\Html\Helper\Element`                               |
+| `elementRaw`         | `Phalcon\Html\Helper\Element` (raw)                         |
+| `form`               | `Phalcon\Html\Helper\Form`                                  |
+| `friendlyTitle`      | `Phalcon\Html\Helper\FriendlyTitle`                         |
+| `img`                | `Phalcon\Html\Helper\Img`                                   |
+| `inputCheckbox`      | `Phalcon\Html\Helper\Input\Checkbox`                        |
+| `inputColor`         | `Phalcon\Html\Helper\Input\Generic` (`type=color`)          |
+| `inputDate`          | `Phalcon\Html\Helper\Input\Generic` (`type=date`)           |
+| `inputDateTime`      | `Phalcon\Html\Helper\Input\Generic` (`type=datetime`)       |
+| `inputDateTimeLocal` | `Phalcon\Html\Helper\Input\Generic` (`type=datetime-local`) |
+| `inputEmail`         | `Phalcon\Html\Helper\Input\Generic` (`type=email`)          |
+| `inputFile`          | `Phalcon\Html\Helper\Input\Generic` (`type=file`)           |
+| `inputHidden`        | `Phalcon\Html\Helper\Input\Generic` (`type=hidden`)         |
+| `inputImage`         | `Phalcon\Html\Helper\Input\Generic` (`type=image`)          |
+| `inputInput`         | `Phalcon\Html\Helper\Input\Generic` (`type=text`)           |
+| `inputMonth`         | `Phalcon\Html\Helper\Input\Generic` (`type=month`)          |
+| `inputNumeric`       | `Phalcon\Html\Helper\Input\Generic` (`type=number`)         |
+| `inputPassword`      | `Phalcon\Html\Helper\Input\Generic` (`type=password`)       |
+| `inputRadio`         | `Phalcon\Html\Helper\Input\Radio`                           |
+| `inputRange`         | `Phalcon\Html\Helper\Input\Generic` (`type=range`)          |
+| `inputSearch`        | `Phalcon\Html\Helper\Input\Generic` (`type=search`)         |
+| `inputSelect`        | `Phalcon\Html\Helper\Input\Select`                          |
+| `inputSubmit`        | `Phalcon\Html\Helper\Input\Generic` (`type=submit`)         |
+| `inputTel`           | `Phalcon\Html\Helper\Input\Generic` (`type=tel`)            |
+| `inputText`          | `Phalcon\Html\Helper\Input\Generic` (`type=text`)           |
+| `inputTextarea`      | `Phalcon\Html\Helper\Input\Textarea`                        |
+| `inputTime`          | `Phalcon\Html\Helper\Input\Generic` (`type=time`)           |
+| `inputUrl`           | `Phalcon\Html\Helper\Input\Generic` (`type=url`)            |
+| `inputWeek`          | `Phalcon\Html\Helper\Input\Generic` (`type=week`)           |
+| `label`              | `Phalcon\Html\Helper\Label`                                 |
+| `labelRaw`           | `Phalcon\Html\Helper\Label` (raw)                           |
+| `link`               | `Phalcon\Html\Helper\Link`                                  |
+| `meta`               | `Phalcon\Html\Helper\Meta`                                  |
+| `ol`                 | `Phalcon\Html\Helper\Ol`                                    |
+| `olRaw`              | `Phalcon\Html\Helper\Ol` (raw)                              |
+| `preload`            | `Phalcon\Html\Helper\Preload`                               |
+| `script`             | `Phalcon\Html\Helper\Script`                                |
+| `style`              | `Phalcon\Html\Helper\Style`                                 |
+| `tag`                | `Phalcon\Html\Helper\Tag`                                   |
+| `title`              | `Phalcon\Html\Helper\Title`                                 |
+| `ul`                 | `Phalcon\Html\Helper\Ul`                                    |
+| `ulRaw`              | `Phalcon\Html\Helper\Ul` (raw)                              |
+| `voidTag`            | `Phalcon\Html\Helper\VoidTag`                               |
 
 !!! info "NOTE"
 
