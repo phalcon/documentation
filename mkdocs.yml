@@ -299,6 +299,7 @@ nav:
           - How to upgrade: upgrade.md
       - Contributing:
           - Contributions: contributions.md
+          - AI Development: ai-development.md
           - Asking a question: https://phalcon.io/discussions
           - Requesting a change: new-feature-request.md
           - Issuing a Pull Request: new-pull-request.md

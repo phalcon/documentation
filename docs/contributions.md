@@ -10,6 +10,10 @@ The Phalcon source code (along with documentation, websites, etc.) is stored in 
 
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request][github-pr].
 
+!!! info "AI Coding Assistants"
+
+    If you use an AI coding assistant (Claude Code, GitHub Copilot, Cursor, Gemini, etc.) when preparing your contribution, please review the [AI Development][ai-development] page. It describes the quality expectations and the per-commit `Assisted-by:` attribution we require.
+
 When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it could be:
 
 * merged immediately or
@@ -99,3 +103,4 @@ Thanks!
 [pr]: new-pull-request.md
 [nfr]: new-feature-request.md
 [support]: https://phalcon.io/support
+[ai-development]: ai-development.md
