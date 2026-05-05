@@ -238,6 +238,36 @@ echo $url->get(
 // /portal/invoices/edit/1?is_paymented=true&some_key=some_value
 ```
 
+#### Replacing query string arguments
+By default, when the supplied URI already contains a query string, any extra arguments passed via the `$args` parameter are appended with `&`. As of v5.12.2, `get()` accepts an opt-in `bool $replaceArgs = false` fifth parameter. When set to `true` and the URI already contains a query string, the existing query is parsed and merged with the supplied arguments so that user-supplied keys override colliding ones.
+
+```php
+<?php
+
+use Phalcon\Mvc\Url;
+
+$url = new Url();
+
+// Default behavior: append with `&` (legacy)
+echo $url->get(
+    'http://example.com?page=1',
+    ['page' => 5]
+);
+// http://example.com?page=1&page=5
+
+// With $replaceArgs = true: collisions are overridden
+echo $url->get(
+    'http://example.com?page=1',
+    ['page' => 5],
+    null,
+    null,
+    true
+);
+// http://example.com?page=5
+```
+
+The default (flag omitted) preserves the legacy append-with-`&` behavior so existing callers keep working unchanged.
+
 ### mod_rewrite
 For developers that are utilizing `mod_rewrite` in their Apache installations, [Phalcon\Mvc\Url][url] offers the necessary functionality to replace `mod_rewrite`. This is especially useful if the target system does not have the module installed, or you cannot install it yourself.
 
