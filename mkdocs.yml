@@ -367,7 +367,6 @@ nav:
   - Business Logic:
       - Access Control Lists: acl.md
       - Annotations: annotations.md
-      - Auth: auth.md
       - Controllers: controllers.md
       - Dispatcher: dispatcher.md
       - Event Manager: events.md
