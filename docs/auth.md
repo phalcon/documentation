@@ -759,21 +759,14 @@ Register either through the locator (`$locator->register('apikey', ApiKey::class
 
 Every adapter and guard carries `@template` annotations (`@extends AbstractAdapter<MemoryAdapterConfig>`, `@extends AbstractGuard<TokenGuardConfig>`) so PHPStan sees `$this->config` as the concrete config type inside the subclass. The contracts (`Adapter`, `RememberAdapter`, `Guard`, `GuardStateful`, `BasicAuth`, `Access`, `AdapterConfig`, `GuardConfig`) all live under `Phalcon\Contracts\Auth\*` so user code can depend on the contract namespace without pulling in implementation classes.
 
-## Testing
-
-The full test suite uses [test fakes][testing] rather than mocks:
-
-- `FakeRequest`, `FakeCookies`, `FakeSessionManager` — drive Session guard flows.
-- `FakeAuthUserModel` — Phalcon-Model stand-in with a static `$rows` fixture and an array-form `findFirst()`. Used by Model adapter tests.
-- `FakeRememberAdapter` — Memory adapter that also implements `RememberAdapter`, with an adapter-level token store so tokens survive the per-call user hydration.
-- `FakeStreamAdapter` — overrides the `FileTrait` helpers (`phpFileExists`, `phpFileGetContents`) so the real `Stream::loadUsers` runs without touching disk.
-
-The whole `src/Auth` namespace ships with 100% line and method coverage; if you add a feature, add the tests next to the existing patterns and keep the bar.
-
-[collection]: di.md
 [abstract-listener]: api/phalcon_auth.md#auth-abstractauthdispatcherlistener
-[adapter-abstract]: api/phalcon_auth.md#auth-adapter-abstractadapter
+[access-abstract]: api/phalcon_auth.md#auth-access-abstractaccess
+[access-auth]: api/phalcon_auth.md#auth-access-auth
+[access-contract]: api/phalcon_auth.md#contracts-auth-access-access
+[access-guest]: api/phalcon_auth.md#auth-access-guest
+[access-locator]: api/phalcon_auth.md#auth-access-accesslocator
 [adapter-abstract-array]: api/phalcon_auth.md#auth-adapter-abstractarrayadapter
+[adapter-abstract]: api/phalcon_auth.md#auth-adapter-abstractadapter
 [adapter-config-abstract]: api/phalcon_auth.md#auth-adapter-config-abstractadapterconfig
 [adapter-config-contract]: api/phalcon_auth.md#contracts-auth-adapter-adapterconfig
 [adapter-contract]: api/phalcon_auth.md#contracts-auth-adapter-adapter
@@ -781,15 +774,11 @@ The whole `src/Auth` namespace ships with 100% line and method coverage; if you 
 [adapter-memory]: api/phalcon_auth.md#auth-adapter-memory
 [adapter-model]: api/phalcon_auth.md#auth-adapter-model
 [adapter-stream]: api/phalcon_auth.md#auth-adapter-stream
-[access-abstract]: api/phalcon_auth.md#auth-access-abstractaccess
-[access-auth]: api/phalcon_auth.md#auth-access-auth
-[access-contract]: api/phalcon_auth.md#contracts-auth-access-access
-[access-guest]: api/phalcon_auth.md#auth-access-guest
-[access-locator]: api/phalcon_auth.md#auth-access-accesslocator
 [auth-remember]: api/phalcon_auth.md#contracts-auth-authremember
 [authuser]: api/phalcon_auth.md#auth-authuser
 [basic-auth]: api/phalcon_auth.md#contracts-auth-guard-basicauth
 [cli-listener]: api/phalcon_auth.md#auth-cli-authdispatcherlistener
+[collection]: di.md
 [config]: config.md
 [container]: di.md
 [cookies]: response.md#cookies
@@ -801,12 +790,11 @@ The whole `src/Auth` namespace ships with 100% line and method coverage; if you 
 [guard-stateful]: api/phalcon_auth.md#contracts-auth-guard-guardstateful
 [guard-token]: api/phalcon_auth.md#auth-guard-token
 [internal-options]: api/phalcon_auth.md#auth-internal-options
-[manager]: api/phalcon_auth.md#auth-manager
 [manager-contract]: api/phalcon_auth.md#contracts-auth-manager
 [manager-factory]: api/phalcon_auth.md#auth-managerfactory
+[manager]: api/phalcon_auth.md#auth-manager
 [mvc-listener]: api/phalcon_auth.md#auth-mvc-authdispatcherlistener
 [remember-adapter]: api/phalcon_auth.md#contracts-auth-adapter-rememberadapter
 [request]: request.md
 [security]: encryption-security.md
 [session-manager]: session.md
-[testing]: unit-testing.md
