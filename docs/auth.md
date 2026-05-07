@@ -335,7 +335,9 @@ $guard = new TokenGuard(
 );
 
 $user = $guard->user();   // resolved from query/header on first call, cached after
-$ok   = $guard->validate(['api_token' => 'abcdef123']);
+$ok   = $guard->validate(
+    ['api_token' => 'abcdef123']
+);
 ```
 
 `TokenGuardConfig` requires both `inputKey` and `storageKey`; passing an empty string for either throws `Phalcon\Auth\Exception` at construction time.
@@ -583,7 +585,9 @@ $manager = $factory->load(
             'web' => [
                 'type'    => 'jwt',
                 'default' => true,
-                'adapter' => ['name' => 'redis', 'options' => [/* ... */]],
+                'adapter' => [
+                    'name'    => 'redis', 
+                    'options' => [/* ... */]],
                 'options' => [/* ... */],
             ],
         ],
