@@ -391,6 +391,41 @@ Note that this type of cache works in memory only, this means that cached data a
 
     The above example is **for demonstration only** and should not be used in your code because it introduces the [N+1][n-1] problem
 
+### Stable Reusable Cache Keys
+
+By default, the reusable cache derives its key from object identity. When two PHP instances represent the same database row (for example, the same record loaded twice through different code paths), they receive different cache keys and the cached entry cannot be shared between them.
+
+A model can opt into a stable key by implementing `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider`:
+
+```php
+<?php
+
+use Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider;
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model implements CacheKeyProvider
+{
+    public function initialize()
+    {
+        $this->belongsTo(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+            ]
+        );
+    }
+
+    public function getUniqueKey(): string
+    {
+        return 'invoice:' . $this->inv_id;
+    }
+}
+```
+
+When the related-record lookup runs through the reusable cache and the source model implements this contract, the return value of `getUniqueKey()` is used as the cache key instead of the object-identity-based builtin. Different PHP instances of the same logical row that return the same key will now share the same reusable record cache entry.
+
 ## Related Records
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 

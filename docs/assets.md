@@ -416,6 +416,26 @@ $headerCollection = $this
     ->addJs('js/bootstrap.min.js');
 ```
 
+### Static Base URI
+
+When a [Phalcon\Mvc\Url][url] service is registered in the DI container, local asset paths are resolved through `$url->getStatic()` instead of being prefixed with a bare `/`. This honours the `staticBaseUri` (or `baseUri`) configured on the URL component and makes asset resolution work correctly for applications deployed in a subdirectory or served from a CDN base path.
+
+```php
+<?php
+
+use Phalcon\Mvc\Url;
+
+$url = new Url();
+$url->setStaticBaseUri('/myapp/static/');
+
+$container->setShared('url', $url);
+
+$this->assets->addCss('css/style.css');
+// Rendered as: <link rel="stylesheet" type="text/css" href="/myapp/static/css/style.css" />
+```
+
+If no `url` service is available, the previous behavior (bare `/` prefix) is retained.
+
 ### Built-In Filters
 
 Assets can be filtered, i.e., manipulated before their output to the view. Although Phalcon v3 offered minifiers for JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v5, we offer only the [Phalcon\Assets\Filters\None][filter-none] filter (which does not change the asset contents) and the [Phalcon\Assets\FilterInterface][filter-interface] interface, offering the ability to create custom filters.

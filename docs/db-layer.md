@@ -81,8 +81,11 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 | `TYPE_TINYBLOB`      | Tiny Blob      |
 | `TYPE_TINYINTEGER`   | Tiny Integer   |
 | `TYPE_TINYTEXT`      | Tiny Text      |
+| `TYPE_UUID`          | UUID           |
 | `TYPE_VARBINARY`     | Varbinary      |
 | `TYPE_VARCHAR`       | Varchar        |
+
+`TYPE_UUID` maps to the PostgreSQL native `uuid` column type via `Phalcon\Db\Adapter\Pdo\Postgresql` and `Phalcon\Db\Dialect\Postgresql`. Other adapters fall back to a string representation.
 
 !!! info "NOTE"
 

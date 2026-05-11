@@ -448,6 +448,29 @@ class Products extends Model
 
     The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
+### Reusable Cache Key Override
+
+When a relation is marked `'reusable' => true`, the Model Manager memoises the resolved related record so that repeated traversals of the same association inside one request return the cached object. By default, the cache key is derived from object identity, which means two PHP instances representing the same row do not share the entry.
+
+A model can supply a stable key by implementing `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider`:
+
+```php
+<?php
+
+use Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider;
+use Phalcon\Mvc\Model;
+
+class Customers extends Model implements CacheKeyProvider
+{
+    public function getUniqueKey(): string
+    {
+        return 'customer:' . $this->cst_id;
+    }
+}
+```
+
+The return value of `getUniqueKey()` replaces the object-identity key when looking up the reusable cache, so different PHP instances of the same logical row will hit the same entry. See [Caching][db-models-cache] for further details.
+
 ## Accessing
 There are several ways that we can access the relationships of a model.
 
@@ -1468,6 +1491,7 @@ if ( false === $customer->save() ) {
 ```
 
 
+[db-models-cache]: db-models-cache.md
 [db-normalization]: https://en.wikipedia.org/wiki/Database_normalization
 [mvc-model]: api/phalcon_mvc.md#mvcmodel
 [mvc-model-relation]: api/phalcon_mvc.md#mvcmodelrelation

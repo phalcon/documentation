@@ -412,7 +412,7 @@ Set form attributes collection
 ```php
 public function setTagFactory(TagFactory $tagFactory): Form
 ```
-Sets the `Phalcon\Html\TagFactory` for the form
+Sets the `Phalcon\Html\TagFactory` for the form. Element rendering looks for a `TagFactory` first on the element (via `setTagFactory()`) and falls back to the parent form's factory. When neither is available, `getLocalTagFactory()` throws `Phalcon\Forms\Exception::tagFactoryNotFound()` rather than silently constructing a default `TagFactory` — this surfaces a missing DI registration early instead of producing an inconsistent escaper chain.
 
 ```php
 public function setValidation(
@@ -701,6 +701,10 @@ These elements use the [Phalcon\Html\TagFactory][tagfactory] component transpare
     The `Phalcon\Forms\Element\Check` and `Phalcon\Forms\Element\Radio` classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more][tagfactory]
 
 The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and` emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
+
+!!! info "NOTE"
+
+    `Phalcon\Forms\Element\Select::render()` delegates to `Phalcon\Tag\Select::selectField()` for backwards compatibility with multiselect (`array` values). The newer `Phalcon\Html\Helper\Input\Select` only supports a single selected value and is not used by `Forms\Element\Select` directly. If you need optgroup support or per-option attributes, use `TagFactory`'s `inputSelect` helper with `fromData()` and `SelectDataInterface` instead.
 
 You can also create your own elements by extending the [Phalcon\Forms\Element\AbstractElement][forms-element-abstractelement] abstract class.
 

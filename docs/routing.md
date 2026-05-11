@@ -1319,6 +1319,8 @@ $container['router'] = function () {
 ```
 In the above, we will read the annotations from `Admin\Controllers\InvoicesController` if the URI starts with `/admin/invoices`.
 
+The `controllerSuffix` (default `Controller`) is stripped from the resolved class name before the annotated routes are emitted. If the registered handler is already a fully-qualified class name that ends in the suffix (e.g. `App\Controllers\InvoicesController`), the suffix is not appended a second time, so the route handler is registered as `Invoices` rather than `InvoicesController`.
+
 The router also understands prefixes to ensure that the routes are resolved as fast as possible. For instance for the following routes:
 
 ```
