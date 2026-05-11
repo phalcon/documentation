@@ -1849,10 +1849,10 @@ echo $factory->preload('/my-font.woff2', 'font');
 public function add(
     string $url,
     array $attributes = [],
-    int $pos = -1
+    int $position = -1
 ): Script
 ```
-Add a URL to the list. The optional `$pos` argument controls the slot in the internal store: a negative value (the default) pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots if necessary. Entries are emitted in numerical key order regardless of registration order.
+Add a URL to the list. The optional `$position` argument controls the slot in the internal store: a negative value (the default) pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots if necessary. Entries are emitted in numerical key order regardless of registration order.
 
 ```php
 public function beginInternal(): void
@@ -1862,10 +1862,10 @@ Starts an output buffer to capture inline JavaScript.
 ```php
 public function endInternal(
     array $attributes = [],
-    int $pos = -1
+    int $position = -1
 ): Script
 ```
-Stops the buffer started by `beginInternal()`, wraps the captured contents in a `<script>` block (with the supplied attributes), and appends it to the asset stack at the optional `$pos`.
+Stops the buffer started by `beginInternal()`, wraps the captured contents in a `<script>` block (with the supplied attributes), and appends it to the asset stack at the optional `$position`.
 
 ```php
 <?php
@@ -1952,10 +1952,10 @@ echo $result;
 public function add(
     string $url,
     array $attributes = [],
-    int $pos = -1
+    int $position = -1
 ): Style
 ```
-Add a URL to the list. The optional `$pos` argument controls placement in the internal store the same way it does for `Script::add()`: negative pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots. Output is `ksort()`ed by key before rendering.
+Add a URL to the list. The optional `$position` argument controls placement in the internal store the same way it does for `Script::add()`: negative pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots. Output is `ksort()`ed by key before rendering.
 
 ```php
 <?php
