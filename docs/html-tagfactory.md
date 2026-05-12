@@ -46,6 +46,7 @@ The registered names for respective helpers are:
 | `friendlyTitle`      | `Phalcon\Html\Helper\FriendlyTitle`                         |
 | `img`                | `Phalcon\Html\Helper\Img`                                   |
 | `inputCheckbox`      | `Phalcon\Html\Helper\Input\Checkbox`                        |
+| `inputCheckboxGroup` | `Phalcon\Html\Helper\Input\CheckboxGroup`                   |
 | `inputColor`         | `Phalcon\Html\Helper\Input\Generic` (`type=color`)          |
 | `inputDate`          | `Phalcon\Html\Helper\Input\Generic` (`type=date`)           |
 | `inputDateTime`      | `Phalcon\Html\Helper\Input\Generic` (`type=datetime`)       |
@@ -59,6 +60,7 @@ The registered names for respective helpers are:
 | `inputNumeric`       | `Phalcon\Html\Helper\Input\Generic` (`type=number`)         |
 | `inputPassword`      | `Phalcon\Html\Helper\Input\Generic` (`type=password`)       |
 | `inputRadio`         | `Phalcon\Html\Helper\Input\Radio`                           |
+| `inputRadioGroup`    | `Phalcon\Html\Helper\Input\RadioGroup`                      |
 | `inputRange`         | `Phalcon\Html\Helper\Input\Generic` (`type=range`)          |
 | `inputSearch`        | `Phalcon\Html\Helper\Input\Generic` (`type=search`)         |
 | `inputSelect`        | `Phalcon\Html\Helper\Input\Select`                          |
@@ -1235,6 +1237,70 @@ echo $result;
 // </label>
 ```
 
+### `inputCheckboxGroup`
+[Phalcon\Html\Helper\Input\CheckboxGroup][html-helper-input-checkboxgroup] renders a related set of `<input type="checkbox">` tags from a single options array. Every input shares the same HTML `name`, gets an auto-generated `id` derived from `{name}_{value}`, and is paired with a matching `<label>`.
+
+The base class [Phalcon\Html\Helper\Input\AbstractGroup][html-helper-input-abstractgroup] handles option-array parsing, attribute merging, and rendering; `CheckboxGroup` only contributes the matching logic (compare the option value against an array of selected values).
+
+| Parameter                | Description                                                          |
+|--------------------------|----------------------------------------------------------------------|
+| `string $name`           | Shared HTML name attribute                                           |
+| `array $options`         | Map of `value => label` (or `value => [label, ...attrs]`)            |
+| `mixed $checked = null`  | Array of selected values, or a scalar (treated as a 1-element array) |
+| `array $attributes = []` | Shared HTML attributes applied to every input                        |
+
+Each entry in `$options` can be either:
+
+- A scalar string label: `'admin' => 'Administrator'`
+- A rich definition that overrides per-item attributes: `'admin' => ['label' => 'Administrator', 'disabled' => 'disabled']`
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\CheckboxGroup;
+
+$escaper = new Escaper();
+$helper  = new CheckboxGroup($escaper);
+
+$options = [
+    'admin'  => 'Administrator',
+    'editor' => 'Editor',
+    'viewer' => ['label' => 'Viewer', 'disabled' => 'disabled'],
+];
+
+echo $helper('roles', $options, ['admin', 'editor'], ['class' => 'role-input']);
+// <input type="checkbox" id="roles_admin"  name="roles" value="admin"  class="role-input" checked="checked">
+// <label for="roles_admin">Administrator</label>
+// <input type="checkbox" id="roles_editor" name="roles" value="editor" class="role-input" checked="checked">
+// <label for="roles_editor">Editor</label>
+// <input type="checkbox" id="roles_viewer" name="roles" value="viewer" disabled="disabled" class="role-input">
+// <label for="roles_viewer">Viewer</label>
+```
+
+Via the factory:
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+
+echo $container->tag->inputCheckboxGroup(
+    'roles[]',
+    [
+        'admin'  => 'Administrator',
+        'editor' => 'Editor',
+    ],
+    'admin'
+);
+```
+
+!!! info "NOTE"
+
+    To collect checked values into an array on submission, suffix the name with `[]` (e.g. `roles[]`) or use [Phalcon\Forms\Element\CheckGroup](forms.md#checkbox-groups) which auto-appends `[]` for you.
+
 ### Generic input
 [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] backs every type-only `<input>` (color, date, email, file, etc.). Pass the HTML5 `type` either as the second constructor argument, or after construction via `setType()`.
 
@@ -1397,6 +1463,60 @@ echo $result;
 //         checked="checked" />
 //     some text
 // </label>
+```
+
+### `inputRadioGroup`
+[Phalcon\Html\Helper\Input\RadioGroup][html-helper-input-radiogroup] renders a related set of `<input type="radio">` tags from a single options array. Every input shares the same HTML `name`, gets an auto-generated `id` derived from `{name}_{value}`, and is paired with a matching `<label>`.
+
+The base class [Phalcon\Html\Helper\Input\AbstractGroup][html-helper-input-abstractgroup] handles option-array parsing, attribute merging, and rendering; `RadioGroup` only contributes the matching logic (compare the option value against a single scalar).
+
+| Parameter                | Description                                                  |
+|--------------------------|--------------------------------------------------------------|
+| `string $name`           | Shared HTML name attribute                                   |
+| `array $options`         | Map of `value => label` (or `value => [label, ...attrs]`)    |
+| `mixed $checked = null`  | Single scalar value matching the option that should be selected |
+| `array $attributes = []` | Shared HTML attributes applied to every input                |
+
+Per-option attribute overrides use the same `value => [label, ...attrs]` form as `CheckboxGroup`:
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Helper\Input\RadioGroup;
+
+$escaper = new Escaper();
+$helper  = new RadioGroup($escaper);
+
+$options = [
+    '1' => 'Single Date',
+    '2' => 'Range',
+];
+
+echo $helper('dateRange', $options, '2', ['class' => 'control-input']);
+// <input type="radio" id="dateRange_1" name="dateRange" value="1" class="control-input">
+// <label for="dateRange_1">Single Date</label>
+// <input type="radio" id="dateRange_2" name="dateRange" value="2" class="control-input" checked="checked">
+// <label for="dateRange_2">Range</label>
+```
+
+Via the factory:
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+
+$container = new FactoryDefault();
+
+echo $container->tag->inputRadioGroup(
+    'plan',
+    [
+        'free' => 'Free',
+        'pro'  => 'Pro',
+    ],
+    'pro'
+);
 ```
 
 ### `inputRange`
@@ -2194,10 +2314,13 @@ echo $result;
 [html-helper-friendlytitle]: api/phalcon_html.md#htmlhelperfriendlytitle
 [html-helper-img]: api/phalcon_html.md#htmlhelperimg
 [html-helper-input-abstractchecked]: api/phalcon_html.md#htmlhelperinputabstractchecked
+[html-helper-input-abstractgroup]: api/phalcon_html.md#htmlhelperinputabstractgroup
 [html-helper-input-abstractinput]: api/phalcon_html.md#htmlhelperinputabstractinput
 [html-helper-input-checkbox]: api/phalcon_html.md#htmlhelperinputcheckbox
+[html-helper-input-checkboxgroup]: api/phalcon_html.md#htmlhelperinputcheckboxgroup
 [html-helper-input-generic]: api/phalcon_html.md#htmlhelperinputgeneric
 [html-helper-input-radio]: api/phalcon_html.md#htmlhelperinputradio
+[html-helper-input-radiogroup]: api/phalcon_html.md#htmlhelperinputradiogroup
 [html-helper-input-select]: api/phalcon_html.md#htmlhelperinputselect
 [html-helper-input-textarea]: api/phalcon_html.md#htmlhelperinputtextarea
 [html-helper-label]: api/phalcon_html.md#htmlhelperlabel
