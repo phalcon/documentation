@@ -1459,6 +1459,37 @@ class DatabaseSchema implements Schema
 1. **Element registry** — maps element-type strings to factory callables that produce concrete `ElementInterface` instances. The constructor seeds defaults for `check`, `checkgroup`, `date`, `email`, `file`, `hidden`, `numeric`, `password`, `radio`, `radiogroup`, `select`, `submit`, `text`, and `textarea`.
 2. **Form registry** — maps form names to factory callables that produce `Form` instances; used internally by `Manager::loadForm()` (see below).
 
+#### Constructor
+
+```php
+public function __construct(array $definitions = [])
+```
+
+`$definitions` is an optional `name => callable` map for the **form registry** that is applied at construction time — the constructor delegates each entry to `set()`, so you get the same behavior as calling `setElement()`/`set()` after the fact but in a single statement. The element registry is always seeded with the built-in types first; you can override or extend it later via `setElement()`.
+
+```php
+<?php
+
+use App\Forms\ContactForm;
+use App\Forms\LoginForm;
+use Phalcon\Forms\FormsLocator;
+
+$locator = new FormsLocator([
+    'login'   => fn ($entity = null) => new LoginForm($entity),
+    'contact' => fn ($entity = null) => new ContactForm($entity),
+]);
+
+// Retrieve a cached entity-less form:
+$loginForm = $locator->get('login');
+
+// Or rebuild a fresh entity-aware form:
+$contactForm = $locator->get('contact', $currentUser);
+```
+
+Each form factory has the signature `fn(?object $entity): Form`. The locator's `get()` method automatically caches the result when invoked without an entity (so subsequent `get('login')` calls return the same instance), and always invokes the factory anew when an entity is supplied (so entity-bound forms never share mutable state).
+
+#### Element factories
+
 Each element factory has the signature `fn(string $name, array $options, array $attributes): ElementInterface`. To teach the locator a brand-new element type, call `setElement()`:
 
 ```php
@@ -1480,9 +1511,11 @@ $locator->setElement(
 
 A schema definition like `['type' => 'colorpicker', 'name' => 'theme']` will now resolve through the closure and produce a `ColorPicker` element. `setElement()` may also override built-in types (e.g. swap `text` for a subclass with extra default attributes).
 
-The methods are:
+#### Method summary
 
 ```php
+public function __construct(array $definitions = [])
+
 public function getElement(string $type): callable
 public function hasElement(string $type): bool
 public function setElement(string $type, callable $factory): void
