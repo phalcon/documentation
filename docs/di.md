@@ -517,6 +517,11 @@ public function has(string $name): bool
 Check whether the DI contains a service by a name
 
 ```php
+public function hasShared(string $name): bool
+```
+Check whether the DI has a cached shared instance for a service name. In contrast to `has()`, which reports on the *definition* registry, this reports on the resolved-instance cache populated by `getShared()`. See [Inspecting and Discarding the Shared-Instance Cache](#inspecting-and-discarding-the-shared-instance-cache).
+
+```php
 public function offsetGet(mixed $name): mixed
 ```
 Gets a shared service using the array syntax
@@ -571,6 +576,11 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function remove(string $name)
 ```
 Removes a service in the services' container. It also removes any shared instance created for the service
+
+```php
+public function removeShared(string $name): void
+```
+Drops the cached shared instance for the given service (both from the container's cache and from the `Service`'s internal cache) while leaving the service definition intact. The next `getShared()` call rebuilds a fresh instance. Alias-aware. See [Inspecting and Discarding the Shared-Instance Cache](#inspecting-and-discarding-the-shared-instance-cache).
 
 ```php
 public static function reset()
@@ -1236,6 +1246,63 @@ $session = $container->getSession();
 ```php
 $request = $container->getShared('request');
 ```
+
+### Inspecting and Discarding the Shared-Instance Cache
+`Phalcon\Mvc\Di` exposes two methods that operate on the shared-instance cache directly, independent of the service-definition registry:
+
+- `hasShared(string $name): bool` — returns `true` when `getShared()` has already materialized an instance for the given name. This is different from `has()`, which reports on the *definition* registry: a service can be registered (so `has()` returns `true`) without yet having been resolved (so `hasShared()` returns `false`).
+- `removeShared(string $name): void` — drops the cached shared instance for `$name` while leaving the service definition intact. The next call to `getShared($name)` will resolve a fresh instance.
+
+Both methods are alias-aware.
+
+The primary use case is fork-based multi-process workers (`pcntl_fork()`, queue worker pools, etc.). A parent process typically creates database connections, Redis handles, or other resource objects and caches them in the DI. When the parent forks, the child inherits those handles by virtue of memory copy, but the underlying sockets and file descriptors are shared between parent and child — usually not what you want. The child needs to discard the inherited connection and open its own:
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Mysql;
+
+$container->setShared(
+    'db',
+    function () {
+        return new Mysql(
+            [
+                'host'     => 'db.internal',
+                'username' => 'app',
+                'password' => 'secret',
+                'dbname'   => 'app',
+            ]
+        );
+    }
+);
+
+// Parent process resolves the connection.
+$container->getShared('db');
+
+$pid = pcntl_fork();
+
+if ($pid === 0) {
+    // Child: discard the inherited connection so the next getShared('db')
+    // call opens a fresh socket owned by this process.
+    $container->removeShared('db');
+
+    $db = $container->getShared('db');
+    // ...child does its work with its own connection...
+    exit(0);
+}
+```
+
+You can also use `hasShared()` to check whether resolution has happened before forcing it:
+
+```php
+<?php
+
+if ($container->hasShared('db')) {
+    $container->removeShared('db');
+}
+```
+
+`removeShared()` also clears the internal cache held by the `Phalcon\Di\Service` object itself, so the next `getShared()` goes through full resolution and produces a new instance — calling the registered closure or constructing the class anew.
 
 ## Manipulating Services
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
