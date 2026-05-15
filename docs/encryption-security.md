@@ -256,6 +256,49 @@ class SessionController extends Controller
 
 Adding a [captcha][captcha] to the form is also recommended to completely avoid the risks of this attack.
 
+### Disabling Automatic Token Rotation
+By default the CSRF token is regenerated on every call to `getToken()` / `getTokenKey()` — a fresh random value is produced and persisted to the session each time a form is rendered. This implements the strict "synchronizer-token" pattern (single-use tokens are more resistant to replay attacks), but it also means that **every form render triggers a session write**.
+
+For applications backed by paid or rate-limited session stores — DynamoDB, Redis-Cluster with per-write billing, remote network sessions — this per-request write can become a non-trivial cost on read-only pages that simply render a form. To address this, the `Security` component exposes an opt-in mode that suspends automatic regeneration while keeping the protection in place.
+
+```php
+<?php
+
+use Phalcon\Encryption\Security;
+
+$security = new Security();
+$security->setDI($di);
+
+// Opt out of per-call rotation. Existing session values are reused;
+// when none exists yet, one fresh pair is minted on the first call.
+$security->setAutoRefresh(false);
+
+// All subsequent renders reuse the persisted token — no session write.
+echo $security->getToken();      // e.g. "9k4Q...xZ"
+echo $security->getToken();      // same value
+echo $security->getTokenKey();   // same key
+```
+
+When you do want to rotate the token (after a successful login, a password change, or any other meaningful state transition), call `refreshToken()` to atomically regenerate both the key and the value and persist the new pair to the session — regardless of the `autoRefresh` flag:
+
+```php
+<?php
+
+public function loginAction()
+{
+    if ($this->request->isPost() && $this->security->checkToken()) {
+        // authenticate the user...
+
+        // Then rotate the CSRF token explicitly.
+        $this->security->refreshToken();
+    }
+}
+```
+
+!!! note "Note"
+
+    The default (`autoRefresh = true`) is unchanged. If you do not call `setAutoRefresh(false)`, the historical one-time-use behavior is preserved exactly. The new behavior is opt-in.
+
 ## Functionality
 
 ### Hash
@@ -328,6 +371,14 @@ Returns the value of the CSRF token in the session
 **`destroyToken()`**
 
 Removes the value of the CSRF token and key from the session
+
+**`setAutoRefresh()`**
+
+Toggles automatic regeneration of the CSRF token on every call to `getToken()` / `getTokenKey()`. Defaults to `true` (rotate on every call — the historical behavior). When set to `false`, existing session values are reused without writing, and a new token is only minted when none is present in the session or when `refreshToken()` is called explicitly. See [Disabling Automatic Token Rotation](#disabling-automatic-token-rotation).
+
+**`refreshToken()`**
+
+Forces the regeneration of the CSRF token and key, writing the new values to the session even when `autoRefresh` has been disabled via `setAutoRefresh(false)`. Useful after a successful login or any other state change where rotating the token is appropriate.
 
 ## Random
 The [Phalcon\Encryption\Security\Random][security-random] class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems, etc. This class partially borrows [SecureRandom][secure-random] library from Ruby.
