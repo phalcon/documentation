@@ -87,6 +87,42 @@ Additional constants are available in the [Phalcon\Db\Column][db-column] object.
 
 `TYPE_UUID` maps to the PostgreSQL native `uuid` column type via `Phalcon\Db\Adapter\Pdo\Postgresql` and `Phalcon\Db\Dialect\Postgresql`. Other adapters fall back to a string representation.
 
+**PostgreSQL-specific Column Types**
+
+The constants below describe column types that only have a native definition in PostgreSQL. They are recognized by the `Phalcon\Db\Dialect\Postgresql` dialect; MySQL and SQLite dialects fall back to the `VARCHAR` `default` branch. Choose a portable base type if your schema targets multiple engines.
+
+| Type               | PostgreSQL keyword | Description                                   |
+|--------------------|--------------------|-----------------------------------------------|
+| `TYPE_BYTEA`       | `BYTEA`            | Variable-length binary data (PostgreSQL BLOB) |
+| `TYPE_CIDR`        | `CIDR`             | IPv4 / IPv6 network address                   |
+| `TYPE_DATERANGE`   | `DATERANGE`        | Range of dates                                |
+| `TYPE_INET`        | `INET`             | IPv4 / IPv6 host address                      |
+| `TYPE_INT4RANGE`   | `INT4RANGE`        | Range of `integer` values                     |
+| `TYPE_INT8RANGE`   | `INT8RANGE`        | Range of `bigint` values                      |
+| `TYPE_MACADDR`     | `MACADDR`          | MAC address                                   |
+| `TYPE_NUMRANGE`    | `NUMRANGE`         | Range of `numeric` values                     |
+| `TYPE_TSRANGE`     | `TSRANGE`          | Range of `timestamp without time zone`        |
+| `TYPE_TSTZRANGE`   | `TSTZRANGE`        | Range of `timestamp with time zone`           |
+
+**Spatial Column Types**
+
+The constants below describe spatial types defined natively by MySQL (5.7+) and through the PostGIS extension on PostgreSQL. SQLite has no native spatial type and the SQLite dialect leaves these constants in the `default` branch.
+
+| Type                      | DDL keyword          | Description                                  |
+|---------------------------|----------------------|----------------------------------------------|
+| `TYPE_GEOMETRY`           | `GEOMETRY`           | Generic spatial value                        |
+| `TYPE_GEOMETRYCOLLECTION` | `GEOMETRYCOLLECTION` | Collection of spatial values                 |
+| `TYPE_LINESTRING`         | `LINESTRING`         | Single line as an ordered sequence of points |
+| `TYPE_MULTILINESTRING`    | `MULTILINESTRING`    | Collection of `LINESTRING` values            |
+| `TYPE_MULTIPOINT`         | `MULTIPOINT`         | Collection of `POINT` values                 |
+| `TYPE_MULTIPOLYGON`       | `MULTIPOLYGON`       | Collection of `POLYGON` values               |
+| `TYPE_POINT`              | `POINT`              | Single (x, y) point                          |
+| `TYPE_POLYGON`            | `POLYGON`            | Closed planar region                         |
+
+!!! info "NOTE"
+
+    Selecting a spatial column with `SELECT col FROM table` returns the raw WKB byte string. Use `ST_AsText(col)` / `ST_AsBinary(col)` / `ST_AsGeoJSON(col)` (PostGIS) server-side to receive a human-readable representation.
+
 !!! info "NOTE"
 
     Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite).
@@ -1974,19 +2010,24 @@ $connection->createTable(
 
 The `createTable` method accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column][db-column]. The table below shows the options available to define a column:
 
-| Option          | Description                                                                                                             | Optional |
-|-----------------|-------------------------------------------------------------------------------------------------------------------------|:--------:|
-| `after`         | Column must be placed after indicated column                                                                            |   Yes    |
-| `autoIncrement` | Set whether this column will be auto-incremented by the database. Only one column in the table can have this attribute. |   Yes    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before saving it                                  |   Yes    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                     |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                             |   Yes    |
-| `notNull`       | Column can store null values                                                                                            |   Yes    |
-| `primary`       | `true` if the column is part of the table's primary key                                                                 |   Yes    |
-| `scale`         | `DECIMAL` or `NUMBER` columns maybe have a scale to specify how many decimals should be stored                         |   Yes    |
-| `size`          | Some types of columns like `VARCHAR` or `INTEGER` may have a specific size                                               |   Yes    |
-| `type`          | Column type. Must be a [Phalcon\Db\Column][db-column] constant (see below for a list)                                   |    No    |
-| `unsigned`      | `INTEGER` columns may be `signed` or `unsigned`. This option does not apply to other types of columns                   |   Yes    |
+| Option             | Description                                                                                                                          | Optional |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------|:--------:|
+| `after`            | Column must be placed after indicated column                                                                                         |   Yes    |
+| `array`            | `true` marks a PostgreSQL array column (e.g. `INTEGER[]`). MySQL and SQLite ignore the flag                                          |   Yes    |
+| `autoIncrement`    | Set whether this column will be auto-incremented by the database. Only one column in the table can have this attribute               |   Yes    |
+| `bind`             | One of the `BIND_TYPE_*` constants telling how the column must be bound before saving it                                             |   Yes    |
+| `comment`          | Column comment string (rendered as a `COMMENT` clause on MySQL and `COMMENT ON COLUMN` on PostgreSQL)                                |   Yes    |
+| `default`          | Default value. Accepts a scalar (quoted), `'CURRENT_TIMESTAMP'` / `'NULL'` keywords (unquoted), or a `Phalcon\Db\RawValue` instance (emitted verbatim — see *Default value expressions*) |   Yes    |
+| `first`            | Column must be placed at first position in the column order                                                                          |   Yes    |
+| `generated`        | SQL expression for a generated/computed column. When set, `default` and `autoIncrement` are not allowed                              |   Yes    |
+| `generationStored` | `true` emits `STORED`, `false` (default) emits `VIRTUAL`. Only meaningful with `generated`. PostgreSQL always emits `STORED`         |   Yes    |
+| `invisible`        | `true` declares an INVISIBLE column (MySQL 8.0.23+). PostgreSQL and SQLite ignore the flag                                           |   Yes    |
+| `notNull`          | Column can store null values                                                                                                         |   Yes    |
+| `primary`          | `true` if the column is part of the table's primary key                                                                              |   Yes    |
+| `scale`            | `DECIMAL` or `NUMBER` columns maybe have a scale to specify how many decimals should be stored                                       |   Yes    |
+| `size`             | Some types of columns like `VARCHAR` or `INTEGER` may have a specific size                                                           |   Yes    |
+| `type`             | Column type. Must be a [Phalcon\Db\Column][db-column] constant (see below for a list)                                                |    No    |
+| `unsigned`         | `INTEGER` columns may be `signed` or `unsigned`. This option does not apply to other types of columns                                |   Yes    |
 
 The following database column types are supported by the adapters:
 
@@ -2005,6 +2046,7 @@ The associative array passed in `createTable()` can have the following keys:
 | `columns`    | An array with columns defined with [Phalcon\Db\Column][db-column]                         |    No    |
 | `indexes`    | An array with indexes defined with [Phalcon\Db\Index][db-index]                           |   Yes    |
 | `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference][db-reference] |   Yes    |
+| `checks`     | An array with CHECK constraints defined with `Phalcon\Db\Check` — see *CHECK constraints* |   Yes    |
 | `options`    | An array with creation options. (specific to the database system)                         |   Yes    |
 
 ### Alter
@@ -2068,6 +2110,544 @@ $connection->dropTable('co_invoices', 'phalcon_db');
 ```
 Drop the table `co_invoices` from the database `phalcon_db`
 
+## Modern Database Features
+The following sections document column, index, and query features available across MySQL, PostgreSQL, and SQLite. Each subsection lists the engines that support the feature and the API surface used to drive it from `Phalcon\Db`.
+
+### Generated Columns
+A generated (computed) column derives its value from an SQL expression evaluated on every row.
+
+- MySQL 5.7+ supports both `VIRTUAL` and `STORED` generated columns
+- PostgreSQL 12+ supports only `STORED` generated columns
+- SQLite 3.31+ supports both `VIRTUAL` and `STORED` generated columns
+
+Use the `generated` key on the column definition to provide the SQL expression; use `generationStored` to choose storage:
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+$total = new Column(
+    'line_total',
+    [
+        'type'             => Column::TYPE_DECIMAL,
+        'size'             => 10,
+        'scale'            => 2,
+        'generated'        => 'unit_price * quantity',
+        'generationStored' => true,         // false (default) emits VIRTUAL
+        'notNull'          => true,
+    ]
+);
+
+$connection->addColumn('invoice_lines', null, $total);
+```
+
+The dialect emits:
+
+```sql
+ALTER TABLE `invoice_lines` ADD `line_total` DECIMAL(10,2)
+    GENERATED ALWAYS AS (unit_price * quantity) STORED NOT NULL
+```
+
+A `Phalcon\Db\Column` with `generated` set rejects `default` and `autoIncrement` — both throw `Phalcon\Db\Exception` from the constructor because the underlying engines do not allow them on generated columns. Use `Column::isGenerated()`, `Column::isGenerationStored()`, and `Column::getGenerationExpression()` to inspect a column.
+
+`Phalcon\Db\Adapter\Pdo\Mysql::describeColumns()` and `Phalcon\Db\Adapter\Pdo\Postgresql::describeColumns()` reverse-engineer the flag and the expression. `Phalcon\Db\Adapter\Pdo\Sqlite::describeColumns()` reports only `isGenerated()` and `isGenerationStored()` — SQLite does not expose the expression through any pragma, so `getGenerationExpression()` round-trips as an empty string.
+
+### Default Value Expressions
+Default values that are not plain scalars — for example MySQL 8.0.13+ `DEFAULT (UUID())`, PostgreSQL `DEFAULT gen_random_uuid()`, or SQLite 3.31+ `DEFAULT strftime('%s','now')` — must be wrapped in `Phalcon\Db\RawValue` so the dialect emits them verbatim instead of quoting:
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+use Phalcon\Db\RawValue;
+
+$id = new Column(
+    'id',
+    [
+        'type'    => Column::TYPE_CHAR,
+        'size'    => 36,
+        'default' => new RawValue('gen_random_uuid()'),  // PostgreSQL
+        'notNull' => true,
+        'primary' => true,
+    ]
+);
+```
+
+Plain scalar values, the keywords `NULL` / `CURRENT_TIMESTAMP`, and numeric values continue to behave as before. The `RawValue` path is required only when the default is an SQL expression.
+
+### Invisible Columns (MySQL 8.0.23+)
+An `INVISIBLE` column is hidden from `SELECT *` expansion but can still be referenced explicitly. It is useful when phasing a legacy column out of read paths before dropping it.
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+$legacy = new Column(
+    'legacy_id',
+    [
+        'type'      => Column::TYPE_INTEGER,
+        'size'      => 11,
+        'notNull'   => true,
+        'invisible' => true,
+    ]
+);
+
+$connection->addColumn('robots', null, $legacy);
+```
+
+The MySQL dialect emits `INVISIBLE` immediately after the `NOT NULL` / `NULL` clause. PostgreSQL and SQLite have no equivalent concept and ignore the flag. Use `Column::isInvisible()` to inspect.
+
+### Array Columns (PostgreSQL)
+PostgreSQL allows any base type to be declared as an array (e.g. `INTEGER[]`, `TEXT[]`, `INET[]`).
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+$tags = new Column(
+    'tags',
+    [
+        'type'    => Column::TYPE_INTEGER,
+        'array'   => true,
+        'notNull' => true,
+    ]
+);
+
+$connection->addColumn('articles', null, $tags);
+// ALTER TABLE "articles" ADD COLUMN "tags" INT[] NOT NULL
+```
+
+`Column::isArray()` reports the flag. MySQL and SQLite dialects ignore it. `Phalcon\Db\Adapter\Pdo\Postgresql::describeColumns()` reverse-engineers the flag when `information_schema.columns.data_type` reports `ARRAY`.
+
+### Spatial / Geometry Columns
+Eight spatial types are exposed via dedicated `Column::TYPE_*` constants — see the *Spatial Column Types* table earlier in this document.
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+$location = new Column(
+    'location',
+    [
+        'type'    => Column::TYPE_POINT,
+        'notNull' => true,
+    ]
+);
+
+$connection->createTable(
+    'places',
+    null,
+    [
+        'columns' => [
+            new Column(
+                'id',
+                [
+                    'type'          => Column::TYPE_INTEGER,
+                    'primary'       => true,
+                    'autoIncrement' => true,
+                    'notNull'       => true,
+                ]
+            ),
+            $location,
+        ],
+    ]
+);
+```
+
+MySQL recognizes the keywords natively from 5.7. PostgreSQL needs the PostGIS extension installed. SQLite has no native spatial support and falls through to `VARCHAR` for these constants.
+
+When selecting a spatial column directly, the underlying engine returns the raw WKB byte string. Project a server-side conversion in the SELECT to receive a usable representation:
+
+```sql
+SELECT id, ST_AsText(location) AS location FROM places;
+```
+
+### CHECK Constraints
+A `CHECK` constraint enforces a boolean SQL predicate on every row of a table; rows that fail the predicate are rejected at `INSERT` / `UPDATE` time.
+
+- MySQL 8.0.16+ enforces CHECK constraints
+- PostgreSQL has always enforced CHECK constraints
+- SQLite has always enforced CHECK constraints
+
+Use the `Phalcon\Db\Check` class. Its definition array accepts a single `expression` key (a non-empty SQL string):
+
+```php
+<?php
+
+use Phalcon\Db\Check;
+use Phalcon\Db\Column;
+
+$positivePrice = new Check(
+    'chk_price_positive',
+    [
+        'expression' => 'price > 0',
+    ]
+);
+
+$connection->createTable(
+    'products',
+    null,
+    [
+        'columns' => [
+            new Column(
+                'id',
+                [
+                    'type'          => Column::TYPE_INTEGER,
+                    'primary'       => true,
+                    'autoIncrement' => true,
+                    'notNull'       => true,
+                ]
+            ),
+            new Column(
+                'price',
+                [
+                    'type'    => Column::TYPE_DECIMAL,
+                    'size'    => 10,
+                    'scale'   => 2,
+                    'notNull' => true,
+                ]
+            ),
+        ],
+        'checks' => [$positivePrice],
+    ]
+);
+```
+
+The first argument is the constraint name. Pass an empty string for an anonymous check; the dialect omits the `CONSTRAINT <name>` prefix in that case.
+
+CHECK constraints can also be added to or removed from an existing table on MySQL and PostgreSQL. SQLite cannot — its CHECK constraints can only be declared at `CREATE TABLE` time:
+
+```php
+<?php
+
+$connection->addCheck('products', null, $positivePrice);
+$connection->dropCheck('products', null, 'chk_price_positive');
+```
+
+Reverse-engineering of CHECK constraints from `information_schema.CHECK_CONSTRAINTS` is not currently exposed through `describeReferences()` — the constraints exist on the table but are not enumerated by the adapter.
+
+### Advanced Index Features
+
+#### Definition-Array Constructor
+The `Phalcon\Db\Index` constructor now accepts either the legacy positional form or a definition-array form. The definition-array form is required to opt in to invisible / descending / partial / functional / concurrent indexes:
+
+```php
+<?php
+
+use Phalcon\Db\Index;
+
+// Legacy positional form (unchanged)
+$idxA = new Index('idx_email', ['email'], 'UNIQUE');
+
+// Definition-array form
+$idxB = new Index(
+    'idx_email',
+    [
+        'columns'    => ['email'],
+        'type'       => 'UNIQUE',
+        'invisible'  => true,                 // MySQL 8.0+
+        'directions' => ['DESC'],             // per-column ASC / DESC
+        'where'      => 'active = true',      // partial index, PgSQL + SQLite
+        'concurrently' => true,               // PostgreSQL
+    ]
+);
+```
+
+Detection is based on the presence of a `columns` key in the second argument. When the definition form is used the third positional `type` argument is ignored — `type` is taken from the definition array.
+
+The definition-array path throws `Phalcon\Db\Exception` if `columns` is not an array, if `directions` is not an array, or if `where` is not a string.
+
+#### Invisible Indexes (MySQL 8.0+)
+An invisible index is maintained by the engine but ignored by the query planner. Use it to validate that a table still performs adequately after a planned index drop without paying for the rebuild on rollback.
+
+```php
+<?php
+
+use Phalcon\Db\Index;
+
+$idx = new Index(
+    'idx_hidden',
+    [
+        'columns'   => ['email'],
+        'type'      => 'UNIQUE',
+        'invisible' => true,
+    ]
+);
+
+$connection->addIndex('robots', null, $idx);
+// ALTER TABLE `robots` ADD UNIQUE INDEX `idx_hidden` (`email`) INVISIBLE
+```
+
+`Index::isInvisible()` reports the flag at runtime. `Phalcon\Db\Adapter\Pdo\Mysql::describeIndexes()` reverse-engineers it from the `Visible` column of `SHOW INDEXES` (MySQL 8.0+; absent on 5.7, which defaults to visible). PostgreSQL and SQLite ignore the flag.
+
+#### Descending Indexes
+Per-column `ASC` / `DESC` directions are declared with the `directions` key — a parallel array, one entry per column. Missing trailing positions default to `ASC`.
+
+```php
+<?php
+
+use Phalcon\Db\Index;
+
+$idx = new Index(
+    'idx_recent_active',
+    [
+        'columns'    => ['created_at', 'status'],
+        'directions' => ['DESC', 'ASC'],
+    ]
+);
+
+$connection->addIndex('events', null, $idx);
+// ALTER TABLE `events` ADD INDEX `idx_recent_active`
+//     (`created_at` DESC, `status` ASC)
+```
+
+Honored by MySQL 8.0+ (5.7 parsed `DESC` but ignored it at the optimizer level), PostgreSQL, and SQLite. `Index::getDirections()` returns the configured list; an empty array preserves the legacy plain `(col1, col2)` rendering.
+
+`Phalcon\Db\Adapter\Pdo\Mysql::describeIndexes()` reverse-engineers directions from the `Collation` field of `SHOW INDEXES` (`A`=ASC, `D`=DESC). PostgreSQL and SQLite reverse-engineering of directions is deferred.
+
+#### Partial Indexes
+PostgreSQL and SQLite allow an index to be restricted to rows matching a predicate.
+
+```php
+<?php
+
+use Phalcon\Db\Index;
+
+$idx = new Index(
+    'idx_active_users',
+    [
+        'columns' => ['email'],
+        'where'   => 'active = true',
+    ]
+);
+
+$connection->addIndex('users', null, $idx);
+// CREATE INDEX "idx_active_users" ON "users" ("email") WHERE active = true
+```
+
+MySQL has no partial-index feature and its dialect silently drops the predicate.
+
+#### Functional / Expression Indexes
+Index entries may be plain column names (escaped as identifiers) or `Phalcon\Db\RawValue` instances (emitted verbatim). The two may be mixed within a single index:
+
+```php
+<?php
+
+use Phalcon\Db\Index;
+use Phalcon\Db\RawValue;
+
+$idx = new Index(
+    'idx_lower_email',
+    [
+        'columns' => [
+            'tenant_id',
+            new RawValue('LOWER(email)'),
+        ],
+    ]
+);
+
+$connection->addIndex('users', null, $idx);
+```
+
+The MySQL and PostgreSQL dialects wrap each expression entry in extra parentheses (`KEY idx (\`tenant_id\`, (LOWER(email)))`); SQLite emits the expression directly. Expressions compose with `directions` and `where` without any additional API surface.
+
+#### Concurrent Index Creation (PostgreSQL)
+`CREATE INDEX CONCURRENTLY` builds the index without taking the strong lock that normally blocks writers — useful when adding an index to a large table in production.
+
+```php
+<?php
+
+use Phalcon\Db\Index;
+
+$idx = new Index(
+    'idx_orders_status',
+    [
+        'columns'      => ['status'],
+        'concurrently' => true,
+    ]
+);
+
+$connection->addIndex('orders', null, $idx);
+// CREATE INDEX CONCURRENTLY "idx_orders_status" ON "orders" ("status")
+```
+
+MySQL and SQLite have no equivalent feature and silently ignore the flag.
+
+### Row Locking
+The `forUpdate()` and `sharedLock()` SQL transformers accept an optional second argument that appends a row-lock disposition keyword. Use the constants on `Phalcon\Contracts\Db\Dialect` (also reachable as `Phalcon\Db\Dialect::LOCK_*` via inheritance):
+
+| Constant                    | Keyword       | Behavior                                   |
+|-----------------------------|---------------|--------------------------------------------|
+| `Dialect::LOCK_NONE`        | `''` (empty)  | Default — no modifier                      |
+| `Dialect::LOCK_NOWAIT`      | `NOWAIT`      | Fail immediately if a needed row is locked |
+| `Dialect::LOCK_SKIP_LOCKED` | `SKIP LOCKED` | Skip already-locked rows                   |
+
+`NOWAIT` and `SKIP LOCKED` are recognized by MySQL 8.0+ and PostgreSQL 9.5+. SQLite has no row-level locking and silently ignores the modifier. MySQL's legacy `LOCK IN SHARE MODE` syntax produced by `sharedLock()` does not accept these modifiers either; the MySQL `sharedLock()` accepts the second argument for signature parity but ignores it.
+
+```php
+<?php
+
+use Phalcon\Db\Dialect;
+use Phalcon\Db\Enum;
+
+$sql = "SELECT * FROM jobs WHERE state = 'queued' LIMIT 10";
+
+// Pop a batch of jobs without contending with peer workers
+$batch = $connection->fetchAll(
+    $connection->forUpdate($sql, Dialect::LOCK_SKIP_LOCKED)
+);
+
+// PostgreSQL — FOR SHARE NOWAIT
+$rows = $connection->fetchAll(
+    $connection->sharedLock(
+        'SELECT * FROM accounts WHERE id = :id',
+        Dialect::LOCK_NOWAIT
+    ),
+    Enum::FETCH_ASSOC,
+    ['id' => 42]
+);
+```
+
+`sharedLock()` emits:
+
+- **MySQL** — `<sql> LOCK IN SHARE MODE` (modifier ignored)
+- **PostgreSQL** — `<sql> FOR SHARE [NOWAIT|SKIP LOCKED]`
+- **SQLite** — `<sql>` unchanged
+
+### Upserts — `ON CONFLICT DO UPDATE`
+PostgreSQL 9.5+ and SQLite 3.24+ accept the SQL-standard `ON CONFLICT (col) DO UPDATE SET other = excluded.other` upsert syntax. Use `onConflictUpdate()` on the dialect or adapter to append the clause to an existing `INSERT` statement:
+
+```php
+<?php
+
+$sql = "INSERT INTO products (sku, name, price) VALUES (?, ?, ?)";
+
+$upsertSql = $connection->onConflictUpdate(
+    $sql,
+    ['sku'],          // conflict-target columns
+    ['name', 'price'] // columns to overwrite with EXCLUDED.*
+);
+
+$connection->execute(
+    $upsertSql,
+    ['SKU-001', 'Widget', 9.99]
+);
+// INSERT INTO products (sku, name, price) VALUES (?, ?, ?)
+//   ON CONFLICT ("sku") DO UPDATE SET
+//     "name" = excluded."name", "price" = excluded."price"
+```
+
+`Phalcon\Db\Dialect\Mysql::onConflictUpdate()` throws `Phalcon\Db\Exception` because MySQL's equivalent uses the incompatible `INSERT ... ON DUPLICATE KEY UPDATE` syntax. Use raw SQL on MySQL until a dedicated helper ships.
+
+Passing an empty `conflictColumns` or `updateColumns` array throws.
+
+### `RETURNING` Clauses
+PostgreSQL and SQLite 3.35+ allow `INSERT` / `UPDATE` / `DELETE` to return rows. `returning()` on the dialect or adapter appends the clause:
+
+```php
+<?php
+
+$sql = "INSERT INTO articles (slug, title) VALUES ('hello', 'Hello')";
+
+// Specific columns
+$withReturning = $connection->returning($sql, ['id', 'created_at']);
+$row = $connection->fetchOne($withReturning);
+
+// All columns
+$withReturning = $connection->returning(
+    "UPDATE articles SET title = 'Updated' WHERE id = 42",
+    ['*']
+);
+$row = $connection->fetchOne($withReturning);
+```
+
+`Phalcon\Db\Dialect\Mysql::returning()` throws (no `RETURNING` construct). An empty `columns` array throws on every dialect.
+
+### Materialized Views (PostgreSQL)
+A materialized view caches the result of a query as a real table; you control when it is refreshed.
+
+```php
+<?php
+
+// Create
+$connection->createMaterializedView(
+    'top_orders',
+    [
+        'sql' => 'SELECT customer_id, SUM(total) AS total
+                  FROM orders
+                  GROUP BY customer_id
+                  ORDER BY total DESC
+                  LIMIT 100',
+    ],
+    'public'
+);
+
+// Refresh (concurrent = non-blocking; requires a unique index on the view)
+$connection->refreshMaterializedView('top_orders', 'public', true);
+
+// Drop
+$connection->dropMaterializedView('top_orders', 'public');
+```
+
+The MySQL and SQLite dialects throw `Phalcon\Db\Exception` from each of the three methods — neither engine has a materialized-view concept.
+
+### SQLite `DROP COLUMN`
+SQLite 3.35+ supports `ALTER TABLE ... DROP COLUMN ...` natively. `Phalcon\Db\Dialect\Sqlite::dropColumn()` now emits the statement (previously it threw unconditionally). On older SQLite versions the server itself rejects the statement at execution time.
+
+```php
+<?php
+
+$connection->dropColumn('events', null, 'legacy_payload');
+// ALTER TABLE "events" DROP COLUMN "legacy_payload"
+```
+
+`addPrimaryKey()`, `dropPrimaryKey()`, `modifyColumn()`, `addForeignKey()`, `dropForeignKey()`, `addCheck()`, and `dropCheck()` continue to throw on SQLite because of genuine engine limitations (table rebuild required).
+
+## The `Phalcon\Contracts\Db` Namespace
+The Db layer interfaces have been promoted to a new `Phalcon\Contracts\Db` namespace as part of an ongoing migration to a canonical contracts package. The new contracts are:
+
+| Contract                                       | Replaces                                       |
+|------------------------------------------------|------------------------------------------------|
+| `Phalcon\Contracts\Db\Adapter\Adapter`         | `Phalcon\Db\Adapter\AdapterInterface`          |
+| `Phalcon\Contracts\Db\Check`                   | `Phalcon\Db\CheckInterface`                    |
+| `Phalcon\Contracts\Db\Column`                  | `Phalcon\Db\ColumnInterface`                   |
+| `Phalcon\Contracts\Db\Dialect`                 | `Phalcon\Db\DialectInterface`                  |
+| `Phalcon\Contracts\Db\Index`                   | `Phalcon\Db\IndexInterface`                    |
+| `Phalcon\Contracts\Db\Reference`               | `Phalcon\Db\ReferenceInterface`                |
+| `Phalcon\Contracts\Db\Result`                  | `Phalcon\Db\ResultInterface`                   |
+
+The legacy `Phalcon\Db\*Interface` types are kept as thin `@deprecated` extensions of the contracts so existing typehints (`function fooBar(ColumnInterface $col)`) and implementations (`class MyColumn implements ColumnInterface`) continue to work unchanged.
+
+For new code prefer typehinting against the contracts:
+
+```php
+<?php
+
+use Phalcon\Contracts\Db\Column;
+
+function describe(Column $column): string
+{
+    return sprintf(
+        '%s (%s)',
+        $column->getName(),
+        $column->getType()
+    );
+}
+```
+
+A small number of methods that landed in this release are intentionally **not** declared on the contracts in the v5 / v6 line — they would be a breaking change for third-party implementors. They are documented in the class-level `@todo v7` block on each contract and are reachable on the concrete classes:
+
+- `Phalcon\Db\Column`: `getGenerationExpression()`, `isArray()`, `isGenerated()`, `isGenerationStored()`, `isInvisible()`
+- `Phalcon\Db\Index`: `getDirections()`, `getWhere()`, `isConcurrent()`, `isInvisible()`
+- `Phalcon\Db\Check`: provided by the new contract; no legacy concern
+- `Phalcon\Db\Dialect` (and the three concrete dialect subclasses): `addCheck()`, `dropCheck()`, `createMaterializedView()`, `dropMaterializedView()`, `refreshMaterializedView()`, `onConflictUpdate()`, `returning()`
+- `Phalcon\Db\Adapter\AbstractAdapter`: the same method set as `Phalcon\Db\Dialect`, returning `bool` from `addCheck()` / `dropCheck()` / the materialized-view methods, and `string` from the SQL-transformer methods (`onConflictUpdate()`, `returning()`)
+
+These will be promoted to required interface members in v7. Until then, call them on the concrete classes or typehint against the abstract `Phalcon\Db\Dialect` / `Phalcon\Db\Adapter\AbstractAdapter` types.
 
 [pdo_quote]: https://www.php.net/manual/en/pdo.quote.php
 [nested_transactions]: https://en.wikipedia.org/wiki/Nested_transaction
