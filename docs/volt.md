@@ -1980,9 +1980,9 @@ public function setOption(string $option, mixed $value)
 Sets a single compiler option
 
 ```php
-public function setOptions(array $options): Compiler
+public function setOptions(array $options)
 ```
-Sets the compiler options. Returns the compiler instance for fluent chaining.
+Sets the compiler options
 
 ```php
 public function setUniquePrefix(string $prefix): Compiler

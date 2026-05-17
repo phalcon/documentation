@@ -195,10 +195,6 @@ Binds data to the entity. The first parameter `data` is an array of key/values. 
 
 The `bind` method takes the first array (e.g. `$_POST`) and an entity object (e.g. `Invoices`). It loops through the array and if it finds an array key that exists in the form, it applies the necessary filters (defined in the form) to the value of the array. After that, it checks the entity object (`Invoices`) and assigns this value to any property that matches the array key. If a method exists as a setter with the same name as an array key, it will be called first (i.e. `name` -> `setName()`).  This method allows us to quickly filter input and assign this input to the passed entity object.
 
-When the data key does not match any registered form-element identifier directly, `bind()` will fall back to scanning the registered elements for one whose HTML `name` attribute matches the data key. This makes it possible to register multiple `Radio` elements under distinct identifiers (`r0`, `r1`) that share the same HTML `name` (`status`) and still have the value posted under `status` bind correctly. See the [Radios](#radios) section for details.
-
-For `Check` elements, browsers omit unchecked checkboxes from the submitted payload, which previously left the entity property untouched. Calling [`Check::setUncheckedValue($value)`](#checkboxes) opts the element into an "unchecked default": when the element's key is missing from the bind payload, `bind()` injects `$value` so it flows through whitelist, filters, and entity setters exactly like a submitted value. Elements without an explicit `setUncheckedValue()` preserve the previous behavior (entity untouched).
-
 ```php
 <?php
 
@@ -366,14 +362,6 @@ public function key(): int
 Returns the current position/key in the iterator
 
 ```php
-public function load(
-    Schema $schema,
-    FormsLocator $locator
-): Form
-```
-Loads elements into the form from a [Phalcon\Contracts\Forms\Schema][forms-schema] source. The schema returns a list of element definitions (each an associative array with at least `type` and `name`); the [Phalcon\Forms\FormsLocator][forms-formslocator] resolves the `type` string to an element factory. Optional keys per definition are `label`, `default`, `attributes`, `options`, `filters`, and `validators`. See the [Loading Forms from Schema](#loading-forms-from-schema) section for full examples.
-
-```php
 public function label(
     string $name, 
     array $attributes = null
@@ -424,7 +412,7 @@ Set form attributes collection
 ```php
 public function setTagFactory(TagFactory $tagFactory): Form
 ```
-Sets the `Phalcon\Html\TagFactory` for the form. Element rendering looks for a `TagFactory` first on the element (via `setTagFactory()`) and falls back to the parent form's factory. When neither is available, `getLocalTagFactory()` throws `Phalcon\Forms\Exception::tagFactoryNotFound()` rather than silently constructing a default `TagFactory` — this surfaces a missing DI registration early instead of producing an inconsistent escaper chain.
+Sets the `Phalcon\Html\TagFactory` for the form
 
 ```php
 public function setValidation(
@@ -687,22 +675,20 @@ For the above entity class, the `getReceiveEmails` and `getTimezone` methods wil
 ## Elements
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
 
-| Name                                                         | Description                                                       |
-|--------------------------------------------------------------|-------------------------------------------------------------------|
-| [Phalcon\Forms\Element\Check][forms-element-check]           | Generate `input[type=checkbox]` elements                          |
-| [Phalcon\Forms\Element\CheckGroup][forms-element-checkgroup] | Generate multiple `input[type=checkbox]` rendered as a group      |
-| [Phalcon\Forms\Element\Date][forms-element-date]             | Generate `input[type=date]` elements                              |
-| [Phalcon\Forms\Element\Email][forms-element-email]           | Generate `input[type=email]` elements                             |
-| [Phalcon\Forms\Element\File][forms-element-file]             | Generate `input[type=file]` elements                              |
-| [Phalcon\Forms\Element\Hidden][forms-element-hidden]         | Generate `input[type=hidden]` elements                            |
-| [Phalcon\Forms\Element\Numeric][forms-element-numeric]       | Generate `input[type=number]` elements                            |
-| [Phalcon\Forms\Element\Password][forms-element-password]     | Generate `input[type=password]` elements                          |
-| [Phalcon\Forms\Element\Radio][forms-element-radio]           | Generate `radio` elements                                         |
-| [Phalcon\Forms\Element\RadioGroup][forms-element-radiogroup] | Generate multiple `input[type=radio]` rendered as a group         |
-| [Phalcon\Forms\Element\Select][forms-element-select]         | Generate `select` elements based on choices                       |
-| [Phalcon\Forms\Element\Submit][forms-element-submit]         | Generate `input[type=submit]` elements                            |
-| [Phalcon\Forms\Element\Text][forms-element-text]             | Generate `input[type=text]` elements                              |
-| [Phalcon\Forms\Element\TextArea][forms-element-textarea]     | Generate `textarea` elements                                      |
+| Name                                                     | Description                                 |
+|----------------------------------------------------------|---------------------------------------------|
+| [Phalcon\Forms\Element\Check][forms-element-check]       | Generate `input[type=check]` elements       |
+| [Phalcon\Forms\Element\Date][forms-element-date]         | Generate `input[type=date]` elements        |
+| [Phalcon\Forms\Element\Email][forms-element-email]       | Generate `input[type=email]` elements       |
+| [Phalcon\Forms\Element\File][forms-element-file]         | Generate `input[type=file]` elements        |
+| [Phalcon\Forms\Element\Hidden][forms-element-hidden]     | Generate `input[type=hidden]` elements      |
+| [Phalcon\Forms\Element\Numeric][forms-element-numeric]   | Generate `input[type=number]` elements      |
+| [Phalcon\Forms\Element\Password][forms-element-password] | Generate `input[type=password]` elements    |
+| [Phalcon\Forms\Element\Radio][forms-element-radio]       | Generate `radio` elements                   |
+| [Phalcon\Forms\Element\Select][forms-element-select]     | Generate `select` elements based on choices |
+| [Phalcon\Forms\Element\Submit][forms-element-submit]     | Generate `input[type=submit]` elements      |
+| [Phalcon\Forms\Element\Text][forms-element-text]         | Generate `input[type=text]` elements        |
+| [Phalcon\Forms\Element\TextArea][forms-element-textarea] | Generate `textarea` elements                |
 
 These elements use the [Phalcon\Html\TagFactory][tagfactory] component transparently.
 
@@ -715,10 +701,6 @@ These elements use the [Phalcon\Html\TagFactory][tagfactory] component transpare
     The `Phalcon\Forms\Element\Check` and `Phalcon\Forms\Element\Radio` classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more][tagfactory]
 
 The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and` emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
-
-!!! info "NOTE"
-
-    `Phalcon\Forms\Element\Select::render()` delegates to `Phalcon\Tag\Select::selectField()` for backwards compatibility with multiselect (`array` values). The newer `Phalcon\Html\Helper\Input\Select` only supports a single selected value and is not used by `Forms\Element\Select` directly. If you need optgroup support or per-option attributes, use `TagFactory`'s `inputSelect` helper with `fromData()` and `SelectDataInterface` instead.
 
 You can also create your own elements by extending the [Phalcon\Forms\Element\AbstractElement][forms-element-abstractelement] abstract class.
 
@@ -760,14 +742,11 @@ Because of the way forms work and interact with elements, certain names are rese
 These names correspond to getters in the `Form` object or are properties coming from the Di container.
 
 ### Radios
-A radio element represents a group of options where only one option can be selected. Phalcon offers two ways to model this:
+Radio elements are a bit different from other elements. A radio element represents a group of options where only one option can be selected. The `Phalcon\Forms\Element\Radio` element is used to create a single radio button. To create a group of radio buttons, you will need to add multiple `Phalcon\Forms\Element\Radio` elements to your form with the same name but different values:
 
-1. **`Phalcon\Forms\Element\RadioGroup`** — recommended for new code. A single form-element entry that renders all options at once and binds cleanly under the field name. See [Radio groups](#radio-groups) below.
-2. **Multiple `Phalcon\Forms\Element\Radio` elements** — one element per button, registered under distinct identifiers (`r0`, `r1`, ...) but sharing the same HTML `name`. Useful when you need fine-grained control over the individual buttons. As of v5.12.2, `Form::bind()` handles this layout correctly out of the box and no longer requires the previous hidden-field workaround.
+One thing to note is that the name of the element (first parameter for the `Radio` class) is not the name attribute that will be rendered in the HTML. It is merely a way to identify the specific `Radio` element in the form. 
 
-One thing to note when using the individual-element approach is that the first constructor argument (the *form-element identifier*) is not the same as the HTML `name` attribute. The identifier is how you reference the element on the form object (`$form->get('r0')`); the HTML `name` lives in the attributes array and is what the browser submits in `$_POST`.
-
-Assume you have to render the following HTML:
+Assume you have to create two radio elements in your form:
 
 ```html
 <input type="radio" id="dt-single" name="dateRange" value="1" checked="checked" />
@@ -777,7 +756,7 @@ Assume you have to render the following HTML:
 <label for="dt-range" class="control-label">Range</label>
 ```
 
-The form is constructed as follows:
+The form must be constructed as follows:
 
 ```php
 <?php
@@ -787,14 +766,15 @@ use Phalcon\Forms\Form;
 
 class DatesForm extends Form
 {
-    public function initialize()
-    {
+        /**
+         * Radio buttons
+         */
         $element = new Radio(
-            'first-dt-radio', // form-element identifier
+            'first-dt-radio', // identifier for the element in the form
             [
                 'value'   => '1',
                 'checked' => '1',
-                'name'    => 'dateRange', // shared HTML name
+                'name'    => 'dateRange', // group name
                 'id'      => 'dt-single', // HTML id attribute
             ]
         );
@@ -803,11 +783,12 @@ class DatesForm extends Form
         $this->add($element);
 
         $element = new Radio(
-            'second-dt-radio',
+            'second-dt-radio', // identifier for the element in the form
             [
-                'value' => '2',
-                'name'  => 'dateRange',
-                'id'    => 'dt-range',
+                'value'   => '2',
+                'checked' => '',
+                'name'    => 'dateRange', // group name
+                'id'      => 'dt-range',  // HTML id attribute
             ]
         );
 
@@ -817,15 +798,15 @@ class DatesForm extends Form
 }
 ```
 
-Render the buttons individually:
+Now when it is time to render the form, you can do it as follows:
 
 ```php
 // Prints the first radio button
 echo $form->render('first-dt-radio');
-echo $form->get('first-dt-radio')->label(['class' => 'control-label']);
+echo $form->get('first-dt-radio')->label(['class' : 'control-label']);
 echo '&nbsp;&nbsp;&nbsp';
 echo $form->render('second-dt-radio');
-echo $form->get('second-dt-radio')->label(['class' => 'control-label']);
+echo $form->get('second-dt-radio')->label(['class' : 'control-label']);
 ```
 
 or when using Volt:
@@ -836,167 +817,6 @@ or when using Volt:
 &nbsp;&nbsp;&nbsp;
 {{ form.render('second-dt-radio') }}
 {{ form.get('second-dt-radio').label(['class' : 'control-label']) }}
-```
-
-When the form is posted as `dateRange=2`, `Form::bind()` resolves the `dateRange` key by HTML `name` attribute, picks the first registered `Radio` element that declares that name, applies any configured filters, and assigns `'2'` to the matching entity property (or setter) named `dateRange`:
-
-```php
-<?php
-
-$entity = new \stdClass();
-$form->bind(['dateRange' => '2'], $entity);
-
-echo $entity->dateRange;
-// 2
-```
-
-### Radio groups
-`Phalcon\Forms\Element\RadioGroup` represents the whole radio group as a single form element, so registration, rendering, and binding all happen under one name. The constructor accepts the field name, an array of options (`value => label`), and optional shared HTML attributes:
-
-```php
-<?php
-
-use Phalcon\Forms\Element\RadioGroup;
-use Phalcon\Forms\Form;
-
-$form = new Form();
-$form->add(
-    new RadioGroup(
-        'dateRange',
-        [
-            '1' => 'Single Date',
-            '2' => 'Range',
-        ],
-        [
-            'class' => 'control-input',
-        ]
-    )
-);
-```
-
-Rendering produces an `<input type="radio">` plus a matching `<label>` per option, sharing the `dateRange` HTML name:
-
-```php
-echo $form->render('dateRange');
-// <input type="radio" id="dateRange_1" name="dateRange" value="1" class="control-input">
-// <label for="dateRange_1">Single Date</label>
-// <input type="radio" id="dateRange_2" name="dateRange" value="2" class="control-input">
-// <label for="dateRange_2">Range</label>
-```
-
-To enable per-option attributes (e.g. disable a value, override its label, set extra HTML attributes), pass an associative array instead of a scalar label:
-
-```php
-$form->add(
-    new RadioGroup(
-        'dateRange',
-        [
-            '1' => 'Single Date',
-            '2' => [
-                'label'    => 'Range (Pro)',
-                'disabled' => 'disabled',
-            ],
-        ]
-    )
-);
-```
-
-Setting the selected value happens through the form's entity or default value, exactly like every other element. `bind()` resolves `$_POST['dateRange']` directly against the registered element, so no special handling is required:
-
-```php
-<?php
-
-$entity = new \stdClass();
-$form->bind(['dateRange' => '2'], $entity);
-
-echo $entity->dateRange;
-// 2
-```
-
-### Checkboxes
-The `Phalcon\Forms\Element\Check` element renders a single checkbox. Browsers do not submit unchecked checkboxes, so by default the entity property is left untouched on `bind()`. To opt the element into resetting the entity property to a specific value when the checkbox is missing from the payload, register an "unchecked value":
-
-```php
-<?php
-
-use Phalcon\Forms\Element\Check;
-use Phalcon\Forms\Form;
-
-$form = new Form();
-$form->add(
-    (new Check('newsletter'))->setUncheckedValue(0)
-);
-```
-
-Now both the checked and unchecked cases write the entity property:
-
-```php
-<?php
-
-$entity = new \stdClass();
-
-// Checkbox was checked
-$form->bind(['newsletter' => 1], $entity);
-echo $entity->newsletter; // 1
-
-// Checkbox was not checked (key absent from $_POST)
-$form->bind([], $entity);
-echo $entity->newsletter; // 0
-```
-
-`Check` exposes three methods for the opt-in:
-
-```php
-public function setUncheckedValue(mixed $value): Check
-public function getUncheckedValue(): mixed
-public function hasUncheckedValue(): bool
-```
-
-The injected value flows through the regular `bind()` pipeline: whitelist filtering, configured `setFilters()` filters, setter detection on the entity, and the `phalcon.form.strict_entity_property_check` ini setting all apply. Elements that never call `setUncheckedValue()` keep the legacy behavior (entity unchanged on missing key).
-
-### Checkbox groups
-`Phalcon\Forms\Element\CheckGroup` renders a set of related checkboxes that all share the same HTML name. The field name is automatically suffixed with `[]` (unless it already contains `[`), so PHP collects the checked values into an array on submission:
-
-```php
-<?php
-
-use Phalcon\Forms\Element\CheckGroup;
-use Phalcon\Forms\Form;
-
-$form = new Form();
-$form->add(
-    new CheckGroup(
-        'roles',
-        [
-            'admin'  => 'Administrator',
-            'editor' => 'Editor',
-            'viewer' => 'Viewer',
-        ]
-    )
-);
-
-echo $form->render('roles');
-// <input type="checkbox" id="roles_admin"  name="roles[]" value="admin">
-// <label for="roles_admin">Administrator</label>
-// <input type="checkbox" id="roles_editor" name="roles[]" value="editor">
-// <label for="roles_editor">Editor</label>
-// <input type="checkbox" id="roles_viewer" name="roles[]" value="viewer">
-// <label for="roles_viewer">Viewer</label>
-```
-
-Selected values are passed as an array (or scalar coerced into one) via the form's entity or default value. Per-option attributes follow the same `[label, ...attrs]` map as `RadioGroup`:
-
-```php
-$form->add(
-    new CheckGroup(
-        'roles',
-        [
-            'admin'  => ['label' => 'Administrator', 'disabled' => 'disabled'],
-            'editor' => 'Editor',
-            'viewer' => 'Viewer',
-        ]
-    )
-);
 ```
 
 ## Filtering
@@ -1281,298 +1101,21 @@ class ContactForm extends Form
 }
 ```
 
-## Loading Forms from Schema
-Forms can be built declaratively from a list of element definitions instead of being hand-assembled in PHP. The declarative pipeline has three pieces:
-
-1. A [Phalcon\Contracts\Forms\Schema][forms-schema] implementation that produces the definitions (PHP array, JSON, YAML, ...).
-2. A [Phalcon\Forms\FormsLocator][forms-formslocator] that maps element-type strings (e.g. `text`, `email`, `radiogroup`) to factory callables.
-3. A call to `Form::load($schema, $locator)` (or `Manager::loadForm()`, see below).
-
-### Schema definitions
-Every element definition is an associative array with the following keys:
-
-| Key          | Required | Description                                                                                                     |
-|--------------|----------|-----------------------------------------------------------------------------------------------------------------|
-| `type`       | yes      | Type string the locator resolves to a factory (e.g. `text`, `email`, `select`, `checkgroup`, `radiogroup`)      |
-| `name`       | yes      | HTML name attribute (also used as the form-element identifier)                                                  |
-| `label`      | no       | Visible label text — passed to `setLabel()`                                                                     |
-| `default`    | no       | Default value — passed to `setDefault()`                                                                        |
-| `attributes` | no       | Additional HTML attributes merged at render time                                                                |
-| `options`    | no       | Choices for `select`, `checkgroup`, `radiogroup`                                                                |
-| `filters`    | no       | Filter name(s) applied during `bind()` — `string` or `string[]`                                                 |
-| `validators` | no       | Array of [Phalcon\Filter\Validation\ValidatorInterface][filter-validation] instances                            |
-
-### ArrayLoader
-The simplest source: a literal PHP array.
-
-```php
-<?php
-
-use Phalcon\Forms\Form;
-use Phalcon\Forms\FormsLocator;
-use Phalcon\Forms\Loader\ArrayLoader;
-
-$schema = new ArrayLoader([
-    [
-        'type'  => 'text',
-        'name'  => 'nameFirst',
-        'label' => 'First name',
-    ],
-    [
-        'type'  => 'text',
-        'name'  => 'nameLast',
-        'label' => 'Last name',
-    ],
-    [
-        'type'    => 'email',
-        'name'    => 'email',
-        'label'   => 'Email',
-        'filters' => ['trim', 'lower'],
-    ],
-    [
-        'type'    => 'select',
-        'name'    => 'country',
-        'label'   => 'Country',
-        'options' => [
-            'us' => 'United States',
-            'gr' => 'Greece',
-            'br' => 'Brazil',
-        ],
-    ],
-    [
-        'type'    => 'radiogroup',
-        'name'    => 'plan',
-        'label'   => 'Plan',
-        'options' => [
-            'free'  => 'Free',
-            'pro'   => 'Pro',
-            'enter' => 'Enterprise',
-        ],
-        'default' => 'free',
-    ],
-]);
-
-$form    = new Form();
-$locator = new FormsLocator();
-$form->load($schema, $locator);
-```
-
-`ArrayLoader::load()` validates that every entry is an array containing non-empty `type` and `name` keys; otherwise a [Phalcon\Forms\Exception][forms-exception] is thrown.
-
-### JsonLoader
-Loads the same schema from a JSON string **or** a path to a readable JSON file.
-
-```php
-<?php
-
-use Phalcon\Forms\Form;
-use Phalcon\Forms\FormsLocator;
-use Phalcon\Forms\Loader\JsonLoader;
-
-// From a string
-$schema = new JsonLoader(
-    '[{"type":"text","name":"username","label":"Username"}]'
-);
-
-// From a file (any path passing is_file() && is_readable())
-$schema = new JsonLoader(__DIR__ . '/forms/login.json');
-
-$form    = new Form();
-$locator = new FormsLocator();
-$form->load($schema, $locator);
-```
-
-Invalid JSON triggers a [Phalcon\Forms\Exception][forms-exception]; the decoded value must be a list of definitions, not a single map.
-
-### YamlLoader
-Same as `JsonLoader`, but consumes YAML (string or file) via the [pecl/yaml][pecl-yaml] PHP extension. If the extension is not loaded, a [Phalcon\Forms\Exception][forms-exception] is thrown.
-
-```yaml
-# forms/contact.yaml
-- type: text
-  name: nameFirst
-  label: First name
-- type: text
-  name: nameLast
-  label: Last name
-- type: email
-  name: email
-  label: Email
-  filters:
-    - trim
-    - lower
-- type: checkgroup
-  name: roles
-  label: Roles
-  options:
-    admin: Administrator
-    editor: Editor
-    viewer: Viewer
-```
-
-```php
-<?php
-
-use Phalcon\Forms\Form;
-use Phalcon\Forms\FormsLocator;
-use Phalcon\Forms\Loader\YamlLoader;
-
-$schema = new YamlLoader(__DIR__ . '/forms/contact.yaml');
-
-$form    = new Form();
-$locator = new FormsLocator();
-$form->load($schema, $locator);
-```
-
-### Custom Schema implementations
-`Schema` is a tiny interface with a single `load(): array` method. Plug in any source — database table, remote API, Phalcon `Config` — by implementing it directly:
-
-```php
-<?php
-
-use Phalcon\Contracts\Forms\Schema;
-
-class DatabaseSchema implements Schema
-{
-    public function __construct(
-        private readonly \PDO $pdo,
-        private readonly string $formKey
-    ) {
-    }
-
-    public function load(): array
-    {
-        $stmt = $this->pdo->prepare(
-            'SELECT definition_json FROM form_schemas WHERE form_key = :key'
-        );
-        $stmt->execute(['key' => $this->formKey]);
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-        return json_decode($row['definition_json'], true);
-    }
-}
-```
-
-### FormsLocator
-[Phalcon\Forms\FormsLocator][forms-formslocator] is a closure-based registry with two responsibilities:
-
-1. **Element registry** — maps element-type strings to factory callables that produce concrete `ElementInterface` instances. The constructor seeds defaults for `check`, `checkgroup`, `date`, `email`, `file`, `hidden`, `numeric`, `password`, `radio`, `radiogroup`, `select`, `submit`, `text`, and `textarea`.
-2. **Form registry** — maps form names to factory callables that produce `Form` instances; used internally by `Manager::loadForm()` (see below).
-
-#### Constructor
-
-```php
-public function __construct(array $definitions = [])
-```
-
-`$definitions` is an optional `name => callable` map for the **form registry** that is applied at construction time — the constructor delegates each entry to `set()`, so you get the same behavior as calling `setElement()`/`set()` after the fact but in a single statement. The element registry is always seeded with the built-in types first; you can override or extend it later via `setElement()`.
-
-```php
-<?php
-
-use App\Forms\ContactForm;
-use App\Forms\LoginForm;
-use Phalcon\Forms\FormsLocator;
-
-$locator = new FormsLocator([
-    'login'   => fn ($entity = null) => new LoginForm($entity),
-    'contact' => fn ($entity = null) => new ContactForm($entity),
-]);
-
-// Retrieve a cached entity-less form:
-$loginForm = $locator->get('login');
-
-// Or rebuild a fresh entity-aware form:
-$contactForm = $locator->get('contact', $currentUser);
-```
-
-Each form factory has the signature `fn(?object $entity): Form`. The locator's `get()` method automatically caches the result when invoked without an entity (so subsequent `get('login')` calls return the same instance), and always invokes the factory anew when an entity is supplied (so entity-bound forms never share mutable state).
-
-#### Element factories
-
-Each element factory has the signature `fn(string $name, array $options, array $attributes): ElementInterface`. To teach the locator a brand-new element type, call `setElement()`:
-
-```php
-<?php
-
-use App\Forms\Element\ColorPicker;
-use Phalcon\Forms\Element\ElementInterface;
-use Phalcon\Forms\FormsLocator;
-
-$locator = new FormsLocator();
-
-$locator->setElement(
-    'colorpicker',
-    function (string $name, array $options, array $attributes): ElementInterface {
-        return new ColorPicker($name, $attributes);
-    }
-);
-```
-
-A schema definition like `['type' => 'colorpicker', 'name' => 'theme']` will now resolve through the closure and produce a `ColorPicker` element. `setElement()` may also override built-in types (e.g. swap `text` for a subclass with extra default attributes).
-
-#### Method summary
-
-```php
-public function __construct(array $definitions = [])
-
-public function getElement(string $type): callable
-public function hasElement(string $type): bool
-public function setElement(string $type, callable $factory): void
-
-public function get(string $name, object | null $entity = null): Form
-public function has(string $name): bool
-public function set(string $name, callable $factory): void
-```
-
-If `getElement()` or `get()` receives an unknown name, a [Phalcon\Forms\Exception][forms-exception] is thrown.
-
 ## Manager
-This component provides the [Phalcon\Forms\Manager][forms-manager] that can be used by the developer to register forms and access them via the service locator. The constructor accepts an optional [FormsLocator][forms-formslocator]; when omitted, a default locator is instantiated internally:
+This component provides the [Phalcon\Forms\Manager][forms-manager] that can be used by the developer to register forms and access them via the service locator:
 
 ```php
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Forms\FormsLocator;
 use Phalcon\Forms\Manager;
 
 $container = new FactoryDefault();
-
-// Default locator — backwards compatible
 $container->set(
     'forms',
     function () {
         return new Manager();
     }
-);
-
-// Or pass a pre-configured locator with custom element types
-$container->set(
-    'forms',
-    function () {
-        $locator = new FormsLocator();
-        $locator->setElement(
-            'colorpicker',
-            fn(string $n, array $o, array $a) => new \App\Forms\Element\ColorPicker($n, $a)
-        );
-
-        return new Manager($locator);
-    }
-);
-```
-
-The locator can be retrieved with `getLocator()`:
-
-```php
-<?php
-
-$manager = $this->forms;
-$locator = $manager->getLocator();
-
-$locator->setElement(
-    'rating',
-    fn(string $n, array $o, array $a) => new \App\Forms\Element\StarRating($n, $a)
 );
 ```
 
@@ -1601,32 +1144,6 @@ echo $loginForm->render();
 ```
 
 If a form is not found in the manager, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
-
-### Manager::loadForm()
-`Manager::loadForm(string $name, Schema $schema, ?object $entity = null): Form` builds a form from a schema, registers it in the manager **and** registers a factory in the locator, so subsequent entity-aware retrievals through `FormsLocator::get($name, $entity)` always rebuild a fresh form bound to the supplied entity:
-
-```php
-<?php
-
-use Phalcon\Forms\Loader\YamlLoader;
-use Phalcon\Forms\Manager;
-
-$manager = new Manager();
-
-$manager->loadForm(
-    'contact',
-    new YamlLoader(__DIR__ . '/forms/contact.yaml')
-);
-
-// Retrieve the entity-less cached instance from the manager
-$form = $manager->get('contact');
-
-// Or rebuild a fresh entity-aware form from the locator
-$customer = Customers::findFirst();
-$form     = $manager
-    ->getLocator()
-    ->get('contact', $customer);
-```
 
 ## Exceptions
 Any exceptions thrown in the `Phalcon\Forms` namespace will be [Phalcon\Forms\Exception][forms-exception]. You can use these exceptions to selectively catch exceptions thrown only from this component.
@@ -1703,7 +1220,6 @@ class ContactForm extends Form
 [di-injectable]: api/phalcon_di.md#diinjectable
 [forms-element-abstractelement]: api/phalcon_forms.md#formselementabstractelement
 [forms-element-check]: api/phalcon_forms.md#formselementcheck
-[forms-element-checkgroup]: api/phalcon_forms.md#formselementcheckgroup
 [forms-element-date]: api/phalcon_forms.md#formselementdate
 [forms-element-elementinterface]: api/phalcon_forms.md#formselementelementinterface
 [forms-element-email]: api/phalcon_forms.md#formselementemail
@@ -1712,16 +1228,13 @@ class ContactForm extends Form
 [forms-element-numeric]: api/phalcon_forms.md#formselementnumeric
 [forms-element-password]: api/phalcon_forms.md#formselementpassword
 [forms-element-radio]: api/phalcon_forms.md#formselementradio
-[forms-element-radiogroup]: api/phalcon_forms.md#formselementradiogroup
 [forms-element-select]: api/phalcon_forms.md#formselementselect
 [forms-element-submit]: api/phalcon_forms.md#formselementsubmit
 [forms-element-text]: api/phalcon_forms.md#formselementtext
 [forms-element-textarea]: api/phalcon_forms.md#formselementtextarea
 [forms-exception]: api/phalcon_forms.md#formsexception
 [forms-form]: api/phalcon_forms.md#formsform
-[forms-formslocator]: api/phalcon_forms.md#formsformslocator
 [forms-manager]: api/phalcon_forms.md#formsmanager
-[forms-schema]: api/phalcon_contracts.md#contractsformsschema
 [html-attributes]: api/phalcon_html.md#htmlattributes
 [html-helper]: api/phalcon_html.md
 [tagfactory]: html-tagfactory.md
@@ -1729,4 +1242,3 @@ class ContactForm extends Form
 [tag]: tag.md
 [vokuro]: https://github.com/phalcon/vokuro
 [filter-validation]: filter-validation.md
-[pecl-yaml]: https://pecl.php.net/package/yaml

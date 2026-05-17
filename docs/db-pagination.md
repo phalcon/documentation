@@ -34,12 +34,11 @@ The example above uses an array as the source and limits the results to 2 record
 ## Adapters
 For the source of the data, the component uses adapters. It comes with the following adapters:
 
-| Adapter                                                                                      | Description                                                                                          |
-|----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]                                   | Use a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset] object as source data.                      |
-| [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]                       | Use a PHP array as source data                                                                       |
-| [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder]                     | Use a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object as source data               |
-| [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor]         | Cursor-based (keyset) pagination using a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder]  |
+| Adapter                                                                  | Description                                                                            |
+|--------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]               | Use a [Phalcon\Mvc\Model\Resultset][mvc-model-resultset] object as source data.        |
+| [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]   | Use a PHP array as source data                                                         |
+| [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] | Use a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object as source data |
 
 !!! warning "WARNING"
 
@@ -52,16 +51,14 @@ public function __construct(array $config)
 
 Every adapter requires options to operate properly. These options are passed as a key/value array in the constructor of the adapter.
 
-| Option               | Description                                                                                                                                                                    |
-|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `builder`            | Used for [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] and [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor]      |
-| `cursor`             | Used only for [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor]. The starting cursor value (`null` for the first page)                       |
-| `cursorColumn`       | Used only for [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor]. The column name used as the cursor key (must be unique and indexed)         |
-| `data`               | The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)                                                                         |
-| `limit` (`int`)      | The size of the page slice. If `limit` is negative, an exception will be thrown.                                                                                               |
-| `model`              | The data to paginate. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)                                                                                     |
-| `page` (`int`)       | The current page                                                                                                                                                               |
-| `repository`         | [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - A repository object setting up the resultset. For more about repositories see below.                  |
+| Option          | Description                                                                                                                                                   |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `builder`       | Used only for the [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] to pass the builder object                                         |
+| `data`          | The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)                                                        |
+| `limit` (`int`) | The size of the page slice. If `limit` is negative, an exception will be thrown.                                                                              |
+| `model`         | The data to paginate. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)                                                                    |
+| `page` (`int`)  | The current page                                                                                                                                              | 
+| `repository`    | [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - A repository object setting up the resultset. For more about repositories see below. | 
 
 The methods exposed are:
 
@@ -157,167 +154,6 @@ $paginator = new QueryBuilder(
 );
 
 $paginate = $paginator->paginate();
-```
-
-### Query Builder (Cursor)
-The [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor] adapter provides **cursor-based (keyset) pagination** using a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] as the data source.
-
-Unlike offset-based pagination, this adapter does not use `LIMIT n OFFSET k`. Instead it appends a `WHERE cursorColumn > :cursor:` condition so that each page is an O(1) index seek regardless of how deep into the data set you are. This makes it well-suited for large tables where offset pagination becomes prohibitively slow.
-
-**Requirements and limitations:**
-
-- `cursorColumn` must be a unique, indexed column (typically the primary key).
-- Pages must be traversed sequentially; random access is not supported.
-- `getTotalItems()` and `getLast()` always return `0` — no `COUNT(*)` query is issued.
-- Items are returned as an array of associative arrays, not as model objects.
-
-**Constructor options:**
-
-| Option         | Required | Description                                                          |
-|----------------|----------|----------------------------------------------------------------------|
-| `builder`      | yes      | A `Phalcon\Mvc\Model\Query\Builder` instance                         |
-| `limit`        | yes      | Number of rows per page                                              |
-| `cursorColumn` | yes      | The PHQL-accessible column name to use as the cursor (e.g. `inv_id`) |
-| `cursor`       | no       | Starting cursor value; omit or pass `null` for the first page        |
-
-**Basic usage — first page:**
-
-```php
-<?php
-declare(strict_types=1);
-
-use MyApp\Models\Invoices;
-use Phalcon\Paginator\Adapter\QueryBuilderCursor;
-
-$builder = $this
-    ->modelsManager
-    ->createBuilder()
-    ->columns("inv_id, inv_title, inv_status_flag")
-    ->from(Invoices::class)
-    ->orderBy("inv_id");
-
-$paginator = new QueryBuilderCursor(
-    [
-        "builder"      => $builder,
-        "limit"        => 20,
-        "cursorColumn" => "inv_id",
-    ]
-);
-
-$page = $paginator->paginate();
-
-// $page->getItems()    — array of rows for this page
-// $page->getCurrent()  — cursor used for this page (0 on the first page)
-// $page->getNext()     — cursor to pass for the next page (0 means no more pages)
-// $page->getLimit()    — page size (20)
-```
-
-**Traversing multiple pages:**
-
-Advance by passing the `next` cursor value back into `setCursor()` before each subsequent call to `paginate()`.
-
-```php
-<?php
-declare(strict_types=1);
-
-use MyApp\Models\Invoices;
-use Phalcon\Paginator\Adapter\QueryBuilderCursor;
-
-$builder = $this
-    ->modelsManager
-    ->createBuilder()
-    ->from(Invoices::class)
-    ->orderBy("inv_id");
-
-$paginator = new QueryBuilderCursor(
-    [
-        "builder"      => $builder,
-        "limit"        => 20,
-        "cursorColumn" => "inv_id",
-    ]
-);
-
-// Page 1
-$page = $paginator->paginate();
-
-while ($page->getNext() !== 0) {
-    $nextCursor = $page->getNext();   // capture before next paginate() call
-
-    $paginator->setCursor($nextCursor);
-    $page = $paginator->paginate();
-
-    foreach ($page->getItems() as $item) {
-        echo $item["inv_id"] . " - " . $item["inv_title"] . PHP_EOL;
-    }
-}
-```
-
-!!! warning "Capture cursor values before the next paginate() call"
-
-    The `Repository` object returned by `paginate()` is reused internally. 
-    Calling `paginate()` a second time overwrites it, so any value you need 
-    from `$page` (such as `getNext()` or `getItems()`) must be copied to a 
-    local variable **before** the next `paginate()` call.
-
-**Using cursor pagination in a controller (HTTP API / infinite scroll):**
-
-The cursor value is passed as a query parameter and carried forward in the response.
-
-```php
-<?php
-declare(strict_types=1);
-
-use MyApp\Models\Invoices;
-use Phalcon\Http\Request;
-use Phalcon\Mvc\Controller;
-use Phalcon\Paginator\Adapter\QueryBuilderCursor;
-
-/**
- * @property Request $request
- */
-class InvoicesController extends Controller
-{
-    public function listAction(): void
-    {
-        $cursor = $this->request->getQuery("cursor", "int", null);
-
-        $builder = $this
-            ->modelsManager
-            ->createBuilder()
-            ->columns("inv_id, inv_title, inv_status_flag")
-            ->from(Invoices::class)
-            ->orderBy("inv_id");
-
-        $paginator = new QueryBuilderCursor(
-            [
-                "builder"      => $builder,
-                "limit"        => 20,
-                "cursorColumn" => "inv_id",
-                "cursor"       => $cursor,
-            ]
-        );
-
-        $page  = $paginator->paginate();
-        $items = $page->getItems();
-        $next  = $page->getNext();      // 0 means last page
-
-        $this->response->setJsonContent(
-            [
-                "data"       => $items,
-                "nextCursor" => $next ?: null,
-            ]
-        );
-    }
-}
-```
-
-**Resetting to the first page:**
-
-Pass `null` (or omit `cursor`) to restart from the beginning.
-
-```php
-$paginator->setCursor(null);
-$firstPage = $paginator->paginate();
 ```
 
 ## Repository
@@ -454,12 +290,11 @@ You can also create your custom repository class by implementing the [Phalcon\Pa
 ## Factory
 You can use the Pagination Factory class to instantiate a new paginator object. The names of the services are:
 
-| Name                  | Class                                                                                        |
-|-----------------------|----------------------------------------------------------------------------------------------|
-| `model`               | [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]                                   |
-| `nativeArray`         | [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]                       |
-| `queryBuilder`        | [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder]                     |
-| `queryBuilderCursor`  | [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor]         |
+| Name           | Class                                                                    |
+|----------------|--------------------------------------------------------------------------|
+| `model`        | [Phalcon\Paginator\Adapter\Model][paginator-adapter-model]               |
+| `nativeArray`  | [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray]   |
+| `queryBuilder` | [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] |
 
 ### newInstance
 One method that you can use is `newInstance()`:
@@ -704,32 +539,6 @@ $options = [
 $paginator = $factory->newInstance('queryBuilder', $options);
 ```
 
-**Query Builder (Cursor)**
-```php
-<?php
-declare(strict_types=1);
-
-use MyApp\Models\Invoices;
-use Phalcon\Paginator\PaginatorFactory;
-
-$factory = new PaginatorFactory();
-
-$builder = $this
-    ->modelsManager
-    ->createBuilder()
-    ->columns('inv_id, inv_title')
-    ->from(Invoices::class)
-    ->orderBy('inv_id');
-
-$options = [
-    'builder'      => $builder,
-    'limit'        => 20,
-    'cursorColumn' => 'inv_id',
-];
-
-$paginator = $factory->newInstance('queryBuilderCursor', $options);
-```
-
 ### Individual Classes
 An example of the source data that must be used for each adapter:
 
@@ -798,32 +607,6 @@ $paginator = new PaginatorQueryBuilder(
 );
 ```
 
-**Query Builder (Cursor)**
-```php
-<?php
-declare(strict_types=1);
-
-use MyApp\Models\Invoices;
-use Phalcon\Paginator\Adapter\QueryBuilderCursor;
-
-$builder = $this
-    ->modelsManager
-    ->createBuilder()
-    ->columns('inv_id, inv_title')
-    ->from(Invoices::class)
-    ->orderBy('inv_id');
-
-$paginator = new QueryBuilderCursor(
-    [
-        'builder'      => $builder,
-        'limit'        => 20,
-        'cursorColumn' => 'inv_id',
-    ]
-);
-
-$page = $paginator->paginate();
-```
-
 ## Custom
 The [Phalcon\Paginator\AdapterInterface][paginator-adapter-adapterinterface] interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
@@ -865,7 +648,6 @@ class MyPaginator implements PaginatorInterface
 [paginator-adapter-model]: api/phalcon_paginator.md#paginatoradaptermodel
 [paginator-adapter-nativearray]: api/phalcon_paginator.md#paginatoradapternativearray
 [paginator-adapter-querybuilder]: api/phalcon_paginator.md#paginatoradapterquerybuilder
-[paginator-adapter-querybuildercursor]: api/phalcon_paginator.md#paginatoradapterquerybuildercursor
 [paginator-exception]: api/phalcon_paginator.md#paginatorexception
 [paginator-paginatorfactory]: api/phalcon_paginator.md#paginatorpaginatorfactory
 [paginator-repository]: api/phalcon_paginator.md#paginatorrepository
