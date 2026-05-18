@@ -283,6 +283,56 @@ $container->setShared(
 
 If a listener returns false that will stop the operation that is executing currently.
 
+### Subscribers
+Multiple model-event listeners that belong together can be grouped behind a single class implementing [Phalcon\Contracts\Events\Subscriber][events-subscriber] and registered through `addSubscriber()` instead of one `attach()` call per event:
+
+```php
+<?php
+
+namespace MyApp\Listeners;
+
+use Phalcon\Contracts\Events\Subscriber;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\Model;
+
+class InvoiceAuditSubscriber implements Subscriber
+{
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'model:beforeCreate' => 'stampNumber',
+            'model:beforeSave'   => ['rejectZeroTotals', 150],
+        ];
+    }
+
+    public function stampNumber(Event $event, Model $invoice): void
+    {
+        $invoice->inv_number = 'INV-' . date('YmdHis');
+    }
+
+    public function rejectZeroTotals(Event $event, Model $invoice)
+    {
+        if ($invoice->inv_total < 1) {
+            return false;
+        }
+    }
+}
+```
+
+Attach the subscriber to the manager that the model (or `modelsManager`) is bound to:
+
+```php
+<?php
+
+use MyApp\Listeners\InvoiceAuditSubscriber;
+use Phalcon\Events\Manager as EventsManager;
+
+$eventsManager = new EventsManager();
+$eventsManager->addSubscriber(new InvoiceAuditSubscriber());
+```
+
+The `getSubscribedEvents()` map is parsed once at registration time and each entry is attached through the regular listener pipeline. See the dedicated [Subscribers][subscribers] section in the Events Manager documentation for the full contract, including the `[method, priority]` and `[[methodA, priorityA], [methodB, priorityB]]` shapes.
+
 ## Logging SQL Statements
 When using high-level abstraction components such as [Phalcon\Mvc\Model][mvc-model] to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model][mvc-model] is supported internally by [Phalcon\Db][db]. [Phalcon\Logger\Logger][logger] interacts with [Phalcon\Db][db], providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
@@ -456,6 +506,8 @@ Each generated profile contains the duration in milliseconds that each instructi
 
 [db]: api/phalcon_db.md
 [events-manager]: api/phalcon_events.md#eventsmanager
+[events-subscriber]: api/phalcon_contracts.md#contractseventssubscriber
 [logger]: logger.md
 [mvc-model]: api/phalcon_mvc.md#mvcmodel
 [mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery
+[subscribers]: events.md#subscribers
