@@ -10,7 +10,7 @@ We will outline the areas that you need to pay attention to and make necessary c
 
 ## Requirements
 ### PHP 8.1
-Phalcon v5.12 supports only PHP 8.1 and above. PHP 8.1 [active support][php-support] has already expired, including security fixes. We will be supporting this version for a while longer, offering developers more time to upgrade their applications.
+Phalcon v5.13 supports only PHP 8.1 and above. PHP 8.1 [active support][php-support] has already expired, including security fixes. We will be supporting this version for a while longer, offering developers more time to upgrade their applications.
 
 Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
 
@@ -19,7 +19,7 @@ Phalcon can be installed using PIE.
 
 ```
 pie install phalcon
-// pie install phalcon/cphalcon-5.12.0
+// pie install phalcon/cphalcon-5.13.0
 ```
 
 **Alternative installation**
@@ -36,7 +36,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/5.12.0 ./
+git checkout tags/5.13.0 ./
 zephir fullclean
 zephir build
 ```
