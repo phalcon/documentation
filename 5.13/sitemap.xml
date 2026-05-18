@@ -429,6 +429,10 @@
          <lastmod>2026-05-18</lastmod>
     </url>
     <url>
+         <loc>https://docs.phalcon.io/5.13/api/phalcon_contracts/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
          <loc>https://docs.phalcon.io/5.13/api/phalcon_datamapper/</loc>
          <lastmod>2026-05-18</lastmod>
     </url>
@@ -514,6 +518,10 @@
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.13/api/phalcon_tag/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.phalcon.io/5.13/api/phalcon_time/</loc>
          <lastmod>2026-05-18</lastmod>
     </url>
     <url>
