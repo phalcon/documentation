@@ -26,8 +26,9 @@ hide:
     - `InvalidArgumentException`
     - `IteratorAggregate`
     - `JsonSerializable`
+    - `Phalcon\Contracts\Support\Collection`
     - `Phalcon\Support\Collection\CollectionInterface`
-    - `Serializable`
+    - `Phalcon\Support\Helper\Json\Encode`
     - `Traversable`
 
 -   __Extends__
@@ -35,27 +36,27 @@ hide:
 
 -   __Implements__
     
-    - `ArrayAccess`
     - `CollectionInterface`
     - `Countable`
-    - `IteratorAggregate`
     - `JsonSerializable`
-    - `Serializable`
 
-`Phalcon\Support\Collection` is a supercharged object oriented array. It implements:
+`Phalcon\Support\Collection` is a supercharged object-oriented array. It implements:
 - [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://www.php.net/manual/en/class.countable.php)
 - [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate.php)
 - [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php)
-- [Serializable](https://www.php.net/manual/en/class.serializable.php)
 
 It can be used in any part of the application that needs collection of data
 Such implementations are for instance accessing globals `$_GET`, `$_POST`
 etc.
 
-@property array $data
-@property bool  $insensitive
-@property array $lowerKeys
+@phpstan-template T
+
+@property array       $data
+@property bool        $insensitive
+@property array       $lowerKeys
+@property bool        $strictNull
+@property string|null $type
 
 
 ### Properties
@@ -75,14 +76,26 @@ protected $insensitive = true;
  */
 protected $lowerKeys;
 
+/**
+ * @var bool
+ */
+protected $strictNull = false;
+
+/**
+ * @var string|null
+ */
+protected $type;
+
 ```
 
 ### Methods
 
 ```php
-public function __construct( array $data = [], bool $insensitive = bool );
+public function __construct( array $data = [], bool $insensitive = bool, bool $strictNull = bool, string $type = null );
 ```
 Collection constructor.
+
+@phpstan-param array<int|string, mixed> $data
 
 
 ```php
@@ -100,7 +113,8 @@ Magic isset to check whether an element exists or not
 ```php
 public function __serialize(): array;
 ```
-
+Returns the state of the collection for serialization, including
+configuration flags so the round-trip restores full state.
 
 
 ```php
@@ -112,7 +126,9 @@ Magic setter to assign values to an element
 ```php
 public function __unserialize( array $data ): void;
 ```
-
+Restores the collection state. Accepts both the structured format
+emitted by __serialize() and the legacy flat-array format for BC
+with previously serialized data.
 
 
 ```php
@@ -128,16 +144,51 @@ Clears the internal collection
 
 
 ```php
+public function column( string $propertyOrMethod ): array;
+```
+Returns the values from a single property/method extracted from every
+item in the collection, keyed by the original collection key.
+
+
+```php
 public function count(): int;
 ```
-Count elements of an object.
-See [count](https://php.net/manual/en/countable.count.php)
+Count elements of an object
+
+
+```php
+public function each( callable $callback ): CollectionInterface;
+```
+Invokes the callback for every item in the collection. Returns the
+collection itself to allow chaining.
+
+@phpstan-param callable(T, array-key): mixed $callback
+
+
+```php
+public function filter( callable $callback ): CollectionInterface;
+```
+Returns a new collection of items for which the callback returns true.
+Keys are preserved.
+
+@phpstan-param  callable(T, array-key): bool $callback
+@phpstan-return static<T>
+
+
+```php
+public function first(): mixed;
+```
+Returns the first value in the collection, or null if empty.
+
+@phpstan-return T|null
 
 
 ```php
 public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 Get the element from the collection
+
+@phpstan-return T|mixed
 
 
 ```php
@@ -149,19 +200,29 @@ Returns the iterator of the class
 ```php
 public function getKeys( bool $insensitive = bool ): array;
 ```
-Return the keys as an array
+Returns the keys (insensitive or not) of the collection.
+
+@deprecated Use {@see self::keys()} instead. Will be removed in a future major release.
+
+
+```php
+public function getType(): string | null;
+```
+Returns the configured runtime type guard, or null if none.
 
 
 ```php
 public function getValues(): array;
 ```
-Return the values as an array
+Returns the values of the internal array.
+
+@deprecated Use {@see self::values()} instead. Will be removed in a future major release.
 
 
 ```php
 public function has( string $element ): bool;
 ```
-Determines whether an element is present in the collection.
+Get the element from the collection
 
 
 ```php
@@ -169,40 +230,86 @@ public function init( array $data = [] ): void;
 ```
 Initialize internal array
 
+@phpstan-param array<int|string, mixed> $data
+
+
+```php
+public function isEmpty(): bool;
+```
+Return if the collection is empty
+
 
 ```php
 public function jsonSerialize(): array;
 ```
 Specify data which should be serialized to JSON
-See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
+
+@link https://php.net/manual/en/jsonserializable.jsonserialize.php
+
+
+```php
+public function keys( bool $insensitive = bool ): array;
+```
+Returns the keys (insensitive or not) of the collection.
+
+
+```php
+public function last(): mixed;
+```
+Returns the last value in the collection, or null if empty.
+
+@phpstan-return T|null
+
+
+```php
+public function map( callable $callback ): CollectionInterface;
+```
+Returns a new collection with the callback applied to every value.
+Keys are preserved.
+
+@phpstan-param  callable(T, array-key): mixed $callback
+@phpstan-return static<mixed>
 
 
 ```php
 public function offsetExists( mixed $element ): bool;
 ```
 Whether a offset exists
-See [offsetExists](https://php.net/manual/en/arrayaccess.offsetexists.php)
+
+@link https://php.net/manual/en/arrayaccess.offsetexists.php
 
 
 ```php
 public function offsetGet( mixed $element ): mixed;
 ```
 Offset to retrieve
-See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
+
+@link https://php.net/manual/en/arrayaccess.offsetget.php
 
 
 ```php
-public function offsetSet( mixed $offset, mixed $value ): void;
+public function offsetSet( mixed $element, mixed $value ): void;
 ```
 Offset to set
-See [offsetSet](https://php.net/manual/en/arrayaccess.offsetset.php)
+
+@link https://php.net/manual/en/arrayaccess.offsetset.php
 
 
 ```php
 public function offsetUnset( mixed $element ): void;
 ```
 Offset to unset
-See [offsetUnset](https://php.net/manual/en/arrayaccess.offsetunset.php)
+
+@link https://php.net/manual/en/arrayaccess.offsetunset.php
+
+
+```php
+public function reduce( callable $callback, mixed $initial = null ): mixed;
+```
+Reduces the collection to a single value using the callback. The
+callback receives `($accumulator, $value, $key)`.
+
+@phpstan-param callable(mixed, T, array-key): mixed $callback
 
 
 ```php
@@ -212,10 +319,17 @@ Delete the element from the collection
 
 
 ```php
+public function replace( array $data ): void;
+```
+Replaces the collection data with a new array, clearing existing data first
+
+@phpstan-param array<int|string, mixed> $data
+
+
+```php
 public function serialize(): string | null;
 ```
-String representation of object
-See [serialize](https://php.net/manual/en/serializable.serialize.php)
+BC - delegate to __serialize()
 
 
 ```php
@@ -225,9 +339,22 @@ Set an element in the collection
 
 
 ```php
+public function sort( mixed $callback = null, int $order = int ): CollectionInterface;
+```
+Returns a new collection sorted by value. Keys are preserved. When a
+callback is supplied, `uasort` is used. Without a callback, the
+comparison direction is controlled by the `$order` argument
+(`SORT_ASC` or `SORT_DESC`).
+
+@phpstan-return static<T>
+
+
+```php
 public function toArray(): array;
 ```
 Returns the object in an array format
+
+@phpstan-return array<array-key, T>
 
 
 ```php
@@ -235,25 +362,48 @@ public function toJson( int $options = int ): string;
 ```
 Returns the object in a JSON format
 
-The default string uses the following options for json_encode
+The following options are used if none specified for json_encode
 
-`JSON_HEX_TAG`, `JSON_HEX_APOS`, `JSON_HEX_AMP`, `JSON_HEX_QUOT`,
-`JSON_UNESCAPED_SLASHES`
+JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
+JSON_UNESCAPED_SLASHES, JSON_THROW_ON_ERROR
 
-See [rfc4627](https://www.ietf.org/rfc/rfc4627.txt)
+@see https://www.ietf.org/rfc/rfc4627.txt
 
 
 ```php
 public function unserialize( string $data ): void;
 ```
-Constructs the object
-See [unserialize](https://php.net/manual/en/serializable.unserialize.php)
+BC - delegate to __unserialize()
 
 
 ```php
-protected function phpJsonEncode( mixed $value, int $flags = int, int $depth = int );
+public function values(): array;
 ```
-@todo to be removed when we get traits
+Returns the values of the internal array.
+
+
+```php
+public function where( string $propertyOrMethod, mixed $value ): CollectionInterface;
+```
+Returns a new collection containing only the items whose
+`propertyOrMethod` strictly equals `$value`.
+
+@phpstan-return static<T>
+
+
+```php
+protected function cloneEmpty( array $data = [] ): CollectionContract;
+```
+Builds a new collection of the same concrete class, carrying over the
+configuration (insensitivity, strict-null, type) of the current one.
+
+
+```php
+protected function extractValue( mixed $item, string $propertyOrMethod ): mixed;
+```
+Extracts a single value from an item. For arrays returns the keyed
+entry; for objects, prefers a callable method, then a readable
+property. Returns null when nothing matches.
 
 
 ```php
@@ -267,6 +417,17 @@ lowercase
 protected function setData( string $element, mixed $value ): void;
 ```
 Internal method to set data
+
+@phpstan-param T $value
+
+
+```php
+protected function validateType( mixed $value ): void;
+```
+Validates the value against the configured `$type` guard. When `$type`
+is null this is a no-op. Scalar tokens (`int`, `string`, `bool`,
+`float`, `array`, `object`) map to their `is_*` checks; anything else
+is treated as a class/interface name and tested with `instanceof`.
 
 
 
@@ -282,103 +443,20 @@ Internal method to set data
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Support\Collection`
 
 -   __Extends__
     
+    `CollectionContract`
 
 -   __Implements__
     
 
 Phalcon\Support\Collection\CollectionInterface
 
-Interface for Phalcon\Support\Collection class
-
-
-### Methods
-
-```php
-public function __get( string $element ): mixed;
-```
-
-
-
-```php
-public function __isset( string $element ): bool;
-```
-
-
-
-```php
-public function __set( string $element, mixed $value ): void;
-```
-
-
-
-```php
-public function __unset( string $element ): void;
-```
-
-
-
-```php
-public function clear(): void;
-```
-
-
-
-```php
-public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
-```
-
-
-
-```php
-public function getKeys( bool $insensitive = bool ): array;
-```
-
-
-
-```php
-public function getValues(): array;
-```
-
-
-
-```php
-public function has( string $element ): bool;
-```
-
-
-
-```php
-public function init( array $data = [] ): void;
-```
-
-
-
-```php
-public function remove( string $element ): void;
-```
-
-
-
-```php
-public function set( string $element, mixed $value ): void;
-```
-
-
-
-```php
-public function toArray(): array;
-```
-
-
-
-```php
-public function toJson( int $options = int ): string;
-```
-
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Support\Collection} instead.
 
 
 
@@ -429,12 +507,54 @@ Exceptions for the Collection object
 A read only Collection object
 
 
+### Properties
+```php
+/**
+ * @var bool
+ */
+protected $constructed = false;
+
+```
+
 ### Methods
+
+```php
+public function __construct( array $data = [], bool $insensitive = bool, bool $strictNull = bool, string $type = null );
+```
+ReadOnlyCollection constructor.
+
+
+```php
+public function __unserialize( array $data ): void;
+```
+Restores the collection state during unserialization.
+
+Temporarily disables the read-only guard so the parent class can restore
+the collection state. The guard is re-enabled before the method returns.
+
+
+```php
+public function clear(): void;
+```
+@throws Exception
+
+
+```php
+public function init( array $data = [] ): void;
+```
+@throws Exception
+
 
 ```php
 public function remove( string $element ): void;
 ```
 Delete the element from the collection
+
+
+```php
+public function replace( array $data ): void;
+```
+Replaces the collection data with a new array
 
 
 ```php
@@ -1687,9 +1807,8 @@ The following options are used if none specified for json_encode
 JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
 JSON_UNESCAPED_SLASHES
 
-If JSON_THROW_ON_ERROR is defined in the options a JsonException will be
-thrown in the case of an error. Otherwise, any error will throw
-InvalidArgumentException
+Any error will throw InvalidArgumentException, regardless of whether
+JSON_THROW_ON_ERROR is specified in the options.
 
 
 ### Methods
@@ -1729,9 +1848,8 @@ The following options are used if none specified for json_encode
 JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
 JSON_UNESCAPED_SLASHES
 
-If JSON_THROW_ON_ERROR is defined in the options a JsonException will be
-thrown in the case of an error. Otherwise, any error will throw
-InvalidArgumentException
+Any error will throw InvalidArgumentException, regardless of whether
+JSON_THROW_ON_ERROR is specified in the options.
 
 @see  https://www.ietf.org/rfc/rfc4627.txt
 
@@ -3192,7 +3310,7 @@ Offset to retrieve
 
 
 ```php
-final public function offsetSet( mixed $offset, mixed $value ): void;
+final public function offsetSet( mixed $element, mixed $value ): void;
 ```
 Offset to set
 

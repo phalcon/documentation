@@ -480,6 +480,10 @@ $logger->error('This is another error');
 $logger->close();
 ```
 
+@property resource|null $handler
+@property string        $mode
+@property string        $name
+@property array         $options
 
 
 ### Properties

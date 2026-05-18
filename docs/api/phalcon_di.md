@@ -247,6 +247,16 @@ Check whether the DI contains a service by a name
 
 
 ```php
+public function hasShared( string $name ): bool;
+```
+Check whether the DI has a cached shared instance for a service name.
+
+Unlike `has()`, which reports on the servicedefinition* registry,
+this method reports only on the resolved-instance cache populated by
+`getShared()`.
+
+
+```php
 public function loadFromPhp( string $filePath ): void;
 ```
 Loads services from a php config file.
@@ -381,6 +391,13 @@ It also removes any shared instance created for the service
 
 
 ```php
+public function removeShared( string $name ): void;
+```
+Removes the cached shared instance for a service, leaving the service
+definition intact so the next `getShared()` call rebuilds it.
+
+
+```php
 public static function reset(): void;
 ```
 Resets the internal default DI
@@ -507,9 +524,31 @@ Check whether the DI contains a service by a name
 
 
 ```php
+public function hasShared( string $name ): bool;
+```
+Check whether the DI has a cached shared instance for a service name.
+
+Unlike `has()`, which reports on the servicedefinition* registry,
+this method reports only on the resolved-instance cache populated by
+`getShared()`. A service can be registered (`has()` returns true)
+without yet having a shared instance (`hasShared()` returns false).
+
+
+```php
 public function remove( string $name ): void;
 ```
 Removes a service in the services container
+
+
+```php
+public function removeShared( string $name ): void;
+```
+Removes the cached shared instance for a service, leaving the service
+definition intact so the next `getShared()` call rebuilds it.
+
+Useful in fork-based multi-process setups where a child inherits the
+parent's resource handle (e.g. a database connection) and needs to
+discard the cached instance without re-registering the service.
 
 
 ```php

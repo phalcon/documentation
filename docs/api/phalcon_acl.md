@@ -675,7 +675,7 @@ This class defines component entity and its description
 /**
  * Component description
  *
- * @var string
+ * @var string | null
  */
 private $description;
 
@@ -703,7 +703,7 @@ public function __toString(): string;
 
 
 ```php
-public function getDescription(): string;
+public function getDescription(): string | null;
 ```
 
 
@@ -777,7 +777,7 @@ Magic method __toString
 
 
 ```php
-public function getDescription(): string;
+public function getDescription(): string | null;
 ```
 Returns component description
 
@@ -868,7 +868,7 @@ This class defines role entity and its description
 /**
  * Role description
  *
- * @var string
+ * @var string | null
  */
 private $description;
 
@@ -896,7 +896,7 @@ public function __toString(): string;
 
 
 ```php
-public function getDescription(): string;
+public function getDescription(): string | null;
 ```
 
 
@@ -970,7 +970,7 @@ Magic method __toString
 
 
 ```php
-public function getDescription(): string;
+public function getDescription(): string | null;
 ```
 Returns role description
 

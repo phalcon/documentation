@@ -139,7 +139,7 @@ Returns the domain that the cookie is available to
 
 
 ```php
-public function getExpiration(): string;
+public function getExpiration(): int;
 ```
 Returns the current expiration time
 
@@ -313,7 +313,7 @@ Returns the domain that the cookie is available to
 
 
 ```php
-public function getExpiration(): string;
+public function getExpiration(): int;
 ```
 Returns the current expiration time
 
@@ -777,7 +777,7 @@ _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 
 ```php
-public function getClientAddress( bool $trustForwardedHeader = bool ): string | false;
+public function getClientAddress( bool $trustForwardedHeader = bool ): string | bool;
 ```
 Gets most possible client IP Address. This method searches in
 `$_SERVER["REMOTE_ADDR"]` and optionally in

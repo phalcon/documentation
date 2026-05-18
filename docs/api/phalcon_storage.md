@@ -1534,7 +1534,7 @@ file that was distributed with this source code.
 ### Methods
 
 ```php
-public function serialize(): string;
+public function serialize(): mixed;
 ```
 Serializes data
 
@@ -1577,7 +1577,6 @@ Wrapper for `igbinary_serialize`
 -   __Uses__
     
     - `InvalidArgumentException`
-    - `JsonSerializable`
     - `Phalcon\Support\Helper\Json\Decode`
     - `Phalcon\Support\Helper\Json\Encode`
 
@@ -1818,7 +1817,7 @@ file that was distributed with this source code.
 ### Methods
 
 ```php
-public function serialize(): string;
+public function serialize(): mixed;
 ```
 Serializes data
 

@@ -931,6 +931,7 @@ public function unpad( string $input, int $blockSize ): int;
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Encryption\Security\Security`
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Encryption\Security\Exception`
@@ -944,6 +945,7 @@ public function unpad( string $input, int $blockSize ): int;
 
 -   __Implements__
     
+    - `SecurityContract`
 
 This component provides a set of functions to improve the security in Phalcon
 applications
@@ -981,6 +983,11 @@ const CRYPT_STD_DES = 1;
 
 ### Properties
 ```php
+/**
+ * @var bool
+ */
+protected $autoRefresh = true;
+
 /**
  * @var int
  */
@@ -1146,6 +1153,24 @@ Creates a password hash using bcrypt with a pseudo random salt
 public function isLegacyHash( string $passwordHash ): bool;
 ```
 Checks if a password hash is a valid bcrypt's hash
+
+
+```php
+public function refreshToken(): Security;
+```
+Forces the regeneration of the CSRF token and key, writing the new
+values to the session even when auto-refresh has been disabled. Useful
+after a successful login or any other state change where rotating the
+token is appropriate.
+
+
+```php
+public function setAutoRefresh( bool $autoRefresh ): Security;
+```
+Toggles automatic regeneration of the CSRF token on every call to
+`getToken()` / `getTokenKey()`. When set to `false`, existing session
+values are reused (no session write), and a new token is only minted
+when none is present or `refreshToken()` is called explicitly.
 
 
 ```php

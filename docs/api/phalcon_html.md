@@ -263,7 +263,12 @@ Returns the internal breadcrumbs array
 
 -   __Uses__
     
+    - `Phalcon\Html\Escaper\AttributeEscaper`
+    - `Phalcon\Html\Escaper\CssEscaper`
     - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Escaper\HtmlEscaper`
+    - `Phalcon\Html\Escaper\JsEscaper`
+    - `Phalcon\Html\Escaper\UrlEscaper`
 
 -   __Extends__
     
@@ -277,16 +282,268 @@ Phalcon\Html\Escaper
 Escapes different kinds of text securing them. By using this component you
 may prevent XSS attacks.
 
+The class is a façade over five per-context escapers (`HtmlEscaper`,
+`AttributeEscaper`, `CssEscaper`, `JsEscaper`, `UrlEscaper`). Each can be
+retrieved via the matching `getXxxEscaper()` accessor and substituted via
+the matching `setXxxEscaper()` setter. The legacy `setEncoding`,
+`setFlags`, and `setDoubleEncode` continue to fan out to all sub-objects
+so existing code keeps working.
+
 This component only works with UTF-8. The PREG extension needs to be compiled
 with UTF-8 support.
 
 ```php
 $escaper = new \Phalcon\Html\Escaper();
 
-$escaped = $escaper->escapeCss("font-family: <Verdana>");
+$escaped = $escaper->css("font-family: <Verdana>");
 
 echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 ```
+
+@property AttributeEscaper $attributeEscaper
+@property CssEscaper       $cssEscaper
+@property HtmlEscaper      $htmlEscaper
+@property JsEscaper        $jsEscaper
+@property UrlEscaper       $urlEscaper
+
+
+### Properties
+```php
+/**
+ * @var AttributeEscaper
+ */
+protected $attributeEscaper;
+
+/**
+ * @var CssEscaper
+ */
+protected $cssEscaper;
+
+/**
+ * @var HtmlEscaper
+ */
+protected $htmlEscaper;
+
+/**
+ * @var JsEscaper
+ */
+protected $jsEscaper;
+
+/**
+ * @var UrlEscaper
+ */
+protected $urlEscaper;
+
+```
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+```php
+public function attributes( mixed $input ): string;
+```
+Escapes a HTML attribute string or array. Delegates to the configured
+`AttributeEscaper`.
+
+
+```php
+public function css( string $input ): string;
+```
+Escape CSS strings. Delegates to the configured `CssEscaper`.
+
+
+```php
+final public function detectEncoding( string $input ): string | null;
+```
+
+
+
+```php
+public function escapeCss( string $input ): string;
+```
+
+
+
+```php
+public function escapeHtml( string $input = null ): string;
+```
+
+
+
+```php
+public function escapeHtmlAttr( string $input = null ): string;
+```
+
+
+
+```php
+public function escapeJs( string $input ): string;
+```
+
+
+
+```php
+public function escapeUrl( string $input ): string;
+```
+
+
+
+```php
+public function getAttributeEscaper(): AttributeEscaper;
+```
+
+
+
+```php
+public function getCssEscaper(): CssEscaper;
+```
+
+
+
+```php
+public function getEncoding(): string;
+```
+
+
+
+```php
+public function getFlags(): int;
+```
+
+
+
+```php
+public function getHtmlEscaper(): HtmlEscaper;
+```
+
+
+
+```php
+public function getJsEscaper(): JsEscaper;
+```
+
+
+
+```php
+public function getUrlEscaper(): UrlEscaper;
+```
+
+
+
+```php
+public function html( string $input = null ): string;
+```
+Escapes a HTML string. Delegates to the configured `HtmlEscaper`.
+
+
+```php
+public function js( string $input ): string;
+```
+Escape javascript strings. Delegates to the configured `JsEscaper`.
+
+
+```php
+final public function normalizeEncoding( string $input ): string;
+```
+
+
+
+```php
+public function setAttributeEscaper( AttributeEscaper $escaper ): Escaper;
+```
+
+
+
+```php
+public function setCssEscaper( CssEscaper $escaper ): Escaper;
+```
+
+
+
+```php
+public function setDoubleEncode( bool $doubleEncode ): Escaper;
+```
+Sets the double_encode flag. Fans out to all sub-objects.
+
+
+```php
+public function setEncoding( string $encoding ): EscaperInterface;
+```
+Sets the encoding. Fans out to all sub-objects.
+
+
+```php
+public function setFlags( int $flags ): EscaperInterface;
+```
+Sets the htmlspecialchars flags. Fans out to all sub-objects.
+
+
+```php
+public function setHtmlEscaper( HtmlEscaper $escaper ): Escaper;
+```
+
+
+
+```php
+public function setHtmlQuoteType( int $flags ): EscaperInterface;
+```
+
+
+
+```php
+public function setJsEscaper( JsEscaper $escaper ): Escaper;
+```
+
+
+
+```php
+public function setUrlEscaper( UrlEscaper $escaper ): Escaper;
+```
+
+
+
+```php
+public function url( string $input ): string;
+```
+Escapes a URL. Delegates to the configured `UrlEscaper`.
+
+
+
+
+## Html\Escaper\AbstractEscaper ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/AbstractEscaper.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Shared base for the per-context escaper objects. Holds the encoding,
+htmlspecialchars flag, and double-encode toggle, plus the encoding
+detection / normalization utilities used by the CSS and JS escapers.
+
+Each concrete context (`HtmlEscaper`, `AttributeEscaper`, `CssEscaper`,
+`JsEscaper`, `UrlEscaper`) extends this so that callers can configure
+one context without affecting the others.
+
+@property bool   $doubleEncode
+@property string $encoding
+@property int    $flags
 
 
 ### Properties
@@ -313,63 +570,17 @@ protected $flags = 11;
 ### Methods
 
 ```php
-public function attributes( mixed $input ): string;
-```
-Escapes a HTML attribute string or array
-
-If the input is an array, the keys are the attribute names and the
-values are attribute values. If a value is boolean (true/false) then
-the attribute will have no value:
-`['disabled' => true]` -> `'disabled``
-
-The resulting string will have attribute pairs separated by a space.
-
-
-```php
-public function css( string $input ): string;
-```
-Escape CSS strings by replacing non-alphanumeric chars by their
-hexadecimal escaped representation
-
-
-```php
 final public function detectEncoding( string $input ): string | null;
 ```
-Detect the character encoding of a string to be handled by an encoder.
-Special-handling for chr(172) and chr(128) to chr(159) which fail to be
-detected by mb_detect_encoding()
+Detects the character encoding of a string. Special-handling for
+chr(172) and chr(128) to chr(159) which fail to be detected by
+`mb_detect_encoding()`.
 
 
 ```php
-public function escapeCss( string $input ): string;
+public function getDoubleEncode(): bool;
 ```
-Escape CSS strings by replacing non-alphanumeric chars by their
-hexadecimal escaped representation
 
-
-```php
-public function escapeHtml( string $input = null ): string;
-```
-Escapes a HTML string. Internally uses htmlspecialchars
-
-
-```php
-public function escapeHtmlAttr( string $input = null ): string;
-```
-Escapes a HTML attribute string
-
-
-```php
-public function escapeJs( string $input ): string;
-```
-Escape JavaScript strings by replacing non-alphanumeric chars by their
-hexadecimal escaped representation
-
-
-```php
-public function escapeUrl( string $input ): string;
-```
-Escapes a URL. Internally uses rawurlencode
 
 
 ```php
@@ -385,74 +596,114 @@ public function getFlags(): int;
 
 
 ```php
-public function html( string $input = null ): string;
-```
-Escapes a HTML string. Internally uses htmlspecialchars
-
-
-```php
-public function js( string $input ): string;
-```
-Escape javascript strings by replacing non-alphanumeric chars by their
-hexadecimal escaped representation
-
-
-```php
 final public function normalizeEncoding( string $input ): string;
 ```
-Utility to normalize a string's encoding to UTF-32.
+Normalizes a string's encoding to UTF-32, used by the CSS and JS
+escapers before invoking the C-level escape routines.
 
 
 ```php
-public function setDoubleEncode( bool $doubleEncode ): Escaper;
+public function setDoubleEncode( bool $doubleEncode );
 ```
-Sets the double_encode to be used by the escaper
 
-```php
-$escaper->setDoubleEncode(false);
-```
 
 
 ```php
-public function setEncoding( string $encoding ): EscaperInterface;
+public function setEncoding( string $encoding );
 ```
-Sets the encoding to be used by the escaper
 
-```php
-$escaper->setEncoding("utf-8");
-```
 
 
 ```php
-public function setFlags( int $flags ): EscaperInterface;
+public function setFlags( int $flags );
 ```
-Sets the HTML quoting type for htmlspecialchars
+
+
+
+
+
+## Html\Escaper\AttributeEscaper 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/AttributeEscaper.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractEscaper`
+
+-   __Implements__
+    
+
+Escapes either a single attribute value (string) or an associative array
+of attribute pairs. Boolean `true` becomes a bare key (e.g. `disabled`);
+`false` and `null` skip the entry; arrays are joined with a space.
+
+
+### Methods
 
 ```php
-$escaper->setFlags(ENT_XHTML);
+public function __invoke( mixed $input = null ): string;
 ```
+
 
 
 ```php
-public function setHtmlQuoteType( int $flags ): EscaperInterface;
+public function escape( mixed $input = null ): string;
 ```
-Sets the HTML quoting type for htmlspecialchars
 
-```php
-$escaper->setHtmlQuoteType(ENT_XHTML);
-```
 
 
 ```php
-public function url( string $input ): string;
+protected function escapeValue( string $input ): string;
 ```
-Escapes a URL. Internally uses rawurlencode
+Encodes a single key/value via `htmlspecialchars`.
+
+
+
+
+## Html\Escaper\CssEscaper 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/CssEscaper.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractEscaper`
+
+-   __Implements__
+    
+
+Escapes a string for use inside a CSS value by replacing non-alphanumeric
+characters with their hexadecimal escape sequence. Wraps the C-level
+`phalcon_escape_css` after normalising the input to UTF-32.
+
+
+### Methods
+
+```php
+public function __invoke( string $input ): string;
+```
+
 
 
 ```php
-protected function phpHtmlSpecialChars( string $input ): string;
+public function escape( string $input ): string;
 ```
-Proxy method for testing
+
 
 
 
@@ -552,6 +803,125 @@ Escapes a URL. Internally uses rawurlencode
     
 
 Exceptions thrown in Phalcon\Html\Escaper will use this class
+
+
+
+## Html\Escaper\HtmlEscaper 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/HtmlEscaper.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractEscaper`
+
+-   __Implements__
+    
+
+Escapes a string for use as HTML body content via `htmlspecialchars`.
+
+
+### Methods
+
+```php
+public function __invoke( string $input = null ): string;
+```
+
+
+
+```php
+public function escape( string $input = null ): string;
+```
+
+
+
+
+
+## Html\Escaper\JsEscaper 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/JsEscaper.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractEscaper`
+
+-   __Implements__
+    
+
+Escapes a string for use inside a JavaScript context by replacing
+non-alphanumeric characters with their hexadecimal escape sequence.
+Wraps the C-level `phalcon_escape_js` after normalising the input to
+UTF-32.
+
+
+### Methods
+
+```php
+public function __invoke( string $input ): string;
+```
+
+
+
+```php
+public function escape( string $input ): string;
+```
+
+
+
+
+
+## Html\Escaper\UrlEscaper 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/UrlEscaper.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Escaper`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractEscaper`
+
+-   __Implements__
+    
+
+Escapes a string for use as a URL component via `rawurlencode`. The
+encoding/flags/doubleEncode setters are accepted for symmetry with the
+other contexts but have no effect on the output.
+
+
+### Methods
+
+```php
+public function __invoke( string $input ): string;
+```
+
+
+
+```php
+public function escape( string $input ): string;
+```
+
+
 
 
 
@@ -684,6 +1054,15 @@ Produces a closing tag
 protected function indent(): string;
 ```
 Replicates the indent x times as per indentLevel
+
+
+```php
+protected function injectAttribute( string $key, string $value, array $attributes ): array;
+```
+Forces a single key into the attribute array, stripping any user-supplied
+value for that key first. Used by helpers whose first positional argument
+is itself an attribute (`href` for Anchor, `src` for Img, etc.) to make
+sure that argument always wins.
 
 
 ```php
@@ -843,7 +1222,10 @@ public function __invoke( string $indent = string, string $delimiter = null ): A
 ```php
 public function __toString();
 ```
-Generates and returns the HTML for the list.
+Generates and returns the HTML for the list. Entries are sorted by
+their integer key first, so an asset registered with a lower position
+renders before one registered with a higher position regardless of
+registration order.
 
 
 ```php
@@ -856,6 +1238,17 @@ Resets the internal store.
 abstract protected function getTag(): string;
 ```
 Returns the tag name.
+
+
+```php
+protected function pushOrPlace( array $entry, int $position = int ): void;
+```
+Appends an entry to the store, optionally at a specific integer
+position. When `position` is negative the entry is pushed onto the next
+available auto-increment slot. When `position` is non-negative the entry
+is placed at that key, advancing past any already-occupied slots so
+existing entries are not overwritten. The store is ksort()ed in
+`__toString`, so positions act as a sort key, not a strict address.
 
 
 
@@ -871,6 +1264,7 @@ Returns the tag name.
 
 -   __Uses__
     
+    - `Phalcon\Html\Escaper\EscaperInterface`
     - `Phalcon\Html\Exception`
 
 -   __Extends__
@@ -882,19 +1276,30 @@ Returns the tag name.
 
 Class Anchor
 
+@property bool $forceRaw
+
+
+### Properties
+```php
+/**
+ * @var bool
+ */
+protected $forceRaw = false;
+
+```
 
 ### Methods
+
+```php
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = bool );
+```
+
+
 
 ```php
 public function __invoke( string $href, string $text, array $attributes = [], bool $raw = bool ): string;
 ```
 Produce a <a> tag
-
-
-```php
-protected function processAttributes( string $href, array $attributes ): array;
-```
-
 
 
 
@@ -991,17 +1396,17 @@ This component offers an easy way to create breadcrumbs for your application.
 The resulting HTML when calling `render()` will have each breadcrumb enclosed
 in `<li>` tags, while the whole string is enclosed in `<nav>` and `<ol>` tags.
 
-@phpstan-type TTemplate = array{
+@phpstan-type TTemplate array{
      main: string,
      line: string,
-     last: string,
-}
-@phpstan-type TElement = array{
+     last: string
+ }
+@phpstan-type TElement array{
      attributes: array<string, string>,
      icon: string,
      link: string,
-     text: string,
-}
+     text: string
+ }
 
 
 ### Properties
@@ -1017,7 +1422,7 @@ private $attributes;
  *
  * @var string
  */
-private $prefix = "";
+private $prefix = ;
 
 /**
  * Optional Url service used to resolve links via get().
@@ -1193,6 +1598,7 @@ Returns the internal breadcrumbs array.
 
 -   __Uses__
     
+    - `Phalcon\Html\Escaper\EscaperInterface`
     - `Phalcon\Html\Exception`
 
 -   __Extends__
@@ -1204,8 +1610,25 @@ Returns the internal breadcrumbs array.
 
 Class Button
 
+@property bool $forceRaw
+
+
+### Properties
+```php
+/**
+ * @var bool
+ */
+protected $forceRaw = false;
+
+```
 
 ### Methods
+
+```php
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = bool );
+```
+
+
 
 ```php
 public function __invoke( string $text, array $attributes = [], bool $raw = bool ): string;
@@ -1336,6 +1759,7 @@ public function getType(): int;
 
 -   __Uses__
     
+    - `Phalcon\Html\Escaper\EscaperInterface`
     - `Phalcon\Html\Exception`
 
 -   __Extends__
@@ -1347,8 +1771,25 @@ public function getType(): int;
 
 Class Element
 
+@property bool $forceRaw
+
+
+### Properties
+```php
+/**
+ * @var bool
+ */
+protected $forceRaw = false;
+
+```
 
 ### Methods
+
+```php
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = bool );
+```
+
+
 
 ```php
 public function __invoke( string $tag, string $text, array $attributes = [], bool $raw = bool ): string;
@@ -1474,6 +1915,197 @@ Produce a <img> tag.
 
 
 
+## Html\Helper\Input\AbstractChecked ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/AbstractChecked.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Helper\Doctype`
+
+-   __Extends__
+    
+    `AbstractInput`
+
+-   __Implements__
+    
+
+Shared base for inputs that can be checked: `<input type="checkbox">` and
+`<input type="radio">`. Holds the optional surrounding `<label>` markup,
+the `unchecked` companion hidden input, and the rule that decides whether
+the rendered tag carries `checked="checked"`.
+
+The match between `checked` and `value` is loose (`==`) by default so that
+mixed int/string form input round-trips correctly (e.g. `value=0` against
+`checked="0"`). Strict (`===`) matching is available via `strict(true)`.
+
+@property array $label
+@property bool  $strict
+
+
+### Properties
+```php
+/**
+ * @var array
+ */
+protected $label;
+
+/**
+ * @var bool
+ */
+protected $strict = false;
+
+```
+
+### Methods
+
+```php
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null );
+```
+
+
+
+```php
+public function __toString();
+```
+Returns the HTML for the input, optionally surrounded by the label
+fragment configured via `label()` and preceded by the hidden companion
+input emitted when an `unchecked` attribute is supplied.
+
+
+```php
+public function label( array $attributes = [] ): AbstractChecked;
+```
+Attaches a wrapping `<label>` to the element. The supplied attributes
+are merged with a default `for` pointing at the input's `id`. A `text`
+pseudo-attribute, if present, becomes the label text and is stripped
+from the rendered attributes.
+
+
+```php
+public function strict( bool $flag = bool ): AbstractChecked;
+```
+Toggles strict (`===`) comparison between the `checked` attribute and
+the `value` attribute when deciding whether to render the input as
+checked. Defaults to loose (`==`), which matches typical form-input
+round-tripping where types may differ between the source data and the
+value rendered into the markup.
+
+
+```php
+protected function processChecked(): void;
+```
+Decides whether the rendered tag carries `checked="checked"`. Two
+paths qualify as checked: an unconditional opt-in via
+`["checked" => "checked"]` (case-insensitive) or `["checked" => true]`,
+and a value-match path where the supplied `checked` attribute equals
+the input's `value` (`==` by default, `===` under `strict(true)`).
+
+
+```php
+protected function processUnchecked(): string;
+```
+Returns the markup for the optional hidden companion input that lets
+a checkbox/radio submit a value when unchecked.
+
+
+
+
+## Html\Helper\Input\AbstractGroup ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/AbstractGroup.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Helper\AbstractHelper`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
+
+Shared base for rendering a group of same-named inputs (checkbox or radio)
+from an options array.
+
+Each option in the $options array may be either:
+  - a scalar string label:  ['value' => 'Label text']
+  - a rich definition:      ['value' => ['label' => 'Label text', 'disabled' => true, ...]]
+
+The $checked parameter is resolved by the concrete subclass:
+  - CheckboxGroup compares against an array of selected values
+  - RadioGroup compares against a single scalar value
+
+
+### Properties
+```php
+/**
+ * @var mixed
+ */
+protected $checked;
+
+/**
+ * @var string
+ */
+protected $name = ;
+
+/**
+ * @var array
+ */
+protected $options;
+
+/**
+ * @var array
+ */
+protected $sharedAttributes;
+
+/**
+ * @var string
+ */
+protected $type = checkbox;
+
+```
+
+### Methods
+
+```php
+public function __invoke( string $name, array $options, mixed $checked = null, array $attributes = [] ): AbstractGroup;
+```
+
+
+
+```php
+public function __toString(): string;
+```
+Renders the group of inputs as a string.
+
+
+```php
+abstract protected function isChecked( string $value ): bool;
+```
+Determines whether the given value is considered checked.
+
+
+```php
+protected function renderItem( string $value, mixed $definition ): string;
+```
+Renders a single input + optional label pair.
+
+
+
+
 ## Html\Helper\Input\AbstractInput ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/AbstractInput.zep)
@@ -1549,28 +2181,55 @@ Sets the value of the element
 
 -   __Uses__
     
-    - `Phalcon\Html\Escaper\EscaperInterface`
-    - `Phalcon\Html\Helper\Doctype`
 
 -   __Extends__
     
-    `AbstractInput`
+    `AbstractChecked`
 
 -   __Implements__
     
 
-Class Checkbox
-
-@property array $label
+Renders an `<input type="checkbox">`. Behavior (label wrapping, `unchecked`
+companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 
 
 ### Properties
 ```php
 /**
- * @var array
+ * @var string
  */
-protected $label;
+protected $type = checkbox;
 
+```
+
+
+## Html\Helper\Input\CheckboxGroup 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/CheckboxGroup.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper\Input`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `AbstractGroup`
+
+-   __Implements__
+    
+
+Renders a group of `<input type="checkbox">` elements from an options array.
+
+The $checked parameter should be an array of selected values, or a single
+scalar value (treated as a one-element array).
+
+
+### Properties
+```php
 /**
  * @var string
  */
@@ -1581,28 +2240,16 @@ protected $type = checkbox;
 ### Methods
 
 ```php
-public function __construct( EscaperInterface $escaper, Doctype $doctype = null );
+protected function isChecked( string $value ): bool;
 ```
-AbstractHelper constructor.
-
-
-```php
-public function __toString();
-```
-Returns the HTML for the input.
-
-
-```php
-public function label( array $attributes = [] ): Checkbox;
-```
-Attaches a label to the element
+Returns true when $value appears in the checked list.
 
 
 
 
-## Html\Helper\Input\Color 
+## Html\Helper\Input\Generic 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Color.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Generic.zep)
 
 
 -   __Namespace__
@@ -1611,6 +2258,8 @@ Attaches a label to the element
 
 -   __Uses__
     
+    - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Helper\Doctype`
 
 -   __Extends__
     
@@ -1619,347 +2268,27 @@ Attaches a label to the element
 -   __Implements__
     
 
-Class Color
-
-
-### Properties
-```php
-//
-protected $type = color;
-
-```
-
-
-## Html\Helper\Input\Date 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Date.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Date
-
-
-### Properties
-```php
-//
-protected $type = date;
-
-```
-
-
-## Html\Helper\Input\DateTime 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/DateTime.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class DateTime
-
-
-### Properties
-```php
-//
-protected $type = datetime;
-
-```
-
-
-## Html\Helper\Input\DateTimeLocal 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/DateTimeLocal.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class DateTimeLocal
-
-
-### Properties
-```php
-//
-protected $type = datetime-local;
-
-```
-
-
-## Html\Helper\Input\Email 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Email.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Email
-
-
-### Properties
-```php
-//
-protected $type = email;
-
-```
-
-
-## Html\Helper\Input\File 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/File.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class File
-
-
-### Properties
-```php
-//
-protected $type = file;
-
-```
-
-
-## Html\Helper\Input\Hidden 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Hidden.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Hidden
-
-
-### Properties
-```php
-//
-protected $type = hidden;
-
-```
-
-
-## Html\Helper\Input\Image 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Image.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Image
-
-
-### Properties
-```php
-//
-protected $type = image;
-
-```
-
-
-## Html\Helper\Input\Input 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Input.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Input
+Generic input helper. The HTML5 `type` attribute is supplied via the
+constructor, which means the `TagFactory` can register a single class
+for all type-string-only inputs (color, date, email, hidden, number, ...)
+and differentiate them through the recipe map. The type can also be
+changed after construction via `setType()`.
 
 
 ### Methods
 
 ```php
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null, string $type = string );
+```
+
+
+
+```php
 public function setType( string $type ): AbstractInput;
 ```
-Sets the type of the input
+Sets the type of the input.
 
 
-
-
-## Html\Helper\Input\Month 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Month.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Month
-
-
-### Properties
-```php
-//
-protected $type = month;
-
-```
-
-
-## Html\Helper\Input\Numeric 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Numeric.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Numeric
-
-
-### Properties
-```php
-//
-protected $type = number;
-
-```
-
-
-## Html\Helper\Input\Password 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Password.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Password
-
-
-### Properties
-```php
-//
-protected $type = password;
-
-```
 
 
 ## Html\Helper\Input\Radio 
@@ -1976,12 +2305,13 @@ protected $type = password;
 
 -   __Extends__
     
-    `Checkbox`
+    `AbstractChecked`
 
 -   __Implements__
     
 
-Class Radio
+Renders an `<input type="radio">`. Behavior (label wrapping, `unchecked`
+companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 
 
 ### Properties
@@ -1994,39 +2324,9 @@ protected $type = radio;
 ```
 
 
-## Html\Helper\Input\Range 
+## Html\Helper\Input\RadioGroup 
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Range.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Range
-
-
-### Properties
-```php
-//
-protected $type = range;
-
-```
-
-
-## Html\Helper\Input\Search 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Search.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/RadioGroup.zep)
 
 
 -   __Namespace__
@@ -2038,20 +2338,34 @@ protected $type = range;
 
 -   __Extends__
     
-    `AbstractInput`
+    `AbstractGroup`
 
 -   __Implements__
     
 
-Class Search
+Renders a group of `<input type="radio">` elements from an options array.
+
+The $checked parameter should be a single scalar value matching the selected
+option's value attribute.
 
 
 ### Properties
 ```php
-//
-protected $type = search;
+/**
+ * @var string
+ */
+protected $type = radio;
 
 ```
+
+### Methods
+
+```php
+protected function isChecked( string $value ): bool;
+```
+Returns true when $value loosely equals the checked scalar.
+
+
 
 
 ## Html\Helper\Input\Select 
@@ -2065,8 +2379,8 @@ protected $type = search;
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Html\Helper\Input\SelectData`
     - `Phalcon\Html\Helper\AbstractList`
-    - `Phalcon\Html\Helper\Input\Select\SelectDataInterface`
 
 -   __Extends__
     
@@ -2095,6 +2409,11 @@ protected $inOptGroup = false;
  */
 protected $selected = ;
 
+/**
+ * @var bool
+ */
+protected $strict = false;
+
 ```
 
 ### Methods
@@ -2112,7 +2431,7 @@ Add a placeholder to the element
 
 
 ```php
-public function fromData( SelectDataInterface $data ): Select;
+public function fromData( SelectData $data ): Select;
 ```
 Populates the select from a data provider.
 
@@ -2127,9 +2446,26 @@ Creates an option group
 
 
 ```php
+public function placeholder( string $text ): Select;
+```
+Adds a non-selectable placeholder option as the first entry. Renders
+as `<option value="" disabled selected>$text</option>`, matching the
+common HTML idiom for "Choose…"-style prompts.
+
+
+```php
 public function selected( string $selected ): Select;
 ```
 
+
+
+```php
+public function strict( bool $flag = bool ): Select;
+```
+Toggles strict (`===`) comparison between an option's `value` and
+the previously stored `selected` value. Defaults to loose (`==`),
+matching the round-tripping fix in `AbstractChecked` so mixed
+int/string form data marks the right option as selected.
 
 
 ```php
@@ -2163,13 +2499,14 @@ protected function optGroupStart( string $label, array $attributes ): string;
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Html\Helper\Input\SelectData`
 
 -   __Extends__
     
 
 -   __Implements__
     
-    - `SelectDataInterface`
+    - `SelectData`
 
 Wraps a plain PHP array as a SELECT data provider.
 
@@ -2182,6 +2519,11 @@ array values define optgroups.
 /**
  * @var array
  */
+protected $attributes;
+
+/**
+ * @var array
+ */
 protected $data;
 
 ```
@@ -2189,7 +2531,13 @@ protected $data;
 ### Methods
 
 ```php
-public function __construct( array $data = [] );
+public function __construct( array $data = [], array $attributes = [] );
+```
+
+
+
+```php
+public function getAttributes(): array;
 ```
 
 
@@ -2214,6 +2562,7 @@ public function getOptions(): array;
 -   __Uses__
     
     - `InvalidArgumentException`
+    - `Phalcon\Contracts\Html\Helper\Input\SelectData`
     - `Phalcon\Mvc\Model\ResultsetInterface`
 
 -   __Extends__
@@ -2221,7 +2570,7 @@ public function getOptions(): array;
 
 -   __Implements__
     
-    - `SelectDataInterface`
+    - `SelectData`
 
 This file is part of the Phalcon Framework.
 
@@ -2230,9 +2579,28 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
+Implementation of this file has been influenced by AuraPHP
+@link    https://github.com/auraphp/Aura.Html
+@license https://github.com/auraphp/Aura.Html/blob/2.x/LICENSE
+
 
 ### Properties
 ```php
+/**
+ * @var array
+ */
+protected $attributesMap;
+
+/**
+ * @var array|null
+ */
+protected $resolvedAttributes;
+
+/**
+ * @var array|null
+ */
+protected $resolvedOptions;
+
 /**
  * @var ResultsetInterface
  */
@@ -2248,7 +2616,13 @@ protected $using;
 ### Methods
 
 ```php
-public function __construct( ResultsetInterface $resultset, array $using );
+public function __construct( ResultsetInterface $resultset, array $using, array $attributesMap = [] );
+```
+
+
+
+```php
+public function getAttributes(): array;
 ```
 
 
@@ -2259,122 +2633,20 @@ public function getOptions(): array;
 
 
 
+```php
+protected function readField( mixed $option, string $field );
+```
+Reads a property from the row, supporting both objects (via
+`readAttribute` when present) and plain arrays.
 
-
-## Html\Helper\Input\Select\SelectDataInterface ![Interface](../assets/images/interface-blue.svg) 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Select/SelectDataInterface.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input\Select`
-
--   __Uses__
-    
-
--   __Extends__
-    
-
--   __Implements__
-    
-
-Interface for SELECT option data providers.
-
-Return format: [value => label] for flat options;
-[groupLabel => [value => label, ...]] for optgroups.
-
-
-### Methods
 
 ```php
-public function getOptions(): array;
+protected function resolve(): void;
 ```
+Walks the resultset once, building both the option map and the
+per-option resolved attribute map. Closures in `attributesMap`
+receive the current row; string values are passed through.
 
-
-
-
-
-## Html\Helper\Input\Submit 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Submit.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Submit
-
-
-### Properties
-```php
-//
-protected $type = submit;
-
-```
-
-
-## Html\Helper\Input\Tel 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Tel.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Tel
-
-
-### Properties
-```php
-//
-protected $type = tel;
-
-```
-
-
-## Html\Helper\Input\Text 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Text.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Text
 
 
 
@@ -2420,96 +2692,6 @@ Returns the HTML for the input.
 
 
 
-## Html\Helper\Input\Time 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Time.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Time
-
-
-### Properties
-```php
-//
-protected $type = time;
-
-```
-
-
-## Html\Helper\Input\Url 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Url.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Url
-
-
-### Properties
-```php
-//
-protected $type = url;
-
-```
-
-
-## Html\Helper\Input\Week 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Week.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Html\Helper\Input`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractInput`
-
--   __Implements__
-    
-
-Class Week
-
-
-### Properties
-```php
-//
-protected $type = week;
-
-```
-
-
 ## Html\Helper\Label 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Label.zep)
@@ -2521,6 +2703,7 @@ protected $type = week;
 
 -   __Uses__
     
+    - `Phalcon\Html\Escaper\EscaperInterface`
     - `Phalcon\Html\Exception`
 
 -   __Extends__
@@ -2532,8 +2715,25 @@ protected $type = week;
 
 Class Label
 
+@property bool $forceRaw
+
+
+### Properties
+```php
+/**
+ * @var bool
+ */
+protected $forceRaw = false;
+
+```
 
 ### Methods
+
+```php
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = bool );
+```
+
+
 
 ```php
 public function __invoke( string $label, array $attributes = [], bool $raw = bool ): string;
@@ -2568,7 +2768,7 @@ Creates <link> tags
 ### Methods
 
 ```php
-public function add( string $url, array $attributes = [] );
+public function add( string $url, array $attributes = [], int $position = int );
 ```
 Add an element to the list
 
@@ -2613,25 +2813,25 @@ Class Meta
 ### Methods
 
 ```php
-public function add( array $attributes = [] ): Meta;
+public function add( array $attributes = [], int $position = int ): Meta;
 ```
 Add an element to the list
 
 
 ```php
-public function addHttp( string $httpEquiv, string $content ): Meta;
+public function addHttp( string $httpEquiv, string $content, int $position = int ): Meta;
 ```
 
 
 
 ```php
-public function addName( string $name, string $content ): Meta;
+public function addName( string $name, string $content, int $position = int ): Meta;
 ```
 
 
 
 ```php
-public function addProperty( string $name, string $content ): Meta;
+public function addProperty( string $name, string $content, int $position = int ): Meta;
 ```
 
 
@@ -2655,6 +2855,7 @@ protected function getTag(): string;
 
 -   __Uses__
     
+    - `Phalcon\Html\Escaper\EscaperInterface`
 
 -   __Extends__
     
@@ -2665,8 +2866,25 @@ protected function getTag(): string;
 
 Class Ol
 
+@property bool $forceRaw
+
+
+### Properties
+```php
+/**
+ * @var bool
+ */
+protected $forceRaw = false;
+
+```
 
 ### Methods
+
+```php
+public function __construct( EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = bool );
+```
+
+
 
 ```php
 public function add( string $text, array $attributes = [], bool $raw = bool ): AbstractList;
@@ -2760,9 +2978,26 @@ Class Script
 ### Methods
 
 ```php
-public function add( string $url, array $attributes = [] );
+public function add( string $url, array $attributes = [], int $position = int );
 ```
 Add an element to the list
+
+
+```php
+public function beginInternal(): void;
+```
+Begins capturing inline script content via output buffering. Pair
+with `endInternal()` to close the buffer and append the captured
+markup as a `<script>...</script>` block in the asset stack.
+
+
+```php
+public function endInternal( array $attributes = [], int $position = int ): Script;
+```
+Closes an inline-script buffer opened by `beginInternal()` and adds
+the captured content as a `<script>...</script>` entry. Any
+attributes supplied are placed on the wrapping tag. The script body
+is treated as raw HTML (it is JavaScript, not user-supplied text).
 
 
 ```php
@@ -2814,7 +3049,7 @@ private $isStyle = false;
 ### Methods
 
 ```php
-public function add( string $url, array $attributes = [] );
+public function add( string $url, array $attributes = [], int $position = int );
 ```
 Add an element to the list
 
@@ -2833,6 +3068,42 @@ Returns the necessary attributes
 
 ```php
 protected function getTag(): string;
+```
+
+
+
+
+
+## Html\Helper\Tag 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Tag.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
+
+Generic open-tag escape hatch. Renders just `<name attr="...">` for any
+tag name without a dedicated helper. For an open + content + close tag
+use `Element` instead. For self-closing void tags (img, br, hr, etc.)
+use `VoidTag`.
+
+
+### Methods
+
+```php
+public function __invoke( string $name, array $attributes = [] ): string;
 ```
 
 
@@ -2965,6 +3236,41 @@ Class Ul
 
 ```php
 protected function getTag(): string;
+```
+
+
+
+
+
+## Html\Helper\VoidTag 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/VoidTag.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Helper`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `AbstractHelper`
+
+-   __Implements__
+    
+
+Generic void-tag escape hatch. Renders a self-closing tag for any name
+without a dedicated helper. The trailing `/` is emitted only for XHTML
+doctypes, matching the `Input/AbstractInput::__toString` convention.
+
+
+### Methods
+
+```php
+public function __invoke( string $name, array $attributes = [] ): string;
 ```
 
 
@@ -3721,110 +4027,116 @@ Serializer method
 
 -   __Uses__
     
-    - `Phalcon\Factory\AbstractFactory`
+    - `Closure`
     - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Helper\Anchor`
+    - `Phalcon\Html\Helper\Base`
+    - `Phalcon\Html\Helper\Body`
     - `Phalcon\Html\Helper\Breadcrumbs`
+    - `Phalcon\Html\Helper\Button`
+    - `Phalcon\Html\Helper\Close`
     - `Phalcon\Html\Helper\Doctype`
+    - `Phalcon\Html\Helper\Element`
+    - `Phalcon\Html\Helper\Form`
+    - `Phalcon\Html\Helper\FriendlyTitle`
+    - `Phalcon\Html\Helper\Img`
     - `Phalcon\Html\Helper\Input\Checkbox`
-    - `Phalcon\Html\Helper\Input\Color`
-    - `Phalcon\Html\Helper\Input\Date`
-    - `Phalcon\Html\Helper\Input\DateTime`
-    - `Phalcon\Html\Helper\Input\DateTimeLocal`
-    - `Phalcon\Html\Helper\Input\Email`
-    - `Phalcon\Html\Helper\Input\File`
-    - `Phalcon\Html\Helper\Input\Hidden`
-    - `Phalcon\Html\Helper\Input\Image`
-    - `Phalcon\Html\Helper\Input\Input`
-    - `Phalcon\Html\Helper\Input\Month`
-    - `Phalcon\Html\Helper\Input\Numeric`
-    - `Phalcon\Html\Helper\Input\Password`
+    - `Phalcon\Html\Helper\Input\CheckboxGroup`
+    - `Phalcon\Html\Helper\Input\Generic`
     - `Phalcon\Html\Helper\Input\Radio`
-    - `Phalcon\Html\Helper\Input\Range`
-    - `Phalcon\Html\Helper\Input\Search`
+    - `Phalcon\Html\Helper\Input\RadioGroup`
     - `Phalcon\Html\Helper\Input\Select`
-    - `Phalcon\Html\Helper\Input\Submit`
-    - `Phalcon\Html\Helper\Input\Tel`
-    - `Phalcon\Html\Helper\Input\Text`
     - `Phalcon\Html\Helper\Input\Textarea`
-    - `Phalcon\Html\Helper\Input\Time`
-    - `Phalcon\Html\Helper\Input\Url`
-    - `Phalcon\Html\Helper\Input\Week`
+    - `Phalcon\Html\Helper\Label`
+    - `Phalcon\Html\Helper\Link`
     - `Phalcon\Html\Helper\Meta`
     - `Phalcon\Html\Helper\Ol`
+    - `Phalcon\Html\Helper\Preload`
     - `Phalcon\Html\Helper\Script`
     - `Phalcon\Html\Helper\Style`
+    - `Phalcon\Html\Helper\Tag`
     - `Phalcon\Html\Helper\Title`
     - `Phalcon\Html\Helper\Ul`
-    - `Phalcon\Html\Link\Link`
+    - `Phalcon\Html\Helper\VoidTag`
     - `Phalcon\Http\ResponseInterface`
     - `Phalcon\Mvc\Url\UrlInterface`
 
 -   __Extends__
     
-    `AbstractFactory`
 
 -   __Implements__
     
 
 ServiceLocator implementation for Tag helpers.
 
-Services are registered using the constructor using a key-value pair. The
-key is the name of the tag helper, while the value is a callable that returns
-the object.
+Built-in services are seeded by the constructor. Users may add or override
+services via `set()`, passing a Closure that returns the helper instance.
 
-The class implements `__call()` to allow calling helper objects as methods.
+Helpers are cached per name after first construction.
 
-@property EscaperInterface $escaper
-@property array            $services
-
-@method string        a(string $href, string $text, array $attributes = [], bool $raw = false)
-@method string        base(string $href, array $attributes = [])
-@method Breadcrumbs   breadcrumbs(string $indent = '    ', string $delimiter = "\n")
-@method string        body(array $attributes = [])
-@method string        button(string $text, array $attributes = [], bool $raw = false)
-@method string        close(string $tag, bool $raw = false)
-@method Doctype       doctype(int $flag, string $delimiter)
-@method string        element(string $tag, string $text, array $attributes = [], bool $raw = false)
-@method string        form(array $attributes = [])
-@method string        friendlyTitle(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null)
-@method string        img(string $src, array $attributes = [])
-@method Checkbox      inputCheckbox(string $name, string $value = null, array $attributes = [])
-@method Color         inputColor(string $name, string $value = null, array $attributes = [])
-@method Date          inputDate(string $name, string $value = null, array $attributes = [])
-@method DateTime      inputDateTime(string $name, string $value = null, array $attributes = [])
-@method DateTimeLocal inputDateTimeLocal(string $name, string $value = null, array $attributes = [])
-@method Email         inputEmail(string $name, string $value = null, array $attributes = [])
-@method File          inputFile(string $name, string $value = null, array $attributes = [])
-@method Hidden        inputHidden(string $name, string $value = null, array $attributes = [])
-@method Image         inputImage(string $name, string $value = null, array $attributes = [])
-@method Input         inputInput(string $name, string $value = null, array $attributes = [])
-@method Month         inputMonth(string $name, string $value = null, array $attributes = [])
-@method Numeric       inputNumeric(string $name, string $value = null, array $attributes = [])
-@method Password      inputPassword(string $name, string $value = null, array $attributes = [])
-@method Radio         inputRadio(string $name, string $value = null, array $attributes = [])
-@method Range         inputRange(string $name, string $value = null, array $attributes = [])
-@method Search        inputSearch(string $name, string $value = null, array $attributes = [])
-@method Select        inputSelect(string $name, string $value = null, array $attributes = [])
-@method Submit        inputSubmit(string $name, string $value = null, array $attributes = [])
-@method Tel           inputTel(string $name, string $value = null, array $attributes = [])
-@method Text          inputText(string $name, string $value = null, array $attributes = [])
-@method Textarea      inputTextarea(string $name, string $value = null, array $attributes = [])
-@method Time          inputTime(string $name, string $value = null, array $attributes = [])
-@method Url           inputUrl(string $name, string $value = null, array $attributes = [])
-@method Week          inputWeek(string $name, string $value = null, array $attributes = [])
-@method string        label(string $label, array $attributes = [], bool $raw = false)
-@method Link          link(string $indent = '    ', string $delimiter = PHP_EOL)
-@method Meta          meta(string $indent = '    ', string $delimiter = PHP_EOL)
-@method Ol            ol(string $text, array $attributes = [], bool $raw = false)
-@method string        preload(string $href, string $type = 'style', array $attributes = [])
-@method Script        script(string $indent = '    ', string $delimiter = PHP_EOL)
-@method Style         style(string $indent = '    ', string $delimiter = PHP_EOL)
-@method Title         title(string $indent = '    ', string $delimiter = PHP_EOL)
-@method Ul            ul(string $text, array $attributes = [], bool $raw = false)
+@method string      a(string $href, string $text, array $attributes = [], bool $raw = false)
+@method string      aRaw(string $href, string $text, array $attributes = [])
+@method string      base(string $href, array $attributes = [])
+@method string      body(array $attributes = [])
+@method Breadcrumbs breadcrumbs(string $indent = '    ', string $delimiter = "\n")
+@method string      button(string $text, array $attributes = [], bool $raw = false)
+@method string      buttonRaw(string $text, array $attributes = [])
+@method string      close(string $tag, bool $raw = false)
+@method Doctype     doctype(int $type = Doctype::HTML5, string $delimiter = "\n")
+@method string      element(string $tag, string $text, array $attributes = [], bool $raw = false)
+@method string      elementRaw(string $tag, string $text, array $attributes = [])
+@method string      form(array $attributes = [])
+@method string      friendlyTitle(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null)
+@method string      img(string $src, array $attributes = [])
+@method Checkbox    inputCheckbox(string $name, string $value = null, array $attributes = [])
+@method CheckboxGroup inputCheckboxGroup(string $name, array $options, mixed $checked = null, array $attributes = [])
+@method Generic     inputColor(string $name, string $value = null, array $attributes = [])
+@method Generic     inputDate(string $name, string $value = null, array $attributes = [])
+@method Generic     inputDateTime(string $name, string $value = null, array $attributes = [])
+@method Generic     inputDateTimeLocal(string $name, string $value = null, array $attributes = [])
+@method Generic     inputEmail(string $name, string $value = null, array $attributes = [])
+@method Generic     inputFile(string $name, string $value = null, array $attributes = [])
+@method Generic     inputHidden(string $name, string $value = null, array $attributes = [])
+@method Generic     inputImage(string $name, string $value = null, array $attributes = [])
+@method Generic     inputInput(string $name, string $value = null, array $attributes = [])
+@method Generic     inputMonth(string $name, string $value = null, array $attributes = [])
+@method Generic     inputNumeric(string $name, string $value = null, array $attributes = [])
+@method Generic     inputPassword(string $name, string $value = null, array $attributes = [])
+@method Radio       inputRadio(string $name, string $value = null, array $attributes = [])
+@method RadioGroup    inputRadioGroup(string $name, array $options, mixed $checked = null, array $attributes = [])
+@method Generic     inputRange(string $name, string $value = null, array $attributes = [])
+@method Generic     inputSearch(string $name, string $value = null, array $attributes = [])
+@method Select      inputSelect(string $name, string $value = null, array $attributes = [])
+@method Generic     inputSubmit(string $name, string $value = null, array $attributes = [])
+@method Generic     inputTel(string $name, string $value = null, array $attributes = [])
+@method Generic     inputText(string $name, string $value = null, array $attributes = [])
+@method Textarea    inputTextarea(string $name, string $value = null, array $attributes = [])
+@method Generic     inputTime(string $name, string $value = null, array $attributes = [])
+@method Generic     inputUrl(string $name, string $value = null, array $attributes = [])
+@method Generic     inputWeek(string $name, string $value = null, array $attributes = [])
+@method string      label(string $label, array $attributes = [], bool $raw = false)
+@method string      labelRaw(string $label, array $attributes = [])
+@method Link        link(string $indent = '    ', string $delimiter = "\n")
+@method Meta        meta(string $indent = '    ', string $delimiter = "\n")
+@method Ol          ol(string $indent = '    ', string $delimiter = null, array $attributes = [])
+@method Ol          olRaw(string $indent = '    ', string $delimiter = null, array $attributes = [])
+@method string      preload(string $href, string $type = 'style', array $attributes = [])
+@method Script      script(string $indent = '    ', string $delimiter = "\n")
+@method Style       style(string $indent = '    ', string $delimiter = "\n")
+@method string      tag(string $name, array $attributes = [])
+@method Title       title(string $indent = '    ', string $delimiter = "\n")
+@method Ul          ul(string $indent = '    ', string $delimiter = null, array $attributes = [])
+@method Ul          ulRaw(string $indent = '    ', string $delimiter = null, array $attributes = [])
+@method string      voidTag(string $name, array $attributes = [])
 
 
 ### Properties
 ```php
+/**
+ * @var Doctype
+ */
+private $doctype;
+
 /**
  * @var EscaperInterface
  */
@@ -3843,7 +4155,12 @@ private $url;
 /**
  * @var array
  */
-protected $services;
+protected $factories;
+
+/**
+ * @var array
+ */
+protected $instances;
 
 ```
 
@@ -3860,6 +4177,8 @@ public function __construct( EscaperInterface $escaper, array $services = [], Re
 ```
 TagFactory constructor.
 
+@phpstan-param array<string, Closure> $services
+
 
 ```php
 public function has( string $name ): bool;
@@ -3868,26 +4187,24 @@ public function has( string $name ): bool;
 
 
 ```php
-public function newInstance( string $name ): mixed;
+public function newInstance( string $name ): object;
 ```
-Create a new instance of the object
+Create or return a cached instance of the helper.
 
 
 ```php
-public function set( string $name, mixed $method ): void;
+public function set( string $name, Closure $definition ): void;
 ```
-
+Register a helper via a zero-argument Closure. The Closure is invoked on
+the first matching `newInstance()` call and its return value is cached.
+Passing a new definition clears any cached instance so the next call to
+`newInstance()` rebuilds it.
 
 
 ```php
-protected function getExceptionClass(): string;
+protected function getDefaultServices(): array;
 ```
-
-
-
-```php
-protected function getServices(): array;
-```
-Returns the available services
+Default service recipes. Every entry is a Closure that returns a
+fully-constructed helper instance. Services are built lazily and cached.
 
 

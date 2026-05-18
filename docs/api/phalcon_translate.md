@@ -173,6 +173,8 @@ Returns the translation string of the given key
     
     - `ArrayAccess`
 
+@property array $translate
+
 
 ### Properties
 ```php
@@ -287,7 +289,7 @@ protected $defaultDomain;
 protected $directory;
 
 /**
- * @var string
+ * @var string | false
  */
 protected $locale;
 
@@ -326,7 +328,7 @@ public function getDirectory(): array | string;
 
 
 ```php
-public function getLocale(): string;
+public function getLocale(): string | false;
 ```
 
 
@@ -399,10 +401,10 @@ Sets locale information
 
 ```php
 // Set locale to Dutch
-$gettext->setLocale(LC_ALL, "nl_NL");
+$gettext->setLocale(LC_ALL, ["nl_NL"]);
 
 // Try different possible locale names for German
-$gettext->setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
+$gettext->setLocale(LC_ALL, ["de_DE@euro", "de_DE", "de", "ge"]);
 ```
 
 

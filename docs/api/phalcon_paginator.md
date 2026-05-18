@@ -117,44 +117,18 @@ Gets current repository for pagination
 
 -   __Uses__
     
-    - `Phalcon\Paginator\RepositoryInterface`
+    - `Phalcon\Contracts\Paginator\Adapter`
 
 -   __Extends__
     
+    `AdapterContract`
 
 -   __Implements__
     
 
-Phalcon\Paginator\AdapterInterface
-
-Interface for Phalcon\Paginator adapters
-
-
-### Methods
-
-```php
-public function getLimit(): int;
-```
-Get current rows limit
-
-
-```php
-public function paginate(): RepositoryInterface;
-```
-Returns a slice of the resultset to show in the pagination
-
-
-```php
-public function setCurrentPage( int $page );
-```
-Set the current page number
-
-
-```php
-public function setLimit( int $limit );
-```
-Set current rows limit
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Paginator\Adapter} instead.
 
 
 
@@ -403,6 +377,158 @@ Returns a slice of the resultset to show in the pagination
 
 ```php
 public function setQueryBuilder( Builder $builder ): QueryBuilder;
+```
+Set query builder object
+
+
+
+
+## Paginator\Adapter\QueryBuilderCursor 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/QueryBuilderCursor.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Query\Builder`
+    - `Phalcon\Paginator\Exception`
+    - `Phalcon\Paginator\RepositoryInterface`
+
+-   __Extends__
+    
+    `AbstractAdapter`
+
+-   __Implements__
+    
+
+Phalcon\Paginator\Adapter\QueryBuilderCursor
+
+Cursor-based (keyset) pagination using a PHQL query builder as source of
+data.
+
+Unlike offset pagination, this adapter does not use an ever-growing OFFSET.
+It appends a WHERE condition on a unique, indexed cursor column so that each
+page is an O(1) index seek regardless of depth.
+
+Limitations:
+- No total count: `getTotalItems()` always returns 0.
+- No random access: `getLast()` always returns 0. Pages must be traversed
+  in order by following the cursor value returned in `getNext()`.
+- The cursor column must be unique and indexed (e.g. a primary key).
+- Items are returned as an array of associative arrays (via
+  `Resultset::toArray()`), not as model objects.
+- `cursorColumn` must match the PHQL-accessible column name exactly
+  (e.g. `"inv_id"`).
+
+```php
+use Phalcon\Paginator\Adapter\QueryBuilderCursor;
+
+$builder = $this->modelsManager->createBuilder()
+                ->columns("inv_id, inv_title")
+                ->from(Invoices::class)
+                ->orderBy("inv_id");
+
+$paginator = new QueryBuilderCursor(
+    [
+        "builder"      => $builder,
+        "limit"        => 20,
+        "cursorColumn" => "inv_id",
+        "cursor"       => null,  // first page; pass $page->getNext() for subsequent pages
+    ]
+);
+
+$page = $paginator->paginate();
+// $page->getItems()   — array of rows for this page
+// $page->getNext()    — cursor value to pass for the next page (0 means no more pages)
+// $page->getCurrent() — cursor value used for this page (0 on first page)
+```
+
+
+### Properties
+```php
+/**
+ * Paginator's data
+ *
+ * @var Builder
+ */
+protected $builder;
+
+/**
+ * The cursor value for the current page (null = first page)
+ *
+ * @var mixed
+ */
+protected $cursor;
+
+/**
+ * The column used as the cursor (must be unique and indexed)
+ *
+ * @var string
+ */
+protected $cursorColumn;
+
+```
+
+### Methods
+
+```php
+public function __construct( array $config );
+```
+Phalcon\Paginator\Adapter\QueryBuilderCursor
+
+
+```php
+public function getCurrentPage(): int;
+```
+Get the current page number
+
+Returns the cursor value used for this page cast to int, or 0 for the
+first page. Use getCursor() to retrieve the raw cursor value.
+
+
+```php
+public function getCursor(): mixed;
+```
+Get the cursor value for the current page (null on first page)
+
+
+```php
+public function getCursorColumn(): string;
+```
+Get the cursor column name
+
+
+```php
+public function getQueryBuilder(): Builder;
+```
+Get query builder object
+
+
+```php
+public function paginate(): RepositoryInterface;
+```
+Returns a slice of the resultset to show in the pagination
+
+Fetches `limit + 1` rows from the builder. If the extra row is present
+a next page exists; it is discarded and the cursor value of the last
+included row is stored in the `next` repository property.
+
+
+```php
+public function setCursor( mixed $cursor ): QueryBuilderCursor;
+```
+Set the cursor value for the next paginate() call
+
+Pass the value returned by Repository::getNext() to advance to the
+next page, or null to restart from the first page.
+
+
+```php
+public function setQueryBuilder( Builder $builder ): QueryBuilderCursor;
 ```
 Set query builder object
 
@@ -662,96 +788,16 @@ Resolve alias property name
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Paginator\Repository`
 
 -   __Extends__
     
+    `RepositoryContract`
 
 -   __Implements__
     
 
-Phalcon\Paginator\RepositoryInterface
-
-Interface for the repository of current state
-Phalcon\Paginator\AdapterInterface::paginate()
-
-
-### Constants
-```php
-const PROPERTY_CURRENT_PAGE = current;
-const PROPERTY_FIRST_PAGE = first;
-const PROPERTY_ITEMS = items;
-const PROPERTY_LAST_PAGE = last;
-const PROPERTY_LIMIT = limit;
-const PROPERTY_NEXT_PAGE = next;
-const PROPERTY_PREVIOUS_PAGE = previous;
-const PROPERTY_TOTAL_ITEMS = total_items;
-```
-
-### Methods
-
-```php
-public function getAliases(): array;
-```
-Gets the aliases for properties repository
-
-
-```php
-public function getCurrent(): int;
-```
-Gets number of the current page
-
-
-```php
-public function getFirst(): int;
-```
-Gets number of the first page
-
-
-```php
-public function getItems(): mixed;
-```
-Gets the items on the current page
-
-
-```php
-public function getLast(): int;
-```
-Gets number of the last page
-
-
-```php
-public function getLimit(): int;
-```
-Gets current rows limit
-
-
-```php
-public function getNext(): int;
-```
-Gets number of the next page
-
-
-```php
-public function getPrevious(): int;
-```
-Gets number of the previous page
-
-
-```php
-public function getTotalItems(): int;
-```
-Gets the total number of items
-
-
-```php
-public function setAliases( array $aliases ): RepositoryInterface;
-```
-Sets the aliases for properties repository
-
-
-```php
-public function setProperties( array $properties ): RepositoryInterface;
-```
-Sets values for properties of the repository
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Paginator\Repository} instead.
 

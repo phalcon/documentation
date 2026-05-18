@@ -291,7 +291,7 @@ protected $data;
 ### Methods
 
 ```php
-public function __construct();
+public function __construct( array $options = [] );
 ```
 
 

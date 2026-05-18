@@ -174,7 +174,7 @@ Returns the parent form to the element
 
 
 ```php
-public function getLabel(): string;
+public function getLabel(): string | null;
 ```
 Returns the element label
 
@@ -344,7 +344,110 @@ Component INPUT[type=check] for forms
  */
 protected $method = inputCheckbox;
 
+/**
+ * @var mixed
+ */
+protected $uncheckedValue;
+
+/**
+ * @var bool
+ */
+protected $uncheckedValueSet = false;
+
 ```
+
+### Methods
+
+```php
+public function getUncheckedValue(): mixed;
+```
+Returns the value to bind when the checkbox is absent from submitted
+data. Only meaningful when hasUncheckedValue() is true.
+
+
+```php
+public function hasUncheckedValue(): bool;
+```
+Whether an "unchecked value" has been explicitly registered.
+
+
+```php
+public function setUncheckedValue( mixed $value ): Check;
+```
+Registers a value to bind when the checkbox is absent from submitted
+data (the typical browser behavior for an unchecked input). Without
+this opt-in, an unchecked checkbox leaves the entity property
+untouched. See cphalcon issue #16982.
+
+
+
+
+## Forms\Element\CheckGroup 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/CheckGroup.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Element`
+
+-   __Uses__
+    
+    - `Phalcon\Html\TagFactory`
+
+-   __Extends__
+    
+    `AbstractElement`
+
+-   __Implements__
+    
+
+Component for a group of INPUT[type=checkbox] elements.
+
+The name is automatically suffixed with [] when not already present so that
+PHP collects all checked values into an array on form submission.
+
+Options are passed as an associative array:
+  ['value' => 'Label']
+or with per-item attributes:
+  ['value' => ['label' => 'Label', 'disabled' => true]]
+
+
+### Properties
+```php
+/**
+ * @var array
+ */
+protected $options;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $name, array $options = [], array $attributes = [] );
+```
+Constructor
+
+
+```php
+public function getOptions(): array;
+```
+Returns the group options
+
+
+```php
+public function render( array $attributes = [] ): string;
+```
+Renders the checkbox group returning HTML
+
+
+```php
+public function setOptions( array $options ): ElementInterface;
+```
+Sets the group options
+
+
 
 
 ## Forms\Element\Date 
@@ -468,7 +571,7 @@ Returns the parent form to the element
 
 
 ```php
-public function getLabel(): string;
+public function getLabel(): string | null;
 ```
 Returns the element's label
 
@@ -789,6 +892,71 @@ protected $method = inputRadio;
 ```
 
 
+## Forms\Element\RadioGroup 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/RadioGroup.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Element`
+
+-   __Uses__
+    
+    - `Phalcon\Html\TagFactory`
+
+-   __Extends__
+    
+    `AbstractElement`
+
+-   __Implements__
+    
+
+Component for a group of INPUT[type=radio] elements.
+
+Options are passed as an associative array:
+  ['value' => 'Label']
+or with per-item attributes:
+  ['value' => ['label' => 'Label', 'disabled' => true]]
+
+
+### Properties
+```php
+/**
+ * @var array
+ */
+protected $options;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $name, array $options = [], array $attributes = [] );
+```
+Constructor
+
+
+```php
+public function getOptions(): array;
+```
+Returns the group options
+
+
+```php
+public function render( array $attributes = [] ): string;
+```
+Renders the radio group returning HTML
+
+
+```php
+public function setOptions( array $options ): ElementInterface;
+```
+Sets the group options
+
+
+
+
 ## Forms\Element\Select 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Element/Select.zep)
@@ -800,11 +968,7 @@ protected $method = inputRadio;
 
 -   __Uses__
     
-    - `Phalcon\Forms\Exception`
-    - `Phalcon\Html\Helper\Input\Select\ArrayData`
-    - `Phalcon\Html\Helper\Input\Select\ResultsetData`
-    - `Phalcon\Html\TagFactory`
-    - `Phalcon\Mvc\Model\ResultsetInterface`
+    - `Phalcon\Tag\Select`
 
 -   __Extends__
     
@@ -1007,11 +1171,13 @@ public static function usingParameterRequired(): Exception;
     
     - `Countable`
     - `Iterator`
+    - `Phalcon\Contracts\Forms\Schema`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\Injectable`
     - `Phalcon\Filter\FilterInterface`
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\ValidationInterface`
+    - `Phalcon\Forms\Element\Check`
     - `Phalcon\Forms\Element\ElementInterface`
     - `Phalcon\Html\Attributes`
     - `Phalcon\Html\Attributes\AttributesInterface`
@@ -1267,6 +1433,16 @@ Generate the label of an element added to the form including HTML
 
 
 ```php
+public function load( Schema $schema, FormsLocator $locator ): Form;
+```
+Loads elements into the form from a Schema source.
+
+Each definition in the schema must have at least 'type' and 'name'.
+The locator resolves the type string to an element factory; custom
+types can be registered on the locator with setElement().
+
+
+```php
 public function next(): void;
 ```
 Moves the internal iteration pointer to the next position
@@ -1347,6 +1523,309 @@ Check if the current element in the iterator is valid
 
 
 
+## Forms\FormsLocator 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/FormsLocator.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Element\Check`
+    - `Phalcon\Forms\Element\CheckGroup`
+    - `Phalcon\Forms\Element\Date`
+    - `Phalcon\Forms\Element\Email`
+    - `Phalcon\Forms\Element\File`
+    - `Phalcon\Forms\Element\Hidden`
+    - `Phalcon\Forms\Element\Numeric`
+    - `Phalcon\Forms\Element\Password`
+    - `Phalcon\Forms\Element\Radio`
+    - `Phalcon\Forms\Element\RadioGroup`
+    - `Phalcon\Forms\Element\Select`
+    - `Phalcon\Forms\Element\Submit`
+    - `Phalcon\Forms\Element\Text`
+    - `Phalcon\Forms\Element\TextArea`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+A closure-based registry for named forms and element type factories.
+
+**Form registry** (`get`/`has`/`set`):
+Each entry is a callable `fn(?object $entity): Form`. Without an entity the
+resolved form is cached; with an entity a fresh form is always produced.
+
+**Element registry** (`getElement`/`hasElement`/`setElement`):
+Maps type strings (e.g. 'text', 'email') to factories used by Form::load().
+Each callable has the signature `fn(string $name, array $options, array $attributes): ElementInterface`.
+Default types are seeded by `getDefaultServices()`. Users may add or override
+types with `setElement()`.
+
+
+### Properties
+```php
+/**
+ * Element type → factory callable.
+ *
+ * @var array
+ */
+private $elements;
+
+/**
+ * Form name → factory callable.
+ *
+ * @var array
+ */
+private $factories;
+
+/**
+ * Cached entity-less form instances.
+ *
+ * @var array
+ */
+private $instances;
+
+```
+
+### Methods
+
+```php
+public function __construct( array $definitions = [] );
+```
+
+
+
+```php
+public function get( string $name, mixed $entity = null ): Form;
+```
+Returns the named form.
+
+Without an entity the result is lazily created and cached.
+With an entity a fresh form is always produced.
+
+
+```php
+public function getElement( string $type );
+```
+Returns the factory callable for the given element type.
+
+
+```php
+public function has( string $name ): bool;
+```
+Checks whether a named form factory is registered.
+
+
+```php
+public function hasElement( string $type ): bool;
+```
+Checks whether an element type is registered.
+
+
+```php
+public function set( string $name, mixed $factory ): void;
+```
+Registers or replaces a named form factory.
+
+The callable must accept one argument (?object $entity) and return a
+Form instance. Replacing a registration clears any cached instance so
+the next get() call rebuilds from the new factory.
+
+
+```php
+public function setElement( string $type, mixed $factory ): void;
+```
+Registers or replaces an element type factory.
+
+The callable must accept (string $name, array $options, array $attributes)
+and return an ElementInterface instance.
+
+
+```php
+protected function getDefaultServices(): array;
+```
+Returns the built-in element type factories.
+
+Each value is a callable: fn(string $name, array $options, array $attributes): ElementInterface
+
+
+
+
+## Forms\Loader\ArrayLoader 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Loader/ArrayLoader.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Loader`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Forms\Schema`
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `Schema`
+
+Supplies form element definitions from a PHP array.
+
+
+### Properties
+```php
+/**
+ * @var array
+ */
+protected $definitions;
+
+```
+
+### Methods
+
+```php
+public function __construct( array $definitions );
+```
+
+
+
+```php
+public function load(): array;
+```
+
+
+
+```php
+protected function validateDefinition( mixed $definition, int $index ): void;
+```
+
+
+
+
+
+## Forms\Loader\JsonLoader 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Loader/JsonLoader.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Loader`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Phalcon\Contracts\Forms\Schema`
+    - `Phalcon\Forms\Exception`
+    - `Phalcon\Support\Helper\Json\Decode`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `Schema`
+
+Supplies form element definitions from a JSON string or file.
+
+When $source looks like an existing, readable file path it is read from
+disk first; otherwise the value is treated as a raw JSON string.
+
+
+### Properties
+```php
+/**
+ * @var string
+ */
+protected $source;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $source );
+```
+
+
+
+```php
+public function load(): array;
+```
+
+
+
+```php
+protected function phpFileGetContents( string $filename );
+```
+
+
+
+
+
+## Forms\Loader\YamlLoader 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Loader/YamlLoader.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Loader`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Forms\Schema`
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `Schema`
+
+Supplies form element definitions from a YAML string or file.
+
+Requires the PHP `yaml` extension (pecl/yaml).
+
+When $source is an existing, readable file path the file is parsed
+directly; otherwise the value is treated as a raw YAML string.
+
+
+### Properties
+```php
+/**
+ * @var string
+ */
+protected $source;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $source );
+```
+
+
+
+```php
+public function load(): array;
+```
+
+
+
+
+
 ## Forms\Manager 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Manager.zep)
@@ -1358,6 +1837,8 @@ Check if the current element in the iterator is valid
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Forms\Schema`
+    - `Phalcon\Forms\Form`
 
 -   __Extends__
     
@@ -1375,9 +1856,20 @@ Forms Manager
  */
 protected $forms;
 
+/**
+ * @var FormsLocator
+ */
+protected $locator;
+
 ```
 
 ### Methods
+
+```php
+public function __construct( FormsLocator $locator = null );
+```
+Manager constructor.
+
 
 ```php
 public function create( string $name, mixed $entity = null ): Form;
@@ -1392,9 +1884,22 @@ Returns a form by its name
 
 
 ```php
+public function getLocator(): FormsLocator;
+```
+Returns the FormsLocator instance.
+
+
+```php
 public function has( string $name ): bool;
 ```
 Checks if a form is registered in the forms manager
+
+
+```php
+public function loadForm( string $name, Schema $schema, mixed $entity = null ): Form;
+```
+Creates a form from a Schema source, registers it in the manager,
+and registers a factory in the locator for entity-aware retrieval.
 
 
 ```php

@@ -22,6 +22,7 @@ hide:
     
     - `DateInterval`
     - `Phalcon\Cache\Adapter\AdapterInterface`
+    - `Phalcon\Cache\Adapter\Redis`
     - `Phalcon\Cache\Exception\InvalidArgumentException`
     - `Phalcon\Events\EventsAwareInterface`
     - `Phalcon\Events\ManagerInterface`
@@ -148,6 +149,9 @@ protected function fire( string $eventName, mixed $keys ): void;
 ```
 Trigger an event for the eventsManager.
 
+@var string $eventName
+@var mixed $keys
+
 
 ```php
 abstract protected function getExceptionClass(): string;
@@ -209,7 +213,7 @@ Apcu adapter
 ### Properties
 ```php
 //
-protected $eventType = 'cache';
+protected $eventType = cache;
 
 ```
 
@@ -242,7 +246,7 @@ Libmemcached adapter
 ### Properties
 ```php
 //
-protected $eventType = 'cache';
+protected $eventType = cache;
 
 ```
 
@@ -275,7 +279,7 @@ Memory adapter
 ### Properties
 ```php
 //
-protected $eventType = 'cache';
+protected $eventType = cache;
 
 ```
 
@@ -308,7 +312,8 @@ Redis adapter
 ### Properties
 ```php
 //
-protected $eventType = 'cache';
+protected $eventType = cache;
+
 ```
 
 
@@ -340,7 +345,7 @@ RedisCluster adapter
 ### Properties
 ```php
 //
-protected $eventType = 'cache';
+protected $eventType = cache;
 
 ```
 
@@ -373,7 +378,7 @@ Stream adapter
 ### Properties
 ```php
 //
-protected $eventType = 'cache';
+protected $eventType = cache;
 
 ```
 
@@ -406,7 +411,7 @@ protected $eventType = 'cache';
 ### Properties
 ```php
 //
-protected $eventType = 'cache';
+protected $eventType = cache;
 
 ```
 

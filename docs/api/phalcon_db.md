@@ -20,6 +20,7 @@ hide:
 
 -   __Uses__
     
+    - `Phalcon\Db\CheckInterface`
     - `Phalcon\Db\ColumnInterface`
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Enum`
@@ -190,6 +191,13 @@ Phalcon\Db\Adapter constructor
 
 
 ```php
+public function addCheck( string $tableName, string $schemaName, CheckInterface $check ): bool;
+```
+Adds a CHECK constraint to a table. MySQL 8.0.16+ and PostgreSQL
+issue `ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`; SQLite throws.
+
+
+```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): bool;
 ```
 Adds a column to a table
@@ -211,6 +219,13 @@ Adds an index to a table
 public function addPrimaryKey( string $tableName, string $schemaName, IndexInterface $index ): bool;
 ```
 Adds a primary key to a table
+
+
+```php
+public function createMaterializedView( string $viewName, array $definition, string $schemaName = null ): bool;
+```
+Creates a materialized view (PostgreSQL only — MySQL and SQLite
+throw via the dialect).
 
 
 ```php
@@ -273,6 +288,12 @@ print_r(
 
 
 ```php
+public function dropCheck( string $tableName, string $schemaName, string $checkName ): bool;
+```
+Drops a CHECK constraint from a table. SQLite throws.
+
+
+```php
 public function dropColumn( string $tableName, string $schemaName, string $columnName ): bool;
 ```
 Drops a column from a table
@@ -288,6 +309,12 @@ Drops a foreign key from a table
 public function dropIndex( string $tableName, string $schemaName, mixed $indexName ): bool;
 ```
 Drop an index from a table
+
+
+```php
+public function dropMaterializedView( string $viewName, string $schemaName = null, bool $ifExists = bool ): bool;
+```
+Drops a materialized view (PostgreSQL only).
 
 
 ```php
@@ -396,9 +423,11 @@ print_r($robot);
 
 
 ```php
-public function forUpdate( string $sqlQuery ): string;
+public function forUpdate( string $sqlQuery, string $modifier = string ): string;
 ```
-Returns a SQL modified with a FOR UPDATE clause
+Returns a SQL modified with a FOR UPDATE clause. The optional
+`modifier` is passed straight to the dialect (use `Dialect::LOCK_NOWAIT`
+/ `Dialect::LOCK_SKIP_LOCKED` / `Dialect::LOCK_NONE`).
 
 
 ```php
@@ -414,7 +443,7 @@ Gets a list of columns
 
 
 ```php
-public function getConnectionId(): string;
+public function getConnectionId(): int;
 ```
 Gets the active connection unique identifier
 
@@ -611,9 +640,32 @@ Modifies a table column based on a definition
 
 
 ```php
+public function onConflictUpdate( string $sqlQuery, array $conflictColumns, array $updateColumns ): string;
+```
+Appends an `ON CONFLICT (...) DO UPDATE SET col = excluded.col`
+upsert clause to the supplied INSERT statement. Supported by
+PostgreSQL and SQLite 3.24+; MySQL throws.
+
+
+```php
+public function refreshMaterializedView( string $viewName, string $schemaName = null, bool $concurrent = bool ): bool;
+```
+Refreshes a materialized view (PostgreSQL only). Pass
+`concurrent = true` for non-blocking refresh.
+
+
+```php
 public function releaseSavepoint( string $name ): bool;
 ```
 Releases given savepoint
+
+
+```php
+public function returning( string $sqlQuery, array $columns ): string;
+```
+Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement
+and returns the modified SQL. Supported by PostgreSQL and SQLite 3.35+;
+MySQL throws (no RETURNING construct). Pass `["*"]` for `RETURNING`.
 
 
 ```php
@@ -647,9 +699,11 @@ Enables/disables options in the Database component
 
 
 ```php
-public function sharedLock( string $sqlQuery ): string;
+public function sharedLock( string $sqlQuery, string $modifier = string ): string;
 ```
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Returns a SQL modified with a shared-lock clause. The optional
+`modifier` is passed straight to the dialect (use
+`Dialect::LOCK_NOWAIT` / `Dialect::LOCK_SKIP_LOCKED` for PostgreSQL).
 
 
 ```php
@@ -782,497 +836,20 @@ var_dump(
 
 -   __Uses__
     
-    - `Phalcon\Db\ColumnInterface`
-    - `Phalcon\Db\DialectInterface`
-    - `Phalcon\Db\IndexInterface`
-    - `Phalcon\Db\RawValue`
-    - `Phalcon\Db\ReferenceInterface`
-    - `Phalcon\Db\ResultInterface`
+    - `Phalcon\Contracts\Db\Adapter\Adapter`
 
 -   __Extends__
     
+    `AdapterContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Db adapters
-
-
-### Methods
-
-```php
-public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): bool;
-```
-Adds a column to a table
-
-
-```php
-public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
-```
-Adds a foreign key to a table
-
-
-```php
-public function addIndex( string $tableName, string $schemaName, IndexInterface $index ): bool;
-```
-Adds an index to a table
-
-
-```php
-public function addPrimaryKey( string $tableName, string $schemaName, IndexInterface $index ): bool;
-```
-Adds a primary key to a table
-
-
-```php
-public function affectedRows(): int;
-```
-Returns the number of affected rows by the last INSERT/UPDATE/DELETE
-reported by the database system
-
-
-```php
-public function begin( bool $nesting = bool ): bool;
-```
-Starts a transaction in the connection
-
-
-```php
-public function close(): void;
-```
-Closes active connection returning success. Phalcon automatically closes
-and destroys active connections within Phalcon\Db\Pool
-
-
-```php
-public function commit( bool $nesting = bool ): bool;
-```
-Commits the active transaction in the connection
-
-
-```php
-public function connect( array $descriptor = [] ): void;
-```
-This method is automatically called in \Phalcon\Db\Adapter\Pdo
-constructor. Call it when you need to restore a database connection
-
-
-```php
-public function createSavepoint( string $name ): bool;
-```
-Creates a new savepoint
-
-
-```php
-public function createTable( string $tableName, string $schemaName, array $definition ): bool;
-```
-Creates a table
-
-
-```php
-public function createView( string $viewName, array $definition, string $schemaName = null ): bool;
-```
-Creates a view
-
-
-```php
-public function delete( mixed $table, string $whereCondition = null, array $placeholders = [], array $dataTypes = [] ): bool;
-```
-Deletes data from a table using custom RDBMS SQL syntax
-
-
-```php
-public function describeColumns( string $table, string $schema = null ): ColumnInterface[];
-```
-Returns an array of Phalcon\Db\Column objects describing a table
-
-
-```php
-public function describeIndexes( string $table, string $schema = null ): IndexInterface[];
-```
-Lists table indexes
-
-
-```php
-public function describeReferences( string $table, string $schema = null ): ReferenceInterface[];
-```
-Lists table references
-
-
-```php
-public function dropColumn( string $tableName, string $schemaName, string $columnName ): bool;
-```
-Drops a column from a table
-
-
-```php
-public function dropForeignKey( string $tableName, string $schemaName, string $referenceName ): bool;
-```
-Drops a foreign key from a table
-
-
-```php
-public function dropIndex( string $tableName, string $schemaName, string $indexName ): bool;
-```
-Drop an index from a table
-
-
-```php
-public function dropPrimaryKey( string $tableName, string $schemaName ): bool;
-```
-Drops primary key from a table
-
-
-```php
-public function dropTable( string $tableName, string $schemaName = null, bool $ifExists = bool ): bool;
-```
-Drops a table from a schema/database
-
-
-```php
-public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): bool;
-```
-Drops a view
-
-
-```php
-public function escapeIdentifier( mixed $identifier ): string;
-```
-Escapes a column/table/schema name
-
-
-```php
-public function escapeString( string $str ): string;
-```
-Escapes a value to avoid SQL injections
-
-
-```php
-public function execute( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): bool;
-```
-Sends SQL statements to the database server returning the success state.
-Use this method only when the SQL statement sent to the server does not
-return any rows
-
-
-```php
-public function fetchAll( string $sqlQuery, int $fetchMode = int, array $bindParams = [], array $bindTypes = [] ): array;
-```
-Dumps the complete result of a query into an array
-
-
-```php
-public function fetchColumn( string $sqlQuery, array $placeholders = [], mixed $column = int ): string | bool;
-```
-Returns the n'th field of first row in a SQL query result
-
-```php
-// Getting count of robots
-$robotsCount = $connection->fetchColumn("SELECT COUNT(*) FROM robots");
-print_r($robotsCount);
-
-// Getting name of last edited robot
-$robot = $connection->fetchColumn(
-    "SELECT id, name FROM robots ORDER BY modified DESC",
-    1
-);
-print_r($robot);
-```
-
-
-```php
-public function fetchOne( string $sqlQuery, int $fetchMode = int, array $bindParams = [], array $bindTypes = [] ): array;
-```
-Returns the first row in a SQL query result
-
-
-```php
-public function forUpdate( string $sqlQuery ): string;
-```
-Returns a SQL modified with a FOR UPDATE clause
-
-
-```php
-public function getColumnDefinition( ColumnInterface $column ): string;
-```
-Returns the SQL column definition from a column
-
-
-```php
-public function getColumnList( mixed $columnList ): string;
-```
-Gets a list of columns
-
-
-```php
-public function getConnectionId(): string;
-```
-Gets the active connection unique identifier
-
-
-```php
-public function getDefaultIdValue(): RawValue;
-```
-Return the default identity value to insert in an identity column
-
-
-```php
-public function getDefaultValue(): RawValue;
-```
-Returns the default value to make the RBDM use the default value declared
-in the table definition
-
-```php
-// Inserting a new robot with a valid default value for the column 'year'
-$success = $connection->insert(
-    "robots",
-    [
-        "Astro Boy",
-        $connection->getDefaultValue()
-    ],
-    [
-        "name",
-        "year",
-    ]
-);
-```
-
-@todo Return NULL if this is not supported by the adapter
-
-
-```php
-public function getDescriptor(): array;
-```
-Return descriptor used to connect to the active database
-
-
-```php
-public function getDialect(): DialectInterface;
-```
-Returns internal dialect instance
-
-
-```php
-public function getDialectType(): string;
-```
-Returns the name of the dialect used
-
-
-```php
-public function getInternalHandler(): mixed;
-```
-Return internal PDO handler
-
-
-```php
-public function getNestedTransactionSavepointName(): string;
-```
-Returns the savepoint name to use for nested transactions
-
-
-```php
-public function getRealSQLStatement(): string;
-```
-Active SQL statement in the object without replace bound parameters
-
-
-```php
-public function getSQLBindTypes(): array;
-```
-Active SQL statement in the object
-
-
-```php
-public function getSQLStatement(): string;
-```
-Active SQL statement in the object
-
-
-```php
-public function getSQLVariables(): array;
-```
-Active SQL statement in the object
-
-
-```php
-public function getType(): string;
-```
-Returns type of database system the adapter is used for
-
-
-```php
-public function insert( string $table, array $values, mixed $fields = null, mixed $dataTypes = null ): bool;
-```
-Inserts data into a table using custom RDBMS SQL syntax
-
-
-```php
-public function insertAsDict( string $table, mixed $data, mixed $dataTypes = null ): bool;
-```
-Inserts data into a table using custom RBDM SQL syntax
-
-```php
-// Inserting a new robot
-$success = $connection->insertAsDict(
-    "robots",
-    [
-        "name" => "Astro Boy",
-        "year" => 1952,
-    ]
-);
-
-// Next SQL sentence is sent to the database system
-INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
-```
-
-
-```php
-public function isNestedTransactionsWithSavepoints(): bool;
-```
-Returns if nested transactions should use savepoints
-
-
-```php
-public function isUnderTransaction(): bool;
-```
-Checks whether connection is under database transaction
-
-
-```php
-public function lastInsertId( string $name = null ): string | bool;
-```
-Returns insert id for the auto_increment column inserted in the last SQL
-statement
-
-
-```php
-public function limit( string $sqlQuery, int $number ): string;
-```
-Appends a LIMIT clause to sqlQuery argument
-
-
-```php
-public function listTables( string $schemaName = null ): array;
-```
-List all tables on a database
-
-
-```php
-public function listViews( string $schemaName = null ): array;
-```
-List all views on a database
-
-
-```php
-public function modifyColumn( string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null ): bool;
-```
-Modifies a table column based on a definition
-
-
-```php
-public function query( string $sqlStatement, array $bindParams = [], array $bindTypes = [] ): ResultInterface | bool;
-```
-Sends SQL statements to the database server returning the success state.
-Use this method only when the SQL statement sent to the server returns
-rows
-
-
-```php
-public function releaseSavepoint( string $name ): bool;
-```
-Releases given savepoint
-
-
-```php
-public function rollback( bool $nesting = bool ): bool;
-```
-Rollbacks the active transaction in the connection
-
-
-```php
-public function rollbackSavepoint( string $name ): bool;
-```
-Rollbacks given savepoint
-
-
-```php
-public function setNestedTransactionsWithSavepoints( bool $nestedTransactionsWithSavepoints ): AdapterInterface;
-```
-Set if nested transactions should use savepoints
-
-
-```php
-public function sharedLock( string $sqlQuery ): string;
-```
-Returns a SQL modified with a LOCK IN SHARE MODE clause
-
-
-```php
-public function supportSequences(): bool;
-```
-Check whether the database system requires a sequence to produce
-auto-numeric values
-
-
-```php
-public function supportsDefaultValue(): bool;
-```
-SQLite does not support the DEFAULT keyword
-
-@deprecated Will re removed in the next version
-
-
-```php
-public function tableExists( string $tableName, string $schemaName = null ): bool;
-```
-Generates SQL checking for the existence of a schema.table
-
-
-```php
-public function tableOptions( string $tableName, string $schemaName = null ): array;
-```
-Gets creation options from a table
-
-
-```php
-public function update( string $table, mixed $fields, mixed $values, mixed $whereCondition = null, mixed $dataTypes = null ): bool;
-```
-Updates data on a table using custom RDBMS SQL syntax
-
-
-```php
-public function updateAsDict( string $table, mixed $data, mixed $whereCondition = null, mixed $dataTypes = null ): bool;
-```
-Updates data on a table using custom RBDM SQL syntax
-Another, more convenient syntax
-
-```php
-// Updating existing robot
-$success = $connection->updateAsDict(
-    "robots",
-    [
-        "name" => "New Astro Boy",
-    ],
-    "id = 101"
-);
-
-// Next SQL sentence is sent to the database system
-UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
-```
-
-
-```php
-public function useExplicitIdValue(): bool;
-```
-Check whether the database system requires an explicit value for identity
-columns
-
-
-```php
-public function viewExists( string $viewName, string $schemaName = null ): bool;
-```
-Generates SQL checking for the existence of a schema.view
-
+Phalcon\Db\Adapter\AdapterInterface
+
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Db\Adapter\Adapter} instead.
 
 
 
@@ -2084,6 +1661,125 @@ Returns the available adapters
 
 
 
+## Db\Check 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Check.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+    - `CheckInterface`
+
+Allows to define `CHECK` constraints on tables. CHECK constraints enforce
+a boolean SQL predicate on each row of the table; rows that fail the
+predicate are rejected at INSERT/UPDATE time.
+
+```php
+use Phalcon\Db\Check;
+
+$positivePrice = new Check(
+    "chk_price_positive",
+    [
+        "expression" => "price > 0",
+    ]
+);
+
+// Used inside a createTable() definition
+$connection->createTable(
+    "products",
+    null,
+    [
+        "columns" => [ ... ],
+        "checks"  => [$positivePrice],
+    ]
+);
+
+// Or added to an existing table (MySQL 8.0.16+ and PostgreSQL).
+// SQLite cannot add CHECK constraints to existing tables.
+$connection->addCheck("products", null, $positivePrice);
+```
+
+
+### Properties
+```php
+/**
+ * The boolean SQL predicate this constraint enforces.
+ *
+ * @var string
+ */
+protected $expression;
+
+/**
+ * The CHECK constraint name. An empty string indicates an unnamed
+ * constraint — the dialect will emit the clause without a `CONSTRAINT`
+ * prefix in that case.
+ *
+ * @var string
+ */
+protected $name;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $name, array $definition );
+```
+Phalcon\Db\Check constructor
+
+
+```php
+public function getExpression(): string;
+```
+Returns the CHECK expression
+
+
+```php
+public function getName(): string;
+```
+Returns the constraint name (may be an empty string for unnamed)
+
+
+
+
+## Db\CheckInterface ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/CheckInterface.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Db\Check`
+
+-   __Extends__
+    
+    `CheckContract`
+
+-   __Implements__
+    
+
+Phalcon\Db\CheckInterface
+
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Db\Check} instead.
+
+
+
 ## Db\Column 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Column.zep)
@@ -2141,21 +1837,37 @@ const TYPE_BINARY = 27;
 const TYPE_BIT = 19;
 const TYPE_BLOB = 11;
 const TYPE_BOOLEAN = 8;
+const TYPE_BYTEA = 30;
 const TYPE_CHAR = 5;
+const TYPE_CIDR = 32;
 const TYPE_DATE = 1;
+const TYPE_DATERANGE = 39;
 const TYPE_DATETIME = 4;
 const TYPE_DECIMAL = 3;
 const TYPE_DOUBLE = 9;
 const TYPE_ENUM = 18;
 const TYPE_FLOAT = 7;
+const TYPE_GEOMETRY = 40;
+const TYPE_GEOMETRYCOLLECTION = 47;
+const TYPE_INET = 31;
+const TYPE_INT4RANGE = 34;
+const TYPE_INT8RANGE = 35;
 const TYPE_INTEGER = 0;
 const TYPE_JSON = 15;
 const TYPE_JSONB = 16;
+const TYPE_LINESTRING = 42;
 const TYPE_LONGBLOB = 13;
 const TYPE_LONGTEXT = 24;
+const TYPE_MACADDR = 33;
 const TYPE_MEDIUMBLOB = 12;
 const TYPE_MEDIUMINTEGER = 21;
 const TYPE_MEDIUMTEXT = 23;
+const TYPE_MULTILINESTRING = 45;
+const TYPE_MULTIPOINT = 44;
+const TYPE_MULTIPOLYGON = 46;
+const TYPE_NUMRANGE = 36;
+const TYPE_POINT = 41;
+const TYPE_POLYGON = 43;
 const TYPE_SMALLINTEGER = 22;
 const TYPE_TEXT = 6;
 const TYPE_TIME = 20;
@@ -2163,6 +1875,9 @@ const TYPE_TIMESTAMP = 17;
 const TYPE_TINYBLOB = 10;
 const TYPE_TINYINTEGER = 26;
 const TYPE_TINYTEXT = 25;
+const TYPE_TSRANGE = 37;
+const TYPE_TSTZRANGE = 38;
+const TYPE_UUID = 29;
 const TYPE_VARBINARY = 28;
 const TYPE_VARCHAR = 2;
 ```
@@ -2172,9 +1887,18 @@ const TYPE_VARCHAR = 2;
 /**
  * Column Position
  *
- * @var string
+ * @var string|null
  */
-protected $after = "";
+protected $after;
+
+/**
+ * Whether the column is an array of its base type. Recognized by the
+ * PostgreSQL dialect (e.g. `INTEGER[]`, `TEXT[]`). MySQL and SQLite
+ * ignore the flag.
+ *
+ * @var bool
+ */
+protected $isArray = false;
 
 /**
  * Column is autoIncrement?
@@ -2212,11 +1936,37 @@ protected $defaultValue;
 protected $first = false;
 
 /**
+ * Generation expression for `GENERATED ALWAYS AS (...)`. Null when the
+ * column is not a generated/computed column.
+ *
+ * @var string|null
+ */
+protected $generated;
+
+/**
+ * Whether a generated column is `STORED` (true) or `VIRTUAL` (false).
+ * Ignored when the column is not generated. PostgreSQL only supports
+ * `STORED` and emits it regardless of this flag.
+ *
+ * @var bool
+ */
+protected $generationStored = false;
+
+/**
  * The column have some numeric type?
  *
  * @var bool
  */
 protected $isNumeric = false;
+
+/**
+ * Whether the column is `INVISIBLE` (MySQL 8.0.23+). Invisible columns
+ * are excluded from `SELECT *` expansion but can still be referenced
+ * explicitly.
+ *
+ * @var bool
+ */
+protected $invisible = false;
 
 /**
  * Column's name
@@ -2294,7 +2044,7 @@ Phalcon\Db\Column constructor
 
 
 ```php
-public function getAfterPosition(): string;
+public function getAfterPosition(): string | null;
 ```
 Check whether field absolute to position in table
 
@@ -2318,6 +2068,13 @@ Default column value
 
 
 ```php
+public function getGenerationExpression(): string | null;
+```
+Returns the generation expression for a generated/computed column.
+Returns `null` when the column is not generated.
+
+
+```php
 public function getName(): string;
 ```
 Column's name
@@ -2336,7 +2093,7 @@ Integer column size
 
 
 ```php
-public function getType(): int;
+public function getType(): int | string;
 ```
 Column data type
 
@@ -2360,6 +2117,14 @@ Check whether column has default value
 
 
 ```php
+public function isArray(): bool;
+```
+Whether the column is an array of its base type. Recognized by the
+PostgreSQL dialect (e.g. `INTEGER[]`, `TEXT[]`); MySQL and SQLite
+ignore the flag.
+
+
+```php
 public function isAutoIncrement(): bool;
 ```
 Auto-Increment
@@ -2369,6 +2134,28 @@ Auto-Increment
 public function isFirst(): bool;
 ```
 Check whether column have first position in table
+
+
+```php
+public function isGenerated(): bool;
+```
+Whether the column is a generated/computed column.
+
+
+```php
+public function isGenerationStored(): bool;
+```
+Whether a generated column is `STORED`. `false` means `VIRTUAL`.
+Always meaningful only when `isGenerated()` is `true`.
+
+
+```php
+public function isInvisible(): bool;
+```
+Whether the column is declared `INVISIBLE` (MySQL 8.0.23+). Invisible
+columns are excluded from `SELECT` expansion but can still be
+referenced explicitly. PostgreSQL and SQLite have no equivalent and
+dialects targeting them ignore the flag.
 
 
 ```php
@@ -2408,113 +2195,20 @@ Returns true if number column is unsigned
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Db\Column`
 
 -   __Extends__
     
+    `ColumnContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Db\Column
+Phalcon\Db\ColumnInterface
 
-
-### Methods
-
-```php
-public function getAfterPosition(): string | null;
-```
-Check whether field absolute to position in table
-
-
-```php
-public function getBindType(): int;
-```
-Returns the type of bind handling
-
-
-```php
-public function getDefault(): mixed;
-```
-Returns default value of column
-
-
-```php
-public function getName(): string;
-```
-Returns column name
-
-
-```php
-public function getScale(): int;
-```
-Returns column scale
-
-
-```php
-public function getSize(): int | string;
-```
-Returns column size
-
-
-```php
-public function getType(): int;
-```
-Returns column type
-
-
-```php
-public function getTypeReference(): int;
-```
-Returns column type reference
-
-
-```php
-public function getTypeValues(): array | string;
-```
-Returns column type values
-
-
-```php
-public function hasDefault(): bool;
-```
-Check whether column has default value
-
-
-```php
-public function isAutoIncrement(): bool;
-```
-Auto-Increment
-
-
-```php
-public function isFirst(): bool;
-```
-Check whether column have first position in table
-
-
-```php
-public function isNotNull(): bool;
-```
-Not null
-
-
-```php
-public function isNumeric(): bool;
-```
-Check whether column have an numeric type
-
-
-```php
-public function isPrimary(): bool;
-```
-Column is part of the primary key?
-
-
-```php
-public function isUnsigned(): bool;
-```
-Returns true if number column is unsigned
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Db\Column} instead.
 
 
 
@@ -2559,9 +2253,23 @@ protected $customFunctions;
 ### Methods
 
 ```php
+public function createMaterializedView( string $viewName, array $definition, string $schemaName = null ): string;
+```
+Generates SQL to create a materialized view. Supported by PostgreSQL
+(`CREATE MATERIALIZED VIEW name AS <sql>`). Other dialects inherit
+this throw — MySQL and SQLite have no materialized-view concept.
+
+
+```php
 public function createSavepoint( string $name ): string;
 ```
 Generate SQL to create a new savepoint
+
+
+```php
+public function dropMaterializedView( string $viewName, string $schemaName = null, bool $ifExists = bool ): string;
+```
+Generates SQL to drop a materialized view. Supported by PostgreSQL.
 
 
 ```php
@@ -2577,14 +2285,26 @@ Escape Schema
 
 
 ```php
-public function forUpdate( string $sqlQuery ): string;
+public function forUpdate( string $sqlQuery, string $modifier = string ): string;
 ```
-Returns a SQL modified with a FOR UPDATE clause
+Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
+appends a row-lock disposition keyword.
 
 ```php
 $sql = $dialect->forUpdate("SELECTFROM robots");
-
 echo $sql; // SELECTFROM robots FOR UPDATE
+
+$sql = $dialect->forUpdate(
+    "SELECTFROM robots",
+    Dialect::LOCK_NOWAIT
+);
+echo $sql; // SELECTFROM robots FOR UPDATE NOWAIT
+
+$sql = $dialect->forUpdate(
+    "SELECTFROM robots",
+    Dialect::LOCK_SKIP_LOCKED
+);
+echo $sql; // SELECTFROM robots FOR UPDATE SKIP LOCKED
 ```
 
 
@@ -2649,6 +2369,25 @@ echo $dialect->limit(
 
 
 ```php
+public function onConflictUpdate( string $sqlQuery, array $conflictColumns, array $updateColumns ): string;
+```
+Appends an `ON CONFLICT (col, ...) DO UPDATE SET col = excluded.col`
+upsert clause to the supplied INSERT statement. The syntax is the
+SQL standard form recognized by PostgreSQL (9.5+) and SQLite (3.24+).
+MySQL overrides this method to throw because its `ON DUPLICATE KEY
+UPDATE` has a different shape (deferred to parser item #23).
+
+
+```php
+public function refreshMaterializedView( string $viewName, string $schemaName = null, bool $concurrent = bool ): string;
+```
+Generates SQL to refresh a materialized view. Supported by
+PostgreSQL. Pass `concurrent = true` for `REFRESH MATERIALIZED VIEW
+CONCURRENTLY ...`, which avoids blocking concurrent SELECTs (requires
+the view to have a unique index).
+
+
+```php
 public function registerCustomFunction( string $name, callable $customFunction ): Dialect;
 ```
 Registers custom SQL functions
@@ -2658,6 +2397,16 @@ Registers custom SQL functions
 public function releaseSavepoint( string $name ): string;
 ```
 Generate SQL to release a savepoint
+
+
+```php
+public function returning( string $sqlQuery, array $columns ): string;
+```
+Returns a SQL statement extended with a `RETURNING` clause so the
+INSERT/UPDATE/DELETE returns rows. Supported by PostgreSQL and
+SQLite 3.35+. Pass `["*"]` for `RETURNING`, or a list of column
+names. The base implementation throws — MySQL inherits it because
+MySQL has no RETURNING construct.
 
 
 ```php
@@ -2697,6 +2446,16 @@ Checks the column type and returns the updated SQL statement
 
 
 ```php
+protected function getCheckClause( CheckInterface $check, string $escapeChar = string ): string;
+```
+Builds a CHECK constraint clause from a `CheckInterface`, using the
+provided escape character for the constraint name (so each dialect
+gets its native quoting). Returns the clause body — the dialect's
+`createTable()` / `addCheck()` is expected to prefix `ADD` or place
+the result on its own line as appropriate.
+
+
+```php
 protected function getColumnSize( ColumnInterface $column ): string;
 ```
 Returns the size of the column enclosed in parentheses
@@ -2706,6 +2465,27 @@ Returns the size of the column enclosed in parentheses
 protected function getColumnSizeAndScale( ColumnInterface $column ): string;
 ```
 Returns the column size and scale enclosed in parentheses
+
+
+```php
+protected function getGeneratedClause( ColumnInterface $column, bool $forceStored = bool ): string;
+```
+Builds the `GENERATED ALWAYS AS (<expr>) VIRTUAL|STORED` clause for a
+generated/computed column. Returns an empty string when the column is
+not generated. When `forceStored` is `true` the clause is always emitted
+as `STORED` regardless of the column's `isGenerationStored()` flag —
+PostgreSQL uses this since it only supports stored generated columns.
+
+
+```php
+protected function getIndexColumnList( IndexInterface $index, bool $wrapExpressions = bool ): string;
+```
+Builds the per-index parenthesized column list, honoring per-column
+sort directions when the index declares any. Returns the bare
+comma-separated `getColumnList()` output when no directions are set,
+preserving the legacy rendering exactly. When directions are set,
+each column is followed by ` ASC` or ` DESC`; trailing positions
+absent from the directions array default to `ASC`.
 
 
 ```php
@@ -2847,12 +2627,14 @@ Prepares table for this RDBMS
 
 -   __Uses__
     
+    - `Phalcon\Db\CheckInterface`
     - `Phalcon\Db\Column`
     - `Phalcon\Db\ColumnInterface`
     - `Phalcon\Db\Dialect`
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Exception`
     - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\RawValue`
     - `Phalcon\Db\ReferenceInterface`
 
 -   __Extends__
@@ -2875,6 +2657,13 @@ protected $escapeChar = `;
 ```
 
 ### Methods
+
+```php
+public function addCheck( string $tableName, string $schemaName, CheckInterface $check ): string;
+```
+Generates SQL to add a CHECK constraint to an existing table.
+Enforced by MySQL 8.0.16+.
+
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2934,6 +2723,12 @@ Generates SQL to query indexes on a table
 public function describeReferences( string $table, string $schema = null ): string;
 ```
 Generates SQL to query foreign keys on a table
+
+
+```php
+public function dropCheck( string $tableName, string $schemaName, string $checkName ): string;
+```
+Generates SQL to delete a CHECK constraint from a table
 
 
 ```php
@@ -3009,9 +2804,23 @@ Generates SQL to modify a column in a table
 
 
 ```php
-public function sharedLock( string $sqlQuery ): string;
+public function onConflictUpdate( string $sqlQuery, array $conflictColumns, array $updateColumns ): string;
 ```
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+MySQL does not support the SQL-standard `ON CONFLICT DO UPDATE`
+upsert syntax — it has its own `INSERT ... ON DUPLICATE KEY UPDATE`
+which requires PHQL grammar work (deferred). The base helper is
+overridden here to throw, preventing accidental emission of invalid
+SQL on MySQL connections.
+
+
+```php
+public function sharedLock( string $sqlQuery, string $modifier = string ): string;
+```
+Returns a SQL modified with a LOCK IN SHARE MODE clause. The `modifier`
+argument is accepted for signature parity with the contract but is
+silently ignored on MySQL — its legacy `LOCK IN SHARE MODE` syntax has
+no `NOWAIT` / `SKIP LOCKED` variant. Callers needing those modifiers
+should target PostgreSQL or stay on `forUpdate()`.
 
 ```php
 $sql = $dialect->sharedLock("SELECTFROM robots");
@@ -3069,12 +2878,14 @@ Generates SQL to add the table creation options
 
 -   __Uses__
     
+    - `Phalcon\Db\CheckInterface`
     - `Phalcon\Db\Column`
     - `Phalcon\Db\ColumnInterface`
     - `Phalcon\Db\Dialect`
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Exception`
     - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\RawValue`
     - `Phalcon\Db\ReferenceInterface`
 
 -   __Extends__
@@ -3099,6 +2910,12 @@ protected $escapeChar = \";
 ### Methods
 
 ```php
+public function addCheck( string $tableName, string $schemaName, CheckInterface $check ): string;
+```
+Generates SQL to add a CHECK constraint to an existing table.
+
+
+```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
 ```
 Generates SQL to add a column to a table
@@ -3120,6 +2937,12 @@ Generates SQL to add an index to a table
 public function addPrimaryKey( string $tableName, string $schemaName, IndexInterface $index ): string;
 ```
 Generates SQL to add the primary key to a table
+
+
+```php
+public function createMaterializedView( string $viewName, array $definition, string $schemaName = null ): string;
+```
+Generates SQL to create a materialized view.
 
 
 ```php
@@ -3159,6 +2982,12 @@ Generates SQL to query foreign keys on a table
 
 
 ```php
+public function dropCheck( string $tableName, string $schemaName, string $checkName ): string;
+```
+Generates SQL to delete a CHECK constraint from a table
+
+
+```php
 public function dropColumn( string $tableName, string $schemaName, string $columnName ): string;
 ```
 Generates SQL to delete a column from a table
@@ -3174,6 +3003,12 @@ Generates SQL to delete a foreign key from a table
 public function dropIndex( string $tableName, string $schemaName, string $indexName ): string;
 ```
 Generates SQL to delete an index from a table
+
+
+```php
+public function dropMaterializedView( string $viewName, string $schemaName = null, bool $ifExists = bool ): string;
+```
+Generates SQL to drop a materialized view.
 
 
 ```php
@@ -3225,10 +3060,38 @@ Generates SQL to modify a column in a table
 
 
 ```php
-public function sharedLock( string $sqlQuery ): string;
+public function refreshMaterializedView( string $viewName, string $schemaName = null, bool $concurrent = bool ): string;
 ```
-Returns a SQL modified a shared lock statement. For now this method
-returns the original query
+Generates SQL to refresh a materialized view. When `concurrent` is
+true, emits `REFRESH MATERIALIZED VIEW CONCURRENTLY ...` (avoids
+blocking concurrent SELECTs; requires a unique index on the view).
+
+
+```php
+public function returning( string $sqlQuery, array $columns ): string;
+```
+Appends a `RETURNING` clause to the supplied INSERT/UPDATE/DELETE
+statement. Pass `["*"]` for `RETURNING`, or a list of column names.
+
+
+```php
+public function sharedLock( string $sqlQuery, string $modifier = string ): string;
+```
+Returns a SQL modified with a `FOR SHARE` clause — PostgreSQL's
+equivalent of MySQL's `LOCK IN SHARE MODE`. The optional `modifier`
+appends a row-lock disposition keyword (pass `Dialect::LOCK_NOWAIT`
+or `Dialect::LOCK_SKIP_LOCKED`).
+
+```php
+echo $dialect->sharedLock("SELECTFROM robots");
+// SELECTFROM robots FOR SHARE
+
+echo $dialect->sharedLock(
+    "SELECTFROM robots",
+    Dialect::LOCK_NOWAIT
+);
+// SELECTFROM robots FOR SHARE NOWAIT
+```
 
 
 ```php
@@ -3286,12 +3149,14 @@ protected function getTableOptions( array $definition ): string;
 
 -   __Uses__
     
+    - `Phalcon\Db\CheckInterface`
     - `Phalcon\Db\Column`
     - `Phalcon\Db\ColumnInterface`
     - `Phalcon\Db\Dialect`
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Exception`
     - `Phalcon\Db\IndexInterface`
+    - `Phalcon\Db\RawValue`
     - `Phalcon\Db\ReferenceInterface`
 
 -   __Extends__
@@ -3314,6 +3179,13 @@ protected $escapeChar = \";
 ```
 
 ### Methods
+
+```php
+public function addCheck( string $tableName, string $schemaName, CheckInterface $check ): string;
+```
+SQLite cannot ALTER an existing table to add a CHECK constraint;
+the constraint must be declared at CREATE TABLE time.
+
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3382,9 +3254,20 @@ Generates SQL to query foreign keys on a table
 
 
 ```php
+public function dropCheck( string $tableName, string $schemaName, string $checkName ): string;
+```
+SQLite cannot DROP a CHECK constraint from an existing table.
+
+
+```php
 public function dropColumn( string $tableName, string $schemaName, string $columnName ): string;
 ```
-Generates SQL to delete a column from a table
+Generates SQL to delete a column from a table.
+
+SQLite 3.35+ supports `ALTER TABLE ... DROP COLUMN ...` directly. On
+older versions the server rejects the statement at execution time;
+cphalcon no longer pre-empts that rejection at the dialect level so
+callers on 3.35+ can use the feature.
 
 
 ```php
@@ -3418,10 +3301,12 @@ Generates SQL to drop a view
 
 
 ```php
-public function forUpdate( string $sqlQuery ): string;
+public function forUpdate( string $sqlQuery, string $modifier = string ): string;
 ```
-Returns a SQL modified with a FOR UPDATE clause. For SQLite it returns
-the original query
+Returns a SQL modified with a FOR UPDATE clause. SQLite has no
+row-level locking, so the original query is returned unchanged
+regardless of the `modifier` argument (`NOWAIT` / `SKIP LOCKED` are
+silently ignored).
 
 
 ```php
@@ -3467,10 +3352,18 @@ Generates SQL to modify a column in a table
 
 
 ```php
-public function sharedLock( string $sqlQuery ): string;
+public function returning( string $sqlQuery, array $columns ): string;
 ```
-Returns a SQL modified a shared lock statement. For now this method
-returns the original query
+Appends a `RETURNING` clause to the supplied INSERT/UPDATE/DELETE
+statement. Supported by SQLite 3.35+. Pass `["*"]` for `RETURNING`,
+or a list of column names.
+
+
+```php
+public function sharedLock( string $sqlQuery, string $modifier = string ): string;
+```
+SQLite has no row-level shared-lock construct, so the original query
+is returned unchanged regardless of the `modifier` argument.
 
 
 ```php
@@ -3516,222 +3409,20 @@ Generates SQL checking for the existence of a schema.view
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Db\Dialect`
 
 -   __Extends__
     
+    `DialectContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Db dialects
-
-
-### Methods
-
-```php
-public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
-```
-Generates SQL to add a column to a table
-
-
-```php
-public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): string;
-```
-Generates SQL to add an index to a table
-
-
-```php
-public function addIndex( string $tableName, string $schemaName, IndexInterface $index ): string;
-```
-Generates SQL to add an index to a table
-
-
-```php
-public function addPrimaryKey( string $tableName, string $schemaName, IndexInterface $index ): string;
-```
-Generates SQL to add the primary key to a table
-
-
-```php
-public function createSavepoint( string $name ): string;
-```
-Generate SQL to create a new savepoint
-
-
-```php
-public function createTable( string $tableName, string $schemaName, array $definition ): string;
-```
-Generates SQL to create a table
-
-
-```php
-public function createView( string $viewName, array $definition, string $schemaName = null ): string;
-```
-Generates SQL to create a view
-
-
-```php
-public function describeColumns( string $table, string $schema = null ): string;
-```
-Generates SQL to describe a table
-
-
-```php
-public function describeIndexes( string $table, string $schema = null ): string;
-```
-Generates SQL to query indexes on a table
-
-
-```php
-public function describeReferences( string $table, string $schema = null ): string;
-```
-Generates SQL to query foreign keys on a table
-
-
-```php
-public function dropColumn( string $tableName, string $schemaName, string $columnName ): string;
-```
-Generates SQL to delete a column from a table
-
-
-```php
-public function dropForeignKey( string $tableName, string $schemaName, string $referenceName ): string;
-```
-Generates SQL to delete a foreign key from a table
-
-
-```php
-public function dropIndex( string $tableName, string $schemaName, string $indexName ): string;
-```
- Generates SQL to delete an index from a table
-
-
-```php
-public function dropPrimaryKey( string $tableName, string $schemaName ): string;
-```
-Generates SQL to delete primary key from a table
-
-
-```php
-public function dropTable( string $tableName, string $schemaName, bool $ifExists = bool ): string;
-```
-Generates SQL to drop a table
-
-
-```php
-public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): string;
-```
-Generates SQL to drop a view
-
-
-```php
-public function forUpdate( string $sqlQuery ): string;
-```
-Returns a SQL modified with a FOR UPDATE clause
-
-
-```php
-public function getColumnDefinition( ColumnInterface $column ): string;
-```
-Gets the column name in RDBMS
-
-
-```php
-public function getColumnList( array $columnList ): string;
-```
-Gets a list of columns
-
-
-```php
-public function getCustomFunctions(): array;
-```
-Returns registered functions
-
-
-```php
-public function getSqlExpression( array $expression, string $escapeChar = null, array $bindCounts = [] ): string;
-```
-Transforms an intermediate representation for an expression into a
-database system valid expression
-
-
-```php
-public function limit( string $sqlQuery, mixed $number ): string;
-```
-Generates the SQL for LIMIT clause
-
-
-```php
-public function listTables( string $schemaName = null ): string;
-```
-List all tables in database
-
-
-```php
-public function modifyColumn( string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null ): string;
-```
-Generates SQL to modify a column in a table
-
-
-```php
-public function registerCustomFunction( string $name, callable $customFunction ): Dialect;
-```
-Registers custom SQL functions
-
-
-```php
-public function releaseSavepoint( string $name ): string;
-```
-Generate SQL to release a savepoint
-
-
-```php
-public function rollbackSavepoint( string $name ): string;
-```
-Generate SQL to rollback a savepoint
-
-
-```php
-public function select( array $definition ): string;
-```
-Builds a SELECT statement
-
-
-```php
-public function sharedLock( string $sqlQuery ): string;
-```
-Returns a SQL modified with a LOCK IN SHARE MODE clause
-
-
-```php
-public function supportsReleaseSavepoints(): bool;
-```
-Checks whether the platform supports releasing savepoints.
-
-
-```php
-public function supportsSavepoints(): bool;
-```
-Checks whether the platform supports savepoints
-
-
-```php
-public function tableExists( string $tableName, string $schemaName = null ): string;
-```
-Generates SQL checking for the existence of a schema.table
-
-
-```php
-public function tableOptions( string $table, string $schema = null ): string;
-```
-Generates the SQL to describe the table creation options
-
-
-```php
-public function viewExists( string $viewName, string $schemaName = null ): string;
-```
-Generates SQL checking for the existence of a schema.view
-
+Phalcon\Db\DialectInterface
+
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Db\Dialect} instead.
 
 
 
@@ -3764,7 +3455,7 @@ const FETCH_BOUND;
 const FETCH_CLASS;
 const FETCH_CLASSTYPE;
 const FETCH_COLUMN;
-const FETCH_DEFAULT = 0;
+const FETCH_DEFAULT;
 const FETCH_FUNC;
 const FETCH_GROUP;
 const FETCH_INTO;
@@ -3824,30 +3515,44 @@ Exceptions thrown in Phalcon\Db will use this class
 
 Allows to define indexes to be used on tables. Indexes are a common way
 to enhance database performance. An index allows the database server to find
-and retrieve specific rows much faster than it could do without an index
+and retrieve specific rows much faster than it could do without an index.
+
+The constructor accepts either the legacy positional form (a plain array
+of column names) or a definition-array form (an associative array with a
+`columns` key); the latter is the path used by features such as
+`invisible` (MySQL 8.0+) and is the form that future per-index modifiers
+will extend.
 
 ```php
-// Define new unique index
-$index_unique = new \Phalcon\Db\Index(
+// Legacy positional form
+$unique = new \Phalcon\Db\Index(
     'column_UNIQUE',
     [
-        'column',
         'column',
     ],
     'UNIQUE'
 );
 
-// Define new primary index
-$index_primary = new \Phalcon\Db\Index(
+$primary = new \Phalcon\Db\Index(
     'PRIMARY',
     [
         'column',
     ]
 );
 
-// Add index to existing table
-$connection->addIndex("robots", null, $index_unique);
-$connection->addIndex("robots", null, $index_primary);
+// Definition-array form (MySQL 8.0+ invisible index)
+$hidden = new \Phalcon\Db\Index(
+    'idx_hidden',
+    [
+        'columns'   => ['col1'],
+        'type'      => '',
+        'invisible' => true,
+    ]
+);
+
+$connection->addIndex("robots", null, $unique);
+$connection->addIndex("robots", null, $primary);
+$connection->addIndex("robots", null, $hidden);
 ```
 
 
@@ -3861,6 +3566,36 @@ $connection->addIndex("robots", null, $index_primary);
 protected $columns;
 
 /**
+ * Whether to build the index without taking a strong lock that blocks
+ * writes — emits `CONCURRENTLY` between `INDEX` and the index name on
+ * PostgreSQL (`CREATE INDEX CONCURRENTLY name ON ...`). MySQL and
+ * SQLite have no equivalent and ignore the flag.
+ *
+ * @var bool
+ */
+protected $concurrent = false;
+
+/**
+ * Per-column sort directions (`ASC` / `DESC`). Empty array means
+ * "emit no per-column direction" — preserves the legacy plain
+ * `(col1, col2)` rendering. When populated, entries shorter than
+ * the columns list default to `ASC` for the missing positions.
+ *
+ * @var array
+ */
+protected $directions;
+
+/**
+ * Whether the index is declared `INVISIBLE` (MySQL 8.0+). Invisible
+ * indexes are ignored by the optimizer — useful for testing what
+ * happens when an index is removed before actually dropping it.
+ * PostgreSQL and SQLite have no equivalent and ignore the flag.
+ *
+ * @var bool
+ */
+protected $invisible = false;
+
+/**
  * Index name
  *
  * @var string
@@ -3872,22 +3607,48 @@ protected $name;
  *
  * @var string
  */
-protected $type;
+protected $type = ;
+
+/**
+ * Optional partial-index `WHERE` predicate. Supported by PostgreSQL and
+ * SQLite (`CREATE INDEX ... WHERE <expr>`); MySQL has no partial-index
+ * concept and its dialect ignores this value. Empty string means no
+ * predicate.
+ *
+ * @var string
+ */
+protected $where = ;
 
 ```
 
 ### Methods
 
 ```php
-public function __construct( string $name, array $columns, string $type = string );
+public function __construct( string $name, array $columnsOrDefinition, string $type = string );
 ```
-Phalcon\Db\Index constructor
+Phalcon\Db\Index constructor.
+
+Accepts either the legacy positional form `(name, columns, type)` or a
+definition-array form `(name, ["columns" => [...], "type" => "...",
+"invisible" => true, ...])`. Detection is based on the presence of a
+`columns` key in the second argument; when present, the third
+positional `type` argument is ignored in favor of the definition.
 
 
 ```php
 public function getColumns(): array;
 ```
 Index columns
+
+
+```php
+public function getDirections(): array;
+```
+Returns the per-column sort directions array (`ASC` / `DESC`).
+Empty array means the index was declared without explicit per-column
+directions and dialects emit the columns plainly. When populated,
+entries are aligned with `getColumns()`; missing trailing positions
+default to `ASC` at emission time.
 
 
 ```php
@@ -3900,6 +3661,29 @@ Index name
 public function getType(): string;
 ```
 Index type
+
+
+```php
+public function getWhere(): string;
+```
+Returns the partial-index `WHERE` predicate, or an empty string when
+the index has none. Supported by PostgreSQL and SQLite; ignored by
+the MySQL dialect (MySQL has no partial-index feature).
+
+
+```php
+public function isConcurrent(): bool;
+```
+Whether the index is built `CONCURRENTLY` (PostgreSQL only). MySQL
+and SQLite have no equivalent and ignore the flag.
+
+
+```php
+public function isInvisible(): bool;
+```
+Whether the index is declared `INVISIBLE` (MySQL 8.0+). Invisible
+indexes are ignored by the optimizer but still maintained, so they
+can be flipped back to visible without a rebuild.
 
 
 
@@ -3915,35 +3699,20 @@ Index type
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Db\Index`
 
 -   __Extends__
     
+    `IndexContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Db\Index
+Phalcon\Db\IndexInterface
 
-
-### Methods
-
-```php
-public function getColumns(): array;
-```
-Gets the columns that corresponds the index
-
-
-```php
-public function getName(): string;
-```
-Gets the index name
-
-
-```php
-public function getType(): string;
-```
-Gets the index type
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Db\Index} instead.
 
 
 
@@ -4428,13 +4197,13 @@ Constraint name
 
 
 ```php
-public function getOnDelete(): string;
+public function getOnDelete(): string | null;
 ```
 ON DELETE
 
 
 ```php
-public function getOnUpdate(): string;
+public function getOnUpdate(): string | null;
 ```
 ON UPDATE
 
@@ -4446,7 +4215,7 @@ Referenced Columns
 
 
 ```php
-public function getReferencedSchema(): string;
+public function getReferencedSchema(): string | null;
 ```
 Referenced Schema
 
@@ -4458,7 +4227,7 @@ Referenced Table
 
 
 ```php
-public function getSchemaName(): string;
+public function getSchemaName(): string | null;
 ```
 Schema name
 
@@ -4476,65 +4245,20 @@ Schema name
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Db\Reference`
 
 -   __Extends__
     
+    `ReferenceContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Db\Reference
+Phalcon\Db\ReferenceInterface
 
-
-### Methods
-
-```php
-public function getColumns(): array;
-```
-Gets local columns which reference is based
-
-
-```php
-public function getName(): string;
-```
-Gets the index name
-
-
-```php
-public function getOnDelete(): string;
-```
-Gets the referenced on delete
-
-
-```php
-public function getOnUpdate(): string;
-```
-Gets the referenced on update
-
-
-```php
-public function getReferencedColumns(): array;
-```
-Gets referenced columns
-
-
-```php
-public function getReferencedSchema(): string;
-```
-Gets the schema where referenced table is
-
-
-```php
-public function getReferencedTable(): string;
-```
-Gets the referenced table
-
-
-```php
-public function getSchemaName(): string;
-```
-Gets the schema where referenced table is
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Db\Reference} instead.
 
 
 
@@ -4776,72 +4500,18 @@ $result->setFetchMode(
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Db\Result`
 
 -   __Extends__
     
+    `ResultContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Db\Result objects
+Phalcon\Db\ResultInterface
 
-
-### Methods
-
-```php
-public function dataSeek( int $number );
-```
-Moves internal resultset cursor to another position letting us to fetch a
-certain row
-
-
-```php
-public function execute(): bool;
-```
-Allows to execute the statement again. Some database systems don't
-support scrollable cursors. So, as cursors are forward only, we need to
-execute the cursor again to fetch rows from the beginning
-
-
-```php
-public function fetch(): mixed;
-```
-Fetches an array/object of strings that corresponds to the fetched row,
-or FALSE if there are no more rows. This method is affected by the active
-fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
-
-
-```php
-public function fetchAll(): array;
-```
-Returns an array of arrays containing all the records in the result. This
-method is affected by the active fetch flag set using
-`Phalcon\Db\Result\Pdo::setFetchMode()`
-
-
-```php
-public function fetchArray(): mixed;
-```
-Returns an array of strings that corresponds to the fetched row, or FALSE
-if there are no more rows. This method is affected by the active fetch
-flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
-
-
-```php
-public function getInternalResult(): \PDOStatement;
-```
-Gets the internal PDO result object
-
-
-```php
-public function numRows(): int;
-```
-Gets number of rows returned by a resultset
-
-
-```php
-public function setFetchMode( int $fetchMode ): bool;
-```
-Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Db\Result} instead.
 

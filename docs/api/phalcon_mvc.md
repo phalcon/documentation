@@ -217,6 +217,15 @@ class PeopleController extends \Phalcon\Mvc\Controller
 ```
 
 
+### Properties
+```php
+/**
+ * @var ManagerInterface|null
+ */
+protected $eventsManager;
+
+```
+
 ### Methods
 
 ```php
@@ -1532,6 +1541,7 @@ if ($robot->save() === false) {
     echo "Great, a new robot was saved successfully!";
 }
 ```
+@template T of static
 
 
 ### Constants
@@ -1951,7 +1961,7 @@ var_dump(
 
 
 ```php
-public static function find( mixed $parameters = null );
+public static function find( mixed $parameters = null ): ResultsetInterface;
 ```
 Query for a set of records that match the specified conditions
 
@@ -4273,6 +4283,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider`
     - `Phalcon\Db\Adapter\AdapterInterface`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\InjectionAwareInterface`
@@ -5447,6 +5458,16 @@ protected $container;
 protected $metaData;
 
 /**
+ * Holds metadata index writes that arrived before the model's metadata was
+ * properly initialized (e.g. skipAttributes() called in a parent model's
+ * initialize() while the child's source had not yet been set).  Applied
+ * inside initializeMetaData() after the real schema is loaded.
+ *
+ * @var array
+ */
+protected $pendingMetaDataWrites;
+
+/**
  * @var StrategyInterface|null
  */
 protected $strategy;
@@ -5746,7 +5767,7 @@ print_r(
 
 
 ```php
-final public function readMetaDataIndex( ModelInterface $model, int $index ): array | null;
+final public function readMetaDataIndex( ModelInterface $model, int $index ): array | string | null;
 ```
 Reads meta-data for certain model
 
@@ -6439,7 +6460,7 @@ Reads meta-data for certain model
 
 
 ```php
-public function readMetaDataIndex( ModelInterface $model, int $index ): array | null;
+public function readMetaDataIndex( ModelInterface $model, int $index ): array | string | null;
 ```
 Reads meta-data for certain model using a MODEL_* constant
 
@@ -7039,6 +7060,16 @@ Gets the write connection from the model if there is no transaction
 inside the query object
 
 
+```php
+final protected function refreshSchemasInIntermediate( array $irPhql ): array;
+```
+Refreshes the schema/source of every model referenced in a cached
+intermediate representation. The PHQL cache is keyed by the PHQL
+string only, so a model that switches its schema or source at
+runtime (for instance via setSchema()/setSource() in initialize())
+would otherwise see the value frozen at first parse. See #17020.
+
+
 
 
 ## Mvc\Model\Query\Builder 
@@ -7067,6 +7098,8 @@ inside the query object
     
     - `BuilderInterface`
     - `InjectionAwareInterface`
+
+Phalcon\Mvc\Model\Query\Builder
 
 Helps to create PHQL queries using an OO interface
 
@@ -7412,7 +7445,7 @@ Returns the GROUP BY clause
 
 
 ```php
-public function getHaving(): string;
+public function getHaving(): string | null;
 ```
 Return the current having clause
 
@@ -7941,7 +7974,7 @@ Returns the GROUP BY clause
 
 
 ```php
-public function getHaving(): string;
+public function getHaving(): string | null;
 ```
 Returns the HAVING condition clause
 
@@ -8796,6 +8829,10 @@ while ($robots->valid()) {
     $robots->next();
 }
 ```
+@template TKey
+@template TValue
+@implements Iterator<TKey, TValue>
+@implements ArrayAccess<TKey, TValue>
 
 
 ### Constants
@@ -9091,12 +9128,14 @@ Check whether internal resource has rows to fetch
 
 -   __Implements__
     
-    - `ResultsetInterface`
 
 Phalcon\Mvc\Model\Resultset\Complex
 
 Complex resultsets may include complete objects and scalar values.
 This class builds every complex row as it is required
+
+@template TKey of int
+@template TValue of mixed
 
 
 ### Properties
@@ -9196,6 +9235,9 @@ Phalcon\Mvc\Model\Resultset\Simple
 
 Simple resultsets only contains a complete objects
 This class builds every complete object as it is required
+
+@template TKey of int
+@template TValue of \Phalcon\Mvc\ModelInterface
 
 
 ### Properties
@@ -10272,6 +10314,8 @@ Phalcon\Mvc\ModelInterface
 
 Interface for Phalcon\Mvc\Model
 
+@template T
+
 
 ### Methods
 
@@ -10581,12 +10625,14 @@ Registers services related to the module
 
 -   __Uses__
     
+    - `Phalcon\Config\ConfigInterface`
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Events\EventsAwareInterface`
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Http\RequestInterface`
     - `Phalcon\Mvc\Router\Exception`
+    - `Phalcon\Mvc\Router\Group`
     - `Phalcon\Mvc\Router\GroupInterface`
     - `Phalcon\Mvc\Router\Route`
     - `Phalcon\Mvc\Router\RouteInterface`
@@ -10697,6 +10743,16 @@ protected $matchedRoute;
  * @var array
  */
 protected $matches;
+
+/**
+ * @var array
+ */
+protected $methodRoutes;
+
+/**
+ * @var bool
+ */
+protected $methodRoutesDirty = true;
 
 /**
  * @var string
@@ -10911,6 +10967,13 @@ Returns the sub expressions in the regular expression matched
 
 
 ```php
+public function getMethodRoutes(): array;
+```
+Returns the routes indexed by HTTP method.
+Routes with no HTTP constraint are stored under the "*" key.
+
+
+```php
 public function getModuleName(): string;
 ```
 Returns the processed module name
@@ -10968,6 +11031,26 @@ $router->handle("/posts/edit/1");
 public function isExactControllerName(): bool;
 ```
 Returns whether controller name should not be mangled
+
+
+```php
+public function loadFromConfig( mixed $config ): RouterInterface;
+```
+Loads routes from an array or Phalcon\Config\Config instance.
+
+```php
+$router->loadFromConfig(
+     [
+         'routes' => [
+             [
+                 'method'  => 'get',
+                 'pattern' => '/users',
+                 'paths'   => 'Users::index',
+             ],
+         ],
+     ]
+ );
+```
 
 
 ```php
@@ -11069,7 +11152,25 @@ Checks if the router matches any of the defined routes
 
 
 ```php
+protected function addRouteFromConfig( array $routeData ): void;
+```
+Adds a single route from a config array entry. Used by loadFromConfig.
+
+
+```php
 protected function extractRealUri( string $uri ): string;
+```
+
+
+
+```php
+protected function mountGroupFromConfig( array $groupData ): void;
+```
+Builds a Group from a config entry and mounts it. Used by loadFromConfig.
+
+
+```php
+protected function rebuildMethodIndex(): void;
 ```
 
 
@@ -11472,7 +11573,7 @@ Returns the common paths defined for this group
 
 
 ```php
-public function getPrefix(): string;
+public function getPrefix(): string | null;
 ```
 Returns the common prefix for all the routes
 
@@ -11678,7 +11779,7 @@ Returns the common paths defined for this group
 
 
 ```php
-public function getPrefix(): string;
+public function getPrefix(): string | null;
 ```
 Returns the common prefix for all the routes
 
@@ -12153,6 +12254,62 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
+## Mvc\Router\RouterFactory 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/RouterFactory.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router`
+
+-   __Uses__
+    
+    - `Phalcon\Config\ConfigInterface`
+    - `Phalcon\Mvc\Router`
+    - `Phalcon\Mvc\RouterInterface`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Phalcon\Mvc\Router\RouterFactory
+
+Builds a Router from an array or ConfigInterface and loads routes via
+Router::loadFromConfig.
+
+```php
+use Phalcon\Mvc\Router\RouterFactory;
+
+$router = (new RouterFactory())->load(
+    [
+        "defaultRoutes" : false,
+        "routes" : [
+            ["method" : "get", "pattern" : "/users", "paths" : "Users::index"]
+        ]
+    ]
+);
+```
+
+
+### Methods
+
+```php
+public function load( mixed $config ): RouterInterface;
+```
+Builds a Router from a config array or ConfigInterface and loads routes.
+
+
+```php
+public function newInstance( bool $defaultRoutes = bool ): RouterInterface;
+```
+Returns a bare Router instance.
+
+
+
+
 ## Mvc\RouterInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/RouterInterface.zep)
@@ -12324,6 +12481,12 @@ Handles routing information received from the rewrite engine
 
 
 ```php
+public function loadFromConfig( mixed $config ): RouterInterface;
+```
+Loads routes from an array or Phalcon\Config\Config instance.
+
+
+```php
 public function mount( GroupInterface $group ): RouterInterface;
 ```
 Mounts a group of routes in the router
@@ -12437,7 +12600,7 @@ public function __construct( RouterInterface $router = null );
 
 
 ```php
-public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
+public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null, bool $replaceArgs = bool ): string;
 ```
 Generates a URL
 
@@ -12468,6 +12631,17 @@ echo $url->get(
     "https://phalcon.io/",
     null,
     false
+);
+
+// Override existing query string keys instead of appending duplicates.
+// Without the fifth argument: "http://example.com?page=1&page=5".
+// With it set to true:        "http://example.com?page=5".
+echo $url->get(
+    "http://example.com?page=1",
+    ["page" => 5],
+    null,
+    null,
+    true
 );
 ```
 
@@ -12597,7 +12771,7 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 ### Methods
 
 ```php
-public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;
+public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null, bool $replaceArgs = bool ): string;
 ```
 Generates a URL
 
@@ -14742,3 +14916,5 @@ Appends template before controller layout
 public function start();
 ```
 Starts rendering process enabling the output buffering
+
+

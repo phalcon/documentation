@@ -62,7 +62,7 @@ Helper method to fire an event
 
 
 
-## Events\Event 
+## Events\Event ![Final](../assets/images/final-red.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Event.zep)
 
@@ -73,6 +73,7 @@ Helper method to fire an event
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Events\Stoppable`
 
 -   __Extends__
     
@@ -80,6 +81,7 @@ Helper method to fire an event
 -   __Implements__
     
     - `EventInterface`
+    - `Stoppable`
 
 This class offers contextual information of a fired event in the
 EventsManager
@@ -172,6 +174,13 @@ if ($event->isCancelable()) {
 
 
 ```php
+public function isPropagationStopped(): bool;
+```
+Returns whether propagation must stop. PSR-14 alias backed by the same
+`stopped` flag as `isStopped()`; calling `stop()` flips both.
+
+
+```php
 public function isStopped(): bool;
 ```
 Check whether the event is currently stopped.
@@ -214,59 +223,20 @@ if ($event->isCancelable()) {
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Events\Event`
 
 -   __Extends__
     
+    `EventContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Events\Event class
+Phalcon\Events\EventInterface
 
-
-### Methods
-
-```php
-public function getData(): mixed;
-```
-Gets event data
-
-
-```php
-public function getType(): mixed;
-```
-Gets event type
-
-
-```php
-public function isCancelable(): bool;
-```
-Check whether the event is cancelable
-
-
-```php
-public function isStopped(): bool;
-```
-Check whether the event is currently stopped
-
-
-```php
-public function setData( mixed $data = null ): EventInterface;
-```
-Sets event data
-
-
-```php
-public function setType( string $type ): EventInterface;
-```
-Sets event type
-
-
-```php
-public function stop(): EventInterface;
-```
-Stops the event preventing propagation
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Events\Event} instead.
 
 
 
@@ -281,30 +251,20 @@ Stops the event preventing propagation
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Events\EventsAware`
 
 -   __Extends__
     
+    `EventsAwareContract`
 
 -   __Implements__
     
 
-This interface must for those classes that accept an EventsManager and
-dispatch events
+Phalcon\Events\EventsAwareInterface
 
-
-### Methods
-
-```php
-public function getEventsManager(): ManagerInterface | null;
-```
-Returns the internal event manager
-
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-Sets the events manager
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Events\EventsAware} instead.
 
 
 
@@ -343,7 +303,7 @@ Exceptions thrown in Phalcon\Events will use this class
 -   __Uses__
     
     - `Closure`
-    - `SplPriorityQueue`
+    - `Phalcon\Contracts\Events\Subscriber`
 
 -   __Extends__
     
@@ -371,6 +331,105 @@ protected $collect = false;
 protected $enablePriorities = false;
 
 /**
+ * Re-entrancy depth of fire()/fireAll(). 0 means no fire is in
+ * progress. Incremented on every fire entry, decremented on exit.
+ * Used to keep nested fire() calls from clobbering the outer
+ * caller's `$this->responses` accumulator.
+ *
+ * @var int
+ */
+protected $fireDepth = ;
+
+/**
+ * Manager-level kill switch. When true, every fire()/fireAll()/
+ * fireQueue() call returns immediately (null or empty array) without
+ * dispatching. Cleared by resume(). Survives across fire() calls,
+ * unlike Event::stop() which only stops the current dispatch chain.
+ *
+ * @var bool
+ */
+protected $halted = false;
+
+/**
+ * When true, a listener returning literal `false` (with the event's
+ * `cancelable` flag on) short-circuits the dispatch loop and pins
+ * the fire() return as `false`. Default off — preserves the pre-5.13
+ * "last-wins" contract for codebases that rely on later listeners
+ * overriding an earlier false return [#17019].
+ *
+ * @var bool
+ */
+protected $stopOnFalse = false;
+
+/**
+ * When true, fire()/fireAll() throw on dispatch of an event that
+ * has zero matching listeners. Catches typos in dev. Default off.
+ *
+ * @var bool
+ */
+protected $strict = false;
+
+/**
+ * Parsed-eventType cache. Memoizes the strpos + substr work done in
+ * fire() so the same event name fired repeatedly (the common case
+ * for db:beforeQuery, model:afterSave, etc.) collapses to a single
+ * hash lookup.
+ *
+ * Shape: `eventNameCache[$eventType] = [typePrefix, eventName]`
+ *
+ * Unbounded by design — distinct event types in a typical Phalcon
+ * application are well under 100 keys, and the cache never needs
+ * invalidation (parse is deterministic for a given eventType string).
+ *
+ * @var array
+ */
+protected $eventNameCache;
+
+/**
+ * Memoized method_exists() results for the OBJECT_METHOD dispatch
+ * path in dispatch(). Keyed by `handlerClass => [methodName => bool]`.
+ * A class doesn't gain methods at runtime so the lookup is permanent.
+ *
+ * @var array
+ */
+protected $methodExistsCache;
+
+/**
+ * Memoized getSubscribedEvents() maps keyed by Subscriber class name.
+ * The static method's return is stable for the lifetime of a class
+ * definition, so the cache never needs invalidation.
+ *
+ * @var array
+ */
+protected $subscriberEventsCache;
+
+/**
+ * Listener storage. Shape:
+ *
+ *   events[$eventType] = [
+ *       [handler, type, priority]            // types 0, 1, 3
+ *       [handler, type, priority, className] // type 2 carries
+ *                                            // resolved class name
+ *       ...
+ *   ]
+ *
+ * Kept sorted by priority descending when priorities are enabled
+ * (FIFO within the same priority); otherwise listeners are simply
+ * appended in attach order.
+ *
+ * `type` is classified once at attach() time so dispatch() can
+ * route via a simple branch:
+ *
+ *   0 — Closure: direct invocation via `{handler}(args)`, no
+ *       arg-array alloc per call
+ *   1 — [obj, method] array callable: direct dynamic dispatch
+ *       `handler[0]->{handler[1]}(args)`
+ *   2 — plain object: dynamic dispatch via method named after the
+ *       event (the classic Phalcon listener pattern); class name is
+ *       captured at attach time to skip get_class() per fire
+ *   3 — generic callable (string fn name, invokable object,
+ *       [class, staticMethod]): call_user_func_array
+ *
  * @var array
  */
 protected $events;
@@ -380,9 +439,22 @@ protected $events;
  */
 protected $responses;
 
+/**
+ * @var array
+ */
+protected $subscribers;
+
 ```
 
 ### Methods
+
+```php
+public function addSubscriber( Subscriber $subscriber ): void;
+```
+Registers an event subscriber. The subscriber's getSubscribedEvents()
+map is parsed and each entry is attached through the regular listener
+pipeline.
+
 
 ```php
 public function arePrioritiesEnabled(): bool;
@@ -391,9 +463,19 @@ Returns if priorities are enabled
 
 
 ```php
-public function attach( string $eventType, mixed $handler, int $priority = static-constant-access ): void;
+final public function attach( string $eventType, mixed $handler, int $priority = static-constant-access ): void;
 ```
 Attach a listener to the events manager
+
+
+```php
+public function clearSubscribers(): void;
+```
+Removes every registered subscriber and detaches each listener they
+contributed. Listeners attached via attach() are untouched.
+
+Iterates a snapshot of `subscribers` so removeSubscriber() can safely
+mutate the original property during the walk.
 
 
 ```php
@@ -430,7 +512,7 @@ lower priority.
 
 
 ```php
-public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
+final public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 Fires an event in the events manager causing the active listeners to be
 notified about it
@@ -441,9 +523,27 @@ $eventsManager->fire("db", $connection);
 
 
 ```php
-final public function fireQueue( SplPriorityQueue $queue, EventInterface $event );
+public function fireAll( string $eventType, object $source, mixed $data = null, bool $cancelable = bool ): array;
 ```
-Internal handler to call a queue of events
+Fires an event and returns every listener's return value as an
+indexed array. Independent of collectResponses(); the caller's
+collected state on `$this->responses` is preserved (stashed and
+restored across the call).
+
+```php
+$results = $eventsManager->fireAll("db:beforeQuery", $connection);
+```
+
+
+```php
+final public function fireQueue( array $queue, EventInterface $event );
+```
+Internal handler to call a queue of events.
+
+Kept at its original 2-arg signature for BC; thin wrapper around
+the private `dispatch()` helper. Direct callers pay the cost of
+re-extracting metadata from the Event; the framework's own fire()
+path bypasses this wrapper and calls dispatch() with hoisted args.
 
 
 ```php
@@ -460,6 +560,23 @@ Returns all the responses returned by every handler executed by the last
 
 
 ```php
+public function getSubscribers(): array;
+```
+Returns the list of registered subscriber instances. Useful for
+introspection and test setup/teardown.
+
+
+```php
+public function halt(): void;
+```
+Manager-level kill switch. After halt(), every fire()/fireAll()/
+fireQueue() call returns immediately without dispatching, until
+resume() is called. Use this when a listener needs to abort all
+subsequent event activity for the lifetime of the manager (e.g.
+a security check that cancels everything downstream).
+
+
+```php
 public function hasListeners( string $type ): bool;
 ```
 Check whether certain type of event has listeners
@@ -473,9 +590,64 @@ by every registered listener in a single fire
 
 
 ```php
+public function isHalted(): bool;
+```
+Returns whether the manager-level kill switch is engaged. See halt().
+
+
+```php
+public function isStopOnFalse(): bool;
+```
+Returns whether the stop-on-false short-circuit is enabled.
+See setStopOnFalse().
+
+
+```php
+public function isStrict(): bool;
+```
+Returns whether strict mode is enabled. When true, fire()/fireAll()
+throw when an event has no matching listeners — useful in dev to
+catch typos. Default off.
+
+
+```php
 public function isValidHandler( mixed $handler ): bool;
 ```
 
+
+
+```php
+public function removeSubscriber( Subscriber $subscriber ): void;
+```
+Removes a previously registered subscriber. Detaches every listener the
+subscriber declared via getSubscribedEvents(). Idempotent — calling
+with a subscriber that was never added (or already removed) is a no-op.
+
+
+```php
+public function resume(): void;
+```
+Clears the manager-level kill switch set by halt(). Subsequent
+fire()/fireAll()/fireQueue() calls resume normal dispatch.
+
+
+```php
+public function setStopOnFalse( bool $flag ): void;
+```
+Enables/disables the stop-on-false short-circuit. When true, a
+listener returning literal `false` (with cancelable=true) stops
+the current event's queue and pins the fire() return as `false`.
+Later listeners cannot overwrite the cancel. Default off.
+
+Independent of halt() / event->stop() — only governs how the
+dispatch loop reacts to a `false` listener return.
+
+
+```php
+public function setStrict( bool $strict ): void;
+```
+Enables/disables strict mode. When true, fire()/fireAll() throw
+when dispatching an event with zero matching listeners.
 
 
 
@@ -491,57 +663,18 @@ public function isValidHandler( mixed $handler ): bool;
 
 -   __Uses__
     
+    - `Phalcon\Contracts\Events\Manager`
 
 -   __Extends__
     
+    `ManagerContract`
 
 -   __Implements__
     
 
-Interface for Phalcon\Events managers.
+Phalcon\Events\ManagerInterface
 
-
-### Constants
-```php
-const DEFAULT_PRIORITY = 100;
-```
-
-### Methods
-
-```php
-public function attach( string $eventType, mixed $handler, int $priority = 100 ): void;
-```
-Attach a listener to the events manager
-
-
-```php
-public function detach( string $eventType, mixed $handler ): void;
-```
-Detach the listener from the events manager
-
-
-```php
-public function detachAll( string $type = null ): void;
-```
-Removes all events from the EventsManager
-
-
-```php
-public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
-```
-Fires an event in the events manager causing the active listeners to be
-notified about it
-
-
-```php
-public function getListeners( string $type ): array;
-```
-Returns all the attached listeners of a certain type
-
-
-```php
-public function hasListeners( string $type ): bool;
-```
-Check whether certain type of event has listeners
-
+@psalm-suppress DeprecatedInterface
+@deprecated Will be removed in a future major release.
+            Use {@see \Phalcon\Contracts\Events\Manager} instead.
 
