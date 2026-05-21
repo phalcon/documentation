@@ -50,7 +50,7 @@ offering lower resource consumption and high performance.
 <a id=__codelineno-0-3 name=__codelineno-0-3 href=#__codelineno-0-3></a>        <span class=nx>Robots</span><span class=o>.</span><span class=nx>php</span>
 <a id=__codelineno-0-4 name=__codelineno-0-4 href=#__codelineno-0-4></a>    <span class=nx>index</span><span class=o>.</span><span class=nx>php</span>
 <a id=__codelineno-0-5 name=__codelineno-0-5 href=#__codelineno-0-5></a>    <span class=o>.</span><span class=nx>htaccess</span>
-</code></pre></div> <p>First, we need a <code>.htaccess</code> file that contains all the rules to rewrite the request URIs to the <code>index.php</code> file (application entry-point):</p> <div class=highlight><pre><span></span><code><a id=__codelineno-1-1 name=__codelineno-1-1 href=#__codelineno-1-1></a>&lt;IfModule mod_rewrite.c&gt;
+</code></pre></div> <p>First, we need a <code>.htaccess</code> file that contains all the rules to rewrite the request URIs to the <code>index.php</code> file ( application entry-point):</p> <div class=highlight><pre><span></span><code><a id=__codelineno-1-1 name=__codelineno-1-1 href=#__codelineno-1-1></a>&lt;IfModule mod_rewrite.c&gt;
 <a id=__codelineno-1-2 name=__codelineno-1-2 href=#__codelineno-1-2></a>    RewriteEngine On
 <a id=__codelineno-1-3 name=__codelineno-1-3 href=#__codelineno-1-3></a>    RewriteCond %{REQUEST_FILENAME} !-f
 <a id=__codelineno-1-4 name=__codelineno-1-4 href=#__codelineno-1-4></a>    RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
