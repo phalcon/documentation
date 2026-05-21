@@ -353,7 +353,7 @@ protected $halted = false;
 /**
  * When true, a listener returning literal `false` (with the event's
  * `cancelable` flag on) short-circuits the dispatch loop and pins
- * the fire() return as `false`. Default off — preserves the pre-5.13
+ * the fire() return as `false`. Default off - preserves the pre-5.13
  * "last-wins" contract for codebases that rely on later listeners
  * overriding an earlier false return [#17019].
  *
@@ -377,7 +377,7 @@ protected $strict = false;
  *
  * Shape: `eventNameCache[$eventType] = [typePrefix, eventName]`
  *
- * Unbounded by design — distinct event types in a typical Phalcon
+ * Unbounded by design - distinct event types in a typical Phalcon
  * application are well under 100 keys, and the cache never needs
  * invalidation (parse is deterministic for a given eventType string).
  *
@@ -420,14 +420,14 @@ protected $subscriberEventsCache;
  * `type` is classified once at attach() time so dispatch() can
  * route via a simple branch:
  *
- *   0 — Closure: direct invocation via `{handler}(args)`, no
+ *   0 - Closure: direct invocation via `{handler}(args)`, no
  *       arg-array alloc per call
- *   1 — [obj, method] array callable: direct dynamic dispatch
+ *   1 - [obj, method] array callable: direct dynamic dispatch
  *       `handler[0]->{handler[1]}(args)`
- *   2 — plain object: dynamic dispatch via method named after the
+ *   2 - plain object: dynamic dispatch via method named after the
  *       event (the classic Phalcon listener pattern); class name is
  *       captured at attach time to skip get_class() per fire
- *   3 — generic callable (string fn name, invokable object,
+ *   3 - generic callable (string fn name, invokable object,
  *       [class, staticMethod]): call_user_func_array
  *
  * @var array
@@ -606,7 +606,7 @@ See setStopOnFalse().
 public function isStrict(): bool;
 ```
 Returns whether strict mode is enabled. When true, fire()/fireAll()
-throw when an event has no matching listeners — useful in dev to
+throw when an event has no matching listeners - useful in dev to
 catch typos. Default off.
 
 
@@ -620,7 +620,7 @@ public function isValidHandler( mixed $handler ): bool;
 public function removeSubscriber( Subscriber $subscriber ): void;
 ```
 Removes a previously registered subscriber. Detaches every listener the
-subscriber declared via getSubscribedEvents(). Idempotent — calling
+subscriber declared via getSubscribedEvents(). Idempotent - calling
 with a subscriber that was never added (or already removed) is a no-op.
 
 
@@ -639,7 +639,7 @@ listener returning literal `false` (with cancelable=true) stops
 the current event's queue and pins the fire() return as `false`.
 Later listeners cannot overwrite the cancel. Default off.
 
-Independent of halt() / event->stop() — only governs how the
+Independent of halt() / event->stop() - only governs how the
 dispatch loop reacts to a `false` listener return.
 
 

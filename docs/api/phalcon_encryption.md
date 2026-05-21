@@ -2240,7 +2240,7 @@ echo $random->base64Safe();           // GD8JojhzSTrqX7Q8J6uug
 echo $random->base64Safe(8);          // mGyy0evy3ok
 echo $random->base64Safe(null, true); // DRrAgOFkS4rvRiVHFefcQ==
 
-// Random UUID (version 4) — returns a string
+// Random UUID (version 4) - returns a string
 echo $random->uuid(); // db082997-2572-4e2c-a046-5eefe97b1235
 echo $random->uuid(); // da2aa0e2-b4d0-4e3c-99f5-f5ef62c57fe2
 
@@ -2549,7 +2549,7 @@ const TIME_OFFSET_INT = 0x01B21DD213814000;
 ### Properties
 ```php
 /**
- * Cached SysNodeProvider instance — shared within the request via static.
+ * Cached SysNodeProvider instance - shared within the request via static.
  *
  * @var NodeProviderInterface|null
  */
@@ -2704,16 +2704,16 @@ Returns a random 12-character hex node with the multicast bit set.
 Discovers the hardware MAC address and returns it as a 12-character hex node.
 
 Two-layer cache:
-  1. Instance property  — free on all calls after the first within this instance.
-  2. APCu               — cross-request within the same PHP-FPM worker (optional).
+  1. Instance property  - free on all calls after the first within this instance.
+  2. APCu               - cross-request within the same PHP-FPM worker (optional).
 
 Falls back to RandomNodeProvider if no valid MAC address is found.
 
 Platform support:
-  Linux   — reads /sys/class/net/*\/address
-  macOS   — passthru("ifconfig 2>&1")
-  Windows — passthru("ipconfig /all 2>&1")
-  FreeBSD — passthru("netstat -i -f link 2>&1")
+  Linux   - reads /sys/class/net/*\/address
+  macOS   - passthru("ifconfig 2>&1")
+  Windows - passthru("ipconfig /all 2>&1")
+  FreeBSD - passthru("netstat -i -f link 2>&1")
 
 
 ### Properties

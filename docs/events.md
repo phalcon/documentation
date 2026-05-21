@@ -1,8 +1,14 @@
 # Events Manager
+
 - - -
 
 ## Overview
-The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These hooks allow developers to obtain status information, manipulate data, or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain information about each hook/event.
+
+The purpose of this component is to intercept the execution of components in the framework by creating _hooks_. These
+hooks allow developers to obtain status information, manipulate data, or change the flow of execution during the process
+of a component. The component consists of a [Phalcon\Events\Manager][events-manager] that handles event propagation and
+execution of events. The manager contains various [Phalcon\Events\Event][events-event] objects, which contain
+information about each hook/event.
 
 ```php
 <?php
@@ -36,21 +42,33 @@ $connection->query(
 ```
 
 ## Naming Convention
-Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace, and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db][db] occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
-When attaching event listeners to the events manager, you can use `component` to catch all events from that component (e.g. `db` to catch all the [Phalcon\Db][db] events) or `component:event` to target a specific event (eg. `db:afterQuery`).
+Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event
+namespace, and you are free to create your own as you see fit. Event names are formatted as `component:event`. For
+example, as [Phalcon\Db][db] occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
+
+When attaching event listeners to the events manager, you can use `component` to catch all events from that component (
+e.g. `db` to catch all the [Phalcon\Db][db] events) or `component:event` to target a specific event (eg.
+`db:afterQuery`).
 
 ## Manager
-The [Phalcon\Events\Manager][events-manager] is the main component that handles all the events in Phalcon. Different implementations in other frameworks refer to this component as _a handler_. Regardless of the name, the functionality and purpose are the same.
 
-The component stores listeners in priority-sorted arrays keyed by event type. Each listener is registered with a priority (default `100`); when the matching event fires, the manager iterates the queue in order. Priorities are disabled by default — call [`enablePriorities(true)`](#manager) to honor them.
+The [Phalcon\Events\Manager][events-manager] is the main component that handles all the events in Phalcon. Different
+implementations in other frameworks refer to this component as _a handler_. Regardless of the name, the functionality
+and purpose are the same.
+
+The component stores listeners in priority-sorted arrays keyed by event type. Each listener is registered with a
+priority (default `100`); when the matching event fires, the manager iterates the queue in order. Priorities are
+disabled by default - call [`enablePriorities(true)`](#manager) to honor them.
 
 The methods exposed by the manager are:
 
 ```php
 public function addSubscriber(Subscriber $subscriber): void
 ```
-Registers an event subscriber. The subscriber's `getSubscribedEvents()` map is parsed and each entry is attached through the regular listener pipeline. See [Subscribers](#subscribers).
+
+Registers an event subscriber. The subscriber's `getSubscribedEvents()` map is parsed and each entry is attached through
+the regular listener pipeline. See [Subscribers](#subscribers).
 
 ```php
 final public function attach(
@@ -59,36 +77,45 @@ final public function attach(
     int $priority = self::DEFAULT_PRIORITY
 ): void
 ```
+
 Attaches a listener to the events manager. The `handler` is an object or a `callable`.
 
 ```php
 public function arePrioritiesEnabled(): bool
 ```
+
 Returns if priorities are enabled.
 
 ```php
 public function clearSubscribers(): void
 ```
-Removes every registered subscriber and detaches each listener they contributed. Listeners attached via `attach()` are untouched.
+
+Removes every registered subscriber and detaches each listener they contributed. Listeners attached via `attach()` are
+untouched.
 
 ```php
 public function collectResponses(bool $collect): void
 ```
+
 Tells the event manager whether to collect responses returned by every registered listener in a single `fire` call.
 
 ```php
 public function detach(string $eventType, mixed $handler): void
 ```
-Detaches the listener from the events manager. When the last listener for an event type is removed, the event-type key is dropped entirely so `hasListeners()` reports the truth.
+
+Detaches the listener from the events manager. When the last listener for an event type is removed, the event-type key
+is dropped entirely so `hasListeners()` reports the truth.
 
 ```php
 public function detachAll(string $type = null): void
 ```
+
 Removes all events from the events manager. With a `$type` argument, removes only the queue for that event type.
 
 ```php
 public function enablePriorities(bool $enablePriorities): void
 ```
+
 Sets whether priorities are honored when dispatching (default `false`).
 
 ```php
@@ -99,7 +126,9 @@ final public function fire(
     bool $cancelable = true
 ): mixed
 ```
-Fires an event causing the active listeners to be notified. Returns the last non-`null` listener return value (or the stopping listener's return value when `$event->stop()` is called).
+
+Fires an event causing the active listeners to be notified. Returns the last non-`null` listener return value (or the
+stopping listener's return value when `$event->stop()` is called).
 
 ```php
 public function fireAll(
@@ -109,85 +138,107 @@ public function fireAll(
     bool $cancelable = true
 ): array
 ```
-Fires an event and returns every listener's return value as an indexed array. Independent of `collectResponses()`. See [All Responses](#all-responses).
+
+Fires an event and returns every listener's return value as an indexed array. Independent of `collectResponses()`.
+See [All Responses](#all-responses).
 
 ```php
 final public function fireQueue(array $queue, EventInterface $event): mixed
 ```
-Internal handler to call a queue of events. Kept at this signature for backward compatibility with direct callers; the framework's own `fire()` path uses a private typed dispatch helper instead.
+
+Internal handler to call a queue of events. Kept at this signature for backward compatibility with direct callers; the
+framework's own `fire()` path uses a private typed dispatch helper instead.
 
 ```php
 public function getListeners(string $type): array
 ```
+
 Returns all the attached listeners of a certain event type.
 
 ```php
 public function getResponses(): array
 ```
+
 Returns the responses collected by the last `fire()` call when `collectResponses(true)` is in effect.
 
 ```php
 public function getSubscribers(): array
 ```
+
 Returns the list of registered subscriber instances.
 
 ```php
 public function halt(): void
 ```
-Engages the manager-level kill switch — see [Kill Switch](#kill-switch).
+
+Engages the manager-level kill switch - see [Kill Switch](#kill-switch).
 
 ```php
 public function hasListeners(string $type): bool
 ```
+
 Checks whether a certain event type has listeners.
 
 ```php
 public function isCollecting(): bool
 ```
+
 Returns whether the manager is currently collecting responses.
 
 ```php
 public function isHalted(): bool
 ```
+
 Returns whether the manager-level kill switch is engaged.
 
 ```php
 public function isStopOnFalse(): bool
 ```
-Returns whether the stop-on-`false` short-circuit is enabled — see [Stop on False](#stop-on-false).
+
+Returns whether the stop-on-`false` short-circuit is enabled - see [Stop on False](#stop-on-false).
 
 ```php
 public function isStrict(): bool
 ```
-Returns whether strict mode is enabled — see [Strict Mode](#strict-mode).
+
+Returns whether strict mode is enabled - see [Strict Mode](#strict-mode).
 
 ```php
 public function isValidHandler(mixed $handler): bool
 ```
+
 Checks whether the handler is an object or a callable.
 
 ```php
 public function removeSubscriber(Subscriber $subscriber): void
 ```
+
 Removes a previously registered subscriber. Idempotent.
 
 ```php
 public function resume(): void
 ```
+
 Clears the manager-level kill switch set by `halt()`.
 
 ```php
 public function setStopOnFalse(bool $flag): void
 ```
-Enables the opt-in per-event short-circuit on a `false` listener return — see [Stop on False](#stop-on-false).
+
+Enables the opt-in per-event short-circuit on a `false` listener return - see [Stop on False](#stop-on-false).
 
 ```php
 public function setStrict(bool $strict): void
 ```
-Toggles strict mode — see [Strict Mode](#strict-mode).
+
+Toggles strict mode - see [Strict Mode](#strict-mode).
 
 ## Usage
-If you are using the [Phalcon\Di\FactoryDefault][di-factorydefaul] DI container, the [Phalcon\Events\Manager][events-manager] is already registered for you with the name `eventsManager`. This is a _global_ events manager. However, you are not restricted to use only that one. You can always create a separate manager to handle events for any component that you require.
+
+If you are using the [Phalcon\Di\FactoryDefault][di-factorydefaul] DI container,
+the [Phalcon\Events\Manager][events-manager] is already registered for you with the name `eventsManager`. This is a
+_global_ events manager. However, you are not restricted to use only that one. You can always create a separate manager
+to handle events for any component that you require.
 
 The following example shows how you can create a query logging mechanism using the _global_ events manager:
 
@@ -255,14 +306,22 @@ $connection->query(
 );
 ```
 
-In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case, MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
+In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service,
+in this case, MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We
+add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event][events-event] as the
+first parameter. This object contains contextual information regarding the event that has been fired. The database
+connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a
+third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you
+can log your queries in a separate log file.
 
 !!! warning "WARNING"
 
     You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component, or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
 
 ## Handlers
-The events manager wires a handler to an event. A handler is a piece of code that will do something when the event fires. As seen in the above example, you can use an anonymous function as your handler:
+
+The events manager wires a handler to an event. A handler is a piece of code that will do something when the event
+fires. As seen in the above example, you can use an anonymous function as your handler:
 
 ```php
 <?php
@@ -294,7 +353,9 @@ $connection->query(
 );
 ```
 
-You can also create a _listener_ class, which offers more flexibility. In a listener, you can listen to multiple events and even extend [Phalcon\Di\Injectable][di-injectable] which will give you fill access to the services of the Di container. The example above can be enhanced by implementing the following listener:
+You can also create a _listener_ class, which offers more flexibility. In a listener, you can listen to multiple events
+and even extend [Phalcon\Di\Injectable][di-injectable] which will give you fill access to the services of the Di
+container. The example above can be enhanced by implementing the following listener:
 
 ```php
 <?php
@@ -348,7 +409,9 @@ $eventsManager->attach(
 );
 ```
 
-The resulting behavior will be that if the `app.logLevel` configuration variable is set to greater than `1` (representing that we are in development mode), all queries will be logged along with the actual parameters that were bound to each query. Additionally, we will log every time we have a rollback in a transaction.
+The resulting behavior will be that if the `app.logLevel` configuration variable is set to greater than `1` (
+representing that we are in development mode), all queries will be logged along with the actual parameters that were
+bound to each query. Additionally, we will log every time we have a rollback in a transaction.
 
 Another handy listener is the `404` one:
 
@@ -418,20 +481,31 @@ $eventsManager->attach(
 );
 ```
 
-First, we attach the listener to the `dispatcher` component and the `beforeException` event. This means that the events manager will fire only for that event calling our listener. We could have just changed the hook point to `dispatcher` so that we are able in the future to add more dispatcher events in the same listener.
+First, we attach the listener to the `dispatcher` component and the `beforeException` event. This means that the events
+manager will fire only for that event calling our listener. We could have just changed the hook point to `dispatcher` so
+that we are able in the future to add more dispatcher events in the same listener.
 
-The `beforeException` function accepts the `$event` as the first parameter, the `$dispatcher` as the second, and the `$ex` exception thrown from the dispatcher component. Using those, we can then figure out if a handler (or controller) or an action was not found. If that is the case, we forward the user to a specific module, controller, and action. If our user is not logged in, then we send them to the login page. Alternatively, we just log the exception message in our logger.
+The `beforeException` function accepts the `$event` as the first parameter, the `$dispatcher` as the second, and the
+`$ex` exception thrown from the dispatcher component. Using those, we can then figure out if a handler (or controller)
+or an action was not found. If that is the case, we forward the user to a specific module, controller, and action. If
+our user is not logged in, then we send them to the login page. Alternatively, we just log the exception message in our
+logger.
 
-The example demonstrates clearly the power of the events manager, and how you can alter the flow of the application using listeners.
+The example demonstrates clearly the power of the events manager, and how you can alter the flow of the application
+using listeners.
 
 ## Subscribers
-Subscribers group multiple listeners for a single class behind a static `getSubscribedEvents()` method, similar to the pattern in Symfony's EventDispatcher. The events manager parses that map once at registration time and attaches each entry through the regular listener pipeline — no reflection at fire time.
 
-Implement the [Phalcon\Contracts\Events\Subscriber][events-subscriber] contract on the class. Each entry in `getSubscribedEvents()` accepts three shapes:
+Subscribers group multiple listeners for a single class behind a static `getSubscribedEvents()` method, similar to the
+pattern in Symfony's EventDispatcher. The events manager parses that map once at registration time and attaches each
+entry through the regular listener pipeline - no reflection at fire time.
 
-- `'event:name' => 'methodName'` — plain method name
-- `'event:name' => ['methodName', priority]` — method with priority
-- `'event:name' => [['methodA', priorityA], ['methodB', priorityB]]` — multiple listeners for the same event
+Implement the [Phalcon\Contracts\Events\Subscriber][events-subscriber] contract on the class. Each entry in
+`getSubscribedEvents()` accepts three shapes:
+
+- `'event:name' => 'methodName'` - plain method name
+- `'event:name' => ['methodName', priority]` - method with priority
+- `'event:name' => [['methodA', priorityA], ['methodB', priorityB]]` - multiple listeners for the same event
 
 ```php
 <?php
@@ -499,16 +573,23 @@ $eventsManager->removeSubscriber($subscriber);
 $eventsManager->clearSubscribers();
 ```
 
-`addSubscriber()` reads `getSubscribedEvents()` once and caches the resulting map per class name, so registering several instances of the same subscriber class does not re-invoke the static method. `removeSubscriber()` is idempotent — removing an instance that was never added (or already removed) is a no-op. `clearSubscribers()` detaches every listener contributed by every registered subscriber; listeners attached via `attach()` are untouched.
+`addSubscriber()` reads `getSubscribedEvents()` once and caches the resulting map per class name, so registering several
+instances of the same subscriber class does not re-invoke the static method. `removeSubscriber()` is idempotent -
+removing an instance that was never added (or already removed) is a no-op. `clearSubscribers()` detaches every listener
+contributed by every registered subscriber; listeners attached via `attach()` are untouched.
 
 !!! info "NOTE"
 
     Subscribers are keyed internally by `spl_object_id()`, so re-adding the same instance is a no-op. Registering two distinct instances of the same subscriber class is allowed and attaches the listeners twice.
 
 ## Events: Trigger
-You can create components in your application that trigger events to an events manager. Listeners attached to those events will be invoked when the events are fired. In order to create a component that triggers events, we need to implement the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface].
+
+You can create components in your application that trigger events to an events manager. Listeners attached to those
+events will be invoked when the events are fired. In order to create a component that triggers events, we need to
+implement the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface].
 
 ### Custom Component
+
 Let's consider the following example:
 
 ```php
@@ -550,11 +631,16 @@ class NotificationsAware extends Injectable implements EventsAwareInterface
 }
 ```
 
-The above component implements the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface] and as a result, it uses the `getEventsManager` and `setEventsManager`. The last method is what does the work. In this example we want to send some notifications to users and want to fire an event before and after the notification is sent.
+The above component implements the [Phalcon\Events\EventsAwareInterface][events-eventsawareinterface] and as a result,
+it uses the `getEventsManager` and `setEventsManager`. The last method is what does the work. In this example we want to
+send some notifications to users and want to fire an event before and after the notification is sent.
 
-We chose to name the component `notification` and the events are called `beforeSend` and `afterSend`. In the `process` method, you can add any code you need in between the calls to fire the relevant events. Additionally, you can inject more data in this component that would help with your implementation and processing of the notifications.
+We chose to name the component `notification` and the events are called `beforeSend` and `afterSend`. In the `process`
+method, you can add any code you need in between the calls to fire the relevant events. Additionally, you can inject
+more data in this component that would help with your implementation and processing of the notifications.
 
 ### Custom Listener
+
 Now we need to create a listener for this component:
 
 ```php
@@ -618,7 +704,8 @@ $eventsManager->attach(
 $component->process();
 ```
 
-When `process` is executed, the two methods in the listener will be executed. Your log will then have the following entries:
+When `process` is executed, the two methods in the listener will be executed. Your log will then have the following
+entries:
 
 ```txt
 [2019-12-25 01:02:03][INFO] Before Notification
@@ -627,6 +714,7 @@ When `process` is executed, the two methods in the listener will be executed. Yo
 ```
 
 ### Custom Data
+
 Additional data may also be passed when triggering an event using the third parameter of `fire()`:
 
 ```php
@@ -668,7 +756,10 @@ $eventsManager->attach(
 ```
 
 ## Propagation
-An events manager can have multiple listeners attached to it. Once an event fires, all listeners that can be notified for the particular event will be notified. This is the default behavior but can be altered if need be by stopping the propagation early:
+
+An events manager can have multiple listeners attached to it. Once an event fires, all listeners that can be notified
+for the particular event will be notified. This is the default behavior but can be altered if need be by stopping the
+propagation early:
 
 ```php
 <?php
@@ -688,7 +779,9 @@ $eventsManager->attach(
 In the above simple example, we stop all events if today is earlier than `2019-01-01`.
 
 ## Cancellation
-By default, all events are cancelable. However, you might want to set a particular event to not be cancelable, allowing the particular event to fire on all available listeners that implement it.
+
+By default, all events are cancelable. However, you might want to set a particular event to not be cancelable, allowing
+the particular event to fire on all available listeners that implement it.
 
 ```php
 <?php
@@ -705,7 +798,8 @@ $eventsManager->attach(
 );
 ```
 
-In the above example, if the event is cancelable, we will stop propagation. You can set a particular event to **not** be cancelable by utilizing the fourth parameter of `fire()`:
+In the above example, if the event is cancelable, we will stop propagation. You can set a particular event to **not** be
+cancelable by utilizing the fourth parameter of `fire()`:
 
 ```php
 <?php
@@ -717,10 +811,14 @@ The `afterSend` event will no longer be cancelable and will execute on all liste
 
 !!! warning "WARNING"
 
-    You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object — or enable [Stop on False](#stop-on-false) so the manager treats a `false` return as a hard cancel.
+    You can stop the execution by returning `false` in your event (but not always). For instance, if you attach an event to `dispatch:beforeDispatchLoop` and your listener returns `false` the dispatch process will be halted. This is true if you only have **one listener** listening to the `dispatch:beforeDispatchLoop` event which returns `false`. If two listeners are attached to the event and the second one that executes returns `true` then the process will continue. If you wish to stop any subsequent events from firing, you will have to issue a `stop()` in your listener on the Event object - or enable [Stop on False](#stop-on-false) so the manager treats a `false` return as a hard cancel.
 
 ## Stop on False
-`setStopOnFalse(true)` enables an opt-in per-event short-circuit. When the flag is on and the fire's `cancelable` argument is also `true`, a listener returning literal `false` halts the dispatch loop for that event and pins the `fire()` return value as `false`. Later listeners attached to the same event do not run, and a subsequent listener returning `true` cannot revive the chain.
+
+`setStopOnFalse(true)` enables an opt-in per-event short-circuit. When the flag is on and the fire's `cancelable`
+argument is also `true`, a listener returning literal `false` halts the dispatch loop for that event and pins the
+`fire()` return value as `false`. Later listeners attached to the same event do not run, and a subsequent listener
+returning `true` cannot revive the chain.
 
 ```php
 <?php
@@ -749,10 +847,16 @@ $result = $eventsManager->fire('orders:beforePay', $order);
 // $result === false when the first listener returns false
 ```
 
-Default is off, preserving the historical last-wins return-value behavior so existing code is unaffected. `isStopOnFalse()` reports the current state. The flag is independent of [`halt()`](#kill-switch) and `$event->stop()` — it only governs how the dispatch loop reacts to a literal `false` listener return.
+Default is off, preserving the historical last-wins return-value behavior so existing code is unaffected.
+`isStopOnFalse()` reports the current state. The flag is independent of [`halt()`](#kill-switch) and `$event->stop()` -
+it only governs how the dispatch loop reacts to a literal `false` listener return.
 
 ## Kill Switch
-`halt()` engages a manager-level kill switch that survives across `fire()` calls. Once halted, every subsequent `fire()`, `fireAll()`, and `fireQueue()` call returns immediately (`null` or `[]`) without dispatching, until `resume()` clears the flag. Use this when a listener needs to abort all downstream event activity for the rest of a request — a failed authorization check, a fatal configuration error, or a circuit breaker tripping.
+
+`halt()` engages a manager-level kill switch that survives across `fire()` calls. Once halted, every subsequent
+`fire()`, `fireAll()`, and `fireQueue()` call returns immediately (`null` or `[]`) without dispatching, until `resume()`
+clears the flag. Use this when a listener needs to abort all downstream event activity for the rest of a request - a
+failed authorization check, a fatal configuration error, or a circuit breaker tripping.
 
 ```php
 <?php
@@ -781,10 +885,13 @@ $eventsManager->fire('app:somethingElse', $app);  // returns null, no dispatch
 $eventsManager->resume();
 ```
 
-`halt()` is distinct from `$event->stop()`. `stop()` only halts the current dispatch chain on the Event instance; `halt()` survives across `fire()` boundaries on the manager itself.
+`halt()` is distinct from `$event->stop()`. `stop()` only halts the current dispatch chain on the Event instance;
+`halt()` survives across `fire()` boundaries on the manager itself.
 
 ## Priorities
-When attaching listeners you can set a specific priority. Setting up priorities when attaching listeners to your events manager defines the order in which they are called:
+
+When attaching listeners you can set a specific priority. Setting up priorities when attaching listeners to your events
+manager defines the order in which they are called:
 
 ```php
 <?php
@@ -821,7 +928,9 @@ $eventsManager->attach(
     A high priority number means that the listener will be processed before those with lower priorities
 
 ## Responses
-The events manager can also collect any responses returned by each event and return them back using the `getResponses()` method. The method returns an array with the responses:
+
+The events manager can also collect any responses returned by each event and return them back using the `getResponses()`
+method. The method returns an array with the responses:
 
 ```php
 <?php
@@ -865,7 +974,9 @@ The above example produces:
     In order for responses to be collected, `collectResponses()` has to be called with `true` to enable collection.
 
 ### All Responses
-`fireAll()` returns every listener's return value as an indexed array in a single call — without enabling `collectResponses()` and without depending on `getResponses()`:
+
+`fireAll()` returns every listener's return value as an indexed array in a single call - without enabling
+`collectResponses()` and without depending on `getResponses()`:
 
 ```php
 <?php
@@ -892,10 +1003,14 @@ $results = $eventsManager->fireAll('reports:collect', $context);
 // $results === ['metrics', 'audit']
 ```
 
-`fireAll()` stashes the caller's `$this->responses` state on entry and restores it on exit, so a `fireAll()` call from inside a `collect`-mode `fire()` does not pollute the outer accumulator. Nested `fire()` calls also stash and restore their outer accumulator on a per-call basis, eliminating cross-fire response clobbering.
+`fireAll()` stashes the caller's `$this->responses` state on entry and restores it on exit, so a `fireAll()` call from
+inside a `collect`-mode `fire()` does not pollute the outer accumulator. Nested `fire()` calls also stash and restore
+their outer accumulator on a per-call basis, eliminating cross-fire response clobbering.
 
 ## Strict Mode
-Strict mode throws `Phalcon\Events\Exception` when an event is fired with no matching listeners. Useful in development for catching typos in event names that would otherwise dispatch silently.
+
+Strict mode throws `Phalcon\Events\Exception` when an event is fired with no matching listeners. Useful in development
+for catching typos in event names that would otherwise dispatch silently.
 
 ```php
 <?php
@@ -914,31 +1029,16 @@ try {
 }
 ```
 
-`setStrict(true)` toggles the flag; `isStrict()` reports the current state. Default is `false`, so existing application code is unaffected. Strict mode applies to both `fire()` and `fireAll()`.
-
-## Exceptions
-Any exceptions thrown in the Events component will be of type [Phalcon\Events\Exception][events-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
-
-```php
-<?php
-
-use Phalcon\Events\EventsManager;
-use Phalcon\Events\Exception;
-
-try {
-
-    $eventsManager = new EventsManager();
-
-    $eventsManager->attach('custom:custom', true);
-} catch (Exception $ex) {
-    echo $ex->getMessage();
-}
-```
+`setStrict(true)` toggles the flag; `isStrict()` reports the current state. Default is `false`, so existing application
+code is unaffected. Strict mode applies to both `fire()` and `fireAll()`.
 
 ## Controllers
-Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event, and it will be fired.
 
-For instance, if we want to send a user to the `/login` page if they are not logged in, we can add the following code in our master controller:
+Controllers act as listeners already registered in the events manager. As a result, you only need to create a method
+with the same name as a registered event, and it will be fired.
+
+For instance, if we want to send a user to the `/login` page if they are not logged in, we can add the following code in
+our master controller:
 
 ```php
 <?php
@@ -978,10 +1078,14 @@ class BaseController extends Controller
     }
 }
 ``` 
-Execute the code before the router, so we can determine if the user is logged in or not. If not, forward them to the login page.
+
+Execute the code before the router, so we can determine if the user is logged in or not. If not, forward them to the
+login page.
 
 ## Models
-Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event, and it will be fired.
+
+Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only
+need to create a method with the same name as a registered event, and it will be fired.
 
 In the following example, we are using the `beforeCreate` event, to automatically calculate an invoice number:
 
@@ -1052,27 +1156,37 @@ class Invoices extends Model
 ``` 
 
 ## Contracts
+
 The canonical contracts for the Events component live under the `Phalcon\Contracts\Events\` namespace:
 
-| Contract                                          | Replaces                                |
-|---------------------------------------------------|-----------------------------------------|
-| [Phalcon\Contracts\Events\Event][contracts-event] | `Phalcon\Events\EventInterface`         |
+| Contract                                                      | Replaces                              |
+|---------------------------------------------------------------|---------------------------------------|
+| [Phalcon\Contracts\Events\Event][contracts-event]             | `Phalcon\Events\EventInterface`       |
 | [Phalcon\Contracts\Events\EventsAware][contracts-eventsaware] | `Phalcon\Events\EventsAwareInterface` |
-| [Phalcon\Contracts\Events\Manager][contracts-manager] | `Phalcon\Events\ManagerInterface`   |
-| [Phalcon\Contracts\Events\Stoppable][contracts-stoppable] | _new — PSR-14-shaped mirror_     |
-| [Phalcon\Contracts\Events\Subscriber][events-subscriber] | _new — Symfony-style subscribers_ |
+| [Phalcon\Contracts\Events\Manager][contracts-manager]         | `Phalcon\Events\ManagerInterface`     |
+| [Phalcon\Contracts\Events\Stoppable][contracts-stoppable]     | _new - PSR-14-shaped mirror_          |
+| [Phalcon\Contracts\Events\Subscriber][events-subscriber]      | _new - Symfony-style subscribers_     |
 
-The legacy `Phalcon\Events\*Interface` types are kept as thin extensions of their canonical counterparts and are marked `@deprecated`. Existing implementors and typehints continue to work; new code should target the canonical contracts directly.
+The legacy `Phalcon\Events\*Interface` types are kept as thin extensions of their canonical counterparts and are marked
+`@deprecated`. Existing implementors and typehints continue to work; new code should target the canonical contracts
+directly.
 
 ### Stoppable Events
-[Phalcon\Contracts\Events\Stoppable][contracts-stoppable] mirrors PSR-14's `StoppableEventInterface` with a single `isPropagationStopped(): bool` method. [Phalcon\Events\Event][events-event] implements it and routes the call through the same internal `stopped` flag as `isStopped()`, so calling `$event->stop()` flips both accessors and a PSR-14-aware library reading `isPropagationStopped()` sees the same state.
+
+[Phalcon\Contracts\Events\Stoppable][contracts-stoppable] mirrors PSR-14's `StoppableEventInterface` with a single
+`isPropagationStopped(): bool` method. [Phalcon\Events\Event][events-event] implements it and routes the call through
+the same internal `stopped` flag as `isStopped()`, so calling `$event->stop()` flips both accessors and a PSR-14-aware
+library reading `isPropagationStopped()` sees the same state.
 
 !!! info "NOTE"
 
     [Phalcon\Events\Event][events-event] is declared `final` to enable C-level direct dispatch on its per-fire getters. If you previously subclassed it, build a sibling class that implements [Phalcon\Contracts\Events\Event][contracts-event] instead.
 
 ## Custom Manager
-The [Phalcon\Contracts\Events\Manager][contracts-manager] contract must be implemented to create your own events manager replacing the one provided by Phalcon. The legacy [Phalcon\Events\ManagerInterface][events-managerinterface] alias is also accepted for backward compatibility.
+
+The [Phalcon\Contracts\Events\Manager][contracts-manager] contract must be implemented to create your own events manager
+replacing the one provided by Phalcon. The legacy [Phalcon\Events\ManagerInterface][events-managerinterface] alias is
+also accepted for backward compatibility.
 
 ```php
 <?php
@@ -1132,6 +1246,7 @@ class EventsManager implements ManagerInterface
 ```
 
 ## List of Events
+
 The events available in Phalcon are:
 
 | Component                   | Event                                | Parameters                                              |
@@ -1250,34 +1365,97 @@ The events available in Phalcon are:
 | [Volt][volt]                | `compileStatement`                   | Volt, [statement]                                       |
 | [Volt][volt]                | `resolveExpression`                  | Volt, [expression]                                      |
 
+## Exceptions
+
+Any exceptions thrown in the Events component will be of type [Phalcon\Events\Exception][events-exception]. You can use
+this exception to selectively catch exceptions thrown only from this component.
+
+```php
+<?php
+
+use Phalcon\Events\EventsManager;
+use Phalcon\Events\Exception;
+
+try {
+    $eventsManager = new EventsManager();
+    $eventsManager->attach('custom:custom', true);
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}
+```
+
+### Granular Exceptions
+
+As of 5.13.1 the component raises granular subclasses of `Phalcon\Events\Exception` so callers can catch a specific
+failure mode. Existing `catch (Phalcon\Events\Exception $e)` blocks continue to work unchanged.
+
+| Class                                                      | Parent                     | Thrown when                                                                    |
+|------------------------------------------------------------|----------------------------|--------------------------------------------------------------------------------|
+| `Phalcon\Events\Exceptions\EventNotCancelable`             | `Phalcon\Events\Exception` | `stop()` is called on an event that was registered as non-cancellable.         |
+| `Phalcon\Events\Exceptions\InvalidEventHandler`            | `Phalcon\Events\Exception` | A handler registered against an event is not callable or an object.            |
+| `Phalcon\Events\Exceptions\InvalidEventSource`             | `Phalcon\Events\Exception` | The event's source argument is not a valid origin.                             |
+| `Phalcon\Events\Exceptions\InvalidEventType`               | `Phalcon\Events\Exception` | An event name does not follow the `type:event` convention.                     |
+| `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` | `Phalcon\Events\Exception` | An object subscribed via `attach()` does not implement the expected interface. |
+| `Phalcon\Events\Exceptions\NoListenersForEvent`            | `Phalcon\Events\Exception` | Strict mode is enabled and an event is fired that has no registered listeners. |
+
 [contracts-event]: api/phalcon_contracts.md#contractseventsevent
+
 [contracts-eventsaware]: api/phalcon_contracts.md#contractseventseventsaware
+
 [contracts-manager]: api/phalcon_contracts.md#contractseventsmanager
+
 [contracts-stoppable]: api/phalcon_contracts.md#contractseventsstoppable
+
 [db]: api/phalcon_db.md
+
 [di-factorydefaul]: api/phalcon_di.md#difactorydefault
+
 [di-injectable]: api/phalcon_di.md#diinjectable
+
 [events-event]: api/phalcon_events.md#eventsevent
+
 [events-eventinterface]: api/phalcon_events.md#eventseventinterface
+
 [events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface
+
 [events-exception]: api/phalcon_events.md#eventsexception
+
 [events-manager]: api/phalcon_events.md#eventsmanager
+
 [events-managerinterface]: api/phalcon_events.md#eventsmanagerinterface
+
 [events-subscriber]: api/phalcon_contracts.md#contractseventssubscriber
+
 [mvc-controller]: api/phalcon_mvc.md#mvccontroller
+
 [mvc-model]: api/phalcon_mvc.md#mvcmodel
+
 [acl]: acl.md
+
 [application]: application.md
+
 [application-cli]: application-cli.md
+
 [cache]: cache.md
+
 [storage]: storage.md
+
 [db-layer]: db-layer.md
+
 [dispatcher]: dispatcher.md
+
 [autoload]: autoload.md
+
 [application-micro]: application-micro.md
+
 [db-models]: db-models.md
+
 [request]: request.md
+
 [response]: response.md
+
 [routing]: routing.md
+
 [views]: views.md
+
 [volt]: volt.md                

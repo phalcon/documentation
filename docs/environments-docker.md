@@ -68,8 +68,10 @@ RUN set -eux \
   && install-php-extensions memcached
 ```
 
-For a full list of supported extensions using this method, please see the [Documentation](https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions).  
-For other extensions not covered by this method, please see the official PHP Docker image [Documentation](https://hub.docker.com/_/php/).
+For a full list of supported extensions using this method, please see
+the [Documentation](https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions).  
+For other extensions not covered by this method, please see the official PHP Docker
+image [Documentation](https://hub.docker.com/_/php/).
 
 ## Notes
 

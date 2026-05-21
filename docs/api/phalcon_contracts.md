@@ -35,7 +35,7 @@ hide:
 
 Canonical contract for Phalcon\Db adapters.
 
-@todo v7 — these will become required interface members. They are
+@todo v7 - these will become required interface members. They are
            omitted from the v5 line to avoid breaking third-party
            implementors:
              - addCheck()                : bool
@@ -239,7 +239,7 @@ Returns the first row in a SQL query result
 public function forUpdate( string $sqlQuery, string $modifier = string ): string;
 ```
 Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
-appends a row-lock disposition keyword — pass `Dialect::LOCK_NOWAIT`
+appends a row-lock disposition keyword - pass `Dialect::LOCK_NOWAIT`
 or `Dialect::LOCK_SKIP_LOCKED` (or leave as `Dialect::LOCK_NONE`).
 
 
@@ -563,7 +563,7 @@ Gets the CHECK expression (the SQL boolean predicate).
 public function getName(): string;
 ```
 Gets the constraint name. An empty string indicates an unnamed CHECK
-constraint — the dialect will emit the clause without a `CONSTRAINT`
+constraint - the dialect will emit the clause without a `CONSTRAINT`
 prefix in that case.
 
 
@@ -589,7 +589,7 @@ prefix in that case.
 
 Canonical contract for Phalcon\Db\Column.
 
-@todo v7 — these will become required interface members. They are
+@todo v7 - these will become required interface members. They are
            omitted from the v5 line to avoid breaking third-party
            implementors:
              - getGenerationExpression() : string | null
@@ -722,7 +722,7 @@ Returns true if number column is unsigned
 
 Canonical contract for Phalcon\Db dialects.
 
-@todo v7 — these will become required interface members. They are
+@todo v7 - these will become required interface members. They are
            omitted from the v5 line to avoid breaking third-party
            implementors:
              - addCheck()                : string
@@ -843,7 +843,7 @@ Generates SQL to drop a view
 public function forUpdate( string $sqlQuery, string $modifier = string ): string;
 ```
 Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
-appends a row-lock disposition keyword — pass `Dialect::LOCK_NOWAIT`
+appends a row-lock disposition keyword - pass `Dialect::LOCK_NOWAIT`
 or `Dialect::LOCK_SKIP_LOCKED` (or leave as `Dialect::LOCK_NONE`).
 
 
@@ -921,7 +921,7 @@ Returns a SQL modified with a shared-lock clause. MySQL emits
 `LOCK IN SHARE MODE`; PostgreSQL emits `FOR SHARE`; SQLite returns the
 original query unchanged. The optional `modifier` appends a row-lock
 disposition keyword (`Dialect::LOCK_NOWAIT` / `Dialect::LOCK_SKIP_LOCKED`)
-for PostgreSQL — MySQL's legacy `LOCK IN SHARE MODE` does not support
+for PostgreSQL - MySQL's legacy `LOCK IN SHARE MODE` does not support
 modifiers, so non-empty values are silently ignored on MySQL.
 
 
@@ -977,7 +977,7 @@ Generates SQL checking for the existence of a schema.view
 
 Canonical contract for Phalcon\Db\Index.
 
-@todo v7 — these will become required interface members. They are
+@todo v7 - these will become required interface members. They are
            omitted from the v5 line to avoid breaking third-party
            implementors:
              - getDirections() : array
@@ -1577,7 +1577,7 @@ Detach a listener from the events manager.
 ```php
 public function detachAll( string $type = null ): void;
 ```
-Removes all listeners — globally or for a single event type.
+Removes all listeners - globally or for a single event type.
 
 
 ```php
@@ -1747,16 +1747,16 @@ definitions. Implementations may source the definitions from a PHP array,
 a JSON document, a YAML file, or any other format.
 
 Each returned definition must be an associative array containing at least:
-  - 'type' (string)  — element type key (e.g. 'text', 'select', 'checkgroup')
-  - 'name' (string)  — the HTML name attribute value
+  - 'type' (string)  - element type key (e.g. 'text', 'select', 'checkgroup')
+  - 'name' (string)  - the HTML name attribute value
 
 Optional keys per definition:
-  - 'label'      (string)          — visible label text
-  - 'default'    (mixed)           — pre-populated default value
-  - 'attributes' (array)           — additional HTML attributes
-  - 'filters'    (array|string)    — filter names applied on bind()
-  - 'validators' (array)           — ValidatorInterface instances
-  - 'options'    (array)           — choices for select / checkgroup / radiogroup
+  - 'label'      (string)          - visible label text
+  - 'default'    (mixed)           - pre-populated default value
+  - 'attributes' (array)           - additional HTML attributes
+  - 'filters'    (array|string)    - filter names applied on bind()
+  - 'validators' (array)           - ValidatorInterface instances
+  - 'options'    (array)           - choices for select / checkgroup / radiogroup
 
 
 ### Methods

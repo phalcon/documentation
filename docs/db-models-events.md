@@ -1,8 +1,12 @@
 # Model Events
+
 - - -
 
 ## Overview
-Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model][mvc-model-query] and their order of execution:
+
+Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to
+define business rules. The following are the events supported by [Phalcon\Mvc\Model][mvc-model-query] and their order of
+execution:
 
 | Operation     | Name                       | Stop? | Explanation                                                                                           |
 |---------------|----------------------------|:-----:|-------------------------------------------------------------------------------------------------------|
@@ -28,7 +32,9 @@ Models allow you to implement events that will be thrown while performing an ins
 | Insert/Update | `validation`               |  Yes  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
 
 ### Events
-Models act as listeners to the events manager. Therefore, we only need to implement the events above in the models directly as public methods:
+
+Models act as listeners to the events manager. Therefore, we only need to implement the events above in the models
+directly as public methods:
 
 ```php
 <?php
@@ -157,7 +163,9 @@ class Invoices extends Model
 ```
 
 ### Custom Events Manager
-Additionally, this component is integrated with [Phalcon\Events\Manager][events-manager], which means we can create listeners that run when an event is triggered.
+
+Additionally, this component is integrated with [Phalcon\Events\Manager][events-manager], which means we can create
+listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -229,7 +237,8 @@ class Invoices extends Model
 }
 ```
 
-In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous function). Events will be fired to the listener when `Invoices` are saved:
+In the example given above, the Events Manager only acts as a bridge between an object and a listener (the anonymous
+function). Events will be fired to the listener when `Invoices` are saved:
 
 ```php
 <?php
@@ -243,7 +252,8 @@ $invoice->inv_title = 'Invoice for ACME Inc.';
 $invoice->save();
 ```
 
-If we want all objects created in our application to use the same EventsManager, then we need to assign it to the Models Manager when setting it in the DI container:
+If we want all objects created in our application to use the same EventsManager, then we need to assign it to the Models
+Manager when setting it in the DI container:
 
 ```php
 <?php
@@ -284,7 +294,10 @@ $container->setShared(
 If a listener returns false that will stop the operation that is executing currently.
 
 ### Subscribers
-Multiple model-event listeners that belong together can be grouped behind a single class implementing [Phalcon\Contracts\Events\Subscriber][events-subscriber] and registered through `addSubscriber()` instead of one `attach()` call per event:
+
+Multiple model-event listeners that belong together can be grouped behind a single class
+implementing [Phalcon\Contracts\Events\Subscriber][events-subscriber] and registered through `addSubscriber()` instead
+of one `attach()` call per event:
 
 ```php
 <?php
@@ -331,10 +344,16 @@ $eventsManager = new EventsManager();
 $eventsManager->addSubscriber(new InvoiceAuditSubscriber());
 ```
 
-The `getSubscribedEvents()` map is parsed once at registration time and each entry is attached through the regular listener pipeline. See the dedicated [Subscribers][subscribers] section in the Events Manager documentation for the full contract, including the `[method, priority]` and `[[methodA, priorityA], [methodB, priorityB]]` shapes.
+The `getSubscribedEvents()` map is parsed once at registration time and each entry is attached through the regular
+listener pipeline. See the dedicated [Subscribers][subscribers] section in the Events Manager documentation for the full
+contract, including the `[method, priority]` and `[[methodA, priorityA], [methodB, priorityB]]` shapes.
 
 ## Logging SQL Statements
-When using high-level abstraction components such as [Phalcon\Mvc\Model][mvc-model] to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model][mvc-model] is supported internally by [Phalcon\Db][db]. [Phalcon\Logger\Logger][logger] interacts with [Phalcon\Db][db], providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
+
+When using high-level abstraction components such as [Phalcon\Mvc\Model][mvc-model] to access a database, it is
+difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model][mvc-model] is
+supported internally by [Phalcon\Db][db]. [Phalcon\Logger\Logger][logger] interacts with [Phalcon\Db][db], providing
+logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
 ```php
 <?php
@@ -383,7 +402,8 @@ $container->set(
 );
 ```
 
-As models access the default database connection, all SQL statements that are sent to the database system will be logged in the file:
+As models access the default database connection, all SQL statements that are sent to the database system will be logged
+in the file:
 
 ```php
 <?php
@@ -408,7 +428,10 @@ As above, the file */storage/logs/db.log* will contain something like this:
     `(inv_cst_id, inv_title, inv_total) VALUES (10, 'Invoice for ACME Inc.', 10000)`
 
 ## Profiling SQL Statements
-Using the [Phalcon\Db][db], the underlying component of [Phalcon\Mvc\Model][mvc-model], it is possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. Analyzing the logs will help in identifying bottlenecks in your SQL code:
+
+Using the [Phalcon\Db][db], the underlying component of [Phalcon\Mvc\Model][mvc-model], it is possible to profile the
+SQL statements generated by the ORM in order to analyze the performance of database operations. Analyzing the logs will
+help in identifying bottlenecks in your SQL code:
 
 ```php
 <?php
@@ -502,12 +525,19 @@ foreach ($profiles as $profile) {
 }
 ```
 
-Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the generated SQL statement.
+Each generated profile contains the duration in milliseconds that each instruction takes to complete as well as the
+generated SQL statement.
 
 [db]: api/phalcon_db.md
+
 [events-manager]: api/phalcon_events.md#eventsmanager
+
 [events-subscriber]: api/phalcon_contracts.md#contractseventssubscriber
+
 [logger]: logger.md
+
 [mvc-model]: api/phalcon_mvc.md#mvcmodel
+
 [mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery
+
 [subscribers]: events.md#subscribers

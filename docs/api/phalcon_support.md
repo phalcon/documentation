@@ -3434,8 +3434,8 @@ Returns the value of a known setting.
 
 Resolution order:
   1. PHP-level override (set via Settings::set())
-  2. globals_get() — the C-level value, honouring php.ini / .htaccess
-  3. null — for unknown keys
+  2. globals_get() - the C-level value, honouring php.ini / .htaccess
+  3. null - for unknown keys
 
 
 ```php

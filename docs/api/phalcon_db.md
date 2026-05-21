@@ -224,7 +224,7 @@ Adds a primary key to a table
 ```php
 public function createMaterializedView( string $viewName, array $definition, string $schemaName = null ): bool;
 ```
-Creates a materialized view (PostgreSQL only — MySQL and SQLite
+Creates a materialized view (PostgreSQL only - MySQL and SQLite
 throw via the dialect).
 
 
@@ -1721,7 +1721,7 @@ protected $expression;
 
 /**
  * The CHECK constraint name. An empty string indicates an unnamed
- * constraint — the dialect will emit the clause without a `CONSTRAINT`
+ * constraint - the dialect will emit the clause without a `CONSTRAINT`
  * prefix in that case.
  *
  * @var string
@@ -2257,7 +2257,7 @@ public function createMaterializedView( string $viewName, array $definition, str
 ```
 Generates SQL to create a materialized view. Supported by PostgreSQL
 (`CREATE MATERIALIZED VIEW name AS <sql>`). Other dialects inherit
-this throw — MySQL and SQLite have no materialized-view concept.
+this throw - MySQL and SQLite have no materialized-view concept.
 
 
 ```php
@@ -2405,7 +2405,7 @@ public function returning( string $sqlQuery, array $columns ): string;
 Returns a SQL statement extended with a `RETURNING` clause so the
 INSERT/UPDATE/DELETE returns rows. Supported by PostgreSQL and
 SQLite 3.35+. Pass `["*"]` for `RETURNING`, or a list of column
-names. The base implementation throws — MySQL inherits it because
+names. The base implementation throws - MySQL inherits it because
 MySQL has no RETURNING construct.
 
 
@@ -2450,7 +2450,7 @@ protected function getCheckClause( CheckInterface $check, string $escapeChar = s
 ```
 Builds a CHECK constraint clause from a `CheckInterface`, using the
 provided escape character for the constraint name (so each dialect
-gets its native quoting). Returns the clause body — the dialect's
+gets its native quoting). Returns the clause body - the dialect's
 `createTable()` / `addCheck()` is expected to prefix `ADD` or place
 the result on its own line as appropriate.
 
@@ -2473,7 +2473,7 @@ protected function getGeneratedClause( ColumnInterface $column, bool $forceStore
 Builds the `GENERATED ALWAYS AS (<expr>) VIRTUAL|STORED` clause for a
 generated/computed column. Returns an empty string when the column is
 not generated. When `forceStored` is `true` the clause is always emitted
-as `STORED` regardless of the column's `isGenerationStored()` flag —
+as `STORED` regardless of the column's `isGenerationStored()` flag -
 PostgreSQL uses this since it only supports stored generated columns.
 
 
@@ -2807,7 +2807,7 @@ Generates SQL to modify a column in a table
 public function onConflictUpdate( string $sqlQuery, array $conflictColumns, array $updateColumns ): string;
 ```
 MySQL does not support the SQL-standard `ON CONFLICT DO UPDATE`
-upsert syntax — it has its own `INSERT ... ON DUPLICATE KEY UPDATE`
+upsert syntax - it has its own `INSERT ... ON DUPLICATE KEY UPDATE`
 which requires PHQL grammar work (deferred). The base helper is
 overridden here to throw, preventing accidental emission of invalid
 SQL on MySQL connections.
@@ -2818,7 +2818,7 @@ public function sharedLock( string $sqlQuery, string $modifier = string ): strin
 ```
 Returns a SQL modified with a LOCK IN SHARE MODE clause. The `modifier`
 argument is accepted for signature parity with the contract but is
-silently ignored on MySQL — its legacy `LOCK IN SHARE MODE` syntax has
+silently ignored on MySQL - its legacy `LOCK IN SHARE MODE` syntax has
 no `NOWAIT` / `SKIP LOCKED` variant. Callers needing those modifiers
 should target PostgreSQL or stay on `forUpdate()`.
 
@@ -3077,7 +3077,7 @@ statement. Pass `["*"]` for `RETURNING`, or a list of column names.
 ```php
 public function sharedLock( string $sqlQuery, string $modifier = string ): string;
 ```
-Returns a SQL modified with a `FOR SHARE` clause — PostgreSQL's
+Returns a SQL modified with a `FOR SHARE` clause - PostgreSQL's
 equivalent of MySQL's `LOCK IN SHARE MODE`. The optional `modifier`
 appends a row-lock disposition keyword (pass `Dialect::LOCK_NOWAIT`
 or `Dialect::LOCK_SKIP_LOCKED`).
@@ -3567,7 +3567,7 @@ protected $columns;
 
 /**
  * Whether to build the index without taking a strong lock that blocks
- * writes — emits `CONCURRENTLY` between `INDEX` and the index name on
+ * writes - emits `CONCURRENTLY` between `INDEX` and the index name on
  * PostgreSQL (`CREATE INDEX CONCURRENTLY name ON ...`). MySQL and
  * SQLite have no equivalent and ignore the flag.
  *
@@ -3577,7 +3577,7 @@ protected $concurrent = false;
 
 /**
  * Per-column sort directions (`ASC` / `DESC`). Empty array means
- * "emit no per-column direction" — preserves the legacy plain
+ * "emit no per-column direction" - preserves the legacy plain
  * `(col1, col2)` rendering. When populated, entries shorter than
  * the columns list default to `ASC` for the missing positions.
  *
@@ -3587,7 +3587,7 @@ protected $directions;
 
 /**
  * Whether the index is declared `INVISIBLE` (MySQL 8.0+). Invisible
- * indexes are ignored by the optimizer — useful for testing what
+ * indexes are ignored by the optimizer - useful for testing what
  * happens when an index is removed before actually dropping it.
  * PostgreSQL and SQLite have no equivalent and ignore the flag.
  *

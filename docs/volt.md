@@ -1,16 +1,23 @@
 # Volt: Template Engine
+
 - - -
 
 ## Overview
-Volt is an ultra-fast and designer-friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon but can be used as a stand-alone component in your application.
+
+Volt is an ultra-fast and designer-friendly templating engine written in C for PHP. It offers a set of helpers to write
+views easily. Volt is highly integrated with other components of Phalcon but can be used as a stand-alone component in
+your application.
 
 ![](assets/images/content/views-volt.png)
 
 Volt is inspired by [Jinja][jinja], originally created by [Armin Ronacher][armin].
 
-Many developers will be in familiar territory, using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
+Many developers will be in familiar territory, using the same syntax they have been using with similar template engines.
+Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have
+been accustomed to while working with Phalcon.
 
 ## Syntax
+
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
 ```twig
@@ -70,9 +77,11 @@ public function __construct(
 )
 ```
 
-The constructor accepts a [Phalcon\Mvc\View][views] or any component that implements the `ViewBaseInterface`, and a DI container.
+The constructor accepts a [Phalcon\Mvc\View][views] or any component that implements the `ViewBaseInterface`, and a DI
+container.
 
 ## Methods
+
 There are several methods available in Volt. In most cases, only a handful of them are used in modern-day applications.
 
 ```php
@@ -154,7 +163,9 @@ sort(array $value): array
 Sorts an array
 
 ## Activation
-As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
+
+As with other templating engines, you may register Volt in the view component, using a new extension or reusing the
+standard `.phtml`:
 
 ```php
 <?php
@@ -231,7 +242,8 @@ $view->registerEngines(
 );
 ```
 
-If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
+If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a
+service name:
 
 ```php
 <?php
@@ -288,8 +300,9 @@ The following options are available in Volt:
 | `prefix`     | `null`  | Prepend a prefix to the templates in the compilation path                                                               |
 | `stat`       | `true`  | Whether Phalcon must check if there are differences between the template file and its compiled path                     |
 
-
-The compilation path is generated according to the options above. You, however, have total freedom in defining the compilation path as an anonymous function, including the logic used to generate it. The anonymous function receives the relative path to the template in the predefined `views` directory.
+The compilation path is generated according to the options above. You, however, have total freedom in defining the
+compilation path as an anonymous function, including the logic used to generate it. The anonymous function receives the
+relative path to the template in the predefined `views` directory.
 
 **Appending extensions**
 
@@ -334,7 +347,10 @@ $volt->setOptions(
 ```
 
 ## Usage
-Volt uses specific delimiters for its syntax. `{%- raw -%}{% ... %}` is used to execute statements such as for-loops or assign values and `{%- raw -%}{{ ... }}` prints the result of an expression to the template. The view files can also contain PHP and HTML should you choose to.
+
+Volt uses specific delimiters for its syntax. `{%- raw -%}{% ... %}` is used to execute statements such as for-loops or
+assign values and `{%- raw -%}{{ ... }}` prints the result of an expression to the template. The view files can also
+contain PHP and HTML should you choose to.
 
 Below is a sample template that illustrates a few basics:
 
@@ -370,7 +386,8 @@ Below is a sample template that illustrates a few basics:
 
 ```
 
-Using [Phalcon\Mvc\View][views] you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `showNavigation`, `menu`, `title`, and `post`:
+Using [Phalcon\Mvc\View][views] you can pass variables from the controller to the views. In the above example, four
+variables were passed to the view: `showNavigation`, `menu`, `title`, and `post`:
 
 ```php
 <?php
@@ -410,6 +427,7 @@ class PostsController extends Controller
     The placeholders for Volt `{{`, `}}`, `{%`, and `%}` cannot be changed or set. 
 
 ### Vue.js
+
 If you are using [Vue][vue] you will need to change the interpolators in Vue itself:
 
 ```javascript
@@ -423,6 +441,7 @@ new Vue(
 ```
 
 ### Angular
+
 If you are using [Angular][angular] you can set the interpolators as follows:
 
 ```javascript
@@ -437,7 +456,9 @@ If you are using [Angular][angular] you can set the interpolators as follows:
 ```
 
 ## Variables
-Object variables may have attributes that can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
+
+Object variables may have attributes that can be accessed using the syntax: `foo.bar`. If you are passing arrays, you
+have to use the square bracket syntax: `foo['bar']`
 
 ```twig
 {%- raw -%}
@@ -447,6 +468,7 @@ Object variables may have attributes that can be accessed using the syntax: `foo
 ```
 
 ## Filters
+
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
 ```twig
@@ -459,35 +481,35 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The available built-in filters are:
 
-| Filter             | Description                                                                                          |
-|--------------------|------------------------------------------------------------------------------------------------------|
-| `abs`              | Applies the [`abs`][abs] PHP function to a value.                                                    |
-| `capitalize`       | Capitalizes a string by applying the [`ucwords`][ucwords] PHP function to the value                  |
-| `convert_encoding` | Converts a string from one charset to another                                                        |
-| `default`          | Sets a default value in case the evaluated expression is empty, not set, or evaluates to falsy value  |
-| `e`                | Applies [`Phalcon\Html\Escaper->html()`][escaper] to the value                                       |
-| `escape`           | Applies [`Phalcon\Html\Escaper->html()`][escaper] to the value                                       |
-| `escape_attr`      | Applies [`Phalcon\Html\Escaper->attributes()`][escaper] to the value                                 |
-| `escape_css`       | Applies [`Phalcon\Html\Escaper->css()`][escaper] to the value                                        |
-| `escape_js`        | Applies [`Phalcon\Html\Escaper->js()`][escaper] to the value                                         |
-| `format`           | Formats a string using [`sprintf`][sprintf]                                                          |
-| `json_encode`      | Converts a value into its [JSON][json] representation                                                |
-| `json_decode`      | Converts a value from its [JSON][json] representation to a PHP representation                        |
-| `join`             | Joins the array parts using a separator [`join`][join]                                               |
-| `keys`             | Returns the array keys using [`array_keys`][array_keys]                                              |
-| `left_trim`        | Applies the [`ltrim`][ltrim] PHP function to the value. Removing extra spaces                        |
+| Filter             | Description                                                                                              |
+|--------------------|----------------------------------------------------------------------------------------------------------|
+| `abs`              | Applies the [`abs`][abs] PHP function to a value.                                                        |
+| `capitalize`       | Capitalizes a string by applying the [`ucwords`][ucwords] PHP function to the value                      |
+| `convert_encoding` | Converts a string from one charset to another                                                            |
+| `default`          | Sets a default value in case the evaluated expression is empty, not set, or evaluates to falsy value     |
+| `e`                | Applies [`Phalcon\Html\Escaper->html()`][escaper] to the value                                           |
+| `escape`           | Applies [`Phalcon\Html\Escaper->html()`][escaper] to the value                                           |
+| `escape_attr`      | Applies [`Phalcon\Html\Escaper->attributes()`][escaper] to the value                                     |
+| `escape_css`       | Applies [`Phalcon\Html\Escaper->css()`][escaper] to the value                                            |
+| `escape_js`        | Applies [`Phalcon\Html\Escaper->js()`][escaper] to the value                                             |
+| `format`           | Formats a string using [`sprintf`][sprintf]                                                              |
+| `json_encode`      | Converts a value into its [JSON][json] representation                                                    |
+| `json_decode`      | Converts a value from its [JSON][json] representation to a PHP representation                            |
+| `join`             | Joins the array parts using a separator [`join`][join]                                                   |
+| `keys`             | Returns the array keys using [`array_keys`][array_keys]                                                  |
+| `left_trim`        | Applies the [`ltrim`][ltrim] PHP function to the value. Removing extra spaces                            |
 | `length`           | Counts the string length or how many items are in an array or object, the equivalent of [`count`][count] |
-| `lower`            | Change the case of a string to lowercase                                                             |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [`nl2br`][nl2br]              |
-| `right_trim`       | Applies the [`rtrim`][rtrim] PHP function to the value. Removing extra spaces                        |
-| `slashes`          | Applies the [`addslashes`][addslashes] PHP function to the value.                                    |
-| `slice`            | Slices strings, arrays, or traversable objects                                                        |
-| `sort`             | Sorts an array using the PHP function [`asort`][asort]                                               |
-| `stripslashes`     | Applies the [`stripslashes`][stripslashes] PHP function to the value. Removing escaped quotes        |
-| `striptags`        | Applies the [`striptags`][striptags] PHP function to the value. Removing HTML tags                   |
-| `trim`             | Applies the [`trim`][trim] PHP function to the value. Removing extra spaces                          |
-| `upper`            | Applies the [`strtoupper`][strtoupper] PHP function to the value.                                    |
-| `url_encode`       | Applies the [`urlencode`][urlencode] PHP function to the value                                       |
+| `lower`            | Change the case of a string to lowercase                                                                 |
+| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [`nl2br`][nl2br]                  |
+| `right_trim`       | Applies the [`rtrim`][rtrim] PHP function to the value. Removing extra spaces                            |
+| `slashes`          | Applies the [`addslashes`][addslashes] PHP function to the value.                                        |
+| `slice`            | Slices strings, arrays, or traversable objects                                                           |
+| `sort`             | Sorts an array using the PHP function [`asort`][asort]                                                   |
+| `stripslashes`     | Applies the [`stripslashes`][stripslashes] PHP function to the value. Removing escaped quotes            |
+| `striptags`        | Applies the [`striptags`][striptags] PHP function to the value. Removing HTML tags                       |
+| `trim`             | Applies the [`trim`][trim] PHP function to the value. Removing extra spaces                              |
+| `upper`            | Applies the [`strtoupper`][strtoupper] PHP function to the value.                                        |
+| `url_encode`       | Applies the [`urlencode`][urlencode] PHP function to the value                                           |
 
 **Examples**
 
@@ -552,7 +574,9 @@ The available built-in filters are:
 ```
 
 ## Comments
-Comments may also be added to a template using the `{%- raw -%}{# ... #}` delimiters. All text inside them is just ignored in the final output:
+
+Comments may also be added to a template using the `{%- raw -%}{# ... #}` delimiters. All text inside them is just
+ignored in the final output:
 
 ```twig
 {%- raw -%}
@@ -563,9 +587,11 @@ Comments may also be added to a template using the `{%- raw -%}{# ... #}` delimi
 ```
 
 ## Control Structures
+
 Volt provides a set of basic but powerful control structures for use in templates:
 
 ### For
+
 Loop over each item in a sequence. The following example shows how to traverse a set of `invoices` and print each title:
 
 ```twig
@@ -622,7 +648,8 @@ An `if` evaluation can be optionally set:
 
 ```
 
-If an `else` is defined inside the `for`, it will be executed if the expression in the iterator results in zero iterations:
+If an `else` is defined inside the `for`, it will be executed if the expression in the iterator results in zero
+iterations:
 
 ```twig
 {%- raw -%}
@@ -649,6 +676,7 @@ Alternative syntax:
 ```
 
 ### Loops
+
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
 ```twig
@@ -676,6 +704,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 ```
 
 ### If
+
 In PHP, an `if` statement checks if an expression is evaluated as true or false:
 
 ```twig
@@ -721,6 +750,7 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 ```
 
 ### Switch
+
 An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
 
 ```twig
@@ -740,9 +770,12 @@ An alternative to the `if` statement is `switch`, allowing you to create logical
 
 ```
 
-The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines and whitespaces can therefore be cleared to reduce the number of errors [see here][control_structures].
+The `switch` statement executes statement by statement, therefore the `break` statement is necessary in some cases. Any
+output (including whitespace) between a switch statement and the first `case` will result in a syntax error. Empty lines
+and whitespaces can therefore be cleared to reduce the number of errors [see here][control_structures].
 
 **`case` without `switch`**
+
 ```twig
 {%- raw -%}
 {% case EXPRESSION %}
@@ -752,23 +785,29 @@ The `switch` statement executes statement by statement, therefore the `break` st
 Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
 
 **`switch` without `endswitch`**
+
 ```twig
 {%- raw -%}
 {% switch EXPRESSION %}
 
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
+Will throw
+`Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected EOF in ..., there is a 'switch' block without 'endswitch'`.
 
 **`default` without `switch`**
+
 ```twig
 {%- raw -%}
 {% default %}
 
 ```
-Will not throw an error because `default` is a reserved word for filters like `{%- raw -%}{{ EXPRESSION | default(VALUE) }}` but in this case, the expression will only output an empty char `''` .
+
+Will not throw an error because `default` is a reserved word for filters like
+`{%- raw -%}{{ EXPRESSION | default(VALUE) }}` but in this case, the expression will only output an empty char `''` .
 
 **nested `switch`**
+
 ```twig
 {%- raw -%}
 {% switch EXPRESSION %}
@@ -778,9 +817,11 @@ Will not throw an error because `default` is a reserved word for filters like `{
 
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
+Will throw
+`Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch detected. There is no nested switch-case statements support in ... on line ...`
 
 **a `switch` without an expression**
+
 ```twig
 {%- raw -%}
 {% switch %}
@@ -790,9 +831,11 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 
 ```
 
-Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token {%- raw -%}%} in ... on line ...`
+Will throw
+`Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token {%- raw -%}%} in ... on line ...`
 
 ### Loop Context
+
 A special variable is available inside `for` loops providing you with information about
 
 | Variable         | Description                                                   |
@@ -831,6 +874,7 @@ Example:
 ```
 
 ## Assignments
+
 Variables may be changed in a template using the instruction `set`:
 
 ```twig
@@ -870,7 +914,9 @@ The following operators are available:
 |   `/=`   | Division assignment       |
 
 ## Expressions
-Volt provides a basic set of expression support, including literals and common operators. An expression can be evaluated and printed using the `{%- raw -%}{{` and `{%- raw -%}}}` delimiters:
+
+Volt provides a basic set of expression support, including literals and common operators. An expression can be evaluated
+and printed using the `{%- raw -%}{{` and `{%- raw -%}}}` delimiters:
 
 ```twig
 {%- raw -%}
@@ -887,6 +933,7 @@ If an expression needs to be evaluated without being printed the `do` statement 
 ```
 
 ### Literals
+
 The following literals are supported:
 
 | Filter               | Description                                                        |
@@ -899,6 +946,7 @@ The following literals are supported:
 | `null`               | Constant `null` is the `null` value                                |
 
 ### Arrays
+
 You can create arrays by enclosing a list of values in square brackets:
 
 ```twig
@@ -927,10 +975,11 @@ Curly braces also can be used to define arrays or hashes:
 ```
 
 ### Math
+
 You may make calculations in templates using the following operators:
 
-| Operator | Description                                                                                    |
-|:--------:|------------------------------------------------------------------------------------------------|
+| Operator | Description                                                                        |
+|:--------:|------------------------------------------------------------------------------------|
 |   `+`    | Perform an adding operation. `{%- raw -%}{{ 2 + 3 }}` returns 5                    |
 |   `-`    | Perform a subtraction operation `{%- raw -%}{{ 2 - 3 }}` returns -1                |
 |   `*`    | Perform a multiplication operation `{%- raw -%}{{ 2 * 3 }}` returns 6              |
@@ -938,21 +987,23 @@ You may make calculations in templates using the following operators:
 |   `%`    | Calculate the remainder of an integer division `{%- raw -%}{{ 10 % 3 }}` returns 1 |
 
 ### Comparisons
+
 The following comparison operators are available:
 
-| Operator | Description                                                       |
-|:--------:|-------------------------------------------------------------------|
-|   `==`   | Check whether both operands are equal                             |
-|   `!=`   | Check whether both operands aren't equal                          |
-|   `<>`   | Check whether both operands aren't equal                          |
-|   `>`    | Check whether the left operand is greater than the right operand          |
-|   `<`    | Check whether the left operand is less than the right operand             |
+| Operator | Description                                                             |
+|:--------:|-------------------------------------------------------------------------|
+|   `==`   | Check whether both operands are equal                                   |
+|   `!=`   | Check whether both operands aren't equal                                |
+|   `<>`   | Check whether both operands aren't equal                                |
+|   `>`    | Check whether the left operand is greater than the right operand        |
+|   `<`    | Check whether the left operand is less than the right operand           |
 |   `<=`   | Check whether the left operand is less or equal to the right operand    |
 |   `>=`   | Check whether the left operand is greater or equal to the right operand |
-|  `===`   | Check whether both operands are identical                         |
-|  `!==`   | Check whether both operands aren't identical                      |
+|  `===`   | Check whether both operands are identical                               |
+|  `!==`   | Check whether both operands aren't identical                            |
 
 ### Logic
+
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
 |  Operator  | Description                                                       |
@@ -963,19 +1014,20 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 | `( expr )` | Parenthesis groups expressions                                    |
 
 ### Other Operators
+
 Additional operators seen the following operators are available:
 
-| Operator          | Description                                                                                               |
-|-------------------|-----------------------------------------------------------------------------------------------------------|
-| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}`                              |
-| `|`          | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' | uppercase }}` |
-| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}` `{%- raw -%}{{ 1..10 }}`              |
-| `is`              | Same as == (equals), also performs tests                                                                  |
-| `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'`                           |
-| `is not`          | Same as != (not equals)                                                                                   |
-| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                                    |
-| `++`              | Increments a value                                                                                        |
-| `--`              | Decrements a value                                                                                        |
+| Operator          | Description                                                                     |
+|-------------------|---------------------------------------------------------------------------------|
+| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}`                |
+| `                 | `                                                                               | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' | uppercase }}` |
+| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}` `{%- raw -%}{{ 1..10 }}`            |
+| `is`              | Same as == (equals), also performs tests                                        |
+| `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'` |
+| `is not`          | Same as != (not equals)                                                         |
+| `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                          |
+| `++`              | Increments a value                                                              |
+| `--`              | Decrements a value                                                              |
 
 The following example shows how to use operators:
 
@@ -992,6 +1044,7 @@ The following example shows how to use operators:
 ```
 
 ## Tests
+
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
 ```twig
@@ -1011,14 +1064,14 @@ The following built-in tests are available in Volt:
 | Test          | Description                                                          |
 |---------------|----------------------------------------------------------------------|
 | `defined`     | Checks if a variable is defined (`isset()`)                          |
-| `divisibleby` | Checks if a value is divisible by another value                        |
+| `divisibleby` | Checks if a value is divisible by another value                      |
 | `empty`       | Checks if a variable is empty                                        |
 | `even`        | Checks if a numeric value is even                                    |
 | `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
 | `numeric`     | Checks if value is numeric                                           |
 | `odd`         | Checks if a numeric value is odd                                     |
-| `sameas`      | Checks if a value is identical to another value                        |
-| `scalar`      | Checks if the value is scalar (not an array or object)                   |
+| `sameas`      | Checks if a value is identical to another value                      |
+| `scalar`      | Checks if the value is scalar (not an array or object)               |
 | `type`        | Checks if a value is of the specified type                           |
 
 More examples:
@@ -1071,6 +1124,7 @@ More examples:
 ```
 
 ## Macros
+
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
 ```twig
@@ -1150,7 +1204,9 @@ And receive optional parameters:
 ```
 
 ## Tag Helpers
-Volt is highly integrated with [Phalcon\Html\TagFactory][html-tagfactory], so it's easy to use the helpers provided by that component in a Volt template:
+
+Volt is highly integrated with [Phalcon\Html\TagFactory][html-tagfactory], so it's easy to use the helpers provided by
+that component in a Volt template:
 
 ```twig
 {%- raw -%}
@@ -1265,6 +1321,7 @@ Also, you can use the [Phalcon\Tag][tag] helper methods. You only need to call a
 | `text_field`         | `Phalcon\Tag::textField`         |
 
 ## Functions
+
 The following built-in functions are available in Volt:
 
 | Name          | Description                                                 |
@@ -1283,7 +1340,9 @@ The following built-in functions are available in Volt:
 | `version_id`  | Returns the current version id of the framework             |
 
 ## View
-Also, Volt is integrated with [Phalcon\Mvc\View][views], so you can play with the view hierarchy and include partials as well:
+
+Also, Volt is integrated with [Phalcon\Mvc\View][views], so you can play with the view hierarchy and include partials as
+well:
 
 ```twig
 {%- raw -%}
@@ -1296,7 +1355,8 @@ Also, Volt is integrated with [Phalcon\Mvc\View][views], so you can play with th
 
 ```
 
-A partial is included in runtime, Volt also provides `include`, which compiles the content of a view and returns its contents as part of the view that was included:
+A partial is included in runtime, Volt also provides `include`, which compiles the content of a view and returns its
+contents as part of the view that was included:
 
 ```twig
 {%- raw -%}
@@ -1308,7 +1368,11 @@ A partial is included in runtime, Volt also provides `include`, which compiles t
 ```
 
 ### Include
-`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file, and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
+
+`include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the
+extension when including the file, and it exists when the template is compiled, Volt can inline the contents of the
+template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed
+with `with`:
 
 ```twig
 {%- raw -%}
@@ -1319,15 +1383,19 @@ A partial is included in runtime, Volt also provides `include`, which compiles t
 ```
 
 ### Partial Vs Include
+
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-| Type       | Description                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                            
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Type       | Description                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                            
+|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `partial`  | allows you to include templates made in Volt and in other template engines. As well allows you to pass an expression like a variable allowing you to include the content of another view dynamically. It's better if the content that you have to include changes frequently |
-| `includes` | copies the compiled content into the view which improves the performance. Only allows to include templates made with Volt. Requires an existing template at compile time                                                                                               |
+| `includes` | copies the compiled content into the view which improves the performance. Only allows to include templates made with Volt. Requires an existing template at compile time                                                                                                     |
 
 ## Inheritance
-With template inheritance, you can create base templates that can be extended by other templates allowing you to reuse code. A base template defines *blocks* that can be overridden by a child template. Let's pretend that we have the following base template:
+
+With template inheritance, you can create base templates that can be extended by other templates allowing you to reuse
+code. A base template defines *blocks* that can be overridden by a child template. Let's pretend that we have the
+following base template:
 
 ```twig
 {%- raw -%}
@@ -1373,7 +1441,8 @@ From other template we could extend the base template by replacing the blocks:
 
 ```
 
-Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the following:
+Not all blocks must be replaced at a child template, only those that are needed. The final output produced will be the
+following:
 
 ```html
 <!DOCTYPE html>
@@ -1399,6 +1468,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 ```
 
 ### Multiple Inheritance
+
 Extended templates can extend other templates. The following example illustrates this:
 
 ```twig
@@ -1474,13 +1544,15 @@ Rendering `index.volt` produces:
 </html>
 ```
 
-Note the call to the function `super()`. With that function, it is possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
+Note the call to the function `super()`. With that function, it is possible to render the contents of the parent block.
+As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
 !!! warning "WARNING"
 
     By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended to initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
 
 ## Autoescape Mode
+
 You can enable auto-escaping of all variables printed in a block using the auto escape mode:
 
 ```twig
@@ -1497,14 +1569,21 @@ Manually escaped: {{ invoice.inv_title|e }}
 ```
 
 ## Extending Volt
-Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt-only acts as a compiler for PHP templates.
+
+Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are
+compiled there is no dependence on Volt. With performance independence in mind, Volt-only acts as a compiler for PHP
+templates.
 
 The Volt compiler allows you to extend it by adding more functions, tests, or filters to the existing ones.
 
 ### Functions
-Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two options, returning a simple string or using an anonymous function. Whichever option you use, you must return a valid PHP string expression.
+
+Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using
+two options, returning a simple string or using an anonymous function. Whichever option you use, you must return a valid
+PHP string expression.
 
 The following example binds the function name `shuffle` in Volt to the PHP function `str_shuffle`:
+
 ```php
 <?php
 
@@ -1523,7 +1602,8 @@ and in Volt:
 {{ shuffle('abcdefg') }}
 ```
 
-The example below registers the function with an anonymous function. Here we use `$resolvedArgs` to pass the arguments exactly when calling the method from the view:
+The example below registers the function with an anonymous function. Here we use `$resolvedArgs` to pass the arguments
+exactly when calling the method from the view:
 
 ```php
 <?php
@@ -1542,7 +1622,9 @@ and in Volt:
 {{ widget('param1', 'param2') }}
 ```
 
-You can also treat the arguments independently and also check for unresolved parameters. In the example below, we retrieve the first parameter and then check for the existence of a second parameter. If present, we store it, otherwise, we use the default `10`. Finally, we call the `str_repeat` PHP method on the first and second parameters.
+You can also treat the arguments independently and also check for unresolved parameters. In the example below, we
+retrieve the first parameter and then check for the existence of a second parameter. If present, we store it, otherwise,
+we use the default `10`. Finally, we call the `str_repeat` PHP method on the first and second parameters.
 
 ```php
 <?php
@@ -1569,7 +1651,9 @@ and in Volt:
 {{ repeat('Apples', 'Oranges') }}
 ```
 
-You can also check the availability of functions in your system and call them if present. In the following example, we will call `mb_stripos` if the `mbstring` extension is present. If present, then `mb_stripos` will be called, otherwise `stripos`:
+You can also check the availability of functions in your system and call them if present. In the following example, we
+will call `mb_stripos` if the `mbstring` extension is present. If present, then `mb_stripos` will be called, otherwise
+`stripos`:
 
 ```php
 <?php
@@ -1586,7 +1670,8 @@ $compiler->addFunction(
 );
 ```
 
-You can also override built-in functions by using the same name in the defined function. In the example below, we _replace_ the built-in Volt function `dump()` with PHP's `print_r`.
+You can also override built-in functions by using the same name in the defined function. In the example below, we
+_replace_ the built-in Volt function `dump()` with PHP's `print_r`.
 
 ```php
 <?php
@@ -1595,7 +1680,9 @@ $compiler->addFunction('dump', 'print_r');
 ```
 
 ### Filters
-A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar to the functions.
+
+A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar to the
+functions.
 
 Add a new filter called `hash` using the `sha1` method:
 
@@ -1618,7 +1705,8 @@ $compiler->addFilter(
 );
 ```
 
-Built-in filters can be overridden by adding a function with the same name. The example below will replace the built-in `capitalize` filter with PHP's [lcfirst][lcfirst] function:
+Built-in filters can be overridden by adding a function with the same name. The example below will replace the built-in
+`capitalize` filter with PHP's [lcfirst][lcfirst] function:
 
 ```php
 <?php
@@ -1627,9 +1715,12 @@ $compiler->addFilter('capitalize', 'lcfirst');
 ```
 
 ### Extensions
-With extensions, the developer has more flexibility to extend the template engine, override the compilation of instructions, change the behavior of an expression or operator, add functions/filters, and more.
 
-An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below allows to use any PHP function in Volt:
+With extensions, the developer has more flexibility to extend the template engine, override the compilation of
+instructions, change the behavior of an expression or operator, add functions/filters, and more.
+
+An extension is a class that implements the events triggered by Volt as a method of itself. For example, the class below
+allows to use any PHP function in Volt:
 
 ```php
 <?php
@@ -1647,7 +1738,11 @@ class PhpFunctionExtension
 }
 ```
 
-The above class implements the method `compileFunction` which is invoked before any attempt to compile a function call in any template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to call the PHP function from the template. Events in extensions must return valid PHP code, which will be used as a result of the compilation instead of code generated by Volt. If an event does not return a string the compilation is done using the default behavior provided by the engine.
+The above class implements the method `compileFunction` which is invoked before any attempt to compile a function call
+in any template. The purpose of the extension is to verify if a function to be compiled is a PHP function allowing to
+call the PHP function from the template. Events in extensions must return valid PHP code, which will be used as a result
+of the compilation instead of code generated by Volt. If an event does not return a string the compilation is done using
+the default behavior provided by the engine.
 
 Volt extensions must be registered in the compiler making them available in compile time:
 
@@ -1662,7 +1757,9 @@ $compiler->addExtension(
 ```
 
 ### Compiler
-The Volt compiler depends on the Volt parser. The parser parses the Volt templates and creates an Intermediate Representation (IR) from it. The compiler uses that representation and produces the compiled PHP code.
+
+The Volt compiler depends on the Volt parser. The parser parses the Volt templates and creates an Intermediate
+Representation (IR) from it. The compiler uses that representation and produces the compiled PHP code.
 
 ```php
 <?php
@@ -1676,16 +1773,19 @@ $compiler->compile("views/partials/header.volt");
 require $compiler->getCompiledTemplatePath();
 ```
 
-The [Phalcon\Mvc\View\Engine\Volt\Compiler][mvc-view-engine-volt-compiler] offers a number of methods that can be extended to suit your application needs.
+The [Phalcon\Mvc\View\Engine\Volt\Compiler][mvc-view-engine-volt-compiler] offers a number of methods that can be
+extended to suit your application needs.
 
 ```php
 public function __construct(ViewBaseInterface $view = null)
 ```
+
 Constructor
 
 ```php
 public function addExtension(mixed $extension): Compiler
 ```
+
 Registers an extension
 
 ```php
@@ -1694,6 +1794,7 @@ public function addFilter(
     mixed definition
 ): Compiler
 ```
+
 Register a new filter
 
 ```php
@@ -1702,11 +1803,13 @@ public function addFunction(
     mixed $definition
 ): Compiler
 ```
+
 Register a new function
 
 ```php
 public function attributeReader(array $expr): string
 ```
+
 Resolves attribute reading
 
 ```php
@@ -1715,7 +1818,9 @@ public function compile(
     bool $extendsMode = false
 )
 ```
-Compiles a template into a file by applying the compiler options. This method does not return the compiled path if the template was not compiled
+
+Compiles a template into a file by applying the compiler options. This method does not return the compiled path if the
+template was not compiled
 
 ```php
 $compiler->compile("views/layouts/main.volt");
@@ -1729,6 +1834,7 @@ public function compileAutoEscape(
     bool $extendsMode
 ): string
 ```
+
 Compiles an "autoescape" statement returning PHP code
 
 ```php
@@ -1740,12 +1846,14 @@ public function compileCache(
     bool $extendsMode = false
 ): string
 ```
+
 (DEPRECATED)
 Compiles a `cache` statement returning PHP code
 
 ```php
 public function compileCall(array $statement, bool $extendsMode)
 ```
+
 Compiles calls to macros
 
 ```php
@@ -1754,21 +1862,25 @@ public function compileCase(
     bool $caseClause = true
 ): string
 ```
+
 Compiles a `case`/`default` clause returning PHP code
 
 ```php
 public function compileDo(array $statement): string
 ```
+
 Compiles a `do` statement returning PHP code
 
 ```php
 public function compileEcho(array $statement): string
 ```
+
 Compiles a `{{` `}}` statement returning PHP code
 
 ```php
 public function compileElseIf(array $statement): string
 ```
+
 Compiles a `elseif` statement returning PHP code
 
 ```php
@@ -1778,6 +1890,7 @@ public function compileFile(
     bool $extendsMode = false
 ): string | array
 ```
+
 Compiles a template into a file also creating the destination path
 
 ```php
@@ -1793,11 +1906,13 @@ public function compileForeach(
     bool $extendsMode = false
 ): string
 ```
+
 Compiles a `foreach` statement returning PHP code
 
 ```php
 public function compileForElse(): string
 ```
+
 Compiles a `forelse` statement returning PHP code
 
 ```php
@@ -1806,11 +1921,13 @@ public function compileIf(
     bool $extendsMode = false
 ): string
 ```
+
 Compiles a `if` statement returning PHP code
 
 ```php
 public function compileInclude(array $statement): string
 ```
+
 Compiles a `include` statement returning PHP code
 
 ```php
@@ -1819,16 +1936,19 @@ public function compileMacro(
     bool $extendsMode
 ): string
 ```
+
 Compiles a macro
 
 ```php
 public function compileReturn(array $statement): string
 ```
+
 Compiles a `return` statement returning PHP code
 
 ```php
 public function compileSet(array $statement): string
 ```
+
 Compiles a "set" statement returning PHP code. The method accepts an
 array produced by the Volt parser and creates the `set` statement in PHP.
 This method is not particularly useful in development, since it requires
@@ -1887,6 +2007,7 @@ public function compileString(
     bool $extendsMode = false
 ): string
 ```
+
 Compiles a template into a string
 
 ```php
@@ -1899,11 +2020,13 @@ public function compileSwitch(
     bool $extendsMode = false
 ): string
 ```
+
 Compiles a `switch` statement returning PHP code
 
 ```php
 final public function expression(array $expr): string
 ```
+
 Resolves an expression node in an AST volt tree
 
 ```php
@@ -1916,51 +2039,61 @@ final public function fireExtensionEvent(
 ```php
 public function functionCall(array $expr): string
 ```
+
 Resolves function intermediate code into PHP function calls
 
 ```php
 public function getCompiledTemplatePath(): string
 ```
+
 Returns the path to the last compiled template
 
 ```php
 public function getExtensions(): array
 ```
+
 Returns the registered extensions
 
 ```php
 public function getFilters(): array
 ```
+
 Returns the registered user filters
 
 ```php
 public function getFunctions(): array
 ```
+
 Returns the registered user functions
 
 ```php
 public function getOption(string $option): string
 ```
+
 Returns an option of the compiler
 
 ```php
 public function getOptions(): array
 ```
+
 Returns the compiler options
 
 ```php
 public function getTemplatePath(): string
 ```
+
 Returns the path that is currently being compiled
 
 ```php
 public function getUniquePrefix(): string
 ```
+
 Return a unique prefix to be used as a prefix for compiled variables and contexts
 
 ```php
 public function parse(string $viewCode): array
 ```
+
 Parses a Volt template returning its intermediate representation
 
 ```php
@@ -1972,24 +2105,29 @@ print_r(
 ```php
 public function resolveTest(array $test, string $left): string
 ```
+
 Resolves filter intermediate code into a valid PHP expression
 
 ```php
 public function setOption(string $option, mixed $value)
 ```
+
 Sets a single compiler option
 
 ```php
 public function setOptions(array $options): Compiler
 ```
+
 Sets the compiler options. Returns the compiler instance for fluent chaining.
 
 ```php
 public function setUniquePrefix(string $prefix): Compiler
 ```
+
 Set a unique prefix to be used as a prefix for compiled variables
 
 ## Events
+
 The following compilation [events][events] are available to be implemented in extensions:
 
 | Event/Method        | Description                                                                                           |
@@ -1999,9 +2137,11 @@ The following compilation [events][events] are available to be implemented in ex
 | `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators    |
 | `compileStatement`  | Triggered before trying to compile any statement. This allows the developer to override any statement |
 
-
 ## Services
-If a service container (DI) is available for Volt. Any registered service in the DI container is available in volt, with a variable having the same name as the one that the service is registered with. In the example below we use the `flash` service as well as the `security` one:
+
+If a service container (DI) is available for Volt. Any registered service in the DI container is available in volt, with
+a variable having the same name as the one that the service is registered with. In the example below we use the `flash`
+service as well as the `security` one:
 
 ```twig
 {%- raw -%}
@@ -2011,6 +2151,7 @@ If a service container (DI) is available for Volt. Any registered service in the
 ```
 
 ## Stand-alone
+
 You can use Volt as a stand-alone component in any application.
 
 Register the compiler and set some options:
@@ -2056,9 +2197,13 @@ require $compiler->getCompiledTemplatePath();
 ```
 
 ## Compiling
-Every time you deploy your application to production, you will need to delete the pre-compiled `.volt` files, so that any changes you made in your templates are displayed to your users. A very easy way to do this is to clean the `volt/` folder using a CLI script or manually delete all files.
 
-If we assume that your `volt` path is located at: `/app/storage/cache/volt/` then the following script will allow you to clear that folder anytime you run it, usually after a deployment.
+Every time you deploy your application to production, you will need to delete the pre-compiled `.volt` files, so that
+any changes you made in your templates are displayed to your users. A very easy way to do this is to clean the `volt/`
+folder using a CLI script or manually delete all files.
+
+If we assume that your `volt` path is located at: `/app/storage/cache/volt/` then the following script will allow you to
+clear that folder anytime you run it, usually after a deployment.
 
 ```php
 <?php
@@ -2093,17 +2238,31 @@ foreach ($fileList as $file) {
 echo PHP_EOL . 'Folder cleared' . PHP_EOL;
 ```
 
-In the example above, we use PHP's [RecursiveDirectoryIterator][recursivedirectoryiterator] and [RecursiveIteratorIterator][recursiveiteratoriterator] to iterate through a folder recursively and create a list of files in the `$fileList` array. After that, we iterate through that array and [unlink][unlink] each file in turn.
+In the example above, we use PHP's [RecursiveDirectoryIterator][recursivedirectoryiterator]
+and [RecursiveIteratorIterator][recursiveiteratoriterator] to iterate through a folder recursively and create a list of
+files in the `$fileList` array. After that, we iterate through that array and [unlink][unlink] each file in turn.
 
-As mentioned above, based on the options provided during setup, Volt can check whether the compiled files exist and generate them accordingly. Additionally, Volt can check if the files have been changed and if yes, generate them.
+As mentioned above, based on the options provided during setup, Volt can check whether the compiled files exist and
+generate them accordingly. Additionally, Volt can check if the files have been changed and if yes, generate them.
 
-These checks are performed when the `always` and `stat` options are set to `true`. For any project, checking the file system multiple times per request (one time per Volt file), is consuming resources. Additionally, you need to ensure that the folder used by Volt to compile the templates is writeable by your web server.
+These checks are performed when the `always` and `stat` options are set to `true`. For any project, checking the file
+system multiple times per request (one time per Volt file), is consuming resources. Additionally, you need to ensure
+that the folder used by Volt to compile the templates is writeable by your web server.
 
-You can create a script or a CLI task (using the [CLI Application][application-cli]) to compile and save all the Volt files when you deploy code. This way, you will be able to instruct Volt not to compile or stat each file in turn, increasing performance. Additionally, since these files are compiled during the deployment process, the volt folder will not need to be writeable, increasing security. Since the compiled Volt templates are phtml fragments, not allowing the webserver to generate executable code is always a good idea.
+You can create a script or a CLI task (using the [CLI Application][application-cli]) to compile and save all the Volt
+files when you deploy code. This way, you will be able to instruct Volt not to compile or stat each file in turn,
+increasing performance. Additionally, since these files are compiled during the deployment process, the volt folder will
+not need to be writeable, increasing security. Since the compiled Volt templates are phtml fragments, not allowing the
+webserver to generate executable code is always a good idea.
 
-Remember this script will be executed at the command line, but in order to compile our templates we will need to bootstrap our web application. In the example below, we will need to get the DI container that has all the services registered for our web application. Then we can use the Volt compiler to compile all the templates to the relevant folder.
+Remember this script will be executed at the command line, but in order to compile our templates we will need to
+bootstrap our web application. In the example below, we will need to get the DI container that has all the services
+registered for our web application. Then we can use the Volt compiler to compile all the templates to the relevant
+folder.
 
-In the example below, we assume that we have a `Bootstrap\Web` class that is responsible for setting up all of our services for the Web application. The class returns the DI container using `getContainer()`. Your implementation might vary.
+In the example below, we assume that we have a `Bootstrap\Web` class that is responsible for setting up all of our
+services for the Web application. The class returns the DI container using `getContainer()`. Your implementation might
+vary.
 
 ```php
 <?php
@@ -2152,43 +2311,114 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 ```
 
 ## External Resources
+
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * Phosphorum, Phalcon's forum implementation, also uses Volt, [GitHub](https://github.com/phalcon/forum)
 * [Vökuró][vokuro], is another sample application that uses Volt, [GitHub](https://github.com/phalcon/vokuro)
 
+## Exceptions
+
+Any exception thrown by Volt at compile time or render time will be of type `Phalcon\Mvc\View\Engine\Volt\Exception`.
+You can use this exception to selectively catch exceptions thrown only from this component.
+
+### Granular Exceptions
+
+As of 5.13.1 the engine raises granular subclasses of `Phalcon\Mvc\View\Engine\Volt\Exception` so callers can catch a
+specific failure mode. Existing `catch (Phalcon\Mvc\View\Engine\Volt\Exception $e)` blocks continue to work unchanged.
+
+| Class                                                                       | Parent                                   | Thrown when                                                                  |
+|-----------------------------------------------------------------------------|------------------------------------------|------------------------------------------------------------------------------|
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`            | `Phalcon\Mvc\View\Engine\Volt\Exception` | The compiled PHP file cannot be opened for writing.                          |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`                | `Phalcon\Mvc\View\Engine\Volt\Exception` | A parsed statement is missing required AST keys.                             |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`        | `Phalcon\Mvc\View\Engine\Volt\Exception` | A parsed statement's `data` payload is malformed.                            |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`          | `Phalcon\Mvc\View\Engine\Volt\Exception` | The `prefix` compiler option is not a string or callable returning a string. |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`                  | `Phalcon\Mvc\View\Engine\Volt\Exception` | A registered Volt extension is not an object.                                |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`                   | `Phalcon\Mvc\View\Engine\Volt\Exception` | A filter that needs an iterable haystack receives something else.            |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` | `Phalcon\Mvc\View\Engine\Volt\Exception` | The compiler is fed an IR that is not an array.                              |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`                 | `Phalcon\Mvc\View\Engine\Volt\Exception` | A compiler option is given a value of the wrong type.                        |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`          | `Phalcon\Mvc\View\Engine\Volt\Exception` | A `compiledPath` callable returns a value that is not a string.              |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`                   | `Phalcon\Mvc\View\Engine\Volt\Exception` | `compiledPath` is not a string or callable.                                  |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`                  | `Phalcon\Mvc\View\Engine\Volt\Exception` | A parsed statement has a type the compiler does not recognize.               |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`       | `Phalcon\Mvc\View\Engine\Volt\Exception` | A user-supplied filter is not a string or callable.                          |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`     | `Phalcon\Mvc\View\Engine\Volt\Exception` | A user-supplied function is not a string or callable.                        |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`               | `Phalcon\Mvc\View\Engine\Volt\Exception` | A `{% macro %}` is declared with a name already used in the current scope.   |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`                     | `Phalcon\Mvc\View\Engine\Volt\Exception` | A macro call references a name that has not been defined.                    |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`                  | `Phalcon\Mvc\View\Engine\Volt\Exception` | A filter that needs `mbstring` is used while the extension is not loaded.    |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`              | `Phalcon\Mvc\View\Engine\Volt\Exception` | A `{% include %}` references a template that cannot be located.              |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`           | `Phalcon\Mvc\View\Engine\Volt\Exception` | A template file exists but cannot be opened for reading.                     |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`             | `Phalcon\Mvc\View\Engine\Volt\Exception` | A template and its compiled output resolve to the same path.                 |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`             | `Phalcon\Mvc\View\Engine\Volt\Exception` | An AST expression has an unrecognized node.                                  |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`                 | `Phalcon\Mvc\View\Engine\Volt\Exception` | A `                                                                          |filter` reference does not match any built-in or registered filter.                |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`             | `Phalcon\Mvc\View\Engine\Volt\Exception` | A filter definition has an unrecognized type.                                |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`              | `Phalcon\Mvc\View\Engine\Volt\Exception` | A statement type returned by the parser is not handled by the compiler.      |
+| `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`          | `Phalcon\Mvc\View\Engine\Volt\Exception` | The compiled-templates directory cannot be created or is not writable.       |
 
 [abs]: https://php.net/manual/en/function.abs.php
+
 [addslashes]: https://php.net/manual/en/function.addslashes.php
+
 [angular]: https://angular.io
+
 [armin]: https://github.com/mitsuhiko
+
 [array_keys]: https://php.net/manual/en/function.array-keys
+
 [asort]: https://php.net/manual/en/function.asort.php
+
 [count]: https://www.php.net/manual/en/function.count.php
+
 [escaper]: html-escaper.md
+
 [jinja]: https://github.com/pallets/jinja
+
 [join]: https://php.net/manual/en/function.join.php
+
 [json]: https://php.net/manual/en/function.json-encode.php
+
 [lcfirst]: https://php.net/manual/en/function.lcfirst.php
+
 [ltrim]: https://php.net/manual/en/function.ltrim.php
+
 [nl2br]: https://php.net/manual/en/function.nl2br.php
+
 [rtrim]: https://php.net/manual/en/function.rtrim.php
+
 [sprintf]: https://php.net/manual/en/function.sprintf.php
+
 [stripslashes]: https://php.net/manual/en/function.stripslashes.php
+
 [striptags]: https://php.net/manual/en/function.strip-tags.php
+
 [trim]: https://php.net/manual/en/function.trim.php
+
 [ucwords]: https://php.net/manual/en/function.ucwords.php
+
 [strtoupper]: https://www.php.net/manual/en/function.strtoupper.php
+
 [urlencode]: https://php.net/manual/en/function.urlencode.php
+
 [vue]: https://vuejs.org
+
 [vokuro]: tutorial-vokuro.md
+
 [control_structures]: https://php.net/control-structures.alternative-syntax
+
 [recursivedirectoryiterator]: https://www.php.net/manual/en/class.recursivedirectoryiterator.php
+
 [recursiveiteratoriterator]: https://www.php.net/manual/en/class.recursiveiteratoriterator.php
+
 [unlink]: https://www.php.net/manual/en/function.unlink.php
+
 [mvc-view-engine-volt-compiler]: api/phalcon_mvc.md#mvcviewenginevoltcompiler
+
 [mvc-view-engine-volt-exception]: api/phalcon_mvc.md#mvcviewenginevoltexception
+
 [views]: views.md
+
 [html-tagfactory]: html-tagfactory.md
+
 [events]: events.md
+
 [tag]: tag.md
+
 [application-cli]: application-cli.md

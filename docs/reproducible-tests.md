@@ -1,4 +1,5 @@
 # Reproducible Tests
+
 - - -
 
 !!! info "NOTE"
@@ -6,6 +7,7 @@
     If you have found a bug, you can open an issue in [GitHub][issues]. Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist][gist] to post any code you want to share with us.
 
 ## Creating a Small Script
+
 A small PHP file can be used to showcase how to reproduce the issue:
 
 ```php
@@ -168,6 +170,7 @@ echo $response->getContent();
 ```
 
 ### Micro Application
+
 For micro applications, you can use the skeleton script below:
 
 ```php
@@ -262,4 +265,5 @@ echo User::createNewUserReturnId();
 ```
 
 [issues]: https://github.com/phalcon/cphalcon/issues
+
 [gist]: https://gist.github.com/

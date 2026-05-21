@@ -1239,7 +1239,7 @@ For compatiblity only, there is no Forever with WeakReference.
 ```php
 protected function doDecrement( string $key, int $value = int ): int | bool;
 ```
-Decrements a stored number — not supported for WeakReference
+Decrements a stored number - not supported for WeakReference
 
 
 ```php
@@ -1263,7 +1263,7 @@ Checks if an element exists in the cache
 ```php
 protected function doIncrement( string $key, int $value = int ): int | bool;
 ```
-Increments a stored number — not supported for WeakReference
+Increments a stored number - not supported for WeakReference
 
 
 ```php

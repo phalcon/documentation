@@ -1,10 +1,16 @@
 # Tag Factory
+
 - - -
 
 ## Overview
-[Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. This component creates a new class locator with predefined HTML tag classes attached to it. Each tag class is lazy-loaded for maximum performance. To instantiate the factory and retrieve a tag helper, you need to call `newInstance()` by passing a `Phalcon\Html\Escaper` object to it.
 
-If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault] container for your application, the [Phalcon\Html\TagFactory][html-tagfactory] is already registered for you with the name `tag`.
+[Phalcon\Html\TagFactory][html-tagfactory] is a component that generates HTML tags. This component creates a new class
+locator with predefined HTML tag classes attached to it. Each tag class is lazy-loaded for maximum performance. To
+instantiate the factory and retrieve a tag helper, you need to call `newInstance()` by passing a `Phalcon\Html\Escaper`
+object to it.
+
+If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault] container for your application,
+the [Phalcon\Html\TagFactory][html-tagfactory] is already registered for you with the name `tag`.
 
 ```php
 <?php
@@ -91,13 +97,19 @@ The registered names for respective helpers are:
     As of v5.12.2 the per-type input helpers (`Color`, `Date`, `DateTime`, `DateTimeLocal`, `Email`, `File`, `Hidden`, `Image`, `Input`, `Month`, `Numeric`, `Password`, `Range`, `Search`, `Submit`, `Tel`, `Text`, `Time`, `Url`, `Week`) have been removed and replaced with a single `Phalcon\Html\Helper\Input\Generic` helper that takes the `type` through its constructor (or `setType()`). Code that uses the `TagFactory` factory method names (`inputColor`, `inputDate`, ...) keeps working unchanged. See [Generic input](#generic-input) below.
 
 ### Registration Pipeline
-Starting with v5.12.2, [Phalcon\Html\TagFactory][html-tagfactory] no longer extends `Phalcon\Factory\AbstractFactory`. The internal recipe map accepts three forms when registering or overriding helpers via `set()`:
+
+Starting with v5.12.2, [Phalcon\Html\TagFactory][html-tagfactory] no longer extends `Phalcon\Factory\AbstractFactory`.
+The internal recipe map accepts three forms when registering or overriding helpers via `set()`:
 
 - A class-string: `'a' => Phalcon\Html\Helper\Anchor::class`
 - A closure or callable: `'a' => fn($escaper) => new Anchor($escaper)`
-- A tuple `[className, [depKey, ...]]` or `[className, [depKey, ...], [extraArg, ...]]`. Dependency keys are resolved from the factory's internal services (`escaper`, `escaperAttribute`, `response`, `url`, ...) and `extraArg`s are appended verbatim.
+- A tuple `[className, [depKey, ...]]` or `[className, [depKey, ...], [extraArg, ...]]`. Dependency keys are resolved
+  from the factory's internal services (`escaper`, `escaperAttribute`, `response`, `url`, ...) and `extraArg`s are
+  appended verbatim.
 
-Resolved instances are cached lazily per name in a separate `instances` map. Calling `set()` with a new recipe invalidates the previously cached instance, so the next resolution returns a fresh helper. `has()` reports against the recipe map (registered names) instead of the resolved-instance map.
+Resolved instances are cached lazily per name in a separate `instances` map. Calling `set()` with a new recipe
+invalidates the previously cached instance, so the next resolution returns a fresh helper. `has()` reports against the
+recipe map (registered names) instead of the resolved-instance map.
 
 ```php
 <?php
@@ -132,16 +144,19 @@ $factory->set('a', MyAnchor::class);
 ```
 
 ### Raw Factory Variants
-Several helpers accept a final `bool $raw = false` argument to skip escaping (useful, for example, when the inner content is itself markup such as an `<img>` inside an `<a>`). To avoid having to remember the parameter position, the factory exposes `Raw` variants that pin `raw = true` for you:
 
-| Raw variant   | Equivalent of                                  |
-|---------------|------------------------------------------------|
-| `aRaw`        | `a($href, $text, $attributes, true)`           |
-| `buttonRaw`   | `button($text, $attributes, true)`             |
-| `elementRaw`  | `element($tag, $text, $attributes, true)`      |
-| `labelRaw`    | `label($label, $attributes, true)`             |
-| `olRaw`       | `ol($text, $attributes, true)`                 |
-| `ulRaw`       | `ul($text, $attributes, true)`                 |
+Several helpers accept a final `bool $raw = false` argument to skip escaping (useful, for example, when the inner
+content is itself markup such as an `<img>` inside an `<a>`). To avoid having to remember the parameter position, the
+factory exposes `Raw` variants that pin `raw = true` for you:
+
+| Raw variant  | Equivalent of                             |
+|--------------|-------------------------------------------|
+| `aRaw`       | `a($href, $text, $attributes, true)`      |
+| `buttonRaw`  | `button($text, $attributes, true)`        |
+| `elementRaw` | `element($tag, $text, $attributes, true)` |
+| `labelRaw`   | `label($label, $attributes, true)`        |
+| `olRaw`      | `ol($text, $attributes, true)`            |
+| `ulRaw`      | `ul($text, $attributes, true)`            |
 
 ```php
 <?php
@@ -154,12 +169,15 @@ $image     = $container->tag->img('https://phalcon.io/img/phalcon.png');
 // Without Raw (passing true as 4th arg)
 echo $container->tag->a('https://phalcon.io', $image, [], true);
 
-// Same result with the Raw variant — no need for the trailing true
+// Same result with the Raw variant - no need for the trailing true
 echo $container->tag->aRaw('https://phalcon.io', $image);
 ```
 
 ### Method call
-If you do not wish to call `newInstance()`, you can always use the method call that corresponds to the name of the helper. Some helpers accept a `bool` `$raw` parameter, which defines whether the input will be escaped or not. This is useful when creating anchor links with images.
+
+If you do not wish to call `newInstance()`, you can always use the method call that corresponds to the name of the
+helper. Some helpers accept a `bool` `$raw` parameter, which defines whether the input will be escaped or not. This is
+useful when creating anchor links with images.
 
 ```php
 public function a(
@@ -470,7 +488,10 @@ $result = $container
 ```
 
 ### Helpers
-All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above.
+
+All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper`
+namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown
+above.
 
 !!! info "NOTE"
 
@@ -478,7 +499,8 @@ All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are 
 
 **Boolean HTML5 attributes**
 
-When an attribute value is set to `true`, the helper renders it as a standalone attribute name (e.g. `async`, `defer`) instead of `async="1"`. This follows the [HTML5 boolean attribute][html5-boolean] specification.
+When an attribute value is set to `true`, the helper renders it as a standalone attribute name (e.g. `async`, `defer`)
+instead of `async="1"`. This follows the [HTML5 boolean attribute][html5-boolean] specification.
 
 ```php
 <?php
@@ -494,6 +516,7 @@ echo $helper('/app.js', ['type' => 'text/javascript', 'async' => true]);
 ```
 
 ### `a`
+
 [Phalcon\Html\Helper\Anchor][html-helper-anchor] creates a `<a>` (anchor) tag.
 
 | Parameter                | Description                       |
@@ -527,6 +550,7 @@ echo $helper('/myurl', 'click<>me', $options);
 ```
 
 ### `base`
+
 [Phalcon\Html\Helper\Base][html-helper-base] creates a `<base>` tag.
 
 | Parameter                | Description                       |
@@ -552,26 +576,36 @@ echo $helper('/myurl', $options);
 ```
 
 ### `breadcrumbs`
-[Phalcon\Html\Helper\Breadcrumbs][html-helper-breadcrumbs] creates HTML for breadcrumbs based on the existing or passed template.
+
+[Phalcon\Html\Helper\Breadcrumbs][html-helper-breadcrumbs] creates HTML for breadcrumbs based on the existing or passed
+template.
 
 | Parameter           | Description   |
 |---------------------|---------------|
 | `string $indent`    | The indent    |
 | `string $delimiter` | The delimiter |
 
+A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space
+or by the `/` character usually, that represents the tree structure of an application. The purpose is to give users
+another easy visual way to navigate throughout the application.
 
-A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space or by the `/` character usually, that represents the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application.
-
-An example is an application that has an `admin` module, an `invoices` area, and a `view invoice` page. Usually, you would select the `admin` module, then from the links you will choose `invoices` (list), and then clicking on one of the invoices in the list, you can view it. To represent this tree-like structure, the breadcrumbs displayed could be:
+An example is an application that has an `admin` module, an `invoices` area, and a `view invoice` page. Usually, you
+would select the `admin` module, then from the links you will choose `invoices` (list), and then clicking on one of the
+invoices in the list, you can view it. To represent this tree-like structure, the breadcrumbs displayed could be:
 
 ```php
 Home / Admin / Invoices / Viewing Invoice [1234]
 ``` 
-Each of the words above (apart from the last one) are links to the respective pages. This way the user can quickly navigate back to a different area without having to click the back button or use another menu.
 
-[Phalcon\Html\Helper\Breadcrumbs][html-helper-breadcrumbs] offers functionality to add text, URL, icon and attributes to each element. The resulting HTML when calling `render()` will have each breadcrumb formatted and enclosed in the HTML structure defined by the template. Each element will be separated from another using the default separator `<li>/</li>`.
+Each of the words above (apart from the last one) are links to the respective pages. This way the user can quickly
+navigate back to a different area without having to click the back button or use another menu.
+
+[Phalcon\Html\Helper\Breadcrumbs][html-helper-breadcrumbs] offers functionality to add text, URL, icon and attributes to
+each element. The resulting HTML when calling `render()` will have each breadcrumb formatted and enclosed in the HTML
+structure defined by the template. Each element will be separated from another using the default separator `<li>/</li>`.
 
 ### Methods
+
 ```php
 public function __invoke(
     string $indent = '    ',
@@ -589,6 +623,7 @@ public function add(
     array $attributes = []
 ): static 
 ```
+
 Adds a new crumb.
 
 ```php
@@ -670,7 +705,8 @@ Sets the attributes for the parent element
 public function setPrefix(string $prefix): static
 ```
 
-Sets a string prefix that is prepended to every non-empty link during rendering. When called, any previously injected `UrlInterface` is replaced by the static prefix string.
+Sets a string prefix that is prepended to every non-empty link during rendering. When called, any previously injected
+`UrlInterface` is replaced by the static prefix string.
 
 ```php
 public function setSeparator(string $separator): static
@@ -696,9 +732,10 @@ Returns the internal breadcrumbs array
 
 ### Subdirectory / Prefix Support
 
-When a Phalcon application is installed in a subdirectory (e.g. `https://example.com/myapp/`), links added with `add()` need the subdirectory prepended so they resolve correctly.
+When a Phalcon application is installed in a subdirectory (e.g. `https://example.com/myapp/`), links added with `add()`
+need the subdirectory prepended so they resolve correctly.
 
-**Using `setPrefix()`** — a static string is prepended to every non-empty link:
+**Using `setPrefix()`** - a static string is prepended to every non-empty link:
 
 ```php
 <?php
@@ -722,7 +759,9 @@ $breadcrumbs
 echo $breadcrumbs->render();
 ```
 
-**Using `TagFactory` with a `UrlInterface`** — when a URL service is passed to `TagFactory`, it is forwarded to `Breadcrumbs` automatically. Every link is then resolved through `$url->get()`, which handles the base URI and double-slash normalisation:
+**Using `TagFactory` with a `UrlInterface`** - when a URL service is passed to `TagFactory`, it is forwarded to
+`Breadcrumbs` automatically. Every link is then resolved through `$url->get()`, which handles the base URI and
+double-slash normalisation:
 
 ```php
 <?php
@@ -771,7 +810,9 @@ The default templates are:
 <li><span%attributes%>%text%</span></li>
 ```
 
-A different template can be supplied to match the needs of the application. The template can be set using the `setTemplate()` method. The template is a string that can contain placeholders that will be replaced by the actual values when rendering the breadcrumbs.
+A different template can be supplied to match the needs of the application. The template can be set using the
+`setTemplate()` method. The template is a string that can contain placeholders that will be replaced by the actual
+values when rendering the breadcrumbs.
 
 The available placeholders are:
 
@@ -785,7 +826,9 @@ The available placeholders are:
 | `%attributes%` | The attributes of the element        |  Element   |
 
 ### Separator
-The separator is what is printed between each of the breadcrumbs. By default, the separator is `<li>/</li>`. You can change the separator by calling `setSeparator()`.
+
+The separator is what is printed between each of the breadcrumbs. By default, the separator is `<li>/</li>`. You can
+change the separator by calling `setSeparator()`.
 
 ### Example
 
@@ -870,6 +913,7 @@ echo $breadcrumbs->render();
 ```
 
 Output HTML:
+
 ```html
 <div class="flex items-center py-4 overflow-x-auto whitespace-nowrap">
     <a href="#" class="text-gray-600 dark:text-gray-200">
@@ -946,6 +990,7 @@ Output HTML:
 ```
 
 ### `body`
+
 [Phalcon\Html\Helper\Body][html-helper-body] creates a `<body>` tag.
 
 | Parameter                | Description                       |
@@ -974,6 +1019,7 @@ echo $helper($options);
     This helper creates only the opening `<body>` tag. You will need to use the `Close` helper to generate the closing `</body>` tag.
 
 ### `button`
+
 [Phalcon\Html\Helper\Button][html-helper-button] creates a `<button>` tag.
 
 | Parameter                | Description                       |
@@ -1006,12 +1052,13 @@ echo $helper('click<>me', $options);
 ```
 
 ### `close`
+
 [Phalcon\Html\Helper\Close][html-helper-close] creates a closing tag.
 
-| Parameter                | Description                       |
-|--------------------------|-----------------------------------|
-| `string $text`           | The text to display               |
-| `bool $raw = false`      | Whether to escape or not the text |
+| Parameter           | Description                       |
+|---------------------|-----------------------------------|
+| `string $text`      | The text to display               |
+| `bool $raw = false` | Whether to escape or not the text |
 
 ```php
 <?php
@@ -1027,6 +1074,7 @@ echo $helper('form');
 ```
 
 ### `doctype`
+
 [Phalcon\Html\Helper\Doctype][html-helper-doctype] creates a `<doctype>` tag.
 
 | Parameter           | Description                       |
@@ -1050,6 +1098,7 @@ echo $helper(Doctype::XHTML11, '-:-');
 ```
 
 ### `element`
+
 [Phalcon\Html\Helper\Element][html-helper-element] creates a tag based on the passed `name`.
 
 | Parameter                | Description                       |
@@ -1083,6 +1132,7 @@ echo $helper('address', 'click<>me', $options);
 ```
 
 ### `form`
+
 [Phalcon\Html\Helper\Form][html-helper-form] creates a `<form>` tag.
 
 | Parameter                | Description                       |
@@ -1119,14 +1169,15 @@ echo $helper($options);
     This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag.
 
 ### `friendlyTitle`
+
 [Phalcon\Html\Helper\FriendlyTitle][html-helper-friendlytitle] converts text to a URL-friendly slug.
 
-| Parameter                        | Description                                |
-|----------------------------------|--------------------------------------------|
-| `string $text`                   | The text to convert                        |
-| `string $separator = '-'`        | The separator character                    |
-| `bool $lowercase = true`         | Convert the result to lowercase            |
-| `array\|string $replace = []`    | Characters/strings to replace with a space |
+| Parameter                     | Description                                |
+|-------------------------------|--------------------------------------------|
+| `string $text`                | The text to convert                        |
+| `string $separator = '-'`     | The separator character                    |
+| `bool $lowercase = true`      | Convert the result to lowercase            |
+| `array\|string $replace = []` | Characters/strings to replace with a space |
 
 ```php
 <?php
@@ -1157,6 +1208,7 @@ echo $helper('Hello/World', '-', true, ['/']);
 ```
 
 ### `img`
+
 [Phalcon\Html\Helper\Img][html-helper-img] creates a `<img>` tag.
 
 | Parameter                | Description                       |
@@ -1187,9 +1239,13 @@ echo $helper('/my-url', $options);
 ```
 
 ### `inputCheckbox`
+
 [Phalcon\Html\Helper\Checkbox][html-helper-input-checkbox] creates a `<input type="checkbox">` tag.
 
-`Checkbox` and `Radio` both extend the shared [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute matches the `value` using a loose comparison (`==`) by default, so mixed `int`/`string` form input still round-trips correctly. Call `strict(true)` to opt back into strict (`===`) matching.
+`Checkbox` and `Radio` both extend the
+shared [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute
+matches the `value` using a loose comparison (`==`) by default, so mixed `int`/`string` form input still round-trips
+correctly. Call `strict(true)` to opt back into strict (`===`) matching.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1202,12 +1258,15 @@ echo $helper('/my-url', $options);
 ```php
 public function label(array $attributes)
 ```
+
 Sets the label for the checkbox
 
 ```php
 public function strict(bool $flag = true): Checkbox
 ```
-Switches between strict (`===`) and loose (`==`) comparison of `value` against the `checked` attribute. Loose is the default.
+
+Switches between strict (`===`) and loose (`==`) comparison of `value` against the `checked` attribute. Loose is the
+default.
 
 ```php
 <?php
@@ -1238,9 +1297,14 @@ echo $result;
 ```
 
 ### `inputCheckboxGroup`
-[Phalcon\Html\Helper\Input\CheckboxGroup][html-helper-input-checkboxgroup] renders a related set of `<input type="checkbox">` tags from a single options array. Every input shares the same HTML `name`, gets an auto-generated `id` derived from `{name}_{value}`, and is paired with a matching `<label>`.
 
-The base class [Phalcon\Html\Helper\Input\AbstractGroup][html-helper-input-abstractgroup] handles option-array parsing, attribute merging, and rendering; `CheckboxGroup` only contributes the matching logic (compare the option value against an array of selected values).
+[Phalcon\Html\Helper\Input\CheckboxGroup][html-helper-input-checkboxgroup] renders a related set of
+`<input type="checkbox">` tags from a single options array. Every input shares the same HTML `name`, gets an
+auto-generated `id` derived from `{name}_{value}`, and is paired with a matching `<label>`.
+
+The base class [Phalcon\Html\Helper\Input\AbstractGroup][html-helper-input-abstractgroup] handles option-array parsing,
+attribute merging, and rendering; `CheckboxGroup` only contributes the matching logic (compare the option value against
+an array of selected values).
 
 | Parameter                | Description                                                          |
 |--------------------------|----------------------------------------------------------------------|
@@ -1252,7 +1316,8 @@ The base class [Phalcon\Html\Helper\Input\AbstractGroup][html-helper-input-abstr
 Each entry in `$options` can be either:
 
 - A scalar string label: `'admin' => 'Administrator'`
-- A rich definition that overrides per-item attributes: `'admin' => ['label' => 'Administrator', 'disabled' => 'disabled']`
+- A rich definition that overrides per-item attributes:
+  `'admin' => ['label' => 'Administrator', 'disabled' => 'disabled']`
 
 ```php
 <?php
@@ -1302,7 +1367,9 @@ echo $container->tag->inputCheckboxGroup(
     To collect checked values into an array on submission, suffix the name with `[]` (e.g. `roles[]`) or use [Phalcon\Forms\Element\CheckGroup](forms.md#checkbox-groups) which auto-appends `[]` for you.
 
 ### Generic input
-[Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] backs every type-only `<input>` (color, date, email, file, etc.). Pass the HTML5 `type` either as the second constructor argument, or after construction via `setType()`.
+
+[Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] backs every type-only `<input>` (color, date, email,
+file, etc.). Pass the HTML5 `type` either as the second constructor argument, or after construction via `setType()`.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1315,6 +1382,7 @@ echo $container->tag->inputCheckboxGroup(
 ```php
 public function setType(string $type): Generic
 ```
+
 Changes the rendered `type=` attribute.
 
 ```php
@@ -1361,7 +1429,9 @@ echo $container->tag->inputDate('start', '2026-01-01');
 ```
 
 ### `inputColor`
-The `inputColor` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=color` baked in. See [Generic input](#generic-input).
+
+The `inputColor` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=color` baked in. See [Generic input](#generic-input).
 
 ```php
 <?php
@@ -1384,40 +1454,67 @@ echo $container->tag->inputColor('test-name', 'test-value', $options);
 ```
 
 ### `inputDate`
-The `inputDate` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=date` baked in. See [Generic input](#generic-input).
+
+The `inputDate` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=date`
+baked in. See [Generic input](#generic-input).
 
 ### `inputDatetime`
-The `inputDateTime` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=datetime` baked in. See [Generic input](#generic-input).
+
+The `inputDateTime` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=datetime` baked in. See [Generic input](#generic-input).
 
 ### `inputDatetimeLocal`
-The `inputDateTimeLocal` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=datetime-local` baked in. See [Generic input](#generic-input).
+
+The `inputDateTimeLocal` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=datetime-local` baked in. See [Generic input](#generic-input).
 
 ### `inputEmail`
-The `inputEmail` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=email` baked in. See [Generic input](#generic-input).
+
+The `inputEmail` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=email` baked in. See [Generic input](#generic-input).
 
 ### `inputFile`
-The `inputFile` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=file` baked in. See [Generic input](#generic-input).
+
+The `inputFile` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=file`
+baked in. See [Generic input](#generic-input).
 
 ### `inputHidden`
-The `inputHidden` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=hidden` baked in. See [Generic input](#generic-input).
+
+The `inputHidden` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=hidden` baked in. See [Generic input](#generic-input).
 
 ### `inputImage`
-The `inputImage` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=image` baked in. See [Generic input](#generic-input).
+
+The `inputImage` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=image` baked in. See [Generic input](#generic-input).
 
 ### `inputMonth`
-The `inputMonth` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=month` baked in. See [Generic input](#generic-input).
+
+The `inputMonth` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=month` baked in. See [Generic input](#generic-input).
 
 ### `input`
-The `inputInput` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with the default `type=text`. Call `setType()` on the returned helper to render any other HTML5 type. See [Generic input](#generic-input).
+
+The `inputInput` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with the
+default `type=text`. Call `setType()` on the returned helper to render any other HTML5 type.
+See [Generic input](#generic-input).
 
 ### `inputNumeric`
-The `inputNumeric` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=number` baked in. See [Generic input](#generic-input).
+
+The `inputNumeric` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=number` baked in. See [Generic input](#generic-input).
 
 ### `inputPassword`
-The `inputPassword` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=password` baked in. See [Generic input](#generic-input).
+
+The `inputPassword` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=password` baked in. See [Generic input](#generic-input).
 
 ### `inputRadio`
-[Phalcon\Html\Helper\Radio][html-helper-input-radio] creates a `<input type="radio">` tag. As of v5.12.2, `Radio` no longer extends `Checkbox`; both share the new [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute matches `value` loosely (`==`) by default — call `strict(true)` to opt into strict (`===`) matching.
+
+[Phalcon\Html\Helper\Radio][html-helper-input-radio] creates a `<input type="radio">` tag. As of v5.12.2, `Radio` no
+longer extends `Checkbox`; both share the
+new [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute matches
+`value` loosely (`==`) by default - call `strict(true)` to opt into strict (`===`) matching.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1430,12 +1527,15 @@ The `inputPassword` factory name resolves to [Phalcon\Html\Helper\Input\Generic]
 ```php
 public function label(array $attributes)
 ```
+
 Sets the label for the radio
 
 ```php
 public function strict(bool $flag = true): Radio
 ```
-Switches between strict (`===`) and loose (`==`) comparison of `value` against the `checked` attribute. Loose is the default.
+
+Switches between strict (`===`) and loose (`==`) comparison of `value` against the `checked` attribute. Loose is the
+default.
 
 ```php
 <?php
@@ -1466,16 +1566,21 @@ echo $result;
 ```
 
 ### `inputRadioGroup`
-[Phalcon\Html\Helper\Input\RadioGroup][html-helper-input-radiogroup] renders a related set of `<input type="radio">` tags from a single options array. Every input shares the same HTML `name`, gets an auto-generated `id` derived from `{name}_{value}`, and is paired with a matching `<label>`.
 
-The base class [Phalcon\Html\Helper\Input\AbstractGroup][html-helper-input-abstractgroup] handles option-array parsing, attribute merging, and rendering; `RadioGroup` only contributes the matching logic (compare the option value against a single scalar).
+[Phalcon\Html\Helper\Input\RadioGroup][html-helper-input-radiogroup] renders a related set of `<input type="radio">`
+tags from a single options array. Every input shares the same HTML `name`, gets an auto-generated `id` derived from
+`{name}_{value}`, and is paired with a matching `<label>`.
 
-| Parameter                | Description                                                  |
-|--------------------------|--------------------------------------------------------------|
-| `string $name`           | Shared HTML name attribute                                   |
-| `array $options`         | Map of `value => label` (or `value => [label, ...attrs]`)    |
+The base class [Phalcon\Html\Helper\Input\AbstractGroup][html-helper-input-abstractgroup] handles option-array parsing,
+attribute merging, and rendering; `RadioGroup` only contributes the matching logic (compare the option value against a
+single scalar).
+
+| Parameter                | Description                                                     |
+|--------------------------|-----------------------------------------------------------------|
+| `string $name`           | Shared HTML name attribute                                      |
+| `array $options`         | Map of `value => label` (or `value => [label, ...attrs]`)       |
 | `mixed $checked = null`  | Single scalar value matching the option that should be selected |
-| `array $attributes = []` | Shared HTML attributes applied to every input                |
+| `array $attributes = []` | Shared HTML attributes applied to every input                   |
 
 Per-option attribute overrides use the same `value => [label, ...attrs]` form as `CheckboxGroup`:
 
@@ -1520,12 +1625,17 @@ echo $container->tag->inputRadioGroup(
 ```
 
 ### `inputRange`
-The `inputRange` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=range` baked in. See [Generic input](#generic-input).
+
+The `inputRange` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=range` baked in. See [Generic input](#generic-input).
 
 ### `inputSearch`
-The `inputSearch` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=search` baked in. See [Generic input](#generic-input).
+
+The `inputSearch` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=search` baked in. See [Generic input](#generic-input).
 
 ### `inputSelect`
+
 [Phalcon\Html\Helper\Select][html-helper-input-select] creates a `<select>` tag.
 
 | Parameter                | Description                       |
@@ -1533,7 +1643,6 @@ The `inputSearch` factory name resolves to [Phalcon\Html\Helper\Input\Generic][h
 | `string $name`           | The name                          |
 | `string $value`          | The value                         |
 | `array $attributes = []` | Additional attributes (key/value) |
-
 
 **Methods**
 
@@ -1545,6 +1654,7 @@ public function add(
     bool $raw = false
 ): Select
 ```
+
 Add an element to the list
 
 ```php
@@ -1555,6 +1665,7 @@ public function addPlaceholder(
     bool $raw = false
 ): Select
 ```
+
 Add a placeholder to the element
 
 ```php
@@ -1563,27 +1674,35 @@ public function optGroup(
     array $attributes = []
 ): Select
 ```
+
 Create an option group
 
 ```php
 public function fromData(SelectDataInterface $data): Select
 ```
-Populates the select options from a `SelectDataInterface` provider. Flat entries use `value => label` format; nested arrays produce `<optgroup>` sections.
+
+Populates the select options from a `SelectDataInterface` provider. Flat entries use `value => label` format; nested
+arrays produce `<optgroup>` sections.
 
 ```php
 public function placeholder(string $text): Select
 ```
-Injects `<option value="" disabled selected>$text</option>` as the first entry. Useful as a non-selectable hint in the dropdown.
+
+Injects `<option value="" disabled selected>$text</option>` as the first entry. Useful as a non-selectable hint in the
+dropdown.
 
 ```php
 public function selected(string $selected): Select
 ```
+
 Set the selected option
 
 ```php
 public function strict(bool $flag = true): Select
 ```
-Switches between strict (`===`) and loose (`==`) comparison of an option's `value` against the `selected` value. Loose is the default in v5.12.2 so mixed `int`/`string` form input round-trips correctly.
+
+Switches between strict (`===`) and loose (`==`) comparison of an option's `value` against the `selected` value. Loose
+is the default in v5.12.2 so mixed `int`/`string` form input round-trips correctly.
 
 ```php
 <?php
@@ -1634,9 +1753,11 @@ echo $result;
 
 **Data providers**
 
-`fromData()` accepts any class implementing `Phalcon\Html\Helper\Input\Select\SelectDataInterface`. Two built-in providers are available.
+`fromData()` accepts any class implementing `Phalcon\Html\Helper\Input\Select\SelectDataInterface`. Two built-in
+providers are available.
 
-`Phalcon\Html\Helper\Input\Select\ArrayData` wraps a plain PHP array. Flat entries (`value => label`) produce plain options; nested arrays (`groupLabel => [value => label, ...]`) produce `<optgroup>` sections.
+`Phalcon\Html\Helper\Input\Select\ArrayData` wraps a plain PHP array. Flat entries (`value => label`) produce plain
+options; nested arrays (`groupLabel => [value => label, ...]`) produce `<optgroup>` sections.
 
 ```php
 <?php
@@ -1671,7 +1792,8 @@ $result->fromData(new ArrayData($grouped->getOptions()));
 echo $result;
 ```
 
-You can implement `SelectDataInterface` yourself to pull options from any data source (database resultset, configuration, etc.):
+You can implement `SelectDataInterface` yourself to pull options from any data source (database resultset,
+configuration, etc.):
 
 ```php
 <?php
@@ -1692,15 +1814,22 @@ class StatusData implements SelectDataInterface
 ```
 
 ### `inputSubmit`
-The `inputSubmit` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=submit` baked in. See [Generic input](#generic-input).
+
+The `inputSubmit` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with
+`type=submit` baked in. See [Generic input](#generic-input).
 
 ### `inputTel`
-The `inputTel` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=tel` baked in. See [Generic input](#generic-input).
+
+The `inputTel` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=tel`
+baked in. See [Generic input](#generic-input).
 
 ### `inputText`
-The `inputText` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=text` baked in. See [Generic input](#generic-input).
+
+The `inputText` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=text`
+baked in. See [Generic input](#generic-input).
 
 ### `inputTextarea`
+
 [Phalcon\Html\Helper\TextArea][html-helper-input-textarea] creates a `<textarea>` tags
 
 | Parameter                | Description                       |
@@ -1733,15 +1862,22 @@ echo $helper('click<>me', $options);
 ```
 
 ### `inputTime`
-The `inputTime` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=time` baked in. See [Generic input](#generic-input).
+
+The `inputTime` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=time`
+baked in. See [Generic input](#generic-input).
 
 ### `inputUrl`
-The `inputUrl` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=url` baked in. See [Generic input](#generic-input).
+
+The `inputUrl` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=url`
+baked in. See [Generic input](#generic-input).
 
 ### `inputWeek`
-The `inputWeek` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=week` baked in. See [Generic input](#generic-input).
+
+The `inputWeek` factory name resolves to [Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] with `type=week`
+baked in. See [Generic input](#generic-input).
 
 ### `label`
+
 [Phalcon\Html\Helper\Label][html-helper-label] creates a `<label>` tag.
 
 | Parameter                | Description                       |
@@ -1776,6 +1912,7 @@ echo $helper($options);
     This helper creates only the opening `<label>` tag. You will need to use the `Close` helper to generate the closing `</label>` tag.
 
 ### `link`
+
 [Phalcon\Html\Helper\Link][html-helper-link] creates a `<link>` tag.
 
 | Parameter           | Description   |
@@ -1804,6 +1941,7 @@ echo $result;
 ```
 
 ### `meta`
+
 [Phalcon\Html\Helper\Meta][html-helper-meta] creates a `<meta>` tag.
 
 | Parameter           | Description   |
@@ -1812,24 +1950,29 @@ echo $result;
 | `string $delimiter` | The delimiter |
 
 **Methods**
+
 ```php
 public function add(array $attributes = []): Meta
 ```
+
 Add an element to the list
 
 ```php
 public function addHttp(string $httpEquiv, string $content): Meta
 ```
+
 Adds an HTTP meta tag
 
 ```php
 public function addName(string name, string content) -> <Meta>
 ```
+
 Adds a name meta tag
 
 ```php
 public function addProperty(string name, string content) -> <Meta>
 ```
+
 Adds a property meta tag
 
 ```php
@@ -1862,6 +2005,7 @@ echo $result;
 ```
 
 ### `ol`
+
 [Phalcon\Html\Helper\Ol][html-helper-ol] creates a `<ol>` tag.
 
 | Parameter           | Description   |
@@ -1878,6 +2022,7 @@ public function add(
     bool $raw = false
 ): Ol
 ```
+
 Add an element to the list
 
 ```php
@@ -1911,13 +2056,15 @@ echo $result;
 ```
 
 ### `preload`
-[Phalcon\Html\Helper\Preload][html-helper-preload] creates a `<link rel="preload">` tag for resource hinting. If a `ResponseInterface` is injected into `TagFactory`, it also sets the HTTP `Link:` header.
 
-| Parameter                | Description                                                          |
-|--------------------------|----------------------------------------------------------------------|
-| `string $href`           | The resource URL                                                     |
+[Phalcon\Html\Helper\Preload][html-helper-preload] creates a `<link rel="preload">` tag for resource hinting. If a
+`ResponseInterface` is injected into `TagFactory`, it also sets the HTTP `Link:` header.
+
+| Parameter                | Description                                                         |
+|--------------------------|---------------------------------------------------------------------|
+| `string $href`           | The resource URL                                                    |
 | `string $type = 'style'` | The `as` attribute value (`style`, `script`, `font`, `image`, etc.) |
-| `array $attributes = []` | Additional attributes (key/value)                                    |
+| `array $attributes = []` | Additional attributes (key/value)                                   |
 
 ```php
 <?php
@@ -1938,7 +2085,8 @@ echo $helper('/my-font.woff2', 'font', ['crossorigin' => 'anonymous']);
 // <link rel="preload" href="/my-font.woff2" as="font" crossorigin="anonymous" />
 ```
 
-To also set the HTTP `Link:` response header (for HTTP/2 server push), pass a `ResponseInterface` as the third argument to `TagFactory`:
+To also set the HTTP `Link:` response header (for HTTP/2 server push), pass a `ResponseInterface` as the third argument
+to `TagFactory`:
 
 ```php
 <?php
@@ -1956,6 +2104,7 @@ echo $factory->preload('/my-font.woff2', 'font');
 ```
 
 ### `script`
+
 [Phalcon\Html\Helper\Script][html-helper-script] creates a `<script>` tag.
 
 | Parameter           | Description   |
@@ -1972,11 +2121,15 @@ public function add(
     int $position = -1
 ): Script
 ```
-Add a URL to the list. The optional `$position` argument controls the slot in the internal store: a negative value (the default) pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots if necessary. Entries are emitted in numerical key order regardless of registration order.
+
+Add a URL to the list. The optional `$position` argument controls the slot in the internal store: a negative value (the
+default) pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past
+occupied slots if necessary. Entries are emitted in numerical key order regardless of registration order.
 
 ```php
 public function beginInternal(): void
 ```
+
 Starts an output buffer to capture inline JavaScript.
 
 ```php
@@ -1985,7 +2138,9 @@ public function endInternal(
     int $position = -1
 ): Script
 ```
-Stops the buffer started by `beginInternal()`, wraps the captured contents in a `<script>` block (with the supplied attributes), and appends it to the asset stack at the optional `$position`.
+
+Stops the buffer started by `beginInternal()`, wraps the captured contents in a `<script>` block (with the supplied
+attributes), and appends it to the asset stack at the optional `$position`.
 
 ```php
 <?php
@@ -2012,7 +2167,8 @@ echo $result;
 
 **Positional inserts**
 
-`add()` accepts a third argument that controls where the entry lands in the internal store. Because `__toString()` `ksort()`s the store before rendering, you can interleave entries deterministically:
+`add()` accepts a third argument that controls where the entry lands in the internal store. Because `__toString()`
+`ksort()`s the store before rendering, you can interleave entries deterministically:
 
 ```php
 <?php
@@ -2059,6 +2215,7 @@ echo $result;
 ```
 
 ### `style`
+
 [Phalcon\Html\Helper\Style][html-helper-style] creates a `<link>` tag.
 
 | Parameter           | Description   |
@@ -2075,7 +2232,10 @@ public function add(
     int $position = -1
 ): Style
 ```
-Add a URL to the list. The optional `$position` argument controls placement in the internal store the same way it does for `Script::add()`: negative pushes onto the next auto-increment slot; a non-negative value places the entry at that key, advancing past occupied slots. Output is `ksort()`ed by key before rendering.
+
+Add a URL to the list. The optional `$position` argument controls placement in the internal store the same way it does
+for `Script::add()`: negative pushes onto the next auto-increment slot; a non-negative value places the entry at that
+key, advancing past occupied slots. Output is `ksort()`ed by key before rendering.
 
 ```php
 <?php
@@ -2124,7 +2284,9 @@ echo $result;
 ```
 
 ### `tag`
-[Phalcon\Html\Helper\Tag][html-helper-tag] is an escape hatch for opening any arbitrary tag without a dedicated helper. It renders only the opening `<name ...>` tag — pair it with the [`close`](#close) helper for the closing tag.
+
+[Phalcon\Html\Helper\Tag][html-helper-tag] is an escape hatch for opening any arbitrary tag without a dedicated helper.
+It renders only the opening `<name ...>` tag - pair it with the [`close`](#close) helper for the closing tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -2146,7 +2308,9 @@ echo $container->tag->close('section');
 ```
 
 ### `voidTag`
-[Phalcon\Html\Helper\VoidTag][html-helper-voidtag] is an escape hatch for self-closing (void) tags such as `<hr>` or any custom element that does not need a closing tag.
+
+[Phalcon\Html\Helper\VoidTag][html-helper-voidtag] is an escape hatch for self-closing (void) tags such as `<hr>` or any
+custom element that does not need a closing tag.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -2168,6 +2332,7 @@ echo $container->tag->voidTag('my-custom-element', ['data-id' => '42']);
 ```
 
 ### `title`
+
 [Phalcon\Html\Helper\Title][html-helper-title] creates a `<title>` tag.
 
 | Parameter           | Description   |
@@ -2183,11 +2348,13 @@ public function append(
     bool $raw = false
 ): Title
 ```
+
 Appends text to the current document title
 
 ```php
 public function get(): string
 ```
+
 Returns the title
 
 ```php
@@ -2196,6 +2363,7 @@ public function set(
     bool $raw = false
 )): Title
 ```
+
 Sets the title
 
 ```php
@@ -2204,6 +2372,7 @@ public function setSeparator(
     bool $raw = false
 )): Title
 ```
+
 Sets the separator
 
 ```php
@@ -2212,6 +2381,7 @@ public function prepend(
     bool $raw = false
 ): Title
 ```
+
 Prepends text to the current document title
 
 ```php
@@ -2243,6 +2413,7 @@ echo $result;
 ```
 
 ### `ul`
+
 [Phalcon\Html\Helper\Ul][html-helper-ol] creates a `<ul>` tag.
 
 | Parameter           | Description   |
@@ -2259,6 +2430,7 @@ public function add(
     bool $raw = false
 ): Ol
 ```
+
 Add an element to the list
 
 ```php
@@ -2291,48 +2463,88 @@ echo $result;
 // </ul>
 ```
 
-
-
 [di-factorydefault]: api/phalcon_di.md#difactorydefault
+
 [html-attributes]: api/phalcon_html.md#htmlattributes
+
 [html-attributes-attributesinterface]: api/phalcon_html.md#htmlattributesattributesinterface
+
 [html-attributes-renderinterface]: api/phalcon_html.md#htmlattributesrenderinterface
+
 [html-breadcrumbs]: api/phalcon_html.md#htmlbreadcrumbs
+
 [html-exception]: api/phalcon_html.md#htmlexception
+
 [html-helper-abstracthelper]: api/phalcon_html.md#htmlhelperabstracthelper
+
 [html-helper-abstractlist]: api/phalcon_html.md#htmlhelperabstractlist
+
 [html-helper-abstractseries]: api/phalcon_html.md#htmlhelperabstractseries
+
 [html-helper-anchor]: api/phalcon_html.md#htmlhelperanchor
+
 [html-helper-base]: api/phalcon_html.md#htmlhelperbase
+
 [html-helper-breadcrumbs]: api/phalcon_html.md#htmlhelperbreadcrumbs
+
 [html-helper-body]: api/phalcon_html.md#htmlhelperbody
+
 [html-helper-button]: api/phalcon_html.md#htmlhelperbutton
+
 [html-helper-close]: api/phalcon_html.md#htmlhelperclose
+
 [html-helper-doctype]: api/phalcon_html.md#htmlhelperdoctype
+
 [html-helper-element]: api/phalcon_html.md#htmlhelperelement
+
 [html-helper-form]: api/phalcon_html.md#htmlhelperform
+
 [html-helper-friendlytitle]: api/phalcon_html.md#htmlhelperfriendlytitle
+
 [html-helper-img]: api/phalcon_html.md#htmlhelperimg
+
 [html-helper-input-abstractchecked]: api/phalcon_html.md#htmlhelperinputabstractchecked
+
 [html-helper-input-abstractgroup]: api/phalcon_html.md#htmlhelperinputabstractgroup
+
 [html-helper-input-abstractinput]: api/phalcon_html.md#htmlhelperinputabstractinput
+
 [html-helper-input-checkbox]: api/phalcon_html.md#htmlhelperinputcheckbox
+
 [html-helper-input-checkboxgroup]: api/phalcon_html.md#htmlhelperinputcheckboxgroup
+
 [html-helper-input-generic]: api/phalcon_html.md#htmlhelperinputgeneric
+
 [html-helper-input-radio]: api/phalcon_html.md#htmlhelperinputradio
+
 [html-helper-input-radiogroup]: api/phalcon_html.md#htmlhelperinputradiogroup
+
 [html-helper-input-select]: api/phalcon_html.md#htmlhelperinputselect
+
 [html-helper-input-textarea]: api/phalcon_html.md#htmlhelperinputtextarea
+
 [html-helper-label]: api/phalcon_html.md#htmlhelperlabel
+
 [html-helper-link]: api/phalcon_html.md#htmlhelperlink
+
 [html-helper-meta]: api/phalcon_html.md#htmlhelpermeta
+
 [html-helper-ol]: api/phalcon_html.md#htmlhelperol
+
 [html-helper-preload]: api/phalcon_html.md#htmlhelperpreload
+
 [html-helper-script]: api/phalcon_html.md#htmlhelperscript
+
 [html-helper-style]: api/phalcon_html.md#htmlhelperstyle
+
 [html-helper-tag]: api/phalcon_html.md#htmlhelpertag
+
 [html-helper-title]: api/phalcon_html.md#htmlhelpertitle
+
 [html-helper-ul]: api/phalcon_html.md#htmlhelperul
+
 [html-helper-voidtag]: api/phalcon_html.md#htmlhelpervoidtag
+
 [html-tagfactory]: api/phalcon_html.md#htmltagfactory
+
 [html5-boolean]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes

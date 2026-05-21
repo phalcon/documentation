@@ -1,22 +1,31 @@
 # Escaper
+
 - - -
 
 ## Overview
-Websites and web applications are vulnerable to [XSS][xss] attacks and although PHP provides escaping functionality, in some contexts, it is not sufficient/appropriate. [Phalcon\Html\Escaper][escaper] provides contextual escaping and is written in [Zephir][zephir], providing minimal overhead when escaping different kinds of texts.
 
-We designed this component based on the [XSS (Cross-Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset.
+Websites and web applications are vulnerable to [XSS][xss] attacks and although PHP provides escaping functionality, in
+some contexts, it is not sufficient/appropriate. [Phalcon\Html\Escaper][escaper] provides contextual escaping and is
+written in [Zephir][zephir], providing minimal overhead when escaping different kinds of texts.
 
-Starting with v5.12.2, [Phalcon\Html\Escaper][escaper] is a façade over five per-context escapers, each living in the `Phalcon\Html\Escaper` namespace:
+We designed this component based on the [XSS (Cross-Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by
+the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset.
 
-| Class                                         | Used by         |
-|-----------------------------------------------|-----------------|
-| [Phalcon\Html\Escaper\HtmlEscaper][html-esc]      | `html()`        |
-| [Phalcon\Html\Escaper\AttributeEscaper][attr-esc] | `attributes()`  |
-| [Phalcon\Html\Escaper\CssEscaper][css-esc]        | `css()`         |
-| [Phalcon\Html\Escaper\JsEscaper][js-esc]          | `js()`          |
-| [Phalcon\Html\Escaper\UrlEscaper][url-esc]        | `url()`         |
+Starting with v5.12.2, [Phalcon\Html\Escaper][escaper] is a façade over five per-context escapers, each living in the
+`Phalcon\Html\Escaper` namespace:
 
-All five extend [Phalcon\Html\Escaper\AbstractEscaper][abstract-esc], which carries the encoding/flags/double-encode state. The façade exposes `getXxxEscaper()` and `setXxxEscaper()` accessors so individual contexts can be swapped without subclassing the façade itself. The legacy `setEncoding()`, `setFlags()`, and `setDoubleEncode()` setters fan out to all sub-escapers automatically, so existing code keeps working.
+| Class                                             | Used by        |
+|---------------------------------------------------|----------------|
+| [Phalcon\Html\Escaper\HtmlEscaper][html-esc]      | `html()`       |
+| [Phalcon\Html\Escaper\AttributeEscaper][attr-esc] | `attributes()` |
+| [Phalcon\Html\Escaper\CssEscaper][css-esc]        | `css()`        |
+| [Phalcon\Html\Escaper\JsEscaper][js-esc]          | `js()`         |
+| [Phalcon\Html\Escaper\UrlEscaper][url-esc]        | `url()`        |
+
+All five extend [Phalcon\Html\Escaper\AbstractEscaper][abstract-esc], which carries the encoding/flags/double-encode
+state. The façade exposes `getXxxEscaper()` and `setXxxEscaper()` accessors so individual contexts can be swapped
+without subclassing the façade itself. The legacy `setEncoding()`, `setFlags()`, and `setDoubleEncode()` setters fan out
+to all sub-escapers automatically, so existing code keeps working.
 
 To illustrate how this component works and why it is important, consider the following example:
 
@@ -45,7 +54,9 @@ echo $escaper->js($js);
 ```
 
 ## HTML
-You can escape text before printing it to your views using `html()`. Without escaping you could potentially echo unsafe data in your HTML output.
+
+You can escape text before printing it to your views using `html()`. Without escaping you could potentially echo unsafe
+data in your HTML output.
 
 ```php
 <?php
@@ -60,19 +71,27 @@ echo $escaper->html($title);
 ```
 
 HTML syntax:
+
 ```html
 <?php echo $this->escaper->html($title); ?>
 ```
 
 Volt syntax:
+
 ```twig
 {{ title | escape }}
 ```
 
 ## HTML Attributes
-Escaping attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric character to a safe format. It uses [htmlspecialchars][htmlspecialchars] internally. This kind of escaping is intended escape excluding complex ones such as `href` or `url`. To escape attributes, you can use the `attributes()` method. This method has been renamed. The old method `escapeHtmlAttr()` will be removed in the future and emit a `@deprecated` warning.
 
-The method also accepts an array as a parameter. The keys are the attribute names and the values are attribute values. If a value is boolean (`true`/`false`) then the attribute will have no value:
+Escaping attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric
+character to a safe format. It uses [htmlspecialchars][htmlspecialchars] internally. This kind of escaping is intended
+escape excluding complex ones such as `href` or `url`. To escape attributes, you can use the `attributes()` method. This
+method has been renamed. The old method `escapeHtmlAttr()` will be removed in the future and emit a `@deprecated`
+warning.
+
+The method also accepts an array as a parameter. The keys are the attribute names and the values are attribute values.
+If a value is boolean (`true`/`false`) then the attribute will have no value:
 
 ```
 ['disabled' => true] -> 'disabled`
@@ -93,17 +112,21 @@ echo $escaper->attributes($attr);
 ```
 
 HTML syntax:
+
 ```html
 <?php echo $this->escaper->attributes($attr); ?>
 ```
 
 Volt syntax:
+
 ```twig
 {{ attr | escape_attr }}
 ```
 
 ## URLs
-`url()` can be used to escape attributes such as `href` or `url`. This method has been renamed. The old method `escapeUrl()` will be removed in the future and emit a `@deprecated` warning.
+
+`url()` can be used to escape attributes such as `href` or `url`. This method has been renamed. The old method
+`escapeUrl()` will be removed in the future and emit a `@deprecated` warning.
 
 ```php
 <?php
@@ -118,14 +141,18 @@ echo $escaper->attributes($url);
 ```
 
 HTML syntax:
+
 ```html
 <?php echo $this->escaper->attributes($url); ?>
 ```
 
 ## CSS
-CSS identifiers/values can be escaped by using `css()`. This method has been renamed. The old method `escapeCss()` will be removed in the future and emits a `@deprecated` warning.
 
-When the input is an empty string, or contains only the null codepoint, `css()` returns an empty string instead of `false`.
+CSS identifiers/values can be escaped by using `css()`. This method has been renamed. The old method `escapeCss()` will
+be removed in the future and emits a `@deprecated` warning.
+
+When the input is an empty string, or contains only the null codepoint, `css()` returns an empty string instead of
+`false`.
 
 ```php
 <?php
@@ -140,19 +167,24 @@ echo $escaper->css($css);
 ```
 
 HTML syntax:
+
 ```html
 <?php echo $this->escaper->css($css); ?>
 ```
 
 Volt syntax:
+
 ```twig
 {{ css | escape_css }}
 ```
 
-##  JavaScript
-Content printed into javascript code must be properly escaped. `js()` helps with this task. This method has been renamed. The old method `escapeJs()` will be removed in the future and emits a `@deprecated` warning.
+## JavaScript
 
-When the input is an empty string, or contains only the null codepoint, `js()` returns an empty string instead of `false`.
+Content printed into javascript code must be properly escaped. `js()` helps with this task. This method has been
+renamed. The old method `escapeJs()` will be removed in the future and emits a `@deprecated` warning.
+
+When the input is an empty string, or contains only the null codepoint, `js()` returns an empty string instead of
+`false`.
 
 ```php
 <?php
@@ -167,20 +199,26 @@ echo $escaper->js($js);
 ```
 
 HTML syntax:
+
 ```html
 <?php echo $this->escaper->js($js); ?>
 ```
 
 Volt syntax:
+
 ```twig
 {{ js | escape_js }}
 ```
 
 ## Encoding
+
 [Phalcon\Html\Escape][escaper] also offers methods regarding the encoding of the text to be escaped.
 
 ### `detectEncoding()`
-Detects the character encoding of a string to be handled by an encoder. Special-handling for `chr(172)` and `chr(128)` to `chr(159)` which fail to be detected [mb_detect_encoding][mb_detect_encoding]. The method returns a `string` with the detected encoding or `null`
+
+Detects the character encoding of a string to be handled by an encoder. Special-handling for `chr(172)` and `chr(128)`
+to `chr(159)` which fail to be detected [mb_detect_encoding][mb_detect_encoding]. The method returns a `string` with the
+detected encoding or `null`
 
 ```php
 <?php
@@ -193,6 +231,7 @@ echo $escaper->detectEncoding('ḂḃĊċḊḋḞḟĠġṀṁ'); // UTF-8
 ```
 
 ### `getEncoding()`
+
 Returns the internal encoding used by the escaper
 
 ```php
@@ -206,6 +245,7 @@ echo $escaper->getEncoding();
 ```
 
 ### `normalizeEncoding()`
+
 Utility method that normalizes a string's encoding to UTF-32.
 
 ```php
@@ -219,6 +259,7 @@ echo $escaper->normalizeEncoding('ḂḃĊċḊḋḞḟĠġṀṁ');
 ```
 
 ### `setEncoding()`
+
 Sets the encoding to be used by the escaper
 
 ```php
@@ -234,6 +275,7 @@ echo $escaper->getEncoding(); // 'utf-8'
 ```
 
 ### `setDoubleEncode()`
+
 Sets the escaper to use double encoding or not (default `true`)
 
 ```php
@@ -247,9 +289,12 @@ $escaper->setDoubleEncode(false);
 ```
 
 ### `setFlags(int $flags)`
-You can set the quote type to be used by the escaper. This method has been renamed. The old method `setHtmlQuoteType()` will be removed in the future and emit a `@deprecated` warning.
+
+You can set the quote type to be used by the escaper. This method has been renamed. The old method `setHtmlQuoteType()`
+will be removed in the future and emit a `@deprecated` warning.
 
 The passed variable is one of the constants that [htmlspecialchars][htmlspecialchars] accepts:
+
 - `ENT_COMPAT`
 - `ENT_QUOTES`
 - `ENT_NOQUOTES`
@@ -272,9 +317,12 @@ $escaper->setFlags(ENT_XHTML);
 ```
 
 ## Per-Context Escapers
-Each method on [Phalcon\Html\Escaper][escaper] delegates to a dedicated sub-escaper. You can read the current sub-escaper, replace it with a custom subclass, or use it directly without going through the façade.
+
+Each method on [Phalcon\Html\Escaper][escaper] delegates to a dedicated sub-escaper. You can read the current
+sub-escaper, replace it with a custom subclass, or use it directly without going through the façade.
 
 ### Accessing a Sub-Escaper
+
 ```php
 <?php
 
@@ -293,7 +341,9 @@ echo $htmlEscaper->escape('</title><script>alert(1)</script>');
 ```
 
 ### Swapping a Sub-Escaper
-You can replace any single sub-escaper without subclassing the façade. This is useful for adding logging, alternative algorithms, or custom flag handling for one context only.
+
+You can replace any single sub-escaper without subclassing the façade. This is useful for adding logging, alternative
+algorithms, or custom flag handling for one context only.
 
 ```php
 <?php
@@ -337,7 +387,9 @@ The available accessor pairs are:
 | `UrlEscaper`       | `getUrlEscaper()`       | `setUrlEscaper()`       |
 
 ### Shared Configuration
-Calling `setEncoding()`, `setFlags()`, or `setDoubleEncode()` on the façade fans the value out to every sub-escaper, so the change is applied uniformly:
+
+Calling `setEncoding()`, `setFlags()`, or `setDoubleEncode()` on the façade fans the value out to every sub-escaper, so
+the change is applied uniformly:
 
 ```php
 <?php
@@ -354,6 +406,7 @@ $escaper->setDoubleEncode(false);
 ```
 
 ### Direct Use Without the Façade
+
 Each sub-escaper can be used standalone if you do not need the façade aggregation:
 
 ```php
@@ -373,7 +426,10 @@ $url  = (new UrlEscaper())->escape('"><script>alert(1)</script>');
 ```
 
 ## Exceptions
-Any exceptions thrown in the Escaper component will be of type [Phalcon\Html\Escaper\Exception][escaper-exception]. It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
+
+Any exceptions thrown in the Escaper component will be of type [Phalcon\Html\Escaper\Exception][escaper-exception]. It
+is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch
+exceptions thrown only from this component.
 
 ```php
 <?php
@@ -399,7 +455,9 @@ class IndexController extends Controller
 ```
 
 ## Dependency Injection
-If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Html\Escaper][escaper] is already registered for you with the name `escaper`.
+
+If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Html\Escaper][escaper] is already
+registered for you with the name `escaper`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -449,7 +507,9 @@ class InvoicesController extends Controller
 ```
 
 ## Custom
-Phalcon also offers the [Phalcon\Html\Escaper\EscaperInterface][escaper-escaperinterface] which can be implemented in a custom class. The class can offer the escaper functionality you require.
+
+Phalcon also offers the [Phalcon\Html\Escaper\EscaperInterface][escaper-escaperinterface] which can be implemented in a
+custom class. The class can offer the escaper functionality you require.
 
 ```php
 <?php
@@ -479,19 +539,35 @@ class Custom extends EscaperInterface
 ```
 
 [abstract-esc]: api/phalcon_html.md#htmlescaperabstractescaper
+
 [attr-esc]: api/phalcon_html.md#htmlescaperattributeescaper
+
 [css-esc]: api/phalcon_html.md#htmlescapercssescaper
+
 [di-factorydefault]: api/phalcon_di.md#difactorydefault
+
 [escaper]: api/phalcon_html.md#htmlescaper
+
 [escaper-escaperinterface]: api/phalcon_html.md#htmlescaperescaperinterface
+
 [escaper-exception]: api/phalcon_html.md#htmlescaperexception
+
 [html-esc]: api/phalcon_html.md#htmlescaperhtmlescaper
+
 [js-esc]: api/phalcon_html.md#htmlescaperjsescaper
+
 [url-esc]: api/phalcon_html.md#htmlescaperurlescaper
+
 [zephir]: https://zephir-lang.com
+
 [htmlspecialchars]: https://www.php.net/manual/en/function.htmlspecialchars.php
+
 [mb_detect_encoding]: https://www.php.net/manual/en/function.mb-detect-encoding.php
+
 [mbstring]: https://www.php.net/manual/en/book.mbstring.php
+
 [owasp]: https://www.owasp.org
+
 [xss]: https://owasp.org/www-community/attacks/xss/
+
 [xss_cheat_sheet]: https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
