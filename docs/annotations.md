@@ -277,6 +277,29 @@ a [Phalcon\Annotations\Exception][annotations-exception] will be thrown.
 
 [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface] is available
 
+## Limiting the In-Memory Cache
+
+Each adapter caches parsed [Phalcon\Annotations\Reflection][annotations-reflection] results keyed by class name. The
+cache lives for the adapter instance lifetime and is bounded in practice by the number of annotated classes in the
+application.
+
+For long-running processes that load classes dynamically (test runners, code generators, multi-tenant workers) call
+`setAnnotationsLimit()` to clear the cache when adding a new class would exceed the cap; the cache repopulates lazily on
+subsequent reads.
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+
+$adapter = new Memory();
+$adapter->setAnnotationsLimit(500);
+```
+
+The default value `0` preserves the original unbounded behavior. `getAnnotationsLimit()` returns the current cap. The
+cap applies uniformly to every adapter (`Apcu`, `Memory`, `Stream`, custom) because the methods live on
+[Phalcon\Annotations\Adapter\AbstractAdapter][annotations-adapter-abstractadapter].
+
 ## Examples
 
 ### Controller-based Access

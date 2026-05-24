@@ -1973,6 +1973,26 @@ $listener = new DbProfiler();
 $manager->attach('db', $listener);
 ```
 
+### Capping Profile Retention
+
+By default the profiler keeps every recorded profile for the lifetime of the instance. In long-running PHP processes (Swoole, RoadRunner, queue workers) this grows without bound. Call `setMaxProfiles()` to keep only the most recent N entries; the oldest is dropped FIFO before each new `stopProfile()` append.
+
+```php
+<?php
+
+use Phalcon\Db\Profiler;
+
+$profiler = new Profiler();
+$profiler->setMaxProfiles(500);
+
+// ... drive queries through the events manager ...
+
+// getProfiles() now returns at most 500 items.
+$recent = $profiler->getProfiles();
+```
+
+The default value `0` preserves the original unbounded behavior, so existing application code is unaffected. `getMaxProfiles()` returns the current cap. Calling `reset()` continues to clear the buffer regardless of the cap.
+
 ## Logging
 
 Using high-level abstraction components such as the `Phalcon\Db` adapters to access the database, makes it difficult to

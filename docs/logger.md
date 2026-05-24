@@ -415,6 +415,34 @@ logged until we call the `commit` method in the `manager` adapter.
 
     If you set one or more adapters to be in transaction mode (i.e. call `begin`) and forget to call `commit`, The adapter will call `commit` for you right before it is destroyed.
 
+### Capping the Transaction Queue
+
+By default the transaction queue holds every message between `begin()` and `commit()`. In long-running processes that batch many messages per transaction this grows without bound. Call `setQueueLimit()` on the adapter to keep only the most recent N items; the oldest is dropped FIFO before each new `add()` call.
+
+```php
+<?php
+
+use Phalcon\Logger\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter = new Stream('/var/log/application.log');
+$adapter->setQueueLimit(1000);
+
+$logger = new Logger('messages', ['file' => $adapter]);
+
+$adapter->begin();
+
+for ($i = 0; $i < 5000; $i++) {
+    $logger->info('record ' . $i);
+}
+
+$adapter->commit();
+// At commit() the queue holds the most recent 1000 messages;
+// the older 4000 were evicted FIFO during add().
+```
+
+The default value `0` preserves the original unbounded behavior. `getQueueLimit()` returns the current cap. `rollback()` continues to drop the queue regardless of the cap.
+
 ## Message Formatting
 
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available

@@ -393,6 +393,22 @@ $adapter = new Memory($serializerFactory, $options);
 The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the
 `defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
 
+The adapter retains every key set for its lifetime. In long-running PHP processes (Swoole, RoadRunner, queue workers)
+call `setMaxItems()` to evict the oldest entry FIFO before a new key is stored once the cap is reached.
+
+```php
+<?php
+
+use Phalcon\Storage\Adapter\Memory;
+use Phalcon\Storage\SerializerFactory;
+
+$adapter = new Memory(new SerializerFactory());
+$adapter->setMaxItems(10000);
+```
+
+The default value `0` preserves the original unbounded behavior. `getMaxItems()` returns the current cap. Eviction is
+FIFO by insertion order; existing keys updated via `set()` are not promoted.
+
 ### `Redis`
 
 This adapter utilizes PHP's [redis][redis] extension to connect to a Redis server. The adapter used is an instance of

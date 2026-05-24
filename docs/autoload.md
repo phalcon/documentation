@@ -490,6 +490,31 @@ files:
 
 Files are checked in the order that each extension is defined.
 
+## Internal Array Keys
+
+The `setDirectories()`, `setExtensions()`, `setFiles()` registrations (and their `addDirectory()`, `addExtension()`, `addFile()` counterparts) store each entry in an array keyed by the value itself. The getters `getDirectories()`, `getExtensions()`, `getFiles()` return those arrays as stored. Code that iterates by value is unaffected:
+
+```php
+<?php
+
+foreach ($loader->getDirectories() as $directory) {
+    echo $directory, PHP_EOL;
+}
+```
+
+Code that reads both key and value sees the value string in the key position:
+
+```php
+<?php
+
+foreach ($loader->getDirectories() as $key => $directory) {
+    // $key === $directory
+    echo $key, ' => ', $directory, PHP_EOL;
+}
+```
+
+Prior to 5.13.1 the key was a SHA-256 hex digest of the value. Application code that depended on that opaque digest (for example to construct a lookup key) must read the value directly or use `in_array()` / `isset($getter[$value])`.
+
 ## File Checking Callback
 
 You can speed up the loader by setting a different file-checking callback method using the `setFileCheckingCallback()`

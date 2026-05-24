@@ -1032,6 +1032,28 @@ try {
 `setStrict(true)` toggles the flag; `isStrict()` reports the current state. Default is `false`, so existing application
 code is unaffected. Strict mode applies to both `fire()` and `fireAll()`.
 
+## Method-Exists Cache
+
+The manager memoizes `method_exists()` results for the object-method dispatch path - a plain-object listener whose
+method name matches the event. The cache is keyed by handler class so a class that never gains methods at runtime stops
+paying the lookup cost from the second `fire()` onwards. The cache covers only the OBJECT_METHOD dispatch path
+(listener type `2`); closures, `[$obj, 'method']` callables, and generic callables are unaffected.
+
+In long-running processes that load many distinct listener classes over time the cache grows alongside the class set.
+Call `setMethodExistsCacheLimit()` to drop the cache when adding a new class would exceed the cap; the lookup re-warms
+on subsequent fires.
+
+```php
+<?php
+
+use Phalcon\Events\Manager as EventsManager;
+
+$eventsManager = new EventsManager();
+$eventsManager->setMethodExistsCacheLimit(256);
+```
+
+The default value `0` preserves the original unbounded behavior. `getMethodExistsCacheLimit()` returns the current cap.
+
 ## Controllers
 
 Controllers act as listeners already registered in the events manager. As a result, you only need to create a method
