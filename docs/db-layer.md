@@ -2942,7 +2942,7 @@ to selectively catch exceptions thrown only from this component.
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses of `Phalcon\Db\Exception` so callers can catch a specific failure
+As of 5.14 the component raises granular subclasses of `Phalcon\Db\Exception` so callers can catch a specific failure
 mode. Every subclass extends `Phalcon\Db\Exception`, so existing `catch (Phalcon\Db\Exception $e)` blocks continue to
 work unchanged.
 

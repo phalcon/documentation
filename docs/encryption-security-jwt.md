@@ -837,7 +837,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses so callers can catch a specific failure mode. Validation-related
+As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Validation-related
 classes extend `ValidatorException`; structural-input errors extend `InvalidArgumentException`; the HMAC algorithm
 rejection extends `UnsupportedAlgorithmException`.
 

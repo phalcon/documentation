@@ -996,7 +996,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses under `Phalcon\Cache\Exception\` so callers can catch a specific
+As of 5.14 the component raises granular subclasses under `Phalcon\Cache\Exception\` so callers can catch a specific
 failure mode. The PSR-16 contract requires that argument validation errors implement
 `Psr\SimpleCache\InvalidArgumentException`, so both classes below extend
 `Phalcon\Cache\Exception\InvalidArgumentException` rather than the base `Exception`. Existing

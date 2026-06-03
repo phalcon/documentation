@@ -2323,7 +2323,7 @@ You can use this exception to selectively catch exceptions thrown only from this
 
 ### Granular Exceptions
 
-As of 5.13.1 the engine raises granular subclasses of `Phalcon\Mvc\View\Engine\Volt\Exception` so callers can catch a
+As of 5.14 the engine raises granular subclasses of `Phalcon\Mvc\View\Engine\Volt\Exception` so callers can catch a
 specific failure mode. Existing `catch (Phalcon\Mvc\View\Engine\Volt\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                       | Parent                                   | Thrown when                                                                  |

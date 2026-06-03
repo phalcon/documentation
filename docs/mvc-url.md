@@ -601,7 +601,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses of `Phalcon\Mvc\Url\Exception` so callers can catch a specific
+As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Url\Exception` so callers can catch a specific
 failure mode. Existing `catch (Phalcon\Mvc\Url\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                 | Parent                      | Thrown when                                                                        |

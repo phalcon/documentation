@@ -590,7 +590,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses so callers can catch a specific failure mode. Three subclasses
+As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Three subclasses
 extend `Phalcon\Annotations\Exception`; one keeps its original SPL parent (`RuntimeException`) because the historical
 throw site used that type.
 

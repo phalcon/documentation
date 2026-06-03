@@ -513,7 +513,7 @@ foreach ($loader->getDirectories() as $key => $directory) {
 }
 ```
 
-Prior to 5.13.1 the key was a SHA-256 hex digest of the value. Application code that depended on that opaque digest (for example to construct a lookup key) must read the value directly or use `in_array()` / `isset($getter[$value])`.
+Prior to 5.14 the key was a SHA-256 hex digest of the value. Application code that depended on that opaque digest (for example to construct a lookup key) must read the value directly or use `in_array()` / `isset($getter[$value])`.
 
 ## File Checking Callback
 
@@ -872,7 +872,7 @@ only from this component.
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses of `Phalcon\Autoload\Exception` so callers can catch a specific
+As of 5.14 the component raises granular subclasses of `Phalcon\Autoload\Exception` so callers can catch a specific
 failure mode. Existing `catch (Phalcon\Autoload\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                   | Parent                       | Thrown when                                                         |

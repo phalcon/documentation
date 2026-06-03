@@ -1361,7 +1361,7 @@ subclass). You can use this exception to selectively catch exceptions thrown onl
 
 ### Granular Exceptions
 
-As of 5.13.1 the dispatcher raises granular subclasses of its `Exception` types so callers can catch a specific failure
+As of 5.14 the dispatcher raises granular subclasses of its `Exception` types so callers can catch a specific failure
 mode. Existing `catch (Phalcon\Dispatcher\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                          | Parent                             | Thrown when                                                                     |

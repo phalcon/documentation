@@ -1679,7 +1679,7 @@ this exception to selectively catch exceptions thrown only from this component.
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific
+As of 5.14 the component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific
 failure mode. Existing `catch (Phalcon\Support\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                         | Parent                      | Thrown when                                                                        |

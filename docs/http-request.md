@@ -14,7 +14,7 @@ respectively.
 
 ### Granular Exceptions
 
-As of 5.13.1 these components raise granular subclasses so callers can catch a specific failure mode. Existing
+As of 5.14 these components raise granular subclasses so callers can catch a specific failure mode. Existing
 `catch (Phalcon\Http\Request\Exception $e)` / `catch (Phalcon\Http\Cookie\Exception $e)` blocks continue to work
 unchanged.
 

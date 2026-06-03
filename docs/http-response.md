@@ -13,7 +13,7 @@ will be of type `Phalcon\Http\Response\Exception`.
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses of `Phalcon\Http\Response\Exception` so callers can catch a
+As of 5.14 the component raises granular subclasses of `Phalcon\Http\Response\Exception` so callers can catch a
 specific failure mode. Existing `catch (Phalcon\Http\Response\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                   | Parent                            | Thrown when                                                                          |

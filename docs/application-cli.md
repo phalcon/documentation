@@ -607,7 +607,7 @@ allows you to trap the exception specifically.
 
 ### Granular Exceptions
 
-As of 5.13.1 the CLI Console and Router raise granular subclasses of their respective `Exception` types so callers can
+As of 5.14 the CLI Console and Router raise granular subclasses of their respective `Exception` types so callers can
 catch a specific failure mode. Existing `catch (Phalcon\Cli\Console\Exception $e)` /
 `catch (Phalcon\Cli\Router\Exception $e)` blocks continue to work unchanged.
 

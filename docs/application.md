@@ -767,7 +767,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.13.1 the component raises granular subclasses so callers can catch a specific failure mode. Every subclass
+As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Every subclass
 extends its respective parent (`Phalcon\Application\Exception` or `Phalcon\Mvc\Application\Exception`), so existing
 `catch` blocks against the umbrella types continue to work unchanged.
 
