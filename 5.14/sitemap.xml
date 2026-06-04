@@ -425,6 +425,10 @@
          <lastmod>2026-06-04</lastmod>
     </url>
     <url>
+         <loc>https://docs.phalcon.io/5.14/api/phalcon_auth/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
          <loc>https://docs.phalcon.io/5.14/api/phalcon_autoload/</loc>
          <lastmod>2026-06-04</lastmod>
     </url>
@@ -438,6 +442,10 @@
     </url>
     <url>
          <loc>https://docs.phalcon.io/5.14/api/phalcon_config/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.phalcon.io/5.14/api/phalcon_container/</loc>
          <lastmod>2026-06-04</lastmod>
     </url>
     <url>
