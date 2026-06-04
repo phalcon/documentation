@@ -1267,6 +1267,91 @@ class EventsManager implements ManagerInterface
 }
 ```
 
+### Extending the Built-in Manager
+
+Instead of implementing the contract from scratch, you can extend [Phalcon\Events\Manager][events-manager] directly.
+`fire()` is no longer `final` as of 5.14.0, so a subclass can hook the dispatch lifecycle. Two protected extension seams
+are provided so common cases do not require reimplementing `fire()` itself:
+
+- `beforeFire(string $eventType, object $source, mixed $data = null, bool $cancelable = true): bool` runs before the
+  event is dispatched. Returning `false` aborts the fire and `fire()` returns `null`. It runs before the no-listener
+  short-circuit, so it observes every `fire()` call, including those with no attached listeners. The base implementation
+  returns `true`.
+- `afterFire(mixed $status, string $eventType, object $source, mixed $data = null, bool $cancelable = true): mixed` runs
+  after the event has been dispatched. It receives the computed dispatch result as `$status` and returns the value
+  `fire()` hands back to its caller. The base implementation returns `$status` unchanged.
+
+Within `fire()` the seams sit around the dispatch in this order:
+
+1. the manager-level [`halt()`](#kill-switch) kill switch returns before `beforeFire()`,
+2. `beforeFire()`,
+3. the no-listener short-circuit,
+4. listener dispatch,
+5. `afterFire()`.
+
+Because `afterFire()` sits after steps 1 and 3, a halted manager or a `fire()` with no attached listeners returns
+without calling it. `beforeFire()` sits before step 3, so it runs on every `fire()` regardless of attached listeners.
+
+```php
+<?php
+
+namespace MyApp\Events;
+
+use MyApp\Queue\QueueClient;
+use Phalcon\Events\Manager as EventsManager;
+use Psr\Log\LoggerInterface;
+
+class QueueAwareManager extends EventsManager
+{
+    public function __construct(
+        private LoggerInterface $logger,
+        private QueueClient $queue
+    ) {
+    }
+
+    /**
+     * Push deferred events onto an external queue and skip local dispatch.
+     */
+    protected function beforeFire(
+        string $eventType,
+        object $source,
+        mixed $data = null,
+        bool $cancelable = true
+    ): bool {
+        if (str_starts_with($eventType, 'queue:')) {
+            $this->queue->push($eventType, $data);
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Record the dispatch result, then return it unchanged.
+     */
+    protected function afterFire(
+        mixed $status,
+        string $eventType,
+        object $source,
+        mixed $data = null,
+        bool $cancelable = true
+    ): mixed {
+        $this->logger->info('Fired ' . $eventType);
+
+        return $status;
+    }
+}
+```
+
+A `fire()` whose event type starts with `queue:` is pushed onto the external queue and never reaches the local listener
+queues, so `fire()` returns `null`. Every other event dispatches normally, and `afterFire()` records the result before
+it is returned.
+
+!!! info "NOTE"
+
+    The events manager can be subclassed. [Phalcon\Events\Manager::fire()][events-manager] was declared `final` in 5.13.0 and reopened in 5.14.0. [Phalcon\Events\Event][events-event] remains `final`; to alter event behavior, implement [Phalcon\Contracts\Events\Event][contracts-event] on a sibling class instead.
+
 ## List of Events
 
 The events available in Phalcon are:
