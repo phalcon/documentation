@@ -20,6 +20,7 @@ hide:
 
 -   __Uses__
     
+    - `Phalcon\Assets\Exceptions\CannotReadAsset`
 
 -   __Extends__
     
@@ -497,43 +498,43 @@ protected $version = ;
 ### Methods
 
 ```php
-public function add( AssetInterface $asset ): Collection;
+public function add( AssetInterface $asset ): static;
 ```
 Adds an asset to the collection
 
 
 ```php
-public function addCss( string $path, mixed $isLocal = null, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Collection;
+public function addCss( string $path, mixed $isLocal = null, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): static;
 ```
 Adds a CSS asset to the collection
 
 
 ```php
-public function addFilter( FilterInterface $filter ): Collection;
+public function addFilter( FilterInterface $filter ): static;
 ```
 Adds a filter to the collection
 
 
 ```php
-public function addInline( Inline $code ): Collection;
+public function addInline( Inline $code ): static;
 ```
 Adds an inline code to the collection
 
 
 ```php
-public function addInlineCss( string $content, bool $filter = bool, array $attributes = [] ): Collection;
+public function addInlineCss( string $content, bool $filter = bool, array $attributes = [] ): static;
 ```
 Adds an inline CSS to the collection
 
 
 ```php
-public function addInlineJs( string $content, bool $filter = bool, array $attributes = [] ): Collection;
+public function addInlineJs( string $content, bool $filter = bool, array $attributes = [] ): static;
 ```
 Adds an inline JavaScript to the collection
 
 
 ```php
-public function addJs( string $path, mixed $isLocal = null, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Collection;
+public function addJs( string $path, mixed $isLocal = null, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): static;
 ```
 Adds a JavaScript asset to the collection
 
@@ -656,68 +657,68 @@ public function isLocal(): bool;
 
 
 ```php
-public function join( bool $flag ): Collection;
+public function join( bool $flag ): static;
 ```
 Sets if all filtered assets in the collection must be joined in a single
 result file
 
 
 ```php
-public function setAttributes( array $attributes ): Collection;
+public function setAttributes( array $attributes ): static;
 ```
 Sets extra HTML attributes
 
 
 ```php
-public function setAutoVersion( bool $flag ): Collection;
+public function setAutoVersion( bool $flag ): static;
 ```
 
 
 
 ```php
-public function setFilters( array $filters ): Collection;
+public function setFilters( array $filters ): static;
 ```
 Sets an array of filters in the collection
 
 
 ```php
-public function setIsLocal( bool $flag ): Collection;
+public function setIsLocal( bool $flag ): static;
 ```
 Sets if the collection uses local assets by default
 
 
 ```php
-public function setPrefix( string $prefix ): Collection;
+public function setPrefix( string $prefix ): static;
 ```
 Sets a common prefix for all the assets
 
 
 ```php
-public function setSourcePath( string $sourcePath ): Collection;
+public function setSourcePath( string $sourcePath ): static;
 ```
 Sets a base source path for all the assets in this collection
 
 
 ```php
-public function setTargetIsLocal( bool $flag ): Collection;
+public function setTargetIsLocal( bool $flag ): static;
 ```
 Sets if the target local or not
 
 
 ```php
-public function setTargetPath( string $targetPath ): Collection;
+public function setTargetPath( string $targetPath ): static;
 ```
 Sets the target path of the file for the filtered/join output
 
 
 ```php
-public function setTargetUri( string $targetUri ): Collection;
+public function setTargetUri( string $targetUri ): static;
 ```
 Sets a target uri for the generated HTML
 
 
 ```php
-public function setVersion( string $version ): Collection;
+public function setVersion( string $version ): static;
 ```
 Sets the version
 
@@ -750,6 +751,310 @@ Adds an asset or inline-code to the collection
     
 
 Exceptions thrown in Phalcon\Assets will use this class
+
+
+
+## Assets\Exceptions\AssetSourceTargetCollision 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/AssetSourceTargetCollision.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Assets\Exceptions\CannotReadAsset 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/CannotReadAsset.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Assets\Exceptions\CollectionNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/CollectionNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Assets\Exceptions\InvalidAssetSourcePath 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidAssetSourcePath.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Assets\Exceptions\InvalidAssetTargetPath 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidAssetTargetPath.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Assets\Exceptions\InvalidFilter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidFilter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Assets\Exceptions\InvalidTargetPath 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidTargetPath.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Assets\Exceptions\TargetPathIsDirectory 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/TargetPathIsDirectory.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Assets\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Assets\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
 
 
 
@@ -1079,6 +1384,13 @@ Phalcon\Assets\Inline\Js constructor
     
     - `Phalcon\Assets\Asset\Css`
     - `Phalcon\Assets\Asset\Js`
+    - `Phalcon\Assets\Exceptions\AssetSourceTargetCollision`
+    - `Phalcon\Assets\Exceptions\CollectionNotFound`
+    - `Phalcon\Assets\Exceptions\InvalidAssetSourcePath`
+    - `Phalcon\Assets\Exceptions\InvalidAssetTargetPath`
+    - `Phalcon\Assets\Exceptions\InvalidFilter`
+    - `Phalcon\Assets\Exceptions\InvalidTargetPath`
+    - `Phalcon\Assets\Exceptions\TargetPathIsDirectory`
     - `Phalcon\Assets\Inline\Css`
     - `Phalcon\Assets\Inline\Js`
     - `Phalcon\Di\AbstractInjectionAware`
@@ -1130,49 +1442,49 @@ Manager constructor.
 
 
 ```php
-public function addAsset( Asset $asset ): Manager;
+public function addAsset( Asset $asset ): static;
 ```
 Adds a raw asset to the manager
 
 
 ```php
-public function addAssetByType( string $type, Asset $asset ): Manager;
+public function addAssetByType( string $type, Asset $asset ): static;
 ```
 Adds a asset by its type
 
 
 ```php
-public function addCss( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Manager;
+public function addCss( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): static;
 ```
 Adds a CSS asset to the 'css' collection
 
 
 ```php
-public function addInlineCode( Inline $code ): Manager;
+public function addInlineCode( Inline $code ): static;
 ```
 Adds a raw inline code to the manager
 
 
 ```php
-public function addInlineCodeByType( string $type, Inline $code ): Manager;
+public function addInlineCodeByType( string $type, Inline $code ): static;
 ```
 Adds an inline code by its type
 
 
 ```php
-public function addInlineCss( string $content, bool $filter = bool, array $attributes = [] ): Manager;
+public function addInlineCss( string $content, bool $filter = bool, array $attributes = [] ): static;
 ```
 Adds an inline CSS to the 'css' collection
 
 
 ```php
-public function addInlineJs( string $content, bool $filter = bool, array $attributes = [] ): Manager;
+public function addInlineJs( string $content, bool $filter = bool, array $attributes = [] ): static;
 ```
 Adds an inline JavaScript to the 'js' collection
 
 
 ```php
-public function addJs( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): Manager;
+public function addJs( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): static;
 ```
 Adds a JavaScript asset to the 'js' collection
 
@@ -1291,7 +1603,7 @@ Prints the HTML for JS assets
 
 
 ```php
-public function set( string $name, Collection $collection ): Manager;
+public function set( string $name, Collection $collection ): static;
 ```
 Sets a collection in the Assets Manager
 
@@ -1301,13 +1613,13 @@ $assets->set("js", $collection);
 
 
 ```php
-public function setOptions( array $options ): Manager;
+public function setOptions( array $options ): static;
 ```
 Sets the manager options
 
 
 ```php
-public function useImplicitOutput( bool $implicitOutput ): Manager;
+public function useImplicitOutput( bool $implicitOutput ): static;
 ```
 Sets if the HTML generated must be directly printed or returned
 

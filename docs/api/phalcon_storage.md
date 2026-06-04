@@ -605,6 +605,8 @@ protected function phpApcuStore( mixed $key, mixed $payload, int $ttl = int ): b
     - `DateInterval`
     - `Exception`
     - `Phalcon\Storage\Exception`
+    - `Phalcon\Storage\Exceptions\ConnectionFailed`
+    - `Phalcon\Storage\Exceptions\InvalidConfiguration`
     - `Phalcon\Storage\SerializerFactory`
     - `Phalcon\Support\Exception`
 
@@ -739,6 +741,15 @@ Memory adapter
  */
 protected $data;
 
+/**
+ * Maximum number of items retained in the in-memory store.
+ * 0 (default) keeps the original unbounded behavior; a positive
+ * value drops the oldest entry FIFO before a new key is stored.
+ *
+ * @var int
+ */
+protected $maxItems = 0;
+
 ```
 
 ### Methods
@@ -762,10 +773,25 @@ Stores data in the adapter
 
 
 ```php
+public function getMaxItems(): int;
+```
+Returns the configured store cap (0 = unlimited). See setMaxItems().
+
+
+```php
 public function setForever( string $key, mixed $value ): bool;
 ```
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
+
+
+```php
+public function setMaxItems( int $maxItems ): static;
+```
+Caps the number of items retained in the in-memory store.
+0 disables the cap (the default; preserves the original
+unbounded behavior). When the cap is exceeded, the oldest
+entry is evicted FIFO before a new key is stored.
 
 
 ```php
@@ -824,6 +850,9 @@ the `setForever()` method.
     - `DateInterval`
     - `Exception`
     - `Phalcon\Storage\Exception`
+    - `Phalcon\Storage\Exceptions\AuthenticationFailed`
+    - `Phalcon\Storage\Exceptions\ConnectionFailed`
+    - `Phalcon\Storage\Exceptions\DatabaseSelectionFailed`
     - `Phalcon\Storage\SerializerFactory`
     - `Phalcon\Support\Exception`
 
@@ -935,7 +964,7 @@ the `setForever()` method.
 
 -   __Uses__
     
-    - `Phalcon\Storage\Exception`
+    - `Phalcon\Storage\Exceptions\ClusterConnectionFailed`
     - `Phalcon\Storage\SerializerFactory`
 
 -   __Extends__
@@ -1023,9 +1052,8 @@ Cluster server(s)
     - `DateInterval`
     - `FilesystemIterator`
     - `Iterator`
-    - `Phalcon\Storage\Exception`
+    - `Phalcon\Storage\Exceptions\InvalidConfiguration`
     - `Phalcon\Storage\SerializerFactory`
-    - `Phalcon\Storage\Traits\StorageErrorHandlerTrait`
     - `Phalcon\Support\Exception`
     - `RecursiveDirectoryIterator`
     - `RecursiveIteratorIterator`
@@ -1370,6 +1398,198 @@ Exceptions thrown in Phalcon\Storage will use this class
 
 
 
+## Storage\Exceptions\AuthenticationFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/AuthenticationFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Storage\Exceptions\ClusterConnectionFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ClusterConnectionFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+
+## Storage\Exceptions\ConnectionFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ConnectionFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+
+## Storage\Exceptions\DatabaseSelectionFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/DatabaseSelectionFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Storage\Exceptions\InvalidConfiguration 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/InvalidConfiguration.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+
+## Storage\Exceptions\StorageError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/StorageError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Storage\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+
 ## Storage\Serializer\AbstractSerializer ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/AbstractSerializer.zep)
@@ -1465,7 +1685,8 @@ If this returns true, then the data is returned as is
 
 -   __Uses__
     
-    - `InvalidArgumentException`
+    - `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput`
+    - `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`
 
 -   __Extends__
     
@@ -1500,6 +1721,80 @@ Unserializes data
 protected function phpBase64Decode( string $input, bool $strict = bool );
 ```
 Wrapper for base64_decode
+
+
+
+
+## Storage\Serializer\Exceptions\InvalidSerializationInput 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidSerializationInput.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Serializer\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Storage\Serializer\Exceptions\InvalidUnserializationInput 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidUnserializationInput.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Storage\Serializer\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
 
 
 
@@ -1797,7 +2092,7 @@ Unserializes data
 
 -   __Uses__
     
-    - `InvalidArgumentException`
+    - `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`
 
 -   __Extends__
     
@@ -1956,11 +2251,9 @@ Serializer using the built-in Redis 'php' serializer
 
 -   __Uses__
     
-    - `Serializable`
 
 -   __Extends__
     
-    `Serializable`
 
 -   __Implements__
     
@@ -1982,9 +2275,21 @@ public function getData(): mixed;
 
 
 ```php
+public function serialize(): mixed;
+```
+Serializes data
+
+
+```php
 public function setData( mixed $data ): void;
 ```
 
+
+
+```php
+public function unserialize( mixed $data ): void;
+```
+Unserializes data
 
 
 

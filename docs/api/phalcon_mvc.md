@@ -26,6 +26,9 @@ hide:
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Http\ResponseInterface`
     - `Phalcon\Mvc\Application\Exception`
+    - `Phalcon\Mvc\Application\Exceptions\ContainerRequired`
+    - `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`
+    - `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`
     - `Phalcon\Mvc\ModuleDefinitionInterface`
     - `Phalcon\Mvc\Router\RouteInterface`
 
@@ -108,19 +111,19 @@ Handles a MVC request
 
 
 ```php
-public function sendCookiesOnHandleRequest( bool $sendCookies ): Application;
+public function sendCookiesOnHandleRequest( bool $sendCookies ): static;
 ```
 Enables or disables sending cookies by each request handling
 
 
 ```php
-public function sendHeadersOnHandleRequest( bool $sendHeaders ): Application;
+public function sendHeadersOnHandleRequest( bool $sendHeaders ): static;
 ```
 Enables or disables sending headers by each request handling
 
 
 ```php
-public function useImplicitView( bool $implicitView ): Application;
+public function useImplicitView( bool $implicitView ): static;
 ```
 By default. The view is implicitly buffering all the output
 You can full disable the view component using this method
@@ -150,6 +153,120 @@ You can full disable the view component using this method
 Phalcon\Mvc\Application\Exception
 
 Exceptions thrown in Phalcon\Mvc\Application class will use this class
+
+
+
+## Mvc\Application\Exceptions\ContainerRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application/Exceptions/ContainerRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Application\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Application\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Application\Exceptions\InvalidModuleDefinition 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application/Exceptions/InvalidModuleDefinition.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Application\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Application\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Application\Exceptions\ModuleDefinitionPathNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Application/Exceptions/ModuleDefinitionPathNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Application\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Application\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
 
 
 
@@ -216,15 +333,6 @@ class PeopleController extends \Phalcon\Mvc\Controller
 }
 ```
 
-
-### Properties
-```php
-/**
- * @var ManagerInterface|null
- */
-protected $eventsManager;
-
-```
 
 ### Methods
 
@@ -326,6 +434,7 @@ Interface for controller handlers
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Http\ResponseInterface`
     - `Phalcon\Mvc\Dispatcher\Exception`
+    - `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
 
 -   __Extends__
     
@@ -474,19 +583,19 @@ Gets previous dispatched namespace name
 
 
 ```php
-public function setControllerName( string $controllerName );
+public function setControllerName( string $controllerName ): DispatcherInterface;
 ```
 Sets the controller name to be dispatched
 
 
 ```php
-public function setControllerSuffix( string $controllerSuffix );
+public function setControllerSuffix( string $controllerSuffix ): DispatcherInterface;
 ```
 Sets the default controller suffix
 
 
 ```php
-public function setDefaultController( string $controllerName );
+public function setDefaultController( string $controllerName ): DispatcherInterface;
 ```
 Sets the default controller name
 
@@ -530,6 +639,44 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 
 
+## Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Dispatcher/Exceptions/ResponseServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Dispatcher\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Dispatcher\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Mvc\DispatcherInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/DispatcherInterface.zep)
@@ -558,7 +705,7 @@ Interface for Phalcon\Mvc\Dispatcher
 ### Methods
 
 ```php
-public function getActiveController(): ControllerInterface;
+public function getActiveController(): ControllerInterface | null;
 ```
 Returns the active controller in the dispatcher
 
@@ -570,25 +717,25 @@ Gets last dispatched controller name
 
 
 ```php
-public function getLastController(): ControllerInterface;
+public function getLastController(): ControllerInterface | null;
 ```
 Returns the latest dispatched controller
 
 
 ```php
-public function setControllerName( string $controllerName );
+public function setControllerName( string $controllerName ): DispatcherInterfaceBase;
 ```
 Sets the controller name to be dispatched
 
 
 ```php
-public function setControllerSuffix( string $controllerSuffix );
+public function setControllerSuffix( string $controllerSuffix ): DispatcherInterfaceBase;
 ```
 Sets the default controller suffix
 
 
 ```php
-public function setDefaultController( string $controllerName );
+public function setDefaultController( string $controllerName ): DispatcherInterfaceBase;
 ```
 Sets the default controller name
 
@@ -647,6 +794,7 @@ Writes an attribute value by its name
     
     - `ArrayAccess`
     - `Closure`
+    - `Phalcon\Cache\Adapter\AdapterInterface`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\FactoryDefault`
     - `Phalcon\Di\Injectable`
@@ -657,6 +805,15 @@ Writes an attribute value by its name
     - `Phalcon\Mvc\Micro\Collection`
     - `Phalcon\Mvc\Micro\CollectionInterface`
     - `Phalcon\Mvc\Micro\Exception`
+    - `Phalcon\Mvc\Micro\Exceptions\ContainerRequired`
+    - `Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`
+    - `Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`
+    - `Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`
+    - `Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`
+    - `Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`
+    - `Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`
+    - `Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`
+    - `Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`
     - `Phalcon\Mvc\Micro\LazyLoader`
     - `Phalcon\Mvc\Micro\MiddlewareInterface`
     - `Phalcon\Mvc\Model\BinderInterface`
@@ -781,19 +938,19 @@ Phalcon\Mvc\Micro constructor
 
 
 ```php
-public function after( mixed $handler ): Micro;
+public function after( mixed $handler ): static;
 ```
 Appends an 'after' middleware to be called after execute the route
 
 
 ```php
-public function afterBinding( mixed $handler ): Micro;
+public function afterBinding( mixed $handler ): static;
 ```
 Appends a afterBinding middleware to be called after model binding
 
 
 ```php
-public function before( mixed $handler ): Micro;
+public function before( mixed $handler ): static;
 ```
 Appends a before middleware to be called before execute the route
 
@@ -805,14 +962,14 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 ```php
-public function error( mixed $handler ): Micro;
+public function error( mixed $handler ): static;
 ```
 Sets a handler that will be called when an exception is thrown handling
 the route
 
 
 ```php
-public function finish( mixed $handler ): Micro;
+public function finish( mixed $handler ): static;
 ```
 Appends a 'finish' middleware to be called when the request is finished
 
@@ -902,13 +1059,13 @@ Maps a route to a handler without any HTTP method constraint
 
 
 ```php
-public function mount( CollectionInterface $collection ): Micro;
+public function mount( CollectionInterface $collection ): static;
 ```
 Mounts a collection of handlers
 
 
 ```php
-public function notFound( mixed $handler ): Micro;
+public function notFound( mixed $handler ): static;
 ```
 Sets a handler that will be called when the router does not match any of
 the defined routes
@@ -977,7 +1134,7 @@ Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 ```php
-public function setActiveHandler( mixed $activeHandler );
+public function setActiveHandler( mixed $activeHandler ): self;
 ```
 Sets externally the handler that must be called by the matched route
 
@@ -995,7 +1152,7 @@ Sets the events manager
 
 
 ```php
-public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): Micro;
+public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): static;
 ```
 Sets model binder
 
@@ -1010,14 +1167,14 @@ $micro->setModelBinder(
 
 
 ```php
-public function setResponseHandler( mixed $handler ): Micro;
+public function setResponseHandler( mixed $handler ): static;
 ```
 Appends a custom 'response' handler to be called instead of the default
 response handler
 
 
 ```php
-public function setService( string $serviceName, mixed $definition, bool $shared = bool ): ServiceInterface;
+public function setService( string $serviceName, mixed $definition, bool $isShared = bool ): ServiceInterface;
 ```
 Sets a service from the DI
 
@@ -1084,7 +1241,7 @@ protected $handlers;
 /**
  * @var bool
  */
-protected $lazy = false;
+protected $isLazy = false;
 
 /**
  * @var string
@@ -1184,13 +1341,13 @@ Maps a route to a handler that only matches if the HTTP method is PUT.
 
 
 ```php
-public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
+public function setHandler( mixed $handler, bool $isLazy = bool ): CollectionInterface;
 ```
 Sets the main handler.
 
 
 ```php
-public function setLazy( bool $lazy ): CollectionInterface;
+public function setLazy( bool $isLazy ): CollectionInterface;
 ```
 Sets if the main handler must be lazy loaded
 
@@ -1307,13 +1464,13 @@ Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 ```php
-public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
+public function setHandler( mixed $handler, bool $isLazy = bool ): CollectionInterface;
 ```
 Sets the main handler
 
 
 ```php
-public function setLazy( bool $lazy ): CollectionInterface;
+public function setLazy( bool $isLazy ): CollectionInterface;
 ```
 Sets if the main handler must be lazy loaded
 
@@ -1349,6 +1506,386 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
 
 
+## Mvc\Micro\Exceptions\ContainerRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/ContainerRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\ErrorHandlerNotCallable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/ErrorHandlerNotCallable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\HandlerNotCallable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/HandlerNotCallable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\InvalidRegisteredHandler 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/InvalidRegisteredHandler.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\LazyHandlerNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/LazyHandlerNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $definition );
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\MissingCollectionMainHandler 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/MissingCollectionMainHandler.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\NoHandlersToMount 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/NoHandlersToMount.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\NoMatchedRouteHandler 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/NoMatchedRouteHandler.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\NotFoundHandlerNotCallable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/NotFoundHandlerNotCallable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Micro\Exceptions\ResponseHandlerNotCallable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/Exceptions/ResponseHandlerNotCallable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Micro\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Micro\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Mvc\Micro\LazyLoader 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Micro/LazyLoader.zep)
@@ -1360,6 +1897,7 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
 -   __Uses__
     
+    - `Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`
     - `Phalcon\Mvc\Model\BinderInterface`
 
 -   __Extends__
@@ -1461,7 +1999,6 @@ Calls the middleware
     - `JsonSerializable`
     - `Phalcon\Db\Adapter\AdapterInterface`
     - `Phalcon\Db\Column`
-    - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Enum`
     - `Phalcon\Db\RawValue`
     - `Phalcon\Di\AbstractInjectionAware`
@@ -1476,6 +2013,31 @@ Calls the middleware
     - `Phalcon\Mvc\Model\Criteria`
     - `Phalcon\Mvc\Model\CriteriaInterface`
     - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`
+    - `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`
+    - `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`
+    - `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`
+    - `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`
+    - `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`
+    - `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`
+    - `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`
+    - `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`
+    - `Phalcon\Mvc\Model\Exceptions\MethodNotFound`
+    - `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`
+    - `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`
+    - `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`
+    - `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`
+    - `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`
+    - `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`
+    - `Phalcon\Mvc\Model\Exceptions\RelationNotDefined`
+    - `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`
+    - `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`
+    - `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`
+    - `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`
     - `Phalcon\Mvc\Model\ManagerInterface`
     - `Phalcon\Mvc\Model\MetaDataInterface`
     - `Phalcon\Mvc\Model\Query`
@@ -3199,6 +3761,44 @@ Checks whether the behavior must take action on certain event
 
 
 
+## Mvc\Model\Behavior\Exceptions\MissingRequiredOption 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Behavior/Exceptions/MissingRequiredOption.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Behavior\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $option );
+```
+
+
+
+
+
 ## Mvc\Model\Behavior\SoftDelete 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Behavior/SoftDelete.zep)
@@ -3212,6 +3812,7 @@ Checks whether the behavior must take action on certain event
     
     - `Phalcon\Mvc\ModelInterface`
     - `Phalcon\Mvc\Model\Behavior`
+    - `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`
     - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Support\Settings`
 
@@ -3252,6 +3853,7 @@ Listens for notifications from the models manager
     - `Closure`
     - `Phalcon\Mvc\ModelInterface`
     - `Phalcon\Mvc\Model\Behavior`
+    - `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`
     - `Phalcon\Mvc\Model\Exception`
 
 -   __Extends__
@@ -3332,6 +3934,10 @@ This method receives the notifications from the EventsManager
     - `Phalcon\Cache\Adapter\AdapterInterface`
     - `Phalcon\Mvc\Controller\BindModelInterface`
     - `Phalcon\Mvc\Model\Binder\BindableInterface`
+    - `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`
+    - `Phalcon\Mvc\Model\Exceptions\MissingMethodName`
+    - `Phalcon\Mvc\Model\Exceptions\MissingModelClassName`
     - `ReflectionFunction`
     - `ReflectionMethod`
     - `ReflectionNamedType`
@@ -3539,6 +4145,7 @@ Sets cache instance
     - `Phalcon\Di\Di`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidModelName`
     - `Phalcon\Mvc\Model\Query\BuilderInterface`
 
 -   __Extends__
@@ -4272,6 +4879,1754 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 
 
+## Mvc\Model\Exceptions\BelongsToRequiresObject 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/BelongsToRequiresObject.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className, string $relationName );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\BindTypeNotDefined 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/BindTypeNotDefined.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $column, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\CannotResolveAttribute 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/CannotResolveAttribute.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $attribute, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ColumnNotInMap 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ColumnNotInMap.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $column, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ColumnNotInTableColumns 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ColumnNotInTableColumns.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $column, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ColumnNotInTableMap 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ColumnNotInTableMap.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $column, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\CorruptColumnType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/CorruptColumnType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\CursorIsImmutable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/CursorIsImmutable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\DataTypeNotDefined 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/DataTypeNotDefined.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $column, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\HandlerMustImplementBindable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/HandlerMustImplementBindable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\IdentityNotInColumnMap 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IdentityNotInColumnMap.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $identityField, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\IdentityNotInTableColumns 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IdentityNotInTableColumns.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $identityField, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\IndexNotInCursor 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IndexNotInCursor.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\IndexNotInRow 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/IndexNotInRow.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidConnectionService 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidConnectionService.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidContainer 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidContainer.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidDumpResultKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidDumpResultKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidFindParameters 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidFindParameters.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidGetModelNameReturn 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidGetModelNameReturn.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidModelName 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidModelName.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidModelsManagerService 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidModelsManagerService.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidModelsMetadataService 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidModelsMetadataService.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidResultsetCacheService 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidResultsetCacheService.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidReturnedRecord 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidReturnedRecord.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\InvalidSerializationData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidSerializationData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ManagerOrmServicesUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ManagerOrmServicesUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\MethodNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/MethodNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $method, string $modelName );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\MissingMethodName 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/MissingMethodName.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\MissingModelClassName 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/MissingModelClassName.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $paramKey );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ModelCouldNotLoad 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ModelCouldNotLoad.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $modelName );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ModelOrmServicesUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ModelOrmServicesUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/PrimaryKeyAttributeNotSet.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $attribute, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\PrimaryKeyRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/PrimaryKeyRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\PropertyNotAccessible 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/PropertyNotAccessible.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $property, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\RecordCannotRefresh 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RecordCannotRefresh.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\RecordNotPersisted 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RecordNotPersisted.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ReferencedFieldsMismatch 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ReferencedFieldsMismatch.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $relationType, string $entityName, string $referencedEntity );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\RelationAliasMustBeString 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RelationAliasMustBeString.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $relationType, string $entityName, string $referencedEntity );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\RelationNotDefined 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RelationNotDefined.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className, string $alias );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\RelationRequiresObjectOrArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RelationRequiresObjectOrArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className, string $relationName );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\ResultsetColumnNotInMap 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/ResultsetColumnNotInMap.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\RowIsImmutable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/RowIsImmutable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\SnapshotsDisabled 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/SnapshotsDisabled.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\StaticMethodRequiresOneArgument 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/StaticMethodRequiresOneArgument.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $method, string $className );
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\UnknownRelationType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UnknownRelationType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Exceptions\UpdateSnapshotDisabled 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UpdateSnapshotDisabled.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
 ## Mvc\Model\Manager 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Manager.zep)
@@ -4290,6 +6645,12 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
     - `Phalcon\Events\EventsAwareInterface`
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`
+    - `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`
+    - `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`
+    - `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`
+    - `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`
+    - `Phalcon\Mvc\Model\Exceptions\UnknownRelationType`
     - `Phalcon\Mvc\Model\Query\Builder`
     - `Phalcon\Mvc\Model\Query\BuilderInterface`
     - `Phalcon\Mvc\Model\Query\StatusInterface`
@@ -4723,7 +7084,7 @@ Gets hasOneThrough relations defined on a model
 
 
 ```php
-public function getLastInitialized(): ModelInterface;
+public function getLastInitialized(): ModelInterface | null;
 ```
 Get last initialized model
 
@@ -4899,6 +7260,12 @@ public function notifyEvent( string $eventName, ModelInterface $model );
 Receives events generated in the models and dispatches them to an
 events-manager if available. Notify the behaviors that are listening in
 the model
+
+
+```php
+public function removeBehavior( ModelInterface $model, string $behaviorClass ): void;
+```
+Removes a behavior from a model
 
 
 ```php
@@ -5153,7 +7520,7 @@ Gets hasOneThrough relations defined on a model
 
 
 ```php
-public function getLastInitialized(): ModelInterface;
+public function getLastInitialized(): ModelInterface | null;
 ```
 Get last initialized model
 
@@ -5325,6 +7692,12 @@ Notify the behaviors that are listening in the model
 
 
 ```php
+public function removeBehavior( ModelInterface $model, string $behaviorClass ): void;
+```
+Removes a behavior from a model
+
+
+```php
 public function setConnectionService( ModelInterface $model, string $connectionService ): void;
 ```
 Sets both write and read connection service for a model
@@ -5383,6 +7756,10 @@ Sets if a model must use dynamic update instead of the all-field update
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\InjectionAwareInterface`
     - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`
     - `Phalcon\Mvc\Model\MetaData\Strategy\Introspection`
     - `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`
     - `Phalcon\Support\Settings`
@@ -5615,7 +7992,7 @@ print_r(
 
 
 ```php
-public function getIdentityField( ModelInterface $model ): string | null;
+public function getIdentityField( ModelInterface $model ): bool | string | null;
 ```
 Returns the name of identity field (if one is present)
 
@@ -5626,6 +8003,12 @@ print_r(
     )
 );
 ```
+
+
+```php
+public function getModelUUID( ModelInterface $model, array $row ): string | null;
+```
+Returns the model UniqueID based on model and array row primary key(s) value(s)
 
 
 ```php
@@ -5718,7 +8101,13 @@ var_dump(
 
 
 ```php
-public function read( string $key ): array | null;
+public function modelEquals( ModelInterface $first, ModelInterface $other ): bool;
+```
+Compares if two models are the same in memory
+
+
+```php
+public function read( mixed $key ): array | null;
 ```
 Reads metadata from the adapter
 
@@ -5910,7 +8299,6 @@ Initialize the metadata for certain table
 -   __Uses__
     
     - `Phalcon\Cache\AdapterFactory`
-    - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\MetaData`
 
 -   __Extends__
@@ -5948,6 +8336,424 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 
 
 
+## Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/CannotObtainTableColumns.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $completeTable, string $className );
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\ColumnMapNotArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/ColumnMapNotArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\ContainerRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/ContainerRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\CorruptedMetaData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/CorruptedMetaData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\InvalidContainer 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/InvalidContainer.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/InvalidMetaDataForModel.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $modelName );
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/MetaDataDirectoryNotWritable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/MetaDataStrategyFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $message );
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/NoAnnotationsForClass.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/NoPropertyAnnotationsForClass.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\MetaData\Exceptions\TableNotInDatabase 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Exceptions/TableNotInDatabase.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\MetaData\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $completeTable, string $className );
+```
+
+
+
+
+
 ## Mvc\Model\MetaData\Libmemcached 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/MetaData/Libmemcached.zep)
@@ -5960,7 +8766,6 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 -   __Uses__
     
     - `Phalcon\Cache\AdapterFactory`
-    - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\MetaData`
 
 -   __Extends__
@@ -6004,7 +8809,6 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 
 -   __Uses__
     
-    - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\MetaData`
 
 -   __Extends__
@@ -6023,19 +8827,13 @@ Stores model meta-data in memory. Data will be erased when the request finishes
 ### Methods
 
 ```php
-public function __construct( mixed $options = null );
-```
-Phalcon\Mvc\Model\MetaData\Memory constructor
-
-
-```php
-public function read( string $key ): array | null;
+public function read( mixed $key ): array | null;
 ```
 Reads the meta-data from temporal memory
 
 
 ```php
-public function write( string $key, array $data ): void;
+public function write( mixed $key, array $data ): void;
 ```
 Writes the meta-data to temporal memory
 
@@ -6114,8 +8912,10 @@ Flush Redis data and resets internal meta-data in order to regenerate it
     - `Phalcon\Db\Column`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Mvc\ModelInterface`
-    - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\MetaData`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`
 
 -   __Extends__
     
@@ -6160,11 +8960,12 @@ The meta-data is obtained by reading the column descriptions from the database i
 -   __Uses__
     
     - `Phalcon\Db\Adapter\AdapterInterface`
-    - `Phalcon\Db\Column`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Mvc\ModelInterface`
-    - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\MetaData`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`
 
 -   __Extends__
     
@@ -6172,8 +8973,6 @@ The meta-data is obtained by reading the column descriptions from the database i
 -   __Implements__
     
     - `StrategyInterface`
-
-Phalcon\Mvc\Model\MetaData\Strategy\Introspection
 
 Queries the table meta-data in order to introspect the model's metadata
 
@@ -6251,8 +9050,8 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 -   __Uses__
     
-    - `Phalcon\Mvc\Model\Exception`
     - `Phalcon\Mvc\Model\MetaData`
+    - `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`
     - `Phalcon\Support\Settings`
 
 -   __Extends__
@@ -6293,13 +9092,13 @@ Phalcon\Mvc\Model\MetaData\Files constructor
 
 
 ```php
-public function read( string $key ): array | null;
+public function read( mixed $key ): array | null;
 ```
 Reads meta-data from files
 
 
 ```php
-public function write( string $key, array $data ): void;
+public function write( mixed $key, array $data ): void;
 ```
 Writes the meta-data to files
 
@@ -6388,7 +9187,7 @@ Returns attributes allow empty strings
 
 
 ```php
-public function getIdentityField( ModelInterface $model ): string | null;
+public function getIdentityField( ModelInterface $model ): bool | string | null;
 ```
 Returns the name of identity field (if one is present)
 
@@ -6528,6 +9327,54 @@ Writes meta-data for certain model using a MODEL_* constant
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\InjectionAwareInterface`
     - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`
+    - `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`
+    - `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`
+    - `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`
+    - `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`
+    - `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`
+    - `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`
+    - `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`
+    - `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`
+    - `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`
+    - `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`
+    - `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`
+    - `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`
+    - `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`
+    - `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`
+    - `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`
+    - `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`
+    - `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`
+    - `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`
+    - `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`
+    - `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`
+    - `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`
+    - `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`
+    - `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`
+    - `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`
+    - `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`
+    - `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`
+    - `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`
+    - `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`
+    - `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`
+    - `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`
+    - `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`
+    - `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`
+    - `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`
     - `Phalcon\Mvc\Model\Query\Lang`
     - `Phalcon\Mvc\Model\Query\Status`
     - `Phalcon\Mvc\Model\Query\StatusInterface`
@@ -6646,6 +9493,11 @@ protected $enableImplicitJoins;
 protected $intermediate;
 
 /**
+ * @var array|null
+ */
+protected static $internalPhqlCache;
+
+/**
  * @var \Phalcon\Mvc\Model\ManagerInterface|null
  */
 protected $manager;
@@ -6706,16 +9558,6 @@ protected $sqlColumnAliases;
 protected $sqlModelsAliases;
 
 /**
- * @var int|null
- */
-protected $type;
-
-/**
- * @var bool
- */
-protected $uniqueRow = false;
-
-/**
  * TransactionInterface so that the query can wrap a transaction
  * around batch updates and intermediate selects within the transaction.
  * however if a model got a transaction set inside it will use the local
@@ -6726,9 +9568,14 @@ protected $uniqueRow = false;
 protected $transaction;
 
 /**
- * @var array|null
+ * @var int|null
  */
-protected static $internalPhqlCache;
+protected $type;
+
+/**
+ * @var bool
+ */
+protected $uniqueRow = false;
 
 ```
 
@@ -6893,33 +9740,6 @@ returned
 
 
 ```php
-final protected function _prepareDelete(): array;
-```
-Analyzes a DELETE intermediate code and produces an array to be executed
-later
-
-
-```php
-final protected function _prepareInsert(): array;
-```
-Analyzes an INSERT intermediate code and produces an array to be executed
-later
-
-
-```php
-final protected function _prepareSelect( mixed $ast = null, bool $merge = bool ): array;
-```
-Analyzes a SELECT intermediate code and produces an array to be executed later
-
-
-```php
-final protected function _prepareUpdate(): array;
-```
-Analyzes an UPDATE intermediate code and produces an array to be executed
-later
-
-
-```php
 final protected function executeDelete( array $intermediate, array $bindParams, array $bindTypes ): StatusInterface;
 ```
 Executes the DELETE intermediate representation producing a
@@ -7061,6 +9881,33 @@ inside the query object
 
 
 ```php
+final protected function prepareDelete(): array;
+```
+Analyzes a DELETE intermediate code and produces an array to be executed
+later
+
+
+```php
+final protected function prepareInsert(): array;
+```
+Analyzes an INSERT intermediate code and produces an array to be executed
+later
+
+
+```php
+final protected function prepareSelect( mixed $ast = null, bool $merge = bool ): array;
+```
+Analyzes a SELECT intermediate code and produces an array to be executed later
+
+
+```php
+final protected function prepareUpdate(): array;
+```
+Analyzes an UPDATE intermediate code and produces an array to be executed
+later
+
+
+```php
 final protected function refreshSchemasInIntermediate( array $irPhql ): array;
 ```
 Refreshes the schema/source of every model referenced in a cached
@@ -7088,7 +9935,13 @@ would otherwise see the value frozen at first parse. See #17020.
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\InjectionAwareInterface`
     - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`
     - `Phalcon\Mvc\Model\QueryInterface`
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`
     - `Phalcon\Support\Settings`
 
 -   __Extends__
@@ -7098,8 +9951,6 @@ would otherwise see the value frozen at first parse. See #17020.
     
     - `BuilderInterface`
     - `InjectionAwareInterface`
-
-Phalcon\Mvc\Model\Query\Builder
 
 Helps to create PHQL queries using an OO interface
 
@@ -7832,8 +10683,6 @@ Appends a NOT IN condition
 -   __Implements__
     
 
-Phalcon\Mvc\Model\Query\BuilderInterface
-
 Interface for Phalcon\Mvc\Model\Query\Builder
 
 
@@ -8125,6 +10974,2020 @@ Sets conditions for the query
 
 
 
+## Mvc\Model\Query\Exceptions\AmbiguousColumn 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/AmbiguousColumn.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\AmbiguousJoinRelation 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/AmbiguousJoinRelation.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $from, string $join, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/BindParameterNotInPlaceholders.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $wildcard );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\BindTypeRequiresArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/BindTypeRequiresArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\BindValueRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/BindValueRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/BuilderColumnNotInMap.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $column );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/BuilderConditionInvalid.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\Builder\ModelRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/ModelRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/NoPrimaryKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/Builder/OperatorNotAvailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions\Builder`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $operator );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\ColumnNotInDomain 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ColumnNotInDomain.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $model, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ColumnNotInSelectedModels.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $tag, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\CorruptedAst 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedAst.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\CorruptedDeleteAst 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedDeleteAst.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\CorruptedInsertAst 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedInsertAst.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\CorruptedSelectAst 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedSelectAst.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\CorruptedUpdateAst 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/CorruptedUpdateAst.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/DeleteMultipleNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\DuplicateAlias 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/DuplicateAlias.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/EmptyArrayPlaceholderValue.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InsertColumnCountMismatch 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InsertColumnCountMismatch.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InvalidCachedResultset 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidCachedResultset.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InvalidCachingOptions 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidCachingOptions.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InvalidColumnDefinition 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidColumnDefinition.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InvalidInjectedManager 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidInjectedManager.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InvalidInjectedMetadata 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidInjectedMetadata.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InvalidQueryCacheService 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidQueryCacheService.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\InvalidResultsetClass 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidResultsetClass.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/JoinAliasAlreadyUsed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $alias, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\JoinFieldCountMismatch 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/JoinFieldCountMismatch.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $model, string $join, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\MissingCacheKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingCacheKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\MissingMetaData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingMetaData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\MissingModelAttribute 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingModelAttribute.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $model, string $attribute, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\MissingModelsManager 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MissingModelsManager.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\MixedDatabaseSystems 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MixedDatabaseSystems.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\ModelSourceNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ModelSourceNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\ModelsListNotLoaded 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ModelsListNotLoaded.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/MultipleSqlStatementsNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\NoModelForAlias 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/NoModelForAlias.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $model, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\PhqlColumnNotInMap 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/PhqlColumnNotInMap.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $fieldName );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\ReadConnectionMissing 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ReadConnectionMissing.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\RelationshipNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/RelationshipNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $model, string $relationship, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\ResultsetClassNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ResultsetClassNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\ResultsetNonCacheable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ResultsetNonCacheable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UnknownBindType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownBindType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UnknownColumnType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownColumnType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UnknownJoinType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownJoinType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UnknownModelOrAlias 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownModelOrAlias.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $model, string $tag, string $phql );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UnknownPhqlExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownPhqlExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownPhqlExpressionType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UnknownPhqlStatement 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UnknownPhqlStatement.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/UpdateMultipleNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Model\Query\Exceptions\WriteConnectionMissing 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/WriteConnectionMissing.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Model\Query\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Model\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Mvc\Model\Query\Lang ![Abstract](../assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Lang.zep)
@@ -8195,8 +13058,6 @@ Parses a PHQL statement returning an intermediate representation (IR)
     
     - `StatusInterface`
 
-Phalcon\Mvc\Model\Query\Status
-
 This class represents the status returned by a PHQL
 statement like INSERT, UPDATE or DELETE. It offers context
 information and the related messages produced by the
@@ -8251,7 +13112,7 @@ Returns the messages produced because of a failed operation
 
 
 ```php
-public function getModel(): ModelInterface;
+public function getModel(): ModelInterface | null;
 ```
 Returns the model that executed the action
 
@@ -8284,8 +13145,6 @@ Allows to check if the executed operation was successful
 -   __Implements__
     
 
-Phalcon\Mvc\Model\Query\StatusInterface
-
 Interface for Phalcon\Mvc\Model\Query\Status
 
 
@@ -8298,7 +13157,7 @@ Returns the messages produced by an operation failed
 
 
 ```php
-public function getModel(): ModelInterface;
+public function getModel(): ModelInterface | null;
 ```
 Returns the model which executed the action
 
@@ -8772,6 +13631,10 @@ Sets the object's state
     - `Phalcon\Messages\MessageInterface`
     - `Phalcon\Mvc\Model`
     - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`
+    - `Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`
     - `Phalcon\Storage\Serializer\SerializerInterface`
     - `Phalcon\Support\Settings`
     - `SeekableIterator`
@@ -9115,6 +13978,9 @@ Check whether internal resource has rows to fetch
     - `Phalcon\Mvc\Model`
     - `Phalcon\Mvc\ModelInterface`
     - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\Exceptions\CorruptColumnType`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidContainer`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`
     - `Phalcon\Mvc\Model\Resultset`
     - `Phalcon\Mvc\Model\ResultsetInterface`
     - `Phalcon\Mvc\Model\Row`
@@ -9219,6 +14085,9 @@ Unserializing a resultset will allow to only works on the rows present in the sa
     - `Phalcon\Mvc\Model`
     - `Phalcon\Mvc\ModelInterface`
     - `Phalcon\Mvc\Model\Exception`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidContainer`
+    - `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`
+    - `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`
     - `Phalcon\Mvc\Model\Resultset`
     - `Phalcon\Mvc\Model\Row`
     - `Phalcon\Storage\Serializer\SerializerInterface`
@@ -9280,7 +14149,7 @@ public function __unserialize( array $data ): void;
 
 
 ```php
-final public function current(): ModelInterface | null;
+final public function current(): ModelInterface | Row | null;
 ```
 Returns current row in the resultset
 
@@ -9443,6 +14312,8 @@ Updates every record in the resultset
     - `JsonSerializable`
     - `Phalcon\Mvc\EntityInterface`
     - `Phalcon\Mvc\ModelInterface`
+    - `Phalcon\Mvc\Model\Exceptions\IndexNotInRow`
+    - `Phalcon\Mvc\Model\Exceptions\RowIsImmutable`
 
 -   __Extends__
     
@@ -9471,7 +14342,9 @@ public function jsonSerialize(): array;
 ```php
 public function offsetExists( mixed $index ): bool;
 ```
-Checks whether offset exists in the row
+Checks whether offset exists in the row. Returns true when the property
+is present on the row, regardless of whether its value is null - column
+presence is the contract, not value truthiness.
 
 
 ```php
@@ -9551,8 +14424,6 @@ $robot->writeAttribute("name", "Rosey");
     
     - `TransactionInterface`
 
-Phalcon\Mvc\Model\Transaction
-
 Transactions are protective blocks where SQL statements are only permanent if
 they can all succeed as one atomic action. Phalcon\Transaction is intended to
 be used with Phalcon_Model_Base. Phalcon Transactions should be created using
@@ -9623,14 +14494,14 @@ protected $manager;
 protected $messages;
 
 /**
- * @var ModelInterface|null
- */
-protected $rollbackRecord;
-
-/**
  * @var bool
  */
 protected $rollbackOnAbort = false;
+
+/**
+ * @var ModelInterface|null
+ */
+protected $rollbackRecord;
 
 /**
  * @var bool
@@ -9790,13 +14661,13 @@ Phalcon\Mvc\Model\Transaction\Failed constructor
 
 
 ```php
-public function getRecord(): ModelInterface;
+public function getRecord(): ModelInterface | null;
 ```
 Returns validation record messages which stop the transaction
 
 
 ```php
-public function getRecordMessages(): MessageInterface[];
+public function getRecordMessages(): array | string;
 ```
 Returns validation record messages which stop the transaction
 
@@ -9817,6 +14688,7 @@ Returns validation record messages which stop the transaction
     - `Phalcon\Di\Di`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\InjectionAwareInterface`
+    - `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`
     - `Phalcon\Mvc\Model\Transaction`
     - `Phalcon\Mvc\Model\TransactionInterface`
 
@@ -9827,8 +14699,6 @@ Returns validation record messages which stop the transaction
     
     - `InjectionAwareInterface`
     - `ManagerInterface`
-
-Phalcon\Mvc\Model\Transaction\Manager
 
 A transaction acts on a single database connection. If you have multiple
 class-specific databases, the transaction will not protect interaction among
@@ -10140,8 +15010,6 @@ Set if the transaction manager must register a shutdown function to clean up pen
 -   __Implements__
     
 
-Phalcon\Mvc\Model\TransactionInterface
-
 Interface for Phalcon\Mvc\Model\Transaction
 
 
@@ -10251,14 +15119,14 @@ Phalcon\Mvc\Model must be set up to have this behavior
 ### Properties
 ```php
 /**
- * @var array
- */
-protected $messages;
-
-/**
  * @var ModelInterface
  */
 protected $model;
+
+/**
+ * @var array
+ */
+protected $validationMessages;
 
 ```
 
@@ -10300,6 +15168,7 @@ Returns the model that generated the messages
     - `Phalcon\Messages\MessageInterface`
     - `Phalcon\Mvc\Model\CriteriaInterface`
     - `Phalcon\Mvc\Model\MetaDataInterface`
+    - `Phalcon\Mvc\Model\ResultInterface`
     - `Phalcon\Mvc\Model\Resultset`
     - `Phalcon\Mvc\Model\ResultsetInterface`
     - `Phalcon\Mvc\Model\TransactionInterface`
@@ -10593,8 +15462,6 @@ Check whether validation process has generated any messages
 -   __Implements__
     
 
-Phalcon\Mvc\ModuleDefinitionInterface
-
 This interface must be implemented by class module definitions
 
 
@@ -10625,6 +15492,7 @@ Registers services related to the module
 
 -   __Uses__
     
+    - `Phalcon\Cache\Adapter\AdapterInterface`
     - `Phalcon\Config\ConfigInterface`
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
@@ -10632,6 +15500,18 @@ Registers services related to the module
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Http\RequestInterface`
     - `Phalcon\Mvc\Router\Exception`
+    - `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`
+    - `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`
+    - `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`
+    - `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`
+    - `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`
+    - `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`
+    - `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`
+    - `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`
+    - `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`
+    - `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`
+    - `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`
+    - `Phalcon\Mvc\Router\Exceptions\WrongPathsKey`
     - `Phalcon\Mvc\Router\Group`
     - `Phalcon\Mvc\Router\GroupInterface`
     - `Phalcon\Mvc\Router\Route`
@@ -10678,6 +15558,7 @@ echo $router->getControllerName();
 ```php
 const POSITION_FIRST = 0;
 const POSITION_LAST = 1;
+const REGEX_CHUNK_SIZE = 10;
 const URI_SOURCE_GET_URL = 0;
 const URI_SOURCE_SERVER_REQUEST_URI = 1;
 ```
@@ -10688,6 +15569,64 @@ const URI_SOURCE_SERVER_REQUEST_URI = 1;
  * @var string
  */
 protected $action = ;
+
+/**
+ * Pre-merged per-method candidate buckets in attach order. For each HTTP
+ * method seen on any registered route, the bucket contains the
+ * method-specific routes followed by the "*" (no-constraint) routes.
+ * The "*" key itself holds only the no-constraint routes — used when the
+ * request method has no specific bucket.
+ *
+ * Built in rebuildMethodIndex(); consumed by handle() in reverse.
+ *
+ * @var array
+ */
+protected $candidatesByMethod;
+
+/**
+ * Single-source per-route metadata cache. One entry per route, keyed
+ * by the route's intrinsic id. Replaces the previous per-method-bucket
+ * replication of metadata arrays. Built once in rebuildMethodIndex().
+ *
+ * Shape: routeMeta[routeId] = [
+ *     "pattern":     string,        // compiled pattern
+ *     "isRegex":     bool,
+ *     "hostname":    string|null,
+ *     "hostRegex":   string|null,
+ *     "beforeMatch": callable|null
+ *   ]
+ *
+ * @var array
+ */
+protected $routeMeta;
+
+/**
+ * Combined PCRE pattern per method bucket (chunked list of strings).
+ * Each chunk uses (?|...) branch reset and (*:N) mark labels. Built
+ * only when the bucket meets gating: no hostname routes; standard
+ * pattern shape.
+ *
+ * @var array
+ */
+protected $combinedRegexByMethod;
+
+/**
+ * Boolean per method bucket: true when the combined regex cannot be
+ * built (hostname route present, exotic pattern shape, etc.).
+ *
+ * @var array
+ */
+protected $combinedRegexDisabled;
+
+/**
+ * Map from MARK label back to the route index in
+ * candidatesByMethod[method]. One per chunk.
+ *
+ *   combinedRegexMarkMap[method][chunkIdx][markLabel] = routeIdx
+ *
+ * @var array
+ */
+protected $combinedRegexMarkMap;
 
 /**
  * @var string
@@ -10723,6 +15662,28 @@ protected $defaultParams;
  * @var ManagerInterface|null
  */
 protected $eventsManager;
+
+/**
+ * Per-method buckets of routes with hostname constraints, grouped by
+ * raw hostname string. Routes are referenced by their index into
+ * candidatesByMethod[method]. Built in rebuildMethodIndex().
+ *
+ * Shape: hostnameByMethod[method][hostname] = list of route indices.
+ *
+ * @var array
+ */
+protected $hostnameByMethod;
+
+/**
+ * Per-method indices of routes without a hostname constraint, in
+ * attach order.
+ *
+ * Shape: hostnameLessByMethod[method] = list of route indices into
+ * candidatesByMethod[method].
+ *
+ * @var array
+ */
+protected $hostnameLessByMethod;
 
 /**
  * @var array
@@ -10775,6 +15736,21 @@ protected $notFoundPaths;
 protected $params;
 
 /**
+ * Lazy-write cache target set by useCache(). When non-null, handle()
+ * writes buildDispatcherDump() to this cache after a successful
+ * rebuild on cache miss, then clears the property to skip subsequent
+ * writes.
+ *
+ * @var CacheAdapterInterface|null
+ */
+protected $pendingCache;
+
+/**
+ * @var string
+ */
+protected $pendingCacheKey = ;
+
+/**
  * @var bool
  */
 protected $removeExtraSlashes = false;
@@ -10783,6 +15759,25 @@ protected $removeExtraSlashes = false;
  * @var array
  */
 protected $routes;
+
+/**
+ * Static-route hash, populated by rebuildMethodIndex(). For each method
+ * bucket (including "*"), maps URI => list of routes whose compiled
+ * pattern is a literal string equal to that URI.
+ *
+ * @var array
+ */
+protected $staticByMethod;
+
+/**
+ * Shadow-detection map. If staticShadowedByMethod[method][uri] is set,
+ * the static URI in that bucket is shadowed by a later-attached regex
+ * route — the fast path MUST NOT be used; fall through to the dynamic
+ * loop so the regex wins (reverse-iteration semantics).
+ *
+ * @var array
+ */
+protected $staticShadowedByMethod;
 
 /**
     * @var int
@@ -10891,7 +15886,7 @@ Adds a route to the router that only match if the HTTP method is TRACE
 
 
 ```php
-public function attach( RouteInterface $route, int $position = static-constant-access ): RouterInterface;
+public function attach( RouteInterface $route, int $position = static-constant-access ): static;
 ```
 Attach Route object to the routes stack.
 
@@ -10913,9 +15908,33 @@ $router->attach(
 
 
 ```php
+public function buildDispatcherDump(): array;
+```
+Produces a pure-data array describing every piece of state needed
+to reconstruct this router. The returned array is var_export-able
+(no objects, no closures). Used by dumpDispatcher() and by
+Phalcon\Cache integration via useCache().
+
+Throws when a route has a Closure beforeMatch or converter — those
+cannot be cached.
+
+@throws \Phalcon\Mvc\Router\Exception
+
+
+```php
 public function clear(): void;
 ```
 Removes all the pre-defined routes
+
+
+```php
+public function dumpDispatcher( string $path ): void;
+```
+File-shaped helper around buildDispatcherDump(). Writes the dump as
+a `<?php return [...];` file, atomically (temp + rename) so concurrent
+dumps don't corrupt the result.
+
+@throws \Phalcon\Mvc\Router\Exception
 
 
 ```php
@@ -10999,7 +16018,7 @@ This returns '/' if the rewrite information cannot be read
 
 
 ```php
-public function getRouteById( mixed $id ): RouteInterface | bool;
+public function getRouteById( mixed $routeId ): RouteInterface | bool;
 ```
 Returns a route object by its id
 
@@ -11034,7 +16053,26 @@ Returns whether controller name should not be mangled
 
 
 ```php
-public function loadFromConfig( mixed $config ): RouterInterface;
+public function loadDispatcher( string $path ): void;
+```
+File-shaped helper around loadDispatcherFromArray(). Includes the
+file (opcache-friendly) and forwards the return value.
+
+@throws \Phalcon\Mvc\Router\Exception
+
+
+```php
+public function loadDispatcherFromArray( array $dump ): void;
+```
+Inverse of buildDispatcherDump(). Reconstructs every Route from the
+scalar `routes` entries (preserving subclass and routeId), restores
+every index, and marks the indexes clean so handle() skips rebuild.
+
+@throws \Phalcon\Mvc\Router\Exception
+
+
+```php
+public function loadFromConfig( mixed $config ): static;
 ```
 Loads routes from an array or Phalcon\Config\Config instance.
 
@@ -11054,44 +16092,44 @@ $router->loadFromConfig(
 
 
 ```php
-public function mount( GroupInterface $group ): RouterInterface;
+public function mount( GroupInterface $group ): static;
 ```
 Mounts a group of routes in the router
 
 
 ```php
-public function notFound( mixed $paths ): RouterInterface;
+public function notFound( mixed $paths ): static;
 ```
 Set a group of paths to be returned when none of the defined routes are
 matched
 
 
 ```php
-public function removeExtraSlashes( bool $remove ): RouterInterface;
+public function removeExtraSlashes( bool $remove ): static;
 ```
 Set whether router must remove the extra slashes in the handled routes
 
 
 ```php
-public function setDefaultAction( string $actionName ): RouterInterface;
+public function setDefaultAction( string $actionName ): static;
 ```
 Sets the default action name
 
 
 ```php
-public function setDefaultController( string $controllerName ): RouterInterface;
+public function setDefaultController( string $controllerName ): static;
 ```
 Sets the default controller name
 
 
 ```php
-public function setDefaultModule( string $moduleName ): RouterInterface;
+public function setDefaultModule( string $moduleName ): static;
 ```
 Sets the name of the default module
 
 
 ```php
-public function setDefaultNamespace( string $namespaceName ): RouterInterface;
+public function setDefaultNamespace( string $namespaceName ): static;
 ```
 Sets the name of the default namespace
 
@@ -11099,7 +16137,7 @@ Sets the name of the default namespace
 
 
 ```php
-public function setDefaults( array $defaults ): RouterInterface;
+public function setDefaults( array $defaults ): static;
 ```
 Sets an array of default paths. If a route is missing a path the router
 will use the defined here. This method must not be used to set a 404
@@ -11122,19 +16160,19 @@ Sets the events manager
 
 
 ```php
-public function setKeyRouteIds( array $routeIds ): Router;
+public function setKeyRouteIds( array $routeIds ): static;
 ```
 
 
 
 ```php
-public function setKeyRouteNames( array $routeNames ): Router;
+public function setKeyRouteNames( array $routeNames ): static;
 ```
 
 
 
 ```php
-public function setUriSource( int $uriSource ): Router;
+public function setUriSource( int $uriSource ): static;
 ```
 Sets the URI source. One of the URI_SOURCE_* constants
 
@@ -11143,6 +16181,17 @@ $router->setUriSource(
     Router::URI_SOURCE_SERVER_REQUEST_URI
 );
 ```
+
+
+```php
+public function useCache( CacheAdapterInterface $cache, string $key = string ): void;
+```
+Cache-instance convenience wrapper. On cache hit, restores the
+dispatcher immediately. On miss, defers cache population until the
+next handle() completes - at which point buildDispatcherDump() is
+written to the cache key.
+
+@throws \Phalcon\Mvc\Router\Exception
 
 
 ```php
@@ -11191,6 +16240,8 @@ protected function rebuildMethodIndex(): void;
     - `Phalcon\Annotations\Annotation`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Mvc\Router`
+    - `Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`
+    - `Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`
 
 -   __Extends__
     
@@ -11253,7 +16304,7 @@ protected $routePrefix = ;
 ### Methods
 
 ```php
-public function addModuleResource( string $module, string $handler, string $prefix = null ): Annotations;
+public function addModuleResource( string $module, string $handler, string $prefix = null ): static;
 ```
 Adds a resource to the annotations handler
 A resource is a class that contains routing annotations
@@ -11261,7 +16312,7 @@ The class is located in a module
 
 
 ```php
-public function addResource( string $handler, string $prefix = null ): Annotations;
+public function addResource( string $handler, string $prefix = null ): static;
 ```
 Adds a resource to the annotations handler
 A resource is a class that contains routing annotations
@@ -11298,7 +16349,7 @@ Checks for annotations in the controller docblock
 
 
 ```php
-public function setActionPreformatCallback( mixed $callback = null );
+public function setActionPreformatCallback( mixed $callback = null ): self;
 ```
 Sets the action preformat callback
 $action here already without suffix 'Action'
@@ -11328,13 +16379,13 @@ $annotationRouter->setActionPreformatCallback();
 
 
 ```php
-public function setActionSuffix( string $actionSuffix );
+public function setActionSuffix( string $actionSuffix ): self;
 ```
 Changes the action method suffix
 
 
 ```php
-public function setControllerSuffix( string $controllerSuffix );
+public function setControllerSuffix( string $controllerSuffix ): self;
 ```
 Changes the controller class suffix
 
@@ -11366,6 +16417,614 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 
 
+## Mvc\Router\Exceptions\AnnotationsServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/AnnotationsServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\BeforeMatchNotCallable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/BeforeMatchNotCallable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\ConfigKeyMustBeArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/ConfigKeyMustBeArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key );
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\EmptyGroupOfRoutes 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/EmptyGroupOfRoutes.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\GroupRoutesMustBeArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/GroupRoutesMustBeArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\InvalidCallbackParameter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidCallbackParameter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\InvalidConfigSource 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidConfigSource.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\InvalidNotFoundPaths 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidNotFoundPaths.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\InvalidRoutePaths 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidRoutePaths.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\InvalidRoutePosition 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidRoutePosition.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\InvalidRouterFactoryConfig 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/InvalidRouterFactoryConfig.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\MissingGroupRouteKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/MissingGroupRouteKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key );
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\MissingRouteConfigKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/MissingRouteConfigKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key );
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\RequestServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/RequestServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\UnknownHttpMethod 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/UnknownHttpMethod.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $method );
+```
+
+
+
+
+
+## Mvc\Router\Exceptions\WrongPathsKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Exceptions/WrongPathsKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $part );
+```
+
+
+
+
+
 ## Mvc\Router\Group 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Router/Group.zep)
@@ -11384,8 +17043,6 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 -   __Implements__
     
     - `GroupInterface`
-
-Phalcon\Mvc\Router\Group
 
 Helper class to create a group of routes with common attributes
 
@@ -11555,7 +17212,7 @@ Removes all the pre-defined routes
 
 
 ```php
-public function getBeforeMatch(): callable;
+public function getBeforeMatch(): callable | null;
 ```
 Returns the 'before match' callback if any
 
@@ -11567,7 +17224,7 @@ Returns the hostname restriction
 
 
 ```php
-public function getPaths(): array | string;
+public function getPaths(): array | string | null;
 ```
 Returns the common paths defined for this group
 
@@ -11627,8 +17284,6 @@ Adds a route applying the common attributes
 
 -   __Implements__
     
-
-Phalcon\Mvc\Router\GroupInterface
 
 ```php
 $router = new \Phalcon\Mvc\Router();
@@ -11761,7 +17416,7 @@ Removes all the pre-defined routes
 
 
 ```php
-public function getBeforeMatch(): callable;
+public function getBeforeMatch(): callable | null;
 ```
 Returns the 'before match' callback if any
 
@@ -11773,7 +17428,7 @@ Returns the hostname restriction
 
 
 ```php
-public function getPaths(): array | string;
+public function getPaths(): array | string | null;
 ```
 Returns the common paths defined for this group
 
@@ -11821,6 +17476,7 @@ Set a common uri prefix for all the routes in this group
 
 -   __Uses__
     
+    - `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 
 -   __Extends__
     
@@ -11828,8 +17484,6 @@ Set a common uri prefix for all the routes in this group
 -   __Implements__
     
     - `RouteInterface`
-
-Phalcon\Mvc\Router\Route
 
 This class represents every route added to the router
 
@@ -11840,6 +17494,15 @@ This class represents every route added to the router
  * @var callable|null
  */
 protected $beforeMatch;
+
+/**
+ * Cached compiled hostname regex. `false` means "not yet computed";
+ * `null` means "hostname is literal — use string equality"; any string
+ * means "use this as the PCRE pattern."
+ *
+ * @var string|null|false
+ */
+protected $compiledHostName = false;
 
 /**
  * @var string|null
@@ -11862,19 +17525,14 @@ protected $group;
 protected $hostname;
 
 /**
- * @var string
- */
-protected $id = ;
-
-/**
- * @var array|string
- */
-protected $methods;
-
-/**
  * @var callable|null
  */
 protected $match;
+
+/**
+ * @var array|string|null
+ */
+protected $methods;
 
 /**
  * @var string|null
@@ -11890,6 +17548,11 @@ protected $paths;
  * @var string
  */
 protected $pattern;
+
+/**
+ * @var string
+ */
+protected $routeId = ;
 
 /**
  * @var int
@@ -11952,9 +17615,19 @@ Extracts parameters from a string
 
 
 ```php
-public function getBeforeMatch(): callable;
+public function getBeforeMatch(): callable | null;
 ```
 Returns the 'before match' callback if any
+
+
+```php
+public function getCompiledHostName(): string | null;
+```
+Returns the compiled hostname regex, or null when the hostname is
+literal and a string-equality comparison should be used.
+
+The result is cached after first computation; setHostname() clears
+the cache.
 
 
 ```php
@@ -11982,19 +17655,13 @@ Returns the hostname restriction if any
 
 
 ```php
-public function getHttpMethods(): array | string;
+public function getHttpMethods(): array | string | null;
 ```
 Returns the HTTP methods that constraint matching the route
 
 
 ```php
-public function getId(): string;
-```
-
-
-
-```php
-public function getMatch(): callable;
+public function getMatch(): callable | null;
 ```
 Returns the 'match' callback if any
 
@@ -12113,6 +17780,14 @@ $router->add(
 
 
 ```php
+public function setRouteId( string $routeId ): RouteInterface;
+```
+Sets the route's id. Intended for restoring cached routes — most
+applications should rely on the auto-incrementing id assigned by
+the constructor.
+
+
+```php
 public function via( mixed $httpMethods ): RouteInterface;
 ```
 Set one or more HTTP methods that constraint the matching of the route
@@ -12149,8 +17824,6 @@ $route->via(
 -   __Implements__
     
 
-Phalcon\Mvc\Router\RouteInterface
-
 Interface for Phalcon\Mvc\Router\Route
 
 
@@ -12181,7 +17854,7 @@ Returns the hostname restriction if any
 
 
 ```php
-public function getHttpMethods(): string | array;
+public function getHttpMethods(): array | string | null;
 ```
 Returns the HTTP methods that constraint matching the route
 
@@ -12247,6 +17920,12 @@ Sets the route's name
 
 
 ```php
+public function setRouteId( string $routeId ): RouteInterface;
+```
+Sets the route's id (intended for restoring cached routes)
+
+
+```php
 public function via( mixed $httpMethods ): RouteInterface;
 ```
 Set one or more HTTP methods that constraint the matching of the route
@@ -12268,6 +17947,7 @@ Set one or more HTTP methods that constraint the matching of the route
     - `Phalcon\Config\ConfigInterface`
     - `Phalcon\Mvc\Router`
     - `Phalcon\Mvc\RouterInterface`
+    - `Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`
 
 -   __Extends__
     
@@ -12457,7 +18137,7 @@ Returns processed extra params
 
 
 ```php
-public function getRouteById( mixed $id ): RouteInterface | bool;
+public function getRouteById( mixed $routeId ): RouteInterface | bool;
 ```
 Returns a route object by its id
 
@@ -12540,6 +18220,9 @@ Check if the router matches any of the defined routes
     - `Phalcon\Mvc\RouterInterface`
     - `Phalcon\Mvc\Router\RouteInterface`
     - `Phalcon\Mvc\Url\Exception`
+    - `Phalcon\Mvc\Url\Exceptions\MissingRouteName`
+    - `Phalcon\Mvc\Url\Exceptions\RouteNotFound`
+    - `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`
     - `Phalcon\Mvc\Url\UrlInterface`
 
 -   __Extends__
@@ -12550,7 +18233,7 @@ Check if the router matches any of the defined routes
     
     - `UrlInterface`
 
-This components helps in the generation of: URIs, URLs and Paths
+This component helps in the generation of: URIs, URLs and Paths
 
 ```php
 // Generate a URL appending the URI to the base URI
@@ -12572,12 +18255,12 @@ echo $url->get(
 /**
  * @var null | string
  */
-protected $baseUri;
+protected $basePath;
 
 /**
  * @var null | string
  */
-protected $basePath;
+protected $baseUri;
 
 /**
  * @var RouterInterface | null
@@ -12600,7 +18283,7 @@ public function __construct( RouterInterface $router = null );
 
 
 ```php
-public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null, bool $replaceArgs = bool ): string;
+public function get( mixed $uri = null, mixed $arguments = null, bool $local = null, mixed $baseUri = null, bool $replaceArgs = bool ): string;
 ```
 Generates a URL
 
@@ -12647,7 +18330,7 @@ echo $url->get(
 
 
 ```php
-public function getBasePath(): string;
+public function getBasePath(): string | null;
 ```
 Returns the base path
 
@@ -12747,6 +18430,120 @@ Exceptions thrown in Phalcon\Mvc\Url will use this class
 
 
 
+## Mvc\Url\Exceptions\MissingRouteName 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/Exceptions/MissingRouteName.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Url\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Url\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\Url\Exceptions\RouteNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/Exceptions/RouteNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Url\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Url\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Mvc\Url\Exceptions\RouterServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/Exceptions/RouterServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\Url\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\Url\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Mvc\Url\UrlInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Url/UrlInterface.zep)
@@ -12771,13 +18568,13 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 ### Methods
 
 ```php
-public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null, bool $replaceArgs = bool ): string;
+public function get( mixed $uri = null, mixed $arguments = null, bool $local = null, mixed $baseUri = null, bool $replaceArgs = bool ): string;
 ```
 Generates a URL
 
 
 ```php
-public function getBasePath(): string;
+public function getBasePath(): string | null;
 ```
 Returns a base path
 
@@ -12826,6 +18623,11 @@ Sets a prefix to all the urls generated
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Mvc\View\Engine\Php`
     - `Phalcon\Mvc\View\Exception`
+    - `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`
+    - `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`
+    - `Phalcon\Mvc\View\Exceptions\ViewNotFound`
+    - `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`
+    - `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`
 
 -   __Extends__
     
@@ -12835,8 +18637,6 @@ Sets a prefix to all the urls generated
     
     - `EventsAwareInterface`
     - `ViewInterface`
-
-Phalcon\Mvc\View
 
 Phalcon\Mvc\View is a class for working with the "view" portion of the
 model-view-controller pattern. That is, it exists to help keep the view
@@ -13030,25 +18830,25 @@ $this->view->products = $products;
 
 
 ```php
-public function cleanTemplateAfter(): View;
+public function cleanTemplateAfter(): static;
 ```
 Resets any template before layouts
 
 
 ```php
-public function cleanTemplateBefore(): View;
+public function cleanTemplateBefore(): static;
 ```
 Resets any "template before" layouts
 
 
 ```php
-public function disable(): View;
+public function disable(): static;
 ```
 Disables the auto-rendering process
 
 
 ```php
-public function disableLevel( mixed $level ): ViewInterface;
+public function disableLevel( mixed $level ): static;
 ```
 Disables a specific level of rendering
 
@@ -13061,7 +18861,7 @@ $this->view->disableLevel(
 
 
 ```php
-public function enable(): View;
+public function enable(): static;
 ```
 Enables the auto-rendering process
 
@@ -13074,7 +18874,7 @@ Checks whether view exists
 
 
 ```php
-public function finish(): View;
+public function finish(): static;
 ```
 Finishes the render process by stopping the output buffering
 
@@ -13122,7 +18922,7 @@ Returns the internal event manager
 
 
 ```php
-public function getLayout(): string;
+public function getLayout(): string | null;
 ```
 Returns the name of the main view
 
@@ -13246,7 +19046,7 @@ $this->partial(
 
 
 ```php
-public function pick( mixed $renderView ): View;
+public function pick( mixed $renderView ): static;
 ```
 Choose a different view to render instead of last-controller/last-action
 
@@ -13273,7 +19073,7 @@ Processes the view and templates; Fires events if needed
 
 
 ```php
-public function registerEngines( array $engines ): View;
+public function registerEngines( array $engines ): static;
 ```
 Register templating engines
 
@@ -13289,7 +19089,7 @@ $this->view->registerEngines(
 
 
 ```php
-public function render( string $controllerName, string $actionName, array $params = [] ): View | false;
+public function render( string $controllerName, string $actionName, array $params = [] ): static | false;
 ```
 Executes render process from dispatching data
 
@@ -13300,13 +19100,13 @@ $view->start()->render("posts", "recent")->finish();
 
 
 ```php
-public function reset(): View;
+public function reset(): static;
 ```
 Resets the view component to its factory default values
 
 
 ```php
-public function setBasePath( string $basePath ): View;
+public function setBasePath( string $basePath ): static;
 ```
 Sets base path. Depending of your platform, always add a trailing slash
 or backslash
@@ -13317,7 +19117,7 @@ $view->setBasePath(__DIR__ . "/");
 
 
 ```php
-public function setContent( string $content ): View;
+public function setContent( string $content ): static;
 ```
 Externally sets the view content
 
@@ -13333,7 +19133,7 @@ Sets the events manager
 
 
 ```php
-public function setLayout( string $layout ): View;
+public function setLayout( string $layout ): static;
 ```
 Change the layout to be used instead of using the name of the latest
 controller name
@@ -13344,7 +19144,7 @@ $this->view->setLayout("main");
 
 
 ```php
-public function setLayoutsDir( string $layoutsDir ): View;
+public function setLayoutsDir( string $layoutsDir ): static;
 ```
 Sets the layouts sub-directory. Must be a directory under the views
 directory. Depending of your platform, always add a trailing slash or
@@ -13356,7 +19156,7 @@ $view->setLayoutsDir("../common/layouts/");
 
 
 ```php
-public function setMainView( string $viewPath ): View;
+public function setMainView( string $viewPath ): static;
 ```
 Sets default view name. Must be a file without extension in the views
 directory
@@ -13368,7 +19168,7 @@ $this->view->setMainView("base");
 
 
 ```php
-public function setParamToView( string $key, mixed $value ): View;
+public function setParamToView( string $key, mixed $value ): static;
 ```
 Adds parameters to views (alias of setVar)
 
@@ -13378,7 +19178,7 @@ $this->view->setParamToView("products", $products);
 
 
 ```php
-public function setPartialsDir( string $partialsDir ): View;
+public function setPartialsDir( string $partialsDir ): static;
 ```
 Sets a partials sub-directory. Must be a directory under the views
 directory. Depending of your platform, always add a trailing slash or
@@ -13390,7 +19190,7 @@ $view->setPartialsDir("../common/partials/");
 
 
 ```php
-public function setRenderLevel( int $level ): ViewInterface;
+public function setRenderLevel( int $level ): static;
 ```
 Sets the render level for the view
 
@@ -13403,19 +19203,19 @@ $this->view->setRenderLevel(
 
 
 ```php
-public function setTemplateAfter( mixed $templateAfter ): View;
+public function setTemplateAfter( mixed $templateAfter ): static;
 ```
 Sets a "template after" controller layout
 
 
 ```php
-public function setTemplateBefore( mixed $templateBefore ): View;
+public function setTemplateBefore( mixed $templateBefore ): static;
 ```
 Sets a template before the controller layout
 
 
 ```php
-public function setVar( string $key, mixed $value ): View;
+public function setVar( string $key, mixed $value ): static;
 ```
 Set a single view parameter
 
@@ -13425,7 +19225,7 @@ $this->view->setVar("products", $products);
 
 
 ```php
-public function setVars( array $params, bool $merge = bool ): View;
+public function setVars( array $params, bool $merge = bool ): static;
 ```
 Set all the render params
 
@@ -13439,14 +19239,14 @@ $this->view->setVars(
 
 
 ```php
-public function setViewsDir( mixed $viewsDir ): View;
+public function setViewsDir( mixed $viewsDir ): static;
 ```
 Sets the views directory. Depending of your platform,
 always add a trailing slash or backslash
 
 
 ```php
-public function start(): View;
+public function start(): static;
 ```
 Starts rendering process enabling the output buffering
 
@@ -13668,6 +19468,9 @@ Renders a view using the template engine
     - `Phalcon\Html\Link\Link`
     - `Phalcon\Html\Link\Serializer\Header`
     - `Phalcon\Mvc\View\Engine\Volt\Compiler`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`
     - `Phalcon\Mvc\View\Exception`
 
 -   __Extends__
@@ -13803,6 +19606,27 @@ Sorts an array
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\InjectionAwareInterface`
     - `Phalcon\Mvc\ViewBaseInterface`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`
 
 -   __Extends__
     
@@ -13944,7 +19768,7 @@ Phalcon\Mvc\View\Engine\Volt\Compiler
 
 
 ```php
-public function addExtension( mixed $extension ): Compiler;
+public function addExtension( mixed $extension ): static;
 ```
 Registers a Volt's extension
 
@@ -13952,13 +19776,13 @@ Registers a Volt's extension
 
 
 ```php
-public function addFilter( string $name, mixed $definition ): Compiler;
+public function addFilter( string $name, mixed $definition ): static;
 ```
 Register a new filter in the compiler
 
 
 ```php
-public function addFunction( string $name, mixed $definition ): Compiler;
+public function addFunction( string $name, mixed $definition ): static;
 ```
 Register a new function in the compiler
 
@@ -13989,7 +19813,7 @@ Compiles a "autoescape" statement returning PHP code
 
 
 ```php
-public function compileCall( array $statement, bool $extendsMode );
+public function compileCall( array $statement, bool $extendsMode ): string;
 ```
 Compiles calls to macros
 
@@ -14240,19 +20064,19 @@ Sets the dependency injector
 
 
 ```php
-public function setOption( string $option, mixed $value );
+public function setOption( string $option, mixed $value ): static;
 ```
 Sets a single compiler option
 
 
 ```php
-public function setOptions( array $options ): Compiler;
+public function setOptions( array $options ): static;
 ```
 Sets the compiler options
 
 
 ```php
-public function setUniquePrefix( string $prefix ): Compiler;
+public function setUniquePrefix( string $prefix ): static;
 ```
 Set a unique prefix to be used as prefix for compiled variables
 
@@ -14337,6 +20161,918 @@ Gets currently parsed statement (if any).
 
 
 
+## Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/CannotOpenCompiledFile.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\CorruptedStatement 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/CorruptedStatement.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/CorruptedStatementWithData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( array $statement );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidCompilationPrefix.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidExtension 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidExtension.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidHaystack 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidHaystack.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidIntermediateRepresentation.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidOptionType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidOptionType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $option, string $type );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidPathClosureReturn.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidPathType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidPathType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidStatement 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidStatement.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $file, int $line, array $statement );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidUserFilterDefinition.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $file, int $line );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/InvalidUserFunctionDefinition.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $file, int $line );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/MacroAlreadyDefined.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\MacroNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/MacroNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\MbstringRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/MbstringRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/TemplateFileNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/TemplateFileNotOpenable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/TemplatePathCollision.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $type, string $file, int $line );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltFilter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $file, int $line );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltFilterType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $file, int $line );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/UnknownVoltStatement.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $type, string $file, int $line );
+```
+
+
+
+
+
+## Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Engine/Volt/Exceptions/VoltDirectoryNotWritable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Engine\Volt\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Engine\Volt\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Mvc\View\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exception.zep)
@@ -14362,6 +21098,272 @@ Class for exceptions thrown by Phalcon\Mvc\View
 
 
 
+## Mvc\View\Exceptions\InvalidEngineRegistration 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/InvalidEngineRegistration.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $extension );
+```
+
+
+
+
+
+## Mvc\View\Exceptions\InvalidViewsDirType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/InvalidViewsDirType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Exceptions\SimpleViewNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/SimpleViewNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $viewsDirPath );
+```
+
+
+
+
+
+## Mvc\View\Exceptions\SimpleViewServicesUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/SimpleViewServicesUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Exceptions\ViewNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/ViewNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $viewPath );
+```
+
+
+
+
+
+## Mvc\View\Exceptions\ViewServicesUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/ViewServicesUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Mvc\View\Exceptions\ViewsDirItemMustBeString 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Exceptions/ViewsDirItemMustBeString.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Mvc\View\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Mvc\View\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Mvc\View\Simple 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Simple.zep)
@@ -14381,6 +21383,9 @@ Class for exceptions thrown by Phalcon\Mvc\View
     - `Phalcon\Mvc\ViewBaseInterface`
     - `Phalcon\Mvc\View\Engine\EngineInterface`
     - `Phalcon\Mvc\View\Engine\Php`
+    - `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`
+    - `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`
+    - `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`
 
 -   __Extends__
     
@@ -14390,8 +21395,6 @@ Class for exceptions thrown by Phalcon\Mvc\View
     
     - `EventsAwareInterface`
     - `ViewBaseInterface`
-
-Phalcon\Mvc\View\Simple
 
 This component allows to render views without hierarchical levels
 
@@ -14451,14 +21454,14 @@ protected $options;
 protected $registeredEngines;
 
 /**
- * @var string
- */
-protected $viewsDir;
-
-/**
  * @var array
  */
 protected $viewParams;
+
+/**
+ * @var string
+ */
+protected $viewsDir;
 
 ```
 
@@ -14576,7 +21579,7 @@ Renders a view
 
 
 ```php
-public function setContent( string $content ): Simple;
+public function setContent( string $content ): static;
 ```
 Externally sets the view content
 
@@ -14592,7 +21595,7 @@ Sets the events manager
 
 
 ```php
-public function setParamToView( string $key, mixed $value ): Simple;
+public function setParamToView( string $key, mixed $value ): static;
 ```
 Adds parameters to views (alias of setVar)
 
@@ -14602,7 +21605,7 @@ $this->view->setParamToView("products", $products);
 
 
 ```php
-public function setVar( string $key, mixed $value ): Simple;
+public function setVar( string $key, mixed $value ): static;
 ```
 Set a single view parameter
 
@@ -14612,7 +21615,7 @@ $this->view->setVar("products", $products);
 
 
 ```php
-public function setVars( array $params, bool $merge = bool ): Simple;
+public function setVars( array $params, bool $merge = bool ): static;
 ```
 Set all the render params
 
@@ -14664,8 +21667,6 @@ Phalcon\Mvc\View\Engine\Php
 
 -   __Implements__
     
-
-Phalcon\Mvc\ViewInterface
 
 Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 
@@ -14742,8 +21743,6 @@ slash or backslash
 -   __Implements__
     
 
-Phalcon\Mvc\ViewInterface
-
 Interface for Phalcon\Mvc\View
 
 
@@ -14804,7 +21803,7 @@ Gets the name of the controller rendered
 
 
 ```php
-public function getLayout(): string;
+public function getLayout(): string | null;
 ```
 Returns the name of the main view
 

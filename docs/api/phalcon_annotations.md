@@ -44,6 +44,16 @@ This is the base class for Phalcon\Annotations adapters
 protected $annotations;
 
 /**
+ * Maximum number of class annotation entries retained in the
+ * in-memory cache. 0 (default) keeps the original unbounded
+ * behavior; a positive value clears the cache when adding a new
+ * class would exceed it.
+ *
+ * @var int
+ */
+protected $annotationsLimit = 0;
+
+/**
  * @var Reader
  */
 protected $reader;
@@ -56,6 +66,13 @@ protected $reader;
 public function get( mixed $className ): Reflection;
 ```
 Parses or retrieves all the annotations found in a class
+
+
+```php
+public function getAnnotationsLimit(): int;
+```
+Returns the configured annotations-cache cap (0 = unlimited).
+See setAnnotationsLimit().
 
 
 ```php
@@ -98,6 +115,15 @@ Returns the annotations found in a specific property
 public function getReader(): ReaderInterface;
 ```
 Returns the annotation reader
+
+
+```php
+public function setAnnotationsLimit( int $annotationsLimit );
+```
+Caps the number of class entries retained in the annotations
+cache. 0 disables the cap (the default; preserves the original
+unbounded behavior). When the cap is exceeded, the cache is
+cleared and repopulated on subsequent reads.
 
 
 ```php
@@ -322,6 +348,8 @@ Writes parsed annotations to memory
 -   __Uses__
     
     - `Phalcon\Annotations\Exception`
+    - `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`
+    - `Phalcon\Annotations\Exceptions\CannotReadAnnotationData`
     - `Phalcon\Annotations\Reflection`
     - `RuntimeException`
 
@@ -387,6 +415,7 @@ Writes parsed annotations to files
 
 -   __Uses__
     
+    - `Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`
 
 -   __Extends__
     
@@ -558,6 +587,7 @@ Returns the available adapters
     
     - `Countable`
     - `Iterator`
+    - `Phalcon\Annotations\Exceptions\AnnotationNotFound`
 
 -   __Extends__
     
@@ -688,6 +718,158 @@ Check if the current annotation in the iterator is valid
     
 
 Class for exceptions thrown by Phalcon\Annotations
+
+
+
+## Annotations\Exceptions\AnnotationNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/AnnotationNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Annotations\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Annotations\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Annotations\Exceptions\AnnotationsDirectoryNotWritable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/AnnotationsDirectoryNotWritable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Annotations\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Annotations\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Annotations\Exceptions\CannotReadAnnotationData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/CannotReadAnnotationData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Annotations\Exceptions`
+
+-   __Uses__
+    
+    - `RuntimeException`
+
+-   __Extends__
+    
+    `RuntimeException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Annotations\Exceptions\UnknownAnnotationExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/UnknownAnnotationExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Annotations\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Annotations\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
 
 
 

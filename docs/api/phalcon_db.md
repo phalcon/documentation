@@ -25,6 +25,13 @@ hide:
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Enum`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\CannotInsertWithoutData`
+    - `Phalcon\Db\Exceptions\IncompleteBindTypes`
+    - `Phalcon\Db\Exceptions\InvalidWhereConditions`
+    - `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked`
+    - `Phalcon\Db\Exceptions\SavepointsNotSupported`
+    - `Phalcon\Db\Exceptions\TableMustHaveColumn`
+    - `Phalcon\Db\Exceptions\UpdateFieldCountMismatch`
     - `Phalcon\Db\Index`
     - `Phalcon\Db\IndexInterface`
     - `Phalcon\Db\RawValue`
@@ -600,7 +607,7 @@ Returns if nested transactions should use savepoints
 
 
 ```php
-public function limit( string $sqlQuery, int $number ): string;
+public function limit( string $sqlQuery, mixed $number ): string;
 ```
 Appends a LIMIT clause to $sqlQuery argument
 
@@ -867,6 +874,10 @@ Phalcon\Db\Adapter\AdapterInterface
     - `Phalcon\Db\Adapter\AbstractAdapter`
     - `Phalcon\Db\Column`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\CannotPrepareStatement`
+    - `Phalcon\Db\Exceptions\InvalidBindParameter`
+    - `Phalcon\Db\Exceptions\MatchedParameterNotFound`
+    - `Phalcon\Db\Exceptions\NoActiveTransaction`
     - `Phalcon\Db\ResultInterface`
     - `Phalcon\Db\Result\PdoResult`
     - `Phalcon\Events\ManagerInterface`
@@ -896,6 +907,11 @@ $config = [
 $connection = new Mysql($config);
 ```
 
+
+### Constants
+```php
+const BIND_PATTERN = "/\\?([0-9]+)|:([a-zA-Z0-9_]+):/";
+```
 
 ### Properties
 ```php
@@ -1036,7 +1052,7 @@ $success = $connection->execute(
 
 
 ```php
-public function executePrepared( \PDOStatement $statement, array $placeholders, mixed $dataTypes ): \PDOStatement;
+public function executePrepared( \PDOStatement $statement, array $placeholders, array $dataTypes = [] ): \PDOStatement;
 ```
 Executes a prepared statement binding. This function uses integer indexes
 starting from zero
@@ -1202,6 +1218,7 @@ Constructs the SQL statement (with parameters)
     - `Phalcon\Db\ColumnInterface`
     - `Phalcon\Db\Enum`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\MissingForeignKeyChecks`
     - `Phalcon\Db\Index`
     - `Phalcon\Db\IndexInterface`
     - `Phalcon\Db\Reference`
@@ -1313,6 +1330,7 @@ Returns PDO adapter DSN defaults as a key-value map.
     - `Phalcon\Db\ColumnInterface`
     - `Phalcon\Db\Enum`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\TableMustHaveColumn`
     - `Phalcon\Db\RawValue`
     - `Phalcon\Db\Reference`
     - `Phalcon\Db\ReferenceInterface`
@@ -1468,6 +1486,7 @@ Returns PDO adapter DSN defaults as a key-value map.
     - `Phalcon\Db\ColumnInterface`
     - `Phalcon\Db\Enum`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\MissingSqliteDatabase`
     - `Phalcon\Db\Index`
     - `Phalcon\Db\IndexInterface`
     - `Phalcon\Db\RawValue`
@@ -1672,6 +1691,8 @@ Returns the available adapters
 
 -   __Uses__
     
+    - `Phalcon\Db\Exceptions\CheckExpressionRequired`
+    - `Phalcon\Db\Exceptions\InvalidCheckExpression`
 
 -   __Extends__
     
@@ -1791,6 +1812,12 @@ Phalcon\Db\CheckInterface
 
 -   __Uses__
     
+    - `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement`
+    - `Phalcon\Db\Exceptions\ColumnTypeRejectsScale`
+    - `Phalcon\Db\Exceptions\ColumnTypeRequired`
+    - `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict`
+    - `Phalcon\Db\Exceptions\GeneratedDefaultConflict`
+    - `Phalcon\Db\Exceptions\InvalidGenerationExpression`
 
 -   __Extends__
     
@@ -2223,6 +2250,17 @@ Phalcon\Db\ColumnInterface
 
 -   __Uses__
     
+    - `Phalcon\Db\Exceptions\ConflictTargetColumnRequired`
+    - `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired`
+    - `Phalcon\Db\Exceptions\InvalidGroupByExpression`
+    - `Phalcon\Db\Exceptions\InvalidListExpression`
+    - `Phalcon\Db\Exceptions\InvalidOrderByExpression`
+    - `Phalcon\Db\Exceptions\InvalidSqlExpression`
+    - `Phalcon\Db\Exceptions\InvalidSqlExpressionType`
+    - `Phalcon\Db\Exceptions\InvalidUnaryExpression`
+    - `Phalcon\Db\Exceptions\MaterializedViewsNotSupported`
+    - `Phalcon\Db\Exceptions\MissingDefinitionKey`
+    - `Phalcon\Db\Exceptions\ReturningNotSupported`
     - `Phalcon\Support\Settings`
 
 -   __Extends__
@@ -2388,7 +2426,7 @@ the view to have a unique index).
 
 
 ```php
-public function registerCustomFunction( string $name, callable $customFunction ): Dialect;
+public function registerCustomFunction( string $name, callable $customFunction ): static;
 ```
 Registers custom SQL functions
 
@@ -2633,6 +2671,9 @@ Prepares table for this RDBMS
     - `Phalcon\Db\Dialect`
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\MissingDefinitionKey`
+    - `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported`
+    - `Phalcon\Db\Exceptions\UnrecognizedDataType`
     - `Phalcon\Db\IndexInterface`
     - `Phalcon\Db\RawValue`
     - `Phalcon\Db\ReferenceInterface`
@@ -2884,6 +2925,9 @@ Generates SQL to add the table creation options
     - `Phalcon\Db\Dialect`
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\MissingDefinitionKey`
+    - `Phalcon\Db\Exceptions\ReturningRequiresColumn`
+    - `Phalcon\Db\Exceptions\UnrecognizedDataType`
     - `Phalcon\Db\IndexInterface`
     - `Phalcon\Db\RawValue`
     - `Phalcon\Db\ReferenceInterface`
@@ -3155,6 +3199,16 @@ protected function getTableOptions( array $definition ): string;
     - `Phalcon\Db\Dialect`
     - `Phalcon\Db\DialectInterface`
     - `Phalcon\Db\Exception`
+    - `Phalcon\Db\Exceptions\MissingDefinitionKey`
+    - `Phalcon\Db\Exceptions\ReturningRequiresColumn`
+    - `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported`
+    - `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported`
+    - `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported`
+    - `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported`
+    - `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported`
+    - `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported`
+    - `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported`
+    - `Phalcon\Db\Exceptions\UnrecognizedDataType`
     - `Phalcon\Db\IndexInterface`
     - `Phalcon\Db\RawValue`
     - `Phalcon\Db\ReferenceInterface`
@@ -3494,6 +3548,1868 @@ Exceptions thrown in Phalcon\Db will use this class
 
 
 
+## Db\Exceptions\CannotInsertWithoutData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/CannotInsertWithoutData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $table );
+```
+
+
+
+
+
+## Db\Exceptions\CannotPrepareStatement 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/CannotPrepareStatement.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\CheckExpressionRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/CheckExpressionRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ColumnTypeRejectsAutoIncrement 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ColumnTypeRejectsAutoIncrement.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ColumnTypeRejectsScale 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ColumnTypeRejectsScale.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ColumnTypeRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ColumnTypeRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ConflictTargetColumnRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ConflictTargetColumnRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ConflictUpdateColumnRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ConflictUpdateColumnRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ForeignKeyColumnsRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ForeignKeyColumnsRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\GeneratedAutoIncrementConflict 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/GeneratedAutoIncrementConflict.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\GeneratedDefaultConflict 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/GeneratedDefaultConflict.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\IncompleteBindTypes 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/IncompleteBindTypes.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidBindParameter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidBindParameter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidCheckExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidCheckExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidGenerationExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidGenerationExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidGroupByExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidGroupByExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidIndexColumns 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidIndexColumns.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidIndexDirections 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidIndexDirections.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidIndexWhere 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidIndexWhere.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidListExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidListExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidOrderByExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidOrderByExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidSqlExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidSqlExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidSqlExpressionType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidSqlExpressionType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
+
+
+
+## Db\Exceptions\InvalidUnaryExpression 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidUnaryExpression.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\InvalidWhereConditions 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidWhereConditions.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\MatchedParameterNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MatchedParameterNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\MaterializedViewsNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MaterializedViewsNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\MissingDefinitionKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MissingDefinitionKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key );
+```
+
+
+
+
+
+## Db\Exceptions\MissingForeignKeyChecks 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MissingForeignKeyChecks.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\MissingSqliteDatabase 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MissingSqliteDatabase.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\MysqlOnConflictNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MysqlOnConflictNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\NestedTransactionChangeBlocked 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/NestedTransactionChangeBlocked.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\NoActiveTransaction 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/NoActiveTransaction.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ReferencedColumnCountMismatch 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReferencedColumnCountMismatch.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ReferencedColumnsRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReferencedColumnsRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ReferencedTableRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReferencedTableRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ReturningNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReturningNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\ReturningRequiresColumn 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReturningRequiresColumn.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SavepointsNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SavepointsNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SqliteAlterCheckNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterCheckNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SqliteAlterColumnNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterColumnNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SqliteAlterForeignKeyNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterForeignKeyNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SqliteAlterPrimaryKeyNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterPrimaryKeyNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SqliteDropCheckNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteDropCheckNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SqliteDropForeignKeyNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteDropForeignKeyNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\SqliteDropPrimaryKeyNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteDropPrimaryKeyNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\TableMustHaveColumn 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/TableMustHaveColumn.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Db\Exceptions\UnrecognizedDataType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/UnrecognizedDataType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $dialect, string $column );
+```
+
+
+
+
+
+## Db\Exceptions\UpdateFieldCountMismatch 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/UpdateFieldCountMismatch.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Db\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Db\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Db\Index 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Index.zep)
@@ -3505,6 +5421,9 @@ Exceptions thrown in Phalcon\Db will use this class
 
 -   __Uses__
     
+    - `Phalcon\Db\Exceptions\InvalidIndexColumns`
+    - `Phalcon\Db\Exceptions\InvalidIndexDirections`
+    - `Phalcon\Db\Exceptions\InvalidIndexWhere`
 
 -   __Extends__
     
@@ -3803,6 +5722,15 @@ protected $activeProfile;
 protected $allProfiles;
 
 /**
+ * Maximum number of profiles to retain. 0 (default) keeps the
+ * original unbounded behavior; a positive value drops the oldest
+ * profile FIFO before a new one is appended.
+ *
+ * @var int
+ */
+protected $maxProfiles = 0;
+
+/**
  * Total time spent by all profiles to complete in nanoseconds
  *
  * @var float
@@ -3817,6 +5745,13 @@ protected $totalNanoseconds = ;
 public function getLastProfile(): Item;
 ```
 Returns the last profile executed in the profiler
+
+
+```php
+public function getMaxProfiles(): int;
+```
+Returns the configured maximum number of retained profiles
+(0 = unlimited)
 
 
 ```php
@@ -3850,19 +5785,26 @@ Returns the total time in seconds spent by the profiles
 
 
 ```php
-public function reset(): Profiler;
+public function reset(): static;
 ```
 Resets the profiler, cleaning up all the profiles
 
 
 ```php
-public function startProfile( string $sqlStatement, array $sqlVariables = [], array $sqlBindTypes = [] ): Profiler;
+public function setMaxProfiles( int $maxProfiles ): static;
+```
+Sets the maximum number of retained profiles. 0 disables the cap
+(the default; preserves the original unbounded behavior).
+
+
+```php
+public function startProfile( string $sqlStatement, array $sqlVariables = [], array $sqlBindTypes = [] ): static;
 ```
 Starts the profile of a SQL sentence
 
 
 ```php
-public function stopProfile(): Profiler;
+public function stopProfile(): static;
 ```
 Stops the active profile
 
@@ -3980,31 +5922,31 @@ Returns the total time in seconds spent by the profile
 
 
 ```php
-public function setFinalTime( double $finalTime ): Item;
+public function setFinalTime( double $finalTime ): static;
 ```
 Return the timestamp when the profile ended
 
 
 ```php
-public function setInitialTime( double $initialTime ): Item;
+public function setInitialTime( double $initialTime ): static;
 ```
 Return the timestamp when the profile started
 
 
 ```php
-public function setSqlBindTypes( array $sqlBindTypes ): Item;
+public function setSqlBindTypes( array $sqlBindTypes ): static;
 ```
 Return the SQL bind types related to the profile
 
 
 ```php
-public function setSqlStatement( string $sqlStatement ): Item;
+public function setSqlStatement( string $sqlStatement ): static;
 ```
 Return the SQL statement related to the profile
 
 
 ```php
-public function setSqlVariables( array $sqlVariables ): Item;
+public function setSqlVariables( array $sqlVariables ): static;
 ```
 Return the SQL variables related to the profile
 
@@ -4087,6 +6029,10 @@ public function getValue(): string;
 
 -   __Uses__
     
+    - `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired`
+    - `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch`
+    - `Phalcon\Db\Exceptions\ReferencedColumnsRequired`
+    - `Phalcon\Db\Exceptions\ReferencedTableRequired`
 
 -   __Extends__
     

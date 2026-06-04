@@ -93,6 +93,111 @@ protected function getArrVal( array $collection, mixed $index, mixed $defaultVal
 
 
 
+## Session\Adapter\Exceptions\AdapterRuntimeError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/AdapterRuntimeError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+
+## Session\Adapter\Exceptions\InvalidSavePath 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/InvalidSavePath.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Session\Adapter\Exceptions\SavePathUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/SavePathUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Adapter\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
+
+
+
 ## Session\Adapter\Libmemcached 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Libmemcached.zep)
@@ -162,45 +267,7 @@ $session->setAdapter(new Noop());
 ```
 
 
-### Properties
-```php
-/**
- * The connection of some adapters
- *
- * @var null
- */
-protected $connection;
-
-/**
- * Session options
- *
- * @var array
- */
-protected $options;
-
-/**
- * Session prefix
- *
- * @var string
- */
-protected $prefix = ;
-
-/**
- * Time To Live
- *
- * @var int
- */
-protected $ttl = 8600;
-
-```
-
 ### Methods
-
-```php
-public function __construct( array $options = [] );
-```
-Constructor
-
 
 ```php
 public function close(): bool;
@@ -236,12 +303,6 @@ Read
 public function write( mixed $id, mixed $data ): bool;
 ```
 Write
-
-
-```php
-protected function getPrefixedName( mixed $name ): string;
-```
-Helper method to get the name prefixed
 
 
 
@@ -290,7 +351,9 @@ Constructor
 
 -   __Uses__
     
-    - `Phalcon\Session\Exception`
+    - `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`
+    - `Phalcon\Session\Adapter\Exceptions\InvalidSavePath`
+    - `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`
 
 -   __Extends__
     
@@ -325,6 +388,20 @@ $session->setAdapter($files);
 
 ### Properties
 ```php
+/**
+ * Session options
+ *
+ * @var array
+ */
+protected $options;
+
+/**
+ * Session prefix
+ *
+ * @var string
+ */
+protected $prefix = "";
+
 /**
  * @var string
  */
@@ -382,6 +459,12 @@ protected function getArrVal( array $collection, mixed $index, mixed $defaultVal
 protected function getGlobFiles( string $pattern ): array | false;
 ```
 Gets the glob array or returns false on failure
+
+
+```php
+protected function getPrefixedName( mixed $name ): string;
+```
+Helper method to get the name prefixed
 
 
 ```php
@@ -645,6 +728,158 @@ Exceptions thrown in Phalcon\Session will use this class
 
 
 
+## Session\Exceptions\InvalidSessionAdapter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionAdapter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Session\Exceptions\InvalidSessionName 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionName.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Session\Exceptions\SessionAlreadyStarted 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionAlreadyStarted.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Session\Exceptions\SessionModificationDenied 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionModificationDenied.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Session\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Session\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Session\Manager 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Manager.zep)
@@ -659,8 +894,10 @@ Exceptions thrown in Phalcon\Session will use this class
     - `InvalidArgumentException`
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
-    - `Phalcon\Support\Helper\Arr\Get`
-    - `RuntimeException`
+    - `Phalcon\Session\Exceptions\InvalidSessionAdapter`
+    - `Phalcon\Session\Exceptions\InvalidSessionName`
+    - `Phalcon\Session\Exceptions\SessionAlreadyStarted`
+    - `Phalcon\Session\Exceptions\SessionModificationDenied`
     - `SessionHandlerInterface`
 
 -   __Extends__
@@ -752,7 +989,7 @@ Gets a session variable from an application context
 
 
 ```php
-public function getAdapter(): SessionHandlerInterface;
+public function getAdapter(): SessionHandlerInterface | null;
 ```
 Returns the stored session adapter
 
@@ -857,7 +1094,6 @@ Checks if or where headers have been sent
 -   __Uses__
     
     - `InvalidArgumentException`
-    - `RuntimeException`
     - `SessionHandlerInterface`
 
 -   __Extends__
@@ -923,7 +1159,7 @@ Gets a session variable from an application context
 
 
 ```php
-public function getAdapter(): SessionHandlerInterface;
+public function getAdapter(): SessionHandlerInterface | null;
 ```
 Returns the stored session adapter
 

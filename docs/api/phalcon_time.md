@@ -62,7 +62,6 @@ public function now(): DateTimeImmutable;
 
 -   __Uses__
     
-    - `Throwable`
 
 -   __Extends__
     
@@ -84,10 +83,45 @@ Implementation of this file has been influenced by lcobucci/clock
 @license https://github.com/lcobucci/clock/blob/3.7.x/LICENSE
 
 
+
+## Time\Clock\Exceptions\InvalidModifier 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exceptions/InvalidModifier.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Time\Clock\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Time\Clock\Exception`
+    - `Throwable`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been influenced by lcobucci/clock
+
+@link    https://github.com/lcobucci/clock
+@license https://github.com/lcobucci/clock/blob/3.7.x/LICENSE
+
+
 ### Methods
 
 ```php
-public static function invalidModifier( string $message, Throwable $ex = null ): Exception;
+public function __construct( string $message, Throwable $ex = null );
 ```
 
 
@@ -107,6 +141,7 @@ public static function invalidModifier( string $message, Throwable $ex = null ):
     
     - `DateTimeImmutable`
     - `DateTimeZone`
+    - `Phalcon\Time\Clock\Exceptions\InvalidModifier`
     - `Throwable`
 
 -   __Extends__
@@ -147,11 +182,11 @@ public function __construct( DateTimeImmutable $now );
 
 
 ```php
-public function adjust( string $modifier ): FrozenClock;
+public function adjust( string $modifier ): static;
 ```
 Mutates the clock to a new value. All consumers receive the same modification
 
-@throws Exception When the modifier string cannot be parsed
+@throws InvalidModifier
 
 
 ```php
@@ -173,7 +208,7 @@ Return the current clock
 
 
 ```php
-public function set( DateTimeImmutable $now ): FrozenClock;
+public function set( DateTimeImmutable $now ): static;
 ```
 Sets the clock to a new value. All consumers receive the same modification
 

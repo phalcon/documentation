@@ -21,6 +21,7 @@ hide:
 -   __Uses__
     
     - `Phalcon\Html\Attributes\RenderInterface`
+    - `Phalcon\Html\Exceptions\AttributeNotRenderable`
     - `Phalcon\Support\Collection`
 
 -   __Extends__
@@ -75,10 +76,8 @@ protected function renderAttributes( array $attributes ): string;
 -   __Implements__
     
 
-* Phalcon\Html\Attributes\AttributesInterface
-*
-* Interface Phalcon\Html\Attributes\AttributesInterface
-*/
+Html Attributes Interface
+
 
 ### Methods
 
@@ -114,17 +113,15 @@ Set Attributes
 -   __Implements__
     
 
-* Phalcon\Html\Attributes\RenderInterface
-*
-* Interface Phalcon\Html\Attributes\RenderInterface
-*/
+Rendering interface for HTML attributes
+
 
 ### Methods
 
 ```php
 public function render(): string;
 ```
-Generate a string represetation
+Generate a string representation
 
 
 
@@ -140,7 +137,6 @@ Generate a string represetation
 
 -   __Uses__
     
-    - `Phalcon\Di\DiInterface`
 
 -   __Extends__
     
@@ -186,7 +182,7 @@ private $template = <dt><a href=\"%link%\">%label%</a></dt>;
 ### Methods
 
 ```php
-public function add( string $label, string $link = string ): Breadcrumbs;
+public function add( string $label, string $link = string ): static;
 ```
 Adds a new crumb.
 
@@ -239,7 +235,7 @@ echo $breadcrumbs->render();
 
 
 ```php
-public function setSeparator( string $separator ): Breadcrumbs;
+public function setSeparator( string $separator ): static;
 ```
 
 
@@ -339,13 +335,13 @@ protected $urlEscaper;
 ### Methods
 
 ```php
-public function __construct();
+public function __construct( string $encoding = string, int $flags = int, bool $doubleEncode = bool );
 ```
 
 
 
 ```php
-public function attributes( mixed $input ): string;
+public function attributes( mixed $input = null ): string;
 ```
 Escapes a HTML attribute string or array. Delegates to the configured
 `AttributeEscaper`.
@@ -454,55 +450,55 @@ final public function normalizeEncoding( string $input ): string;
 
 
 ```php
-public function setAttributeEscaper( AttributeEscaper $escaper ): Escaper;
+public function setAttributeEscaper( AttributeEscaper $escaper ): static;
 ```
 
 
 
 ```php
-public function setCssEscaper( CssEscaper $escaper ): Escaper;
+public function setCssEscaper( CssEscaper $escaper ): static;
 ```
 
 
 
 ```php
-public function setDoubleEncode( bool $doubleEncode ): Escaper;
+public function setDoubleEncode( bool $doubleEncode ): static;
 ```
 Sets the double_encode flag. Fans out to all sub-objects.
 
 
 ```php
-public function setEncoding( string $encoding ): EscaperInterface;
+public function setEncoding( string $encoding ): static;
 ```
 Sets the encoding. Fans out to all sub-objects.
 
 
 ```php
-public function setFlags( int $flags ): EscaperInterface;
+public function setFlags( int $flags ): static;
 ```
 Sets the htmlspecialchars flags. Fans out to all sub-objects.
 
 
 ```php
-public function setHtmlEscaper( HtmlEscaper $escaper ): Escaper;
+public function setHtmlEscaper( HtmlEscaper $escaper ): static;
 ```
 
 
 
 ```php
-public function setHtmlQuoteType( int $flags ): EscaperInterface;
+public function setHtmlQuoteType( int $flags ): static;
 ```
 
 
 
 ```php
-public function setJsEscaper( JsEscaper $escaper ): Escaper;
+public function setJsEscaper( JsEscaper $escaper ): static;
 ```
 
 
 
 ```php
-public function setUrlEscaper( UrlEscaper $escaper ): Escaper;
+public function setUrlEscaper( UrlEscaper $escaper ): static;
 ```
 
 
@@ -603,19 +599,19 @@ escapers before invoking the C-level escape routines.
 
 
 ```php
-public function setDoubleEncode( bool $doubleEncode );
+public function setDoubleEncode( bool $doubleEncode ): static;
 ```
 
 
 
 ```php
-public function setEncoding( string $encoding );
+public function setEncoding( string $encoding ): static;
 ```
 
 
 
 ```php
-public function setFlags( int $flags );
+public function setFlags( int $flags ): static;
 ```
 
 
@@ -688,8 +684,7 @@ Encodes a single key/value via `htmlspecialchars`.
     
 
 Escapes a string for use inside a CSS value by replacing non-alphanumeric
-characters with their hexadecimal escape sequence. Wraps the C-level
-`phalcon_escape_css` after normalising the input to UTF-32.
+characters with their hexadecimal escape sequence.
 
 
 ### Methods
@@ -865,8 +860,6 @@ public function escape( string $input = null ): string;
 
 Escapes a string for use inside a JavaScript context by replacing
 non-alphanumeric characters with their hexadecimal escape sequence.
-Wraps the C-level `phalcon_escape_js` after normalising the input to
-UTF-32.
 
 
 ### Methods
@@ -904,9 +897,7 @@ public function escape( string $input ): string;
 -   __Implements__
     
 
-Escapes a string for use as a URL component via `rawurlencode`. The
-encoding/flags/doubleEncode setters are accepted for symmetry with the
-other contexts but have no effect on the output.
+Escapes a string for use as a URL component via `rawurlencode`.
 
 
 ### Methods
@@ -975,9 +966,199 @@ Create a new instance of the object
 -   __Implements__
     
 
-Phalcon\Html\Tag\Exception
+Phalcon\Html\Exception
 
-Exceptions thrown in Phalcon\Html\Tag will use this class
+Exceptions thrown in Phalcon\Html will use this class
+
+
+
+## Html\Exceptions\AttributeNotRenderable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/AttributeNotRenderable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key, string $type );
+```
+
+
+
+
+
+## Html\Exceptions\FriendlyTitleConversionFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/FriendlyTitleConversionFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $message );
+```
+
+
+
+
+
+## Html\Exceptions\InvalidResultsetValue 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/InvalidResultsetValue.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Html\Exceptions\ServiceNotRegistered 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/ServiceNotRegistered.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Html\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Html\Exceptions\UsingRequiresTwoValues 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/UsingRequiresTwoValues.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Html\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 
@@ -1068,7 +1249,7 @@ sure that argument always wins.
 ```php
 protected function orderAttributes( array $overrides, array $attributes ): array;
 ```
-Keeps all the attributes sorted - same order all the tome
+Keeps all the attributes sorted - same order all the time
 
 
 ```php
@@ -1155,7 +1336,7 @@ protected $store;
 ### Methods
 
 ```php
-public function __invoke( string $indent = string, string $delimiter = null, array $attributes = [] ): AbstractList;
+public function __invoke( string $indent = string, string $delimiter = null, array $attributes = [] ): static;
 ```
 
 
@@ -1214,7 +1395,7 @@ protected $store;
 ### Methods
 
 ```php
-public function __invoke( string $indent = string, string $delimiter = null ): AbstractSeries;
+public function __invoke( string $indent = string, string $delimiter = null ): static;
 ```
 
 
@@ -1229,7 +1410,7 @@ registration order.
 
 
 ```php
-public function reset(): AbstractSeries;
+public function reset(): static;
 ```
 Resets the internal store.
 
@@ -1471,13 +1652,13 @@ AbstractHelper constructor.
 
 
 ```php
-public function __invoke( string $indent = string, string $delimiter = null ): Breadcrumbs;
+public function __invoke( string $indent = string, string $delimiter = null ): static;
 ```
 Sets the indent and delimiter and returns the object back.
 
 
 ```php
-public function add( string $text, string $link = string, string $icon = string, array $attributes = [] ): Breadcrumbs;
+public function add( string $text, string $link = string, string $icon = string, array $attributes = [] ): static;
 ```
 Adds a new crumb.
 
@@ -1504,7 +1685,7 @@ $breadcrumbs->clear()
 
 
 ```php
-public function clearAttributes(): Breadcrumbs;
+public function clearAttributes(): static;
 ```
 Clear the attributes of the parent element.
 
@@ -1555,26 +1736,26 @@ echo $breadcrumbs->render();
 
 
 ```php
-public function setAttributes( array $attributes ): Breadcrumbs;
+public function setAttributes( array $attributes ): static;
 ```
 Set the attributes for the parent element.
 
 
 ```php
-public function setPrefix( string $prefix ): Breadcrumbs;
+public function setPrefix( string $prefix ): static;
 ```
 Set the link prefix prepended to every non-empty link during rendering.
 When a Url service was injected, calling this method replaces it.
 
 
 ```php
-public function setSeparator( string $separator ): Breadcrumbs;
+public function setSeparator( string $separator ): static;
 ```
 Set the separator.
 
 
 ```php
-public function setTemplate( string $main, string $line, string $last ): Breadcrumbs;
+public function setTemplate( string $main, string $line, string $last ): static;
 ```
 Set the HTML template.
 
@@ -1729,7 +1910,7 @@ public function __construct();
 
 
 ```php
-public function __invoke( int $type = static-constant-access, string $delimiter = string ): Doctype;
+public function __invoke( int $type = static-constant-access, string $delimiter = string ): static;
 ```
 Produce a <doctype> tag
 
@@ -1845,6 +2026,7 @@ Produce a `<form>` tag.
     
     - `Phalcon\Html\Escaper\EscaperInterface`
     - `Phalcon\Html\Exception`
+    - `Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`
     - `Phalcon\Support\Helper\Str\Friendly`
 
 -   __Extends__
@@ -1980,7 +2162,7 @@ input emitted when an `unchecked` attribute is supplied.
 
 
 ```php
-public function label( array $attributes = [] ): AbstractChecked;
+public function label( array $attributes = [] ): static;
 ```
 Attaches a wrapping `<label>` to the element. The supplied attributes
 are merged with a default `for` pointing at the input's `id`. A `text`
@@ -1989,7 +2171,7 @@ from the rendered attributes.
 
 
 ```php
-public function strict( bool $flag = bool ): AbstractChecked;
+public function strict( bool $flag = bool ): static;
 ```
 Toggles strict (`===`) comparison between the `checked` attribute and
 the `value` attribute when deciding whether to render the input as
@@ -2081,7 +2263,7 @@ protected $type = checkbox;
 ### Methods
 
 ```php
-public function __invoke( string $name, array $options, mixed $checked = null, array $attributes = [] ): AbstractGroup;
+public function __invoke( string $name, array $options, mixed $checked = null, array $attributes = [] ): static;
 ```
 
 
@@ -2151,7 +2333,7 @@ protected $attributes;
 ### Methods
 
 ```php
-public function __invoke( string $name, string $value = null, array $attributes = [] ): AbstractInput;
+public function __invoke( string $name, string $value = null, array $attributes = [] ): static;
 ```
 
 
@@ -2163,7 +2345,7 @@ Returns the HTML for the input.
 
 
 ```php
-public function setValue( string $value = null ): AbstractInput;
+public function setValue( string $value = null ): static;
 ```
 Sets the value of the element
 
@@ -2419,19 +2601,19 @@ protected $strict = false;
 ### Methods
 
 ```php
-public function add( string $text, string $value = null, array $attributes = [], bool $raw = bool ): Select;
+public function add( string $text, string $value = null, array $attributes = [], bool $raw = bool ): static;
 ```
 Add an element to the list
 
 
 ```php
-public function addPlaceholder( string $text, mixed $value = null, array $attributes = [], bool $raw = bool ): Select;
+public function addPlaceholder( string $text, string $value = null, array $attributes = [], bool $raw = bool ): static;
 ```
 Add a placeholder to the element
 
 
 ```php
-public function fromData( SelectData $data ): Select;
+public function fromData( SelectData $data ): static;
 ```
 Populates the select from a data provider.
 
@@ -2440,27 +2622,27 @@ Optgroup entries: key = group label, value = [value => label] array.
 
 
 ```php
-public function optGroup( string $label = null, array $attributes = [] ): Select;
+public function optGroup( string $label = null, array $attributes = [] ): static;
 ```
 Creates an option group
 
 
 ```php
-public function placeholder( string $text ): Select;
+public function placeholder( string $text ): static;
 ```
 Adds a non-selectable placeholder option as the first entry. Renders
 as `<option value="" disabled selected>$text</option>`, matching the
-common HTML idiom for "Choose…"-style prompts.
+common HTML idiom for "Choose..."-style prompts.
 
 
 ```php
-public function selected( string $selected ): Select;
+public function selected( string $selected ): static;
 ```
 
 
 
 ```php
-public function strict( bool $flag = bool ): Select;
+public function strict( bool $flag = bool ): static;
 ```
 Toggles strict (`===`) comparison between an option's `value` and
 the previously stored `selected` value. Defaults to loose (`==`),
@@ -2563,6 +2745,8 @@ public function getOptions(): array;
     
     - `InvalidArgumentException`
     - `Phalcon\Contracts\Html\Helper\Input\SelectData`
+    - `Phalcon\Html\Exceptions\InvalidResultsetValue`
+    - `Phalcon\Html\Exceptions\UsingRequiresTwoValues`
     - `Phalcon\Mvc\Model\ResultsetInterface`
 
 -   __Extends__
@@ -2624,7 +2808,7 @@ public function __construct( ResultsetInterface $resultset, array $using, array 
 ```php
 public function getAttributes(): array;
 ```
-
+Returns per-option attribute maps, keyed by option value.
 
 
 ```php
@@ -2645,7 +2829,8 @@ protected function resolve(): void;
 ```
 Walks the resultset once, building both the option map and the
 per-option resolved attribute map. Closures in `attributesMap`
-receive the current row; string values are passed through.
+receive the current row; static values are passed through.
+`false` or `null` values skip the attribute entirely.
 
 
 
@@ -2768,7 +2953,7 @@ Creates <link> tags
 ### Methods
 
 ```php
-public function add( string $url, array $attributes = [], int $position = int );
+public function add( string $url, array $attributes = [], int $position = int ): static;
 ```
 Add an element to the list
 
@@ -2813,25 +2998,25 @@ Class Meta
 ### Methods
 
 ```php
-public function add( array $attributes = [], int $position = int ): Meta;
+public function add( array $attributes = [], int $position = int ): static;
 ```
 Add an element to the list
 
 
 ```php
-public function addHttp( string $httpEquiv, string $content, int $position = int ): Meta;
+public function addHttp( string $httpEquiv, string $content, int $position = int ): static;
 ```
 
 
 
 ```php
-public function addName( string $name, string $content, int $position = int ): Meta;
+public function addName( string $name, string $content, int $position = int ): static;
 ```
 
 
 
 ```php
-public function addProperty( string $name, string $content, int $position = int ): Meta;
+public function addProperty( string $name, string $content, int $position = int ): static;
 ```
 
 
@@ -2887,7 +3072,7 @@ public function __construct( EscaperInterface $escaper, Doctype $doctype = null,
 
 
 ```php
-public function add( string $text, array $attributes = [], bool $raw = bool ): AbstractList;
+public function add( string $text, array $attributes = [], bool $raw = bool ): static;
 ```
 Add an element to the list
 
@@ -2978,7 +3163,7 @@ Class Script
 ### Methods
 
 ```php
-public function add( string $url, array $attributes = [], int $position = int );
+public function add( string $url, array $attributes = [], int $position = int ): static;
 ```
 Add an element to the list
 
@@ -2992,7 +3177,7 @@ markup as a `<script>...</script>` block in the asset stack.
 
 
 ```php
-public function endInternal( array $attributes = [], int $position = int ): Script;
+public function endInternal( array $attributes = [], int $position = int ): static;
 ```
 Closes an inline-script buffer opened by `beginInternal()` and adds
 the captured content as a `<script>...</script>` entry. Any
@@ -3049,13 +3234,13 @@ private $isStyle = false;
 ### Methods
 
 ```php
-public function add( string $url, array $attributes = [], int $position = int );
+public function add( string $url, array $attributes = [], int $position = int ): static;
 ```
 Add an element to the list
 
 
 ```php
-public function setStyle( bool $flag ): Style;
+public function setStyle( bool $flag ): static;
 ```
 Sets if this is a style or link tag
 
@@ -3167,7 +3352,7 @@ protected $separator = ;
 ### Methods
 
 ```php
-public function __invoke( string $indent = string, string $delimiter = null ): Title;
+public function __invoke( string $indent = string, string $delimiter = null ): static;
 ```
 Sets the separator and returns the object back
 
@@ -3179,7 +3364,7 @@ Returns the title tags
 
 
 ```php
-public function append( string $text, bool $raw = bool ): Title;
+public function append( string $text, bool $raw = bool ): static;
 ```
 Appends text to current document title
 
@@ -3191,19 +3376,19 @@ Returns the title
 
 
 ```php
-public function prepend( string $text, bool $raw = bool ): Title;
+public function prepend( string $text, bool $raw = bool ): static;
 ```
 Prepends text to current document title
 
 
 ```php
-public function set( string $text, bool $raw = bool ): Title;
+public function set( string $text, bool $raw = bool ): static;
 ```
 Sets the title
 
 
 ```php
-public function setSeparator( string $separator, bool $raw = bool ): Title;
+public function setSeparator( string $separator, bool $raw = bool ): static;
 ```
 Sets the separator
 
@@ -3296,10 +3481,10 @@ public function __invoke( string $name, array $attributes = [] ): string;
 -   __Implements__
     
 
-@property array  $attributes
-@property string $href
-@property array  $rels
-@property bool   $templated
+@property Collection $attributes
+@property string     $href
+@property Collection $rels
+@property bool       $templated
 
 
 ### Properties
@@ -3370,33 +3555,33 @@ Returns whether this is a templated link.
 
 
 ```php
-protected function doWithAttribute( string $key, mixed $value );
+protected function doWithAttribute( string $key, mixed $value ): static;
 ```
 
 
 
 ```php
-protected function doWithHref( string $href );
+protected function doWithHref( string $href ): static;
 ```
 
 
 
 ```php
-protected function doWithRel( string $key );
+protected function doWithRel( string $key ): static;
 ```
 
 
 
 ```php
-protected function doWithoutAttribute( string $key );
+protected function doWithoutAttribute( string $key ): static;
 ```
-   
+
 
 
 ```php
-protected function doWithoutRel( string $key );
+protected function doWithoutRel( string $key ): static;
 ```
-   
+
 
 
 ```php
@@ -3469,7 +3654,7 @@ MUST be returned.
 
 
 ```php
-protected function doWithLink( mixed $link );
+protected function doWithLink( mixed $link ): static;
 ```
 Returns an instance with the specified link included.
 
@@ -3479,7 +3664,7 @@ to a link object already in the collection.
 
 
 ```php
-protected function doWithoutLink( mixed $link );
+protected function doWithoutLink( mixed $link ): static;
 ```
 Returns an instance with the specified link removed.
 
@@ -3517,18 +3702,13 @@ Returns the object hash key
     
     - `EvolvableLinkInterface`
 
-Class Phalcon\Http\Link\EvolvableLink
-
-@property array  attributes
-@property string href
-@property array  rels
-@property bool   templated
+Class Phalcon\Html\Link\EvolvableLink
 
 
 ### Methods
 
 ```php
-public function withAttribute( mixed $attribute, mixed $value ): EvolvableLinkInterface;
+public function withAttribute( mixed $attribute, mixed $value ): static;
 ```
 Returns an instance with the specified attribute added.
 
@@ -3537,13 +3717,13 @@ with the new value.
 
 
 ```php
-public function withHref( string $href ): EvolvableLinkInterface;
+public function withHref( string $href ): static;
 ```
 Returns an instance with the specified href.
 
 
 ```php
-public function withRel( string $rel ): EvolvableLinkInterface;
+public function withRel( string $rel ): static;
 ```
 Returns an instance with the specified relationship included.
 
@@ -3552,7 +3732,7 @@ normally without errors, but without adding the rel a second time.
 
 
 ```php
-public function withoutAttribute( string $attribute ): EvolvableLinkInterface;
+public function withoutAttribute( string $attribute ): static;
 ```
 Returns an instance with the specified attribute excluded.
 
@@ -3561,7 +3741,7 @@ normally without errors.
 
 
 ```php
-public function withoutRel( string $rel ): EvolvableLinkInterface;
+public function withoutRel( string $rel ): static;
 ```
 Returns an instance with the specified relationship excluded.
 
@@ -3593,15 +3773,15 @@ normally without errors.
     
     - `EvolvableLinkProviderInterface`
 
-Class Phalcon\Http\Link\LinkProvider
+Class Phalcon\Html\Link\EvolvableLinkProvider
 
-@property LinkInterface[] links
+@property LinkInterface[] $links
 
 
 ### Methods
 
 ```php
-public function withLink( LinkInterface $link ): EvolvableLinkProviderInterface;
+public function withLink( LinkInterface $link ): static;
 ```
 Returns an instance with the specified link included.
 
@@ -3611,7 +3791,7 @@ to a link object already in the collection.
 
 
 ```php
-public function withoutLink( LinkInterface $link ): EvolvableLinkProviderInterface;
+public function withoutLink( LinkInterface $link ): static;
 ```
 Returns an instance with the specified link removed.
 
@@ -3727,7 +3907,7 @@ to a link object already in the collection.
 ```php
 public function withoutLink( LinkInterface $link ): EvolvableLinkProviderInterface;
 ```
-Returns an instance with the specifed link removed.
+Returns an instance with the specified link removed.
 
 If the specified link is not present, this method MUST return normally
 without errors. The link is present if $link is === identical to a link
@@ -3846,8 +4026,6 @@ relationship.
 -   __Uses__
     
     - `Phalcon\Html\Link\Interfaces\LinkInterface`
-    - `Phalcon\Support\Collection`
-    - `Phalcon\Support\Collection\CollectionInterface`
 
 -   __Extends__
     
@@ -3857,12 +4035,7 @@ relationship.
     
     - `LinkInterface`
 
-Class Phalcon\Http\Link\Link
-
-@property array  attributes
-@property string href
-@property array  rels
-@property bool   templated
+Class Phalcon\Html\Link\Link
 
 
 ### Methods
@@ -4029,6 +4202,7 @@ Serializer method
     
     - `Closure`
     - `Phalcon\Html\Escaper\EscaperInterface`
+    - `Phalcon\Html\Exceptions\ServiceNotRegistered`
     - `Phalcon\Html\Helper\Anchor`
     - `Phalcon\Html\Helper\Base`
     - `Phalcon\Html\Helper\Body`

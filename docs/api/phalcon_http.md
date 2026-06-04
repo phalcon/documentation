@@ -23,10 +23,13 @@ hide:
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Encryption\Crypt\CryptInterface`
-    - `Phalcon\Encryption\Crypt\Mismatch`
     - `Phalcon\Filter\FilterInterface`
     - `Phalcon\Http\Cookie\CookieInterface`
     - `Phalcon\Http\Cookie\Exception`
+    - `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort`
+    - `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired`
+    - `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable`
+    - `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable`
     - `Phalcon\Http\Response\Exception`
     - `Phalcon\Session\ManagerInterface`
 
@@ -86,7 +89,7 @@ protected $isRead = false;
 /**
  * @var bool
  */
-protected $restored = false;
+protected $isRestored = false;
 
 /**
  * @var bool
@@ -251,7 +254,7 @@ and generated using a cryptographically secure pseudo random generator.
 
 Use NULL to disable cookie signing.
 
-@see \Phalcon\Security\Random
+@see \Phalcon\Encryption\Security\Random
 @throws \Phalcon\Http\Cookie\Exception
 
 
@@ -440,6 +443,158 @@ Sets if the cookie must be encrypted/decrypted automatically
 Phalcon\Http\Cookie\Exception
 
 Exceptions thrown in Phalcon\Http\Cookie will use this class.
+
+
+
+## Http\Cookie\Exceptions\CookieKeyTooShort 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exceptions/CookieKeyTooShort.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Cookie\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $length );
+```
+
+
+
+
+
+## Http\Cookie\Exceptions\CryptInterfaceRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exceptions/CryptInterfaceRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Cookie\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Http\Cookie\Exceptions\CryptServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exceptions/CryptServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Cookie\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Http\Cookie\Exceptions\FilterServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Cookie/Exceptions/FilterServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Cookie\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Cookie\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 
@@ -639,10 +794,14 @@ const STATUS_WEB_SERVER_IS_DOWN = 521;
     - `Phalcon\Filter\FilterInterface`
     - `Phalcon\Http\Message\RequestMethodInterface`
     - `Phalcon\Http\Request\Exception`
+    - `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable`
+    - `Phalcon\Http\Request\Exceptions\InvalidHost`
+    - `Phalcon\Http\Request\Exceptions\InvalidHttpMethod`
+    - `Phalcon\Http\Request\Exceptions\MissingFilters`
+    - `Phalcon\Http\Request\Exceptions\SanitizerNotFound`
     - `Phalcon\Http\Request\File`
     - `Phalcon\Http\Request\FileInterface`
     - `Phalcon\Support\Helper\Json\Decode`
-    - `UnexpectedValueException`
     - `stdClass`
 
 -   __Extends__
@@ -690,7 +849,7 @@ protected $filterService;
 /**
  * @var bool
  */
-protected $httpMethodParameterOverride = false;
+protected $methodOverride = false;
 
 /**
  * @var array
@@ -1255,33 +1414,33 @@ Returns the number of files available
 
 
 ```php
-public function setHttpMethodParameterOverride( bool $override ): Request;
+public function setHttpMethodParameterOverride( bool $override ): static;
 ```
 Set the HTTP method parameter override flag
 
 
 ```php
-public function setParameterFilters( string $name, array $filters = [], array $scope = [] ): RequestInterface;
+public function setParameterFilters( string $name, array $filters = [], array $scope = [] ): static;
 ```
 Sets automatic sanitizers/filters for a particular field and for
 particular methods
 
 
 ```php
-public function setStrictHostCheck( bool $flag = bool ): RequestInterface;
+public function setStrictHostCheck( bool $flag = bool ): static;
 ```
 Sets if the `Request::getHttpHost` method must be use strict validation
 of host name or not
 
 
 ```php
-public function setTrustedProxies( array $trustedProxies ): RequestInterface;
+public function setTrustedProxies( array $trustedProxies ): static;
 ```
 Set a trusted proxy list for X-Forwarded-For header
 
 
 ```php
-public function setTrustedProxyHeader( string $trustedProxyHeader ): RequestInterface;
+public function setTrustedProxyHeader( string $trustedProxyHeader ): static;
 ```
 This header takes priority when parsing HTTP headers
 The header return only 1 single IP address, prefixed with HTTP_ eg. HTTP_CLIENT_IP.
@@ -1357,6 +1516,196 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 
 
+## Http\Request\Exceptions\FilterServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exceptions/FilterServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Request\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Http\Request\Exceptions\InvalidHost 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exceptions/InvalidHost.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request\Exceptions`
+
+-   __Uses__
+    
+    - `UnexpectedValueException`
+
+-   __Extends__
+    
+    `UnexpectedValueException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $host );
+```
+
+
+
+
+
+## Http\Request\Exceptions\InvalidHttpMethod 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exceptions/InvalidHttpMethod.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Request\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $method );
+```
+
+
+
+
+
+## Http\Request\Exceptions\MissingFilters 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exceptions/MissingFilters.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Request\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Http\Request\Exceptions\SanitizerNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exceptions/SanitizerNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Request\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Request\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $sanitizer );
+```
+
+
+
+
+
 ## Http\Request\File 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/File.zep)
@@ -1402,7 +1751,7 @@ class PostsController extends Controller
 ### Properties
 ```php
 /**
- * @var string|null
+ * @var int
  */
 protected $error;
 
@@ -1412,7 +1761,7 @@ protected $error;
 protected $extension;
 
 /**
- * @var string|null
+ * @var string
  */
 protected $key;
 
@@ -1432,7 +1781,7 @@ protected $realType;
 protected $size = ;
 
 /**
- * @var string|null
+ * @var string
  */
 protected $tmp;
 
@@ -1446,13 +1795,13 @@ protected $type;
 ### Methods
 
 ```php
-public function __construct( array $file, mixed $key = null );
+public function __construct( array $file, string $key = string );
 ```
 Phalcon\Http\Request\File constructor
 
 
 ```php
-public function getError(): string | null;
+public function getError(): int;
 ```
 
 
@@ -1464,7 +1813,7 @@ public function getExtension(): string;
 
 
 ```php
-public function getKey(): string | null;
+public function getKey(): string;
 ```
 
 
@@ -1538,7 +1887,7 @@ Interface for Phalcon\Http\Request\File
 ### Methods
 
 ```php
-public function getError(): string | null;
+public function getError(): int;
 ```
 Returns the error if any
 
@@ -2010,7 +2359,7 @@ if $_SERVER["REQUEST_METHOD"] === "TRACE"
 
 
 ```php
-public function numFiles( bool $onlySuccessful = bool ): long;
+public function numFiles( bool $onlySuccessful = bool ): int;
 ```
 Returns the number of files available
 
@@ -2037,11 +2386,14 @@ Returns the number of files available
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Http\Message\ResponseStatusCodeInterface`
     - `Phalcon\Http\Response\CookiesInterface`
-    - `Phalcon\Http\Response\Exception`
+    - `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage`
+    - `Phalcon\Http\Response\Exceptions\ResponseAlreadySent`
+    - `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable`
     - `Phalcon\Http\Response\Headers`
     - `Phalcon\Http\Response\HeadersInterface`
     - `Phalcon\Mvc\Url\UrlInterface`
     - `Phalcon\Mvc\ViewInterface`
+    - `Phalcon\Support\Helper\File\Basename`
     - `Phalcon\Support\Helper\Json\Encode`
 
 -   __Extends__
@@ -2104,11 +2456,6 @@ protected $headers;
  * @var bool
  */
 protected $sent = false;
-
-/**
- * @var array
- */
-protected $statusCodes;
 
 /**
  * @var Encode
@@ -2430,6 +2777,7 @@ $response->setStatusCode(404, "Not Found");
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Http\Cookie\CookieInterface`
     - `Phalcon\Http\Cookie\Exception`
+    - `Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable`
 
 -   __Extends__
     
@@ -2438,8 +2786,6 @@ $response->setStatusCode(404, "Not Found");
 -   __Implements__
     
     - `CookiesInterface`
-
-Phalcon\Http\Response\Cookies
 
 This class is a bag to manage the cookies.
 
@@ -2502,7 +2848,7 @@ protected $isSent = false;
 /**
  * @var bool
  */
-protected $registered = false;
+protected $isRegistered = false;
 
 /**
  * The cookie's sign key.
@@ -2638,8 +2984,6 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 -   __Implements__
     
 
-Phalcon\Http\Response\CookiesInterface
-
 Interface for Phalcon\Http\Response\Cookies
 
 
@@ -2721,6 +3065,158 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 
 
+## Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exceptions/NonStandardStatusCodeRequiresMessage.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Response\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Http\Response\Exceptions\ResponseAlreadySent 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exceptions/ResponseAlreadySent.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Response\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Http\Response\Exceptions\ResponseServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exceptions/ResponseServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Response\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Http\Response\Exceptions\UrlServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Exceptions/UrlServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Http\Response\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Http\Response\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Http\Response\Headers 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Response/Headers.zep)
@@ -2732,6 +3228,8 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 -   __Uses__
     
+    - `IteratorAggregate`
+    - `Traversable`
 
 -   __Extends__
     
@@ -2739,8 +3237,7 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 -   __Implements__
     
     - `HeadersInterface`
-
-Phalcon\Http\Response\Headers
+    - `IteratorAggregate`
 
 This class is a bag to manage the response headers
 
@@ -2762,9 +3259,15 @@ protected $isSent = false;
 ### Methods
 
 ```php
-public function get( string $name ): string | bool;
+public function get( string $name ): string | bool | null;
 ```
 Gets a header value from the internal bag
+
+
+```php
+public function getIterator(): Traversable;
+```
+
 
 
 ```php
@@ -2786,7 +3289,7 @@ Removes a header by its name
 
 
 ```php
-public function reset();
+public function reset(): void;
 ```
 Reset set headers
 
@@ -2835,15 +3338,13 @@ Returns the current headers as an array
 -   __Implements__
     
 
-Phalcon\Http\Response\HeadersInterface
-
 Interface for Phalcon\Http\Response\Headers compatible bags
 
 
 ### Methods
 
 ```php
-public function get( string $name ): string | bool;
+public function get( string $name ): string | bool | null;
 ```
 Gets a header value from the internal bag
 
@@ -2855,7 +3356,7 @@ Checks if a header exists
 
 
 ```php
-public function reset();
+public function reset(): void;
 ```
 Reset set headers
 
@@ -2867,13 +3368,13 @@ Sends the headers to the client
 
 
 ```php
-public function set( string $name, string $value );
+public function set( string $name, string $value ): HeadersInterface;
 ```
 Sets a header to be sent at the end of the request
 
 
 ```php
-public function setRaw( string $header );
+public function setRaw( string $header ): HeadersInterface;
 ```
 Sets a raw header to be sent at the end of the request
 
@@ -2908,7 +3409,7 @@ Interface for Phalcon\Http\Response
 ### Methods
 
 ```php
-public function appendContent( mixed $content ): ResponseInterface;
+public function appendContent( string $content ): ResponseInterface;
 ```
 Appends a string to the HTTP response body
 
@@ -2944,7 +3445,7 @@ Checks if the response was already sent
 
 
 ```php
-public function redirect( mixed $location = null, bool $externalRedirect = bool, int $statusCode = int ): ResponseInterface;
+public function redirect( string $location = null, bool $externalRedirect = bool, int $statusCode = int ): ResponseInterface;
 ```
 Redirect by HTTP to another action or URL
 
@@ -2986,7 +3487,7 @@ Sets the response content-length
 
 
 ```php
-public function setContentType( string $contentType, mixed $charset = null ): ResponseInterface;
+public function setContentType( string $contentType, string $charset = null ): ResponseInterface;
 ```
 Sets the response content-type mime, optionally the charset
 
@@ -2998,13 +3499,13 @@ Sets output expire time header
 
 
 ```php
-public function setFileToSend( string $filePath, mixed $attachmentName = null ): ResponseInterface;
+public function setFileToSend( string $filePath, string $attachmentName = null ): ResponseInterface;
 ```
 Sets an attached file to be sent at the end of the request
 
 
 ```php
-public function setHeader( string $name, mixed $value ): ResponseInterface;
+public function setHeader( string $name, string $value ): ResponseInterface;
 ```
 Overwrites a header in the response
 

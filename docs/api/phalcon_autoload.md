@@ -32,6 +32,82 @@ Exceptions thrown in Phalcon\Autoload will use this class
 
 
 
+## Autoload\Exceptions\LoaderDirectoriesNotArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderDirectoriesNotArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Autoload\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Autoload\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Autoload\Exceptions\LoaderMethodNotCallable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderMethodNotCallable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Autoload\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Autoload\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Autoload\Loader 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Loader.zep)
@@ -43,6 +119,8 @@ Exceptions thrown in Phalcon\Autoload will use this class
 
 -   __Uses__
     
+    - `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`
+    - `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`
     - `Phalcon\Events\AbstractEventsAware`
 
 -   __Extends__
@@ -125,31 +203,31 @@ Loader constructor.
 
 
 ```php
-public function addClass( string $name, string $file ): Loader;
+public function addClass( string $name, string $file ): static;
 ```
 Adds a class to the internal collection for the mapping
 
 
 ```php
-public function addDirectory( string $directory ): Loader;
+public function addDirectory( string $directory ): static;
 ```
 Adds a directory for the loaded files
 
 
 ```php
-public function addExtension( string $extension ): Loader;
+public function addExtension( string $extension ): static;
 ```
 Adds an extension for the loaded files
 
 
 ```php
-public function addFile( string $file ): Loader;
+public function addFile( string $file ): static;
 ```
 Adds a file to be added to the loader
 
 
 ```php
-public function addNamespace( string $name, mixed $directories, bool $prepend = bool ): Loader;
+public function addNamespace( string $name, mixed $directories, bool $prepend = bool ): static;
 ```
 
 
@@ -211,7 +289,7 @@ Returns the namespaces currently registered in the autoloader
 ```php
 public function isRegistered(): bool;
 ```
-returns isRegister
+returns isRegistered
 
 
 ```php
@@ -221,32 +299,32 @@ Checks if a file exists and then adds the file by doing virtual require
 
 
 ```php
-public function register( bool $prepend = bool ): Loader;
+public function register( bool $prepend = bool ): static;
 ```
 Register the autoload method
 
 
 ```php
-public function setClasses( array $classes, bool $merge = bool ): Loader;
+public function setClasses( array $classes, bool $merge = bool ): static;
 ```
 Register classes and their locations
 
 
 ```php
-public function setDirectories( array $directories, bool $merge = bool ): Loader;
+public function setDirectories( array $directories, bool $merge = bool ): static;
 ```
 Register directories in which "not found" classes could be found
 
 
 ```php
-public function setExtensions( array $extensions, bool $merge = bool ): Loader;
+public function setExtensions( array $extensions, bool $merge = bool ): static;
 ```
 Sets an array of file extensions that the loader must try in each attempt
 to locate the file
 
 
 ```php
-public function setFileCheckingCallback( mixed $method = null ): Loader;
+public function setFileCheckingCallback( mixed $method = null ): static;
 ```
 Sets the file check callback.
 
@@ -264,20 +342,20 @@ $loader->setFileCheckingCallback(null);
 
 
 ```php
-public function setFiles( array $files, bool $merge = bool ): Loader;
+public function setFiles( array $files, bool $merge = bool ): static;
 ```
 Registers files that are "non-classes" hence need a "require". This is
 very useful for including files that only have functions
 
 
 ```php
-public function setNamespaces( array $namespaces, bool $merge = bool ): Loader;
+public function setNamespaces( array $namespaces, bool $merge = bool ): static;
 ```
 Register namespaces and their related directories
 
 
 ```php
-public function unregister(): Loader;
+public function unregister(): static;
 ```
 Unregister the autoload method
 

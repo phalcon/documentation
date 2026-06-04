@@ -9,6 +9,120 @@ hide:
 
 
 
+## Support\AbstractLocator ![Abstract](../assets/images/abstract-green.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/AbstractLocator.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Container\Service\Collection`
+    - `Phalcon\Di\DiInterface`
+    - `Throwable`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Abstract base class for service locators.
+
+Provides a unified way to register, validate, and resolve services
+from a DI container, with support for both legacy Di and new Container.
+
+@template T of object
+
+
+### Properties
+```php
+/**
+ * @var Collection|DiInterface
+ */
+protected $container;
+
+/**
+ * @phpstan-var array<string, class-string<T>>
+ * @var array
+ */
+protected $services;
+
+```
+
+### Methods
+
+```php
+public function __construct( mixed $container, array $services = [] );
+```
+@phpstan-param array<string, class-string<T>> $services
+
+
+```php
+public function getAll(): array;
+```
+Returns the full registered service map (defaults plus any added via
+register()).
+
+
+```php
+public function getClass( string $name ): string;
+```
+Returns the class-string registered under the given name.
+
+
+```php
+public function has( string $name ): bool;
+```
+Whether a service with the given name is registered.
+
+
+```php
+public function newInstance( string $name ): object;
+```
+Retrieve a shared service instance from the container.
+
+
+```php
+public function register( string $name, string $definition ): static;
+```
+Register a service or override an existing one.
+
+@phpstan-param class-string<T> $definition
+
+@throws Exception
+
+
+```php
+abstract protected function getExceptionClass(): string;
+```
+Get the exception class to throw on errors.
+
+
+```php
+abstract protected function getInterfaceClass(): string;
+```
+Get the interface/class that all registered services must implement.
+This allows different locators to enforce different contracts.
+
+
+```php
+protected function getService( string $name ): string;
+```
+Get the service class name for a given name.
+
+
+```php
+abstract protected function getServices(): array;
+```
+Get the default services for this locator.
+
+
+
+
 ## Support\Collection 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection.zep)
@@ -23,11 +137,10 @@ hide:
     - `ArrayAccess`
     - `ArrayIterator`
     - `Countable`
-    - `InvalidArgumentException`
     - `IteratorAggregate`
     - `JsonSerializable`
-    - `Phalcon\Contracts\Support\Collection`
     - `Phalcon\Support\Collection\CollectionInterface`
+    - `Phalcon\Support\Collection\Exceptions\InvalidValueType`
     - `Phalcon\Support\Helper\Json\Encode`
     - `Traversable`
 
@@ -157,7 +270,7 @@ Count elements of an object
 
 
 ```php
-public function each( callable $callback ): CollectionInterface;
+public function each( callable $callback ): static;
 ```
 Invokes the callback for every item in the collection. Returns the
 collection itself to allow chaining.
@@ -166,7 +279,7 @@ collection itself to allow chaining.
 
 
 ```php
-public function filter( callable $callback ): CollectionInterface;
+public function filter( callable $callback ): static;
 ```
 Returns a new collection of items for which the callback returns true.
 Keys are preserved.
@@ -262,7 +375,7 @@ Returns the last value in the collection, or null if empty.
 
 
 ```php
-public function map( callable $callback ): CollectionInterface;
+public function map( callable $callback ): static;
 ```
 Returns a new collection with the callback applied to every value.
 Keys are preserved.
@@ -339,7 +452,7 @@ Set an element in the collection
 
 
 ```php
-public function sort( mixed $callback = null, int $order = int ): CollectionInterface;
+public function sort( mixed $callback = null, int $order = int ): static;
 ```
 Returns a new collection sorted by value. Keys are preserved. When a
 callback is supplied, `uasort` is used. Without a callback, the
@@ -383,7 +496,7 @@ Returns the values of the internal array.
 
 
 ```php
-public function where( string $propertyOrMethod, mixed $value ): CollectionInterface;
+public function where( string $propertyOrMethod, mixed $value ): static;
 ```
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.
@@ -392,7 +505,7 @@ Returns a new collection containing only the items whose
 
 
 ```php
-protected function cloneEmpty( array $data = [] ): CollectionContract;
+protected function cloneEmpty( array $data = [] ): static;
 ```
 Builds a new collection of the same concrete class, carrying over the
 configuration (insensitivity, strict-null, type) of the current one.
@@ -471,16 +584,92 @@ Phalcon\Support\Collection\CollectionInterface
 
 -   __Uses__
     
-    - `Throwable`
+    - `Phalcon\Support\Exception`
 
 -   __Extends__
     
-    `\Exception`
+    `SupportException`
 
 -   __Implements__
     
 
 Exceptions for the Collection object
+
+
+
+## Support\Collection\Exceptions\InvalidValueType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/Exceptions/InvalidValueType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Collection\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type, mixed $value );
+```
+
+
+
+
+
+## Support\Collection\Exceptions\ReadOnlyViolation 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/Exceptions/ReadOnlyViolation.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Collection\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Support\Collection\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 
@@ -496,6 +685,7 @@ Exceptions for the Collection object
 -   __Uses__
     
     - `Phalcon\Support\Collection`
+    - `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`
 
 -   __Extends__
     
@@ -536,13 +726,13 @@ the collection state. The guard is re-enabled before the method returns.
 ```php
 public function clear(): void;
 ```
-@throws Exception
+@throws ReadOnlyViolation
 
 
 ```php
 public function init( array $data = [] ): void;
 ```
-@throws Exception
+@throws ReadOnlyViolation
 
 
 ```php
@@ -576,8 +766,8 @@ Set an element in the collection
 
 -   __Uses__
     
-    - `ErrorException`
-    - `Phalcon\Support\Debug\Exception`
+    - `Phalcon\Support\Debug\Exceptions\RequestHalted`
+    - `Phalcon\Support\Debug\Exceptions\RuntimeWarning`
     - `ReflectionClass`
     - `ReflectionException`
     - `ReflectionFunction`
@@ -639,13 +829,13 @@ protected $uri = https://assets.phalcon.io/debug/5.0.x/;
 ### Methods
 
 ```php
-public function clearVars(): Debug;
+public function clearVars(): static;
 ```
 Clears are variables added previously
 
 
 ```php
-public function debugVar( mixed $varz ): Debug;
+public function debugVar( mixed $varz ): static;
 ```
 Adds a variable to the debug output
 
@@ -673,23 +863,23 @@ public function halt(): void;
 ```
 Halts the request showing a backtrace
 
-@throws Exception
+@throws RequestHalted
 
 
 ```php
-public function listen( bool $exceptions = bool, bool $lowSeverity = bool ): Debug;
+public function listen( bool $exceptions = bool, bool $lowSeverity = bool ): static;
 ```
 Listen for uncaught exceptions and non silent notices or warnings
 
 
 ```php
-public function listenExceptions(): Debug;
+public function listenExceptions(): static;
 ```
 Listen for uncaught exceptions
 
 
 ```php
-public function listenLowSeverity(): Debug;
+public function listenLowSeverity(): static;
 ```
 Listen for non silent notices or warnings
 
@@ -713,32 +903,32 @@ Render exception to html format.
 
 
 ```php
-public function setBlacklist( array $blacklist ): Debug;
+public function setBlacklist( array $blacklist ): static;
 ```
 Sets if files the exception's backtrace must be showed
 
 
 ```php
-public function setShowBackTrace( bool $showBackTrace ): Debug;
+public function setShowBackTrace( bool $showBackTrace ): static;
 ```
 Sets if files the exception's backtrace must be showed
 
 
 ```php
-public function setShowFileFragment( bool $showFileFragment ): Debug;
+public function setShowFileFragment( bool $showFileFragment ): static;
 ```
 Sets if files must be completely opened and showed in the output
 or just the fragment related to the exception
 
 
 ```php
-public function setShowFiles( bool $showFiles ): Debug;
+public function setShowFiles( bool $showFiles ): static;
 ```
 Set if files part of the backtrace must be shown in the output
 
 
 ```php
-public function setUri( string $uri ): Debug;
+public function setUri( string $uri ): static;
 ```
 Change the base URI for static resources
 
@@ -954,6 +1144,72 @@ Exceptions thrown in Phalcon\Debug will use this class
 
 
 
+## Support\Debug\Exceptions\RequestHalted 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Exceptions/RequestHalted.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Debug\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Support\Debug\Exception`
+
+-   __Extends__
+    
+    `DebugException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Support\Debug\Exceptions\RuntimeWarning 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Exceptions/RuntimeWarning.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Debug\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `\ErrorException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+
 ## Support\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Exception.zep)
@@ -973,7 +1229,7 @@ Exceptions thrown in Phalcon\Debug will use this class
 -   __Implements__
     
 
-Phalcon\Support\Exception
+Exceptions thrown in Phalcon\Support will use this class
 
 
 
@@ -1735,16 +1991,17 @@ public function __invoke( array $collection, array $whiteList ): array;
 
 -   __Uses__
     
+    - `Phalcon\Support\Exception`
 
 -   __Extends__
     
-    `\Exception`
+    `SupportException`
 
 -   __Implements__
     
 
-* Phalcon\Support\Exception
-*/
+Exceptions thrown in Phalcon\Support\Helper will use this class
+
 
 
 ## Support\Helper\File\Basename 
@@ -1791,7 +2048,7 @@ public function __invoke( string $uri, string $suffix = null ): string;
 
 -   __Uses__
     
-    - `InvalidArgumentException`
+    - `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`
 
 -   __Extends__
     
@@ -1807,8 +2064,9 @@ The following options are used if none specified for json_encode
 JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
 JSON_UNESCAPED_SLASHES
 
-Any error will throw InvalidArgumentException, regardless of whether
-JSON_THROW_ON_ERROR is specified in the options.
+If JSON_THROW_ON_ERROR is defined in the options a JsonException will be
+thrown in the case of an error. Otherwise, any error will throw
+JsonDecodeError
 
 
 ### Methods
@@ -1832,7 +2090,7 @@ public function __invoke( string $data, bool $associative = bool, int $depth = i
 
 -   __Uses__
     
-    - `InvalidArgumentException`
+    - `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`
 
 -   __Extends__
     
@@ -1848,8 +2106,9 @@ The following options are used if none specified for json_encode
 JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
 JSON_UNESCAPED_SLASHES
 
-Any error will throw InvalidArgumentException, regardless of whether
-JSON_THROW_ON_ERROR is specified in the options.
+If JSON_THROW_ON_ERROR is defined in the options a JsonException will be
+thrown in the case of an error. Otherwise, any error will throw
+JsonEncodeError
 
 @see  https://www.ietf.org/rfc/rfc4627.txt
 
@@ -1858,6 +2117,84 @@ JSON_THROW_ON_ERROR is specified in the options.
 
 ```php
 public function __invoke( mixed $data, int $options = int, int $depth = int ): string;
+```
+
+
+
+
+
+## Support\Helper\Json\Exceptions\JsonDecodeError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Exceptions/JsonDecodeError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Helper\Json\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Throwable`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $message = string, int $code = int, Throwable $previous = null );
+```
+
+
+
+
+
+## Support\Helper\Json\Exceptions\JsonEncodeError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Exceptions/JsonEncodeError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Helper\Json\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+    - `Throwable`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $message = string, int $code = int, Throwable $previous = null );
 ```
 
 
@@ -1998,7 +2335,7 @@ public function __invoke( string $text, string $delimiters = null, bool $lowerFi
 
 -   __Uses__
     
-    - `Phalcon\Support\Helper\Exception`
+    - `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
 
 -   __Extends__
     
@@ -2194,7 +2531,7 @@ public function __invoke( string $directory ): string;
 
 -   __Uses__
     
-    - `RuntimeException`
+    - `Phalcon\Support\Helper\Str\Exceptions\SyntaxError`
 
 -   __Extends__
     
@@ -2249,6 +2586,111 @@ public function __invoke( string $haystack, string $needle, bool $ignoreCase = b
 
 
 
+## Support\Helper\Str\Exceptions\InsufficientArguments 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/InsufficientArguments.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Helper\Str\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Support\Helper\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Support\Helper\Str\Exceptions\InvalidReplaceFormat 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/InvalidReplaceFormat.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Helper\Str\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Support\Helper\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+
+## Support\Helper\Str\Exceptions\SyntaxError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/SyntaxError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Support\Helper\Str\Exceptions`
+
+-   __Uses__
+    
+    - `RuntimeException`
+
+-   __Extends__
+    
+    `RuntimeException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $text );
+```
+
+
+
+
+
 ## Support\Helper\Str\FirstBetween 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/FirstBetween.zep)
@@ -2292,7 +2734,7 @@ public function __invoke( string $text, string $start, string $end ): string;
 
 -   __Uses__
     
-    - `Phalcon\Support\Helper\Exception`
+    - `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
 
 -   __Extends__
     
@@ -3060,7 +3502,7 @@ ServiceLocator implementation for helpers
 @method string decrement(string $text, string $separator = '_')
 @method string dirFromFile(string $file)
 @method string dirSeparator(string $directory)
-@method string dynamic(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|")
+@method string dynamic(string $text, string $leftDel = "{", string $rightDel = "}", string $separator = "|")
 @method string encode($data, int $options = 0, int $depth = 512)
 @method bool   endsWith(string $haystack, string $needle, bool $ignoreCase = true)
 @method mixed  filter(array $collection, callable|null $method)
@@ -3090,7 +3532,7 @@ ServiceLocator implementation for helpers
 @method array  order(array $collection, $attribute, string $order = 'asc')
 @method string pascalCase(string $text, string $delimiters = null)
 @method array  pluck(array $collection, string $element)
-@method string prefix($text, string $prefix)
+@method string prefix(string $text, string $prefix)
 @method string random(int $type = 0, int $length = 8)
 @method string reduceSlashes(string $text)
 @method array  set(array $collection, $value, $index = null)
@@ -3164,8 +3606,6 @@ Returns the available adapters
 
 -   __Implements__
     
-
-Phalcon\Registry
 
 A registry is a container for storing objects and values in the application
 space. By storing the value in a registry, the same object is always
@@ -3434,7 +3874,7 @@ Returns the value of a known setting.
 
 Resolution order:
   1. PHP-level override (set via Settings::set())
-  2. globals_get() - the C-level value, honouring php.ini / .htaccess
+  2. globals_get() - the C-level value, honoring php.ini / .htaccess
   3. null - for unknown keys
 
 

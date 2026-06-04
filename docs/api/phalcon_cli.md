@@ -22,6 +22,10 @@ hide:
     
     - `Phalcon\Application\AbstractApplication`
     - `Phalcon\Cli\Console\Exception`
+    - `Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered`
+    - `Phalcon\Cli\Console\Exceptions\ContainerRequired`
+    - `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath`
+    - `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound`
     - `Phalcon\Cli\Router\Route`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Events\ManagerInterface`
@@ -59,7 +63,7 @@ Handle the whole command-line tasks
 
 
 ```php
-public function setArgument( array $arguments = null, bool $str = bool, bool $shift = bool ): Console;
+public function setArgument( array $arguments = null, bool $str = bool, bool $shift = bool ): static;
 ```
 Set an specific argument
 
@@ -86,6 +90,158 @@ Set an specific argument
     
 
 Exceptions thrown in Phalcon\Cli\Console will use this class
+
+
+
+## Cli\Console\Exceptions\ConsoleModuleNotRegistered 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ConsoleModuleNotRegistered.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Console\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Console\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $moduleName );
+```
+
+
+
+
+
+## Cli\Console\Exceptions\ContainerRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ContainerRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Console\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Console\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Cli\Console\Exceptions\InvalidModuleDefinitionPath 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/InvalidModuleDefinitionPath.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Console\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Console\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Cli\Console\Exceptions\ModuleDefinitionPathNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ModuleDefinitionPathNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Console\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Console\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $path );
+```
+
+
 
 
 
@@ -363,6 +519,8 @@ Sets the default task suffix
 -   __Uses__
     
     - `Phalcon\Cli\Router\Exception`
+    - `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable`
+    - `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType`
     - `Phalcon\Cli\Router\Route`
     - `Phalcon\Cli\Router\RouteInterface`
     - `Phalcon\Di\AbstractInjectionAware`
@@ -374,6 +532,7 @@ Sets the default task suffix
 
 -   __Implements__
     
+    - `RouterInterface`
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process
 of taking a command-line arguments and decomposing it into parameters to
@@ -546,25 +705,25 @@ Handles routing information received from command-line arguments
 
 
 ```php
-public function setDefaultAction( string $actionName ): Router;
+public function setDefaultAction( string $actionName ): static;
 ```
 Sets the default action name
 
 
 ```php
-public function setDefaultModule( string $moduleName ): Router;
+public function setDefaultModule( string $moduleName ): static;
 ```
 Sets the name of the default module
 
 
 ```php
-public function setDefaultTask( string $taskName ): void;
+public function setDefaultTask( string $taskName ): static;
 ```
 Sets the default controller name
 
 
 ```php
-public function setDefaults( array $defaults ): Router;
+public function setDefaults( array $defaults ): static;
 ```
 Sets an array of default paths. If a route is missing a path the router
 will use the defined here. This method must not be used to set a 404
@@ -611,6 +770,120 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 
 
 
+## Cli\Router\Exceptions\BeforeMatchNotCallable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/BeforeMatchNotCallable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Cli\Router\Exceptions\InvalidRoutePaths 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/InvalidRoutePaths.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Cli\Router\Exceptions\RouterArgumentsInvalidType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/RouterArgumentsInvalidType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cli\Router\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Cli\Router\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Cli\Router\Route 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Route.zep)
@@ -622,6 +895,7 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 
 -   __Uses__
     
+    - `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`
 
 -   __Extends__
     
@@ -1012,13 +1286,13 @@ Returns processed extra params
 
 
 ```php
-public function getRouteById( mixed $id ): RouteInterface;
+public function getRouteById( mixed $id ): RouteInterface | bool;
 ```
 Returns a route object by its id
 
 
 ```php
-public function getRouteByName( string $name ): RouteInterface;
+public function getRouteByName( string $name ): RouteInterface | bool;
 ```
 Returns a route object by its name
 
@@ -1042,25 +1316,25 @@ Handles routing information received from the rewrite engine
 
 
 ```php
-public function setDefaultAction( string $actionName ): void;
+public function setDefaultAction( string $actionName ): RouterInterface;
 ```
 Sets the default action name
 
 
 ```php
-public function setDefaultModule( string $moduleName ): void;
+public function setDefaultModule( string $moduleName ): RouterInterface;
 ```
 Sets the name of the default module
 
 
 ```php
-public function setDefaultTask( string $taskName ): void;
+public function setDefaultTask( string $taskName ): RouterInterface;
 ```
 Sets the default task name
 
 
 ```php
-public function setDefaults( array $defaults ): void;
+public function setDefaults( array $defaults ): RouterInterface;
 ```
 Sets an array of default paths
 

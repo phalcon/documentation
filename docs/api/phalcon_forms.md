@@ -25,6 +25,8 @@ hide:
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Filter\Validation\ValidatorInterface`
     - `Phalcon\Forms\Exception`
+    - `Phalcon\Forms\Exceptions\FormElementNameRequired`
+    - `Phalcon\Forms\Exceptions\InvalidFilterType`
     - `Phalcon\Forms\Form`
     - `Phalcon\Html\TagFactory`
     - `Phalcon\Messages\MessageInterface`
@@ -290,7 +292,7 @@ Sets the element name
 
 
 ```php
-public function setTagFactory( TagFactory $tagFactory ): AbstractElement;
+public function setTagFactory( TagFactory $tagFactory ): static;
 ```
 Sets the TagFactory
 
@@ -372,7 +374,7 @@ Whether an "unchecked value" has been explicitly registered.
 
 
 ```php
-public function setUncheckedValue( mixed $value ): Check;
+public function setUncheckedValue( mixed $value ): static;
 ```
 Registers a value to bind when the checkbox is absent from submitted
 data (the typical browser behavior for an unchecked input). Without
@@ -1145,13 +1147,545 @@ Exceptions thrown in Phalcon\Forms will use this class
 ### Methods
 
 ```php
-public static function tagFactoryNotFound(): Exception;
+public static function tagFactoryNotFound(): self;
 ```
 
 
 
 ```php
-public static function usingParameterRequired(): Exception;
+public static function usingParameterRequired(): self;
+```
+
+
+
+
+
+## Forms\Exceptions\ElementNotInForm 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/ElementNotInForm.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Forms\Exceptions\FormElementNameRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/FormElementNameRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Forms\Exceptions\FormNotInLocator 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/FormNotInLocator.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Forms\Exceptions\FormNotRegistered 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/FormNotRegistered.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Forms\Exceptions\InvalidEntity 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/InvalidEntity.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Forms\Exceptions\InvalidFilterType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/InvalidFilterType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Forms\Exceptions\InvalidJsonSchema 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/InvalidJsonSchema.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $detail );
+```
+
+
+
+
+
+## Forms\Exceptions\JsonSchemaNotArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/JsonSchemaNotArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Forms\Exceptions\NoFormElements 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/NoFormElements.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Forms\Exceptions\SchemaEntryMissingKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/SchemaEntryMissingKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $index, string $key );
+```
+
+
+
+
+
+## Forms\Exceptions\SchemaEntryNotArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/SchemaEntryNotArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $index );
+```
+
+
+
+
+
+## Forms\Exceptions\UnknownFormElementType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/UnknownFormElementType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type );
+```
+
+
+
+
+
+## Forms\Exceptions\YamlExtensionRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/YamlExtensionRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Forms\Exceptions\YamlSchemaNotArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Forms/Exceptions/YamlSchemaNotArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Forms\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Forms\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
 ```
 
 
@@ -1179,6 +1713,9 @@ public static function usingParameterRequired(): Exception;
     - `Phalcon\Filter\Validation\ValidationInterface`
     - `Phalcon\Forms\Element\Check`
     - `Phalcon\Forms\Element\ElementInterface`
+    - `Phalcon\Forms\Exceptions\ElementNotInForm`
+    - `Phalcon\Forms\Exceptions\InvalidEntity`
+    - `Phalcon\Forms\Exceptions\NoFormElements`
     - `Phalcon\Html\Attributes`
     - `Phalcon\Html\Attributes\AttributesInterface`
     - `Phalcon\Html\TagFactory`
@@ -1232,7 +1769,7 @@ protected $elementsIndexed;
 protected $entity;
 
 /**
- * @var Messages|array|null
+ * @var Messages
  */
 protected $messages;
 
@@ -1272,19 +1809,19 @@ Phalcon\Forms\Form constructor
 
 
 ```php
-public function add( ElementInterface $element, string $position = null, bool $type = null ): Form;
+public function add( ElementInterface $element, string $position = null, bool $type = null ): static;
 ```
 Adds an element to the form
 
 
 ```php
-public function bind( array $data, mixed $entity = null, array $whitelist = [] ): Form;
+public function bind( array $data, mixed $entity = null, array $whitelist = [] ): static;
 ```
 Binds data to the entity
 
 
 ```php
-public function clear( mixed $fields = null ): Form;
+public function clear( mixed $fields = null ): static;
 ```
 Clears every element in the form to its default value
 
@@ -1345,7 +1882,7 @@ Returns a label for an element
 
 
 ```php
-public function getMessages(): Messages | array;
+public function getMessages(): Messages;
 ```
 Returns the messages generated in the validation.
 
@@ -1433,7 +1970,7 @@ Generate the label of an element added to the form including HTML
 
 
 ```php
-public function load( Schema $schema, FormsLocator $locator ): Form;
+public function load( Schema $schema, FormsLocator $locator ): static;
 ```
 Loads elements into the form from a Schema source.
 
@@ -1467,50 +2004,50 @@ Rewinds the internal iterator
 
 
 ```php
-public function setAction( string $action ): Form;
+public function setAction( string $action ): static;
 ```
 Sets the form's action
 
 
 ```php
-public function setAttributes( Attributes $attributes ): AttributesInterface;
+public function setAttributes( Attributes $attributes ): static;
 ```
    Set form attributes collection
    
 
 
 ```php
-public function setEntity( mixed $entity ): Form;
+public function setEntity( mixed $entity ): static;
 ```
 Sets the entity related to the model
 
 
 ```php
-public function setTagFactory( TagFactory $tagFactory ): Form;
+public function setTagFactory( TagFactory $tagFactory ): static;
 ```
 Sets the tagFactory for the form
 
 
 ```php
-public function setUserOption( string $option, mixed $value ): Form;
+public function setUserOption( string $option, mixed $value ): static;
 ```
 Sets an option for the form
 
 
 ```php
-public function setUserOptions( array $options ): Form;
+public function setUserOptions( array $options ): static;
 ```
 Sets options for the element
 
 
 ```php
-public function setValidation( ValidationInterface $validation ): Form;
+public function setValidation( ValidationInterface $validation ): static;
 ```
 Sets the default validation
 
 
 ```php
-public function setWhitelist( array $whitelist ): Form;
+public function setWhitelist( array $whitelist ): static;
 ```
 Sets the default whitelist
 
@@ -1548,6 +2085,8 @@ Check if the current element in the iterator is valid
     - `Phalcon\Forms\Element\Submit`
     - `Phalcon\Forms\Element\Text`
     - `Phalcon\Forms\Element\TextArea`
+    - `Phalcon\Forms\Exceptions\FormNotInLocator`
+    - `Phalcon\Forms\Exceptions\UnknownFormElementType`
 
 -   __Extends__
     
@@ -1670,6 +2209,8 @@ Each value is a callable: fn(string $name, array $options, array $attributes): E
     
     - `Phalcon\Contracts\Forms\Schema`
     - `Phalcon\Forms\Exception`
+    - `Phalcon\Forms\Exceptions\SchemaEntryMissingKey`
+    - `Phalcon\Forms\Exceptions\SchemaEntryNotArray`
 
 -   __Extends__
     
@@ -1726,6 +2267,8 @@ protected function validateDefinition( mixed $definition, int $index ): void;
     - `InvalidArgumentException`
     - `Phalcon\Contracts\Forms\Schema`
     - `Phalcon\Forms\Exception`
+    - `Phalcon\Forms\Exceptions\InvalidJsonSchema`
+    - `Phalcon\Forms\Exceptions\JsonSchemaNotArray`
     - `Phalcon\Support\Helper\Json\Decode`
 
 -   __Extends__
@@ -1785,6 +2328,8 @@ protected function phpFileGetContents( string $filename );
     
     - `Phalcon\Contracts\Forms\Schema`
     - `Phalcon\Forms\Exception`
+    - `Phalcon\Forms\Exceptions\YamlExtensionRequired`
+    - `Phalcon\Forms\Exceptions\YamlSchemaNotArray`
 
 -   __Extends__
     
@@ -1838,6 +2383,7 @@ public function load(): array;
 -   __Uses__
     
     - `Phalcon\Contracts\Forms\Schema`
+    - `Phalcon\Forms\Exceptions\FormNotRegistered`
     - `Phalcon\Forms\Form`
 
 -   __Extends__
@@ -1903,7 +2449,7 @@ and registers a factory in the locator for entity-aware retrieval.
 
 
 ```php
-public function set( string $name, Form $form ): Manager;
+public function set( string $name, Form $form ): static;
 ```
 Registers a form in the Forms Manager
 

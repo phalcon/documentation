@@ -62,7 +62,7 @@ Helper method to fire an event
 
 
 
-## Events\Event ![Final](../assets/images/final-red.svg) 
+## Events\Event 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Event.zep)
 
@@ -74,6 +74,8 @@ Helper method to fire an event
 -   __Uses__
     
     - `Phalcon\Contracts\Events\Stoppable`
+    - `Phalcon\Events\Exceptions\EventNotCancelable`
+    - `Phalcon\Events\Exceptions\InvalidEventSource`
 
 -   __Extends__
     
@@ -291,6 +293,234 @@ Exceptions thrown in Phalcon\Events will use this class
 
 
 
+## Events\Exceptions\EventNotCancelable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/EventNotCancelable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Events\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Events\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Events\Exceptions\InvalidEventHandler 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventHandler.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Events\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Events\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Events\Exceptions\InvalidEventSource 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventSource.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Events\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Events\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type, string $sourceType );
+```
+
+
+
+
+
+## Events\Exceptions\InvalidEventType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Events\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Events\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $eventType );
+```
+
+
+
+
+
+## Events\Exceptions\InvalidSubscriberConfiguration 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidSubscriberConfiguration.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Events\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Events\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $eventName );
+```
+
+
+
+
+
+## Events\Exceptions\NoListenersForEvent 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/NoListenersForEvent.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Events\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Events\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $eventType );
+```
+
+
+
+
+
 ## Events\Manager 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Manager.zep)
@@ -304,6 +534,10 @@ Exceptions thrown in Phalcon\Events will use this class
     
     - `Closure`
     - `Phalcon\Contracts\Events\Subscriber`
+    - `Phalcon\Events\Exceptions\InvalidEventHandler`
+    - `Phalcon\Events\Exceptions\InvalidEventType`
+    - `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration`
+    - `Phalcon\Events\Exceptions\NoListenersForEvent`
 
 -   __Extends__
     
@@ -393,6 +627,18 @@ protected $eventNameCache;
  * @var array
  */
 protected $methodExistsCache;
+
+/**
+ * Maximum number of distinct handler classes retained in
+ * methodExistsCache. 0 (default) keeps the original unbounded
+ * behavior; a positive value clears the cache when adding a new
+ * class would exceed it. Re-warming is cheap (method_exists is
+ * O(1)) and the cap is meant for very long-lived workers that see
+ * many distinct listener classes over time.
+ *
+ * @var int
+ */
+protected $methodExistsCacheLimit = 0;
 
 /**
  * Memoized getSubscribedEvents() maps keyed by Subscriber class name.
@@ -512,7 +758,7 @@ lower priority.
 
 
 ```php
-final public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
+public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 Fires an event in the events manager causing the active listeners to be
 notified about it
@@ -550,6 +796,13 @@ path bypasses this wrapper and calls dispatch() with hoisted args.
 public function getListeners( string $type ): array;
 ```
 Returns all the attached listeners of a certain type
+
+
+```php
+public function getMethodExistsCacheLimit(): int;
+```
+Returns the configured method_exists-cache cap (0 = unlimited).
+See setMethodExistsCacheLimit().
 
 
 ```php
@@ -632,6 +885,16 @@ fire()/fireAll()/fireQueue() calls resume normal dispatch.
 
 
 ```php
+public function setMethodExistsCacheLimit( int $methodExistsCacheLimit ): void;
+```
+Caps the number of distinct handler classes retained in the
+method_exists memoization cache. 0 disables the cap (the
+default; preserves the original unbounded behavior). When the
+cap is exceeded, the cache is cleared and re-warms on subsequent
+fires.
+
+
+```php
 public function setStopOnFalse( bool $flag ): void;
 ```
 Enables/disables the stop-on-false short-circuit. When true, a
@@ -648,6 +911,31 @@ public function setStrict( bool $strict ): void;
 ```
 Enables/disables strict mode. When true, fire()/fireAll() throw
 when dispatching an event with zero matching listeners.
+
+
+```php
+protected function afterFire( mixed $status, string $eventType, object $source, mixed $data = null, bool $cancelable = bool ): mixed;
+```
+Extension seam invoked after an event has been dispatched to its
+listener queues. Receives the computed dispatch result as `status`
+and returns the value fire() hands back to its caller; the base
+implementation returns `status` unchanged. A subclass can override
+it to run bookkeeping or to post-process / rewrite the result.
+
+Only called when the event was actually dispatched; the halted and
+no-listener short-circuits in fire() return before reaching it.
+
+
+```php
+protected function beforeFire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool ): bool;
+```
+Extension seam invoked before an event is dispatched. The base
+implementation returns true, so dispatch proceeds unchanged. A
+subclass can override it to inspect the source and data and, by
+returning false, abort the dispatch entirely - for example to
+redirect a deferred event onto an external queue. Invoked before the
+no-listener short-circuits, so it sees every fire(), including those
+with no locally attached listeners.
 
 
 

@@ -32,6 +32,82 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 
 
+## Messages\Exceptions\MessageNotObject 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exceptions/MessageNotObject.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Messages\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Messages\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Messages\Exceptions\MessagesNotIterable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exceptions/MessagesNotIterable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Messages\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Messages\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Messages\Message 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Message.zep)
@@ -76,21 +152,21 @@ protected $field;
 protected $message;
 
 /**
- * @var string
- */
-protected $type;
-
-/**
  * @var array
  */
 protected $metaData;
+
+/**
+ * @var string
+ */
+protected $type;
 
 ```
 
 ### Methods
 
 ```php
-public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] );
+public function __construct( string $message, string $field = string, string $type = string, int $code = int, array $metaData = [] );
 ```
 Phalcon\Messages\Message constructor
 
@@ -144,7 +220,7 @@ Sets code for the message
 
 
 ```php
-public function setField( mixed $field ): MessageInterface;
+public function setField( string $field ): MessageInterface;
 ```
 Sets field name related to message
 
@@ -201,13 +277,13 @@ Magic __toString method returns verbose message
 
 
 ```php
-public function getCode();
+public function getCode(): int;
 ```
 Returns the message code related to this message
 
 
 ```php
-public function getField();
+public function getField(): string;
 ```
 Returns field name related to message
 
@@ -277,6 +353,8 @@ Sets message type
     - `Countable`
     - `Iterator`
     - `JsonSerializable`
+    - `Phalcon\Messages\Exceptions\MessageNotObject`
+    - `Phalcon\Messages\Exceptions\MessagesNotIterable`
 
 -   __Extends__
     
@@ -314,7 +392,7 @@ Phalcon\Messages\Messages constructor
 
 
 ```php
-public function appendMessage( MessageInterface $message );
+public function appendMessage( MessageInterface $message ): void;
 ```
 Appends a message to the collection
 

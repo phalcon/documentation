@@ -77,6 +77,10 @@ Sets the dependency injector
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\Exception`
     - `Phalcon\Di\Exception\ServiceResolutionException`
+    - `Phalcon\Di\Exceptions\AliasAlreadyInUse`
+    - `Phalcon\Di\Exceptions\AliasNameMustBeString`
+    - `Phalcon\Di\Exceptions\CircularAliasReference`
+    - `Phalcon\Di\Exceptions\ServiceCannotBeResolved`
     - `Phalcon\Di\InitializationAwareInterface`
     - `Phalcon\Di\InjectionAwareInterface`
     - `Phalcon\Di\Service`
@@ -410,7 +414,7 @@ Registers a service in the services container
 
 
 ```php
-public function setAlias( string $name, mixed $aliases ): Di;
+public function setAlias( string $name, mixed $aliases ): self;
 ```
 Sets one or more aliases to the given name.
 
@@ -657,6 +661,766 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 
 
+## Di\Exceptions\AliasAlreadyInUse 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/AliasAlreadyInUse.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $alias );
+```
+
+
+
+
+
+## Di\Exceptions\AliasNameMustBeString 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/AliasNameMustBeString.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\ArgumentTypeRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/ArgumentTypeRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
+## Di\Exceptions\CallArgumentsMustBeArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/CallArgumentsMustBeArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
+## Di\Exceptions\CircularAliasReference 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/CircularAliasReference.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Di\Exceptions\ContainerRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/ContainerRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\DefinitionMustBeArrayForRead 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/DefinitionMustBeArrayForRead.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\DefinitionMustBeArrayForUpdate 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/DefinitionMustBeArrayForUpdate.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\MethodCallMustBeArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MethodCallMustBeArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
+## Di\Exceptions\MethodNameRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MethodNameRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
+## Di\Exceptions\MissingClassNameParameter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MissingClassNameParameter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\MissingParameterKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/MissingParameterKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key, int $position );
+```
+
+
+
+
+
+## Di\Exceptions\PropertyInjectionRequiresInstance 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyInjectionRequiresInstance.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\PropertyMustBeArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyMustBeArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
+## Di\Exceptions\PropertyNameRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyNameRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
+## Di\Exceptions\PropertyValueRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/PropertyValueRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
+## Di\Exceptions\ServiceCannotBeResolved 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/ServiceCannotBeResolved.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Di\Exceptions\SetterInjectionRequiresInstance 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/SetterInjectionRequiresInstance.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\SetterParametersMustBeArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/SetterParametersMustBeArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Di\Exceptions\UnknownServiceType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/Exceptions/UnknownServiceType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Di\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Di\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( int $position );
+```
+
+
+
+
+
 ## Di\FactoryDefault 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Di/FactoryDefault.zep)
@@ -776,6 +1540,7 @@ public function initialize(): void;
 -   __Uses__
     
     - `Phalcon\Di\Di`
+    - `Phalcon\Di\Exceptions\ContainerRequired`
     - `Phalcon\Session\BagInterface`
     - `stdClass`
 
@@ -907,6 +1672,8 @@ Sets the dependency injector
     
     - `Closure`
     - `Phalcon\Di\Exception\ServiceResolutionException`
+    - `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead`
+    - `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate`
     - `Phalcon\Di\Service\Builder`
 
 -   __Extends__
@@ -1029,6 +1796,19 @@ Sets/Resets the shared instance related to the service
     
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\Exception`
+    - `Phalcon\Di\Exceptions\ArgumentTypeRequired`
+    - `Phalcon\Di\Exceptions\CallArgumentsMustBeArray`
+    - `Phalcon\Di\Exceptions\MethodCallMustBeArray`
+    - `Phalcon\Di\Exceptions\MethodNameRequired`
+    - `Phalcon\Di\Exceptions\MissingClassNameParameter`
+    - `Phalcon\Di\Exceptions\MissingParameterKey`
+    - `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance`
+    - `Phalcon\Di\Exceptions\PropertyMustBeArray`
+    - `Phalcon\Di\Exceptions\PropertyNameRequired`
+    - `Phalcon\Di\Exceptions\PropertyValueRequired`
+    - `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance`
+    - `Phalcon\Di\Exceptions\SetterParametersMustBeArray`
+    - `Phalcon\Di\Exceptions\UnknownServiceType`
 
 -   __Extends__
     

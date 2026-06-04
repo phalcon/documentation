@@ -9,6 +9,1671 @@ hide:
 
 
 
+## Contracts\Auth\Access\Access ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Access/Access.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Access`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+@phpstan-type ForwardTarget array{
+    controller?: string,
+    action?: string,
+    params?: array<int|string, mixed>,
+    namespace?: string,
+    task?: string,
+}&array<string, mixed>
+
+
+### Methods
+
+```php
+public function allowedIf(): bool;
+```
+
+
+
+```php
+public function getExceptActions(): array;
+```
+
+
+
+```php
+public function getOnlyActions(): array;
+```
+
+
+
+```php
+public function isAllowed( string $actionName ): bool;
+```
+
+
+
+```php
+public function redirectTo(): array | null;
+```
+@phpstan-return ForwardTarget|null
+
+
+```php
+public function setExceptActions( array $exceptActions = [] ): void;
+```
+
+
+
+```php
+public function setOnlyActions( array $onlyActions = [] ): void;
+```
+
+
+
+
+
+## Contracts\Auth\Adapter\Adapter ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Adapter/Adapter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Auth\AuthUser`
+    - `Phalcon\Contracts\Encryption\Security\Security`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Authentication adapter contract.
+
+Adapters look users up by credentials or by identifier and verify the
+password against the stored hash. The credential payload is intentionally
+unsealed: any user-row field may be used as the lookup key, plus an
+optional `password` entry that is ignored during the row match and
+consumed only by validateCredentials().
+
+@phpstan-type AuthCredentials array<string, mixed>
+
+
+### Methods
+
+```php
+public static function fromOptions( Security $hasher, array $options ): static;
+```
+Build an adapter from a flat options map. Used by ManagerFactory to
+wire adapters from the application config; each implementation is
+free to interpret the option keys it cares about.
+
+
+```php
+public function retrieveByCredentials( array $credentials ): AuthUser | null;
+```
+Find a user matching the given credentials (e.g. ['email' => 'a@b']).
+The 'password' key, if present, is ignored during the lookup.
+Returns null if no user matches.
+
+@phpstan-param AuthCredentials $credentials
+
+
+```php
+public function retrieveById( mixed $id ): AuthUser | null;
+```
+Find a user by their unique identifier.
+
+
+```php
+public function validateCredentials( AuthUser $user, array $credentials ): bool;
+```
+Validate the provided credentials against the given user.
+Implementations typically verify the password hash held under the
+'password' key.
+
+@phpstan-param AuthCredentials $credentials
+
+
+
+
+## Contracts\Auth\Adapter\AdapterConfig ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Adapter/AdapterConfig.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Adapter`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Authentication adapter configuration contract.
+
+Per-adapter config shape is intentionally adapter-specific (e.g. Stream
+exposes getFile(), Memory exposes getUsers()); the only field shared across
+all adapters is the optional model class used during user hydration.
+
+
+### Methods
+
+```php
+public function getModel(): string | null;
+```
+Returns the user-model class name to hydrate, if configured.
+
+
+
+
+## Contracts\Auth\Adapter\RememberAdapter ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Adapter/RememberAdapter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Adapter`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Auth\AuthUser`
+    - `Phalcon\Contracts\Auth\RememberToken`
+
+-   __Extends__
+    
+    `Adapter`
+
+-   __Implements__
+    
+
+Capability extension implemented by adapters that support remember-me.
+
+
+### Methods
+
+```php
+public function createRememberToken( AuthUser $user ): RememberToken;
+```
+Create and persist a new remember token for the user.
+
+
+```php
+public function retrieveByToken( mixed $id, string $token, string $userAgent = null ): AuthUser | null;
+```
+Retrieve a user by the remember-me cookie payload.
+
+
+
+
+## Contracts\Auth\AuthRemember ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/AuthRemember.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Implemented by authenticatable models that support remember-me tokens.
+This is intentionally separate from AuthUser so that adapters which do
+not support remember-me are not forced to implement it.
+
+
+### Methods
+
+```php
+public function createRememberToken( string $token, string $userAgent = null ): RememberToken;
+```
+Persists a new remember token for the user.
+
+
+```php
+public function getRememberToken( string $token ): RememberToken | null;
+```
+Returns the remember token entry matching the given token value,
+or null if not found.
+
+
+
+
+## Contracts\Auth\AuthUser ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/AuthUser.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Implemented by user models that can be authenticated.
+
+
+### Methods
+
+```php
+public function getAuthIdentifier(): int | string;
+```
+Returns the unique identifier for the authenticatable user
+(e.g. the primary key). Implementations MUST return a non-null
+scalar; if a record cannot produce one, the implementation should
+fail at construction time rather than returning null.
+
+
+```php
+public function getAuthPassword(): string;
+```
+Returns the hashed password for the authenticatable user.
+
+
+
+
+## Contracts\Auth\Guard\BasicAuth ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/BasicAuth.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Guard`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Auth\AuthUser`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been influenced by sinbadxiii/cphalcon-auth
+@link    https://github.com/sinbadxiii/cphalcon-auth
+
+
+### Methods
+
+```php
+public function basic( string $field = string, array $extraConditions = [] ): bool;
+```
+Authenticate against HTTP Basic credentials. Returns true on success.
+
+
+```php
+public function onceBasic( string $field = string, array $extraConditions = [] ): false | AuthUser;
+```
+Like basic() but does not persist; returns the resolved user on success
+or false on failure.
+
+
+
+
+## Contracts\Auth\Guard\Guard ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/Guard.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Guard`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Auth\Adapter\Adapter`
+    - `Phalcon\Contracts\Auth\AuthUser`
+    - `Phalcon\Contracts\Container\Service\Collection`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+@phpstan-import-type AuthCredentials from Adapter
+
+
+### Methods
+
+```php
+public function check(): bool;
+```
+Whether the current request is authenticated.
+
+
+```php
+public static function fromOptions( Adapter $adapter, Collection $container, array $options ): static;
+```
+Build a guard from an adapter, the application container, and a flat
+options map. Used by ManagerFactory to wire guards from the
+application config; each implementation resolves the framework
+services it needs from the container.
+
+
+```php
+public function getLastUserAttempted(): AuthUser | null;
+```
+Returns the last user the guard tried to authenticate during this
+request, regardless of success.
+
+
+```php
+public function guest(): bool;
+```
+Whether the current request is unauthenticated.
+
+
+```php
+public function hasUser(): bool;
+```
+Whether the guard currently holds a resolved user.
+
+
+```php
+public function id(): int | string | null;
+```
+Returns the authenticated user's identifier, or null when no
+authenticated user is present.
+
+
+```php
+public function setUser( AuthUser $user ): static;
+```
+Sets the current user explicitly. Returns $this for fluent chaining.
+
+
+```php
+public function user(): AuthUser | null;
+```
+Returns the resolved user for the current request, or null.
+
+
+```php
+public function validate( array $credentials = [] ): bool;
+```
+Validates the given credentials without logging in.
+
+@phpstan-param AuthCredentials $credentials
+
+
+
+
+## Contracts\Auth\Guard\GuardConfig ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/GuardConfig.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Guard`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Authentication guard configuration contract.
+
+Per-guard config shape is intentionally guard-specific (e.g. Token exposes
+getInputKey()/getStorageKey(); Session has no required config today).
+The contract carries no methods of its own — it only marks the type so
+AbstractGuard can accept any guard config uniformly.
+
+
+
+## Contracts\Auth\Guard\GuardStateful ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Guard/GuardStateful.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth\Guard`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Auth\Adapter\Adapter`
+    - `Phalcon\Contracts\Auth\AuthUser`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+Implemented by guards backed by persistent state (sessions/cookies).
+
+@phpstan-import-type AuthCredentials from Adapter
+
+
+### Methods
+
+```php
+public function attempt( array $credentials = [], bool $remember = bool ): bool;
+```
+Attempts to authenticate the user with the given credentials and, on
+success, persists the resulting state on the guard.
+
+@phpstan-param AuthCredentials $credentials
+
+
+```php
+public function login( AuthUser $user, bool $remember = bool ): void;
+```
+
+
+
+```php
+public function loginById( mixed $id, bool $remember = bool ): false | AuthUser;
+```
+Logs in the user identified by $id. Returns the resolved user on
+success or false when no user matches the id.
+
+
+```php
+public function logout(): void;
+```
+
+
+
+```php
+public function viaRemember(): bool;
+```
+
+
+
+
+
+## Contracts\Auth\Manager ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/Manager.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth`
+
+-   __Uses__
+    
+    - `Phalcon\Auth\Exception`
+    - `Phalcon\Contracts\Auth\Access\Access`
+    - `Phalcon\Contracts\Auth\Adapter\Adapter`
+    - `Phalcon\Contracts\Auth\Guard\Guard`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+@phpstan-import-type AuthCredentials from Adapter
+
+
+### Methods
+
+```php
+public function access( string $accessName ): self;
+```
+
+
+
+```php
+public function addAccessList( array $accessList ): self;
+```
+@phpstan-param array<string, class-string<Access>> $accessList
+
+
+```php
+public function addGuard( string $nameGuard, Guard $guard, bool $isDefault = bool ): self;
+```
+
+
+
+```php
+public function attempt( array $credentials = [], bool $remember = bool ): bool;
+```
+@phpstan-param AuthCredentials $credentials
+
+@throws Exception
+
+
+```php
+public function check(): bool;
+```
+Whether the default guard reports the current request as authenticated.
+
+
+```php
+public function except( string $actions ): self;
+```
+Restricts the active access gate to skip the listed action names.
+
+
+```php
+public function getAccess(): Access | null;
+```
+
+
+
+```php
+public function getAccessList(): array;
+```
+@phpstan-return array<string, class-string<Access>>
+
+
+```php
+public function getDefaultGuard(): Guard | null;
+```
+
+
+
+```php
+public function getGuards(): array;
+```
+
+
+
+```php
+public function guard( string $name = null ): Guard;
+```
+Returns the named guard, or the default guard when $name is null.
+
+
+```php
+public function id(): int | string | null;
+```
+Returns the authenticated user's identifier from the default guard,
+or null when no authenticated user is present.
+
+
+```php
+public function logout(): void;
+```
+Logs the current user out via the default guard.
+
+@throws Exception
+
+
+```php
+public function only( string $actions ): self;
+```
+Restricts the active access gate to apply only to the listed action names.
+
+
+```php
+public function setAccess( Access $access ): self;
+```
+
+
+
+```php
+public function setDefaultGuard( Guard $guard ): self;
+```
+
+
+
+```php
+public function user(): AuthUser | null;
+```
+Returns the resolved user from the default guard, or null.
+
+
+```php
+public function validate( array $credentials = [] ): bool;
+```
+Validates the given credentials against the default guard without
+logging in.
+
+@phpstan-param AuthCredentials $credentials
+
+
+
+
+## Contracts\Auth\RememberToken ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Auth/RememberToken.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Auth`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+A persisted remember-me token row.
+
+
+### Methods
+
+```php
+public function delete(): bool;
+```
+Deletes the token from storage.
+
+
+```php
+public function getToken(): string;
+```
+Returns the token value stored for this remember entry.
+
+
+```php
+public function getUserAgent(): string | null;
+```
+Returns the user agent associated with this token, if any.
+
+
+
+
+## Contracts\Container\Ioc\IocContainer ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocContainer.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Ioc`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+[_IocContainer_][] affords obtaining services by name.
+
+- Notes:
+
+    -*This interface does not afford service management.** The container
+      will need to obtain services somehow, e.g. from a [Service-Interop][]
+      implementation.
+
+@phpstan-import-type ioc_service_name_string from IocTypeAliases
+@phpstan-import-type ioc_service_object from IocTypeAliases
+
+
+### Methods
+
+```php
+public function getService( string $serviceName ): object;
+```
+Returns an instance of the `$serviceName`.
+
+- Directives:
+
+    - Implementations MUST throw [_IocThrowable_][] if the container
+      cannot return an instance of the `$serviceName`.
+
+- Notes:
+
+    -*The logic for this method is expressly unspecified.** Retrieval
+      may be accomplished via a service management subsystem, or by some
+      other means.
+
+    -*The returned instance may be new or shared.** The retrieval
+      logic defines the service lifetime, not the container (per se) and
+      not the caller requesting the service.
+
+
+```php
+public function hasService( string $serviceName ): bool;
+```
+Is the container able to return an instance of the `$serviceName`?
+
+- Notes:
+
+    -*The logic for this method is expressly unspecified.** The ability
+      check may be accomplished by querying a service management subsystem,
+      or by some other means.
+
+
+
+
+## Contracts\Container\Ioc\IocContainerFactory ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocContainerFactory.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Ioc`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+[_IocContainerFactory_][] affords obtaining a new instance of
+[_IocContainer_][].
+
+
+### Methods
+
+```php
+public function newContainer(): IocContainer;
+```
+Returns a new instance of [_IocContainer_][].
+
+- Notes:
+
+    -*Container instantiation logic is not specified.** Implementations
+      might use providers, configuration files, attribute or annotation
+      collection, or some other means to create and populate a container.
+      Implementations might also choose to return a compiled or otherwise
+      reconstituted container.
+
+
+
+
+## Contracts\Container\Ioc\IocThrowable ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocThrowable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Ioc`
+
+-   __Uses__
+    
+    - `Throwable`
+
+-   __Extends__
+    
+    `Throwable`
+
+-   __Implements__
+    
+
+[_IocThrowable_][] extends [_Throwable_][] to mark an [_Exception_][] as
+IOC-related.
+
+It adds no class members.
+
+
+
+## Contracts\Container\Ioc\IocTypeAliases ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Ioc/IocTypeAliases.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Ioc`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+@phpstan-type ioc_service_name_string class-string|non-empty-string
+@phpstan-type ioc_service_object object
+
+
+
+## Contracts\Container\Resolver\ReflectionMethodResolver ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ReflectionMethodResolver.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Resolver`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Container\Ioc\IocContainer`
+    - `ReflectionMethod`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+### Methods
+
+```php
+public function resolveMethod( IocContainer $ioc, ReflectionMethod $method, object $instance ): void;
+```
+
+
+
+
+
+## Contracts\Container\Resolver\ReflectionParameterResolver ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ReflectionParameterResolver.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Resolver`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Container\Ioc\IocContainer`
+    - `ReflectionParameter`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+### Methods
+
+```php
+public function resolveParameter( IocContainer $ioc, ReflectionParameter $parameter ): mixed;
+```
+
+
+
+
+
+## Contracts\Container\Resolver\Resolvable ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/Resolvable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Resolver`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Container\Ioc\IocContainer`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+### Methods
+
+```php
+public function resolve( IocContainer $ioc ): mixed;
+```
+
+
+
+
+
+## Contracts\Container\Resolver\ResolverService ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ResolverService.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Resolver`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Container\Ioc\IocContainer`
+    - `ReflectionMethod`
+    - `ReflectionParameter`
+    - `ReflectionType`
+
+-   __Extends__
+    
+    `ReflectionParameterResolver`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+### Methods
+
+```php
+public function isResolvableClass( string $className ): bool;
+```
+
+
+
+```php
+public function resolveCall( IocContainer $ioc, callable $callableObject, array $arguments ): mixed;
+```
+
+
+
+```php
+public function resolveClass( IocContainer $ioc, string $className, array $arguments ): object;
+```
+
+
+
+```php
+public function resolveMethod( IocContainer $ioc, ReflectionMethod $method, object $instance ): void;
+```
+
+
+
+```php
+public function resolveParameters( IocContainer $ioc, array $parameters, array $arguments ): array;
+```
+
+
+
+```php
+public function resolveType( IocContainer $ioc, ReflectionType $type ): mixed;
+```
+
+
+
+
+
+## Contracts\Container\Resolver\ResolverThrowable ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Resolver/ResolverThrowable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Resolver`
+
+-   __Uses__
+    
+    - `Throwable`
+
+-   __Extends__
+    
+    `Throwable`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+
+## Contracts\Container\Service\Collection ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Collection.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Service`
+
+-   __Uses__
+    
+    - `Closure`
+    - `Phalcon\Container\Definition\ServiceDefinition`
+    - `Phalcon\Container\Resolver\Resolver`
+    - `Phalcon\Contracts\Container\Ioc\IocContainer`
+
+-   __Extends__
+    
+    `IocContainer`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+### Methods
+
+```php
+public function bind( string $interfaceName, string $concrete ): ServiceDefinition;
+```
+
+
+
+```php
+public function callableGet( string $name ): Closure;
+```
+
+
+
+```php
+public function callableNew( string $name ): Closure;
+```
+
+
+
+```php
+public function extend( string $name, callable $callableObject ): void;
+```
+
+
+
+```php
+public function get( string $name ): mixed;
+```
+
+
+
+```php
+public function getAlias( string $name ): string;
+```
+
+
+
+```php
+public function getByTag( string $tag ): array;
+```
+
+
+
+```php
+public function getDefinition( string $name ): ServiceDefinition;
+```
+
+
+
+```php
+public function getInstance( string $name ): object;
+```
+
+
+
+```php
+public function getParameter( string $name ): mixed;
+```
+
+
+
+```php
+public function getResolver(): Resolver;
+```
+
+
+
+```php
+public function has( string $name ): bool;
+```
+
+
+
+```php
+public function hasAlias( string $name ): bool;
+```
+
+
+
+```php
+public function hasDefinition( string $name ): bool;
+```
+
+
+
+```php
+public function hasInstance( string $name ): bool;
+```
+
+
+
+```php
+public function hasParameter( string $name ): bool;
+```
+
+
+
+```php
+public function isAutowireEnabled(): bool;
+```
+
+
+
+```php
+public function new( string $name ): mixed;
+```
+
+
+
+```php
+public function newDefinition( string $name ): ServiceDefinition;
+```
+
+
+
+```php
+public function set( string $name, mixed $definition ): ServiceDefinition;
+```
+
+
+
+```php
+public function setAlias( string $name, string $alias ): static;
+```
+
+
+
+```php
+public function setAutowire( bool $enabled ): static;
+```
+
+
+
+```php
+public function setDefinition( string $name, ServiceDefinition $definition ): static;
+```
+
+
+
+```php
+public function setInstance( string $name, object $instance, string $lifetime ): static;
+```
+
+
+
+```php
+public function setParameter( string $name, mixed $value ): static;
+```
+
+
+
+```php
+public function unsetAlias( string $name ): void;
+```
+
+
+
+```php
+public function unsetDefinition( string $name ): void;
+```
+
+
+
+```php
+public function unsetInstance( string $name ): void;
+```
+
+
+
+```php
+public function unsetInstances( string $lifetime ): void;
+```
+
+
+
+```php
+public function unsetParameter( string $name ): void;
+```
+
+
+
+
+
+## Contracts\Container\Service\Definition ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Definition.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Service`
+
+-   __Uses__
+    
+    - `Phalcon\Contracts\Container\Ioc\IocContainer`
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+### Methods
+
+```php
+public function addExtender( callable $extender ): static;
+```
+
+
+
+```php
+public function buildService( IocContainer $ioc ): object;
+```
+
+
+
+```php
+public function getClass(): string;
+```
+
+
+
+```php
+public function getExtenders(): array;
+```
+
+
+
+```php
+public function getFactory(): callable;
+```
+
+
+
+```php
+public function getLifetime(): string;
+```
+
+
+
+```php
+public function getServiceName(): string;
+```
+
+
+
+```php
+public function hasClass(): bool;
+```
+
+
+
+```php
+public function hasExtenders(): bool;
+```
+
+
+
+```php
+public function hasFactory(): bool;
+```
+
+
+
+```php
+public function setClass( string $className ): static;
+```
+
+
+
+```php
+public function setExtenders( array $extenders ): static;
+```
+
+
+
+```php
+public function setFactory( callable $factory ): static;
+```
+
+
+
+```php
+public function setLifetime( string $lifetime ): static;
+```
+
+
+
+```php
+public function unsetClass(): static;
+```
+
+
+
+```php
+public function unsetExtenders(): static;
+```
+
+
+
+```php
+public function unsetFactory(): static;
+```
+
+
+
+
+
+## Contracts\Container\Service\Provider ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Provider.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Service`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+### Methods
+
+```php
+public function provide( Collection $services ): void;
+```
+
+
+
+
+
+## Contracts\Container\Service\Throwable ![Interface](../assets/images/interface-blue.svg) 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Throwable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Contracts\Container\Service`
+
+-   __Uses__
+    
+    - `Throwable`
+
+-   __Extends__
+    
+    `PhpThrowable`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+Implementation of this file has been heavily influenced by CapsulePHP.
+Additionally, there are implementations from ioc-interop, which is a
+Composer dependency, and from service-interop and resolver-interop. They
+are copied and re-implemented here because we need to support PHP 8.1.
+Once we move to min 8.4 and packages become available and compatible, the
+copies will be replaced with the actual Composer dependencies.
+
+@link    https://github.com/capsulephp/di
+@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
+
+@link    https://github.com/ioc-interop/interface
+@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/service-interop/interface
+@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
+
+@link    https://github.com/resolver-interop/interface/tree/1.x
+@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+
+
+
 ## Contracts\Db\Adapter\Adapter ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Db/Adapter/Adapter.zep)
@@ -1193,7 +2858,7 @@ file that was distributed with this source code.
 ### Methods
 
 ```php
-public function computeHmac( string $data, string $key, string $algo, bool $raw = bool ): string;
+public function computeHmac( string $data, string $key, string $algorithm, bool $raw = bool ): string;
 ```
 
 
@@ -1860,6 +3525,7 @@ use as the key in the reusable records cache.
 
 -   __Uses__
     
+    - `Phalcon\Paginator\Adapter\AdapterInterface`
 
 -   __Extends__
     
@@ -1885,13 +3551,13 @@ Returns a slice of the resultset to show in the pagination
 
 
 ```php
-public function setCurrentPage( int $page );
+public function setCurrentPage( int $page ): AdapterInterface;
 ```
 Set the current page number
 
 
 ```php
-public function setLimit( int $limit );
+public function setLimit( int $limit ): AdapterInterface;
 ```
 Set current rows limit
 
@@ -2071,7 +3737,7 @@ item in the collection, keyed by the original collection key.
 
 
 ```php
-public function each( callable $callback ): Collection;
+public function each( callable $callback ): static;
 ```
 Invokes the callback for every item in the collection.
 
@@ -2079,7 +3745,7 @@ Invokes the callback for every item in the collection.
 
 
 ```php
-public function filter( callable $callback ): Collection;
+public function filter( callable $callback ): static;
 ```
 Returns a new collection of items for which the callback returns true.
 
@@ -2156,7 +3822,7 @@ Returns the last value in the collection or null when empty.
 
 
 ```php
-public function map( callable $callback ): Collection;
+public function map( callable $callback ): static;
 ```
 Returns a new collection with the callback applied to every value.
 
@@ -2192,7 +3858,7 @@ Stores an element in the collection.
 
 
 ```php
-public function sort( callable $callback = null, int $order = int ): Collection;
+public function sort( callable $callback = null, int $order = int ): static;
 ```
 Returns a new collection sorted by value, preserving keys.
 
@@ -2220,7 +3886,7 @@ Returns the values of the internal array.
 
 
 ```php
-public function where( string $propertyOrMethod, mixed $value ): Collection;
+public function where( string $propertyOrMethod, mixed $value ): static;
 ```
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.

@@ -22,6 +22,9 @@ hide:
     
     - `Phalcon\Image\Enum`
     - `Phalcon\Image\Exception`
+    - `Phalcon\Image\Exceptions\MissingDimensions`
+    - `Phalcon\Image\Exceptions\MissingHeight`
+    - `Phalcon\Image\Exceptions\MissingWidth`
 
 -   __Extends__
     
@@ -261,6 +264,18 @@ Flip an image
 
 
 ```php
+public function getHeight(): int;
+```
+
+
+
+```php
+public function getWidth(): int;
+```
+
+
+
+```php
 public function mask( AdapterInterface $mask ): AdapterInterface;
 ```
 Add a mask to an image
@@ -335,6 +350,11 @@ Add a watermark on an image
     
     - `Phalcon\Image\Enum`
     - `Phalcon\Image\Exception`
+    - `Phalcon\Image\Exceptions\ExtensionNotLoaded`
+    - `Phalcon\Image\Exceptions\ImageLoadFailed`
+    - `Phalcon\Image\Exceptions\TextRenderingFailed`
+    - `Phalcon\Image\Exceptions\UnsupportedImageType`
+    - `Phalcon\Image\Exceptions\VersionMismatch`
 
 -   __Extends__
     
@@ -482,6 +502,11 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
     - `ImagickPixelException`
     - `Phalcon\Image\Enum`
     - `Phalcon\Image\Exception`
+    - `Phalcon\Image\Exceptions\CompositeFailed`
+    - `Phalcon\Image\Exceptions\ExtensionNotLoaded`
+    - `Phalcon\Image\Exceptions\ImageLoadFailed`
+    - `Phalcon\Image\Exceptions\ResizeFailed`
+    - `Phalcon\Image\Exceptions\ResourceTypeError`
 
 -   __Extends__
     
@@ -690,6 +715,424 @@ Exceptions thrown in Phalcon\Image will use this class
 
 
 
+## Image\Exceptions\CompositeFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/CompositeFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Image\Exceptions\ExtensionNotLoaded 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ExtensionNotLoaded.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $extension );
+```
+
+
+
+
+
+## Image\Exceptions\ImageLoadFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageLoadFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $file );
+```
+
+
+
+
+
+## Image\Exceptions\MissingDimensions 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingDimensions.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Image\Exceptions\MissingHeight 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingHeight.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Image\Exceptions\MissingWidth 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingWidth.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Image\Exceptions\ResizeFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResizeFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Image\Exceptions\ResourceTypeError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResourceTypeError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Image\Exceptions\TextRenderingFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/TextRenderingFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Image\Exceptions\UnsupportedImageType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/UnsupportedImageType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $format = string );
+```
+
+
+
+
+
+## Image\Exceptions\VersionMismatch 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/VersionMismatch.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Image\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Image\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $version );
+```
+
+
+
+
+
 ## Image\ImageFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/ImageFactory.zep)
@@ -701,6 +1144,7 @@ Exceptions thrown in Phalcon\Image will use this class
 
 -   __Uses__
     
+    - `Phalcon\Config\ConfigInterface`
     - `Phalcon\Factory\AbstractFactory`
     - `Phalcon\Image\Adapter\AdapterInterface`
 
@@ -711,12 +1155,7 @@ Exceptions thrown in Phalcon\Image will use this class
 -   __Implements__
     
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+Factory to create adapters for image manipulation
 
 
 ### Methods

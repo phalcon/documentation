@@ -24,6 +24,7 @@ hide:
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Dispatcher\Exception`
+    - `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`
     - `Phalcon\Events\EventsAwareInterface`
     - `Phalcon\Events\ManagerInterface`
     - `Phalcon\Filter\FilterInterface`
@@ -91,6 +92,11 @@ protected $defaultHandler = ;
  * @var array
  */
 protected $handlerHashes;
+
+/**
+ * @var array
+ */
+protected $handlerHookCache;
 
 /**
  * @var string
@@ -640,3 +646,41 @@ const EXCEPTION_INVALID_HANDLER = 3;
 const EXCEPTION_INVALID_PARAMS = 4;
 const EXCEPTION_NO_DI = 0;
 ```
+
+
+## Dispatcher\Exceptions\ForwardInInitializeForbidden 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/Exceptions/ForwardInInitializeForbidden.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Dispatcher\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Dispatcher\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the
+LICENSE.txt file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+

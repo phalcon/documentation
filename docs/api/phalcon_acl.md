@@ -41,7 +41,7 @@ Adapter for Phalcon\Acl adapters
 /**
  * Access Granted
  *
- * @var bool
+ * @var int
  */
 protected $accessGranted = false;
 
@@ -284,7 +284,16 @@ accessKey
     - `Phalcon\Acl\ComponentAwareInterface`
     - `Phalcon\Acl\ComponentInterface`
     - `Phalcon\Acl\Enum`
-    - `Phalcon\Acl\Exception`
+    - `Phalcon\Acl\Exceptions\AccessRuleNotFound`
+    - `Phalcon\Acl\Exceptions\CircularInheritanceError`
+    - `Phalcon\Acl\Exceptions\ElementNotFound`
+    - `Phalcon\Acl\Exceptions\InvalidAccessList`
+    - `Phalcon\Acl\Exceptions\InvalidComponentImplementation`
+    - `Phalcon\Acl\Exceptions\InvalidRoleImplementation`
+    - `Phalcon\Acl\Exceptions\InvalidRoleType`
+    - `Phalcon\Acl\Exceptions\MissingFunctionParameters`
+    - `Phalcon\Acl\Exceptions\ParameterTypeMismatch`
+    - `Phalcon\Acl\Exceptions\RoleNotFoundException`
     - `Phalcon\Acl\Role`
     - `Phalcon\Acl\RoleAwareInterface`
     - `Phalcon\Acl\RoleInterface`
@@ -418,7 +427,7 @@ protected $componentsNames;
  *
  * @var mixed
  */
-protected $func;
+protected $functions;
 
 /**
  * Default action for no arguments is `allow`
@@ -659,6 +668,7 @@ accessKey
 
 -   __Uses__
     
+    - `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 
 -   __Extends__
     
@@ -838,6 +848,331 @@ const DENY = 0;
     
 
 Class for exceptions thrown by Phalcon\Acl
+
+
+
+## Acl\Exceptions\AccessRuleNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/AccessRuleNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct( string $accessName, string $componentName );
+```
+
+
+
+
+
+## Acl\Exceptions\CircularInheritanceError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/CircularInheritanceError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct( string $roleName );
+```
+
+
+
+
+
+## Acl\Exceptions\ElementNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/ElementNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+
+## Acl\Exceptions\ForbiddenWildcard 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/ForbiddenWildcard.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct( string $elementType );
+```
+
+
+
+
+
+## Acl\Exceptions\InvalidAccessList 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidAccessList.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Acl\Exceptions\InvalidComponentImplementation 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidComponentImplementation.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Acl\Exceptions\InvalidRoleImplementation 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidRoleImplementation.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Acl\Exceptions\InvalidRoleType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/InvalidRoleType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Acl\Exceptions\MissingFunctionParameters 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/MissingFunctionParameters.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+
+## Acl\Exceptions\ParameterTypeMismatch 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/ParameterTypeMismatch.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+
+## Acl\Exceptions\RoleNotFoundException 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Exceptions/RoleNotFoundException.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Acl\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Acl\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+
+
+### Methods
+
+```php
+public function __construct( string $roleName );
+```
+
+
 
 
 

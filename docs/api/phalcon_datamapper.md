@@ -20,8 +20,8 @@ hide:
 
 -   __Uses__
     
-    - `InvalidArgumentException`
     - `Phalcon\DataMapper\Pdo\Connection\AbstractConnection`
+    - `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`
     - `Phalcon\DataMapper\Pdo\Profiler\Profiler`
     - `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
@@ -88,7 +88,7 @@ Disconnects from the database.
 -   __Uses__
     
     - `BadMethodCallException`
-    - `Phalcon\DataMapper\Pdo\Exception\CannotBindValue`
+    - `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod`
     - `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
 -   __Extends__
@@ -354,7 +354,7 @@ Set a database connection attribute
 
 
 ```php
-public function setProfiler( ProfilerInterface $profiler );
+public function setProfiler( ProfilerInterface $profiler ): static;
 ```
 Sets the Profiler instance.
 
@@ -384,8 +384,6 @@ Bind a value using the proper PDO::PARAM_* type.
 
 -   __Uses__
     
-    - `Phalcon\DataMapper\Pdo\Exception\CannotBindValue`
-    - `Phalcon\DataMapper\Pdo\Parser\ParserInterface`
     - `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
 -   __Extends__
@@ -789,19 +787,19 @@ default connection.
 
 
 ```php
-public function setMaster( ConnectionInterface $callableObject ): ConnectionLocatorInterface;
+public function setMaster( ConnectionInterface $callableObject ): static;
 ```
 Sets the default connection factory.
 
 
 ```php
-public function setRead( string $name, callable $callableObject ): ConnectionLocatorInterface;
+public function setRead( string $name, callable $callableObject ): static;
 ```
 Sets a read connection factory by name.
 
 
 ```php
-public function setWrite( string $name, callable $callableObject ): ConnectionLocatorInterface;
+public function setWrite( string $name, callable $callableObject ): static;
 ```
 Sets a write connection factory by name.
 
@@ -927,6 +925,44 @@ Locator could not find a named connection.
 
 
 
+## DataMapper\Pdo\Exception\DriverNotSupported 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/DriverNotSupported.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Exception`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $driver );
+```
+
+
+
+
+
 ## DataMapper\Pdo\Exception\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/Exception.zep)
@@ -947,6 +983,82 @@ Locator could not find a named connection.
     
 
 Base Exception class
+
+
+
+## DataMapper\Pdo\Exception\UnknownDriverMethod 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/UnknownDriverMethod.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Exception`
+
+-   __Uses__
+    
+    - `BadMethodCallException`
+
+-   __Extends__
+    
+    `BadMethodCallException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $message );
+```
+
+
+
+
+
+## DataMapper\Pdo\Exception\UnknownQueryMethod 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/UnknownQueryMethod.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\DataMapper\Pdo\Exception`
+
+-   __Uses__
+    
+    - `BadMethodCallException`
+
+-   __Extends__
+    
+    `BadMethodCallException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $method );
+```
+
+
 
 
 
@@ -1878,6 +1990,7 @@ Create a new Update object
 -   __Uses__
     
     - `BadMethodCallException`
+    - `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`
 
 -   __Extends__
     

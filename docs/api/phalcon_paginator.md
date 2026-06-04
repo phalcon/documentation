@@ -21,6 +21,7 @@ hide:
 -   __Uses__
     
     - `Phalcon\Paginator\Exception`
+    - `Phalcon\Paginator\Exceptions\InvalidLimit`
     - `Phalcon\Paginator\Repository`
     - `Phalcon\Paginator\RepositoryInterface`
 
@@ -244,6 +245,7 @@ Returns a slice of the resultset to show in the pagination
 -   __Uses__
     
     - `Phalcon\Paginator\Exception`
+    - `Phalcon\Paginator\Exceptions\PaginatorDataNotArray`
     - `Phalcon\Paginator\RepositoryInterface`
 
 -   __Extends__
@@ -300,6 +302,10 @@ Returns a slice of the resultset to show in the pagination
     - `Phalcon\Db\Enum`
     - `Phalcon\Mvc\Model\Query\Builder`
     - `Phalcon\Paginator\Exception`
+    - `Phalcon\Paginator\Exceptions\BuilderModelNotDefined`
+    - `Phalcon\Paginator\Exceptions\InvalidBuilderInstance`
+    - `Phalcon\Paginator\Exceptions\MissingColumnsForHaving`
+    - `Phalcon\Paginator\Exceptions\MissingRequiredParameter`
     - `Phalcon\Paginator\RepositoryInterface`
 
 -   __Extends__
@@ -376,7 +382,7 @@ Returns a slice of the resultset to show in the pagination
 
 
 ```php
-public function setQueryBuilder( Builder $builder ): QueryBuilder;
+public function setQueryBuilder( Builder $builder ): static;
 ```
 Set query builder object
 
@@ -396,6 +402,9 @@ Set query builder object
     
     - `Phalcon\Mvc\Model\Query\Builder`
     - `Phalcon\Paginator\Exception`
+    - `Phalcon\Paginator\Exceptions\InvalidBuilderInstance`
+    - `Phalcon\Paginator\Exceptions\InvalidCursorColumn`
+    - `Phalcon\Paginator\Exceptions\MissingRequiredParameter`
     - `Phalcon\Paginator\RepositoryInterface`
 
 -   __Extends__
@@ -519,7 +528,7 @@ included row is stored in the `next` repository property.
 
 
 ```php
-public function setCursor( mixed $cursor ): QueryBuilderCursor;
+public function setCursor( mixed $cursor ): static;
 ```
 Set the cursor value for the next paginate() call
 
@@ -528,7 +537,7 @@ next page, or null to restart from the first page.
 
 
 ```php
-public function setQueryBuilder( Builder $builder ): QueryBuilderCursor;
+public function setQueryBuilder( Builder $builder ): static;
 ```
 Set query builder object
 
@@ -557,6 +566,287 @@ Set query builder object
 Phalcon\Paginator\Exception
 
 Exceptions thrown in Phalcon\Paginator will use this class
+
+
+
+## Paginator\Exceptions\BuilderModelNotDefined 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/BuilderModelNotDefined.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Paginator\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Paginator\Exceptions\InvalidBuilderInstance 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidBuilderInstance.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Paginator\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Paginator\Exceptions\InvalidCursorColumn 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidCursorColumn.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Paginator\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Paginator\Exceptions\InvalidLimit 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidLimit.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Paginator\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Paginator\Exceptions\MissingColumnsForHaving 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingColumnsForHaving.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Paginator\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Paginator\Exceptions\MissingRequiredParameter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingRequiredParameter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Paginator\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Properties
+```php
+/**
+ * @var string
+ */
+private $parameter;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $parameter );
+```
+
+
+
+```php
+public function getParameter(): string;
+```
+
+
+
+
+
+## Paginator\Exceptions\PaginatorDataNotArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/PaginatorDataNotArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Paginator\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Paginator\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 

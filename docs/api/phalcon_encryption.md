@@ -21,8 +21,18 @@ hide:
 -   __Uses__
     
     - `Phalcon\Encryption\Crypt\CryptInterface`
+    - `Phalcon\Encryption\Crypt\Exception\DecryptionFailed`
+    - `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`
+    - `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`
+    - `Phalcon\Encryption\Crypt\Exception\EncryptionFailed`
     - `Phalcon\Encryption\Crypt\Exception\Exception`
+    - `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`
+    - `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`
     - `Phalcon\Encryption\Crypt\Exception\Mismatch`
+    - `Phalcon\Encryption\Crypt\Exception\MissingAuthData`
+    - `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`
+    - `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`
+    - `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`
     - `Phalcon\Encryption\Crypt\PadFactory`
 
 -   __Extends__
@@ -99,6 +109,16 @@ protected $cipher;
  * @var string
  */
 protected $hashAlgorithm;
+
+/**
+ * Memoized `strlen(hash($algo, "", true))` results, keyed by
+ * algorithm name. The hash output length is deterministic for a
+ * given algorithm, so this collapses the per-decrypt strlen+hash
+ * call to a single hash lookup after warm-up.
+ *
+ * @var array
+ */
+protected $hashLengthCache;
 
 /**
  * The cipher iv length.
@@ -233,37 +253,37 @@ Returns if the input length for decryption is valid or not
 
 
 ```php
-public function setAuthData( string $data ): CryptInterface;
+public function setAuthData( string $data ): static;
 ```
 
 
 
 ```php
-public function setAuthTag( string $tag ): CryptInterface;
+public function setAuthTag( string $tag ): static;
 ```
 
 
 
 ```php
-public function setAuthTagLength( int $length ): CryptInterface;
+public function setAuthTagLength( int $length ): static;
 ```
 
 
 
 ```php
-public function setCipher( string $cipher ): CryptInterface;
+public function setCipher( string $cipher ): static;
 ```
 Sets the cipher algorithm for data encryption and decryption.
 
 
 ```php
-public function setHashAlgorithm( string $hashAlgorithm ): CryptInterface;
+public function setHashAlgorithm( string $hashAlgorithm ): static;
 ```
 Set the name of hashing algorithm.
 
 
 ```php
-public function setKey( string $key ): CryptInterface;
+public function setKey( string $key ): static;
 ```
 Sets the encryption key.
 
@@ -281,13 +301,13 @@ Good key:
 
 
 ```php
-public function setPadding( int $scheme ): CryptInterface;
+public function setPadding( int $scheme ): static;
 ```
 Changes the padding scheme used.
 
 
 ```php
-public function useSigning( bool $useSigning ): CryptInterface;
+public function useSigning( bool $useSigning ): static;
 ```
 Sets if the calculating message digest must used.
 
@@ -339,7 +359,7 @@ protected function encryptGetPadded( string $mode, string $input, int $blockSize
 
 
 ```php
-protected function initializeAvailableCiphers(): Crypt;
+protected function initializeAvailableCiphers(): static;
 ```
 Initialize available cipher algorithms.
 
@@ -491,6 +511,154 @@ Sets if the calculating message digest must be used.
 
 
 
+## Encryption\Crypt\Exception\DecryptionFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/DecryptionFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Crypt\Exception\EmptyDecryptionKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/EmptyDecryptionKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Crypt\Exception\EmptyEncryptionKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/EmptyEncryptionKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Crypt\Exception\EncryptionFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/EncryptionFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Encryption\Crypt\Exception\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/Exception.zep)
@@ -511,6 +679,80 @@ Sets if the calculating message digest must be used.
     
 
 Exceptions thrown in Phalcon\Crypt use this class
+
+
+
+## Encryption\Crypt\Exception\InvalidPaddingSize 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/InvalidPaddingSize.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Crypt\Exception\IvLengthCalculationFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/IvLengthCalculationFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 
@@ -537,6 +779,154 @@ Exceptions thrown in Phalcon\Crypt will use this class.
 
 
 
+## Encryption\Crypt\Exception\MissingAuthData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/MissingAuthData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Crypt\Exception\MissingOpensslExtension 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/MissingOpensslExtension.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Crypt\Exception\RandomBytesGenerationFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/RandomBytesGenerationFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Crypt\Exception\UnsupportedAlgorithm 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/UnsupportedAlgorithm.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Crypt\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $type, string $cipher );
+```
+
+
+
+
+
 ## Encryption\Crypt\PadFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/PadFactory.zep)
@@ -560,9 +950,7 @@ Exceptions thrown in Phalcon\Crypt will use this class.
 -   __Implements__
     
 
-Class PadFactory
-
-@package Phalcon\Crypt
+Factory for creating pad classes
 
 
 ### Properties
@@ -935,6 +1323,7 @@ public function unpad( string $input, int $blockSize ): int;
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Encryption\Security\Exception`
+    - `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`
     - `Phalcon\Encryption\Security\Random`
     - `Phalcon\Http\RequestInterface`
     - `Phalcon\Session\ManagerInterface`
@@ -1068,13 +1457,13 @@ in session
 
 
 ```php
-public function computeHmac( string $data, string $key, string $algo, bool $raw = bool ): string;
+public function computeHmac( string $data, string $key, string $algorithm, bool $raw = bool ): string;
 ```
 Computes a HMAC
 
 
 ```php
-public function destroyToken(): Security;
+public function destroyToken(): static;
 ```
 Removes the value of the CSRF token and key from session
 
@@ -1156,7 +1545,7 @@ Checks if a password hash is a valid bcrypt's hash
 
 
 ```php
-public function refreshToken(): Security;
+public function refreshToken(): static;
 ```
 Forces the regeneration of the CSRF token and key, writing the new
 values to the session even when auto-refresh has been disabled. Useful
@@ -1165,7 +1554,7 @@ token is appropriate.
 
 
 ```php
-public function setAutoRefresh( bool $autoRefresh ): Security;
+public function setAutoRefresh( bool $autoRefresh ): static;
 ```
 Toggles automatic regeneration of the CSRF token on every call to
 `getToken()` / `getTokenKey()`. When set to `false`, existing session
@@ -1174,20 +1563,20 @@ when none is present or `refreshToken()` is called explicitly.
 
 
 ```php
-public function setDefaultHash( int $defaultHash ): Security;
+public function setDefaultHash( int $defaultHash ): static;
 ```
 Sets the default hash
 
 
 ```php
-public function setRandomBytes( int $randomBytes ): Security;
+public function setRandomBytes( int $randomBytes ): static;
 ```
 Sets a number of bytes to be generated by the openssl pseudo random
 generator
 
 
 ```php
-public function setWorkFactor( int $workFactor ): Security;
+public function setWorkFactor( int $workFactor ): static;
 ```
 Sets the work factor
 
@@ -1225,6 +1614,82 @@ Exceptions thrown in Phalcon\Security will use this class
 
 
 
+## Encryption\Security\Exceptions\InvalidRandomInput 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Exceptions/InvalidRandomInput.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Security\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\Exceptions\UnknownHashAlgorithm 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Exceptions/UnknownHashAlgorithm.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Encryption\Security\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $algo );
+```
+
+
+
+
+
 ## Encryption\Security\JWT\Builder 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Builder.zep)
@@ -1236,7 +1701,12 @@ Exceptions thrown in Phalcon\Security will use this class
 
 -   __Uses__
     
+    - `Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`
     - `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`
     - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
     - `Phalcon\Encryption\Security\JWT\Token\Enum`
     - `Phalcon\Encryption\Security\JWT\Token\Item`
@@ -1252,14 +1722,7 @@ Exceptions thrown in Phalcon\Security will use this class
 -   __Implements__
     
 
-Builder
-
-The builder offers
-
-@property CollectionInterface $claims
-@property CollectionInterface $jose
-@property string              $passphrase
-@property SignerInterface     $signer
+JWT Builder
 
 @link https://tools.ietf.org/html/rfc7519
 
@@ -1302,13 +1765,13 @@ Builder constructor.
 
 
 ```php
-public function addClaim( string $name, mixed $value ): Builder;
+public function addClaim( string $name, mixed $value ): static;
 ```
 Adds a custom claim
 
 
 ```php
-public function addHeader( string $name, mixed $value ): Builder;
+public function addHeader( string $name, mixed $value ): static;
 ```
 Adds a custom claim
 
@@ -1386,13 +1849,13 @@ public function getToken(): Token;
 
 
 ```php
-public function init(): Builder;
+public function init(): static;
 ```
 
 
 
 ```php
-public function setAudience( mixed $audience ): Builder;
+public function setAudience( mixed $audience ): static;
 ```
 The "aud" (audience) claim identifies the recipients that the JWT is
 intended for.  Each principal intended to process the JWT MUST
@@ -1408,13 +1871,13 @@ Use of this claim is OPTIONAL.
 
 
 ```php
-public function setContentType( string $contentType ): Builder;
+public function setContentType( string $contentType ): static;
 ```
 Sets the content type header 'cty'
 
 
 ```php
-public function setExpirationTime( int $timestamp ): Builder;
+public function setExpirationTime( int $timestamp ): static;
 ```
 The "exp" (expiration time) claim identifies the expiration time on
 or after which the JWT MUST NOT be accepted for processing.  The
@@ -1426,7 +1889,7 @@ containing a NumericDate value.  Use of this claim is OPTIONAL.
 
 
 ```php
-public function setId( string $id ): Builder;
+public function setId( string $jwtId ): static;
 ```
 The "jti" (JWT ID) claim provides a unique identifier for the JWT.
 The identifier value MUST be assigned in a manner that ensures that
@@ -1439,7 +1902,7 @@ sensitive string.  Use of this claim is OPTIONAL.
 
 
 ```php
-public function setIssuedAt( int $timestamp ): Builder;
+public function setIssuedAt( int $timestamp ): static;
 ```
 The "iat" (issued at) claim identifies the time at which the JWT was
 issued.  This claim can be used to determine the age of the JWT.  Its
@@ -1448,7 +1911,7 @@ claim is OPTIONAL.
 
 
 ```php
-public function setIssuer( string $issuer ): Builder;
+public function setIssuer( string $issuer ): static;
 ```
 The "iss" (issuer) claim identifies the principal that issued the
 JWT.  The processing of this claim is generally application specific.
@@ -1457,7 +1920,7 @@ value.  Use of this claim is OPTIONAL.
 
 
 ```php
-public function setNotBefore( int $timestamp ): Builder;
+public function setNotBefore( int $timestamp ): static;
 ```
 The "nbf" (not before) claim identifies the time before which the JWT
 MUST NOT be accepted for processing.  The processing of the "nbf"
@@ -1469,13 +1932,13 @@ NumericDate value.  Use of this claim is OPTIONAL.
 
 
 ```php
-public function setPassphrase( string $passphrase ): Builder;
+public function setPassphrase( string $passphrase ): static;
 ```
 
 
 
 ```php
-public function setSubject( string $subject ): Builder;
+public function setSubject( string $subject ): static;
 ```
 The "sub" (subject) claim identifies the principal that is the
 subject of the JWT.  The claims in a JWT are normally statements
@@ -1490,6 +1953,343 @@ value.  Use of this claim is OPTIONAL.
 protected function setClaim( string $name, mixed $value ): Builder;
 ```
 Sets a registered claim
+
+
+
+
+## Encryption\Security\JWT\Exceptions\EmptyPassphrase 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/EmptyPassphrase.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ValidatorException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\InvalidAudience 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidAudience.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ValidatorException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\InvalidAudienceType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidAudienceType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ValidatorException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\InvalidClaims 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidClaims.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\InvalidExpirationTime 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidExpirationTime.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ValidatorException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\InvalidHeader 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidHeader.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\InvalidNotBefore 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidNotBefore.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ValidatorException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\MalformedJwtString 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/MalformedJwtString.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Encryption\Security\JWT\Exceptions\MissingJwtTypHeader 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/MissingJwtTypHeader.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+    - `InvalidArgumentException`
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
 
 
 
@@ -1518,6 +2318,43 @@ Exception thrown when the algorithm is not supported for JWT
 
 
 
+## Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/UnsupportedHmacAlgorithm.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `UnsupportedAlgorithmException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Encryption\Security\JWT\Exceptions\ValidatorException 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/ValidatorException.zep)
@@ -1539,6 +2376,43 @@ Exception thrown when the algorithm is not supported for JWT
     
 
 Exception thrown when the validation does not pass for JWT
+
+
+
+## Encryption\Security\JWT\Exceptions\WeakPassphrase 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/WeakPassphrase.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Encryption\Security\JWT\Exceptions`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `ValidatorException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 
@@ -1595,6 +2469,7 @@ public function getAlgorithm(): string;
 -   __Uses__
     
     - `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`
 
 -   __Extends__
     
@@ -1873,6 +2748,10 @@ public function has( string $name ): bool;
 -   __Uses__
     
     - `InvalidArgumentException`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString`
+    - `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader`
     - `Phalcon\Support\Helper\Json\Decode`
 
 -   __Extends__
@@ -2061,6 +2940,7 @@ Verify the signature
 
 -   __Uses__
     
+    - `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`
     - `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`
     - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
     - `Phalcon\Encryption\Security\JWT\Token\Enum`
@@ -2120,61 +3000,61 @@ Return an array with validation errors (if any)
 
 
 ```php
-public function set( string $claim, mixed $value ): Validator;
+public function set( string $claim, mixed $value ): static;
 ```
 Set the value of a claim, for comparison with the token values
 
 
 ```php
-public function setToken( Token $token ): Validator;
+public function setToken( Token $token ): static;
 ```
 Set the token to be validated
 
 
 ```php
-public function validateAudience( mixed $audience ): Validator;
+public function validateAudience( mixed $audience ): static;
 ```
 Validate the audience
 
 
 ```php
-public function validateClaim( string $name, mixed $value ): Validator;
+public function validateClaim( string $name, mixed $value ): static;
 ```
 Validate a claim
 
 
 ```php
-public function validateExpiration( int $timestamp ): Validator;
+public function validateExpiration( int $timestamp ): static;
 ```
 Validate the expiration time of the token
 
 
 ```php
-public function validateId( string $id ): Validator;
+public function validateId( string $id ): static;
 ```
 Validate the id of the token
 
 
 ```php
-public function validateIssuedAt( int $timestamp ): Validator;
+public function validateIssuedAt( int $timestamp ): static;
 ```
 Validate the issued at (iat) of the token
 
 
 ```php
-public function validateIssuer( string $issuer ): Validator;
+public function validateIssuer( string $issuer ): static;
 ```
 Validate the issuer of the token
 
 
 ```php
-public function validateNotBefore( int $timestamp ): Validator;
+public function validateNotBefore( int $timestamp ): static;
 ```
 Validate the notbefore (nbf) of the token
 
 
 ```php
-public function validateSignature( SignerInterface $signer, string $passphrase ): Validator;
+public function validateSignature( SignerInterface $signer, string $passphrase ): static;
 ```
 Validate the signature of the token
 
@@ -2192,6 +3072,7 @@ Validate the signature of the token
 
 -   __Uses__
     
+    - `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`
 
 -   __Extends__
     
@@ -2429,7 +3310,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 
 ```php
-protected function base( string $alphabet, int $base, mixed $n = int ): string;
+protected function base( string $alphabet, int $base, mixed $number = int ): string;
 ```
 Generates a random string based on the number ($base) of characters
 ($alphabet).
@@ -2468,13 +3349,6 @@ Factory that generates UUIDs of versions 1 through 7.
 Each call creates a new immutable version object. Cast to string for the
 UUID value; use the returned object for additional methods such as
 getDateTime() or getNode().
-
-@method Version1 v1()
-@method Version3 v3(string $namespaceName, string $name)
-@method Version4 v4()
-@method Version5 v5(string $namespaceName, string $name)
-@method Version6 v6()
-@method Version7 v7()
 
 
 ### Methods

@@ -23,7 +23,9 @@ hide:
     - `DateInterval`
     - `Phalcon\Cache\Adapter\AdapterInterface`
     - `Phalcon\Cache\Adapter\Redis`
+    - `Phalcon\Cache\Exception\CacheKeysNotIterable`
     - `Phalcon\Cache\Exception\InvalidArgumentException`
+    - `Phalcon\Cache\Exception\InvalidCacheKey`
     - `Phalcon\Events\EventsAwareInterface`
     - `Phalcon\Events\ManagerInterface`
     - `Traversable`
@@ -447,7 +449,7 @@ Factory to create Cache adapters
 /**
  * @var SerializerFactory
  */
-private $serializerFactory;
+protected $serializerFactory;
 
 ```
 
@@ -703,6 +705,43 @@ Persists a set of key => value pairs in the cache, with an optional TTL.
 
 
 
+## Cache\Exception\CacheKeysNotIterable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/CacheKeysNotIterable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cache\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Cache\Exception\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/Exception.zep)
@@ -746,4 +785,41 @@ Exceptions thrown in Phalcon\Cache will use this class
     
 
 Exceptions thrown in Phalcon\Cache will use this class
+
+
+
+## Cache\Exception\InvalidCacheKey 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/InvalidCacheKey.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Cache\Exception`
+
+-   __Uses__
+    
+
+-   __Extends__
+    
+    `InvalidArgumentException`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 

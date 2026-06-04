@@ -20,6 +20,7 @@ hide:
 
 -   __Uses__
     
+    - `Phalcon\Application\Exceptions\ModuleNotRegistered`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Di\Injectable`
     - `Phalcon\Events\EventsAwareInterface`
@@ -93,7 +94,7 @@ Return the modules registered in the application
 
 
 ```php
-public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
+public function registerModules( array $modules, bool $merge = bool ): static;
 ```
 Register an array of modules present in the application
 
@@ -114,7 +115,7 @@ $this->registerModules(
 
 
 ```php
-public function setDefaultModule( string $defaultModule ): AbstractApplication;
+public function setDefaultModule( string $defaultModule ): static;
 ```
 Sets the module name to be used if the router does not return a valid module
 
@@ -147,4 +148,42 @@ Sets the events manager
     
 
 Exceptions thrown in Phalcon\Application class will use this class
+
+
+
+## Application\Exceptions\ModuleNotRegistered 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Application/Exceptions/ModuleNotRegistered.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Application\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Application\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
 

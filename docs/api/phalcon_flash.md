@@ -23,6 +23,8 @@ hide:
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\Di`
     - `Phalcon\Di\DiInterface`
+    - `Phalcon\Flash\Exceptions\EscaperServiceUnavailable`
+    - `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`
     - `Phalcon\Html\Escaper\EscaperInterface`
     - `Phalcon\Session\ManagerInterface`
     - `Phalcon\Support\Helper\Str\Interpolate`
@@ -183,43 +185,43 @@ $flash->outputMessage("error", $message);
 
 
 ```php
-public function setAutoescape( bool $autoescape ): AbstractFlash;
+public function setAutoescape( bool $autoescape ): static;
 ```
 Set the autoescape mode in generated HTML
 
 
 ```php
-public function setAutomaticHtml( bool $automaticHtml ): AbstractFlash;
+public function setAutomaticHtml( bool $automaticHtml ): static;
 ```
 Set if the output must be implicitly formatted with HTML
 
 
 ```php
-public function setCssClasses( array $cssClasses ): AbstractFlash;
+public function setCssClasses( array $cssClasses ): static;
 ```
 Set an array with CSS classes to format the messages
 
 
 ```php
-public function setCssIconClasses( array $cssIconClasses ): AbstractFlash;
+public function setCssIconClasses( array $cssIconClasses ): static;
 ```
 Set an array with CSS classes to format the icon messages
 
 
 ```php
-public function setCustomTemplate( string $customTemplate ): AbstractFlash;
+public function setCustomTemplate( string $customTemplate ): static;
 ```
 Set a custom template for showing the messages
 
 
 ```php
-public function setEscaperService( EscaperInterface $escaperService ): AbstractFlash;
+public function setEscaperService( EscaperInterface $escaperService ): static;
 ```
 Sets the Escaper Service
 
 
 ```php
-public function setImplicitFlush( bool $implicitFlush ): AbstractFlash;
+public function setImplicitFlush( bool $implicitFlush ): static;
 ```
 Set whether the output must be implicitly flushed to the output or
 returned as string
@@ -310,6 +312,120 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 
 
 
+## Flash\Exceptions\EscaperServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/EscaperServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Flash\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Flash\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Flash\Exceptions\FlashMessageNotStringOrArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/FlashMessageNotStringOrArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Flash\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Flash\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Flash\Exceptions\SessionServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/SessionServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Flash\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Flash\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
 ## Flash\FlashInterface ![Interface](../assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/FlashInterface.zep)
@@ -378,6 +494,7 @@ Shows a HTML warning message
 
 -   __Uses__
     
+    - `Phalcon\Flash\Exceptions\SessionServiceUnavailable`
     - `Phalcon\Session\ManagerInterface`
 
 -   __Extends__

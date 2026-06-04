@@ -34,6 +34,44 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 
 
+## Filter\Exceptions\FilterNotRegistered 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Exceptions/FilterNotRegistered.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
 ## Filter\Filter 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Filter.zep)
@@ -1018,6 +1056,15 @@ public function __invoke( mixed $input );
     - `Phalcon\Filter\FilterInterface`
     - `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`
     - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidFieldType`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidFilterService`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidValidationData`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidValidator`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`
+    - `Phalcon\Filter\Validation\Exceptions\NoDataToValidate`
+    - `Phalcon\Filter\Validation\Exceptions\NoValidators`
+    - `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`
     - `Phalcon\Filter\Validation\ValidationInterface`
     - `Phalcon\Filter\Validation\ValidatorInterface`
     - `Phalcon\Messages\MessageInterface`
@@ -1067,7 +1114,7 @@ protected $whitelist;
 protected $labels;
 
 /**
- * @var Messages|null
+ * @var Messages
  */
 protected $messages;
 
@@ -1096,19 +1143,19 @@ Phalcon\Filter\Validation constructor
 
 
 ```php
-public function add( mixed $field, ValidatorInterface $validator ): ValidationInterface;
+public function add( mixed $field, ValidatorInterface $validator ): static;
 ```
 Adds a validator to a field
 
 
 ```php
-public function appendMessage( MessageInterface $message ): ValidationInterface;
+public function appendMessage( MessageInterface $message ): static;
 ```
 Appends a message to the messages list
 
 
 ```php
-public function bind( mixed $entity, mixed $data, array $whitelist = [] ): ValidationInterface;
+public function bind( mixed $entity, mixed $data, array $whitelist = [] ): static;
 ```
 Assigns the data to an entity
 The entity is used to obtain the validation values
@@ -1183,13 +1230,13 @@ Gets the a value to validate in the object entity source
 
 
 ```php
-public function rule( mixed $field, ValidatorInterface $validator ): ValidationInterface;
+public function rule( mixed $field, ValidatorInterface $validator ): static;
 ```
 Alias of `add` method
 
 
 ```php
-public function rules( mixed $field, array $validators ): ValidationInterface;
+public function rules( mixed $field, array $validators ): static;
 ```
 Adds the validators to a field
 
@@ -1201,7 +1248,7 @@ Sets the bound entity
 
 
 ```php
-public function setFilters( mixed $field, mixed $filters ): ValidationInterface;
+public function setFilters( mixed $field, mixed $filters ): static;
 ```
 Adds filters to the field
 
@@ -1213,7 +1260,7 @@ Adds labels for fields
 
 
 ```php
-public function setValidators( array $validators ): Validation;
+public function setValidators( array $validators ): static;
 ```
 
 
@@ -1283,6 +1330,7 @@ This is a base class for combined fields validators
 -   __Uses__
     
     - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`
     - `Phalcon\Messages\Message`
     - `Phalcon\Support\Helper\Arr\Whitelist`
 
@@ -1421,6 +1469,7 @@ Prepares a label for the field.
 -   __Uses__
     
     - `Phalcon\Filter\Validation`
+    - `Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`
 
 -   __Extends__
     
@@ -1478,6 +1527,728 @@ Executes the validation
     
 
 Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
+
+
+
+## Filter\Validation\Exceptions\FieldNotPrintable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/FieldNotPrintable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\FilterServiceUnavailable 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/FilterServiceUnavailable.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidAllowedTypes 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidAllowedTypes.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidCallbackReturn 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidCallbackReturn.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidDomainOption 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidDomainOption.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidFieldType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidFieldType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidFilterService 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidFilterService.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidStrictOption 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidStrictOption.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidValidationData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidValidationData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidValidator 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidValidator.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\InvalidValidatorScope 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidValidatorScope.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\MissingMbstring 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/MissingMbstring.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\NoDataToValidate 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/NoDataToValidate.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\NoValidators 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/NoValidators.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\NoValidatorsInComposite 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/NoValidatorsInComposite.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $className );
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\UniquenessConversionMustBeArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/UniquenessConversionMustBeArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\UniquenessModelRequired 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/UniquenessModelRequired.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/UniquenessOnlyForPhalconModel.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Filter\Validation\Exceptions\ValidationEntityNotObject 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/ValidationEntityNotObject.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Filter\Validation\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Filter\Validation\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 
@@ -1854,6 +2625,7 @@ Executes the validation
     
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`
     - `Phalcon\Filter\Validation\ValidatorInterface`
     - `Phalcon\Messages\Message`
 
@@ -1945,6 +2717,7 @@ Executes the validation
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\Exceptions\MissingMbstring`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
@@ -2392,6 +3165,8 @@ class
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
@@ -2761,6 +3536,7 @@ overridden in a subclass if you do not want to check uploaded files
     
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
@@ -3449,6 +4225,8 @@ Executes the validation
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractValidator`
     - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`
+    - `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`
     - `Phalcon\Messages\Message`
 
 -   __Extends__
@@ -4159,6 +4937,9 @@ Executes the validation
     - `Phalcon\Filter\Validation`
     - `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`
     - `Phalcon\Filter\Validation\Exception`
+    - `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`
+    - `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`
+    - `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`
     - `Phalcon\Messages\Message`
     - `Phalcon\Mvc\Model`
     - `Phalcon\Mvc\ModelInterface`

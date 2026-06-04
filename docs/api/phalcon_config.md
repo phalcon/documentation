@@ -24,6 +24,7 @@ hide:
     - `Phalcon\Config\ConfigFactory`
     - `Phalcon\Config\ConfigInterface`
     - `Phalcon\Config\Exception`
+    - `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`
     - `Phalcon\Factory\Exception`
 
 -   __Extends__
@@ -107,7 +108,7 @@ Phalcon\Config\Adapter\Grouped constructor
     
     - `Phalcon\Config\Config`
     - `Phalcon\Config\Exception`
-    - `Phalcon\Support\Traits\PhpFileTrait`
+    - `Phalcon\Config\Exceptions\CannotLoadConfigFile`
 
 -   __Extends__
     
@@ -322,6 +323,8 @@ Phalcon\Config\Adapter\Php constructor
     
     - `Phalcon\Config\Config`
     - `Phalcon\Config\Exception`
+    - `Phalcon\Config\Exceptions\CannotLoadConfigFile`
+    - `Phalcon\Config\Exceptions\MissingYamlExtension`
 
 -   __Extends__
     
@@ -400,6 +403,7 @@ protected function phpYamlParseFile( mixed $filename, mixed $pos = int, mixed $n
 
 -   __Uses__
     
+    - `Phalcon\Config\Exceptions\InvalidMergeData`
     - `Phalcon\Support\Collection`
 
 -   __Extends__
@@ -530,6 +534,9 @@ Sets the collection data
     
     - `Phalcon\Config\Config`
     - `Phalcon\Config\ConfigInterface`
+    - `Phalcon\Config\Exceptions\ConfigNotArrayOrObject`
+    - `Phalcon\Config\Exceptions\MissingConfigOption`
+    - `Phalcon\Config\Exceptions\MissingFileExtension`
     - `Phalcon\Factory\AbstractFactory`
 
 -   __Extends__
@@ -667,4 +674,300 @@ public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
     
 
 Exceptions thrown in Phalcon\Config will use this class
+
+
+
+## Config\Exceptions\CannotLoadConfigFile 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/CannotLoadConfigFile.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Config\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Config\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Properties
+```php
+/**
+ * @var string
+ */
+private $fileName;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $fileName );
+```
+
+
+
+```php
+public function getFileName(): string;
+```
+
+
+
+
+
+## Config\Exceptions\ConfigNotArrayOrObject 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/ConfigNotArrayOrObject.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Config\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Config\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Config\Exceptions\GroupedAdapterRequiresArray 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/GroupedAdapterRequiresArray.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Config\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Config\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Config\Exceptions\InvalidMergeData 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/InvalidMergeData.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Config\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Config\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Config\Exceptions\MissingConfigOption 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingConfigOption.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Config\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Config\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Properties
+```php
+/**
+ * @var string
+ */
+private $option;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $option );
+```
+
+
+
+```php
+public function getOption(): string;
+```
+
+
+
+
+
+## Config\Exceptions\MissingFileExtension 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingFileExtension.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Config\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Config\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Config\Exceptions\MissingYamlExtension 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingYamlExtension.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Config\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Config\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 

@@ -20,8 +20,8 @@ hide:
 
 -   __Uses__
     
-    - `Phalcon\Support\Helper\Arr\Get`
-    - `Phalcon\Translate\Exception`
+    - `ArrayAccess`
+    - `Phalcon\Translate\Exceptions\ImmutableObject`
     - `Phalcon\Translate\InterpolatorFactory`
 
 -   __Extends__
@@ -30,13 +30,8 @@ hide:
 -   __Implements__
     
     - `AdapterInterface`
+    - `ArrayAccess`
 
-Class AbstractAdapter
-
-@package Phalcon\Translate\Adapter
-
-@property string              $defaultInterpolator
-@property InterpolatorFactory $interpolatorFactory
 
 
 ### Properties
@@ -74,7 +69,7 @@ Check whether a translation key exists
 
 
 ```php
-public function offsetGet( mixed $translateKey ): mixed;
+public function offsetGet( mixed $translateKey ): string | null;
 ```
 Returns the translation related to the given key
 
@@ -161,8 +156,9 @@ Returns the translation string of the given key
 
 -   __Uses__
     
-    - `ArrayAccess`
     - `Phalcon\Translate\Exception`
+    - `Phalcon\Translate\Exceptions\FileOpenError`
+    - `Phalcon\Translate\Exceptions\MissingRequiredParameter`
     - `Phalcon\Translate\InterpolatorFactory`
 
 -   __Extends__
@@ -236,8 +232,9 @@ protected function phpFopen( string $filename, string $mode );
 
 -   __Uses__
     
-    - `ArrayAccess`
     - `Phalcon\Translate\Exception`
+    - `Phalcon\Translate\Exceptions\MissingGettextExtension`
+    - `Phalcon\Translate\Exceptions\MissingRequiredParameter`
     - `Phalcon\Translate\InterpolatorFactory`
 
 -   __Extends__
@@ -246,7 +243,6 @@ protected function phpFopen( string $filename, string $mode );
 
 -   __Implements__
     
-    - `ArrayAccess`
 
 Phalcon\Translate\Adapter\Gettext
 
@@ -263,7 +259,7 @@ $adapter = new Gettext(
 );
 ```
 
-Allows translate using gettext
+Allows translations using gettext
 
 @property int          $category
 @property string       $defaultDomain
@@ -439,8 +435,10 @@ Validator for constructor
 
 -   __Uses__
     
-    - `ArrayAccess`
     - `Phalcon\Translate\Exception`
+    - `Phalcon\Translate\Exceptions\InvalidDataType`
+    - `Phalcon\Translate\Exceptions\KeyNotFound`
+    - `Phalcon\Translate\Exceptions\MissingContent`
     - `Phalcon\Translate\InterpolatorFactory`
 
 -   __Extends__
@@ -449,16 +447,9 @@ Validator for constructor
 
 -   __Implements__
     
-    - `ArrayAccess`
-
-Class NativeArray
 
 Defines translation lists using PHP arrays
 
-@package Phalcon\Translate\Adapter
-
-@property array $translate
-@property bool  $triggerError
 
 
 ### Properties
@@ -534,9 +525,346 @@ Returns the internal array
 -   __Implements__
     
 
-Phalcon\Translate\Exception
-
 Class for exceptions thrown by Phalcon\Translate
+
+
+
+## Translate\Exceptions\FileOpenError 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/FileOpenError.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Translate\Exceptions\ImmutableObject 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/ImmutableObject.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Translate\Exceptions\InterpolatorNotRegistered 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/InterpolatorNotRegistered.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+
+## Translate\Exceptions\InvalidDataType 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/InvalidDataType.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Translate\Exceptions\KeyNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/KeyNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $key );
+```
+
+
+
+
+
+## Translate\Exceptions\MissingContent 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingContent.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Translate\Exceptions\MissingGettextExtension 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingGettextExtension.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Translate\Exceptions\MissingRequiredParameter 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingRequiredParameter.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Properties
+```php
+/**
+ * @var string
+ */
+private $parameter;
+
+```
+
+### Methods
+
+```php
+public function __construct( string $parameter );
+```
+
+
+
+```php
+public function getParameter(): string;
+```
+
+
+
+
+
+## Translate\Exceptions\TranslatorNotRegistered 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/TranslatorNotRegistered.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Translate\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Translate\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
 
 
 
@@ -561,8 +889,6 @@ Class for exceptions thrown by Phalcon\Translate
     - `InterpolatorInterface`
 
 Class AssociativeArray
-
-@package Phalcon\Translate\Interpolator
 
 
 ### Methods
@@ -594,9 +920,6 @@ Replaces placeholders by the values passed
     
     - `InterpolatorInterface`
 
-Class IndexedArray
-
-@package Phalcon\Translate\Interpolator
 
 
 ### Methods
@@ -721,11 +1044,6 @@ Returns the available adapters
 -   __Implements__
     
 
-Class TranslateFactory
-
-@package Phalcon\Translate
-
-@property InterpolatorFactory $interpolator
 
 
 ### Properties
@@ -742,7 +1060,6 @@ private $interpolator;
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $services = [] );
 ```
-AdapterFactory constructor.
 
 
 ```php

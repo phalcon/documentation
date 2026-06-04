@@ -24,7 +24,8 @@ hide:
     - `DateTimeZone`
     - `Exception`
     - `Phalcon\Logger\Adapter\AdapterInterface`
-    - `Phalcon\Logger\Exception`
+    - `Phalcon\Logger\Exceptions\AdapterNotFound`
+    - `Phalcon\Logger\Exceptions\NoAdaptersConfigured`
 
 -   __Extends__
     
@@ -104,13 +105,13 @@ Constructor.
 
 
 ```php
-public function addAdapter( string $name, AdapterInterface $adapter ): AbstractLogger;
+public function addAdapter( string $name, AdapterInterface $adapter ): static;
 ```
 Add an adapter to the stack. For processing we use FIFO
 
 
 ```php
-public function excludeAdapters( array $adapters = [] ): AbstractLogger;
+public function excludeAdapters( array $adapters = [] ): static;
 ```
 Exclude certain adapters.
 
@@ -140,19 +141,19 @@ Returns the name of the logger
 
 
 ```php
-public function removeAdapter( string $name ): AbstractLogger;
+public function removeAdapter( string $name ): static;
 ```
 Removes an adapter from the stack
 
 
 ```php
-public function setAdapters( array $adapters ): AbstractLogger;
+public function setAdapters( array $adapters ): static;
 ```
 Sets the adapters stack overriding what is already there
 
 
 ```php
-public function setLogLevel( int $level ): AbstractLogger;
+public function setLogLevel( int $level ): static;
 ```
 Sets the adapters stack overriding what is already there
 
@@ -188,7 +189,10 @@ Returns an array of log levels with integer to string conversion
 
 -   __Uses__
     
-    - `Phalcon\Logger\Exception`
+    - `Phalcon\Logger\Exceptions\DeserializationFailed`
+    - `Phalcon\Logger\Exceptions\SerializationFailed`
+    - `Phalcon\Logger\Exceptions\TransactionAlreadyActive`
+    - `Phalcon\Logger\Exceptions\TransactionNotActive`
     - `Phalcon\Logger\Formatter\FormatterInterface`
     - `Phalcon\Logger\Formatter\Line`
     - `Phalcon\Logger\Item`
@@ -238,6 +242,16 @@ protected $inTransaction = false;
  */
 protected $queue;
 
+/**
+ * Maximum number of items retained in the transaction queue.
+ * 0 (default) keeps the original unbounded behavior; a positive
+ * value drops the oldest queued item FIFO before a new one is
+ * appended in add().
+ *
+ * @var int
+ */
+protected $queueLimit = 0;
+
 ```
 
 ### Methods
@@ -247,7 +261,7 @@ public function __destruct();
 ```
 Destructor cleanup
 
-@throws Exception
+@throws TransactionAlreadyActive
 
 
 ```php
@@ -287,6 +301,12 @@ public function getFormatter(): FormatterInterface;
 
 
 ```php
+public function getQueueLimit(): int;
+```
+Returns the configured transaction-queue cap (0 = unlimited)
+
+
+```php
 public function inTransaction(): bool;
 ```
 Returns the whether the logger is currently in an active transaction or
@@ -309,6 +329,14 @@ Rollbacks the internal transaction
 public function setFormatter( FormatterInterface $formatter ): AdapterInterface;
 ```
 Sets the message formatter
+
+
+```php
+public function setQueueLimit( int $queueLimit ): AdapterInterface;
+```
+Sets the maximum number of items retained in the transaction
+queue. 0 disables the cap (the default; preserves the original
+unbounded behavior).
 
 
 ```php
@@ -403,6 +431,120 @@ Sets the message formatter
 
 
 
+## Logger\Adapter\Exceptions\FileOpenFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/FileOpenFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Adapter\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, string $mode );
+```
+
+
+
+
+
+## Logger\Adapter\Exceptions\InvalidStreamMode 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/InvalidStreamMode.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Adapter\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Logger\Adapter\Exceptions\SyslogOpenFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/SyslogOpenFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Adapter\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name, int $facility );
+```
+
+
+
+
+
 ## Logger\Adapter\Noop 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Noop.zep)
@@ -455,8 +597,8 @@ Processes the message i.e. writes it to the file
 
 -   __Uses__
     
-    - `LogicException`
-    - `Phalcon\Logger\Exception`
+    - `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed`
+    - `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode`
     - `Phalcon\Logger\Item`
 
 -   __Extends__
@@ -483,7 +625,6 @@ $logger->close();
 @property resource|null $handler
 @property string        $mode
 @property string        $name
-@property array         $options
 
 
 ### Properties
@@ -508,13 +649,6 @@ protected $mode = ab;
  * @var string
  */
 protected $name;
-
-/**
- * Path options
- *
- * @var array
- */
-protected $options;
 
 ```
 
@@ -575,7 +709,7 @@ protected function phpFwrite( mixed $handle, string $message );
 
 -   __Uses__
     
-    - `LogicException`
+    - `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed`
     - `Phalcon\Logger\Enum`
     - `Phalcon\Logger\Item`
 
@@ -760,6 +894,234 @@ const WARNING = 4;
 Phalcon\Logger\Exception
 
 Exceptions thrown in Phalcon\Logger will use this class
+
+
+
+## Logger\Exceptions\AdapterNotFound 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/AdapterNotFound.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct( string $name );
+```
+
+
+
+
+
+## Logger\Exceptions\DeserializationFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/DeserializationFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Logger\Exceptions\NoAdaptersConfigured 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/NoAdaptersConfigured.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Logger\Exceptions\SerializationFailed 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/SerializationFailed.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Logger\Exceptions\TransactionAlreadyActive 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/TransactionAlreadyActive.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
+
+
+
+## Logger\Exceptions\TransactionNotActive 
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/TransactionNotActive.zep)
+
+
+-   __Namespace__
+
+    - `Phalcon\Logger\Exceptions`
+
+-   __Uses__
+    
+    - `Phalcon\Logger\Exception`
+
+-   __Extends__
+    
+    `Exception`
+
+-   __Implements__
+    
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalcon.io>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+### Methods
+
+```php
+public function __construct();
+```
+
+
 
 
 
@@ -968,7 +1330,7 @@ Return the format applied to each message
 
 
 ```php
-public function setFormat( string $format ): Line;
+public function setFormat( string $format ): static;
 ```
 Set the format applied to each message
 
@@ -1002,7 +1364,7 @@ Represents each item in a logging transaction
 @property string            $message
 @property int               $level
 @property string            $levelName
-@property DateTimeImmutable $datetime
+@property DateTimeImmutable $dateTime
 
 
 ### Properties
@@ -1018,11 +1380,6 @@ protected $context;
 protected $dateTime;
 
 /**
- * @var string
- */
-protected $message;
-
-/**
  * @var int
  */
 protected $level;
@@ -1031,6 +1388,11 @@ protected $level;
  * @var string
  */
 protected $levelName;
+
+/**
+ * @var string
+ */
+protected $message;
 
 ```
 
@@ -1349,6 +1711,9 @@ Normal but significant events.
 ```php
 public function warning( string $message, array $context = [] ): void;
 ```
-Normal but significant events.
+Exceptional occurrences that are not errors.
+
+Example: Use of deprecated APIs, poor use of an API, undesirable things
+that are not necessarily wrong.
 
 
