@@ -177,9 +177,8 @@ $paginate = $paginator->paginate();
 
 ### Query Builder (Cursor)
 
-The [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor] adapter provides *
-*cursor-based (keyset) pagination** using a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] as the data
-source.
+The [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor] adapter provides **cursor-based (keyset) pagination** using a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder]
+as the data source.
 
 Unlike offset-based pagination, this adapter does not use `LIMIT n OFFSET k`. Instead it appends a
 `WHERE cursorColumn > :cursor:` condition so that each page is an O(1) index seek regardless of how deep into the data

@@ -1089,17 +1089,21 @@ call site.
 
 ## Exceptions
 
-Any exception thrown in the `Phalcon\Support\Collection` namespace will be of type `Phalcon\Support\Exception`. You can
-use this exception to selectively catch exceptions thrown only from this component.
+Most exceptions thrown in the `Phalcon\Support\Collection` namespace extend `Phalcon\Support\Exception`, so a
+`catch (Phalcon\Support\Exception $e)` block catches them. The lone exception is `InvalidValueType`, which extends the
+native `\InvalidArgumentException` (see the table below).
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific
-failure mode. Existing `catch (Phalcon\Support\Exception $e)` blocks continue to work unchanged.
+As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. `ReadOnlyViolation`
+extends `Phalcon\Support\Collection\Exception` (itself a `Phalcon\Support\Exception`), so existing
+`catch (Phalcon\Support\Exception $e)` blocks continue to catch it. `InvalidValueType` extends the native
+`\InvalidArgumentException`, so it is **not** caught by `Phalcon\Support\Exception`; catch `\InvalidArgumentException`
+or the class itself.
 
-| Class                                                     | Parent                      | Thrown when                                                              |
-|-----------------------------------------------------------|-----------------------------|--------------------------------------------------------------------------|
-| `Phalcon\Support\Collection\Exceptions\InvalidValueType`  | `Phalcon\Support\Exception` | A value being added to the collection has a type the collection rejects. |
-| `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation` | `Phalcon\Support\Exception` | A write is attempted on a `ReadOnlyCollection`.                          |
+| Class                                                     | Parent                                 | Thrown when                                                              |
+|-----------------------------------------------------------|----------------------------------------|--------------------------------------------------------------------------|
+| `Phalcon\Support\Collection\Exceptions\InvalidValueType`  | `\InvalidArgumentException`             | A value being added to the collection has a type the collection rejects. |
+| `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation` | `Phalcon\Support\Collection\Exception` | A write is attempted on a `ReadOnlyCollection`.                          |
 
 [contracts-support-collection]: api/phalcon_contracts.md#contractssupportcollection
