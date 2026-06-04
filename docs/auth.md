@@ -13,13 +13,13 @@ The layer is composed of four building blocks:
 - **Access gates** answer "is this action allowed?". Two ship in the box: `auth` (requires a logged-in user) and `guest` (requires no logged-in user).
 - **`AuthUser`** is the authenticated user value object returned by guards.
 
-The layer is built on the modern `Phalcon\Container\Container`. Guards resolve the framework services they need (request, cookies, session manager) from the container, so they wire against the real application singletons.
+Guards resolve the framework services they need (request, cookies, session manager) from a container, so they wire against the real application singletons. The container can be the modern `Phalcon\Container\Container` or the classic `Phalcon\Di\Di`.
 
 ---
 
 ## Bootstrapping with ManagerFactory
 
-`Phalcon\Auth\ManagerFactory` builds a fully wired `Manager` from a configuration tree. It needs a password hasher (`Phalcon\Encryption\Security`) and a container that provides the framework services the guards consume. The built-in `Phalcon\Container\Provider\Web` registers those services.
+`Phalcon\Auth\ManagerFactory` builds a fully wired `Manager` from a configuration tree. It needs a password hasher (`Phalcon\Encryption\Security`) and a container that provides the framework services the guards consume - either a `Phalcon\Container\Container` or a `Phalcon\Di\DiInterface`. The built-in `Phalcon\Container\Provider\Web` registers those services on a `Phalcon\Container\Container`.
 
 ```php
 <?php
@@ -34,6 +34,12 @@ use Phalcon\Encryption\Security;
 $container = (new ContainerFactory())
     ->addProvider(new Web())
     ->newContainer();
+
+/**
+ * Alternative 
+ *
+$container = new Phalcon\Di\FactoryDefault();
+*/
 
 $factory = new ManagerFactory(new Security(), $container);
 
@@ -70,6 +76,55 @@ $manager = $factory->load([
 
 ---
 
+## The Container
+
+Every entry point that takes a container - `ManagerFactory::__construct()`, the guards' `fromOptions()` factories, and the adapter, guard, and access locators - accepts either of two container types:
+
+- `Phalcon\Container\Container`, the modern service container (it implements `Phalcon\Contracts\Container\Service\Collection`).
+- `Phalcon\Di\DiInterface`, the classic dependency-injection container (for example `Phalcon\Di\FactoryDefault`).
+
+Passing any other type throws a `\TypeError`.
+
+The layer resolves services by their interface ID, through the container's `has()` and `get()` methods. Whichever container is used, these services must be bound under the following IDs:
+
+| Service ID                               | Required by              |
+|------------------------------------------|--------------------------|
+| `Phalcon\Http\RequestInterface`          | session and token guards |
+| `Phalcon\Http\Response\CookiesInterface` | session guard            |
+| `Phalcon\Session\ManagerInterface`       | session guard            |
+
+A service that is not bound throws `Phalcon\Auth\Exception`. `Phalcon\Container\Provider\Web` registers these IDs on a `Phalcon\Container\Container`. A classic `Phalcon\Di\FactoryDefault` does not: it registers `request` and `cookies` under short names and ships no session manager. Bind the three interface IDs explicitly before passing it to the factory.
+
+```php
+<?php
+
+use Phalcon\Auth\ManagerFactory;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Encryption\Security;
+use Phalcon\Http\Request;
+use Phalcon\Http\Response\Cookies;
+use Phalcon\Session\Adapter\Stream;
+use Phalcon\Session\Manager as SessionManager;
+
+$di = new FactoryDefault();
+
+// Bind the services the guards resolve, under their interface IDs
+$di->setShared('Phalcon\Http\RequestInterface', Request::class);
+$di->setShared('Phalcon\Http\Response\CookiesInterface', Cookies::class);
+$di->setShared('Phalcon\Session\ManagerInterface', function () {
+    $session = new SessionManager();
+    $session->setAdapter(new Stream(['savePath' => '/var/app/cache/session']));
+
+    return $session;
+});
+
+$factory = new ManagerFactory(new Security(), $di);
+```
+
+A token-only setup needs only `Phalcon\Http\RequestInterface` bound.
+
+---
+
 ## The Manager
 
 The `Manager` is the entry point for both authentication and authorization. Authentication calls delegate to the active guard; authorization calls drive the active access gate.
@@ -92,18 +147,18 @@ $manager->guard('api')->validate(['api_token' => $token]);
 $manager->logout();
 ```
 
-| Method | Returns | Purpose |
-|---|---|---|
-| `guard(?string $name = null)` | `Guard` | The named guard, or the default guard when `$name` is `null` |
-| `attempt(array $credentials = [], bool $remember = false)` | `bool` | Authenticate against the default guard (requires a stateful guard) |
-| `validate(array $credentials = [])` | `bool` | Verify credentials without logging in |
-| `check()` | `bool` | Whether a user is authenticated |
-| `user()` | `AuthUser` or `null` | The authenticated user |
-| `id()` | `int`, `string`, or `null` | The authenticated identifier |
-| `logout()` | `void` | Log out of the default guard (requires a stateful guard) |
-| `access(string $name)` | `self` | Activate an access gate for the current request |
-| `only(string ...$actions)` | `self` | Restrict the active gate to the listed actions |
-| `except(string ...$actions)` | `self` | Apply the active gate to every action except those listed |
+| Method                                                     | Returns                    | Purpose                                                            |
+|------------------------------------------------------------|----------------------------|--------------------------------------------------------------------|
+| `guard(?string $name = null)`                              | `Guard`                    | The named guard, or the default guard when `$name` is `null`       |
+| `attempt(array $credentials = [], bool $remember = false)` | `bool`                     | Authenticate against the default guard (requires a stateful guard) |
+| `validate(array $credentials = [])`                        | `bool`                     | Verify credentials without logging in                              |
+| `check()`                                                  | `bool`                     | Whether a user is authenticated                                    |
+| `user()`                                                   | `AuthUser` or `null`       | The authenticated user                                             |
+| `id()`                                                     | `int`, `string`, or `null` | The authenticated identifier                                       |
+| `logout()`                                                 | `void`                     | Log out of the default guard (requires a stateful guard)           |
+| `access(string $name)`                                     | `self`                     | Activate an access gate for the current request                    |
+| `only(string ...$actions)`                                 | `self`                     | Restrict the active gate to the listed actions                     |
+| `except(string ...$actions)`                               | `self`                     | Apply the active gate to every action except those listed          |
 
 `attempt()` and `logout()` throw `Phalcon\Auth\Exception` when the default guard is not stateful. The `token` guard is stateless; use `validate()` with it.
 
@@ -142,11 +197,11 @@ Remember-me requires an adapter that implements `Phalcon\Contracts\Auth\Adapter\
 
 The session key and remember-cookie name are configurable through the guard `options`:
 
-| Option | Default | Purpose |
-|---|---|---|
-| `name` | `auth` | Session key holding the authenticated identifier |
-| `rememberName` | `remember` | Remember-me cookie name |
-| `suffix` | none | Derives `auth_<suffix>` / `remember_<suffix>` names for multi-guard apps |
+| Option         | Default    | Purpose                                                                  |
+|----------------|------------|--------------------------------------------------------------------------|
+| `name`         | `auth`     | Session key holding the authenticated identifier                         |
+| `rememberName` | `remember` | Remember-me cookie name                                                  |
+| `suffix`       | none       | Derives `auth_<suffix>` / `remember_<suffix>` names for multi-guard apps |
 
 ### Token Guard
 
@@ -317,12 +372,12 @@ $eventsManager->attach('auth', function ($event, $guard) {
 $manager->guard('web')->setEventsManager($eventsManager);
 ```
 
-| Event | Fired |
-|---|---|
-| `auth:beforeLogin` | Before a login is applied |
-| `auth:afterLogin` | After a successful login |
-| `auth:beforeLogout` | Before logout |
-| `auth:afterLogout` | After logout |
+| Event               | Fired                     |
+|---------------------|---------------------------|
+| `auth:beforeLogin`  | Before a login is applied |
+| `auth:afterLogin`   | After a successful login  |
+| `auth:beforeLogout` | Before logout             |
+| `auth:afterLogout`  | After logout              |
 
 ---
 
@@ -346,16 +401,16 @@ try {
 }
 ```
 
-| Exception | Thrown when |
-|---|---|
-| `AccessDenied` | An access gate denies an action and no redirect target is set |
-| `ConfigRequiresNonEmptyValue` | A guard/adapter config receives a required empty value |
-| `DataMustContainIdKey` | An `AuthUser` is built from data with no scalar `id` |
-| `DoesNotImplement` | Remember-me is used with an adapter/model that lacks the required contract |
-| `FileDoesNotExist` | The `stream` adapter file is missing |
-| `FileCannotRead` | The `stream` adapter file cannot be read |
-| `FileNotValidJson` | The `stream` adapter file is not valid JSON |
-| `FileDoesNotContainJson` | The `stream` adapter file does not decode to an array |
+| Exception                     | Thrown when                                                                |
+|-------------------------------|----------------------------------------------------------------------------|
+| `AccessDenied`                | An access gate denies an action and no redirect target is set              |
+| `ConfigRequiresNonEmptyValue` | A guard/adapter config receives a required empty value                     |
+| `DataMustContainIdKey`        | An `AuthUser` is built from data with no scalar `id`                       |
+| `DoesNotImplement`            | Remember-me is used with an adapter/model that lacks the required contract |
+| `FileDoesNotExist`            | The `stream` adapter file is missing                                       |
+| `FileCannotRead`              | The `stream` adapter file cannot be read                                   |
+| `FileNotValidJson`            | The `stream` adapter file is not valid JSON                                |
+| `FileDoesNotContainJson`      | The `stream` adapter file does not decode to an array                      |
 
 ---
 
