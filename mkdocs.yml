@@ -332,6 +332,7 @@ nav:
       - Application: application.md
       - Micro: application-micro.md
       - CLI: application-cli.md
+      - Container: container.md
       - DI Container: di.md
       - MVC: mvc.md
       - Namespaces: namespaces.md
@@ -367,6 +368,7 @@ nav:
   - Business Logic:
       - Access Control Lists: acl.md
       - Annotations: annotations.md
+      - Authentication: auth.md
       - Controllers: controllers.md
       - Dispatcher: dispatcher.md
       - Event Manager: events.md
