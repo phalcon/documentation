@@ -7,6 +7,10 @@
 
 `Container` is the recommended choice for new projects. `Phalcon\Di\Di` remains fully supported and is not being removed.
 
+!!! info "WARNING"
+
+    `Container` cannot be used with components that use the Inversion of Control methodology in Phalcon. That is, the container is available in the component, and it is used to retrive a different service to be used in that component. An example is the `Response` object which internally retrieves the `Filter` service for filtering. For this to happen, we need to widen the `getDI()` and `setDI()` which will affect backwards compatibiity. As such, Container cannot be used out of the box for this version. This refers to the `Registering as the Framework Default` section below. In the next major version we will change the interfaces to offer this functionality. 
+
 !!! info "NOTE"
 
     `Container` does not implement PSR-11 `ContainerInterface`. It implements `ioc-interop/IocContainer` (`getService()`/`hasService()`). A PSR-11 bridge adapter is planned for a future release.
