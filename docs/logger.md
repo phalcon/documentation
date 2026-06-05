@@ -298,6 +298,7 @@ used as the first parameter in the `log()` method.
 | `INFO`      |   6   |
 | `DEBUG`     |   7   |
 | `CUSTOM`    |   8   |
+| `TRACE`     |   9   |
 
 ## Log Levels
 
@@ -359,6 +360,55 @@ application such as development mode vs. production.
 !!! danger "DANGER"
 
     It is **never** a good idea to suppress logging levels in your application since even warning errors do require CPU cycles to be processed, and neglecting these errors could potentially lead to unintended circumstances 
+
+## Trace Level
+
+`trace()` records extra-verbose, fine-grained diagnostic output. Use it for
+high-frequency events such as raw socket frames, full HTTP response bodies, or
+internal state transitions that are too noisy for `debug()`.
+
+`TRACE` has the value `9`. It is more verbose than `DEBUG` (`7`) and `CUSTOM`
+(`8`), making it the most verbose level the logger emits. `TRACE` is an
+additional level; the existing `CUSTOM` level and its `custom` label are
+unchanged.
+
+`trace()` is opt-in. The default minimum log level is `CUSTOM` (`8`), and the
+logger only emits a message when its level is at or below the configured
+minimum. Because `TRACE` (`9`) is higher than the default, trace messages are
+suppressed until you lower the threshold with `setLogLevel()`.
+
+```php
+<?php
+
+use Phalcon\Logger\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter = new Stream('/storage/logs/main.log');
+$logger  = new Logger(
+    'messages',
+    [
+        'main' => $adapter,
+    ]
+);
+
+// Suppressed: the default minimum level is CUSTOM (8), TRACE (9) is higher
+$logger->trace('This message is not logged at the default level');
+
+$logger->setLogLevel(Logger::TRACE);
+
+// Emitted: the minimum level now includes TRACE
+$logger->trace('Raw response body: {"status":"ok"}');
+```
+
+The log generated is as follows:
+
+```bash
+[Tue, 25 Dec 18 12:13:14 -0400][trace] Raw response body: {"status":"ok"}
+```
+
+The level name is emitted in lowercase as `trace`. When the
+[Syslog][logger-adapter-syslog] adapter receives a `trace` message, it maps the
+level to `LOG_DEBUG`.
 
 ## Transactions
 
