@@ -1409,6 +1409,134 @@ generated during the save process of the whole transaction will be passed back t
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
+### Synchronizing Many-to-Many Records
+
+Assigning an array to a many-to-many relationship and calling `save()` is additive by default. Records in the array are
+inserted or kept. Records that were linked before but are absent from the array stay linked. Synchronization changes
+this: the assigned array becomes the complete set of related records. Links missing from the array are deleted, new
+links are created, and existing links are kept.
+
+- Synchronization applies to `hasManyToMany()` relationships only.
+- It operates on the intermediate (pivot) table and behaves identically on MySQL, PostgreSQL, and SQLite.
+- The default additive behavior is unchanged unless you opt in.
+
+Enable it on the relationship definition with the `sync` option. Every save of that relationship then synchronizes.
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
+
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'alias' => 'products',
+                'sync'  => true,
+            ]
+        );
+    }
+}
+```
+
+With the option enabled, the assigned array is authoritative on every save:
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+// Link invoice 1 to product 1 and product 2
+$invoice->products = [$product1, $product2];
+$invoice->save();
+
+// product2 is dropped from the array
+$invoice->products = [$product1, $product3];
+$invoice->save();
+
+// invoice 1 is now linked to product 1 and product 3 only.
+// The link to product2 is deleted. product2 itself is not deleted.
+```
+
+Assigning an empty array removes every link for that relationship:
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+$invoice->products = [];
+$invoice->save();
+
+// All intermediate rows for invoice 1 are removed.
+```
+
+To synchronize without changing the relationship definition, use `Phalcon\Mvc\Model::setSync()`. It enables or disables
+synchronization for the next `save()` only, and the flag is cleared once the save completes. The method returns the
+model instance, so it chains before `save()`.
+
+`setSync()` accepts:
+
+- no argument or `"*"` - every many-to-many relationship on the model
+- a single alias string - that one relationship
+- an array of alias strings - those relationships
+- an optional second argument (`bool`, default `true`) - pass `false` to disable synchronization instead of
+  enabling it
+
+A per-save call takes precedence over the relationship's `sync` option for that save.
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+// Synchronize only the "products" relationship on this save
+$invoice->products = [$product1];
+$invoice->setSync('products')->save();
+
+// Synchronize every many-to-many relationship on this save
+$invoice->setSync()->save();
+
+// Synchronize a specific set of relationships on this save
+$invoice->setSync(['products', 'categories'])->save();
+```
+
+The second argument disables synchronization for a single save. This keeps a save additive even when the relationship is
+defined with `'sync' => true`:
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+// "*" targets every relationship; false keeps this save additive
+$invoice->products = [$product1];
+$invoice->setSync('*', false)->save();
+
+// Disable synchronization for specific relationships on this save
+$invoice->setSync(['products', 'categories'], false)->save();
+```
+
+Synchronization runs inside the same implicit transaction as the rest of the save. If a delete fails, the transaction is
+rolled back and the messages are available through `Phalcon\Mvc\Model::getMessages()`.
+
 ### Update
 
 Instead of doing this:
