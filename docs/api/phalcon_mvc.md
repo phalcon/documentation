@@ -31435,7 +31435,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">compileEcho</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
-<span class="desc">Compiles a {% raw %}<code>{{</code> <code>}}</code>{% endraw %} statement returning PHP code</span>
+<span class="desc">Compiles a <code>{{</code> <code>}}</code> statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileelseif">
 <code class="vis vis-public">public</code>
@@ -31866,7 +31866,7 @@ Compiles a "do" statement returning PHP code
 public function compileEcho( array $statement ): string;
 ```
 
-Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
+Compiles a `{{` `}}` statement returning PHP code
 
 #### `compileElseIf()` { #mvcviewenginevoltcompiler-compileelseif }
 
@@ -32023,7 +32023,7 @@ public function compileString(
 Compiles a template into a string
 
 ```php
-echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
+echo $compiler->compileString('{{ "hello world" }}');
 ```
 
 #### `compileSwitch()` { #mvcviewenginevoltcompiler-compileswitch }
@@ -32153,7 +32153,7 @@ Parses a Volt template returning its intermediate representation
 
 ```php
 print_r(
-    $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
+    $compiler->parse("{{ 3 + 2 }}")
 );
 ```
 

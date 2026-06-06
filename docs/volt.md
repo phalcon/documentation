@@ -348,14 +348,13 @@ $volt->setOptions(
 
 ## Usage
 
-Volt uses specific delimiters for its syntax. `{%- raw -%}{% ... %}` is used to execute statements such as for-loops or
-assign values and `{%- raw -%}{{ ... }}` prints the result of an expression to the template. The view files can also
+Volt uses specific delimiters for its syntax. `{% ... %}` is used to execute statements such as for-loops or
+assign values and `{{ ... }}` prints the result of an expression to the template. The view files can also
 contain PHP and HTML should you choose to.
 
 Below is a sample template that illustrates a few basics:
 
 ```twig
-{%- raw -%}
 {# app/views/posts/show.phtml #}
 <!DOCTYPE html>
 <html>
@@ -461,7 +460,6 @@ Object variables may have attributes that can be accessed using the syntax: `foo
 have to use the square bracket syntax: `foo['bar']`
 
 ```twig
-{%- raw -%}
 {{ post.title }} {# for $post->title #}
 {{ post['title'] }} {# for $post['title'] #}
 
@@ -472,7 +470,6 @@ have to use the square bracket syntax: `foo['bar']`
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
 ```twig
-{%- raw -%}
 {{ post.title | e }}
 {{ post.content | striptags }}
 {{ name | capitalize | trim }}
@@ -514,7 +511,6 @@ The available built-in filters are:
 **Examples**
 
 ```twig
-{%- raw -%}
 {# e or escape filter #}
 {{ '<h1>Hello<h1>'|e }}
 {{ '<h1>Hello<h1>'|escape }}
@@ -575,11 +571,10 @@ The available built-in filters are:
 
 ## Comments
 
-Comments may also be added to a template using the `{%- raw -%}{# ... #}` delimiters. All text inside them is just
+Comments may also be added to a template using the `{# ... #}` delimiters. All text inside them is just
 ignored in the final output:
 
 ```twig
-{%- raw -%}
 {# note: this is a comment
     {% set price = 100; %}
 #}
@@ -595,7 +590,6 @@ Volt provides a set of basic but powerful control structures for use in template
 Loop over each item in a sequence. The following example shows how to traverse a set of `invoices` and print each title:
 
 ```twig
-{%- raw -%}
 <h1>Invoices</h1>
 <ul>
     {% for invoice in invoices %}
@@ -610,7 +604,6 @@ Loop over each item in a sequence. The following example shows how to traverse a
 for-loops can also be nested:
 
 ```twig
-{%- raw -%}
 <h1>Invoices</h1>
 {% for invoice in invoices %}
     {% for product in invoice.products %}
@@ -623,7 +616,6 @@ Product: {{ product.prd_title|e }} {{ product.prd_price|e }} USD <br />
 You can get the element `keys` as in the PHP counterpart using the following syntax:
 
 ```twig
-{%- raw -%}
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
 {% for name, value in numbers %}
@@ -635,7 +627,6 @@ You can get the element `keys` as in the PHP counterpart using the following syn
 An `if` evaluation can be optionally set:
 
 ```twig
-{%- raw -%}
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
 {% for value in numbers if value < 2 %}
@@ -652,7 +643,6 @@ If an `else` is defined inside the `for`, it will be executed if the expression 
 iterations:
 
 ```twig
-{%- raw -%}
 <h1>Invoices</h1>
 {% for invoice in invoices %}
     Invoice: {{ invoice.inv_number | e }} - {{ invoice.inv_title | e }} <br />
@@ -665,7 +655,6 @@ iterations:
 Alternative syntax:
 
 ```twig
-{%- raw -%}
 <h1>Invoices</h1>
 {% for invoice in invoices %}
     Invoice: {{ invoice.inv_number | e }} - {{ invoice.inv_title | e }} <br />
@@ -680,7 +669,6 @@ Alternative syntax:
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
 ```twig
-{%- raw -%}
 {# skip the even invoices #}
 {% for index, invoice in invoices %}
     {% if index is even %}
@@ -692,7 +680,6 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 ```
 
 ```twig
-{%- raw -%}
 {# exit the foreach on the first even invoice #}
 {% for index, invoice in invoices %}
     {% if index is even %}
@@ -708,7 +695,6 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 In PHP, an `if` statement checks if an expression is evaluated as true or false:
 
 ```twig
-{%- raw -%}
 <h1>Paid Invoices</h1>
 <ul>
     {% for invoice in invoices %}
@@ -722,7 +708,6 @@ In PHP, an `if` statement checks if an expression is evaluated as true or false:
 The else clause is also supported:
 
 ```twig
-{%- raw -%}
 <h1>Invoices</h1>
 <ul>
     {% for invoice in invoices %}
@@ -738,7 +723,6 @@ The else clause is also supported:
 The `elseif` control flow structure can be used together with if to emulate a `switch` block:
 
 ```twig
-{%- raw -%}
 {% if invoice.inv_paid_flag === constant('MyApp\Constants\Status::PAID') %}
     Invoice is paid
 {% elseif invoice.inv_paid_flag === 2 %}
@@ -754,7 +738,6 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
 
 ```twig
-{%- raw -%}
 {% switch foo %}
     {% case 0 %}
     {% case 1 %}
@@ -777,7 +760,6 @@ and whitespaces can therefore be cleared to reduce the number of errors [see her
 **`case` without `switch`**
 
 ```twig
-{%- raw -%}
 {% case EXPRESSION %}
 
 ```
@@ -787,7 +769,6 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Unexpected CASE`.
 **`switch` without `endswitch`**
 
 ```twig
-{%- raw -%}
 {% switch EXPRESSION %}
 
 ```
@@ -798,18 +779,16 @@ Will throw
 **`default` without `switch`**
 
 ```twig
-{%- raw -%}
 {% default %}
 
 ```
 
 Will not throw an error because `default` is a reserved word for filters like
-`{%- raw -%}{{ EXPRESSION | default(VALUE) }}` but in this case, the expression will only output an empty char `''` .
+`{{ EXPRESSION | default(VALUE) }}` but in this case, the expression will only output an empty char `''` .
 
 **nested `switch`**
 
 ```twig
-{%- raw -%}
 {% switch EXPRESSION %}
   {% switch EXPRESSION %}
   {% endswitch %}
@@ -823,7 +802,6 @@ Will throw
 **a `switch` without an expression**
 
 ```twig
-{%- raw -%}
 {% switch %}
   {% case EXPRESSION %}
       {% break %}
@@ -832,7 +810,7 @@ Will throw
 ```
 
 Will throw
-`Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token {%- raw -%}%} in ... on line ...`
+`Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token %} in ... on line ...`
 
 ### Loop Context
 
@@ -851,7 +829,6 @@ A special variable is available inside `for` loops providing you with informatio
 Example:
 
 ```twig
-{%- raw -%}
 {% for invoice in invoices %}
     {% if loop.first %}
         <table>
@@ -878,7 +855,6 @@ Example:
 Variables may be changed in a template using the instruction `set`:
 
 ```twig
-{%- raw -%}
 {% set fruits = ['Apple', 'Banana', 'Orange'] %}
 
 {% set title = invoice.inv_title %}
@@ -888,7 +864,6 @@ Variables may be changed in a template using the instruction `set`:
 Multiple assignments are allowed in the same instruction:
 
 ```twig
-{%- raw -%}
 {% set fruits = ['Apple', 'Banana', 'Orange'], name = invoice.inv_title, active = true %}
 
 ```
@@ -896,7 +871,6 @@ Multiple assignments are allowed in the same instruction:
 Additionally, you can use compound assignment operators:
 
 ```twig
-{%- raw -%}
 {% set price += 100.00 %}
 
 {% set age *= 5 %}
@@ -916,10 +890,9 @@ The following operators are available:
 ## Expressions
 
 Volt provides a basic set of expression support, including literals and common operators. An expression can be evaluated
-and printed using the `{%- raw -%}{{` and `{%- raw -%}}}` delimiters:
+and printed using the `{{` and `}}` delimiters:
 
 ```twig
-{%- raw -%}
 {{ (1 + 1) * 2 }}
 
 ```
@@ -927,7 +900,6 @@ and printed using the `{%- raw -%}{{` and `{%- raw -%}}}` delimiters:
 If an expression needs to be evaluated without being printed the `do` statement can be used:
 
 ```twig
-{%- raw -%}
 {% do (1 + 1) * 2 %}
 
 ```
@@ -950,7 +922,6 @@ The following literals are supported:
 You can create arrays by enclosing a list of values in square brackets:
 
 ```twig
-{%- raw -%}
 {# Simple array #}
 {{ ['Apple', 'Banana', 'Orange'] }}
 
@@ -968,7 +939,6 @@ You can create arrays by enclosing a list of values in square brackets:
 Curly braces also can be used to define arrays or hashes:
 
 ```twig
-{%- raw -%}
 {% set myArray = {'Apple', 'Banana', 'Orange'} %}
 {% set myHash  = {'first': 1, 'second': 4/2, 'third': '3'} %}
 
@@ -980,11 +950,11 @@ You may make calculations in templates using the following operators:
 
 | Operator | Description                                                                        |
 |:--------:|------------------------------------------------------------------------------------|
-|   `+`    | Perform an adding operation. `{%- raw -%}{{ 2 + 3 }}` returns 5                    |
-|   `-`    | Perform a subtraction operation `{%- raw -%}{{ 2 - 3 }}` returns -1                |
-|   `*`    | Perform a multiplication operation `{%- raw -%}{{ 2 * 3 }}` returns 6              |
-|   `/`    | Perform a division operation `{%- raw -%}{{ 10 / 2 }}` returns 5                   |
-|   `%`    | Calculate the remainder of an integer division `{%- raw -%}{{ 10 % 3 }}` returns 1 |
+|   `+`    | Perform an adding operation. `{{ 2 + 3 }}` returns 5                    |
+|   `-`    | Perform a subtraction operation `{{ 2 - 3 }}` returns -1                |
+|   `*`    | Perform a multiplication operation `{{ 2 * 3 }}` returns 6              |
+|   `/`    | Perform a division operation `{{ 10 / 2 }}` returns 5                   |
+|   `%`    | Calculate the remainder of an integer division `{{ 10 % 3 }}` returns 1 |
 
 ### Comparisons
 
@@ -1019,9 +989,9 @@ Additional operators seen the following operators are available:
 
 | Operator          | Description                                                                     |
 |-------------------|---------------------------------------------------------------------------------|
-| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}`                |
-| `                 | `                                                                               | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello' | uppercase }}` |
-| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}` `{%- raw -%}{{ 1..10 }}`            |
+| `~`               | Concatenates both operands `{{ 'hello ' ~ 'world' }}`                |
+| `                 | `                                                                               | Applies a filter in the right operand to the left `{{ 'hello' | uppercase }}` |
+| `..`              | Creates a range `{{ 'a'..'z' }}` `{{ 1..10 }}`            |
 | `is`              | Same as == (equals), also performs tests                                        |
 | `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'` |
 | `is not`          | Same as != (not equals)                                                         |
@@ -1032,7 +1002,6 @@ Additional operators seen the following operators are available:
 The following example shows how to use operators:
 
 ```twig
-{%- raw -%}
 {% set fruits = ['Apple', 'Banana', 'Orange', 'Kiwi'] %}
 
 {% for index in 0..fruits | length %}
@@ -1048,7 +1017,6 @@ The following example shows how to use operators:
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
 ```twig
-{%- raw -%}
 {% set invoices = ['1': 'Apple', '2': 'Banana', '3': 'Orange'] %}
 
 {% for position, name in invoices %}
@@ -1077,7 +1045,6 @@ The following built-in tests are available in Volt:
 More examples:
 
 ```twig
-{%- raw -%}
 {% if invoice is defined %}
     The invoice variable is defined
 {% endif %}
@@ -1128,7 +1095,6 @@ More examples:
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
 ```twig
-{%- raw -%}
 {# Macro 'display a list of links to related topics' #}
 {%- macro related_bar(related_links) %}
     <ul>
@@ -1156,7 +1122,6 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 When calling macros, parameters can be passed by name:
 
 ```twig
-{%- raw -%}
 {%- macro error_messages(message, field, type) %}
     <div>
         <span class='error-type'>{{ type }}</span>
@@ -1179,7 +1144,6 @@ When calling macros, parameters can be passed by name:
 Macros can return values:
 
 ```twig
-{%- raw -%}
 {%- macro my_input(name, class) %}
     {% return text_field(name, 'class': class) %}
 {%- endmacro %}
@@ -1192,7 +1156,6 @@ Macros can return values:
 And receive optional parameters:
 
 ```twig
-{%- raw -%}
 {%- macro my_input(name, class='input-text') %}
     {% return text_field(name, 'class': class) %}
 {%- endmacro %}
@@ -1209,7 +1172,6 @@ Volt is highly integrated with [Phalcon\Html\TagFactory][html-tagfactory], so it
 that component in a Volt template:
 
 ```twig
-{%- raw -%}
 {{ script().add('js/jquery.js') }}
 
 {{ form(['action' : 'products/save', 'method': 'post']) }}
@@ -1345,7 +1307,6 @@ Also, Volt is integrated with [Phalcon\Mvc\View][views], so you can play with th
 well:
 
 ```twig
-{%- raw -%}
 {{ content() }}
 
 <div id='footer'>
@@ -1359,7 +1320,6 @@ A partial is included in runtime, Volt also provides `include`, which compiles t
 contents as part of the view that was included:
 
 ```twig
-{%- raw -%}
 <div id='footer'>
     {% include 'partials/footer' %}
     {% include 'partials/footer' with ['links': links] %}
@@ -1375,7 +1335,6 @@ template in the parent template where it's included. Templates aren't inlined if
 with `with`:
 
 ```twig
-{%- raw -%}
 <div id='footer'>
     {% include 'partials/footer.volt' %}
 </div>
@@ -1398,7 +1357,6 @@ code. A base template defines *blocks* that can be overridden by a child templat
 following base template:
 
 ```twig
-{%- raw -%}
 {# templates/base.volt #}
 <!DOCTYPE html>
 <html>
@@ -1427,7 +1385,6 @@ following base template:
 From other template we could extend the base template by replacing the blocks:
 
 ```twig
-{%- raw -%}
 {% extends 'templates/base.volt' %}
 
 {% block title %}Index{% endblock %}
@@ -1472,7 +1429,6 @@ following:
 Extended templates can extend other templates. The following example illustrates this:
 
 ```twig
-{%- raw -%}
 {# main.volt #}
 <!DOCTYPE html>
 <html>
@@ -1490,7 +1446,6 @@ Extended templates can extend other templates. The following example illustrates
 Template `layout.volt` extends `main.volt`
 
 ```twig
-{%- raw -%}
 {# layout.volt #}
 {% extends 'main.volt' %}
 
@@ -1505,7 +1460,6 @@ Template `layout.volt` extends `main.volt`
 Finally, a view that extends `layout.volt`:
 
 ```twig
-{%- raw -%}
 {# index.volt #}
 {% extends 'layout.volt' %}
 
@@ -1556,7 +1510,6 @@ As partials, the path set to `extends` is a relative path under the current view
 You can enable auto-escaping of all variables printed in a block using the auto escape mode:
 
 ```twig
-{%- raw -%}
 Manually escaped: {{ invoice.inv_title|e }}
 
 {% autoescape true %}
@@ -2144,7 +2097,6 @@ a variable having the same name as the one that the service is registered with. 
 service as well as the `security` one:
 
 ```twig
-{%- raw -%}
 <div id='messages'>{{ flash.output() }}</div>
 <input type='hidden' name='token' value='{{ security.getToken() }}'>
 
