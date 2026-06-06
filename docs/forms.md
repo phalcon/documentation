@@ -242,6 +242,9 @@ if (true === $form->isValid()) {
 
 If there are no elements in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
+A form subclass can run logic before and after the binding process by defining `beforeBind()` and `afterBind()`
+methods. See [Bind Hooks](#bind-hooks).
+
 ```php
 public function clear(mixed $fields = null): Form
 ```
@@ -782,6 +785,65 @@ and `timezone` properties.
 
     The default behavior of `Phalcon\Forms\Form::bind()` is to bind all form fields to the Model. To only bind the 
     fields that exist in the model, set `phalcon.form.strict_entity_property_check` value to `1`. 
+
+### Bind Hooks
+`Phalcon\Forms\Form` calls two optional hook methods around `bind()`. Define either method on a form subclass to run
+logic before or after the submitted data is assigned.
+
+- `beforeBind(array $data, ?object $entity): bool` runs at the start of `bind()`, before any element is processed.
+  Returning `false` cancels the operation: no filtering runs, the entity is left untouched, and `bind()` returns
+  immediately.
+- `afterBind(?object $entity): void` runs at the end of `bind()`, after the filtered values have been assigned to the
+  entity.
+
+Both hooks are optional and are detected with `method_exists()`, so a form without them keeps the previous behavior.
+They also fire when `bind()` is reached indirectly through [`isValid()`](#validation).
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+use Phalcon\Forms\Element\Text;
+use Phalcon\Forms\Form;
+
+class InvoiceForm extends Form
+{
+    public function initialize()
+    {
+        $this->add(new Text('title'));
+        $this->add(new Text('total'));
+    }
+
+    public function beforeBind(array $data, ?object $entity): bool
+    {
+        // Stop the bind when there is nothing to assign
+        if (empty($data)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function afterBind(?object $entity): void
+    {
+        if ($entity instanceof Invoices) {
+            $entity->updated_at = date('Y-m-d H:i:s');
+        }
+    }
+}
+
+$invoice = new Invoices();
+$form    = new InvoiceForm();
+
+$form->bind($_POST, $invoice);
+
+if (true === $form->isValid()) {
+    $invoice->save();
+}
+```
+
+The `entity` argument is `null` when `bind()` is called without an entity. Use `beforeBind()` to validate or veto the
+incoming payload, and `afterBind()` to derive entity state that depends on more than one field.
 
 ## Elements
 
