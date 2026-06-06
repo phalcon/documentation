@@ -1569,6 +1569,62 @@ foreach ($invoices as $invoice) {
 }
 ```
 
+### Updating with Joins
+
+An `UPDATE` statement can include `JOIN` clauses to restrict the rows that are updated based on related models. The
+statement still updates a single model; the join only filters which records of that model are affected.
+
+The join types available to `SELECT` queries are also available here (see [Joins](#joins)). The join conditions are
+resolved automatically from the relationships defined in each model, or set manually with an `ON` clause.
+
+```php
+<?php
+
+$phql = "
+    UPDATE Invoices
+    INNER JOIN Customers
+        ON Customers.cst_id = Invoices.inv_cst_id
+    SET
+        Invoices.inv_status_flag = 0
+    WHERE
+        Customers.cst_status_flag = 1";
+
+$result = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Named and numeric placeholders behave the same as in any other `UPDATE`:
+
+```php
+<?php
+
+$phql = "
+    UPDATE Invoices
+    LEFT JOIN Customers
+        ON Customers.cst_id = Invoices.inv_cst_id
+    SET
+        Invoices.inv_total = :total:
+    WHERE
+        Customers.cst_id = :customerId:";
+
+$result = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'total'      => 0,
+            'customerId' => 10,
+        ]
+    )
+;
+```
+
+The join takes part in the record-selection phase only. As described above, an `UPDATE` first retrieves the records that
+match the `WHERE` and `JOIN` conditions, then saves each one. The `SET` clause assigns values to the columns of the
+updated model. It cannot read columns from the joined models.
+
 ## Deleting Data
 
 Similar to updating records, deleting records uses the same rules. For that operation, we use the `DELETE` command. When
