@@ -8,34 +8,10 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Flash\AbstractFlash
 
-## Flash\AbstractFlash ![Abstract](../assets/images/abstract-green.svg) 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/AbstractFlash.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash`
-
--   __Uses__
-    
-    - `Phalcon\Di\AbstractInjectionAware`
-    - `Phalcon\Di\Di`
-    - `Phalcon\Di\DiInterface`
-    - `Phalcon\Flash\Exceptions\EscaperServiceUnavailable`
-    - `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`
-    - `Phalcon\Html\Escaper\EscaperInterface`
-    - `Phalcon\Session\ManagerInterface`
-    - `Phalcon\Support\Helper\Str\Interpolate`
-
--   __Extends__
-    
-    `AbstractInjectionAware`
-
--   __Implements__
-    
-    - `FlashInterface`
+<span class="badge badge--abstract">Abstract</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/AbstractFlash.zep){ .src-btn }
 
 Shows HTML notifications related to different circumstances. Classes can be
 stylized using CSS
@@ -49,197 +25,345 @@ Class AbstractFlash
 
 @package Phalcon\Flash
 
+<div class="api-tree" markdown>
+
+- `stdClass`
+    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
+        - **`Phalcon\Flash\AbstractFlash`** — implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
+            - [`Phalcon\Flash\Direct`](#flashdirect)
+            - [`Phalcon\Flash\Session`](#flashsession)
+
+</div>
+
+__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Str\Interpolate`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashabstractflash-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct(
+    EscaperInterface $escaper = null,
+    SessionInterface $session = null
+)</code>
+<span class="desc">AbstractFlash constructor.</span>
+</a>
+<a class="api-item" href="#flashabstractflash-clear">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">clear()</code>
+<span class="desc">Clears accumulated messages when implicit flush is disabled</span>
+</a>
+<a class="api-item" href="#flashabstractflash-error">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">error( string $message )</code>
+<span class="desc">Shows a HTML error message</span>
+</a>
+<a class="api-item" href="#flashabstractflash-getautoescape">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">getAutoescape()</code>
+</a>
+<a class="api-item" href="#flashabstractflash-getautomatichtml">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">getAutomaticHtml()</code>
+</a>
+<a class="api-item" href="#flashabstractflash-getcssclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getCssClasses()</code>
+</a>
+<a class="api-item" href="#flashabstractflash-getcssiconclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getCssIconClasses()</code>
+</a>
+<a class="api-item" href="#flashabstractflash-getcustomtemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">getCustomTemplate()</code>
+</a>
+<a class="api-item" href="#flashabstractflash-getescaperservice">
+<code class="vis vis-public">public</code>
+<code class="ret">EscaperInterface</code>
+<code class="sig">getEscaperService()</code>
+<span class="desc">Returns the Escaper Service</span>
+</a>
+<a class="api-item" href="#flashabstractflash-notice">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">notice( string $message )</code>
+<span class="desc">Shows a HTML notice/information message</span>
+</a>
+<a class="api-item" href="#flashabstractflash-outputmessage">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">outputMessage(
+    string $type,
+    mixed $message
+)</code>
+<span class="desc">Outputs a message formatting it with HTML</span>
+</a>
+<a class="api-item" href="#flashabstractflash-setautoescape">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setAutoescape( bool $autoescape )</code>
+<span class="desc">Set the autoescape mode in generated HTML</span>
+</a>
+<a class="api-item" href="#flashabstractflash-setautomatichtml">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setAutomaticHtml( bool $automaticHtml )</code>
+<span class="desc">Set if the output must be implicitly formatted with HTML</span>
+</a>
+<a class="api-item" href="#flashabstractflash-setcssclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setCssClasses( array $cssClasses )</code>
+<span class="desc">Set an array with CSS classes to format the messages</span>
+</a>
+<a class="api-item" href="#flashabstractflash-setcssiconclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setCssIconClasses( array $cssIconClasses )</code>
+<span class="desc">Set an array with CSS classes to format the icon messages</span>
+</a>
+<a class="api-item" href="#flashabstractflash-setcustomtemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setCustomTemplate( string $customTemplate )</code>
+<span class="desc">Set a custom template for showing the messages</span>
+</a>
+<a class="api-item" href="#flashabstractflash-setescaperservice">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setEscaperService( EscaperInterface $escaperService )</code>
+<span class="desc">Sets the Escaper Service</span>
+</a>
+<a class="api-item" href="#flashabstractflash-setimplicitflush">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setImplicitFlush( bool $implicitFlush )</code>
+<span class="desc">Set whether the output must be implicitly flushed to the output or</span>
+</a>
+<a class="api-item" href="#flashabstractflash-success">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">success( string $message )</code>
+<span class="desc">Shows a HTML success message</span>
+</a>
+<a class="api-item" href="#flashabstractflash-warning">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">warning( string $message )</code>
+<span class="desc">Shows a HTML warning message</span>
+</a>
+</div>
 
 ### Properties
-```php
-/**
- * @var bool
- */
-protected $autoescape = true;
 
-/**
- * @var bool
- */
-protected $automaticHtml = true;
+<div class="api-list" markdown>
 
-/**
- * @var array
- */
-protected $cssClasses;
+-   `protected`{ .vis-protected } `$autoescape = true` `bool`
 
-/**
- * @var array
- */
-protected $cssIconClasses;
+-   `protected`{ .vis-protected } `$automaticHtml = true` `bool`
 
-/**
- * @var string
- */
-protected $customTemplate = ;
+-   `protected`{ .vis-protected } `$cssClasses = []` `array`
 
-/**
- * @var EscaperInterface | null
- */
-protected $escaperService;
+-   `protected`{ .vis-protected } `$cssIconClasses = []` `array`
 
-/**
- * @var bool
- */
-protected $implicitFlush = true;
+-   `protected`{ .vis-protected } `$customTemplate = ""` `string`
 
-/**
- * @var Interpolate
- */
-protected $interpolator;
+-   `protected`{ .vis-protected } `$escaperService = null` `EscaperInterface | null`
 
-/**
- * @var array
- */
-protected $messages;
+-   `protected`{ .vis-protected } `$implicitFlush = true` `bool`
 
-/**
- * @var SessionInterface|null
- */
-protected $sessionService;
+-   `protected`{ .vis-protected } `$interpolator` `Interpolate`
 
-```
+-   `protected`{ .vis-protected } `$messages = []` `array`
+
+-   `protected`{ .vis-protected } `$sessionService = null` `SessionInterface|null`
+
+</div>
 
 ### Methods
 
+<div class="api-group">Public · 20</div>
+
+#### `__construct()` { #flashabstractflash-__construct }
+
 ```php
-public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
+public function __construct(
+    EscaperInterface $escaper = null,
+    SessionInterface $session = null
+);
 ```
+
 AbstractFlash constructor.
 
+#### `clear()` { #flashabstractflash-clear }
 
 ```php
 public function clear(): void;
 ```
+
 Clears accumulated messages when implicit flush is disabled
 
+#### `error()` { #flashabstractflash-error }
 
 ```php
-public function error( string $message ): string | null;
+public function error( string $message ): string|null;
 ```
+
 Shows a HTML error message
 
 ```php
 $flash->error("This is an error");
 ```
 
+#### `getAutoescape()` { #flashabstractflash-getautoescape }
 
 ```php
 public function getAutoescape(): bool;
 ```
 
-
+#### `getAutomaticHtml()` { #flashabstractflash-getautomatichtml }
 
 ```php
 public function getAutomaticHtml(): bool;
 ```
 
-
+#### `getCssClasses()` { #flashabstractflash-getcssclasses }
 
 ```php
 public function getCssClasses(): array;
 ```
 
-
+#### `getCssIconClasses()` { #flashabstractflash-getcssiconclasses }
 
 ```php
 public function getCssIconClasses(): array;
 ```
 
-
+#### `getCustomTemplate()` { #flashabstractflash-getcustomtemplate }
 
 ```php
 public function getCustomTemplate(): string;
 ```
 
-
+#### `getEscaperService()` { #flashabstractflash-getescaperservice }
 
 ```php
 public function getEscaperService(): EscaperInterface;
 ```
+
 Returns the Escaper Service
 
+#### `notice()` { #flashabstractflash-notice }
 
 ```php
-public function notice( string $message ): string | null;
+public function notice( string $message ): string|null;
 ```
+
 Shows a HTML notice/information message
 
 ```php
 $flash->notice("This is an information");
 ```
 
+#### `outputMessage()` { #flashabstractflash-outputmessage }
 
 ```php
-public function outputMessage( string $type, mixed $message ): string | null;
+public function outputMessage(
+    string $type,
+    mixed $message
+): string|null;
 ```
+
 Outputs a message formatting it with HTML
 
 ```php
 $flash->outputMessage("error", $message);
 ```
 
+#### `setAutoescape()` { #flashabstractflash-setautoescape }
 
 ```php
 public function setAutoescape( bool $autoescape ): static;
 ```
+
 Set the autoescape mode in generated HTML
 
+#### `setAutomaticHtml()` { #flashabstractflash-setautomatichtml }
 
 ```php
 public function setAutomaticHtml( bool $automaticHtml ): static;
 ```
+
 Set if the output must be implicitly formatted with HTML
 
+#### `setCssClasses()` { #flashabstractflash-setcssclasses }
 
 ```php
 public function setCssClasses( array $cssClasses ): static;
 ```
+
 Set an array with CSS classes to format the messages
 
+#### `setCssIconClasses()` { #flashabstractflash-setcssiconclasses }
 
 ```php
 public function setCssIconClasses( array $cssIconClasses ): static;
 ```
+
 Set an array with CSS classes to format the icon messages
 
+#### `setCustomTemplate()` { #flashabstractflash-setcustomtemplate }
 
 ```php
 public function setCustomTemplate( string $customTemplate ): static;
 ```
+
 Set a custom template for showing the messages
 
+#### `setEscaperService()` { #flashabstractflash-setescaperservice }
 
 ```php
 public function setEscaperService( EscaperInterface $escaperService ): static;
 ```
+
 Sets the Escaper Service
 
+#### `setImplicitFlush()` { #flashabstractflash-setimplicitflush }
 
 ```php
 public function setImplicitFlush( bool $implicitFlush ): static;
 ```
+
 Set whether the output must be implicitly flushed to the output or
 returned as string
 
+#### `success()` { #flashabstractflash-success }
 
 ```php
-public function success( string $message ): string | null;
+public function success( string $message ): string|null;
 ```
+
 Shows a HTML success message
 
 ```php
 $flash->success("The process was finished successfully");
 ```
 
+#### `warning()` { #flashabstractflash-warning }
 
 ```php
-public function warning( string $message ): string | null;
+public function warning( string $message ): string|null;
 ```
+
 Shows a HTML warning message
 
 ```php
@@ -247,90 +371,90 @@ $flash->warning("Hey, this is important");
 ```
 
 
+## Flash\Direct
 
-
-## Flash\Direct 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Direct.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `AbstractFlash`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Direct.zep){ .src-btn }
 
 Class Direct
 
 @package Phalcon\Flash
 
+<div class="api-tree" markdown>
+
+- `stdClass`
+    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
+        - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+            - **`Phalcon\Flash\Direct`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashdirect-message">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">message(
+    string $type,
+    mixed $message
+)</code>
+<span class="desc">Outputs a message</span>
+</a>
+<a class="api-item" href="#flashdirect-output">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">output( bool $remove = true )</code>
+<span class="desc">Prints the messages accumulated in the flasher</span>
+</a>
+</div>
 
 ### Methods
 
+<div class="api-group">Public · 2</div>
+
+#### `message()` { #flashdirect-message }
+
 ```php
-public function message( string $type, mixed $message ): string | null;
+public function message(
+    string $type,
+    mixed $message
+): string|null;
 ```
+
 Outputs a message
 
+#### `output()` { #flashdirect-output }
 
 ```php
-public function output( bool $remove = bool ): void;
+public function output( bool $remove = true ): void;
 ```
+
 Prints the messages accumulated in the flasher
 
 
+## Flash\Exception
 
-
-## Flash\Exception 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exception.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `\Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exception.zep){ .src-btn }
 
 Exceptions thrown in Phalcon\Flash classes will use this class
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - **`Phalcon\Flash\Exception`**
+        - [`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`](#flashexceptionsescaperserviceunavailable)
+        - [`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`](#flashexceptionsflashmessagenotstringorarray)
+        - [`Phalcon\Flash\Exceptions\SessionServiceUnavailable`](#flashexceptionssessionserviceunavailable)
+
+</div>
 
 
-## Flash\Exceptions\EscaperServiceUnavailable 
+## Flash\Exceptions\EscaperServiceUnavailable
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/EscaperServiceUnavailable.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Flash\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/EscaperServiceUnavailable.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -339,36 +463,41 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Flash\Exception`](#flashexception)
+        - **`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`**
+
+</div>
+
+__Uses__ `Phalcon\Flash\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashexceptionsescaperserviceunavailable-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #flashexceptionsescaperserviceunavailable-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Flash\Exceptions\FlashMessageNotStringOrArray
 
-
-
-## Flash\Exceptions\FlashMessageNotStringOrArray 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/FlashMessageNotStringOrArray.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Flash\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/FlashMessageNotStringOrArray.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -377,36 +506,41 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Flash\Exception`](#flashexception)
+        - **`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`**
+
+</div>
+
+__Uses__ `Phalcon\Flash\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashexceptionsflashmessagenotstringorarray-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #flashexceptionsflashmessagenotstringorarray-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Flash\Exceptions\SessionServiceUnavailable
 
-
-
-## Flash\Exceptions\SessionServiceUnavailable 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/SessionServiceUnavailable.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Flash\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/SessionServiceUnavailable.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -415,94 +549,142 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Flash\Exception`](#flashexception)
+        - **`Phalcon\Flash\Exceptions\SessionServiceUnavailable`**
+
+</div>
+
+__Uses__ `Phalcon\Flash\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashexceptionssessionserviceunavailable-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #flashexceptionssessionserviceunavailable-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Flash\FlashInterface
 
-
-
-## Flash\FlashInterface ![Interface](../assets/images/interface-blue.svg) 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/FlashInterface.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash`
-
--   __Uses__
-    
-
--   __Extends__
-    
-
--   __Implements__
-    
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/FlashInterface.zep){ .src-btn }
 
 Interface FlashInterface
 
 @package Phalcon\Flash
 
+<div class="api-tree" markdown>
+
+- **`Phalcon\Flash\FlashInterface`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashflashinterface-error">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">error( string $message )</code>
+<span class="desc">Shows a HTML error message</span>
+</a>
+<a class="api-item" href="#flashflashinterface-message">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">message(
+    string $type,
+    string $message
+)</code>
+<span class="desc">Outputs a message</span>
+</a>
+<a class="api-item" href="#flashflashinterface-notice">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">notice( string $message )</code>
+<span class="desc">Shows a HTML notice/information message</span>
+</a>
+<a class="api-item" href="#flashflashinterface-success">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">success( string $message )</code>
+<span class="desc">Shows a HTML success message</span>
+</a>
+<a class="api-item" href="#flashflashinterface-warning">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">warning( string $message )</code>
+<span class="desc">Shows a HTML warning message</span>
+</a>
+</div>
 
 ### Methods
 
+<div class="api-group">Public · 5</div>
+
+#### `error()` { #flashflashinterface-error }
+
 ```php
-public function error( string $message ): string | null;
+public function error( string $message ): string|null;
 ```
+
 Shows a HTML error message
 
+#### `message()` { #flashflashinterface-message }
 
 ```php
-public function message( string $type, string $message ): string | null;
+public function message(
+    string $type,
+    string $message
+): string|null;
 ```
+
 Outputs a message
 
+#### `notice()` { #flashflashinterface-notice }
 
 ```php
-public function notice( string $message ): string | null;
+public function notice( string $message ): string|null;
 ```
+
 Shows a HTML notice/information message
 
+#### `success()` { #flashflashinterface-success }
 
 ```php
-public function success( string $message ): string | null;
+public function success( string $message ): string|null;
 ```
+
 Shows a HTML success message
 
+#### `warning()` { #flashflashinterface-warning }
 
 ```php
-public function warning( string $message ): string | null;
+public function warning( string $message ): string|null;
 ```
+
 Shows a HTML warning message
 
 
+## Flash\Session
 
-
-## Flash\Session 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Session.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Flash`
-
--   __Uses__
-    
-    - `Phalcon\Flash\Exceptions\SessionServiceUnavailable`
-    - `Phalcon\Session\ManagerInterface`
-
--   __Extends__
-    
-    `AbstractFlash`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Session.zep){ .src-btn }
 
 This is an implementation of the Phalcon\Flash\FlashInterface that
 temporarily stores the messages in session, then messages can be printed in
@@ -512,61 +694,163 @@ Class Session
 
 @package Phalcon\Flash
 
+<div class="api-tree" markdown>
+
+- `stdClass`
+    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
+        - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+            - **`Phalcon\Flash\Session`**
+
+</div>
+
+__Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Session\ManagerInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#flashsession-clear">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">clear()</code>
+<span class="desc">Clear messages in the session messenger</span>
+</a>
+<a class="api-item" href="#flashsession-getmessages">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getMessages(
+    mixed $type = null,
+    bool $remove = true
+)</code>
+<span class="desc">Returns the messages in the session flasher</span>
+</a>
+<a class="api-item" href="#flashsession-getsessionservice">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">getSessionService()</code>
+<span class="desc">Returns the Session Service</span>
+</a>
+<a class="api-item" href="#flashsession-has">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">has( string $type = null )</code>
+<span class="desc">Checks whether there are messages</span>
+</a>
+<a class="api-item" href="#flashsession-message">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">message(
+    string $type,
+    mixed $message
+)</code>
+<span class="desc">Adds a message to the session flasher</span>
+</a>
+<a class="api-item" href="#flashsession-output">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">output( bool $remove = true )</code>
+<span class="desc">Prints the messages in the session flasher</span>
+</a>
+<a class="api-item" href="#flashsession-getsessionmessages">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig">getSessionMessages(
+    bool $remove,
+    string $type = null
+)</code>
+<span class="desc">Returns the messages stored in session</span>
+</a>
+<a class="api-item" href="#flashsession-setsessionmessages">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig">setSessionMessages( array $messages )</code>
+<span class="desc">Stores the messages in session</span>
+</a>
+</div>
 
 ### Constants
-```php
-const SESSION_KEY = _flashMessages;
-```
+
+<div class="api-list" markdown>
+
+-   `SESSION_KEY = "_flashMessages"` `string`
+
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `clear()` { #flashsession-clear }
 
 ```php
 public function clear(): void;
 ```
+
 Clear messages in the session messenger
 
-@throws Exception
-
+#### `getMessages()` { #flashsession-getmessages }
 
 ```php
-public function getMessages( mixed $type = null, bool $remove = bool ): array;
+public function getMessages(
+    mixed $type = null,
+    bool $remove = true
+): array;
 ```
+
 Returns the messages in the session flasher
 
+#### `getSessionService()` { #flashsession-getsessionservice }
 
 ```php
 public function getSessionService(): ManagerInterface;
 ```
+
 Returns the Session Service
 
+#### `has()` { #flashsession-has }
 
 ```php
 public function has( string $type = null ): bool;
 ```
+
 Checks whether there are messages
 
+#### `message()` { #flashsession-message }
 
 ```php
-public function message( string $type, mixed $message ): string | null;
+public function message(
+    string $type,
+    mixed $message
+): string|null;
 ```
+
 Adds a message to the session flasher
 
+#### `output()` { #flashsession-output }
 
 ```php
-public function output( bool $remove = bool ): void;
+public function output( bool $remove = true ): void;
 ```
+
 Prints the messages in the session flasher
 
+<div class="api-group">Protected · 2</div>
+
+#### `getSessionMessages()` { #flashsession-getsessionmessages }
 
 ```php
-protected function getSessionMessages( bool $remove, string $type = null ): array;
+protected function getSessionMessages(
+    bool $remove,
+    string $type = null
+): array;
 ```
+
 Returns the messages stored in session
 
+#### `setSessionMessages()` { #flashsession-setsessionmessages }
 
 ```php
 protected function setSessionMessages( array $messages ): array;
 ```
+
 Stores the messages in session
-
-

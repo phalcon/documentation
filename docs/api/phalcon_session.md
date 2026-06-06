@@ -8,27 +8,10 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Session\Adapter\AbstractAdapter
 
-## Session\Adapter\AbstractAdapter ![Abstract](../assets/images/abstract-green.svg) 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter`
-
--   __Uses__
-    
-    - `Phalcon\Storage\Adapter\AdapterInterface`
-    - `SessionHandlerInterface`
-
--   __Extends__
-    
-
--   __Implements__
-    
-    - `SessionHandlerInterface`
+<span class="badge badge--abstract">Abstract</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -37,81 +20,159 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- **`Phalcon\Session\Adapter\AbstractAdapter`** — implements `SessionHandlerInterface`
+    - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
+    - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
+
+</div>
+
+__Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `SessionHandlerInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionadapterabstractadapter-close">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">close()</code>
+<span class="desc">Close</span>
+</a>
+<a class="api-item" href="#sessionadapterabstractadapter-destroy">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">destroy( mixed $id )</code>
+<span class="desc">Destroy</span>
+</a>
+<a class="api-item" href="#sessionadapterabstractadapter-gc">
+<code class="vis vis-public">public</code>
+<code class="ret">int|false</code>
+<code class="sig">gc( int $max_lifetime )</code>
+<span class="desc">Garbage Collector</span>
+</a>
+<a class="api-item" href="#sessionadapterabstractadapter-open">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">open(
+    mixed $path,
+    mixed $name
+)</code>
+<span class="desc">Open</span>
+</a>
+<a class="api-item" href="#sessionadapterabstractadapter-read">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">read( mixed $id )</code>
+<span class="desc">Read</span>
+</a>
+<a class="api-item" href="#sessionadapterabstractadapter-write">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">write(
+    mixed $id,
+    mixed $data
+)</code>
+<span class="desc">Write</span>
+</a>
+<a class="api-item" href="#sessionadapterabstractadapter-getarrval">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig">getArrVal(
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null
+)</code>
+<span class="desc">@todo Remove this when we get traits</span>
+</a>
+</div>
 
 ### Properties
-```php
-/**
- * @var AdapterInterface
- */
-protected $adapter;
 
-```
+<div class="api-list" markdown>
+
+-   `protected`{ .vis-protected } `$adapter` `AdapterInterface`
+
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `close()` { #sessionadapterabstractadapter-close }
 
 ```php
 public function close(): bool;
 ```
+
 Close
 
+#### `destroy()` { #sessionadapterabstractadapter-destroy }
 
 ```php
 public function destroy( mixed $id ): bool;
 ```
+
 Destroy
 
+#### `gc()` { #sessionadapterabstractadapter-gc }
 
 ```php
-public function gc( int $max_lifetime ): int | false;
+public function gc( int $max_lifetime ): int|false;
 ```
+
 Garbage Collector
 
+#### `open()` { #sessionadapterabstractadapter-open }
 
 ```php
-public function open( mixed $path, mixed $name ): bool;
+public function open(
+    mixed $path,
+    mixed $name
+): bool;
 ```
+
 Open
 
+#### `read()` { #sessionadapterabstractadapter-read }
 
 ```php
 public function read( mixed $id ): string;
 ```
+
 Read
 
+#### `write()` { #sessionadapterabstractadapter-write }
 
 ```php
-public function write( mixed $id, mixed $data ): bool;
+public function write(
+    mixed $id,
+    mixed $data
+): bool;
 ```
+
 Write
 
+<div class="api-group">Protected · 1</div>
+
+#### `getArrVal()` { #sessionadapterabstractadapter-getarrval }
 
 ```php
-protected function getArrVal( array $collection, mixed $index, mixed $defaultValue = null ): mixed;
+protected function getArrVal(
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null
+): mixed;
 ```
+
 @todo Remove this when we get traits
 
 
+## Session\Adapter\Exceptions\AdapterRuntimeError
 
-
-## Session\Adapter\Exceptions\AdapterRuntimeError 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/AdapterRuntimeError.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Session\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/AdapterRuntimeError.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -120,27 +181,22 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
 
 
-## Session\Adapter\Exceptions\InvalidSavePath 
+## Session\Adapter\Exceptions\InvalidSavePath
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/InvalidSavePath.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Session\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/InvalidSavePath.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -149,36 +205,41 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionadapterexceptionsinvalidsavepath-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionadapterexceptionsinvalidsavepath-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Session\Adapter\Exceptions\SavePathUnavailable
 
-
-
-## Session\Adapter\Exceptions\SavePathUnavailable 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/SavePathUnavailable.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Session\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/SavePathUnavailable.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -187,69 +248,95 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionadapterexceptionssavepathunavailable-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct( string $path )</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionadapterexceptionssavepathunavailable-__construct }
 
 ```php
 public function __construct( string $path );
 ```
 
 
+## Session\Adapter\Libmemcached
 
-
-
-## Session\Adapter\Libmemcached 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Libmemcached.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter`
-
--   __Uses__
-    
-    - `Phalcon\Storage\AdapterFactory`
-
--   __Extends__
-    
-    `AbstractAdapter`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Libmemcached.zep){ .src-btn }
 
 Phalcon\Session\Adapter\Libmemcached
 
+<div class="api-tree" markdown>
+
+- [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
+    - **`Phalcon\Session\Adapter\Libmemcached`**
+
+</div>
+
+__Uses__ `Phalcon\Storage\AdapterFactory`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionadapterlibmemcached-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct(
+    AdapterFactory $factory,
+    array $options = []
+)</code>
+<span class="desc">Libmemcached constructor.</span>
+</a>
+</div>
 
 ### Methods
 
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionadapterlibmemcached-__construct }
+
 ```php
-public function __construct( AdapterFactory $factory, array $options = [] );
+public function __construct(
+    AdapterFactory $factory,
+    array $options = []
+);
 ```
+
 Libmemcached constructor.
 
+        ]
+    ],
+    'defaultSerializer' => 'Php',
+    'lifetime' => 3600,
+    'serializer' => null,
+    'prefix' => 'sess-memc-'
+]
 
 
+## Session\Adapter\Noop
 
-## Session\Adapter\Noop 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Noop.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter`
-
--   __Uses__
-    
-    - `SessionHandlerInterface`
-
--   __Extends__
-    
-
--   __Implements__
-    
-    - `SessionHandlerInterface`
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Noop.zep){ .src-btn }
 
 Phalcon\Session\Adapter\Noop
 
@@ -266,101 +353,172 @@ $session = new Manager();
 $session->setAdapter(new Noop());
 ```
 
+<div class="api-tree" markdown>
+
+- **`Phalcon\Session\Adapter\Noop`** — implements `SessionHandlerInterface`
+    - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
+
+</div>
+
+__Uses__ `SessionHandlerInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionadapternoop-close">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">close()</code>
+<span class="desc">Close</span>
+</a>
+<a class="api-item" href="#sessionadapternoop-destroy">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">destroy( mixed $id )</code>
+<span class="desc">Destroy</span>
+</a>
+<a class="api-item" href="#sessionadapternoop-gc">
+<code class="vis vis-public">public</code>
+<code class="ret">int|false</code>
+<code class="sig">gc( int $max_lifetime )</code>
+<span class="desc">Garbage Collector</span>
+</a>
+<a class="api-item" href="#sessionadapternoop-open">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">open(
+    mixed $path,
+    mixed $name
+)</code>
+<span class="desc">Open</span>
+</a>
+<a class="api-item" href="#sessionadapternoop-read">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">read( mixed $id )</code>
+<span class="desc">Read</span>
+</a>
+<a class="api-item" href="#sessionadapternoop-write">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">write(
+    mixed $id,
+    mixed $data
+)</code>
+<span class="desc">Write</span>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `close()` { #sessionadapternoop-close }
 
 ```php
 public function close(): bool;
 ```
+
 Close
 
+#### `destroy()` { #sessionadapternoop-destroy }
 
 ```php
 public function destroy( mixed $id ): bool;
 ```
+
 Destroy
 
+#### `gc()` { #sessionadapternoop-gc }
 
 ```php
-public function gc( int $max_lifetime ): int | false;
+public function gc( int $max_lifetime ): int|false;
 ```
+
 Garbage Collector
 
+#### `open()` { #sessionadapternoop-open }
 
 ```php
-public function open( mixed $path, mixed $name ): bool;
+public function open(
+    mixed $path,
+    mixed $name
+): bool;
 ```
+
 Open
 
+#### `read()` { #sessionadapternoop-read }
 
 ```php
 public function read( mixed $id ): string;
 ```
+
 Read
 
+#### `write()` { #sessionadapternoop-write }
 
 ```php
-public function write( mixed $id, mixed $data ): bool;
+public function write(
+    mixed $id,
+    mixed $data
+): bool;
 ```
+
 Write
 
 
+## Session\Adapter\Redis
 
-
-## Session\Adapter\Redis 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Redis.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter`
-
--   __Uses__
-    
-    - `Phalcon\Storage\AdapterFactory`
-
--   __Extends__
-    
-    `AbstractAdapter`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Redis.zep){ .src-btn }
 
 Phalcon\Session\Adapter\Redis
 
+<div class="api-tree" markdown>
+
+- [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
+    - **`Phalcon\Session\Adapter\Redis`**
+
+</div>
+
+__Uses__ `Phalcon\Storage\AdapterFactory`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionadapterredis-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct(
+    AdapterFactory $factory,
+    array $options = []
+)</code>
+<span class="desc">Constructor</span>
+</a>
+</div>
 
 ### Methods
 
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionadapterredis-__construct }
+
 ```php
-public function __construct( AdapterFactory $factory, array $options = [] );
+public function __construct(
+    AdapterFactory $factory,
+    array $options = []
+);
 ```
+
 Constructor
 
 
+## Session\Adapter\Stream
 
-
-## Session\Adapter\Stream 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Stream.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Adapter`
-
--   __Uses__
-    
-    - `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`
-    - `Phalcon\Session\Adapter\Exceptions\InvalidSavePath`
-    - `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`
-
--   __Extends__
-    
-    `Noop`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Stream.zep){ .src-btn }
 
 Phalcon\Session\Adapter\Stream
 
@@ -385,151 +543,288 @@ $session->setAdapter($files);
 @property string $prefix
 @property string $path
 
+<div class="api-tree" markdown>
+
+- [`Phalcon\Session\Adapter\Noop`](#sessionadapternoop)
+    - **`Phalcon\Session\Adapter\Stream`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionadapterstream-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct( array $options = [] )</code>
+<span class="desc">Constructor</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-destroy">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">destroy( mixed $id )</code>
+</a>
+<a class="api-item" href="#sessionadapterstream-gc">
+<code class="vis vis-public">public</code>
+<code class="ret">int|false</code>
+<code class="sig">gc( int $max_lifetime )</code>
+<span class="desc">Garbage Collector</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-open">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">open(
+    mixed $path,
+    mixed $name
+)</code>
+<span class="desc">Ignore the savePath and use local defined path</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-read">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">read( mixed $id )</code>
+<span class="desc">Reads data from the adapter</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-write">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">write(
+    mixed $id,
+    mixed $data
+)</code>
+</a>
+<a class="api-item" href="#sessionadapterstream-getarrval">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig">getArrVal(
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null,
+    string $cast = null
+)</code>
+<span class="desc">@todo Remove this when we get traits</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-getglobfiles">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|false</code>
+<code class="sig">getGlobFiles( string $pattern )</code>
+<span class="desc">Gets the glob array or returns false on failure</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-getprefixedname">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig">getPrefixedName( mixed $name )</code>
+<span class="desc">Helper method to get the name prefixed</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-phpfileexists">
+<code class="vis vis-protected">protected</code>
+<code class="sig">phpFileExists( string $filename )</code>
+<span class="desc">@link https://php.net/manual/en/function.file-exists.php</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-phpfilegetcontents">
+<code class="vis vis-protected">protected</code>
+<code class="sig">phpFileGetContents( string $filename )</code>
+<span class="desc">@link https://php.net/manual/en/function.file-get-contents.php</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-phpfileputcontents">
+<code class="vis vis-protected">protected</code>
+<code class="sig">phpFilePutContents(
+    string $filename,
+    mixed $data,
+    int $flags = 0,
+    mixed $context = null
+)</code>
+<span class="desc">@link https://php.net/manual/en/function.file-put-contents.php</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-phpfopen">
+<code class="vis vis-protected">protected</code>
+<code class="sig">phpFopen(
+    string $filename,
+    string $mode
+)</code>
+<span class="desc">@link https://php.net/manual/en/function.fopen.php</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-phpiniget">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig">phpIniGet( string $varname )</code>
+<span class="desc">Gets the value of a configuration option</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-phpiswritable">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig">phpIsWritable( string $filename )</code>
+<span class="desc">Tells whether the filename is writable</span>
+</a>
+</div>
 
 ### Properties
-```php
-/**
- * Session options
- *
- * @var array
- */
-protected $options;
 
-/**
- * Session prefix
- *
- * @var string
- */
-protected $prefix = "";
+<div class="api-list" markdown>
 
-/**
- * @var string
- */
-private $path = ;
+-   `protected`{ .vis-protected } `$options = []` `array`
 
-```
+    Session options
+
+-   `protected`{ .vis-protected } `$prefix = ""` `string`
+
+    Session prefix
+
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `__construct()` { #sessionadapterstream-__construct }
 
 ```php
 public function __construct( array $options = [] );
 ```
+
 Constructor
 
+#### `destroy()` { #sessionadapterstream-destroy }
 
 ```php
 public function destroy( mixed $id ): bool;
 ```
 
-
+#### `gc()` { #sessionadapterstream-gc }
 
 ```php
-public function gc( int $max_lifetime ): int | false;
+public function gc( int $max_lifetime ): int|false;
 ```
+
 Garbage Collector
 
+#### `open()` { #sessionadapterstream-open }
 
 ```php
-public function open( mixed $path, mixed $name ): bool;
+public function open(
+    mixed $path,
+    mixed $name
+): bool;
 ```
-   Ignore the savePath and use local defined path
-   
-   
 
+Ignore the savePath and use local defined path
+
+#### `read()` { #sessionadapterstream-read }
 
 ```php
 public function read( mixed $id ): string;
 ```
+
 Reads data from the adapter
 
+#### `write()` { #sessionadapterstream-write }
 
 ```php
-public function write( mixed $id, mixed $data ): bool;
+public function write(
+    mixed $id,
+    mixed $data
+): bool;
 ```
 
+<div class="api-group">Protected · 9</div>
 
+#### `getArrVal()` { #sessionadapterstream-getarrval }
 
 ```php
-protected function getArrVal( array $collection, mixed $index, mixed $defaultValue = null, string $cast = null ): mixed;
+protected function getArrVal(
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null,
+    string $cast = null
+): mixed;
 ```
+
 @todo Remove this when we get traits
 
+#### `getGlobFiles()` { #sessionadapterstream-getglobfiles }
 
 ```php
-protected function getGlobFiles( string $pattern ): array | false;
+protected function getGlobFiles( string $pattern ): array|false;
 ```
+
 Gets the glob array or returns false on failure
 
+#### `getPrefixedName()` { #sessionadapterstream-getprefixedname }
 
 ```php
 protected function getPrefixedName( mixed $name ): string;
 ```
+
 Helper method to get the name prefixed
 
+#### `phpFileExists()` { #sessionadapterstream-phpfileexists }
 
 ```php
 protected function phpFileExists( string $filename );
 ```
 
+@link https://php.net/manual/en/function.file-exists.php
 
+#### `phpFileGetContents()` { #sessionadapterstream-phpfilegetcontents }
 
 ```php
 protected function phpFileGetContents( string $filename );
 ```
 
+@link https://php.net/manual/en/function.file-get-contents.php
 
-
-```php
-protected function phpFilePutContents( string $filename, mixed $data, int $flags = int, mixed $context = null );
-```
-
-
+#### `phpFilePutContents()` { #sessionadapterstream-phpfileputcontents }
 
 ```php
-protected function phpFopen( string $filename, string $mode );
+protected function phpFilePutContents(
+    string $filename,
+    mixed $data,
+    int $flags = 0,
+    mixed $context = null
+);
 ```
 
+@link https://php.net/manual/en/function.file-put-contents.php
 
+#### `phpFopen()` { #sessionadapterstream-phpfopen }
+
+```php
+protected function phpFopen(
+    string $filename,
+    string $mode
+);
+```
+
+@link https://php.net/manual/en/function.fopen.php
+
+#### `phpIniGet()` { #sessionadapterstream-phpiniget }
 
 ```php
 protected function phpIniGet( string $varname ): string;
 ```
+
 Gets the value of a configuration option
 
+@link https://php.net/manual/en/function.ini-get.php
+@link https://php.net/manual/en/ini.list.php
+
+#### `phpIsWritable()` { #sessionadapterstream-phpiswritable }
 
 ```php
 protected function phpIsWritable( string $filename ): bool;
 ```
+
 Tells whether the filename is writable
 
+@link https://php.net/manual/en/function.is-writable.php
 
 
+## Session\Bag
 
-## Session\Bag 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Bag.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session`
-
--   __Uses__
-    
-    - `Phalcon\Di\Di`
-    - `Phalcon\Di\DiInterface`
-    - `Phalcon\Di\InjectionAwareInterface`
-    - `Phalcon\Session\ManagerInterface`
-    - `Phalcon\Support\Collection`
-
--   __Extends__
-    
-    `Collection`
-
--   __Implements__
-    
-    - `BagInterface`
-    - `InjectionAwareInterface`
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Bag.zep){ .src-btn }
 
 Phalcon\Session\Bag
 
@@ -548,205 +843,315 @@ $user->age  = 22;
 @property string           $name
 @property ManagerInterface $session;
 
+<div class="api-tree" markdown>
 
-### Properties
-```php
-/**
- * @var DiInterface|null
- */
-private $container;
+- [`Phalcon\Support\Collection`](phalcon_support.md#supportcollection)
+    - **`Phalcon\Session\Bag`** — implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
 
-/**
- * Session Bag name
- *
- * @var string
- */
-private $name;
+</div>
 
-/**
- * @var ManagerInterface
- */
-private $session;
+__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Collection`
+{ .api-uses }
 
-```
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionbag-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct(
+    ManagerInterface $session,
+    string $name
+)</code>
+</a>
+<a class="api-item" href="#sessionbag-clear">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">clear()</code>
+<span class="desc">Destroys the session bag</span>
+</a>
+<a class="api-item" href="#sessionbag-getdi">
+<code class="vis vis-public">public</code>
+<code class="ret">DiInterface</code>
+<code class="sig">getDI()</code>
+<span class="desc">Returns the DependencyInjector container</span>
+</a>
+<a class="api-item" href="#sessionbag-init">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">init( array $data = [] )</code>
+<span class="desc">Initialize internal array</span>
+</a>
+<a class="api-item" href="#sessionbag-remove">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">remove( string $element )</code>
+<span class="desc">Removes a property from the internal bag</span>
+</a>
+<a class="api-item" href="#sessionbag-set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">set(
+    string $element,
+    mixed $value
+)</code>
+<span class="desc">Sets a value in the session bag</span>
+</a>
+<a class="api-item" href="#sessionbag-setdi">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">setDI( DiInterface $container )</code>
+<span class="desc">Sets the DependencyInjector container</span>
+</a>
+</div>
 
 ### Methods
 
+<div class="api-group">Public · 7</div>
+
+#### `__construct()` { #sessionbag-__construct }
+
 ```php
-public function __construct( ManagerInterface $session, string $name );
+public function __construct(
+    ManagerInterface $session,
+    string $name
+);
 ```
 
-
+#### `clear()` { #sessionbag-clear }
 
 ```php
 public function clear(): void;
 ```
+
 Destroys the session bag
 
+#### `getDI()` { #sessionbag-getdi }
 
 ```php
 public function getDI(): DiInterface;
 ```
+
 Returns the DependencyInjector container
 
+#### `init()` { #sessionbag-init }
 
 ```php
 public function init( array $data = [] ): void;
 ```
+
 Initialize internal array
 
+#### `remove()` { #sessionbag-remove }
 
 ```php
 public function remove( string $element ): void;
 ```
+
 Removes a property from the internal bag
 
+#### `set()` { #sessionbag-set }
 
 ```php
-public function set( string $element, mixed $value ): void;
+public function set(
+    string $element,
+    mixed $value
+): void;
 ```
+
 Sets a value in the session bag
 
+#### `setDI()` { #sessionbag-setdi }
 
 ```php
 public function setDI( DiInterface $container ): void;
 ```
+
 Sets the DependencyInjector container
 
 
+## Session\BagInterface
 
-
-## Session\BagInterface ![Interface](../assets/images/interface-blue.svg) 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session`
-
--   __Uses__
-    
-
--   __Extends__
-    
-
--   __Implements__
-    
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/BagInterface.zep){ .src-btn }
 
 Phalcon\Session\BagInterface
 
 Interface for Phalcon\Session\Bag
 
+<div class="api-tree" markdown>
+
+- **`Phalcon\Session\BagInterface`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionbaginterface-__get">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig">__get( string $element )</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-__isset">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">__isset( string $element )</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-__set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">__set(
+    string $element,
+    mixed $value
+)</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-__unset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">__unset( string $element )</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-clear">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">clear()</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-get">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig">get(
+    string $element,
+    mixed $defaultValue = null,
+    string $cast = null
+)</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-has">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">has( string $element )</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-init">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">init( array $data = [] )</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-remove">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">remove( string $element )</code>
+</a>
+<a class="api-item" href="#sessionbaginterface-set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">set(
+    string $element,
+    mixed $value
+)</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 10</div>
+
+#### `__get()` { #sessionbaginterface-__get }
 
 ```php
 public function __get( string $element ): mixed;
 ```
 
-
+#### `__isset()` { #sessionbaginterface-__isset }
 
 ```php
 public function __isset( string $element ): bool;
 ```
 
-
+#### `__set()` { #sessionbaginterface-__set }
 
 ```php
-public function __set( string $element, mixed $value ): void;
+public function __set(
+    string $element,
+    mixed $value
+): void;
 ```
 
-
+#### `__unset()` { #sessionbaginterface-__unset }
 
 ```php
 public function __unset( string $element ): void;
 ```
 
-
+#### `clear()` { #sessionbaginterface-clear }
 
 ```php
 public function clear(): void;
 ```
 
-
+#### `get()` { #sessionbaginterface-get }
 
 ```php
-public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
+public function get(
+    string $element,
+    mixed $defaultValue = null,
+    string $cast = null
+): mixed;
 ```
 
-
+#### `has()` { #sessionbaginterface-has }
 
 ```php
 public function has( string $element ): bool;
 ```
 
-
+#### `init()` { #sessionbaginterface-init }
 
 ```php
 public function init( array $data = [] ): void;
 ```
 
-
+#### `remove()` { #sessionbaginterface-remove }
 
 ```php
 public function remove( string $element ): void;
 ```
 
-
+#### `set()` { #sessionbaginterface-set }
 
 ```php
-public function set( string $element, mixed $value ): void;
+public function set(
+    string $element,
+    mixed $value
+): void;
 ```
 
 
+## Session\Exception
 
-
-
-## Session\Exception 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exception.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `\Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exception.zep){ .src-btn }
 
 Phalcon\Session\Exception
 
 Exceptions thrown in Phalcon\Session will use this class
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - **`Phalcon\Session\Exception`**
+        - [`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`](#sessionadapterexceptionsadapterruntimeerror)
+        - [`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`](#sessionadapterexceptionsinvalidsavepath)
+        - [`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`](#sessionadapterexceptionssavepathunavailable)
+        - [`Phalcon\Session\Exceptions\InvalidSessionAdapter`](#sessionexceptionsinvalidsessionadapter)
+        - [`Phalcon\Session\Exceptions\InvalidSessionName`](#sessionexceptionsinvalidsessionname)
+        - [`Phalcon\Session\Exceptions\SessionAlreadyStarted`](#sessionexceptionssessionalreadystarted)
+        - [`Phalcon\Session\Exceptions\SessionModificationDenied`](#sessionexceptionssessionmodificationdenied)
+
+</div>
 
 
-## Session\Exceptions\InvalidSessionAdapter 
+## Session\Exceptions\InvalidSessionAdapter
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionAdapter.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Session\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionAdapter.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -755,36 +1160,41 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\InvalidSessionAdapter`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionexceptionsinvalidsessionadapter-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionexceptionsinvalidsessionadapter-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Session\Exceptions\InvalidSessionName
 
-
-
-## Session\Exceptions\InvalidSessionName 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionName.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Session\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionName.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -793,36 +1203,41 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\InvalidSessionName`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionexceptionsinvalidsessionname-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionexceptionsinvalidsessionname-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Session\Exceptions\SessionAlreadyStarted
 
-
-
-## Session\Exceptions\SessionAlreadyStarted 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionAlreadyStarted.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Session\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionAlreadyStarted.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -831,36 +1246,41 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\SessionAlreadyStarted`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionexceptionssessionalreadystarted-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionexceptionssessionalreadystarted-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Session\Exceptions\SessionModificationDenied
 
-
-
-## Session\Exceptions\SessionModificationDenied 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionModificationDenied.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Session\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionModificationDenied.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -869,380 +1289,766 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\SessionModificationDenied`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionexceptionssessionmodificationdenied-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionexceptionssessionmodificationdenied-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Session\Manager
 
-
-
-## Session\Manager 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Manager.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session`
-
--   __Uses__
-    
-    - `InvalidArgumentException`
-    - `Phalcon\Di\AbstractInjectionAware`
-    - `Phalcon\Di\DiInterface`
-    - `Phalcon\Session\Exceptions\InvalidSessionAdapter`
-    - `Phalcon\Session\Exceptions\InvalidSessionName`
-    - `Phalcon\Session\Exceptions\SessionAlreadyStarted`
-    - `Phalcon\Session\Exceptions\SessionModificationDenied`
-    - `SessionHandlerInterface`
-
--   __Extends__
-    
-    `AbstractInjectionAware`
-
--   __Implements__
-    
-    - `ManagerInterface`
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Manager.zep){ .src-btn }
 
 @property SessionHandlerInterface|null $adapter
 @property string                       $name
 @property array                        $options
 @property string                       $uniqueId
 
+<div class="api-tree" markdown>
 
-### Properties
-```php
-/**
- * @var SessionHandlerInterface|null
- */
-private $adapter;
+- `stdClass`
+    - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
+        - **`Phalcon\Session\Manager`** — implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
 
-/**
- * @var string
- */
-private $name = ;
+</div>
 
-/**
- * @var array
- */
-private $options;
+__Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `SessionHandlerInterface`
+{ .api-uses }
 
-/**
- * @var string
- */
-private $uniqueId = ;
+### Method Summary
 
-```
+<div class="api-list">
+<a class="api-item" href="#sessionmanager-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct( array $options = [] )</code>
+<span class="desc">Manager constructor.</span>
+</a>
+<a class="api-item" href="#sessionmanager-__get">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig">__get( string $key )</code>
+<span class="desc">Alias: Gets a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-__isset">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">__isset( string $key )</code>
+<span class="desc">Alias: Check whether a session variable is set in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-__set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">__set(
+    string $key,
+    mixed $value
+)</code>
+<span class="desc">Alias: Sets a session variable in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-__unset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">__unset( string $key )</code>
+<span class="desc">Alias: Removes a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-destroy">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">destroy()</code>
+<span class="desc">Destroy/end a session</span>
+</a>
+<a class="api-item" href="#sessionmanager-exists">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">exists()</code>
+<span class="desc">Check whether the session has been started</span>
+</a>
+<a class="api-item" href="#sessionmanager-get">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig">get(
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
+)</code>
+<span class="desc">Gets a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-getadapter">
+<code class="vis vis-public">public</code>
+<code class="ret">SessionHandlerInterface|null</code>
+<code class="sig">getAdapter()</code>
+<span class="desc">Returns the stored session adapter</span>
+</a>
+<a class="api-item" href="#sessionmanager-getid">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">getId()</code>
+<span class="desc">Returns the session id</span>
+</a>
+<a class="api-item" href="#sessionmanager-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">getName()</code>
+<span class="desc">Returns the name of the session</span>
+</a>
+<a class="api-item" href="#sessionmanager-getoptions">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getOptions()</code>
+<span class="desc">Get internal options</span>
+</a>
+<a class="api-item" href="#sessionmanager-has">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">has( string $key )</code>
+<span class="desc">Check whether a session variable is set in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-regenerateid">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">regenerateId( bool $deleteOldSession = true )</code>
+<span class="desc">Regenerates the session id using the adapter.</span>
+</a>
+<a class="api-item" href="#sessionmanager-remove">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">remove( string $key )</code>
+<span class="desc">Removes a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">set(
+    string $key,
+    mixed $value
+)</code>
+<span class="desc">Sets a session variable in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanager-setadapter">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">setAdapter( SessionHandlerInterface $adapter )</code>
+<span class="desc">Set the adapter for the session</span>
+</a>
+<a class="api-item" href="#sessionmanager-setid">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">setId( string $sessionId )</code>
+<span class="desc">Set session Id</span>
+</a>
+<a class="api-item" href="#sessionmanager-setname">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">setName( string $name )</code>
+<span class="desc">Set the session name. Throw exception if the session has started</span>
+</a>
+<a class="api-item" href="#sessionmanager-setoptions">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">setOptions( array $options )</code>
+<span class="desc">Sets session&#039;s options</span>
+</a>
+<a class="api-item" href="#sessionmanager-start">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">start()</code>
+<span class="desc">Starts the session (if headers are already sent the session will not be</span>
+</a>
+<a class="api-item" href="#sessionmanager-status">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig">status()</code>
+<span class="desc">Returns the status of the current session.</span>
+</a>
+<a class="api-item" href="#sessionmanager-phpheaderssent">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig">phpHeadersSent()</code>
+<span class="desc">Checks if or where headers have been sent</span>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 22</div>
+
+#### `__construct()` { #sessionmanager-__construct }
 
 ```php
 public function __construct( array $options = [] );
 ```
+
 Manager constructor.
 
+#### `__get()` { #sessionmanager-__get }
 
 ```php
 public function __get( string $key ): mixed;
 ```
+
 Alias: Gets a session variable from an application context
 
+#### `__isset()` { #sessionmanager-__isset }
 
 ```php
 public function __isset( string $key ): bool;
 ```
+
 Alias: Check whether a session variable is set in an application context
 
+#### `__set()` { #sessionmanager-__set }
 
 ```php
-public function __set( string $key, mixed $value ): void;
+public function __set(
+    string $key,
+    mixed $value
+): void;
 ```
+
 Alias: Sets a session variable in an application context
 
+#### `__unset()` { #sessionmanager-__unset }
 
 ```php
 public function __unset( string $key ): void;
 ```
+
 Alias: Removes a session variable from an application context
 
+#### `destroy()` { #sessionmanager-destroy }
 
 ```php
 public function destroy(): void;
 ```
+
 Destroy/end a session
 
+#### `exists()` { #sessionmanager-exists }
 
 ```php
 public function exists(): bool;
 ```
+
 Check whether the session has been started
 
+#### `get()` { #sessionmanager-get }
 
 ```php
-public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
+public function get(
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
+): mixed;
 ```
+
 Gets a session variable from an application context
 
+#### `getAdapter()` { #sessionmanager-getadapter }
 
 ```php
-public function getAdapter(): SessionHandlerInterface | null;
+public function getAdapter(): SessionHandlerInterface|null;
 ```
+
 Returns the stored session adapter
 
+#### `getId()` { #sessionmanager-getid }
 
 ```php
 public function getId(): string;
 ```
+
 Returns the session id
 
+#### `getName()` { #sessionmanager-getname }
 
 ```php
 public function getName(): string;
 ```
+
 Returns the name of the session
 
+#### `getOptions()` { #sessionmanager-getoptions }
 
 ```php
 public function getOptions(): array;
 ```
+
 Get internal options
 
+#### `has()` { #sessionmanager-has }
 
 ```php
 public function has( string $key ): bool;
 ```
+
 Check whether a session variable is set in an application context
 
+#### `regenerateId()` { #sessionmanager-regenerateid }
 
 ```php
-public function regenerateId( bool $deleteOldSession = bool ): ManagerInterface;
+public function regenerateId( bool $deleteOldSession = true ): ManagerInterface;
 ```
+
 Regenerates the session id using the adapter.
 
+#### `remove()` { #sessionmanager-remove }
 
 ```php
 public function remove( string $key ): void;
 ```
+
 Removes a session variable from an application context
 
+#### `set()` { #sessionmanager-set }
 
 ```php
-public function set( string $key, mixed $value ): void;
+public function set(
+    string $key,
+    mixed $value
+): void;
 ```
+
 Sets a session variable in an application context
 
+#### `setAdapter()` { #sessionmanager-setadapter }
 
 ```php
 public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
+
 Set the adapter for the session
 
+#### `setId()` { #sessionmanager-setid }
 
 ```php
 public function setId( string $sessionId ): ManagerInterface;
 ```
+
 Set session Id
 
+#### `setName()` { #sessionmanager-setname }
 
 ```php
 public function setName( string $name ): ManagerInterface;
 ```
+
 Set the session name. Throw exception if the session has started
 and do not allow poop names
 
+#### `setOptions()` { #sessionmanager-setoptions }
 
 ```php
 public function setOptions( array $options ): void;
 ```
+
 Sets session's options
 
+#### `start()` { #sessionmanager-start }
 
 ```php
 public function start(): bool;
 ```
+
 Starts the session (if headers are already sent the session will not be
 started)
 
+#### `status()` { #sessionmanager-status }
 
 ```php
 public function status(): int;
 ```
+
 Returns the status of the current session.
 
+<div class="api-group">Protected · 1</div>
+
+#### `phpHeadersSent()` { #sessionmanager-phpheaderssent }
 
 ```php
 protected function phpHeadersSent(): bool;
 ```
+
 Checks if or where headers have been sent
 
+@link https://php.net/manual/en/function.headers-sent.php
 
 
+## Session\ManagerInterface
 
-## Session\ManagerInterface ![Interface](../assets/images/interface-blue.svg) 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Session`
-
--   __Uses__
-    
-    - `InvalidArgumentException`
-    - `SessionHandlerInterface`
-
--   __Extends__
-    
-
--   __Implements__
-    
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/ManagerInterface.zep){ .src-btn }
 
 Phalcon\Session
 
 Interface for the Phalcon\Session\Manager
 
+<div class="api-tree" markdown>
+
+- **`Phalcon\Session\ManagerInterface`**
+
+</div>
+
+__Uses__ `InvalidArgumentException` · `SessionHandlerInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionmanagerinterface-__get">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig">__get( string $key )</code>
+<span class="desc">Alias: Gets a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-__isset">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">__isset( string $key )</code>
+<span class="desc">Alias: Check whether a session variable is set in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-__set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">__set(
+    string $key,
+    mixed $value
+)</code>
+<span class="desc">Alias: Sets a session variable in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-__unset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">__unset( string $key )</code>
+<span class="desc">Alias: Removes a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-destroy">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">destroy()</code>
+<span class="desc">Destroy/end a session</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-exists">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">exists()</code>
+<span class="desc">Check whether the session has been started</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-get">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig">get(
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
+)</code>
+<span class="desc">Gets a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-getadapter">
+<code class="vis vis-public">public</code>
+<code class="ret">SessionHandlerInterface|null</code>
+<code class="sig">getAdapter()</code>
+<span class="desc">Returns the stored session adapter</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-getid">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">getId()</code>
+<span class="desc">Returns the session id</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig">getName()</code>
+<span class="desc">Returns the name of the session</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-getoptions">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getOptions()</code>
+<span class="desc">Get internal options</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-has">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">has( string $key )</code>
+<span class="desc">Check whether a session variable is set in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-regenerateid">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">regenerateId( bool $deleteOldSession = true )</code>
+<span class="desc">Regenerates the session id using the adapter.</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-remove">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">remove( string $key )</code>
+<span class="desc">Removes a session variable from an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">set(
+    string $key,
+    mixed $value
+)</code>
+<span class="desc">Sets a session variable in an application context</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-setadapter">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">setAdapter( SessionHandlerInterface $adapter )</code>
+<span class="desc">Set the adapter for the session</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-setid">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">setId( string $sessionId )</code>
+<span class="desc">Set session Id</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-setname">
+<code class="vis vis-public">public</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig">setName( string $name )</code>
+<span class="desc">Set the session name. Throw exception if the session has started</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-setoptions">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">setOptions( array $options )</code>
+<span class="desc">Sets session&#039;s options</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-start">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">start()</code>
+<span class="desc">Starts the session (if headers are already sent the session will not be</span>
+</a>
+<a class="api-item" href="#sessionmanagerinterface-status">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig">status()</code>
+<span class="desc">Returns the status of the current session.</span>
+</a>
+</div>
 
 ### Constants
-```php
-const SESSION_ACTIVE = 2;
-const SESSION_DISABLED = 0;
-const SESSION_NONE = 1;
-```
+
+<div class="api-list" markdown>
+
+-   `SESSION_ACTIVE = 2` `int`
+
+-   `SESSION_DISABLED = 0` `int`
+
+-   `SESSION_NONE = 1` `int`
+
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 21</div>
+
+#### `__get()` { #sessionmanagerinterface-__get }
 
 ```php
 public function __get( string $key ): mixed;
 ```
+
 Alias: Gets a session variable from an application context
 
+#### `__isset()` { #sessionmanagerinterface-__isset }
 
 ```php
 public function __isset( string $key ): bool;
 ```
+
 Alias: Check whether a session variable is set in an application context
 
+#### `__set()` { #sessionmanagerinterface-__set }
 
 ```php
-public function __set( string $key, mixed $value ): void;
+public function __set(
+    string $key,
+    mixed $value
+): void;
 ```
+
 Alias: Sets a session variable in an application context
 
+#### `__unset()` { #sessionmanagerinterface-__unset }
 
 ```php
 public function __unset( string $key ): void;
 ```
+
 Alias: Removes a session variable from an application context
 
+#### `destroy()` { #sessionmanagerinterface-destroy }
 
 ```php
 public function destroy(): void;
 ```
+
 Destroy/end a session
 
+#### `exists()` { #sessionmanagerinterface-exists }
 
 ```php
 public function exists(): bool;
 ```
+
 Check whether the session has been started
 
+#### `get()` { #sessionmanagerinterface-get }
 
 ```php
-public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
+public function get(
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
+): mixed;
 ```
+
 Gets a session variable from an application context
 
+#### `getAdapter()` { #sessionmanagerinterface-getadapter }
 
 ```php
-public function getAdapter(): SessionHandlerInterface | null;
+public function getAdapter(): SessionHandlerInterface|null;
 ```
+
 Returns the stored session adapter
 
+#### `getId()` { #sessionmanagerinterface-getid }
 
 ```php
 public function getId(): string;
 ```
+
 Returns the session id
 
+#### `getName()` { #sessionmanagerinterface-getname }
 
 ```php
 public function getName(): string;
 ```
+
 Returns the name of the session
 
+#### `getOptions()` { #sessionmanagerinterface-getoptions }
 
 ```php
 public function getOptions(): array;
 ```
+
 Get internal options
 
+#### `has()` { #sessionmanagerinterface-has }
 
 ```php
 public function has( string $key ): bool;
 ```
+
 Check whether a session variable is set in an application context
 
+#### `regenerateId()` { #sessionmanagerinterface-regenerateid }
 
 ```php
-public function regenerateId( bool $deleteOldSession = bool ): ManagerInterface;
+public function regenerateId( bool $deleteOldSession = true ): ManagerInterface;
 ```
+
 Regenerates the session id using the adapter.
 
+#### `remove()` { #sessionmanagerinterface-remove }
 
 ```php
 public function remove( string $key ): void;
 ```
+
 Removes a session variable from an application context
 
+#### `set()` { #sessionmanagerinterface-set }
 
 ```php
-public function set( string $key, mixed $value ): void;
+public function set(
+    string $key,
+    mixed $value
+): void;
 ```
+
 Sets a session variable in an application context
 
+#### `setAdapter()` { #sessionmanagerinterface-setadapter }
 
 ```php
 public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
+
 Set the adapter for the session
 
+#### `setId()` { #sessionmanagerinterface-setid }
 
 ```php
 public function setId( string $sessionId ): ManagerInterface;
 ```
+
 Set session Id
 
+#### `setName()` { #sessionmanagerinterface-setname }
 
 ```php
 public function setName( string $name ): ManagerInterface;
 ```
+
 Set the session name. Throw exception if the session has started
 and do not allow poop names
 
-@throws InvalidArgumentException
-
+#### `setOptions()` { #sessionmanagerinterface-setoptions }
 
 ```php
 public function setOptions( array $options ): void;
 ```
+
 Sets session's options
 
+#### `start()` { #sessionmanagerinterface-start }
 
 ```php
 public function start(): bool;
 ```
+
 Starts the session (if headers are already sent the session will not be
 started)
 
+#### `status()` { #sessionmanagerinterface-status }
 
 ```php
 public function status(): int;
 ```
+
 Returns the status of the current session.
-
-

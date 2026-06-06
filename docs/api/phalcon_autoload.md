@@ -8,49 +8,27 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Autoload\Exception
 
-## Autoload\Exception 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exception.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Autoload`
-
--   __Uses__
-    
-
--   __Extends__
-    
-    `\Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exception.zep){ .src-btn }
 
 Exceptions thrown in Phalcon\Autoload will use this class
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - **`Phalcon\Autoload\Exception`**
+        - [`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`](#autoloadexceptionsloaderdirectoriesnotarray)
+        - [`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`](#autoloadexceptionsloadermethodnotcallable)
+
+</div>
 
 
-## Autoload\Exceptions\LoaderDirectoriesNotArray 
+## Autoload\Exceptions\LoaderDirectoriesNotArray
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderDirectoriesNotArray.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Autoload\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Autoload\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderDirectoriesNotArray.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -59,36 +37,41 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Autoload\Exception`](#autoloadexception)
+        - **`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`**
+
+</div>
+
+__Uses__ `Phalcon\Autoload\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#autoloadexceptionsloaderdirectoriesnotarray-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #autoloadexceptionsloaderdirectoriesnotarray-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Autoload\Exceptions\LoaderMethodNotCallable
 
-
-
-## Autoload\Exceptions\LoaderMethodNotCallable 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderMethodNotCallable.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Autoload\Exceptions`
-
--   __Uses__
-    
-    - `Phalcon\Autoload\Exception`
-
--   __Extends__
-    
-    `Exception`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderMethodNotCallable.zep){ .src-btn }
 
 This file is part of the Phalcon Framework.
 
@@ -97,235 +80,458 @@ This file is part of the Phalcon Framework.
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
 
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Autoload\Exception`](#autoloadexception)
+        - **`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`**
+
+</div>
+
+__Uses__ `Phalcon\Autoload\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#autoloadexceptionsloadermethodnotcallable-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct()</code>
+</a>
+</div>
 
 ### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #autoloadexceptionsloadermethodnotcallable-__construct }
 
 ```php
 public function __construct();
 ```
 
 
+## Autoload\Loader
 
-
-
-## Autoload\Loader 
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Loader.zep)
-
-
--   __Namespace__
-
-    - `Phalcon\Autoload`
-
--   __Uses__
-    
-    - `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`
-    - `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`
-    - `Phalcon\Events\AbstractEventsAware`
-
--   __Extends__
-    
-    `AbstractEventsAware`
-
--   __Implements__
-    
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Loader.zep){ .src-btn }
 
 The Phalcon Autoloader provides an easy way to automatically load classes
 (namespaced or not) as well as files. It also features extension loading,
 allowing the user to autoload files with different extensions than .php.
 
+<div class="api-tree" markdown>
+
+- [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
+    - **`Phalcon\Autoload\Loader`**
+
+</div>
+
+__Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Events\AbstractEventsAware`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#autoloadloader-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig">__construct( bool $isDebug = false )</code>
+<span class="desc">Loader constructor.</span>
+</a>
+<a class="api-item" href="#autoloadloader-addclass">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">addClass(
+    string $name,
+    string $file
+)</code>
+<span class="desc">Adds a class to the internal collection for the mapping</span>
+</a>
+<a class="api-item" href="#autoloadloader-adddirectory">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">addDirectory( string $directory )</code>
+<span class="desc">Adds a directory for the loaded files</span>
+</a>
+<a class="api-item" href="#autoloadloader-addextension">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">addExtension( string $extension )</code>
+<span class="desc">Adds an extension for the loaded files</span>
+</a>
+<a class="api-item" href="#autoloadloader-addfile">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">addFile( string $file )</code>
+<span class="desc">Adds a file to be added to the loader</span>
+</a>
+<a class="api-item" href="#autoloadloader-addnamespace">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">addNamespace(
+    string $name,
+    mixed $directories,
+    bool $prepend = false
+)</code>
+</a>
+<a class="api-item" href="#autoloadloader-autoload">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">autoload( string $className )</code>
+<span class="desc">Autoloads the registered classes</span>
+</a>
+<a class="api-item" href="#autoloadloader-getcheckedpath">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">getCheckedPath()</code>
+<span class="desc">Get the path the loader is checking for a path</span>
+</a>
+<a class="api-item" href="#autoloadloader-getclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getClasses()</code>
+<span class="desc">Returns the class-map currently registered in the autoloader</span>
+</a>
+<a class="api-item" href="#autoloadloader-getdebug">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getDebug()</code>
+<span class="desc">Returns debug information collected</span>
+</a>
+<a class="api-item" href="#autoloadloader-getdirectories">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getDirectories()</code>
+<span class="desc">Returns the directories currently registered in the autoloader</span>
+</a>
+<a class="api-item" href="#autoloadloader-getextensions">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getExtensions()</code>
+<span class="desc">Returns the file extensions registered in the loader</span>
+</a>
+<a class="api-item" href="#autoloadloader-getfiles">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getFiles()</code>
+<span class="desc">Returns the files currently registered in the autoloader</span>
+</a>
+<a class="api-item" href="#autoloadloader-getfoundpath">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig">getFoundPath()</code>
+<span class="desc">Get the path when a class was found</span>
+</a>
+<a class="api-item" href="#autoloadloader-getnamespaces">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig">getNamespaces()</code>
+<span class="desc">Returns the namespaces currently registered in the autoloader</span>
+</a>
+<a class="api-item" href="#autoloadloader-isregistered">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig">isRegistered()</code>
+<span class="desc">returns isRegistered</span>
+</a>
+<a class="api-item" href="#autoloadloader-loadfiles">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig">loadFiles()</code>
+<span class="desc">Checks if a file exists and then adds the file by doing virtual require</span>
+</a>
+<a class="api-item" href="#autoloadloader-register">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">register( bool $prepend = false )</code>
+<span class="desc">Register the autoload method</span>
+</a>
+<a class="api-item" href="#autoloadloader-setclasses">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setClasses(
+    array $classes,
+    bool $merge = false
+)</code>
+<span class="desc">Register classes and their locations</span>
+</a>
+<a class="api-item" href="#autoloadloader-setdirectories">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setDirectories(
+    array $directories,
+    bool $merge = false
+)</code>
+<span class="desc">Register directories in which &quot;not found&quot; classes could be found</span>
+</a>
+<a class="api-item" href="#autoloadloader-setextensions">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setExtensions(
+    array $extensions,
+    bool $merge = false
+)</code>
+<span class="desc">Sets an array of file extensions that the loader must try in each attempt</span>
+</a>
+<a class="api-item" href="#autoloadloader-setfilecheckingcallback">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setFileCheckingCallback( mixed $method = null )</code>
+<span class="desc">Sets the file check callback.</span>
+</a>
+<a class="api-item" href="#autoloadloader-setfiles">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setFiles(
+    array $files,
+    bool $merge = false
+)</code>
+<span class="desc">Registers files that are &quot;non-classes&quot; hence need a &quot;require&quot;. This is</span>
+</a>
+<a class="api-item" href="#autoloadloader-setnamespaces">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">setNamespaces(
+    array $namespaces,
+    bool $merge = false
+)</code>
+<span class="desc">Register namespaces and their related directories</span>
+</a>
+<a class="api-item" href="#autoloadloader-unregister">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig">unregister()</code>
+<span class="desc">Unregister the autoload method</span>
+</a>
+<a class="api-item" href="#autoloadloader-requirefile">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig">requireFile( string $file )</code>
+<span class="desc">If the file exists, require it and return true; false otherwise</span>
+</a>
+</div>
 
 ### Properties
-```php
-/**
- * @var string|null
- */
-protected $checkedPath;
 
-/**
- * @var array
- */
-protected $classes;
+<div class="api-list" markdown>
 
-/**
- * @var array
- */
-protected $debug;
+-   `protected`{ .vis-protected } `$checkedPath = null` `string|null`
 
-/**
- * @var array
- */
-protected $directories;
+-   `protected`{ .vis-protected } `$classes = []` `array`
 
-/**
- * @var array
- */
-protected $extensions;
+-   `protected`{ .vis-protected } `$debug = []` `array`
 
-/**
- * @var string|callable
- */
-protected $fileCheckingCallback = is_file;
+-   `protected`{ .vis-protected } `$directories = []` `array`
 
-/**
- * @var array
- */
-protected $files;
+-   `protected`{ .vis-protected } `$extensions = []` `array`
 
-/**
- * @var string|null
- */
-protected $foundPath;
+-   `protected`{ .vis-protected } `$fileCheckingCallback = "is_file"` `string|callable`
 
-/**
- * @var bool
- */
-protected $isDebug = false;
+-   `protected`{ .vis-protected } `$files = []` `array`
 
-/**
- * @var bool
- */
-protected $isRegistered = false;
+-   `protected`{ .vis-protected } `$foundPath = null` `string|null`
 
-/**
- * @var array
- */
-protected $namespaces;
+-   `protected`{ .vis-protected } `$isDebug = false` `bool`
 
-```
+-   `protected`{ .vis-protected } `$isRegistered = false` `bool`
+
+-   `protected`{ .vis-protected } `$namespaces = []` `array`
+
+</div>
 
 ### Methods
 
+<div class="api-group">Public · 25</div>
+
+#### `__construct()` { #autoloadloader-__construct }
+
 ```php
-public function __construct( bool $isDebug = bool );
+public function __construct( bool $isDebug = false );
 ```
+
 Loader constructor.
 
+#### `addClass()` { #autoloadloader-addclass }
 
 ```php
-public function addClass( string $name, string $file ): static;
+public function addClass(
+    string $name,
+    string $file
+): static;
 ```
+
 Adds a class to the internal collection for the mapping
 
+#### `addDirectory()` { #autoloadloader-adddirectory }
 
 ```php
 public function addDirectory( string $directory ): static;
 ```
+
 Adds a directory for the loaded files
 
+#### `addExtension()` { #autoloadloader-addextension }
 
 ```php
 public function addExtension( string $extension ): static;
 ```
+
 Adds an extension for the loaded files
 
+#### `addFile()` { #autoloadloader-addfile }
 
 ```php
 public function addFile( string $file ): static;
 ```
+
 Adds a file to be added to the loader
 
+#### `addNamespace()` { #autoloadloader-addnamespace }
 
 ```php
-public function addNamespace( string $name, mixed $directories, bool $prepend = bool ): static;
+public function addNamespace(
+    string $name,
+    mixed $directories,
+    bool $prepend = false
+): static;
 ```
 
-
+#### `autoload()` { #autoloadloader-autoload }
 
 ```php
 public function autoload( string $className ): bool;
 ```
+
 Autoloads the registered classes
 
+#### `getCheckedPath()` { #autoloadloader-getcheckedpath }
 
 ```php
-public function getCheckedPath(): string | null;
+public function getCheckedPath(): string|null;
 ```
+
 Get the path the loader is checking for a path
 
+#### `getClasses()` { #autoloadloader-getclasses }
 
 ```php
 public function getClasses(): array;
 ```
+
 Returns the class-map currently registered in the autoloader
 
+#### `getDebug()` { #autoloadloader-getdebug }
 
 ```php
 public function getDebug(): array;
 ```
+
 Returns debug information collected
 
+#### `getDirectories()` { #autoloadloader-getdirectories }
 
 ```php
 public function getDirectories(): array;
 ```
+
 Returns the directories currently registered in the autoloader
 
+#### `getExtensions()` { #autoloadloader-getextensions }
 
 ```php
 public function getExtensions(): array;
 ```
+
 Returns the file extensions registered in the loader
 
+#### `getFiles()` { #autoloadloader-getfiles }
 
 ```php
 public function getFiles(): array;
 ```
+
 Returns the files currently registered in the autoloader
 
+#### `getFoundPath()` { #autoloadloader-getfoundpath }
 
 ```php
-public function getFoundPath(): string | null;
+public function getFoundPath(): string|null;
 ```
+
 Get the path when a class was found
 
+#### `getNamespaces()` { #autoloadloader-getnamespaces }
 
 ```php
 public function getNamespaces(): array;
 ```
+
 Returns the namespaces currently registered in the autoloader
 
+#### `isRegistered()` { #autoloadloader-isregistered }
 
 ```php
 public function isRegistered(): bool;
 ```
+
 returns isRegistered
 
+#### `loadFiles()` { #autoloadloader-loadfiles }
 
 ```php
 public function loadFiles(): void;
 ```
+
 Checks if a file exists and then adds the file by doing virtual require
 
+#### `register()` { #autoloadloader-register }
 
 ```php
-public function register( bool $prepend = bool ): static;
+public function register( bool $prepend = false ): static;
 ```
+
 Register the autoload method
 
+#### `setClasses()` { #autoloadloader-setclasses }
 
 ```php
-public function setClasses( array $classes, bool $merge = bool ): static;
+public function setClasses(
+    array $classes,
+    bool $merge = false
+): static;
 ```
+
 Register classes and their locations
 
+#### `setDirectories()` { #autoloadloader-setdirectories }
 
 ```php
-public function setDirectories( array $directories, bool $merge = bool ): static;
+public function setDirectories(
+    array $directories,
+    bool $merge = false
+): static;
 ```
+
 Register directories in which "not found" classes could be found
 
+#### `setExtensions()` { #autoloadloader-setextensions }
 
 ```php
-public function setExtensions( array $extensions, bool $merge = bool ): static;
+public function setExtensions(
+    array $extensions,
+    bool $merge = false
+): static;
 ```
+
 Sets an array of file extensions that the loader must try in each attempt
 to locate the file
 
+#### `setFileCheckingCallback()` { #autoloadloader-setfilecheckingcallback }
 
 ```php
 public function setFileCheckingCallback( mixed $method = null ): static;
 ```
+
 Sets the file check callback.
 
 ```php
@@ -340,29 +546,43 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
+#### `setFiles()` { #autoloadloader-setfiles }
 
 ```php
-public function setFiles( array $files, bool $merge = bool ): static;
+public function setFiles(
+    array $files,
+    bool $merge = false
+): static;
 ```
+
 Registers files that are "non-classes" hence need a "require". This is
 very useful for including files that only have functions
 
+#### `setNamespaces()` { #autoloadloader-setnamespaces }
 
 ```php
-public function setNamespaces( array $namespaces, bool $merge = bool ): static;
+public function setNamespaces(
+    array $namespaces,
+    bool $merge = false
+): static;
 ```
+
 Register namespaces and their related directories
 
+#### `unregister()` { #autoloadloader-unregister }
 
 ```php
 public function unregister(): static;
 ```
+
 Unregister the autoload method
 
+<div class="api-group">Protected · 1</div>
+
+#### `requireFile()` { #autoloadloader-requirefile }
 
 ```php
 protected function requireFile( string $file ): bool;
 ```
+
 If the file exists, require it and return true; false otherwise
-
-
