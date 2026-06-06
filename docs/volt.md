@@ -439,6 +439,8 @@ new Vue(
 );
 ```
 
+You can also wrap the affected markup in a [verbatim](#verbatim) block so that Volt leaves it untouched.
+
 ### Angular
 
 If you are using [Angular][angular] you can set the interpolators as follows:
@@ -453,6 +455,8 @@ If you are using [Angular][angular] you can set the interpolators as follows:
     }
 );
 ```
+
+You can also wrap the affected markup in a [verbatim](#verbatim) block so that Volt leaves it untouched.
 
 ## Variables
 
@@ -580,6 +584,41 @@ ignored in the final output:
 #}
 
 ```
+
+## Verbatim
+
+The `{% verbatim %}` tag outputs its body exactly as written. Volt does not parse anything between `{% verbatim %}` and
+`{% endverbatim %}`, so `{{ ... }}`, `{% ... %}` and `{# ... #}` are emitted unchanged:
+
+```twig
+{% verbatim %}
+    {{ this is sent to the output as-is }}
+{% endverbatim %}
+
+```
+
+Use it when a template must contain literal braces that Volt would otherwise interpret. A common case is an XML
+declaration:
+
+```twig
+{% verbatim %}<?xml version="1.0" encoding="UTF-8"?>{% endverbatim %}
+
+```
+
+Another case is markup for a client-side template engine (Handlebars, Mustache, Vue, Angular), which shares the `{{ }}`
+syntax:
+
+```twig
+{% verbatim %}
+    {% if user.active %}
+        <p>{{ user.name }}</p>
+    {% endif %}
+{% endverbatim %}
+
+```
+
+Only the matching `{% endverbatim %}` closes the block. Every other Volt construct inside it is treated as text. An
+empty block (`{% verbatim %}{% endverbatim %}`) produces no output.
 
 ## Control Structures
 
