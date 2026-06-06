@@ -43,25 +43,26 @@ __Uses__ `stdClass`
 <a class="api-item" href="#diabstractinjectionaware-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the internal dependency injector</span>
 </a>
 <a class="api-item" href="#diabstractinjectionaware-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the dependency injector</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$container` `DiInterface`
-
-    Dependency Injector
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface</code>
+<code class="sig"><span class="sv">$container</span></code>
+<span class="desc">Dependency Injector</span>
+</div>
 </div>
 
 ### Methods
@@ -143,239 +144,216 @@ __Uses__ `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalc
 <a class="api-item" href="#didi-__call">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">__call(
-    string $method,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Magic method to get or set services using setters/getters</span>
 </a>
 <a class="api-item" href="#didi-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Di\Di constructor</span>
 </a>
 <a class="api-item" href="#didi-attempt">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface|bool</code>
-<code class="sig">attempt(
-    string $name,
-    mixed $definition,
-    bool $shared = false
-)</code>
+<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Attempts to register a service in the services container</span>
 </a>
 <a class="api-item" href="#didi-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get(
-    string $name,
-    mixed $parameters = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service based on its configuration</span>
 </a>
 <a class="api-item" href="#didi-getalias">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getAlias( string $name )</code>
+<code class="sig"><span class="sf">getAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return the alias based on a passed key. Returns an empty string if</span>
 </a>
 <a class="api-item" href="#didi-getdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface|null</code>
-<code class="sig">getDefault()</code>
+<code class="sig"><span class="sf">getDefault</span>()</code>
 <span class="desc">Return the latest DI created</span>
 </a>
 <a class="api-item" href="#didi-getinternaleventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getInternalEventsManager()</code>
+<code class="sig"><span class="sf">getInternalEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#didi-getraw">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getRaw( string $name )</code>
+<code class="sig"><span class="sf">getRaw</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a service definition without resolving</span>
 </a>
 <a class="api-item" href="#didi-getservice">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">getService( string $name )</code>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a Phalcon\Di\Service instance</span>
 </a>
 <a class="api-item" href="#didi-getservices">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface[]</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Return the services registered in the DI</span>
 </a>
 <a class="api-item" href="#didi-getshared">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getShared(
-    string $name,
-    mixed $parameters = null
-)</code>
+<code class="sig"><span class="sf">getShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves a service, the resolved service is stored in the DI, subsequent</span>
 </a>
 <a class="api-item" href="#didi-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check whether the DI contains a service by a name</span>
 </a>
 <a class="api-item" href="#didi-hasshared">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasShared( string $name )</code>
+<code class="sig"><span class="sf">hasShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check whether the DI has a cached shared instance for a service name.</span>
 </a>
 <a class="api-item" href="#didi-loadfromphp">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">loadFromPhp( string $filePath )</code>
+<code class="sig"><span class="sf">loadFromPhp</span>( <span class="st">string</span> <span class="sv">$filePath</span> )</code>
 <span class="desc">Loads services from a php config file.</span>
 </a>
 <a class="api-item" href="#didi-loadfromyaml">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">loadFromYaml(
-    string $filePath,
-    array $callbacks = null
-)</code>
+<code class="sig"><span class="sf">loadFromYaml</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Loads services from a yaml file.</span>
 </a>
 <a class="api-item" href="#didi-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $name )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check if a service is registered using the array syntax</span>
 </a>
 <a class="api-item" href="#didi-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $name )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
 <span class="desc">Allows to obtain a shared service using the array syntax</span>
 </a>
 <a class="api-item" href="#didi-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $offset,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Allows to register a shared service using the array syntax</span>
 </a>
 <a class="api-item" href="#didi-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $name )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes a service from the services container using the array syntax</span>
 </a>
 <a class="api-item" href="#didi-register">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">register( ServiceProviderInterface $provider )</code>
+<code class="sig"><span class="sf">register</span>( <span class="st">ServiceProviderInterface</span> <span class="sv">$provider</span> )</code>
 <span class="desc">Registers a service provider.</span>
 </a>
 <a class="api-item" href="#didi-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $name )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes a service in the services container</span>
 </a>
 <a class="api-item" href="#didi-removeshared">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">removeShared( string $name )</code>
+<code class="sig"><span class="sf">removeShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes the cached shared instance for a service, leaving the service</span>
 </a>
 <a class="api-item" href="#didi-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal default DI</span>
 </a>
 <a class="api-item" href="#didi-set">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">set(
-    string $name,
-    mixed $definition,
-    bool $shared = false
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Registers a service in the services container</span>
 </a>
 <a class="api-item" href="#didi-setalias">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">setAlias(
-    string $name,
-    mixed $aliases
-)</code>
+<code class="sig"><span class="sf">setAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$aliases</span></span>)</code>
 <span class="desc">Sets one or more aliases to the given name.</span>
 </a>
 <a class="api-item" href="#didi-setdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefault( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDefault</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Set a default dependency injection container to be obtained into static</span>
 </a>
 <a class="api-item" href="#didi-setinternaleventsmanager">
 <code class="vis vis-public">public</code>
-<code class="sig">setInternalEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setInternalEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the internal event manager</span>
 </a>
 <a class="api-item" href="#didi-setservice">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">setService(
-    string $name,
-    ServiceInterface $rawDefinition
-)</code>
+<code class="sig"><span class="sf">setService</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceInterface</span> <span class="sv">$rawDefinition</span></span>)</code>
 <span class="desc">Sets a service using a raw Phalcon\Di\Service definition</span>
 </a>
 <a class="api-item" href="#didi-setshared">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">setShared(
-    string $name,
-    mixed $definition
-)</code>
+<code class="sig"><span class="sf">setShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Registers an &quot;always shared&quot; service in the services container</span>
 </a>
 <a class="api-item" href="#didi-loadfromconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">loadFromConfig( ConfigInterface $config )</code>
+<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">ConfigInterface</span> <span class="sv">$config</span> )</code>
 <span class="desc">Loads services from a Config object.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$aliases = []` `array`
-
-    List of service aliases
-
--   `protected`{ .vis-protected } `$defaultContainer = null` `DiInterface|null`
-
-    Latest DI build
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
-    Events Manager
-
--   `protected`{ .vis-protected } `$services = []` `ServiceInterface[]`
-
-    List of registered services
-
--   `protected`{ .vis-protected } `$sharedInstances = []` `array`
-
-    List of shared instances
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$aliases</span><span class="sm"> = []</span></code>
+<span class="desc">List of service aliases</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$defaultContainer</span><span class="sm"> = null</span></code>
+<span class="desc">Latest DI build</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+<span class="desc">Events Manager</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ServiceInterface[]</code>
+<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
+<span class="desc">List of registered services</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sharedInstances</span><span class="sm"> = []</span></code>
+<span class="desc">List of shared instances</span>
+</div>
 </div>
 
 ### Methods
@@ -776,117 +754,97 @@ __Uses__ `ArrayAccess`
 <a class="api-item" href="#didiinterface-attempt">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface|bool</code>
-<code class="sig">attempt(
-    string $name,
-    mixed $definition,
-    bool $shared = false
-)</code>
+<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Attempts to register a service in the services container</span>
 </a>
 <a class="api-item" href="#didiinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get(
-    string $name,
-    mixed $parameters = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service based on its configuration</span>
 </a>
 <a class="api-item" href="#didiinterface-getdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface|null</code>
-<code class="sig">getDefault()</code>
+<code class="sig"><span class="sf">getDefault</span>()</code>
 <span class="desc">Return the last DI created</span>
 </a>
 <a class="api-item" href="#didiinterface-getraw">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getRaw( string $name )</code>
+<code class="sig"><span class="sf">getRaw</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a service definition without resolving</span>
 </a>
 <a class="api-item" href="#didiinterface-getservice">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">getService( string $name )</code>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns the corresponding Phalcon\Di\Service instance for a service</span>
 </a>
 <a class="api-item" href="#didiinterface-getservices">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface[]</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Return the services registered in the DI</span>
 </a>
 <a class="api-item" href="#didiinterface-getshared">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getShared(
-    string $name,
-    mixed $parameters = null
-)</code>
+<code class="sig"><span class="sf">getShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a shared service based on their configuration</span>
 </a>
 <a class="api-item" href="#didiinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check whether the DI contains a service by a name</span>
 </a>
 <a class="api-item" href="#didiinterface-hasshared">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasShared( string $name )</code>
+<code class="sig"><span class="sf">hasShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check whether the DI has a cached shared instance for a service name.</span>
 </a>
 <a class="api-item" href="#didiinterface-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $name )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes a service in the services container</span>
 </a>
 <a class="api-item" href="#didiinterface-removeshared">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">removeShared( string $name )</code>
+<code class="sig"><span class="sf">removeShared</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes the cached shared instance for a service, leaving the service</span>
 </a>
 <a class="api-item" href="#didiinterface-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal default DI</span>
 </a>
 <a class="api-item" href="#didiinterface-set">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">set(
-    string $name,
-    mixed $definition,
-    bool $shared = false
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Registers a service in the services container</span>
 </a>
 <a class="api-item" href="#didiinterface-setdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefault( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDefault</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Set a default dependency injection container to be obtained into static</span>
 </a>
 <a class="api-item" href="#didiinterface-setservice">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">setService(
-    string $name,
-    ServiceInterface $rawDefinition
-)</code>
+<code class="sig"><span class="sf">setService</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceInterface</span> <span class="sv">$rawDefinition</span></span>)</code>
 <span class="desc">Sets a service using a raw Phalcon\Di\Service definition</span>
 </a>
 <a class="api-item" href="#didiinterface-setshared">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">setShared(
-    string $name,
-    mixed $definition
-)</code>
+<code class="sig"><span class="sf">setShared</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Registers an &quot;always shared&quot; service in the services container</span>
 </a>
 </div>
@@ -1098,22 +1056,22 @@ Exceptions thrown in Phalcon\Di will use this class
 <a class="api-item" href="#diexception-servicecannotberesolved">
 <code class="vis vis-public">public</code>
 <code class="ret">Exception</code>
-<code class="sig">serviceCannotBeResolved( string $name )</code>
+<code class="sig"><span class="sf">serviceCannotBeResolved</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#diexception-servicenotfound">
 <code class="vis vis-public">public</code>
 <code class="ret">Exception</code>
-<code class="sig">serviceNotFound( string $name )</code>
+<code class="sig"><span class="sf">serviceNotFound</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#diexception-undefinedmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">Exception</code>
-<code class="sig">undefinedMethod( string $method )</code>
+<code class="sig"><span class="sf">undefinedMethod</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 </a>
 <a class="api-item" href="#diexception-unknownserviceinparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">Exception</code>
-<code class="sig">unknownServiceInParameter( int $position )</code>
+<code class="sig"><span class="sf">unknownServiceInParameter</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1190,7 +1148,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsaliasalreadyinuse-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $alias )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$alias</span> )</code>
 </a>
 </div>
 
@@ -1233,7 +1191,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsaliasnamemustbestring-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1276,7 +1234,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsargumenttyperequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1319,7 +1277,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionscallargumentsmustbearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1362,7 +1320,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionscircularaliasreference-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -1405,7 +1363,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionscontainerrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1448,7 +1406,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsdefinitionmustbearrayforread-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1491,7 +1449,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsdefinitionmustbearrayforupdate-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1534,7 +1492,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsmethodcallmustbearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1577,7 +1535,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsmethodnamerequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1620,7 +1578,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsmissingclassnameparameter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1663,10 +1621,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsmissingparameterkey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $key,
-    int $position
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span></span>)</code>
 </a>
 </div>
 
@@ -1712,7 +1667,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionspropertyinjectionrequiresinstance-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1755,7 +1710,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionspropertymustbearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1798,7 +1753,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionspropertynamerequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1841,7 +1796,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionspropertyvaluerequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -1884,7 +1839,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsservicecannotberesolved-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -1927,7 +1882,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionssetterinjectionrequiresinstance-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1970,7 +1925,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionssetterparametersmustbearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2013,7 +1968,7 @@ __Uses__ `Phalcon\Di\Exception`
 <div class="api-list">
 <a class="api-item" href="#diexceptionsunknownservicetype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $position )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 </a>
 </div>
 
@@ -2054,7 +2009,7 @@ __Uses__ `Phalcon\Filter\FilterFactory`
 <div class="api-list">
 <a class="api-item" href="#difactorydefault-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Di\FactoryDefault constructor</span>
 </a>
 </div>
@@ -2100,7 +2055,7 @@ __Uses__ `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Filter\
 <div class="api-list">
 <a class="api-item" href="#difactorydefaultcli-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Di\FactoryDefault\Cli constructor</span>
 </a>
 </div>
@@ -2137,7 +2092,7 @@ Interface for components that have `initialize()`
 <a class="api-item" href="#diinitializationawareinterface-initialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">initialize()</code>
+<code class="sig"><span class="sf">initialize</span>()</code>
 </a>
 </div>
 
@@ -2211,37 +2166,38 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\Exceptions\ContainerRequired` · `Phalco
 <a class="api-item" href="#diinjectable-__get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">__get( string $propertyName )</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$propertyName</span> )</code>
 <span class="desc">Magic method __get</span>
 </a>
 <a class="api-item" href="#diinjectable-__isset">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__isset( string $name )</code>
+<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Magic method __isset</span>
 </a>
 <a class="api-item" href="#diinjectable-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the internal dependency injector</span>
 </a>
 <a class="api-item" href="#diinjectable-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the dependency injector</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
-    Dependency Injector
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+<span class="desc">Dependency Injector</span>
+</div>
 </div>
 
 ### Methods
@@ -2301,13 +2257,13 @@ Phalcon\Di\Di that creates them
 <a class="api-item" href="#diinjectionawareinterface-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the internal dependency injector</span>
 </a>
 <a class="api-item" href="#diinjectionawareinterface-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the dependency injector</span>
 </a>
 </div>
@@ -2363,85 +2319,87 @@ __Uses__ `Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phal
 <div class="api-list">
 <a class="api-item" href="#diservice-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $definition,
-    bool $shared = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shared</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Phalcon\Di\Service</span>
 </a>
 <a class="api-item" href="#diservice-getdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getDefinition()</code>
+<code class="sig"><span class="sf">getDefinition</span>()</code>
 <span class="desc">Returns the service definition</span>
 </a>
 <a class="api-item" href="#diservice-getparameter">
 <code class="vis vis-public">public</code>
-<code class="sig">getParameter( int $position )</code>
+<code class="sig"><span class="sf">getParameter</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 <span class="desc">Returns a parameter in a specific position</span>
 </a>
 <a class="api-item" href="#diservice-isresolved">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isResolved()</code>
+<code class="sig"><span class="sf">isResolved</span>()</code>
 <span class="desc">Returns true if the service was resolved</span>
 </a>
 <a class="api-item" href="#diservice-isshared">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isShared()</code>
+<code class="sig"><span class="sf">isShared</span>()</code>
 <span class="desc">Check whether the service is shared or not</span>
 </a>
 <a class="api-item" href="#diservice-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve(
-    mixed $parameters = null,
-    DiInterface $container = null
-)</code>
+<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service</span>
 </a>
 <a class="api-item" href="#diservice-setdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefinition( mixed $definition )</code>
+<code class="sig"><span class="sf">setDefinition</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Set the service definition</span>
 </a>
 <a class="api-item" href="#diservice-setparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">setParameter(
-    int $position,
-    array $parameter
-)</code>
+<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">int</span> <span class="sv">$position</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameter</span></span>)</code>
 <span class="desc">Changes a parameter in the definition without resolve the service</span>
 </a>
 <a class="api-item" href="#diservice-setshared">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setShared( bool $shared )</code>
+<code class="sig"><span class="sf">setShared</span>( <span class="st">bool</span> <span class="sv">$shared</span> )</code>
 <span class="desc">Sets if the service is shared or not</span>
 </a>
 <a class="api-item" href="#diservice-setsharedinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setSharedInstance( mixed $sharedInstance )</code>
+<code class="sig"><span class="sf">setSharedInstance</span>( <span class="st">mixed</span> <span class="sv">$sharedInstance</span> )</code>
 <span class="desc">Sets/Resets the shared instance related to the service</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$definition` `mixed`
-
--   `protected`{ .vis-protected } `$resolved = false` `bool`
-
--   `protected`{ .vis-protected } `$shared = false` `bool`
-
--   `protected`{ .vis-protected } `$sharedInstance = null` `mixed|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$definition</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$resolved</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$shared</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$sharedInstance</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2557,52 +2515,46 @@ Represents a service in the services container
 <a class="api-item" href="#diserviceinterface-getdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getDefinition()</code>
+<code class="sig"><span class="sf">getDefinition</span>()</code>
 <span class="desc">Returns the service definition</span>
 </a>
 <a class="api-item" href="#diserviceinterface-getparameter">
 <code class="vis vis-public">public</code>
-<code class="sig">getParameter( int $position )</code>
+<code class="sig"><span class="sf">getParameter</span>( <span class="st">int</span> <span class="sv">$position</span> )</code>
 <span class="desc">Returns a parameter in a specific position</span>
 </a>
 <a class="api-item" href="#diserviceinterface-isresolved">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isResolved()</code>
+<code class="sig"><span class="sf">isResolved</span>()</code>
 <span class="desc">Returns true if the service was resolved</span>
 </a>
 <a class="api-item" href="#diserviceinterface-isshared">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isShared()</code>
+<code class="sig"><span class="sf">isShared</span>()</code>
 <span class="desc">Check whether the service is shared or not</span>
 </a>
 <a class="api-item" href="#diserviceinterface-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve(
-    mixed $parameters = null,
-    DiInterface $container = null
-)</code>
+<code class="sig"><span class="sf">resolve</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolves the service</span>
 </a>
 <a class="api-item" href="#diserviceinterface-setdefinition">
 <code class="vis vis-public">public</code>
-<code class="sig">setDefinition( mixed $definition )</code>
+<code class="sig"><span class="sf">setDefinition</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Set the service definition</span>
 </a>
 <a class="api-item" href="#diserviceinterface-setparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">setParameter(
-    int $position,
-    array $parameter
-)</code>
+<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">int</span> <span class="sv">$position</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameter</span></span>)</code>
 <span class="desc">Changes a parameter in the definition without resolve the service</span>
 </a>
 <a class="api-item" href="#diserviceinterface-setshared">
 <code class="vis vis-public">public</code>
-<code class="sig">setShared( bool $shared )</code>
+<code class="sig"><span class="sf">setShared</span>( <span class="st">bool</span> <span class="sv">$shared</span> )</code>
 <span class="desc">Sets if the service is shared or not</span>
 </a>
 </div>
@@ -2722,7 +2674,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 <a class="api-item" href="#diserviceproviderinterface-register">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">register( DiInterface $di )</code>
+<code class="sig"><span class="sf">register</span>( <span class="st">DiInterface</span> <span class="sv">$di</span> )</code>
 <span class="desc">Registers a service provider.</span>
 </a>
 </div>
@@ -2763,11 +2715,7 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Excep
 <div class="api-list">
 <a class="api-item" href="#diservicebuilder-build">
 <code class="vis vis-public">public</code>
-<code class="sig">build(
-    DiInterface $container,
-    array $definition,
-    mixed $parameters = null
-)</code>
+<code class="sig"><span class="sf">build</span>(<span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Builds a service using a complex service definition</span>
 </a>
 </div>

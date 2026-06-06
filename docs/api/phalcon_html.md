@@ -31,19 +31,19 @@ __Uses__ `Phalcon\Html\Attributes\RenderInterface` · `Phalcon\Html\Exceptions\A
 <a class="api-item" href="#htmlattributes-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Alias of the render method</span>
 </a>
 <a class="api-item" href="#htmlattributes-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render()</code>
+<code class="sig"><span class="sf">render</span>()</code>
 <span class="desc">Render attributes as HTML attributes</span>
 </a>
 <a class="api-item" href="#htmlattributes-renderattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">renderAttributes( array $attributes )</code>
+<code class="sig"><span class="sf">renderAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">@todo remove this when we refactor forms. Maybe remove this class? Put it into traits</span>
 </a>
 </div>
@@ -101,13 +101,13 @@ __Uses__ `Phalcon\Html\Attributes`
 <a class="api-item" href="#htmlattributesattributesinterface-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">Attributes</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Get Attributes</span>
 </a>
 <a class="api-item" href="#htmlattributesattributesinterface-setattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">AttributesInterface</code>
-<code class="sig">setAttributes( Attributes $attributes )</code>
+<code class="sig"><span class="sf">setAttributes</span>( <span class="st">Attributes</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Set Attributes</span>
 </a>
 </div>
@@ -152,7 +152,7 @@ Rendering interface for HTML attributes
 <a class="api-item" href="#htmlattributesrenderinterface-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render()</code>
+<code class="sig"><span class="sf">render</span>()</code>
 <span class="desc">Generate a string representation</span>
 </a>
 </div>
@@ -196,45 +196,42 @@ Use {@see Phalcon\Html\Helper\Breadcrumbs} instead.
 <a class="api-item" href="#htmlbreadcrumbs-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    string $label,
-    string $link = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$label</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$link</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Adds a new crumb.</span>
 </a>
 <a class="api-item" href="#htmlbreadcrumbs-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Clears the crumbs</span>
 </a>
 <a class="api-item" href="#htmlbreadcrumbs-getseparator">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSeparator()</code>
+<code class="sig"><span class="sf">getSeparator</span>()</code>
 <span class="desc">Crumb separator</span>
 </a>
 <a class="api-item" href="#htmlbreadcrumbs-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $link )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$link</span> )</code>
 <span class="desc">Removes crumb by url.</span>
 </a>
 <a class="api-item" href="#htmlbreadcrumbs-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render()</code>
+<code class="sig"><span class="sf">render</span>()</code>
 <span class="desc">Renders and outputs breadcrumbs based on previously set template.</span>
 </a>
 <a class="api-item" href="#htmlbreadcrumbs-setseparator">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setSeparator( string $separator )</code>
+<code class="sig"><span class="sf">setSeparator</span>( <span class="st">string</span> <span class="sv">$separator</span> )</code>
 </a>
 <a class="api-item" href="#htmlbreadcrumbs-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal breadcrumbs array</span>
 </a>
 </div>
@@ -372,177 +369,187 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <div class="api-list">
 <a class="api-item" href="#htmlescaper-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $encoding = &quot;utf-8&quot;,
-    int $flags = 11,
-    bool $doubleEncode = true
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;utf-8&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 11</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$doubleEncode</span><span class="sm"> = true</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlescaper-attributes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">attributes( mixed $input = null )</code>
+<code class="sig"><span class="sf">attributes</span>( <span class="st">mixed</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 <span class="desc">Escapes a HTML attribute string or array. Delegates to the configured</span>
 </a>
 <a class="api-item" href="#htmlescaper-css">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">css( string $input )</code>
-<span class="desc">Escape CSS strings. Delegates to the configured `CssEscaper`.</span>
+<code class="sig"><span class="sf">css</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Escape CSS strings. Delegates to the configured <code>CssEscaper</code>.</span>
 </a>
 <a class="api-item" href="#htmlescaper-detectencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">detectEncoding( string $input )</code>
+<code class="sig"><span class="sf">detectEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-escapecss">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeCss( string $input )</code>
+<code class="sig"><span class="sf">escapeCss</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-escapehtml">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeHtml( string $input = null )</code>
+<code class="sig"><span class="sf">escapeHtml</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-escapehtmlattr">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeHtmlAttr( string $input = null )</code>
+<code class="sig"><span class="sf">escapeHtmlAttr</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-escapejs">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeJs( string $input )</code>
+<code class="sig"><span class="sf">escapeJs</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-escapeurl">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeUrl( string $input )</code>
+<code class="sig"><span class="sf">escapeUrl</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-getattributeescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">AttributeEscaper</code>
-<code class="sig">getAttributeEscaper()</code>
+<code class="sig"><span class="sf">getAttributeEscaper</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaper-getcssescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">CssEscaper</code>
-<code class="sig">getCssEscaper()</code>
+<code class="sig"><span class="sf">getCssEscaper</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaper-getencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getEncoding()</code>
+<code class="sig"><span class="sf">getEncoding</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaper-getflags">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getFlags()</code>
+<code class="sig"><span class="sf">getFlags</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaper-gethtmlescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">HtmlEscaper</code>
-<code class="sig">getHtmlEscaper()</code>
+<code class="sig"><span class="sf">getHtmlEscaper</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaper-getjsescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">JsEscaper</code>
-<code class="sig">getJsEscaper()</code>
+<code class="sig"><span class="sf">getJsEscaper</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaper-geturlescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">UrlEscaper</code>
-<code class="sig">getUrlEscaper()</code>
+<code class="sig"><span class="sf">getUrlEscaper</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaper-html">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">html( string $input = null )</code>
-<span class="desc">Escapes a HTML string. Delegates to the configured `HtmlEscaper`.</span>
+<code class="sig"><span class="sf">html</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
+<span class="desc">Escapes a HTML string. Delegates to the configured <code>HtmlEscaper</code>.</span>
 </a>
 <a class="api-item" href="#htmlescaper-js">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">js( string $input )</code>
-<span class="desc">Escape javascript strings. Delegates to the configured `JsEscaper`.</span>
+<code class="sig"><span class="sf">js</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Escape javascript strings. Delegates to the configured <code>JsEscaper</code>.</span>
 </a>
 <a class="api-item" href="#htmlescaper-normalizeencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">normalizeEncoding( string $input )</code>
+<code class="sig"><span class="sf">normalizeEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-setattributeescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAttributeEscaper( AttributeEscaper $escaper )</code>
+<code class="sig"><span class="sf">setAttributeEscaper</span>( <span class="st">AttributeEscaper</span> <span class="sv">$escaper</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-setcssescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setCssEscaper( CssEscaper $escaper )</code>
+<code class="sig"><span class="sf">setCssEscaper</span>( <span class="st">CssEscaper</span> <span class="sv">$escaper</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-setdoubleencode">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDoubleEncode( bool $doubleEncode )</code>
+<code class="sig"><span class="sf">setDoubleEncode</span>( <span class="st">bool</span> <span class="sv">$doubleEncode</span> )</code>
 <span class="desc">Sets the double_encode flag. Fans out to all sub-objects.</span>
 </a>
 <a class="api-item" href="#htmlescaper-setencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setEncoding( string $encoding )</code>
+<code class="sig"><span class="sf">setEncoding</span>( <span class="st">string</span> <span class="sv">$encoding</span> )</code>
 <span class="desc">Sets the encoding. Fans out to all sub-objects.</span>
 </a>
 <a class="api-item" href="#htmlescaper-setflags">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFlags( int $flags )</code>
+<code class="sig"><span class="sf">setFlags</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
 <span class="desc">Sets the htmlspecialchars flags. Fans out to all sub-objects.</span>
 </a>
 <a class="api-item" href="#htmlescaper-sethtmlescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setHtmlEscaper( HtmlEscaper $escaper )</code>
+<code class="sig"><span class="sf">setHtmlEscaper</span>( <span class="st">HtmlEscaper</span> <span class="sv">$escaper</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-sethtmlquotetype">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setHtmlQuoteType( int $flags )</code>
+<code class="sig"><span class="sf">setHtmlQuoteType</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
 <span class="desc">@deprecated</span>
 </a>
 <a class="api-item" href="#htmlescaper-setjsescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setJsEscaper( JsEscaper $escaper )</code>
+<code class="sig"><span class="sf">setJsEscaper</span>( <span class="st">JsEscaper</span> <span class="sv">$escaper</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-seturlescaper">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUrlEscaper( UrlEscaper $escaper )</code>
+<code class="sig"><span class="sf">setUrlEscaper</span>( <span class="st">UrlEscaper</span> <span class="sv">$escaper</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaper-url">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">url( string $input )</code>
-<span class="desc">Escapes a URL. Delegates to the configured `UrlEscaper`.</span>
+<code class="sig"><span class="sf">url</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Escapes a URL. Delegates to the configured <code>UrlEscaper</code>.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributeEscaper` `AttributeEscaper`
-
--   `protected`{ .vis-protected } `$cssEscaper` `CssEscaper`
-
--   `protected`{ .vis-protected } `$htmlEscaper` `HtmlEscaper`
-
--   `protected`{ .vis-protected } `$jsEscaper` `JsEscaper`
-
--   `protected`{ .vis-protected } `$urlEscaper` `UrlEscaper`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AttributeEscaper</code>
+<code class="sig"><span class="sv">$attributeEscaper</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">CssEscaper</code>
+<code class="sig"><span class="sv">$cssEscaper</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">HtmlEscaper</code>
+<code class="sig"><span class="sv">$htmlEscaper</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">JsEscaper</code>
+<code class="sig"><span class="sv">$jsEscaper</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">UrlEscaper</code>
+<code class="sig"><span class="sv">$urlEscaper</span></code>
+</div>
 </div>
 
 ### Methods
@@ -766,7 +773,7 @@ Class EscaperFactory
 <a class="api-item" href="#htmlescaperfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">Escaper</code>
-<code class="sig">newInstance()</code>
+<code class="sig"><span class="sf">newInstance</span>()</code>
 <span class="desc">Create a new instance of the object</span>
 </a>
 </div>
@@ -818,59 +825,66 @@ one context without affecting the others.
 <a class="api-item" href="#htmlescaperabstractescaper-detectencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">detectEncoding( string $input )</code>
+<code class="sig"><span class="sf">detectEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Detects the character encoding of a string. Special-handling for</span>
 </a>
 <a class="api-item" href="#htmlescaperabstractescaper-getdoubleencode">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getDoubleEncode()</code>
+<code class="sig"><span class="sf">getDoubleEncode</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaperabstractescaper-getencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getEncoding()</code>
+<code class="sig"><span class="sf">getEncoding</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaperabstractescaper-getflags">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getFlags()</code>
+<code class="sig"><span class="sf">getFlags</span>()</code>
 </a>
 <a class="api-item" href="#htmlescaperabstractescaper-normalizeencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">normalizeEncoding( string $input )</code>
+<code class="sig"><span class="sf">normalizeEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Normalizes a string&#039;s encoding to UTF-32, used by the CSS and JS</span>
 </a>
 <a class="api-item" href="#htmlescaperabstractescaper-setdoubleencode">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDoubleEncode( bool $doubleEncode )</code>
+<code class="sig"><span class="sf">setDoubleEncode</span>( <span class="st">bool</span> <span class="sv">$doubleEncode</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperabstractescaper-setencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setEncoding( string $encoding )</code>
+<code class="sig"><span class="sf">setEncoding</span>( <span class="st">string</span> <span class="sv">$encoding</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperabstractescaper-setflags">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFlags( int $flags )</code>
+<code class="sig"><span class="sf">setFlags</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$doubleEncode = true` `bool`
-
--   `protected`{ .vis-protected } `$encoding = "utf-8"` `string`
-
--   `protected`{ .vis-protected } `$flags = 11` `int`
-
-    ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$doubleEncode</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$encoding</span><span class="sm"> = &quot;utf-8&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$flags</span><span class="sm"> = 11</span></code>
+<span class="desc">ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401</span>
+</div>
 </div>
 
 ### Methods
@@ -955,18 +969,18 @@ of attribute pairs. Boolean `true` becomes a bare key (e.g. `disabled`);
 <a class="api-item" href="#htmlescaperattributeescaper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( mixed $input = null )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperattributeescaper-escape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escape( mixed $input = null )</code>
+<code class="sig"><span class="sf">escape</span>( <span class="st">mixed</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperattributeescaper-escapevalue">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">escapeValue( string $input )</code>
-<span class="desc">Encodes a single key/value via `htmlspecialchars`.</span>
+<code class="sig"><span class="sf">escapeValue</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Encodes a single key/value via <code>htmlspecialchars</code>.</span>
 </a>
 </div>
 
@@ -1018,12 +1032,12 @@ characters with their hexadecimal escape sequence.
 <a class="api-item" href="#htmlescapercssescaper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescapercssescaper-escape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escape( string $input )</code>
+<code class="sig"><span class="sf">escape</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1063,49 +1077,49 @@ Interface for Phalcon\Html\Escaper
 <a class="api-item" href="#htmlescaperescaperinterface-attributes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">attributes( string $input )</code>
+<code class="sig"><span class="sf">attributes</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Escapes a HTML attribute string</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-css">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">css( string $input )</code>
+<code class="sig"><span class="sf">css</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Escape CSS strings by replacing non-alphanumeric chars by their</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-getencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getEncoding()</code>
+<code class="sig"><span class="sf">getEncoding</span>()</code>
 <span class="desc">Returns the internal encoding used by the escaper</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-html">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">html( string $input )</code>
+<code class="sig"><span class="sf">html</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Escapes a HTML string</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-js">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">js( string $input )</code>
+<code class="sig"><span class="sf">js</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Escape Javascript strings by replacing non-alphanumeric chars by their</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-setencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">EscaperInterface</code>
-<code class="sig">setEncoding( string $encoding )</code>
+<code class="sig"><span class="sf">setEncoding</span>( <span class="st">string</span> <span class="sv">$encoding</span> )</code>
 <span class="desc">Sets the encoding to be used by the escaper</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-setflags">
 <code class="vis vis-public">public</code>
 <code class="ret">EscaperInterface</code>
-<code class="sig">setFlags( int $flags )</code>
+<code class="sig"><span class="sf">setFlags</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
 <span class="desc">Sets the HTML quoting type for htmlspecialchars</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-url">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">url( string $input )</code>
+<code class="sig"><span class="sf">url</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Escapes a URL. Internally uses rawurlencode</span>
 </a>
 </div>
@@ -1216,12 +1230,12 @@ Escapes a string for use as HTML body content via `htmlspecialchars`.
 <a class="api-item" href="#htmlescaperhtmlescaper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $input = null )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperhtmlescaper-escape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escape( string $input = null )</code>
+<code class="sig"><span class="sf">escape</span>( <span class="st">string</span> <span class="sv">$input</span><span class="sm"> = null</span> )</code>
 </a>
 </div>
 
@@ -1263,12 +1277,12 @@ non-alphanumeric characters with their hexadecimal escape sequence.
 <a class="api-item" href="#htmlescaperjsescaper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperjsescaper-escape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escape( string $input )</code>
+<code class="sig"><span class="sf">escape</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1309,12 +1323,12 @@ Escapes a string for use as a URL component via `rawurlencode`.
 <a class="api-item" href="#htmlescaperurlescaper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 <a class="api-item" href="#htmlescaperurlescaper-escape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escape( string $input )</code>
+<code class="sig"><span class="sf">escape</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1383,10 +1397,7 @@ __Uses__ `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlexceptionsattributenotrenderable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $key,
-    string $type
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
 </a>
 </div>
 
@@ -1432,7 +1443,7 @@ __Uses__ `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlexceptionsfriendlytitleconversionfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $message )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 </a>
 </div>
 
@@ -1474,7 +1485,7 @@ __Uses__ `InvalidArgumentException`
 <div class="api-list">
 <a class="api-item" href="#htmlexceptionsinvalidresultsetvalue-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1517,7 +1528,7 @@ __Uses__ `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlexceptionsservicenotregistered-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -1559,7 +1570,7 @@ __Uses__ `InvalidArgumentException`
 <div class="api-list">
 <a class="api-item" href="#htmlexceptionsusingrequirestwovalues-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1617,116 +1628,99 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperabstracthelper-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">AbstractHelper constructor.</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-close">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">close(
-    string $tag,
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">close</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Produces a closing tag</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-indent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">indent()</code>
+<code class="sig"><span class="sf">indent</span>()</code>
 <span class="desc">Replicates the indent x times as per indentLevel</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-injectattribute">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">injectAttribute(
-    string $key,
-    string $value,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">injectAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Forces a single key into the attribute array, stripping any user-supplied</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-orderattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">orderAttributes(
-    array $overrides,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">orderAttributes</span>(<span class="prm"><span class="st">array</span> <span class="sv">$overrides</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Keeps all the attributes sorted - same order all the time</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-renderarrayelements">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">renderArrayElements(
-    array $elements,
-    string $delimiter
-)</code>
+<code class="sig"><span class="sf">renderArrayElements</span>(<span class="prm"><span class="st">array</span> <span class="sv">$elements</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span></span>)</code>
 <span class="desc">Traverses an array and calls the method defined in the first element</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-renderattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">renderAttributes( array $attributes )</code>
+<code class="sig"><span class="sf">renderAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Renders all the attributes</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-renderelement">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">renderElement(
-    string $tag,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">renderElement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Renders an element</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-renderfullelement">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">renderFullElement(
-    string $tag,
-    string $text,
-    array $attributes = [],
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">renderFullElement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Renders an element</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-rendertag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">renderTag(
-    string $tag,
-    array $attributes = [],
-    string $close = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">renderTag</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$close</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Renders a tag</span>
 </a>
 <a class="api-item" href="#htmlhelperabstracthelper-selfclose">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">selfClose(
-    string $tag,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">selfClose</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Produces a self close tag i.e. &lt;img /&gt;</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$delimiter = ""` `string`
-
--   `protected`{ .vis-protected } `$doctype = null` `Doctype|null`
-
--   `protected`{ .vis-protected } `$escaper` `EscaperInterface`
-
--   `protected`{ .vis-protected } `$indent = "    "` `string`
-
--   `protected`{ .vis-protected } `$indentLevel = 1` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$delimiter</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Doctype|null</code>
+<code class="sig"><span class="sv">$doctype</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">EscaperInterface</code>
+<code class="sig"><span class="sv">$escaper</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$indentLevel</span><span class="sm"> = 1</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1884,35 +1878,39 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperabstractlist-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">__invoke(
-    string $indent = &quot;    &quot;,
-    string $delimiter = null,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperabstractlist-__tostring">
 <code class="vis vis-public">public</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Generates and returns the HTML for the list.</span>
 </a>
 <a class="api-item" href="#htmlhelperabstractlist-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 <span class="desc">Returns the tag name.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributes = []` `array`
-
--   `protected`{ .vis-protected } `$elementTag = "li"` `string`
-
--   `protected`{ .vis-protected } `$store = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$elementTag</span><span class="sm"> = &quot;li&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$store</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1972,47 +1970,46 @@ Returns the tag name.
 <a class="api-item" href="#htmlhelperabstractseries-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">__invoke(
-    string $indent = &quot;    &quot;,
-    string $delimiter = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperabstractseries-__tostring">
 <code class="vis vis-public">public</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Generates and returns the HTML for the list. Entries are sorted by</span>
 </a>
 <a class="api-item" href="#htmlhelperabstractseries-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal store.</span>
 </a>
 <a class="api-item" href="#htmlhelperabstractseries-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 <span class="desc">Returns the tag name.</span>
 </a>
 <a class="api-item" href="#htmlhelperabstractseries-pushorplace">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">pushOrPlace(
-    array $entry,
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">pushOrPlace</span>(<span class="prm"><span class="st">array</span> <span class="sv">$entry</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Appends an entry to the store, optionally at a specific integer</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributes = []` `array`
-
--   `protected`{ .vis-protected } `$store = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$store</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2098,31 +2095,24 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperanchor-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null,
-    bool $forceRaw = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperanchor-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $href,
-    string $text,
-    array $attributes = [],
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$href</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Produce a &lt;a&gt; tag</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$forceRaw = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forceRaw</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2176,11 +2166,8 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperbase-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $href = null,
-    array $attributes = []
-)</code>
-<span class="desc">Produce a `&lt;base/&gt;` tag.</span>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$href</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Produce a <code>&lt;base/&gt;</code> tag.</span>
 </a>
 </div>
 
@@ -2223,8 +2210,8 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperbody-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( array $attributes = [] )</code>
-<span class="desc">Produce a `&lt;body&gt;` tag.</span>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
+<span class="desc">Produce a <code>&lt;body&gt;</code> tag.</span>
 </a>
 </div>
 
@@ -2265,112 +2252,97 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterfac
 <div class="api-list">
 <a class="api-item" href="#htmlhelperbreadcrumbs-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    UrlInterface $url = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">UrlInterface</span> <span class="sv">$url</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">AbstractHelper constructor.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">__invoke(
-    string $indent = &quot;    &quot;,
-    string $delimiter = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the indent and delimiter and returns the object back.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    string $text,
-    string $link = &quot;&quot;,
-    string $icon = &quot;&quot;,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$link</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$icon</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Adds a new crumb.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Clears the crumbs.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-clearattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">clearAttributes()</code>
+<code class="sig"><span class="sf">clearAttributes</span>()</code>
 <span class="desc">Clear the attributes of the parent element.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Get the attributes of the parent element.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-getprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPrefix()</code>
+<code class="sig"><span class="sf">getPrefix</span>()</code>
 <span class="desc">Returns the link prefix.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-getseparator">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSeparator()</code>
+<code class="sig"><span class="sf">getSeparator</span>()</code>
 <span class="desc">Returns the separator.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-gettemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getTemplate()</code>
+<code class="sig"><span class="sf">getTemplate</span>()</code>
 <span class="desc">Return the current template.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( int $index )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">int</span> <span class="sv">$index</span> )</code>
 <span class="desc">Removes crumb by url.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render()</code>
+<code class="sig"><span class="sf">render</span>()</code>
 <span class="desc">Renders and outputs breadcrumbs based on previously set template.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-setattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAttributes( array $attributes )</code>
+<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Set the attributes for the parent element.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-setprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setPrefix( string $prefix )</code>
+<code class="sig"><span class="sf">setPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Set the link prefix prepended to every non-empty link during rendering.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-setseparator">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setSeparator( string $separator )</code>
+<code class="sig"><span class="sf">setSeparator</span>( <span class="st">string</span> <span class="sv">$separator</span> )</code>
 <span class="desc">Set the separator.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-settemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setTemplate(
-    string $main,
-    string $line,
-    string $last
-)</code>
+<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$main</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$line</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$last</span></span>)</code>
 <span class="desc">Set the HTML template.</span>
 </a>
 <a class="api-item" href="#htmlhelperbreadcrumbs-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal breadcrumbs array.</span>
 </a>
 </div>
@@ -2572,30 +2544,24 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperbutton-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null,
-    bool $forceRaw = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperbutton-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    array $attributes = [],
-    bool $raw = false
-)</code>
-<span class="desc">Produce a `&lt;button&gt;` tag.</span>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Produce a <code>&lt;button&gt;</code> tag.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$forceRaw = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forceRaw</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2645,11 +2611,8 @@ Class Close
 <a class="api-item" href="#htmlhelperclose-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $tag,
-    bool $raw = false
-)</code>
-<span class="desc">Produce a `&lt;/...&gt;` tag.</span>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Produce a <code>&lt;/...&gt;</code> tag.</span>
 </a>
 </div>
 
@@ -2687,55 +2650,73 @@ Creates Doctype tags
 <div class="api-list">
 <a class="api-item" href="#htmlhelperdoctype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 <a class="api-item" href="#htmlhelperdoctype-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">__invoke(
-    int $type = self::HTML5,
-    string $delimiter = &quot;\n&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = self::HTML5</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = &quot;\n&quot;</span></span>)</code>
 <span class="desc">Produce a &lt;doctype&gt; tag</span>
 </a>
 <a class="api-item" href="#htmlhelperdoctype-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 </a>
 <a class="api-item" href="#htmlhelperdoctype-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `HTML32 = 1` `int`
-
--   `HTML401_FRAMESET = 4` `int`
-
--   `HTML401_STRICT = 2` `int`
-
--   `HTML401_TRANSITIONAL = 3` `int`
-
--   `HTML5 = 5` `int`
-
--   `XHTML10_FRAMESET = 8` `int`
-
--   `XHTML10_STRICT = 6` `int`
-
--   `XHTML10_TRANSITIONAL = 7` `int`
-
--   `XHTML11 = 9` `int`
-
--   `XHTML20 = 10` `int`
-
--   `XHTML5 = 11` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HTML32</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HTML401_FRAMESET</span><span class="sm"> = 4</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HTML401_STRICT</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HTML401_TRANSITIONAL</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HTML5</span><span class="sm"> = 5</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">XHTML10_FRAMESET</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">XHTML10_STRICT</span><span class="sm"> = 6</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">XHTML10_TRANSITIONAL</span><span class="sm"> = 7</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">XHTML11</span><span class="sm"> = 9</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">XHTML20</span><span class="sm"> = 10</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">XHTML5</span><span class="sm"> = 11</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2796,31 +2777,24 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperelement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null,
-    bool $forceRaw = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperelement-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $tag,
-    string $text,
-    array $attributes = [],
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Produce a tag.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$forceRaw = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forceRaw</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2874,8 +2848,8 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperform-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( array $attributes = [] )</code>
-<span class="desc">Produce a `&lt;form&gt;` tag.</span>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
+<span class="desc">Produce a <code>&lt;form&gt;</code> tag.</span>
 </a>
 </div>
 
@@ -2914,26 +2888,23 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception` · 
 <div class="api-list">
 <a class="api-item" href="#htmlhelperfriendlytitle-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( EscaperInterface $escaper )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">EscaperInterface</span> <span class="sv">$escaper</span> )</code>
 </a>
 <a class="api-item" href="#htmlhelperfriendlytitle-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $separator = &quot;-&quot;,
-    bool $lowercase = true,
-    mixed $replace = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$friendly` `Friendly`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Friendly</code>
+<code class="sig"><span class="sv">$friendly</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2981,10 +2952,7 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperimg-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $src,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$src</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Produce a &lt;img&gt; tag.</span>
 </a>
 </div>
@@ -3040,50 +3008,52 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputabstractchecked-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractchecked-__tostring">
 <code class="vis vis-public">public</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Returns the HTML for the input, optionally surrounded by the label</span>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractchecked-label">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">label( array $attributes = [] )</code>
-<span class="desc">Attaches a wrapping `&lt;label&gt;` to the element. The supplied attributes</span>
+<code class="sig"><span class="sf">label</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
+<span class="desc">Attaches a wrapping <code>&lt;label&gt;</code> to the element. The supplied attributes</span>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractchecked-strict">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">strict( bool $flag = true )</code>
-<span class="desc">Toggles strict (`===`) comparison between the `checked` attribute and</span>
+<code class="sig"><span class="sf">strict</span>( <span class="st">bool</span> <span class="sv">$flag</span><span class="sm"> = true</span> )</code>
+<span class="desc">Toggles strict (<code>===</code>) comparison between the <code>checked</code> attribute and</span>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractchecked-processchecked">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">processChecked()</code>
-<span class="desc">Decides whether the rendered tag carries `checked=&quot;checked&quot;`. Two</span>
+<code class="sig"><span class="sf">processChecked</span>()</code>
+<span class="desc">Decides whether the rendered tag carries <code>checked=&quot;checked&quot;</code>. Two</span>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractchecked-processunchecked">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">processUnchecked()</code>
+<code class="sig"><span class="sf">processUnchecked</span>()</code>
 <span class="desc">Returns the markup for the optional hidden companion input that lets</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$label = []` `array`
-
--   `protected`{ .vis-protected } `$strict = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$label</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$strict</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3190,50 +3160,56 @@ __Uses__ `Phalcon\Html\Helper\AbstractHelper`
 <a class="api-item" href="#htmlhelperinputabstractgroup-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">__invoke(
-    string $name,
-    array $options,
-    mixed $checked = null,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$checked</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractgroup-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Renders the group of inputs as a string.</span>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractgroup-ischecked">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">isChecked( string $value )</code>
+<code class="sig"><span class="sf">isChecked</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
 <span class="desc">Determines whether the given value is considered checked.</span>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractgroup-renderitem">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">renderItem(
-    string $value,
-    mixed $definition
-)</code>
+<code class="sig"><span class="sf">renderItem</span>(<span class="prm"><span class="st">string</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Renders a single input + optional label pair.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$checked = null` `mixed`
-
--   `protected`{ .vis-protected } `$name = ""` `string`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$sharedAttributes = []` `array`
-
--   `protected`{ .vis-protected } `$type = "checkbox"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$checked</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sharedAttributes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;checkbox&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3311,33 +3287,34 @@ __Uses__ `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
 <a class="api-item" href="#htmlhelperinputabstractinput-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">__invoke(
-    string $name,
-    string $value = null,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractinput-__tostring">
 <code class="vis vis-public">public</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Returns the HTML for the input.</span>
 </a>
 <a class="api-item" href="#htmlhelperinputabstractinput-setvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setValue( string $value = null )</code>
+<code class="sig"><span class="sf">setValue</span>( <span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the value of the element</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributes = []` `array`
-
--   `protected`{ .vis-protected } `$type = "text"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;text&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3390,10 +3367,12 @@ companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$type = "checkbox"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;checkbox&quot;</span></code>
+</div>
 </div>
 
 
@@ -3421,17 +3400,19 @@ scalar value (treated as a one-element array).
 <a class="api-item" href="#htmlhelperinputcheckboxgroup-ischecked">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">isChecked( string $value )</code>
+<code class="sig"><span class="sf">isChecked</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
 <span class="desc">Returns true when $value appears in the checked list.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$type = "checkbox"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;checkbox&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3474,16 +3455,12 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputgeneric-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null,
-    string $type = &quot;text&quot;
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;text&quot;</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputgeneric-settype">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractInput</code>
-<code class="sig">setType( string $type )</code>
+<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Sets the type of the input.</span>
 </a>
 </div>
@@ -3530,10 +3507,12 @@ companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$type = "radio"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;radio&quot;</span></code>
+</div>
 </div>
 
 
@@ -3561,17 +3540,19 @@ option's value attribute.
 <a class="api-item" href="#htmlhelperinputradiogroup-ischecked">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">isChecked( string $value )</code>
+<code class="sig"><span class="sf">isChecked</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
 <span class="desc">Returns true when $value loosely equals the checked scalar.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$type = "radio"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;radio&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3611,89 +3592,84 @@ __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Helpe
 <a class="api-item" href="#htmlhelperinputselect-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    string $text,
-    string $value = null,
-    array $attributes = [],
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-addplaceholder">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addPlaceholder(
-    string $text,
-    string $value = null,
-    array $attributes = [],
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">addPlaceholder</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Add a placeholder to the element</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-fromdata">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">fromData( SelectData $data )</code>
+<code class="sig"><span class="sf">fromData</span>( <span class="st">SelectData</span> <span class="sv">$data</span> )</code>
 <span class="desc">Populates the select from a data provider.</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-optgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">optGroup(
-    string $label = null,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">optGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$label</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Creates an option group</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-placeholder">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">placeholder( string $text )</code>
+<code class="sig"><span class="sf">placeholder</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
 <span class="desc">Adds a non-selectable placeholder option as the first entry. Renders</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-selected">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">selected( string $selected )</code>
+<code class="sig"><span class="sf">selected</span>( <span class="st">string</span> <span class="sv">$selected</span> )</code>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-strict">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">strict( bool $flag = true )</code>
-<span class="desc">Toggles strict (`===`) comparison between an option&#039;s `value` and</span>
+<code class="sig"><span class="sf">strict</span>( <span class="st">bool</span> <span class="sv">$flag</span><span class="sm"> = true</span> )</code>
+<span class="desc">Toggles strict (<code>===</code>) comparison between an option&#039;s <code>value</code> and</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-optgroupend">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">optGroupEnd()</code>
+<code class="sig"><span class="sf">optGroupEnd</span>()</code>
 </a>
 <a class="api-item" href="#htmlhelperinputselect-optgroupstart">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">optGroupStart(
-    string $label,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">optGroupStart</span>(<span class="prm"><span class="st">string</span> <span class="sv">$label</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$elementTag = "option"` `string`
-
--   `protected`{ .vis-protected } `$inOptGroup = false` `bool`
-
--   `protected`{ .vis-protected } `$selected = ""` `string`
-
--   `protected`{ .vis-protected } `$strict = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$elementTag</span><span class="sm"> = &quot;option&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$inOptGroup</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$selected</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$strict</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3823,31 +3799,33 @@ __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputselectarraydata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    array $data = [],
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputselectarraydata-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 </a>
 <a class="api-item" href="#htmlhelperinputselectarraydata-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributes = []` `array`
-
--   `protected`{ .vis-protected } `$data = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3906,53 +3884,60 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Html\Helper\Input\Sele
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputselectresultsetdata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    ResultsetInterface $resultset,
-    array $using,
-    array $attributesMap = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ResultsetInterface</span> <span class="sv">$resultset</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$using</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributesMap</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperinputselectresultsetdata-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Returns per-option attribute maps, keyed by option value.</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselectresultsetdata-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 </a>
 <a class="api-item" href="#htmlhelperinputselectresultsetdata-readfield">
 <code class="vis vis-protected">protected</code>
-<code class="sig">readField(
-    mixed $option,
-    string $field
-)</code>
+<code class="sig"><span class="sf">readField</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Reads a property from the row, supporting both objects (via</span>
 </a>
 <a class="api-item" href="#htmlhelperinputselectresultsetdata-resolve">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">resolve()</code>
+<code class="sig"><span class="sf">resolve</span>()</code>
 <span class="desc">Walks the resultset once, building both the option map and the</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributesMap = []` `array`
-
--   `protected`{ .vis-protected } `$resolvedAttributes = null` `array|null`
-
--   `protected`{ .vis-protected } `$resolvedOptions = null` `array|null`
-
--   `protected`{ .vis-protected } `$resultset` `ResultsetInterface`
-
--   `protected`{ .vis-protected } `$using = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$attributesMap</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$resolvedAttributes</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$resolvedOptions</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ResultsetInterface</code>
+<code class="sig"><span class="sv">$resultset</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$using</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4032,17 +4017,19 @@ __Uses__ `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperinputtextarea-__tostring">
 <code class="vis vis-public">public</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Returns the HTML for the input.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$type = "textarea"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;textarea&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4082,30 +4069,24 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperlabel-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null,
-    bool $forceRaw = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperlabel-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $label,
-    array $attributes = [],
-    bool $raw = false
-)</code>
-<span class="desc">Produce a `&lt;label&gt;` tag.</span>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$label</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Produce a <code>&lt;label&gt;</code> tag.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$forceRaw = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forceRaw</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4157,26 +4138,19 @@ Creates <link> tags
 <a class="api-item" href="#htmlhelperlink-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    string $url,
-    array $attributes = [],
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperlink-getattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes(
-    string $url,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">getAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Returns the necessary attributes</span>
 </a>
 <a class="api-item" href="#htmlhelperlink-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 </a>
 </div>
 
@@ -4240,43 +4214,28 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelpermeta-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    array $attributes = [],
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelpermeta-addhttp">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addHttp(
-    string $httpEquiv,
-    string $content,
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">addHttp</span>(<span class="prm"><span class="st">string</span> <span class="sv">$httpEquiv</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelpermeta-addname">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addName(
-    string $name,
-    string $content,
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">addName</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelpermeta-addproperty">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addProperty(
-    string $name,
-    string $content,
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">addProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelpermeta-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 </a>
 </div>
 
@@ -4360,35 +4319,29 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface`
 <div class="api-list">
 <a class="api-item" href="#htmlhelperol-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    Doctype $doctype = null,
-    bool $forceRaw = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">Doctype</span> <span class="sv">$doctype</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceRaw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperol-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    string $text,
-    array $attributes = [],
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperol-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$forceRaw = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forceRaw</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4449,28 +4402,23 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · 
 <div class="api-list">
 <a class="api-item" href="#htmlhelperpreload-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    ResponseInterface $response = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">ResponseInterface</span> <span class="sv">$response</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#htmlhelperpreload-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $href,
-    string $type = &quot;style&quot;,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$href</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;style&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$response = null` `ResponseInterface|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ResponseInterface|null</code>
+<code class="sig"><span class="sv">$response</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4521,41 +4469,31 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperscript-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    string $url,
-    array $attributes = [],
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperscript-begininternal">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">beginInternal()</code>
+<code class="sig"><span class="sf">beginInternal</span>()</code>
 <span class="desc">Begins capturing inline script content via output buffering. Pair</span>
 </a>
 <a class="api-item" href="#htmlhelperscript-endinternal">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">endInternal(
-    array $attributes = [],
-    int $position = -1
-)</code>
-<span class="desc">Closes an inline-script buffer opened by `beginInternal()` and adds</span>
+<code class="sig"><span class="sf">endInternal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Closes an inline-script buffer opened by <code>beginInternal()</code> and adds</span>
 </a>
 <a class="api-item" href="#htmlhelperscript-getattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes(
-    string $url,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">getAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Returns the necessary attributes</span>
 </a>
 <a class="api-item" href="#htmlhelperscript-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 </a>
 </div>
 
@@ -4644,32 +4582,25 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelperstyle-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    string $url,
-    array $attributes = [],
-    int $position = -1
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Add an element to the list</span>
 </a>
 <a class="api-item" href="#htmlhelperstyle-setstyle">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setStyle( bool $flag )</code>
+<code class="sig"><span class="sf">setStyle</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
 <span class="desc">Sets if this is a style or link tag</span>
 </a>
 <a class="api-item" href="#htmlhelperstyle-getattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes(
-    string $url,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">getAttributes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Returns the necessary attributes</span>
 </a>
 <a class="api-item" href="#htmlhelperstyle-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 </a>
 </div>
 
@@ -4743,10 +4674,7 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelpertag-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $name,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 </div>
 
@@ -4794,73 +4722,69 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelpertitle-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">__invoke(
-    string $indent = &quot;    &quot;,
-    string $delimiter = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$indent</span><span class="sm"> = &quot;    &quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the separator and returns the object back</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-__tostring">
 <code class="vis vis-public">public</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Returns the title tags</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-append">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">append(
-    string $text,
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">append</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Appends text to current document title</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">get()</code>
+<code class="sig"><span class="sf">get</span>()</code>
 <span class="desc">Returns the title</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-prepend">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">prepend(
-    string $text,
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">prepend</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Prepends text to current document title</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-set">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">set(
-    string $text,
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sets the title</span>
 </a>
 <a class="api-item" href="#htmlhelpertitle-setseparator">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setSeparator(
-    string $separator,
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">setSeparator</span>(<span class="prm"><span class="st">string</span> <span class="sv">$separator</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sets the separator</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$append = []` `array`
-
--   `protected`{ .vis-protected } `$prepend = []` `array`
-
--   `protected`{ .vis-protected } `$separator = ""` `string`
-
--   `protected`{ .vis-protected } `$title = ""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$append</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$prepend</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$separator</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$title</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4961,7 +4885,7 @@ Class Ul
 <a class="api-item" href="#htmlhelperul-gettag">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTag()</code>
+<code class="sig"><span class="sf">getTag</span>()</code>
 </a>
 </div>
 
@@ -5001,10 +4925,7 @@ __Uses__ `Phalcon\Html\Exception`
 <a class="api-item" href="#htmlhelpervoidtag-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $name,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 </a>
 </div>
 
@@ -5047,85 +4968,89 @@ __Uses__ `Phalcon\Support\Collection`
 <div class="api-list">
 <a class="api-item" href="#htmllinkabstractlink-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $rel = &quot;&quot;,
-    string $href = &quot;&quot;,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$rel</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$href</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Link constructor.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dogetattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">doGetAttributes()</code>
+<code class="sig"><span class="sf">doGetAttributes</span>()</code>
 <span class="desc">Returns a list of attributes that describe the target URI.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dogethref">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">doGetHref()</code>
+<code class="sig"><span class="sf">doGetHref</span>()</code>
 <span class="desc">Returns the target of the link.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dogetrels">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">doGetRels()</code>
+<code class="sig"><span class="sf">doGetRels</span>()</code>
 <span class="desc">Returns the relationship type(s) of the link.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-doistemplated">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doIsTemplated()</code>
+<code class="sig"><span class="sf">doIsTemplated</span>()</code>
 <span class="desc">Returns whether this is a templated link.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithattribute">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">doWithAttribute(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">doWithAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithhref">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">doWithHref( string $href )</code>
+<code class="sig"><span class="sf">doWithHref</span>( <span class="st">string</span> <span class="sv">$href</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithrel">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">doWithRel( string $key )</code>
+<code class="sig"><span class="sf">doWithRel</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithoutattribute">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">doWithoutAttribute( string $key )</code>
+<code class="sig"><span class="sf">doWithoutAttribute</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-dowithoutrel">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">doWithoutRel( string $key )</code>
+<code class="sig"><span class="sf">doWithoutRel</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 <a class="api-item" href="#htmllinkabstractlink-hrefistemplated">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">hrefIsTemplated( string $href )</code>
+<code class="sig"><span class="sf">hrefIsTemplated</span>( <span class="st">string</span> <span class="sv">$href</span> )</code>
 <span class="desc">Determines if a href is a templated link or not.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributes` `Collection`
-
--   `protected`{ .vis-protected } `$href = ""` `string`
-
--   `protected`{ .vis-protected } `$rels` `Collection`
-
--   `protected`{ .vis-protected } `$templated = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Collection</code>
+<code class="sig"><span class="sv">$attributes</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$href</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Collection</code>
+<code class="sig"><span class="sv">$rels</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$templated</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5255,47 +5180,49 @@ __Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
 <div class="api-list">
 <a class="api-item" href="#htmllinkabstractlinkprovider-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $links = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$links</span><span class="sm"> = []</span> )</code>
 <span class="desc">LinkProvider constructor.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlinkprovider-dogetlinks">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">doGetLinks()</code>
+<code class="sig"><span class="sf">doGetLinks</span>()</code>
 <span class="desc">Returns an iterable of LinkInterface objects.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlinkprovider-dogetlinksbyrel">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">doGetLinksByRel( string $rel )</code>
+<code class="sig"><span class="sf">doGetLinksByRel</span>( <span class="st">string</span> <span class="sv">$rel</span> )</code>
 <span class="desc">Returns an iterable of LinkInterface objects that have a specific</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlinkprovider-dowithlink">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">doWithLink( mixed $link )</code>
+<code class="sig"><span class="sf">doWithLink</span>( <span class="st">mixed</span> <span class="sv">$link</span> )</code>
 <span class="desc">Returns an instance with the specified link included.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlinkprovider-dowithoutlink">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">doWithoutLink( mixed $link )</code>
+<code class="sig"><span class="sf">doWithoutLink</span>( <span class="st">mixed</span> <span class="sv">$link</span> )</code>
 <span class="desc">Returns an instance with the specified link removed.</span>
 </a>
 <a class="api-item" href="#htmllinkabstractlinkprovider-getkey">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getKey( mixed $link )</code>
+<code class="sig"><span class="sf">getKey</span>( <span class="st">mixed</span> <span class="sv">$link</span> )</code>
 <span class="desc">Returns the object hash key</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$links = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$links</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5393,34 +5320,31 @@ __Uses__ `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
 <a class="api-item" href="#htmllinkevolvablelink-withattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">withAttribute(
-    mixed $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">withAttribute</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Returns an instance with the specified attribute added.</span>
 </a>
 <a class="api-item" href="#htmllinkevolvablelink-withhref">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">withHref( string $href )</code>
+<code class="sig"><span class="sf">withHref</span>( <span class="st">string</span> <span class="sv">$href</span> )</code>
 <span class="desc">Returns an instance with the specified href.</span>
 </a>
 <a class="api-item" href="#htmllinkevolvablelink-withrel">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">withRel( string $rel )</code>
+<code class="sig"><span class="sf">withRel</span>( <span class="st">string</span> <span class="sv">$rel</span> )</code>
 <span class="desc">Returns an instance with the specified relationship included.</span>
 </a>
 <a class="api-item" href="#htmllinkevolvablelink-withoutattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">withoutAttribute( string $attribute )</code>
+<code class="sig"><span class="sf">withoutAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Returns an instance with the specified attribute excluded.</span>
 </a>
 <a class="api-item" href="#htmllinkevolvablelink-withoutrel">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">withoutRel( string $rel )</code>
+<code class="sig"><span class="sf">withoutRel</span>( <span class="st">string</span> <span class="sv">$rel</span> )</code>
 <span class="desc">Returns an instance with the specified relationship excluded.</span>
 </a>
 </div>
@@ -5514,13 +5438,13 @@ __Uses__ `Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface` · `Phalc
 <a class="api-item" href="#htmllinkevolvablelinkprovider-withlink">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">withLink( LinkInterface $link )</code>
+<code class="sig"><span class="sf">withLink</span>( <span class="st">LinkInterface</span> <span class="sv">$link</span> )</code>
 <span class="desc">Returns an instance with the specified link included.</span>
 </a>
 <a class="api-item" href="#htmllinkevolvablelinkprovider-withoutlink">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">withoutLink( LinkInterface $link )</code>
+<code class="sig"><span class="sf">withoutLink</span>( <span class="st">LinkInterface</span> <span class="sv">$link</span> )</code>
 <span class="desc">Returns an instance with the specified link removed.</span>
 </a>
 </div>
@@ -5574,34 +5498,31 @@ An evolvable link value object.
 <a class="api-item" href="#htmllinkinterfacesevolvablelinkinterface-withattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">EvolvableLinkInterface</code>
-<code class="sig">withAttribute(
-    string $attribute,
-    string $value
-)</code>
+<code class="sig"><span class="sf">withAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Returns an instance with the specified attribute added.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfacesevolvablelinkinterface-withhref">
 <code class="vis vis-public">public</code>
 <code class="ret">EvolvableLinkInterface</code>
-<code class="sig">withHref( string $href )</code>
+<code class="sig"><span class="sf">withHref</span>( <span class="st">string</span> <span class="sv">$href</span> )</code>
 <span class="desc">Returns an instance with the specified href.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfacesevolvablelinkinterface-withrel">
 <code class="vis vis-public">public</code>
 <code class="ret">EvolvableLinkInterface</code>
-<code class="sig">withRel( string $rel )</code>
+<code class="sig"><span class="sf">withRel</span>( <span class="st">string</span> <span class="sv">$rel</span> )</code>
 <span class="desc">Returns an instance with the specified relationship included.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfacesevolvablelinkinterface-withoutattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">EvolvableLinkInterface</code>
-<code class="sig">withoutAttribute( string $attribute )</code>
+<code class="sig"><span class="sf">withoutAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Returns an instance with the specified attribute excluded.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfacesevolvablelinkinterface-withoutrel">
 <code class="vis vis-public">public</code>
 <code class="ret">EvolvableLinkInterface</code>
-<code class="sig">withoutRel( string $rel )</code>
+<code class="sig"><span class="sf">withoutRel</span>( <span class="st">string</span> <span class="sv">$rel</span> )</code>
 <span class="desc">Returns an instance with the specified relationship excluded.</span>
 </a>
 </div>
@@ -5689,13 +5610,13 @@ An evolvable link provider value object.
 <a class="api-item" href="#htmllinkinterfacesevolvablelinkproviderinterface-withlink">
 <code class="vis vis-public">public</code>
 <code class="ret">EvolvableLinkProviderInterface</code>
-<code class="sig">withLink( LinkInterface $link )</code>
+<code class="sig"><span class="sf">withLink</span>( <span class="st">LinkInterface</span> <span class="sv">$link</span> )</code>
 <span class="desc">Returns an instance with the specified link included.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfacesevolvablelinkproviderinterface-withoutlink">
 <code class="vis vis-public">public</code>
 <code class="ret">EvolvableLinkProviderInterface</code>
-<code class="sig">withoutLink( LinkInterface $link )</code>
+<code class="sig"><span class="sf">withoutLink</span>( <span class="st">LinkInterface</span> <span class="sv">$link</span> )</code>
 <span class="desc">Returns an instance with the specified link removed.</span>
 </a>
 </div>
@@ -5749,25 +5670,25 @@ A readable link object.
 <a class="api-item" href="#htmllinkinterfaceslinkinterface-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Returns a list of attributes that describe the target URI.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfaceslinkinterface-gethref">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHref()</code>
+<code class="sig"><span class="sf">getHref</span>()</code>
 <span class="desc">Returns the target of the link.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfaceslinkinterface-getrels">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getRels()</code>
+<code class="sig"><span class="sf">getRels</span>()</code>
 <span class="desc">Returns the relationship type(s) of the link.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfaceslinkinterface-istemplated">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isTemplated()</code>
+<code class="sig"><span class="sf">isTemplated</span>()</code>
 <span class="desc">Returns whether this is a templated link.</span>
 </a>
 </div>
@@ -5840,13 +5761,13 @@ A link provider object.
 <a class="api-item" href="#htmllinkinterfaceslinkproviderinterface-getlinks">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getLinks()</code>
+<code class="sig"><span class="sf">getLinks</span>()</code>
 <span class="desc">Returns an array of LinkInterface objects.</span>
 </a>
 <a class="api-item" href="#htmllinkinterfaceslinkproviderinterface-getlinksbyrel">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getLinksByRel( string $rel )</code>
+<code class="sig"><span class="sf">getLinksByRel</span>( <span class="st">string</span> <span class="sv">$rel</span> )</code>
 <span class="desc">Returns an array of LinkInterface objects that have a specific</span>
 </a>
 </div>
@@ -5897,25 +5818,25 @@ __Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
 <a class="api-item" href="#htmllinklink-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Returns a list of attributes that describe the target URI.</span>
 </a>
 <a class="api-item" href="#htmllinklink-gethref">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHref()</code>
+<code class="sig"><span class="sf">getHref</span>()</code>
 <span class="desc">Returns the target of the link.</span>
 </a>
 <a class="api-item" href="#htmllinklink-getrels">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getRels()</code>
+<code class="sig"><span class="sf">getRels</span>()</code>
 <span class="desc">Returns the relationship type(s) of the link.</span>
 </a>
 <a class="api-item" href="#htmllinklink-istemplated">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isTemplated()</code>
+<code class="sig"><span class="sf">isTemplated</span>()</code>
 <span class="desc">Returns whether or not this is a templated link.</span>
 </a>
 </div>
@@ -5992,13 +5913,13 @@ __Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface` · `Phalcon\Html\Link\Inte
 <a class="api-item" href="#htmllinklinkprovider-getlinks">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getLinks()</code>
+<code class="sig"><span class="sf">getLinks</span>()</code>
 <span class="desc">Returns an iterable of LinkInterface objects.</span>
 </a>
 <a class="api-item" href="#htmllinklinkprovider-getlinksbyrel">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getLinksByRel( mixed $rel )</code>
+<code class="sig"><span class="sf">getLinksByRel</span>( <span class="st">mixed</span> <span class="sv">$rel</span> )</code>
 <span class="desc">Returns an iterable of LinkInterface objects that have a specific</span>
 </a>
 </div>
@@ -6051,7 +5972,7 @@ Class Phalcon\Http\Link\Serializer\Header
 <a class="api-item" href="#htmllinkserializerheader-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">serialize( array $links )</code>
+<code class="sig"><span class="sf">serialize</span>( <span class="st">array</span> <span class="sv">$links</span> )</code>
 <span class="desc">Serializes all the passed links to a HTTP link header</span>
 </a>
 </div>
@@ -6088,7 +6009,7 @@ Class Phalcon\Http\Link\Serializer\SerializerInterface
 <a class="api-item" href="#htmllinkserializerserializerinterface-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">serialize( array $links )</code>
+<code class="sig"><span class="sf">serialize</span>( <span class="st">array</span> <span class="sv">$links</span> )</code>
 <span class="desc">Serializer method</span>
 </a>
 </div>
@@ -6187,58 +6108,52 @@ __Uses__ `Closure` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\E
 <div class="api-list">
 <a class="api-item" href="#htmltagfactory-__call">
 <code class="vis vis-public">public</code>
-<code class="sig">__call(
-    string $name,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Magic call to make the helper objects available as methods.</span>
 </a>
 <a class="api-item" href="#htmltagfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    EscaperInterface $escaper,
-    array $services = [],
-    ResponseInterface $response = null,
-    UrlInterface $url = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">ResponseInterface</span> <span class="sv">$response</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">UrlInterface</span> <span class="sv">$url</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">TagFactory constructor.</span>
 </a>
 <a class="api-item" href="#htmltagfactory-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#htmltagfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">newInstance( string $name )</code>
+<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Create or return a cached instance of the helper.</span>
 </a>
 <a class="api-item" href="#htmltagfactory-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $name,
-    Closure $definition
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">Closure</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Register a helper via a zero-argument Closure. The Closure is invoked on</span>
 </a>
 <a class="api-item" href="#htmltagfactory-getdefaultservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getDefaultServices()</code>
+<code class="sig"><span class="sf">getDefaultServices</span>()</code>
 <span class="desc">Default service recipes. Every entry is a Closure that returns a</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$factories = []` `array`
-
--   `protected`{ .vis-protected } `$instances = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$factories</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$instances</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods

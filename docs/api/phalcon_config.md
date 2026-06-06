@@ -79,10 +79,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 <div class="api-list">
 <a class="api-item" href="#configadaptergrouped-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    array $arrayConfig,
-    string $defaultAdapter = &quot;php&quot;
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Grouped constructor</span>
 </a>
 </div>
@@ -165,39 +162,29 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <div class="api-list">
 <a class="api-item" href="#configadapterini-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $filePath,
-    int $mode = 1
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$mode</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Ini constructor.</span>
 </a>
 <a class="api-item" href="#configadapterini-cast">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">cast( mixed $ini )</code>
+<code class="sig"><span class="sf">cast</span>( <span class="st">mixed</span> <span class="sv">$ini</span> )</code>
 <span class="desc">We have to cast values manually because parse_ini_file() has a poor</span>
 </a>
 <a class="api-item" href="#configadapterini-castarray">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">castArray( array $ini )</code>
+<code class="sig"><span class="sf">castArray</span>( <span class="st">array</span> <span class="sv">$ini</span> )</code>
 </a>
 <a class="api-item" href="#configadapterini-parseinistring">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">parseIniString(
-    string $path,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">parseIniString</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Build multidimensional array from string</span>
 </a>
 <a class="api-item" href="#configadapterini-phpparseinifile">
 <code class="vis vis-protected">protected</code>
-<code class="sig">phpParseIniFile(
-    string $filename,
-    bool $processSections = false,
-    int $scannerMode = 1
-)</code>
+<code class="sig"><span class="sf">phpParseIniFile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$processSections</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$scannerMode</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">@todo to be removed when we get traits</span>
 </a>
 </div>
@@ -298,7 +285,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Support\Helper\Json\Decode`
 <div class="api-list">
 <a class="api-item" href="#configadapterjson-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $filePath )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$filePath</span> )</code>
 <span class="desc">Phalcon\Config\Adapter\Json constructor</span>
 </a>
 </div>
@@ -371,7 +358,7 @@ __Uses__ `Phalcon\Config\Config`
 <div class="api-list">
 <a class="api-item" href="#configadapterphp-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $filePath )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$filePath</span> )</code>
 <span class="desc">Phalcon\Config\Adapter\Php constructor</span>
 </a>
 </div>
@@ -446,25 +433,17 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <div class="api-list">
 <a class="api-item" href="#configadapteryaml-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $filePath,
-    array $callbacks = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Yaml constructor</span>
 </a>
 <a class="api-item" href="#configadapteryaml-phpextensionloaded">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">phpExtensionLoaded( string $name )</code>
+<code class="sig"><span class="sf">phpExtensionLoaded</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#configadapteryaml-phpyamlparsefile">
 <code class="vis vis-protected">protected</code>
-<code class="sig">phpYamlParseFile(
-    mixed $filename,
-    mixed $pos = 0,
-    mixed $ndocs = null,
-    mixed $callbacks = []
-)</code>
+<code class="sig"><span class="sf">phpYamlParseFile</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$pos</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ndocs</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$callbacks</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">@todo to be removed when we get traits</span>
 </a>
 </div>
@@ -556,71 +535,64 @@ __Uses__ `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Support\Collec
 <a class="api-item" href="#configconfig-getpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPathDelimiter()</code>
+<code class="sig"><span class="sf">getPathDelimiter</span>()</code>
 <span class="desc">Gets the default path delimiter</span>
 </a>
 <a class="api-item" href="#configconfig-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig">merge( mixed $toMerge )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
 <span class="desc">Merges a configuration into the current one</span>
 </a>
 <a class="api-item" href="#configconfig-path">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">path(
-    string $path,
-    mixed $defaultValue = null,
-    string $delimiter = null
-)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a value from current config using a dot separated path.</span>
 </a>
 <a class="api-item" href="#configconfig-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig">setPathDelimiter( string $delimiter = null )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the default path delimiter</span>
 </a>
 <a class="api-item" href="#configconfig-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Converts recursively the object to an array</span>
 </a>
 <a class="api-item" href="#configconfig-internalmerge">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">internalMerge(
-    array $source,
-    array $target
-)</code>
+<code class="sig"><span class="sf">internalMerge</span>(<span class="prm"><span class="st">array</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$target</span></span>)</code>
 <span class="desc">Performs a merge recursively</span>
 </a>
 <a class="api-item" href="#configconfig-setdata">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">setData(
-    mixed $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setData</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets the collection data</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `DEFAULT_PATH_DELIMITER = "."` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">DEFAULT_PATH_DELIMITER</span><span class="sm"> = &quot;.&quot;</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$pathDelimiter = self::DEFAULT_PATH_DELIMITER` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$pathDelimiter</span><span class="sm"> = self::DEFAULT_PATH_DELIMITER</span></code>
+</div>
 </div>
 
 ### Methods
@@ -753,40 +725,36 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon
 <div class="api-list">
 <a class="api-item" href="#configconfigfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $services = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 <span class="desc">ConfigFactory constructor.</span>
 </a>
 <a class="api-item" href="#configconfigfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig">load( mixed $config )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Load a config to create a new instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig">newInstance(
-    string $name,
-    string $fileName,
-    mixed $params = null
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a new Config instance</span>
 </a>
 <a class="api-item" href="#configconfigfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#configconfigfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 <a class="api-item" href="#configconfigfactory-parseconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">parseConfig( mixed $config )</code>
+<code class="sig"><span class="sf">parseConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 </a>
 </div>
 
@@ -872,26 +840,22 @@ __Uses__ `Phalcon\Support\Collection\CollectionInterface`
 <a class="api-item" href="#configconfiginterface-getpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPathDelimiter()</code>
+<code class="sig"><span class="sf">getPathDelimiter</span>()</code>
 </a>
 <a class="api-item" href="#configconfiginterface-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig">merge( mixed $toMerge )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$toMerge</span> )</code>
 </a>
 <a class="api-item" href="#configconfiginterface-path">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">path(
-    string $path,
-    mixed $defaultValue = null,
-    string $delimiter = null
-)</code>
+<code class="sig"><span class="sf">path</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#configconfiginterface-setpathdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">ConfigInterface</code>
-<code class="sig">setPathDelimiter( string $delimiter = null )</code>
+<code class="sig"><span class="sf">setPathDelimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 </a>
 </div>
 
@@ -978,12 +942,12 @@ __Uses__ `Phalcon\Config\Exception`
 <div class="api-list">
 <a class="api-item" href="#configexceptionscannotloadconfigfile-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $fileName )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$fileName</span> )</code>
 </a>
 <a class="api-item" href="#configexceptionscannotloadconfigfile-getfilename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getFileName()</code>
+<code class="sig"><span class="sf">getFileName</span>()</code>
 </a>
 </div>
 
@@ -1032,7 +996,7 @@ __Uses__ `Phalcon\Config\Exception`
 <div class="api-list">
 <a class="api-item" href="#configexceptionsconfignotarrayorobject-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1075,7 +1039,7 @@ __Uses__ `Phalcon\Config\Exception`
 <div class="api-list">
 <a class="api-item" href="#configexceptionsgroupedadapterrequiresarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1118,7 +1082,7 @@ __Uses__ `Phalcon\Config\Exception`
 <div class="api-list">
 <a class="api-item" href="#configexceptionsinvalidmergedata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1161,12 +1125,12 @@ __Uses__ `Phalcon\Config\Exception`
 <div class="api-list">
 <a class="api-item" href="#configexceptionsmissingconfigoption-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $option )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$option</span> )</code>
 </a>
 <a class="api-item" href="#configexceptionsmissingconfigoption-getoption">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getOption()</code>
+<code class="sig"><span class="sf">getOption</span>()</code>
 </a>
 </div>
 
@@ -1215,7 +1179,7 @@ __Uses__ `Phalcon\Config\Exception`
 <div class="api-list">
 <a class="api-item" href="#configexceptionsmissingfileextension-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1258,7 +1222,7 @@ __Uses__ `Phalcon\Config\Exception`
 <div class="api-list">
 <a class="api-item" href="#configexceptionsmissingyamlextension-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 

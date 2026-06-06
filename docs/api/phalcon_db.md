@@ -72,598 +72,481 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon
 <div class="api-list">
 <a class="api-item" href="#dbadapterabstractadapter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $descriptor )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$descriptor</span> )</code>
 <span class="desc">Phalcon\Db\Adapter constructor</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-addcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addCheck(
-    string $tableName,
-    string $schemaName,
-    CheckInterface $check
-)</code>
+<code class="sig"><span class="sf">addCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">CheckInterface</span> <span class="sv">$check</span></span>)</code>
 <span class="desc">Adds a CHECK constraint to a table. MySQL 8.0.16+ and PostgreSQL</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-addcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column
-)</code>
+<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
 <span class="desc">Adds a column to a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-addforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addForeignKey(
-    string $tableName,
-    string $schemaName,
-    ReferenceInterface $reference
-)</code>
+<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
 <span class="desc">Adds a foreign key to a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-addindex">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addIndex(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Adds an index to a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-addprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addPrimaryKey(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Adds a primary key to a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-creatematerializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createMaterializedView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a materialized view (PostgreSQL only - MySQL and SQLite</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-createsavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createSavepoint( string $name )</code>
+<code class="sig"><span class="sf">createSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Creates a new savepoint</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-createtable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createTable(
-    string $tableName,
-    string $schemaName,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Creates a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a view</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete(
-    mixed $table,
-    string $whereCondition = null,
-    array $placeholders = [],
-    array $dataTypes = []
-)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Deletes data from a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">IndexInterface[]</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table indexes</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">ReferenceInterface[]</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table references</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-dropcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropCheck(
-    string $tableName,
-    string $schemaName,
-    string $checkName
-)</code>
+<code class="sig"><span class="sf">dropCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$checkName</span></span>)</code>
 <span class="desc">Drops a CHECK constraint from a table. SQLite throws.</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-dropcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropColumn(
-    string $tableName,
-    string $schemaName,
-    string $columnName
-)</code>
+<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
 <span class="desc">Drops a column from a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-dropforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropForeignKey(
-    string $tableName,
-    string $schemaName,
-    string $referenceName
-)</code>
+<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
 <span class="desc">Drops a foreign key from a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-dropindex">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropIndex(
-    string $tableName,
-    string $schemaName,
-    mixed $indexName
-)</code>
+<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$indexName</span></span>)</code>
 <span class="desc">Drop an index from a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-dropmaterializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropMaterializedView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Drops a materialized view (PostgreSQL only).</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-dropprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropPrimaryKey(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Drops a table&#039;s primary key</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-droptable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropTable(
-    string $tableName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Drops a table from a schema/database</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Drops a view</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-escapeidentifier">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeIdentifier( mixed $identifier )</code>
+<code class="sig"><span class="sf">escapeIdentifier</span>( <span class="st">mixed</span> <span class="sv">$identifier</span> )</code>
 <span class="desc">Escapes a column/table/schema name</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-fetchall">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAll(
-    string $sqlQuery,
-    int $fetchMode = Enum::FETCH_ASSOC,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">fetchAll</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$fetchMode</span><span class="sm"> = Enum::FETCH_ASSOC</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Dumps the complete result of a query into an array</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-fetchcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
-<code class="sig">fetchColumn(
-    string $sqlQuery,
-    array $placeholders = [],
-    mixed $column = 0
-)</code>
+<code class="sig"><span class="sf">fetchColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$column</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Returns the n&#039;th field of first row in a SQL query result</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-fetchone">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchOne(
-    string $sqlQuery,
-    mixed $fetchMode = Enum::FETCH_ASSOC,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">fetchOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fetchMode</span><span class="sm"> = Enum::FETCH_ASSOC</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the first row in a SQL query result</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">forUpdate(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getcolumndefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnDefinition( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Returns the SQL column definition from a column</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getcolumnlist">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnList( mixed $columnList )</code>
+<code class="sig"><span class="sf">getColumnList</span>( <span class="st">mixed</span> <span class="sv">$columnList</span> )</code>
 <span class="desc">Gets a list of columns</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getconnectionid">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getConnectionId()</code>
+<code class="sig"><span class="sf">getConnectionId</span>()</code>
 <span class="desc">Gets the active connection unique identifier</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getdefaultidvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">RawValue</code>
-<code class="sig">getDefaultIdValue()</code>
+<code class="sig"><span class="sf">getDefaultIdValue</span>()</code>
 <span class="desc">Returns the default identity value to be inserted in an identity column</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getdefaultvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">RawValue</code>
-<code class="sig">getDefaultValue()</code>
+<code class="sig"><span class="sf">getDefaultValue</span>()</code>
 <span class="desc">Returns the default value to make the RBDM use the default value declared</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getdescriptor">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDescriptor()</code>
+<code class="sig"><span class="sf">getDescriptor</span>()</code>
 <span class="desc">Return descriptor used to connect to the active database</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getdialect">
 <code class="vis vis-public">public</code>
 <code class="ret">DialectInterface</code>
-<code class="sig">getDialect()</code>
+<code class="sig"><span class="sf">getDialect</span>()</code>
 <span class="desc">Returns internal dialect instance</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getdialecttype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDialectType()</code>
+<code class="sig"><span class="sf">getDialectType</span>()</code>
 <span class="desc">Name of the dialect used</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getnestedtransactionsavepointname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getNestedTransactionSavepointName()</code>
+<code class="sig"><span class="sf">getNestedTransactionSavepointName</span>()</code>
 <span class="desc">Returns the savepoint name to use for nested transactions</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getrealsqlstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRealSQLStatement()</code>
+<code class="sig"><span class="sf">getRealSQLStatement</span>()</code>
 <span class="desc">Active SQL statement in the object without replace bound parameters</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getsqlbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSQLBindTypes()</code>
+<code class="sig"><span class="sf">getSQLBindTypes</span>()</code>
 <span class="desc">Active SQL statement in the object</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getsqlstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSQLStatement()</code>
+<code class="sig"><span class="sf">getSQLStatement</span>()</code>
 <span class="desc">Active SQL statement in the object</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-getsqlvariables">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSQLVariables()</code>
+<code class="sig"><span class="sf">getSQLVariables</span>()</code>
 <span class="desc">Active SQL variables in the object</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Type of database system the adapter is used for</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-insert">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">insert(
-    string $table,
-    array $values,
-    mixed $fields = null,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">insert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Inserts data into a table using custom RDBMS SQL syntax</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-insertasdict">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">insertAsDict(
-    string $table,
-    mixed $data,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">insertAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Inserts data into a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-isnestedtransactionswithsavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isNestedTransactionsWithSavepoints()</code>
+<code class="sig"><span class="sf">isNestedTransactionsWithSavepoints</span>()</code>
 <span class="desc">Returns if nested transactions should use savepoints</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">limit(
-    string $sqlQuery,
-    mixed $number
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Appends a LIMIT clause to $sqlQuery argument</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">listTables( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables on a database</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-listviews">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">listViews( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listViews</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all views on a database</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">modifyColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column,
-    ColumnInterface $currentColumn = null
-)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Modifies a table column based on a definition</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-onconflictupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">onConflictUpdate(
-    string $sqlQuery,
-    array $conflictColumns,
-    array $updateColumns
-)</code>
-<span class="desc">Appends an `ON CONFLICT (...) DO UPDATE SET col = excluded.col`</span>
+<code class="sig"><span class="sf">onConflictUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$conflictColumns</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$updateColumns</span></span>)</code>
+<span class="desc">Appends an <code>ON CONFLICT (...) DO UPDATE SET col = excluded.col</code></span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-refreshmaterializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">refreshMaterializedView(
-    string $viewName,
-    string $schemaName = null,
-    bool $concurrent = false
-)</code>
+<code class="sig"><span class="sf">refreshMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$concurrent</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Refreshes a materialized view (PostgreSQL only). Pass</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-releasesavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">releaseSavepoint( string $name )</code>
+<code class="sig"><span class="sf">releaseSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Releases given savepoint</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-returning">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">returning(
-    string $sqlQuery,
-    array $columns
-)</code>
+<code class="sig"><span class="sf">returning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$columns</span></span>)</code>
 <span class="desc">Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-rollbacksavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollbackSavepoint( string $name )</code>
+<code class="sig"><span class="sf">rollbackSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Rollbacks given savepoint</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-setdialect">
 <code class="vis vis-public">public</code>
-<code class="sig">setDialect( DialectInterface $dialect )</code>
+<code class="sig"><span class="sf">setDialect</span>( <span class="st">DialectInterface</span> <span class="sv">$dialect</span> )</code>
 <span class="desc">Sets the dialect used to produce the SQL</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the event manager</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-setnestedtransactionswithsavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">setNestedTransactionsWithSavepoints( bool $nestedTransactionsWithSavepoints )</code>
+<code class="sig"><span class="sf">setNestedTransactionsWithSavepoints</span>( <span class="st">bool</span> <span class="sv">$nestedTransactionsWithSavepoints</span> )</code>
 <span class="desc">Set if nested transactions should use savepoints</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-setup">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setup( array $options )</code>
+<code class="sig"><span class="sf">setup</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Enables/disables options in the Database component</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">sharedLock(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a SQL modified with a shared-lock clause. The optional</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-supportsequences">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportSequences()</code>
+<code class="sig"><span class="sf">supportSequences</span>()</code>
 <span class="desc">Check whether the database system requires a sequence to produce</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-supportsdefaultvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportsDefaultValue()</code>
+<code class="sig"><span class="sf">supportsDefaultValue</span>()</code>
 <span class="desc">Check whether the database system support the DEFAULT</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">tableExists(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">tableOptions(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets creation options from a table</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">update(
-    string $table,
-    mixed $fields,
-    mixed $values,
-    mixed $whereCondition = null,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates data on a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-updateasdict">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">updateAsDict(
-    string $table,
-    mixed $data,
-    mixed $whereCondition = null,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">updateAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates data on a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-useexplicitidvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">useExplicitIdValue()</code>
+<code class="sig"><span class="sf">useExplicitIdValue</span>()</code>
 <span class="desc">Check whether the database system requires an explicit value for identity</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">viewExists(
-    string $viewName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$connectionConsecutive = 0` `int`
-
-    Connection ID
-
--   `protected`{ .vis-protected } `$connectionId` `int`
-
-    Active connection ID
-
--   `protected`{ .vis-protected } `$descriptor = []` `array`
-
-    Descriptor used to connect to a database
-
--   `protected`{ .vis-protected } `$dialect` `object`
-
-    Dialect instance
-
--   `protected`{ .vis-protected } `$dialectType` `string`
-
-    Name of the dialect used
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
-    Event Manager
-
--   `protected`{ .vis-protected } `$realSqlStatement` `string`
-
-    The real SQL statement - what was executed
-
--   `protected`{ .vis-protected } `$sqlBindTypes = []` `array`
-
-    Active SQL Bind Types
-
--   `protected`{ .vis-protected } `$sqlStatement` `string`
-
-    Active SQL Statement
-
--   `protected`{ .vis-protected } `$sqlVariables = []` `array`
-
-    Active SQL bound parameter variables
-
--   `protected`{ .vis-protected } `$transactionLevel = 0` `int`
-
-    Current transaction level
-
--   `protected`{ .vis-protected } `$transactionsWithSavepoints = false` `bool`
-
-    Whether the database supports transactions with save points
-
--   `protected`{ .vis-protected } `$type` `string`
-
-    Type of database system the adapter is used for
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$connectionConsecutive</span><span class="sm"> = 0</span></code>
+<span class="desc">Connection ID</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$connectionId</span></code>
+<span class="desc">Active connection ID</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$descriptor</span><span class="sm"> = []</span></code>
+<span class="desc">Descriptor used to connect to a database</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object</code>
+<code class="sig"><span class="sv">$dialect</span></code>
+<span class="desc">Dialect instance</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$dialectType</span></code>
+<span class="desc">Name of the dialect used</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+<span class="desc">Event Manager</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$realSqlStatement</span></code>
+<span class="desc">The real SQL statement - what was executed</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlBindTypes</span><span class="sm"> = []</span></code>
+<span class="desc">Active SQL Bind Types</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$sqlStatement</span></code>
+<span class="desc">Active SQL Statement</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlVariables</span><span class="sm"> = []</span></code>
+<span class="desc">Active SQL bound parameter variables</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$transactionLevel</span><span class="sm"> = 0</span></code>
+<span class="desc">Current transaction level</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$transactionsWithSavepoints</span><span class="sm"> = false</span></code>
+<span class="desc">Whether the database supports transactions with save points</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span></code>
+<span class="desc">Type of database system the adapter is used for</span>
+</div>
 </div>
 
 ### Methods
@@ -1634,33 +1517,30 @@ __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Get`
 <div class="api-list">
 <a class="api-item" href="#dbadapterpdofactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $services = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#dbadapterpdofactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">load( mixed $config )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#dbadapterpdofactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">newInstance(
-    string $name,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Create a new instance of the adapter</span>
 </a>
 <a class="api-item" href="#dbadapterpdofactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#dbadapterpdofactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
@@ -1753,163 +1633,149 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <div class="api-list">
 <a class="api-item" href="#dbadapterpdoabstractpdo-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $descriptor )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$descriptor</span> )</code>
 <span class="desc">Constructor for Phalcon\Db\Adapter\Pdo</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-affectedrows">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">affectedRows()</code>
+<code class="sig"><span class="sf">affectedRows</span>()</code>
 <span class="desc">Returns the number of affected rows by the latest INSERT/UPDATE/DELETE</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">begin( bool $nesting = true )</code>
+<code class="sig"><span class="sf">begin</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Starts a transaction in the connection</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-close">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">close()</code>
+<code class="sig"><span class="sf">close</span>()</code>
 <span class="desc">Closes the active connection returning success. Phalcon automatically</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">commit( bool $nesting = true )</code>
+<code class="sig"><span class="sf">commit</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Commits the active transaction in the connection</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect( array $descriptor = [] )</code>
+<code class="sig"><span class="sf">connect</span>( <span class="st">array</span> <span class="sv">$descriptor</span><span class="sm"> = []</span> )</code>
 <span class="desc">This method is automatically called in \Phalcon\Db\Adapter\Pdo</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-convertboundparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">convertBoundParams(
-    string $sql,
-    array $params = []
-)</code>
+<code class="sig"><span class="sf">convertBoundParams</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sql</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Converts bound parameters such as :name: or ?1 into PDO bind params ?</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-escapestring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeString( string $str )</code>
+<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$str</span> )</code>
 <span class="desc">Escapes a value to avoid SQL injections according to the active charset</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-execute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">execute(
-    string $sqlStatement,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">execute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sends SQL statements to the database server returning the success state.</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-executeprepared">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
-<code class="sig">executePrepared(
-    \PDOStatement $statement,
-    array $placeholders,
-    array $dataTypes = []
-)</code>
+<code class="sig"><span class="sf">executePrepared</span>(<span class="prm"><span class="st">\PDOStatement</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes a prepared statement binding. This function uses integer indexes</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-geterrorinfo">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getErrorInfo()</code>
+<code class="sig"><span class="sf">getErrorInfo</span>()</code>
 <span class="desc">Return the error info, if any</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-getinternalhandler">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getInternalHandler()</code>
+<code class="sig"><span class="sf">getInternalHandler</span>()</code>
 <span class="desc">Return internal PDO handler</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-gettransactionlevel">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getTransactionLevel()</code>
+<code class="sig"><span class="sf">getTransactionLevel</span>()</code>
 <span class="desc">Returns the current transaction nesting level</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-isundertransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUnderTransaction()</code>
+<code class="sig"><span class="sf">isUnderTransaction</span>()</code>
 <span class="desc">Checks whether the connection is under a transaction</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-lastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
-<code class="sig">lastInsertId( string $name = null )</code>
+<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the insert id for the auto_increment/serial column inserted in</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-prepare">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
-<code class="sig">prepare( string $sqlStatement )</code>
+<code class="sig"><span class="sf">prepare</span>( <span class="st">string</span> <span class="sv">$sqlStatement</span> )</code>
 <span class="desc">Returns a PDO prepared statement to be executed with &#039;executePrepared&#039;</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-query">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultInterface|bool</code>
-<code class="sig">query(
-    string $sqlStatement,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sends SQL statements to the database server returning the success state.</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollback( bool $nesting = true )</code>
+<code class="sig"><span class="sf">rollback</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Rollbacks the active transaction in the connection</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-getdsndefaults">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getDsnDefaults()</code>
+<code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-preparerealsql">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">prepareRealSql(
-    string $statement,
-    array $parameters
-)</code>
+<code class="sig"><span class="sf">prepareRealSql</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span></span>)</code>
 <span class="desc">Constructs the SQL statement (with parameters)</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `BIND_PATTERN = "/\\?([0-9]+)|:([a-zA-Z0-9_]+):/"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">BIND_PATTERN</span><span class="sm"> = &quot;/\\?([0-9]+)|:([a-zA-Z0-9_]+):/&quot;</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$affectedRows = 0` `int`
-
-    Last affected rows
-
--   `protected`{ .vis-protected } `$pdo` `\PDO`
-
-    PDO Handler
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$affectedRows</span><span class="sm"> = 0</span></code>
+<span class="desc">Last affected rows</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">\PDO</code>
+<code class="sig"><span class="sv">$pdo</span></code>
+<span class="desc">PDO Handler</span>
+</div>
 </div>
 
 ### Methods
@@ -2282,56 +2148,48 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 <a class="api-item" href="#dbadapterpdomysql-addforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addForeignKey(
-    string $tableName,
-    string $schemaName,
-    ReferenceInterface $reference
-)</code>
+<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
 <span class="desc">Adds a foreign key to a table</span>
 </a>
 <a class="api-item" href="#dbadapterpdomysql-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">ColumnInterface[]</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an array of Phalcon\Db\Column objects describing a table</span>
 </a>
 <a class="api-item" href="#dbadapterpdomysql-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">IndexInterface[]</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table indexes</span>
 </a>
 <a class="api-item" href="#dbadapterpdomysql-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">ReferenceInterface[]</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table references</span>
 </a>
 <a class="api-item" href="#dbadapterpdomysql-getdsndefaults">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getDsnDefaults()</code>
+<code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$dialectType = "mysql"` `string`
-
--   `protected`{ .vis-protected } `$type = "mysql"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$dialectType</span><span class="sm"> = &quot;mysql&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;mysql&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2449,88 +2307,78 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 <div class="api-list">
 <a class="api-item" href="#dbadapterpdopostgresql-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $descriptor )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$descriptor</span> )</code>
 <span class="desc">Constructor for Phalcon\Db\Adapter\Pdo\Postgresql</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect( array $descriptor = [] )</code>
+<code class="sig"><span class="sf">connect</span>( <span class="st">array</span> <span class="sv">$descriptor</span><span class="sm"> = []</span> )</code>
 <span class="desc">This method is automatically called in Phalcon\Db\Adapter\Pdo</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-createtable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createTable(
-    string $tableName,
-    string $schemaName,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Creates a table</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">ColumnInterface[]</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an array of Phalcon\Db\Column objects describing a table</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">ReferenceInterface[]</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table references</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-getdefaultidvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">RawValue</code>
-<code class="sig">getDefaultIdValue()</code>
+<code class="sig"><span class="sf">getDefaultIdValue</span>()</code>
 <span class="desc">Returns the default identity value to be inserted in an identity column</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">modifyColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column,
-    ColumnInterface $currentColumn = null
-)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Modifies a table column based on a definition</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-supportsequences">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportSequences()</code>
+<code class="sig"><span class="sf">supportSequences</span>()</code>
 <span class="desc">Check whether the database system requires a sequence to produce</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-useexplicitidvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">useExplicitIdValue()</code>
+<code class="sig"><span class="sf">useExplicitIdValue</span>()</code>
 <span class="desc">Check whether the database system requires an explicit value for identity</span>
 </a>
 <a class="api-item" href="#dbadapterpdopostgresql-getdsndefaults">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getDsnDefaults()</code>
+<code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$dialectType = "postgresql"` `string`
-
--   `protected`{ .vis-protected } `$type = "pgsql"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$dialectType</span><span class="sm"> = &quot;postgresql&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;pgsql&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2700,76 +2548,72 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 <div class="api-list">
 <a class="api-item" href="#dbadapterpdosqlite-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $descriptor )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$descriptor</span> )</code>
 <span class="desc">Constructor for Phalcon\Db\Adapter\Pdo\Sqlite</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect( array $descriptor = [] )</code>
+<code class="sig"><span class="sf">connect</span>( <span class="st">array</span> <span class="sv">$descriptor</span><span class="sm"> = []</span> )</code>
 <span class="desc">This method is automatically called in Phalcon\Db\Adapter\Pdo</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">ColumnInterface[]</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an array of Phalcon\Db\Column objects describing a table</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">IndexInterface[]</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table indexes</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">ReferenceInterface[]</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table references</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-getdefaultvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">RawValue</code>
-<code class="sig">getDefaultValue()</code>
+<code class="sig"><span class="sf">getDefaultValue</span>()</code>
 <span class="desc">Returns the default value to make the RBDM use the default value declared</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-supportsdefaultvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportsDefaultValue()</code>
+<code class="sig"><span class="sf">supportsDefaultValue</span>()</code>
 <span class="desc">SQLite does not support the DEFAULT keyword</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-useexplicitidvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">useExplicitIdValue()</code>
+<code class="sig"><span class="sf">useExplicitIdValue</span>()</code>
 <span class="desc">Check whether the database system requires an explicit value for identity</span>
 </a>
 <a class="api-item" href="#dbadapterpdosqlite-getdsndefaults">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getDsnDefaults()</code>
+<code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$dialectType = "sqlite"` `string`
-
--   `protected`{ .vis-protected } `$type = "sqlite"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$dialectType</span><span class="sm"> = &quot;sqlite&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;sqlite&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2940,40 +2784,40 @@ __Uses__ `Phalcon\Db\Exceptions\CheckExpressionRequired` · `Phalcon\Db\Exceptio
 <div class="api-list">
 <a class="api-item" href="#dbcheck-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Phalcon\Db\Check constructor</span>
 </a>
 <a class="api-item" href="#dbcheck-getexpression">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getExpression()</code>
+<code class="sig"><span class="sf">getExpression</span>()</code>
 <span class="desc">Returns the CHECK expression</span>
 </a>
 <a class="api-item" href="#dbcheck-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the constraint name (may be an empty string for unnamed)</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$expression` `string`
-
-    The boolean SQL predicate this constraint enforces.
-
--   `protected`{ .vis-protected } `$name` `string`
-
-    The CHECK constraint name. An empty string indicates an unnamed
-    constraint - the dialect will emit the clause without a `CONSTRAINT`
-    prefix in that case.
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$expression</span></code>
+<span class="desc">The boolean SQL predicate this constraint enforces.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">The CHECK constraint name. An empty string indicates an unnamed
+constraint - the dialect will emit the clause without a <code>CONSTRAINT</code>
+prefix in that case.</span>
+</div>
 </div>
 
 ### Methods
@@ -3072,465 +2916,555 @@ __Uses__ `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\E
 <div class="api-list">
 <a class="api-item" href="#dbcolumn-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Phalcon\Db\Column constructor</span>
 </a>
 <a class="api-item" href="#dbcolumn-getafterposition">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getAfterPosition()</code>
+<code class="sig"><span class="sf">getAfterPosition</span>()</code>
 <span class="desc">Check whether field absolute to position in table</span>
 </a>
 <a class="api-item" href="#dbcolumn-getbindtype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getBindType()</code>
+<code class="sig"><span class="sf">getBindType</span>()</code>
 <span class="desc">Returns the type of bind handling</span>
 </a>
 <a class="api-item" href="#dbcolumn-getcomment">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getComment()</code>
+<code class="sig"><span class="sf">getComment</span>()</code>
 <span class="desc">Column&#039;s comment</span>
 </a>
 <a class="api-item" href="#dbcolumn-getdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getDefault()</code>
+<code class="sig"><span class="sf">getDefault</span>()</code>
 <span class="desc">Default column value</span>
 </a>
 <a class="api-item" href="#dbcolumn-getgenerationexpression">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getGenerationExpression()</code>
+<code class="sig"><span class="sf">getGenerationExpression</span>()</code>
 <span class="desc">Returns the generation expression for a generated/computed column.</span>
 </a>
 <a class="api-item" href="#dbcolumn-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Column&#039;s name</span>
 </a>
 <a class="api-item" href="#dbcolumn-getscale">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getScale()</code>
+<code class="sig"><span class="sf">getScale</span>()</code>
 <span class="desc">Integer column number scale</span>
 </a>
 <a class="api-item" href="#dbcolumn-getsize">
 <code class="vis vis-public">public</code>
 <code class="ret">int|string</code>
-<code class="sig">getSize()</code>
+<code class="sig"><span class="sf">getSize</span>()</code>
 <span class="desc">Integer column size</span>
 </a>
 <a class="api-item" href="#dbcolumn-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int|string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Column data type</span>
 </a>
 <a class="api-item" href="#dbcolumn-gettypereference">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getTypeReference()</code>
+<code class="sig"><span class="sf">getTypeReference</span>()</code>
 <span class="desc">Column data type reference</span>
 </a>
 <a class="api-item" href="#dbcolumn-gettypevalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string</code>
-<code class="sig">getTypeValues()</code>
+<code class="sig"><span class="sf">getTypeValues</span>()</code>
 <span class="desc">Column data type values</span>
 </a>
 <a class="api-item" href="#dbcolumn-hasdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasDefault()</code>
+<code class="sig"><span class="sf">hasDefault</span>()</code>
 <span class="desc">Check whether column has default value</span>
 </a>
 <a class="api-item" href="#dbcolumn-isarray">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isArray()</code>
+<code class="sig"><span class="sf">isArray</span>()</code>
 <span class="desc">Whether the column is an array of its base type. Recognized by the</span>
 </a>
 <a class="api-item" href="#dbcolumn-isautoincrement">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAutoIncrement()</code>
+<code class="sig"><span class="sf">isAutoIncrement</span>()</code>
 <span class="desc">Auto-Increment</span>
 </a>
 <a class="api-item" href="#dbcolumn-isfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isFirst()</code>
+<code class="sig"><span class="sf">isFirst</span>()</code>
 <span class="desc">Check whether column have first position in table</span>
 </a>
 <a class="api-item" href="#dbcolumn-isgenerated">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isGenerated()</code>
+<code class="sig"><span class="sf">isGenerated</span>()</code>
 <span class="desc">Whether the column is a generated/computed column.</span>
 </a>
 <a class="api-item" href="#dbcolumn-isgenerationstored">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isGenerationStored()</code>
-<span class="desc">Whether a generated column is `STORED`. `false` means `VIRTUAL`.</span>
+<code class="sig"><span class="sf">isGenerationStored</span>()</code>
+<span class="desc">Whether a generated column is <code>STORED</code>. <code>false</code> means <code>VIRTUAL</code>.</span>
 </a>
 <a class="api-item" href="#dbcolumn-isinvisible">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isInvisible()</code>
-<span class="desc">Whether the column is declared `INVISIBLE` (MySQL 8.0.23+). Invisible</span>
+<code class="sig"><span class="sf">isInvisible</span>()</code>
+<span class="desc">Whether the column is declared <code>INVISIBLE</code> (MySQL 8.0.23+). Invisible</span>
 </a>
 <a class="api-item" href="#dbcolumn-isnotnull">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isNotNull()</code>
+<code class="sig"><span class="sf">isNotNull</span>()</code>
 <span class="desc">Not null</span>
 </a>
 <a class="api-item" href="#dbcolumn-isnumeric">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isNumeric()</code>
+<code class="sig"><span class="sf">isNumeric</span>()</code>
 <span class="desc">Check whether column have an numeric type</span>
 </a>
 <a class="api-item" href="#dbcolumn-isprimary">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPrimary()</code>
+<code class="sig"><span class="sf">isPrimary</span>()</code>
 <span class="desc">Column is part of the primary key?</span>
 </a>
 <a class="api-item" href="#dbcolumn-isunsigned">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUnsigned()</code>
+<code class="sig"><span class="sf">isUnsigned</span>()</code>
 <span class="desc">Returns true if number column is unsigned</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `BIND_PARAM_BLOB = 3` `int`
-
-    Bind Type Blob
-
--   `BIND_PARAM_BOOL = 5` `int`
-
-    Bind Type Bool
-
--   `BIND_PARAM_DECIMAL = 32` `int`
-
-    Bind Type Decimal
-
--   `BIND_PARAM_INT = 1` `int`
-
-    Bind Type Integer
-
--   `BIND_PARAM_NULL = 0` `int`
-
-    Bind Type Null
-
--   `BIND_PARAM_STR = 2` `int`
-
-    Bind Type String
-
--   `BIND_SKIP = 1024` `int`
-
-    Skip binding by type
-
--   `TYPE_BIGINTEGER = 14` `int`
-
-    Big integer abstract data type
-
--   `TYPE_BINARY = 27` `int`
-
-    Binary abstract data type
-
--   `TYPE_BIT = 19` `int`
-
-    Bit abstract data type
-
--   `TYPE_BLOB = 11` `int`
-
-    Blob abstract data type
-
--   `TYPE_BOOLEAN = 8` `int`
-
-    Bool abstract data type
-
--   `TYPE_BYTEA = 30` `int`
-
-    PostgreSQL `BYTEA` binary type
-
--   `TYPE_CHAR = 5` `int`
-
-    Char abstract data type
-
--   `TYPE_CIDR = 32` `int`
-
-    PostgreSQL `CIDR` network-address type
-
--   `TYPE_DATE = 1` `int`
-
-    Date abstract data type
-
--   `TYPE_DATERANGE = 39` `int`
-
-    PostgreSQL `DATERANGE` range-of-date type
-
--   `TYPE_DATETIME = 4` `int`
-
-    Datetime abstract data type
-
--   `TYPE_DECIMAL = 3` `int`
-
-    Decimal abstract data type
-
--   `TYPE_DOUBLE = 9` `int`
-
-    Double abstract data type
-
--   `TYPE_ENUM = 18` `int`
-
-    Enum abstract data type
-
--   `TYPE_FLOAT = 7` `int`
-
-    Float abstract data type
-
--   `TYPE_GEOMETRY = 40` `int`
-
-    Spatial `GEOMETRY` base type (MySQL 5.7+; PostgreSQL + PostGIS)
-
--   `TYPE_GEOMETRYCOLLECTION = 47` `int`
-
-    Spatial `GEOMETRYCOLLECTION` type (MySQL; PostgreSQL + PostGIS)
-
--   `TYPE_INET = 31` `int`
-
-    PostgreSQL `INET` IPv4/IPv6 address type
-
--   `TYPE_INT4RANGE = 34` `int`
-
-    PostgreSQL `INT4RANGE` range-of-integer type
-
--   `TYPE_INT8RANGE = 35` `int`
-
-    PostgreSQL `INT8RANGE` range-of-bigint type
-
--   `TYPE_INTEGER = 0` `int`
-
-    Int abstract data type
-
--   `TYPE_JSON = 15` `int`
-
-    Json abstract data type
-
--   `TYPE_JSONB = 16` `int`
-
-    Jsonb abstract data type
-
--   `TYPE_LINESTRING = 42` `int`
-
-    Spatial `LINESTRING` type (MySQL; PostgreSQL + PostGIS)
-
--   `TYPE_LONGBLOB = 13` `int`
-
-    Longblob abstract data type
-
--   `TYPE_LONGTEXT = 24` `int`
-
-    Longtext abstract data type
-
--   `TYPE_MACADDR = 33` `int`
-
-    PostgreSQL `MACADDR` MAC-address type
-
--   `TYPE_MEDIUMBLOB = 12` `int`
-
-    Mediumblob abstract data type
-
--   `TYPE_MEDIUMINTEGER = 21` `int`
-
-    Mediumintegerr abstract data type
-
--   `TYPE_MEDIUMTEXT = 23` `int`
-
-    Mediumtext abstract data type
-
--   `TYPE_MULTILINESTRING = 45` `int`
-
-    Spatial `MULTILINESTRING` type (MySQL; PostgreSQL + PostGIS)
-
--   `TYPE_MULTIPOINT = 44` `int`
-
-    Spatial `MULTIPOINT` type (MySQL; PostgreSQL + PostGIS)
-
--   `TYPE_MULTIPOLYGON = 46` `int`
-
-    Spatial `MULTIPOLYGON` type (MySQL; PostgreSQL + PostGIS)
-
--   `TYPE_NUMRANGE = 36` `int`
-
-    PostgreSQL `NUMRANGE` range-of-numeric type
-
--   `TYPE_POINT = 41` `int`
-
-    Spatial `POINT` type (MySQL; PostgreSQL + PostGIS)
-
--   `TYPE_POLYGON = 43` `int`
-
-    Spatial `POLYGON` type (MySQL; PostgreSQL + PostGIS)
-
--   `TYPE_SMALLINTEGER = 22` `int`
-
-    Smallint abstract data type
-
--   `TYPE_TEXT = 6` `int`
-
-    Text abstract data type
-
--   `TYPE_TIME = 20` `int`
-
-    Time abstract data type
-
--   `TYPE_TIMESTAMP = 17` `int`
-
-    Timestamp abstract data type
-
--   `TYPE_TINYBLOB = 10` `int`
-
-    Tinyblob abstract data type
-
--   `TYPE_TINYINTEGER = 26` `int`
-
-    Tinyint abstract data type
-
--   `TYPE_TINYTEXT = 25` `int`
-
-    Tinytext abstract data type
-
--   `TYPE_TSRANGE = 37` `int`
-
-    PostgreSQL `TSRANGE` range-of-timestamp (without time zone) type
-
--   `TYPE_TSTZRANGE = 38` `int`
-
-    PostgreSQL `TSTZRANGE` range-of-timestamp (with time zone) type
-
--   `TYPE_UUID = 29` `int`
-
-    UUID abstract data type
-
--   `TYPE_VARBINARY = 28` `int`
-
-    Varbinary abstract data type
-
--   `TYPE_VARCHAR = 2` `int`
-
-    Varchar abstract data type
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BIND_PARAM_BLOB</span><span class="sm"> = 3</span></code>
+<span class="desc">Bind Type Blob</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BIND_PARAM_BOOL</span><span class="sm"> = 5</span></code>
+<span class="desc">Bind Type Bool</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BIND_PARAM_DECIMAL</span><span class="sm"> = 32</span></code>
+<span class="desc">Bind Type Decimal</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BIND_PARAM_INT</span><span class="sm"> = 1</span></code>
+<span class="desc">Bind Type Integer</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BIND_PARAM_NULL</span><span class="sm"> = 0</span></code>
+<span class="desc">Bind Type Null</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BIND_PARAM_STR</span><span class="sm"> = 2</span></code>
+<span class="desc">Bind Type String</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BIND_SKIP</span><span class="sm"> = 1024</span></code>
+<span class="desc">Skip binding by type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_BIGINTEGER</span><span class="sm"> = 14</span></code>
+<span class="desc">Big integer abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_BINARY</span><span class="sm"> = 27</span></code>
+<span class="desc">Binary abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_BIT</span><span class="sm"> = 19</span></code>
+<span class="desc">Bit abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_BLOB</span><span class="sm"> = 11</span></code>
+<span class="desc">Blob abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_BOOLEAN</span><span class="sm"> = 8</span></code>
+<span class="desc">Bool abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_BYTEA</span><span class="sm"> = 30</span></code>
+<span class="desc">PostgreSQL <code>BYTEA</code> binary type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_CHAR</span><span class="sm"> = 5</span></code>
+<span class="desc">Char abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_CIDR</span><span class="sm"> = 32</span></code>
+<span class="desc">PostgreSQL <code>CIDR</code> network-address type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_DATE</span><span class="sm"> = 1</span></code>
+<span class="desc">Date abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_DATERANGE</span><span class="sm"> = 39</span></code>
+<span class="desc">PostgreSQL <code>DATERANGE</code> range-of-date type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_DATETIME</span><span class="sm"> = 4</span></code>
+<span class="desc">Datetime abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_DECIMAL</span><span class="sm"> = 3</span></code>
+<span class="desc">Decimal abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_DOUBLE</span><span class="sm"> = 9</span></code>
+<span class="desc">Double abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_ENUM</span><span class="sm"> = 18</span></code>
+<span class="desc">Enum abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_FLOAT</span><span class="sm"> = 7</span></code>
+<span class="desc">Float abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_GEOMETRY</span><span class="sm"> = 40</span></code>
+<span class="desc">Spatial <code>GEOMETRY</code> base type (MySQL 5.7+; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_GEOMETRYCOLLECTION</span><span class="sm"> = 47</span></code>
+<span class="desc">Spatial <code>GEOMETRYCOLLECTION</code> type (MySQL; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_INET</span><span class="sm"> = 31</span></code>
+<span class="desc">PostgreSQL <code>INET</code> IPv4/IPv6 address type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_INT4RANGE</span><span class="sm"> = 34</span></code>
+<span class="desc">PostgreSQL <code>INT4RANGE</code> range-of-integer type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_INT8RANGE</span><span class="sm"> = 35</span></code>
+<span class="desc">PostgreSQL <code>INT8RANGE</code> range-of-bigint type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_INTEGER</span><span class="sm"> = 0</span></code>
+<span class="desc">Int abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_JSON</span><span class="sm"> = 15</span></code>
+<span class="desc">Json abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_JSONB</span><span class="sm"> = 16</span></code>
+<span class="desc">Jsonb abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_LINESTRING</span><span class="sm"> = 42</span></code>
+<span class="desc">Spatial <code>LINESTRING</code> type (MySQL; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_LONGBLOB</span><span class="sm"> = 13</span></code>
+<span class="desc">Longblob abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_LONGTEXT</span><span class="sm"> = 24</span></code>
+<span class="desc">Longtext abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_MACADDR</span><span class="sm"> = 33</span></code>
+<span class="desc">PostgreSQL <code>MACADDR</code> MAC-address type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_MEDIUMBLOB</span><span class="sm"> = 12</span></code>
+<span class="desc">Mediumblob abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_MEDIUMINTEGER</span><span class="sm"> = 21</span></code>
+<span class="desc">Mediumintegerr abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_MEDIUMTEXT</span><span class="sm"> = 23</span></code>
+<span class="desc">Mediumtext abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_MULTILINESTRING</span><span class="sm"> = 45</span></code>
+<span class="desc">Spatial <code>MULTILINESTRING</code> type (MySQL; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_MULTIPOINT</span><span class="sm"> = 44</span></code>
+<span class="desc">Spatial <code>MULTIPOINT</code> type (MySQL; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_MULTIPOLYGON</span><span class="sm"> = 46</span></code>
+<span class="desc">Spatial <code>MULTIPOLYGON</code> type (MySQL; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_NUMRANGE</span><span class="sm"> = 36</span></code>
+<span class="desc">PostgreSQL <code>NUMRANGE</code> range-of-numeric type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_POINT</span><span class="sm"> = 41</span></code>
+<span class="desc">Spatial <code>POINT</code> type (MySQL; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_POLYGON</span><span class="sm"> = 43</span></code>
+<span class="desc">Spatial <code>POLYGON</code> type (MySQL; PostgreSQL + PostGIS)</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_SMALLINTEGER</span><span class="sm"> = 22</span></code>
+<span class="desc">Smallint abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TEXT</span><span class="sm"> = 6</span></code>
+<span class="desc">Text abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TIME</span><span class="sm"> = 20</span></code>
+<span class="desc">Time abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TIMESTAMP</span><span class="sm"> = 17</span></code>
+<span class="desc">Timestamp abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TINYBLOB</span><span class="sm"> = 10</span></code>
+<span class="desc">Tinyblob abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TINYINTEGER</span><span class="sm"> = 26</span></code>
+<span class="desc">Tinyint abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TINYTEXT</span><span class="sm"> = 25</span></code>
+<span class="desc">Tinytext abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TSRANGE</span><span class="sm"> = 37</span></code>
+<span class="desc">PostgreSQL <code>TSRANGE</code> range-of-timestamp (without time zone) type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_TSTZRANGE</span><span class="sm"> = 38</span></code>
+<span class="desc">PostgreSQL <code>TSTZRANGE</code> range-of-timestamp (with time zone) type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_UUID</span><span class="sm"> = 29</span></code>
+<span class="desc">UUID abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_VARBINARY</span><span class="sm"> = 28</span></code>
+<span class="desc">Varbinary abstract data type</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_VARCHAR</span><span class="sm"> = 2</span></code>
+<span class="desc">Varchar abstract data type</span>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$after</span><span class="sm"> = null</span></code>
+<span class="desc">Column Position</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autoIncrement</span><span class="sm"> = false</span></code>
+<span class="desc">Column is autoIncrement?</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$bindType</span><span class="sm"> = 2</span></code>
+<span class="desc">Bind Type</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$comment</span><span class="sm"> = null</span></code>
+<span class="desc">Column&#039;s comment</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$defaultValue</span><span class="sm"> = null</span></code>
+<span class="desc">Default column value</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$first</span><span class="sm"> = false</span></code>
+<span class="desc">Position is first</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$generated</span><span class="sm"> = null</span></code>
+<span class="desc">Generation expression for <code>GENERATED ALWAYS AS (...)</code>. Null when the
+column is not a generated/computed column.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$generationStored</span><span class="sm"> = false</span></code>
+<span class="desc">Whether a generated column is <code>STORED</code> (true) or <code>VIRTUAL</code> (false).
+Ignored when the column is not generated. PostgreSQL only supports
+<code>STORED</code> and emits it regardless of this flag.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$invisible</span><span class="sm"> = false</span></code>
+<span class="desc">Whether the column is <code>INVISIBLE</code> (MySQL 8.0.23+). Invisible columns
+are excluded from <code>SELECT *</code> expansion but can still be referenced
+explicitly.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isArray</span><span class="sm"> = false</span></code>
+<span class="desc">Whether the column is an array of its base type. Recognized by the
+PostgreSQL dialect (e.g. <code>INTEGER[]</code>, <code>TEXT[]</code>). MySQL and SQLite
+ignore the flag.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isNumeric</span><span class="sm"> = false</span></code>
+<span class="desc">The column have some numeric type?</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Column&#039;s name</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$notNull</span><span class="sm"> = true</span></code>
+<span class="desc">Column not nullable?
 
--   `protected`{ .vis-protected } `$after = null` `string|null`
-
-    Column Position
-
--   `protected`{ .vis-protected } `$autoIncrement = false` `bool`
-
-    Column is autoIncrement?
-
--   `protected`{ .vis-protected } `$bindType = 2` `int`
-
-    Bind Type
-
--   `protected`{ .vis-protected } `$comment = null` `string|null`
-
-    Column's comment
-
--   `protected`{ .vis-protected } `$defaultValue = null` `mixed|null`
-
-    Default column value
-
--   `protected`{ .vis-protected } `$first = false` `bool`
-
-    Position is first
-
--   `protected`{ .vis-protected } `$generated = null` `string|null`
-
-    Generation expression for `GENERATED ALWAYS AS (...)`. Null when the
-    column is not a generated/computed column.
-
--   `protected`{ .vis-protected } `$generationStored = false` `bool`
-
-    Whether a generated column is `STORED` (true) or `VIRTUAL` (false).
-    Ignored when the column is not generated. PostgreSQL only supports
-    `STORED` and emits it regardless of this flag.
-
--   `protected`{ .vis-protected } `$invisible = false` `bool`
-
-    Whether the column is `INVISIBLE` (MySQL 8.0.23+). Invisible columns
-    are excluded from `SELECT *` expansion but can still be referenced
-    explicitly.
-
--   `protected`{ .vis-protected } `$isArray = false` `bool`
-
-    Whether the column is an array of its base type. Recognized by the
-    PostgreSQL dialect (e.g. `INTEGER[]`, `TEXT[]`). MySQL and SQLite
-    ignore the flag.
-
--   `protected`{ .vis-protected } `$isNumeric = false` `bool`
-
-    The column have some numeric type?
-
--   `protected`{ .vis-protected } `$name` `string`
-
-    Column's name
-
--   `protected`{ .vis-protected } `$notNull = true` `bool`
-
-    Column not nullable?
-
-    Default SQL definition is NOT NULL.
-
--   `protected`{ .vis-protected } `$primary = false` `bool`
-
-    Column is part of the primary key?
-
--   `protected`{ .vis-protected } `$scale = 0` `int`
-
-    Integer column number scale
-
--   `protected`{ .vis-protected } `$size = 0` `int|string`
-
-    Integer column size
-
--   `protected`{ .vis-protected } `$type` `int`
-
-    Column data type
-
--   `protected`{ .vis-protected } `$typeReference = -1` `int`
-
-    Column data type reference
-
--   `protected`{ .vis-protected } `$typeValues = []` `array|string`
-
-    Column data type values
-
--   `protected`{ .vis-protected } `$unsigned = false` `bool`
-
-    Integer column unsigned?
-
+Default SQL definition is NOT NULL.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$primary</span><span class="sm"> = false</span></code>
+<span class="desc">Column is part of the primary key?</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$scale</span><span class="sm"> = 0</span></code>
+<span class="desc">Integer column number scale</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int|string</code>
+<code class="sig"><span class="sv">$size</span><span class="sm"> = 0</span></code>
+<span class="desc">Integer column size</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$type</span></code>
+<span class="desc">Column data type</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$typeReference</span><span class="sm"> = -1</span></code>
+<span class="desc">Column data type reference</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$typeValues</span><span class="sm"> = []</span></code>
+<span class="desc">Column data type values</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$unsigned</span><span class="sm"> = false</span></code>
+<span class="desc">Integer column unsigned?</span>
+</div>
 </div>
 
 ### Methods
@@ -3780,447 +3714,312 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 <a class="api-item" href="#dbdialect-creatematerializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createMaterializedView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to create a materialized view. Supported by PostgreSQL</span>
 </a>
 <a class="api-item" href="#dbdialect-createsavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createSavepoint( string $name )</code>
+<code class="sig"><span class="sf">createSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Generate SQL to create a new savepoint</span>
 </a>
 <a class="api-item" href="#dbdialect-dropmaterializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropMaterializedView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a materialized view. Supported by PostgreSQL.</span>
 </a>
 <a class="api-item" href="#dbdialect-escape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escape(
-    string $str,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">escape</span>(<span class="prm"><span class="st">string</span> <span class="sv">$str</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Escape identifiers</span>
 </a>
 <a class="api-item" href="#dbdialect-escapeschema">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeSchema(
-    string $str,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">escapeSchema</span>(<span class="prm"><span class="st">string</span> <span class="sv">$str</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Escape Schema</span>
 </a>
 <a class="api-item" href="#dbdialect-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">forUpdate(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
-<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`</span>
+<code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional <code>modifier</code></span>
 </a>
 <a class="api-item" href="#dbdialect-getcolumnlist">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnList(
-    array $columnList,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getColumnList</span>(<span class="prm"><span class="st">array</span> <span class="sv">$columnList</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Gets a list of columns with escaped identifiers</span>
 </a>
 <a class="api-item" href="#dbdialect-getcustomfunctions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getCustomFunctions()</code>
+<code class="sig"><span class="sf">getCustomFunctions</span>()</code>
 <span class="desc">Returns registered functions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSqlColumn(
-    mixed $column,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlColumn</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve Column expressions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpression">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpression(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpression</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Transforms an intermediate representation for an expression into a database system valid expression</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqltable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSqlTable(
-    mixed $table,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">getSqlTable</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Transform an intermediate representation of a schema/table into a</span>
 </a>
 <a class="api-item" href="#dbdialect-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">limit(
-    string $sqlQuery,
-    mixed $number
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Generates the SQL for LIMIT clause</span>
 </a>
 <a class="api-item" href="#dbdialect-onconflictupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">onConflictUpdate(
-    string $sqlQuery,
-    array $conflictColumns,
-    array $updateColumns
-)</code>
-<span class="desc">Appends an `ON CONFLICT (col, ...) DO UPDATE SET col = excluded.col`</span>
+<code class="sig"><span class="sf">onConflictUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$conflictColumns</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$updateColumns</span></span>)</code>
+<span class="desc">Appends an <code>ON CONFLICT (col, ...) DO UPDATE SET col = excluded.col</code></span>
 </a>
 <a class="api-item" href="#dbdialect-refreshmaterializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">refreshMaterializedView(
-    string $viewName,
-    string $schemaName = null,
-    bool $concurrent = false
-)</code>
+<code class="sig"><span class="sf">refreshMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$concurrent</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Generates SQL to refresh a materialized view. Supported by</span>
 </a>
 <a class="api-item" href="#dbdialect-registercustomfunction">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">registerCustomFunction(
-    string $name,
-    callable $customFunction
-)</code>
+<code class="sig"><span class="sf">registerCustomFunction</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$customFunction</span></span>)</code>
 <span class="desc">Registers custom SQL functions</span>
 </a>
 <a class="api-item" href="#dbdialect-releasesavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">releaseSavepoint( string $name )</code>
+<code class="sig"><span class="sf">releaseSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Generate SQL to release a savepoint</span>
 </a>
 <a class="api-item" href="#dbdialect-returning">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">returning(
-    string $sqlQuery,
-    array $columns
-)</code>
-<span class="desc">Returns a SQL statement extended with a `RETURNING` clause so the</span>
+<code class="sig"><span class="sf">returning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$columns</span></span>)</code>
+<span class="desc">Returns a SQL statement extended with a <code>RETURNING</code> clause so the</span>
 </a>
 <a class="api-item" href="#dbdialect-rollbacksavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">rollbackSavepoint( string $name )</code>
+<code class="sig"><span class="sf">rollbackSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Generate SQL to rollback a savepoint</span>
 </a>
 <a class="api-item" href="#dbdialect-select">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">select( array $definition )</code>
+<code class="sig"><span class="sf">select</span>( <span class="st">array</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Builds a SELECT statement</span>
 </a>
 <a class="api-item" href="#dbdialect-supportsreleasesavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportsReleaseSavepoints()</code>
+<code class="sig"><span class="sf">supportsReleaseSavepoints</span>()</code>
 <span class="desc">Checks whether the platform supports releasing savepoints.</span>
 </a>
 <a class="api-item" href="#dbdialect-supportssavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportsSavepoints()</code>
+<code class="sig"><span class="sf">supportsSavepoints</span>()</code>
 <span class="desc">Checks whether the platform supports savepoints</span>
 </a>
 <a class="api-item" href="#dbdialect-checkcolumntype">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">checkColumnType( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">checkColumnType</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Checks the column type and if not string it returns the type reference</span>
 </a>
 <a class="api-item" href="#dbdialect-checkcolumntypesql">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">checkColumnTypeSql( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">checkColumnTypeSql</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Checks the column type and returns the updated SQL statement</span>
 </a>
 <a class="api-item" href="#dbdialect-getcheckclause">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getCheckClause(
-    CheckInterface $check,
-    string $escapeChar = &quot;`&quot;
-)</code>
-<span class="desc">Builds a CHECK constraint clause from a `CheckInterface`, using the</span>
+<code class="sig"><span class="sf">getCheckClause</span>(<span class="prm"><span class="st">CheckInterface</span> <span class="sv">$check</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = &quot;`&quot;</span></span>)</code>
+<span class="desc">Builds a CHECK constraint clause from a <code>CheckInterface</code>, using the</span>
 </a>
 <a class="api-item" href="#dbdialect-getcolumnsize">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getColumnSize( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnSize</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Returns the size of the column enclosed in parentheses</span>
 </a>
 <a class="api-item" href="#dbdialect-getcolumnsizeandscale">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getColumnSizeAndScale( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnSizeAndScale</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Returns the column size and scale enclosed in parentheses</span>
 </a>
 <a class="api-item" href="#dbdialect-getgeneratedclause">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getGeneratedClause(
-    ColumnInterface $column,
-    bool $forceStored = false
-)</code>
-<span class="desc">Builds the `GENERATED ALWAYS AS (&lt;expr&gt;) VIRTUAL|STORED` clause for a</span>
+<code class="sig"><span class="sf">getGeneratedClause</span>(<span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$forceStored</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Builds the <code>GENERATED ALWAYS AS (&lt;expr&gt;) VIRTUAL|STORED</code> clause for a</span>
 </a>
 <a class="api-item" href="#dbdialect-getindexcolumnlist">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getIndexColumnList(
-    IndexInterface $index,
-    bool $wrapExpressions = true
-)</code>
+<code class="sig"><span class="sf">getIndexColumnList</span>(<span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$wrapExpressions</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Builds the per-index parenthesized column list, honoring per-column</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionall">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionAll(
-    array $expression,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionAll</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolve *</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionbinaryoperations">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionBinaryOperations(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionBinaryOperations</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve binary operations expressions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressioncase">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionCase(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionCase</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve CASE expressions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressioncastvalue">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionCastValue(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionCastValue</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve CAST of values</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionconvertvalue">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionConvertValue(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionConvertValue</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve CONVERT of values encodings</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionfrom">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionFrom(
-    mixed $expression,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionFrom</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolve a FROM clause</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionfunctioncall">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionFunctionCall(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionFunctionCall</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve function calls</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressiongroupby">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionGroupBy(
-    mixed $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionGroupBy</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve a GROUP BY clause</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionhaving">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionHaving(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionHaving</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve a HAVING clause</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionjoins">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionJoins(
-    mixed $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionJoins</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve a JOINs clause</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionlimit">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionLimit(
-    mixed $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionLimit</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve a LIMIT clause</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionlist">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionList(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionList</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve Lists</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionobject">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionObject(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionObject</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve object expressions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionorderby">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionOrderBy(
-    mixed $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionOrderBy</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve an ORDER BY clause</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionqualified">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionQualified(
-    array $expression,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionQualified</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Resolve qualified expressions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionscalar">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionScalar(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionScalar</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve Column expressions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionunaryoperations">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionUnaryOperations(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionUnaryOperations</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve unary operations expressions</span>
 </a>
 <a class="api-item" href="#dbdialect-getsqlexpressionwhere">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpressionWhere(
-    mixed $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpressionWhere</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Resolve a WHERE clause</span>
 </a>
 <a class="api-item" href="#dbdialect-preparecolumnalias">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">prepareColumnAlias(
-    string $qualified,
-    string $alias = null,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">prepareColumnAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$qualified</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Prepares column for this RDBMS</span>
 </a>
 <a class="api-item" href="#dbdialect-preparequalified">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">prepareQualified(
-    string $column,
-    string $domain = null,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">prepareQualified</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Prepares qualified for this RDBMS</span>
 </a>
 <a class="api-item" href="#dbdialect-preparetable">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">prepareTable(
-    string $table,
-    string $schema = null,
-    string $alias = null,
-    string $escapeChar = null
-)</code>
+<code class="sig"><span class="sf">prepareTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Prepares table for this RDBMS</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$customFunctions = []` `array`
-
--   `protected`{ .vis-protected } `$escapeChar` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$customFunctions</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$escapeChar</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4875,273 +4674,187 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <a class="api-item" href="#dbdialectmysql-addcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addCheck(
-    string $tableName,
-    string $schemaName,
-    CheckInterface $check
-)</code>
+<code class="sig"><span class="sf">addCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">CheckInterface</span> <span class="sv">$check</span></span>)</code>
 <span class="desc">Generates SQL to add a CHECK constraint to an existing table.</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-addcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column
-)</code>
+<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
 <span class="desc">Generates SQL to add a column to a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-addforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addForeignKey(
-    string $tableName,
-    string $schemaName,
-    ReferenceInterface $reference
-)</code>
+<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-addindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addIndex(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-addprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addPrimaryKey(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add the primary key to a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-createtable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createTable(
-    string $tableName,
-    string $schemaName,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Generates SQL to create a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to create a view</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL describing a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query indexes on a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query foreign keys on a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-dropcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropCheck(
-    string $tableName,
-    string $schemaName,
-    string $checkName
-)</code>
+<code class="sig"><span class="sf">dropCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$checkName</span></span>)</code>
 <span class="desc">Generates SQL to delete a CHECK constraint from a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-dropcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropColumn(
-    string $tableName,
-    string $schemaName,
-    string $columnName
-)</code>
+<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
 <span class="desc">Generates SQL to delete a column from a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-dropforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropForeignKey(
-    string $tableName,
-    string $schemaName,
-    string $referenceName
-)</code>
+<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
 <span class="desc">Generates SQL to delete a foreign key from a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-dropindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropIndex(
-    string $tableName,
-    string $schemaName,
-    string $indexName
-)</code>
+<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$indexName</span></span>)</code>
 <span class="desc">Generates SQL to delete an index from a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-dropprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropPrimaryKey(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Generates SQL to delete primary key from a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-droptable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropTable(
-    string $tableName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a view</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-getcolumndefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnDefinition( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Gets the column name in MySQL</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-getforeignkeychecks">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getForeignKeyChecks()</code>
+<code class="sig"><span class="sf">getForeignKeyChecks</span>()</code>
 <span class="desc">Generates SQL to check DB parameter FOREIGN_KEY_CHECKS.</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listTables( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables in database</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-listviews">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listViews( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listViews</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates the SQL to list all views of a schema or user</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">modifyColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column,
-    ColumnInterface $currentColumn = null
-)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to modify a column in a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-onconflictupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">onConflictUpdate(
-    string $sqlQuery,
-    array $conflictColumns,
-    array $updateColumns
-)</code>
-<span class="desc">MySQL does not support the SQL-standard `ON CONFLICT DO UPDATE`</span>
+<code class="sig"><span class="sf">onConflictUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$conflictColumns</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$updateColumns</span></span>)</code>
+<span class="desc">MySQL does not support the SQL-standard <code>ON CONFLICT DO UPDATE</code></span>
 </a>
 <a class="api-item" href="#dbdialectmysql-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">sharedLock(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
-<span class="desc">Returns a SQL modified with a LOCK IN SHARE MODE clause. The `modifier`</span>
+<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<span class="desc">Returns a SQL modified with a LOCK IN SHARE MODE clause. The <code>modifier</code></span>
 </a>
 <a class="api-item" href="#dbdialectmysql-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableExists(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableOptions(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates the SQL to describe the table creation options</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-truncatetable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">truncateTable(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">truncateTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Generates SQL to truncate a table</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">viewExists(
-    string $viewName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 <a class="api-item" href="#dbdialectmysql-gettableoptions">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTableOptions( array $definition )</code>
+<code class="sig"><span class="sf">getTableOptions</span>( <span class="st">array</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Generates SQL to add the table creation options</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$escapeChar = "`"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$escapeChar</span><span class="sm"> = &quot;`&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5527,300 +5240,203 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <a class="api-item" href="#dbdialectpostgresql-addcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addCheck(
-    string $tableName,
-    string $schemaName,
-    CheckInterface $check
-)</code>
+<code class="sig"><span class="sf">addCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">CheckInterface</span> <span class="sv">$check</span></span>)</code>
 <span class="desc">Generates SQL to add a CHECK constraint to an existing table.</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-addcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column
-)</code>
+<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
 <span class="desc">Generates SQL to add a column to a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-addforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addForeignKey(
-    string $tableName,
-    string $schemaName,
-    ReferenceInterface $reference
-)</code>
+<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-addindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addIndex(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-addprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addPrimaryKey(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add the primary key to a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-creatematerializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createMaterializedView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to create a materialized view.</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-createtable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createTable(
-    string $tableName,
-    string $schemaName,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Generates SQL to create a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to create a view</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL describing a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query indexes on a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query foreign keys on a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-dropcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropCheck(
-    string $tableName,
-    string $schemaName,
-    string $checkName
-)</code>
+<code class="sig"><span class="sf">dropCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$checkName</span></span>)</code>
 <span class="desc">Generates SQL to delete a CHECK constraint from a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-dropcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropColumn(
-    string $tableName,
-    string $schemaName,
-    string $columnName
-)</code>
+<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
 <span class="desc">Generates SQL to delete a column from a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-dropforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropForeignKey(
-    string $tableName,
-    string $schemaName,
-    string $referenceName
-)</code>
+<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
 <span class="desc">Generates SQL to delete a foreign key from a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-dropindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropIndex(
-    string $tableName,
-    string $schemaName,
-    string $indexName
-)</code>
+<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$indexName</span></span>)</code>
 <span class="desc">Generates SQL to delete an index from a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-dropmaterializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropMaterializedView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a materialized view.</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-dropprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropPrimaryKey(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Generates SQL to delete primary key from a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-droptable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropTable(
-    string $tableName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a view</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-getcolumndefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnDefinition( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Gets the column name in PostgreSQL</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listTables( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables in database</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-listviews">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listViews( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listViews</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates the SQL to list all views of a schema or user</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">modifyColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column,
-    ColumnInterface $currentColumn = null
-)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to modify a column in a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-refreshmaterializedview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">refreshMaterializedView(
-    string $viewName,
-    string $schemaName = null,
-    bool $concurrent = false
-)</code>
-<span class="desc">Generates SQL to refresh a materialized view. When `concurrent` is</span>
+<code class="sig"><span class="sf">refreshMaterializedView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$concurrent</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Generates SQL to refresh a materialized view. When <code>concurrent</code> is</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-returning">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">returning(
-    string $sqlQuery,
-    array $columns
-)</code>
-<span class="desc">Appends a `RETURNING` clause to the supplied INSERT/UPDATE/DELETE</span>
+<code class="sig"><span class="sf">returning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$columns</span></span>)</code>
+<span class="desc">Appends a <code>RETURNING</code> clause to the supplied INSERT/UPDATE/DELETE</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">sharedLock(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
-<span class="desc">Returns a SQL modified with a `FOR SHARE` clause - PostgreSQL&#039;s</span>
+<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<span class="desc">Returns a SQL modified with a <code>FOR SHARE</code> clause - PostgreSQL&#039;s</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableExists(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableOptions(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates the SQL to describe the table creation options</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-truncatetable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">truncateTable(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">truncateTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Generates SQL to truncate a table</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">viewExists(
-    string $viewName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-castdefault">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">castDefault( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">castDefault</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 </a>
 <a class="api-item" href="#dbdialectpostgresql-gettableoptions">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getTableOptions( array $definition )</code>
+<code class="sig"><span class="sf">getTableOptions</span>( <span class="st">array</span> <span class="sv">$definition</span> )</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$escapeChar = "\""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$escapeChar</span><span class="sm"> = &quot;\&quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6239,285 +5855,193 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <a class="api-item" href="#dbdialectsqlite-addcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addCheck(
-    string $tableName,
-    string $schemaName,
-    CheckInterface $check
-)</code>
+<code class="sig"><span class="sf">addCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">CheckInterface</span> <span class="sv">$check</span></span>)</code>
 <span class="desc">SQLite cannot ALTER an existing table to add a CHECK constraint;</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-addcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column
-)</code>
+<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
 <span class="desc">Generates SQL to add a column to a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-addforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addForeignKey(
-    string $tableName,
-    string $schemaName,
-    ReferenceInterface $reference
-)</code>
+<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-addindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addIndex(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-addprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addPrimaryKey(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add the primary key to a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-createtable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createTable(
-    string $tableName,
-    string $schemaName,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Generates SQL to create a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to create a view</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL describing a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-describeindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeIndex( string $index )</code>
+<code class="sig"><span class="sf">describeIndex</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Generates SQL to query indexes detail on a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query indexes on a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query foreign keys on a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-dropcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropCheck(
-    string $tableName,
-    string $schemaName,
-    string $checkName
-)</code>
+<code class="sig"><span class="sf">dropCheck</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$checkName</span></span>)</code>
 <span class="desc">SQLite cannot DROP a CHECK constraint from an existing table.</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-dropcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropColumn(
-    string $tableName,
-    string $schemaName,
-    string $columnName
-)</code>
+<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
 <span class="desc">Generates SQL to delete a column from a table.</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-dropforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropForeignKey(
-    string $tableName,
-    string $schemaName,
-    string $referenceName
-)</code>
+<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
 <span class="desc">Generates SQL to delete a foreign key from a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-dropindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropIndex(
-    string $tableName,
-    string $schemaName,
-    string $indexName
-)</code>
+<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$indexName</span></span>)</code>
 <span class="desc">Generates SQL to delete an index from a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-dropprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropPrimaryKey(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Generates SQL to delete primary key from a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-droptable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropTable(
-    string $tableName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a view</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">forUpdate(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a SQL modified with a FOR UPDATE clause. SQLite has no</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-getcolumndefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnDefinition( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Gets the column name in SQLite</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-listindexessql">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listIndexesSql(
-    string $table,
-    string $schema = null,
-    string $keyName = null
-)</code>
+<code class="sig"><span class="sf">listIndexesSql</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$keyName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates the SQL to get query list of indexes</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listTables( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables in database</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-listviews">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listViews( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listViews</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates the SQL to list all views of a schema or user</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">modifyColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column,
-    ColumnInterface $currentColumn = null
-)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to modify a column in a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-returning">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">returning(
-    string $sqlQuery,
-    array $columns
-)</code>
-<span class="desc">Appends a `RETURNING` clause to the supplied INSERT/UPDATE/DELETE</span>
+<code class="sig"><span class="sf">returning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$columns</span></span>)</code>
+<span class="desc">Appends a <code>RETURNING</code> clause to the supplied INSERT/UPDATE/DELETE</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">sharedLock(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">SQLite has no row-level shared-lock construct, so the original query</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableExists(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableOptions(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates the SQL to describe the table creation options</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-truncatetable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">truncateTable(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">truncateTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Generates SQL to truncate a table</span>
 </a>
 <a class="api-item" href="#dbdialectsqlite-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">viewExists(
-    string $viewName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$escapeChar = "\""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$escapeChar</span><span class="sm"> = &quot;\&quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6910,46 +6434,83 @@ Constants for Phalcon\Db
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `FETCH_ASSOC = \PDO::FETCH_ASSOC` `int`
-
--   `FETCH_BOTH = \PDO::FETCH_BOTH` `int`
-
--   `FETCH_BOUND = \PDO::FETCH_BOUND` `int`
-
--   `FETCH_CLASS = \PDO::FETCH_CLASS` `int`
-
--   `FETCH_CLASSTYPE = \PDO::FETCH_CLASSTYPE` `int`
-
--   `FETCH_COLUMN = \PDO::FETCH_COLUMN` `int`
-
--   `FETCH_DEFAULT = \PDO::FETCH_DEFAULT` `int`
-
--   `FETCH_FUNC = \PDO::FETCH_FUNC` `int`
-
--   `FETCH_GROUP = \PDO::FETCH_GROUP` `int`
-
--   `FETCH_INTO = \PDO::FETCH_INTO` `int`
-
--   `FETCH_KEY_PAIR = \PDO::FETCH_KEY_PAIR` `int`
-
--   `FETCH_LAZY = \PDO::FETCH_LAZY` `int`
-
--   `FETCH_NAMED = \PDO::FETCH_NAMED` `int`
-
--   `FETCH_NUM = \PDO::FETCH_NUM` `int`
-
--   `FETCH_OBJ = \PDO::FETCH_OBJ` `int`
-
--   `FETCH_ORI_NEXT = \PDO::FETCH_ORI_NEXT` `int`
-
--   `FETCH_PROPS_LATE = \PDO::FETCH_PROPS_LATE` `int`
-
--   `FETCH_SERIALIZE = \PDO::FETCH_SERIALIZE` `int`
-
--   `FETCH_UNIQUE = \PDO::FETCH_UNIQUE` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_ASSOC</span><span class="sm"> = \PDO::FETCH_ASSOC</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_BOTH</span><span class="sm"> = \PDO::FETCH_BOTH</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_BOUND</span><span class="sm"> = \PDO::FETCH_BOUND</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_CLASS</span><span class="sm"> = \PDO::FETCH_CLASS</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_CLASSTYPE</span><span class="sm"> = \PDO::FETCH_CLASSTYPE</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_COLUMN</span><span class="sm"> = \PDO::FETCH_COLUMN</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_DEFAULT</span><span class="sm"> = \PDO::FETCH_DEFAULT</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_FUNC</span><span class="sm"> = \PDO::FETCH_FUNC</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_GROUP</span><span class="sm"> = \PDO::FETCH_GROUP</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_INTO</span><span class="sm"> = \PDO::FETCH_INTO</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_KEY_PAIR</span><span class="sm"> = \PDO::FETCH_KEY_PAIR</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_LAZY</span><span class="sm"> = \PDO::FETCH_LAZY</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_NAMED</span><span class="sm"> = \PDO::FETCH_NAMED</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_NUM</span><span class="sm"> = \PDO::FETCH_NUM</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_OBJ</span><span class="sm"> = \PDO::FETCH_OBJ</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_ORI_NEXT</span><span class="sm"> = \PDO::FETCH_ORI_NEXT</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_PROPS_LATE</span><span class="sm"> = \PDO::FETCH_PROPS_LATE</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_SERIALIZE</span><span class="sm"> = \PDO::FETCH_SERIALIZE</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">FETCH_UNIQUE</span><span class="sm"> = \PDO::FETCH_UNIQUE</span></code>
+</div>
 </div>
 
 
@@ -7045,7 +6606,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionscannotinsertwithoutdata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $table )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$table</span> )</code>
 </a>
 </div>
 
@@ -7088,7 +6649,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionscannotpreparestatement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7131,7 +6692,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionscheckexpressionrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7174,7 +6735,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionscolumntyperejectsautoincrement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7217,7 +6778,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionscolumntyperejectsscale-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7260,7 +6821,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionscolumntyperequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7303,7 +6864,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsconflicttargetcolumnrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7346,7 +6907,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsconflictupdatecolumnrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7389,7 +6950,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsforeignkeycolumnsrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7432,7 +6993,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsgeneratedautoincrementconflict-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7475,7 +7036,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsgenerateddefaultconflict-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7518,7 +7079,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsincompletebindtypes-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7561,7 +7122,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidbindparameter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7604,7 +7165,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidcheckexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7647,7 +7208,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidgenerationexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7690,7 +7251,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidgroupbyexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7733,7 +7294,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidindexcolumns-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7776,7 +7337,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidindexdirections-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7819,7 +7380,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidindexwhere-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7862,7 +7423,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidlistexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7905,7 +7466,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidorderbyexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7948,7 +7509,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidsqlexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -7991,7 +7552,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidsqlexpressiontype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -8034,7 +7595,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidunaryexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8077,7 +7638,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsinvalidwhereconditions-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8120,7 +7681,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsmatchedparameternotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8163,7 +7724,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsmaterializedviewsnotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8206,7 +7767,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsmissingdefinitionkey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $key )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 </div>
 
@@ -8249,7 +7810,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsmissingforeignkeychecks-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8292,7 +7853,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsmissingsqlitedatabase-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8335,7 +7896,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsmysqlonconflictnotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8378,7 +7939,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsnestedtransactionchangeblocked-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8421,7 +7982,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsnoactivetransaction-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8464,7 +8025,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsreferencedcolumncountmismatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8507,7 +8068,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsreferencedcolumnsrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8550,7 +8111,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsreferencedtablerequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8593,7 +8154,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsreturningnotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8636,7 +8197,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsreturningrequirescolumn-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8679,7 +8240,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssavepointsnotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8722,7 +8283,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssqlitealterchecknotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8765,7 +8326,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssqlitealtercolumnnotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8808,7 +8369,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssqlitealterforeignkeynotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8851,7 +8412,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssqlitealterprimarykeynotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8894,7 +8455,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssqlitedropchecknotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8937,7 +8498,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssqlitedropforeignkeynotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8980,7 +8541,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionssqlitedropprimarykeynotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9023,7 +8584,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionstablemusthavecolumn-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9066,10 +8627,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsunrecognizeddatatype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $dialect,
-    string $column
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$dialect</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$column</span></span>)</code>
 </a>
 </div>
 
@@ -9115,7 +8673,7 @@ __Uses__ `Phalcon\Db\Exception`
 <div class="api-list">
 <a class="api-item" href="#dbexceptionsupdatefieldcountmismatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9191,101 +8749,110 @@ __Uses__ `Phalcon\Db\Exceptions\InvalidIndexColumns` · `Phalcon\Db\Exceptions\I
 <div class="api-list">
 <a class="api-item" href="#dbindex-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $columnsOrDefinition,
-    string $type = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$columnsOrDefinition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Phalcon\Db\Index constructor.</span>
 </a>
 <a class="api-item" href="#dbindex-getcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Index columns</span>
 </a>
 <a class="api-item" href="#dbindex-getdirections">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDirections()</code>
-<span class="desc">Returns the per-column sort directions array (`ASC` / `DESC`).</span>
+<code class="sig"><span class="sf">getDirections</span>()</code>
+<span class="desc">Returns the per-column sort directions array (<code>ASC</code> / <code>DESC</code>).</span>
 </a>
 <a class="api-item" href="#dbindex-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Index name</span>
 </a>
 <a class="api-item" href="#dbindex-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Index type</span>
 </a>
 <a class="api-item" href="#dbindex-getwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getWhere()</code>
-<span class="desc">Returns the partial-index `WHERE` predicate, or an empty string when</span>
+<code class="sig"><span class="sf">getWhere</span>()</code>
+<span class="desc">Returns the partial-index <code>WHERE</code> predicate, or an empty string when</span>
 </a>
 <a class="api-item" href="#dbindex-isconcurrent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isConcurrent()</code>
-<span class="desc">Whether the index is built `CONCURRENTLY` (PostgreSQL only). MySQL</span>
+<code class="sig"><span class="sf">isConcurrent</span>()</code>
+<span class="desc">Whether the index is built <code>CONCURRENTLY</code> (PostgreSQL only). MySQL</span>
 </a>
 <a class="api-item" href="#dbindex-isinvisible">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isInvisible()</code>
-<span class="desc">Whether the index is declared `INVISIBLE` (MySQL 8.0+). Invisible</span>
+<code class="sig"><span class="sf">isInvisible</span>()</code>
+<span class="desc">Whether the index is declared <code>INVISIBLE</code> (MySQL 8.0+). Invisible</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$columns` `array`
-
-    Index columns
-
--   `protected`{ .vis-protected } `$concurrent = false` `bool`
-
-    Whether to build the index without taking a strong lock that blocks
-    writes - emits `CONCURRENTLY` between `INDEX` and the index name on
-    PostgreSQL (`CREATE INDEX CONCURRENTLY name ON ...`). MySQL and
-    SQLite have no equivalent and ignore the flag.
-
--   `protected`{ .vis-protected } `$directions = []` `array`
-
-    Per-column sort directions (`ASC` / `DESC`). Empty array means
-    "emit no per-column direction" - preserves the legacy plain
-    `(col1, col2)` rendering. When populated, entries shorter than
-    the columns list default to `ASC` for the missing positions.
-
--   `protected`{ .vis-protected } `$invisible = false` `bool`
-
-    Whether the index is declared `INVISIBLE` (MySQL 8.0+). Invisible
-    indexes are ignored by the optimizer - useful for testing what
-    happens when an index is removed before actually dropping it.
-    PostgreSQL and SQLite have no equivalent and ignore the flag.
-
--   `protected`{ .vis-protected } `$name` `string`
-
-    Index name
-
--   `protected`{ .vis-protected } `$type = ""` `string`
-
-    Index type
-
--   `protected`{ .vis-protected } `$where = ""` `string`
-
-    Optional partial-index `WHERE` predicate. Supported by PostgreSQL and
-    SQLite (`CREATE INDEX ... WHERE <expr>`); MySQL has no partial-index
-    concept and its dialect ignores this value. Empty string means no
-    predicate.
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$columns</span></code>
+<span class="desc">Index columns</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$concurrent</span><span class="sm"> = false</span></code>
+<span class="desc">Whether to build the index without taking a strong lock that blocks
+writes - emits <code>CONCURRENTLY</code> between <code>INDEX</code> and the index name on
+PostgreSQL (<code>CREATE INDEX CONCURRENTLY name ON ...</code>). MySQL and
+SQLite have no equivalent and ignore the flag.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$directions</span><span class="sm"> = []</span></code>
+<span class="desc">Per-column sort directions (<code>ASC</code> / <code>DESC</code>). Empty array means
+&quot;emit no per-column direction&quot; - preserves the legacy plain
+<code>(col1, col2)</code> rendering. When populated, entries shorter than
+the columns list default to <code>ASC</code> for the missing positions.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$invisible</span><span class="sm"> = false</span></code>
+<span class="desc">Whether the index is declared <code>INVISIBLE</code> (MySQL 8.0+). Invisible
+indexes are ignored by the optimizer - useful for testing what
+happens when an index is removed before actually dropping it.
+PostgreSQL and SQLite have no equivalent and ignore the flag.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Index name</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;&quot;</span></code>
+<span class="desc">Index type</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$where</span><span class="sm"> = &quot;&quot;</span></code>
+<span class="desc">Optional partial-index <code>WHERE</code> predicate. Supported by PostgreSQL and
+SQLite (<code>CREATE INDEX ... WHERE &lt;expr&gt;</code>); MySQL has no partial-index
+concept and its dialect ignores this value. Empty string means no
+predicate.</span>
+</div>
 </div>
 
 ### Methods
@@ -9467,97 +9034,100 @@ __Uses__ `Phalcon\Db\Profiler\Item`
 <a class="api-item" href="#dbprofiler-getlastprofile">
 <code class="vis vis-public">public</code>
 <code class="ret">Item</code>
-<code class="sig">getLastProfile()</code>
+<code class="sig"><span class="sf">getLastProfile</span>()</code>
 <span class="desc">Returns the last profile executed in the profiler</span>
 </a>
 <a class="api-item" href="#dbprofiler-getmaxprofiles">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getMaxProfiles()</code>
+<code class="sig"><span class="sf">getMaxProfiles</span>()</code>
 <span class="desc">Returns the configured maximum number of retained profiles</span>
 </a>
 <a class="api-item" href="#dbprofiler-getnumbertotalstatements">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getNumberTotalStatements()</code>
+<code class="sig"><span class="sf">getNumberTotalStatements</span>()</code>
 <span class="desc">Returns the total number of SQL statements processed</span>
 </a>
 <a class="api-item" href="#dbprofiler-getprofiles">
 <code class="vis vis-public">public</code>
 <code class="ret">Item[]</code>
-<code class="sig">getProfiles()</code>
+<code class="sig"><span class="sf">getProfiles</span>()</code>
 <span class="desc">Returns all the processed profiles</span>
 </a>
 <a class="api-item" href="#dbprofiler-gettotalelapsedmilliseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getTotalElapsedMilliseconds()</code>
+<code class="sig"><span class="sf">getTotalElapsedMilliseconds</span>()</code>
 <span class="desc">Returns the total time in milliseconds spent by the profiles</span>
 </a>
 <a class="api-item" href="#dbprofiler-gettotalelapsednanoseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getTotalElapsedNanoseconds()</code>
+<code class="sig"><span class="sf">getTotalElapsedNanoseconds</span>()</code>
 <span class="desc">Returns the total time in nanoseconds spent by the profiles</span>
 </a>
 <a class="api-item" href="#dbprofiler-gettotalelapsedseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getTotalElapsedSeconds()</code>
+<code class="sig"><span class="sf">getTotalElapsedSeconds</span>()</code>
 <span class="desc">Returns the total time in seconds spent by the profiles</span>
 </a>
 <a class="api-item" href="#dbprofiler-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the profiler, cleaning up all the profiles</span>
 </a>
 <a class="api-item" href="#dbprofiler-setmaxprofiles">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setMaxProfiles( int $maxProfiles )</code>
+<code class="sig"><span class="sf">setMaxProfiles</span>( <span class="st">int</span> <span class="sv">$maxProfiles</span> )</code>
 <span class="desc">Sets the maximum number of retained profiles. 0 disables the cap</span>
 </a>
 <a class="api-item" href="#dbprofiler-startprofile">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">startProfile(
-    string $sqlStatement,
-    array $sqlVariables = [],
-    array $sqlBindTypes = []
-)</code>
+<code class="sig"><span class="sf">startProfile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$sqlVariables</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$sqlBindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Starts the profile of a SQL sentence</span>
 </a>
 <a class="api-item" href="#dbprofiler-stopprofile">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">stopProfile()</code>
+<code class="sig"><span class="sf">stopProfile</span>()</code>
 <span class="desc">Stops the active profile</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$activeProfile` `Item`
-
-    Active Item
-
--   `protected`{ .vis-protected } `$allProfiles` `Item[]`
-
-    All the Items in the active profile
-
--   `protected`{ .vis-protected } `$maxProfiles = 0` `int`
-
-    Maximum number of profiles to retain. 0 (default) keeps the
-    original unbounded behavior; a positive value drops the oldest
-    profile FIFO before a new one is appended.
-
--   `protected`{ .vis-protected } `$totalNanoseconds = 0` `float`
-
-    Total time spent by all profiles to complete in nanoseconds
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Item</code>
+<code class="sig"><span class="sv">$activeProfile</span></code>
+<span class="desc">Active Item</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Item[]</code>
+<code class="sig"><span class="sv">$allProfiles</span></code>
+<span class="desc">All the Items in the active profile</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$maxProfiles</span><span class="sm"> = 0</span></code>
+<span class="desc">Maximum number of profiles to retain. 0 (default) keeps the
+original unbounded behavior; a positive value drops the oldest
+profile FIFO before a new one is appended.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">float</code>
+<code class="sig"><span class="sv">$totalNanoseconds</span><span class="sm"> = 0</span></code>
+<span class="desc">Total time spent by all profiles to complete in nanoseconds</span>
+</div>
 </div>
 
 ### Methods
@@ -9678,107 +9248,116 @@ This class identifies each profile in a Phalcon\Db\Profiler
 <a class="api-item" href="#dbprofileritem-getfinaltime">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getFinalTime()</code>
+<code class="sig"><span class="sf">getFinalTime</span>()</code>
 <span class="desc">Return the timestamp when the profile ended</span>
 </a>
 <a class="api-item" href="#dbprofileritem-getinitialtime">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getInitialTime()</code>
+<code class="sig"><span class="sf">getInitialTime</span>()</code>
 <span class="desc">Return the timestamp when the profile started</span>
 </a>
 <a class="api-item" href="#dbprofileritem-getsqlbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSqlBindTypes()</code>
+<code class="sig"><span class="sf">getSqlBindTypes</span>()</code>
 <span class="desc">Return the SQL bind types related to the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-getsqlstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSqlStatement()</code>
+<code class="sig"><span class="sf">getSqlStatement</span>()</code>
 <span class="desc">Return the SQL statement related to the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-getsqlvariables">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSqlVariables()</code>
+<code class="sig"><span class="sf">getSqlVariables</span>()</code>
 <span class="desc">Return the SQL variables related to the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-gettotalelapsedmilliseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getTotalElapsedMilliseconds()</code>
+<code class="sig"><span class="sf">getTotalElapsedMilliseconds</span>()</code>
 <span class="desc">Returns the total time in milliseconds spent by the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-gettotalelapsednanoseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getTotalElapsedNanoseconds()</code>
+<code class="sig"><span class="sf">getTotalElapsedNanoseconds</span>()</code>
 <span class="desc">Returns the total time in nanoseconds spent by the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-gettotalelapsedseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getTotalElapsedSeconds()</code>
+<code class="sig"><span class="sf">getTotalElapsedSeconds</span>()</code>
 <span class="desc">Returns the total time in seconds spent by the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-setfinaltime">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFinalTime( double $finalTime )</code>
+<code class="sig"><span class="sf">setFinalTime</span>( <span class="st">double</span> <span class="sv">$finalTime</span> )</code>
 <span class="desc">Return the timestamp when the profile ended</span>
 </a>
 <a class="api-item" href="#dbprofileritem-setinitialtime">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setInitialTime( double $initialTime )</code>
+<code class="sig"><span class="sf">setInitialTime</span>( <span class="st">double</span> <span class="sv">$initialTime</span> )</code>
 <span class="desc">Return the timestamp when the profile started</span>
 </a>
 <a class="api-item" href="#dbprofileritem-setsqlbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setSqlBindTypes( array $sqlBindTypes )</code>
+<code class="sig"><span class="sf">setSqlBindTypes</span>( <span class="st">array</span> <span class="sv">$sqlBindTypes</span> )</code>
 <span class="desc">Return the SQL bind types related to the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-setsqlstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setSqlStatement( string $sqlStatement )</code>
+<code class="sig"><span class="sf">setSqlStatement</span>( <span class="st">string</span> <span class="sv">$sqlStatement</span> )</code>
 <span class="desc">Return the SQL statement related to the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-setsqlvariables">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setSqlVariables( array $sqlVariables )</code>
+<code class="sig"><span class="sf">setSqlVariables</span>( <span class="st">array</span> <span class="sv">$sqlVariables</span> )</code>
 <span class="desc">Return the SQL variables related to the profile</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$finalTime` `double`
-
-    Timestamp when the profile ended
-
--   `protected`{ .vis-protected } `$initialTime` `double`
-
-    Timestamp when the profile started
-
--   `protected`{ .vis-protected } `$sqlBindTypes` `array`
-
-    SQL bind types related to the profile
-
--   `protected`{ .vis-protected } `$sqlStatement` `string`
-
-    SQL statement related to the profile
-
--   `protected`{ .vis-protected } `$sqlVariables` `array`
-
-    SQL variables related to the profile
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sv">$finalTime</span></code>
+<span class="desc">Timestamp when the profile ended</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sv">$initialTime</span></code>
+<span class="desc">Timestamp when the profile started</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlBindTypes</span></code>
+<span class="desc">SQL bind types related to the profile</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$sqlStatement</span></code>
+<span class="desc">SQL statement related to the profile</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlVariables</span></code>
+<span class="desc">SQL variables related to the profile</span>
+</div>
 </div>
 
 ### Methods
@@ -9919,29 +9498,30 @@ $subscriber->save();
 <div class="api-list">
 <a class="api-item" href="#dbrawvalue-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( mixed $value )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Phalcon\Db\RawValue constructor</span>
 </a>
 <a class="api-item" href="#dbrawvalue-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 </a>
 <a class="api-item" href="#dbrawvalue-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getValue()</code>
+<code class="sig"><span class="sf">getValue</span>()</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$value` `string`
-
-    Raw value without quoting or formatting
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$value</span></code>
+<span class="desc">Raw value without quoting or formatting</span>
+</div>
 </div>
 
 ### Methods
@@ -10008,98 +9588,110 @@ __Uses__ `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Except
 <div class="api-list">
 <a class="api-item" href="#dbreference-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Phalcon\Db\Reference constructor</span>
 </a>
 <a class="api-item" href="#dbreference-getcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Local reference columns</span>
 </a>
 <a class="api-item" href="#dbreference-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Constraint name</span>
 </a>
 <a class="api-item" href="#dbreference-getondelete">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getOnDelete()</code>
+<code class="sig"><span class="sf">getOnDelete</span>()</code>
 <span class="desc">ON DELETE</span>
 </a>
 <a class="api-item" href="#dbreference-getonupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getOnUpdate()</code>
+<code class="sig"><span class="sf">getOnUpdate</span>()</code>
 <span class="desc">ON UPDATE</span>
 </a>
 <a class="api-item" href="#dbreference-getreferencedcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getReferencedColumns()</code>
+<code class="sig"><span class="sf">getReferencedColumns</span>()</code>
 <span class="desc">Referenced Columns</span>
 </a>
 <a class="api-item" href="#dbreference-getreferencedschema">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getReferencedSchema()</code>
+<code class="sig"><span class="sf">getReferencedSchema</span>()</code>
 <span class="desc">Referenced Schema</span>
 </a>
 <a class="api-item" href="#dbreference-getreferencedtable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReferencedTable()</code>
+<code class="sig"><span class="sf">getReferencedTable</span>()</code>
 <span class="desc">Referenced Table</span>
 </a>
 <a class="api-item" href="#dbreference-getschemaname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getSchemaName()</code>
+<code class="sig"><span class="sf">getSchemaName</span>()</code>
 <span class="desc">Schema name</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$columns` `array`
-
-    Local reference columns
-
--   `protected`{ .vis-protected } `$name` `string`
-
-    Constraint name
-
--   `protected`{ .vis-protected } `$onDelete` `string`
-
-    ON DELETE
-
--   `protected`{ .vis-protected } `$onUpdate` `string`
-
-    ON UPDATE
-
--   `protected`{ .vis-protected } `$referencedColumns` `array`
-
-    Referenced Columns
-
--   `protected`{ .vis-protected } `$referencedSchema` `string`
-
-    Referenced Schema
-
--   `protected`{ .vis-protected } `$referencedTable` `string`
-
-    Referenced Table
-
--   `protected`{ .vis-protected } `$schemaName` `string`
-
-    Schema name
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$columns</span></code>
+<span class="desc">Local reference columns</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Constraint name</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$onDelete</span></code>
+<span class="desc">ON DELETE</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$onUpdate</span></code>
+<span class="desc">ON UPDATE</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$referencedColumns</span></code>
+<span class="desc">Referenced Columns</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$referencedSchema</span></code>
+<span class="desc">Referenced Schema</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$referencedTable</span></code>
+<span class="desc">Referenced Table</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$schemaName</span></code>
+<span class="desc">Schema name</span>
+</div>
 </div>
 
 ### Methods
@@ -10259,99 +9851,102 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\
 <div class="api-list">
 <a class="api-item" href="#dbresultpdoresult-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    AdapterInterface $connection,
-    \PDOStatement $result,
-    mixed $sqlStatement = null,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">\PDOStatement</span> <span class="sv">$result</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$sqlStatement</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Db\Result\Pdo constructor</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-dataseek">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">dataSeek( int $number )</code>
+<code class="sig"><span class="sf">dataSeek</span>( <span class="st">int</span> <span class="sv">$number</span> )</code>
 <span class="desc">Moves internal resultset cursor to another position letting us to fetch a</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-execute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">execute()</code>
+<code class="sig"><span class="sf">execute</span>()</code>
 <span class="desc">Allows to execute the statement again. Some database systems don&#039;t</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-fetch">
 <code class="vis vis-public">public</code>
-<code class="sig">fetch(
-    int $fetchStyle = null,
-    int $cursorOrientation = Enum::FETCH_ORI_NEXT,
-    int $cursorOffset = 0
-)</code>
+<code class="sig"><span class="sf">fetch</span>(<span class="prm"><span class="st">int</span> <span class="sv">$fetchStyle</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$cursorOrientation</span><span class="sm"> = Enum::FETCH_ORI_NEXT</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$cursorOffset</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Fetches an array/object of strings that corresponds to the fetched row,</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-fetchall">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAll(
-    int $mode = Enum::FETCH_DEFAULT,
-    mixed $fetchArgument = Enum::FETCH_ORI_NEXT,
-    mixed $constructorArgs = null
-)</code>
+<code class="sig"><span class="sf">fetchAll</span>(<span class="prm"><span class="st">int</span> <span class="sv">$mode</span><span class="sm"> = Enum::FETCH_DEFAULT</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fetchArgument</span><span class="sm"> = Enum::FETCH_ORI_NEXT</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$constructorArgs</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an array of arrays containing all the records in the result</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-fetcharray">
 <code class="vis vis-public">public</code>
-<code class="sig">fetchArray()</code>
+<code class="sig"><span class="sf">fetchArray</span>()</code>
 <span class="desc">Returns an array of strings that corresponds to the fetched row, or FALSE</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-getinternalresult">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
-<code class="sig">getInternalResult()</code>
+<code class="sig"><span class="sf">getInternalResult</span>()</code>
 <span class="desc">Gets the internal PDO result object</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-numrows">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">numRows()</code>
+<code class="sig"><span class="sf">numRows</span>()</code>
 <span class="desc">Gets number of rows returned by a resultset</span>
 </a>
 <a class="api-item" href="#dbresultpdoresult-setfetchmode">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">setFetchMode(
-    int $fetchMode,
-    mixed $colNoOrClassNameOrObject = null,
-    mixed $ctorargs = null
-)</code>
+<code class="sig"><span class="sf">setFetchMode</span>(<span class="prm"><span class="st">int</span> <span class="sv">$fetchMode</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$colNoOrClassNameOrObject</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ctorargs</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$bindParams = []` `array`
-
--   `protected`{ .vis-protected } `$bindTypes = []` `array`
-
--   `protected`{ .vis-protected } `$connection` `AdapterInterface`
-
--   `protected`{ .vis-protected } `$fetchMode = Enum::FETCH_DEFAULT` `int`
-
-    Active fetch mode
-
--   `protected`{ .vis-protected } `$pdoStatement` `\PDOStatement`
-
-    Internal resultset
-
--   `protected`{ .vis-protected } `$result` `mixed`
-
--   `protected`{ .vis-protected } `$rowCount = null` `int|null`
-
--   `protected`{ .vis-protected } `$sqlStatement = null` `string|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindTypes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AdapterInterface</code>
+<code class="sig"><span class="sv">$connection</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$fetchMode</span><span class="sm"> = Enum::FETCH_DEFAULT</span></code>
+<span class="desc">Active fetch mode</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">\PDOStatement</code>
+<code class="sig"><span class="sv">$pdoStatement</span></code>
+<span class="desc">Internal resultset</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$result</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sv">$rowCount</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$sqlStatement</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods

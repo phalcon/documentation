@@ -42,140 +42,159 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 <div class="api-list">
 <a class="api-item" href="#loggerabstractlogger-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $adapters = [],
-    DateTimeZone $timezone = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-addadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addAdapter(
-    string $name,
-    AdapterInterface $adapter
-)</code>
+<code class="sig"><span class="sf">addAdapter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$adapter</span></span>)</code>
 <span class="desc">Add an adapter to the stack. For processing we use FIFO</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-excludeadapters">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">excludeAdapters( array $adapters = [] )</code>
+<code class="sig"><span class="sf">excludeAdapters</span>( <span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span> )</code>
 <span class="desc">Exclude certain adapters.</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-getadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getAdapter( string $name )</code>
+<code class="sig"><span class="sf">getAdapter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an adapter from the stack</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-getadapters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAdapters()</code>
+<code class="sig"><span class="sf">getAdapters</span>()</code>
 <span class="desc">Returns the adapter stack array</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-getloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getLogLevel()</code>
+<code class="sig"><span class="sf">getLogLevel</span>()</code>
 <span class="desc">Returns the log level</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the name of the logger</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-removeadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">removeAdapter( string $name )</code>
+<code class="sig"><span class="sf">removeAdapter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes an adapter from the stack</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-setadapters">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAdapters( array $adapters )</code>
+<code class="sig"><span class="sf">setAdapters</span>( <span class="st">array</span> <span class="sv">$adapters</span> )</code>
 <span class="desc">Sets the adapters stack overriding what is already there</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-setloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setLogLevel( int $level )</code>
+<code class="sig"><span class="sf">setLogLevel</span>( <span class="st">int</span> <span class="sv">$level</span> )</code>
 <span class="desc">Sets the adapters stack overriding what is already there</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-addmessage">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">addMessage(
-    int $level,
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">addMessage</span>(<span class="prm"><span class="st">int</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Adds a message to each handler for processing</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-getlevelnumber">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
-<code class="sig">getLevelNumber( mixed $level )</code>
+<code class="sig"><span class="sf">getLevelNumber</span>( <span class="st">mixed</span> <span class="sv">$level</span> )</code>
 <span class="desc">Converts the level from string/word to an integer</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-getlevels">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getLevels()</code>
+<code class="sig"><span class="sf">getLevels</span>()</code>
 <span class="desc">Returns an array of log levels with integer to string conversion</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `ALERT = 2` `int`
-
--   `CRITICAL = 1` `int`
-
--   `CUSTOM = 8` `int`
-
--   `DEBUG = 7` `int`
-
--   `EMERGENCY = 0` `int`
-
--   `ERROR = 3` `int`
-
--   `INFO = 6` `int`
-
--   `NOTICE = 5` `int`
-
--   `TRACE = 9` `int`
-
--   `WARNING = 4` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ALERT</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">CRITICAL</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">CUSTOM</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DEBUG</span><span class="sm"> = 7</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EMERGENCY</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ERROR</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">INFO</span><span class="sm"> = 6</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">NOTICE</span><span class="sm"> = 5</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TRACE</span><span class="sm"> = 9</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">WARNING</span><span class="sm"> = 4</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$adapters = []` `AdapterInterface[]`
-
-    The adapter stack
-
--   `protected`{ .vis-protected } `$excluded = []` `array`
-
-    The excluded adapters for this log process
-
--   `protected`{ .vis-protected } `$logLevel = 8` `int`
-
-    Minimum log level for the logger
-
--   `protected`{ .vis-protected } `$name = ""` `string`
-
--   `protected`{ .vis-protected } `$timezone` `DateTimeZone`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AdapterInterface[]</code>
+<code class="sig"><span class="sv">$adapters</span><span class="sm"> = []</span></code>
+<span class="desc">The adapter stack</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$excluded</span><span class="sm"> = []</span></code>
+<span class="desc">The excluded adapters for this log process</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$logLevel</span><span class="sm"> = 8</span></code>
+<span class="desc">Minimum log level for the logger</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DateTimeZone</code>
+<code class="sig"><span class="sv">$timezone</span></code>
+</div>
 </div>
 
 ### Methods
@@ -323,28 +342,24 @@ __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInt
 <div class="api-list">
 <a class="api-item" href="#loggeradapterfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $services = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 <span class="desc">AdapterFactory constructor.</span>
 </a>
 <a class="api-item" href="#loggeradapterfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">newInstance(
-    string $name,
-    string $fileName,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Create a new instance of the adapter</span>
 </a>
 <a class="api-item" href="#loggeradapterfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#loggeradapterfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
@@ -419,115 +434,124 @@ __Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Ex
 <div class="api-list">
 <a class="api-item" href="#loggeradapterabstractadapter-__destruct">
 <code class="vis vis-public">public</code>
-<code class="sig">__destruct()</code>
+<code class="sig"><span class="sf">__destruct</span>()</code>
 <span class="desc">Destructor cleanup</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-__serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__serialize()</code>
+<code class="sig"><span class="sf">__serialize</span>()</code>
 <span class="desc">Prevent serialization</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unserialize( array $data )</code>
+<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 <span class="desc">Prevent unserialization</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-add">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">add( Item $item )</code>
+<code class="sig"><span class="sf">add</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Adds a message to the queue</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">begin()</code>
+<code class="sig"><span class="sf">begin</span>()</code>
 <span class="desc">Starts a transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits the internal transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getformatter">
 <code class="vis vis-public">public</code>
 <code class="ret">FormatterInterface</code>
-<code class="sig">getFormatter()</code>
+<code class="sig"><span class="sf">getFormatter</span>()</code>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getqueuelimit">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getQueueLimit()</code>
+<code class="sig"><span class="sf">getQueueLimit</span>()</code>
 <span class="desc">Returns the configured transaction-queue cap (0 = unlimited)</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-intransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">inTransaction()</code>
+<code class="sig"><span class="sf">inTransaction</span>()</code>
 <span class="desc">Returns the whether the logger is currently in an active transaction or</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-process">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">process( Item $item )</code>
+<code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Processes the message in the adapter</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">rollback()</code>
+<code class="sig"><span class="sf">rollback</span>()</code>
 <span class="desc">Rollbacks the internal transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-setformatter">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">setFormatter( FormatterInterface $formatter )</code>
+<code class="sig"><span class="sf">setFormatter</span>( <span class="st">FormatterInterface</span> <span class="sv">$formatter</span> )</code>
 <span class="desc">Sets the message formatter</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-setqueuelimit">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">setQueueLimit( int $queueLimit )</code>
+<code class="sig"><span class="sf">setQueueLimit</span>( <span class="st">int</span> <span class="sv">$queueLimit</span> )</code>
 <span class="desc">Sets the maximum number of items retained in the transaction</span>
 </a>
 <a class="api-item" href="#loggeradapterabstractadapter-getformatteditem">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getFormattedItem( Item $item )</code>
+<code class="sig"><span class="sf">getFormattedItem</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Returns the formatted item</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$defaultFormatter = "Phalcon\\Logger\Formatter\\Line"` `string`
-
-    Name of the default formatter class
-
--   `protected`{ .vis-protected } `$formatter = null` `FormatterInterface|null`
-
-    Formatter
-
--   `protected`{ .vis-protected } `$inTransaction = false` `bool`
-
-    Tells if there is an active transaction or not
-
--   `protected`{ .vis-protected } `$queue = []` `array`
-
-    Array with messages queued in the transaction
-
--   `protected`{ .vis-protected } `$queueLimit = 0` `int`
-
-    Maximum number of items retained in the transaction queue.
-    0 (default) keeps the original unbounded behavior; a positive
-    value drops the oldest queued item FIFO before a new one is
-    appended in add().
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultFormatter</span><span class="sm"> = &quot;Phalcon\\Logger\Formatter\\Line&quot;</span></code>
+<span class="desc">Name of the default formatter class</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">FormatterInterface|null</code>
+<code class="sig"><span class="sv">$formatter</span><span class="sm"> = null</span></code>
+<span class="desc">Formatter</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$inTransaction</span><span class="sm"> = false</span></code>
+<span class="desc">Tells if there is an active transaction or not</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$queue</span><span class="sm"> = []</span></code>
+<span class="desc">Array with messages queued in the transaction</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$queueLimit</span><span class="sm"> = 0</span></code>
+<span class="desc">Maximum number of items retained in the transaction queue.
+0 (default) keeps the original unbounded behavior; a positive
+value drops the oldest queued item FIFO before a new one is
+appended in add().</span>
+</div>
 </div>
 
 ### Methods
@@ -674,55 +698,55 @@ __Uses__ `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Item`
 <a class="api-item" href="#loggeradapteradapterinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">add( Item $item )</code>
+<code class="sig"><span class="sf">add</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Adds a message in the queue</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">begin()</code>
+<code class="sig"><span class="sf">begin</span>()</code>
 <span class="desc">Starts a transaction</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-close">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">close()</code>
+<code class="sig"><span class="sf">close</span>()</code>
 <span class="desc">Closes the logger</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits the internal transaction</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-getformatter">
 <code class="vis vis-public">public</code>
 <code class="ret">FormatterInterface</code>
-<code class="sig">getFormatter()</code>
+<code class="sig"><span class="sf">getFormatter</span>()</code>
 <span class="desc">Returns the internal formatter</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-intransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">inTransaction()</code>
+<code class="sig"><span class="sf">inTransaction</span>()</code>
 <span class="desc">Returns the whether the logger is currently in an active transaction or</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-process">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">process( Item $item )</code>
+<code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Processes the message in the adapter</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">rollback()</code>
+<code class="sig"><span class="sf">rollback</span>()</code>
 <span class="desc">Rollbacks the internal transaction</span>
 </a>
 <a class="api-item" href="#loggeradapteradapterinterface-setformatter">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">setFormatter( FormatterInterface $formatter )</code>
+<code class="sig"><span class="sf">setFormatter</span>( <span class="st">FormatterInterface</span> <span class="sv">$formatter</span> )</code>
 <span class="desc">Sets the message formatter</span>
 </a>
 </div>
@@ -833,10 +857,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggeradapterexceptionsfileopenfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $mode
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
 </a>
 </div>
 
@@ -882,7 +903,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggeradapterexceptionsinvalidstreammode-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -925,10 +946,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggeradapterexceptionssyslogopenfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    int $facility
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$facility</span></span>)</code>
 </a>
 </div>
 
@@ -971,13 +989,13 @@ __Uses__ `Phalcon\Logger\Item`
 <a class="api-item" href="#loggeradapternoop-close">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">close()</code>
+<code class="sig"><span class="sf">close</span>()</code>
 <span class="desc">Closes the stream</span>
 </a>
 <a class="api-item" href="#loggeradapternoop-process">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">process( Item $item )</code>
+<code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Processes the message i.e. writes it to the file</span>
 </a>
 </div>
@@ -1041,70 +1059,66 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\A
 <div class="api-list">
 <a class="api-item" href="#loggeradapterstream-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Stream constructor.</span>
 </a>
 <a class="api-item" href="#loggeradapterstream-close">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">close()</code>
+<code class="sig"><span class="sf">close</span>()</code>
 <span class="desc">Closes the stream</span>
 </a>
 <a class="api-item" href="#loggeradapterstream-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Stream name</span>
 </a>
 <a class="api-item" href="#loggeradapterstream-process">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">process( Item $item )</code>
+<code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Processes the message i.e. writes it to the file</span>
 </a>
 <a class="api-item" href="#loggeradapterstream-phpfclose">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">phpFclose( mixed $handle )</code>
+<code class="sig"><span class="sf">phpFclose</span>( <span class="st">mixed</span> <span class="sv">$handle</span> )</code>
 <span class="desc">@todo to be removed when we get traits</span>
 </a>
 <a class="api-item" href="#loggeradapterstream-phpfopen">
 <code class="vis vis-protected">protected</code>
-<code class="sig">phpFopen(
-    string $filename,
-    string $mode
-)</code>
+<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
 <span class="desc">@todo to be removed when we get traits</span>
 </a>
 <a class="api-item" href="#loggeradapterstream-phpfwrite">
 <code class="vis vis-protected">protected</code>
-<code class="sig">phpFwrite(
-    mixed $handle,
-    string $message
-)</code>
+<code class="sig"><span class="sf">phpFwrite</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handle</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
 <span class="desc">@todo to be removed when we get traits</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$handler = null` `resource|null`
-
-    Stream handler resource
-
--   `protected`{ .vis-protected } `$mode = "ab"` `string`
-
-    The file open mode. Defaults to 'ab'
-
--   `protected`{ .vis-protected } `$name` `string`
-
-    Stream name
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">resource|null</code>
+<code class="sig"><span class="sv">$handler</span><span class="sm"> = null</span></code>
+<span class="desc">Stream handler resource</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$mode</span><span class="sm"> = &quot;ab&quot;</span></code>
+<span class="desc">The file open mode. Defaults to &#039;ab&#039;</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Stream name</span>
+</div>
 </div>
 
 ### Methods
@@ -1207,48 +1221,52 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger
 <div class="api-list">
 <a class="api-item" href="#loggeradaptersyslog-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Syslog constructor.</span>
 </a>
 <a class="api-item" href="#loggeradaptersyslog-close">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">close()</code>
+<code class="sig"><span class="sf">close</span>()</code>
 <span class="desc">Closes the logger</span>
 </a>
 <a class="api-item" href="#loggeradaptersyslog-process">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">process( Item $item )</code>
+<code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Processes the message i.e. writes it to the syslog</span>
 </a>
 <a class="api-item" href="#loggeradaptersyslog-openlog">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">openlog(
-    string $ident,
-    int $option,
-    int $facility
-)</code>
+<code class="sig"><span class="sf">openlog</span>(<span class="prm"><span class="st">string</span> <span class="sv">$ident</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$facility</span></span>)</code>
 <span class="desc">Open connection to system logger</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$facility = 0` `int`
-
--   `protected`{ .vis-protected } `$name = ""` `string`
-
--   `protected`{ .vis-protected } `$opened = false` `bool`
-
--   `protected`{ .vis-protected } `$option = 0` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$facility</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$opened</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$option</span><span class="sm"> = 0</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1314,28 +1332,47 @@ Log Level Enum constants
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `ALERT = 2` `int`
-
--   `CRITICAL = 1` `int`
-
--   `CUSTOM = 8` `int`
-
--   `DEBUG = 7` `int`
-
--   `EMERGENCY = 0` `int`
-
--   `ERROR = 3` `int`
-
--   `INFO = 6` `int`
-
--   `NOTICE = 5` `int`
-
--   `TRACE = 9` `int`
-
--   `WARNING = 4` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ALERT</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">CRITICAL</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">CUSTOM</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DEBUG</span><span class="sm"> = 7</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EMERGENCY</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ERROR</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">INFO</span><span class="sm"> = 6</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">NOTICE</span><span class="sm"> = 5</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TRACE</span><span class="sm"> = 9</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">WARNING</span><span class="sm"> = 4</span></code>
+</div>
 </div>
 
 
@@ -1393,7 +1430,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggerexceptionsadapternotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -1436,7 +1473,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggerexceptionsdeserializationfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1479,7 +1516,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggerexceptionsnoadaptersconfigured-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1522,7 +1559,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggerexceptionsserializationfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1565,7 +1602,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggerexceptionstransactionalreadyactive-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1608,7 +1645,7 @@ __Uses__ `Phalcon\Logger\Exception`
 <div class="api-list">
 <a class="api-item" href="#loggerexceptionstransactionnotactive-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1648,41 +1685,45 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Logger\Item` · `Phalcon\Support\Helper
 <a class="api-item" href="#loggerformatterabstractformatter-getdateformat">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDateFormat()</code>
+<code class="sig"><span class="sf">getDateFormat</span>()</code>
 </a>
 <a class="api-item" href="#loggerformatterabstractformatter-setdateformat">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDateFormat( string $format )</code>
+<code class="sig"><span class="sf">setDateFormat</span>( <span class="st">string</span> <span class="sv">$format</span> )</code>
 </a>
 <a class="api-item" href="#loggerformatterabstractformatter-getformatteddate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getFormattedDate( Item $item )</code>
+<code class="sig"><span class="sf">getFormattedDate</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Returns the date formatted for the logger.</span>
 </a>
 <a class="api-item" href="#loggerformatterabstractformatter-getinterpolatedmessage">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getInterpolatedMessage(
-    Item $item,
-    string $message
-)</code>
+<code class="sig"><span class="sf">getInterpolatedMessage</span>(<span class="prm"><span class="st">Item</span> <span class="sv">$item</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$dateFormat = "c"` `string`
-
-    Default date format
-
--   `protected`{ .vis-protected } `$interpolatorLeft = "%"` `string`
-
--   `protected`{ .vis-protected } `$interpolatorRight = "%"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$dateFormat</span><span class="sm"> = &quot;c&quot;</span></code>
+<span class="desc">Default date format</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$interpolatorLeft</span><span class="sm"> = &quot;%&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$interpolatorRight</span><span class="sm"> = &quot;%&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1745,7 +1786,7 @@ __Uses__ `Phalcon\Logger\Item`
 <a class="api-item" href="#loggerformatterformatterinterface-format">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">format( Item $item )</code>
+<code class="sig"><span class="sf">format</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Applies a format to an item</span>
 </a>
 </div>
@@ -1786,17 +1827,13 @@ __Uses__ `JsonException` · `Phalcon\Logger\Item`
 <div class="api-list">
 <a class="api-item" href="#loggerformatterjson-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $dateFormat = &quot;c&quot;,
-    string $interpolatorLeft = &quot;%&quot;,
-    string $interpolatorRight = &quot;%&quot;
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$dateFormat</span><span class="sm"> = &quot;c&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$interpolatorLeft</span><span class="sm"> = &quot;%&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$interpolatorRight</span><span class="sm"> = &quot;%&quot;</span></span>)</code>
 <span class="desc">Json constructor.</span>
 </a>
 <a class="api-item" href="#loggerformatterjson-format">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">format( Item $item )</code>
+<code class="sig"><span class="sf">format</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Applies a format to a message before sent it to the internal log</span>
 </a>
 </div>
@@ -1849,42 +1886,38 @@ __Uses__ `Exception` · `Phalcon\Logger\Item`
 <div class="api-list">
 <a class="api-item" href="#loggerformatterline-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $format = &quot;[%date%][%level%] %message%&quot;,
-    string $dateFormat = &quot;c&quot;,
-    string $interpolatorLeft = &quot;%&quot;,
-    string $interpolatorRight = &quot;%&quot;
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$format</span><span class="sm"> = &quot;[%date%][%level%] %message%&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$dateFormat</span><span class="sm"> = &quot;c&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$interpolatorLeft</span><span class="sm"> = &quot;%&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$interpolatorRight</span><span class="sm"> = &quot;%&quot;</span></span>)</code>
 <span class="desc">Line constructor.</span>
 </a>
 <a class="api-item" href="#loggerformatterline-format">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">format( Item $item )</code>
+<code class="sig"><span class="sf">format</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Applies a format to a message before sent it to the internal log</span>
 </a>
 <a class="api-item" href="#loggerformatterline-getformat">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getFormat()</code>
+<code class="sig"><span class="sf">getFormat</span>()</code>
 <span class="desc">Return the format applied to each message</span>
 </a>
 <a class="api-item" href="#loggerformatterline-setformat">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFormat( string $format )</code>
+<code class="sig"><span class="sf">setFormat</span>( <span class="st">string</span> <span class="sv">$format</span> )</code>
 <span class="desc">Set the format applied to each message</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$format` `string`
-
-    Format applied to each message
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$format</span></code>
+<span class="desc">Format applied to each message</span>
+</div>
 </div>
 
 ### Methods
@@ -1958,56 +1991,64 @@ __Uses__ `DateTimeImmutable`
 <div class="api-list">
 <a class="api-item" href="#loggeritem-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $message,
-    string $levelName,
-    int $level,
-    DateTimeImmutable $dateTime,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$levelName</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">DateTimeImmutable</span> <span class="sv">$dateTime</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Item constructor.</span>
 </a>
 <a class="api-item" href="#loggeritem-getcontext">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getContext()</code>
+<code class="sig"><span class="sf">getContext</span>()</code>
 </a>
 <a class="api-item" href="#loggeritem-getdatetime">
 <code class="vis vis-public">public</code>
 <code class="ret">DateTimeImmutable</code>
-<code class="sig">getDateTime()</code>
+<code class="sig"><span class="sf">getDateTime</span>()</code>
 </a>
 <a class="api-item" href="#loggeritem-getlevel">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getLevel()</code>
+<code class="sig"><span class="sf">getLevel</span>()</code>
 </a>
 <a class="api-item" href="#loggeritem-getlevelname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLevelName()</code>
+<code class="sig"><span class="sf">getLevelName</span>()</code>
 </a>
 <a class="api-item" href="#loggeritem-getmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMessage()</code>
+<code class="sig"><span class="sf">getMessage</span>()</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$context = []` `array`
-
--   `protected`{ .vis-protected } `$dateTime` `DateTimeImmutable`
-
--   `protected`{ .vis-protected } `$level` `int`
-
--   `protected`{ .vis-protected } `$levelName` `string`
-
--   `protected`{ .vis-protected } `$message` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$context</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DateTimeImmutable</code>
+<code class="sig"><span class="sv">$dateTime</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$level</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$levelName</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$message</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2088,92 +2129,61 @@ __Uses__ `Exception` · `Phalcon\Logger\Exception`
 <a class="api-item" href="#loggerlogger-alert">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">alert(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">alert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Action must be taken immediately.</span>
 </a>
 <a class="api-item" href="#loggerlogger-critical">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">critical(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">critical</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Critical conditions.</span>
 </a>
 <a class="api-item" href="#loggerlogger-debug">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">debug(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">debug</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Detailed debug information.</span>
 </a>
 <a class="api-item" href="#loggerlogger-emergency">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">emergency(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">emergency</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">System is unusable.</span>
 </a>
 <a class="api-item" href="#loggerlogger-error">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">error(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">error</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Runtime errors that do not require immediate action but should typically</span>
 </a>
 <a class="api-item" href="#loggerlogger-info">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">info(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">info</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Interesting events.</span>
 </a>
 <a class="api-item" href="#loggerlogger-log">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">log(
-    mixed $level,
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">log</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Logs with an arbitrary level.</span>
 </a>
 <a class="api-item" href="#loggerlogger-notice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">notice(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">notice</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Normal but significant events.</span>
 </a>
 <a class="api-item" href="#loggerlogger-trace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">trace(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">trace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Extra-verbose diagnostic output.</span>
 </a>
 <a class="api-item" href="#loggerlogger-warning">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">warning(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">warning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Exceptional occurrences that are not errors.</span>
 </a>
 </div>
@@ -2331,38 +2341,30 @@ __Uses__ `DateTimeZone` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\
 <div class="api-list">
 <a class="api-item" href="#loggerloggerfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( AdapterFactory $factory )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span> )</code>
 </a>
 <a class="api-item" href="#loggerloggerfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">Logger</code>
-<code class="sig">load( mixed $config )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">Logger</code>
-<code class="sig">newInstance(
-    string $name,
-    array $adapters = [],
-    DateTimeZone $timezone = null
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a Logger object</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-getarrval">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">@todo Remove this when we get traits</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 </div>
 
@@ -2439,116 +2441,85 @@ __Uses__ `Phalcon\Logger\Adapter\AdapterInterface`
 <a class="api-item" href="#loggerloggerinterface-alert">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">alert(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">alert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Action must be taken immediately.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-critical">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">critical(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">critical</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Critical conditions.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-debug">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">debug(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">debug</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Detailed debug information.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-emergency">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">emergency(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">emergency</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">System is unusable.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-error">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">error(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">error</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Runtime errors that do not require immediate action but should typically</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-getadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getAdapter( string $name )</code>
+<code class="sig"><span class="sf">getAdapter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an adapter from the stack</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-getadapters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAdapters()</code>
+<code class="sig"><span class="sf">getAdapters</span>()</code>
 <span class="desc">Returns the adapter stack array</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-getloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getLogLevel()</code>
+<code class="sig"><span class="sf">getLogLevel</span>()</code>
 <span class="desc">Returns the log level</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the name of the logger</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-info">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">info(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">info</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Interesting events.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-log">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">log(
-    mixed $level,
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">log</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Logs with an arbitrary level.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-notice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">notice(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">notice</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Normal but significant events.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-trace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">trace(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">trace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Extra-verbose diagnostic output.</span>
 </a>
 <a class="api-item" href="#loggerloggerinterface-warning">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">warning(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">warning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Exceptional occurrences that are not errors.</span>
 </a>
 </div>

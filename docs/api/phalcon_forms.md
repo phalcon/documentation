@@ -43,258 +43,272 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterfac
 <div class="api-list">
 <a class="api-item" href="#formselementabstractelement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Magic method __toString renders the widget without attributes</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-addfilter">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">addFilter( string $filter )</code>
+<code class="sig"><span class="sf">addFilter</span>( <span class="st">string</span> <span class="sv">$filter</span> )</code>
 <span class="desc">Adds a filter to current list of filters</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-addvalidator">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">addValidator( ValidatorInterface $validator )</code>
+<code class="sig"><span class="sf">addValidator</span>( <span class="st">ValidatorInterface</span> <span class="sv">$validator</span> )</code>
 <span class="desc">Adds a validator to the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-addvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">addValidators(
-    array $validators,
-    bool $merge = true
-)</code>
+<code class="sig"><span class="sf">addValidators</span>(<span class="prm"><span class="st">array</span> <span class="sv">$validators</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Adds a group of validators</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-appendmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">appendMessage( MessageInterface $message )</code>
+<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
 <span class="desc">Appends a message to the internal message list</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Clears element to its default value</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getAttribute(
-    string $attribute,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the value of an attribute if present</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Returns the default attributes for the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getDefault()</code>
+<code class="sig"><span class="sf">getDefault</span>()</code>
 <span class="desc">Returns the default value assigned to the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getfilters">
 <code class="vis vis-public">public</code>
-<code class="sig">getFilters()</code>
+<code class="sig"><span class="sf">getFilters</span>()</code>
 <span class="desc">Returns the element filters</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getform">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig">getForm()</code>
+<code class="sig"><span class="sf">getForm</span>()</code>
 <span class="desc">Returns the parent form to the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getlabel">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getLabel()</code>
+<code class="sig"><span class="sf">getLabel</span>()</code>
 <span class="desc">Returns the element label</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the messages that belongs to the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the element name</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-gettagfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">TagFactory|null</code>
-<code class="sig">getTagFactory()</code>
+<code class="sig"><span class="sf">getTagFactory</span>()</code>
 <span class="desc">Returns the tagFactory; throws exception if not present</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getuseroption">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getUserOption(
-    string $option,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getUserOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the value of an option if present</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getuseroptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getUserOptions()</code>
+<code class="sig"><span class="sf">getUserOptions</span>()</code>
 <span class="desc">Returns the options for the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidatorInterface[]</code>
-<code class="sig">getValidators()</code>
+<code class="sig"><span class="sf">getValidators</span>()</code>
 <span class="desc">Returns the validators registered for the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getValue()</code>
+<code class="sig"><span class="sf">getValue</span>()</code>
 <span class="desc">Returns the element&#039;s value</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-hasmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasMessages()</code>
+<code class="sig"><span class="sf">hasMessages</span>()</code>
 <span class="desc">Checks whether there are messages attached to the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-label">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">label( array $attributes = [] )</code>
+<code class="sig"><span class="sf">label</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Generate the HTML to label the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render( array $attributes = [] )</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Renders the element widget returning HTML</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setAttribute(
-    string $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets a default attribute for the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setAttributes( array $attributes )</code>
+<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Sets default attributes for the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setDefault( mixed $value )</code>
+<code class="sig"><span class="sf">setDefault</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Sets a default value in case the form does not use an entity</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setFilters( mixed $filters )</code>
+<code class="sig"><span class="sf">setFilters</span>( <span class="st">mixed</span> <span class="sv">$filters</span> )</code>
 <span class="desc">Sets the element filters</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setform">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setForm( Form $form )</code>
+<code class="sig"><span class="sf">setForm</span>( <span class="st">Form</span> <span class="sv">$form</span> )</code>
 <span class="desc">Sets the parent form to the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setlabel">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setLabel( string $label )</code>
+<code class="sig"><span class="sf">setLabel</span>( <span class="st">string</span> <span class="sv">$label</span> )</code>
 <span class="desc">Sets the element label</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setMessages( Messages $messages )</code>
+<code class="sig"><span class="sf">setMessages</span>( <span class="st">Messages</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Sets the validation messages related to the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setname">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setName( string $name )</code>
+<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Sets the element name</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-settagfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setTagFactory( TagFactory $tagFactory )</code>
+<code class="sig"><span class="sf">setTagFactory</span>( <span class="st">TagFactory</span> <span class="sv">$tagFactory</span> )</code>
 <span class="desc">Sets the TagFactory</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setuseroption">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setUserOption(
-    string $option,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setUserOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets an option for the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-setuseroptions">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setUserOptions( array $options )</code>
+<code class="sig"><span class="sf">setUserOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets options for the element</span>
 </a>
 <a class="api-item" href="#formselementabstractelement-getlocaltagfactory">
 <code class="vis vis-protected">protected</code>
 <code class="ret">TagFactory</code>
-<code class="sig">getLocalTagFactory()</code>
+<code class="sig"><span class="sf">getLocalTagFactory</span>()</code>
 <span class="desc">Returns the tagFactory; throws exception if not present</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributes = []` `array`
-
--   `protected`{ .vis-protected } `$filters = []` `array`
-
--   `protected`{ .vis-protected } `$form = null` `Form|null`
-
--   `protected`{ .vis-protected } `$label = null` `string|null`
-
--   `protected`{ .vis-protected } `$messages` `Messages`
-
--   `protected`{ .vis-protected } `$method = "inputText"` `string`
-
--   `protected`{ .vis-protected } `$name` `string`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$tagFactory = null` `TagFactory|null`
-
--   `protected`{ .vis-protected } `$validators = []` `array`
-
--   `protected`{ .vis-protected } `$value = null` `mixed|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Form|null</code>
+<code class="sig"><span class="sv">$form</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$label</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Messages</code>
+<code class="sig"><span class="sv">$messages</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputText&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">TagFactory|null</code>
+<code class="sig"><span class="sv">$tagFactory</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$validators</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$value</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -624,33 +638,41 @@ Component INPUT[type=check] for forms
 <a class="api-item" href="#formselementcheck-getuncheckedvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getUncheckedValue()</code>
+<code class="sig"><span class="sf">getUncheckedValue</span>()</code>
 <span class="desc">Returns the value to bind when the checkbox is absent from submitted</span>
 </a>
 <a class="api-item" href="#formselementcheck-hasuncheckedvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasUncheckedValue()</code>
+<code class="sig"><span class="sf">hasUncheckedValue</span>()</code>
 <span class="desc">Whether an &quot;unchecked value&quot; has been explicitly registered.</span>
 </a>
 <a class="api-item" href="#formselementcheck-setuncheckedvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUncheckedValue( mixed $value )</code>
+<code class="sig"><span class="sf">setUncheckedValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Registers a value to bind when the checkbox is absent from submitted</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputCheckbox"` `string`
-
--   `protected`{ .vis-protected } `$uncheckedValue = null` `mixed`
-
--   `protected`{ .vis-protected } `$uncheckedValueSet = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputCheckbox&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$uncheckedValue</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$uncheckedValueSet</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -716,39 +738,37 @@ __Uses__ `Phalcon\Html\TagFactory`
 <div class="api-list">
 <a class="api-item" href="#formselementcheckgroup-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $options = [],
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#formselementcheckgroup-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the group options</span>
 </a>
 <a class="api-item" href="#formselementcheckgroup-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render( array $attributes = [] )</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Renders the checkbox group returning HTML</span>
 </a>
 <a class="api-item" href="#formselementcheckgroup-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets the group options</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -811,10 +831,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputDate"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputDate&quot;</span></code>
+</div>
 </div>
 
 
@@ -840,195 +862,180 @@ __Uses__ `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Form` 
 <a class="api-item" href="#formselementelementinterface-addfilter">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">addFilter( string $filter )</code>
+<code class="sig"><span class="sf">addFilter</span>( <span class="st">string</span> <span class="sv">$filter</span> )</code>
 <span class="desc">Adds a filter to current list of filters</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-addvalidator">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">addValidator( ValidatorInterface $validator )</code>
+<code class="sig"><span class="sf">addValidator</span>( <span class="st">ValidatorInterface</span> <span class="sv">$validator</span> )</code>
 <span class="desc">Adds a validator to the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-addvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">addValidators(
-    array $validators,
-    bool $merge = true
-)</code>
+<code class="sig"><span class="sf">addValidators</span>(<span class="prm"><span class="st">array</span> <span class="sv">$validators</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Adds a group of validators</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-appendmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">appendMessage( MessageInterface $message )</code>
+<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
 <span class="desc">Appends a message to the internal message list</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Clears every element in the form to its default value</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getAttribute(
-    string $attribute,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the value of an attribute if present</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Returns the default attributes for the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getDefault()</code>
+<code class="sig"><span class="sf">getDefault</span>()</code>
 <span class="desc">Returns the default value assigned to the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getfilters">
 <code class="vis vis-public">public</code>
-<code class="sig">getFilters()</code>
+<code class="sig"><span class="sf">getFilters</span>()</code>
 <span class="desc">Returns the element&#039;s filters</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getform">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig">getForm()</code>
+<code class="sig"><span class="sf">getForm</span>()</code>
 <span class="desc">Returns the parent form to the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getlabel">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getLabel()</code>
+<code class="sig"><span class="sf">getLabel</span>()</code>
 <span class="desc">Returns the element&#039;s label</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the messages that belongs to the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the element&#039;s name</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getuseroption">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getUserOption(
-    string $option,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getUserOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the value of an option if present</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getuseroptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getUserOptions()</code>
+<code class="sig"><span class="sf">getUserOptions</span>()</code>
 <span class="desc">Returns the options for the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidatorInterface[]</code>
-<code class="sig">getValidators()</code>
+<code class="sig"><span class="sf">getValidators</span>()</code>
 <span class="desc">Returns the validators registered for the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getValue()</code>
+<code class="sig"><span class="sf">getValue</span>()</code>
 <span class="desc">Returns the element&#039;s value</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-hasmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasMessages()</code>
+<code class="sig"><span class="sf">hasMessages</span>()</code>
 <span class="desc">Checks whether there are messages attached to the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-label">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">label()</code>
+<code class="sig"><span class="sf">label</span>()</code>
 <span class="desc">Generate the HTML to label the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render( array $attributes = [] )</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Renders the element widget</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setAttribute(
-    string $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets a default attribute for the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setAttributes( array $attributes )</code>
+<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Sets default attributes for the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setDefault( mixed $value )</code>
+<code class="sig"><span class="sf">setDefault</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Sets a default value in case the form does not use an entity</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setFilters( mixed $filters )</code>
+<code class="sig"><span class="sf">setFilters</span>( <span class="st">mixed</span> <span class="sv">$filters</span> )</code>
 <span class="desc">Sets the element&#039;s filters</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setform">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setForm( Form $form )</code>
+<code class="sig"><span class="sf">setForm</span>( <span class="st">Form</span> <span class="sv">$form</span> )</code>
 <span class="desc">Sets the parent form to the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setlabel">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setLabel( string $label )</code>
+<code class="sig"><span class="sf">setLabel</span>( <span class="st">string</span> <span class="sv">$label</span> )</code>
 <span class="desc">Sets the element label</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setMessages( Messages $messages )</code>
+<code class="sig"><span class="sf">setMessages</span>( <span class="st">Messages</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Sets the validation messages related to the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setname">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setName( string $name )</code>
+<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Sets the element&#039;s name</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setuseroption">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setUserOption(
-    string $option,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setUserOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets an option for the element</span>
 </a>
 <a class="api-item" href="#formselementelementinterface-setuseroptions">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setUserOptions( array $options )</code>
+<code class="sig"><span class="sf">setUserOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets options for the element</span>
 </a>
 </div>
@@ -1314,10 +1321,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputEmail"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputEmail&quot;</span></code>
+</div>
 </div>
 
 
@@ -1340,10 +1349,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputFile"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputFile&quot;</span></code>
+</div>
 </div>
 
 
@@ -1366,10 +1377,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputHidden"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputHidden&quot;</span></code>
+</div>
 </div>
 
 
@@ -1392,10 +1405,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputNumeric"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputNumeric&quot;</span></code>
+</div>
 </div>
 
 
@@ -1418,10 +1433,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputPassword"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputPassword&quot;</span></code>
+</div>
 </div>
 
 
@@ -1444,10 +1461,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputRadio"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputRadio&quot;</span></code>
+</div>
 </div>
 
 
@@ -1478,39 +1497,37 @@ __Uses__ `Phalcon\Html\TagFactory`
 <div class="api-list">
 <a class="api-item" href="#formselementradiogroup-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    array $options = [],
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#formselementradiogroup-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the group options</span>
 </a>
 <a class="api-item" href="#formselementradiogroup-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render( array $attributes = [] )</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Renders the radio group returning HTML</span>
 </a>
 <a class="api-item" href="#formselementradiogroup-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets the group options</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1576,50 +1593,48 @@ __Uses__ `Phalcon\Tag\Select`
 <div class="api-list">
 <a class="api-item" href="#formselementselect-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    mixed $options = null,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$options</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#formselementselect-addoption">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">addOption( mixed $option )</code>
+<code class="sig"><span class="sf">addOption</span>( <span class="st">mixed</span> <span class="sv">$option</span> )</code>
 <span class="desc">Adds an option to the current options</span>
 </a>
 <a class="api-item" href="#formselementselect-getoptions">
 <code class="vis vis-public">public</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the choices&#039; options</span>
 </a>
 <a class="api-item" href="#formselementselect-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render( array $attributes = [] )</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Renders the element widget returning HTML</span>
 </a>
 <a class="api-item" href="#formselementselect-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">setOptions( mixed $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">mixed</span> <span class="sv">$options</span> )</code>
 <span class="desc">Set the choice&#039;s options</span>
 </a>
 <a class="api-item" href="#formselementselect-prepareattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">prepareAttributes( array $attributes = [] )</code>
+<code class="sig"><span class="sf">prepareAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span> )</code>
 <span class="desc">Returns an array of prepared attributes for Phalcon\Html\TagFactory</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$optionsValues = null` `object|array|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object|array|null</code>
+<code class="sig"><span class="sv">$optionsValues</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1701,10 +1716,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputSubmit"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputSubmit&quot;</span></code>
+</div>
 </div>
 
 
@@ -1745,10 +1762,12 @@ __Uses__ `Phalcon\Tag`
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$method = "inputTextarea"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputTextarea&quot;</span></code>
+</div>
 </div>
 
 
@@ -1785,12 +1804,12 @@ Exceptions thrown in Phalcon\Forms will use this class
 <a class="api-item" href="#formsexception-tagfactorynotfound">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">tagFactoryNotFound()</code>
+<code class="sig"><span class="sf">tagFactoryNotFound</span>()</code>
 </a>
 <a class="api-item" href="#formsexception-usingparameterrequired">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">usingParameterRequired()</code>
+<code class="sig"><span class="sf">usingParameterRequired</span>()</code>
 </a>
 </div>
 
@@ -1839,7 +1858,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionselementnotinform-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -1881,7 +1900,7 @@ __Uses__ `InvalidArgumentException`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsformelementnamerequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1924,7 +1943,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsformnotinlocator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -1967,7 +1986,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsformnotregistered-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -2010,7 +2029,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsinvalidentity-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2053,7 +2072,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsinvalidfiltertype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2096,7 +2115,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsinvalidjsonschema-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $detail )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$detail</span> )</code>
 </a>
 </div>
 
@@ -2139,7 +2158,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsjsonschemanotarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2182,7 +2201,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsnoformelements-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2225,10 +2244,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsschemaentrymissingkey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    int $index,
-    string $key
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
 </a>
 </div>
 
@@ -2274,7 +2290,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsschemaentrynotarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $index )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$index</span> )</code>
 </a>
 </div>
 
@@ -2317,7 +2333,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsunknownformelementtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -2360,7 +2376,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsyamlextensionrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2403,7 +2419,7 @@ __Uses__ `Phalcon\Forms\Exception`
 <div class="api-list">
 <a class="api-item" href="#formsexceptionsyamlschemanotarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2441,302 +2457,307 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 <div class="api-list">
 <a class="api-item" href="#formsform-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $entity = null,
-    array $userOptions = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$userOptions</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Forms\Form constructor</span>
 </a>
 <a class="api-item" href="#formsform-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    ElementInterface $element,
-    string $position = null,
-    bool $type = null
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">ElementInterface</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$position</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an element to the form</span>
 </a>
 <a class="api-item" href="#formsform-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">bind(
-    array $data,
-    mixed $entity = null,
-    array $whitelist = []
-)</code>
+<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Binds data to the entity</span>
 </a>
 <a class="api-item" href="#formsform-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">clear( mixed $fields = null )</code>
+<code class="sig"><span class="sf">clear</span>( <span class="st">mixed</span> <span class="sv">$fields</span><span class="sm"> = null</span> )</code>
 <span class="desc">Clears every element in the form to its default value</span>
 </a>
 <a class="api-item" href="#formsform-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">count()</code>
+<code class="sig"><span class="sf">count</span>()</code>
 <span class="desc">Returns the number of elements in the form</span>
 </a>
 <a class="api-item" href="#formsform-current">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">current()</code>
+<code class="sig"><span class="sf">current</span>()</code>
 <span class="desc">Returns the current element in the iterator</span>
 </a>
 <a class="api-item" href="#formsform-get">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an element added to the form by its name</span>
 </a>
 <a class="api-item" href="#formsform-getaction">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getAction()</code>
+<code class="sig"><span class="sf">getAction</span>()</code>
 <span class="desc">Returns the form&#039;s action</span>
 </a>
 <a class="api-item" href="#formsform-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">Attributes</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Get Form attributes collection</span>
 </a>
 <a class="api-item" href="#formsform-getelements">
 <code class="vis vis-public">public</code>
 <code class="ret">ElementInterface[]</code>
-<code class="sig">getElements()</code>
+<code class="sig"><span class="sf">getElements</span>()</code>
 <span class="desc">Returns the form elements added to the form</span>
 </a>
 <a class="api-item" href="#formsform-getentity">
 <code class="vis vis-public">public</code>
-<code class="sig">getEntity()</code>
+<code class="sig"><span class="sf">getEntity</span>()</code>
 <span class="desc">Returns the entity related to the model</span>
 </a>
 <a class="api-item" href="#formsform-getfilteredvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getFilteredValue( string $name )</code>
+<code class="sig"><span class="sf">getFilteredValue</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a value from the internal filtered data or calls getValue(name)</span>
 </a>
 <a class="api-item" href="#formsform-getlabel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLabel( string $name )</code>
+<code class="sig"><span class="sf">getLabel</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a label for an element</span>
 </a>
 <a class="api-item" href="#formsform-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the messages generated in the validation.</span>
 </a>
 <a class="api-item" href="#formsform-getmessagesfor">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
-<code class="sig">getMessagesFor( string $name )</code>
+<code class="sig"><span class="sf">getMessagesFor</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns the messages generated for a specific element</span>
 </a>
 <a class="api-item" href="#formsform-gettagfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">TagFactory|null</code>
-<code class="sig">getTagFactory()</code>
+<code class="sig"><span class="sf">getTagFactory</span>()</code>
 <span class="desc">Returns the tagFactory object</span>
 </a>
 <a class="api-item" href="#formsform-getuseroption">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getUserOption(
-    string $option,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getUserOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the value of an option if present</span>
 </a>
 <a class="api-item" href="#formsform-getuseroptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getUserOptions()</code>
+<code class="sig"><span class="sf">getUserOptions</span>()</code>
 <span class="desc">Returns the options for the element</span>
 </a>
 <a class="api-item" href="#formsform-getvalidation">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidationInterface|null</code>
-<code class="sig">getValidation()</code>
+<code class="sig"><span class="sf">getValidation</span>()</code>
 <span class="desc">return ValidationInterface|null</span>
 </a>
 <a class="api-item" href="#formsform-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getValue( string $name )</code>
+<code class="sig"><span class="sf">getValue</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a value from the internal related entity or from the default value</span>
 </a>
 <a class="api-item" href="#formsform-getwhitelist">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getWhitelist()</code>
+<code class="sig"><span class="sf">getWhitelist</span>()</code>
 <span class="desc">return array</span>
 </a>
 <a class="api-item" href="#formsform-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check if the form contains an element</span>
 </a>
 <a class="api-item" href="#formsform-hasmessagesfor">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasMessagesFor( string $name )</code>
+<code class="sig"><span class="sf">hasMessagesFor</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check if messages were generated for a specific element</span>
 </a>
 <a class="api-item" href="#formsform-isvalid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isValid(
-    mixed $data = null,
-    mixed $entity = null,
-    array $whitelist = []
-)</code>
+<code class="sig"><span class="sf">isValid</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Validates the form</span>
 </a>
 <a class="api-item" href="#formsform-key">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">key()</code>
+<code class="sig"><span class="sf">key</span>()</code>
 <span class="desc">Returns the current position/key in the iterator</span>
 </a>
 <a class="api-item" href="#formsform-label">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">label(
-    string $name,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">label</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Generate the label of an element added to the form including HTML</span>
 </a>
 <a class="api-item" href="#formsform-load">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">load(
-    Schema $schema,
-    FormsLocator $locator
-)</code>
+<code class="sig"><span class="sf">load</span>(<span class="prm"><span class="st">Schema</span> <span class="sv">$schema</span>,</span><span class="prm"><span class="st">FormsLocator</span> <span class="sv">$locator</span></span>)</code>
 <span class="desc">Loads elements into the form from a Schema source.</span>
 </a>
 <a class="api-item" href="#formsform-next">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">next()</code>
+<code class="sig"><span class="sf">next</span>()</code>
 <span class="desc">Moves the internal iteration pointer to the next position</span>
 </a>
 <a class="api-item" href="#formsform-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">remove( string $name )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes an element from the form</span>
 </a>
 <a class="api-item" href="#formsform-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render(
-    string $name,
-    array $attributes = []
-)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Renders a specific item in the form</span>
 </a>
 <a class="api-item" href="#formsform-rewind">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rewind()</code>
+<code class="sig"><span class="sf">rewind</span>()</code>
 <span class="desc">Rewinds the internal iterator</span>
 </a>
 <a class="api-item" href="#formsform-setaction">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAction( string $action )</code>
+<code class="sig"><span class="sf">setAction</span>( <span class="st">string</span> <span class="sv">$action</span> )</code>
 <span class="desc">Sets the form&#039;s action</span>
 </a>
 <a class="api-item" href="#formsform-setattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAttributes( Attributes $attributes )</code>
+<code class="sig"><span class="sf">setAttributes</span>( <span class="st">Attributes</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Set form attributes collection</span>
 </a>
 <a class="api-item" href="#formsform-setentity">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setEntity( mixed $entity )</code>
+<code class="sig"><span class="sf">setEntity</span>( <span class="st">mixed</span> <span class="sv">$entity</span> )</code>
 <span class="desc">Sets the entity related to the model</span>
 </a>
 <a class="api-item" href="#formsform-settagfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setTagFactory( TagFactory $tagFactory )</code>
+<code class="sig"><span class="sf">setTagFactory</span>( <span class="st">TagFactory</span> <span class="sv">$tagFactory</span> )</code>
 <span class="desc">Sets the tagFactory for the form</span>
 </a>
 <a class="api-item" href="#formsform-setuseroption">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUserOption(
-    string $option,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setUserOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets an option for the form</span>
 </a>
 <a class="api-item" href="#formsform-setuseroptions">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUserOptions( array $options )</code>
+<code class="sig"><span class="sf">setUserOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets options for the element</span>
 </a>
 <a class="api-item" href="#formsform-setvalidation">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setValidation( ValidationInterface $validation )</code>
+<code class="sig"><span class="sf">setValidation</span>( <span class="st">ValidationInterface</span> <span class="sv">$validation</span> )</code>
 <span class="desc">Sets the default validation</span>
 </a>
 <a class="api-item" href="#formsform-setwhitelist">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setWhitelist( array $whitelist )</code>
+<code class="sig"><span class="sf">setWhitelist</span>( <span class="st">array</span> <span class="sv">$whitelist</span> )</code>
 <span class="desc">Sets the default whitelist</span>
 </a>
 <a class="api-item" href="#formsform-valid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">valid()</code>
+<code class="sig"><span class="sf">valid</span>()</code>
 <span class="desc">Check if the current element in the iterator is valid</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$attributes = null` `AttributesInterface|null`
-
--   `protected`{ .vis-protected } `$data = []` `array`
-
--   `protected`{ .vis-protected } `$elements = []` `array`
-
--   `protected`{ .vis-protected } `$elementsIndexed = []` `array`
-
--   `protected`{ .vis-protected } `$entity = null` `object|null`
-
--   `protected`{ .vis-protected } `$filteredData = []` `array`
-
--   `protected`{ .vis-protected } `$messages` `Messages`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$position = 0` `int`
-
--   `protected`{ .vis-protected } `$tagFactory = null` `TagFactory|null`
-
--   `protected`{ .vis-protected } `$validation = null` `ValidationInterface|null`
-
--   `protected`{ .vis-protected } `$whitelist = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AttributesInterface|null</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$elements</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$elementsIndexed</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object|null</code>
+<code class="sig"><span class="sv">$entity</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$filteredData</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Messages</code>
+<code class="sig"><span class="sv">$messages</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">TagFactory|null</code>
+<code class="sig"><span class="sv">$tagFactory</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ValidationInterface|null</code>
+<code class="sig"><span class="sv">$validation</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$whitelist</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3139,56 +3160,47 @@ __Uses__ `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · 
 <div class="api-list">
 <a class="api-item" href="#formsformslocator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $definitions = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$definitions</span><span class="sm"> = []</span> )</code>
 </a>
 <a class="api-item" href="#formsformslocator-get">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig">get(
-    string $name,
-    mixed $entity = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the named form.</span>
 </a>
 <a class="api-item" href="#formsformslocator-getelement">
 <code class="vis vis-public">public</code>
-<code class="sig">getElement( string $type )</code>
+<code class="sig"><span class="sf">getElement</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Returns the factory callable for the given element type.</span>
 </a>
 <a class="api-item" href="#formsformslocator-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether a named form factory is registered.</span>
 </a>
 <a class="api-item" href="#formsformslocator-haselement">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasElement( string $type )</code>
+<code class="sig"><span class="sf">hasElement</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Checks whether an element type is registered.</span>
 </a>
 <a class="api-item" href="#formsformslocator-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $name,
-    mixed $factory
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$factory</span></span>)</code>
 <span class="desc">Registers or replaces a named form factory.</span>
 </a>
 <a class="api-item" href="#formsformslocator-setelement">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setElement(
-    string $type,
-    mixed $factory
-)</code>
+<code class="sig"><span class="sf">setElement</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$factory</span></span>)</code>
 <span class="desc">Registers or replaces an element type factory.</span>
 </a>
 <a class="api-item" href="#formsformslocator-getdefaultservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getDefaultServices()</code>
+<code class="sig"><span class="sf">getDefaultServices</span>()</code>
 <span class="desc">Returns the built-in element type factories.</span>
 </a>
 </div>
@@ -3304,29 +3316,28 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalc
 <div class="api-list">
 <a class="api-item" href="#formsloaderarrayloader-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $definitions )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$definitions</span> )</code>
 </a>
 <a class="api-item" href="#formsloaderarrayloader-load">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">load()</code>
+<code class="sig"><span class="sf">load</span>()</code>
 </a>
 <a class="api-item" href="#formsloaderarrayloader-validatedefinition">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">validateDefinition(
-    mixed $definition,
-    int $index
-)</code>
+<code class="sig"><span class="sf">validateDefinition</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$definitions` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$definitions</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3381,25 +3392,27 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phal
 <div class="api-list">
 <a class="api-item" href="#formsloaderjsonloader-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $source )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$source</span> )</code>
 </a>
 <a class="api-item" href="#formsloaderjsonloader-load">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">load()</code>
+<code class="sig"><span class="sf">load</span>()</code>
 </a>
 <a class="api-item" href="#formsloaderjsonloader-phpfilegetcontents">
 <code class="vis vis-protected">protected</code>
-<code class="sig">phpFileGetContents( string $filename )</code>
+<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$source` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$source</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3453,21 +3466,23 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalc
 <div class="api-list">
 <a class="api-item" href="#formsloaderyamlloader-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $source )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$source</span> )</code>
 </a>
 <a class="api-item" href="#formsloaderyamlloader-load">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">load()</code>
+<code class="sig"><span class="sf">load</span>()</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$source` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$source</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3508,65 +3523,60 @@ __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRe
 <div class="api-list">
 <a class="api-item" href="#formsmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( FormsLocator $locator = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">FormsLocator</span> <span class="sv">$locator</span><span class="sm"> = null</span> )</code>
 <span class="desc">Manager constructor.</span>
 </a>
 <a class="api-item" href="#formsmanager-create">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig">create(
-    string $name,
-    mixed $entity = null
-)</code>
+<code class="sig"><span class="sf">create</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a form registering it in the forms manager</span>
 </a>
 <a class="api-item" href="#formsmanager-get">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a form by its name</span>
 </a>
 <a class="api-item" href="#formsmanager-getlocator">
 <code class="vis vis-public">public</code>
 <code class="ret">FormsLocator</code>
-<code class="sig">getLocator()</code>
+<code class="sig"><span class="sf">getLocator</span>()</code>
 <span class="desc">Returns the FormsLocator instance.</span>
 </a>
 <a class="api-item" href="#formsmanager-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a form is registered in the forms manager</span>
 </a>
 <a class="api-item" href="#formsmanager-loadform">
 <code class="vis vis-public">public</code>
 <code class="ret">Form</code>
-<code class="sig">loadForm(
-    string $name,
-    Schema $schema,
-    mixed $entity = null
-)</code>
+<code class="sig"><span class="sf">loadForm</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">Schema</span> <span class="sv">$schema</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a form from a Schema source, registers it in the manager,</span>
 </a>
 <a class="api-item" href="#formsmanager-set">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">set(
-    string $name,
-    Form $form
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">Form</span> <span class="sv">$form</span></span>)</code>
 <span class="desc">Registers a form in the Forms Manager</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$forms = []` `array`
-
--   `protected`{ .vis-protected } `$locator` `FormsLocator`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$forms</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">FormsLocator</code>
+<code class="sig"><span class="sv">$locator</span></code>
+</div>
 </div>
 
 ### Methods

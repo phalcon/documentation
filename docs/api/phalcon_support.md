@@ -37,78 +37,77 @@ __Uses__ `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInter
 <div class="api-list">
 <a class="api-item" href="#supportabstractlocator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $container,
-    array $services = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#supportabstractlocator-getall">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAll()</code>
+<code class="sig"><span class="sf">getAll</span>()</code>
 <span class="desc">Returns the full registered service map (defaults plus any added via</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-getclass">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getClass( string $name )</code>
+<code class="sig"><span class="sf">getClass</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns the class-string registered under the given name.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Whether a service with the given name is registered.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">newInstance( string $name )</code>
+<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Retrieve a shared service instance from the container.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-register">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">register(
-    string $name,
-    string $definition
-)</code>
+<code class="sig"><span class="sf">register</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Register a service or override an existing one.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 <span class="desc">Get the exception class to throw on errors.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-getinterfaceclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getInterfaceClass()</code>
+<code class="sig"><span class="sf">getInterfaceClass</span>()</code>
 <span class="desc">Get the interface/class that all registered services must implement.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-getservice">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getService( string $name )</code>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Get the service class name for a given name.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Get the default services for this locator.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$container` `Collection|DiInterface`
-
--   `protected`{ .vis-protected } `$services = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Collection|DiInterface</code>
+<code class="sig"><span class="sv">$container</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -244,322 +243,303 @@ __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` 
 <div class="api-list">
 <a class="api-item" href="#supportcollection-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    array $data = [],
-    bool $insensitive = true,
-    bool $strictNull = false,
-    string $type = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strictNull</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Collection constructor.</span>
 </a>
 <a class="api-item" href="#supportcollection-__get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__get( string $element )</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Magic getter to get an element from the collection</span>
 </a>
 <a class="api-item" href="#supportcollection-__isset">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__isset( string $element )</code>
+<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Magic isset to check whether an element exists or not</span>
 </a>
 <a class="api-item" href="#supportcollection-__serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__serialize()</code>
+<code class="sig"><span class="sf">__serialize</span>()</code>
 <span class="desc">Returns the state of the collection for serialization, including</span>
 </a>
 <a class="api-item" href="#supportcollection-__set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__set(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Magic setter to assign values to an element</span>
 </a>
 <a class="api-item" href="#supportcollection-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unserialize( array $data )</code>
+<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 <span class="desc">Restores the collection state. Accepts both the structured format</span>
 </a>
 <a class="api-item" href="#supportcollection-__unset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unset( string $element )</code>
+<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Magic unset to remove an element from the collection</span>
 </a>
 <a class="api-item" href="#supportcollection-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Clears the internal collection</span>
 </a>
 <a class="api-item" href="#supportcollection-column">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">column( string $propertyOrMethod )</code>
+<code class="sig"><span class="sf">column</span>( <span class="st">string</span> <span class="sv">$propertyOrMethod</span> )</code>
 <span class="desc">Returns the values from a single property/method extracted from every</span>
 </a>
 <a class="api-item" href="#supportcollection-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">count()</code>
+<code class="sig"><span class="sf">count</span>()</code>
 <span class="desc">Count elements of an object</span>
 </a>
 <a class="api-item" href="#supportcollection-each">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">each( callable $callback )</code>
+<code class="sig"><span class="sf">each</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Invokes the callback for every item in the collection. Returns the</span>
 </a>
 <a class="api-item" href="#supportcollection-filter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">filter( callable $callback )</code>
+<code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Returns a new collection of items for which the callback returns true.</span>
 </a>
 <a class="api-item" href="#supportcollection-first">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">first()</code>
+<code class="sig"><span class="sf">first</span>()</code>
 <span class="desc">Returns the first value in the collection, or null if empty.</span>
 </a>
 <a class="api-item" href="#supportcollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get(
-    string $element,
-    mixed $defaultValue = null,
-    string $cast = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Get the element from the collection</span>
 </a>
 <a class="api-item" href="#supportcollection-getiterator">
 <code class="vis vis-public">public</code>
 <code class="ret">Traversable</code>
-<code class="sig">getIterator()</code>
+<code class="sig"><span class="sf">getIterator</span>()</code>
 <span class="desc">Returns the iterator of the class</span>
 </a>
 <a class="api-item" href="#supportcollection-getkeys">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getKeys( bool $insensitive = true )</code>
+<code class="sig"><span class="sf">getKeys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns the keys (insensitive or not) of the collection.</span>
 </a>
 <a class="api-item" href="#supportcollection-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the configured runtime type guard, or null if none.</span>
 </a>
 <a class="api-item" href="#supportcollection-getvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getValues()</code>
+<code class="sig"><span class="sf">getValues</span>()</code>
 <span class="desc">Returns the values of the internal array.</span>
 </a>
 <a class="api-item" href="#supportcollection-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $element )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Get the element from the collection</span>
 </a>
 <a class="api-item" href="#supportcollection-init">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">init( array $data = [] )</code>
+<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
 <span class="desc">Initialize internal array</span>
 </a>
 <a class="api-item" href="#supportcollection-isempty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isEmpty()</code>
+<code class="sig"><span class="sf">isEmpty</span>()</code>
 <span class="desc">Return if the collection is empty</span>
 </a>
 <a class="api-item" href="#supportcollection-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">jsonSerialize()</code>
+<code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Specify data which should be serialized to JSON</span>
 </a>
 <a class="api-item" href="#supportcollection-keys">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">keys( bool $insensitive = true )</code>
+<code class="sig"><span class="sf">keys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns the keys (insensitive or not) of the collection.</span>
 </a>
 <a class="api-item" href="#supportcollection-last">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">last()</code>
+<code class="sig"><span class="sf">last</span>()</code>
 <span class="desc">Returns the last value in the collection, or null if empty.</span>
 </a>
 <a class="api-item" href="#supportcollection-map">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">map( callable $callback )</code>
+<code class="sig"><span class="sf">map</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Returns a new collection with the callback applied to every value.</span>
 </a>
 <a class="api-item" href="#supportcollection-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $element )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
 <span class="desc">Whether a offset exists</span>
 </a>
 <a class="api-item" href="#supportcollection-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $element )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
 <span class="desc">Offset to retrieve</span>
 </a>
 <a class="api-item" href="#supportcollection-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Offset to set</span>
 </a>
 <a class="api-item" href="#supportcollection-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $element )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
 <span class="desc">Offset to unset</span>
 </a>
 <a class="api-item" href="#supportcollection-reduce">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">reduce(
-    callable $callback,
-    mixed $initial = null
-)</code>
+<code class="sig"><span class="sf">reduce</span>(<span class="prm"><span class="st">callable</span> <span class="sv">$callback</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$initial</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reduces the collection to a single value using the callback. The</span>
 </a>
 <a class="api-item" href="#supportcollection-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $element )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Delete the element from the collection</span>
 </a>
 <a class="api-item" href="#supportcollection-replace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">replace( array $data )</code>
+<code class="sig"><span class="sf">replace</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 <span class="desc">Replaces the collection data with a new array, clearing existing data first</span>
 </a>
 <a class="api-item" href="#supportcollection-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">serialize()</code>
+<code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">BC - delegate to __serialize()</span>
 </a>
 <a class="api-item" href="#supportcollection-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set an element in the collection</span>
 </a>
 <a class="api-item" href="#supportcollection-sort">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">sort(
-    mixed $callback = null,
-    int $order = 4
-)</code>
+<code class="sig"><span class="sf">sort</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$callback</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = 4</span></span>)</code>
 <span class="desc">Returns a new collection sorted by value. Keys are preserved. When a</span>
 </a>
 <a class="api-item" href="#supportcollection-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the object in an array format</span>
 </a>
 <a class="api-item" href="#supportcollection-tojson">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">toJson( int $options = 4194383 )</code>
+<code class="sig"><span class="sf">toJson</span>( <span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 4194383</span> )</code>
 <span class="desc">Returns the object in a JSON format</span>
 </a>
 <a class="api-item" href="#supportcollection-unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unserialize( string $data )</code>
+<code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
 <span class="desc">BC - delegate to __unserialize()</span>
 </a>
 <a class="api-item" href="#supportcollection-values">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">values()</code>
+<code class="sig"><span class="sf">values</span>()</code>
 <span class="desc">Returns the values of the internal array.</span>
 </a>
 <a class="api-item" href="#supportcollection-where">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">where(
-    string $propertyOrMethod,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$propertyOrMethod</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Returns a new collection containing only the items whose</span>
 </a>
 <a class="api-item" href="#supportcollection-cloneempty">
 <code class="vis vis-protected">protected</code>
 <code class="ret">static</code>
-<code class="sig">cloneEmpty( array $data = [] )</code>
+<code class="sig"><span class="sf">cloneEmpty</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
 <span class="desc">Builds a new collection of the same concrete class, carrying over the</span>
 </a>
 <a class="api-item" href="#supportcollection-extractvalue">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">extractValue(
-    mixed $item,
-    string $propertyOrMethod
-)</code>
+<code class="sig"><span class="sf">extractValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$item</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$propertyOrMethod</span></span>)</code>
 <span class="desc">Extracts a single value from an item. For arrays returns the keyed</span>
 </a>
 <a class="api-item" href="#supportcollection-processkey">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">processKey( string $element )</code>
+<code class="sig"><span class="sf">processKey</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Checks if we need insensitive keys and if so, converts the element to</span>
 </a>
 <a class="api-item" href="#supportcollection-setdata">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">setData(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Internal method to set data</span>
 </a>
 <a class="api-item" href="#supportcollection-validatetype">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">validateType( mixed $value )</code>
-<span class="desc">Validates the value against the configured `$type` guard. When `$type`</span>
+<code class="sig"><span class="sf">validateType</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Validates the value against the configured <code>$type</code> guard. When <code>$type</code></span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$data = []` `array`
-
--   `protected`{ .vis-protected } `$insensitive = true` `bool`
-
--   `protected`{ .vis-protected } `$lowerKeys = []` `array`
-
--   `protected`{ .vis-protected } `$strictNull = false` `bool`
-
--   `protected`{ .vis-protected } `$type = null` `string|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$insensitive</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$lowerKeys</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$strictNull</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1073,10 +1053,7 @@ __Uses__ `InvalidArgumentException`
 <div class="api-list">
 <a class="api-item" href="#supportcollectionexceptionsinvalidvaluetype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $type,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 </a>
 </div>
 
@@ -1123,7 +1100,7 @@ __Uses__ `Phalcon\Support\Collection\Exception`
 <div class="api-list">
 <a class="api-item" href="#supportcollectionexceptionsreadonlyviolation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1160,59 +1137,53 @@ __Uses__ `Phalcon\Support\Collection` · `Phalcon\Support\Collection\Exceptions\
 <div class="api-list">
 <a class="api-item" href="#supportcollectionreadonlycollection-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    array $data = [],
-    bool $insensitive = true,
-    bool $strictNull = false,
-    string $type = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strictNull</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">ReadOnlyCollection constructor.</span>
 </a>
 <a class="api-item" href="#supportcollectionreadonlycollection-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unserialize( array $data )</code>
+<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 <span class="desc">Restores the collection state during unserialization.</span>
 </a>
 <a class="api-item" href="#supportcollectionreadonlycollection-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 </a>
 <a class="api-item" href="#supportcollectionreadonlycollection-init">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">init( array $data = [] )</code>
+<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
 </a>
 <a class="api-item" href="#supportcollectionreadonlycollection-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $element )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Delete the element from the collection</span>
 </a>
 <a class="api-item" href="#supportcollectionreadonlycollection-replace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">replace( array $data )</code>
+<code class="sig"><span class="sf">replace</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 <span class="desc">Replaces the collection data with a new array</span>
 </a>
 <a class="api-item" href="#supportcollectionreadonlycollection-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set an element in the collection</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$constructed = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$constructed</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1305,165 +1276,174 @@ __Uses__ `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\De
 <a class="api-item" href="#supportdebug-clearvars">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">clearVars()</code>
+<code class="sig"><span class="sf">clearVars</span>()</code>
 <span class="desc">Clears are variables added previously</span>
 </a>
 <a class="api-item" href="#supportdebug-debugvar">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">debugVar( mixed $varz )</code>
+<code class="sig"><span class="sf">debugVar</span>( <span class="st">mixed</span> <span class="sv">$varz</span> )</code>
 <span class="desc">Adds a variable to the debug output</span>
 </a>
 <a class="api-item" href="#supportdebug-getcsssources">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getCssSources()</code>
+<code class="sig"><span class="sf">getCssSources</span>()</code>
 <span class="desc">Returns the CSS sources</span>
 </a>
 <a class="api-item" href="#supportdebug-getjssources">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getJsSources()</code>
+<code class="sig"><span class="sf">getJsSources</span>()</code>
 <span class="desc">Returns the JavaScript sources</span>
 </a>
 <a class="api-item" href="#supportdebug-getversion">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getVersion()</code>
+<code class="sig"><span class="sf">getVersion</span>()</code>
 <span class="desc">Generates a link to the current version documentation</span>
 </a>
 <a class="api-item" href="#supportdebug-halt">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">halt()</code>
+<code class="sig"><span class="sf">halt</span>()</code>
 <span class="desc">Halts the request showing a backtrace</span>
 </a>
 <a class="api-item" href="#supportdebug-listen">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">listen(
-    bool $exceptions = true,
-    bool $lowSeverity = false
-)</code>
+<code class="sig"><span class="sf">listen</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$exceptions</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowSeverity</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Listen for uncaught exceptions and non silent notices or warnings</span>
 </a>
 <a class="api-item" href="#supportdebug-listenexceptions">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">listenExceptions()</code>
+<code class="sig"><span class="sf">listenExceptions</span>()</code>
 <span class="desc">Listen for uncaught exceptions</span>
 </a>
 <a class="api-item" href="#supportdebug-listenlowseverity">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">listenLowSeverity()</code>
+<code class="sig"><span class="sf">listenLowSeverity</span>()</code>
 <span class="desc">Listen for non silent notices or warnings</span>
 </a>
 <a class="api-item" href="#supportdebug-onuncaughtexception">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">onUncaughtException( \Throwable $exception )</code>
+<code class="sig"><span class="sf">onUncaughtException</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Handles uncaught exceptions</span>
 </a>
 <a class="api-item" href="#supportdebug-onuncaughtlowseverity">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">onUncaughtLowSeverity(
-    mixed $severity,
-    mixed $message,
-    mixed $file,
-    mixed $line
-)</code>
+<code class="sig"><span class="sf">onUncaughtLowSeverity</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$severity</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$line</span></span>)</code>
 <span class="desc">Throws an exception when a notice or warning is raised</span>
 </a>
 <a class="api-item" href="#supportdebug-renderhtml">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">renderHtml( \Throwable $exception )</code>
+<code class="sig"><span class="sf">renderHtml</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Render exception to html format.</span>
 </a>
 <a class="api-item" href="#supportdebug-setblacklist">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setBlacklist( array $blacklist )</code>
+<code class="sig"><span class="sf">setBlacklist</span>( <span class="st">array</span> <span class="sv">$blacklist</span> )</code>
 <span class="desc">Sets if files the exception&#039;s backtrace must be showed</span>
 </a>
 <a class="api-item" href="#supportdebug-setshowbacktrace">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setShowBackTrace( bool $showBackTrace )</code>
+<code class="sig"><span class="sf">setShowBackTrace</span>( <span class="st">bool</span> <span class="sv">$showBackTrace</span> )</code>
 <span class="desc">Sets if files the exception&#039;s backtrace must be showed</span>
 </a>
 <a class="api-item" href="#supportdebug-setshowfilefragment">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setShowFileFragment( bool $showFileFragment )</code>
+<code class="sig"><span class="sf">setShowFileFragment</span>( <span class="st">bool</span> <span class="sv">$showFileFragment</span> )</code>
 <span class="desc">Sets if files must be completely opened and showed in the output</span>
 </a>
 <a class="api-item" href="#supportdebug-setshowfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setShowFiles( bool $showFiles )</code>
+<code class="sig"><span class="sf">setShowFiles</span>( <span class="st">bool</span> <span class="sv">$showFiles</span> )</code>
 <span class="desc">Set if files part of the backtrace must be shown in the output</span>
 </a>
 <a class="api-item" href="#supportdebug-seturi">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUri( string $uri )</code>
+<code class="sig"><span class="sf">setUri</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Change the base URI for static resources</span>
 </a>
 <a class="api-item" href="#supportdebug-escapestring">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">escapeString( string $value )</code>
+<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
 <span class="desc">Escapes a string with htmlentities</span>
 </a>
 <a class="api-item" href="#supportdebug-getarraydump">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string|null</code>
-<code class="sig">getArrayDump(
-    array $argument,
-    mixed $n = 0
-)</code>
+<code class="sig"><span class="sf">getArrayDump</span>(<span class="prm"><span class="st">array</span> <span class="sv">$argument</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$n</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Produces a recursive representation of an array</span>
 </a>
 <a class="api-item" href="#supportdebug-getvardump">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getVarDump( mixed $variable )</code>
+<code class="sig"><span class="sf">getVarDump</span>( <span class="st">mixed</span> <span class="sv">$variable</span> )</code>
 <span class="desc">Produces an string representation of a variable</span>
 </a>
 <a class="api-item" href="#supportdebug-showtraceitem">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">showTraceItem(
-    int $number,
-    array $trace
-)</code>
+<code class="sig"><span class="sf">showTraceItem</span>(<span class="prm"><span class="st">int</span> <span class="sv">$number</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$trace</span></span>)</code>
 <span class="desc">Shows a backtrace item</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$blacklist = [...]` `array`
-
--   `protected`{ .vis-protected } `$data = []` `array`
-
--   `protected`{ .vis-protected } `$hideDocumentRoot = false` `bool`
-
--   `protected`{ .vis-protected } `$isActive = false` `bool`
-
--   `protected`{ .vis-protected } `$showBackTrace = true` `bool`
-
--   `protected`{ .vis-protected } `$showFileFragment = false` `bool`
-
--   `protected`{ .vis-protected } `$showFiles = true` `bool`
-
--   `protected`{ .vis-protected } `$uri = "https://assets.phalcon.io/debug/5.0.x/"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$blacklist</span><span class="sm"> = [...]</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$hideDocumentRoot</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isActive</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$showBackTrace</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$showFileFragment</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$showFiles</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$uri</span><span class="sm"> = &quot;https://assets.phalcon.io/debug/5.0.x/&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1691,92 +1671,87 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Re
 <div class="api-list">
 <a class="api-item" href="#supportdebugdump-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    array $styles = [],
-    bool $detailed = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$styles</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$detailed</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Phalcon\Debug\Dump constructor</span>
 </a>
 <a class="api-item" href="#supportdebugdump-all">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">all()</code>
+<code class="sig"><span class="sf">all</span>()</code>
 <span class="desc">Alias of variables() method</span>
 </a>
 <a class="api-item" href="#supportdebugdump-getdetailed">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getDetailed()</code>
+<code class="sig"><span class="sf">getDetailed</span>()</code>
 </a>
 <a class="api-item" href="#supportdebugdump-one">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">one(
-    mixed $variable,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">one</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$variable</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Alias of variable() method</span>
 </a>
 <a class="api-item" href="#supportdebugdump-setdetailed">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDetailed( bool $flag )</code>
+<code class="sig"><span class="sf">setDetailed</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
 </a>
 <a class="api-item" href="#supportdebugdump-setstyles">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">setStyles( array $styles = [] )</code>
+<code class="sig"><span class="sf">setStyles</span>( <span class="st">array</span> <span class="sv">$styles</span><span class="sm"> = []</span> )</code>
 <span class="desc">Set styles for vars type</span>
 </a>
 <a class="api-item" href="#supportdebugdump-tojson">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">toJson( mixed $variable )</code>
+<code class="sig"><span class="sf">toJson</span>( <span class="st">mixed</span> <span class="sv">$variable</span> )</code>
 <span class="desc">Returns an JSON string of information about a single variable.</span>
 </a>
 <a class="api-item" href="#supportdebugdump-variable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">variable(
-    mixed $variable,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">variable</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$variable</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an HTML string of information about a single variable.</span>
 </a>
 <a class="api-item" href="#supportdebugdump-variables">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">variables()</code>
+<code class="sig"><span class="sf">variables</span>()</code>
 <span class="desc">Returns an HTML string of debugging information about any number of</span>
 </a>
 <a class="api-item" href="#supportdebugdump-getstyle">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getStyle( string $type )</code>
+<code class="sig"><span class="sf">getStyle</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Get style for type</span>
 </a>
 <a class="api-item" href="#supportdebugdump-output">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">output(
-    mixed $variable,
-    string $name = null,
-    int $tab = 1
-)</code>
+<code class="sig"><span class="sf">output</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$variable</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$tab</span><span class="sm"> = 1</span></span>)</code>
 <span class="desc">Prepare an HTML string of information about a single variable.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$detailed = false` `bool`
-
--   `protected`{ .vis-protected } `$methods = []` `array`
-
--   `protected`{ .vis-protected } `$styles = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$detailed</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$methods</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$styles</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1958,7 +1933,7 @@ __Uses__ `Phalcon\Support\Debug\Exception`
 <div class="api-list">
 <a class="api-item" href="#supportdebugexceptionsrequesthalted-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2094,29 +2069,26 @@ __Uses__ `Phalcon\Factory\AbstractFactory`
 <div class="api-list">
 <a class="api-item" href="#supporthelperfactory-__call">
 <code class="vis vis-public">public</code>
-<code class="sig">__call(
-    string $name,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#supporthelperfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $services = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 <span class="desc">FactoryTrait constructor.</span>
 </a>
 <a class="api-item" href="#supporthelperfactory-newinstance">
 <code class="vis vis-public">public</code>
-<code class="sig">newInstance( string $name )</code>
+<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#supporthelperfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#supporthelperfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
@@ -2196,10 +2168,7 @@ be moved to a trait once Zephir supports it.
 <a class="api-item" href="#supporthelperarrabstractarr-tofilter">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">toFilter(
-    array $collection,
-    mixed $method = null
-)</code>
+<code class="sig"><span class="sf">toFilter</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Helper method to filter the collection</span>
 </a>
 </div>
@@ -2241,10 +2210,7 @@ by the keys obtained from the elements of a blacklist
 <a class="api-item" href="#supporthelperarrblacklist-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    array $blackList
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$blackList</span></span>)</code>
 </a>
 </div>
 
@@ -2281,11 +2247,7 @@ Chunks an array into smaller arrays of a specified size.
 <a class="api-item" href="#supporthelperarrchunk-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    int $size,
-    bool $preserveKeys = false
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$preserveKeys</span><span class="sm"> = false</span></span>)</code>
 </a>
 </div>
 
@@ -2324,10 +2286,7 @@ Filters a collection using array_filter and using the callable (if defined)
 <a class="api-item" href="#supporthelperarrfilter-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -2366,10 +2325,7 @@ element returned is the first that validates true
 <a class="api-item" href="#supporthelperarrfirst-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -2408,10 +2364,7 @@ is passed, the element returned is the first that validates true
 <a class="api-item" href="#supporthelperarrfirstkey-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -2449,10 +2402,7 @@ Flattens an array up to the one level depth, unless `$deep` is set to
 <a class="api-item" href="#supporthelperarrflatten-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    bool $deep = false
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$deep</span><span class="sm"> = false</span></span>)</code>
 </a>
 </div>
 
@@ -2491,12 +2441,7 @@ It also allows for casting the returned value to a specific type using
 <a class="api-item" href="#supporthelperarrget-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null,
-    string $cast = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -2535,10 +2480,7 @@ Groups the elements of an array based on the passed callable
 <a class="api-item" href="#supporthelperarrgroup-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
 </a>
 </div>
 
@@ -2576,10 +2518,7 @@ Checks an array if it has an element with a specific key and returns
 <a class="api-item" href="#supporthelperarrhas-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $index
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span></span>)</code>
 </a>
 </div>
 
@@ -2617,7 +2556,7 @@ values exist and false if values are all unique.
 <a class="api-item" href="#supporthelperarrisunique-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke( array $collection )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$collection</span> )</code>
 </a>
 </div>
 
@@ -2653,10 +2592,7 @@ element returned is the first that validates true
 <a class="api-item" href="#supporthelperarrlast-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -2695,10 +2631,7 @@ passed, the element returned is the first that validates true
 <a class="api-item" href="#supporthelperarrlastkey-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -2737,23 +2670,21 @@ the ones used by `ksort` and `krsort`
 <a class="api-item" href="#supporthelperarrorder-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $attribute,
-    int $order = self::ORDER_ASC,
-    int $flags = 0
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = self::ORDER_ASC</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 0</span></span>)</code>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `ORDER_ASC = 1` `int`
-
--   `ORDER_DESC = 2` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ORDER_ASC</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ORDER_DESC</span><span class="sm"> = 2</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2791,10 +2722,7 @@ Returns a subset of the collection based on the values of the collection
 <a class="api-item" href="#supporthelperarrpluck-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    string $element
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$element</span></span>)</code>
 </a>
 </div>
 
@@ -2831,11 +2759,7 @@ Sets an array element. Using a key is optional
 <a class="api-item" href="#supporthelperarrset-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $value,
-    mixed $index = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -2873,10 +2797,7 @@ Returns a new array with n elements removed from the left.
 <a class="api-item" href="#supporthelperarrsliceleft-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    int $elements = 1
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$elements</span><span class="sm"> = 1</span></span>)</code>
 </a>
 </div>
 
@@ -2913,10 +2834,7 @@ Returns a new array with n elements removed from the right.
 <a class="api-item" href="#supporthelperarrsliceright-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    int $elements = 1
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$elements</span><span class="sm"> = 1</span></span>)</code>
 </a>
 </div>
 
@@ -2954,7 +2872,7 @@ as another
 <a class="api-item" href="#supporthelperarrsplit-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke( array $collection )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$collection</span> )</code>
 </a>
 </div>
 
@@ -2988,7 +2906,7 @@ Returns the passed array as an object.
 <a class="api-item" href="#supporthelperarrtoobject-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">__invoke( array $collection )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">array</span> <span class="sv">$collection</span> )</code>
 </a>
 </div>
 
@@ -3024,10 +2942,7 @@ the collection, `false` otherwise.
 <a class="api-item" href="#supporthelperarrvalidateall-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
 </a>
 </div>
 
@@ -3066,10 +2981,7 @@ element of the collection, `false` otherwise.
 <a class="api-item" href="#supporthelperarrvalidateany-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    array $collection,
-    mixed $method
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span></span>)</code>
 </a>
 </div>
 
@@ -3108,10 +3020,7 @@ obtained from the elements of a whitelist
 <a class="api-item" href="#supporthelperarrwhitelist-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__invoke(
-    array $collection,
-    array $whiteList
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whiteList</span></span>)</code>
 </a>
 </div>
 
@@ -3171,10 +3080,7 @@ filenames beginning with a non-US-ASCII character.
 <a class="api-item" href="#supporthelperfilebasename-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $uri,
-    string $suffix = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$uri</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">@see https://bugs.php.net/bug.php?id=37738</span>
 </a>
 </div>
@@ -3226,12 +3132,7 @@ __Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`
 <div class="api-list">
 <a class="api-item" href="#supporthelperjsondecode-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke(
-    string $data,
-    bool $associative = false,
-    int $depth = 512,
-    int $options = 79
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$associative</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$depth</span><span class="sm"> = 512</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 79</span></span>)</code>
 </a>
 </div>
 
@@ -3285,11 +3186,7 @@ __Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`
 <a class="api-item" href="#supporthelperjsonencode-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    mixed $data,
-    int $options = 79,
-    int $depth = 512
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 79</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$depth</span><span class="sm"> = 512</span></span>)</code>
 </a>
 </div>
 
@@ -3335,11 +3232,7 @@ __Uses__ `InvalidArgumentException` · `Throwable`
 <div class="api-list">
 <a class="api-item" href="#supporthelperjsonexceptionsjsondecodeerror-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $message = &quot;&quot;,
-    int $code = 0,
-    Throwable $previous = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -3385,11 +3278,7 @@ __Uses__ `InvalidArgumentException` · `Throwable`
 <div class="api-list">
 <a class="api-item" href="#supporthelperjsonexceptionsjsonencodeerror-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $message = &quot;&quot;,
-    int $code = 0,
-    Throwable $previous = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -3427,11 +3316,7 @@ Checks if a number is within a range
 <a class="api-item" href="#supporthelpernumberisbetween-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    int $value,
-    int $start,
-    int $end
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">int</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$start</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$end</span></span>)</code>
 </a>
 </div>
 
@@ -3482,50 +3367,31 @@ be moved to a trait once Zephir supports it.
 <a class="api-item" href="#supporthelperstrabstractstr-toendswith">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">toEndsWith(
-    string $haystack,
-    string $needle,
-    bool $ignoreCase = true
-)</code>
+<code class="sig"><span class="sf">toEndsWith</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Check if a string ends with a given string</span>
 </a>
 <a class="api-item" href="#supporthelperstrabstractstr-tointerpolate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">toInterpolate(
-    string $input,
-    array $context = [],
-    string $left = &quot;%&quot;,
-    string $right = &quot;%&quot;
-)</code>
+<code class="sig"><span class="sf">toInterpolate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$left</span><span class="sm"> = &quot;%&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$right</span><span class="sm"> = &quot;%&quot;</span></span>)</code>
 <span class="desc">Interpolates context values into the message placeholders</span>
 </a>
 <a class="api-item" href="#supporthelperstrabstractstr-tolower">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">toLower(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">toLower</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 <span class="desc">Lowercases a string using mbstring</span>
 </a>
 <a class="api-item" href="#supporthelperstrabstractstr-tostartswith">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">toStartsWith(
-    string $haystack,
-    string $needle,
-    bool $ignoreCase = true
-)</code>
+<code class="sig"><span class="sf">toStartsWith</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Check if a string starts with a given string</span>
 </a>
 <a class="api-item" href="#supporthelperstrabstractstr-toupper">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">toUpper(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">toUpper</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 <span class="desc">Uppercases a string using mbstring</span>
 </a>
 </div>
@@ -3616,11 +3482,7 @@ Converts strings to upperCamelCase or lowerCamelCase
 <a class="api-item" href="#supporthelperstrcamelize-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $delimiters = null,
-    bool $lowerFirst = false
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowerFirst</span><span class="sm"> = false</span></span>)</code>
 </a>
 </div>
 
@@ -3663,7 +3525,7 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
 <a class="api-item" href="#supporthelperstrconcat-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke()</code>
+<code class="sig"><span class="sf">__invoke</span>()</code>
 </a>
 </div>
 
@@ -3698,7 +3560,7 @@ to count the number of vowels (A, E, I, O, U) in a string.
 <a class="api-item" href="#supporthelperstrcountvowels-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">__invoke( string $text )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
 </a>
 </div>
 
@@ -3735,11 +3597,7 @@ string intact, or set it to true to convert to uppercase.
 <a class="api-item" href="#supporthelperstrdecapitalize-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    bool $upperRest = false,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$upperRest</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -3778,10 +3636,7 @@ is already defined
 <a class="api-item" href="#supporthelperstrdecrement-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $separator = &quot;_&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;_&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -3819,7 +3674,7 @@ directory structure with the filename in the end
 <a class="api-item" href="#supporthelperstrdirfromfile-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $file )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$file</span> )</code>
 </a>
 </div>
 
@@ -3854,7 +3709,7 @@ DIRECTORY_SEPARATOR
 <a class="api-item" href="#supporthelperstrdirseparator-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $directory )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$directory</span> )</code>
 </a>
 </div>
 
@@ -3893,12 +3748,7 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\SyntaxError`
 <a class="api-item" href="#supporthelperstrdynamic-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $leftDelimiter = &quot;{&quot;,
-    string $rightDelimiter = &quot;}&quot;,
-    string $separator = &quot;|&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$leftDelimiter</span><span class="sm"> = &quot;{&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$rightDelimiter</span><span class="sm"> = &quot;}&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;|&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -3938,11 +3788,7 @@ Check if a string ends with a given string
 <a class="api-item" href="#supporthelperstrendswith-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    string $haystack,
-    string $needle,
-    bool $ignoreCase = true
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
 </a>
 </div>
 
@@ -3990,7 +3836,7 @@ __Uses__ `Phalcon\Support\Helper\Exception`
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrexceptionsinsufficientarguments-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -4057,7 +3903,7 @@ __Uses__ `RuntimeException`
 <div class="api-list">
 <a class="api-item" href="#supporthelperstrexceptionssyntaxerror-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $text )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
 </a>
 </div>
 
@@ -4092,11 +3938,7 @@ parameter start and end.
 <a class="api-item" href="#supporthelperstrfirstbetween-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $start,
-    string $end
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$start</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$end</span></span>)</code>
 </a>
 </div>
 
@@ -4140,12 +3982,7 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
 <a class="api-item" href="#supporthelperstrfriendly-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $separator = &quot;-&quot;,
-    bool $lowercase = true,
-    mixed $replace = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;-&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$lowercase</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -4184,7 +4021,7 @@ Makes an underscored or dashed text human-readable
 <a class="api-item" href="#supporthelperstrhumanize-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $text )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
 </a>
 </div>
 
@@ -4218,10 +4055,7 @@ Determines whether a string includes another string or not.
 <a class="api-item" href="#supporthelperstrincludes-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    string $haystack,
-    string $needle
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span></span>)</code>
 </a>
 </div>
 
@@ -4259,10 +4093,7 @@ is already defined
 <a class="api-item" href="#supporthelperstrincrement-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $separator = &quot;_&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;_&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -4302,12 +4133,7 @@ right and left tokens are `%`
 <a class="api-item" href="#supporthelperstrinterpolate-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $message,
-    array $context = [],
-    string $leftToken = &quot;%&quot;,
-    string $rightToken = &quot;%&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$leftToken</span><span class="sm"> = &quot;%&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$rightToken</span><span class="sm"> = &quot;%&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -4347,10 +4173,7 @@ Compare two strings and returns `true` if both strings are anagram,
 <a class="api-item" href="#supporthelperstrisanagram-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    string $first,
-    string $second
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span></span>)</code>
 </a>
 </div>
 
@@ -4388,10 +4211,7 @@ Returns `true` if the given string is in lower case, `false` otherwise.
 <a class="api-item" href="#supporthelperstrislower-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -4428,7 +4248,7 @@ Returns `true` if the given string is a palindrome, `false` otherwise.
 <a class="api-item" href="#supporthelperstrispalindrome-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke( string $text )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
 </a>
 </div>
 
@@ -4463,10 +4283,7 @@ Returns `true` if the given string is in upper case, `false` otherwise.
 <a class="api-item" href="#supporthelperstrisupper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -4504,10 +4321,7 @@ Converts strings to kebab-case style
 <a class="api-item" href="#supporthelperstrkebabcase-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $delimiters = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -4544,10 +4358,7 @@ Calculates the length of the string using `mb_strlen`
 <a class="api-item" href="#supporthelperstrlen-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">__invoke(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -4585,10 +4396,7 @@ Converts a string to lowercase using mbstring
 <a class="api-item" href="#supporthelperstrlower-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -4628,18 +4436,12 @@ Converts strings to PascalCase style
 <a class="api-item" href="#supporthelperstrpascalcase-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $delimiters = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#supporthelperstrpascalcase-processarray">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">processArray(
-    string $text,
-    string $delimiters = null
-)</code>
+<code class="sig"><span class="sf">processArray</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -4687,10 +4489,7 @@ Prefixes the text with the supplied prefix
 <a class="api-item" href="#supporthelperstrprefix-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    mixed $text,
-    string $prefix
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
 </a>
 </div>
 
@@ -4728,42 +4527,44 @@ RANDOM_* constants
 <a class="api-item" href="#supporthelperstrrandom-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    int $type = self::RANDOM_ALNUM,
-    int $length = 8
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = self::RANDOM_ALNUM</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$length</span><span class="sm"> = 8</span></span>)</code>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `RANDOM_ALNUM = 0` `int`
-
-    Only alphanumeric characters [a-zA-Z0-9]
-
--   `RANDOM_ALPHA = 1` `int`
-
-    Only alphabetical characters [azAZ]
-
--   `RANDOM_DISTINCT = 5` `int`
-
-    Only alphanumeric uppercase characters exclude similar
-    characters [2345679ACDEFHJKLMNPRSTUVWXYZ]
-
--   `RANDOM_HEXDEC = 2` `int`
-
-    Only hexadecimal characters [0-9a-f]
-
--   `RANDOM_NOZERO = 4` `int`
-
-    Only numbers without 0 [1-9]
-
--   `RANDOM_NUMERIC = 3` `int`
-
-    Only numbers [0-9]
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">RANDOM_ALNUM</span><span class="sm"> = 0</span></code>
+<span class="desc">Only alphanumeric characters [a-zA-Z0-9]</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">RANDOM_ALPHA</span><span class="sm"> = 1</span></code>
+<span class="desc">Only alphabetical characters [azAZ]</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">RANDOM_DISTINCT</span><span class="sm"> = 5</span></code>
+<span class="desc">Only alphanumeric uppercase characters exclude similar
+characters [2345679ACDEFHJKLMNPRSTUVWXYZ]</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">RANDOM_HEXDEC</span><span class="sm"> = 2</span></code>
+<span class="desc">Only hexadecimal characters [0-9a-f]</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">RANDOM_NOZERO</span><span class="sm"> = 4</span></code>
+<span class="desc">Only numbers without 0 [1-9]</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">RANDOM_NUMERIC</span><span class="sm"> = 3</span></code>
+<span class="desc">Only numbers [0-9]</span>
+</div>
 </div>
 
 ### Methods
@@ -4799,7 +4600,7 @@ Reduces multiple slashes in a string to single slashes
 <a class="api-item" href="#supporthelperstrreduceslashes-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $text )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
 </a>
 </div>
 
@@ -4834,10 +4635,7 @@ Converts strings to snake_case style
 <a class="api-item" href="#supporthelperstrsnakecase-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $delimiters = null
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiters</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -4875,11 +4673,7 @@ Check if a string starts with a given string
 <a class="api-item" href="#supporthelperstrstartswith-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__invoke(
-    string $haystack,
-    string $needle,
-    bool $ignoreCase = true
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
 </a>
 </div>
 
@@ -4917,10 +4711,7 @@ Suffixes the text with the supplied suffix
 <a class="api-item" href="#supporthelperstrsuffix-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    mixed $text,
-    string $suffix
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span></span>)</code>
 </a>
 </div>
 
@@ -4957,10 +4748,7 @@ Capitalizes the first letter of each word
 <a class="api-item" href="#supporthelperstrucwords-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -4997,10 +4785,7 @@ Converts strings to non camelized style
 <a class="api-item" href="#supporthelperstruncamelize-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $delimiter = &quot;_&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = &quot;_&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -5037,7 +4822,7 @@ Makes a text underscored instead of spaced
 <a class="api-item" href="#supporthelperstrunderscore-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke( string $text )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$text</span> )</code>
 </a>
 </div>
 
@@ -5072,10 +4857,7 @@ Converts a string to uppercase using mbstring
 <a class="api-item" href="#supporthelperstrupper-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $text,
-    string $encoding = &quot;UTF-8&quot;
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
 </a>
 </div>
 
@@ -5160,146 +4942,133 @@ __Uses__ `Phalcon\Support\Collection` · `Traversable`
 <div class="api-list">
 <a class="api-item" href="#supportregistry-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $data = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#supportregistry-__get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__get( string $element )</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Magic getter to get an element from the collection</span>
 </a>
 <a class="api-item" href="#supportregistry-__isset">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__isset( string $element )</code>
+<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Magic isset to check whether an element exists or not</span>
 </a>
 <a class="api-item" href="#supportregistry-__set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__set(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Magic setter to assign values to an element</span>
 </a>
 <a class="api-item" href="#supportregistry-__unset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unset( string $element )</code>
+<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Magic unset to remove an element from the collection</span>
 </a>
 <a class="api-item" href="#supportregistry-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Clears the internal collection</span>
 </a>
 <a class="api-item" href="#supportregistry-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">count()</code>
+<code class="sig"><span class="sf">count</span>()</code>
 <span class="desc">Count elements of an object</span>
 </a>
 <a class="api-item" href="#supportregistry-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get(
-    string $element,
-    mixed $defaultValue = null,
-    string $cast = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Get the element from the collection</span>
 </a>
 <a class="api-item" href="#supportregistry-getiterator">
 <code class="vis vis-public">public</code>
 <code class="ret">Traversable</code>
-<code class="sig">getIterator()</code>
+<code class="sig"><span class="sf">getIterator</span>()</code>
 <span class="desc">Returns the iterator of the class</span>
 </a>
 <a class="api-item" href="#supportregistry-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $element )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Determines whether an element is present in the collection.</span>
 </a>
 <a class="api-item" href="#supportregistry-init">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">init( array $data = [] )</code>
+<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
 <span class="desc">Initialize internal array</span>
 </a>
 <a class="api-item" href="#supportregistry-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">jsonSerialize()</code>
+<code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Specify data which should be serialized to JSON</span>
 </a>
 <a class="api-item" href="#supportregistry-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $element )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
 <span class="desc">Whether a offset exists</span>
 </a>
 <a class="api-item" href="#supportregistry-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $element )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
 <span class="desc">Offset to retrieve</span>
 </a>
 <a class="api-item" href="#supportregistry-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Offset to set</span>
 </a>
 <a class="api-item" href="#supportregistry-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $element )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$element</span> )</code>
 <span class="desc">Offset to unset</span>
 </a>
 <a class="api-item" href="#supportregistry-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $element )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Delete the element from the collection</span>
 </a>
 <a class="api-item" href="#supportregistry-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">serialize()</code>
+<code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">String representation of object</span>
 </a>
 <a class="api-item" href="#supportregistry-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set an element in the collection</span>
 </a>
 <a class="api-item" href="#supportregistry-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the object in an array format</span>
 </a>
 <a class="api-item" href="#supportregistry-tojson">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">toJson( int $options = 79 )</code>
+<code class="sig"><span class="sf">toJson</span>( <span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 79</span> )</code>
 <span class="desc">Returns the object in a JSON format</span>
 </a>
 <a class="api-item" href="#supportregistry-unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unserialize( string $data )</code>
+<code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
 <span class="desc">Constructs the object</span>
 </a>
 </div>
@@ -5559,34 +5328,32 @@ those keys to their globals_get() fallback values.
 <a class="api-item" href="#supportsettings-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get( string $key )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Returns the value of a known setting.</span>
 </a>
 <a class="api-item" href="#supportsettings-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Clears all PHP-level overrides, restoring get() to return globals_get()</span>
 </a>
 <a class="api-item" href="#supportsettings-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Overrides a setting at the PHP level.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$overrides` `array`
-
-    PHP-level overrides. Keys stored here take priority over globals_get().
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$overrides</span></code>
+<span class="desc">PHP-level overrides. Keys stored here take priority over globals_get().</span>
+</div>
 </div>
 
 ### Methods
@@ -5651,84 +5418,88 @@ This class allows to get the installed version of the framework
 <a class="api-item" href="#supportversion-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">get()</code>
+<code class="sig"><span class="sf">get</span>()</code>
 <span class="desc">Returns the active version (string)</span>
 </a>
 <a class="api-item" href="#supportversion-getid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getId()</code>
+<code class="sig"><span class="sf">getId</span>()</code>
 <span class="desc">Returns the numeric active version</span>
 </a>
 <a class="api-item" href="#supportversion-getpart">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPart( int $part )</code>
+<code class="sig"><span class="sf">getPart</span>( <span class="st">int</span> <span class="sv">$part</span> )</code>
 <span class="desc">Returns a specific part of the version. If the wrong parameter is passed</span>
 </a>
 <a class="api-item" href="#supportversion-getspecial">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getSpecial( int $special )</code>
+<code class="sig"><span class="sf">getSpecial</span>( <span class="st">int</span> <span class="sv">$special</span> )</code>
 <span class="desc">Translates a number to a special release.</span>
 </a>
 <a class="api-item" href="#supportversion-getversion">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getVersion()</code>
+<code class="sig"><span class="sf">getVersion</span>()</code>
 <span class="desc">Area where the version number is set. The format is as follows:</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">VERSION_MAJOR</span><span class="sm"> = 0</span></code>
+<span class="desc">The constant referencing the major version. Returns 0
 
--   `VERSION_MAJOR = 0` `int`
+``<code>php
+echo (new Phalcon\Support\Version())
+         -&gt;getPart(Phalcon\Support\Version::VERSION_MAJOR);
+</code>``</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">VERSION_MEDIUM</span><span class="sm"> = 1</span></code>
+<span class="desc">The constant referencing the major version. Returns 1
 
-    The constant referencing the major version. Returns 0
+``<code>php
+echo (new Phalcon\Support\Version())
+         -&gt;getPart(Phalcon\Support\Version::VERSION_MEDIUM);
+</code>``</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">VERSION_MINOR</span><span class="sm"> = 2</span></code>
+<span class="desc">The constant referencing the major version. Returns 2
 
-    ```php
-    echo (new Phalcon\Support\Version())
-             ->getPart(Phalcon\Support\Version::VERSION_MAJOR);
-    ```
+``<code>php
+echo (new Phalcon\Support\Version())
+         -&gt;getPart(Phalcon\Support\Version::VERSION_MINOR);
+</code>``</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">VERSION_SPECIAL</span><span class="sm"> = 3</span></code>
+<span class="desc">The constant referencing the major version. Returns 3
 
--   `VERSION_MEDIUM = 1` `int`
+``<code>php
+echo (new Phalcon\Support\Version())
+         -&gt;getPart(Phalcon\Support\Version::VERSION_SPECIAL);
+</code>``</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">VERSION_SPECIAL_NUMBER</span><span class="sm"> = 4</span></code>
+<span class="desc">The constant referencing the major version. Returns 4
 
-    The constant referencing the major version. Returns 1
-
-    ```php
-    echo (new Phalcon\Support\Version())
-             ->getPart(Phalcon\Support\Version::VERSION_MEDIUM);
-    ```
-
--   `VERSION_MINOR = 2` `int`
-
-    The constant referencing the major version. Returns 2
-
-    ```php
-    echo (new Phalcon\Support\Version())
-             ->getPart(Phalcon\Support\Version::VERSION_MINOR);
-    ```
-
--   `VERSION_SPECIAL = 3` `int`
-
-    The constant referencing the major version. Returns 3
-
-    ```php
-    echo (new Phalcon\Support\Version())
-             ->getPart(Phalcon\Support\Version::VERSION_SPECIAL);
-    ```
-
--   `VERSION_SPECIAL_NUMBER = 4` `int`
-
-    The constant referencing the major version. Returns 4
-
-    ```php
-    echo (new Phalcon\Support\Version())
-             ->getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER);
-    ```
-
+``<code>php
+echo (new Phalcon\Support\Version())
+         -&gt;getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER);
+</code>``</span>
+</div>
 </div>
 
 ### Methods

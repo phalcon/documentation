@@ -53,7 +53,7 @@ __Uses__ `Phalcon\Autoload\Exception`
 <div class="api-list">
 <a class="api-item" href="#autoloadexceptionsloaderdirectoriesnotarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -96,7 +96,7 @@ __Uses__ `Phalcon\Autoload\Exception`
 <div class="api-list">
 <a class="api-item" href="#autoloadexceptionsloadermethodnotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -135,208 +135,218 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 <div class="api-list">
 <a class="api-item" href="#autoloadloader-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( bool $isDebug = false )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">bool</span> <span class="sv">$isDebug</span><span class="sm"> = false</span> )</code>
 <span class="desc">Loader constructor.</span>
 </a>
 <a class="api-item" href="#autoloadloader-addclass">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addClass(
-    string $name,
-    string $file
-)</code>
+<code class="sig"><span class="sf">addClass</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span></span>)</code>
 <span class="desc">Adds a class to the internal collection for the mapping</span>
 </a>
 <a class="api-item" href="#autoloadloader-adddirectory">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addDirectory( string $directory )</code>
+<code class="sig"><span class="sf">addDirectory</span>( <span class="st">string</span> <span class="sv">$directory</span> )</code>
 <span class="desc">Adds a directory for the loaded files</span>
 </a>
 <a class="api-item" href="#autoloadloader-addextension">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addExtension( string $extension )</code>
+<code class="sig"><span class="sf">addExtension</span>( <span class="st">string</span> <span class="sv">$extension</span> )</code>
 <span class="desc">Adds an extension for the loaded files</span>
 </a>
 <a class="api-item" href="#autoloadloader-addfile">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addFile( string $file )</code>
+<code class="sig"><span class="sf">addFile</span>( <span class="st">string</span> <span class="sv">$file</span> )</code>
 <span class="desc">Adds a file to be added to the loader</span>
 </a>
 <a class="api-item" href="#autoloadloader-addnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addNamespace(
-    string $name,
-    mixed $directories,
-    bool $prepend = false
-)</code>
+<code class="sig"><span class="sf">addNamespace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#autoloadloader-autoload">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">autoload( string $className )</code>
+<code class="sig"><span class="sf">autoload</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Autoloads the registered classes</span>
 </a>
 <a class="api-item" href="#autoloadloader-getcheckedpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getCheckedPath()</code>
+<code class="sig"><span class="sf">getCheckedPath</span>()</code>
 <span class="desc">Get the path the loader is checking for a path</span>
 </a>
 <a class="api-item" href="#autoloadloader-getclasses">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getClasses()</code>
+<code class="sig"><span class="sf">getClasses</span>()</code>
 <span class="desc">Returns the class-map currently registered in the autoloader</span>
 </a>
 <a class="api-item" href="#autoloadloader-getdebug">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDebug()</code>
+<code class="sig"><span class="sf">getDebug</span>()</code>
 <span class="desc">Returns debug information collected</span>
 </a>
 <a class="api-item" href="#autoloadloader-getdirectories">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDirectories()</code>
+<code class="sig"><span class="sf">getDirectories</span>()</code>
 <span class="desc">Returns the directories currently registered in the autoloader</span>
 </a>
 <a class="api-item" href="#autoloadloader-getextensions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getExtensions()</code>
+<code class="sig"><span class="sf">getExtensions</span>()</code>
 <span class="desc">Returns the file extensions registered in the loader</span>
 </a>
 <a class="api-item" href="#autoloadloader-getfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getFiles()</code>
+<code class="sig"><span class="sf">getFiles</span>()</code>
 <span class="desc">Returns the files currently registered in the autoloader</span>
 </a>
 <a class="api-item" href="#autoloadloader-getfoundpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getFoundPath()</code>
+<code class="sig"><span class="sf">getFoundPath</span>()</code>
 <span class="desc">Get the path when a class was found</span>
 </a>
 <a class="api-item" href="#autoloadloader-getnamespaces">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getNamespaces()</code>
+<code class="sig"><span class="sf">getNamespaces</span>()</code>
 <span class="desc">Returns the namespaces currently registered in the autoloader</span>
 </a>
 <a class="api-item" href="#autoloadloader-isregistered">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isRegistered()</code>
+<code class="sig"><span class="sf">isRegistered</span>()</code>
 <span class="desc">returns isRegistered</span>
 </a>
 <a class="api-item" href="#autoloadloader-loadfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">loadFiles()</code>
+<code class="sig"><span class="sf">loadFiles</span>()</code>
 <span class="desc">Checks if a file exists and then adds the file by doing virtual require</span>
 </a>
 <a class="api-item" href="#autoloadloader-register">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">register( bool $prepend = false )</code>
+<code class="sig"><span class="sf">register</span>( <span class="st">bool</span> <span class="sv">$prepend</span><span class="sm"> = false</span> )</code>
 <span class="desc">Register the autoload method</span>
 </a>
 <a class="api-item" href="#autoloadloader-setclasses">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setClasses(
-    array $classes,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setClasses</span>(<span class="prm"><span class="st">array</span> <span class="sv">$classes</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Register classes and their locations</span>
 </a>
 <a class="api-item" href="#autoloadloader-setdirectories">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDirectories(
-    array $directories,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setDirectories</span>(<span class="prm"><span class="st">array</span> <span class="sv">$directories</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Register directories in which &quot;not found&quot; classes could be found</span>
 </a>
 <a class="api-item" href="#autoloadloader-setextensions">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setExtensions(
-    array $extensions,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setExtensions</span>(<span class="prm"><span class="st">array</span> <span class="sv">$extensions</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sets an array of file extensions that the loader must try in each attempt</span>
 </a>
 <a class="api-item" href="#autoloadloader-setfilecheckingcallback">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFileCheckingCallback( mixed $method = null )</code>
+<code class="sig"><span class="sf">setFileCheckingCallback</span>( <span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the file check callback.</span>
 </a>
 <a class="api-item" href="#autoloadloader-setfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFiles(
-    array $files,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setFiles</span>(<span class="prm"><span class="st">array</span> <span class="sv">$files</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Registers files that are &quot;non-classes&quot; hence need a &quot;require&quot;. This is</span>
 </a>
 <a class="api-item" href="#autoloadloader-setnamespaces">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setNamespaces(
-    array $namespaces,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setNamespaces</span>(<span class="prm"><span class="st">array</span> <span class="sv">$namespaces</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Register namespaces and their related directories</span>
 </a>
 <a class="api-item" href="#autoloadloader-unregister">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">unregister()</code>
+<code class="sig"><span class="sf">unregister</span>()</code>
 <span class="desc">Unregister the autoload method</span>
 </a>
 <a class="api-item" href="#autoloadloader-requirefile">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">requireFile( string $file )</code>
+<code class="sig"><span class="sf">requireFile</span>( <span class="st">string</span> <span class="sv">$file</span> )</code>
 <span class="desc">If the file exists, require it and return true; false otherwise</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$checkedPath = null` `string|null`
-
--   `protected`{ .vis-protected } `$classes = []` `array`
-
--   `protected`{ .vis-protected } `$debug = []` `array`
-
--   `protected`{ .vis-protected } `$directories = []` `array`
-
--   `protected`{ .vis-protected } `$extensions = []` `array`
-
--   `protected`{ .vis-protected } `$fileCheckingCallback = "is_file"` `string|callable`
-
--   `protected`{ .vis-protected } `$files = []` `array`
-
--   `protected`{ .vis-protected } `$foundPath = null` `string|null`
-
--   `protected`{ .vis-protected } `$isDebug = false` `bool`
-
--   `protected`{ .vis-protected } `$isRegistered = false` `bool`
-
--   `protected`{ .vis-protected } `$namespaces = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$checkedPath</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$classes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$debug</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$directories</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$extensions</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|callable</code>
+<code class="sig"><span class="sv">$fileCheckingCallback</span><span class="sm"> = &quot;is_file&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$files</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$foundPath</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isDebug</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isRegistered</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$namespaces</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods

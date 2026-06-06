@@ -53,7 +53,7 @@ __Uses__ `Phalcon\Messages\Exception`
 <div class="api-list">
 <a class="api-item" href="#messagesexceptionsmessagenotobject-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -96,7 +96,7 @@ __Uses__ `Phalcon\Messages\Exception`
 <div class="api-list">
 <a class="api-item" href="#messagesexceptionsmessagesnotiterable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -134,98 +134,106 @@ __Uses__ `JsonSerializable`
 <div class="api-list">
 <a class="api-item" href="#messagesmessage-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $message,
-    string $field = &quot;&quot;,
-    string $type = &quot;&quot;,
-    int $code = 0,
-    array $metaData = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$metaData</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Messages\Message constructor</span>
 </a>
 <a class="api-item" href="#messagesmessage-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Magic __toString method returns verbose message</span>
 </a>
 <a class="api-item" href="#messagesmessage-getcode">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getCode()</code>
+<code class="sig"><span class="sf">getCode</span>()</code>
 </a>
 <a class="api-item" href="#messagesmessage-getfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getField()</code>
+<code class="sig"><span class="sf">getField</span>()</code>
 </a>
 <a class="api-item" href="#messagesmessage-getmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMessage()</code>
+<code class="sig"><span class="sf">getMessage</span>()</code>
 </a>
 <a class="api-item" href="#messagesmessage-getmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMetaData()</code>
+<code class="sig"><span class="sf">getMetaData</span>()</code>
 </a>
 <a class="api-item" href="#messagesmessage-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 </a>
 <a class="api-item" href="#messagesmessage-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">jsonSerialize()</code>
+<code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Serializes the object for json_encode</span>
 </a>
 <a class="api-item" href="#messagesmessage-setcode">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setCode( int $code )</code>
+<code class="sig"><span class="sf">setCode</span>( <span class="st">int</span> <span class="sv">$code</span> )</code>
 <span class="desc">Sets code for the message</span>
 </a>
 <a class="api-item" href="#messagesmessage-setfield">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setField( string $field )</code>
+<code class="sig"><span class="sf">setField</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
 <span class="desc">Sets field name related to message</span>
 </a>
 <a class="api-item" href="#messagesmessage-setmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setMessage( string $message )</code>
+<code class="sig"><span class="sf">setMessage</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 <span class="desc">Sets verbose message</span>
 </a>
 <a class="api-item" href="#messagesmessage-setmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setMetaData( array $metaData )</code>
+<code class="sig"><span class="sf">setMetaData</span>( <span class="st">array</span> <span class="sv">$metaData</span> )</code>
 <span class="desc">Sets message metadata</span>
 </a>
 <a class="api-item" href="#messagesmessage-settype">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setType( string $type )</code>
+<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Sets message type</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$code` `int`
-
--   `protected`{ .vis-protected } `$field` `string`
-
--   `protected`{ .vis-protected } `$message` `string`
-
--   `protected`{ .vis-protected } `$metaData = []` `array`
-
--   `protected`{ .vis-protected } `$type` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$code</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$field</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$message</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$metaData</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span></code>
+</div>
 </div>
 
 ### Methods
@@ -354,67 +362,67 @@ Interface for Phalcon\Messages\MessageInterface
 <a class="api-item" href="#messagesmessageinterface-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Magic __toString method returns verbose message</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-getcode">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getCode()</code>
+<code class="sig"><span class="sf">getCode</span>()</code>
 <span class="desc">Returns the message code related to this message</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-getfield">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getField()</code>
+<code class="sig"><span class="sf">getField</span>()</code>
 <span class="desc">Returns field name related to message</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-getmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMessage()</code>
+<code class="sig"><span class="sf">getMessage</span>()</code>
 <span class="desc">Returns verbose message</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-getmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMetaData()</code>
+<code class="sig"><span class="sf">getMetaData</span>()</code>
 <span class="desc">Returns message metadata</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns message type</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-setcode">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setCode( int $code )</code>
+<code class="sig"><span class="sf">setCode</span>( <span class="st">int</span> <span class="sv">$code</span> )</code>
 <span class="desc">Sets code for the message</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-setfield">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setField( string $field )</code>
+<code class="sig"><span class="sf">setField</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
 <span class="desc">Sets field name related to message</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-setmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setMessage( string $message )</code>
+<code class="sig"><span class="sf">setMessage</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 <span class="desc">Sets verbose message</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-setmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setMetaData( array $metaData )</code>
+<code class="sig"><span class="sf">setMetaData</span>( <span class="st">array</span> <span class="sv">$metaData</span> )</code>
 <span class="desc">Sets message metadata</span>
 </a>
 <a class="api-item" href="#messagesmessageinterface-settype">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">setType( string $type )</code>
+<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Sets message type</span>
 </a>
 </div>
@@ -533,105 +541,107 @@ __Uses__ `ArrayAccess` · `Countable` · `Iterator` · `JsonSerializable` · `Ph
 <div class="api-list">
 <a class="api-item" href="#messagesmessages-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $messages = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$messages</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Messages\Messages constructor</span>
 </a>
 <a class="api-item" href="#messagesmessages-appendmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">appendMessage( MessageInterface $message )</code>
+<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
 <span class="desc">Appends a message to the collection</span>
 </a>
 <a class="api-item" href="#messagesmessages-appendmessages">
 <code class="vis vis-public">public</code>
-<code class="sig">appendMessages( mixed $messages )</code>
+<code class="sig"><span class="sf">appendMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Appends an array of messages to the collection</span>
 </a>
 <a class="api-item" href="#messagesmessages-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">count()</code>
+<code class="sig"><span class="sf">count</span>()</code>
 <span class="desc">Returns the number of messages in the list</span>
 </a>
 <a class="api-item" href="#messagesmessages-current">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface</code>
-<code class="sig">current()</code>
+<code class="sig"><span class="sf">current</span>()</code>
 <span class="desc">Returns the current message in the iterator</span>
 </a>
 <a class="api-item" href="#messagesmessages-filter">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">filter( string $fieldName )</code>
+<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$fieldName</span> )</code>
 <span class="desc">Filters the message collection by field name</span>
 </a>
 <a class="api-item" href="#messagesmessages-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">jsonSerialize()</code>
+<code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Returns serialised message objects as array for json_encode. Calls</span>
 </a>
 <a class="api-item" href="#messagesmessages-key">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">key()</code>
+<code class="sig"><span class="sf">key</span>()</code>
 <span class="desc">Returns the current position/key in the iterator</span>
 </a>
 <a class="api-item" href="#messagesmessages-next">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">next()</code>
+<code class="sig"><span class="sf">next</span>()</code>
 <span class="desc">Moves the internal iteration pointer to the next position</span>
 </a>
 <a class="api-item" href="#messagesmessages-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $index )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
 <span class="desc">Checks if an index exists</span>
 </a>
 <a class="api-item" href="#messagesmessages-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $index )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
 <span class="desc">Gets an attribute a message using the array syntax</span>
 </a>
 <a class="api-item" href="#messagesmessages-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $offset,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets an attribute using the array-syntax</span>
 </a>
 <a class="api-item" href="#messagesmessages-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $index )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
 <span class="desc">Removes a message from the list</span>
 </a>
 <a class="api-item" href="#messagesmessages-rewind">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rewind()</code>
+<code class="sig"><span class="sf">rewind</span>()</code>
 <span class="desc">Rewinds the internal iterator</span>
 </a>
 <a class="api-item" href="#messagesmessages-valid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">valid()</code>
+<code class="sig"><span class="sf">valid</span>()</code>
 <span class="desc">Check if the current message in the iterator is valid</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$messages` `array`
-
--   `protected`{ .vis-protected } `$position = 0` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$messages</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
+</div>
 </div>
 
 ### Methods

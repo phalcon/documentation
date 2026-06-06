@@ -33,93 +33,91 @@ __Uses__ `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · 
 <a class="api-item" href="#annotationsadapterabstractadapter-get">
 <code class="vis vis-public">public</code>
 <code class="ret">Reflection</code>
-<code class="sig">get( mixed $className )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">mixed</span> <span class="sv">$className</span> )</code>
 <span class="desc">Parses or retrieves all the annotations found in a class</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getannotationslimit">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getAnnotationsLimit()</code>
+<code class="sig"><span class="sf">getAnnotationsLimit</span>()</code>
 <span class="desc">Returns the configured annotations-cache cap (0 = unlimited).</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getconstant">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection</code>
-<code class="sig">getConstant(
-    string $className,
-    string $constantName
-)</code>
+<code class="sig"><span class="sf">getConstant</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$constantName</span></span>)</code>
 <span class="desc">Returns the annotations found in a specific constant</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getconstants">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getConstants( string $className )</code>
+<code class="sig"><span class="sf">getConstants</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Returns the annotations found in all the class&#039; constants</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection</code>
-<code class="sig">getMethod(
-    string $className,
-    string $methodName
-)</code>
+<code class="sig"><span class="sf">getMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span></span>)</code>
 <span class="desc">Returns the annotations found in a specific method</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMethods( string $className )</code>
+<code class="sig"><span class="sf">getMethods</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Returns the annotations found in all the class&#039; methods</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getproperties">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getProperties( string $className )</code>
+<code class="sig"><span class="sf">getProperties</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Returns the annotations found in all the class&#039; properties</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getproperty">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection</code>
-<code class="sig">getProperty(
-    string $className,
-    string $propertyName
-)</code>
+<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$propertyName</span></span>)</code>
 <span class="desc">Returns the annotations found in a specific property</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-getreader">
 <code class="vis vis-public">public</code>
 <code class="ret">ReaderInterface</code>
-<code class="sig">getReader()</code>
+<code class="sig"><span class="sf">getReader</span>()</code>
 <span class="desc">Returns the annotation reader</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-setannotationslimit">
 <code class="vis vis-public">public</code>
-<code class="sig">setAnnotationsLimit( int $annotationsLimit )</code>
+<code class="sig"><span class="sf">setAnnotationsLimit</span>( <span class="st">int</span> <span class="sv">$annotationsLimit</span> )</code>
 <span class="desc">Caps the number of class entries retained in the annotations</span>
 </a>
 <a class="api-item" href="#annotationsadapterabstractadapter-setreader">
 <code class="vis vis-public">public</code>
-<code class="sig">setReader( ReaderInterface $reader )</code>
+<code class="sig"><span class="sf">setReader</span>( <span class="st">ReaderInterface</span> <span class="sv">$reader</span> )</code>
 <span class="desc">Sets the annotations parser</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$annotations = []` `array`
-
--   `protected`{ .vis-protected } `$annotationsLimit = 0` `int`
-
-    Maximum number of class annotation entries retained in the
-    in-memory cache. 0 (default) keeps the original unbounded
-    behavior; a positive value clears the cache when adding a new
-    class would exceed it.
-
--   `protected`{ .vis-protected } `$reader` `Reader`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$annotations</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$annotationsLimit</span><span class="sm"> = 0</span></code>
+<span class="desc">Maximum number of class annotation entries retained in the
+in-memory cache. 0 (default) keeps the original unbounded
+behavior; a positive value clears the cache when adding a new
+class would exceed it.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Reader</code>
+<code class="sig"><span class="sv">$reader</span></code>
+</div>
 </div>
 
 ### Methods
@@ -250,63 +248,54 @@ __Uses__ `Phalcon\Annotations\Collection` · `Phalcon\Annotations\ReaderInterfac
 <a class="api-item" href="#annotationsadapteradapterinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">Reflection</code>
-<code class="sig">get( string $className )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Parses or retrieves all the annotations found in a class</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-getconstant">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection</code>
-<code class="sig">getConstant(
-    string $className,
-    string $constantName
-)</code>
+<code class="sig"><span class="sf">getConstant</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$constantName</span></span>)</code>
 <span class="desc">Returns the annotations found in a specific constant</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-getconstants">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getConstants( string $className )</code>
+<code class="sig"><span class="sf">getConstants</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Returns the annotations found in all the class&#039; constants</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-getmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection</code>
-<code class="sig">getMethod(
-    string $className,
-    string $methodName
-)</code>
+<code class="sig"><span class="sf">getMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span></span>)</code>
 <span class="desc">Returns the annotations found in a specific method</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-getmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMethods( string $className )</code>
+<code class="sig"><span class="sf">getMethods</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Returns the annotations found in all the class&#039; methods</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-getproperties">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getProperties( string $className )</code>
+<code class="sig"><span class="sf">getProperties</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Returns the annotations found in all the class&#039; methods</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-getproperty">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection</code>
-<code class="sig">getProperty(
-    string $className,
-    string $propertyName
-)</code>
+<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$propertyName</span></span>)</code>
 <span class="desc">Returns the annotations found in a specific property</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-getreader">
 <code class="vis vis-public">public</code>
 <code class="ret">ReaderInterface</code>
-<code class="sig">getReader()</code>
+<code class="sig"><span class="sf">getReader</span>()</code>
 <span class="desc">Returns the annotation reader</span>
 </a>
 <a class="api-item" href="#annotationsadapteradapterinterface-setreader">
 <code class="vis vis-public">public</code>
-<code class="sig">setReader( ReaderInterface $reader )</code>
+<code class="sig"><span class="sf">setReader</span>( <span class="st">ReaderInterface</span> <span class="sv">$reader</span> )</code>
 <span class="desc">Sets the annotations parser</span>
 </a>
 </div>
@@ -425,34 +414,36 @@ __Uses__ `Phalcon\Annotations\Reflection`
 <div class="api-list">
 <a class="api-item" href="#annotationsadapterapcu-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Annotations\Adapter\Apcu constructor</span>
 </a>
 <a class="api-item" href="#annotationsadapterapcu-read">
 <code class="vis vis-public">public</code>
 <code class="ret">Reflection|bool</code>
-<code class="sig">read( string $key )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads parsed annotations from APCu</span>
 </a>
 <a class="api-item" href="#annotationsadapterapcu-write">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">write(
-    string $key,
-    Reflection $data
-)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">Reflection</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes parsed annotations to APCu</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$prefix = ""` `string`
-
--   `protected`{ .vis-protected } `$ttl = 172800` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$ttl</span><span class="sm"> = 172800</span></code>
+</div>
 </div>
 
 ### Methods
@@ -510,31 +501,30 @@ __Uses__ `Phalcon\Annotations\Reflection`
 <div class="api-list">
 <a class="api-item" href="#annotationsadaptermemory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 </a>
 <a class="api-item" href="#annotationsadaptermemory-read">
 <code class="vis vis-public">public</code>
 <code class="ret">Reflection|bool</code>
-<code class="sig">read( string $key )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads parsed annotations from memory</span>
 </a>
 <a class="api-item" href="#annotationsadaptermemory-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">write(
-    string $key,
-    Reflection $data
-)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">Reflection</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes parsed annotations to memory</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$data` `mixed`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$data</span></code>
+</div>
 </div>
 
 ### Methods
@@ -599,32 +589,31 @@ __Uses__ `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\Anno
 <div class="api-list">
 <a class="api-item" href="#annotationsadapterstream-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Annotations\Adapter\Stream constructor</span>
 </a>
 <a class="api-item" href="#annotationsadapterstream-read">
 <code class="vis vis-public">public</code>
 <code class="ret">Reflection|bool|int</code>
-<code class="sig">read( string $key )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads parsed annotations from files</span>
 </a>
 <a class="api-item" href="#annotationsadapterstream-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">write(
-    string $key,
-    Reflection $data
-)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">Reflection</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes parsed annotations to files</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$annotationsDir = "./"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$annotationsDir</span><span class="sm"> = &quot;./&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -680,81 +669,86 @@ __Uses__ `Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`
 <div class="api-list">
 <a class="api-item" href="#annotationsannotation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $reflectionData )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$reflectionData</span> )</code>
 <span class="desc">Phalcon\Annotations\Annotation constructor</span>
 </a>
 <a class="api-item" href="#annotationsannotation-getargument">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getArgument( mixed $position )</code>
+<code class="sig"><span class="sf">getArgument</span>( <span class="st">mixed</span> <span class="sv">$position</span> )</code>
 <span class="desc">Returns an argument in a specific position</span>
 </a>
 <a class="api-item" href="#annotationsannotation-getarguments">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getArguments()</code>
+<code class="sig"><span class="sf">getArguments</span>()</code>
 <span class="desc">Returns the expression arguments</span>
 </a>
 <a class="api-item" href="#annotationsannotation-getexprarguments">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getExprArguments()</code>
+<code class="sig"><span class="sf">getExprArguments</span>()</code>
 <span class="desc">Returns the expression arguments without resolving</span>
 </a>
 <a class="api-item" href="#annotationsannotation-getexpression">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getExpression( array $expr )</code>
+<code class="sig"><span class="sf">getExpression</span>( <span class="st">array</span> <span class="sv">$expr</span> )</code>
 <span class="desc">Resolves an annotation expression</span>
 </a>
 <a class="api-item" href="#annotationsannotation-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">null|string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the annotation&#039;s name</span>
 </a>
 <a class="api-item" href="#annotationsannotation-getnamedargument">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getNamedArgument( string $name )</code>
+<code class="sig"><span class="sf">getNamedArgument</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a named argument</span>
 </a>
 <a class="api-item" href="#annotationsannotation-getnamedparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getNamedParameter( string $name )</code>
+<code class="sig"><span class="sf">getNamedParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a named parameter</span>
 </a>
 <a class="api-item" href="#annotationsannotation-hasargument">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasArgument( mixed $position )</code>
+<code class="sig"><span class="sf">hasArgument</span>( <span class="st">mixed</span> <span class="sv">$position</span> )</code>
 <span class="desc">Returns an argument in a specific position</span>
 </a>
 <a class="api-item" href="#annotationsannotation-numberarguments">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">numberArguments()</code>
+<code class="sig"><span class="sf">numberArguments</span>()</code>
 <span class="desc">Returns the number of arguments that the annotation has</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments = []` `array`
-
-    Annotation Arguments
-
--   `protected`{ .vis-protected } `$exprArguments = []` `array`
-
-    Annotation ExprArguments
-
--   `protected`{ .vis-protected } `$name` `string|null`
-
-    Annotation Name
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
+<span class="desc">Annotation Arguments</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$exprArguments</span><span class="sm"> = []</span></code>
+<span class="desc">Annotation ExprArguments</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Annotation Name</span>
+</div>
 </div>
 
 ### Methods
@@ -865,33 +859,30 @@ __Uses__ `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Factory\Abst
 <div class="api-list">
 <a class="api-item" href="#annotationsannotationsfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $services = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 <span class="desc">AdapterFactory constructor.</span>
 </a>
 <a class="api-item" href="#annotationsannotationsfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">load( mixed $config )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#annotationsannotationsfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">newInstance(
-    string $name,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Create a new instance of the adapter</span>
 </a>
 <a class="api-item" href="#annotationsannotationsfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#annotationsannotationsfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
@@ -979,79 +970,84 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Annotations\Exceptions\Annotation
 <div class="api-list">
 <a class="api-item" href="#annotationscollection-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $reflectionData = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$reflectionData</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Annotations\Collection constructor</span>
 </a>
 <a class="api-item" href="#annotationscollection-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">count()</code>
+<code class="sig"><span class="sf">count</span>()</code>
 <span class="desc">Returns the number of annotations in the collection</span>
 </a>
 <a class="api-item" href="#annotationscollection-current">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">current()</code>
+<code class="sig"><span class="sf">current</span>()</code>
 <span class="desc">Returns the current annotation in the iterator</span>
 </a>
 <a class="api-item" href="#annotationscollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">Annotation</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns the first annotation that match a name</span>
 </a>
 <a class="api-item" href="#annotationscollection-getall">
 <code class="vis vis-public">public</code>
 <code class="ret">Annotation[]</code>
-<code class="sig">getAll( string $name )</code>
+<code class="sig"><span class="sf">getAll</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns all the annotations that match a name</span>
 </a>
 <a class="api-item" href="#annotationscollection-getannotations">
 <code class="vis vis-public">public</code>
 <code class="ret">Annotation[]</code>
-<code class="sig">getAnnotations()</code>
+<code class="sig"><span class="sf">getAnnotations</span>()</code>
 <span class="desc">Returns the internal annotations as an array</span>
 </a>
 <a class="api-item" href="#annotationscollection-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check if an annotation exists in a collection</span>
 </a>
 <a class="api-item" href="#annotationscollection-key">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">key()</code>
+<code class="sig"><span class="sf">key</span>()</code>
 <span class="desc">Returns the current position/key in the iterator</span>
 </a>
 <a class="api-item" href="#annotationscollection-next">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">next()</code>
+<code class="sig"><span class="sf">next</span>()</code>
 <span class="desc">Moves the internal iteration pointer to the next position</span>
 </a>
 <a class="api-item" href="#annotationscollection-rewind">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rewind()</code>
+<code class="sig"><span class="sf">rewind</span>()</code>
 <span class="desc">Rewinds the internal iterator</span>
 </a>
 <a class="api-item" href="#annotationscollection-valid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">valid()</code>
+<code class="sig"><span class="sf">valid</span>()</code>
 <span class="desc">Check if the current annotation in the iterator is valid</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$annotations` `array`
-
--   `protected`{ .vis-protected } `$position = 0` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$annotations</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1193,7 +1189,7 @@ __Uses__ `Phalcon\Annotations\Exception`
 <div class="api-list">
 <a class="api-item" href="#annotationsexceptionsannotationnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -1236,7 +1232,7 @@ __Uses__ `Phalcon\Annotations\Exception`
 <div class="api-list">
 <a class="api-item" href="#annotationsexceptionsannotationsdirectorynotwritable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1278,7 +1274,7 @@ __Uses__ `RuntimeException`
 <div class="api-list">
 <a class="api-item" href="#annotationsexceptionscannotreadannotationdata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1321,7 +1317,7 @@ __Uses__ `Phalcon\Annotations\Exception`
 <div class="api-list">
 <a class="api-item" href="#annotationsexceptionsunknownannotationexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -1358,17 +1354,13 @@ __Uses__ `ReflectionClass`
 <a class="api-item" href="#annotationsreader-parse">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parse( string $className )</code>
+<code class="sig"><span class="sf">parse</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Reads annotations from the class docblocks, its methods and/or properties</span>
 </a>
 <a class="api-item" href="#annotationsreader-parsedocblock">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parseDocBlock(
-    string $docBlock,
-    mixed $file = null,
-    mixed $line = null
-)</code>
+<code class="sig"><span class="sf">parseDocBlock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$docBlock</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$line</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Parses a raw doc block returning the annotations found</span>
 </a>
 </div>
@@ -1417,17 +1409,13 @@ Parses docblocks returning an array with the found annotations
 <a class="api-item" href="#annotationsreaderinterface-parse">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parse( string $className )</code>
+<code class="sig"><span class="sf">parse</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Reads annotations from the class docblocks, its constants, properties and methods</span>
 </a>
 <a class="api-item" href="#annotationsreaderinterface-parsedocblock">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parseDocBlock(
-    string $docBlock,
-    mixed $file = null,
-    mixed $line = null
-)</code>
+<code class="sig"><span class="sf">parseDocBlock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$docBlock</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$line</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Parses a raw docblock returning the annotations found</span>
 </a>
 </div>
@@ -1490,54 +1478,68 @@ $classAnnotations = $reflection->getClassAnnotations();
 <div class="api-list">
 <a class="api-item" href="#annotationsreflection-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $reflectionData = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$reflectionData</span><span class="sm"> = []</span> )</code>
 </a>
 <a class="api-item" href="#annotationsreflection-getclassannotations">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection|null</code>
-<code class="sig">getClassAnnotations()</code>
+<code class="sig"><span class="sf">getClassAnnotations</span>()</code>
 <span class="desc">Returns the annotations found in the class docblock</span>
 </a>
 <a class="api-item" href="#annotationsreflection-getconstantsannotations">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection[]</code>
-<code class="sig">getConstantsAnnotations()</code>
+<code class="sig"><span class="sf">getConstantsAnnotations</span>()</code>
 <span class="desc">Returns the annotations found in the constants&#039; docblocks</span>
 </a>
 <a class="api-item" href="#annotationsreflection-getmethodsannotations">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection[]</code>
-<code class="sig">getMethodsAnnotations()</code>
+<code class="sig"><span class="sf">getMethodsAnnotations</span>()</code>
 <span class="desc">Returns the annotations found in the methods&#039; docblocks</span>
 </a>
 <a class="api-item" href="#annotationsreflection-getpropertiesannotations">
 <code class="vis vis-public">public</code>
 <code class="ret">Collection[]</code>
-<code class="sig">getPropertiesAnnotations()</code>
+<code class="sig"><span class="sf">getPropertiesAnnotations</span>()</code>
 <span class="desc">Returns the annotations found in the properties&#039; docblocks</span>
 </a>
 <a class="api-item" href="#annotationsreflection-getreflectiondata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getReflectionData()</code>
+<code class="sig"><span class="sf">getReflectionData</span>()</code>
 <span class="desc">Returns the raw parsing intermediate definitions used to construct the</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$classAnnotations = null` `Collection|null`
-
--   `protected`{ .vis-protected } `$constantAnnotations = []` `array`
-
--   `protected`{ .vis-protected } `$methodAnnotations = []` `array`
-
--   `protected`{ .vis-protected } `$propertyAnnotations = []` `array`
-
--   `protected`{ .vis-protected } `$reflectionData = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Collection|null</code>
+<code class="sig"><span class="sv">$classAnnotations</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$constantAnnotations</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$methodAnnotations</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$propertyAnnotations</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$reflectionData</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods

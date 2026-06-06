@@ -40,7 +40,7 @@ __Uses__ `DateTimeImmutable`
 <a class="api-item" href="#timeclockclockinterface-now">
 <code class="vis vis-public">public</code>
 <code class="ret">DateTimeImmutable</code>
-<code class="sig">now()</code>
+<code class="sig"><span class="sf">now</span>()</code>
 </a>
 </div>
 
@@ -114,10 +114,7 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 <div class="api-list">
 <a class="api-item" href="#timeclockexceptionsinvalidmodifier-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $message,
-    Throwable $ex = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -166,36 +163,36 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Phalcon\Time\Clock\Exceptions
 <div class="api-list">
 <a class="api-item" href="#timeclockfrozenclock-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( DateTimeImmutable $now )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DateTimeImmutable</span> <span class="sv">$now</span> )</code>
 </a>
 <a class="api-item" href="#timeclockfrozenclock-adjust">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">adjust( string $modifier )</code>
+<code class="sig"><span class="sf">adjust</span>( <span class="st">string</span> <span class="sv">$modifier</span> )</code>
 <span class="desc">Mutates the clock to a new value. All consumers receive the same modification</span>
 </a>
 <a class="api-item" href="#timeclockfrozenclock-fromsystemtimezone">
 <code class="vis vis-public">public</code>
 <code class="ret">FrozenClock</code>
-<code class="sig">fromSystemTimezone()</code>
+<code class="sig"><span class="sf">fromSystemTimezone</span>()</code>
 <span class="desc">Return a new object of now with the current timezone</span>
 </a>
 <a class="api-item" href="#timeclockfrozenclock-fromutc">
 <code class="vis vis-public">public</code>
 <code class="ret">FrozenClock</code>
-<code class="sig">fromUTC()</code>
+<code class="sig"><span class="sf">fromUTC</span>()</code>
 <span class="desc">Return a new object of now with UTC</span>
 </a>
 <a class="api-item" href="#timeclockfrozenclock-now">
 <code class="vis vis-public">public</code>
 <code class="ret">DateTimeImmutable</code>
-<code class="sig">now()</code>
+<code class="sig"><span class="sf">now</span>()</code>
 <span class="desc">Return the current clock</span>
 </a>
 <a class="api-item" href="#timeclockfrozenclock-set">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">set( DateTimeImmutable $now )</code>
+<code class="sig"><span class="sf">set</span>( <span class="st">DateTimeImmutable</span> <span class="sv">$now</span> )</code>
 <span class="desc">Sets the clock to a new value. All consumers receive the same modification</span>
 </a>
 </div>
@@ -282,24 +279,24 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone`
 <div class="api-list">
 <a class="api-item" href="#timeclocksystemclock-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( DateTimeZone $timezone )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DateTimeZone</span> <span class="sv">$timezone</span> )</code>
 </a>
 <a class="api-item" href="#timeclocksystemclock-fromsystemtimezone">
 <code class="vis vis-public">public</code>
 <code class="ret">SystemClock</code>
-<code class="sig">fromSystemTimezone()</code>
+<code class="sig"><span class="sf">fromSystemTimezone</span>()</code>
 <span class="desc">Return a new object of now with the current timezone</span>
 </a>
 <a class="api-item" href="#timeclocksystemclock-fromutc">
 <code class="vis vis-public">public</code>
 <code class="ret">SystemClock</code>
-<code class="sig">fromUTC()</code>
+<code class="sig"><span class="sf">fromUTC</span>()</code>
 <span class="desc">Return a new object of now with UTC</span>
 </a>
 <a class="api-item" href="#timeclocksystemclock-now">
 <code class="vis vis-public">public</code>
 <code class="ret">DateTimeImmutable</code>
-<code class="sig">now()</code>
+<code class="sig"><span class="sf">now</span>()</code>
 <span class="desc">Return the current clock</span>
 </a>
 </div>

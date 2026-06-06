@@ -35,314 +35,370 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <div class="api-list">
 <a class="api-item" href="#dispatcherabstractdispatcher-callactionmethod">
 <code class="vis vis-public">public</code>
-<code class="sig">callActionMethod(
-    mixed $handler,
-    string $actionMethod,
-    array $params = []
-)</code>
+<code class="sig"><span class="sf">callActionMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionMethod</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-dispatch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|bool</code>
-<code class="sig">dispatch()</code>
+<code class="sig"><span class="sf">dispatch</span>()</code>
 <span class="desc">Process the results of the router by calling into the appropriate</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-forward">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">forward( array $forward )</code>
+<code class="sig"><span class="sf">forward</span>( <span class="st">array</span> <span class="sv">$forward</span> )</code>
 <span class="desc">Forwards the execution flow to another controller/action.</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Gets the latest dispatched action name</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getactionsuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionSuffix()</code>
+<code class="sig"><span class="sf">getActionSuffix</span>()</code>
 <span class="desc">Gets the default action suffix</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getactivemethod">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActiveMethod()</code>
+<code class="sig"><span class="sf">getActiveMethod</span>()</code>
 <span class="desc">Returns the current method to be/executed in the dispatcher</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getboundmodels">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBoundModels()</code>
+<code class="sig"><span class="sf">getBoundModels</span>()</code>
 <span class="desc">Returns bound models from binder instance</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getdefaultnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDefaultNamespace()</code>
+<code class="sig"><span class="sf">getDefaultNamespace</span>()</code>
 <span class="desc">Returns the default namespace</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-gethandlerclass">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHandlerClass()</code>
+<code class="sig"><span class="sf">getHandlerClass</span>()</code>
 <span class="desc">Possible class name that will be located to dispatch the request</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-gethandlersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHandlerSuffix()</code>
+<code class="sig"><span class="sf">getHandlerSuffix</span>()</code>
 <span class="desc">Gets the default handler suffix</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getmodelbinder">
 <code class="vis vis-public">public</code>
 <code class="ret">BinderInterface|null</code>
-<code class="sig">getModelBinder()</code>
+<code class="sig"><span class="sf">getModelBinder</span>()</code>
 <span class="desc">Gets model binder</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getModuleName()</code>
+<code class="sig"><span class="sf">getModuleName</span>()</code>
 <span class="desc">Gets the module where the controller class is</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getnamespacename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getNamespaceName()</code>
+<code class="sig"><span class="sf">getNamespaceName</span>()</code>
 <span class="desc">Gets a namespace to be prepended to the current handler name</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparam">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getParam(
-    mixed $param,
-    mixed $filters = null,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getParameter(
-    mixed $param,
-    mixed $filters = null,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparameters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParameters()</code>
+<code class="sig"><span class="sf">getParameters</span>()</code>
 <span class="desc">Gets action params</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Gets action params</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getreturnedvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getReturnedValue()</code>
+<code class="sig"><span class="sf">getReturnedValue</span>()</code>
 <span class="desc">Returns value returned by the latest dispatched action</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-hasparam">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasParam( mixed $param )</code>
+<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-hasparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasParameter( mixed $param )</code>
+<code class="sig"><span class="sf">hasParameter</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-isfinished">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isFinished()</code>
+<code class="sig"><span class="sf">isFinished</span>()</code>
 <span class="desc">Checks if the dispatch loop is finished or has more pendent</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setActionName( string $actionName )</code>
+<code class="sig"><span class="sf">setActionName</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the action name to be dispatched</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setactionsuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setActionSuffix( string $actionSuffix )</code>
+<code class="sig"><span class="sf">setActionSuffix</span>( <span class="st">string</span> <span class="sv">$actionSuffix</span> )</code>
 <span class="desc">Sets the default action suffix</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setdefaultaction">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefaultAction( string $actionName )</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the default action name</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setdefaultnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefaultNamespace( string $defaultNamespace )</code>
+<code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$defaultNamespace</span> )</code>
 <span class="desc">Sets the default namespace</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-sethandlersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setHandlerSuffix( string $handlerSuffix )</code>
+<code class="sig"><span class="sf">setHandlerSuffix</span>( <span class="st">string</span> <span class="sv">$handlerSuffix</span> )</code>
 <span class="desc">Sets the default suffix for the handler</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setmodelbinder">
 <code class="vis vis-public">public</code>
 <code class="ret">DispatcherInterface</code>
-<code class="sig">setModelBinder(
-    BinderInterface $modelBinder,
-    mixed $cache = null
-)</code>
+<code class="sig"><span class="sf">setModelBinder</span>(<span class="prm"><span class="st">BinderInterface</span> <span class="sv">$modelBinder</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Enable model binding during dispatch</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setModuleName( string $moduleName = null )</code>
+<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the module where the controller is (only informative)</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setnamespacename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setNamespaceName( string $namespaceName )</code>
+<code class="sig"><span class="sf">setNamespaceName</span>( <span class="st">string</span> <span class="sv">$namespaceName</span> )</code>
 <span class="desc">Sets the namespace where the controller class is</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparam">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setParam(
-    mixed $param,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setParameter(
-    mixed $param,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparameters">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setParameters( array $params )</code>
+<code class="sig"><span class="sf">setParameters</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
 <span class="desc">Sets action params to be dispatched</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setparams">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setParams( array $params )</code>
+<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
 <span class="desc">Sets action params to be dispatched</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-setreturnedvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setReturnedValue( mixed $value )</code>
+<code class="sig"><span class="sf">setReturnedValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Sets the latest returned value by an action manually</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-wasforwarded">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">wasForwarded()</code>
+<code class="sig"><span class="sf">wasForwarded</span>()</code>
 <span class="desc">Check if the current executed action was forwarded by another one</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-resolveemptyproperties">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">resolveEmptyProperties()</code>
+<code class="sig"><span class="sf">resolveEmptyProperties</span>()</code>
 <span class="desc">Set empty properties to their defaults (where defaults are available)</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-tocamelcase">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">toCamelCase( string $input )</code>
+<code class="sig"><span class="sf">toCamelCase</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$actionName = ""` `string`
-
--   `protected`{ .vis-protected } `$actionSuffix = "Action"` `string`
-
--   `protected`{ .vis-protected } `$activeHandler = null` `object|null`
-
--   `protected`{ .vis-protected } `$activeMethodMap = []` `array`
-
--   `protected`{ .vis-protected } `$camelCaseMap = []` `array`
-
--   `protected`{ .vis-protected } `$defaultAction = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultHandler = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultNamespace = ""` `string`
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$finished = false` `bool`
-
--   `protected`{ .vis-protected } `$forwarded = false` `bool`
-
--   `protected`{ .vis-protected } `$handlerHashes = []` `array`
-
--   `protected`{ .vis-protected } `$handlerHookCache = []` `array`
-
--   `protected`{ .vis-protected } `$handlerName = ""` `string`
-
--   `protected`{ .vis-protected } `$handlerSuffix = ""` `string`
-
--   `protected`{ .vis-protected } `$isControllerInitialize = false` `bool`
-
--   `protected`{ .vis-protected } `$lastHandler = null` `mixed|null`
-
--   `protected`{ .vis-protected } `$modelBinder = null` `BinderInterface|null`
-
--   `protected`{ .vis-protected } `$modelBinding = false` `bool`
-
--   `protected`{ .vis-protected } `$moduleName = ""` `string`
-
--   `protected`{ .vis-protected } `$namespaceName = ""` `string`
-
--   `protected`{ .vis-protected } `$params = []` `array`
-
--   `protected`{ .vis-protected } `$previousActionName = ""` `string|null`
-
--   `protected`{ .vis-protected } `$previousHandlerName = ""` `string|null`
-
--   `protected`{ .vis-protected } `$previousNamespaceName = ""` `string|null`
-
--   `protected`{ .vis-protected } `$returnedValue = null` `string|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$actionName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$actionSuffix</span><span class="sm"> = &quot;Action&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object|null</code>
+<code class="sig"><span class="sv">$activeHandler</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$activeMethodMap</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$camelCaseMap</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultAction</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultHandler</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultNamespace</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$finished</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forwarded</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$handlerHashes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$handlerHookCache</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$handlerName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$handlerSuffix</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isControllerInitialize</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$lastHandler</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">BinderInterface|null</code>
+<code class="sig"><span class="sv">$modelBinder</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$modelBinding</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$moduleName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$namespaceName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$params</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$previousActionName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$previousHandlerName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$previousNamespaceName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$returnedValue</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -747,136 +803,127 @@ Interface for Phalcon\Dispatcher\AbstractDispatcher
 <a class="api-item" href="#dispatcherdispatcherinterface-dispatch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|bool</code>
-<code class="sig">dispatch()</code>
+<code class="sig"><span class="sf">dispatch</span>()</code>
 <span class="desc">Dispatches a handle action taking into account the routing parameters</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-forward">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">forward( array $forward )</code>
+<code class="sig"><span class="sf">forward</span>( <span class="st">array</span> <span class="sv">$forward</span> )</code>
 <span class="desc">Forwards the execution flow to another controller/action</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Gets last dispatched action name</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-getactionsuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionSuffix()</code>
+<code class="sig"><span class="sf">getActionSuffix</span>()</code>
 <span class="desc">Gets the default action suffix</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-gethandlersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHandlerSuffix()</code>
+<code class="sig"><span class="sf">getHandlerSuffix</span>()</code>
 <span class="desc">Gets the default handler suffix</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-getparam">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getParam(
-    mixed $param,
-    mixed $filters = null
-)</code>
+<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getParameter(
-    mixed $param,
-    mixed $filters = null
-)</code>
+<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-getparameters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParameters()</code>
+<code class="sig"><span class="sf">getParameters</span>()</code>
 <span class="desc">Gets action params</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Gets action params</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-getreturnedvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getReturnedValue()</code>
+<code class="sig"><span class="sf">getReturnedValue</span>()</code>
 <span class="desc">Returns value returned by the latest dispatched action</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-hasparam">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasParam( mixed $param )</code>
+<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
 <span class="desc">Check if a param exists</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-isfinished">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isFinished()</code>
+<code class="sig"><span class="sf">isFinished</span>()</code>
 <span class="desc">Checks if the dispatch loop is finished or has more pendent</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setActionName( string $actionName )</code>
+<code class="sig"><span class="sf">setActionName</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the action name to be dispatched</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setactionsuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setActionSuffix( string $actionSuffix )</code>
+<code class="sig"><span class="sf">setActionSuffix</span>( <span class="st">string</span> <span class="sv">$actionSuffix</span> )</code>
 <span class="desc">Sets the default action suffix</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setdefaultaction">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefaultAction( string $actionName )</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the default action name</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setdefaultnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefaultNamespace( string $defaultNamespace )</code>
+<code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$defaultNamespace</span> )</code>
 <span class="desc">Sets the default namespace</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-sethandlersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setHandlerSuffix( string $handlerSuffix )</code>
+<code class="sig"><span class="sf">setHandlerSuffix</span>( <span class="st">string</span> <span class="sv">$handlerSuffix</span> )</code>
 <span class="desc">Sets the default suffix for the handler</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setModuleName( string $moduleName = null )</code>
+<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the module name which the application belongs to</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setnamespacename">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setNamespaceName( string $namespaceName )</code>
+<code class="sig"><span class="sf">setNamespaceName</span>( <span class="st">string</span> <span class="sv">$namespaceName</span> )</code>
 <span class="desc">Sets the namespace which the controller belongs to</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setparam">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setParam(
-    mixed $param,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a param by its name or numeric index</span>
 </a>
 <a class="api-item" href="#dispatcherdispatcherinterface-setparams">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setParams( array $params )</code>
+<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
 <span class="desc">Sets action params to be dispatched</span>
 </a>
 </div>
@@ -1083,20 +1130,31 @@ Exceptions thrown in Phalcon\Dispatcher/* will use this class
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `EXCEPTION_ACTION_NOT_FOUND = 5` `int`
-
--   `EXCEPTION_CYCLIC_ROUTING = 1` `int`
-
--   `EXCEPTION_HANDLER_NOT_FOUND = 2` `int`
-
--   `EXCEPTION_INVALID_HANDLER = 3` `int`
-
--   `EXCEPTION_INVALID_PARAMS = 4` `int`
-
--   `EXCEPTION_NO_DI = 0` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EXCEPTION_ACTION_NOT_FOUND</span><span class="sm"> = 5</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EXCEPTION_CYCLIC_ROUTING</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EXCEPTION_HANDLER_NOT_FOUND</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EXCEPTION_INVALID_HANDLER</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EXCEPTION_INVALID_PARAMS</span><span class="sm"> = 4</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">EXCEPTION_NO_DI</span><span class="sm"> = 0</span></code>
+</div>
 </div>
 
 
@@ -1128,7 +1186,7 @@ __Uses__ `Phalcon\Dispatcher\Exception`
 <div class="api-list">
 <a class="api-item" href="#dispatcherexceptionsforwardininitializeforbidden-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 

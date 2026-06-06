@@ -32,29 +32,30 @@ __Uses__ `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Excep
 <div class="api-list">
 <a class="api-item" href="#cliconsole-handle">
 <code class="vis vis-public">public</code>
-<code class="sig">handle( array $arguments = null )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
 <span class="desc">Handle the whole command-line tasks</span>
 </a>
 <a class="api-item" href="#cliconsole-setargument">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setArgument(
-    array $arguments = null,
-    bool $str = true,
-    bool $shift = true
-)</code>
+<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$str</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$shift</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Set an specific argument</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments = []` `array`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -131,7 +132,7 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 <div class="api-list">
 <a class="api-item" href="#cliconsoleexceptionsconsolemodulenotregistered-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $moduleName )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$moduleName</span> )</code>
 </a>
 </div>
 
@@ -175,7 +176,7 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 <div class="api-list">
 <a class="api-item" href="#cliconsoleexceptionscontainerrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -219,7 +220,7 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 <div class="api-list">
 <a class="api-item" href="#cliconsoleexceptionsinvalidmoduledefinitionpath-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -263,7 +264,7 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 <div class="api-list">
 <a class="api-item" href="#cliconsoleexceptionsmoduledefinitionpathnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $path )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 </a>
 </div>
 
@@ -322,110 +323,110 @@ __Uses__ `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Dispatcher\AbstractDispa
 <a class="api-item" href="#clidispatcher-callactionmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">callActionMethod(
-    mixed $handler,
-    string $actionMethod,
-    array $params = []
-)</code>
+<code class="sig"><span class="sf">callActionMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionMethod</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Calls the action method.</span>
 </a>
 <a class="api-item" href="#clidispatcher-getactivetask">
 <code class="vis vis-public">public</code>
 <code class="ret">TaskInterface</code>
-<code class="sig">getActiveTask()</code>
+<code class="sig"><span class="sf">getActiveTask</span>()</code>
 <span class="desc">Returns the active task in the dispatcher</span>
 </a>
 <a class="api-item" href="#clidispatcher-getlasttask">
 <code class="vis vis-public">public</code>
 <code class="ret">TaskInterface</code>
-<code class="sig">getLastTask()</code>
+<code class="sig"><span class="sf">getLastTask</span>()</code>
 <span class="desc">Returns the latest dispatched controller</span>
 </a>
 <a class="api-item" href="#clidispatcher-getoption">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getOption(
-    mixed $option,
-    mixed $filters = null,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets an option by its name or numeric index</span>
 </a>
 <a class="api-item" href="#clidispatcher-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Get dispatched options</span>
 </a>
 <a class="api-item" href="#clidispatcher-gettaskname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTaskName()</code>
+<code class="sig"><span class="sf">getTaskName</span>()</code>
 <span class="desc">Gets last dispatched task name</span>
 </a>
 <a class="api-item" href="#clidispatcher-gettasksuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTaskSuffix()</code>
+<code class="sig"><span class="sf">getTaskSuffix</span>()</code>
 <span class="desc">Gets the default task suffix</span>
 </a>
 <a class="api-item" href="#clidispatcher-hasoption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasOption( mixed $option )</code>
+<code class="sig"><span class="sf">hasOption</span>( <span class="st">mixed</span> <span class="sv">$option</span> )</code>
 <span class="desc">Check if an option exists</span>
 </a>
 <a class="api-item" href="#clidispatcher-setdefaulttask">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefaultTask( string $taskName )</code>
+<code class="sig"><span class="sf">setDefaultTask</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
 <span class="desc">Sets the default task name</span>
 </a>
 <a class="api-item" href="#clidispatcher-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Set the options to be dispatched</span>
 </a>
 <a class="api-item" href="#clidispatcher-settaskname">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setTaskName( string $taskName )</code>
+<code class="sig"><span class="sf">setTaskName</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
 <span class="desc">Sets the task name to be dispatched</span>
 </a>
 <a class="api-item" href="#clidispatcher-settasksuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setTaskSuffix( string $taskSuffix )</code>
+<code class="sig"><span class="sf">setTaskSuffix</span>( <span class="st">string</span> <span class="sv">$taskSuffix</span> )</code>
 <span class="desc">Sets the default task suffix</span>
 </a>
 <a class="api-item" href="#clidispatcher-handleexception">
 <code class="vis vis-protected">protected</code>
-<code class="sig">handleException( \Exception $exception )</code>
+<code class="sig"><span class="sf">handleException</span>( <span class="st">\Exception</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Handles a user exception</span>
 </a>
 <a class="api-item" href="#clidispatcher-throwdispatchexception">
 <code class="vis vis-protected">protected</code>
-<code class="sig">throwDispatchException(
-    string $message,
-    int $exceptionCode = 0
-)</code>
+<code class="sig"><span class="sf">throwDispatchException</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$exceptionCode</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Throws an internal exception</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$defaultAction = "main"` `string`
-
--   `protected`{ .vis-protected } `$defaultHandler = "main"` `string`
-
--   `protected`{ .vis-protected } `$handlerSuffix = "Task"` `string`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultAction</span><span class="sm"> = &quot;main&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultHandler</span><span class="sm"> = &quot;main&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$handlerSuffix</span><span class="sm"> = &quot;Task&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -581,55 +582,55 @@ __Uses__ `Phalcon\Dispatcher\DispatcherInterface`
 <a class="api-item" href="#clidispatcherinterface-getactivetask">
 <code class="vis vis-public">public</code>
 <code class="ret">TaskInterface</code>
-<code class="sig">getActiveTask()</code>
+<code class="sig"><span class="sf">getActiveTask</span>()</code>
 <span class="desc">Returns the active task in the dispatcher</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-getlasttask">
 <code class="vis vis-public">public</code>
 <code class="ret">TaskInterface</code>
-<code class="sig">getLastTask()</code>
+<code class="sig"><span class="sf">getLastTask</span>()</code>
 <span class="desc">Returns the latest dispatched controller</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Get dispatched options</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-gettaskname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTaskName()</code>
+<code class="sig"><span class="sf">getTaskName</span>()</code>
 <span class="desc">Gets last dispatched task name</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-gettasksuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTaskSuffix()</code>
+<code class="sig"><span class="sf">getTaskSuffix</span>()</code>
 <span class="desc">Gets default task suffix</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-setdefaulttask">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefaultTask( string $taskName )</code>
+<code class="sig"><span class="sf">setDefaultTask</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
 <span class="desc">Sets the default task name</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Set the options to be dispatched</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-settaskname">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setTaskName( string $taskName )</code>
+<code class="sig"><span class="sf">setTaskName</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
 <span class="desc">Sets the task name to be dispatched</span>
 </a>
 <a class="api-item" href="#clidispatcherinterface-settasksuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setTaskSuffix( string $taskSuffix )</code>
+<code class="sig"><span class="sf">setTaskSuffix</span>( <span class="st">string</span> <span class="sv">$taskSuffix</span> )</code>
 <span class="desc">Sets the default task suffix</span>
 </a>
 </div>
@@ -767,143 +768,175 @@ __Uses__ `Phalcon\Cli\Router\Exception` · `Phalcon\Cli\Router\Exceptions\Before
 <div class="api-list">
 <a class="api-item" href="#clirouter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( bool $defaultRoutes = true )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">bool</span> <span class="sv">$defaultRoutes</span><span class="sm"> = true</span> )</code>
 <span class="desc">Phalcon\Cli\Router constructor</span>
 </a>
 <a class="api-item" href="#clirouter-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">add(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router</span>
 </a>
 <a class="api-item" href="#clirouter-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Returns processed action name</span>
 </a>
 <a class="api-item" href="#clirouter-getmatchedroute">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|null</code>
-<code class="sig">getMatchedRoute()</code>
+<code class="sig"><span class="sf">getMatchedRoute</span>()</code>
 <span class="desc">Returns the route that matches the handled URI</span>
 </a>
 <a class="api-item" href="#clirouter-getmatches">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMatches()</code>
+<code class="sig"><span class="sf">getMatches</span>()</code>
 <span class="desc">Returns the sub expressions in the regular expression matched</span>
 </a>
 <a class="api-item" href="#clirouter-getmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModuleName()</code>
+<code class="sig"><span class="sf">getModuleName</span>()</code>
 <span class="desc">Returns processed module name</span>
 </a>
 <a class="api-item" href="#clirouter-getparameters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParameters()</code>
+<code class="sig"><span class="sf">getParameters</span>()</code>
 <span class="desc">Returns processed extra params</span>
 </a>
 <a class="api-item" href="#clirouter-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns processed extra params</span>
 </a>
 <a class="api-item" href="#clirouter-getroutebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteById( mixed $id )</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#clirouter-getroutebyname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteByName( string $name )</code>
+<code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#clirouter-getroutes">
 <code class="vis vis-public">public</code>
 <code class="ret">Route[]</code>
-<code class="sig">getRoutes()</code>
+<code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns all the routes defined in the router</span>
 </a>
 <a class="api-item" href="#clirouter-gettaskname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTaskName()</code>
+<code class="sig"><span class="sf">getTaskName</span>()</code>
 <span class="desc">Returns processed task name</span>
 </a>
 <a class="api-item" href="#clirouter-handle">
 <code class="vis vis-public">public</code>
-<code class="sig">handle( mixed $arguments = null )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
 <span class="desc">Handles routing information received from command-line arguments</span>
 </a>
 <a class="api-item" href="#clirouter-setdefaultaction">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultAction( string $actionName )</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the default action name</span>
 </a>
 <a class="api-item" href="#clirouter-setdefaultmodule">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultModule( string $moduleName )</code>
+<code class="sig"><span class="sf">setDefaultModule</span>( <span class="st">string</span> <span class="sv">$moduleName</span> )</code>
 <span class="desc">Sets the name of the default module</span>
 </a>
 <a class="api-item" href="#clirouter-setdefaulttask">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultTask( string $taskName )</code>
+<code class="sig"><span class="sf">setDefaultTask</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
 <span class="desc">Sets the default controller name</span>
 </a>
 <a class="api-item" href="#clirouter-setdefaults">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaults( array $defaults )</code>
+<code class="sig"><span class="sf">setDefaults</span>( <span class="st">array</span> <span class="sv">$defaults</span> )</code>
 <span class="desc">Sets an array of default paths. If a route is missing a path the router</span>
 </a>
 <a class="api-item" href="#clirouter-wasmatched">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">wasMatched()</code>
+<code class="sig"><span class="sf">wasMatched</span>()</code>
 <span class="desc">Checks if the router matches any of the defined routes</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$action = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultAction = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultModule = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultParams = []` `array`
-
--   `protected`{ .vis-protected } `$defaultTask = ""` `string`
-
--   `protected`{ .vis-protected } `$matchedRoute = null` `RouteInterface|null`
-
--   `protected`{ .vis-protected } `$matches = []` `array`
-
--   `protected`{ .vis-protected } `$module = ""` `string`
-
--   `protected`{ .vis-protected } `$params = []` `array`
-
--   `protected`{ .vis-protected } `$routes = []` `array`
-
--   `protected`{ .vis-protected } `$task = ""` `string`
-
--   `protected`{ .vis-protected } `$wasMatched = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$action</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultAction</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultModule</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$defaultParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultTask</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">RouteInterface|null</code>
+<code class="sig"><span class="sv">$matchedRoute</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$matches</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$module</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$params</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$routes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$task</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$wasMatched</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1097,105 +1130,102 @@ __Uses__ `Phalcon\Cli\Router\RouteInterface`
 <a class="api-item" href="#clirouterinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">add(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Returns processed action name</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getmatchedroute">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|null</code>
-<code class="sig">getMatchedRoute()</code>
+<code class="sig"><span class="sf">getMatchedRoute</span>()</code>
 <span class="desc">Returns the route that matches the handled URI</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getmatches">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMatches()</code>
+<code class="sig"><span class="sf">getMatches</span>()</code>
 <span class="desc">Return the sub expressions in the regular expression matched</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModuleName()</code>
+<code class="sig"><span class="sf">getModuleName</span>()</code>
 <span class="desc">Returns processed module name</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getparameters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParameters()</code>
+<code class="sig"><span class="sf">getParameters</span>()</code>
 <span class="desc">Returns processed extra params</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns processed extra params</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getroutebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteById( mixed $id )</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getroutebyname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteByName( string $name )</code>
+<code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#clirouterinterface-getroutes">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface[]</code>
-<code class="sig">getRoutes()</code>
+<code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Return all the routes defined in the router</span>
 </a>
 <a class="api-item" href="#clirouterinterface-gettaskname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTaskName()</code>
+<code class="sig"><span class="sf">getTaskName</span>()</code>
 <span class="desc">Returns processed task name</span>
 </a>
 <a class="api-item" href="#clirouterinterface-handle">
 <code class="vis vis-public">public</code>
-<code class="sig">handle( mixed $arguments = null )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
 <span class="desc">Handles routing information received from the rewrite engine</span>
 </a>
 <a class="api-item" href="#clirouterinterface-setdefaultaction">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaultAction( string $actionName )</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the default action name</span>
 </a>
 <a class="api-item" href="#clirouterinterface-setdefaultmodule">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaultModule( string $moduleName )</code>
+<code class="sig"><span class="sf">setDefaultModule</span>( <span class="st">string</span> <span class="sv">$moduleName</span> )</code>
 <span class="desc">Sets the name of the default module</span>
 </a>
 <a class="api-item" href="#clirouterinterface-setdefaulttask">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaultTask( string $taskName )</code>
+<code class="sig"><span class="sf">setDefaultTask</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
 <span class="desc">Sets the default task name</span>
 </a>
 <a class="api-item" href="#clirouterinterface-setdefaults">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaults( array $defaults )</code>
+<code class="sig"><span class="sf">setDefaults</span>( <span class="st">array</span> <span class="sv">$defaults</span> )</code>
 <span class="desc">Sets an array of default paths</span>
 </a>
 <a class="api-item" href="#clirouterinterface-wasmatched">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">wasMatched()</code>
+<code class="sig"><span class="sf">wasMatched</span>()</code>
 <span class="desc">Check if the router matches any of the defined routes</span>
 </a>
 </div>
@@ -1393,7 +1423,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#clirouterexceptionsbeforematchnotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1436,7 +1466,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#clirouterexceptionsinvalidroutepaths-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1479,7 +1509,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#clirouterexceptionsrouterargumentsinvalidtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1515,167 +1545,191 @@ __Uses__ `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`
 <div class="api-list">
 <a class="api-item" href="#clirouterroute-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#clirouterroute-beforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">beforeMatch( mixed $callback )</code>
+<code class="sig"><span class="sf">beforeMatch</span>( <span class="st">mixed</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Sets a callback that is called if the route is matched.</span>
 </a>
 <a class="api-item" href="#clirouterroute-compilepattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compilePattern( string $pattern )</code>
+<code class="sig"><span class="sf">compilePattern</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
 <span class="desc">Replaces placeholders from pattern returning a valid PCRE regular</span>
 </a>
 <a class="api-item" href="#clirouterroute-convert">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">convert(
-    string $name,
-    mixed $converter
-)</code>
+<code class="sig"><span class="sf">convert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$converter</span></span>)</code>
 <span class="desc">Adds a converter to perform an additional transformation for certain</span>
 </a>
 <a class="api-item" href="#clirouterroute-delimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">delimiter( string $delimiter = null )</code>
+<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Set the routing delimiter</span>
 </a>
 <a class="api-item" href="#clirouterroute-extractnamedparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array|bool</code>
-<code class="sig">extractNamedParams( string $pattern )</code>
+<code class="sig"><span class="sf">extractNamedParams</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
 <span class="desc">Extracts parameters from a string</span>
 </a>
 <a class="api-item" href="#clirouterroute-getbeforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getBeforeMatch()</code>
+<code class="sig"><span class="sf">getBeforeMatch</span>()</code>
 <span class="desc">Returns the &#039;before match&#039; callback if any</span>
 </a>
 <a class="api-item" href="#clirouterroute-getcompiledpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getCompiledPattern()</code>
+<code class="sig"><span class="sf">getCompiledPattern</span>()</code>
 <span class="desc">Returns the route&#039;s compiled pattern</span>
 </a>
 <a class="api-item" href="#clirouterroute-getconverters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getConverters()</code>
+<code class="sig"><span class="sf">getConverters</span>()</code>
 <span class="desc">Returns the router converter</span>
 </a>
 <a class="api-item" href="#clirouterroute-getdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDelimiter()</code>
+<code class="sig"><span class="sf">getDelimiter</span>()</code>
 <span class="desc">Get routing delimiter</span>
 </a>
 <a class="api-item" href="#clirouterroute-getdescription">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDescription()</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
 <span class="desc">Returns the route&#039;s description</span>
 </a>
 <a class="api-item" href="#clirouterroute-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the route&#039;s name</span>
 </a>
 <a class="api-item" href="#clirouterroute-getpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getPaths()</code>
+<code class="sig"><span class="sf">getPaths</span>()</code>
 <span class="desc">Returns the paths</span>
 </a>
 <a class="api-item" href="#clirouterroute-getpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPattern()</code>
+<code class="sig"><span class="sf">getPattern</span>()</code>
 <span class="desc">Returns the route&#039;s pattern</span>
 </a>
 <a class="api-item" href="#clirouterroute-getreversedpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getReversedPaths()</code>
+<code class="sig"><span class="sf">getReversedPaths</span>()</code>
 <span class="desc">Returns the paths using positions as keys and names as values</span>
 </a>
 <a class="api-item" href="#clirouterroute-getrouteid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRouteId()</code>
+<code class="sig"><span class="sf">getRouteId</span>()</code>
 <span class="desc">Returns the route&#039;s id</span>
 </a>
 <a class="api-item" href="#clirouterroute-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reConfigure(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#clirouterroute-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal route id generator</span>
 </a>
 <a class="api-item" href="#clirouterroute-setdescription">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setDescription( string $description )</code>
+<code class="sig"><span class="sf">setDescription</span>( <span class="st">string</span> <span class="sv">$description</span> )</code>
 <span class="desc">Sets the route&#039;s description</span>
 </a>
 <a class="api-item" href="#clirouterroute-setname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setName( string $name )</code>
+<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Sets the route&#039;s name</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `DEFAULT_DELIMITER = " "` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">DEFAULT_DELIMITER</span><span class="sm"> = &quot; &quot;</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$beforeMatch = null` `mixed|null`
-
--   `protected`{ .vis-protected } `$compiledPattern = ""` `string`
-
--   `protected`{ .vis-protected } `$converters = []` `array`
-
--   `protected`{ .vis-protected } `$delimiter` `string`
-
--   `protected`{ .vis-protected } `$delimiterPath = self::DEFAULT_DELIMITER` `string`
-
--   `protected`{ .vis-protected } `$description = ""` `string`
-
--   `protected`{ .vis-protected } `$name = ""` `string`
-
--   `protected`{ .vis-protected } `$paths = []` `array`
-
--   `protected`{ .vis-protected } `$pattern = ""` `string`
-
--   `protected`{ .vis-protected } `$routeId` `string`
-
--   `protected`{ .vis-protected } `$uniqueId = 0` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$beforeMatch</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$compiledPattern</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$converters</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$delimiter</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$delimiterPath</span><span class="sm"> = self::DEFAULT_DELIMITER</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$description</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$paths</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$pattern</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$routeId</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$uniqueId</span><span class="sm"> = 0</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1882,87 +1936,84 @@ Interface for Phalcon\Cli\Router\Route
 <a class="api-item" href="#clirouterrouteinterface-compilepattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compilePattern( string $pattern )</code>
+<code class="sig"><span class="sf">compilePattern</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
 <span class="desc">Replaces placeholders from pattern returning a valid PCRE regular</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-delimiter">
 <code class="vis vis-public">public</code>
-<code class="sig">delimiter( string $delimiter = null )</code>
+<code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Set the routing delimiter</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getcompiledpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getCompiledPattern()</code>
+<code class="sig"><span class="sf">getCompiledPattern</span>()</code>
 <span class="desc">Returns the route&#039;s pattern</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getdelimiter">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDelimiter()</code>
+<code class="sig"><span class="sf">getDelimiter</span>()</code>
 <span class="desc">Get routing delimiter</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getdescription">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDescription()</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
 <span class="desc">Returns the route&#039;s description</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the route&#039;s name</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getPaths()</code>
+<code class="sig"><span class="sf">getPaths</span>()</code>
 <span class="desc">Returns the paths</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPattern()</code>
+<code class="sig"><span class="sf">getPattern</span>()</code>
 <span class="desc">Returns the route&#039;s pattern</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getreversedpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getReversedPaths()</code>
+<code class="sig"><span class="sf">getReversedPaths</span>()</code>
 <span class="desc">Returns the paths using positions as keys and names as values</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-getrouteid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRouteId()</code>
+<code class="sig"><span class="sf">getRouteId</span>()</code>
 <span class="desc">Returns the route&#039;s id</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reConfigure(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal route id generator</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-setdescription">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setDescription( string $description )</code>
+<code class="sig"><span class="sf">setDescription</span>( <span class="st">string</span> <span class="sv">$description</span> )</code>
 <span class="desc">Sets the route&#039;s description</span>
 </a>
 <a class="api-item" href="#clirouterrouteinterface-setname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setName( string $name )</code>
+<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Sets the route&#039;s name</span>
 </a>
 </div>
@@ -2132,29 +2183,31 @@ __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Ph
 <div class="api-list">
 <a class="api-item" href="#clitask-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Cli\Task constructor</span>
 </a>
 <a class="api-item" href="#clitask-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#clitask-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventsManager` `ManagerInterface`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig"><span class="sv">$eventsManager</span></code>
+</div>
 </div>
 
 ### Methods

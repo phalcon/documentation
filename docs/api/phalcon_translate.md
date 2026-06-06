@@ -38,76 +38,66 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Pha
 <div class="api-list">
 <a class="api-item" href="#translateadapterabstractadapter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    InterpolatorFactory $interpolator,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AbstractAdapter constructor.</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-_">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">_(
-    string $translateKey,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">_</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation string of the given key (alias of method &#039;t&#039;)</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $translateKey )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$translateKey</span> )</code>
 <span class="desc">Check whether a translation key exists</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">offsetGet( mixed $translateKey )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$translateKey</span> )</code>
 <span class="desc">Returns the translation related to the given key</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $offset,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets a translation value</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Unsets a translation from the dictionary</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-t">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">t(
-    string $translateKey,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">t</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation string of the given key</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-replaceplaceholders">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">replacePlaceholders(
-    string $translation,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">replacePlaceholders</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translation</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Replaces placeholders by the values passed</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$defaultInterpolator = ""` `string`
-
--   `protected`{ .vis-protected } `$interpolatorFactory` `InterpolatorFactory`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultInterpolator</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">InterpolatorFactory</code>
+<code class="sig"><span class="sv">$interpolatorFactory</span></code>
+</div>
 </div>
 
 ### Methods
@@ -217,25 +207,19 @@ Interface for Phalcon\Translate adapters
 <a class="api-item" href="#translateadapteradapterinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $index )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
 <a class="api-item" href="#translateadapteradapterinterface-query">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">query(
-    string $translateKey,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation related to the given key</span>
 </a>
 <a class="api-item" href="#translateadapteradapterinterface-t">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">t(
-    string $translateKey,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">t</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation string of the given key</span>
 </a>
 </div>
@@ -295,55 +279,48 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpen
 <div class="api-list">
 <a class="api-item" href="#translateadaptercsv-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    InterpolatorFactory $interpolator,
-    array $options
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
 <span class="desc">Csv constructor.</span>
 </a>
 <a class="api-item" href="#translateadaptercsv-exists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">exists( string $index )</code>
+<code class="sig"><span class="sf">exists</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
 <a class="api-item" href="#translateadaptercsv-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $index )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
 <a class="api-item" href="#translateadaptercsv-query">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">query(
-    string $translateKey,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation related to the given key</span>
 </a>
 <a class="api-item" href="#translateadaptercsv-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal array</span>
 </a>
 <a class="api-item" href="#translateadaptercsv-phpfopen">
 <code class="vis vis-protected">protected</code>
-<code class="sig">phpFopen(
-    string $filename,
-    string $mode
-)</code>
+<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
 <span class="desc">@todo to be removed when we get traits</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$translate = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$translate</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -447,130 +424,126 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingG
 <div class="api-list">
 <a class="api-item" href="#translateadaptergettext-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    InterpolatorFactory $interpolator,
-    array $options
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
 <span class="desc">Gettext constructor.</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-exists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">exists( string $index )</code>
+<code class="sig"><span class="sf">exists</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-getcategory">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getCategory()</code>
+<code class="sig"><span class="sf">getCategory</span>()</code>
 </a>
 <a class="api-item" href="#translateadaptergettext-getdefaultdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDefaultDomain()</code>
+<code class="sig"><span class="sf">getDefaultDomain</span>()</code>
 </a>
 <a class="api-item" href="#translateadaptergettext-getdirectory">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string</code>
-<code class="sig">getDirectory()</code>
+<code class="sig"><span class="sf">getDirectory</span>()</code>
 </a>
 <a class="api-item" href="#translateadaptergettext-getlocale">
 <code class="vis vis-public">public</code>
 <code class="ret">string|false</code>
-<code class="sig">getLocale()</code>
+<code class="sig"><span class="sf">getLocale</span>()</code>
 </a>
 <a class="api-item" href="#translateadaptergettext-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $index )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-nquery">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">nquery(
-    string $msgid1,
-    string $msgid2,
-    int $count,
-    array $placeholders = [],
-    string $domain = null
-)</code>
+<code class="sig"><span class="sf">nquery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$msgid1</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$msgid2</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$count</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">The plural version of gettext().</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-query">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">query(
-    string $translateKey,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation related to the given key.</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-resetdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">resetDomain()</code>
+<code class="sig"><span class="sf">resetDomain</span>()</code>
 <span class="desc">Sets the default domain</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-setdefaultdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDefaultDomain( string $domain )</code>
+<code class="sig"><span class="sf">setDefaultDomain</span>( <span class="st">string</span> <span class="sv">$domain</span> )</code>
 <span class="desc">Sets the domain default to search within when calls are made to gettext()</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-setdirectory">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDirectory( mixed $directory )</code>
+<code class="sig"><span class="sf">setDirectory</span>( <span class="st">mixed</span> <span class="sv">$directory</span> )</code>
 <span class="desc">Sets the path for a domain</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-setdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">setDomain( string $domain = null )</code>
+<code class="sig"><span class="sf">setDomain</span>( <span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = null</span> )</code>
 <span class="desc">Changes the current domain (i.e. the translation file)</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-setlocale">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
-<code class="sig">setLocale(
-    int $category,
-    array $localeArray = []
-)</code>
+<code class="sig"><span class="sf">setLocale</span>(<span class="prm"><span class="st">int</span> <span class="sv">$category</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$localeArray</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets locale information</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-getoptionsdefault">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getOptionsDefault()</code>
+<code class="sig"><span class="sf">getOptionsDefault</span>()</code>
 <span class="desc">Gets default options</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-phpfunctionexists">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">phpFunctionExists( string $name )</code>
+<code class="sig"><span class="sf">phpFunctionExists</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">@todo to be removed when we get traits</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-prepareoptions">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">prepareOptions( array $options )</code>
+<code class="sig"><span class="sf">prepareOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Validator for constructor</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$category` `int`
-
--   `protected`{ .vis-protected } `$defaultDomain` `string`
-
--   `protected`{ .vis-protected } `$directory` `string|array`
-
--   `protected`{ .vis-protected } `$locale` `string | false`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$category</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultDomain</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|array</code>
+<code class="sig"><span class="sv">$directory</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string | false</code>
+<code class="sig"><span class="sv">$locale</span></code>
+</div>
 </div>
 
 ### Methods
@@ -772,43 +745,37 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidD
 <div class="api-list">
 <a class="api-item" href="#translateadapternativearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    InterpolatorFactory $interpolator,
-    array $options
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
 <span class="desc">NativeArray constructor.</span>
 </a>
 <a class="api-item" href="#translateadapternativearray-exists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">exists( string $index )</code>
+<code class="sig"><span class="sf">exists</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
 <a class="api-item" href="#translateadapternativearray-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $index )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
 <a class="api-item" href="#translateadapternativearray-notfound">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">notFound( string $index )</code>
+<code class="sig"><span class="sf">notFound</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Whenever a key is not found this method will be called</span>
 </a>
 <a class="api-item" href="#translateadapternativearray-query">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">query(
-    string $translateKey,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation related to the given key</span>
 </a>
 <a class="api-item" href="#translateadapternativearray-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal array</span>
 </a>
 </div>
@@ -924,7 +891,7 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-list">
 <a class="api-item" href="#translateexceptionsfileopenerror-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -967,7 +934,7 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-list">
 <a class="api-item" href="#translateexceptionsimmutableobject-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1034,7 +1001,7 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-list">
 <a class="api-item" href="#translateexceptionsinvaliddatatype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1077,7 +1044,7 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-list">
 <a class="api-item" href="#translateexceptionskeynotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $key )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 </div>
 
@@ -1120,7 +1087,7 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-list">
 <a class="api-item" href="#translateexceptionsmissingcontent-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1163,7 +1130,7 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-list">
 <a class="api-item" href="#translateexceptionsmissinggettextextension-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1206,12 +1173,12 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-list">
 <a class="api-item" href="#translateexceptionsmissingrequiredparameter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $parameter )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$parameter</span> )</code>
 </a>
 <a class="api-item" href="#translateexceptionsmissingrequiredparameter-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getParameter()</code>
+<code class="sig"><span class="sf">getParameter</span>()</code>
 </a>
 </div>
 
@@ -1284,23 +1251,23 @@ __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Interpolator\In
 <div class="api-list">
 <a class="api-item" href="#translateinterpolatorfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $services = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 </a>
 <a class="api-item" href="#translateinterpolatorfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">InterpolatorInterface</code>
-<code class="sig">newInstance( string $name )</code>
+<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Create a new instance of the adapter</span>
 </a>
 <a class="api-item" href="#translateinterpolatorfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#translateinterpolatorfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
@@ -1362,10 +1329,7 @@ __Uses__ `Phalcon\Support\Helper\Str\Interpolate`
 <a class="api-item" href="#translateinterpolatorassociativearray-replaceplaceholders">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">replacePlaceholders(
-    string $translation,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">replacePlaceholders</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translation</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Replaces placeholders by the values passed</span>
 </a>
 </div>
@@ -1410,10 +1374,7 @@ file that was distributed with this source code.
 <a class="api-item" href="#translateinterpolatorindexedarray-replaceplaceholders">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">replacePlaceholders(
-    string $translation,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">replacePlaceholders</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translation</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Replaces placeholders by the values passed</span>
 </a>
 </div>
@@ -1455,10 +1416,7 @@ Interface for Phalcon\Translate interpolators
 <a class="api-item" href="#translateinterpolatorinterpolatorinterface-replaceplaceholders">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">replacePlaceholders(
-    string $translation,
-    array $placeholders = []
-)</code>
+<code class="sig"><span class="sf">replacePlaceholders</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translation</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Replaces placeholders by the values passed</span>
 </a>
 </div>
@@ -1516,35 +1474,29 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` �
 <div class="api-list">
 <a class="api-item" href="#translatetranslatefactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    InterpolatorFactory $interpolator,
-    array $services = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">InterpolatorFactory</span> <span class="sv">$interpolator</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#translatetranslatefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">load( mixed $config )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#translatetranslatefactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">newInstance(
-    string $name,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Create a new instance of the adapter</span>
 </a>
 <a class="api-item" href="#translatetranslatefactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#translatetranslatefactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>

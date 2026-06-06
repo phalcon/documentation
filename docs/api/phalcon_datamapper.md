@@ -31,42 +31,37 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\Data
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoconnection-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $dsn,
-    string $username = null,
-    string $password = null,
-    array $options = [],
-    array $queries = [],
-    ProfilerInterface $profiler = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$dsn</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$username</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$password</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$queries</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">ProfilerInterface</span> <span class="sv">$profiler</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnection-__debuginfo">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__debugInfo()</code>
+<code class="sig"><span class="sf">__debugInfo</span>()</code>
 <span class="desc">The purpose of this method is to hide sensitive data from stack traces.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnection-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect()</code>
+<code class="sig"><span class="sf">connect</span>()</code>
 <span class="desc">Connects to the database.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnection-disconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">disconnect()</code>
+<code class="sig"><span class="sf">disconnect</span>()</code>
 <span class="desc">Disconnects from the database.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -137,82 +132,74 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\Dat
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoconnectionlocator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    ConnectionInterface $master,
-    array $read = [],
-    array $write = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ConnectionInterface</span> <span class="sv">$master</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$read</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$write</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocator-getmaster">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionInterface</code>
-<code class="sig">getMaster()</code>
+<code class="sig"><span class="sf">getMaster</span>()</code>
 <span class="desc">Returns the default connection object.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocator-getread">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionInterface</code>
-<code class="sig">getRead( string $name = &quot;&quot; )</code>
+<code class="sig"><span class="sf">getRead</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Returns a read connection by name; if no name is given, picks a</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocator-getwrite">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionInterface</code>
-<code class="sig">getWrite( string $name = &quot;&quot; )</code>
+<code class="sig"><span class="sf">getWrite</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Returns a write connection by name; if no name is given, picks a</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocator-setmaster">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setMaster( ConnectionInterface $callableObject )</code>
+<code class="sig"><span class="sf">setMaster</span>( <span class="st">ConnectionInterface</span> <span class="sv">$callableObject</span> )</code>
 <span class="desc">Sets the default connection factory.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocator-setread">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setRead(
-    string $name,
-    callable $callableObject
-)</code>
+<code class="sig"><span class="sf">setRead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
 <span class="desc">Sets a read connection factory by name.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocator-setwrite">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setWrite(
-    string $name,
-    callable $callableObject
-)</code>
+<code class="sig"><span class="sf">setWrite</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
 <span class="desc">Sets a write connection factory by name.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocator-getconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ConnectionInterface</code>
-<code class="sig">getConnection(
-    string $type,
-    string $name = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">getConnection</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a connection by name.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$master` `ConnectionInterface`
-
-    A default Connection connection factory/instance.
-
--   `protected`{ .vis-protected } `$read = []` `array`
-
-    A registry of Connection "read" factories/instances.
-
--   `protected`{ .vis-protected } `$write = []` `array`
-
-    A registry of Connection "write" factories/instances.
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ConnectionInterface</code>
+<code class="sig"><span class="sv">$master</span></code>
+<span class="desc">A default Connection connection factory/instance.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$read</span><span class="sm"> = []</span></code>
+<span class="desc">A registry of Connection &quot;read&quot; factories/instances.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$write</span><span class="sm"> = []</span></code>
+<span class="desc">A registry of Connection &quot;write&quot; factories/instances.</span>
+</div>
 </div>
 
 ### Methods
@@ -325,43 +312,37 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`
 <a class="api-item" href="#datamapperpdoconnectionlocatorinterface-getmaster">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionInterface</code>
-<code class="sig">getMaster()</code>
+<code class="sig"><span class="sf">getMaster</span>()</code>
 <span class="desc">Returns the default connection object.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocatorinterface-getread">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionInterface</code>
-<code class="sig">getRead( string $name = &quot;&quot; )</code>
+<code class="sig"><span class="sf">getRead</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Returns a read connection by name; if no name is given, picks a</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocatorinterface-getwrite">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionInterface</code>
-<code class="sig">getWrite( string $name = &quot;&quot; )</code>
+<code class="sig"><span class="sf">getWrite</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Returns a write connection by name; if no name is given, picks a</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocatorinterface-setmaster">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionLocatorInterface</code>
-<code class="sig">setMaster( ConnectionInterface $callableObject )</code>
+<code class="sig"><span class="sf">setMaster</span>( <span class="st">ConnectionInterface</span> <span class="sv">$callableObject</span> )</code>
 <span class="desc">Sets the default connection registry entry.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocatorinterface-setread">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionLocatorInterface</code>
-<code class="sig">setRead(
-    string $name,
-    callable $callableObject
-)</code>
+<code class="sig"><span class="sf">setRead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
 <span class="desc">Sets a read connection registry entry by name.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionlocatorinterface-setwrite">
 <code class="vis vis-public">public</code>
 <code class="ret">ConnectionLocatorInterface</code>
-<code class="sig">setWrite(
-    string $name,
-    callable $callableObject
-)</code>
+<code class="sig"><span class="sf">setWrite</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
 <span class="desc">Sets a write connection registry entry by name.</span>
 </a>
 </div>
@@ -453,288 +434,233 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-__call">
 <code class="vis vis-public">public</code>
-<code class="sig">__call(
-    mixed $name,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Proxies to PDO methods created for specific drivers; in particular,</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-begintransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">beginTransaction()</code>
+<code class="sig"><span class="sf">beginTransaction</span>()</code>
 <span class="desc">Begins a transaction. If the profiler is enabled, the operation will</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits the existing transaction. If the profiler is enabled, the</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect()</code>
+<code class="sig"><span class="sf">connect</span>()</code>
 <span class="desc">Connects to the database.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-disconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">disconnect()</code>
+<code class="sig"><span class="sf">disconnect</span>()</code>
 <span class="desc">Disconnects from the database.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-errorcode">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">errorCode()</code>
+<code class="sig"><span class="sf">errorCode</span>()</code>
 <span class="desc">Gets the most recent error code.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-errorinfo">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">errorInfo()</code>
+<code class="sig"><span class="sf">errorInfo</span>()</code>
 <span class="desc">Gets the most recent error info.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-exec">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">exec( string $statement )</code>
+<code class="sig"><span class="sf">exec</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Executes an SQL statement and returns the number of affected rows. If</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchaffected">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">fetchAffected(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchAffected</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Performs a statement and returns the number of affected rows.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchall">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAll(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchAll</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches a sequential array of rows from the database; the rows are</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchassoc">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAssoc(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchAssoc</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches an associative array of rows from the database; the rows are</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchColumn(
-    string $statement,
-    array $values = [],
-    int $column = 0
-)</code>
+<code class="sig"><span class="sf">fetchColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$column</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Fetches a column of rows as a sequential array (default first one).</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchGroup(
-    string $statement,
-    array $values = [],
-    int $flags = \PDO::FETCH_ASSOC
-)</code>
+<code class="sig"><span class="sf">fetchGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = \PDO::FETCH_ASSOC</span></span>)</code>
 <span class="desc">Fetches multiple from the database as an associative array. The first</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchobject">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">fetchObject(
-    string $statement,
-    array $values = [],
-    string $className = &quot;stdClass&quot;,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">fetchObject</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span><span class="sm"> = &quot;stdClass&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches one row from the database as an object where the column values</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchobjects">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchObjects(
-    string $statement,
-    array $values = [],
-    string $className = &quot;stdClass&quot;,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">fetchObjects</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span><span class="sm"> = &quot;stdClass&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches a sequential array of rows from the database; the rows are</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchone">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchOne(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches one row from the database as an associative array.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchpairs">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchPairs(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchPairs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches an associative array of rows as key-value pairs (first column is</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchvalue">
 <code class="vis vis-public">public</code>
-<code class="sig">fetchValue(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches the very first value (i.e., first column of the first row).</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDO</code>
-<code class="sig">getAdapter()</code>
+<code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Return the inner PDO (if any)</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getAttribute( int $attribute )</code>
+<code class="sig"><span class="sf">getAttribute</span>( <span class="st">int</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Retrieve a database connection attribute</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getavailabledrivers">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAvailableDrivers()</code>
+<code class="sig"><span class="sf">getAvailableDrivers</span>()</code>
 <span class="desc">Return an array of available PDO drivers (empty array if none available)</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getdrivername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDriverName()</code>
+<code class="sig"><span class="sf">getDriverName</span>()</code>
 <span class="desc">Return the driver name</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getprofiler">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">getProfiler()</code>
+<code class="sig"><span class="sf">getProfiler</span>()</code>
 <span class="desc">Returns the Profiler instance.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getquotenames">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getQuoteNames( string $driver = &quot;&quot; )</code>
+<code class="sig"><span class="sf">getQuoteNames</span>( <span class="st">string</span> <span class="sv">$driver</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Gets the quote parameters based on the driver</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-intransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">inTransaction()</code>
+<code class="sig"><span class="sf">inTransaction</span>()</code>
 <span class="desc">Is a transaction currently active? If the profiler is enabled, the</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-isconnected">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isConnected()</code>
+<code class="sig"><span class="sf">isConnected</span>()</code>
 <span class="desc">Is the PDO connection active?</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-lastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">lastInsertId( string $name = null )</code>
+<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the last inserted autoincrement sequence value. If the profiler</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-perform">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
-<code class="sig">perform(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">perform</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Performs a query with bound values and returns the resulting</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-prepare">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement|bool</code>
-<code class="sig">prepare(
-    string $statement,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">prepare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Prepares an SQL statement for execution.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-query">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement|bool</code>
-<code class="sig">query( string $statement )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Queries the database and returns a PDOStatement. If the profiler is</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-quote">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">quote(
-    mixed $value,
-    int $type = \PDO::PARAM_STR
-)</code>
+<code class="sig"><span class="sf">quote</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = \PDO::PARAM_STR</span></span>)</code>
 <span class="desc">Quotes a value for use in an SQL statement. This differs from</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollBack()</code>
+<code class="sig"><span class="sf">rollBack</span>()</code>
 <span class="desc">Rolls back the current transaction, and restores autocommit mode. If the</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-setattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">setAttribute(
-    int $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setAttribute</span>(<span class="prm"><span class="st">int</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a database connection attribute</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-setprofiler">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setProfiler( ProfilerInterface $profiler )</code>
+<code class="sig"><span class="sf">setProfiler</span>( <span class="st">ProfilerInterface</span> <span class="sv">$profiler</span> )</code>
 <span class="desc">Sets the Profiler instance.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-fetchdata">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">fetchData(
-    string $method,
-    array $arguments,
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Helper method to get data from PDO based on the method passed</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-performbind">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">performBind(
-    \PDOStatement $statement,
-    mixed $name,
-    mixed $arguments
-)</code>
+<code class="sig"><span class="sf">performBind</span>(<span class="prm"><span class="st">\PDOStatement</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Bind a value using the proper PDO::PARAM_* type.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$pdo` `\PDO`
-
--   `protected`{ .vis-protected } `$profiler` `ProfilerInterface`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">\PDO</code>
+<code class="sig"><span class="sv">$pdo</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ProfilerInterface</code>
+<code class="sig"><span class="sv">$profiler</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1153,141 +1079,102 @@ __Uses__ `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect()</code>
+<code class="sig"><span class="sf">connect</span>()</code>
 <span class="desc">Connects to the database.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-disconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">disconnect()</code>
+<code class="sig"><span class="sf">disconnect</span>()</code>
 <span class="desc">Disconnects from the database.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchaffected">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">fetchAffected(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchAffected</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Performs a statement and returns the number of affected rows.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchall">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAll(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchAll</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches a sequential array of rows from the database; the rows are</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchassoc">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAssoc(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchAssoc</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches an associative array of rows from the database; the rows are</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchColumn(
-    string $statement,
-    array $values = [],
-    int $column = 0
-)</code>
+<code class="sig"><span class="sf">fetchColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$column</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Fetches a column of rows as a sequential array (default first one).</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchGroup(
-    string $statement,
-    array $values = [],
-    int $flags = \PDO::FETCH_ASSOC
-)</code>
+<code class="sig"><span class="sf">fetchGroup</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = \PDO::FETCH_ASSOC</span></span>)</code>
 <span class="desc">Fetches multiple from the database as an associative array. The first</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchobject">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">fetchObject(
-    string $statement,
-    array $values = [],
-    string $className = &quot;stdClass&quot;,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">fetchObject</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span><span class="sm"> = &quot;stdClass&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches one row from the database as an object where the column values</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchobjects">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchObjects(
-    string $statement,
-    array $values = [],
-    string $className = &quot;stdClass&quot;,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">fetchObjects</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span><span class="sm"> = &quot;stdClass&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches a sequential array of rows from the database; the rows are</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchone">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchOne(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches one row from the database as an associative array.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchpairs">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchPairs(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchPairs</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches an associative array of rows as key-value pairs (first column is</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-fetchvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">fetchValue(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">fetchValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fetches the very first value (i.e., first column of the first row).</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-getadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDO</code>
-<code class="sig">getAdapter()</code>
+<code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Return the inner PDO (if any)</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-getprofiler">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">getProfiler()</code>
+<code class="sig"><span class="sf">getProfiler</span>()</code>
 <span class="desc">Returns the Profiler instance.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-isconnected">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isConnected()</code>
+<code class="sig"><span class="sf">isConnected</span>()</code>
 <span class="desc">Is the PDO connection active?</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-perform">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
-<code class="sig">perform(
-    string $statement,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">perform</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Performs a query with bound values and returns the resulting</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionconnectioninterface-setprofiler">
 <code class="vis vis-public">public</code>
-<code class="sig">setProfiler( ProfilerInterface $profiler )</code>
+<code class="sig"><span class="sf">setProfiler</span>( <span class="st">ProfilerInterface</span> <span class="sv">$profiler</span> )</code>
 <span class="desc">Sets the Profiler instance.</span>
 </a>
 </div>
@@ -1520,22 +1407,19 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMap
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoconnectiondecorated-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    \PDO $pdo,
-    ProfilerInterface $profiler = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">\PDO</span> <span class="sv">$pdo</span>,</span><span class="prm"><span class="st">ProfilerInterface</span> <span class="sv">$profiler</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectiondecorated-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect()</code>
+<code class="sig"><span class="sf">connect</span>()</code>
 <span class="desc">Connects to the database.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectiondecorated-disconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">disconnect()</code>
+<code class="sig"><span class="sf">disconnect</span>()</code>
 <span class="desc">Disconnects from the database; disallowed with decorated PDO connections.</span>
 </a>
 </div>
@@ -1595,94 +1479,85 @@ An interface to the native PDO object.
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-begintransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">beginTransaction()</code>
+<code class="sig"><span class="sf">beginTransaction</span>()</code>
 <span class="desc">Begins a transaction. If the profiler is enabled, the operation will</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits the existing transaction. If the profiler is enabled, the</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-errorcode">
 <code class="vis vis-public">public</code>
 <code class="ret">null|string</code>
-<code class="sig">errorCode()</code>
+<code class="sig"><span class="sf">errorCode</span>()</code>
 <span class="desc">Gets the most recent error code.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-errorinfo">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">errorInfo()</code>
+<code class="sig"><span class="sf">errorInfo</span>()</code>
 <span class="desc">Gets the most recent error info.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-exec">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">exec( string $statement )</code>
+<code class="sig"><span class="sf">exec</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Executes an SQL statement and returns the number of affected rows. If</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-getattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getAttribute( int $attribute )</code>
+<code class="sig"><span class="sf">getAttribute</span>( <span class="st">int</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Retrieve a database connection attribute</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-getavailabledrivers">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAvailableDrivers()</code>
+<code class="sig"><span class="sf">getAvailableDrivers</span>()</code>
 <span class="desc">Return an array of available PDO drivers (empty array if none available)</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-intransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">inTransaction()</code>
+<code class="sig"><span class="sf">inTransaction</span>()</code>
 <span class="desc">Is a transaction currently active? If the profiler is enabled, the</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-lastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">lastInsertId( string $name = null )</code>
+<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the last inserted autoincrement sequence value. If the profiler</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-prepare">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement|bool</code>
-<code class="sig">prepare(
-    string $statement,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">prepare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Prepares an SQL statement for execution.</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-query">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement|bool</code>
-<code class="sig">query( string $statement )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">string</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Queries the database and returns a PDOStatement. If the profiler is</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-quote">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">quote(
-    mixed $value,
-    int $type = \PDO::PARAM_STR
-)</code>
+<code class="sig"><span class="sf">quote</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = \PDO::PARAM_STR</span></span>)</code>
 <span class="desc">Quotes a value for use in an SQL statement. This differs from</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollBack()</code>
+<code class="sig"><span class="sf">rollBack</span>()</code>
 <span class="desc">Rolls back the current transaction, and restores autocommit mode. If the</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionpdointerface-setattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">setAttribute(
-    int $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setAttribute</span>(<span class="prm"><span class="st">int</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a database connection attribute</span>
 </a>
 </div>
@@ -1883,7 +1758,7 @@ __Uses__ `InvalidArgumentException`
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoexceptiondrivernotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $driver )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$driver</span> )</code>
 </a>
 </div>
 
@@ -1942,7 +1817,7 @@ __Uses__ `BadMethodCallException`
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoexceptionunknowndrivermethod-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $message )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 </a>
 </div>
 
@@ -1984,7 +1859,7 @@ __Uses__ `BadMethodCallException`
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoexceptionunknownquerymethod-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $method )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 </a>
 </div>
 
@@ -2021,123 +1896,94 @@ __Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\No
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-alert">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">alert(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">alert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-critical">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">critical(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">critical</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-debug">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">debug(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">debug</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-emergency">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">emergency(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">emergency</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-error">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">error(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">error</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-getadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getAdapter( string $name )</code>
+<code class="sig"><span class="sf">getAdapter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an adapter from the stack</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-getadapters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAdapters()</code>
+<code class="sig"><span class="sf">getAdapters</span>()</code>
 <span class="desc">Returns the adapter stack array</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-getloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getLogLevel()</code>
+<code class="sig"><span class="sf">getLogLevel</span>()</code>
 <span class="desc">Returns the log level</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the logged messages.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the name of the logger</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-info">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">info(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">info</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-log">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">log(
-    mixed $level,
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">log</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Logs a message.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-notice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">notice(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">notice</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-trace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">trace(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">trace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperpdoprofilermemorylogger-warning">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">warning(
-    string $message,
-    array $context = []
-)</code>
+<code class="sig"><span class="sf">warning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$messages = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2299,82 +2145,93 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\Exception` · `Phalcon\Logger\Enum` �
 <div class="api-list">
 <a class="api-item" href="#datamapperpdoprofilerprofiler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( LoggerInterface $logger = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">LoggerInterface</span> <span class="sv">$logger</span><span class="sm"> = null</span> )</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-finish">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">finish(
-    string $statement = null,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">finish</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Finishes and logs a profile entry.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-getlogformat">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLogFormat()</code>
+<code class="sig"><span class="sf">getLogFormat</span>()</code>
 <span class="desc">Returns the log message format string, with placeholders.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-getloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLogLevel()</code>
+<code class="sig"><span class="sf">getLogLevel</span>()</code>
 <span class="desc">Returns the level at which to log profile messages.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-getlogger">
 <code class="vis vis-public">public</code>
 <code class="ret">LoggerInterface</code>
-<code class="sig">getLogger()</code>
+<code class="sig"><span class="sf">getLogger</span>()</code>
 <span class="desc">Returns the underlying logger instance.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-isactive">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isActive()</code>
+<code class="sig"><span class="sf">isActive</span>()</code>
 <span class="desc">Returns true if logging is active.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-setactive">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">setActive( bool $active )</code>
+<code class="sig"><span class="sf">setActive</span>( <span class="st">bool</span> <span class="sv">$active</span> )</code>
 <span class="desc">Enable or disable profiler logging.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-setlogformat">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">setLogFormat( string $logFormat )</code>
+<code class="sig"><span class="sf">setLogFormat</span>( <span class="st">string</span> <span class="sv">$logFormat</span> )</code>
 <span class="desc">Sets the log message format string, with placeholders.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-setloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">setLogLevel( string $logLevel )</code>
+<code class="sig"><span class="sf">setLogLevel</span>( <span class="st">string</span> <span class="sv">$logLevel</span> )</code>
 <span class="desc">Level at which to log profile messages.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofiler-start">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">start( string $method )</code>
+<code class="sig"><span class="sf">start</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 <span class="desc">Starts a profile entry.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$active = false` `bool`
-
--   `protected`{ .vis-protected } `$context = []` `array`
-
--   `protected`{ .vis-protected } `$logFormat = ""` `string`
-
--   `protected`{ .vis-protected } `$logLevel = 0` `int`
-
--   `protected`{ .vis-protected } `$logger` `LoggerInterface`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$active</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$context</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$logFormat</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$logLevel</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">LoggerInterface</code>
+<code class="sig"><span class="sv">$logger</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2487,58 +2344,55 @@ __Uses__ `Phalcon\Logger\LoggerInterface`
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-finish">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">finish(
-    string $statement = null,
-    array $values = []
-)</code>
+<code class="sig"><span class="sf">finish</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Finishes and logs a profile entry.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-getlogformat">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLogFormat()</code>
+<code class="sig"><span class="sf">getLogFormat</span>()</code>
 <span class="desc">Returns the log message format string, with placeholders.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-getloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLogLevel()</code>
+<code class="sig"><span class="sf">getLogLevel</span>()</code>
 <span class="desc">Returns the level at which to log profile messages.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-getlogger">
 <code class="vis vis-public">public</code>
 <code class="ret">LoggerInterface</code>
-<code class="sig">getLogger()</code>
+<code class="sig"><span class="sf">getLogger</span>()</code>
 <span class="desc">Returns the underlying logger instance.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-isactive">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isActive()</code>
+<code class="sig"><span class="sf">isActive</span>()</code>
 <span class="desc">Returns true if logging is active.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-setactive">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">setActive( bool $active )</code>
+<code class="sig"><span class="sf">setActive</span>( <span class="st">bool</span> <span class="sv">$active</span> )</code>
 <span class="desc">Enable or disable profiler logging.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-setlogformat">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">setLogFormat( string $logFormat )</code>
+<code class="sig"><span class="sf">setLogFormat</span>( <span class="st">string</span> <span class="sv">$logFormat</span> )</code>
 <span class="desc">Sets the log message format string, with placeholders.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-setloglevel">
 <code class="vis vis-public">public</code>
 <code class="ret">ProfilerInterface</code>
-<code class="sig">setLogLevel( string $logLevel )</code>
+<code class="sig"><span class="sf">setLogLevel</span>( <span class="st">string</span> <span class="sv">$logLevel</span> )</code>
 <span class="desc">Level at which to log profile messages.</span>
 </a>
 <a class="api-item" href="#datamapperpdoprofilerprofilerinterface-start">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">start( string $method )</code>
+<code class="sig"><span class="sf">start</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 <span class="desc">Starts a profile entry.</span>
 </a>
 </div>
@@ -2646,132 +2500,102 @@ Class AbstractConditions
 <a class="api-item" href="#datamapperqueryabstractconditions-andwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">andWhere(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a `AND` for a `WHERE` condition</span>
+<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a <code>AND</code> for a <code>WHERE</code> condition</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-appendwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">appendWhere(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Concatenates to the most recent `WHERE` clause</span>
+<code class="sig"><span class="sf">appendWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Concatenates to the most recent <code>WHERE</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">limit( int $limit )</code>
-<span class="desc">Sets the `LIMIT` clause</span>
+<code class="sig"><span class="sf">limit</span>( <span class="st">int</span> <span class="sv">$limit</span> )</code>
+<span class="desc">Sets the <code>LIMIT</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-offset">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">offset( int $offset )</code>
-<span class="desc">Sets the `OFFSET` clause</span>
+<code class="sig"><span class="sf">offset</span>( <span class="st">int</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Sets the <code>OFFSET</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-orwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">orWhere(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a `OR` for a `WHERE` condition</span>
+<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a <code>OR</code> for a <code>WHERE</code> condition</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-orderby">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">orderBy( mixed $orderBy )</code>
-<span class="desc">Sets the `ORDER BY`</span>
+<code class="sig"><span class="sf">orderBy</span>( <span class="st">mixed</span> <span class="sv">$orderBy</span> )</code>
+<span class="desc">Sets the <code>ORDER BY</code></span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-where">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">where(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a `WHERE` condition</span>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a <code>WHERE</code> condition</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-whereequals">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractConditions</code>
-<code class="sig">whereEquals( array $columnsValues )</code>
+<code class="sig"><span class="sf">whereEquals</span>( <span class="st">array</span> <span class="sv">$columnsValues</span> )</code>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-addcondition">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">addCondition(
-    string $store,
-    string $andor,
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">addCondition</span>(<span class="prm"><span class="st">string</span> <span class="sv">$store</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$andor</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Appends a conditional</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-appendcondition">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">appendCondition(
-    string $store,
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">appendCondition</span>(<span class="prm"><span class="st">string</span> <span class="sv">$store</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Concatenates a conditional</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-buildby">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">buildBy( string $type )</code>
-<span class="desc">Builds a `BY` list</span>
+<code class="sig"><span class="sf">buildBy</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
+<span class="desc">Builds a <code>BY</code> list</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-buildcondition">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">buildCondition( string $type )</code>
+<code class="sig"><span class="sf">buildCondition</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Builds the conditional string</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-buildlimit">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">buildLimit()</code>
-<span class="desc">Builds the `LIMIT` clause</span>
+<code class="sig"><span class="sf">buildLimit</span>()</code>
+<span class="desc">Builds the <code>LIMIT</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-buildlimitcommon">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">buildLimitCommon()</code>
-<span class="desc">Builds the `LIMIT` clause for all drivers</span>
+<code class="sig"><span class="sf">buildLimitCommon</span>()</code>
+<span class="desc">Builds the <code>LIMIT</code> clause for all drivers</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-buildlimitearly">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">buildLimitEarly()</code>
-<span class="desc">Builds the early `LIMIT` clause - MS SQLServer</span>
+<code class="sig"><span class="sf">buildLimitEarly</span>()</code>
+<span class="desc">Builds the early <code>LIMIT</code> clause - MS SQLServer</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-buildlimitsqlsrv">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">buildLimitSqlsrv()</code>
-<span class="desc">Builds the `LIMIT` clause for MSSQLServer</span>
+<code class="sig"><span class="sf">buildLimitSqlsrv</span>()</code>
+<span class="desc">Builds the <code>LIMIT</code> clause for MSSQLServer</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractconditions-processvalue">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">processValue(
-    string $store,
-    mixed $data
-)</code>
+<code class="sig"><span class="sf">processValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$store</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Processes a value (array or string) and merges it with the store</span>
 </a>
 </div>
@@ -2970,158 +2794,147 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 <div class="api-list">
 <a class="api-item" href="#datamapperqueryabstractquery-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    Connection $connection,
-    Bind $bind
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Connection</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">Bind</span> <span class="sv">$bind</span></span>)</code>
 <span class="desc">AbstractQuery constructor.</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-bindinline">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">bindInline(
-    mixed $value,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">bindInline</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Binds a value inline</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-bindvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractQuery</code>
-<code class="sig">bindValue(
-    string $key,
-    mixed $value,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">bindValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Binds a value - auto-detects the type if necessary</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-bindvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">AbstractQuery</code>
-<code class="sig">bindValues( array $values )</code>
+<code class="sig"><span class="sf">bindValues</span>( <span class="st">array</span> <span class="sv">$values</span> )</code>
 <span class="desc">Binds an array of values</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-getbindvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindValues()</code>
+<code class="sig"><span class="sf">getBindValues</span>()</code>
 <span class="desc">Returns all the bound values</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-getstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getStatement()</code>
+<code class="sig"><span class="sf">getStatement</span>()</code>
 <span class="desc">Return the generated statement</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-perform">
 <code class="vis vis-public">public</code>
-<code class="sig">perform()</code>
+<code class="sig"><span class="sf">perform</span>()</code>
 <span class="desc">Performs a statement in the connection</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-quoteidentifier">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">quoteIdentifier(
-    string $name,
-    int $type = \PDO::PARAM_STR
-)</code>
+<code class="sig"><span class="sf">quoteIdentifier</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = \PDO::PARAM_STR</span></span>)</code>
 <span class="desc">Quotes the identifier</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal array</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resetcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetColumns()</code>
+<code class="sig"><span class="sf">resetColumns</span>()</code>
 <span class="desc">Resets the columns</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resetflags">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetFlags()</code>
+<code class="sig"><span class="sf">resetFlags</span>()</code>
 <span class="desc">Resets the flags</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resetfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetFrom()</code>
+<code class="sig"><span class="sf">resetFrom</span>()</code>
 <span class="desc">Resets the from</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resetgroupby">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetGroupBy()</code>
+<code class="sig"><span class="sf">resetGroupBy</span>()</code>
 <span class="desc">Resets the group by</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resethaving">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetHaving()</code>
+<code class="sig"><span class="sf">resetHaving</span>()</code>
 <span class="desc">Resets the having</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resetlimit">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetLimit()</code>
+<code class="sig"><span class="sf">resetLimit</span>()</code>
 <span class="desc">Resets the limit and offset</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resetorderby">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetOrderBy()</code>
+<code class="sig"><span class="sf">resetOrderBy</span>()</code>
 <span class="desc">Resets the order by</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-resetwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resetWhere()</code>
+<code class="sig"><span class="sf">resetWhere</span>()</code>
 <span class="desc">Resets the where</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-setflag">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setFlag(
-    string $flag,
-    bool $enable = true
-)</code>
+<code class="sig"><span class="sf">setFlag</span>(<span class="prm"><span class="st">string</span> <span class="sv">$flag</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$enable</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Sets a flag for the query such as &quot;DISTINCT&quot;</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-buildflags">
 <code class="vis vis-protected">protected</code>
-<code class="sig">buildFlags()</code>
+<code class="sig"><span class="sf">buildFlags</span>()</code>
 <span class="desc">Builds the flags statement(s)</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-buildreturning">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">buildReturning()</code>
-<span class="desc">Builds the `RETURNING` clause</span>
+<code class="sig"><span class="sf">buildReturning</span>()</code>
+<span class="desc">Builds the <code>RETURNING</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryabstractquery-indent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">indent(
-    array $collection,
-    string $glue = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">indent</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$glue</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Indents a collection</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$bind` `Bind`
-
--   `protected`{ .vis-protected } `$connection` `Connection`
-
--   `protected`{ .vis-protected } `$store = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Bind</code>
+<code class="sig"><span class="sv">$bind</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Connection</code>
+<code class="sig"><span class="sv">$connection</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$store</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3337,67 +3150,59 @@ Class Bind
 <a class="api-item" href="#datamapperquerybind-bindinline">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">bindInline(
-    mixed $value,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">bindInline</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 </a>
 <a class="api-item" href="#datamapperquerybind-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $key )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Removes a value from the store</span>
 </a>
 <a class="api-item" href="#datamapperquerybind-setvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setValue(
-    string $key,
-    mixed $value,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">setValue</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Sets a value</span>
 </a>
 <a class="api-item" href="#datamapperquerybind-setvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setValues(
-    array $values,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">setValues</span>(<span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Sets values from an array</span>
 </a>
 <a class="api-item" href="#datamapperquerybind-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal collection</span>
 </a>
 <a class="api-item" href="#datamapperquerybind-gettype">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
-<code class="sig">getType( mixed $value )</code>
+<code class="sig"><span class="sf">getType</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Auto detects the PDO type</span>
 </a>
 <a class="api-item" href="#datamapperquerybind-inlinearray">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">inlineArray(
-    array $data,
-    int $type
-)</code>
-<span class="desc">Processes an array - if passed as an `inline` parameter</span>
+<code class="sig"><span class="sf">inlineArray</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span></span>)</code>
+<span class="desc">Processes an array - if passed as an <code>inline</code> parameter</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$inlineCount = 0` `int`
-
--   `protected`{ .vis-protected } `$store = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$inlineCount</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$store</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3497,34 +3302,31 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 <div class="api-list">
 <a class="api-item" href="#datamapperquerydelete-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    Connection $connection,
-    Bind $bind
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Connection</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">Bind</span> <span class="sv">$bind</span></span>)</code>
 <span class="desc">Delete constructor.</span>
 </a>
 <a class="api-item" href="#datamapperquerydelete-from">
 <code class="vis vis-public">public</code>
 <code class="ret">Delete</code>
-<code class="sig">from( string $table )</code>
+<code class="sig"><span class="sf">from</span>( <span class="st">string</span> <span class="sv">$table</span> )</code>
 <span class="desc">Adds table(s) in the query</span>
 </a>
 <a class="api-item" href="#datamapperquerydelete-getstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getStatement()</code>
+<code class="sig"><span class="sf">getStatement</span>()</code>
 </a>
 <a class="api-item" href="#datamapperquerydelete-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal store</span>
 </a>
 <a class="api-item" href="#datamapperquerydelete-returning">
 <code class="vis vis-public">public</code>
 <code class="ret">Delete</code>
-<code class="sig">returning( array $columns )</code>
-<span class="desc">Adds the `RETURNING` clause</span>
+<code class="sig"><span class="sf">returning</span>( <span class="st">array</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Adds the <code>RETURNING</code> clause</span>
 </a>
 </div>
 
@@ -3596,64 +3398,54 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 <div class="api-list">
 <a class="api-item" href="#datamapperqueryinsert-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    Connection $connection,
-    Bind $bind
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Connection</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">Bind</span> <span class="sv">$bind</span></span>)</code>
 <span class="desc">Insert constructor.</span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-column">
 <code class="vis vis-public">public</code>
 <code class="ret">Insert</code>
-<code class="sig">column(
-    string $column,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a column for the `INSERT` query</span>
+<code class="sig"><span class="sf">column</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a column for the <code>INSERT</code> query</span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">Insert</code>
-<code class="sig">columns( array $columns )</code>
-<span class="desc">Mass sets columns and values for the `INSERT`</span>
+<code class="sig"><span class="sf">columns</span>( <span class="st">array</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Mass sets columns and values for the <code>INSERT</code></span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-getlastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLastInsertId( string $name = null )</code>
+<code class="sig"><span class="sf">getLastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the id of the last inserted record</span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-getstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getStatement()</code>
+<code class="sig"><span class="sf">getStatement</span>()</code>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-into">
 <code class="vis vis-public">public</code>
 <code class="ret">Insert</code>
-<code class="sig">into( string $table )</code>
+<code class="sig"><span class="sf">into</span>( <span class="st">string</span> <span class="sv">$table</span> )</code>
 <span class="desc">Adds table(s) in the query</span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal store</span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-returning">
 <code class="vis vis-public">public</code>
 <code class="ret">Insert</code>
-<code class="sig">returning( array $columns )</code>
-<span class="desc">Adds the `RETURNING` clause</span>
+<code class="sig"><span class="sf">returning</span>( <span class="st">array</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Adds the <code>RETURNING</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryinsert-set">
 <code class="vis vis-public">public</code>
 <code class="ret">Insert</code>
-<code class="sig">set(
-    string $column,
-    mixed $value = null
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets a column = value condition</span>
 </a>
 </div>
@@ -3764,47 +3556,49 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 <div class="api-list">
 <a class="api-item" href="#datamapperqueryqueryfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $selectClass = &quot;&quot; )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$selectClass</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">QueryFactory constructor.</span>
 </a>
 <a class="api-item" href="#datamapperqueryqueryfactory-newbind">
 <code class="vis vis-public">public</code>
 <code class="ret">Bind</code>
-<code class="sig">newBind()</code>
+<code class="sig"><span class="sf">newBind</span>()</code>
 <span class="desc">Create a new Bind object</span>
 </a>
 <a class="api-item" href="#datamapperqueryqueryfactory-newdelete">
 <code class="vis vis-public">public</code>
 <code class="ret">Delete</code>
-<code class="sig">newDelete( Connection $connection )</code>
+<code class="sig"><span class="sf">newDelete</span>( <span class="st">Connection</span> <span class="sv">$connection</span> )</code>
 <span class="desc">Create a new Delete object</span>
 </a>
 <a class="api-item" href="#datamapperqueryqueryfactory-newinsert">
 <code class="vis vis-public">public</code>
 <code class="ret">Insert</code>
-<code class="sig">newInsert( Connection $connection )</code>
+<code class="sig"><span class="sf">newInsert</span>( <span class="st">Connection</span> <span class="sv">$connection</span> )</code>
 <span class="desc">Create a new Insert object</span>
 </a>
 <a class="api-item" href="#datamapperqueryqueryfactory-newselect">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">newSelect( Connection $connection )</code>
+<code class="sig"><span class="sf">newSelect</span>( <span class="st">Connection</span> <span class="sv">$connection</span> )</code>
 <span class="desc">Create a new Select object</span>
 </a>
 <a class="api-item" href="#datamapperqueryqueryfactory-newupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">Update</code>
-<code class="sig">newUpdate( Connection $connection )</code>
+<code class="sig"><span class="sf">newUpdate</span>( <span class="st">Connection</span> <span class="sv">$connection</span> )</code>
 <span class="desc">Create a new Update object</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$selectClass = ""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$selectClass</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3883,175 +3677,158 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownQu
 <div class="api-list">
 <a class="api-item" href="#datamapperqueryselect-__call">
 <code class="vis vis-public">public</code>
-<code class="sig">__call(
-    string $method,
-    array $params
-)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span></span>)</code>
 <span class="desc">Proxied methods to the connection</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-andhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">andHaving(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a `AND` for a `HAVING` condition</span>
+<code class="sig"><span class="sf">andHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a <code>AND</code> for a <code>HAVING</code> condition</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-appendhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">appendHaving(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Concatenates to the most recent `HAVING` clause</span>
+<code class="sig"><span class="sf">appendHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Concatenates to the most recent <code>HAVING</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-appendjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">appendJoin(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Concatenates to the most recent `JOIN` clause</span>
+<code class="sig"><span class="sf">appendJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Concatenates to the most recent <code>JOIN</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-asalias">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">asAlias( string $asAlias )</code>
-<span class="desc">The `AS` statement for the query - useful in sub-queries</span>
+<code class="sig"><span class="sf">asAlias</span>( <span class="st">string</span> <span class="sv">$asAlias</span> )</code>
+<span class="desc">The <code>AS</code> statement for the query - useful in sub-queries</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">columns( array $columns )</code>
+<code class="sig"><span class="sf">columns</span>( <span class="st">array</span> <span class="sv">$columns</span> )</code>
 <span class="desc">The columns to select from. If a key is set in the array element, the</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-distinct">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">distinct( bool $enable = true )</code>
+<code class="sig"><span class="sf">distinct</span>( <span class="st">bool</span> <span class="sv">$enable</span><span class="sm"> = true</span> )</code>
 </a>
 <a class="api-item" href="#datamapperqueryselect-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">forUpdate( bool $enable = true )</code>
-<span class="desc">Enable the `FOR UPDATE` for the query</span>
+<code class="sig"><span class="sf">forUpdate</span>( <span class="st">bool</span> <span class="sv">$enable</span><span class="sm"> = true</span> )</code>
+<span class="desc">Enable the <code>FOR UPDATE</code> for the query</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-from">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">from( string $table )</code>
+<code class="sig"><span class="sf">from</span>( <span class="st">string</span> <span class="sv">$table</span> )</code>
 <span class="desc">Adds table(s) in the query</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-getstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getStatement()</code>
+<code class="sig"><span class="sf">getStatement</span>()</code>
 <span class="desc">Returns the compiled SQL statement</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-groupby">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">groupBy( mixed $groupBy )</code>
-<span class="desc">Sets the `GROUP BY`</span>
+<code class="sig"><span class="sf">groupBy</span>( <span class="st">mixed</span> <span class="sv">$groupBy</span> )</code>
+<span class="desc">Sets the <code>GROUP BY</code></span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-hascolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasColumns()</code>
+<code class="sig"><span class="sf">hasColumns</span>()</code>
 <span class="desc">Whether the query has columns or not</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-having">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">having(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a `HAVING` condition</span>
+<code class="sig"><span class="sf">having</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a <code>HAVING</code> condition</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-join">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">join(
-    string $join,
-    string $table,
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$join</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
 <span class="desc">Sets a &#039;JOIN&#039; condition</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-orhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">orHaving(
-    string $condition,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a `OR` for a `HAVING` condition</span>
+<code class="sig"><span class="sf">orHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$condition</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a <code>OR</code> for a <code>HAVING</code> condition</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal collections</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-subselect">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">subSelect()</code>
+<code class="sig"><span class="sf">subSelect</span>()</code>
 <span class="desc">Start a sub-select</span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-union">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">union()</code>
-<span class="desc">Start a `UNION`</span>
+<code class="sig"><span class="sf">union</span>()</code>
+<span class="desc">Start a <code>UNION</code></span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-unionall">
 <code class="vis vis-public">public</code>
 <code class="ret">Select</code>
-<code class="sig">unionAll()</code>
-<span class="desc">Start a `UNION ALL`</span>
+<code class="sig"><span class="sf">unionAll</span>()</code>
+<span class="desc">Start a <code>UNION ALL</code></span>
 </a>
 <a class="api-item" href="#datamapperqueryselect-getcurrentstatement">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getCurrentStatement( string $suffix = &quot;&quot; )</code>
+<code class="sig"><span class="sf">getCurrentStatement</span>( <span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = &quot;&quot;</span> )</code>
 <span class="desc">Statement builder</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `JOIN_INNER = "INNER"` `string`
-
--   `JOIN_LEFT = "LEFT"` `string`
-
--   `JOIN_NATURAL = "NATURAL"` `string`
-
--   `JOIN_RIGHT = "RIGHT"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">JOIN_INNER</span><span class="sm"> = &quot;INNER&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">JOIN_LEFT</span><span class="sm"> = &quot;LEFT&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">JOIN_NATURAL</span><span class="sm"> = &quot;NATURAL&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">JOIN_RIGHT</span><span class="sm"> = &quot;RIGHT&quot;</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$asAlias = ""` `string`
-
--   `protected`{ .vis-protected } `$forUpdate = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$asAlias</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forUpdate</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4272,64 +4049,54 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 <div class="api-list">
 <a class="api-item" href="#datamapperqueryupdate-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    Connection $connection,
-    Bind $bind
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Connection</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">Bind</span> <span class="sv">$bind</span></span>)</code>
 <span class="desc">Update constructor.</span>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-column">
 <code class="vis vis-public">public</code>
 <code class="ret">Update</code>
-<code class="sig">column(
-    string $column,
-    mixed $value = null,
-    int $type = -1
-)</code>
-<span class="desc">Sets a column for the `UPDATE` query</span>
+<code class="sig"><span class="sf">column</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$type</span><span class="sm"> = -1</span></span>)</code>
+<span class="desc">Sets a column for the <code>UPDATE</code> query</span>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">Update</code>
-<code class="sig">columns( array $columns )</code>
-<span class="desc">Mass sets columns and values for the `UPDATE`</span>
+<code class="sig"><span class="sf">columns</span>( <span class="st">array</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Mass sets columns and values for the <code>UPDATE</code></span>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-from">
 <code class="vis vis-public">public</code>
 <code class="ret">Update</code>
-<code class="sig">from( string $table )</code>
+<code class="sig"><span class="sf">from</span>( <span class="st">string</span> <span class="sv">$table</span> )</code>
 <span class="desc">Adds table(s) in the query</span>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-getstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getStatement()</code>
+<code class="sig"><span class="sf">getStatement</span>()</code>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-hascolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasColumns()</code>
+<code class="sig"><span class="sf">hasColumns</span>()</code>
 <span class="desc">Whether the query has columns or not</span>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal store</span>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-returning">
 <code class="vis vis-public">public</code>
 <code class="ret">Update</code>
-<code class="sig">returning( array $columns )</code>
-<span class="desc">Adds the `RETURNING` clause</span>
+<code class="sig"><span class="sf">returning</span>( <span class="st">array</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Adds the <code>RETURNING</code> clause</span>
 </a>
 <a class="api-item" href="#datamapperqueryupdate-set">
 <code class="vis vis-public">public</code>
 <code class="ret">Update</code>
-<code class="sig">set(
-    string $column,
-    mixed $value = null
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets a column = value condition</span>
 </a>
 </div>

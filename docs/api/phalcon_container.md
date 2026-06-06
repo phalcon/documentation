@@ -54,255 +54,256 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` 
 <div class="api-list">
 <a class="api-item" href="#containercontainer-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 <a class="api-item" href="#containercontainer-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">bind(
-    string $interfaceName,
-    string $concrete
-)</code>
+<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">string</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$concrete</span></span>)</code>
 <span class="desc">Bind an interface to a concrete class</span>
 </a>
 <a class="api-item" href="#containercontainer-callableget">
 <code class="vis vis-public">public</code>
 <code class="ret">Closure</code>
-<code class="sig">callableGet( string $name )</code>
+<code class="sig"><span class="sf">callableGet</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Resolve to a closure on a get()</span>
 </a>
 <a class="api-item" href="#containercontainer-callablenew">
 <code class="vis vis-public">public</code>
 <code class="ret">Closure</code>
-<code class="sig">callableNew( string $name )</code>
+<code class="sig"><span class="sf">callableNew</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Resolve to a closure on a new()</span>
 </a>
 <a class="api-item" href="#containercontainer-extend">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">extend(
-    string $name,
-    callable $callableObject
-)</code>
+<code class="sig"><span class="sf">extend</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
 <span class="desc">Extends the definition</span>
 </a>
 <a class="api-item" href="#containercontainer-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Resolve and return an element registerd in the container</span>
 </a>
 <a class="api-item" href="#containercontainer-getalias">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getAlias( string $name )</code>
+<code class="sig"><span class="sf">getAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return an alias</span>
 </a>
 <a class="api-item" href="#containercontainer-getbytag">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getByTag( string $tag )</code>
+<code class="sig"><span class="sf">getByTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
 <span class="desc">Return services by tag</span>
 </a>
 <a class="api-item" href="#containercontainer-getdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">getDefinition( string $name )</code>
+<code class="sig"><span class="sf">getDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return the service definition</span>
 </a>
 <a class="api-item" href="#containercontainer-getinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">getInstance( string $name )</code>
+<code class="sig"><span class="sf">getInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return a stored instance</span>
 </a>
 <a class="api-item" href="#containercontainer-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getParameter( string $name )</code>
+<code class="sig"><span class="sf">getParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return a parameter</span>
 </a>
 <a class="api-item" href="#containercontainer-getresolver">
 <code class="vis vis-public">public</code>
 <code class="ret">Resolver</code>
-<code class="sig">getResolver()</code>
+<code class="sig"><span class="sf">getResolver</span>()</code>
 <span class="desc">Return the resolver</span>
 </a>
 <a class="api-item" href="#containercontainer-getservice">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">getService( string $serviceName )</code>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
 <span class="desc">Resolve an return a service</span>
 </a>
 <a class="api-item" href="#containercontainer-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Does the container have a particular service</span>
 </a>
 <a class="api-item" href="#containercontainer-hasalias">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasAlias( string $name )</code>
+<code class="sig"><span class="sf">hasAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Does the service have an alias</span>
 </a>
 <a class="api-item" href="#containercontainer-hasdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasDefinition( string $name )</code>
+<code class="sig"><span class="sf">hasDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Does the service have a definition</span>
 </a>
 <a class="api-item" href="#containercontainer-hasinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasInstance( string $name )</code>
+<code class="sig"><span class="sf">hasInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Does the service have an instance</span>
 </a>
 <a class="api-item" href="#containercontainer-hasparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasParameter( string $name )</code>
+<code class="sig"><span class="sf">hasParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Does the service have a parameter</span>
 </a>
 <a class="api-item" href="#containercontainer-hasservice">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasService( string $serviceName )</code>
+<code class="sig"><span class="sf">hasService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
 <span class="desc">Does the container have a particular service</span>
 </a>
 <a class="api-item" href="#containercontainer-isautowireenabled">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAutowireEnabled()</code>
+<code class="sig"><span class="sf">isAutowireEnabled</span>()</code>
 <span class="desc">Is AutoWiring enabled</span>
 </a>
 <a class="api-item" href="#containercontainer-new">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">new( string $name )</code>
+<code class="sig"><span class="sf">new</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Resolve and return a new service</span>
 </a>
 <a class="api-item" href="#containercontainer-newdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">newDefinition( string $name )</code>
+<code class="sig"><span class="sf">newDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return a new service definition</span>
 </a>
 <a class="api-item" href="#containercontainer-set">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">set(
-    string $name,
-    mixed $definition
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Set a service</span>
 </a>
 <a class="api-item" href="#containercontainer-setalias">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAlias(
-    string $name,
-    string $alias
-)</code>
+<code class="sig"><span class="sf">setAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
 <span class="desc">Set an alias</span>
 </a>
 <a class="api-item" href="#containercontainer-setautowire">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAutowire( bool $enabled )</code>
+<code class="sig"><span class="sf">setAutowire</span>( <span class="st">bool</span> <span class="sv">$enabled</span> )</code>
 <span class="desc">Set AutoWire</span>
 </a>
 <a class="api-item" href="#containercontainer-setdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefinition(
-    string $name,
-    ServiceDefinition $definition
-)</code>
+<code class="sig"><span class="sf">setDefinition</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceDefinition</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Set a definition</span>
 </a>
 <a class="api-item" href="#containercontainer-setinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setInstance(
-    string $name,
-    object $instance,
-    string $lifetime
-)</code>
+<code class="sig"><span class="sf">setInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$lifetime</span></span>)</code>
 <span class="desc">Set an instance</span>
 </a>
 <a class="api-item" href="#containercontainer-setparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setParameter(
-    string $name,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a parameter</span>
 </a>
 <a class="api-item" href="#containercontainer-settag">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setTag(
-    string $tag,
-    string $serviceName
-)</code>
+<code class="sig"><span class="sf">setTag</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$serviceName</span></span>)</code>
 <span class="desc">Register a tag with a service</span>
 </a>
 <a class="api-item" href="#containercontainer-unsetalias">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetAlias( string $name )</code>
+<code class="sig"><span class="sf">unsetAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Remove an alias</span>
 </a>
 <a class="api-item" href="#containercontainer-unsetdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetDefinition( string $name )</code>
+<code class="sig"><span class="sf">unsetDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Remove a definition</span>
 </a>
 <a class="api-item" href="#containercontainer-unsetinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetInstance( string $name )</code>
+<code class="sig"><span class="sf">unsetInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Remove an instance</span>
 </a>
 <a class="api-item" href="#containercontainer-unsetinstances">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetInstances( string $lifetime )</code>
+<code class="sig"><span class="sf">unsetInstances</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
 <span class="desc">Remove instances based on lifetime</span>
 </a>
 <a class="api-item" href="#containercontainer-unsetparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetParameter( string $name )</code>
+<code class="sig"><span class="sf">unsetParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Remove a parameter</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$aliases = []` `array<string, string>`
-
--   `protected`{ .vis-protected } `$autowire = true` `bool`
-
--   `protected`{ .vis-protected } `$instanceLifetimes = []` `array<string, string>`
-
--   `protected`{ .vis-protected } `$instances = []` `array<string, object>`
-
--   `protected`{ .vis-protected } `$parameters = []` `array<string, mixed>`
-
--   `protected`{ .vis-protected } `$processors = []` `array<string, Processor>`
-
--   `protected`{ .vis-protected } `$resolver` `Resolver`
-
--   `protected`{ .vis-protected } `$services = []` `array<string, ServiceDefinition>`
-
--   `protected`{ .vis-protected } `$tags = []` `array<string, list<string>>`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;string, string&gt;</code>
+<code class="sig"><span class="sv">$aliases</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autowire</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;string, string&gt;</code>
+<code class="sig"><span class="sv">$instanceLifetimes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;string, object&gt;</code>
+<code class="sig"><span class="sv">$instances</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;string, mixed&gt;</code>
+<code class="sig"><span class="sv">$parameters</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;string, Processor&gt;</code>
+<code class="sig"><span class="sv">$processors</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Resolver</code>
+<code class="sig"><span class="sv">$resolver</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;string, ServiceDefinition&gt;</code>
+<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;string, list&lt;string&gt;&gt;</code>
+<code class="sig"><span class="sv">$tags</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -652,23 +653,25 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainerFactory` · `Phalcon\Contr
 <a class="api-item" href="#containercontainerfactory-addprovider">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addProvider( Provider $provider )</code>
+<code class="sig"><span class="sf">addProvider</span>( <span class="st">Provider</span> <span class="sv">$provider</span> )</code>
 <span class="desc">Adds a provider</span>
 </a>
 <a class="api-item" href="#containercontainerfactory-newcontainer">
 <code class="vis vis-public">public</code>
 <code class="ret">Container</code>
-<code class="sig">newContainer()</code>
+<code class="sig"><span class="sf">newContainer</span>()</code>
 <span class="desc">Returns a new container</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$providers = []` `array<array-key, Provider>`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;array-key, Provider&gt;</code>
+<code class="sig"><span class="sv">$providers</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -732,16 +735,23 @@ copies will be replaced with the actual Composer dependencies.
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `CLOSURE_TYPE = "closure"` `string`
-
--   `OBJECT_TYPE = "object"` `string`
-
--   `PARAMETER_TYPE = "parameter"` `string`
-
--   `STRING_TYPE = "string"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">CLOSURE_TYPE</span><span class="sm"> = &quot;closure&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">OBJECT_TYPE</span><span class="sm"> = &quot;object&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PARAMETER_TYPE</span><span class="sm"> = &quot;parameter&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">STRING_TYPE</span><span class="sm"> = &quot;string&quot;</span></code>
+</div>
 </div>
 
 
@@ -792,17 +802,13 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\
 <a class="api-item" href="#containerdefinitionprocessorclosureprocessor-canprocess">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">canProcess( mixed $definition )</code>
+<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Wheteher the definition is a Closure</span>
 </a>
 <a class="api-item" href="#containerdefinitionprocessorclosureprocessor-process">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">process(
-    string $name,
-    mixed $definition,
-    object $container
-)</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Process the Closure</span>
 </a>
 </div>
@@ -879,17 +885,13 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\
 <a class="api-item" href="#containerdefinitionprocessorobjectprocessor-canprocess">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">canProcess( mixed $definition )</code>
+<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Whether the definition is an Object (not Closure)</span>
 </a>
 <a class="api-item" href="#containerdefinitionprocessorobjectprocessor-process">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">process(
-    string $name,
-    mixed $definition,
-    object $container
-)</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Process the Object</span>
 </a>
 </div>
@@ -966,17 +968,13 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\
 <a class="api-item" href="#containerdefinitionprocessorparameterprocessor-canprocess">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">canProcess( mixed $definition )</code>
+<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Whetehr the definition is a parameter</span>
 </a>
 <a class="api-item" href="#containerdefinitionprocessorparameterprocessor-process">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">process(
-    string $name,
-    mixed $definition,
-    object $container
-)</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Process the parameter</span>
 </a>
 </div>
@@ -1052,17 +1050,13 @@ __Uses__ `Phalcon\Container\Definition\ServiceDefinition`
 <a class="api-item" href="#containerdefinitionprocessorprocessor-canprocess">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">canProcess( mixed $definition )</code>
+<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Can this definition be processed?</span>
 </a>
 <a class="api-item" href="#containerdefinitionprocessorprocessor-process">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">process(
-    string $name,
-    mixed $definition,
-    object $container
-)</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Process the definition</span>
 </a>
 </div>
@@ -1139,17 +1133,13 @@ __Uses__ `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Def
 <a class="api-item" href="#containerdefinitionprocessorstringprocessor-canprocess">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">canProcess( mixed $definition )</code>
+<code class="sig"><span class="sf">canProcess</span>( <span class="st">mixed</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Whether the definition is a class string</span>
 </a>
 <a class="api-item" href="#containerdefinitionprocessorstringprocessor-process">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">process(
-    string $name,
-    mixed $definition,
-    object $container
-)</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Process the class string</span>
 </a>
 </div>
@@ -1225,221 +1215,252 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 <div class="api-list">
 <a class="api-item" href="#containerdefinitionservicedefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $serviceName,
-    string $type,
-    mixed $raw = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$serviceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$raw</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-addextender">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addExtender( callable $extender )</code>
+<code class="sig"><span class="sf">addExtender</span>( <span class="st">callable</span> <span class="sv">$extender</span> )</code>
 <span class="desc">Adds an extender</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-addtag">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addTag( string $tag )</code>
+<code class="sig"><span class="sf">addTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
 <span class="desc">Adds a tag</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-buildservice">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">buildService( object $container )</code>
+<code class="sig"><span class="sf">buildService</span>( <span class="st">object</span> <span class="sv">$container</span> )</code>
 <span class="desc">Builds a service and returns the instance back</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-freeze">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">freeze( object $container )</code>
+<code class="sig"><span class="sf">freeze</span>( <span class="st">object</span> <span class="sv">$container</span> )</code>
 <span class="desc">Freezes the container</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-getarguments">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getArguments()</code>
+<code class="sig"><span class="sf">getArguments</span>()</code>
 <span class="desc">Returns the arguments</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-getclass">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getClass()</code>
+<code class="sig"><span class="sf">getClass</span>()</code>
 <span class="desc">Returns the class</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-getconstructorargs">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getConstructorArgs()</code>
+<code class="sig"><span class="sf">getConstructorArgs</span>()</code>
 <span class="desc">Returns the constructor arguments</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-getextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getExtenders()</code>
+<code class="sig"><span class="sf">getExtenders</span>()</code>
 <span class="desc">Returns the extenders</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-getfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">callable</code>
-<code class="sig">getFactory()</code>
+<code class="sig"><span class="sf">getFactory</span>()</code>
 <span class="desc">Returns the factory</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-getlifetime">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLifetime()</code>
+<code class="sig"><span class="sf">getLifetime</span>()</code>
 <span class="desc">Returns the lifetime</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-getservicename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getServiceName()</code>
+<code class="sig"><span class="sf">getServiceName</span>()</code>
 <span class="desc">Returns the name of the service</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-gettags">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getTags()</code>
+<code class="sig"><span class="sf">getTags</span>()</code>
 <span class="desc">Returns the tags</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the type</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-hasclass">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasClass()</code>
+<code class="sig"><span class="sf">hasClass</span>()</code>
 <span class="desc">Does it have a class</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-hasextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasExtenders()</code>
+<code class="sig"><span class="sf">hasExtenders</span>()</code>
 <span class="desc">Do we have extenders</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-hasfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasFactory()</code>
+<code class="sig"><span class="sf">hasFactory</span>()</code>
 <span class="desc">Does it have a factory</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-iscacheable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isCacheable()</code>
+<code class="sig"><span class="sf">isCacheable</span>()</code>
 <span class="desc">Is it cacheable</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-isfrozen">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isFrozen()</code>
+<code class="sig"><span class="sf">isFrozen</span>()</code>
 <span class="desc">Is it frozen</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setargument">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setArgument(
-    mixed $param,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setArgument</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set an argument</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setclass">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setClass( string $className )</code>
+<code class="sig"><span class="sf">setClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Set a class</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setcontainer">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setContainer( object $container )</code>
+<code class="sig"><span class="sf">setContainer</span>( <span class="st">object</span> <span class="sv">$container</span> )</code>
 <span class="desc">Set the container</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setExtenders( array $extenders )</code>
+<code class="sig"><span class="sf">setExtenders</span>( <span class="st">array</span> <span class="sv">$extenders</span> )</code>
 <span class="desc">Set extenders</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFactory( callable $factory )</code>
+<code class="sig"><span class="sf">setFactory</span>( <span class="st">callable</span> <span class="sv">$factory</span> )</code>
 <span class="desc">Set a factory</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setiscacheable">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setIsCacheable( bool $isCacheable )</code>
+<code class="sig"><span class="sf">setIsCacheable</span>( <span class="st">bool</span> <span class="sv">$isCacheable</span> )</code>
 <span class="desc">Set cachable</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-setlifetime">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setLifetime( string $lifetime )</code>
+<code class="sig"><span class="sf">setLifetime</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
 <span class="desc">Set lifetime</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-unsetclass">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">unsetClass()</code>
+<code class="sig"><span class="sf">unsetClass</span>()</code>
 <span class="desc">Unset class</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-unsetextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">unsetExtenders()</code>
+<code class="sig"><span class="sf">unsetExtenders</span>()</code>
 <span class="desc">Unset extenders</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-unsetfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">unsetFactory()</code>
+<code class="sig"><span class="sf">unsetFactory</span>()</code>
 <span class="desc">Unset the factory</span>
 </a>
 <a class="api-item" href="#containerdefinitionservicedefinition-checkfrozen">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">checkFrozen()</code>
+<code class="sig"><span class="sf">checkFrozen</span>()</code>
 <span class="desc">Check if frozen</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments = []` `array`
-
--   `protected`{ .vis-protected } `$className = null` `string | null`
-
--   `protected`{ .vis-protected } `$constructorArgs = []` `array`
-
--   `protected`{ .vis-protected } `$container = null` `object | null`
-
--   `protected`{ .vis-protected } `$extenders = []` `array<array-key, callable>`
-
--   `protected`{ .vis-protected } `$factory = null` `callable | null`
-
--   `protected`{ .vis-protected } `$frozen = false` `bool`
-
--   `protected`{ .vis-protected } `$isCacheable = false` `bool`
-
--   `protected`{ .vis-protected } `$lifetime = ServiceLifetime::SCOPED` `string`
-
--   `protected`{ .vis-protected } `$raw = null` `mixed`
-
--   `protected`{ .vis-protected } `$serviceName` `mixed`
-
--   `protected`{ .vis-protected } `$tags = []` `array`
-
--   `protected`{ .vis-protected } `$type` `mixed`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string | null</code>
+<code class="sig"><span class="sv">$className</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$constructorArgs</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object | null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;array-key, callable&gt;</code>
+<code class="sig"><span class="sv">$extenders</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable | null</code>
+<code class="sig"><span class="sv">$factory</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$frozen</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isCacheable</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$lifetime</span><span class="sm"> = ServiceLifetime::SCOPED</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$raw</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$serviceName</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$tags</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$type</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1734,14 +1755,19 @@ copies will be replaced with the actual Composer dependencies.
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `SCOPED = "SCOPED"` `string`
-
--   `SINGLETON = "SINGLETON"` `string`
-
--   `TRANSIENT = "TRANSIENT"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">SCOPED</span><span class="sm"> = &quot;SCOPED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">SINGLETON</span><span class="sm"> = &quot;SINGLETON&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">TRANSIENT</span><span class="sm"> = &quot;TRANSIENT&quot;</span></code>
+</div>
 </div>
 
 
@@ -1790,7 +1816,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionscannotextendresolved-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Cannot extend a resolved service</span>
 </a>
 </div>
@@ -1853,10 +1879,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionscannotresolveparameter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $param,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 <span class="desc">Cannot resolve a parameter</span>
 </a>
 </div>
@@ -1922,7 +1945,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionscircularaliasfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Circular Alias found</span>
 </a>
 </div>
@@ -2028,7 +2051,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsenvnotdefined-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $varname )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$varname</span> )</code>
 </a>
 </div>
 
@@ -2144,7 +2167,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsfrozendefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Definition is frozen</span>
 </a>
 </div>
@@ -2207,7 +2230,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsinstancenotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -2267,10 +2290,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsinvalidextender-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $service,
-    string $key
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$service</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
 <span class="desc">Invalid extender (not callable)</span>
 </a>
 </div>
@@ -2336,7 +2356,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsnoclassset-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">No set for service</span>
 </a>
 </div>
@@ -2399,7 +2419,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsnofactoryset-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">No factory for service</span>
 </a>
 </div>
@@ -2462,7 +2482,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsnoprocessorfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">No processor found</span>
 </a>
 </div>
@@ -2525,7 +2545,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsparameternotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -2585,7 +2605,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsservicenotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Service not found</span>
 </a>
 </div>
@@ -2648,7 +2668,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerexceptionsservicenotregistered-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Service not registered</span>
 </a>
 </div>
@@ -2713,7 +2733,7 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Ser
 <a class="api-item" href="#containerprovidercli-provide">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">provide( Collection $services )</code>
+<code class="sig"><span class="sf">provide</span>( <span class="st">Collection</span> <span class="sv">$services</span> )</code>
 <span class="desc">Provider for commonly used CLI applications</span>
 </a>
 </div>
@@ -2778,7 +2798,7 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Ser
 <a class="api-item" href="#containerproviderweb-provide">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">provide( Collection $services )</code>
+<code class="sig"><span class="sf">provide</span>( <span class="st">Collection</span> <span class="sv">$services</span> )</code>
 <span class="desc">Provider for commonly used Web applications</span>
 </a>
 </div>
@@ -2843,76 +2863,69 @@ __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate`
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyarrayvalues-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $values = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">count()</code>
+<code class="sig"><span class="sf">count</span>()</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-getiterator">
 <code class="vis vis-public">public</code>
 <code class="ret">ArrayIterator</code>
-<code class="sig">getIterator()</code>
+<code class="sig"><span class="sf">getIterator</span>()</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-merge">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">merge( mixed $values )</code>
+<code class="sig"><span class="sf">merge</span>( <span class="st">mixed</span> <span class="sv">$values</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $offset,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve to an array, where each element has itself been lazy-resolved.</span>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-resolvevalue">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveValue(
-    object $ioc,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">resolveValue</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyarrayvalues-resolvevalues">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">resolveValues(
-    object $ioc,
-    array $values
-)</code>
+<code class="sig"><span class="sf">resolveValues</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$values = []` `array<array-key, mixed>`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="sig"><span class="sv">$values</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3043,22 +3056,24 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazycall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( callable $callableObject )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">callable</span> <span class="sv">$callableObject</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazycall-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve the callable</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$callableObject` `mixed`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$callableObject</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3124,22 +3139,24 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazycallableget-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( mixed $id )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazycallableget-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve to a closure on a get()</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$id` `string|Lazy`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|Lazy</code>
+<code class="sig"><span class="sv">$id</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3205,22 +3222,24 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazycallablenew-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( mixed $id )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazycallablenew-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve to a closure on a new()</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$id` `string|Lazy`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|Lazy</code>
+<code class="sig"><span class="sv">$id</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3291,7 +3310,7 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <a class="api-item" href="#containerresolverlazycsenv-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve the getEnv() from keys as a comma separated list</span>
 </a>
 </div>
@@ -3358,39 +3377,41 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyenv-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $varname,
-    string $vartype = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyenv-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve an environment variable</span>
 </a>
 <a class="api-item" href="#containerresolverlazyenv-cast">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">cast( mixed $value )</code>
+<code class="sig"><span class="sf">cast</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Cast a value to the defined type (if any)</span>
 </a>
 <a class="api-item" href="#containerresolverlazyenv-getenv">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getEnv()</code>
+<code class="sig"><span class="sf">getEnv</span>()</code>
 <span class="desc">Return the env value</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$varname` `string`
-
--   `protected`{ .vis-protected } `$vartype = null` `string|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$varname</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$vartype</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3481,16 +3502,12 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyenvdefault-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $varname,
-    mixed $defaultValue,
-    string $vartype = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$varname</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$vartype</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyenvdefault-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve an environment variable, returning the default if not defined</span>
 </a>
 </div>
@@ -3562,27 +3579,29 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyfunctioncall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $functionName,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazyfunctioncall-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve a function</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments` `array<array-key, mixed>`
-
--   `protected`{ .vis-protected } `$functionName` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="sig"><span class="sv">$arguments</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$functionName</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3651,22 +3670,24 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazyget-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( mixed $id )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazyget-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve a shared instance</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$id` `string|Lazy`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|Lazy</code>
+<code class="sig"><span class="sv">$id</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3732,30 +3753,34 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazygetcall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $id,
-    string $method,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazygetcall-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve a shared instance method call</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments` `array<array-key, mixed>`
-
--   `protected`{ .vis-protected } `$id` `string|Lazy`
-
--   `protected`{ .vis-protected } `$method` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="sig"><span class="sv">$arguments</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|Lazy</code>
+<code class="sig"><span class="sv">$id</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3839,28 +3864,22 @@ __Uses__ `Phalcon\Contracts\Container\Resolver\Resolvable`
 <a class="api-item" href="#containerresolverlazylazy-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__invoke( object $ioc )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazy-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazy-resolveargument">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveArgument(
-    object $ioc,
-    mixed $argument
-)</code>
+<code class="sig"><span class="sf">resolveArgument</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$argument</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazy-resolvearguments">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">resolveArguments(
-    object $ioc,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">resolveArguments</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 </div>
 
@@ -3945,92 +3964,67 @@ copies will be replaced with the actual Composer dependencies.
 <a class="api-item" href="#containerresolverlazylazyfactory-arrayvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">ArrayValues</code>
-<code class="sig">arrayValues( array $values )</code>
+<code class="sig"><span class="sf">arrayValues</span>( <span class="st">array</span> <span class="sv">$values</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-call">
 <code class="vis vis-public">public</code>
 <code class="ret">Call</code>
-<code class="sig">call( callable $callableObject )</code>
+<code class="sig"><span class="sf">call</span>( <span class="st">callable</span> <span class="sv">$callableObject</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-callableget">
 <code class="vis vis-public">public</code>
 <code class="ret">CallableGet</code>
-<code class="sig">callableGet( string $id )</code>
+<code class="sig"><span class="sf">callableGet</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-callablenew">
 <code class="vis vis-public">public</code>
 <code class="ret">CallableNew</code>
-<code class="sig">callableNew( string $id )</code>
+<code class="sig"><span class="sf">callableNew</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-csenv">
 <code class="vis vis-public">public</code>
 <code class="ret">CsEnv</code>
-<code class="sig">csEnv(
-    string $name,
-    string $type = null
-)</code>
+<code class="sig"><span class="sf">csEnv</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-env">
 <code class="vis vis-public">public</code>
 <code class="ret">Env</code>
-<code class="sig">env(
-    string $name,
-    string $type = null
-)</code>
+<code class="sig"><span class="sf">env</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-envdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">EnvDefault</code>
-<code class="sig">envDefault(
-    string $name,
-    mixed $defaultValue,
-    string $type = null
-)</code>
+<code class="sig"><span class="sf">envDefault</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-functioncall">
 <code class="vis vis-public">public</code>
 <code class="ret">FunctionCall</code>
-<code class="sig">functionCall(
-    string $functionName,
-    array $args
-)</code>
+<code class="sig"><span class="sf">functionCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-get">
 <code class="vis vis-public">public</code>
 <code class="ret">Get</code>
-<code class="sig">get( string $id )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-getcall">
 <code class="vis vis-public">public</code>
 <code class="ret">GetCall</code>
-<code class="sig">getCall(
-    string $id,
-    string $method,
-    array $args
-)</code>
+<code class="sig"><span class="sf">getCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-newcall">
 <code class="vis vis-public">public</code>
 <code class="ret">NewCall</code>
-<code class="sig">newCall(
-    string $id,
-    string $method,
-    array $args
-)</code>
+<code class="sig"><span class="sf">newCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">NewInstance</code>
-<code class="sig">newInstance( string $id )</code>
+<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazylazyfactory-staticcall">
 <code class="vis vis-public">public</code>
 <code class="ret">StaticCall</code>
-<code class="sig">staticCall(
-    string $className,
-    string $method,
-    array $args
-)</code>
+<code class="sig"><span class="sf">staticCall</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
 </a>
 </div>
 
@@ -4186,30 +4180,34 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazynewcall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $id,
-    string $method,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazynewcall-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve a new instance method call</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments` `array<array-key, mixed>`
-
--   `protected`{ .vis-protected } `$id` `string|Lazy`
-
--   `protected`{ .vis-protected } `$method` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="sig"><span class="sv">$arguments</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|Lazy</code>
+<code class="sig"><span class="sv">$id</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4279,22 +4277,24 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazynewinstance-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( mixed $id )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 </a>
 <a class="api-item" href="#containerresolverlazynewinstance-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve a new instance</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$id` `string|Lazy`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|Lazy</code>
+<code class="sig"><span class="sv">$id</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4360,30 +4360,34 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-list">
 <a class="api-item" href="#containerresolverlazystaticcall-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $className,
-    string $method,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverlazystaticcall-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( object $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">object</span> <span class="sv">$ioc</span> )</code>
 <span class="desc">Resolve a static method call</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$arguments` `array<array-key, mixed>`
-
--   `protected`{ .vis-protected } `$className` `string|Lazy`
-
--   `protected`{ .vis-protected } `$method` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array&lt;array-key, mixed&gt;</code>
+<code class="sig"><span class="sv">$arguments</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|Lazy</code>
+<code class="sig"><span class="sv">$className</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$method</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4456,64 +4460,42 @@ __Uses__ `Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `
 <a class="api-item" href="#containerresolverresolver-isresolvableclass">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isResolvableClass( string $className )</code>
+<code class="sig"><span class="sf">isResolvableClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Is this a resolvable class?</span>
 </a>
 <a class="api-item" href="#containerresolverresolver-resolvecall">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveCall(
-    object $ioc,
-    callable $callableObject,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">resolveCall</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Resolve a call</span>
 </a>
 <a class="api-item" href="#containerresolverresolver-resolveclass">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">resolveClass(
-    object $ioc,
-    string $className,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">resolveClass</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Resolve a class</span>
 </a>
 <a class="api-item" href="#containerresolverresolver-resolvemethod">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resolveMethod(
-    object $ioc,
-    ReflectionMethod $method,
-    object $instance
-)</code>
+<code class="sig"><span class="sf">resolveMethod</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionMethod</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span></span>)</code>
 <span class="desc">Resolve a method</span>
 </a>
 <a class="api-item" href="#containerresolverresolver-resolveparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveParameter(
-    object $ioc,
-    ReflectionParameter $parameter
-)</code>
+<code class="sig"><span class="sf">resolveParameter</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionParameter</span> <span class="sv">$parameter</span></span>)</code>
 <span class="desc">Resolve parameters</span>
 </a>
 <a class="api-item" href="#containerresolverresolver-resolveparameters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">resolveParameters(
-    object $ioc,
-    array $parameters,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">resolveParameters</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#containerresolverresolver-resolvetype">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveType(
-    object $ioc,
-    mixed $type
-)</code>
+<code class="sig"><span class="sf">resolveType</span>(<span class="prm"><span class="st">object</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$type</span></span>)</code>
 <span class="desc">type is ReflectionType</span>
 </a>
 </div>

@@ -76,39 +76,47 @@ __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\D
 <a class="api-item" href="#mvcapplication-handle">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface|bool</code>
-<code class="sig">handle( string $uri )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Handles a MVC request</span>
 </a>
 <a class="api-item" href="#mvcapplication-sendcookiesonhandlerequest">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">sendCookiesOnHandleRequest( bool $sendCookies )</code>
+<code class="sig"><span class="sf">sendCookiesOnHandleRequest</span>( <span class="st">bool</span> <span class="sv">$sendCookies</span> )</code>
 <span class="desc">Enables or disables sending cookies by each request handling</span>
 </a>
 <a class="api-item" href="#mvcapplication-sendheadersonhandlerequest">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">sendHeadersOnHandleRequest( bool $sendHeaders )</code>
+<code class="sig"><span class="sf">sendHeadersOnHandleRequest</span>( <span class="st">bool</span> <span class="sv">$sendHeaders</span> )</code>
 <span class="desc">Enables or disables sending headers by each request handling</span>
 </a>
 <a class="api-item" href="#mvcapplication-useimplicitview">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">useImplicitView( bool $implicitView )</code>
+<code class="sig"><span class="sf">useImplicitView</span>( <span class="st">bool</span> <span class="sv">$implicitView</span> )</code>
 <span class="desc">By default. The view is implicitly buffering all the output</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$implicitView = true` `bool`
-
--   `protected`{ .vis-protected } `$sendCookies = true` `bool`
-
--   `protected`{ .vis-protected } `$sendHeaders = true` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$implicitView</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$sendCookies</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$sendHeaders</span><span class="sm"> = true</span></code>
+</div>
 </div>
 
 ### Methods
@@ -199,7 +207,7 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcapplicationexceptionscontainerrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -243,7 +251,7 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcapplicationexceptionsinvalidmoduledefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -287,7 +295,7 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcapplicationexceptionsmoduledefinitionpathnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $path )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 </a>
 </div>
 
@@ -362,29 +370,25 @@ __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Ph
 <div class="api-list">
 <a class="api-item" href="#mvccontroller-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 <span class="desc">Phalcon\Mvc\Controller constructor</span>
 </a>
 <a class="api-item" href="#mvccontroller-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvccontroller-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvccontroller-firemanagerevent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed|bool</code>
-<code class="sig">fireManagerEvent(
-    string $eventName,
-    mixed $data = null,
-    bool $cancellable = true
-)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 </div>
@@ -469,7 +473,7 @@ Interface for Phalcon\Mvc\Controller
 <a class="api-item" href="#mvccontrollerbindmodelinterface-getmodelname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModelName()</code>
+<code class="sig"><span class="sf">getModelName</span>()</code>
 <span class="desc">Return the model name associated with this controller</span>
 </a>
 </div>
@@ -529,94 +533,99 @@ __Uses__ `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInter
 <a class="api-item" href="#mvcdispatcher-forward">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">forward( array $forward )</code>
+<code class="sig"><span class="sf">forward</span>( <span class="st">array</span> <span class="sv">$forward</span> )</code>
 <span class="desc">Forwards the execution flow to another controller/action.</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-getactivecontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">ControllerInterface</code>
-<code class="sig">getActiveController()</code>
+<code class="sig"><span class="sf">getActiveController</span>()</code>
 <span class="desc">Returns the active controller in the dispatcher</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-getcontrollerclass">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getControllerClass()</code>
+<code class="sig"><span class="sf">getControllerClass</span>()</code>
 <span class="desc">Possible controller class name that will be located to dispatch the</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-getcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getControllerName()</code>
+<code class="sig"><span class="sf">getControllerName</span>()</code>
 <span class="desc">Gets last dispatched controller name</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-getlastcontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">ControllerInterface</code>
-<code class="sig">getLastController()</code>
+<code class="sig"><span class="sf">getLastController</span>()</code>
 <span class="desc">Returns the latest dispatched controller</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-getpreviousactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPreviousActionName()</code>
+<code class="sig"><span class="sf">getPreviousActionName</span>()</code>
 <span class="desc">Gets previous dispatched action name</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-getpreviouscontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPreviousControllerName()</code>
+<code class="sig"><span class="sf">getPreviousControllerName</span>()</code>
 <span class="desc">Gets previous dispatched controller name</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-getpreviousnamespacename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPreviousNamespaceName()</code>
+<code class="sig"><span class="sf">getPreviousNamespaceName</span>()</code>
 <span class="desc">Gets previous dispatched namespace name</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-setcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">DispatcherInterface</code>
-<code class="sig">setControllerName( string $controllerName )</code>
+<code class="sig"><span class="sf">setControllerName</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
 <span class="desc">Sets the controller name to be dispatched</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-setcontrollersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">DispatcherInterface</code>
-<code class="sig">setControllerSuffix( string $controllerSuffix )</code>
+<code class="sig"><span class="sf">setControllerSuffix</span>( <span class="st">string</span> <span class="sv">$controllerSuffix</span> )</code>
 <span class="desc">Sets the default controller suffix</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-setdefaultcontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">DispatcherInterface</code>
-<code class="sig">setDefaultController( string $controllerName )</code>
+<code class="sig"><span class="sf">setDefaultController</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
 <span class="desc">Sets the default controller name</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-handleexception">
 <code class="vis vis-protected">protected</code>
-<code class="sig">handleException( \Exception $exception )</code>
+<code class="sig"><span class="sf">handleException</span>( <span class="st">\Exception</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Handles a user exception</span>
 </a>
 <a class="api-item" href="#mvcdispatcher-throwdispatchexception">
 <code class="vis vis-protected">protected</code>
-<code class="sig">throwDispatchException(
-    string $message,
-    int $exceptionCode = 0
-)</code>
+<code class="sig"><span class="sf">throwDispatchException</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$exceptionCode</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Throws an internal exception</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$defaultAction = "index"` `string`
-
--   `protected`{ .vis-protected } `$defaultHandler = "index"` `string`
-
--   `protected`{ .vis-protected } `$handlerSuffix = "Controller"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultAction</span><span class="sm"> = &quot;index&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultHandler</span><span class="sm"> = &quot;index&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$handlerSuffix</span><span class="sm"> = &quot;Controller&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -813,37 +822,37 @@ __Uses__ `Phalcon\Dispatcher\DispatcherInterface`
 <a class="api-item" href="#mvcdispatcherinterface-getactivecontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">ControllerInterface|null</code>
-<code class="sig">getActiveController()</code>
+<code class="sig"><span class="sf">getActiveController</span>()</code>
 <span class="desc">Returns the active controller in the dispatcher</span>
 </a>
 <a class="api-item" href="#mvcdispatcherinterface-getcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getControllerName()</code>
+<code class="sig"><span class="sf">getControllerName</span>()</code>
 <span class="desc">Gets last dispatched controller name</span>
 </a>
 <a class="api-item" href="#mvcdispatcherinterface-getlastcontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">ControllerInterface|null</code>
-<code class="sig">getLastController()</code>
+<code class="sig"><span class="sf">getLastController</span>()</code>
 <span class="desc">Returns the latest dispatched controller</span>
 </a>
 <a class="api-item" href="#mvcdispatcherinterface-setcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">DispatcherInterfaceBase</code>
-<code class="sig">setControllerName( string $controllerName )</code>
+<code class="sig"><span class="sf">setControllerName</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
 <span class="desc">Sets the controller name to be dispatched</span>
 </a>
 <a class="api-item" href="#mvcdispatcherinterface-setcontrollersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">DispatcherInterfaceBase</code>
-<code class="sig">setControllerSuffix( string $controllerSuffix )</code>
+<code class="sig"><span class="sf">setControllerSuffix</span>( <span class="st">string</span> <span class="sv">$controllerSuffix</span> )</code>
 <span class="desc">Sets the default controller suffix</span>
 </a>
 <a class="api-item" href="#mvcdispatcherinterface-setdefaultcontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">DispatcherInterfaceBase</code>
-<code class="sig">setDefaultController( string $controllerName )</code>
+<code class="sig"><span class="sf">setDefaultController</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
 <span class="desc">Sets the default controller name</span>
 </a>
 </div>
@@ -949,7 +958,7 @@ __Uses__ `Phalcon\Mvc\Dispatcher\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcdispatcherexceptionsresponseserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -985,15 +994,12 @@ Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 <a class="api-item" href="#mvcentityinterface-readattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">readAttribute( string $attribute )</code>
+<code class="sig"><span class="sf">readAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Reads an attribute value by its name</span>
 </a>
 <a class="api-item" href="#mvcentityinterface-writeattribute">
 <code class="vis vis-public">public</code>
-<code class="sig">writeAttribute(
-    string $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">writeAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Writes an attribute value by its name</span>
 </a>
 </div>
@@ -1063,296 +1069,306 @@ __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` 
 <div class="api-list">
 <a class="api-item" href="#mvcmicro-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( DiInterface $container = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Micro constructor</span>
 </a>
 <a class="api-item" href="#mvcmicro-after">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">after( mixed $handler )</code>
+<code class="sig"><span class="sf">after</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends an &#039;after&#039; middleware to be called after execute the route</span>
 </a>
 <a class="api-item" href="#mvcmicro-afterbinding">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">afterBinding( mixed $handler )</code>
+<code class="sig"><span class="sf">afterBinding</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a afterBinding middleware to be called after model binding</span>
 </a>
 <a class="api-item" href="#mvcmicro-before">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">before( mixed $handler )</code>
+<code class="sig"><span class="sf">before</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a before middleware to be called before execute the route</span>
 </a>
 <a class="api-item" href="#mvcmicro-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">delete(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcmicro-error">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">error( mixed $handler )</code>
+<code class="sig"><span class="sf">error</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Sets a handler that will be called when an exception is thrown handling</span>
 </a>
 <a class="api-item" href="#mvcmicro-finish">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">finish( mixed $handler )</code>
+<code class="sig"><span class="sf">finish</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a &#039;finish&#039; middleware to be called when the request is finished</span>
 </a>
 <a class="api-item" href="#mvcmicro-get">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">get(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcmicro-getactivehandler">
 <code class="vis vis-public">public</code>
-<code class="sig">getActiveHandler()</code>
+<code class="sig"><span class="sf">getActiveHandler</span>()</code>
 <span class="desc">Return the handler that will be called for the matched route</span>
 </a>
 <a class="api-item" href="#mvcmicro-getboundmodels">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBoundModels()</code>
+<code class="sig"><span class="sf">getBoundModels</span>()</code>
 <span class="desc">Returns bound models from binder instance</span>
 </a>
 <a class="api-item" href="#mvcmicro-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcmicro-gethandlers">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getHandlers()</code>
+<code class="sig"><span class="sf">getHandlers</span>()</code>
 <span class="desc">Returns the internal handlers attached to the application</span>
 </a>
 <a class="api-item" href="#mvcmicro-getmodelbinder">
 <code class="vis vis-public">public</code>
 <code class="ret">BinderInterface|null</code>
-<code class="sig">getModelBinder()</code>
+<code class="sig"><span class="sf">getModelBinder</span>()</code>
 <span class="desc">Gets model binder</span>
 </a>
 <a class="api-item" href="#mvcmicro-getreturnedvalue">
 <code class="vis vis-public">public</code>
-<code class="sig">getReturnedValue()</code>
+<code class="sig"><span class="sf">getReturnedValue</span>()</code>
 <span class="desc">Returns the value returned by the executed handler</span>
 </a>
 <a class="api-item" href="#mvcmicro-getrouter">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">getRouter()</code>
+<code class="sig"><span class="sf">getRouter</span>()</code>
 <span class="desc">Returns the internal router used by the application</span>
 </a>
 <a class="api-item" href="#mvcmicro-getservice">
 <code class="vis vis-public">public</code>
-<code class="sig">getService( string $serviceName )</code>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
 <span class="desc">Obtains a service from the DI</span>
 </a>
 <a class="api-item" href="#mvcmicro-getsharedservice">
 <code class="vis vis-public">public</code>
-<code class="sig">getSharedService( string $serviceName )</code>
+<code class="sig"><span class="sf">getSharedService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
 <span class="desc">Obtains a shared service from the DI</span>
 </a>
 <a class="api-item" href="#mvcmicro-handle">
 <code class="vis vis-public">public</code>
-<code class="sig">handle( string $uri )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Handle the whole request</span>
 </a>
 <a class="api-item" href="#mvcmicro-hasservice">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasService( string $serviceName )</code>
+<code class="sig"><span class="sf">hasService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
 <span class="desc">Checks if a service is registered in the DI</span>
 </a>
 <a class="api-item" href="#mvcmicro-head">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">head(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcmicro-map">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">map(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler without any HTTP method constraint</span>
 </a>
 <a class="api-item" href="#mvcmicro-mount">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">mount( CollectionInterface $collection )</code>
+<code class="sig"><span class="sf">mount</span>( <span class="st">CollectionInterface</span> <span class="sv">$collection</span> )</code>
 <span class="desc">Mounts a collection of handlers</span>
 </a>
 <a class="api-item" href="#mvcmicro-notfound">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">notFound( mixed $handler )</code>
+<code class="sig"><span class="sf">notFound</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Sets a handler that will be called when the router does not match any of</span>
 </a>
 <a class="api-item" href="#mvcmicro-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Check if a service is registered in the internal services container using</span>
 </a>
 <a class="api-item" href="#mvcmicro-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Allows to obtain a shared service in the internal services container</span>
 </a>
 <a class="api-item" href="#mvcmicro-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $offset,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Allows to register a shared service in the internal services container</span>
 </a>
 <a class="api-item" href="#mvcmicro-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Removes a service from the internal services container using the array</span>
 </a>
 <a class="api-item" href="#mvcmicro-options">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">options(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcmicro-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">patch(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcmicro-post">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">post(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcmicro-put">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">put(
-    string $routePattern,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcmicro-setactivehandler">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">setActiveHandler( mixed $activeHandler )</code>
+<code class="sig"><span class="sf">setActiveHandler</span>( <span class="st">mixed</span> <span class="sv">$activeHandler</span> )</code>
 <span class="desc">Sets externally the handler that must be called by the matched route</span>
 </a>
 <a class="api-item" href="#mvcmicro-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmicro-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcmicro-setmodelbinder">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setModelBinder(
-    BinderInterface $modelBinder,
-    mixed $cache = null
-)</code>
+<code class="sig"><span class="sf">setModelBinder</span>(<span class="prm"><span class="st">BinderInterface</span> <span class="sv">$modelBinder</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets model binder</span>
 </a>
 <a class="api-item" href="#mvcmicro-setresponsehandler">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setResponseHandler( mixed $handler )</code>
+<code class="sig"><span class="sf">setResponseHandler</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Appends a custom &#039;response&#039; handler to be called instead of the default</span>
 </a>
 <a class="api-item" href="#mvcmicro-setservice">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceInterface</code>
-<code class="sig">setService(
-    string $serviceName,
-    mixed $definition,
-    bool $isShared = false
-)</code>
+<code class="sig"><span class="sf">setService</span>(<span class="prm"><span class="st">string</span> <span class="sv">$serviceName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isShared</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sets a service from the DI</span>
 </a>
 <a class="api-item" href="#mvcmicro-stop">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">stop()</code>
+<code class="sig"><span class="sf">stop</span>()</code>
 <span class="desc">Stops the middleware execution avoiding than other middlewares be</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$activeHandler = null` `callable|null`
-
--   `protected`{ .vis-protected } `$afterBindingHandlers = []` `array`
-
--   `protected`{ .vis-protected } `$afterHandlers = []` `array`
-
--   `protected`{ .vis-protected } `$beforeHandlers = []` `array`
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$errorHandler = null` `callable|null`
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$finishHandlers = []` `array`
-
--   `protected`{ .vis-protected } `$handlers = []` `array`
-
--   `protected`{ .vis-protected } `$modelBinder = null` `BinderInterface|null`
-
--   `protected`{ .vis-protected } `$notFoundHandler = null` `callable|null`
-
--   `protected`{ .vis-protected } `$responseHandler = null` `callable|null`
-
--   `protected`{ .vis-protected } `$returnedValue = null` `mixed|null`
-
--   `protected`{ .vis-protected } `$router = null` `RouterInterface|null`
-
--   `protected`{ .vis-protected } `$stopped = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|null</code>
+<code class="sig"><span class="sv">$activeHandler</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$afterBindingHandlers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$afterHandlers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$beforeHandlers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|null</code>
+<code class="sig"><span class="sv">$errorHandler</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$finishHandlers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$handlers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">BinderInterface|null</code>
+<code class="sig"><span class="sv">$modelBinder</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|null</code>
+<code class="sig"><span class="sv">$notFoundHandler</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|null</code>
+<code class="sig"><span class="sv">$responseHandler</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$returnedValue</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">RouterInterface|null</code>
+<code class="sig"><span class="sv">$router</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$stopped</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1760,164 +1776,130 @@ $app->mount($collection);
 <a class="api-item" href="#mvcmicrocollection-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">delete(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">get(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-gethandler">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getHandler()</code>
+<code class="sig"><span class="sf">getHandler</span>()</code>
 <span class="desc">Returns the main handler</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-gethandlers">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getHandlers()</code>
+<code class="sig"><span class="sf">getHandlers</span>()</code>
 <span class="desc">Returns the registered handlers</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-getprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPrefix()</code>
+<code class="sig"><span class="sf">getPrefix</span>()</code>
 <span class="desc">Returns the collection prefix if any</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-head">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">head(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-islazy">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isLazy()</code>
+<code class="sig"><span class="sf">isLazy</span>()</code>
 <span class="desc">Returns if the main handler must be lazy loaded</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-map">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">map(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-mapvia">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">mapVia(
-    string $routePattern,
-    callable $handler,
-    mixed $method,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">mapVia</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler via methods.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-options">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">options(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">patch(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-post">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">post(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-put">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">put(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-sethandler">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">setHandler(
-    mixed $handler,
-    bool $isLazy = false
-)</code>
+<code class="sig"><span class="sf">setHandler</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isLazy</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sets the main handler.</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-setlazy">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">setLazy( bool $isLazy )</code>
+<code class="sig"><span class="sf">setLazy</span>( <span class="st">bool</span> <span class="sv">$isLazy</span> )</code>
 <span class="desc">Sets if the main handler must be lazy loaded</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-setprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">setPrefix( string $prefix )</code>
+<code class="sig"><span class="sf">setPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Sets a prefix for all routes added to the collection</span>
 </a>
 <a class="api-item" href="#mvcmicrocollection-addmap">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">addMap(
-    mixed $method,
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">addMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Internal function to add a handler to the group.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$handler` `callable`
-
--   `protected`{ .vis-protected } `$handlers = []` `array`
-
--   `protected`{ .vis-protected } `$isLazy = false` `bool`
-
--   `protected`{ .vis-protected } `$prefix = ""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable</code>
+<code class="sig"><span class="sv">$handler</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$handlers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isLazy</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2139,126 +2121,91 @@ Interface for Phalcon\Mvc\Micro\Collection
 <a class="api-item" href="#mvcmicrocollectioninterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">delete(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">get(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-gethandler">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getHandler()</code>
+<code class="sig"><span class="sf">getHandler</span>()</code>
 <span class="desc">Returns the main handler</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-gethandlers">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getHandlers()</code>
+<code class="sig"><span class="sf">getHandlers</span>()</code>
 <span class="desc">Returns the registered handlers</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-getprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPrefix()</code>
+<code class="sig"><span class="sf">getPrefix</span>()</code>
 <span class="desc">Returns the collection prefix if any</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-head">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">head(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">head</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-islazy">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isLazy()</code>
+<code class="sig"><span class="sf">isLazy</span>()</code>
 <span class="desc">Returns if the main handler must be lazy loaded</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-map">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">map(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">map</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-options">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">options(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">options</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-patch">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">patch(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">patch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-post">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">post(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">post</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-put">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">put(
-    string $routePattern,
-    callable $handler,
-    string $name = null
-)</code>
+<code class="sig"><span class="sf">put</span>(<span class="prm"><span class="st">string</span> <span class="sv">$routePattern</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Maps a route to a handler that only matches if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-sethandler">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">setHandler(
-    mixed $handler,
-    bool $isLazy = false
-)</code>
+<code class="sig"><span class="sf">setHandler</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isLazy</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sets the main handler</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-setlazy">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">setLazy( bool $isLazy )</code>
+<code class="sig"><span class="sf">setLazy</span>( <span class="st">bool</span> <span class="sv">$isLazy</span> )</code>
 <span class="desc">Sets if the main handler must be lazy loaded</span>
 </a>
 <a class="api-item" href="#mvcmicrocollectioninterface-setprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">CollectionInterface</code>
-<code class="sig">setPrefix( string $prefix )</code>
+<code class="sig"><span class="sf">setPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Sets a prefix for all routes added to the collection</span>
 </a>
 </div>
@@ -2476,7 +2423,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionscontainerrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2519,7 +2466,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionserrorhandlernotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2562,7 +2509,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionshandlernotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -2605,7 +2552,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionsinvalidregisteredhandler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2648,7 +2595,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionslazyhandlernotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $definition )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$definition</span> )</code>
 </a>
 </div>
 
@@ -2691,7 +2638,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionsmissingcollectionmainhandler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2734,7 +2681,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionsnohandlerstomount-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2777,7 +2724,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionsnomatchedroutehandler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2820,7 +2767,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionsnotfoundhandlernotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2863,7 +2810,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmicroexceptionsresponsehandlernotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2901,38 +2848,39 @@ __Uses__ `Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound` · `Phalcon\Mvc\Mode
 <div class="api-list">
 <a class="api-item" href="#mvcmicrolazyloader-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $definition )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Phalcon\Mvc\Micro\LazyLoader constructor</span>
 </a>
 <a class="api-item" href="#mvcmicrolazyloader-callmethod">
 <code class="vis vis-public">public</code>
-<code class="sig">callMethod(
-    string $method,
-    mixed $arguments,
-    BinderInterface $modelBinder = null
-)</code>
+<code class="sig"><span class="sf">callMethod</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">BinderInterface</span> <span class="sv">$modelBinder</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Calling __call method</span>
 </a>
 <a class="api-item" href="#mvcmicrolazyloader-getdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDefinition()</code>
+<code class="sig"><span class="sf">getDefinition</span>()</code>
 </a>
 <a class="api-item" href="#mvcmicrolazyloader-gethandler">
 <code class="vis vis-public">public</code>
 <code class="ret">object|null</code>
-<code class="sig">getHandler()</code>
+<code class="sig"><span class="sf">getHandler</span>()</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$definition` `string`
-
--   `protected`{ .vis-protected } `$handler = null` `object|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$definition</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object|null</code>
+<code class="sig"><span class="sv">$handler</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2993,7 +2941,7 @@ __Uses__ `Phalcon\Mvc\Micro`
 <div class="api-list">
 <a class="api-item" href="#mvcmicromiddlewareinterface-call">
 <code class="vis vis-public">public</code>
-<code class="sig">call( Micro $application )</code>
+<code class="sig"><span class="sf">call</span>( <span class="st">Micro</span> <span class="sv">$application</span> )</code>
 <span class="desc">Calls the middleware</span>
 </a>
 </div>
@@ -3069,793 +3017,727 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <div class="api-list">
 <a class="api-item" href="#mvcmodel-__call">
 <code class="vis vis-public">public</code>
-<code class="sig">__call(
-    string $method,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Handles method calls when a method is not implemented</span>
 </a>
 <a class="api-item" href="#mvcmodel-__callstatic">
 <code class="vis vis-public">public</code>
-<code class="sig">__callStatic(
-    string $method,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">__callStatic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Handles method calls when a static method is not implemented</span>
 </a>
 <a class="api-item" href="#mvcmodel-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $data = null,
-    DiInterface $container = null,
-    ManagerInterface $modelsManager = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$modelsManager</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model constructor</span>
 </a>
 <a class="api-item" href="#mvcmodel-__get">
 <code class="vis vis-public">public</code>
-<code class="sig">__get( string $property )</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$property</span> )</code>
 <span class="desc">Magic method to get related records using the relation alias as a</span>
 </a>
 <a class="api-item" href="#mvcmodel-__isset">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__isset( string $property )</code>
+<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$property</span> )</code>
 <span class="desc">Magic method to check if a property is a valid relation</span>
 </a>
 <a class="api-item" href="#mvcmodel-__serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__serialize()</code>
+<code class="sig"><span class="sf">__serialize</span>()</code>
 <span class="desc">Serializes a model</span>
 </a>
 <a class="api-item" href="#mvcmodel-__set">
 <code class="vis vis-public">public</code>
-<code class="sig">__set(
-    string $property,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$property</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Magic method to assign values to the the model</span>
 </a>
 <a class="api-item" href="#mvcmodel-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unserialize( array $data )</code>
+<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 <span class="desc">Unserializes an array to the model</span>
 </a>
 <a class="api-item" href="#mvcmodel-addbehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">addBehavior( BehaviorInterface $behavior )</code>
+<code class="sig"><span class="sf">addBehavior</span>( <span class="st">BehaviorInterface</span> <span class="sv">$behavior</span> )</code>
 <span class="desc">Setups a behavior in a model</span>
 </a>
 <a class="api-item" href="#mvcmodel-appendmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">appendMessage( MessageInterface $message )</code>
+<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
 <span class="desc">Appends a customized message on the validation process</span>
 </a>
 <a class="api-item" href="#mvcmodel-appendmessagesfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">appendMessagesFrom( mixed $model )</code>
+<code class="sig"><span class="sf">appendMessagesFrom</span>( <span class="st">mixed</span> <span class="sv">$model</span> )</code>
 <span class="desc">**</span>
 </a>
 <a class="api-item" href="#mvcmodel-assign">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">assign(
-    array $data,
-    mixed $whiteList = null,
-    mixed $dataColumnMap = null
-)</code>
+<code class="sig"><span class="sf">assign</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whiteList</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataColumnMap</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Assigns values to a model from an array</span>
 </a>
 <a class="api-item" href="#mvcmodel-average">
 <code class="vis vis-public">public</code>
 <code class="ret">double|ResultsetInterface</code>
-<code class="sig">average( array $parameters = [] )</code>
+<code class="sig"><span class="sf">average</span>( <span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span> )</code>
 <span class="desc">Returns the average value on a column for a result-set of rows matching</span>
 </a>
 <a class="api-item" href="#mvcmodel-cloneresult">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">cloneResult(
-    ModelInterface $base,
-    array $data,
-    int $dirtyState = 0
-)</code>
+<code class="sig"><span class="sf">cloneResult</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Assigns values to a model from an array returning a new model</span>
 </a>
 <a class="api-item" href="#mvcmodel-cloneresultmap">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">cloneResultMap(
-    mixed $base,
-    array $data,
-    mixed $columnMap,
-    int $dirtyState = 0,
-    bool $keepSnapshots = null
-)</code>
+<code class="sig"><span class="sf">cloneResultMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Assigns values to a model from an array, returning a new model.</span>
 </a>
 <a class="api-item" href="#mvcmodel-cloneresultmaphydrate">
 <code class="vis vis-public">public</code>
-<code class="sig">cloneResultMapHydrate(
-    array $data,
-    mixed $columnMap,
-    int $hydrationMode
-)</code>
+<code class="sig"><span class="sf">cloneResultMapHydrate</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$hydrationMode</span></span>)</code>
 <span class="desc">Returns an hydrated result based on the data and the column map</span>
 </a>
 <a class="api-item" href="#mvcmodel-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int|ResultsetInterface</code>
-<code class="sig">count( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">count</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Counts how many records match the specified conditions.</span>
 </a>
 <a class="api-item" href="#mvcmodel-create">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">create()</code>
+<code class="sig"><span class="sf">create</span>()</code>
 <span class="desc">Inserts a model instance. If the instance already exists in the</span>
 </a>
 <a class="api-item" href="#mvcmodel-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete()</code>
+<code class="sig"><span class="sf">delete</span>()</code>
 <span class="desc">Deletes a model instance. Returning true on success or false otherwise.</span>
 </a>
 <a class="api-item" href="#mvcmodel-dosave">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">doSave( CollectionInterface $visited )</code>
+<code class="sig"><span class="sf">doSave</span>( <span class="st">CollectionInterface</span> <span class="sv">$visited</span> )</code>
 <span class="desc">Inserted or updates model instance, expects a visited list of objects.</span>
 </a>
 <a class="api-item" href="#mvcmodel-dump">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">dump()</code>
+<code class="sig"><span class="sf">dump</span>()</code>
 <span class="desc">Returns a simple representation of the object that can be used with</span>
 </a>
 <a class="api-item" href="#mvcmodel-find">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">find( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">find</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Query for a set of records that match the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodel-findfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">findFirst( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">findFirst</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Query the first record that matches the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodel-fireevent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">fireEvent( string $eventName )</code>
+<code class="sig"><span class="sf">fireEvent</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
 <a class="api-item" href="#mvcmodel-fireeventcancel">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">fireEventCancel( string $eventName )</code>
+<code class="sig"><span class="sf">fireEventCancel</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
 <a class="api-item" href="#mvcmodel-getchangedfields">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getChangedFields()</code>
+<code class="sig"><span class="sf">getChangedFields</span>()</code>
 <span class="desc">Returns a list of changed values.</span>
 </a>
 <a class="api-item" href="#mvcmodel-getdirtystate">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getDirtyState()</code>
+<code class="sig"><span class="sf">getDirtyState</span>()</code>
 <span class="desc">Returns one of the DIRTY_STATE_* constants telling if the record exists</span>
 </a>
 <a class="api-item" href="#mvcmodel-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">EventsManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the custom events manager or null if there is no custom events manager</span>
 </a>
 <a class="api-item" href="#mvcmodel-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface[]</code>
-<code class="sig">getMessages( mixed $filter = null )</code>
+<code class="sig"><span class="sf">getMessages</span>( <span class="st">mixed</span> <span class="sv">$filter</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns array of validation messages</span>
 </a>
 <a class="api-item" href="#mvcmodel-getmodelsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface</code>
-<code class="sig">getModelsManager()</code>
+<code class="sig"><span class="sf">getModelsManager</span>()</code>
 <span class="desc">Returns the models manager related to the entity instance</span>
 </a>
 <a class="api-item" href="#mvcmodel-getmodelsmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">MetaDataInterface</code>
-<code class="sig">getModelsMetaData()</code>
+<code class="sig"><span class="sf">getModelsMetaData</span>()</code>
 <span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#mvcmodel-getoldsnapshotdata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOldSnapshotData()</code>
+<code class="sig"><span class="sf">getOldSnapshotData</span>()</code>
 <span class="desc">Returns the internal old snapshot data</span>
 </a>
 <a class="api-item" href="#mvcmodel-getoperationmade">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getOperationMade()</code>
+<code class="sig"><span class="sf">getOperationMade</span>()</code>
 <span class="desc">Returns the type of the latest operation performed by the ORM</span>
 </a>
 <a class="api-item" href="#mvcmodel-getreadconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getReadConnection()</code>
+<code class="sig"><span class="sf">getReadConnection</span>()</code>
 <span class="desc">Gets the connection used to read data for the model</span>
 </a>
 <a class="api-item" href="#mvcmodel-getreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReadConnectionService()</code>
+<code class="sig"><span class="sf">getReadConnectionService</span>()</code>
 <span class="desc">Returns the DependencyInjection connection service name used to read data</span>
 </a>
 <a class="api-item" href="#mvcmodel-getrelated">
 <code class="vis vis-public">public</code>
-<code class="sig">getRelated(
-    string $alias,
-    mixed $arguments = null
-)</code>
+<code class="sig"><span class="sf">getRelated</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns related records based on defined relations</span>
 </a>
 <a class="api-item" href="#mvcmodel-getschema">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getSchema()</code>
+<code class="sig"><span class="sf">getSchema</span>()</code>
 <span class="desc">Returns schema name where the mapped table is located</span>
 </a>
 <a class="api-item" href="#mvcmodel-getsnapshotdata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSnapshotData()</code>
+<code class="sig"><span class="sf">getSnapshotData</span>()</code>
 <span class="desc">Returns the internal snapshot data</span>
 </a>
 <a class="api-item" href="#mvcmodel-getsource">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSource()</code>
+<code class="sig"><span class="sf">getSource</span>()</code>
 <span class="desc">Returns the table name mapped in the model</span>
 </a>
 <a class="api-item" href="#mvcmodel-gettransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">TransactionInterface|null</code>
-<code class="sig">getTransaction()</code>
+<code class="sig"><span class="sf">getTransaction</span>()</code>
 </a>
 <a class="api-item" href="#mvcmodel-getupdatedfields">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getUpdatedFields()</code>
+<code class="sig"><span class="sf">getUpdatedFields</span>()</code>
 <span class="desc">Returns a list of updated values.</span>
 </a>
 <a class="api-item" href="#mvcmodel-getwriteconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getWriteConnection()</code>
+<code class="sig"><span class="sf">getWriteConnection</span>()</code>
 <span class="desc">Gets the connection used to write data to the model</span>
 </a>
 <a class="api-item" href="#mvcmodel-getwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getWriteConnectionService()</code>
+<code class="sig"><span class="sf">getWriteConnectionService</span>()</code>
 <span class="desc">Returns the DependencyInjection connection service name used to write</span>
 </a>
 <a class="api-item" href="#mvcmodel-haschanged">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasChanged(
-    mixed $fieldName = null,
-    bool $allFields = false
-)</code>
+<code class="sig"><span class="sf">hasChanged</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$fieldName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$allFields</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Check if a specific attribute has changed</span>
 </a>
 <a class="api-item" href="#mvcmodel-hassnapshotdata">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasSnapshotData()</code>
+<code class="sig"><span class="sf">hasSnapshotData</span>()</code>
 <span class="desc">Checks if the object has internal snapshot data</span>
 </a>
 <a class="api-item" href="#mvcmodel-hasupdated">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasUpdated(
-    mixed $fieldName = null,
-    bool $allFields = false
-)</code>
+<code class="sig"><span class="sf">hasUpdated</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$fieldName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$allFields</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Check if a specific attribute was updated</span>
 </a>
 <a class="api-item" href="#mvcmodel-isrelationshiploaded">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isRelationshipLoaded( string $relationshipAlias )</code>
+<code class="sig"><span class="sf">isRelationshipLoaded</span>( <span class="st">string</span> <span class="sv">$relationshipAlias</span> )</code>
 <span class="desc">Checks if saved related records have already been loaded.</span>
 </a>
 <a class="api-item" href="#mvcmodel-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">jsonSerialize()</code>
+<code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Serializes the object for json_encode</span>
 </a>
 <a class="api-item" href="#mvcmodel-maximum">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">maximum( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">maximum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the maximum value of a column for a result-set of rows that match</span>
 </a>
 <a class="api-item" href="#mvcmodel-minimum">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">minimum( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">minimum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the minimum value of a column for a result-set of rows that match</span>
 </a>
 <a class="api-item" href="#mvcmodel-query">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">query( DiInterface $container = null )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Create a criteria for a specific model</span>
 </a>
 <a class="api-item" href="#mvcmodel-readattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">readAttribute( string $attribute )</code>
+<code class="sig"><span class="sf">readAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Reads an attribute value by its name</span>
 </a>
 <a class="api-item" href="#mvcmodel-refresh">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">refresh()</code>
+<code class="sig"><span class="sf">refresh</span>()</code>
 <span class="desc">Refreshes the model attributes re-querying the record from the database</span>
 </a>
 <a class="api-item" href="#mvcmodel-save">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">save()</code>
+<code class="sig"><span class="sf">save</span>()</code>
 <span class="desc">Inserts or updates a model instance. Returning true on success or false</span>
 </a>
 <a class="api-item" href="#mvcmodel-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">serialize()</code>
+<code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializes the object ignoring connections, services, related objects or</span>
 </a>
 <a class="api-item" href="#mvcmodel-setconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setConnectionService( string $connectionService )</code>
+<code class="sig"><span class="sf">setConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets the DependencyInjection connection service name</span>
 </a>
 <a class="api-item" href="#mvcmodel-setdirtystate">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig">setDirtyState( int $dirtyState )</code>
+<code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Sets the dirty state of the object using one of the DIRTY_STATE_* constants</span>
 </a>
 <a class="api-item" href="#mvcmodel-seteventsmanager">
 <code class="vis vis-public">public</code>
-<code class="sig">setEventsManager( EventsManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">EventsManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets a custom events manager</span>
 </a>
 <a class="api-item" href="#mvcmodel-setoldsnapshotdata">
 <code class="vis vis-public">public</code>
-<code class="sig">setOldSnapshotData(
-    array $data,
-    mixed $columnMap = null
-)</code>
+<code class="sig"><span class="sf">setOldSnapshotData</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the record&#039;s old snapshot data.</span>
 </a>
 <a class="api-item" href="#mvcmodel-setreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setReadConnectionService( string $connectionService )</code>
+<code class="sig"><span class="sf">setReadConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets the DependencyInjection connection service name used to read data</span>
 </a>
 <a class="api-item" href="#mvcmodel-setsnapshotdata">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setSnapshotData(
-    array $data,
-    mixed $columnMap = null
-)</code>
+<code class="sig"><span class="sf">setSnapshotData</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the record&#039;s snapshot data.</span>
 </a>
 <a class="api-item" href="#mvcmodel-setsync">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">setSync(
-    mixed $elements = null,
-    bool $enabled = true
-)</code>
+<code class="sig"><span class="sf">setSync</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$elements</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$enabled</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Marks one or more many-to-many relationships to be synchronized (or not)</span>
 </a>
 <a class="api-item" href="#mvcmodel-settransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">setTransaction( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">setTransaction</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">Sets a transaction related to the Model instance</span>
 </a>
 <a class="api-item" href="#mvcmodel-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setWriteConnectionService( string $connectionService )</code>
+<code class="sig"><span class="sf">setWriteConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets the DependencyInjection connection service name used to write data</span>
 </a>
 <a class="api-item" href="#mvcmodel-setup">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setup( array $options )</code>
+<code class="sig"><span class="sf">setup</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Enables/disables options in the ORM</span>
 </a>
 <a class="api-item" href="#mvcmodel-skipoperation">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">skipOperation( bool $skip )</code>
+<code class="sig"><span class="sf">skipOperation</span>( <span class="st">bool</span> <span class="sv">$skip</span> )</code>
 <span class="desc">Skips the current operation forcing a success state</span>
 </a>
 <a class="api-item" href="#mvcmodel-sum">
 <code class="vis vis-public">public</code>
 <code class="ret">double|ResultsetInterface</code>
-<code class="sig">sum( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">sum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Calculates the sum on a column for a result-set of rows that match the</span>
 </a>
 <a class="api-item" href="#mvcmodel-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray(
-    mixed $columns = null,
-    mixed $useGetter = true
-)</code>
+<code class="sig"><span class="sf">toArray</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columns</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$useGetter</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Returns the instance as an array representation</span>
 </a>
 <a class="api-item" href="#mvcmodel-unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unserialize( string $data )</code>
+<code class="sig"><span class="sf">unserialize</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
 <span class="desc">Unserializes the object from a serialized string</span>
 </a>
 <a class="api-item" href="#mvcmodel-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">update()</code>
+<code class="sig"><span class="sf">update</span>()</code>
 <span class="desc">Updates a model instance. If the instance does not exist in the</span>
 </a>
 <a class="api-item" href="#mvcmodel-validationhasfailed">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validationHasFailed()</code>
+<code class="sig"><span class="sf">validationHasFailed</span>()</code>
 <span class="desc">Check whether validation process has generated any messages</span>
 </a>
 <a class="api-item" href="#mvcmodel-writeattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">writeAttribute(
-    string $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">writeAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Writes an attribute value by its name</span>
 </a>
 <a class="api-item" href="#mvcmodel-allowemptystringvalues">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">allowEmptyStringValues( array $attributes )</code>
+<code class="sig"><span class="sf">allowEmptyStringValues</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Sets a list of attributes that must be skipped from the</span>
 </a>
 <a class="api-item" href="#mvcmodel-belongsto">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Relation</code>
-<code class="sig">belongsTo(
-    mixed $fields,
-    string $referenceModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">belongsTo</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a reverse 1-1 or n-1 relation between two models</span>
 </a>
 <a class="api-item" href="#mvcmodel-canceloperation">
 <code class="vis vis-protected">protected</code>
-<code class="sig">cancelOperation()</code>
+<code class="sig"><span class="sf">cancelOperation</span>()</code>
 <span class="desc">Cancel the current operation</span>
 </a>
 <a class="api-item" href="#mvcmodel-checkforeignkeysrestrict">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">checkForeignKeysRestrict()</code>
+<code class="sig"><span class="sf">checkForeignKeysRestrict</span>()</code>
 <span class="desc">Reads &quot;belongs to&quot; relations and check the virtual foreign keys when</span>
 </a>
 <a class="api-item" href="#mvcmodel-checkforeignkeysreversecascade">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">checkForeignKeysReverseCascade()</code>
+<code class="sig"><span class="sf">checkForeignKeysReverseCascade</span>()</code>
 <span class="desc">Reads both &quot;hasMany&quot; and &quot;hasOne&quot; relations and checks the virtual</span>
 </a>
 <a class="api-item" href="#mvcmodel-checkforeignkeysreverserestrict">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">checkForeignKeysReverseRestrict()</code>
+<code class="sig"><span class="sf">checkForeignKeysReverseRestrict</span>()</code>
 <span class="desc">Reads both &quot;hasMany&quot; and &quot;hasOne&quot; relations and checks the virtual</span>
 </a>
 <a class="api-item" href="#mvcmodel-collectrelatedtosave">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">collectRelatedToSave()</code>
+<code class="sig"><span class="sf">collectRelatedToSave</span>()</code>
 <span class="desc">Collects previously queried (belongs-to, has-one and has-one-through)</span>
 </a>
 <a class="api-item" href="#mvcmodel-dolowinsert">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doLowInsert(
-    MetaDataInterface $metaData,
-    AdapterInterface $connection,
-    mixed $table,
-    mixed $identityField
-)</code>
+<code class="sig"><span class="sf">doLowInsert</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$identityField</span></span>)</code>
 <span class="desc">Sends a pre-build INSERT SQL statement to the relational database system</span>
 </a>
 <a class="api-item" href="#mvcmodel-dolowupdate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doLowUpdate(
-    MetaDataInterface $metaData,
-    AdapterInterface $connection,
-    mixed $table
-)</code>
+<code class="sig"><span class="sf">doLowUpdate</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span></span>)</code>
 <span class="desc">Sends a pre-build UPDATE SQL statement to the relational database system</span>
 </a>
 <a class="api-item" href="#mvcmodel-getrelatedrecords">
 <code class="vis vis-protected">protected</code>
-<code class="sig">getRelatedRecords(
-    string $modelName,
-    string $method,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">getRelatedRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Returns related records defined relations depending on the method name.</span>
 </a>
 <a class="api-item" href="#mvcmodel-groupresult">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">groupResult(
-    string $functionName,
-    string $alias,
-    mixed $parameters = null
-)</code>
+<code class="sig"><span class="sf">groupResult</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generate a PHQL SELECT statement for an aggregate</span>
 </a>
 <a class="api-item" href="#mvcmodel-has">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">has(
-    MetaDataInterface $metaData,
-    AdapterInterface $connection
-)</code>
+<code class="sig"><span class="sf">has</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span></span>)</code>
 <span class="desc">Checks whether the current record already exists</span>
 </a>
 <a class="api-item" href="#mvcmodel-hasmany">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Relation</code>
-<code class="sig">hasMany(
-    mixed $fields,
-    string $referenceModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">hasMany</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a 1-n relation between two models</span>
 </a>
 <a class="api-item" href="#mvcmodel-hasmanytomany">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Relation</code>
-<code class="sig">hasManyToMany(
-    mixed $fields,
-    string $intermediateModel,
-    mixed $intermediateFields,
-    mixed $intermediateReferencedFields,
-    string $referenceModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">hasManyToMany</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup an n-n relation between two models, through an intermediate</span>
 </a>
 <a class="api-item" href="#mvcmodel-hasone">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Relation</code>
-<code class="sig">hasOne(
-    mixed $fields,
-    string $referenceModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">hasOne</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a 1-1 relation between two models</span>
 </a>
 <a class="api-item" href="#mvcmodel-hasonethrough">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Relation</code>
-<code class="sig">hasOneThrough(
-    mixed $fields,
-    string $intermediateModel,
-    mixed $intermediateFields,
-    mixed $intermediateReferencedFields,
-    string $referenceModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">hasOneThrough</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a 1-1 relation between two models, through an intermediate</span>
 </a>
 <a class="api-item" href="#mvcmodel-invokefinder">
 <code class="vis vis-protected">protected</code>
-<code class="sig">invokeFinder(
-    string $method,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">invokeFinder</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 <span class="desc">Try to check if the query must invoke a finder</span>
 </a>
 <a class="api-item" href="#mvcmodel-keepsnapshots">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">keepSnapshots( bool $keepSnapshot )</code>
+<code class="sig"><span class="sf">keepSnapshots</span>( <span class="st">bool</span> <span class="sv">$keepSnapshot</span> )</code>
 <span class="desc">Sets if the model must keep the original record snapshot in memory</span>
 </a>
 <a class="api-item" href="#mvcmodel-possiblesetter">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">possibleSetter(
-    string $property,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">possibleSetter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$property</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Check for, and attempt to use, possible setter.</span>
 </a>
 <a class="api-item" href="#mvcmodel-postsave">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">postSave(
-    bool $success,
-    bool $exists
-)</code>
+<code class="sig"><span class="sf">postSave</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$success</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$exists</span></span>)</code>
 <span class="desc">Executes internal events after save a record</span>
 </a>
 <a class="api-item" href="#mvcmodel-postsaverelatedrecords">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">postSaveRelatedRecords(
-    AdapterInterface $connection,
-    mixed $related,
-    CollectionInterface $visited
-)</code>
+<code class="sig"><span class="sf">postSaveRelatedRecords</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$related</span>,</span><span class="prm"><span class="st">CollectionInterface</span> <span class="sv">$visited</span></span>)</code>
 <span class="desc">Save the related records assigned in the has-one/has-many relations</span>
 </a>
 <a class="api-item" href="#mvcmodel-presave">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">preSave(
-    MetaDataInterface $metaData,
-    bool $exists,
-    mixed $identityField
-)</code>
+<code class="sig"><span class="sf">preSave</span>(<span class="prm"><span class="st">MetaDataInterface</span> <span class="sv">$metaData</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$exists</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$identityField</span></span>)</code>
 <span class="desc">Executes internal hooks before save a record</span>
 </a>
 <a class="api-item" href="#mvcmodel-presaverelatedrecords">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">preSaveRelatedRecords(
-    AdapterInterface $connection,
-    mixed $related,
-    CollectionInterface $visited
-)</code>
+<code class="sig"><span class="sf">preSaveRelatedRecords</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$connection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$related</span>,</span><span class="prm"><span class="st">CollectionInterface</span> <span class="sv">$visited</span></span>)</code>
 <span class="desc">Saves related records that must be stored prior to save the master record</span>
 </a>
 <a class="api-item" href="#mvcmodel-setschema">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">setSchema( string $schema )</code>
+<code class="sig"><span class="sf">setSchema</span>( <span class="st">string</span> <span class="sv">$schema</span> )</code>
 <span class="desc">Sets schema name where the mapped table is located</span>
 </a>
 <a class="api-item" href="#mvcmodel-setsource">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">setSource( string $source )</code>
+<code class="sig"><span class="sf">setSource</span>( <span class="st">string</span> <span class="sv">$source</span> )</code>
 <span class="desc">Sets the table name to which model should be mapped</span>
 </a>
 <a class="api-item" href="#mvcmodel-skipattributes">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">skipAttributes( array $attributes )</code>
+<code class="sig"><span class="sf">skipAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Sets a list of attributes that must be skipped from the</span>
 </a>
 <a class="api-item" href="#mvcmodel-skipattributesoncreate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">skipAttributesOnCreate( array $attributes )</code>
+<code class="sig"><span class="sf">skipAttributesOnCreate</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Sets a list of attributes that must be skipped from the</span>
 </a>
 <a class="api-item" href="#mvcmodel-skipattributesonupdate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">skipAttributesOnUpdate( array $attributes )</code>
+<code class="sig"><span class="sf">skipAttributesOnUpdate</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
 <span class="desc">Sets a list of attributes that must be skipped from the</span>
 </a>
 <a class="api-item" href="#mvcmodel-usedynamicupdate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">useDynamicUpdate( bool $dynamicUpdate )</code>
+<code class="sig"><span class="sf">useDynamicUpdate</span>( <span class="st">bool</span> <span class="sv">$dynamicUpdate</span> )</code>
 <span class="desc">Sets if a model must use dynamic update instead of the all-field update</span>
 </a>
 <a class="api-item" href="#mvcmodel-validate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">validate( ValidationInterface $validator )</code>
+<code class="sig"><span class="sf">validate</span>( <span class="st">ValidationInterface</span> <span class="sv">$validator</span> )</code>
 <span class="desc">Executes validators on every validation call</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `DIRTY_STATE_DETACHED = 2` `int`
-
--   `DIRTY_STATE_PERSISTENT = 0` `int`
-
--   `DIRTY_STATE_TRANSIENT = 1` `int`
-
--   `OP_CREATE = 1` `int`
-
--   `OP_DELETE = 3` `int`
-
--   `OP_NONE = 0` `int`
-
--   `OP_UPDATE = 2` `int`
-
--   `TRANSACTION_INDEX = "transaction"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DIRTY_STATE_DETACHED</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DIRTY_STATE_PERSISTENT</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DIRTY_STATE_TRANSIENT</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">OP_CREATE</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">OP_DELETE</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">OP_NONE</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">OP_UPDATE</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">TRANSACTION_INDEX</span><span class="sm"> = &quot;transaction&quot;</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$dirtyRelated = []` `array`
-
--   `protected`{ .vis-protected } `$dirtyState = 1` `int`
-
--   `protected`{ .vis-protected } `$errorMessages = []` `array`
-
--   `protected`{ .vis-protected } `$modelsManager = null` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$modelsMetaData = null` `MetaDataInterface|null`
-
--   `protected`{ .vis-protected } `$oldSnapshot = []` `array`
-
--   `protected`{ .vis-protected } `$operationMade = 0` `int`
-
--   `protected`{ .vis-protected } `$rawValues = []` `array`
-
--   `protected`{ .vis-protected } `$related = []` `array`
-
--   `protected`{ .vis-protected } `$skipped = false` `bool`
-
--   `protected`{ .vis-protected } `$snapshot = []` `array`
-
--   `protected`{ .vis-protected } `$syncRelated = []` `array`
-
-    Per-save many-to-many sync overrides, keyed by lowercased relation
-    alias (or "*" wildcard) => bool. Cleared after each save().
-
--   `protected`{ .vis-protected } `$transaction = null` `TransactionInterface|null`
-
--   `protected`{ .vis-protected } `$uniqueKey = null` `string|null`
-
--   `protected`{ .vis-protected } `$uniqueParams = []` `array`
-
--   `protected`{ .vis-protected } `$uniqueTypes = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$dirtyRelated</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$dirtyState</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$errorMessages</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$modelsManager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">MetaDataInterface|null</code>
+<code class="sig"><span class="sv">$modelsMetaData</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$oldSnapshot</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$operationMade</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$rawValues</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$related</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$skipped</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$snapshot</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$syncRelated</span><span class="sm"> = []</span></code>
+<span class="desc">Per-save many-to-many sync overrides, keyed by lowercased relation
+alias (or &quot;*&quot; wildcard) =&gt; bool. Cleared after each save().</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">TransactionInterface|null</code>
+<code class="sig"><span class="sv">$transaction</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$uniqueKey</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$uniqueParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$uniqueTypes</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5749,265 +5631,238 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 <a class="api-item" href="#mvcmodelinterface-appendmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">appendMessage( MessageInterface $message )</code>
+<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
 <span class="desc">Appends a customized message on the validation process</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-assign">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">assign(
-    array $data,
-    mixed $whiteList = null,
-    mixed $dataColumnMap = null
-)</code>
+<code class="sig"><span class="sf">assign</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whiteList</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataColumnMap</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Assigns values to a model from an array</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-average">
 <code class="vis vis-public">public</code>
 <code class="ret">double|ResultsetInterface</code>
-<code class="sig">average( array $parameters = [] )</code>
+<code class="sig"><span class="sf">average</span>( <span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = []</span> )</code>
 <span class="desc">Allows to calculate the average value on a column matching the specified</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-cloneresult">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">cloneResult(
-    ModelInterface $base,
-    array $data,
-    int $dirtyState = 0
-)</code>
+<code class="sig"><span class="sf">cloneResult</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Assigns values to a model from an array returning a new model</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-cloneresultmap">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">cloneResultMap(
-    mixed $base,
-    array $data,
-    mixed $columnMap,
-    int $dirtyState = 0,
-    bool $keepSnapshots = false
-)</code>
+<code class="sig"><span class="sf">cloneResultMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$base</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$dirtyState</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Assigns values to a model from an array returning a new model</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-cloneresultmaphydrate">
 <code class="vis vis-public">public</code>
-<code class="sig">cloneResultMapHydrate(
-    array $data,
-    mixed $columnMap,
-    int $hydrationMode
-)</code>
+<code class="sig"><span class="sf">cloneResultMapHydrate</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$hydrationMode</span></span>)</code>
 <span class="desc">Returns an hydrated result based on the data and the column map</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int|ResultsetInterface</code>
-<code class="sig">count( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">count</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to count how many records match the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-create">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">create()</code>
+<code class="sig"><span class="sf">create</span>()</code>
 <span class="desc">Inserts a model instance. If the instance already exists in the</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete()</code>
+<code class="sig"><span class="sf">delete</span>()</code>
 <span class="desc">Deletes a model instance. Returning true on success or false otherwise.</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-find">
 <code class="vis vis-public">public</code>
-<code class="sig">find( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">find</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to query a set of records that match the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-findfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">findFirst( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">findFirst</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to query the first record that match the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-fireevent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">fireEvent( string $eventName )</code>
+<code class="sig"><span class="sf">fireEvent</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-fireeventcancel">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">fireEventCancel( string $eventName )</code>
+<code class="sig"><span class="sf">fireEventCancel</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Fires an event, implicitly calls behaviors and listeners in the events</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getdirtystate">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getDirtyState()</code>
+<code class="sig"><span class="sf">getDirtyState</span>()</code>
 <span class="desc">Returns one of the DIRTY_STATE_* constants telling if the record exists</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface[]</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns array of validation messages</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getmodelsmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">MetaDataInterface</code>
-<code class="sig">getModelsMetaData()</code>
+<code class="sig"><span class="sf">getModelsMetaData</span>()</code>
 <span class="desc">Returns the models meta-data service related to the entity instance.</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getoperationmade">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getOperationMade()</code>
+<code class="sig"><span class="sf">getOperationMade</span>()</code>
 <span class="desc">Returns the type of the latest operation performed by the ORM</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getreadconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getReadConnection()</code>
+<code class="sig"><span class="sf">getReadConnection</span>()</code>
 <span class="desc">Gets internal database connection</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReadConnectionService()</code>
+<code class="sig"><span class="sf">getReadConnectionService</span>()</code>
 <span class="desc">Returns DependencyInjection connection service used to read data</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getrelated">
 <code class="vis vis-public">public</code>
-<code class="sig">getRelated(
-    string $alias,
-    mixed $arguments = null
-)</code>
+<code class="sig"><span class="sf">getRelated</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns related records based on defined relations</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getschema">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getSchema()</code>
+<code class="sig"><span class="sf">getSchema</span>()</code>
 <span class="desc">Returns schema name where table mapped is located</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getsource">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSource()</code>
+<code class="sig"><span class="sf">getSource</span>()</code>
 <span class="desc">Returns table name mapped in the model</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getwriteconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getWriteConnection()</code>
+<code class="sig"><span class="sf">getWriteConnection</span>()</code>
 <span class="desc">Gets internal database connection</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-getwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getWriteConnectionService()</code>
+<code class="sig"><span class="sf">getWriteConnectionService</span>()</code>
 <span class="desc">Returns DependencyInjection connection service used to write data</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-maximum">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">maximum( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">maximum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to get the maximum value of a column that match the specified</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-minimum">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">minimum( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">minimum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to get the minimum value of a column that match the specified</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-query">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">query( DiInterface $container = null )</code>
+<code class="sig"><span class="sf">query</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Create a criteria for a specific model</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-refresh">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">refresh()</code>
+<code class="sig"><span class="sf">refresh</span>()</code>
 <span class="desc">Refreshes the model attributes re-querying the record from the database</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-save">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">save()</code>
+<code class="sig"><span class="sf">save</span>()</code>
 <span class="desc">Inserts or updates a model instance. Returning true on success or false</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-setconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setConnectionService( string $connectionService )</code>
+<code class="sig"><span class="sf">setConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets both read/write connection services</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-setdirtystate">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig">setDirtyState( int $dirtyState )</code>
+<code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Sets the dirty state of the object using one of the DIRTY_STATE_*</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-setreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setReadConnectionService( string $connectionService )</code>
+<code class="sig"><span class="sf">setReadConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets the DependencyInjection connection service used to read data</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-setsnapshotdata">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setSnapshotData(
-    array $data,
-    mixed $columnMap = null
-)</code>
+<code class="sig"><span class="sf">setSnapshotData</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the record&#039;s snapshot data. This method is used internally to set</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-setsync">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">setSync(
-    mixed $elements = null,
-    bool $enabled = true
-)</code>
+<code class="sig"><span class="sf">setSync</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$elements</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$enabled</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Marks one or more many-to-many relationships to be synchronized (or not)</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-settransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">setTransaction( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">setTransaction</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">Sets a transaction related to the Model instance</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setWriteConnectionService( string $connectionService )</code>
+<code class="sig"><span class="sf">setWriteConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets the DependencyInjection connection service used to write data</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-skipoperation">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">skipOperation( bool $skip )</code>
+<code class="sig"><span class="sf">skipOperation</span>( <span class="st">bool</span> <span class="sv">$skip</span> )</code>
 <span class="desc">Skips the current operation forcing a success state</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-sum">
 <code class="vis vis-public">public</code>
 <code class="ret">double|ResultsetInterface</code>
-<code class="sig">sum( mixed $parameters = null )</code>
+<code class="sig"><span class="sf">sum</span>( <span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span> )</code>
 <span class="desc">Allows to calculate a sum on a column that match the specified conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">update()</code>
+<code class="sig"><span class="sf">update</span>()</code>
 <span class="desc">Updates a model instance. If the instance does not exist in the</span>
 </a>
 <a class="api-item" href="#mvcmodelinterface-validationhasfailed">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validationHasFailed()</code>
+<code class="sig"><span class="sf">validationHasFailed</span>()</code>
 <span class="desc">Check whether validation process has generated any messages</span>
 </a>
 </div>
@@ -6413,45 +6268,40 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbehavior-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\Behavior</span>
 </a>
 <a class="api-item" href="#mvcmodelbehavior-missingmethod">
 <code class="vis vis-public">public</code>
-<code class="sig">missingMethod(
-    ModelInterface $model,
-    string $method,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">missingMethod</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Acts as fallbacks when a missing method is called on the model</span>
 </a>
 <a class="api-item" href="#mvcmodelbehavior-notify">
 <code class="vis vis-public">public</code>
-<code class="sig">notify(
-    string $type,
-    ModelInterface $model
-)</code>
+<code class="sig"><span class="sf">notify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">This method receives the notifications from the EventsManager</span>
 </a>
 <a class="api-item" href="#mvcmodelbehavior-getoptions">
 <code class="vis vis-protected">protected</code>
-<code class="sig">getOptions( string $eventName = null )</code>
+<code class="sig"><span class="sf">getOptions</span>( <span class="st">string</span> <span class="sv">$eventName</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the behavior options related to an event</span>
 </a>
 <a class="api-item" href="#mvcmodelbehavior-musttakeaction">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">mustTakeAction( string $eventName )</code>
+<code class="sig"><span class="sf">mustTakeAction</span>( <span class="st">string</span> <span class="sv">$eventName</span> )</code>
 <span class="desc">Checks whether the behavior must take action on certain event</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$options` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6531,19 +6381,12 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbehaviorinterface-missingmethod">
 <code class="vis vis-public">public</code>
-<code class="sig">missingMethod(
-    ModelInterface $model,
-    string $method,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">missingMethod</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Calls a method when it&#039;s missing in the model</span>
 </a>
 <a class="api-item" href="#mvcmodelbehaviorinterface-notify">
 <code class="vis vis-public">public</code>
-<code class="sig">notify(
-    string $type,
-    ModelInterface $model
-)</code>
+<code class="sig"><span class="sf">notify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">This method receives the notifications from the EventsManager</span>
 </a>
 </div>
@@ -6604,7 +6447,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbehaviorexceptionsmissingrequiredoption-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $option )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$option</span> )</code>
 </a>
 </div>
 
@@ -6644,10 +6487,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalco
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbehaviorsoftdelete-notify">
 <code class="vis vis-public">public</code>
-<code class="sig">notify(
-    string $type,
-    ModelInterface $model
-)</code>
+<code class="sig"><span class="sf">notify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">Listens for notifications from the models manager</span>
 </a>
 </div>
@@ -6693,10 +6533,7 @@ __Uses__ `Closure` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavio
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbehaviortimestampable-notify">
 <code class="vis vis-public">public</code>
-<code class="sig">notify(
-    string $type,
-    ModelInterface $model
-)</code>
+<code class="sig"><span class="sf">notify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">Listens for notifications from the models manager</span>
 </a>
 </div>
@@ -6740,92 +6577,86 @@ __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\C
 <div class="api-list">
 <a class="api-item" href="#mvcmodelbinder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( AdapterInterface $cache = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterInterface</span> <span class="sv">$cache</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\Binder constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-bindtohandler">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">bindToHandler(
-    object $handler,
-    array $params,
-    string $cacheKey,
-    string $methodName = null
-)</code>
+<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Bind models into params in proper handler</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-getboundmodels">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBoundModels()</code>
+<code class="sig"><span class="sf">getBoundModels</span>()</code>
 <span class="desc">Return the active bound models</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-getcache">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getCache()</code>
+<code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Sets cache instance</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-getoriginalvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOriginalValues()</code>
+<code class="sig"><span class="sf">getOriginalValues</span>()</code>
 <span class="desc">Return the array for original values</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-setcache">
 <code class="vis vis-public">public</code>
 <code class="ret">BinderInterface</code>
-<code class="sig">setCache( AdapterInterface $cache )</code>
+<code class="sig"><span class="sf">setCache</span>( <span class="st">AdapterInterface</span> <span class="sv">$cache</span> )</code>
 <span class="desc">Gets cache instance</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-findboundmodel">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed|bool</code>
-<code class="sig">findBoundModel(
-    mixed $paramValue,
-    string $className
-)</code>
+<code class="sig"><span class="sf">findBoundModel</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$paramValue</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 <span class="desc">Find the model by param value.</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-getparamsfromcache">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|null</code>
-<code class="sig">getParamsFromCache( string $cacheKey )</code>
+<code class="sig"><span class="sf">getParamsFromCache</span>( <span class="st">string</span> <span class="sv">$cacheKey</span> )</code>
 <span class="desc">Get params classes from cache by key</span>
 </a>
 <a class="api-item" href="#mvcmodelbinder-getparamsfromreflection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getParamsFromReflection(
-    object $handler,
-    array $params,
-    string $cacheKey,
-    string $methodName
-)</code>
+<code class="sig"><span class="sf">getParamsFromReflection</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span></span>)</code>
 <span class="desc">Get modified params for handler using reflection</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$boundModels = []` `array`
-
-    Array for storing active bound models
-
--   `protected`{ .vis-protected } `$cache` `AdapterInterface|null`
-
-    Cache object used for caching parameters for model binding
-
--   `protected`{ .vis-protected } `$internalCache = []` `array`
-
-    Internal cache for caching parameters for model binding during request
-
--   `protected`{ .vis-protected } `$originalValues = []` `array`
-
-    Array for original values
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$boundModels</span><span class="sm"> = []</span></code>
+<span class="desc">Array for storing active bound models</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AdapterInterface|null</code>
+<code class="sig"><span class="sv">$cache</span></code>
+<span class="desc">Cache object used for caching parameters for model binding</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$internalCache</span><span class="sm"> = []</span></code>
+<span class="desc">Internal cache for caching parameters for model binding during request</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$originalValues</span><span class="sm"> = []</span></code>
+<span class="desc">Array for original values</span>
+</div>
 </div>
 
 ### Methods
@@ -6944,30 +6775,25 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
 <a class="api-item" href="#mvcmodelbinderinterface-bindtohandler">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">bindToHandler(
-    object $handler,
-    array $params,
-    string $cacheKey,
-    string $methodName = null
-)</code>
+<code class="sig"><span class="sf">bindToHandler</span>(<span class="prm"><span class="st">object</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cacheKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$methodName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Bind models into params in proper handler</span>
 </a>
 <a class="api-item" href="#mvcmodelbinderinterface-getboundmodels">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBoundModels()</code>
+<code class="sig"><span class="sf">getBoundModels</span>()</code>
 <span class="desc">Gets active bound models</span>
 </a>
 <a class="api-item" href="#mvcmodelbinderinterface-getcache">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getCache()</code>
+<code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Gets cache instance</span>
 </a>
 <a class="api-item" href="#mvcmodelbinderinterface-setcache">
 <code class="vis vis-public">public</code>
 <code class="ret">BinderInterface</code>
-<code class="sig">setCache( AdapterInterface $cache )</code>
+<code class="sig"><span class="sf">setCache</span>( <span class="st">AdapterInterface</span> <span class="sv">$cache</span> )</code>
 <span class="desc">Sets cache instance</span>
 </a>
 </div>
@@ -7035,7 +6861,7 @@ Interface for bindable classes
 <a class="api-item" href="#mvcmodelbinderbindableinterface-getmodelname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array</code>
-<code class="sig">getModelName()</code>
+<code class="sig"><span class="sf">getModelName</span>()</code>
 <span class="desc">Return the model name or models names and parameters keys associated with</span>
 </a>
 </div>
@@ -7090,299 +6916,259 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <a class="api-item" href="#mvcmodelcriteria-andwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">andWhere(
-    string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
-)</code>
+<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an AND operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-betweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">betweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum
-)</code>
+<code class="sig"><span class="sf">betweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span></span>)</code>
 <span class="desc">Appends a BETWEEN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">bind(
-    array $bindParams,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sets the bound parameters in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-bindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">bindTypes( array $bindTypes )</code>
+<code class="sig"><span class="sf">bindTypes</span>( <span class="st">array</span> <span class="sv">$bindTypes</span> )</code>
 <span class="desc">Sets the bind types in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-cache">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">cache( array $cache )</code>
+<code class="sig"><span class="sf">cache</span>( <span class="st">array</span> <span class="sv">$cache</span> )</code>
 <span class="desc">Sets the cache options in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">columns( mixed $columns )</code>
-<span class="desc">Sets the columns to be queried. The columns can be either a `string` or</span>
+<code class="sig"><span class="sf">columns</span>( <span class="st">mixed</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Sets the columns to be queried. The columns can be either a <code>string</code> or</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-conditions">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">conditions( string $conditions )</code>
+<code class="sig"><span class="sf">conditions</span>( <span class="st">string</span> <span class="sv">$conditions</span> )</code>
 <span class="desc">Adds the conditions parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-createbuilder">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">createBuilder()</code>
+<code class="sig"><span class="sf">createBuilder</span>()</code>
 <span class="desc">Creates a query builder from criteria.</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-distinct">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">distinct( mixed $distinct )</code>
+<code class="sig"><span class="sf">distinct</span>( <span class="st">mixed</span> <span class="sv">$distinct</span> )</code>
 <span class="desc">Sets SELECT DISTINCT / SELECT ALL flag</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-execute">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">execute()</code>
+<code class="sig"><span class="sf">execute</span>()</code>
 <span class="desc">Executes a find using the parameters built with the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">forUpdate( bool $forUpdate = true )</code>
+<code class="sig"><span class="sf">forUpdate</span>( <span class="st">bool</span> <span class="sv">$forUpdate</span><span class="sm"> = true</span> )</code>
 <span class="desc">Adds the &quot;for_update&quot; parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-frominput">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">fromInput(
-    DiInterface $container,
-    string $modelName,
-    array $data,
-    string $operator = &quot;AND&quot;
-)</code>
+<code class="sig"><span class="sf">fromInput</span>(<span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = &quot;AND&quot;</span></span>)</code>
 <span class="desc">Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array|null</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Returns the columns to be queried</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getconditions">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getConditions()</code>
+<code class="sig"><span class="sf">getConditions</span>()</code>
 <span class="desc">Returns the conditions parameter in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getgroupby">
 <code class="vis vis-public">public</code>
-<code class="sig">getGroupBy()</code>
+<code class="sig"><span class="sf">getGroupBy</span>()</code>
 <span class="desc">Returns the group clause in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-gethaving">
 <code class="vis vis-public">public</code>
-<code class="sig">getHaving()</code>
+<code class="sig"><span class="sf">getHaving</span>()</code>
 <span class="desc">Returns the having clause in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getlimit">
 <code class="vis vis-public">public</code>
 <code class="ret">int|array|null</code>
-<code class="sig">getLimit()</code>
+<code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Returns the limit parameter in the criteria, which will be</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getmodelname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModelName()</code>
+<code class="sig"><span class="sf">getModelName</span>()</code>
 <span class="desc">Returns an internal model name on which the criteria will be applied</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getorderby">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getOrderBy()</code>
+<code class="sig"><span class="sf">getOrderBy</span>()</code>
 <span class="desc">Returns the order clause in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns all the parameters defined in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-getwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getWhere()</code>
+<code class="sig"><span class="sf">getWhere</span>()</code>
 <span class="desc">Returns the conditions parameter in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-groupby">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">groupBy( mixed $group )</code>
+<code class="sig"><span class="sf">groupBy</span>( <span class="st">mixed</span> <span class="sv">$group</span> )</code>
 <span class="desc">Adds the group-by clause to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-having">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">having( mixed $having )</code>
+<code class="sig"><span class="sf">having</span>( <span class="st">mixed</span> <span class="sv">$having</span> )</code>
 <span class="desc">Adds the having clause to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-inwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">inWhere(
-    string $expr,
-    array $values
-)</code>
+<code class="sig"><span class="sf">inWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 <span class="desc">Appends an IN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">innerJoin(
-    string $model,
-    mixed $conditions = null,
-    mixed $alias = null
-)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-join">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">join(
-    string $model,
-    mixed $conditions = null,
-    mixed $alias = null,
-    mixed $type = null
-)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">leftJoin(
-    string $model,
-    mixed $conditions = null,
-    mixed $alias = null
-)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">limit(
-    int $limit,
-    int $offset = 0
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">int</span> <span class="sv">$limit</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offset</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Adds the limit parameter to the criteria.</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-notbetweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">notBetweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum
-)</code>
+<code class="sig"><span class="sf">notBetweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span></span>)</code>
 <span class="desc">Appends a NOT BETWEEN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-notinwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">notInWhere(
-    string $expr,
-    array $values
-)</code>
+<code class="sig"><span class="sf">notInWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 <span class="desc">Appends a NOT IN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-orwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">orWhere(
-    string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
-)</code>
+<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an OR operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-orderby">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">orderBy( string $orderColumns )</code>
+<code class="sig"><span class="sf">orderBy</span>( <span class="st">string</span> <span class="sv">$orderColumns</span> )</code>
 <span class="desc">Adds the order-by clause to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">rightJoin(
-    string $model,
-    mixed $conditions = null,
-    mixed $alias = null
-)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-setmodelname">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">setModelName( string $modelName )</code>
+<code class="sig"><span class="sf">setModelName</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Set a model on which the query will be executed</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">sharedLock( bool $sharedLock = true )</code>
+<code class="sig"><span class="sf">sharedLock</span>( <span class="st">bool</span> <span class="sv">$sharedLock</span><span class="sm"> = true</span> )</code>
 <span class="desc">Adds the &quot;shared_lock&quot; parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteria-where">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">where(
-    string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
-)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the conditions parameter in the criteria</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$bindParams` `array`
-
--   `protected`{ .vis-protected } `$bindTypes` `array`
-
--   `protected`{ .vis-protected } `$hiddenParamNumber = 0` `int`
-
--   `protected`{ .vis-protected } `$model = null` `string|null`
-
--   `protected`{ .vis-protected } `$params = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindParams</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindTypes</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$hiddenParamNumber</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$model</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$params</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -7916,232 +7702,191 @@ __Uses__ `Phalcon\Di\DiInterface`
 <a class="api-item" href="#mvcmodelcriteriainterface-andwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">andWhere(
-    string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
-)</code>
+<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an AND operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-betweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">betweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum
-)</code>
+<code class="sig"><span class="sf">betweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span></span>)</code>
 <span class="desc">Appends a BETWEEN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">bind( array $bindParams )</code>
+<code class="sig"><span class="sf">bind</span>( <span class="st">array</span> <span class="sv">$bindParams</span> )</code>
 <span class="desc">Sets the bound parameters in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-bindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">bindTypes( array $bindTypes )</code>
+<code class="sig"><span class="sf">bindTypes</span>( <span class="st">array</span> <span class="sv">$bindTypes</span> )</code>
 <span class="desc">Sets the bind types in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-cache">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">cache( array $cache )</code>
+<code class="sig"><span class="sf">cache</span>( <span class="st">array</span> <span class="sv">$cache</span> )</code>
 <span class="desc">Sets the cache options in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-conditions">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">conditions( string $conditions )</code>
+<code class="sig"><span class="sf">conditions</span>( <span class="st">string</span> <span class="sv">$conditions</span> )</code>
 <span class="desc">Adds the conditions parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-distinct">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">distinct( mixed $distinct )</code>
+<code class="sig"><span class="sf">distinct</span>( <span class="st">mixed</span> <span class="sv">$distinct</span> )</code>
 <span class="desc">Sets SELECT DISTINCT / SELECT ALL flag</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-execute">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">execute()</code>
+<code class="sig"><span class="sf">execute</span>()</code>
 <span class="desc">Executes a find using the parameters built with the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">forUpdate( bool $forUpdate = true )</code>
+<code class="sig"><span class="sf">forUpdate</span>( <span class="st">bool</span> <span class="sv">$forUpdate</span><span class="sm"> = true</span> )</code>
 <span class="desc">Sets the &quot;for_update&quot; parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array|null</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Returns the columns to be queried</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getconditions">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getConditions()</code>
+<code class="sig"><span class="sf">getConditions</span>()</code>
 <span class="desc">Returns the conditions parameter in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getgroupby">
 <code class="vis vis-public">public</code>
-<code class="sig">getGroupBy()</code>
+<code class="sig"><span class="sf">getGroupBy</span>()</code>
 <span class="desc">Returns the group clause in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-gethaving">
 <code class="vis vis-public">public</code>
-<code class="sig">getHaving()</code>
+<code class="sig"><span class="sf">getHaving</span>()</code>
 <span class="desc">Returns the having clause in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getlimit">
 <code class="vis vis-public">public</code>
 <code class="ret">int|array|null</code>
-<code class="sig">getLimit()</code>
+<code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Returns the limit parameter in the criteria, which will be</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getmodelname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModelName()</code>
+<code class="sig"><span class="sf">getModelName</span>()</code>
 <span class="desc">Returns an internal model name on which the criteria will be applied</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getorderby">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getOrderBy()</code>
+<code class="sig"><span class="sf">getOrderBy</span>()</code>
 <span class="desc">Returns the order parameter in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns all the parameters defined in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-getwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getWhere()</code>
+<code class="sig"><span class="sf">getWhere</span>()</code>
 <span class="desc">Returns the conditions parameter in the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-groupby">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">groupBy( mixed $group )</code>
+<code class="sig"><span class="sf">groupBy</span>( <span class="st">mixed</span> <span class="sv">$group</span> )</code>
 <span class="desc">Adds the group-by clause to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-having">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">having( mixed $having )</code>
+<code class="sig"><span class="sf">having</span>( <span class="st">mixed</span> <span class="sv">$having</span> )</code>
 <span class="desc">Adds the having clause to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-inwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">inWhere(
-    string $expr,
-    array $values
-)</code>
+<code class="sig"><span class="sf">inWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 <span class="desc">Appends an IN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">innerJoin(
-    string $model,
-    mixed $conditions = null,
-    mixed $alias = null
-)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">leftJoin(
-    string $model,
-    mixed $conditions = null,
-    mixed $alias = null
-)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">limit(
-    int $limit,
-    int $offset = 0
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">int</span> <span class="sv">$limit</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offset</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Sets the limit parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-notbetweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">notBetweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum
-)</code>
+<code class="sig"><span class="sf">notBetweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span></span>)</code>
 <span class="desc">Appends a NOT BETWEEN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-notinwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">notInWhere(
-    string $expr,
-    array $values
-)</code>
+<code class="sig"><span class="sf">notInWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 <span class="desc">Appends a NOT IN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-orwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">orWhere(
-    string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
-)</code>
+<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an OR operator</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-orderby">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">orderBy( string $orderColumns )</code>
+<code class="sig"><span class="sf">orderBy</span>( <span class="st">string</span> <span class="sv">$orderColumns</span> )</code>
 <span class="desc">Adds the order-by parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">rightJoin(
-    string $model,
-    mixed $conditions = null,
-    mixed $alias = null
-)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-setmodelname">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">setModelName( string $modelName )</code>
+<code class="sig"><span class="sf">setModelName</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Set a model on which the query will be executed</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">sharedLock( bool $sharedLock = true )</code>
+<code class="sig"><span class="sf">sharedLock</span>( <span class="st">bool</span> <span class="sv">$sharedLock</span><span class="sm"> = true</span> )</code>
 <span class="desc">Sets the &quot;shared_lock&quot; parameter to the criteria</span>
 </a>
 <a class="api-item" href="#mvcmodelcriteriainterface-where">
 <code class="vis vis-public">public</code>
 <code class="ret">CriteriaInterface</code>
-<code class="sig">where(
-    string $conditions,
-    mixed $bindParams = null,
-    mixed $bindTypes = null
-)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindParams</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$bindTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the conditions parameter in the criteria</span>
 </a>
 </div>
@@ -8662,10 +8407,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsbelongstorequiresobject-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $className,
-    string $relationName
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$relationName</span></span>)</code>
 </a>
 </div>
 
@@ -8711,10 +8453,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsbindtypenotdefined-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $column,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -8760,10 +8499,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionscannotresolveattribute-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $attribute,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -8809,10 +8545,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionscolumnnotinmap-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $column,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -8858,10 +8591,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionscolumnnotintablecolumns-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $column,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -8907,10 +8637,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionscolumnnotintablemap-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $column,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -8956,7 +8683,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionscorruptcolumntype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -8999,7 +8726,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionscursorisimmutable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9042,10 +8769,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsdatatypenotdefined-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $column,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -9091,7 +8815,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionshandlermustimplementbindable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9134,10 +8858,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsidentitynotincolumnmap-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $identityField,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$identityField</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -9183,10 +8904,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsidentitynotintablecolumns-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $identityField,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$identityField</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -9232,7 +8950,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsindexnotincursor-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9275,7 +8993,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsindexnotinrow-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9318,7 +9036,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidconnectionservice-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9361,7 +9079,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidcontainer-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9404,7 +9122,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvaliddumpresultkey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -9447,7 +9165,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidfindparameters-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -9490,7 +9208,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidgetmodelnamereturn-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9533,7 +9251,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidmodelname-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9576,7 +9294,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidmodelsmanagerservice-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -9619,7 +9337,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidmodelsmetadataservice-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -9662,7 +9380,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidresultsetcacheservice-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9705,7 +9423,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidreturnedrecord-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9748,7 +9466,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsinvalidserializationdata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9791,7 +9509,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsmanagerormservicesunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9834,10 +9552,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsmethodnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $method,
-    string $modelName
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelName</span></span>)</code>
 </a>
 </div>
 
@@ -9883,7 +9598,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsmissingmethodname-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -9926,7 +9641,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsmissingmodelclassname-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $paramKey )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$paramKey</span> )</code>
 </a>
 </div>
 
@@ -9969,7 +9684,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsmodelcouldnotload-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $modelName )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 </a>
 </div>
 
@@ -10012,7 +9727,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsmodelormservicesunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -10055,10 +9770,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsprimarykeyattributenotset-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $attribute,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -10104,7 +9816,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsprimarykeyrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -10147,10 +9859,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionspropertynotaccessible-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $property,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$property</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -10196,7 +9905,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsrecordcannotrefresh-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -10239,7 +9948,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsrecordnotpersisted-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -10282,11 +9991,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsreferencedfieldsmismatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $relationType,
-    string $entityName,
-    string $referencedEntity
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$relationType</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$entityName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedEntity</span></span>)</code>
 </a>
 </div>
 
@@ -10333,11 +10038,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsrelationaliasmustbestring-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $relationType,
-    string $entityName,
-    string $referencedEntity
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$relationType</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$entityName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedEntity</span></span>)</code>
 </a>
 </div>
 
@@ -10384,10 +10085,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsrelationnotdefined-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $className,
-    string $alias
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
 </a>
 </div>
 
@@ -10433,10 +10131,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsrelationrequiresobjectorarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $className,
-    string $relationName
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$relationName</span></span>)</code>
 </a>
 </div>
 
@@ -10482,7 +10177,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsresultsetcolumnnotinmap-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $key )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 </div>
 
@@ -10525,7 +10220,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsrowisimmutable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -10568,7 +10263,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionssnapshotsdisabled-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -10611,10 +10306,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsstaticmethodrequiresoneargument-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $method,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -10660,7 +10352,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsunknownrelationtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -10703,7 +10395,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelexceptionsupdatesnapshotdisabled-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -10761,680 +10453,592 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmanager-__destruct">
 <code class="vis vis-public">public</code>
-<code class="sig">__destruct()</code>
+<code class="sig"><span class="sf">__destruct</span>()</code>
 <span class="desc">Destroys the current PHQL cache</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-addbehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">addBehavior(
-    ModelInterface $model,
-    BehaviorInterface $behavior
-)</code>
+<code class="sig"><span class="sf">addBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">BehaviorInterface</span> <span class="sv">$behavior</span></span>)</code>
 <span class="desc">Binds a behavior to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-addbelongsto">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addBelongsTo(
-    ModelInterface $model,
-    mixed $fields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addBelongsTo</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a relation reverse many to one between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-addhasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasMany(
-    ModelInterface $model,
-    mixed $fields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasMany</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a relation 1-n between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-addhasmanytomany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasManyToMany(
-    ModelInterface $model,
-    mixed $fields,
-    string $intermediateModel,
-    mixed $intermediateFields,
-    mixed $intermediateReferencedFields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasManyToMany</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setups a relation n-m between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-addhasone">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasOne(
-    ModelInterface $model,
-    mixed $fields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasOne</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a 1-1 relation between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-addhasonethrough">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasOneThrough(
-    ModelInterface $model,
-    mixed $fields,
-    string $intermediateModel,
-    mixed $intermediateFields,
-    mixed $intermediateReferencedFields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasOneThrough</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setups a relation 1-1 between two models using an intermediate model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-clearreusableobjects">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clearReusableObjects()</code>
+<code class="sig"><span class="sf">clearReusableObjects</span>()</code>
 <span class="desc">Clears the internal reusable list</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-createbuilder">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">createBuilder( mixed $params = null )</code>
+<code class="sig"><span class="sf">createBuilder</span>( <span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span> )</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query\Builder</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-createquery">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">createQuery( string $phql )</code>
+<code class="sig"><span class="sf">createQuery</span>( <span class="st">string</span> <span class="sv">$phql</span> )</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query without execute it</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-executequery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">executeQuery(
-    string $phql,
-    mixed $placeholders = null,
-    mixed $types = null
-)</code>
+<code class="sig"><span class="sf">executeQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$placeholders</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$types</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query and execute it</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-existsbelongsto">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">existsBelongsTo(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">existsBelongsTo</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a belongsTo relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-existshasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">existsHasMany(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">existsHasMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasMany relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-existshasmanytomany">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">existsHasManyToMany(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">existsHasManyToMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasManyToMany relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-existshasone">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">existsHasOne(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">existsHasOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasOne relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-existshasonethrough">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">existsHasOneThrough(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">existsHasOneThrough</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasOneThrough relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getbelongsto">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getBelongsTo( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getBelongsTo</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets all the belongsTo relations defined in a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getbelongstorecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig">getBelongsToRecords(
-    string $modelName,
-    string $modelRelation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getbuilder">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface|null</code>
-<code class="sig">getBuilder()</code>
+<code class="sig"><span class="sf">getBuilder</span>()</code>
 <span class="desc">Returns the newly created Phalcon\Mvc\Model\Query\Builder or null</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getConnectionService(
-    ModelInterface $model,
-    array $connectionServices
-)</code>
+<code class="sig"><span class="sf">getConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$connectionServices</span></span>)</code>
 <span class="desc">Returns the connection service name used to read or write data related to</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getcustomeventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">EventsManagerInterface|null</code>
-<code class="sig">getCustomEventsManager( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getCustomEventsManager</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns a custom events manager related to a model or null if there is</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">EventsManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getHasMany( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasMany relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasmanyrecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig">getHasManyRecords(
-    string $modelName,
-    string $modelRelation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasMany related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasmanytomany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getHasManyToMany( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasManyToMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasManyToMany relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasone">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getHasOne( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasOne</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOne relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasoneandhasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]</code>
-<code class="sig">getHasOneAndHasMany( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasOneAndHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOne relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasonerecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig">getHasOneRecords(
-    string $modelName,
-    string $modelRelation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-gethasonethrough">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getHasOneThrough( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasOneThrough</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOneThrough relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getlastinitialized">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig">getLastInitialized()</code>
+<code class="sig"><span class="sf">getLastInitialized</span>()</code>
 <span class="desc">Get last initialized model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getlastquery">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">getLastQuery()</code>
+<code class="sig"><span class="sf">getLastQuery</span>()</code>
 <span class="desc">Returns the last query created or executed in the models manager</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getmodelprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModelPrefix()</code>
+<code class="sig"><span class="sf">getModelPrefix</span>()</code>
 <span class="desc">Returns the prefix for all model sources.</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getmodelschema">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getModelSchema( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getModelSchema</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the mapped schema for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getmodelsource">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModelSource( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getModelSource</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the mapped source for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getreadconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getReadConnection( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getReadConnection</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection to read data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReadConnectionService( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getReadConnectionService</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection service name used to read data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelationbyalias">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface|bool</code>
-<code class="sig">getRelationByAlias(
-    string $modelName,
-    string $alias
-)</code>
+<code class="sig"><span class="sf">getRelationByAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
 <span class="desc">Returns a relation by its alias</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelationrecords">
 <code class="vis vis-public">public</code>
-<code class="sig">getRelationRecords(
-    RelationInterface $relation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Helper method to query records based on a relation definition</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelations">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]</code>
-<code class="sig">getRelations( string $modelName )</code>
+<code class="sig"><span class="sf">getRelations</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Query all the relationships defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getrelationsbetween">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|bool</code>
-<code class="sig">getRelationsBetween(
-    string $first,
-    string $second
-)</code>
+<code class="sig"><span class="sf">getRelationsBetween</span>(<span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span></span>)</code>
 <span class="desc">Query the first relationship defined between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getreusablerecords">
 <code class="vis vis-public">public</code>
-<code class="sig">getReusableRecords(
-    string $modelName,
-    string $key
-)</code>
+<code class="sig"><span class="sf">getReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
 <span class="desc">Returns a reusable object from the internal list</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getwriteconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getWriteConnection( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getWriteConnection</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection to write data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getWriteConnectionService( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getWriteConnectionService</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection service name used to write data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-hasbelongsto">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasBelongsTo(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasBelongsTo</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a belongsTo relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-hashasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasMany(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasMany relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-hashasmanytomany">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasManyToMany(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasManyToMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasManyToMany relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-hashasone">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasOne(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasOne relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-hashasonethrough">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasOneThrough(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasOneThrough</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasOneThrough relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-initialize">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">initialize( ModelInterface $model )</code>
+<code class="sig"><span class="sf">initialize</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Initializes a model in the model manager</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-isinitialized">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isInitialized( string $className )</code>
+<code class="sig"><span class="sf">isInitialized</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Check whether a model is already initialized</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-iskeepingsnapshots">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isKeepingSnapshots( ModelInterface $model )</code>
+<code class="sig"><span class="sf">isKeepingSnapshots</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Checks if a model is keeping snapshots for the queried records</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-isusingdynamicupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUsingDynamicUpdate( ModelInterface $model )</code>
+<code class="sig"><span class="sf">isUsingDynamicUpdate</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Checks if a model is using dynamic update instead of all-field update</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-isvisiblemodelproperty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isVisibleModelProperty(
-    ModelInterface $model,
-    string $property
-)</code>
+<code class="sig"><span class="sf">isVisibleModelProperty</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$property</span></span>)</code>
 <span class="desc">Check whether a model property is declared as public.</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-keepsnapshots">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">keepSnapshots(
-    ModelInterface $model,
-    bool $keepSnapshots
-)</code>
+<code class="sig"><span class="sf">keepSnapshots</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span></span>)</code>
 <span class="desc">Sets if a model must keep snapshots</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">load( string $modelName )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Loads a model throwing an exception if it does not exist</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-missingmethod">
 <code class="vis vis-public">public</code>
-<code class="sig">missingMethod(
-    ModelInterface $model,
-    string $eventName,
-    mixed $data
-)</code>
+<code class="sig"><span class="sf">missingMethod</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Dispatch an event to the listeners and behaviors</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-notifyevent">
 <code class="vis vis-public">public</code>
-<code class="sig">notifyEvent(
-    string $eventName,
-    ModelInterface $model
-)</code>
+<code class="sig"><span class="sf">notifyEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">Receives events generated in the models and dispatches them to an</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-removebehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">removeBehavior(
-    ModelInterface $model,
-    string $behaviorClass
-)</code>
+<code class="sig"><span class="sf">removeBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$behaviorClass</span></span>)</code>
 <span class="desc">Removes a behavior from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setConnectionService(
-    ModelInterface $model,
-    string $connectionService
-)</code>
+<code class="sig"><span class="sf">setConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
 <span class="desc">Sets both write and read connection service for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setcustomeventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setCustomEventsManager(
-    ModelInterface $model,
-    EventsManagerInterface $eventsManager
-)</code>
+<code class="sig"><span class="sf">setCustomEventsManager</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">EventsManagerInterface</span> <span class="sv">$eventsManager</span></span>)</code>
 <span class="desc">Sets a custom events manager for a specific model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( EventsManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">EventsManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets a global events manager</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setmodelprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setModelPrefix( string $prefix )</code>
+<code class="sig"><span class="sf">setModelPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Sets the prefix for all model sources.</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setmodelschema">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setModelSchema(
-    ModelInterface $model,
-    string $schema
-)</code>
+<code class="sig"><span class="sf">setModelSchema</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span></span>)</code>
 <span class="desc">Sets the mapped schema for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setmodelsource">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setModelSource(
-    ModelInterface $model,
-    string $source
-)</code>
+<code class="sig"><span class="sf">setModelSource</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$source</span></span>)</code>
 <span class="desc">Sets the mapped source for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setReadConnectionService(
-    ModelInterface $model,
-    string $connectionService
-)</code>
+<code class="sig"><span class="sf">setReadConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
 <span class="desc">Sets read connection service for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setreusablerecords">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setReusableRecords(
-    string $modelName,
-    string $key,
-    mixed $records
-)</code>
+<code class="sig"><span class="sf">setReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
 <span class="desc">Stores a reusable record in the internal list</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setWriteConnectionService(
-    ModelInterface $model,
-    string $connectionService
-)</code>
+<code class="sig"><span class="sf">setWriteConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
 <span class="desc">Sets write connection service for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-usedynamicupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">useDynamicUpdate(
-    ModelInterface $model,
-    bool $dynamicUpdate
-)</code>
+<code class="sig"><span class="sf">useDynamicUpdate</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$dynamicUpdate</span></span>)</code>
 <span class="desc">Sets if a model must use dynamic update instead of the all-field update</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-getconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getConnection(
-    ModelInterface $model,
-    array $connectionServices
-)</code>
+<code class="sig"><span class="sf">getConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$connectionServices</span></span>)</code>
 <span class="desc">Returns the connection to read or write data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-mergefindparameters">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">mergeFindParameters(
-    mixed $findParamsOne,
-    mixed $findParamsTwo
-)</code>
+<code class="sig"><span class="sf">mergeFindParameters</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsOne</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsTwo</span></span>)</code>
 <span class="desc">Merge two arrays of find parameters</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$aliases = []` `array`
-
--   `protected`{ .vis-protected } `$behaviors = []` `array`
-
-    Models' behaviors
-
--   `protected`{ .vis-protected } `$belongsTo = []` `array`
-
-    Belongs to relations
-
--   `protected`{ .vis-protected } `$belongsToSingle = []` `array`
-
-    All the relationships by model
-
--   `protected`{ .vis-protected } `$builder = null` `BuilderInterface|null`
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$customEventsManager = []` `array`
-
--   `protected`{ .vis-protected } `$dynamicUpdate = []` `array`
-
-    Does the model use dynamic update, instead of updating all rows?
-
--   `protected`{ .vis-protected } `$eventsManager = null` `EventsManagerInterface|null`
-
--   `protected`{ .vis-protected } `$hasMany = []` `array`
-
-    Has many relations
-
--   `protected`{ .vis-protected } `$hasManySingle = []` `array`
-
-    Has many relations by model
-
--   `protected`{ .vis-protected } `$hasManyToMany = []` `array`
-
-    Has many-Through relations
-
--   `protected`{ .vis-protected } `$hasManyToManySingle = []` `array`
-
-    Has many-Through relations by model
-
--   `protected`{ .vis-protected } `$hasOne = []` `array`
-
-    Has one relations
-
--   `protected`{ .vis-protected } `$hasOneSingle = []` `array`
-
-    Has one relations by model
-
--   `protected`{ .vis-protected } `$hasOneThrough = []` `array`
-
-    Has one through relations
-
--   `protected`{ .vis-protected } `$hasOneThroughSingle = []` `array`
-
-    Has one through relations by model
-
--   `protected`{ .vis-protected } `$initialized = []` `array`
-
-    Mark initialized models
-
--   `protected`{ .vis-protected } `$keepSnapshots = []` `array`
-
--   `protected`{ .vis-protected } `$lastInitialized = null` `ModelInterface|null`
-
-    Last model initialized
-
--   `protected`{ .vis-protected } `$lastQuery = null` `QueryInterface|null`
-
-    Last query created/executed
-
--   `protected`{ .vis-protected } `$modelVisibility = []` `array`
-
--   `protected`{ .vis-protected } `$prefix = ""` `string`
-
--   `protected`{ .vis-protected } `$readConnectionServices = []` `array`
-
--   `protected`{ .vis-protected } `$reusable = []` `array`
-
-    Stores a list of reusable instances
-
--   `protected`{ .vis-protected } `$schemas = []` `array`
-
--   `protected`{ .vis-protected } `$sources = []` `array`
-
--   `protected`{ .vis-protected } `$writeConnectionServices = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$aliases</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$behaviors</span><span class="sm"> = []</span></code>
+<span class="desc">Models&#039; behaviors</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$belongsTo</span><span class="sm"> = []</span></code>
+<span class="desc">Belongs to relations</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$belongsToSingle</span><span class="sm"> = []</span></code>
+<span class="desc">All the relationships by model</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">BuilderInterface|null</code>
+<code class="sig"><span class="sv">$builder</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$customEventsManager</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$dynamicUpdate</span><span class="sm"> = []</span></code>
+<span class="desc">Does the model use dynamic update, instead of updating all rows?</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">EventsManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasMany</span><span class="sm"> = []</span></code>
+<span class="desc">Has many relations</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasManySingle</span><span class="sm"> = []</span></code>
+<span class="desc">Has many relations by model</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasManyToMany</span><span class="sm"> = []</span></code>
+<span class="desc">Has many-Through relations</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasManyToManySingle</span><span class="sm"> = []</span></code>
+<span class="desc">Has many-Through relations by model</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasOne</span><span class="sm"> = []</span></code>
+<span class="desc">Has one relations</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasOneSingle</span><span class="sm"> = []</span></code>
+<span class="desc">Has one relations by model</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasOneThrough</span><span class="sm"> = []</span></code>
+<span class="desc">Has one through relations</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hasOneThroughSingle</span><span class="sm"> = []</span></code>
+<span class="desc">Has one through relations by model</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$initialized</span><span class="sm"> = []</span></code>
+<span class="desc">Mark initialized models</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$keepSnapshots</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ModelInterface|null</code>
+<code class="sig"><span class="sv">$lastInitialized</span><span class="sm"> = null</span></code>
+<span class="desc">Last model initialized</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">QueryInterface|null</code>
+<code class="sig"><span class="sv">$lastQuery</span><span class="sm"> = null</span></code>
+<span class="desc">Last query created/executed</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$modelVisibility</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$readConnectionServices</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$reusable</span><span class="sm"> = []</span></code>
+<span class="desc">Stores a list of reusable instances</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$schemas</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sources</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$writeConnectionServices</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -12265,453 +11869,325 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <a class="api-item" href="#mvcmodelmanagerinterface-addbehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">addBehavior(
-    ModelInterface $model,
-    BehaviorInterface $behavior
-)</code>
+<code class="sig"><span class="sf">addBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">BehaviorInterface</span> <span class="sv">$behavior</span></span>)</code>
 <span class="desc">Binds a behavior to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-addbelongsto">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addBelongsTo(
-    ModelInterface $model,
-    mixed $fields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addBelongsTo</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a relation reverse 1-1  between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-addhasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasMany(
-    ModelInterface $model,
-    mixed $fields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasMany</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a relation 1-n between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-addhasmanytomany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasManyToMany(
-    ModelInterface $model,
-    mixed $fields,
-    string $intermediateModel,
-    mixed $intermediateFields,
-    mixed $intermediateReferencedFields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasManyToMany</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setups a relation n-m between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-addhasone">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasOne(
-    ModelInterface $model,
-    mixed $fields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasOne</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setup a 1-1 relation between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-addhasonethrough">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface</code>
-<code class="sig">addHasOneThrough(
-    ModelInterface $model,
-    mixed $fields,
-    string $intermediateModel,
-    mixed $intermediateFields,
-    mixed $intermediateReferencedFields,
-    string $referencedModel,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">addHasOneThrough</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Setups a 1-1 relation between two models using an intermediate table</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-clearreusableobjects">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clearReusableObjects()</code>
+<code class="sig"><span class="sf">clearReusableObjects</span>()</code>
 <span class="desc">Clears the internal reusable list</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-createbuilder">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">createBuilder( mixed $params = null )</code>
+<code class="sig"><span class="sf">createBuilder</span>( <span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span> )</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query\Builder</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-createquery">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">createQuery( string $phql )</code>
+<code class="sig"><span class="sf">createQuery</span>( <span class="st">string</span> <span class="sv">$phql</span> )</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query without execute it</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-executequery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">executeQuery(
-    string $phql,
-    mixed $placeholders = null,
-    mixed $types = null
-)</code>
+<code class="sig"><span class="sf">executeQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$placeholders</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$types</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a Phalcon\Mvc\Model\Query and execute it</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getbelongsto">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getBelongsTo( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getBelongsTo</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets belongsTo relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getbelongstorecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig">getBelongsToRecords(
-    string $modelName,
-    string $modelRelation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getBelongsToRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets belongsTo related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getbuilder">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface|null</code>
-<code class="sig">getBuilder()</code>
+<code class="sig"><span class="sf">getBuilder</span>()</code>
 <span class="desc">Returns the newly created Phalcon\Mvc\Model\Query\Builder or null</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getHasMany( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasMany relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmanyrecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface|bool</code>
-<code class="sig">getHasManyRecords(
-    string $modelName,
-    string $modelRelation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getHasManyRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasMany related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasmanytomany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getHasManyToMany( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasManyToMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasManyToMany relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasone">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getHasOne( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasOne</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOne relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasoneandhasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]</code>
-<code class="sig">getHasOneAndHasMany( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasOneAndHasMany</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOne relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasonerecords">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig">getHasOneRecords(
-    string $modelName,
-    string $modelRelation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getHasOneRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets hasOne related records from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-gethasonethrough">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|array</code>
-<code class="sig">getHasOneThrough( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getHasOneThrough</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Gets hasOneThrough relations defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getlastinitialized">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig">getLastInitialized()</code>
+<code class="sig"><span class="sf">getLastInitialized</span>()</code>
 <span class="desc">Get last initialized model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getlastquery">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">getLastQuery()</code>
+<code class="sig"><span class="sf">getLastQuery</span>()</code>
 <span class="desc">Returns the last query created or executed in the models manager</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getmodelschema">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getModelSchema( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getModelSchema</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the mapped schema for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getmodelsource">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModelSource( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getModelSource</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the mapped source for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getreadconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getReadConnection( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getReadConnection</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection to read data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReadConnectionService( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getReadConnectionService</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection service name used to read data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelationbyalias">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface|bool</code>
-<code class="sig">getRelationByAlias(
-    string $modelName,
-    string $alias
-)</code>
+<code class="sig"><span class="sf">getRelationByAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
 <span class="desc">Returns a relation by its alias</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelationrecords">
 <code class="vis vis-public">public</code>
-<code class="sig">getRelationRecords(
-    RelationInterface $relation,
-    ModelInterface $record,
-    mixed $parameters = null,
-    string $method = null
-)</code>
+<code class="sig"><span class="sf">getRelationRecords</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$parameters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Helper method to query records based on a relation definition</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelations">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]</code>
-<code class="sig">getRelations( string $modelName )</code>
+<code class="sig"><span class="sf">getRelations</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Query all the relationships defined on a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getrelationsbetween">
 <code class="vis vis-public">public</code>
 <code class="ret">RelationInterface[]|bool</code>
-<code class="sig">getRelationsBetween(
-    string $first,
-    string $second
-)</code>
+<code class="sig"><span class="sf">getRelationsBetween</span>(<span class="prm"><span class="st">string</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$second</span></span>)</code>
 <span class="desc">Query the relations between two models</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getreusablerecords">
 <code class="vis vis-public">public</code>
-<code class="sig">getReusableRecords(
-    string $modelName,
-    string $key
-)</code>
+<code class="sig"><span class="sf">getReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span></span>)</code>
 <span class="desc">Returns a reusable object from the internal list</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getwriteconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getWriteConnection( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getWriteConnection</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection to write data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-getwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getWriteConnectionService( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getWriteConnectionService</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the connection service name used to write data related to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-hasbelongsto">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasBelongsTo(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasBelongsTo</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a belongsTo relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-hashasmany">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasMany(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasMany relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-hashasmanytomany">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasManyToMany(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasManyToMany</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasManyToMany relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-hashasone">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasOne(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasOne relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-hashasonethrough">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHasOneThrough(
-    string $modelName,
-    string $modelRelation
-)</code>
+<code class="sig"><span class="sf">hasHasOneThrough</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelRelation</span></span>)</code>
 <span class="desc">Checks whether a model has a hasOneThrough relation with another model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-initialize">
 <code class="vis vis-public">public</code>
-<code class="sig">initialize( ModelInterface $model )</code>
+<code class="sig"><span class="sf">initialize</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Initializes a model in the model manager</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-isinitialized">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isInitialized( string $className )</code>
+<code class="sig"><span class="sf">isInitialized</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 <span class="desc">Check of a model is already initialized</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-iskeepingsnapshots">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isKeepingSnapshots( ModelInterface $model )</code>
+<code class="sig"><span class="sf">isKeepingSnapshots</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Checks if a model is keeping snapshots for the queried records</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-isusingdynamicupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUsingDynamicUpdate( ModelInterface $model )</code>
+<code class="sig"><span class="sf">isUsingDynamicUpdate</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Checks if a model is using dynamic update instead of all-field update</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-isvisiblemodelproperty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isVisibleModelProperty(
-    ModelInterface $model,
-    string $property
-)</code>
+<code class="sig"><span class="sf">isVisibleModelProperty</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$property</span></span>)</code>
 <span class="desc">Check whether a model property is declared as public.</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-keepsnapshots">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">keepSnapshots(
-    ModelInterface $model,
-    bool $keepSnapshots
-)</code>
+<code class="sig"><span class="sf">keepSnapshots</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span></span>)</code>
 <span class="desc">Sets if a model must keep snapshots</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-load">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">load( string $modelName )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Loads a model throwing an exception if it does not exist</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-missingmethod">
 <code class="vis vis-public">public</code>
-<code class="sig">missingMethod(
-    ModelInterface $model,
-    string $eventName,
-    mixed $data
-)</code>
+<code class="sig"><span class="sf">missingMethod</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Dispatch an event to the listeners and behaviors</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-notifyevent">
 <code class="vis vis-public">public</code>
-<code class="sig">notifyEvent(
-    string $eventName,
-    ModelInterface $model
-)</code>
+<code class="sig"><span class="sf">notifyEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">Receives events generated in the models and dispatches them to an events-manager if available</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-removebehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">removeBehavior(
-    ModelInterface $model,
-    string $behaviorClass
-)</code>
+<code class="sig"><span class="sf">removeBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$behaviorClass</span></span>)</code>
 <span class="desc">Removes a behavior from a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setConnectionService(
-    ModelInterface $model,
-    string $connectionService
-)</code>
+<code class="sig"><span class="sf">setConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
 <span class="desc">Sets both write and read connection service for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setmodelschema">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setModelSchema(
-    ModelInterface $model,
-    string $schema
-)</code>
+<code class="sig"><span class="sf">setModelSchema</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span></span>)</code>
 <span class="desc">Sets the mapped schema for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setmodelsource">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setModelSource(
-    ModelInterface $model,
-    string $source
-)</code>
+<code class="sig"><span class="sf">setModelSource</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$source</span></span>)</code>
 <span class="desc">Sets the mapped source for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setreadconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setReadConnectionService(
-    ModelInterface $model,
-    string $connectionService
-)</code>
+<code class="sig"><span class="sf">setReadConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
 <span class="desc">Sets read connection service for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setreusablerecords">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setReusableRecords(
-    string $modelName,
-    string $key,
-    mixed $records
-)</code>
+<code class="sig"><span class="sf">setReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
 <span class="desc">Stores a reusable record in the internal list</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
-<code class="sig">setWriteConnectionService(
-    ModelInterface $model,
-    string $connectionService
-)</code>
+<code class="sig"><span class="sf">setWriteConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
 <span class="desc">Sets write connection service for a model</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-usedynamicupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">useDynamicUpdate(
-    ModelInterface $model,
-    bool $dynamicUpdate
-)</code>
+<code class="sig"><span class="sf">useDynamicUpdate</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$dynamicUpdate</span></span>)</code>
 <span class="desc">Sets if a model must use dynamic update instead of the all-field update</span>
 </a>
 </div>
@@ -13343,349 +12819,350 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 <a class="api-item" href="#mvcmodelmetadata-getadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">CacheAdapterInterface|null</code>
-<code class="sig">getAdapter()</code>
+<code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Return the internal cache adapter</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns table attributes names (fields)</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getautomaticcreateattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAutomaticCreateAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getAutomaticCreateAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes that must be ignored from the INSERT SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getautomaticupdateattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAutomaticUpdateAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getAutomaticUpdateAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes that must be ignored from the UPDATE SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindTypes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getBindTypes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes and their bind data types</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getcolumnmap">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">getColumnMap( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getColumnMap</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the column map if any</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getcolumnmapuniquekey">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getColumnMapUniqueKey( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getColumnMapUniqueKey</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns a ColumnMap Unique key for meta-data is created using className</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getdatatypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDataTypes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getDataTypes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes and their data types</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getdatatypesnumeric">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDataTypesNumeric( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getDataTypesNumeric</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes which types are numerical</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getdefaultvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDefaultValues( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getDefaultValues</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes (which have default values) and their default values</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getemptystringattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getEmptyStringAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getEmptyStringAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes allow empty strings</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getidentityfield">
 <code class="vis vis-public">public</code>
 <code class="ret">bool|string|null</code>
-<code class="sig">getIdentityField( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getIdentityField</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the name of identity field (if one is present)</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getmetadatauniquekey">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getMetaDataUniqueKey( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getMetaDataUniqueKey</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns a MetaData Unique key for meta-data is created using className</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getmodeluuid">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getModelUUID(
-    ModelInterface $model,
-    array $row
-)</code>
+<code class="sig"><span class="sf">getModelUUID</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$row</span></span>)</code>
 <span class="desc">Returns the model UniqueID based on model and array row primary key(s) value(s)</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getnonprimarykeyattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getNonPrimaryKeyAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getNonPrimaryKeyAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns an array of fields which are not part of the primary key</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getnotnullattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getNotNullAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getNotNullAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns an array of not null attributes</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getprimarykeyattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getPrimaryKeyAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getPrimaryKeyAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns an array of fields which are part of the primary key</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getreversecolumnmap">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">getReverseColumnMap( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getReverseColumnMap</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the reverse column map if any</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getstrategy">
 <code class="vis vis-public">public</code>
 <code class="ret">StrategyInterface</code>
-<code class="sig">getStrategy()</code>
+<code class="sig"><span class="sf">getStrategy</span>()</code>
 <span class="desc">Return the strategy to obtain the meta-data</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-hasattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasAttribute(
-    ModelInterface $model,
-    string $attribute
-)</code>
+<code class="sig"><span class="sf">hasAttribute</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$attribute</span></span>)</code>
 <span class="desc">Check if a model has certain attribute</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-isempty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isEmpty()</code>
+<code class="sig"><span class="sf">isEmpty</span>()</code>
 <span class="desc">Checks if the internal meta-data container is empty</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-modelequals">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">modelEquals(
-    ModelInterface $first,
-    ModelInterface $other
-)</code>
+<code class="sig"><span class="sf">modelEquals</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$first</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$other</span></span>)</code>
 <span class="desc">Compares if two models are the same in memory</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-read">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">read( mixed $key )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads metadata from the adapter</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-readcolumnmap">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">readColumnMap( ModelInterface $model )</code>
+<code class="sig"><span class="sf">readColumnMap</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Reads the ordered/reversed column map for certain model</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-readcolumnmapindex">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">readColumnMapIndex(
-    ModelInterface $model,
-    int $index
-)</code>
+<code class="sig"><span class="sf">readColumnMapIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Reads column-map information for certain model using a MODEL_* constant</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-readmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">readMetaData( ModelInterface $model )</code>
+<code class="sig"><span class="sf">readMetaData</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Reads the complete meta-data for certain model</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-readmetadataindex">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string|null</code>
-<code class="sig">readMetaDataIndex(
-    ModelInterface $model,
-    int $index
-)</code>
+<code class="sig"><span class="sf">readMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Reads meta-data for certain model</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets internal meta-data in order to regenerate it</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-setautomaticcreateattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setAutomaticCreateAttributes(
-    ModelInterface $model,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">setAutomaticCreateAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Set the attributes that must be ignored from the INSERT SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-setautomaticupdateattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setAutomaticUpdateAttributes(
-    ModelInterface $model,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">setAutomaticUpdateAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Set the attributes that must be ignored from the UPDATE SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-setemptystringattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEmptyStringAttributes(
-    ModelInterface $model,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">setEmptyStringAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Set the attributes that allow empty string values</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-setstrategy">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setStrategy( StrategyInterface $strategy )</code>
+<code class="sig"><span class="sf">setStrategy</span>( <span class="st">StrategyInterface</span> <span class="sv">$strategy</span> )</code>
 <span class="desc">Set the meta-data extraction strategy</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">write(
-    string $key,
-    array $data
-)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes the metadata to adapter</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-writemetadataindex">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">writeMetaDataIndex(
-    ModelInterface $model,
-    int $index,
-    mixed $data
-)</code>
+<code class="sig"><span class="sf">writeMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes meta-data for certain model using a MODEL_* constant</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-getarrval">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">@todo Remove this when we get traits</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-initialize">
 <code class="vis vis-protected">protected</code>
-<code class="sig">initialize(
-    ModelInterface $model,
-    mixed $key,
-    mixed $table,
-    mixed $schema
-)</code>
+<code class="sig"><span class="sf">initialize</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$schema</span></span>)</code>
 <span class="desc">Initialize old behaviour for compatability</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-initializecolumnmap">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">initializeColumnMap(
-    ModelInterface $model,
-    mixed $key
-)</code>
+<code class="sig"><span class="sf">initializeColumnMap</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span></span>)</code>
 <span class="desc">Initialize ColumnMap for a certain table</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadata-initializemetadata">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">initializeMetaData(
-    ModelInterface $model,
-    mixed $key
-)</code>
+<code class="sig"><span class="sf">initializeMetaData</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span></span>)</code>
 <span class="desc">Initialize the metadata for certain table</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `MODELS_ATTRIBUTES = 0` `int`
-
--   `MODELS_AUTOMATIC_DEFAULT_INSERT = 10` `int`
-
--   `MODELS_AUTOMATIC_DEFAULT_UPDATE = 11` `int`
-
--   `MODELS_COLUMN_MAP = 0` `int`
-
--   `MODELS_DATA_TYPES = 4` `int`
-
--   `MODELS_DATA_TYPES_BIND = 9` `int`
-
--   `MODELS_DATA_TYPES_NUMERIC = 5` `int`
-
--   `MODELS_DATE_AT = 6` `int`
-
--   `MODELS_DATE_IN = 7` `int`
-
--   `MODELS_DEFAULT_VALUES = 12` `int`
-
--   `MODELS_EMPTY_STRING_VALUES = 13` `int`
-
--   `MODELS_IDENTITY_COLUMN = 8` `int`
-
--   `MODELS_NON_PRIMARY_KEY = 2` `int`
-
--   `MODELS_NOT_NULL = 3` `int`
-
--   `MODELS_PRIMARY_KEY = 1` `int`
-
--   `MODELS_REVERSE_COLUMN_MAP = 1` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_ATTRIBUTES</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_AUTOMATIC_DEFAULT_INSERT</span><span class="sm"> = 10</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_AUTOMATIC_DEFAULT_UPDATE</span><span class="sm"> = 11</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_COLUMN_MAP</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_DATA_TYPES</span><span class="sm"> = 4</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_DATA_TYPES_BIND</span><span class="sm"> = 9</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_DATA_TYPES_NUMERIC</span><span class="sm"> = 5</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_DATE_AT</span><span class="sm"> = 6</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_DATE_IN</span><span class="sm"> = 7</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_DEFAULT_VALUES</span><span class="sm"> = 12</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_EMPTY_STRING_VALUES</span><span class="sm"> = 13</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_IDENTITY_COLUMN</span><span class="sm"> = 8</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_NON_PRIMARY_KEY</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_NOT_NULL</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_PRIMARY_KEY</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MODELS_REVERSE_COLUMN_MAP</span><span class="sm"> = 1</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$adapter = null` `CacheAdapterInterface|null`
-
--   `protected`{ .vis-protected } `$columnMap = []` `array`
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$metaData = []` `array`
-
--   `protected`{ .vis-protected } `$pendingMetaDataWrites = []` `array`
-
-    Holds metadata index writes that arrived before the model's metadata was
-    properly initialized (e.g. skipAttributes() called in a parent model's
-    initialize() while the child's source had not yet been set).  Applied
-    inside initializeMetaData() after the real schema is loaded.
-
--   `protected`{ .vis-protected } `$strategy = null` `StrategyInterface|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">CacheAdapterInterface|null</code>
+<code class="sig"><span class="sv">$adapter</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$columnMap</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$metaData</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$pendingMetaDataWrites</span><span class="sm"> = []</span></code>
+<span class="desc">Holds metadata index writes that arrived before the model&#039;s metadata was
+properly initialized (e.g. skipAttributes() called in a parent model&#039;s
+initialize() while the child&#039;s source had not yet been set).  Applied
+inside initializeMetaData() after the real schema is loaded.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">StrategyInterface|null</code>
+<code class="sig"><span class="sv">$strategy</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -14289,195 +13766,170 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Strategy\St
 <a class="api-item" href="#mvcmodelmetadatainterface-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns table attributes names (fields)</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getautomaticcreateattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAutomaticCreateAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getAutomaticCreateAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes that must be ignored from the INSERT SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getautomaticupdateattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAutomaticUpdateAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getAutomaticUpdateAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes that must be ignored from the UPDATE SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindTypes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getBindTypes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes and their bind data types</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getcolumnmap">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">getColumnMap( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getColumnMap</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the column map if any</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getdatatypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDataTypes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getDataTypes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes and their data types</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getdatatypesnumeric">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDataTypesNumeric( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getDataTypesNumeric</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes which types are numerical</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getdefaultvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDefaultValues( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getDefaultValues</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes (which have default values) and their default values</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getemptystringattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getEmptyStringAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getEmptyStringAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns attributes allow empty strings</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getidentityfield">
 <code class="vis vis-public">public</code>
 <code class="ret">bool|string|null</code>
-<code class="sig">getIdentityField( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getIdentityField</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the name of identity field (if one is present)</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getnonprimarykeyattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getNonPrimaryKeyAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getNonPrimaryKeyAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns an array of fields which are not part of the primary key</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getnotnullattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getNotNullAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getNotNullAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns an array of not null attributes</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getprimarykeyattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getPrimaryKeyAttributes( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getPrimaryKeyAttributes</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns an array of fields which are part of the primary key</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getreversecolumnmap">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">getReverseColumnMap( ModelInterface $model )</code>
+<code class="sig"><span class="sf">getReverseColumnMap</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Returns the reverse column map if any</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-getstrategy">
 <code class="vis vis-public">public</code>
 <code class="ret">StrategyInterface</code>
-<code class="sig">getStrategy()</code>
+<code class="sig"><span class="sf">getStrategy</span>()</code>
 <span class="desc">Return the strategy to obtain the meta-data</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-hasattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasAttribute(
-    ModelInterface $model,
-    string $attribute
-)</code>
+<code class="sig"><span class="sf">hasAttribute</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$attribute</span></span>)</code>
 <span class="desc">Check if a model has certain attribute</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-isempty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isEmpty()</code>
+<code class="sig"><span class="sf">isEmpty</span>()</code>
 <span class="desc">Checks if the internal meta-data container is empty</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-read">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">read( string $key )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads meta-data from the adapter</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-readcolumnmap">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">readColumnMap( ModelInterface $model )</code>
+<code class="sig"><span class="sf">readColumnMap</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Reads the ordered/reversed column map for certain model</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-readcolumnmapindex">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">readColumnMapIndex(
-    ModelInterface $model,
-    int $index
-)</code>
+<code class="sig"><span class="sf">readColumnMapIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Reads column-map information for certain model using a MODEL_* constant</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-readmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">readMetaData( ModelInterface $model )</code>
+<code class="sig"><span class="sf">readMetaData</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
 <span class="desc">Reads meta-data for certain model</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-readmetadataindex">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string|null</code>
-<code class="sig">readMetaDataIndex(
-    ModelInterface $model,
-    int $index
-)</code>
+<code class="sig"><span class="sf">readMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Reads meta-data for certain model using a MODEL_* constant</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-reset">
 <code class="vis vis-public">public</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets internal meta-data in order to regenerate it</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-setautomaticcreateattributes">
 <code class="vis vis-public">public</code>
-<code class="sig">setAutomaticCreateAttributes(
-    ModelInterface $model,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">setAutomaticCreateAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Set the attributes that must be ignored from the INSERT SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-setautomaticupdateattributes">
 <code class="vis vis-public">public</code>
-<code class="sig">setAutomaticUpdateAttributes(
-    ModelInterface $model,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">setAutomaticUpdateAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Set the attributes that must be ignored from the UPDATE SQL generation</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-setemptystringattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEmptyStringAttributes(
-    ModelInterface $model,
-    array $attributes
-)</code>
+<code class="sig"><span class="sf">setEmptyStringAttributes</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
 <span class="desc">Set the attributes that allow empty string values</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-setstrategy">
 <code class="vis vis-public">public</code>
-<code class="sig">setStrategy( StrategyInterface $strategy )</code>
+<code class="sig"><span class="sf">setStrategy</span>( <span class="st">StrategyInterface</span> <span class="sv">$strategy</span> )</code>
 <span class="desc">Set the meta-data extraction strategy</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">write(
-    string $key,
-    array $data
-)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes meta-data to the adapter</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatainterface-writemetadataindex">
 <code class="vis vis-public">public</code>
-<code class="sig">writeMetaDataIndex(
-    ModelInterface $model,
-    int $index,
-    mixed $data
-)</code>
+<code class="sig"><span class="sf">writeMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes meta-data for certain model using a MODEL_* constant</span>
 </a>
 </div>
@@ -14781,10 +14233,7 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataapcu-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    AdapterFactory $factory,
-    array $options = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\MetaData\Apcu constructor</span>
 </a>
 </div>
@@ -14833,10 +14282,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionscannotobtaintablecolumns-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $completeTable,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$completeTable</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -14882,7 +14328,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionscolumnmapnotarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -14925,7 +14371,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionscontainerrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -14968,7 +14414,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionscorruptedmetadata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -15011,7 +14457,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionsinvalidcontainer-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -15054,7 +14500,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionsinvalidmetadataformodel-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $modelName )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 </a>
 </div>
 
@@ -15097,7 +14543,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionsmetadatadirectorynotwritable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -15140,7 +14586,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionsmetadatastrategyfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $message )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 </a>
 </div>
 
@@ -15183,7 +14629,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionsnoannotationsforclass-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -15226,7 +14672,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionsnopropertyannotationsforclass-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -15269,10 +14715,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataexceptionstablenotindatabase-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $completeTable,
-    string $className
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$completeTable</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span></span>)</code>
 </a>
 </div>
 
@@ -15316,16 +14759,13 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadatalibmemcached-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    AdapterFactory $factory,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\MetaData\Libmemcached constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatalibmemcached-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Flush Memcache data and resets internal meta-data in order to regenerate it</span>
 </a>
 </div>
@@ -15379,16 +14819,13 @@ __Uses__ `Phalcon\Mvc\Model\MetaData`
 <a class="api-item" href="#mvcmodelmetadatamemory-read">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">read( mixed $key )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads the meta-data from temporal memory</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatamemory-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">write(
-    mixed $key,
-    array $data
-)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes the meta-data to temporal memory</span>
 </a>
 </div>
@@ -15457,16 +14894,13 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadataredis-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    AdapterFactory $factory,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\MetaData\Redis constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadataredis-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Flush Redis data and resets internal meta-data in order to regenerate it</span>
 </a>
 </div>
@@ -15522,19 +14956,13 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelIn
 <a class="api-item" href="#mvcmodelmetadatastrategyannotations-getcolumnmaps">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getColumnMaps(
-    ModelInterface $model,
-    DiInterface $container
-)</code>
+<code class="sig"><span class="sf">getColumnMaps</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Read the model&#039;s column map, this can&#039;t be inferred</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatastrategyannotations-getmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMetaData(
-    ModelInterface $model,
-    DiInterface $container
-)</code>
+<code class="sig"><span class="sf">getMetaData</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">The meta-data is obtained by reading the column descriptions from the database information schema</span>
 </a>
 </div>
@@ -15588,19 +15016,13 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 <a class="api-item" href="#mvcmodelmetadatastrategyintrospection-getcolumnmaps">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getColumnMaps(
-    ModelInterface $model,
-    DiInterface $container
-)</code>
+<code class="sig"><span class="sf">getColumnMaps</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Read the model&#039;s column map, this can&#039;t be inferred</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatastrategyintrospection-getmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMetaData(
-    ModelInterface $model,
-    DiInterface $container
-)</code>
+<code class="sig"><span class="sf">getMetaData</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">The meta-data is obtained by reading the column descriptions from the database information schema</span>
 </a>
 </div>
@@ -15659,19 +15081,13 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface`
 <a class="api-item" href="#mvcmodelmetadatastrategystrategyinterface-getcolumnmaps">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getColumnMaps(
-    ModelInterface $model,
-    DiInterface $container
-)</code>
+<code class="sig"><span class="sf">getColumnMaps</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">Read the model&#039;s column map, this can&#039;t be inferred</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatastrategystrategyinterface-getmetadata">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMetaData(
-    ModelInterface $model,
-    DiInterface $container
-)</code>
+<code class="sig"><span class="sf">getMetaData</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span></span>)</code>
 <span class="desc">The meta-data is obtained by reading the column descriptions from the database information schema</span>
 </a>
 </div>
@@ -15737,32 +15153,31 @@ __Uses__ `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\
 <div class="api-list">
 <a class="api-item" href="#mvcmodelmetadatastream-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\MetaData\Files constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatastream-read">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">read( mixed $key )</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
 <span class="desc">Reads meta-data from files</span>
 </a>
 <a class="api-item" href="#mvcmodelmetadatastream-write">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">write(
-    mixed $key,
-    array $data
-)</code>
+<code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes the meta-data to files</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$metaDataDir = "./"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$metaDataDir</span><span class="sm"> = &quot;./&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -15865,451 +15280,456 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquery-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $phql = null,
-    DiInterface $container = null,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$phql</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-cache">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">cache( array $cacheOptions )</code>
+<code class="sig"><span class="sf">cache</span>( <span class="st">array</span> <span class="sv">$cacheOptions</span> )</code>
 <span class="desc">Sets the cache parameters of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-clean">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clean()</code>
+<code class="sig"><span class="sf">clean</span>()</code>
 <span class="desc">Destroys the internal PHQL cache</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-execute">
 <code class="vis vis-public">public</code>
-<code class="sig">execute(
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">execute</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes a parsed PHQL statement</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindParams()</code>
+<code class="sig"><span class="sf">getBindParams</span>()</code>
 <span class="desc">Returns default bind params</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindTypes()</code>
+<code class="sig"><span class="sf">getBindTypes</span>()</code>
 <span class="desc">Returns default bind types</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getcache">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getCache()</code>
+<code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Returns the current cache backend instance</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getcacheoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getCacheOptions()</code>
+<code class="sig"><span class="sf">getCacheOptions</span>()</code>
 <span class="desc">Returns the current cache options</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the dependency injection container</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getintermediate">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getIntermediate()</code>
+<code class="sig"><span class="sf">getIntermediate</span>()</code>
 <span class="desc">Returns the intermediate representation of the PHQL statement</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getsingleresult">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">getSingleResult(
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">getSingleResult</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes the query returning the first result</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getsql">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSql()</code>
+<code class="sig"><span class="sf">getSql</span>()</code>
 <span class="desc">Returns an associative array with the SQL to be generated by the internal PHQL,</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-gettransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">TransactionInterface|null</code>
-<code class="sig">getTransaction()</code>
+<code class="sig"><span class="sf">getTransaction</span>()</code>
 </a>
 <a class="api-item" href="#mvcmodelquery-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Gets the type of PHQL statement executed</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getuniquerow">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getUniqueRow()</code>
+<code class="sig"><span class="sf">getUniqueRow</span>()</code>
 <span class="desc">Check if the query is programmed to get only the first row in the</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-parse">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parse()</code>
+<code class="sig"><span class="sf">parse</span>()</code>
 <span class="desc">Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-setbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setBindParams(
-    array $bindParams,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindParams</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-setbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setBindTypes(
-    array $bindTypes,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindTypes</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the dependency injection container</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-setintermediate">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setIntermediate( array $intermediate )</code>
+<code class="sig"><span class="sf">setIntermediate</span>( <span class="st">array</span> <span class="sv">$intermediate</span> )</code>
 <span class="desc">Allows to set the IR to be executed</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-setsharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setSharedLock( bool $sharedLock = false )</code>
+<code class="sig"><span class="sf">setSharedLock</span>( <span class="st">bool</span> <span class="sv">$sharedLock</span><span class="sm"> = false</span> )</code>
 <span class="desc">Set SHARED LOCK clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-settransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setTransaction( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">setTransaction</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">allows to wrap a transaction around all queries</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-settype">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setType( int $type )</code>
+<code class="sig"><span class="sf">setType</span>( <span class="st">int</span> <span class="sv">$type</span> )</code>
 <span class="desc">Sets the type of PHQL statement to be executed</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-setuniquerow">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setUniqueRow( bool $uniqueRow )</code>
+<code class="sig"><span class="sf">setUniqueRow</span>( <span class="st">bool</span> <span class="sv">$uniqueRow</span> )</code>
 <span class="desc">Tells to the query if only the first row in the resultset must be</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-executedelete">
 <code class="vis vis-protected">protected</code>
 <code class="ret">StatusInterface</code>
-<code class="sig">executeDelete(
-    array $intermediate,
-    array $bindParams,
-    array $bindTypes
-)</code>
+<code class="sig"><span class="sf">executeDelete</span>(<span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span></span>)</code>
 <span class="desc">Executes the DELETE intermediate representation producing a</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-executeinsert">
 <code class="vis vis-protected">protected</code>
 <code class="ret">StatusInterface</code>
-<code class="sig">executeInsert(
-    array $intermediate,
-    array $bindParams,
-    array $bindTypes
-)</code>
+<code class="sig"><span class="sf">executeInsert</span>(<span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span></span>)</code>
 <span class="desc">Executes the INSERT intermediate representation producing a</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-executeselect">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ResultsetInterface|array</code>
-<code class="sig">executeSelect(
-    array $intermediate,
-    array $bindParams,
-    array $bindTypes,
-    bool $simulate = false
-)</code>
+<code class="sig"><span class="sf">executeSelect</span>(<span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$simulate</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the SELECT intermediate representation producing a</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-executeupdate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">StatusInterface</code>
-<code class="sig">executeUpdate(
-    array $intermediate,
-    array $bindParams,
-    array $bindTypes
-)</code>
+<code class="sig"><span class="sf">executeUpdate</span>(<span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span></span>)</code>
 <span class="desc">Executes the UPDATE intermediate representation producing a</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getcallargument">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getCallArgument( array $argument )</code>
+<code class="sig"><span class="sf">getCallArgument</span>( <span class="st">array</span> <span class="sv">$argument</span> )</code>
 <span class="desc">Resolves an expression in a single call argument</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getcaseexpression">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getCaseExpression( array $expr )</code>
+<code class="sig"><span class="sf">getCaseExpression</span>( <span class="st">array</span> <span class="sv">$expr</span> )</code>
 <span class="desc">Resolves an expression in a single call argument</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getexpression">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getExpression(
-    array $expr,
-    bool $quoting = true
-)</code>
+<code class="sig"><span class="sf">getExpression</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$quoting</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Resolves an expression from its intermediate code into an array</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getfunctioncall">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getFunctionCall( array $expr )</code>
+<code class="sig"><span class="sf">getFunctionCall</span>( <span class="st">array</span> <span class="sv">$expr</span> )</code>
 <span class="desc">Resolves an expression in a single call argument</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getgroupclause">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getGroupClause( array $group )</code>
+<code class="sig"><span class="sf">getGroupClause</span>( <span class="st">array</span> <span class="sv">$group</span> )</code>
 <span class="desc">Returns a processed group clause for a SELECT statement</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getjoin">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getJoin(
-    ManagerInterface $manager,
-    array $join
-)</code>
+<code class="sig"><span class="sf">getJoin</span>(<span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$manager</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$join</span></span>)</code>
 <span class="desc">Resolves a JOIN clause checking if the associated models exist</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getjointype">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getJoinType( array $join )</code>
+<code class="sig"><span class="sf">getJoinType</span>( <span class="st">array</span> <span class="sv">$join</span> )</code>
 <span class="desc">Resolves a JOIN type</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getjoins">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getJoins( array $select )</code>
+<code class="sig"><span class="sf">getJoins</span>( <span class="st">array</span> <span class="sv">$select</span> )</code>
 <span class="desc">Processes the JOINs in the query returning an internal representation for</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getlimitclause">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getLimitClause( array $limitClause )</code>
+<code class="sig"><span class="sf">getLimitClause</span>( <span class="st">array</span> <span class="sv">$limitClause</span> )</code>
 <span class="desc">Returns a processed limit clause for a SELECT statement</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getmultijoin">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getMultiJoin(
-    string $joinType,
-    mixed $joinSource,
-    string $modelAlias,
-    string $joinAlias,
-    RelationInterface $relation
-)</code>
+<code class="sig"><span class="sf">getMultiJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$joinType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$joinSource</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelAlias</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$joinAlias</span>,</span><span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span></span>)</code>
 <span class="desc">Resolves joins involving many-to-many relations</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getorderclause">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getOrderClause( mixed $order )</code>
+<code class="sig"><span class="sf">getOrderClause</span>( <span class="st">mixed</span> <span class="sv">$order</span> )</code>
 <span class="desc">Returns a processed order clause for a SELECT statement</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getqualified">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getQualified( array $expr )</code>
+<code class="sig"><span class="sf">getQualified</span>( <span class="st">array</span> <span class="sv">$expr</span> )</code>
 <span class="desc">Replaces the model&#039;s name to its source name in a qualified-name</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getreadconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getReadConnection(
-    ModelInterface $model,
-    array $intermediate = null,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">getReadConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Gets the read connection from the model if there is no transaction set</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getrelatedrecords">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">getRelatedRecords(
-    ModelInterface $model,
-    array $intermediate,
-    array $bindParams,
-    array $bindTypes
-)</code>
+<code class="sig"><span class="sf">getRelatedRecords</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span></span>)</code>
 <span class="desc">Query the records on which the UPDATE/DELETE operation will be done</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getselectcolumn">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getSelectColumn( array $column )</code>
+<code class="sig"><span class="sf">getSelectColumn</span>( <span class="st">array</span> <span class="sv">$column</span> )</code>
 <span class="desc">Resolves a column from its intermediate representation into an array</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getsinglejoin">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getSingleJoin(
-    string $joinType,
-    mixed $joinSource,
-    string $modelAlias,
-    string $joinAlias,
-    RelationInterface $relation
-)</code>
+<code class="sig"><span class="sf">getSingleJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$joinType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$joinSource</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelAlias</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$joinAlias</span>,</span><span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span></span>)</code>
 <span class="desc">Resolves joins involving has-one/belongs-to/has-many relations</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-gettable">
 <code class="vis vis-protected">protected</code>
-<code class="sig">getTable(
-    ManagerInterface $manager,
-    array $qualifiedName
-)</code>
+<code class="sig"><span class="sf">getTable</span>(<span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$manager</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$qualifiedName</span></span>)</code>
 <span class="desc">Resolves a table in a SELECT statement checking if the model exists</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-getwriteconnection">
 <code class="vis vis-protected">protected</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getWriteConnection(
-    ModelInterface $model,
-    array $intermediate = null,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">getWriteConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$intermediate</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Gets the write connection from the model if there is no transaction</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-preparedelete">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">prepareDelete()</code>
+<code class="sig"><span class="sf">prepareDelete</span>()</code>
 <span class="desc">Analyzes a DELETE intermediate code and produces an array to be executed</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-prepareinsert">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">prepareInsert()</code>
+<code class="sig"><span class="sf">prepareInsert</span>()</code>
 <span class="desc">Analyzes an INSERT intermediate code and produces an array to be executed</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-prepareselect">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">prepareSelect(
-    mixed $ast = null,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">prepareSelect</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$ast</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Analyzes a SELECT intermediate code and produces an array to be executed later</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-prepareupdate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">prepareUpdate()</code>
+<code class="sig"><span class="sf">prepareUpdate</span>()</code>
 <span class="desc">Analyzes an UPDATE intermediate code and produces an array to be executed</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-refreshschemasinintermediate">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">refreshSchemasInIntermediate( array $irPhql )</code>
+<code class="sig"><span class="sf">refreshSchemasInIntermediate</span>( <span class="st">array</span> <span class="sv">$irPhql</span> )</code>
 <span class="desc">Refreshes the schema/source of every model referenced in a cached</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `TYPE_DELETE = 303` `int`
-
--   `TYPE_INSERT = 306` `int`
-
--   `TYPE_SELECT = 309` `int`
-
--   `TYPE_UPDATE = 300` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_DELETE</span><span class="sm"> = 303</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_INSERT</span><span class="sm"> = 306</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_SELECT</span><span class="sm"> = 309</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_UPDATE</span><span class="sm"> = 300</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$ast` `array`
-
--   `protected`{ .vis-protected } `$bindParams = []` `array`
-
--   `protected`{ .vis-protected } `$bindTypes = []` `array`
-
--   `protected`{ .vis-protected } `$cache = null` `mixed|null`
-
--   `protected`{ .vis-protected } `$cacheOptions` `array|null`
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$enableImplicitJoins` `bool`
-
--   `protected`{ .vis-protected } `$intermediate` `array`
-
--   `protected`{ .vis-protected } `$internalPhqlCache` `array|null`
-
--   `protected`{ .vis-protected } `$manager = null` `\Phalcon\Mvc\Model\ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$metaData = null` `\Phalcon\Mvc\Model\MetaDataInterface|null`
-
--   `protected`{ .vis-protected } `$models = []` `array`
-
--   `protected`{ .vis-protected } `$modelsInstances = []` `array`
-
--   `protected`{ .vis-protected } `$nestingLevel = -1` `int`
-
--   `protected`{ .vis-protected } `$phql = null` `string|null`
-
--   `protected`{ .vis-protected } `$sharedLock = false` `bool`
-
--   `protected`{ .vis-protected } `$sqlAliases = []` `array`
-
--   `protected`{ .vis-protected } `$sqlAliasesModels = []` `array`
-
--   `protected`{ .vis-protected } `$sqlAliasesModelsInstances = []` `array`
-
--   `protected`{ .vis-protected } `$sqlColumnAliases = []` `array`
-
--   `protected`{ .vis-protected } `$sqlModelsAliases = []` `array`
-
--   `protected`{ .vis-protected } `$transaction = null` `TransactionInterface|null`
-
-    TransactionInterface so that the query can wrap a transaction
-    around batch updates and intermediate selects within the transaction.
-    however if a model got a transaction set inside it will use the local
-    transaction instead of this one
-
--   `protected`{ .vis-protected } `$type` `int|null`
-
--   `protected`{ .vis-protected } `$uniqueRow = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$ast</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindTypes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$cache</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$cacheOptions</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$enableImplicitJoins</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$intermediate</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$internalPhqlCache</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">\Phalcon\Mvc\Model\ManagerInterface|null</code>
+<code class="sig"><span class="sv">$manager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">\Phalcon\Mvc\Model\MetaDataInterface|null</code>
+<code class="sig"><span class="sv">$metaData</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$models</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$modelsInstances</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$nestingLevel</span><span class="sm"> = -1</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$phql</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$sharedLock</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlAliases</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlAliasesModels</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlAliasesModelsInstances</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlColumnAliases</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$sqlModelsAliases</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">TransactionInterface|null</code>
+<code class="sig"><span class="sv">$transaction</span><span class="sm"> = null</span></code>
+<span class="desc">TransactionInterface so that the query can wrap a transaction
+around batch updates and intermediate selects within the transaction.
+however if a model got a transaction set inside it will use the local
+transaction instead of this one</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sv">$type</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$uniqueRow</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -16850,90 +16270,78 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 <a class="api-item" href="#mvcmodelqueryinterface-cache">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">cache( array $cacheOptions )</code>
+<code class="sig"><span class="sf">cache</span>( <span class="st">array</span> <span class="sv">$cacheOptions</span> )</code>
 <span class="desc">Sets the cache parameters of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-execute">
 <code class="vis vis-public">public</code>
-<code class="sig">execute(
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">execute</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes a parsed PHQL statement</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-getbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindParams()</code>
+<code class="sig"><span class="sf">getBindParams</span>()</code>
 <span class="desc">Returns default bind params</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-getbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindTypes()</code>
+<code class="sig"><span class="sf">getBindTypes</span>()</code>
 <span class="desc">Returns default bind types</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-getcacheoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getCacheOptions()</code>
+<code class="sig"><span class="sf">getCacheOptions</span>()</code>
 <span class="desc">Returns the current cache options</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-getsingleresult">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">getSingleResult(
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">getSingleResult</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes the query returning the first result</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-getsql">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSql()</code>
+<code class="sig"><span class="sf">getSql</span>()</code>
 <span class="desc">Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-getuniquerow">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getUniqueRow()</code>
+<code class="sig"><span class="sf">getUniqueRow</span>()</code>
 <span class="desc">Check if the query is programmed to get only the first row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-parse">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parse()</code>
+<code class="sig"><span class="sf">parse</span>()</code>
 <span class="desc">Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating another</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-setbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setBindParams(
-    array $bindParams,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindParams</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-setbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setBindTypes(
-    array $bindTypes,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindTypes</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-setsharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setSharedLock( bool $sharedLock = false )</code>
+<code class="sig"><span class="sf">setSharedLock</span>( <span class="st">bool</span> <span class="sv">$sharedLock</span><span class="sm"> = false</span> )</code>
 <span class="desc">Set SHARED LOCK clause</span>
 </a>
 <a class="api-item" href="#mvcmodelqueryinterface-setuniquerow">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">setUniqueRow( bool $uniqueRow )</code>
+<code class="sig"><span class="sf">setUniqueRow</span>( <span class="st">bool</span> <span class="sv">$uniqueRow</span> )</code>
 <span class="desc">Tells to the query if only the first row in the resultset must be returned</span>
 </a>
 </div>
@@ -17112,462 +16520,395 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquerybuilder-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $params = null,
-    DiInterface $container = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query\Builder constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-addfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">addFrom(
-    string $model,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a model to take part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-andhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">andHaving(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">andHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Appends a condition to the current HAVING conditions clause using a AND operator</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-andwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">andWhere(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Appends a condition to the current WHERE conditions using a AND operator</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-autoescape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">autoescape( string $identifier )</code>
+<code class="sig"><span class="sf">autoescape</span>( <span class="st">string</span> <span class="sv">$identifier</span> )</code>
 <span class="desc">Automatically escapes identifiers but only if they need to be escaped.</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-betweenhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">betweenHaving(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">betweenHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a BETWEEN condition to the current HAVING conditions clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-betweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">betweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">betweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a BETWEEN condition to the current WHERE conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">columns( mixed $columns )</code>
-<span class="desc">Sets the columns to be queried. The columns can be either a `string` or</span>
+<code class="sig"><span class="sf">columns</span>( <span class="st">mixed</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Sets the columns to be queried. The columns can be either a <code>string</code> or</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-distinct">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">distinct( mixed $distinct )</code>
+<code class="sig"><span class="sf">distinct</span>( <span class="st">mixed</span> <span class="sv">$distinct</span> )</code>
 <span class="desc">Sets SELECT DISTINCT / SELECT ALL flag</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">forUpdate( bool $forUpdate )</code>
+<code class="sig"><span class="sf">forUpdate</span>( <span class="st">bool</span> <span class="sv">$forUpdate</span> )</code>
 <span class="desc">Sets a FOR UPDATE clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-from">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">from( mixed $models )</code>
+<code class="sig"><span class="sf">from</span>( <span class="st">mixed</span> <span class="sv">$models</span> )</code>
 <span class="desc">Sets the models who makes part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindParams()</code>
+<code class="sig"><span class="sf">getBindParams</span>()</code>
 <span class="desc">Returns default bind params</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindTypes()</code>
+<code class="sig"><span class="sf">getBindTypes</span>()</code>
 <span class="desc">Returns default bind types</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getcolumns">
 <code class="vis vis-public">public</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Return the columns to be queried</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getdistinct">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getDistinct()</code>
+<code class="sig"><span class="sf">getDistinct</span>()</code>
 <span class="desc">Returns SELECT DISTINCT / SELECT ALL flag</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getfrom">
 <code class="vis vis-public">public</code>
-<code class="sig">getFrom()</code>
+<code class="sig"><span class="sf">getFrom</span>()</code>
 <span class="desc">Return the models who makes part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getgroupby">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getGroupBy()</code>
+<code class="sig"><span class="sf">getGroupBy</span>()</code>
 <span class="desc">Returns the GROUP BY clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-gethaving">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getHaving()</code>
+<code class="sig"><span class="sf">getHaving</span>()</code>
 <span class="desc">Return the current having clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getjoins">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getJoins()</code>
+<code class="sig"><span class="sf">getJoins</span>()</code>
 <span class="desc">Return join parts of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getlimit">
 <code class="vis vis-public">public</code>
-<code class="sig">getLimit()</code>
+<code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Returns the current LIMIT clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getmodels">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array|null</code>
-<code class="sig">getModels()</code>
+<code class="sig"><span class="sf">getModels</span>()</code>
 <span class="desc">Returns the models involved in the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getoffset">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getOffset()</code>
+<code class="sig"><span class="sf">getOffset</span>()</code>
 <span class="desc">Returns the current OFFSET clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getorderby">
 <code class="vis vis-public">public</code>
-<code class="sig">getOrderBy()</code>
+<code class="sig"><span class="sf">getOrderBy</span>()</code>
 <span class="desc">Returns the set ORDER BY clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getphql">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPhql()</code>
+<code class="sig"><span class="sf">getPhql</span>()</code>
 <span class="desc">Returns a PHQL statement built based on the builder parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getquery">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">getQuery()</code>
+<code class="sig"><span class="sf">getQuery</span>()</code>
 <span class="desc">Returns the query built</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-getwhere">
 <code class="vis vis-public">public</code>
-<code class="sig">getWhere()</code>
+<code class="sig"><span class="sf">getWhere</span>()</code>
 <span class="desc">Return the conditions for the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-groupby">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">groupBy( mixed $group )</code>
+<code class="sig"><span class="sf">groupBy</span>( <span class="st">mixed</span> <span class="sv">$group</span> )</code>
 <span class="desc">Sets a GROUP BY clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-having">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">having(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">having</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets the HAVING condition clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-inhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">inHaving(
-    string $expr,
-    array $values,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">inHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends an IN condition to the current HAVING conditions clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-inwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">inWhere(
-    string $expr,
-    array $values,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">inWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends an IN condition to the current WHERE conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">innerJoin(
-    string $model,
-    string $conditions = null,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-join">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">join(
-    string $model,
-    string $conditions = null,
-    string $alias = null,
-    string $type = null
-)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an :type: join (by default type - INNER) to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">leftJoin(
-    string $model,
-    string $conditions = null,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">limit(
-    int $limit,
-    mixed $offset = null
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">int</span> <span class="sv">$limit</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets a LIMIT clause, optionally an offset clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-notbetweenhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">notBetweenHaving(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">notBetweenHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a NOT BETWEEN condition to the current HAVING conditions clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-notbetweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">notBetweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">notBetweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a NOT BETWEEN condition to the current WHERE conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-notinhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">notInHaving(
-    string $expr,
-    array $values,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">notInHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a NOT IN condition to the current HAVING conditions clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-notinwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">notInWhere(
-    string $expr,
-    array $values,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">notInWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a NOT IN condition to the current WHERE conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-offset">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">offset( int $offset )</code>
+<code class="sig"><span class="sf">offset</span>( <span class="st">int</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Sets an OFFSET clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-orhaving">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">orHaving(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">orHaving</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Appends a condition to the current HAVING conditions clause using an OR operator</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-orwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">orWhere(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an OR operator</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-orderby">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">orderBy( mixed $orderBy )</code>
+<code class="sig"><span class="sf">orderBy</span>( <span class="st">mixed</span> <span class="sv">$orderBy</span> )</code>
 <span class="desc">Sets an ORDER BY condition clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">rightJoin(
-    string $model,
-    string $conditions = null,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-setbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">setBindParams(
-    array $bindParams,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindParams</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-setbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">setBindTypes(
-    array $bindTypes,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindTypes</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind types</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the DependencyInjector container</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-where">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">where(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets the query WHERE conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-conditionbetween">
 <code class="vis vis-protected">protected</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">conditionBetween(
-    string $clause,
-    string $operator,
-    string $expr,
-    mixed $minimum,
-    mixed $maximum
-)</code>
+<code class="sig"><span class="sf">conditionBetween</span>(<span class="prm"><span class="st">string</span> <span class="sv">$clause</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span></span>)</code>
 <span class="desc">Appends a BETWEEN condition</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-conditionin">
 <code class="vis vis-protected">protected</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">conditionIn(
-    string $clause,
-    string $operator,
-    string $expr,
-    array $values
-)</code>
+<code class="sig"><span class="sf">conditionIn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$clause</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 <span class="desc">Appends an IN condition</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-conditionnotbetween">
 <code class="vis vis-protected">protected</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">conditionNotBetween(
-    string $clause,
-    string $operator,
-    string $expr,
-    mixed $minimum,
-    mixed $maximum
-)</code>
+<code class="sig"><span class="sf">conditionNotBetween</span>(<span class="prm"><span class="st">string</span> <span class="sv">$clause</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span></span>)</code>
 <span class="desc">Appends a NOT BETWEEN condition</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilder-conditionnotin">
 <code class="vis vis-protected">protected</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">conditionNotIn(
-    string $clause,
-    string $operator,
-    string $expr,
-    array $values
-)</code>
+<code class="sig"><span class="sf">conditionNotIn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$clause</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 <span class="desc">Appends a NOT IN condition</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$bindParams = []` `array`
-
--   `protected`{ .vis-protected } `$bindTypes = []` `array`
-
--   `protected`{ .vis-protected } `$columns = null` `array|string|null`
-
--   `protected`{ .vis-protected } `$conditions = null` `array|string|null`
-
--   `protected`{ .vis-protected } `$container` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$distinct = null` `mixed`
-
--   `protected`{ .vis-protected } `$forUpdate = false` `bool`
-
--   `protected`{ .vis-protected } `$group = []` `array`
-
--   `protected`{ .vis-protected } `$having = null` `string|null`
-
--   `protected`{ .vis-protected } `$hiddenParamNumber = 0` `int`
-
--   `protected`{ .vis-protected } `$joins = []` `array`
-
--   `protected`{ .vis-protected } `$limit` `array|string`
-
--   `protected`{ .vis-protected } `$models` `array|string`
-
--   `protected`{ .vis-protected } `$offset = 0` `int`
-
--   `protected`{ .vis-protected } `$order` `array|string`
-
--   `protected`{ .vis-protected } `$sharedLock = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$bindTypes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$columns</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$conditions</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$distinct</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$forUpdate</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$group</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$having</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$hiddenParamNumber</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$joins</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$limit</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$models</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$offset</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$order</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$sharedLock</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -18407,298 +17748,239 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 <a class="api-item" href="#mvcmodelquerybuilderinterface-addfrom">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">addFrom(
-    string $model,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">addFrom</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a model to take part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-andwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">andWhere(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">andWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using a AND operator</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-betweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">betweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">betweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a BETWEEN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-columns">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">columns( mixed $columns )</code>
-<span class="desc">Sets the columns to be queried. The columns can be either a `string` or</span>
+<code class="sig"><span class="sf">columns</span>( <span class="st">mixed</span> <span class="sv">$columns</span> )</code>
+<span class="desc">Sets the columns to be queried. The columns can be either a <code>string</code> or</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-distinct">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">distinct( mixed $distinct )</code>
+<code class="sig"><span class="sf">distinct</span>( <span class="st">mixed</span> <span class="sv">$distinct</span> )</code>
 <span class="desc">Sets SELECT DISTINCT / SELECT ALL flag</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">forUpdate( bool $forUpdate )</code>
+<code class="sig"><span class="sf">forUpdate</span>( <span class="st">bool</span> <span class="sv">$forUpdate</span> )</code>
 <span class="desc">Sets a FOR UPDATE clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-from">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">from( mixed $models )</code>
+<code class="sig"><span class="sf">from</span>( <span class="st">mixed</span> <span class="sv">$models</span> )</code>
 <span class="desc">Sets the models who makes part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindParams()</code>
+<code class="sig"><span class="sf">getBindParams</span>()</code>
 <span class="desc">Returns default bind params</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getBindTypes()</code>
+<code class="sig"><span class="sf">getBindTypes</span>()</code>
 <span class="desc">Returns default bind types</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getcolumns">
 <code class="vis vis-public">public</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Return the columns to be queried</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getdistinct">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getDistinct()</code>
+<code class="sig"><span class="sf">getDistinct</span>()</code>
 <span class="desc">Returns SELECT DISTINCT / SELECT ALL flag</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getfrom">
 <code class="vis vis-public">public</code>
-<code class="sig">getFrom()</code>
+<code class="sig"><span class="sf">getFrom</span>()</code>
 <span class="desc">Return the models who makes part of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getgroupby">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getGroupBy()</code>
+<code class="sig"><span class="sf">getGroupBy</span>()</code>
 <span class="desc">Returns the GROUP BY clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-gethaving">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getHaving()</code>
+<code class="sig"><span class="sf">getHaving</span>()</code>
 <span class="desc">Returns the HAVING condition clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getjoins">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getJoins()</code>
+<code class="sig"><span class="sf">getJoins</span>()</code>
 <span class="desc">Return join parts of the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getlimit">
 <code class="vis vis-public">public</code>
-<code class="sig">getLimit()</code>
+<code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Returns the current LIMIT clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getmodels">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array|null</code>
-<code class="sig">getModels()</code>
+<code class="sig"><span class="sf">getModels</span>()</code>
 <span class="desc">Returns the models involved in the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getoffset">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getOffset()</code>
+<code class="sig"><span class="sf">getOffset</span>()</code>
 <span class="desc">Returns the current OFFSET clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getorderby">
 <code class="vis vis-public">public</code>
-<code class="sig">getOrderBy()</code>
+<code class="sig"><span class="sf">getOrderBy</span>()</code>
 <span class="desc">Return the set ORDER BY clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getphql">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPhql()</code>
+<code class="sig"><span class="sf">getPhql</span>()</code>
 <span class="desc">Returns a PHQL statement built based on the builder parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getquery">
 <code class="vis vis-public">public</code>
 <code class="ret">QueryInterface</code>
-<code class="sig">getQuery()</code>
+<code class="sig"><span class="sf">getQuery</span>()</code>
 <span class="desc">Returns the query built</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-getwhere">
 <code class="vis vis-public">public</code>
-<code class="sig">getWhere()</code>
+<code class="sig"><span class="sf">getWhere</span>()</code>
 <span class="desc">Return the conditions for the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-groupby">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">groupBy( mixed $group )</code>
+<code class="sig"><span class="sf">groupBy</span>( <span class="st">mixed</span> <span class="sv">$group</span> )</code>
 <span class="desc">Sets a GROUP BY clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-having">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">having(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">having</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets a HAVING condition clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-inwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">inWhere(
-    string $expr,
-    array $values,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">inWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends an IN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-innerjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">innerJoin(
-    string $model,
-    string $conditions = null,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">innerJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an INNER join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-join">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">join(
-    string $model,
-    string $conditions = null,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">join</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds an :type: join (by default type - INNER) to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-leftjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">leftJoin(
-    string $model,
-    string $conditions = null,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">leftJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a LEFT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">limit(
-    int $limit,
-    mixed $offset = null
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">int</span> <span class="sv">$limit</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets a LIMIT clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-notbetweenwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">notBetweenWhere(
-    string $expr,
-    mixed $minimum,
-    mixed $maximum,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">notBetweenWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$minimum</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$maximum</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a NOT BETWEEN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-notinwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">notInWhere(
-    string $expr,
-    array $values,
-    string $operator = BuilderInterface::OPERATOR_AND
-)</code>
+<code class="sig"><span class="sf">notInWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$operator</span><span class="sm"> = BuilderInterface::OPERATOR_AND</span></span>)</code>
 <span class="desc">Appends a NOT IN condition to the current conditions</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-offset">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">offset( int $offset )</code>
+<code class="sig"><span class="sf">offset</span>( <span class="st">int</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Sets an OFFSET clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-orwhere">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">orWhere(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">orWhere</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Appends a condition to the current conditions using an OR operator</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-orderby">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">orderBy( mixed $orderBy )</code>
+<code class="sig"><span class="sf">orderBy</span>( <span class="st">mixed</span> <span class="sv">$orderBy</span> )</code>
 <span class="desc">Sets an ORDER BY condition clause</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-rightjoin">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">rightJoin(
-    string $model,
-    string $conditions = null,
-    string $alias = null
-)</code>
+<code class="sig"><span class="sf">rightJoin</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$conditions</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a RIGHT join to the query</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-setbindparams">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">setBindParams(
-    array $bindParams,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindParams</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind parameters</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-setbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">setBindTypes(
-    array $bindTypes,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">setBindTypes</span>(<span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Set default bind types</span>
 </a>
 <a class="api-item" href="#mvcmodelquerybuilderinterface-where">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
-<code class="sig">where(
-    string $conditions,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$conditions</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets conditions for the query</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `OPERATOR_AND = "and"` `string`
-
--   `OPERATOR_OR = "or"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">OPERATOR_AND</span><span class="sm"> = &quot;and&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">OPERATOR_OR</span><span class="sm"> = &quot;or&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -19150,10 +18432,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsambiguouscolumn-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -19199,11 +18478,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsambiguousjoinrelation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $from,
-    string $join,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$from</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$join</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -19250,7 +18525,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbindparameternotinplaceholders-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $wildcard )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$wildcard</span> )</code>
 </a>
 </div>
 
@@ -19293,7 +18568,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbindtyperequiresarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -19336,7 +18611,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbindvaluerequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -19379,7 +18654,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbuilderbuildercolumnnotinmap-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $column )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$column</span> )</code>
 </a>
 </div>
 
@@ -19422,7 +18697,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbuilderbuilderconditioninvalid-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19465,7 +18740,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbuildermodelrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19508,7 +18783,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbuildernoprimarykey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19551,7 +18826,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsbuilderoperatornotavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $operator )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$operator</span> )</code>
 </a>
 </div>
 
@@ -19594,11 +18869,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionscolumnnotindomain-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $model,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -19645,11 +18916,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionscolumnnotinselectedmodels-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $tag,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -19696,7 +18963,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionscorruptedast-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19739,7 +19006,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionscorrupteddeleteast-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19782,7 +19049,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionscorruptedinsertast-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19825,7 +19092,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionscorruptedselectast-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19868,7 +19135,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionscorruptedupdateast-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19911,7 +19178,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsdeletemultiplenotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -19954,10 +19221,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsduplicatealias-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -20003,7 +19267,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsemptyarrayplaceholdervalue-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -20046,7 +19310,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinsertcolumncountmismatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20089,7 +19353,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinvalidcachedresultset-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20132,7 +19396,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinvalidcachingoptions-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20175,7 +19439,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinvalidcolumndefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20218,7 +19482,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinvalidinjectedmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20261,7 +19525,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinvalidinjectedmetadata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20304,7 +19568,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinvalidquerycacheservice-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20347,7 +19611,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsinvalidresultsetclass-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -20390,10 +19654,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsjoinaliasalreadyused-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $alias,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -20439,11 +19700,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsjoinfieldcountmismatch-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $model,
-    string $join,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$join</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -20490,7 +19747,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmissingcachekey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20533,7 +19790,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmissingmetadata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20576,11 +19833,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmissingmodelattribute-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $model,
-    string $attribute,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -20627,7 +19880,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmissingmodelsmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20670,7 +19923,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmixeddatabasesystems-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20713,10 +19966,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmodelsourcenotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -20762,7 +20012,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmodelslistnotloaded-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20805,7 +20055,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsmultiplesqlstatementsnotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20848,10 +20098,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsnomodelforalias-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $model,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -20897,7 +20144,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsphqlcolumnnotinmap-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $fieldName )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$fieldName</span> )</code>
 </a>
 </div>
 
@@ -20940,7 +20187,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsreadconnectionmissing-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -20983,11 +20230,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsrelationshipnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $model,
-    string $relationship,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$relationship</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -21034,7 +20277,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsresultsetclassnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -21077,7 +20320,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsresultsetnoncacheable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -21120,7 +20363,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsunknownbindtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -21163,7 +20406,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsunknowncolumntype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -21206,10 +20449,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsunknownjointype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $type,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -21255,11 +20495,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsunknownmodeloralias-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $model,
-    string $tag,
-    string $phql
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$tag</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$phql</span></span>)</code>
 </a>
 </div>
 
@@ -21306,7 +20542,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsunknownphqlexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -21349,7 +20585,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsunknownphqlexpressiontype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -21392,7 +20628,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsunknownphqlstatement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $type )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 </a>
 </div>
 
@@ -21435,7 +20671,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionsupdatemultiplenotsupported-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -21478,7 +20714,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelqueryexceptionswriteconnectionmissing-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -21530,7 +20766,7 @@ $intermediate = Lang::parsePHQL(
 <a class="api-item" href="#mvcmodelquerylang-parsephql">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parsePHQL( string $phql )</code>
+<code class="sig"><span class="sf">parsePHQL</span>( <span class="st">string</span> <span class="sv">$phql</span> )</code>
 <span class="desc">Parses a PHQL statement returning an intermediate representation (IR)</span>
 </a>
 </div>
@@ -21591,40 +20827,42 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelquerystatus-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    bool $success,
-    ModelInterface $model = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$success</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Query\Status</span>
 </a>
 <a class="api-item" href="#mvcmodelquerystatus-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface[]</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the messages produced because of a failed operation</span>
 </a>
 <a class="api-item" href="#mvcmodelquerystatus-getmodel">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig">getModel()</code>
+<code class="sig"><span class="sf">getModel</span>()</code>
 <span class="desc">Returns the model that executed the action</span>
 </a>
 <a class="api-item" href="#mvcmodelquerystatus-success">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">success()</code>
+<code class="sig"><span class="sf">success</span>()</code>
 <span class="desc">Allows to check if the executed operation was successful</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$model` `ModelInterface|null`
-
--   `protected`{ .vis-protected } `$success` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ModelInterface|null</code>
+<code class="sig"><span class="sv">$model</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$success</span></code>
+</div>
 </div>
 
 ### Methods
@@ -21689,19 +20927,19 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <a class="api-item" href="#mvcmodelquerystatusinterface-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface[]</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the messages produced by an operation failed</span>
 </a>
 <a class="api-item" href="#mvcmodelquerystatusinterface-getmodel">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig">getModel()</code>
+<code class="sig"><span class="sf">getModel</span>()</code>
 <span class="desc">Returns the model which executed the action</span>
 </a>
 <a class="api-item" href="#mvcmodelquerystatusinterface-success">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">success()</code>
+<code class="sig"><span class="sf">success</span>()</code>
 <span class="desc">Allows to check if the executed operation was successful</span>
 </a>
 </div>
@@ -21755,145 +20993,173 @@ This class represents a relationship between two models
 <div class="api-list">
 <a class="api-item" href="#mvcmodelrelation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    int $type,
-    string $referencedModel,
-    mixed $fields,
-    mixed $referencedFields,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referencedModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$referencedFields</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Relation constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getfields">
 <code class="vis vis-public">public</code>
-<code class="sig">getFields()</code>
+<code class="sig"><span class="sf">getFields</span>()</code>
 <span class="desc">Returns the fields</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getforeignkey">
 <code class="vis vis-public">public</code>
-<code class="sig">getForeignKey()</code>
+<code class="sig"><span class="sf">getForeignKey</span>()</code>
 <span class="desc">Returns the foreign key configuration</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getintermediatefields">
 <code class="vis vis-public">public</code>
-<code class="sig">getIntermediateFields()</code>
+<code class="sig"><span class="sf">getIntermediateFields</span>()</code>
 <span class="desc">Gets the intermediate fields for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getintermediatemodel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getIntermediateModel()</code>
+<code class="sig"><span class="sf">getIntermediateModel</span>()</code>
 <span class="desc">Gets the intermediate model for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getintermediatereferencedfields">
 <code class="vis vis-public">public</code>
-<code class="sig">getIntermediateReferencedFields()</code>
+<code class="sig"><span class="sf">getIntermediateReferencedFields</span>()</code>
 <span class="desc">Gets the intermediate referenced fields for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getoption">
 <code class="vis vis-public">public</code>
-<code class="sig">getOption( string $name )</code>
+<code class="sig"><span class="sf">getOption</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an option by the specified name</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the options</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getparams">
 <code class="vis vis-public">public</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns parameters that must be always used when the related records are obtained</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getreferencedfields">
 <code class="vis vis-public">public</code>
-<code class="sig">getReferencedFields()</code>
+<code class="sig"><span class="sf">getReferencedFields</span>()</code>
 <span class="desc">Returns the referenced fields</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-getreferencedmodel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReferencedModel()</code>
+<code class="sig"><span class="sf">getReferencedModel</span>()</code>
 <span class="desc">Returns the referenced model</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the relation type</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-isforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isForeignKey()</code>
+<code class="sig"><span class="sf">isForeignKey</span>()</code>
 <span class="desc">Check whether the relation act as a foreign key</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-isreusable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isReusable()</code>
+<code class="sig"><span class="sf">isReusable</span>()</code>
 <span class="desc">Check if records returned by getting belongs-to/has-many are implicitly cached during the current request</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-isthrough">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isThrough()</code>
+<code class="sig"><span class="sf">isThrough</span>()</code>
 <span class="desc">Check whether the relation is a &#039;many-to-many&#039; relation or not</span>
 </a>
 <a class="api-item" href="#mvcmodelrelation-setintermediaterelation">
 <code class="vis vis-public">public</code>
-<code class="sig">setIntermediateRelation(
-    mixed $intermediateFields,
-    string $intermediateModel,
-    mixed $intermediateReferencedFields
-)</code>
+<code class="sig"><span class="sf">setIntermediateRelation</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span></span>)</code>
 <span class="desc">Sets the intermediate model data for has-*-through relations</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `ACTION_CASCADE = 2` `int`
-
--   `ACTION_RESTRICT = 1` `int`
-
--   `BELONGS_TO = 0` `int`
-
--   `HAS_MANY = 2` `int`
-
--   `HAS_MANY_THROUGH = 4` `int`
-
--   `HAS_ONE = 1` `int`
-
--   `HAS_ONE_THROUGH = 3` `int`
-
--   `NO_ACTION = 0` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ACTION_CASCADE</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">ACTION_RESTRICT</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">BELONGS_TO</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HAS_MANY</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HAS_MANY_THROUGH</span><span class="sm"> = 4</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HAS_ONE</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HAS_ONE_THROUGH</span><span class="sm"> = 3</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">NO_ACTION</span><span class="sm"> = 0</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$fields` `array|string`
-
--   `protected`{ .vis-protected } `$intermediateFields` `array|string`
-
--   `protected`{ .vis-protected } `$intermediateModel = null` `string|null`
-
--   `protected`{ .vis-protected } `$intermediateReferencedFields` `array|string`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$referencedFields` `array|string`
-
--   `protected`{ .vis-protected } `$referencedModel` `string`
-
--   `protected`{ .vis-protected } `$type` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$fields</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$intermediateFields</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$intermediateModel</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$intermediateReferencedFields</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$referencedFields</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$referencedModel</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$type</span></code>
+</div>
 </div>
 
 ### Methods
@@ -22060,88 +21326,84 @@ Interface for Phalcon\Mvc\Model\Relation
 <div class="api-list">
 <a class="api-item" href="#mvcmodelrelationinterface-getfields">
 <code class="vis vis-public">public</code>
-<code class="sig">getFields()</code>
+<code class="sig"><span class="sf">getFields</span>()</code>
 <span class="desc">Returns the fields</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getforeignkey">
 <code class="vis vis-public">public</code>
-<code class="sig">getForeignKey()</code>
+<code class="sig"><span class="sf">getForeignKey</span>()</code>
 <span class="desc">Returns the foreign key configuration</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getintermediatefields">
 <code class="vis vis-public">public</code>
-<code class="sig">getIntermediateFields()</code>
+<code class="sig"><span class="sf">getIntermediateFields</span>()</code>
 <span class="desc">Gets the intermediate fields for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getintermediatemodel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getIntermediateModel()</code>
+<code class="sig"><span class="sf">getIntermediateModel</span>()</code>
 <span class="desc">Gets the intermediate model for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getintermediatereferencedfields">
 <code class="vis vis-public">public</code>
-<code class="sig">getIntermediateReferencedFields()</code>
+<code class="sig"><span class="sf">getIntermediateReferencedFields</span>()</code>
 <span class="desc">Gets the intermediate referenced fields for has-*-through relations</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getoption">
 <code class="vis vis-public">public</code>
-<code class="sig">getOption( string $name )</code>
+<code class="sig"><span class="sf">getOption</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns an option by the specified name</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the options</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getparams">
 <code class="vis vis-public">public</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns parameters that must be always used when the related records are obtained</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getreferencedfields">
 <code class="vis vis-public">public</code>
-<code class="sig">getReferencedFields()</code>
+<code class="sig"><span class="sf">getReferencedFields</span>()</code>
 <span class="desc">Returns the referenced fields</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-getreferencedmodel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReferencedModel()</code>
+<code class="sig"><span class="sf">getReferencedModel</span>()</code>
 <span class="desc">Returns the referenced model</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the relations type</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-isforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isForeignKey()</code>
+<code class="sig"><span class="sf">isForeignKey</span>()</code>
 <span class="desc">Check whether the relation act as a foreign key</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-isreusable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isReusable()</code>
+<code class="sig"><span class="sf">isReusable</span>()</code>
 <span class="desc">Check if records returned by getting belongs-to/has-many are implicitly cached during the current request</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-isthrough">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isThrough()</code>
+<code class="sig"><span class="sf">isThrough</span>()</code>
 <span class="desc">Check whether the relation is a &#039;many-to-many&#039; relation or not</span>
 </a>
 <a class="api-item" href="#mvcmodelrelationinterface-setintermediaterelation">
 <code class="vis vis-public">public</code>
-<code class="sig">setIntermediateRelation(
-    mixed $intermediateFields,
-    string $intermediateModel,
-    mixed $intermediateReferencedFields
-)</code>
+<code class="sig"><span class="sf">setIntermediateRelation</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateFields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$intermediateModel</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$intermediateReferencedFields</span></span>)</code>
 <span class="desc">Sets the intermediate model data for has-*-through relations</span>
 </a>
 </div>
@@ -22300,7 +21562,7 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 <a class="api-item" href="#mvcmodelresultinterface-setdirtystate">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig">setDirtyState( int $dirtyState )</code>
+<code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Sets the object&#039;s state</span>
 </a>
 </div>
@@ -22383,210 +21645,238 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <div class="api-list">
 <a class="api-item" href="#mvcmodelresultset-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $result,
-    mixed $cache = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$result</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Resultset constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-count">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">count()</code>
+<code class="sig"><span class="sf">count</span>()</code>
 <span class="desc">Counts how many rows are in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete( Closure $conditionCallback = null )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Deletes every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-filter">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface[]</code>
-<code class="sig">filter( callable $filter )</code>
+<code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$filter</span> )</code>
 <span class="desc">Filters a resultset returning only those the developer requires</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getcache">
 <code class="vis vis-public">public</code>
 <code class="ret">CacheInterface|null</code>
-<code class="sig">getCache()</code>
+<code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Returns the associated cache for the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getFirst()</code>
+<code class="sig"><span class="sf">getFirst</span>()</code>
 <span class="desc">Get first row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-gethydratemode">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getHydrateMode()</code>
+<code class="sig"><span class="sf">getHydrateMode</span>()</code>
 <span class="desc">Returns the current hydration mode</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getlast">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig">getLast()</code>
+<code class="sig"><span class="sf">getLast</span>()</code>
 <span class="desc">Get last row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface[]</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the error messages produced by a batch operation</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-getresult">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getResult()</code>
+<code class="sig"><span class="sf">getResult</span>()</code>
 </a>
 <a class="api-item" href="#mvcmodelresultset-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the internal type of data retrieval that the resultset is using</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-isfresh">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isFresh()</code>
+<code class="sig"><span class="sf">isFresh</span>()</code>
 <span class="desc">Tell if the resultset if fresh or an old one cached</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">jsonSerialize()</code>
+<code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Returns serialised model objects as array for json_encode.</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-key">
 <code class="vis vis-public">public</code>
 <code class="ret">int|null</code>
-<code class="sig">key()</code>
+<code class="sig"><span class="sf">key</span>()</code>
 <span class="desc">Gets pointer number of active row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-next">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">next()</code>
+<code class="sig"><span class="sf">next</span>()</code>
 <span class="desc">Moves cursor to next row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $index )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
 <span class="desc">Checks whether offset exists in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $index )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
 <span class="desc">Gets row in a specific position of the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $offset,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-refresh">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">refresh()</code>
+<code class="sig"><span class="sf">refresh</span>()</code>
 </a>
 <a class="api-item" href="#mvcmodelresultset-rewind">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rewind()</code>
+<code class="sig"><span class="sf">rewind</span>()</code>
 <span class="desc">Rewinds resultset to its beginning</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-seek">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">seek( mixed $position )</code>
+<code class="sig"><span class="sf">seek</span>( <span class="st">mixed</span> <span class="sv">$position</span> )</code>
 <span class="desc">Changes the internal pointer to a specific position in the resultset.</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-sethydratemode">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">setHydrateMode( int $hydrateMode )</code>
+<code class="sig"><span class="sf">setHydrateMode</span>( <span class="st">int</span> <span class="sv">$hydrateMode</span> )</code>
 <span class="desc">Sets the hydration mode in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-setisfresh">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">setIsFresh( bool $isFresh )</code>
+<code class="sig"><span class="sf">setIsFresh</span>( <span class="st">bool</span> <span class="sv">$isFresh</span> )</code>
 <span class="desc">Set if the resultset is fresh or an old one cached</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">update(
-    mixed $data,
-    Closure $conditionCallback = null
-)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultset-valid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">valid()</code>
+<code class="sig"><span class="sf">valid</span>()</code>
 <span class="desc">Check whether internal resource has rows to fetch</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `HYDRATE_ARRAYS = 1` `int`
-
--   `HYDRATE_OBJECTS = 2` `int`
-
--   `HYDRATE_RECORDS = 0` `int`
-
--   `TYPE_RESULT_FULL = 0` `int`
-
--   `TYPE_RESULT_PARTIAL = 1` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HYDRATE_ARRAYS</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HYDRATE_OBJECTS</span><span class="sm"> = 2</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">HYDRATE_RECORDS</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_RESULT_FULL</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">TYPE_RESULT_PARTIAL</span><span class="sm"> = 1</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$activeRow = null` `mixed|null`
-
--   `protected`{ .vis-protected } `$cache = null` `CacheInterface|null`
-
--   `protected`{ .vis-protected } `$count = 0` `int`
-
--   `protected`{ .vis-protected } `$errorMessages = []` `array`
-
--   `protected`{ .vis-protected } `$hydrateMode = 0` `int`
-
--   `protected`{ .vis-protected } `$isFresh = true` `bool`
-
--   `protected`{ .vis-protected } `$pointer = 0` `int`
-
--   `protected`{ .vis-protected } `$result` `ResultInterface|bool`
-
-    Phalcon\Db\ResultInterface or false for empty resultset
-
--   `protected`{ .vis-protected } `$row = null` `mixed|null`
-
--   `protected`{ .vis-protected } `$rows = null` `array|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$activeRow</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">CacheInterface|null</code>
+<code class="sig"><span class="sv">$cache</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$count</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$errorMessages</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$hydrateMode</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isFresh</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$pointer</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ResultInterface|bool</code>
+<code class="sig"><span class="sv">$result</span></code>
+<span class="desc">Phalcon\Db\ResultInterface or false for empty resultset</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$row</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$rows</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -22869,82 +22159,79 @@ __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelI
 <a class="api-item" href="#mvcmodelresultsetinterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete( Closure $conditionCallback = null )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Deletes every record in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-filter">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface[]</code>
-<code class="sig">filter( callable $filter )</code>
+<code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$filter</span> )</code>
 <span class="desc">Filters a resultset returning only those the developer requires</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getcache">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getCache()</code>
+<code class="sig"><span class="sf">getCache</span>()</code>
 <span class="desc">Returns the associated cache for the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getFirst()</code>
+<code class="sig"><span class="sf">getFirst</span>()</code>
 <span class="desc">Get first row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-gethydratemode">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getHydrateMode()</code>
+<code class="sig"><span class="sf">getHydrateMode</span>()</code>
 <span class="desc">Returns the current hydration mode</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getlast">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig">getLast()</code>
+<code class="sig"><span class="sf">getLast</span>()</code>
 <span class="desc">Get last row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">MessageInterface[]</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the error messages produced by a batch operation</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the internal type of data retrieval that the resultset is using</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-isfresh">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isFresh()</code>
+<code class="sig"><span class="sf">isFresh</span>()</code>
 <span class="desc">Tell if the resultset if fresh or an old one cached</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-sethydratemode">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">setHydrateMode( int $hydrateMode )</code>
+<code class="sig"><span class="sf">setHydrateMode</span>( <span class="st">int</span> <span class="sv">$hydrateMode</span> )</code>
 <span class="desc">Sets the hydration mode in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-setisfresh">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
-<code class="sig">setIsFresh( bool $isFresh )</code>
+<code class="sig"><span class="sf">setIsFresh</span>( <span class="st">bool</span> <span class="sv">$isFresh</span> )</code>
 <span class="desc">Set if the resultset is fresh or an old one cached</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns a complete resultset as an array, if the resultset has a big number of rows</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetinterface-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">update(
-    mixed $data,
-    Closure $conditionCallback = null
-)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">Closure</span> <span class="sv">$conditionCallback</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates every record in the resultset</span>
 </a>
 </div>
@@ -23100,60 +22387,60 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <div class="api-list">
 <a class="api-item" href="#mvcmodelresultsetcomplex-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $columnTypes,
-    ResultInterface $result = null,
-    mixed $cache = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnTypes</span>,</span><span class="prm"><span class="st">ResultInterface</span> <span class="sv">$result</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Resultset\Complex constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-__serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__serialize()</code>
+<code class="sig"><span class="sf">__serialize</span>()</code>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unserialize( array $data )</code>
+<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-current">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">current()</code>
+<code class="sig"><span class="sf">current</span>()</code>
 <span class="desc">Returns current row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">serialize()</code>
+<code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializing a resultset will dump all related rows into a big array,</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns a complete resultset as an array, if the resultset has a big</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unserialize( mixed $data )</code>
+<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
 <span class="desc">Unserializing a resultset will allow to only works on the rows present in the saved state</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$columnTypes` `array`
-
--   `protected`{ .vis-protected } `$disableHydration = false` `bool`
-
-    Unserialised result-set hydrated all rows already. unserialise() sets
-    disableHydration to true
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$columnTypes</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$disableHydration</span><span class="sm"> = false</span></code>
+<span class="desc">Unserialised result-set hydrated all rows already. unserialise() sets
+disableHydration to true</span>
+</div>
 </div>
 
 ### Methods
@@ -23247,61 +22534,63 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 <div class="api-list">
 <a class="api-item" href="#mvcmodelresultsetsimple-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    mixed $columnMap,
-    mixed $model,
-    mixed $result,
-    mixed $cache = null,
-    bool $keepSnapshots = false
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$result</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$keepSnapshots</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Resultset\Simple constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetsimple-__serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">__serialize()</code>
+<code class="sig"><span class="sf">__serialize</span>()</code>
 </a>
 <a class="api-item" href="#mvcmodelresultsetsimple-__unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unserialize( array $data )</code>
+<code class="sig"><span class="sf">__unserialize</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 </a>
 <a class="api-item" href="#mvcmodelresultsetsimple-current">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|Row|null</code>
-<code class="sig">current()</code>
+<code class="sig"><span class="sf">current</span>()</code>
 <span class="desc">Returns current row in the resultset</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetsimple-serialize">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">serialize()</code>
+<code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializing a resultset will dump all related rows into a big array</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetsimple-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray( bool $renameColumns = true )</code>
+<code class="sig"><span class="sf">toArray</span>( <span class="st">bool</span> <span class="sv">$renameColumns</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns a complete resultset as an array, if the resultset has a big</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetsimple-unserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unserialize( mixed $data )</code>
+<code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
 <span class="desc">Unserializing a resultset will allow to only works on the rows present in</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$columnMap` `array|string`
-
--   `protected`{ .vis-protected } `$keepSnapshots = false` `bool`
-
--   `protected`{ .vis-protected } `$model` `ModelInterface|Row`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string</code>
+<code class="sig"><span class="sv">$columnMap</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$keepSnapshots</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ModelInterface|Row</code>
+<code class="sig"><span class="sv">$model</span></code>
+</div>
 </div>
 
 ### Methods
@@ -23395,60 +22684,54 @@ __Uses__ `ArrayAccess` · `JsonSerializable` · `Phalcon\Mvc\EntityInterface` ·
 <a class="api-item" href="#mvcmodelrow-jsonserialize">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">jsonSerialize()</code>
+<code class="sig"><span class="sf">jsonSerialize</span>()</code>
 <span class="desc">Serializes the object for json_encode</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-offsetexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">offsetExists( mixed $index )</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
 <span class="desc">Checks whether offset exists in the row. Returns true when the property</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-offsetget">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">offsetGet( mixed $index )</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$index</span> )</code>
 <span class="desc">Gets a record in a specific position of the row</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-offsetset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetSet(
-    mixed $offset,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-offsetunset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">offsetUnset( mixed $offset )</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
 <span class="desc">Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-readattribute">
 <code class="vis vis-public">public</code>
-<code class="sig">readAttribute( string $attribute )</code>
+<code class="sig"><span class="sf">readAttribute</span>( <span class="st">string</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Reads an attribute value by its name</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-setdirtystate">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|bool</code>
-<code class="sig">setDirtyState( int $dirtyState )</code>
+<code class="sig"><span class="sf">setDirtyState</span>( <span class="st">int</span> <span class="sv">$dirtyState</span> )</code>
 <span class="desc">Set the current object&#039;s state</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the instance as an array representation</span>
 </a>
 <a class="api-item" href="#mvcmodelrow-writeattribute">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">writeAttribute(
-    string $attribute,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">writeAttribute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Writes an attribute value by its name</span>
 </a>
 </div>
@@ -23606,110 +22889,126 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 <div class="api-list">
 <a class="api-item" href="#mvcmodeltransaction-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    DiInterface $container,
-    bool $autoBegin = false,
-    string $service = &quot;db&quot;
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$autoBegin</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$service</span><span class="sm"> = &quot;db&quot;</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Transaction constructor</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">begin()</code>
+<code class="sig"><span class="sf">begin</span>()</code>
 <span class="desc">Starts the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-getconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getConnection()</code>
+<code class="sig"><span class="sf">getConnection</span>()</code>
 <span class="desc">Returns the connection related to transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns validations messages from last save try</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-ismanaged">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isManaged()</code>
+<code class="sig"><span class="sf">isManaged</span>()</code>
 <span class="desc">Checks whether transaction is managed by a transaction manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-isvalid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isValid()</code>
+<code class="sig"><span class="sf">isValid</span>()</code>
 <span class="desc">Checks whether internal connection is under an active transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollback(
-    string $rollbackMessage = null,
-    ModelInterface $rollbackRecord = null
-)</code>
+<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Rollbacks the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-setisnewtransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setIsNewTransaction( bool $isNew )</code>
+<code class="sig"><span class="sf">setIsNewTransaction</span>( <span class="st">bool</span> <span class="sv">$isNew</span> )</code>
 <span class="desc">Sets if is a reused transaction or new once</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-setrollbackonabort">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setRollbackOnAbort( bool $rollbackOnAbort )</code>
+<code class="sig"><span class="sf">setRollbackOnAbort</span>( <span class="st">bool</span> <span class="sv">$rollbackOnAbort</span> )</code>
 <span class="desc">Sets flag to rollback on abort the HTTP connection</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-setrollbackedrecord">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setRollbackedRecord( ModelInterface $record )</code>
+<code class="sig"><span class="sf">setRollbackedRecord</span>( <span class="st">ModelInterface</span> <span class="sv">$record</span> )</code>
 <span class="desc">Sets object which generates rollback action</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-settransactionmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setTransactionManager( ManagerInterface $manager )</code>
+<code class="sig"><span class="sf">setTransactionManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$manager</span> )</code>
 <span class="desc">Sets transaction manager related to the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransaction-throwrollbackexception">
 <code class="vis vis-public">public</code>
 <code class="ret">TransactionInterface</code>
-<code class="sig">throwRollbackException( bool $status )</code>
+<code class="sig"><span class="sf">throwRollbackException</span>( <span class="st">bool</span> <span class="sv">$status</span> )</code>
 <span class="desc">Enables throwing exception</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$activeTransaction = false` `bool`
-
--   `protected`{ .vis-protected } `$connection` `AdapterInterface`
-
--   `protected`{ .vis-protected } `$isNewTransaction = true` `bool`
-
--   `protected`{ .vis-protected } `$manager = null` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$messages = []` `array`
-
--   `protected`{ .vis-protected } `$rollbackOnAbort = false` `bool`
-
--   `protected`{ .vis-protected } `$rollbackRecord = null` `ModelInterface|null`
-
--   `protected`{ .vis-protected } `$rollbackThrowException = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$activeTransaction</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AdapterInterface</code>
+<code class="sig"><span class="sv">$connection</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isNewTransaction</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$manager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$messages</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$rollbackOnAbort</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ModelInterface|null</code>
+<code class="sig"><span class="sv">$rollbackRecord</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$rollbackThrowException</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -23850,76 +23149,73 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\ManagerI
 <a class="api-item" href="#mvcmodeltransactioninterface-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">begin()</code>
+<code class="sig"><span class="sf">begin</span>()</code>
 <span class="desc">Starts the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-getconnection">
 <code class="vis vis-public">public</code>
 <code class="ret">\Phalcon\Db\Adapter\AdapterInterface</code>
-<code class="sig">getConnection()</code>
+<code class="sig"><span class="sf">getConnection</span>()</code>
 <span class="desc">Returns connection related to transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns validations messages from last save try</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-ismanaged">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isManaged()</code>
+<code class="sig"><span class="sf">isManaged</span>()</code>
 <span class="desc">Checks whether transaction is managed by a transaction manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-isvalid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isValid()</code>
+<code class="sig"><span class="sf">isValid</span>()</code>
 <span class="desc">Checks whether internal connection is under an active transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollback(
-    string $rollbackMessage = null,
-    ModelInterface $rollbackRecord = null
-)</code>
+<code class="sig"><span class="sf">rollback</span>(<span class="prm"><span class="st">string</span> <span class="sv">$rollbackMessage</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$rollbackRecord</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Rollbacks the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-setisnewtransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setIsNewTransaction( bool $isNew )</code>
+<code class="sig"><span class="sf">setIsNewTransaction</span>( <span class="st">bool</span> <span class="sv">$isNew</span> )</code>
 <span class="desc">Sets if is a reused transaction or new once</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-setrollbackonabort">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setRollbackOnAbort( bool $rollbackOnAbort )</code>
+<code class="sig"><span class="sf">setRollbackOnAbort</span>( <span class="st">bool</span> <span class="sv">$rollbackOnAbort</span> )</code>
 <span class="desc">Sets flag to rollback on abort the HTTP connection</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-setrollbackedrecord">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setRollbackedRecord( ModelInterface $record )</code>
+<code class="sig"><span class="sf">setRollbackedRecord</span>( <span class="st">ModelInterface</span> <span class="sv">$record</span> )</code>
 <span class="desc">Sets object which generates rollback action</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-settransactionmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setTransactionManager( ManagerInterface $manager )</code>
+<code class="sig"><span class="sf">setTransactionManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$manager</span> )</code>
 <span class="desc">Sets transaction manager related to the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactioninterface-throwrollbackexception">
 <code class="vis vis-public">public</code>
 <code class="ret">TransactionInterface</code>
-<code class="sig">throwRollbackException( bool $status )</code>
+<code class="sig"><span class="sf">throwRollbackException</span>( <span class="st">bool</span> <span class="sv">$status</span> )</code>
 <span class="desc">Enables throwing exception</span>
 </a>
 </div>
@@ -24073,32 +23369,31 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodeltransactionfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $message,
-    ModelInterface $record = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$record</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Transaction\Failed constructor</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionfailed-getrecord">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface|null</code>
-<code class="sig">getRecord()</code>
+<code class="sig"><span class="sf">getRecord</span>()</code>
 <span class="desc">Returns validation record messages which stop the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionfailed-getrecordmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string</code>
-<code class="sig">getRecordMessages()</code>
+<code class="sig"><span class="sf">getRecordMessages</span>()</code>
 <span class="desc">Returns validation record messages which stop the transaction</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$record = null` `ModelInterface|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ModelInterface|null</code>
+<code class="sig"><span class="sv">$record</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -24196,122 +23491,139 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 <div class="api-list">
 <a class="api-item" href="#mvcmodeltransactionmanager-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( DiInterface $container = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Model\Transaction\Manager constructor</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-collecttransactions">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">collectTransactions()</code>
+<code class="sig"><span class="sf">collectTransactions</span>()</code>
 <span class="desc">Remove all the transactions from the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-commit">
 <code class="vis vis-public">public</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits active transactions within the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-get">
 <code class="vis vis-public">public</code>
 <code class="ret">TransactionInterface</code>
-<code class="sig">get( bool $autoBegin = true )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">bool</span> <span class="sv">$autoBegin</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns a new \Phalcon\Mvc\Model\Transaction or an already created once</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the dependency injection container</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-getdbservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDbService()</code>
+<code class="sig"><span class="sf">getDbService</span>()</code>
 <span class="desc">Returns the database service used to isolate the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-getorcreatetransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">TransactionInterface</code>
-<code class="sig">getOrCreateTransaction( bool $autoBegin = true )</code>
+<code class="sig"><span class="sf">getOrCreateTransaction</span>( <span class="st">bool</span> <span class="sv">$autoBegin</span><span class="sm"> = true</span> )</code>
 <span class="desc">Create/Returns a new transaction or an existing one</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-getrollbackpendent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getRollbackPendent()</code>
+<code class="sig"><span class="sf">getRollbackPendent</span>()</code>
 <span class="desc">Check if the transaction manager is registering a shutdown function to</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has()</code>
+<code class="sig"><span class="sf">has</span>()</code>
 <span class="desc">Checks whether the manager has an active transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-notifycommit">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">notifyCommit( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">notifyCommit</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">Notifies the manager about a committed transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-notifyrollback">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">notifyRollback( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">notifyRollback</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">Notifies the manager about a rollbacked transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rollback( bool $collect = true )</code>
+<code class="sig"><span class="sf">rollback</span>( <span class="st">bool</span> <span class="sv">$collect</span><span class="sm"> = true</span> )</code>
 <span class="desc">Rollbacks active transactions within the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-rollbackpendent">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rollbackPendent()</code>
+<code class="sig"><span class="sf">rollbackPendent</span>()</code>
 <span class="desc">Rollbacks active transactions within the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the dependency injection container</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-setdbservice">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface</code>
-<code class="sig">setDbService( string $service )</code>
+<code class="sig"><span class="sf">setDbService</span>( <span class="st">string</span> <span class="sv">$service</span> )</code>
 <span class="desc">Sets the database service used to run the isolated transactions</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-setrollbackpendent">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface</code>
-<code class="sig">setRollbackPendent( bool $rollbackPendent )</code>
+<code class="sig"><span class="sf">setRollbackPendent</span>( <span class="st">bool</span> <span class="sv">$rollbackPendent</span> )</code>
 <span class="desc">Set if the transaction manager must register a shutdown function to clean</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanager-collecttransaction">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">collectTransaction( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">collectTransaction</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">Removes transactions from the TransactionManager</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$container` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$initialized = false` `bool`
-
--   `protected`{ .vis-protected } `$number = 0` `int`
-
--   `protected`{ .vis-protected } `$rollbackPendent = true` `bool`
-
--   `protected`{ .vis-protected } `$service = "db"` `string`
-
--   `protected`{ .vis-protected } `$transactions = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$initialized</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$number</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$rollbackPendent</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$service</span><span class="sm"> = &quot;db&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$transactions</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -24485,72 +23797,72 @@ __Uses__ `Phalcon\Mvc\Model\TransactionInterface`
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-collecttransactions">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">collectTransactions()</code>
+<code class="sig"><span class="sf">collectTransactions</span>()</code>
 <span class="desc">Remove all the transactions from the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-commit">
 <code class="vis vis-public">public</code>
-<code class="sig">commit()</code>
+<code class="sig"><span class="sf">commit</span>()</code>
 <span class="desc">Commits active transactions within the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">TransactionInterface</code>
-<code class="sig">get( bool $autoBegin = true )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">bool</span> <span class="sv">$autoBegin</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns a new \Phalcon\Mvc\Model\Transaction or an already created once</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-getdbservice">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDbService()</code>
+<code class="sig"><span class="sf">getDbService</span>()</code>
 <span class="desc">Returns the database service used to isolate the transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-getrollbackpendent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getRollbackPendent()</code>
+<code class="sig"><span class="sf">getRollbackPendent</span>()</code>
 <span class="desc">Check if the transaction manager is registering a shutdown function to clean up pendent transactions</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has()</code>
+<code class="sig"><span class="sf">has</span>()</code>
 <span class="desc">Checks whether manager has an active transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-notifycommit">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">notifyCommit( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">notifyCommit</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">Notifies the manager about a committed transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-notifyrollback">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">notifyRollback( TransactionInterface $transaction )</code>
+<code class="sig"><span class="sf">notifyRollback</span>( <span class="st">TransactionInterface</span> <span class="sv">$transaction</span> )</code>
 <span class="desc">Notifies the manager about a rollbacked transaction</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rollback( bool $collect = false )</code>
+<code class="sig"><span class="sf">rollback</span>( <span class="st">bool</span> <span class="sv">$collect</span><span class="sm"> = false</span> )</code>
 <span class="desc">Rollbacks active transactions within the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-rollbackpendent">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">rollbackPendent()</code>
+<code class="sig"><span class="sf">rollbackPendent</span>()</code>
 <span class="desc">Rollbacks active transactions within the manager</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-setdbservice">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface</code>
-<code class="sig">setDbService( string $service )</code>
+<code class="sig"><span class="sf">setDbService</span>( <span class="st">string</span> <span class="sv">$service</span> )</code>
 <span class="desc">Sets the database service used to run the isolated transactions</span>
 </a>
 <a class="api-item" href="#mvcmodeltransactionmanagerinterface-setrollbackpendent">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface</code>
-<code class="sig">setRollbackPendent( bool $rollbackPendent )</code>
+<code class="sig"><span class="sf">setRollbackPendent</span>( <span class="st">bool</span> <span class="sv">$rollbackPendent</span> )</code>
 <span class="desc">Set if the transaction manager must register a shutdown function to clean up pendent transactions</span>
 </a>
 </div>
@@ -24683,34 +23995,36 @@ __Uses__ `Phalcon\Messages\Message` · `Phalcon\Mvc\ModelInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmodelvalidationfailed-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    ModelInterface $model,
-    array $validationMessages
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$validationMessages</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\ValidationFailed constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelvalidationfailed-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">Message[]</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the complete group of messages produced in the validation</span>
 </a>
 <a class="api-item" href="#mvcmodelvalidationfailed-getmodel">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
-<code class="sig">getModel()</code>
+<code class="sig"><span class="sf">getModel</span>()</code>
 <span class="desc">Returns the model that generated the messages</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$model` `ModelInterface`
-
--   `protected`{ .vis-protected } `$validationMessages = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ModelInterface</code>
+<code class="sig"><span class="sv">$model</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$validationMessages</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -24766,12 +24080,12 @@ __Uses__ `Phalcon\Di\DiInterface`
 <div class="api-list">
 <a class="api-item" href="#mvcmoduledefinitioninterface-registerautoloaders">
 <code class="vis vis-public">public</code>
-<code class="sig">registerAutoloaders( DiInterface $container = null )</code>
+<code class="sig"><span class="sf">registerAutoloaders</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Registers an autoloader related to the module</span>
 </a>
 <a class="api-item" href="#mvcmoduledefinitioninterface-registerservices">
 <code class="vis vis-public">public</code>
-<code class="sig">registerServices( DiInterface $container )</code>
+<code class="sig"><span class="sf">registerServices</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Registers services related to the module</span>
 </a>
 </div>
@@ -24846,528 +24160,573 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 <div class="api-list">
 <a class="api-item" href="#mvcrouter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( bool $defaultRoutes = true )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">bool</span> <span class="sv">$defaultRoutes</span><span class="sm"> = true</span> )</code>
 <span class="desc">Phalcon\Mvc\Router constructor</span>
 </a>
 <a class="api-item" href="#mvcrouter-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">add(
-    string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router without any HTTP constraint</span>
 </a>
 <a class="api-item" href="#mvcrouter-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addConnect(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcrouter-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addDelete(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcrouter-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addGet(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcrouter-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addHead(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcrouter-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addOptions(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcrouter-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPatch(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcrouter-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPost(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcrouter-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPurge(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcrouter-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPut(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcrouter-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addTrace(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcrouter-attach">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">attach(
-    RouteInterface $route,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">RouteInterface</span> <span class="sv">$route</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Attach Route object to the routes stack.</span>
 </a>
 <a class="api-item" href="#mvcrouter-builddispatcherdump">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">buildDispatcherDump()</code>
+<code class="sig"><span class="sf">buildDispatcherDump</span>()</code>
 <span class="desc">Produces a pure-data array describing every piece of state needed</span>
 </a>
 <a class="api-item" href="#mvcrouter-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Removes all the pre-defined routes</span>
 </a>
 <a class="api-item" href="#mvcrouter-dumpdispatcher">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">dumpDispatcher( string $path )</code>
+<code class="sig"><span class="sf">dumpDispatcher</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">File-shaped helper around buildDispatcherDump(). Writes the dump as</span>
 </a>
 <a class="api-item" href="#mvcrouter-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Returns the processed action name</span>
 </a>
 <a class="api-item" href="#mvcrouter-getcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getControllerName()</code>
+<code class="sig"><span class="sf">getControllerName</span>()</code>
 <span class="desc">Returns the processed controller name</span>
 </a>
 <a class="api-item" href="#mvcrouter-getdefaults">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDefaults()</code>
+<code class="sig"><span class="sf">getDefaults</span>()</code>
 <span class="desc">Returns an array of default parameters</span>
 </a>
 <a class="api-item" href="#mvcrouter-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcrouter-getkeyrouteids">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getKeyRouteIds()</code>
+<code class="sig"><span class="sf">getKeyRouteIds</span>()</code>
 </a>
 <a class="api-item" href="#mvcrouter-getkeyroutenames">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getKeyRouteNames()</code>
+<code class="sig"><span class="sf">getKeyRouteNames</span>()</code>
 </a>
 <a class="api-item" href="#mvcrouter-getmatchedroute">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|null</code>
-<code class="sig">getMatchedRoute()</code>
+<code class="sig"><span class="sf">getMatchedRoute</span>()</code>
 <span class="desc">Returns the route that matches the handled URI</span>
 </a>
 <a class="api-item" href="#mvcrouter-getmatches">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMatches()</code>
+<code class="sig"><span class="sf">getMatches</span>()</code>
 <span class="desc">Returns the sub expressions in the regular expression matched</span>
 </a>
 <a class="api-item" href="#mvcrouter-getmethodroutes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMethodRoutes()</code>
+<code class="sig"><span class="sf">getMethodRoutes</span>()</code>
 <span class="desc">Returns the routes indexed by HTTP method.</span>
 </a>
 <a class="api-item" href="#mvcrouter-getmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModuleName()</code>
+<code class="sig"><span class="sf">getModuleName</span>()</code>
 <span class="desc">Returns the processed module name</span>
 </a>
 <a class="api-item" href="#mvcrouter-getnamespacename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getNamespaceName()</code>
+<code class="sig"><span class="sf">getNamespaceName</span>()</code>
 <span class="desc">Returns the processed namespace name</span>
 </a>
 <a class="api-item" href="#mvcrouter-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns the processed parameters</span>
 </a>
 <a class="api-item" href="#mvcrouter-getrewriteuri">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRewriteUri()</code>
+<code class="sig"><span class="sf">getRewriteUri</span>()</code>
 <span class="desc">Get rewrite info. This info is read from $_GET[&quot;_url&quot;].</span>
 </a>
 <a class="api-item" href="#mvcrouter-getroutebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteById( mixed $routeId )</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#mvcrouter-getroutebyname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteByName( string $name )</code>
+<code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#mvcrouter-getroutes">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface[]</code>
-<code class="sig">getRoutes()</code>
+<code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns all the routes defined in the router</span>
 </a>
 <a class="api-item" href="#mvcrouter-handle">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">handle( string $uri )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Handles routing information received from the rewrite engine</span>
 </a>
 <a class="api-item" href="#mvcrouter-isexactcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isExactControllerName()</code>
+<code class="sig"><span class="sf">isExactControllerName</span>()</code>
 <span class="desc">Returns whether controller name should not be mangled</span>
 </a>
 <a class="api-item" href="#mvcrouter-loaddispatcher">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">loadDispatcher( string $path )</code>
+<code class="sig"><span class="sf">loadDispatcher</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">File-shaped helper around loadDispatcherFromArray(). Includes the</span>
 </a>
 <a class="api-item" href="#mvcrouter-loaddispatcherfromarray">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">loadDispatcherFromArray( array $dump )</code>
+<code class="sig"><span class="sf">loadDispatcherFromArray</span>( <span class="st">array</span> <span class="sv">$dump</span> )</code>
 <span class="desc">Inverse of buildDispatcherDump(). Reconstructs every Route from the</span>
 </a>
 <a class="api-item" href="#mvcrouter-loadfromconfig">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">loadFromConfig( mixed $config )</code>
+<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Loads routes from an array or Phalcon\Config\Config instance.</span>
 </a>
 <a class="api-item" href="#mvcrouter-mount">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">mount( GroupInterface $group )</code>
+<code class="sig"><span class="sf">mount</span>( <span class="st">GroupInterface</span> <span class="sv">$group</span> )</code>
 <span class="desc">Mounts a group of routes in the router</span>
 </a>
 <a class="api-item" href="#mvcrouter-notfound">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">notFound( mixed $paths )</code>
+<code class="sig"><span class="sf">notFound</span>( <span class="st">mixed</span> <span class="sv">$paths</span> )</code>
 <span class="desc">Set a group of paths to be returned when none of the defined routes are</span>
 </a>
 <a class="api-item" href="#mvcrouter-removeextraslashes">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">removeExtraSlashes( bool $remove )</code>
+<code class="sig"><span class="sf">removeExtraSlashes</span>( <span class="st">bool</span> <span class="sv">$remove</span> )</code>
 <span class="desc">Set whether router must remove the extra slashes in the handled routes</span>
 </a>
 <a class="api-item" href="#mvcrouter-setdefaultaction">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultAction( string $actionName )</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the default action name</span>
 </a>
 <a class="api-item" href="#mvcrouter-setdefaultcontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultController( string $controllerName )</code>
+<code class="sig"><span class="sf">setDefaultController</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
 <span class="desc">Sets the default controller name</span>
 </a>
 <a class="api-item" href="#mvcrouter-setdefaultmodule">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultModule( string $moduleName )</code>
+<code class="sig"><span class="sf">setDefaultModule</span>( <span class="st">string</span> <span class="sv">$moduleName</span> )</code>
 <span class="desc">Sets the name of the default module</span>
 </a>
 <a class="api-item" href="#mvcrouter-setdefaultnamespace">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultNamespace( string $namespaceName )</code>
+<code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$namespaceName</span> )</code>
 <span class="desc">Sets the name of the default namespace</span>
 </a>
 <a class="api-item" href="#mvcrouter-setdefaults">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaults( array $defaults )</code>
+<code class="sig"><span class="sf">setDefaults</span>( <span class="st">array</span> <span class="sv">$defaults</span> )</code>
 <span class="desc">Sets an array of default paths. If a route is missing a path the router</span>
 </a>
 <a class="api-item" href="#mvcrouter-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcrouter-setkeyrouteids">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setKeyRouteIds( array $routeIds )</code>
+<code class="sig"><span class="sf">setKeyRouteIds</span>( <span class="st">array</span> <span class="sv">$routeIds</span> )</code>
 </a>
 <a class="api-item" href="#mvcrouter-setkeyroutenames">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setKeyRouteNames( array $routeNames )</code>
+<code class="sig"><span class="sf">setKeyRouteNames</span>( <span class="st">array</span> <span class="sv">$routeNames</span> )</code>
 </a>
 <a class="api-item" href="#mvcrouter-seturisource">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUriSource( int $uriSource )</code>
+<code class="sig"><span class="sf">setUriSource</span>( <span class="st">int</span> <span class="sv">$uriSource</span> )</code>
 <span class="desc">Sets the URI source. One of the URI_SOURCE_* constants</span>
 </a>
 <a class="api-item" href="#mvcrouter-usecache">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">useCache(
-    CacheAdapterInterface $cache,
-    string $key = &quot;phalcon.router.dispatcher&quot;
-)</code>
+<code class="sig"><span class="sf">useCache</span>(<span class="prm"><span class="st">CacheAdapterInterface</span> <span class="sv">$cache</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = &quot;phalcon.router.dispatcher&quot;</span></span>)</code>
 <span class="desc">Cache-instance convenience wrapper. On cache hit, restores the</span>
 </a>
 <a class="api-item" href="#mvcrouter-wasmatched">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">wasMatched()</code>
+<code class="sig"><span class="sf">wasMatched</span>()</code>
 <span class="desc">Checks if the router matches any of the defined routes</span>
 </a>
 <a class="api-item" href="#mvcrouter-addroutefromconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">addRouteFromConfig( array $routeData )</code>
+<code class="sig"><span class="sf">addRouteFromConfig</span>( <span class="st">array</span> <span class="sv">$routeData</span> )</code>
 <span class="desc">Adds a single route from a config array entry. Used by loadFromConfig.</span>
 </a>
 <a class="api-item" href="#mvcrouter-extractrealuri">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">extractRealUri( string $uri )</code>
+<code class="sig"><span class="sf">extractRealUri</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 </a>
 <a class="api-item" href="#mvcrouter-mountgroupfromconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">mountGroupFromConfig( array $groupData )</code>
+<code class="sig"><span class="sf">mountGroupFromConfig</span>( <span class="st">array</span> <span class="sv">$groupData</span> )</code>
 <span class="desc">Builds a Group from a config entry and mounts it. Used by loadFromConfig.</span>
 </a>
 <a class="api-item" href="#mvcrouter-rebuildmethodindex">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">rebuildMethodIndex()</code>
+<code class="sig"><span class="sf">rebuildMethodIndex</span>()</code>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `POSITION_FIRST = 0` `int`
-
--   `POSITION_LAST = 1` `int`
-
--   `REGEX_CHUNK_SIZE = 10` `int`
-
-    Number of alternatives per combined-regex chunk. Empirically derived
-    (FastRoute uses ~10) - keeps each chunk below PCRE's optimizer cliff.
-
--   `URI_SOURCE_GET_URL = 0` `int`
-
--   `URI_SOURCE_SERVER_REQUEST_URI = 1` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">POSITION_FIRST</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">POSITION_LAST</span><span class="sm"> = 1</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">REGEX_CHUNK_SIZE</span><span class="sm"> = 10</span></code>
+<span class="desc">Number of alternatives per combined-regex chunk. Empirically derived
+(FastRoute uses ~10) - keeps each chunk below PCRE&#039;s optimizer cliff.</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">URI_SOURCE_GET_URL</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">URI_SOURCE_SERVER_REQUEST_URI</span><span class="sm"> = 1</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$action</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$candidatesByMethod</span><span class="sm"> = []</span></code>
+<span class="desc">Pre-merged per-method candidate buckets in attach order. For each HTTP
+method seen on any registered route, the bucket contains the
+method-specific routes followed by the &quot;*&quot; (no-constraint) routes.
+The &quot;*&quot; key itself holds only the no-constraint routes - used when the
+request method has no specific bucket.
 
--   `protected`{ .vis-protected } `$action = ""` `string`
+Built in rebuildMethodIndex(); consumed by handle() in reverse.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$combinedRegexByMethod</span><span class="sm"> = []</span></code>
+<span class="desc">Combined PCRE pattern per method bucket (chunked list of strings).
+Each chunk uses (?|...) branch reset and (*:N) mark labels. Built
+only when the bucket meets gating: no hostname routes; standard
+pattern shape.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$combinedRegexDisabled</span><span class="sm"> = []</span></code>
+<span class="desc">Boolean per method bucket: true when the combined regex cannot be
+built (hostname route present, exotic pattern shape, etc.).</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$combinedRegexMarkMap</span><span class="sm"> = []</span></code>
+<span class="desc">Map from MARK label back to the route index in
+candidatesByMethod[method]. One per chunk.
 
--   `protected`{ .vis-protected } `$candidatesByMethod = []` `array`
+  combinedRegexMarkMap[method][chunkIdx][markLabel] = routeIdx</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$controller</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultAction</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultController</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultModule</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultNamespace</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$defaultParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hostnameByMethod</span><span class="sm"> = []</span></code>
+<span class="desc">Per-method buckets of routes with hostname constraints, grouped by
+raw hostname string. Routes are referenced by their index into
+candidatesByMethod[method]. Built in rebuildMethodIndex().
 
-    Pre-merged per-method candidate buckets in attach order. For each HTTP
-    method seen on any registered route, the bucket contains the
-    method-specific routes followed by the "*" (no-constraint) routes.
-    The "*" key itself holds only the no-constraint routes - used when the
-    request method has no specific bucket.
+Shape: hostnameByMethod[method][hostname] = list of route indices.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$hostnameLessByMethod</span><span class="sm"> = []</span></code>
+<span class="desc">Per-method indices of routes without a hostname constraint, in
+attach order.
 
-    Built in rebuildMethodIndex(); consumed by handle() in reverse.
+Shape: hostnameLessByMethod[method] = list of route indices into
+candidatesByMethod[method].</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$keyRouteIds</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$keyRouteNames</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">RouteInterface|null</code>
+<code class="sig"><span class="sv">$matchedRoute</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$matches</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$methodRoutes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$methodRoutesDirty</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$module</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$namespaceName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$notFoundPaths</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$params</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">CacheAdapterInterface|null</code>
+<code class="sig"><span class="sv">$pendingCache</span><span class="sm"> = null</span></code>
+<span class="desc">Lazy-write cache target set by useCache(). When non-null, handle()
+writes buildDispatcherDump() to this cache after a successful
+rebuild on cache miss, then clears the property to skip subsequent
+writes.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$pendingCacheKey</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$removeExtraSlashes</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$routeMeta</span><span class="sm"> = []</span></code>
+<span class="desc">Single-source per-route metadata cache. One entry per route, keyed
+by the route&#039;s intrinsic id. Replaces the previous per-method-bucket
+replication of metadata arrays. Built once in rebuildMethodIndex().
 
--   `protected`{ .vis-protected } `$combinedRegexByMethod = []` `array`
-
-    Combined PCRE pattern per method bucket (chunked list of strings).
-    Each chunk uses (?|...) branch reset and (*:N) mark labels. Built
-    only when the bucket meets gating: no hostname routes; standard
-    pattern shape.
-
--   `protected`{ .vis-protected } `$combinedRegexDisabled = []` `array`
-
-    Boolean per method bucket: true when the combined regex cannot be
-    built (hostname route present, exotic pattern shape, etc.).
-
--   `protected`{ .vis-protected } `$combinedRegexMarkMap = []` `array`
-
-    Map from MARK label back to the route index in
-    candidatesByMethod[method]. One per chunk.
-
-      combinedRegexMarkMap[method][chunkIdx][markLabel] = routeIdx
-
--   `protected`{ .vis-protected } `$controller = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultAction = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultController = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultModule = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultNamespace = ""` `string`
-
--   `protected`{ .vis-protected } `$defaultParams = []` `array`
-
--   `protected`{ .vis-protected } `$eventsManager` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$hostnameByMethod = []` `array`
-
-    Per-method buckets of routes with hostname constraints, grouped by
-    raw hostname string. Routes are referenced by their index into
-    candidatesByMethod[method]. Built in rebuildMethodIndex().
-
-    Shape: hostnameByMethod[method][hostname] = list of route indices.
-
--   `protected`{ .vis-protected } `$hostnameLessByMethod = []` `array`
-
-    Per-method indices of routes without a hostname constraint, in
-    attach order.
-
-    Shape: hostnameLessByMethod[method] = list of route indices into
-    candidatesByMethod[method].
-
--   `protected`{ .vis-protected } `$keyRouteIds = []` `array`
-
--   `protected`{ .vis-protected } `$keyRouteNames = []` `array`
-
--   `protected`{ .vis-protected } `$matchedRoute = null` `RouteInterface|null`
-
--   `protected`{ .vis-protected } `$matches = []` `array`
-
--   `protected`{ .vis-protected } `$methodRoutes = []` `array`
-
--   `protected`{ .vis-protected } `$methodRoutesDirty = true` `bool`
-
--   `protected`{ .vis-protected } `$module = ""` `string`
-
--   `protected`{ .vis-protected } `$namespaceName = ""` `string`
-
--   `protected`{ .vis-protected } `$notFoundPaths = null` `array|string|null`
-
--   `protected`{ .vis-protected } `$params = []` `array`
-
--   `protected`{ .vis-protected } `$pendingCache = null` `CacheAdapterInterface|null`
-
-    Lazy-write cache target set by useCache(). When non-null, handle()
-    writes buildDispatcherDump() to this cache after a successful
-    rebuild on cache miss, then clears the property to skip subsequent
-    writes.
-
--   `protected`{ .vis-protected } `$pendingCacheKey = ""` `string`
-
--   `protected`{ .vis-protected } `$removeExtraSlashes = false` `bool`
-
--   `protected`{ .vis-protected } `$routeMeta = []` `array`
-
-    Single-source per-route metadata cache. One entry per route, keyed
-    by the route's intrinsic id. Replaces the previous per-method-bucket
-    replication of metadata arrays. Built once in rebuildMethodIndex().
-
-    Shape: routeMeta[routeId] = [
-        "pattern":     string,        // compiled pattern
-        "isRegex":     bool,
-        "hostname":    string|null,
-        "hostRegex":   string|null,
-        "beforeMatch": callable|null
-      ]
-
--   `protected`{ .vis-protected } `$routes = []` `array`
-
--   `protected`{ .vis-protected } `$staticByMethod = []` `array`
-
-    Static-route hash, populated by rebuildMethodIndex(). For each method
-    bucket (including "*"), maps URI => list of routes whose compiled
-    pattern is a literal string equal to that URI.
-
--   `protected`{ .vis-protected } `$staticShadowedByMethod = []` `array`
-
-    Shadow-detection map. If staticShadowedByMethod[method][uri] is set,
-    the static URI in that bucket is shadowed by a later-attached regex
-    route - the fast path MUST NOT be used; fall through to the dynamic
-    loop so the regex wins (reverse-iteration semantics).
-
--   `protected`{ .vis-protected } `$uriSource = self::URI_SOURCE_GET_URL` `int`
-
--   `protected`{ .vis-protected } `$wasMatched = false` `bool`
-
+Shape: routeMeta[routeId] = [
+    &quot;pattern&quot;:     string,        // compiled pattern
+    &quot;isRegex&quot;:     bool,
+    &quot;hostname&quot;:    string|null,
+    &quot;hostRegex&quot;:   string|null,
+    &quot;beforeMatch&quot;: callable|null
+  ]</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$routes</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$staticByMethod</span><span class="sm"> = []</span></code>
+<span class="desc">Static-route hash, populated by rebuildMethodIndex(). For each method
+bucket (including &quot;*&quot;), maps URI =&gt; list of routes whose compiled
+pattern is a literal string equal to that URI.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$staticShadowedByMethod</span><span class="sm"> = []</span></code>
+<span class="desc">Shadow-detection map. If staticShadowedByMethod[method][uri] is set,
+the static URI in that bucket is shadowed by a later-attached regex
+route - the fast path MUST NOT be used; fall through to the dynamic
+loop so the regex wins (reverse-iteration semantics).</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$uriSource</span><span class="sm"> = self::URI_SOURCE_GET_URL</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$wasMatched</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -25969,235 +25328,187 @@ __Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterfa
 <a class="api-item" href="#mvcrouterinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">add(
-    string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addConnect(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addDelete(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addGet(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addHead(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addOptions(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPatch(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPost(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPurge(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPut(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addTrace(
-    string $pattern,
-    mixed $paths = null,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-attach">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">attach(
-    RouteInterface $route,
-    int $position = Router::POSITION_LAST
-)</code>
+<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">RouteInterface</span> <span class="sv">$route</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$position</span><span class="sm"> = Router::POSITION_LAST</span></span>)</code>
 <span class="desc">Attach Route object to the routes stack.</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Removes all the defined routes</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Returns processed action name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getControllerName()</code>
+<code class="sig"><span class="sf">getControllerName</span>()</code>
 <span class="desc">Returns processed controller name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getmatchedroute">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|null</code>
-<code class="sig">getMatchedRoute()</code>
+<code class="sig"><span class="sf">getMatchedRoute</span>()</code>
 <span class="desc">Returns the route that matches the handled URI</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getmatches">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getMatches()</code>
+<code class="sig"><span class="sf">getMatches</span>()</code>
 <span class="desc">Return the sub expressions in the regular expression matched</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getmodulename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getModuleName()</code>
+<code class="sig"><span class="sf">getModuleName</span>()</code>
 <span class="desc">Returns processed module name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getnamespacename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getNamespaceName()</code>
+<code class="sig"><span class="sf">getNamespaceName</span>()</code>
 <span class="desc">Returns processed namespace name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParams()</code>
+<code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Returns processed extra params</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getroutebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteById( mixed $routeId )</code>
+<code class="sig"><span class="sf">getRouteById</span>( <span class="st">mixed</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Returns a route object by its id</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getroutebyname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface|bool</code>
-<code class="sig">getRouteByName( string $name )</code>
+<code class="sig"><span class="sf">getRouteByName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Returns a route object by its name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-getroutes">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface[]</code>
-<code class="sig">getRoutes()</code>
+<code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Return all the routes defined in the router</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-handle">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">handle( string $uri )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Handles routing information received from the rewrite engine</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-loadfromconfig">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">loadFromConfig( mixed $config )</code>
+<code class="sig"><span class="sf">loadFromConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Loads routes from an array or Phalcon\Config\Config instance.</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-mount">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">mount( GroupInterface $group )</code>
+<code class="sig"><span class="sf">mount</span>( <span class="st">GroupInterface</span> <span class="sv">$group</span> )</code>
 <span class="desc">Mounts a group of routes in the router</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-setdefaultaction">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaultAction( string $actionName )</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 <span class="desc">Sets the default action name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-setdefaultcontroller">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaultController( string $controllerName )</code>
+<code class="sig"><span class="sf">setDefaultController</span>( <span class="st">string</span> <span class="sv">$controllerName</span> )</code>
 <span class="desc">Sets the default controller name</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-setdefaultmodule">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaultModule( string $moduleName )</code>
+<code class="sig"><span class="sf">setDefaultModule</span>( <span class="st">string</span> <span class="sv">$moduleName</span> )</code>
 <span class="desc">Sets the name of the default module</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-setdefaults">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">setDefaults( array $defaults )</code>
+<code class="sig"><span class="sf">setDefaults</span>( <span class="st">array</span> <span class="sv">$defaults</span> )</code>
 <span class="desc">Sets an array of default paths</span>
 </a>
 <a class="api-item" href="#mvcrouterinterface-wasmatched">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">wasMatched()</code>
+<code class="sig"><span class="sf">wasMatched</span>()</code>
 <span class="desc">Check if the router matches any of the defined routes</span>
 </a>
 </div>
@@ -26548,92 +25859,90 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 <a class="api-item" href="#mvcrouterannotations-addmoduleresource">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addModuleResource(
-    string $module,
-    string $handler,
-    string $prefix = null
-)</code>
+<code class="sig"><span class="sf">addModuleResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$module</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a resource to the annotations handler</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-addresource">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addResource(
-    string $handler,
-    string $prefix = null
-)</code>
+<code class="sig"><span class="sf">addResource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a resource to the annotations handler</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-getactionpreformatcallback">
 <code class="vis vis-public">public</code>
-<code class="sig">getActionPreformatCallback()</code>
+<code class="sig"><span class="sf">getActionPreformatCallback</span>()</code>
 </a>
 <a class="api-item" href="#mvcrouterannotations-getresources">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getResources()</code>
+<code class="sig"><span class="sf">getResources</span>()</code>
 <span class="desc">Return the registered resources</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-handle">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">handle( string $uri )</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Produce the routing parameters from the rewrite information</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-processactionannotation">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">processActionAnnotation(
-    string $module,
-    string $namespaceName,
-    string $controller,
-    string $action,
-    Annotation $annotation
-)</code>
+<code class="sig"><span class="sf">processActionAnnotation</span>(<span class="prm"><span class="st">string</span> <span class="sv">$module</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$namespaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$controller</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$action</span>,</span><span class="prm"><span class="st">Annotation</span> <span class="sv">$annotation</span></span>)</code>
 <span class="desc">Checks for annotations in the public methods of the controller</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-processcontrollerannotation">
 <code class="vis vis-public">public</code>
-<code class="sig">processControllerAnnotation(
-    string $handler,
-    Annotation $annotation
-)</code>
+<code class="sig"><span class="sf">processControllerAnnotation</span>(<span class="prm"><span class="st">string</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">Annotation</span> <span class="sv">$annotation</span></span>)</code>
 <span class="desc">Checks for annotations in the controller docblock</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-setactionpreformatcallback">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">setActionPreformatCallback( mixed $callback = null )</code>
+<code class="sig"><span class="sf">setActionPreformatCallback</span>( <span class="st">mixed</span> <span class="sv">$callback</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the action preformat callback</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-setactionsuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">setActionSuffix( string $actionSuffix )</code>
+<code class="sig"><span class="sf">setActionSuffix</span>( <span class="st">string</span> <span class="sv">$actionSuffix</span> )</code>
 <span class="desc">Changes the action method suffix</span>
 </a>
 <a class="api-item" href="#mvcrouterannotations-setcontrollersuffix">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">setControllerSuffix( string $controllerSuffix )</code>
+<code class="sig"><span class="sf">setControllerSuffix</span>( <span class="st">string</span> <span class="sv">$controllerSuffix</span> )</code>
 <span class="desc">Changes the controller class suffix</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$actionPreformatCallback = null` `callable|string|null`
-
--   `protected`{ .vis-protected } `$actionSuffix = "Action"` `string`
-
--   `protected`{ .vis-protected } `$controllerSuffix = "Controller"` `string`
-
--   `protected`{ .vis-protected } `$handlers = []` `array`
-
--   `protected`{ .vis-protected } `$routePrefix = ""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|string|null</code>
+<code class="sig"><span class="sv">$actionPreformatCallback</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$actionSuffix</span><span class="sm"> = &quot;Action&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$controllerSuffix</span><span class="sm"> = &quot;Controller&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$handlers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$routePrefix</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -26823,7 +26132,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsannotationsserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -26866,7 +26175,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsbeforematchnotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -26909,7 +26218,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsconfigkeymustbearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $key )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 </div>
 
@@ -26952,7 +26261,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsemptygroupofroutes-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -26995,7 +26304,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsgrouproutesmustbearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27038,7 +26347,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsinvalidcallbackparameter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27081,7 +26390,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsinvalidconfigsource-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27124,7 +26433,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsinvalidnotfoundpaths-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27167,7 +26476,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsinvalidroutepaths-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27210,7 +26519,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsinvalidrouteposition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27253,7 +26562,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsinvalidrouterfactoryconfig-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27296,7 +26605,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsmissinggrouproutekey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $key )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 </div>
 
@@ -27339,7 +26648,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsmissingrouteconfigkey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $key )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 </a>
 </div>
 
@@ -27382,7 +26691,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsrequestserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -27425,7 +26734,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionsunknownhttpmethod-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $method )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 </a>
 </div>
 
@@ -27468,7 +26777,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterexceptionswrongpathskey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $part )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$part</span> )</code>
 </a>
 </div>
 
@@ -27544,195 +26853,171 @@ $router->mount($blog);
 <div class="api-list">
 <a class="api-item" href="#mvcroutergroup-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( mixed $paths = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\Router\Group constructor</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">add(
-    string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addConnect(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addDelete(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addGet(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addHead(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addOptions(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPatch(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPost(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPurge(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPut(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addTrace(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-beforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">beforeMatch( callable $beforeMatch )</code>
+<code class="sig"><span class="sf">beforeMatch</span>( <span class="st">callable</span> <span class="sv">$beforeMatch</span> )</code>
 <span class="desc">Sets a callback that is called if the route is matched.</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Removes all the pre-defined routes</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-getbeforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">callable|null</code>
-<code class="sig">getBeforeMatch()</code>
+<code class="sig"><span class="sf">getBeforeMatch</span>()</code>
 <span class="desc">Returns the &#039;before match&#039; callback if any</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-gethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getHostname()</code>
+<code class="sig"><span class="sf">getHostname</span>()</code>
 <span class="desc">Returns the hostname restriction</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-getpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string|null</code>
-<code class="sig">getPaths()</code>
+<code class="sig"><span class="sf">getPaths</span>()</code>
 <span class="desc">Returns the common paths defined for this group</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-getprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getPrefix()</code>
+<code class="sig"><span class="sf">getPrefix</span>()</code>
 <span class="desc">Returns the common prefix for all the routes</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-getroutes">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface[]</code>
-<code class="sig">getRoutes()</code>
+<code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns the routes added to the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-sethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">setHostname( string $hostname )</code>
+<code class="sig"><span class="sf">setHostname</span>( <span class="st">string</span> <span class="sv">$hostname</span> )</code>
 <span class="desc">Set a hostname restriction for all the routes in the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-setpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">setPaths( mixed $paths )</code>
+<code class="sig"><span class="sf">setPaths</span>( <span class="st">mixed</span> <span class="sv">$paths</span> )</code>
 <span class="desc">Set common paths for all the routes in the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-setprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">setPrefix( string $prefix )</code>
+<code class="sig"><span class="sf">setPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Set a common uri prefix for all the routes in this group</span>
 </a>
 <a class="api-item" href="#mvcroutergroup-addroute">
 <code class="vis vis-protected">protected</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addRoute(
-    string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
-)</code>
+<code class="sig"><span class="sf">addRoute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route applying the common attributes</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$beforeMatch = null` `callable|null`
-
--   `protected`{ .vis-protected } `$hostname = null` `string|null`
-
--   `protected`{ .vis-protected } `$paths = null` `array|string|null`
-
--   `protected`{ .vis-protected } `$prefix = null` `string|null`
-
--   `protected`{ .vis-protected } `$routes = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|null</code>
+<code class="sig"><span class="sv">$beforeMatch</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$hostname</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$paths</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$prefix</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$routes</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -28030,161 +27315,127 @@ $router->mount($blog);
 <a class="api-item" href="#mvcroutergroupinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">add(
-    string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router on any HTTP method</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addConnect(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addConnect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is CONNECT</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-adddelete">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addDelete(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addDelete</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is DELETE</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addget">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addGet(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is GET</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addhead">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addHead(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addHead</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is HEAD</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addOptions(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Add a route to the router that only match if the HTTP method is OPTIONS</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPatch(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PATCH</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addpost">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPost(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is POST</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addpurge">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPurge(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPurge</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PURGE</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addput">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addPut(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is PUT</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-addtrace">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">addTrace(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">addTrace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Adds a route to the router that only match if the HTTP method is TRACE</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-beforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">beforeMatch( callable $beforeMatch )</code>
+<code class="sig"><span class="sf">beforeMatch</span>( <span class="st">callable</span> <span class="sv">$beforeMatch</span> )</code>
 <span class="desc">Sets a callback that is called if the route is matched.</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Removes all the pre-defined routes</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-getbeforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">callable|null</code>
-<code class="sig">getBeforeMatch()</code>
+<code class="sig"><span class="sf">getBeforeMatch</span>()</code>
 <span class="desc">Returns the &#039;before match&#039; callback if any</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-gethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getHostname()</code>
+<code class="sig"><span class="sf">getHostname</span>()</code>
 <span class="desc">Returns the hostname restriction</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-getpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string|null</code>
-<code class="sig">getPaths()</code>
+<code class="sig"><span class="sf">getPaths</span>()</code>
 <span class="desc">Returns the common paths defined for this group</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-getprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getPrefix()</code>
+<code class="sig"><span class="sf">getPrefix</span>()</code>
 <span class="desc">Returns the common prefix for all the routes</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-getroutes">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface[]</code>
-<code class="sig">getRoutes()</code>
+<code class="sig"><span class="sf">getRoutes</span>()</code>
 <span class="desc">Returns the routes added to the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-sethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">setHostname( string $hostname )</code>
+<code class="sig"><span class="sf">setHostname</span>( <span class="st">string</span> <span class="sv">$hostname</span> )</code>
 <span class="desc">Set a hostname restriction for all the routes in the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-setpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">setPaths( mixed $paths )</code>
+<code class="sig"><span class="sf">setPaths</span>( <span class="st">mixed</span> <span class="sv">$paths</span> )</code>
 <span class="desc">Set common paths for all the routes in the group</span>
 </a>
 <a class="api-item" href="#mvcroutergroupinterface-setprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface</code>
-<code class="sig">setPrefix( string $prefix )</code>
+<code class="sig"><span class="sf">setPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Set a common uri prefix for all the routes in this group</span>
 </a>
 </div>
@@ -28423,217 +27674,244 @@ __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 <div class="api-list">
 <a class="api-item" href="#mvcrouterroute-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $pattern,
-    mixed $paths = null,
-    mixed $httpMethods = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$httpMethods</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Router\Route constructor</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-beforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">beforeMatch( callable $callback )</code>
+<code class="sig"><span class="sf">beforeMatch</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Sets a callback that is called if the route is matched.</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-compilepattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compilePattern( string $pattern )</code>
+<code class="sig"><span class="sf">compilePattern</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
 <span class="desc">Replaces placeholders from pattern returning a valid PCRE regular expression</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-convert">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">convert(
-    string $name,
-    mixed $converter
-)</code>
+<code class="sig"><span class="sf">convert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$converter</span></span>)</code>
 <span class="desc">{@inheritdoc}</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-extractnamedparams">
 <code class="vis vis-public">public</code>
 <code class="ret">array|bool</code>
-<code class="sig">extractNamedParams( string $pattern )</code>
+<code class="sig"><span class="sf">extractNamedParams</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
 <span class="desc">Extracts parameters from a string</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getbeforematch">
 <code class="vis vis-public">public</code>
 <code class="ret">callable|null</code>
-<code class="sig">getBeforeMatch()</code>
+<code class="sig"><span class="sf">getBeforeMatch</span>()</code>
 <span class="desc">Returns the &#039;before match&#039; callback if any</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getcompiledhostname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getCompiledHostName()</code>
+<code class="sig"><span class="sf">getCompiledHostName</span>()</code>
 <span class="desc">Returns the compiled hostname regex, or null when the hostname is</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getcompiledpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getCompiledPattern()</code>
+<code class="sig"><span class="sf">getCompiledPattern</span>()</code>
 <span class="desc">Returns the route&#039;s compiled pattern</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getconverters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getConverters()</code>
+<code class="sig"><span class="sf">getConverters</span>()</code>
 <span class="desc">Returns the router converter</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">GroupInterface|null</code>
-<code class="sig">getGroup()</code>
+<code class="sig"><span class="sf">getGroup</span>()</code>
 <span class="desc">Returns the group associated with the route</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-gethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getHostname()</code>
+<code class="sig"><span class="sf">getHostname</span>()</code>
 <span class="desc">Returns the hostname restriction if any</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-gethttpmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string|null</code>
-<code class="sig">getHttpMethods()</code>
+<code class="sig"><span class="sf">getHttpMethods</span>()</code>
 <span class="desc">Returns the HTTP methods that constraint matching the route</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getmatch">
 <code class="vis vis-public">public</code>
 <code class="ret">callable|null</code>
-<code class="sig">getMatch()</code>
+<code class="sig"><span class="sf">getMatch</span>()</code>
 <span class="desc">Returns the &#039;match&#039; callback if any</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the route&#039;s name</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getPaths()</code>
+<code class="sig"><span class="sf">getPaths</span>()</code>
 <span class="desc">Returns the paths</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPattern()</code>
+<code class="sig"><span class="sf">getPattern</span>()</code>
 <span class="desc">Returns the route&#039;s pattern</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getreversedpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getReversedPaths()</code>
+<code class="sig"><span class="sf">getReversedPaths</span>()</code>
 <span class="desc">Returns the paths using positions as keys and names as values</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getrouteid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRouteId()</code>
+<code class="sig"><span class="sf">getRouteId</span>()</code>
 <span class="desc">Returns the route&#039;s id</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-getroutepaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getRoutePaths( mixed $paths = null )</code>
+<code class="sig"><span class="sf">getRoutePaths</span>( <span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns routePaths</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-match">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">match( mixed $callback )</code>
+<code class="sig"><span class="sf">match</span>( <span class="st">mixed</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Allows to set a callback to handle the request directly in the route</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reConfigure(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal route id generator</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-setgroup">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setGroup( GroupInterface $group )</code>
+<code class="sig"><span class="sf">setGroup</span>( <span class="st">GroupInterface</span> <span class="sv">$group</span> )</code>
 <span class="desc">Sets the group associated with the route</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-sethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setHostname( string $hostname )</code>
+<code class="sig"><span class="sf">setHostname</span>( <span class="st">string</span> <span class="sv">$hostname</span> )</code>
 <span class="desc">Sets a hostname restriction to the route</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-sethttpmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setHttpMethods( mixed $httpMethods )</code>
+<code class="sig"><span class="sf">setHttpMethods</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Sets a set of HTTP methods that constraint the matching of the route (alias of via)</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-setname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setName( string $name )</code>
+<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Sets the route&#039;s name</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-setrouteid">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setRouteId( string $routeId )</code>
+<code class="sig"><span class="sf">setRouteId</span>( <span class="st">string</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Sets the route&#039;s id. Intended for restoring cached routes - most</span>
 </a>
 <a class="api-item" href="#mvcrouterroute-via">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">via( mixed $httpMethods )</code>
+<code class="sig"><span class="sf">via</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Set one or more HTTP methods that constraint the matching of the route</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$beforeMatch = null` `callable|null`
-
--   `protected`{ .vis-protected } `$compiledHostName = false` `string|null|false`
-
-    Cached compiled hostname regex. `false` means "not yet computed";
-    `null` means "hostname is literal - use string equality"; any string
-    means "use this as the PCRE pattern."
-
--   `protected`{ .vis-protected } `$compiledPattern = null` `string|null`
-
--   `protected`{ .vis-protected } `$converters = []` `array`
-
--   `protected`{ .vis-protected } `$group = null` `GroupInterface|null`
-
--   `protected`{ .vis-protected } `$hostname = null` `string|null`
-
--   `protected`{ .vis-protected } `$match = null` `callable|null`
-
--   `protected`{ .vis-protected } `$methods = []` `array|string|null`
-
--   `protected`{ .vis-protected } `$name = null` `string|null`
-
--   `protected`{ .vis-protected } `$paths = []` `array`
-
--   `protected`{ .vis-protected } `$pattern` `string`
-
--   `protected`{ .vis-protected } `$routeId = ""` `string`
-
--   `protected`{ .vis-protected } `$uniqueId = 0` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|null</code>
+<code class="sig"><span class="sv">$beforeMatch</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null|false</code>
+<code class="sig"><span class="sv">$compiledHostName</span><span class="sm"> = false</span></code>
+<span class="desc">Cached compiled hostname regex. <code>false</code> means &quot;not yet computed&quot;;
+<code>null</code> means &quot;hostname is literal - use string equality&quot;; any string
+means &quot;use this as the PCRE pattern.&quot;</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$compiledPattern</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$converters</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">GroupInterface|null</code>
+<code class="sig"><span class="sv">$group</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$hostname</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">callable|null</code>
+<code class="sig"><span class="sv">$match</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|string|null</code>
+<code class="sig"><span class="sv">$methods</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$paths</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$pattern</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$routeId</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$uniqueId</span><span class="sm"> = 0</span></code>
+</div>
 </div>
 
 ### Methods
@@ -28967,109 +28245,103 @@ Interface for Phalcon\Mvc\Router\Route
 <a class="api-item" href="#mvcrouterrouteinterface-compilepattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compilePattern( string $pattern )</code>
+<code class="sig"><span class="sf">compilePattern</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
 <span class="desc">Replaces placeholders from pattern returning a valid PCRE regular expression</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-convert">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">convert(
-    string $name,
-    mixed $converter
-)</code>
+<code class="sig"><span class="sf">convert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$converter</span></span>)</code>
 <span class="desc">Adds a converter to perform an additional transformation for certain parameter.</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-getcompiledpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getCompiledPattern()</code>
+<code class="sig"><span class="sf">getCompiledPattern</span>()</code>
 <span class="desc">Returns the route&#039;s pattern</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-gethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getHostname()</code>
+<code class="sig"><span class="sf">getHostname</span>()</code>
 <span class="desc">Returns the hostname restriction if any</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-gethttpmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string|null</code>
-<code class="sig">getHttpMethods()</code>
+<code class="sig"><span class="sf">getHttpMethods</span>()</code>
 <span class="desc">Returns the HTTP methods that constraint matching the route</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the route&#039;s name</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-getpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getPaths()</code>
+<code class="sig"><span class="sf">getPaths</span>()</code>
 <span class="desc">Returns the paths</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-getpattern">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPattern()</code>
+<code class="sig"><span class="sf">getPattern</span>()</code>
 <span class="desc">Returns the route&#039;s pattern</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-getreversedpaths">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getReversedPaths()</code>
+<code class="sig"><span class="sf">getReversedPaths</span>()</code>
 <span class="desc">Returns the paths using positions as keys and names as values</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-getrouteid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRouteId()</code>
+<code class="sig"><span class="sf">getRouteId</span>()</code>
 <span class="desc">Returns the route&#039;s id</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-reconfigure">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reConfigure(
-    string $pattern,
-    mixed $paths = null
-)</code>
+<code class="sig"><span class="sf">reConfigure</span>(<span class="prm"><span class="st">string</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$paths</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reconfigure the route adding a new pattern and a set of paths</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the internal route id generator</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-sethostname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setHostname( string $hostname )</code>
+<code class="sig"><span class="sf">setHostname</span>( <span class="st">string</span> <span class="sv">$hostname</span> )</code>
 <span class="desc">Sets a hostname restriction to the route</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-sethttpmethods">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setHttpMethods( mixed $httpMethods )</code>
+<code class="sig"><span class="sf">setHttpMethods</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Sets a set of HTTP methods that constraint the matching of the route</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-setname">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setName( string $name )</code>
+<code class="sig"><span class="sf">setName</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Sets the route&#039;s name</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-setrouteid">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">setRouteId( string $routeId )</code>
+<code class="sig"><span class="sf">setRouteId</span>( <span class="st">string</span> <span class="sv">$routeId</span> )</code>
 <span class="desc">Sets the route&#039;s id (intended for restoring cached routes)</span>
 </a>
 <a class="api-item" href="#mvcrouterrouteinterface-via">
 <code class="vis vis-public">public</code>
 <code class="ret">RouteInterface</code>
-<code class="sig">via( mixed $httpMethods )</code>
+<code class="sig"><span class="sf">via</span>( <span class="st">mixed</span> <span class="sv">$httpMethods</span> )</code>
 <span class="desc">Set one or more HTTP methods that constraint the matching of the route</span>
 </a>
 </div>
@@ -29259,13 +28531,13 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mv
 <a class="api-item" href="#mvcrouterrouterfactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">load( mixed $config )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Builds a Router from a config array or ConfigInterface and loads routes.</span>
 </a>
 <a class="api-item" href="#mvcrouterrouterfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">RouterInterface</code>
-<code class="sig">newInstance( bool $defaultRoutes = true )</code>
+<code class="sig"><span class="sf">newInstance</span>( <span class="st">bool</span> <span class="sv">$defaultRoutes</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns a bare Router instance.</span>
 </a>
 </div>
@@ -29328,82 +28600,87 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <a class="api-item" href="#mvcurl-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( RouterInterface $router = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">RouterInterface</span> <span class="sv">$router</span><span class="sm"> = null</span> )</code>
 </a>
 <a class="api-item" href="#mvcurl-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">get(
-    mixed $uri = null,
-    mixed $arguments = null,
-    bool $local = null,
-    mixed $baseUri = null,
-    bool $replaceArgs = false
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Generates a URL</span>
 </a>
 <a class="api-item" href="#mvcurl-getbasepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getBasePath()</code>
+<code class="sig"><span class="sf">getBasePath</span>()</code>
 <span class="desc">Returns the base path</span>
 </a>
 <a class="api-item" href="#mvcurl-getbaseuri">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBaseUri()</code>
+<code class="sig"><span class="sf">getBaseUri</span>()</code>
 <span class="desc">Returns the prefix for all the generated urls. By default /</span>
 </a>
 <a class="api-item" href="#mvcurl-getstatic">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getStatic( mixed $uri = null )</code>
+<code class="sig"><span class="sf">getStatic</span>( <span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a URL for a static resource</span>
 </a>
 <a class="api-item" href="#mvcurl-getstaticbaseuri">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getStaticBaseUri()</code>
+<code class="sig"><span class="sf">getStaticBaseUri</span>()</code>
 <span class="desc">Returns the prefix for all the generated static urls. By default /</span>
 </a>
 <a class="api-item" href="#mvcurl-path">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">path( string $path = null )</code>
+<code class="sig"><span class="sf">path</span>( <span class="st">string</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a local path</span>
 </a>
 <a class="api-item" href="#mvcurl-setbasepath">
 <code class="vis vis-public">public</code>
 <code class="ret">UrlInterface</code>
-<code class="sig">setBasePath( string $basePath )</code>
+<code class="sig"><span class="sf">setBasePath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
 <span class="desc">Sets a base path for all the generated paths</span>
 </a>
 <a class="api-item" href="#mvcurl-setbaseuri">
 <code class="vis vis-public">public</code>
 <code class="ret">UrlInterface</code>
-<code class="sig">setBaseUri( string $baseUri )</code>
+<code class="sig"><span class="sf">setBaseUri</span>( <span class="st">string</span> <span class="sv">$baseUri</span> )</code>
 <span class="desc">Sets a prefix for all the URIs to be generated</span>
 </a>
 <a class="api-item" href="#mvcurl-setstaticbaseuri">
 <code class="vis vis-public">public</code>
 <code class="ret">UrlInterface</code>
-<code class="sig">setStaticBaseUri( string $staticBaseUri )</code>
+<code class="sig"><span class="sf">setStaticBaseUri</span>( <span class="st">string</span> <span class="sv">$staticBaseUri</span> )</code>
 <span class="desc">Sets a prefix for all static URLs generated</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$basePath = null` `null | string`
-
--   `protected`{ .vis-protected } `$baseUri = null` `null | string`
-
--   `protected`{ .vis-protected } `$router = null` `RouterInterface | null`
-
--   `protected`{ .vis-protected } `$staticBaseUri = null` `null | string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">null | string</code>
+<code class="sig"><span class="sv">$basePath</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">null | string</code>
+<code class="sig"><span class="sv">$baseUri</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">RouterInterface | null</code>
+<code class="sig"><span class="sv">$router</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">null | string</code>
+<code class="sig"><span class="sv">$staticBaseUri</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -29610,7 +28887,7 @@ __Uses__ `Phalcon\Mvc\Url\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcurlexceptionsmissingroutename-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -29653,7 +28930,7 @@ __Uses__ `Phalcon\Mvc\Url\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcurlexceptionsroutenotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -29696,7 +28973,7 @@ __Uses__ `Phalcon\Mvc\Url\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcurlexceptionsrouterserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -29730,43 +29007,37 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 <a class="api-item" href="#mvcurlurlinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">get(
-    mixed $uri = null,
-    mixed $arguments = null,
-    bool $local = null,
-    mixed $baseUri = null,
-    bool $replaceArgs = false
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$uri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$local</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$baseUri</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$replaceArgs</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Generates a URL</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-getbasepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getBasePath()</code>
+<code class="sig"><span class="sf">getBasePath</span>()</code>
 <span class="desc">Returns a base path</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-getbaseuri">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBaseUri()</code>
+<code class="sig"><span class="sf">getBaseUri</span>()</code>
 <span class="desc">Returns the prefix for all the generated urls. By default /</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-path">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">path( string $path = null )</code>
+<code class="sig"><span class="sf">path</span>( <span class="st">string</span> <span class="sv">$path</span><span class="sm"> = null</span> )</code>
 <span class="desc">Generates a local path</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-setbasepath">
 <code class="vis vis-public">public</code>
 <code class="ret">UrlInterface</code>
-<code class="sig">setBasePath( string $basePath )</code>
+<code class="sig"><span class="sf">setBasePath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
 <span class="desc">Sets a base paths for all the generated paths</span>
 </a>
 <a class="api-item" href="#mvcurlurlinterface-setbaseuri">
 <code class="vis vis-public">public</code>
 <code class="ret">UrlInterface</code>
-<code class="sig">setBaseUri( string $baseUri )</code>
+<code class="sig"><span class="sf">setBaseUri</span>( <span class="st">string</span> <span class="sv">$baseUri</span> )</code>
 <span class="desc">Sets a prefix to all the urls generated</span>
 </a>
 </div>
@@ -29874,461 +29145,493 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <div class="api-list">
 <a class="api-item" href="#mvcview-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Mvc\View constructor</span>
 </a>
 <a class="api-item" href="#mvcview-__get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">__get( string $key )</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Magic method to retrieve a variable passed to the view</span>
 </a>
 <a class="api-item" href="#mvcview-__isset">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__isset( string $key )</code>
+<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Magic method to retrieve if a variable is set in the view</span>
 </a>
 <a class="api-item" href="#mvcview-__set">
 <code class="vis vis-public">public</code>
-<code class="sig">__set(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Magic method to pass variables to the views</span>
 </a>
 <a class="api-item" href="#mvcview-cleantemplateafter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">cleanTemplateAfter()</code>
+<code class="sig"><span class="sf">cleanTemplateAfter</span>()</code>
 <span class="desc">Resets any template before layouts</span>
 </a>
 <a class="api-item" href="#mvcview-cleantemplatebefore">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">cleanTemplateBefore()</code>
+<code class="sig"><span class="sf">cleanTemplateBefore</span>()</code>
 <span class="desc">Resets any &quot;template before&quot; layouts</span>
 </a>
 <a class="api-item" href="#mvcview-disable">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">disable()</code>
+<code class="sig"><span class="sf">disable</span>()</code>
 <span class="desc">Disables the auto-rendering process</span>
 </a>
 <a class="api-item" href="#mvcview-disablelevel">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">disableLevel( mixed $level )</code>
+<code class="sig"><span class="sf">disableLevel</span>( <span class="st">mixed</span> <span class="sv">$level</span> )</code>
 <span class="desc">Disables a specific level of rendering</span>
 </a>
 <a class="api-item" href="#mvcview-enable">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">enable()</code>
+<code class="sig"><span class="sf">enable</span>()</code>
 <span class="desc">Enables the auto-rendering process</span>
 </a>
 <a class="api-item" href="#mvcview-exists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">exists( string $view )</code>
+<code class="sig"><span class="sf">exists</span>( <span class="st">string</span> <span class="sv">$view</span> )</code>
 <span class="desc">Checks whether view exists</span>
 </a>
 <a class="api-item" href="#mvcview-finish">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">finish()</code>
+<code class="sig"><span class="sf">finish</span>()</code>
 <span class="desc">Finishes the render process by stopping the output buffering</span>
 </a>
 <a class="api-item" href="#mvcview-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Gets the name of the action rendered</span>
 </a>
 <a class="api-item" href="#mvcview-getactiverenderpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array</code>
-<code class="sig">getActiveRenderPath()</code>
+<code class="sig"><span class="sf">getActiveRenderPath</span>()</code>
 <span class="desc">Returns the path (or paths) of the views that are currently rendered</span>
 </a>
 <a class="api-item" href="#mvcview-getbasepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBasePath()</code>
+<code class="sig"><span class="sf">getBasePath</span>()</code>
 <span class="desc">Gets base path</span>
 </a>
 <a class="api-item" href="#mvcview-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getContent()</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Returns output from another view stage</span>
 </a>
 <a class="api-item" href="#mvcview-getcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getControllerName()</code>
+<code class="sig"><span class="sf">getControllerName</span>()</code>
 <span class="desc">Gets the name of the controller rendered</span>
 </a>
 <a class="api-item" href="#mvcview-getcurrentrenderlevel">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getCurrentRenderLevel()</code>
+<code class="sig"><span class="sf">getCurrentRenderLevel</span>()</code>
 </a>
 <a class="api-item" href="#mvcview-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcview-getlayout">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getLayout()</code>
+<code class="sig"><span class="sf">getLayout</span>()</code>
 <span class="desc">Returns the name of the main view</span>
 </a>
 <a class="api-item" href="#mvcview-getlayoutsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLayoutsDir()</code>
+<code class="sig"><span class="sf">getLayoutsDir</span>()</code>
 <span class="desc">Gets the current layouts sub-directory</span>
 </a>
 <a class="api-item" href="#mvcview-getmainview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMainView()</code>
+<code class="sig"><span class="sf">getMainView</span>()</code>
 <span class="desc">Returns the name of the main view</span>
 </a>
 <a class="api-item" href="#mvcview-getparamstoview">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParamsToView()</code>
+<code class="sig"><span class="sf">getParamsToView</span>()</code>
 <span class="desc">Returns parameters to views</span>
 </a>
 <a class="api-item" href="#mvcview-getpartial">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPartial(
-    string $partialPath,
-    mixed $params = null
-)</code>
+<code class="sig"><span class="sf">getPartial</span>(<span class="prm"><span class="st">string</span> <span class="sv">$partialPath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders a partial view</span>
 </a>
 <a class="api-item" href="#mvcview-getpartialsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPartialsDir()</code>
+<code class="sig"><span class="sf">getPartialsDir</span>()</code>
 <span class="desc">Gets the current partials sub-directory</span>
 </a>
 <a class="api-item" href="#mvcview-getregisteredengines">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getRegisteredEngines()</code>
+<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
 </a>
 <a class="api-item" href="#mvcview-getrender">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRender(
-    string $controllerName,
-    string $actionName,
-    array $params = [],
-    mixed $configCallback = null
-)</code>
+<code class="sig"><span class="sf">getRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$controllerName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$configCallback</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Perform the automatic rendering returning the output as a string</span>
 </a>
 <a class="api-item" href="#mvcview-getrenderlevel">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getRenderLevel()</code>
+<code class="sig"><span class="sf">getRenderLevel</span>()</code>
 </a>
 <a class="api-item" href="#mvcview-getvar">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getVar( string $key )</code>
+<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Returns a parameter previously set in the view</span>
 </a>
 <a class="api-item" href="#mvcview-getviewsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array</code>
-<code class="sig">getViewsDir()</code>
+<code class="sig"><span class="sf">getViewsDir</span>()</code>
 <span class="desc">Gets views directory</span>
 </a>
 <a class="api-item" href="#mvcview-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $view )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$view</span> )</code>
 <span class="desc">Checks whether view exists</span>
 </a>
 <a class="api-item" href="#mvcview-isdisabled">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isDisabled()</code>
+<code class="sig"><span class="sf">isDisabled</span>()</code>
 <span class="desc">Whether automatic rendering is enabled</span>
 </a>
 <a class="api-item" href="#mvcview-partial">
 <code class="vis vis-public">public</code>
-<code class="sig">partial(
-    string $partialPath,
-    mixed $params = null
-)</code>
+<code class="sig"><span class="sf">partial</span>(<span class="prm"><span class="st">string</span> <span class="sv">$partialPath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders a partial view</span>
 </a>
 <a class="api-item" href="#mvcview-pick">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">pick( mixed $renderView )</code>
+<code class="sig"><span class="sf">pick</span>( <span class="st">mixed</span> <span class="sv">$renderView</span> )</code>
 <span class="desc">Choose a different view to render instead of last-controller/last-action</span>
 </a>
 <a class="api-item" href="#mvcview-processrender">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">processRender(
-    string $controllerName,
-    string $actionName,
-    array $params = [],
-    bool $fireEvents = true
-)</code>
+<code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$controllerName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$fireEvents</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Processes the view and templates; Fires events if needed</span>
 </a>
 <a class="api-item" href="#mvcview-registerengines">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">registerEngines( array $engines )</code>
+<code class="sig"><span class="sf">registerEngines</span>( <span class="st">array</span> <span class="sv">$engines</span> )</code>
 <span class="desc">Register templating engines</span>
 </a>
 <a class="api-item" href="#mvcview-render">
 <code class="vis vis-public">public</code>
 <code class="ret">static|false</code>
-<code class="sig">render(
-    string $controllerName,
-    string $actionName,
-    array $params = []
-)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$controllerName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes render process from dispatching data</span>
 </a>
 <a class="api-item" href="#mvcview-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the view component to its factory default values</span>
 </a>
 <a class="api-item" href="#mvcview-setbasepath">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setBasePath( string $basePath )</code>
+<code class="sig"><span class="sf">setBasePath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
 <span class="desc">Sets base path. Depending of your platform, always add a trailing slash</span>
 </a>
 <a class="api-item" href="#mvcview-setcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setContent( string $content )</code>
+<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
 <span class="desc">Externally sets the view content</span>
 </a>
 <a class="api-item" href="#mvcview-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcview-setlayout">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setLayout( string $layout )</code>
+<code class="sig"><span class="sf">setLayout</span>( <span class="st">string</span> <span class="sv">$layout</span> )</code>
 <span class="desc">Change the layout to be used instead of using the name of the latest</span>
 </a>
 <a class="api-item" href="#mvcview-setlayoutsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setLayoutsDir( string $layoutsDir )</code>
+<code class="sig"><span class="sf">setLayoutsDir</span>( <span class="st">string</span> <span class="sv">$layoutsDir</span> )</code>
 <span class="desc">Sets the layouts sub-directory. Must be a directory under the views</span>
 </a>
 <a class="api-item" href="#mvcview-setmainview">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setMainView( string $viewPath )</code>
+<code class="sig"><span class="sf">setMainView</span>( <span class="st">string</span> <span class="sv">$viewPath</span> )</code>
 <span class="desc">Sets default view name. Must be a file without extension in the views</span>
 </a>
 <a class="api-item" href="#mvcview-setparamtoview">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setParamToView(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParamToView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Adds parameters to views (alias of setVar)</span>
 </a>
 <a class="api-item" href="#mvcview-setpartialsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setPartialsDir( string $partialsDir )</code>
+<code class="sig"><span class="sf">setPartialsDir</span>( <span class="st">string</span> <span class="sv">$partialsDir</span> )</code>
 <span class="desc">Sets a partials sub-directory. Must be a directory under the views</span>
 </a>
 <a class="api-item" href="#mvcview-setrenderlevel">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setRenderLevel( int $level )</code>
+<code class="sig"><span class="sf">setRenderLevel</span>( <span class="st">int</span> <span class="sv">$level</span> )</code>
 <span class="desc">Sets the render level for the view</span>
 </a>
 <a class="api-item" href="#mvcview-settemplateafter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setTemplateAfter( mixed $templateAfter )</code>
+<code class="sig"><span class="sf">setTemplateAfter</span>( <span class="st">mixed</span> <span class="sv">$templateAfter</span> )</code>
 <span class="desc">Sets a &quot;template after&quot; controller layout</span>
 </a>
 <a class="api-item" href="#mvcview-settemplatebefore">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setTemplateBefore( mixed $templateBefore )</code>
+<code class="sig"><span class="sf">setTemplateBefore</span>( <span class="st">mixed</span> <span class="sv">$templateBefore</span> )</code>
 <span class="desc">Sets a template before the controller layout</span>
 </a>
 <a class="api-item" href="#mvcview-setvar">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setVar(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a single view parameter</span>
 </a>
 <a class="api-item" href="#mvcview-setvars">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setVars(
-    array $params,
-    bool $merge = true
-)</code>
+<code class="sig"><span class="sf">setVars</span>(<span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Set all the render params</span>
 </a>
 <a class="api-item" href="#mvcview-setviewsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setViewsDir( mixed $viewsDir )</code>
+<code class="sig"><span class="sf">setViewsDir</span>( <span class="st">mixed</span> <span class="sv">$viewsDir</span> )</code>
 <span class="desc">Sets the views directory. Depending of your platform,</span>
 </a>
 <a class="api-item" href="#mvcview-start">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">start()</code>
+<code class="sig"><span class="sf">start</span>()</code>
 <span class="desc">Starts rendering process enabling the output buffering</span>
 </a>
 <a class="api-item" href="#mvcview-tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">toString(
-    string $controllerName,
-    string $actionName,
-    array $params = []
-)</code>
+<code class="sig"><span class="sf">toString</span>(<span class="prm"><span class="st">string</span> <span class="sv">$controllerName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Renders the view and returns it as a string</span>
 </a>
 <a class="api-item" href="#mvcview-enginerender">
 <code class="vis vis-protected">protected</code>
-<code class="sig">engineRender(
-    array $engines,
-    string $viewPath,
-    bool $silence,
-    bool $mustClean = true
-)</code>
+<code class="sig"><span class="sf">engineRender</span>(<span class="prm"><span class="st">array</span> <span class="sv">$engines</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$viewPath</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$silence</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$mustClean</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Checks whether view exists on registered extensions and render it</span>
 </a>
 <a class="api-item" href="#mvcview-getviewsdirs">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getViewsDirs()</code>
+<code class="sig"><span class="sf">getViewsDirs</span>()</code>
 <span class="desc">Gets views directories</span>
 </a>
 <a class="api-item" href="#mvcview-isabsolutepath">
 <code class="vis vis-protected">protected</code>
-<code class="sig">isAbsolutePath( string $path )</code>
+<code class="sig"><span class="sf">isAbsolutePath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">Checks if a path is absolute or not</span>
 </a>
 <a class="api-item" href="#mvcview-loadtemplateengines">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">loadTemplateEngines()</code>
+<code class="sig"><span class="sf">loadTemplateEngines</span>()</code>
 <span class="desc">Loads registered template engines, if none is registered it will use</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `LEVEL_ACTION_VIEW = 1` `int`
-
-    Render Level: To the action view
-
--   `LEVEL_AFTER_TEMPLATE = 4` `int`
-
-    Render Level: Render to the templates "after"
-
--   `LEVEL_BEFORE_TEMPLATE = 2` `int`
-
-    Render Level: To the templates "before"
-
--   `LEVEL_LAYOUT = 3` `int`
-
-    Render Level: To the controller layout
-
--   `LEVEL_MAIN_LAYOUT = 5` `int`
-
-    Render Level: To the main layout
-
--   `LEVEL_NO_RENDER = 0` `int`
-
-    Render Level: No render any view
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">LEVEL_ACTION_VIEW</span><span class="sm"> = 1</span></code>
+<span class="desc">Render Level: To the action view</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">LEVEL_AFTER_TEMPLATE</span><span class="sm"> = 4</span></code>
+<span class="desc">Render Level: Render to the templates &quot;after&quot;</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">LEVEL_BEFORE_TEMPLATE</span><span class="sm"> = 2</span></code>
+<span class="desc">Render Level: To the templates &quot;before&quot;</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">LEVEL_LAYOUT</span><span class="sm"> = 3</span></code>
+<span class="desc">Render Level: To the controller layout</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">LEVEL_MAIN_LAYOUT</span><span class="sm"> = 5</span></code>
+<span class="desc">Render Level: To the main layout</span>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">LEVEL_NO_RENDER</span><span class="sm"> = 0</span></code>
+<span class="desc">Render Level: No render any view</span>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$actionName` `string`
-
--   `protected`{ .vis-protected } `$activeRenderPaths` `array`
-
--   `protected`{ .vis-protected } `$basePath = ""` `string`
-
--   `protected`{ .vis-protected } `$content = ""` `string`
-
--   `protected`{ .vis-protected } `$controllerName` `string`
-
--   `protected`{ .vis-protected } `$currentRenderLevel = 0` `int`
-
--   `protected`{ .vis-protected } `$disabled = false` `bool`
-
--   `protected`{ .vis-protected } `$disabledLevels = []` `array`
-
--   `protected`{ .vis-protected } `$engines = false` `array|bool`
-
--   `protected`{ .vis-protected } `$eventsManager` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$layout = null` `string|null`
-
--   `protected`{ .vis-protected } `$layoutsDir = ""` `string`
-
--   `protected`{ .vis-protected } `$mainView = "index"` `string`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$params = []` `array`
-
--   `protected`{ .vis-protected } `$partialsDir = ""` `string`
-
--   `protected`{ .vis-protected } `$pickView` `array|null`
-
--   `protected`{ .vis-protected } `$registeredEngines = []` `array`
-
--   `protected`{ .vis-protected } `$renderLevel = 5` `int`
-
--   `protected`{ .vis-protected } `$templatesAfter = []` `array`
-
--   `protected`{ .vis-protected } `$templatesBefore = []` `array`
-
--   `protected`{ .vis-protected } `$viewParams = []` `array`
-
--   `protected`{ .vis-protected } `$viewsDirs = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$actionName</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$activeRenderPaths</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$basePath</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$content</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$controllerName</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$currentRenderLevel</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$disabled</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$disabledLevels</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|bool</code>
+<code class="sig"><span class="sv">$engines</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$layout</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$layoutsDir</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$mainView</span><span class="sm"> = &quot;index&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$params</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$partialsDir</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$pickView</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$renderLevel</span><span class="sm"> = 5</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$templatesAfter</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$templatesBefore</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$viewsDirs</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -30999,53 +30302,44 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
 <a class="api-item" href="#mvcviewbaseinterface-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getContent()</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Returns cached output from another view stage</span>
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-getparamstoview">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParamsToView()</code>
+<code class="sig"><span class="sf">getParamsToView</span>()</code>
 <span class="desc">Returns parameters to views</span>
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-getviewsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array</code>
-<code class="sig">getViewsDir()</code>
+<code class="sig"><span class="sf">getViewsDir</span>()</code>
 <span class="desc">Gets views directory</span>
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-partial">
 <code class="vis vis-public">public</code>
-<code class="sig">partial(
-    string $partialPath,
-    mixed $params = null
-)</code>
+<code class="sig"><span class="sf">partial</span>(<span class="prm"><span class="st">string</span> <span class="sv">$partialPath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders a partial view</span>
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-setcontent">
 <code class="vis vis-public">public</code>
-<code class="sig">setContent( string $content )</code>
+<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
 <span class="desc">Externally sets the view content</span>
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-setparamtoview">
 <code class="vis vis-public">public</code>
-<code class="sig">setParamToView(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParamToView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Adds parameters to views (alias of setVar)</span>
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-setvar">
 <code class="vis vis-public">public</code>
-<code class="sig">setVar(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Adds parameters to views</span>
 </a>
 <a class="api-item" href="#mvcviewbaseinterface-setviewsdir">
 <code class="vis vis-public">public</code>
-<code class="sig">setViewsDir( string $viewsDir )</code>
+<code class="sig"><span class="sf">setViewsDir</span>( <span class="st">string</span> <span class="sv">$viewsDir</span> )</code>
 <span class="desc">Sets views directory. Depending of your platform, always add a trailing</span>
 </a>
 </div>
@@ -31148,152 +30442,148 @@ Interface for Phalcon\Mvc\View
 <div class="api-list">
 <a class="api-item" href="#mvcviewinterface-cleantemplateafter">
 <code class="vis vis-public">public</code>
-<code class="sig">cleanTemplateAfter()</code>
+<code class="sig"><span class="sf">cleanTemplateAfter</span>()</code>
 <span class="desc">Resets any template before layouts</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-cleantemplatebefore">
 <code class="vis vis-public">public</code>
-<code class="sig">cleanTemplateBefore()</code>
+<code class="sig"><span class="sf">cleanTemplateBefore</span>()</code>
 <span class="desc">Resets any template before layouts</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-disable">
 <code class="vis vis-public">public</code>
-<code class="sig">disable()</code>
+<code class="sig"><span class="sf">disable</span>()</code>
 <span class="desc">Disables the auto-rendering process</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-enable">
 <code class="vis vis-public">public</code>
-<code class="sig">enable()</code>
+<code class="sig"><span class="sf">enable</span>()</code>
 <span class="desc">Enables the auto-rendering process</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-finish">
 <code class="vis vis-public">public</code>
-<code class="sig">finish()</code>
+<code class="sig"><span class="sf">finish</span>()</code>
 <span class="desc">Finishes the render process by stopping the output buffering</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getactionname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActionName()</code>
+<code class="sig"><span class="sf">getActionName</span>()</code>
 <span class="desc">Gets the name of the action rendered</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getactiverenderpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string|array</code>
-<code class="sig">getActiveRenderPath()</code>
+<code class="sig"><span class="sf">getActiveRenderPath</span>()</code>
 <span class="desc">Returns the path of the view that is currently rendered</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getbasepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBasePath()</code>
+<code class="sig"><span class="sf">getBasePath</span>()</code>
 <span class="desc">Gets base path</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getControllerName()</code>
+<code class="sig"><span class="sf">getControllerName</span>()</code>
 <span class="desc">Gets the name of the controller rendered</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getlayout">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getLayout()</code>
+<code class="sig"><span class="sf">getLayout</span>()</code>
 <span class="desc">Returns the name of the main view</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getlayoutsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLayoutsDir()</code>
+<code class="sig"><span class="sf">getLayoutsDir</span>()</code>
 <span class="desc">Gets the current layouts sub-directory</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getmainview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMainView()</code>
+<code class="sig"><span class="sf">getMainView</span>()</code>
 <span class="desc">Returns the name of the main view</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-getpartialsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPartialsDir()</code>
+<code class="sig"><span class="sf">getPartialsDir</span>()</code>
 <span class="desc">Gets the current partials sub-directory</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-isdisabled">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isDisabled()</code>
+<code class="sig"><span class="sf">isDisabled</span>()</code>
 <span class="desc">Whether the automatic rendering is disabled</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-pick">
 <code class="vis vis-public">public</code>
-<code class="sig">pick( string $renderView )</code>
+<code class="sig"><span class="sf">pick</span>( <span class="st">string</span> <span class="sv">$renderView</span> )</code>
 <span class="desc">Choose a view different to render than last-controller/last-action</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-registerengines">
 <code class="vis vis-public">public</code>
-<code class="sig">registerEngines( array $engines )</code>
+<code class="sig"><span class="sf">registerEngines</span>( <span class="st">array</span> <span class="sv">$engines</span> )</code>
 <span class="desc">Register templating engines</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-render">
 <code class="vis vis-public">public</code>
 <code class="ret">ViewInterface|bool</code>
-<code class="sig">render(
-    string $controllerName,
-    string $actionName,
-    array $params = []
-)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$controllerName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$actionName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes render process from dispatching data</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-reset">
 <code class="vis vis-public">public</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Resets the view component to its factory default values</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-setbasepath">
 <code class="vis vis-public">public</code>
-<code class="sig">setBasePath( string $basePath )</code>
+<code class="sig"><span class="sf">setBasePath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
 <span class="desc">Sets base path. Depending of your platform, always add a trailing slash</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-setlayout">
 <code class="vis vis-public">public</code>
-<code class="sig">setLayout( string $layout )</code>
+<code class="sig"><span class="sf">setLayout</span>( <span class="st">string</span> <span class="sv">$layout</span> )</code>
 <span class="desc">Change the layout to be used instead of using the name of the latest</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-setlayoutsdir">
 <code class="vis vis-public">public</code>
-<code class="sig">setLayoutsDir( string $layoutsDir )</code>
+<code class="sig"><span class="sf">setLayoutsDir</span>( <span class="st">string</span> <span class="sv">$layoutsDir</span> )</code>
 <span class="desc">Sets the layouts sub-directory. Must be a directory under the views</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-setmainview">
 <code class="vis vis-public">public</code>
-<code class="sig">setMainView( string $viewPath )</code>
+<code class="sig"><span class="sf">setMainView</span>( <span class="st">string</span> <span class="sv">$viewPath</span> )</code>
 <span class="desc">Sets default view name. Must be a file without extension in the views</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-setpartialsdir">
 <code class="vis vis-public">public</code>
-<code class="sig">setPartialsDir( string $partialsDir )</code>
+<code class="sig"><span class="sf">setPartialsDir</span>( <span class="st">string</span> <span class="sv">$partialsDir</span> )</code>
 <span class="desc">Sets a partials sub-directory. Must be a directory under the views</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-setrenderlevel">
 <code class="vis vis-public">public</code>
 <code class="ret">ViewInterface</code>
-<code class="sig">setRenderLevel( int $level )</code>
+<code class="sig"><span class="sf">setRenderLevel</span>( <span class="st">int</span> <span class="sv">$level</span> )</code>
 <span class="desc">Sets the render level for the view</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-settemplateafter">
 <code class="vis vis-public">public</code>
-<code class="sig">setTemplateAfter( mixed $templateAfter )</code>
+<code class="sig"><span class="sf">setTemplateAfter</span>( <span class="st">mixed</span> <span class="sv">$templateAfter</span> )</code>
 <span class="desc">Appends template after controller layout</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-settemplatebefore">
 <code class="vis vis-public">public</code>
-<code class="sig">setTemplateBefore( mixed $templateBefore )</code>
+<code class="sig"><span class="sf">setTemplateBefore</span>( <span class="st">mixed</span> <span class="sv">$templateBefore</span> )</code>
 <span class="desc">Appends template before controller layout</span>
 </a>
 <a class="api-item" href="#mvcviewinterface-start">
 <code class="vis vis-public">public</code>
-<code class="sig">start()</code>
+<code class="sig"><span class="sf">start</span>()</code>
 <span class="desc">Starts rendering process enabling the output buffering</span>
 </a>
 </div>
@@ -31556,65 +30846,60 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 <div class="api-list">
 <a class="api-item" href="#mvcviewengineabstractengine-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    ViewBaseInterface $view,
-    DiInterface $container = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">ViewBaseInterface</span> <span class="sv">$view</span>,</span><span class="prm"><span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Mvc\View\Engine constructor</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getContent()</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Returns cached output on another view stage</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-getview">
 <code class="vis vis-public">public</code>
 <code class="ret">ViewBaseInterface</code>
-<code class="sig">getView()</code>
+<code class="sig"><span class="sf">getView</span>()</code>
 <span class="desc">Returns the view component related to the adapter</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-partial">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">partial(
-    string $partialPath,
-    mixed $params = null
-)</code>
+<code class="sig"><span class="sf">partial</span>(<span class="prm"><span class="st">string</span> <span class="sv">$partialPath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders a partial inside another view</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcviewengineabstractengine-firemanagerevent">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed|bool</code>
-<code class="sig">fireManagerEvent(
-    string $eventName,
-    mixed $data = null,
-    bool $cancellable = true
-)</code>
+<code class="sig"><span class="sf">fireManagerEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancellable</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Helper method to fire an event</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$view` `ViewBaseInterface`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ViewBaseInterface</code>
+<code class="sig"><span class="sv">$view</span></code>
+</div>
 </div>
 
 ### Methods
@@ -31709,25 +30994,18 @@ Interface for Phalcon\Mvc\View engine adapters
 <a class="api-item" href="#mvcviewengineengineinterface-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getContent()</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Returns cached output on another view stage</span>
 </a>
 <a class="api-item" href="#mvcviewengineengineinterface-partial">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">partial(
-    string $partialPath,
-    mixed $params = null
-)</code>
+<code class="sig"><span class="sf">partial</span>(<span class="prm"><span class="st">string</span> <span class="sv">$partialPath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders a partial inside another view</span>
 </a>
 <a class="api-item" href="#mvcviewengineengineinterface-render">
 <code class="vis vis-public">public</code>
-<code class="sig">render(
-    string $path,
-    mixed $params,
-    bool $mustClean = false
-)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$mustClean</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Renders a view using the template engine</span>
 </a>
 </div>
@@ -31791,11 +31069,7 @@ Adapter to use PHP itself as templating engine
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginephp-render">
 <code class="vis vis-public">public</code>
-<code class="sig">render(
-    string $path,
-    mixed $params,
-    bool $mustClean = false
-)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$mustClean</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Renders a view using the template engine</span>
 </a>
 </div>
@@ -31842,110 +31116,103 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `P
 <a class="api-item" href="#mvcviewenginevolt-callmacro">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">callMacro(
-    string $name,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">callMacro</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Checks if a macro is defined and calls it</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-convertencoding">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">convertEncoding(
-    string $text,
-    string $from,
-    string $to
-)</code>
+<code class="sig"><span class="sf">convertEncoding</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$from</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$to</span></span>)</code>
 <span class="desc">Performs a string conversion</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-getcompiler">
 <code class="vis vis-public">public</code>
 <code class="ret">Compiler</code>
-<code class="sig">getCompiler()</code>
+<code class="sig"><span class="sf">getCompiler</span>()</code>
 <span class="desc">Returns the Volt&#039;s compiler</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Return Volt&#039;s options</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-isincluded">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isIncluded(
-    mixed $needle,
-    mixed $haystack
-)</code>
+<code class="sig"><span class="sf">isIncluded</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$haystack</span></span>)</code>
 <span class="desc">Checks if the needle is included in the haystack</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-length">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">length( mixed $item )</code>
+<code class="sig"><span class="sf">length</span>( <span class="st">mixed</span> <span class="sv">$item</span> )</code>
 <span class="desc">Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-preload">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">preload( mixed $parameters )</code>
+<code class="sig"><span class="sf">preload</span>( <span class="st">mixed</span> <span class="sv">$parameters</span> )</code>
 <span class="desc">Parses the preload element passed and sets the necessary link headers</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-render">
 <code class="vis vis-public">public</code>
-<code class="sig">render(
-    string $path,
-    mixed $params,
-    bool $mustClean = false
-)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$mustClean</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Renders a view using the template engine</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-setoptions">
 <code class="vis vis-public">public</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Set Volt&#039;s options</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-slice">
 <code class="vis vis-public">public</code>
-<code class="sig">slice(
-    mixed $value,
-    int $start = 0,
-    mixed $end = null
-)</code>
+<code class="sig"><span class="sf">slice</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$start</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$end</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Extracts a slice from a string/array/traversable object value</span>
 </a>
 <a class="api-item" href="#mvcviewenginevolt-sort">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">sort( array $value )</code>
+<code class="sig"><span class="sf">sort</span>( <span class="st">array</span> <span class="sv">$value</span> )</code>
 <span class="desc">Sorts an array</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$compiler` `Compiler`
-
--   `protected`{ .vis-protected } `$eventsManager` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$macros = []` `array`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Compiler</code>
+<code class="sig"><span class="sv">$compiler</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$macros</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -32108,381 +31375,380 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInte
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltcompiler-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( ViewBaseInterface $view = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">ViewBaseInterface</span> <span class="sv">$view</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\Mvc\View\Engine\Volt\Compiler</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-addextension">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addExtension( mixed $extension )</code>
+<code class="sig"><span class="sf">addExtension</span>( <span class="st">mixed</span> <span class="sv">$extension</span> )</code>
 <span class="desc">Registers a Volt&#039;s extension</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-addfilter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addFilter(
-    string $name,
-    mixed $definition
-)</code>
+<code class="sig"><span class="sf">addFilter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Register a new filter in the compiler</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-addfunction">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addFunction(
-    string $name,
-    mixed $definition
-)</code>
+<code class="sig"><span class="sf">addFunction</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Register a new function in the compiler</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-attributereader">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">attributeReader( array $expr )</code>
+<code class="sig"><span class="sf">attributeReader</span>( <span class="st">array</span> <span class="sv">$expr</span> )</code>
 <span class="desc">Resolves attribute reading</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compile">
 <code class="vis vis-public">public</code>
-<code class="sig">compile(
-    string $templatePath,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">compile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$templatePath</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a template into a file applying the compiler options</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileautoescape">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileAutoEscape(
-    array $statement,
-    bool $extendsMode
-)</code>
+<code class="sig"><span class="sf">compileAutoEscape</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span></span>)</code>
 <span class="desc">Compiles a &quot;autoescape&quot; statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilecall">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileCall(
-    array $statement,
-    bool $extendsMode
-)</code>
+<code class="sig"><span class="sf">compileCall</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span></span>)</code>
 <span class="desc">Compiles calls to macros</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilecase">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileCase(
-    array $statement,
-    bool $caseClause = true
-)</code>
+<code class="sig"><span class="sf">compileCase</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$caseClause</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Compiles a &quot;case&quot;/&quot;default&quot; clause returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compiledo">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileDo( array $statement )</code>
+<code class="sig"><span class="sf">compileDo</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Compiles a &quot;do&quot; statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileecho">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileEcho( array $statement )</code>
-<span class="desc">Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code</span>
+<code class="sig"><span class="sf">compileEcho</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
+<span class="desc">Compiles a {% raw %}<code>{{</code> <code>}}</code>{% endraw %} statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileelseif">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileElseIf( array $statement )</code>
+<code class="sig"><span class="sf">compileElseIf</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Compiles a &quot;elseif&quot; statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilefile">
 <code class="vis vis-public">public</code>
-<code class="sig">compileFile(
-    string $path,
-    string $compiledPath,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">compileFile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$compiledPath</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a template into a file forcing the destination path</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileforelse">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileForElse()</code>
+<code class="sig"><span class="sf">compileForElse</span>()</code>
 <span class="desc">Generates a &#039;forelse&#039; PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileforeach">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileForeach(
-    array $statement,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">compileForeach</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a &quot;foreach&quot; intermediate code representation into plain PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileif">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileIf(
-    array $statement,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">compileIf</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a &#039;if&#039; statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileinclude">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileInclude( array $statement )</code>
+<code class="sig"><span class="sf">compileInclude</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Compiles a &#039;include&#039; statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilemacro">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileMacro(
-    array $statement,
-    bool $extendsMode
-)</code>
+<code class="sig"><span class="sf">compileMacro</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span></span>)</code>
 <span class="desc">Compiles macros</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilereturn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileReturn( array $statement )</code>
+<code class="sig"><span class="sf">compileReturn</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Compiles a &quot;return&quot; statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileset">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileSet( array $statement )</code>
+<code class="sig"><span class="sf">compileSet</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
 <span class="desc">Compiles a &quot;set&quot; statement returning PHP code. The method accepts an</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilestring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileString(
-    string $viewCode,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">compileString</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewCode</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a template into a string</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compileswitch">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">compileSwitch(
-    array $statement,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">compileSwitch</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a &#039;switch&#039; statement returning PHP code</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-expression">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">expression(
-    array $expr,
-    bool $doubleQuotes = false
-)</code>
+<code class="sig"><span class="sf">expression</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$doubleQuotes</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Resolves an expression node in an AST volt tree</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-fireextensionevent">
 <code class="vis vis-public">public</code>
-<code class="sig">fireExtensionEvent(
-    string $name,
-    array $arguments = []
-)</code>
+<code class="sig"><span class="sf">fireExtensionEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Fires an event to registered extensions</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-functioncall">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">functionCall(
-    array $expr,
-    bool $doubleQuotes = false
-)</code>
+<code class="sig"><span class="sf">functionCall</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expr</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$doubleQuotes</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Resolves function intermediate code into PHP function calls</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getcompiledtemplatepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getCompiledTemplatePath()</code>
+<code class="sig"><span class="sf">getCompiledTemplatePath</span>()</code>
 <span class="desc">Returns the path to the last compiled template</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the internal dependency injector</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getextensions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getExtensions()</code>
+<code class="sig"><span class="sf">getExtensions</span>()</code>
 <span class="desc">Returns the list of extensions registered in Volt</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getFilters()</code>
+<code class="sig"><span class="sf">getFilters</span>()</code>
 <span class="desc">Register the user registered filters</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getfunctions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getFunctions()</code>
+<code class="sig"><span class="sf">getFunctions</span>()</code>
 <span class="desc">Register the user registered functions</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getoption">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getOption( string $option )</code>
+<code class="sig"><span class="sf">getOption</span>( <span class="st">string</span> <span class="sv">$option</span> )</code>
 <span class="desc">Returns a compiler&#039;s option</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the compiler options</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-gettemplatepath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTemplatePath()</code>
+<code class="sig"><span class="sf">getTemplatePath</span>()</code>
 <span class="desc">Returns the path that is currently being compiled</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getuniqueprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getUniquePrefix()</code>
+<code class="sig"><span class="sf">getUniquePrefix</span>()</code>
 <span class="desc">Return a unique prefix to be used as prefix for compiled variables and</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-parse">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">parse( string $viewCode )</code>
+<code class="sig"><span class="sf">parse</span>( <span class="st">string</span> <span class="sv">$viewCode</span> )</code>
 <span class="desc">Parses a Volt template returning its intermediate representation</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-resolvetest">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">resolveTest(
-    array $test,
-    string $left
-)</code>
+<code class="sig"><span class="sf">resolveTest</span>(<span class="prm"><span class="st">array</span> <span class="sv">$test</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$left</span></span>)</code>
 <span class="desc">Resolves filter intermediate code into a valid PHP expression</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the dependency injector</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-setoption">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setOption(
-    string $option,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets a single compiler option</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets the compiler options</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-setuniqueprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUniquePrefix( string $prefix )</code>
+<code class="sig"><span class="sf">setUniquePrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Set a unique prefix to be used as prefix for compiled variables</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-compilesource">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|string</code>
-<code class="sig">compileSource(
-    string $viewCode,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">compileSource</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewCode</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Compiles a Volt source code returning a PHP plain version</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-getfinalpath">
 <code class="vis vis-protected">protected</code>
-<code class="sig">getFinalPath( string $path )</code>
+<code class="sig"><span class="sf">getFinalPath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">Gets the final path with VIEW</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-resolvefilter">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">resolveFilter(
-    array $filter,
-    string $left
-)</code>
+<code class="sig"><span class="sf">resolveFilter</span>(<span class="prm"><span class="st">array</span> <span class="sv">$filter</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$left</span></span>)</code>
 <span class="desc">Resolves filter intermediate code into PHP function calls</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-statementlist">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">statementList(
-    array $statements,
-    bool $extendsMode = false
-)</code>
+<code class="sig"><span class="sf">statementList</span>(<span class="prm"><span class="st">array</span> <span class="sv">$statements</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$extendsMode</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Traverses a statement list compiling each of its nodes</span>
 </a>
 <a class="api-item" href="#mvcviewenginevoltcompiler-statementlistorextends">
 <code class="vis vis-protected">protected</code>
-<code class="sig">statementListOrExtends( mixed $statements )</code>
+<code class="sig"><span class="sf">statementListOrExtends</span>( <span class="st">mixed</span> <span class="sv">$statements</span> )</code>
 <span class="desc">Compiles a block of statements</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$autoescape = false` `bool`
-
--   `protected`{ .vis-protected } `$blockLevel = 0` `int`
-
--   `protected`{ .vis-protected } `$blocks` `array|null`
-
-    TODO: Make array only?
-
--   `protected`{ .vis-protected } `$compiledTemplatePath` `string|null`
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$currentBlock = null` `string|null`
-
--   `protected`{ .vis-protected } `$currentPath = null` `string|null`
-
--   `protected`{ .vis-protected } `$exprLevel = 0` `int`
-
--   `protected`{ .vis-protected } `$extended = false` `bool`
-
--   `protected`{ .vis-protected } `$extendedBlocks` `array|bool`
-
-    TODO: Make it always array
-
--   `protected`{ .vis-protected } `$extensions = []` `array`
-
--   `protected`{ .vis-protected } `$filters = []` `array`
-
--   `protected`{ .vis-protected } `$forElsePointers = []` `array`
-
--   `protected`{ .vis-protected } `$foreachLevel = 0` `int`
-
--   `protected`{ .vis-protected } `$functions = []` `array`
-
--   `protected`{ .vis-protected } `$level = 0` `int`
-
--   `protected`{ .vis-protected } `$loopPointers = []` `array`
-
--   `protected`{ .vis-protected } `$macros = []` `array`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$prefix = ""` `string`
-
--   `protected`{ .vis-protected } `$view` `ViewBaseInterface|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autoescape</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$blockLevel</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$blocks</span></code>
+<span class="desc">TODO: Make array only?</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$compiledTemplatePath</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$currentBlock</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$currentPath</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$exprLevel</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$extended</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|bool</code>
+<code class="sig"><span class="sv">$extendedBlocks</span></code>
+<span class="desc">TODO: Make it always array</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$extensions</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$forElsePointers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$foreachLevel</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$functions</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$level</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$loopPointers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$macros</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ViewBaseInterface|null</code>
+<code class="sig"><span class="sv">$view</span></code>
+</div>
 </div>
 
 ### Methods
@@ -33036,27 +32302,24 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexception-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $message = &quot;&quot;,
-    array $statement = [],
-    int $code = 0,
-    \Exception $previous = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$statement</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$code</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">\Exception</span> <span class="sv">$previous</span><span class="sm"> = null</span></span>)</code>
 </a>
 <a class="api-item" href="#mvcviewenginevoltexception-getstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getStatement()</code>
+<code class="sig"><span class="sf">getStatement</span>()</code>
 <span class="desc">Gets currently parsed statement (if any).</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$statement = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$statement</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -33112,7 +32375,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionscannotopencompiledfile-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $path )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 </a>
 </div>
 
@@ -33156,7 +32419,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionscorruptedstatement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33200,7 +32463,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionscorruptedstatementwithdata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $statement )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$statement</span> )</code>
 </a>
 </div>
 
@@ -33244,7 +32507,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidcompilationprefix-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33288,7 +32551,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidextension-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33332,7 +32595,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidhaystack-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33376,7 +32639,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidintermediaterepresentation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33420,10 +32683,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidoptiontype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $option,
-    string $type
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$option</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$type</span></span>)</code>
 </a>
 </div>
 
@@ -33470,7 +32730,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidpathclosurereturn-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33514,7 +32774,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidpathtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33558,11 +32818,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvalidstatement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $file,
-    int $line,
-    array $statement
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$statement</span></span>)</code>
 </a>
 </div>
 
@@ -33610,11 +32866,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvaliduserfilterdefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $file,
-    int $line
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span></span>)</code>
 </a>
 </div>
 
@@ -33662,11 +32914,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsinvaliduserfunctiondefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $file,
-    int $line
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span></span>)</code>
 </a>
 </div>
 
@@ -33714,7 +32962,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsmacroalreadydefined-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -33758,7 +33006,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsmacronotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -33802,7 +33050,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsmbstringrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33846,7 +33094,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionstemplatefilenotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $path )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 </a>
 </div>
 
@@ -33890,7 +33138,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionstemplatefilenotopenable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $path )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 </a>
 </div>
 
@@ -33934,7 +33182,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionstemplatepathcollision-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -33978,11 +33226,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsunknownvoltexpression-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    int $type,
-    string $file,
-    int $line
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span></span>)</code>
 </a>
 </div>
 
@@ -34030,11 +33274,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsunknownvoltfilter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    string $file,
-    int $line
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span></span>)</code>
 </a>
 </div>
 
@@ -34082,10 +33322,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsunknownvoltfiltertype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $file,
-    int $line
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span></span>)</code>
 </a>
 </div>
 
@@ -34132,11 +33369,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsunknownvoltstatement-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    int $type,
-    string $file,
-    int $line
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">int</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span></span>)</code>
 </a>
 </div>
 
@@ -34184,7 +33417,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewenginevoltexceptionsvoltdirectorynotwritable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -34252,7 +33485,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewexceptionsinvalidengineregistration-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $extension )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$extension</span> )</code>
 </a>
 </div>
 
@@ -34295,7 +33528,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewexceptionsinvalidviewsdirtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -34338,7 +33571,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewexceptionssimpleviewnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $viewsDirPath )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$viewsDirPath</span> )</code>
 </a>
 </div>
 
@@ -34381,7 +33614,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewexceptionssimpleviewservicesunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -34424,7 +33657,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewexceptionsviewnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $viewPath )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$viewPath</span> )</code>
 </a>
 </div>
 
@@ -34467,7 +33700,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewexceptionsviewservicesunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -34510,7 +33743,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 <div class="api-list">
 <a class="api-item" href="#mvcviewexceptionsviewsdiritemmustbestring-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -34570,171 +33803,173 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <div class="api-list">
 <a class="api-item" href="#mvcviewsimple-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Mvc\View\Simple constructor</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-__get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">__get( string $key )</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Magic method to retrieve a variable passed to the view</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-__set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__set(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Magic method to pass variables to the views</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-getactiverenderpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getActiveRenderPath()</code>
+<code class="sig"><span class="sf">getActiveRenderPath</span>()</code>
 <span class="desc">Returns the path of the view that is currently rendered</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getContent()</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Returns output from another view stage</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-getparamstoview">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getParamsToView()</code>
+<code class="sig"><span class="sf">getParamsToView</span>()</code>
 <span class="desc">Returns parameters to views</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-getregisteredengines">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getRegisteredEngines()</code>
+<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
 </a>
 <a class="api-item" href="#mvcviewsimple-getvar">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getVar( string $key )</code>
+<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Returns a parameter previously set in the view</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-getviewsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getViewsDir()</code>
+<code class="sig"><span class="sf">getViewsDir</span>()</code>
 <span class="desc">Gets views directory</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-partial">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">partial(
-    string $partialPath,
-    mixed $params = null
-)</code>
+<code class="sig"><span class="sf">partial</span>(<span class="prm"><span class="st">string</span> <span class="sv">$partialPath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Renders a partial view</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-registerengines">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">registerEngines( array $engines )</code>
+<code class="sig"><span class="sf">registerEngines</span>( <span class="st">array</span> <span class="sv">$engines</span> )</code>
 <span class="desc">Register templating engines</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-render">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">render(
-    string $path,
-    array $params = []
-)</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Renders a view</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-setcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setContent( string $content )</code>
+<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
 <span class="desc">Externally sets the view content</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-setparamtoview">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setParamToView(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParamToView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Adds parameters to views (alias of setVar)</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-setvar">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setVar(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a single view parameter</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-setvars">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setVars(
-    array $params,
-    bool $merge = true
-)</code>
+<code class="sig"><span class="sf">setVars</span>(<span class="prm"><span class="st">array</span> <span class="sv">$params</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Set all the render params</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-setviewsdir">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setViewsDir( string $viewsDir )</code>
+<code class="sig"><span class="sf">setViewsDir</span>( <span class="st">string</span> <span class="sv">$viewsDir</span> )</code>
 <span class="desc">Sets views directory</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-internalrender">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">internalRender(
-    string $path,
-    mixed $params
-)</code>
+<code class="sig"><span class="sf">internalRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span></span>)</code>
 <span class="desc">Tries to render the view with every engine registered in the component</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-loadtemplateengines">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">loadTemplateEngines()</code>
+<code class="sig"><span class="sf">loadTemplateEngines</span>()</code>
 <span class="desc">Loads registered template engines, if none are registered it will use</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$activeRenderPath` `string`
-
--   `protected`{ .vis-protected } `$content` `string`
-
--   `protected`{ .vis-protected } `$engines = false` `EngineInterface[]|false`
-
--   `protected`{ .vis-protected } `$eventsManager` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$registeredEngines = []` `array`
-
--   `protected`{ .vis-protected } `$viewParams = []` `array`
-
--   `protected`{ .vis-protected } `$viewsDir` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$activeRenderPath</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$content</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">EngineInterface[]|false</code>
+<code class="sig"><span class="sv">$engines</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$viewsDir</span></code>
+</div>
 </div>
 
 ### Methods

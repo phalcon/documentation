@@ -31,192 +31,217 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <a class="api-item" href="#httpcookie-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $name,
-    mixed $value = null,
-    int $expire = 0,
-    string $path = &quot;/&quot;,
-    bool $secure = false,
-    string $domain = &quot;&quot;,
-    bool $httpOnly = false,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$expire</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span><span class="sm"> = &quot;/&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$secure</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$httpOnly</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Phalcon\Http\Cookie constructor.</span>
 </a>
 <a class="api-item" href="#httpcookie-__tostring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__toString()</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
 <span class="desc">Magic __toString method converts the cookie&#039;s value to string</span>
 </a>
 <a class="api-item" href="#httpcookie-delete">
 <code class="vis vis-public">public</code>
-<code class="sig">delete()</code>
+<code class="sig"><span class="sf">delete</span>()</code>
 <span class="desc">Deletes the cookie by setting an expire time in the past</span>
 </a>
 <a class="api-item" href="#httpcookie-getdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDomain()</code>
+<code class="sig"><span class="sf">getDomain</span>()</code>
 <span class="desc">Returns the domain that the cookie is available to</span>
 </a>
 <a class="api-item" href="#httpcookie-getexpiration">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getExpiration()</code>
+<code class="sig"><span class="sf">getExpiration</span>()</code>
 <span class="desc">Returns the current expiration time</span>
 </a>
 <a class="api-item" href="#httpcookie-gethttponly">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getHttpOnly()</code>
+<code class="sig"><span class="sf">getHttpOnly</span>()</code>
 <span class="desc">Returns if the cookie is accessible only through the HTTP protocol</span>
 </a>
 <a class="api-item" href="#httpcookie-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the current cookie&#039;s name</span>
 </a>
 <a class="api-item" href="#httpcookie-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the current cookie&#039;s options</span>
 </a>
 <a class="api-item" href="#httpcookie-getpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPath()</code>
+<code class="sig"><span class="sf">getPath</span>()</code>
 <span class="desc">Returns the current cookie&#039;s path</span>
 </a>
 <a class="api-item" href="#httpcookie-getsecure">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getSecure()</code>
+<code class="sig"><span class="sf">getSecure</span>()</code>
 <span class="desc">Returns whether the cookie must only be sent when the connection is</span>
 </a>
 <a class="api-item" href="#httpcookie-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getValue(
-    mixed $filters = null,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the cookie&#039;s value.</span>
 </a>
 <a class="api-item" href="#httpcookie-isusingencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUsingEncryption()</code>
+<code class="sig"><span class="sf">isUsingEncryption</span>()</code>
 <span class="desc">Check if the cookie is using implicit encryption</span>
 </a>
 <a class="api-item" href="#httpcookie-restore">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">restore()</code>
+<code class="sig"><span class="sf">restore</span>()</code>
 <span class="desc">Reads the cookie-related info from the SESSION to restore the cookie as</span>
 </a>
 <a class="api-item" href="#httpcookie-send">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Sends the cookie to the HTTP client.</span>
 </a>
 <a class="api-item" href="#httpcookie-setdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setDomain( string $domain )</code>
+<code class="sig"><span class="sf">setDomain</span>( <span class="st">string</span> <span class="sv">$domain</span> )</code>
 <span class="desc">Sets the domain that the cookie is available to</span>
 </a>
 <a class="api-item" href="#httpcookie-setexpiration">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setExpiration( int $expire )</code>
+<code class="sig"><span class="sf">setExpiration</span>( <span class="st">int</span> <span class="sv">$expire</span> )</code>
 <span class="desc">Sets the cookie&#039;s expiration time</span>
 </a>
 <a class="api-item" href="#httpcookie-sethttponly">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setHttpOnly( bool $httpOnly )</code>
+<code class="sig"><span class="sf">setHttpOnly</span>( <span class="st">bool</span> <span class="sv">$httpOnly</span> )</code>
 <span class="desc">Sets if the cookie is accessible only through the HTTP protocol</span>
 </a>
 <a class="api-item" href="#httpcookie-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets the cookie&#039;s options</span>
 </a>
 <a class="api-item" href="#httpcookie-setpath">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setPath( string $path )</code>
+<code class="sig"><span class="sf">setPath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">Sets the cookie&#039;s path</span>
 </a>
 <a class="api-item" href="#httpcookie-setsecure">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setSecure( bool $secure )</code>
+<code class="sig"><span class="sf">setSecure</span>( <span class="st">bool</span> <span class="sv">$secure</span> )</code>
 <span class="desc">Sets if the cookie must only be sent when the connection is secure (HTTPS)</span>
 </a>
 <a class="api-item" href="#httpcookie-setsignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setSignKey( string $signKey = null )</code>
+<code class="sig"><span class="sf">setSignKey</span>( <span class="st">string</span> <span class="sv">$signKey</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the cookie&#039;s sign key.</span>
 </a>
 <a class="api-item" href="#httpcookie-setvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setValue( mixed $value )</code>
+<code class="sig"><span class="sf">setValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Sets the cookie&#039;s value</span>
 </a>
 <a class="api-item" href="#httpcookie-useencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">useEncryption( bool $useEncryption )</code>
+<code class="sig"><span class="sf">useEncryption</span>( <span class="st">bool</span> <span class="sv">$useEncryption</span> )</code>
 <span class="desc">Sets if the cookie must be encrypted/decrypted automatically</span>
 </a>
 <a class="api-item" href="#httpcookie-assertsignkeyislongenough">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">assertSignKeyIsLongEnough( string $signKey )</code>
+<code class="sig"><span class="sf">assertSignKeyIsLongEnough</span>( <span class="st">string</span> <span class="sv">$signKey</span> )</code>
 <span class="desc">Assert the cookie&#039;s key is enough long.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$domain` `string`
-
--   `protected`{ .vis-protected } `$expire` `int`
-
--   `protected`{ .vis-protected } `$filter = null` `FilterInterface|null`
-
--   `protected`{ .vis-protected } `$httpOnly` `bool`
-
--   `protected`{ .vis-protected } `$isRead = false` `bool`
-
--   `protected`{ .vis-protected } `$isRestored = false` `bool`
-
--   `protected`{ .vis-protected } `$name` `string`
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$path` `string`
-
--   `protected`{ .vis-protected } `$secure = true` `bool`
-
--   `protected`{ .vis-protected } `$signKey = null` `string|null`
-
-    The cookie's sign key.
-
--   `protected`{ .vis-protected } `$useEncryption = false` `bool`
-
--   `protected`{ .vis-protected } `$value = null` `mixed|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$domain</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$expire</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">FilterInterface|null</code>
+<code class="sig"><span class="sv">$filter</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$httpOnly</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isRead</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isRestored</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$path</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$secure</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$signKey</span><span class="sm"> = null</span></code>
+<span class="desc">The cookie&#039;s sign key.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$useEncryption</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sv">$value</span><span class="sm"> = null</span></code>
+</div>
 </div>
 
 ### Methods
@@ -462,118 +487,115 @@ Interface for Phalcon\Http\Cookie
 <div class="api-list">
 <a class="api-item" href="#httpcookiecookieinterface-delete">
 <code class="vis vis-public">public</code>
-<code class="sig">delete()</code>
+<code class="sig"><span class="sf">delete</span>()</code>
 <span class="desc">Deletes the cookie</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-getdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDomain()</code>
+<code class="sig"><span class="sf">getDomain</span>()</code>
 <span class="desc">Returns the domain that the cookie is available to</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-getexpiration">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getExpiration()</code>
+<code class="sig"><span class="sf">getExpiration</span>()</code>
 <span class="desc">Returns the current expiration time</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-gethttponly">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getHttpOnly()</code>
+<code class="sig"><span class="sf">getHttpOnly</span>()</code>
 <span class="desc">Returns if the cookie is accessible only through the HTTP protocol</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the current cookie&#039;s name</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 <span class="desc">Returns the current cookie&#039;s options</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-getpath">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPath()</code>
+<code class="sig"><span class="sf">getPath</span>()</code>
 <span class="desc">Returns the current cookie&#039;s path</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-getsecure">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getSecure()</code>
+<code class="sig"><span class="sf">getSecure</span>()</code>
 <span class="desc">Returns whether the cookie must only be sent when the connection is</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getValue(
-    mixed $filters = null,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the cookie&#039;s value.</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-isusingencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUsingEncryption()</code>
+<code class="sig"><span class="sf">isUsingEncryption</span>()</code>
 <span class="desc">Check if the cookie is using implicit encryption</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-send">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Sends the cookie to the HTTP client</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-setdomain">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setDomain( string $domain )</code>
+<code class="sig"><span class="sf">setDomain</span>( <span class="st">string</span> <span class="sv">$domain</span> )</code>
 <span class="desc">Sets the domain that the cookie is available to</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-setexpiration">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setExpiration( int $expire )</code>
+<code class="sig"><span class="sf">setExpiration</span>( <span class="st">int</span> <span class="sv">$expire</span> )</code>
 <span class="desc">Sets the cookie&#039;s expiration time</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-sethttponly">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setHttpOnly( bool $httpOnly )</code>
+<code class="sig"><span class="sf">setHttpOnly</span>( <span class="st">bool</span> <span class="sv">$httpOnly</span> )</code>
 <span class="desc">Sets if the cookie is accessible only through the HTTP protocol</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-setoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setOptions( array $options )</code>
+<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
 <span class="desc">Sets the cookie&#039;s options</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-setpath">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setPath( string $path )</code>
+<code class="sig"><span class="sf">setPath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">Sets the cookie&#039;s expiration time</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-setsecure">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setSecure( bool $secure )</code>
+<code class="sig"><span class="sf">setSecure</span>( <span class="st">bool</span> <span class="sv">$secure</span> )</code>
 <span class="desc">Sets if the cookie must only be sent when the connection is secure</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-setvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">setValue( mixed $value )</code>
+<code class="sig"><span class="sf">setValue</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Sets the cookie&#039;s value</span>
 </a>
 <a class="api-item" href="#httpcookiecookieinterface-useencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">useEncryption( bool $useEncryption )</code>
+<code class="sig"><span class="sf">useEncryption</span>( <span class="st">bool</span> <span class="sv">$useEncryption</span> )</code>
 <span class="desc">Sets if the cookie must be encrypted/decrypted automatically</span>
 </a>
 </div>
@@ -789,7 +811,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpcookieexceptionscookiekeytooshort-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( int $length )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">int</span> <span class="sv">$length</span> )</code>
 </a>
 </div>
 
@@ -832,7 +854,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpcookieexceptionscryptinterfacerequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -875,7 +897,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpcookieexceptionscryptserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -918,7 +940,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpcookieexceptionsfilterserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -952,28 +974,47 @@ Implementation of this file has been influenced by PHP FIG
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `METHOD_CONNECT = "CONNECT"` `string`
-
--   `METHOD_DELETE = "DELETE"` `string`
-
--   `METHOD_GET = "GET"` `string`
-
--   `METHOD_HEAD = "HEAD"` `string`
-
--   `METHOD_OPTIONS = "OPTIONS"` `string`
-
--   `METHOD_PATCH = "PATCH"` `string`
-
--   `METHOD_POST = "POST"` `string`
-
--   `METHOD_PURGE = "PURGE"` `string`
-
--   `METHOD_PUT = "PUT"` `string`
-
--   `METHOD_TRACE = "TRACE"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_CONNECT</span><span class="sm"> = &quot;CONNECT&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_DELETE</span><span class="sm"> = &quot;DELETE&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_GET</span><span class="sm"> = &quot;GET&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_HEAD</span><span class="sm"> = &quot;HEAD&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_OPTIONS</span><span class="sm"> = &quot;OPTIONS&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_PATCH</span><span class="sm"> = &quot;PATCH&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_POST</span><span class="sm"> = &quot;POST&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_PURGE</span><span class="sm"> = &quot;PURGE&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_PUT</span><span class="sm"> = &quot;PUT&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">METHOD_TRACE</span><span class="sm"> = &quot;TRACE&quot;</span></code>
+</div>
 </div>
 
 
@@ -1017,184 +1058,359 @@ Defines constants for common HTTP status code.
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `STATUS_ACCEPTED = 202` `int`
-
--   `STATUS_ALREADY_REPORTED = 208` `int`
-
--   `STATUS_BAD_GATEWAY = 502` `int`
-
--   `STATUS_BAD_REQUEST = 400` `int`
-
--   `STATUS_BANDWIDTH_LIMIT_EXCEEDED = 509` `int`
-
--   `STATUS_BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS = 450` `int`
-
--   `STATUS_CLIENT_CLOSED_REQUEST = 499` `int`
-
--   `STATUS_CONFLICT = 409` `int`
-
--   `STATUS_CONNECTION_TIMEOUT = 522` `int`
-
--   `STATUS_CONTINUE = 100` `int`
-
--   `STATUS_CREATED = 201` `int`
-
--   `STATUS_EARLY_HINTS = 103` `int`
-
--   `STATUS_EXPECTATION_FAILED = 417` `int`
-
--   `STATUS_FAILED_DEPENDENCY = 424` `int`
-
--   `STATUS_FORBIDDEN = 403` `int`
-
--   `STATUS_FOUND = 302` `int`
-
--   `STATUS_GATEWAY_TIMEOUT = 504` `int`
-
--   `STATUS_GONE = 410` `int`
-
--   `STATUS_HTTP_REQUEST_SENT_TO_HTTPS_PORT = 497` `int`
-
--   `STATUS_IM_A_TEAPOT = 418` `int`
-
--   `STATUS_IM_USED = 226` `int`
-
--   `STATUS_INSUFFICIENT_STORAGE = 507` `int`
-
--   `STATUS_INTERNAL_SERVER_ERROR = 500` `int`
-
--   `STATUS_INVALID_SSL_CERTIFICATE = 526` `int`
-
--   `STATUS_INVALID_TOKEN_ESRI = 498` `int`
-
--   `STATUS_LENGTH_REQUIRED = 411` `int`
-
--   `STATUS_LOCKED = 423` `int`
-
--   `STATUS_LOGIN_TIMEOUT = 440` `int`
-
--   `STATUS_LOOP_DETECTED = 508` `int`
-
--   `STATUS_METHOD_FAILURE = 420` `int`
-
--   `STATUS_METHOD_NOT_ALLOWED = 405` `int`
-
--   `STATUS_MISDIRECTED_REQUEST = 421` `int`
-
--   `STATUS_MOVED_PERMANENTLY = 301` `int`
-
--   `STATUS_MULTIPLE_CHOICES = 300` `int`
-
--   `STATUS_MULTI_STATUS = 207` `int`
-
--   `STATUS_NETWORK_AUTHENTICATION_REQUIRED = 511` `int`
-
--   `STATUS_NETWORK_CONNECT_TIMEOUT_ERROR = 599` `int`
-
--   `STATUS_NETWORK_READ_TIMEOUT_ERROR = 598` `int`
-
--   `STATUS_NON_AUTHORITATIVE_INFORMATION = 203` `int`
-
--   `STATUS_NOT_ACCEPTABLE = 406` `int`
-
--   `STATUS_NOT_EXTENDED = 510` `int`
-
--   `STATUS_NOT_FOUND = 404` `int`
-
--   `STATUS_NOT_IMPLEMENTED = 501` `int`
-
--   `STATUS_NOT_MODIFIED = 304` `int`
-
--   `STATUS_NO_CONTENT = 204` `int`
-
--   `STATUS_NO_RESPONSE = 444` `int`
-
--   `STATUS_OK = 200` `int`
-
--   `STATUS_ORIGIN_DNS_ERROR = 530` `int`
-
--   `STATUS_ORIGIN_IS_UNREACHABLE = 523` `int`
-
--   `STATUS_PAGE_EXPIRED = 419` `int`
-
--   `STATUS_PARTIAL_CONTENT = 206` `int`
-
--   `STATUS_PAYLOAD_TOO_LARGE = 413` `int`
-
--   `STATUS_PAYMENT_REQUIRED = 402` `int`
-
--   `STATUS_PERMANENT_REDIRECT = 308` `int`
-
--   `STATUS_PRECONDITION_FAILED = 412` `int`
-
--   `STATUS_PRECONDITION_REQUIRED = 428` `int`
-
--   `STATUS_PROCESSING = 102` `int`
-
--   `STATUS_PROXY_AUTHENTICATION_REQUIRED = 407` `int`
-
--   `STATUS_RAILGUN_ERROR = 527` `int`
-
--   `STATUS_RANGE_NOT_SATISFIABLE = 416` `int`
-
--   `STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE = 431` `int`
-
--   `STATUS_REQUEST_HEADER_TOO_LARGE = 494` `int`
-
--   `STATUS_REQUEST_TIMEOUT = 408` `int`
-
--   `STATUS_RESERVED = 306` `int`
-
--   `STATUS_RESET_CONTENT = 205` `int`
-
--   `STATUS_RETRY_WITH = 449` `int`
-
--   `STATUS_SEE_OTHER = 303` `int`
-
--   `STATUS_SERVICE_UNAVAILABLE = 503` `int`
-
--   `STATUS_SSL_CERTIFICATE_ERROR = 495` `int`
-
--   `STATUS_SSL_CERTIFICATE_REQUIRED = 496` `int`
-
--   `STATUS_SSL_HANDSHAKE_FAILED = 525` `int`
-
--   `STATUS_SWITCHING_PROTOCOLS = 101` `int`
-
--   `STATUS_TEMPORARY_REDIRECT = 307` `int`
-
--   `STATUS_THIS_IS_FINE = 218` `int`
-
--   `STATUS_TIMEOUT_OCCURRED = 524` `int`
-
--   `STATUS_TOO_EARLY = 425` `int`
-
--   `STATUS_TOO_MANY_REQUESTS = 429` `int`
-
--   `STATUS_UNAUTHORIZED = 401` `int`
-
--   `STATUS_UNAVAILABLE_FOR_LEGAL_REASONS = 451` `int`
-
--   `STATUS_UNKNOWN_ERROR = 520` `int`
-
--   `STATUS_UNPROCESSABLE_ENTITY = 422` `int`
-
--   `STATUS_UNSUPPORTED_MEDIA_TYPE = 415` `int`
-
--   `STATUS_UPGRADE_REQUIRED = 426` `int`
-
--   `STATUS_URI_TOO_LONG = 414` `int`
-
--   `STATUS_USE_PROXY = 305` `int`
-
--   `STATUS_VARIANT_ALSO_NEGOTIATES = 506` `int`
-
--   `STATUS_VERSION_NOT_SUPPORTED = 505` `int`
-
--   `STATUS_WEB_SERVER_IS_DOWN = 521` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_ACCEPTED</span><span class="sm"> = 202</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_ALREADY_REPORTED</span><span class="sm"> = 208</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_BAD_GATEWAY</span><span class="sm"> = 502</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_BAD_REQUEST</span><span class="sm"> = 400</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_BANDWIDTH_LIMIT_EXCEEDED</span><span class="sm"> = 509</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS</span><span class="sm"> = 450</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_CLIENT_CLOSED_REQUEST</span><span class="sm"> = 499</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_CONFLICT</span><span class="sm"> = 409</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_CONNECTION_TIMEOUT</span><span class="sm"> = 522</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_CONTINUE</span><span class="sm"> = 100</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_CREATED</span><span class="sm"> = 201</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_EARLY_HINTS</span><span class="sm"> = 103</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_EXPECTATION_FAILED</span><span class="sm"> = 417</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_FAILED_DEPENDENCY</span><span class="sm"> = 424</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_FORBIDDEN</span><span class="sm"> = 403</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_FOUND</span><span class="sm"> = 302</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_GATEWAY_TIMEOUT</span><span class="sm"> = 504</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_GONE</span><span class="sm"> = 410</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_HTTP_REQUEST_SENT_TO_HTTPS_PORT</span><span class="sm"> = 497</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_IM_A_TEAPOT</span><span class="sm"> = 418</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_IM_USED</span><span class="sm"> = 226</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_INSUFFICIENT_STORAGE</span><span class="sm"> = 507</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_INTERNAL_SERVER_ERROR</span><span class="sm"> = 500</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_INVALID_SSL_CERTIFICATE</span><span class="sm"> = 526</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_INVALID_TOKEN_ESRI</span><span class="sm"> = 498</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_LENGTH_REQUIRED</span><span class="sm"> = 411</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_LOCKED</span><span class="sm"> = 423</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_LOGIN_TIMEOUT</span><span class="sm"> = 440</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_LOOP_DETECTED</span><span class="sm"> = 508</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_METHOD_FAILURE</span><span class="sm"> = 420</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_METHOD_NOT_ALLOWED</span><span class="sm"> = 405</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_MISDIRECTED_REQUEST</span><span class="sm"> = 421</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_MOVED_PERMANENTLY</span><span class="sm"> = 301</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_MULTIPLE_CHOICES</span><span class="sm"> = 300</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_MULTI_STATUS</span><span class="sm"> = 207</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NETWORK_AUTHENTICATION_REQUIRED</span><span class="sm"> = 511</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NETWORK_CONNECT_TIMEOUT_ERROR</span><span class="sm"> = 599</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NETWORK_READ_TIMEOUT_ERROR</span><span class="sm"> = 598</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NON_AUTHORITATIVE_INFORMATION</span><span class="sm"> = 203</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NOT_ACCEPTABLE</span><span class="sm"> = 406</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NOT_EXTENDED</span><span class="sm"> = 510</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NOT_FOUND</span><span class="sm"> = 404</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NOT_IMPLEMENTED</span><span class="sm"> = 501</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NOT_MODIFIED</span><span class="sm"> = 304</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NO_CONTENT</span><span class="sm"> = 204</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_NO_RESPONSE</span><span class="sm"> = 444</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_OK</span><span class="sm"> = 200</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_ORIGIN_DNS_ERROR</span><span class="sm"> = 530</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_ORIGIN_IS_UNREACHABLE</span><span class="sm"> = 523</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PAGE_EXPIRED</span><span class="sm"> = 419</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PARTIAL_CONTENT</span><span class="sm"> = 206</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PAYLOAD_TOO_LARGE</span><span class="sm"> = 413</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PAYMENT_REQUIRED</span><span class="sm"> = 402</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PERMANENT_REDIRECT</span><span class="sm"> = 308</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PRECONDITION_FAILED</span><span class="sm"> = 412</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PRECONDITION_REQUIRED</span><span class="sm"> = 428</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PROCESSING</span><span class="sm"> = 102</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_PROXY_AUTHENTICATION_REQUIRED</span><span class="sm"> = 407</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_RAILGUN_ERROR</span><span class="sm"> = 527</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_RANGE_NOT_SATISFIABLE</span><span class="sm"> = 416</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE</span><span class="sm"> = 431</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_REQUEST_HEADER_TOO_LARGE</span><span class="sm"> = 494</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_REQUEST_TIMEOUT</span><span class="sm"> = 408</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_RESERVED</span><span class="sm"> = 306</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_RESET_CONTENT</span><span class="sm"> = 205</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_RETRY_WITH</span><span class="sm"> = 449</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_SEE_OTHER</span><span class="sm"> = 303</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_SERVICE_UNAVAILABLE</span><span class="sm"> = 503</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_SSL_CERTIFICATE_ERROR</span><span class="sm"> = 495</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_SSL_CERTIFICATE_REQUIRED</span><span class="sm"> = 496</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_SSL_HANDSHAKE_FAILED</span><span class="sm"> = 525</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_SWITCHING_PROTOCOLS</span><span class="sm"> = 101</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_TEMPORARY_REDIRECT</span><span class="sm"> = 307</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_THIS_IS_FINE</span><span class="sm"> = 218</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_TIMEOUT_OCCURRED</span><span class="sm"> = 524</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_TOO_EARLY</span><span class="sm"> = 425</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_TOO_MANY_REQUESTS</span><span class="sm"> = 429</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_UNAUTHORIZED</span><span class="sm"> = 401</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_UNAVAILABLE_FOR_LEGAL_REASONS</span><span class="sm"> = 451</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_UNKNOWN_ERROR</span><span class="sm"> = 520</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_UNPROCESSABLE_ENTITY</span><span class="sm"> = 422</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_UNSUPPORTED_MEDIA_TYPE</span><span class="sm"> = 415</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_UPGRADE_REQUIRED</span><span class="sm"> = 426</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_URI_TOO_LONG</span><span class="sm"> = 414</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_USE_PROXY</span><span class="sm"> = 305</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_VARIANT_ALSO_NEGOTIATES</span><span class="sm"> = 506</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_VERSION_NOT_SUPPORTED</span><span class="sm"> = 505</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">STATUS_WEB_SERVER_IS_DOWN</span><span class="sm"> = 521</span></code>
+</div>
 </div>
 
 
@@ -1245,568 +1461,498 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <a class="api-item" href="#httprequest-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the $_REQUEST superglobal applying filters if</span>
 </a>
 <a class="api-item" href="#httprequest-getacceptablecontent">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAcceptableContent()</code>
+<code class="sig"><span class="sf">getAcceptableContent</span>()</code>
 <span class="desc">Gets an array with mime/types and their quality accepted by the</span>
 </a>
 <a class="api-item" href="#httprequest-getbasicauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">getBasicAuth()</code>
+<code class="sig"><span class="sf">getBasicAuth</span>()</code>
 <span class="desc">Gets auth info accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequest-getbestaccept">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBestAccept()</code>
+<code class="sig"><span class="sf">getBestAccept</span>()</code>
 <span class="desc">Gets best mime/type accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequest-getbestcharset">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBestCharset()</code>
+<code class="sig"><span class="sf">getBestCharset</span>()</code>
 <span class="desc">Gets best charset accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequest-getbestlanguage">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBestLanguage()</code>
+<code class="sig"><span class="sf">getBestLanguage</span>()</code>
 <span class="desc">Gets best language accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequest-getclientaddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
-<code class="sig">getClientAddress( bool $trustForwardedHeader = false )</code>
+<code class="sig"><span class="sf">getClientAddress</span>( <span class="st">bool</span> <span class="sv">$trustForwardedHeader</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets most possible client IP Address. This method searches in</span>
 </a>
 <a class="api-item" href="#httprequest-getclientcharsets">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getClientCharsets()</code>
+<code class="sig"><span class="sf">getClientCharsets</span>()</code>
 <span class="desc">Gets a charsets array and their quality accepted by the browser/client</span>
 </a>
 <a class="api-item" href="#httprequest-getcontenttype">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getContentType()</code>
+<code class="sig"><span class="sf">getContentType</span>()</code>
 <span class="desc">Gets content type which request has been made</span>
 </a>
 <a class="api-item" href="#httprequest-getdigestauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDigestAuth()</code>
+<code class="sig"><span class="sf">getDigestAuth</span>()</code>
 <span class="desc">Gets auth info accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequest-getfiltereddata">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getFilteredData(
-    string $methodKey,
-    string $method,
-    string $name = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getFilteredData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$methodKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets filtered data</span>
 </a>
 <a class="api-item" href="#httprequest-getfilteredpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getFilteredPatch(
-    string $name = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getFilteredPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a patch value always sanitized with the preset filters</span>
 </a>
 <a class="api-item" href="#httprequest-getfilteredpost">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getFilteredPost(
-    string $name = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getFilteredPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a post value always sanitized with the preset filters</span>
 </a>
 <a class="api-item" href="#httprequest-getfilteredput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getFilteredPut(
-    string $name = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getFilteredPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a put value always sanitized with the preset filters</span>
 </a>
 <a class="api-item" href="#httprequest-getfilteredquery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getFilteredQuery(
-    string $name = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getFilteredQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a query/get value always sanitized with the preset filters</span>
 </a>
 <a class="api-item" href="#httprequest-gethttpreferer">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHTTPReferer()</code>
+<code class="sig"><span class="sf">getHTTPReferer</span>()</code>
 <span class="desc">Gets web page that refers active request. ie: http://www.google.com</span>
 </a>
 <a class="api-item" href="#httprequest-getheader">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHeader( string $header )</code>
+<code class="sig"><span class="sf">getHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Gets HTTP header from request data</span>
 </a>
 <a class="api-item" href="#httprequest-getheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getHeaders()</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
 <span class="desc">Returns the available headers in the request</span>
 </a>
 <a class="api-item" href="#httprequest-gethttphost">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHttpHost()</code>
+<code class="sig"><span class="sf">getHttpHost</span>()</code>
 <span class="desc">Gets host name used by the request.</span>
 </a>
 <a class="api-item" href="#httprequest-gethttpmethodparameteroverride">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">getHttpMethodParameterOverride()</code>
+<code class="sig"><span class="sf">getHttpMethodParameterOverride</span>()</code>
 <span class="desc">Return the HTTP method parameter override flag</span>
 </a>
 <a class="api-item" href="#httprequest-getjsonrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">\stdClass|array|bool</code>
-<code class="sig">getJsonRawBody( bool $associative = false )</code>
+<code class="sig"><span class="sf">getJsonRawBody</span>( <span class="st">bool</span> <span class="sv">$associative</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets decoded JSON HTTP raw request body</span>
 </a>
 <a class="api-item" href="#httprequest-getlanguages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getLanguages()</code>
+<code class="sig"><span class="sf">getLanguages</span>()</code>
 <span class="desc">Gets languages array and their quality accepted by the browser/client</span>
 </a>
 <a class="api-item" href="#httprequest-getmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMethod()</code>
+<code class="sig"><span class="sf">getMethod</span>()</code>
 <span class="desc">Gets HTTP method which request has been made</span>
 </a>
 <a class="api-item" href="#httprequest-getpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getPatch(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getPatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from put request</span>
 </a>
 <a class="api-item" href="#httprequest-getport">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getPort()</code>
+<code class="sig"><span class="sf">getPort</span>()</code>
 <span class="desc">Gets information about the port on which the request is made.</span>
 </a>
 <a class="api-item" href="#httprequest-getpost">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getPost(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the $_POST superglobal applying filters if needed</span>
 </a>
 <a class="api-item" href="#httprequest-getpreferredisolocalevariant">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getPreferredIsoLocaleVariant()</code>
+<code class="sig"><span class="sf">getPreferredIsoLocaleVariant</span>()</code>
 <span class="desc">Gets the preferred ISO locale variant.</span>
 </a>
 <a class="api-item" href="#httprequest-getput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getPut(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the PUT request</span>
 </a>
 <a class="api-item" href="#httprequest-getquery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getQuery(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets variable from $_GET superglobal applying filters if needed</span>
 </a>
 <a class="api-item" href="#httprequest-getrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRawBody()</code>
+<code class="sig"><span class="sf">getRawBody</span>()</code>
 <span class="desc">Gets HTTP raw request body</span>
 </a>
 <a class="api-item" href="#httprequest-getscheme">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getScheme()</code>
+<code class="sig"><span class="sf">getScheme</span>()</code>
 <span class="desc">Gets HTTP schema (http/https)</span>
 </a>
 <a class="api-item" href="#httprequest-getserver">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getServer( string $name )</code>
+<code class="sig"><span class="sf">getServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets variable from $_SERVER superglobal</span>
 </a>
 <a class="api-item" href="#httprequest-getserveraddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getServerAddress()</code>
+<code class="sig"><span class="sf">getServerAddress</span>()</code>
 <span class="desc">Gets active server address IP</span>
 </a>
 <a class="api-item" href="#httprequest-getservername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getServerName()</code>
+<code class="sig"><span class="sf">getServerName</span>()</code>
 <span class="desc">Gets active server name</span>
 </a>
 <a class="api-item" href="#httprequest-geturi">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getURI( bool $onlyPath = false )</code>
+<code class="sig"><span class="sf">getURI</span>( <span class="st">bool</span> <span class="sv">$onlyPath</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets HTTP URI which request has been made to</span>
 </a>
 <a class="api-item" href="#httprequest-getuploadedfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">FileInterface[]</code>
-<code class="sig">getUploadedFiles(
-    bool $onlySuccessful = false,
-    bool $namedKeys = false
-)</code>
+<code class="sig"><span class="sf">getUploadedFiles</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$namedKeys</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets attached files as Phalcon\Http\Request\File instances</span>
 </a>
 <a class="api-item" href="#httprequest-getuseragent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getUserAgent()</code>
+<code class="sig"><span class="sf">getUserAgent</span>()</code>
 <span class="desc">Gets HTTP user agent used to made the request</span>
 </a>
 <a class="api-item" href="#httprequest-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_REQUEST superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequest-hasfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasFiles()</code>
+<code class="sig"><span class="sf">hasFiles</span>()</code>
 <span class="desc">Returns if the request has files or not</span>
 </a>
 <a class="api-item" href="#httprequest-hasheader">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHeader( string $header )</code>
+<code class="sig"><span class="sf">hasHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Checks whether headers has certain index</span>
 </a>
 <a class="api-item" href="#httprequest-haspatch">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasPatch( string $name )</code>
+<code class="sig"><span class="sf">hasPatch</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether the PATCH data has certain index</span>
 </a>
 <a class="api-item" href="#httprequest-haspost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasPost( string $name )</code>
+<code class="sig"><span class="sf">hasPost</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_POST superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequest-hasput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasPut( string $name )</code>
+<code class="sig"><span class="sf">hasPut</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether the PUT data has certain index</span>
 </a>
 <a class="api-item" href="#httprequest-hasquery">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasQuery( string $name )</code>
+<code class="sig"><span class="sf">hasQuery</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_GET superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequest-hasserver">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasServer( string $name )</code>
+<code class="sig"><span class="sf">hasServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_SERVER superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequest-isajax">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAjax()</code>
+<code class="sig"><span class="sf">isAjax</span>()</code>
 <span class="desc">Checks whether request has been made using ajax</span>
 </a>
 <a class="api-item" href="#httprequest-isconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isConnect()</code>
+<code class="sig"><span class="sf">isConnect</span>()</code>
 <span class="desc">Checks whether HTTP method is CONNECT.</span>
 </a>
 <a class="api-item" href="#httprequest-isdelete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isDelete()</code>
+<code class="sig"><span class="sf">isDelete</span>()</code>
 <span class="desc">Checks whether HTTP method is DELETE.</span>
 </a>
 <a class="api-item" href="#httprequest-isget">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isGet()</code>
+<code class="sig"><span class="sf">isGet</span>()</code>
 <span class="desc">Checks whether HTTP method is GET.</span>
 </a>
 <a class="api-item" href="#httprequest-ishead">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isHead()</code>
+<code class="sig"><span class="sf">isHead</span>()</code>
 <span class="desc">Checks whether HTTP method is HEAD.</span>
 </a>
 <a class="api-item" href="#httprequest-isjson">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isJson()</code>
+<code class="sig"><span class="sf">isJson</span>()</code>
 <span class="desc">Checks whether request content type contains json data</span>
 </a>
 <a class="api-item" href="#httprequest-ismethod">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isMethod(
-    mixed $methods,
-    bool $strict = false
-)</code>
+<code class="sig"><span class="sf">isMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$methods</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strict</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Check if HTTP method match any of the passed methods</span>
 </a>
 <a class="api-item" href="#httprequest-isoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isOptions()</code>
+<code class="sig"><span class="sf">isOptions</span>()</code>
 <span class="desc">Checks whether HTTP method is OPTIONS.</span>
 </a>
 <a class="api-item" href="#httprequest-ispatch">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPatch()</code>
+<code class="sig"><span class="sf">isPatch</span>()</code>
 <span class="desc">Checks whether HTTP method is PATCH.</span>
 </a>
 <a class="api-item" href="#httprequest-ispost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPost()</code>
+<code class="sig"><span class="sf">isPost</span>()</code>
 <span class="desc">Checks whether HTTP method is POST.</span>
 </a>
 <a class="api-item" href="#httprequest-ispurge">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPurge()</code>
+<code class="sig"><span class="sf">isPurge</span>()</code>
 <span class="desc">Checks whether HTTP method is PURGE (Squid and Varnish support).</span>
 </a>
 <a class="api-item" href="#httprequest-isput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPut()</code>
+<code class="sig"><span class="sf">isPut</span>()</code>
 <span class="desc">Checks whether HTTP method is PUT.</span>
 </a>
 <a class="api-item" href="#httprequest-issecure">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSecure()</code>
+<code class="sig"><span class="sf">isSecure</span>()</code>
 <span class="desc">Checks whether request has been made using any secure layer</span>
 </a>
 <a class="api-item" href="#httprequest-issoap">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSoap()</code>
+<code class="sig"><span class="sf">isSoap</span>()</code>
 <span class="desc">Checks whether request has been made using SOAP</span>
 </a>
 <a class="api-item" href="#httprequest-isstricthostcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isStrictHostCheck()</code>
-<span class="desc">Checks if the `Request::getHttpHost` method will be use strict validation</span>
+<code class="sig"><span class="sf">isStrictHostCheck</span>()</code>
+<span class="desc">Checks if the <code>Request::getHttpHost</code> method will be use strict validation</span>
 </a>
 <a class="api-item" href="#httprequest-istrace">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isTrace()</code>
+<code class="sig"><span class="sf">isTrace</span>()</code>
 <span class="desc">Checks whether HTTP method is TRACE.</span>
 </a>
 <a class="api-item" href="#httprequest-isvalidhttpmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isValidHttpMethod( string $method )</code>
+<code class="sig"><span class="sf">isValidHttpMethod</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 <span class="desc">Checks if a method is a valid HTTP method</span>
 </a>
 <a class="api-item" href="#httprequest-numfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">long</code>
-<code class="sig">numFiles( bool $onlySuccessful = false )</code>
+<code class="sig"><span class="sf">numFiles</span>( <span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span> )</code>
 <span class="desc">Returns the number of files available</span>
 </a>
 <a class="api-item" href="#httprequest-sethttpmethodparameteroverride">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setHttpMethodParameterOverride( bool $override )</code>
+<code class="sig"><span class="sf">setHttpMethodParameterOverride</span>( <span class="st">bool</span> <span class="sv">$override</span> )</code>
 <span class="desc">Set the HTTP method parameter override flag</span>
 </a>
 <a class="api-item" href="#httprequest-setparameterfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setParameterFilters(
-    string $name,
-    array $filters = [],
-    array $scope = []
-)</code>
+<code class="sig"><span class="sf">setParameterFilters</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$filters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$scope</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets automatic sanitizers/filters for a particular field and for</span>
 </a>
 <a class="api-item" href="#httprequest-setstricthostcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setStrictHostCheck( bool $flag = true )</code>
-<span class="desc">Sets if the `Request::getHttpHost` method must be use strict validation</span>
+<code class="sig"><span class="sf">setStrictHostCheck</span>( <span class="st">bool</span> <span class="sv">$flag</span><span class="sm"> = true</span> )</code>
+<span class="desc">Sets if the <code>Request::getHttpHost</code> method must be use strict validation</span>
 </a>
 <a class="api-item" href="#httprequest-settrustedproxies">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setTrustedProxies( array $trustedProxies )</code>
+<code class="sig"><span class="sf">setTrustedProxies</span>( <span class="st">array</span> <span class="sv">$trustedProxies</span> )</code>
 <span class="desc">Set a trusted proxy list for X-Forwarded-For header</span>
 </a>
 <a class="api-item" href="#httprequest-settrustedproxyheader">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setTrustedProxyHeader( string $trustedProxyHeader )</code>
+<code class="sig"><span class="sf">setTrustedProxyHeader</span>( <span class="st">string</span> <span class="sv">$trustedProxyHeader</span> )</code>
 <span class="desc">This header takes priority when parsing HTTP headers</span>
 </a>
 <a class="api-item" href="#httprequest-getbestquality">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getBestQuality(
-    array $qualityParts,
-    string $name
-)</code>
+<code class="sig"><span class="sf">getBestQuality</span>(<span class="prm"><span class="st">array</span> <span class="sv">$qualityParts</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Process a request header and return the one with best quality</span>
 </a>
 <a class="api-item" href="#httprequest-gethelper">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">getHelper(
-    array $source,
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getHelper</span>(<span class="prm"><span class="st">array</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper to get data from superglobals, applying filters if needed.</span>
 </a>
 <a class="api-item" href="#httprequest-getqualityheader">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getQualityHeader(
-    string $serverIndex,
-    string $name
-)</code>
+<code class="sig"><span class="sf">getQualityHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$serverIndex</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Process a request header and return an array of values with their qualities</span>
 </a>
 <a class="api-item" href="#httprequest-hasfilehelper">
 <code class="vis vis-protected">protected</code>
 <code class="ret">long</code>
-<code class="sig">hasFileHelper(
-    mixed $data,
-    bool $onlySuccessful
-)</code>
+<code class="sig"><span class="sf">hasFileHelper</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$onlySuccessful</span></span>)</code>
 <span class="desc">Recursively counts file in an array of files</span>
 </a>
 <a class="api-item" href="#httprequest-isipaddressincidr">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">isIpAddressInCIDR(
-    string $ip,
-    string $cidr
-)</code>
+<code class="sig"><span class="sf">isIpAddressInCIDR</span>(<span class="prm"><span class="st">string</span> <span class="sv">$ip</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cidr</span></span>)</code>
 <span class="desc">Check if an IP address exists in CIDR range</span>
 </a>
 <a class="api-item" href="#httprequest-resolveauthorizationheaders">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">resolveAuthorizationHeaders()</code>
+<code class="sig"><span class="sf">resolveAuthorizationHeaders</span>()</code>
 <span class="desc">Resolve authorization headers.</span>
 </a>
 <a class="api-item" href="#httprequest-smoothfiles">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">smoothFiles(
-    array $names,
-    array $types,
-    array $tmp_names,
-    array $sizes,
-    array $errors,
-    string $prefix
-)</code>
+<code class="sig"><span class="sf">smoothFiles</span>(<span class="prm"><span class="st">array</span> <span class="sv">$names</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$types</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$tmp_names</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$sizes</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$errors</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
 <span class="desc">Smooth out $_FILES to have plain array with all files uploaded</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$filterService = null` `FilterInterface|null`
-
--   `protected`{ .vis-protected } `$methodOverride = false` `bool`
-
--   `protected`{ .vis-protected } `$postCache = null` `array|null`
-
--   `protected`{ .vis-protected } `$queryFilters = []` `array`
-
--   `protected`{ .vis-protected } `$rawBody = ""` `string`
-
--   `protected`{ .vis-protected } `$strictHostCheck = false` `bool`
-
--   `protected`{ .vis-protected } `$trustedProxies = []` `array`
-
--   `protected`{ .vis-protected } `$trustedProxyHeader = ""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">FilterInterface|null</code>
+<code class="sig"><span class="sv">$filterService</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$methodOverride</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$postCache</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$queryFilters</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$rawBody</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$strictHostCheck</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$trustedProxies</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$trustedProxyHeader</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2685,331 +2831,301 @@ __Uses__ `Phalcon\Http\Request\FileInterface` · `stdClass`
 <a class="api-item" href="#httprequestinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the $_REQUEST superglobal applying filters if</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getacceptablecontent">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAcceptableContent()</code>
+<code class="sig"><span class="sf">getAcceptableContent</span>()</code>
 <span class="desc">Gets an array with mime/types and their quality accepted by the</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getbasicauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">getBasicAuth()</code>
+<code class="sig"><span class="sf">getBasicAuth</span>()</code>
 <span class="desc">Gets auth info accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getbestaccept">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBestAccept()</code>
+<code class="sig"><span class="sf">getBestAccept</span>()</code>
 <span class="desc">Gets best mime/type accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getbestcharset">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBestCharset()</code>
+<code class="sig"><span class="sf">getBestCharset</span>()</code>
 <span class="desc">Gets best charset accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getbestlanguage">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getBestLanguage()</code>
+<code class="sig"><span class="sf">getBestLanguage</span>()</code>
 <span class="desc">Gets best language accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getclientaddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
-<code class="sig">getClientAddress( bool $trustForwardedHeader = false )</code>
+<code class="sig"><span class="sf">getClientAddress</span>( <span class="st">bool</span> <span class="sv">$trustForwardedHeader</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets most possible client IPv4 Address. This method searches in</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getclientcharsets">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getClientCharsets()</code>
+<code class="sig"><span class="sf">getClientCharsets</span>()</code>
 <span class="desc">Gets a charsets array and their quality accepted by the browser/client</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getcontenttype">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getContentType()</code>
+<code class="sig"><span class="sf">getContentType</span>()</code>
 <span class="desc">Gets content type which request has been made</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getdigestauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDigestAuth()</code>
+<code class="sig"><span class="sf">getDigestAuth</span>()</code>
 <span class="desc">Gets auth info accepted by the browser/client from</span>
 </a>
 <a class="api-item" href="#httprequestinterface-gethttpreferer">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHTTPReferer()</code>
+<code class="sig"><span class="sf">getHTTPReferer</span>()</code>
 <span class="desc">Gets web page that refers active request. ie: http://www.google.com</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getheader">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHeader( string $header )</code>
+<code class="sig"><span class="sf">getHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Gets HTTP header from request data</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getHeaders()</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
 <span class="desc">Returns the available headers in the request</span>
 </a>
 <a class="api-item" href="#httprequestinterface-gethttphost">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getHttpHost()</code>
+<code class="sig"><span class="sf">getHttpHost</span>()</code>
 <span class="desc">Gets host name used by the request.</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getjsonrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">stdClass|array|bool</code>
-<code class="sig">getJsonRawBody( bool $associative = false )</code>
+<code class="sig"><span class="sf">getJsonRawBody</span>( <span class="st">bool</span> <span class="sv">$associative</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets decoded JSON HTTP raw request body</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getlanguages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getLanguages()</code>
+<code class="sig"><span class="sf">getLanguages</span>()</code>
 <span class="desc">Gets languages array and their quality accepted by the browser/client</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMethod()</code>
+<code class="sig"><span class="sf">getMethod</span>()</code>
 <span class="desc">Gets HTTP method which request has been made</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getport">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getPort()</code>
+<code class="sig"><span class="sf">getPort</span>()</code>
 <span class="desc">Gets information about the port on which the request is made</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getpost">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getPost(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getPost</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the $_POST superglobal applying filters if needed</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getPut(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getPut</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the PUT request</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getquery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getQuery(
-    string $name = null,
-    mixed $filters = null,
-    mixed $defaultValue = null,
-    bool $notAllowEmpty = false,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">getQuery</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets variable from $_GET superglobal applying filters if needed</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRawBody()</code>
+<code class="sig"><span class="sf">getRawBody</span>()</code>
 <span class="desc">Gets HTTP raw request body</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getscheme">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getScheme()</code>
+<code class="sig"><span class="sf">getScheme</span>()</code>
 <span class="desc">Gets HTTP schema (http/https)</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getserver">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getServer( string $name )</code>
+<code class="sig"><span class="sf">getServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets variable from $_SERVER superglobal</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getserveraddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getServerAddress()</code>
+<code class="sig"><span class="sf">getServerAddress</span>()</code>
 <span class="desc">Gets active server address IP</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getservername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getServerName()</code>
+<code class="sig"><span class="sf">getServerName</span>()</code>
 <span class="desc">Gets active server name</span>
 </a>
 <a class="api-item" href="#httprequestinterface-geturi">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getURI( bool $onlyPath = false )</code>
+<code class="sig"><span class="sf">getURI</span>( <span class="st">bool</span> <span class="sv">$onlyPath</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets HTTP URI which request has been made to</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getuploadedfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">FileInterface[]</code>
-<code class="sig">getUploadedFiles(
-    bool $onlySuccessful = false,
-    bool $namedKeys = false
-)</code>
+<code class="sig"><span class="sf">getUploadedFiles</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$namedKeys</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets attached files as Phalcon\Http\Request\FileInterface compatible</span>
 </a>
 <a class="api-item" href="#httprequestinterface-getuseragent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getUserAgent()</code>
+<code class="sig"><span class="sf">getUserAgent</span>()</code>
 <span class="desc">Gets HTTP user agent used to made the request</span>
 </a>
 <a class="api-item" href="#httprequestinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_REQUEST superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequestinterface-hasfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasFiles()</code>
+<code class="sig"><span class="sf">hasFiles</span>()</code>
 <span class="desc">Checks whether request include attached files</span>
 </a>
 <a class="api-item" href="#httprequestinterface-hasheader">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHeader( string $header )</code>
+<code class="sig"><span class="sf">hasHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Checks whether headers has certain index</span>
 </a>
 <a class="api-item" href="#httprequestinterface-haspost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasPost( string $name )</code>
+<code class="sig"><span class="sf">hasPost</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_POST superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequestinterface-hasput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasPut( string $name )</code>
+<code class="sig"><span class="sf">hasPut</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether the PUT data has certain index</span>
 </a>
 <a class="api-item" href="#httprequestinterface-hasquery">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasQuery( string $name )</code>
+<code class="sig"><span class="sf">hasQuery</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_GET superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequestinterface-hasserver">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasServer( string $name )</code>
+<code class="sig"><span class="sf">hasServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_SERVER superglobal has certain index</span>
 </a>
 <a class="api-item" href="#httprequestinterface-isajax">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAjax()</code>
+<code class="sig"><span class="sf">isAjax</span>()</code>
 <span class="desc">Checks whether request has been made using ajax. Checks if $_SERVER[&quot;HTTP_X_REQUESTED_WITH&quot;] === &quot;XMLHttpRequest&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-isconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isConnect()</code>
+<code class="sig"><span class="sf">isConnect</span>()</code>
 <span class="desc">Checks whether HTTP method is CONNECT. if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;CONNECT&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-isdelete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isDelete()</code>
+<code class="sig"><span class="sf">isDelete</span>()</code>
 <span class="desc">Checks whether HTTP method is DELETE. if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;DELETE&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-isget">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isGet()</code>
+<code class="sig"><span class="sf">isGet</span>()</code>
 <span class="desc">Checks whether HTTP method is GET. if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;GET&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-ishead">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isHead()</code>
+<code class="sig"><span class="sf">isHead</span>()</code>
 <span class="desc">Checks whether HTTP method is HEAD. if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;HEAD&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-ismethod">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isMethod(
-    mixed $methods,
-    bool $strict = false
-)</code>
+<code class="sig"><span class="sf">isMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$methods</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strict</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Check if HTTP method match any of the passed methods</span>
 </a>
 <a class="api-item" href="#httprequestinterface-isoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isOptions()</code>
+<code class="sig"><span class="sf">isOptions</span>()</code>
 <span class="desc">Checks whether HTTP method is OPTIONS. if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;OPTIONS&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-ispost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPost()</code>
+<code class="sig"><span class="sf">isPost</span>()</code>
 <span class="desc">Checks whether HTTP method is POST. if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;POST&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-ispurge">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPurge()</code>
+<code class="sig"><span class="sf">isPurge</span>()</code>
 <span class="desc">Checks whether HTTP method is PURGE (Squid and Varnish support). if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;PURGE&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-isput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPut()</code>
+<code class="sig"><span class="sf">isPut</span>()</code>
 <span class="desc">Checks whether HTTP method is PUT. if $_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;PUT&quot;</span>
 </a>
 <a class="api-item" href="#httprequestinterface-issecure">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSecure()</code>
+<code class="sig"><span class="sf">isSecure</span>()</code>
 <span class="desc">Checks whether request has been made using any secure layer</span>
 </a>
 <a class="api-item" href="#httprequestinterface-issoap">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSoap()</code>
+<code class="sig"><span class="sf">isSoap</span>()</code>
 <span class="desc">Checks whether request has been made using SOAP</span>
 </a>
 <a class="api-item" href="#httprequestinterface-istrace">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isTrace()</code>
+<code class="sig"><span class="sf">isTrace</span>()</code>
 <span class="desc">Checks whether HTTP method is TRACE.</span>
 </a>
 <a class="api-item" href="#httprequestinterface-numfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">numFiles( bool $onlySuccessful = false )</code>
+<code class="sig"><span class="sf">numFiles</span>( <span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span> )</code>
 <span class="desc">Returns the number of files available</span>
 </a>
 </div>
@@ -3606,7 +3722,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 <div class="api-list">
 <a class="api-item" href="#httprequestexceptionsfilterserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -3648,7 +3764,7 @@ __Uses__ `UnexpectedValueException`
 <div class="api-list">
 <a class="api-item" href="#httprequestexceptionsinvalidhost-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $host )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$host</span> )</code>
 </a>
 </div>
 
@@ -3691,7 +3807,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 <div class="api-list">
 <a class="api-item" href="#httprequestexceptionsinvalidhttpmethod-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $method )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 </a>
 </div>
 
@@ -3734,7 +3850,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 <div class="api-list">
 <a class="api-item" href="#httprequestexceptionsmissingfilters-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -3777,7 +3893,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 <div class="api-list">
 <a class="api-item" href="#httprequestexceptionssanitizernotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $sanitizer )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$sanitizer</span> )</code>
 </a>
 </div>
 
@@ -3830,91 +3946,111 @@ class PostsController extends Controller
 <div class="api-list">
 <a class="api-item" href="#httprequestfile-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    array $file,
-    string $key = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Phalcon\Http\Request\File constructor</span>
 </a>
 <a class="api-item" href="#httprequestfile-geterror">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getError()</code>
+<code class="sig"><span class="sf">getError</span>()</code>
 </a>
 <a class="api-item" href="#httprequestfile-getextension">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getExtension()</code>
+<code class="sig"><span class="sf">getExtension</span>()</code>
 </a>
 <a class="api-item" href="#httprequestfile-getkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getKey()</code>
+<code class="sig"><span class="sf">getKey</span>()</code>
 </a>
 <a class="api-item" href="#httprequestfile-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the real name of the uploaded file</span>
 </a>
 <a class="api-item" href="#httprequestfile-getrealtype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRealType()</code>
+<code class="sig"><span class="sf">getRealType</span>()</code>
 <span class="desc">Gets the real mime type of the upload file using finfo</span>
 </a>
 <a class="api-item" href="#httprequestfile-getsize">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getSize()</code>
+<code class="sig"><span class="sf">getSize</span>()</code>
 <span class="desc">Returns the file size of the uploaded file</span>
 </a>
 <a class="api-item" href="#httprequestfile-gettempname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTempName()</code>
+<code class="sig"><span class="sf">getTempName</span>()</code>
 <span class="desc">Returns the temporary name of the uploaded file</span>
 </a>
 <a class="api-item" href="#httprequestfile-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the mime type reported by the browser</span>
 </a>
 <a class="api-item" href="#httprequestfile-isuploadedfile">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUploadedFile()</code>
+<code class="sig"><span class="sf">isUploadedFile</span>()</code>
 <span class="desc">Checks whether the file has been uploaded via Post.</span>
 </a>
 <a class="api-item" href="#httprequestfile-moveto">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">moveTo( string $destination )</code>
+<code class="sig"><span class="sf">moveTo</span>( <span class="st">string</span> <span class="sv">$destination</span> )</code>
 <span class="desc">Moves the temporary file to a destination within the application</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$error = 0` `int`
-
--   `protected`{ .vis-protected } `$extension = ""` `string`
-
--   `protected`{ .vis-protected } `$key = ""` `string`
-
--   `protected`{ .vis-protected } `$name = ""` `string`
-
--   `protected`{ .vis-protected } `$realType` `string`
-
--   `protected`{ .vis-protected } `$size = 0` `int`
-
--   `protected`{ .vis-protected } `$tmpName = ""` `string`
-
--   `protected`{ .vis-protected } `$type = ""` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$error</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$extension</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$key</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$realType</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$size</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$tmpName</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4027,43 +4163,43 @@ Interface for Phalcon\Http\Request\File
 <a class="api-item" href="#httprequestfileinterface-geterror">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getError()</code>
+<code class="sig"><span class="sf">getError</span>()</code>
 <span class="desc">Returns the error if any</span>
 </a>
 <a class="api-item" href="#httprequestfileinterface-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns the real name of the uploaded file</span>
 </a>
 <a class="api-item" href="#httprequestfileinterface-getrealtype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRealType()</code>
+<code class="sig"><span class="sf">getRealType</span>()</code>
 <span class="desc">Gets the real mime type of the upload file using finfo</span>
 </a>
 <a class="api-item" href="#httprequestfileinterface-getsize">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getSize()</code>
+<code class="sig"><span class="sf">getSize</span>()</code>
 <span class="desc">Returns the file size of the uploaded file</span>
 </a>
 <a class="api-item" href="#httprequestfileinterface-gettempname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTempName()</code>
+<code class="sig"><span class="sf">getTempName</span>()</code>
 <span class="desc">Returns the temporal name of the uploaded file</span>
 </a>
 <a class="api-item" href="#httprequestfileinterface-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the mime type reported by the browser</span>
 </a>
 <a class="api-item" href="#httprequestfileinterface-moveto">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">moveTo( string $destination )</code>
+<code class="sig"><span class="sf">moveTo</span>( <span class="st">string</span> <span class="sv">$destination</span> )</code>
 <span class="desc">Move the temporary file to a destination</span>
 </a>
 </div>
@@ -4162,254 +4298,252 @@ __Uses__ `DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <div class="api-list">
 <a class="api-item" href="#httpresponse-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    string $content = null,
-    mixed $code = null,
-    mixed $status = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$content</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$code</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$status</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Http\Response constructor</span>
 </a>
 <a class="api-item" href="#httpresponse-appendcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">appendContent( mixed $content )</code>
+<code class="sig"><span class="sf">appendContent</span>( <span class="st">mixed</span> <span class="sv">$content</span> )</code>
 <span class="desc">Appends a string to the HTTP response body</span>
 </a>
 <a class="api-item" href="#httpresponse-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getContent()</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Gets the HTTP response body</span>
 </a>
 <a class="api-item" href="#httpresponse-getcookies">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">getCookies()</code>
+<code class="sig"><span class="sf">getCookies</span>()</code>
 <span class="desc">Returns cookies set by the user</span>
 </a>
 <a class="api-item" href="#httpresponse-getdi">
 <code class="vis vis-public">public</code>
 <code class="ret">DiInterface</code>
-<code class="sig">getDI()</code>
+<code class="sig"><span class="sf">getDI</span>()</code>
 <span class="desc">Returns the internal dependency injector</span>
 </a>
 <a class="api-item" href="#httpresponse-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#httpresponse-getheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">HeadersInterface</code>
-<code class="sig">getHeaders()</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
 <span class="desc">Returns headers set by the user</span>
 </a>
 <a class="api-item" href="#httpresponse-getreasonphrase">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getReasonPhrase()</code>
+<code class="sig"><span class="sf">getReasonPhrase</span>()</code>
 <span class="desc">Returns the reason phrase</span>
 </a>
 <a class="api-item" href="#httpresponse-getstatuscode">
 <code class="vis vis-public">public</code>
 <code class="ret">int|null</code>
-<code class="sig">getStatusCode()</code>
+<code class="sig"><span class="sf">getStatusCode</span>()</code>
 <span class="desc">Returns the status code</span>
 </a>
 <a class="api-item" href="#httpresponse-hasheader">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHeader( string $name )</code>
+<code class="sig"><span class="sf">hasHeader</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a header exists</span>
 </a>
 <a class="api-item" href="#httpresponse-issent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSent()</code>
+<code class="sig"><span class="sf">isSent</span>()</code>
 <span class="desc">Check if the response is already sent</span>
 </a>
 <a class="api-item" href="#httpresponse-redirect">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">redirect(
-    mixed $location = null,
-    bool $externalRedirect = false,
-    int $statusCode = 302
-)</code>
+<code class="sig"><span class="sf">redirect</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$location</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$externalRedirect</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$statusCode</span><span class="sm"> = 302</span></span>)</code>
 <span class="desc">Redirect by HTTP to another action or URL</span>
 </a>
 <a class="api-item" href="#httpresponse-removeheader">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">removeHeader( string $name )</code>
+<code class="sig"><span class="sf">removeHeader</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Remove a header in the response</span>
 </a>
 <a class="api-item" href="#httpresponse-resetheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">resetHeaders()</code>
+<code class="sig"><span class="sf">resetHeaders</span>()</code>
 <span class="desc">Resets all the established headers</span>
 </a>
 <a class="api-item" href="#httpresponse-send">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Prints out HTTP response to the client</span>
 </a>
 <a class="api-item" href="#httpresponse-sendcookies">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">sendCookies()</code>
+<code class="sig"><span class="sf">sendCookies</span>()</code>
 <span class="desc">Sends cookies to the client</span>
 </a>
 <a class="api-item" href="#httpresponse-sendheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface|bool</code>
-<code class="sig">sendHeaders()</code>
+<code class="sig"><span class="sf">sendHeaders</span>()</code>
 <span class="desc">Sends headers to the client</span>
 </a>
 <a class="api-item" href="#httpresponse-setcache">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setCache( int $minutes )</code>
+<code class="sig"><span class="sf">setCache</span>( <span class="st">int</span> <span class="sv">$minutes</span> )</code>
 <span class="desc">Sets Cache headers to use HTTP cache</span>
 </a>
 <a class="api-item" href="#httpresponse-setcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setContent( string $content )</code>
+<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
 <span class="desc">Sets HTTP response body</span>
 </a>
 <a class="api-item" href="#httpresponse-setcontentlength">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setContentLength( int $contentLength )</code>
+<code class="sig"><span class="sf">setContentLength</span>( <span class="st">int</span> <span class="sv">$contentLength</span> )</code>
 <span class="desc">Sets the response content-length</span>
 </a>
 <a class="api-item" href="#httpresponse-setcontenttype">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setContentType(
-    string $contentType,
-    mixed $charset = null
-)</code>
+<code class="sig"><span class="sf">setContentType</span>(<span class="prm"><span class="st">string</span> <span class="sv">$contentType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$charset</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the response content-type mime, optionally the charset</span>
 </a>
 <a class="api-item" href="#httpresponse-setcookies">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setCookies( CookiesInterface $cookies )</code>
+<code class="sig"><span class="sf">setCookies</span>( <span class="st">CookiesInterface</span> <span class="sv">$cookies</span> )</code>
 <span class="desc">Sets a cookies bag for the response externally</span>
 </a>
 <a class="api-item" href="#httpresponse-setdi">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setDI( DiInterface $container )</code>
+<code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the dependency injector</span>
 </a>
 <a class="api-item" href="#httpresponse-setetag">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setEtag( string $etag )</code>
+<code class="sig"><span class="sf">setEtag</span>( <span class="st">string</span> <span class="sv">$etag</span> )</code>
 <span class="desc">Set a custom ETag</span>
 </a>
 <a class="api-item" href="#httpresponse-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 <a class="api-item" href="#httpresponse-setexpires">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setExpires( DateTime $datetime )</code>
+<code class="sig"><span class="sf">setExpires</span>( <span class="st">DateTime</span> <span class="sv">$datetime</span> )</code>
 <span class="desc">Sets an Expires header in the response that allows to use the HTTP cache</span>
 </a>
 <a class="api-item" href="#httpresponse-setfiletosend">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setFileToSend(
-    string $filePath,
-    mixed $attachmentName = null,
-    mixed $attachment = true
-)</code>
+<code class="sig"><span class="sf">setFileToSend</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$attachmentName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$attachment</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Sets an attached file to be sent at the end of the request</span>
 </a>
 <a class="api-item" href="#httpresponse-setheader">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setHeader(
-    string $name,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Overwrites a header in the response</span>
 </a>
 <a class="api-item" href="#httpresponse-setheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setHeaders( HeadersInterface $headers )</code>
+<code class="sig"><span class="sf">setHeaders</span>( <span class="st">HeadersInterface</span> <span class="sv">$headers</span> )</code>
 <span class="desc">Sets a headers bag for the response externally</span>
 </a>
 <a class="api-item" href="#httpresponse-setjsoncontent">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setJsonContent(
-    mixed $content,
-    int $jsonOptions = 0,
-    int $depth = 512
-)</code>
+<code class="sig"><span class="sf">setJsonContent</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$content</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$jsonOptions</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$depth</span><span class="sm"> = 512</span></span>)</code>
 <span class="desc">Sets HTTP response body. The parameter is automatically converted to JSON</span>
 </a>
 <a class="api-item" href="#httpresponse-setlastmodified">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setLastModified( DateTime $datetime )</code>
+<code class="sig"><span class="sf">setLastModified</span>( <span class="st">DateTime</span> <span class="sv">$datetime</span> )</code>
 <span class="desc">Sets Last-Modified header</span>
 </a>
 <a class="api-item" href="#httpresponse-setnotmodified">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setNotModified()</code>
+<code class="sig"><span class="sf">setNotModified</span>()</code>
 <span class="desc">Sends a Not-Modified response</span>
 </a>
 <a class="api-item" href="#httpresponse-setrawheader">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setRawHeader( string $header )</code>
+<code class="sig"><span class="sf">setRawHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Send a raw header to the response</span>
 </a>
 <a class="api-item" href="#httpresponse-setstatuscode">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setStatusCode(
-    int $code,
-    string $message = null
-)</code>
+<code class="sig"><span class="sf">setStatusCode</span>(<span class="prm"><span class="st">int</span> <span class="sv">$code</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the HTTP response code</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$content = null` `string|null`
-
--   `protected`{ .vis-protected } `$cookies = null` `CookiesInterface|null`
-
--   `protected`{ .vis-protected } `$encode` `Encode`
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$file = null` `string|null`
-
--   `protected`{ .vis-protected } `$headers` `Headers`
-
--   `protected`{ .vis-protected } `$sent = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$content</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">CookiesInterface|null</code>
+<code class="sig"><span class="sv">$cookies</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Encode</code>
+<code class="sig"><span class="sv">$encode</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$file</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Headers</code>
+<code class="sig"><span class="sv">$headers</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$sent</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4828,143 +4962,127 @@ __Uses__ `DateTime` · `Phalcon\Http\Response\HeadersInterface`
 <a class="api-item" href="#httpresponseinterface-appendcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">appendContent( string $content )</code>
+<code class="sig"><span class="sf">appendContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
 <span class="desc">Appends a string to the HTTP response body</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-getcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getContent()</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
 <span class="desc">Gets the HTTP response body</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-getheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">HeadersInterface</code>
-<code class="sig">getHeaders()</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
 <span class="desc">Returns headers set by the user</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-getstatuscode">
 <code class="vis vis-public">public</code>
 <code class="ret">int|null</code>
-<code class="sig">getStatusCode()</code>
+<code class="sig"><span class="sf">getStatusCode</span>()</code>
 <span class="desc">Returns the status code</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-hasheader">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasHeader( string $name )</code>
+<code class="sig"><span class="sf">hasHeader</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a header exists</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-issent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSent()</code>
+<code class="sig"><span class="sf">isSent</span>()</code>
 <span class="desc">Checks if the response was already sent</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-redirect">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">redirect(
-    string $location = null,
-    bool $externalRedirect = false,
-    int $statusCode = 302
-)</code>
+<code class="sig"><span class="sf">redirect</span>(<span class="prm"><span class="st">string</span> <span class="sv">$location</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$externalRedirect</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$statusCode</span><span class="sm"> = 302</span></span>)</code>
 <span class="desc">Redirect by HTTP to another action or URL</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-resetheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">resetHeaders()</code>
+<code class="sig"><span class="sf">resetHeaders</span>()</code>
 <span class="desc">Resets all the established headers</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-send">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Prints out HTTP response to the client</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-sendcookies">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">sendCookies()</code>
+<code class="sig"><span class="sf">sendCookies</span>()</code>
 <span class="desc">Sends cookies to the client</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-sendheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface|bool</code>
-<code class="sig">sendHeaders()</code>
+<code class="sig"><span class="sf">sendHeaders</span>()</code>
 <span class="desc">Sends headers to the client</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setcontent">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setContent( string $content )</code>
+<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
 <span class="desc">Sets HTTP response body</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setcontentlength">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setContentLength( int $contentLength )</code>
+<code class="sig"><span class="sf">setContentLength</span>( <span class="st">int</span> <span class="sv">$contentLength</span> )</code>
 <span class="desc">Sets the response content-length</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setcontenttype">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setContentType(
-    string $contentType,
-    string $charset = null
-)</code>
+<code class="sig"><span class="sf">setContentType</span>(<span class="prm"><span class="st">string</span> <span class="sv">$contentType</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$charset</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the response content-type mime, optionally the charset</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setexpires">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setExpires( DateTime $datetime )</code>
+<code class="sig"><span class="sf">setExpires</span>( <span class="st">DateTime</span> <span class="sv">$datetime</span> )</code>
 <span class="desc">Sets output expire time header</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setfiletosend">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setFileToSend(
-    string $filePath,
-    string $attachmentName = null
-)</code>
+<code class="sig"><span class="sf">setFileToSend</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$attachmentName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets an attached file to be sent at the end of the request</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setheader">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setHeader(
-    string $name,
-    string $value
-)</code>
+<code class="sig"><span class="sf">setHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Overwrites a header in the response</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setjsoncontent">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setJsonContent( mixed $content )</code>
+<code class="sig"><span class="sf">setJsonContent</span>( <span class="st">mixed</span> <span class="sv">$content</span> )</code>
 <span class="desc">Sets HTTP response body. The parameter is automatically converted to JSON</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setnotmodified">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setNotModified()</code>
+<code class="sig"><span class="sf">setNotModified</span>()</code>
 <span class="desc">Sends a Not-Modified response</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setrawheader">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setRawHeader( string $header )</code>
+<code class="sig"><span class="sf">setRawHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Send a raw header to the response</span>
 </a>
 <a class="api-item" href="#httpresponseinterface-setstatuscode">
 <code class="vis vis-public">public</code>
 <code class="ret">ResponseInterface</code>
-<code class="sig">setStatusCode(
-    int $code,
-    string $message = null
-)</code>
+<code class="sig"><span class="sf">setStatusCode</span>(<span class="prm"><span class="st">int</span> <span class="sv">$code</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Sets the HTTP response code</span>
 </a>
 </div>
@@ -5232,105 +5350,106 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <a class="api-item" href="#httpresponsecookies-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    bool $useEncryption = true,
-    string $signKey = null
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$useEncryption</span><span class="sm"> = true</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$signKey</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Http\Response\Cookies constructor</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete( string $name )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Deletes a cookie by its name</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a cookie from the bag</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-getcookies">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getCookies()</code>
+<code class="sig"><span class="sf">getCookies</span>()</code>
 <span class="desc">Gets all cookies from the bag</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check if a cookie is defined in the bag or exists in the _COOKIE</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-issent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSent()</code>
+<code class="sig"><span class="sf">isSent</span>()</code>
 <span class="desc">Returns if the headers have already been sent</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-isusingencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUsingEncryption()</code>
+<code class="sig"><span class="sf">isUsingEncryption</span>()</code>
 <span class="desc">Returns if the bag is automatically encrypting/decrypting cookies</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Reset set cookies</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-send">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Sends the cookies to the client</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-set">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">set(
-    string $name,
-    mixed $value = null,
-    int $expire = 0,
-    string $path = &quot;/&quot;,
-    bool $secure = false,
-    string $domain = &quot;&quot;,
-    bool $httpOnly = false,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$expire</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span><span class="sm"> = &quot;/&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$secure</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$httpOnly</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets a cookie to be sent at the end of the request.</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-setsignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">setSignKey( string $signKey = null )</code>
+<code class="sig"><span class="sf">setSignKey</span>( <span class="st">string</span> <span class="sv">$signKey</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets the cookie&#039;s sign key.</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-useencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">useEncryption( bool $useEncryption )</code>
+<code class="sig"><span class="sf">useEncryption</span>( <span class="st">bool</span> <span class="sv">$useEncryption</span> )</code>
 <span class="desc">Set if cookies in the bag must be automatically encrypted/decrypted</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$cookies = []` `array`
-
--   `protected`{ .vis-protected } `$isRegistered = false` `bool`
-
--   `protected`{ .vis-protected } `$isSent = false` `bool`
-
--   `protected`{ .vis-protected } `$signKey = null` `string|null`
-
-    The cookie's sign key.
-
--   `protected`{ .vis-protected } `$useEncryption = true` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$cookies</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isRegistered</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isSent</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$signKey</span><span class="sm"> = null</span></code>
+<span class="desc">The cookie&#039;s sign key.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$useEncryption</span><span class="sm"> = true</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5494,58 +5613,49 @@ __Uses__ `Phalcon\Http\Cookie\CookieInterface`
 <a class="api-item" href="#httpresponsecookiesinterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete( string $name )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Deletes a cookie by its name</span>
 </a>
 <a class="api-item" href="#httpresponsecookiesinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">CookieInterface</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a cookie from the bag</span>
 </a>
 <a class="api-item" href="#httpresponsecookiesinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Check if a cookie is defined in the bag or exists in the _COOKIE superglobal</span>
 </a>
 <a class="api-item" href="#httpresponsecookiesinterface-isusingencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUsingEncryption()</code>
+<code class="sig"><span class="sf">isUsingEncryption</span>()</code>
 <span class="desc">Returns if the bag is automatically encrypting/decrypting cookies</span>
 </a>
 <a class="api-item" href="#httpresponsecookiesinterface-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Reset set cookies</span>
 </a>
 <a class="api-item" href="#httpresponsecookiesinterface-send">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Sends the cookies to the client</span>
 </a>
 <a class="api-item" href="#httpresponsecookiesinterface-set">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">set(
-    string $name,
-    mixed $value = null,
-    int $expire = 0,
-    string $path = &quot;/&quot;,
-    bool $secure = false,
-    string $domain = &quot;&quot;,
-    bool $httpOnly = false,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$expire</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span><span class="sm"> = &quot;/&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$secure</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$domain</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$httpOnly</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets a cookie to be sent at the end of the request</span>
 </a>
 <a class="api-item" href="#httpresponsecookiesinterface-useencryption">
 <code class="vis vis-public">public</code>
 <code class="ret">CookiesInterface</code>
-<code class="sig">useEncryption( bool $useEncryption )</code>
+<code class="sig"><span class="sf">useEncryption</span>( <span class="st">bool</span> <span class="sv">$useEncryption</span> )</code>
 <span class="desc">Set if cookies in the bag must be automatically encrypted/decrypted</span>
 </a>
 </div>
@@ -5678,7 +5788,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpresponseexceptionsnonstandardstatuscoderequiresmessage-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -5721,7 +5831,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpresponseexceptionsresponsealreadysent-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -5764,7 +5874,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpresponseexceptionsresponseserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -5807,7 +5917,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 <div class="api-list">
 <a class="api-item" href="#httpresponseexceptionsurlserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -5844,75 +5954,77 @@ __Uses__ `IteratorAggregate` · `Traversable`
 <a class="api-item" href="#httpresponseheaders-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool|null</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a header value from the internal bag</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-getiterator">
 <code class="vis vis-public">public</code>
 <code class="ret">Traversable</code>
-<code class="sig">getIterator()</code>
+<code class="sig"><span class="sf">getIterator</span>()</code>
 </a>
 <a class="api-item" href="#httpresponseheaders-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a header exists</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-issent">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isSent()</code>
+<code class="sig"><span class="sf">isSent</span>()</code>
 <span class="desc">Returns if the headers have already been sent</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">HeadersInterface</code>
-<code class="sig">remove( string $header )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Removes a header by its name</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Reset set headers</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-send">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Sends the headers to the client</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-set">
 <code class="vis vis-public">public</code>
 <code class="ret">HeadersInterface</code>
-<code class="sig">set(
-    string $name,
-    string $value
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets a header to be sent at the end of the request</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-setraw">
 <code class="vis vis-public">public</code>
 <code class="ret">HeadersInterface</code>
-<code class="sig">setRaw( string $header )</code>
+<code class="sig"><span class="sf">setRaw</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Sets a raw header to be sent at the end of the request</span>
 </a>
 <a class="api-item" href="#httpresponseheaders-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the current headers as an array</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$headers = []` `array`
-
--   `protected`{ .vis-protected } `$isSent = false` `bool`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$headers</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isSent</span><span class="sm"> = false</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6020,40 +6132,37 @@ Interface for Phalcon\Http\Response\Headers compatible bags
 <a class="api-item" href="#httpresponseheadersinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool|null</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets a header value from the internal bag</span>
 </a>
 <a class="api-item" href="#httpresponseheadersinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a header exists</span>
 </a>
 <a class="api-item" href="#httpresponseheadersinterface-reset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">reset()</code>
+<code class="sig"><span class="sf">reset</span>()</code>
 <span class="desc">Reset set headers</span>
 </a>
 <a class="api-item" href="#httpresponseheadersinterface-send">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">send()</code>
+<code class="sig"><span class="sf">send</span>()</code>
 <span class="desc">Sends the headers to the client</span>
 </a>
 <a class="api-item" href="#httpresponseheadersinterface-set">
 <code class="vis vis-public">public</code>
 <code class="ret">HeadersInterface</code>
-<code class="sig">set(
-    string $name,
-    string $value
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets a header to be sent at the end of the request</span>
 </a>
 <a class="api-item" href="#httpresponseheadersinterface-setraw">
 <code class="vis vis-public">public</code>
 <code class="ret">HeadersInterface</code>
-<code class="sig">setRaw( string $header )</code>
+<code class="sig"><span class="sf">setRaw</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Sets a raw header to be sent at the end of the request</span>
 </a>
 </div>

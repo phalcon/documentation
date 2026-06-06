@@ -30,129 +30,116 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <div class="api-list">
 <a class="api-item" href="#cacheabstractcache-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( AdapterInterface $adapter )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterInterface</span> <span class="sv">$adapter</span> )</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-getadapter">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">getAdapter()</code>
+<code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Returns the current adapter</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Get the event manager</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the event manager</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-checkkey">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">checkKey( string $key )</code>
+<code class="sig"><span class="sf">checkKey</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Checks the key. If it contains invalid characters an exception is thrown</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-checkkeys">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">checkKeys( mixed $keys )</code>
+<code class="sig"><span class="sf">checkKeys</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
 <span class="desc">Checks the key. If it contains invalid characters an exception is thrown</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-doclear">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doClear()</code>
+<code class="sig"><span class="sf">doClear</span>()</code>
 <span class="desc">Wipes clean the entire cache&#039;s keys.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dodelete">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doDelete( string $key )</code>
+<code class="sig"><span class="sf">doDelete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Delete an item from the cache by its unique key.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dodeletemultiple">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doDeleteMultiple( mixed $keys )</code>
+<code class="sig"><span class="sf">doDeleteMultiple</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
 <span class="desc">Deletes multiple cache items in a single operation.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-doget">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">doGet(
-    string $key,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">doGet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dogetmultiple">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">doGetMultiple(
-    mixed $keys,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">doGetMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Obtains multiple cache items by their unique keys.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dohas">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doHas( string $key )</code>
+<code class="sig"><span class="sf">doHas</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Determines whether an item is present in the cache.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-doset">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doSet(
-    string $key,
-    mixed $value,
-    mixed $ttl = null
-)</code>
+<code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-dosetmultiple">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">doSetMultiple(
-    mixed $values,
-    mixed $ttl = null
-)</code>
+<code class="sig"><span class="sf">doSetMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-fire">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">fire(
-    string $eventName,
-    mixed $keys
-)</code>
+<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span></span>)</code>
 <span class="desc">Trigger an event for the eventsManager.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 <span class="desc">Returns the exception class that will be used for exceptions thrown</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$adapter` `AdapterInterface`
-
-    The adapter
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
-    Event Manager
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AdapterInterface</code>
+<code class="sig"><span class="sv">$adapter</span></code>
+<span class="desc">The adapter</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+<span class="desc">Event Manager</span>
+</div>
 </div>
 
 ### Methods
@@ -330,40 +317,36 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Exception\Ex
 <div class="api-list">
 <a class="api-item" href="#cacheadapterfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct(
-    SerializerFactory $factory,
-    array $services = []
-)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">SerializerFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">AdapterFactory constructor.</span>
 </a>
 <a class="api-item" href="#cacheadapterfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">newInstance(
-    string $name,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Create a new instance of the adapter</span>
 </a>
 <a class="api-item" href="#cacheadapterfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#cacheadapterfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$serializerFactory` `SerializerFactory`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">SerializerFactory</code>
+<code class="sig"><span class="sv">$serializerFactory</span></code>
+</div>
 </div>
 
 ### Methods
@@ -447,10 +430,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Ap
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventType = "cache"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+</div>
 </div>
 
 
@@ -474,10 +459,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Li
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventType = "cache"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+</div>
 </div>
 
 
@@ -501,10 +488,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Me
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventType = "cache"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+</div>
 </div>
 
 
@@ -528,10 +517,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventType = "cache"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+</div>
 </div>
 
 
@@ -556,10 +547,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventType = "cache"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+</div>
 </div>
 
 
@@ -583,10 +576,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\St
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventType = "cache"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+</div>
 </div>
 
 
@@ -610,10 +605,12 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\We
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$eventType = "cache"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
+</div>
 </div>
 
 
@@ -640,66 +637,53 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <a class="api-item" href="#cachecache-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Wipes clean the entire cache&#039;s keys.</span>
 </a>
 <a class="api-item" href="#cachecache-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete( string $key )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Delete an item from the cache by its unique key.</span>
 </a>
 <a class="api-item" href="#cachecache-deletemultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">deleteMultiple( mixed $keys )</code>
+<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
 <span class="desc">Deletes multiple cache items in a single operation.</span>
 </a>
 <a class="api-item" href="#cachecache-get">
 <code class="vis vis-public">public</code>
-<code class="sig">get(
-    string $key,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#cachecache-getmultiple">
 <code class="vis vis-public">public</code>
-<code class="sig">getMultiple(
-    mixed $keys,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Obtains multiple cache items by their unique keys.</span>
 </a>
 <a class="api-item" href="#cachecache-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $key )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Determines whether an item is present in the cache.</span>
 </a>
 <a class="api-item" href="#cachecache-set">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">set(
-    string $key,
-    mixed $value,
-    mixed $ttl = null
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
 </a>
 <a class="api-item" href="#cachecache-setmultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">setMultiple(
-    mixed $values,
-    mixed $ttl = null
-)</code>
+<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
 <a class="api-item" href="#cachecache-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 <span class="desc">Returns the exception class that will be used for exceptions thrown</span>
 </a>
 </div>
@@ -819,37 +803,36 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `P
 <div class="api-list">
 <a class="api-item" href="#cachecachefactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( AdapterFactory $factory )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterFactory</span> <span class="sv">$factory</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#cachecachefactory-load">
 <code class="vis vis-public">public</code>
 <code class="ret">CacheInterface</code>
-<code class="sig">load( mixed $config )</code>
+<code class="sig"><span class="sf">load</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Factory to create an instance from a Config object</span>
 </a>
 <a class="api-item" href="#cachecachefactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">CacheInterface</code>
-<code class="sig">newInstance(
-    string $name,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructs a new Cache instance.</span>
 </a>
 <a class="api-item" href="#cachecachefactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$adapterFactory` `AdapterFactory`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">AdapterFactory</code>
+<code class="sig"><span class="sv">$adapterFactory</span></code>
+</div>
 </div>
 
 ### Methods
@@ -914,60 +897,47 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
 <a class="api-item" href="#cachecacheinterface-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Wipes clean the entire cache&#039;s keys.</span>
 </a>
 <a class="api-item" href="#cachecacheinterface-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete( string $key )</code>
+<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Delete an item from the cache by its unique key.</span>
 </a>
 <a class="api-item" href="#cachecacheinterface-deletemultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">deleteMultiple( mixed $keys )</code>
+<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
 <span class="desc">Deletes multiple cache items in a single operation.</span>
 </a>
 <a class="api-item" href="#cachecacheinterface-get">
 <code class="vis vis-public">public</code>
-<code class="sig">get(
-    string $key,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#cachecacheinterface-getmultiple">
 <code class="vis vis-public">public</code>
-<code class="sig">getMultiple(
-    mixed $keys,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Obtains multiple cache items by their unique keys.</span>
 </a>
 <a class="api-item" href="#cachecacheinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $key )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Determines whether an item is present in the cache.</span>
 </a>
 <a class="api-item" href="#cachecacheinterface-set">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">set(
-    string $key,
-    mixed $value,
-    mixed $ttl = null
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
 </a>
 <a class="api-item" href="#cachecacheinterface-setmultiple">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">setMultiple(
-    mixed $values,
-    mixed $ttl = null
-)</code>
+<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
 </a>
 </div>
@@ -1080,7 +1050,7 @@ file that was distributed with this source code.
 <div class="api-list">
 <a class="api-item" href="#cacheexceptioncachekeysnotiterable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -1152,7 +1122,7 @@ file that was distributed with this source code.
 <div class="api-list">
 <a class="api-item" href="#cacheexceptioninvalidcachekey-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 

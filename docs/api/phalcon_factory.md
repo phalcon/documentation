@@ -38,28 +38,25 @@ __Uses__ `Phalcon\Config\ConfigInterface`
 <a class="api-item" href="#factoryabstractconfigfactory-checkconfig">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">checkConfig( mixed $config )</code>
+<code class="sig"><span class="sf">checkConfig</span>( <span class="st">mixed</span> <span class="sv">$config</span> )</code>
 <span class="desc">Checks the config if it is a valid object</span>
 </a>
 <a class="api-item" href="#factoryabstractconfigfactory-checkconfigelement">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">checkConfigElement(
-    array $config,
-    string $element
-)</code>
+<code class="sig"><span class="sf">checkConfigElement</span>(<span class="prm"><span class="st">array</span> <span class="sv">$config</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$element</span></span>)</code>
 <span class="desc">Checks if the config has &quot;adapter&quot;</span>
 </a>
 <a class="api-item" href="#factoryabstractconfigfactory-getexception">
 <code class="vis vis-protected">protected</code>
 <code class="ret">\Exception</code>
-<code class="sig">getException( string $message )</code>
+<code class="sig"><span class="sf">getException</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 <span class="desc">Returns the exception object for the child class</span>
 </a>
 <a class="api-item" href="#factoryabstractconfigfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 </div>
 
@@ -143,31 +140,36 @@ __Uses__ `Phalcon\Config\ConfigInterface`
 <a class="api-item" href="#factoryabstractfactory-getservice">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">getService( string $name )</code>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a service exists and throws an exception</span>
 </a>
 <a class="api-item" href="#factoryabstractfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the adapters for the factory</span>
 </a>
 <a class="api-item" href="#factoryabstractfactory-init">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">init( array $services = [] )</code>
+<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 <span class="desc">Initialize services/add new services</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$mapper = []` `array`
-
--   `protected`{ .vis-protected } `$services = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$mapper</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods

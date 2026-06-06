@@ -30,105 +30,116 @@ __Uses__ `Throwable`
 <a class="api-item" href="#domainpayloadpayload-getexception">
 <code class="vis vis-public">public</code>
 <code class="ret">Throwable|null</code>
-<code class="sig">getException()</code>
+<code class="sig"><span class="sf">getException</span>()</code>
 <span class="desc">Gets the potential exception thrown in the domain layer</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-getextras">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getExtras()</code>
+<code class="sig"><span class="sf">getExtras</span>()</code>
 <span class="desc">Extra information</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-getinput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getInput()</code>
+<code class="sig"><span class="sf">getInput</span>()</code>
 <span class="desc">Input</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Messages</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-getoutput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getOutput()</code>
+<code class="sig"><span class="sf">getOutput</span>()</code>
 <span class="desc">Output</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-getstatus">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getStatus()</code>
+<code class="sig"><span class="sf">getStatus</span>()</code>
 <span class="desc">Status</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-setexception">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setException( Throwable $exception )</code>
+<code class="sig"><span class="sf">setException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Sets an exception thrown in the domain</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-setextras">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setExtras( mixed $extras )</code>
+<code class="sig"><span class="sf">setExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
 <span class="desc">Sets arbitrary extra domain information.</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-setinput">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setInput( mixed $input )</code>
+<code class="sig"><span class="sf">setInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 <span class="desc">Sets the domain input.</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-setmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setMessages( mixed $messages )</code>
+<code class="sig"><span class="sf">setMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Sets the domain messages.</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-setoutput">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setOutput( mixed $output )</code>
+<code class="sig"><span class="sf">setOutput</span>( <span class="st">mixed</span> <span class="sv">$output</span> )</code>
 <span class="desc">Sets the domain output.</span>
 </a>
 <a class="api-item" href="#domainpayloadpayload-setstatus">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setStatus( mixed $status )</code>
+<code class="sig"><span class="sf">setStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
 <span class="desc">Sets the payload status.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$exception = null` `Throwable|null`
-
-    Exception if any
-
--   `protected`{ .vis-protected } `$extras` `mixed`
-
-    Extra information
-
--   `protected`{ .vis-protected } `$input` `mixed`
-
-    Input
-
--   `protected`{ .vis-protected } `$messages` `mixed`
-
-    Messages
-
--   `protected`{ .vis-protected } `$output` `mixed`
-
-    Output
-
--   `protected`{ .vis-protected } `$status` `mixed`
-
-    Status
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Throwable|null</code>
+<code class="sig"><span class="sv">$exception</span><span class="sm"> = null</span></code>
+<span class="desc">Exception if any</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$extras</span></code>
+<span class="desc">Extra information</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$input</span></code>
+<span class="desc">Input</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$messages</span></code>
+<span class="desc">Messages</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$output</span></code>
+<span class="desc">Output</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$status</span></code>
+<span class="desc">Status</span>
+</div>
 </div>
 
 ### Methods
@@ -251,7 +262,7 @@ Factory to create payload objects
 <a class="api-item" href="#domainpayloadpayloadfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">newInstance()</code>
+<code class="sig"><span class="sf">newInstance</span>()</code>
 <span class="desc">Instantiate a new object</span>
 </a>
 </div>
@@ -307,37 +318,37 @@ __Uses__ `Throwable`
 <a class="api-item" href="#domainpayloadreadableinterface-getexception">
 <code class="vis vis-public">public</code>
 <code class="ret">Throwable|null</code>
-<code class="sig">getException()</code>
+<code class="sig"><span class="sf">getException</span>()</code>
 <span class="desc">Gets the potential exception thrown in the domain layer</span>
 </a>
 <a class="api-item" href="#domainpayloadreadableinterface-getextras">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getExtras()</code>
+<code class="sig"><span class="sf">getExtras</span>()</code>
 <span class="desc">Gets arbitrary extra values produced by the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadreadableinterface-getinput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getInput()</code>
+<code class="sig"><span class="sf">getInput</span>()</code>
 <span class="desc">Gets the input received by the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadreadableinterface-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Gets the messages produced by the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadreadableinterface-getoutput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getOutput()</code>
+<code class="sig"><span class="sf">getOutput</span>()</code>
 <span class="desc">Gets the output produced from the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadreadableinterface-getstatus">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getStatus()</code>
+<code class="sig"><span class="sf">getStatus</span>()</code>
 <span class="desc">Gets the status of this payload.</span>
 </a>
 </div>
@@ -410,48 +421,87 @@ Holds the status codes for the payload
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `ACCEPTED = "ACCEPTED"` `string`
-
--   `AUTHENTICATED = "AUTHENTICATED"` `string`
-
--   `AUTHORIZED = "AUTHORIZED"` `string`
-
--   `CREATED = "CREATED"` `string`
-
--   `DELETED = "DELETED"` `string`
-
--   `ERROR = "ERROR"` `string`
-
--   `FAILURE = "FAILURE"` `string`
-
--   `FOUND = "FOUND"` `string`
-
--   `NOT_ACCEPTED = "NOT_ACCEPTED"` `string`
-
--   `NOT_AUTHENTICATED = "NOT_AUTHENTICATED"` `string`
-
--   `NOT_AUTHORIZED = "NOT_AUTHORIZED"` `string`
-
--   `NOT_CREATED = "NOT_CREATED"` `string`
-
--   `NOT_DELETED = "NOT_DELETED"` `string`
-
--   `NOT_FOUND = "NOT_FOUND"` `string`
-
--   `NOT_UPDATED = "NOT_UPDATED"` `string`
-
--   `NOT_VALID = "NOT_VALID"` `string`
-
--   `PROCESSING = "PROCESSING"` `string`
-
--   `SUCCESS = "SUCCESS"` `string`
-
--   `UPDATED = "UPDATED"` `string`
-
--   `VALID = "VALID"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">ACCEPTED</span><span class="sm"> = &quot;ACCEPTED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AUTHENTICATED</span><span class="sm"> = &quot;AUTHENTICATED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">AUTHORIZED</span><span class="sm"> = &quot;AUTHORIZED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">CREATED</span><span class="sm"> = &quot;CREATED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">DELETED</span><span class="sm"> = &quot;DELETED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">ERROR</span><span class="sm"> = &quot;ERROR&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FAILURE</span><span class="sm"> = &quot;FAILURE&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FOUND</span><span class="sm"> = &quot;FOUND&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_ACCEPTED</span><span class="sm"> = &quot;NOT_ACCEPTED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_AUTHENTICATED</span><span class="sm"> = &quot;NOT_AUTHENTICATED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_AUTHORIZED</span><span class="sm"> = &quot;NOT_AUTHORIZED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_CREATED</span><span class="sm"> = &quot;NOT_CREATED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_DELETED</span><span class="sm"> = &quot;NOT_DELETED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_FOUND</span><span class="sm"> = &quot;NOT_FOUND&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_UPDATED</span><span class="sm"> = &quot;NOT_UPDATED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">NOT_VALID</span><span class="sm"> = &quot;NOT_VALID&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROCESSING</span><span class="sm"> = &quot;PROCESSING&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">SUCCESS</span><span class="sm"> = &quot;SUCCESS&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">UPDATED</span><span class="sm"> = &quot;UPDATED&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">VALID</span><span class="sm"> = &quot;VALID&quot;</span></code>
+</div>
 </div>
 
 
@@ -477,37 +527,37 @@ __Uses__ `Throwable`
 <a class="api-item" href="#domainpayloadwriteableinterface-setexception">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setException( Throwable $exception )</code>
+<code class="sig"><span class="sf">setException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
 <span class="desc">Sets an exception produced by the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadwriteableinterface-setextras">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setExtras( mixed $extras )</code>
+<code class="sig"><span class="sf">setExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
 <span class="desc">Sets arbitrary extra values produced by the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadwriteableinterface-setinput">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setInput( mixed $input )</code>
+<code class="sig"><span class="sf">setInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 <span class="desc">Sets the input received by the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadwriteableinterface-setmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setMessages( mixed $messages )</code>
+<code class="sig"><span class="sf">setMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
 <span class="desc">Sets the messages produced by the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadwriteableinterface-setoutput">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setOutput( mixed $output )</code>
+<code class="sig"><span class="sf">setOutput</span>( <span class="st">mixed</span> <span class="sv">$output</span> )</code>
 <span class="desc">Sets the output produced from the domain layer.</span>
 </a>
 <a class="api-item" href="#domainpayloadwriteableinterface-setstatus">
 <code class="vis vis-public">public</code>
 <code class="ret">PayloadInterface</code>
-<code class="sig">setStatus( mixed $status )</code>
+<code class="sig"><span class="sf">setStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
 <span class="desc">Sets the status of this payload.</span>
 </a>
 </div>

@@ -54,7 +54,7 @@ __Uses__ `Phalcon\Filter\Exception`
 <div class="api-list">
 <a class="api-item" href="#filterexceptionsfilternotregistered-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -117,116 +117,156 @@ __Uses__ `Phalcon\Filter\Exceptions\FilterNotRegistered`
 <div class="api-list">
 <a class="api-item" href="#filterfilter-__call">
 <code class="vis vis-public">public</code>
-<code class="sig">__call(
-    string $name,
-    array $args
-)</code>
+<code class="sig"><span class="sf">__call</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span></span>)</code>
 <span class="desc">Magic call to make the helper objects available as methods.</span>
 </a>
 <a class="api-item" href="#filterfilter-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $mapper = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$mapper</span><span class="sm"> = []</span> )</code>
 <span class="desc">Filter constructor.</span>
 </a>
 <a class="api-item" href="#filterfilter-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Get a service. If it is not in the mapper array, create a new object,</span>
 </a>
 <a class="api-item" href="#filterfilter-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a service exists in the map array</span>
 </a>
 <a class="api-item" href="#filterfilter-sanitize">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">sanitize(
-    mixed $value,
-    mixed $sanitizers,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">sanitize</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$sanitizers</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sanitizes a value with a specified single or set of sanitizers</span>
 </a>
 <a class="api-item" href="#filterfilter-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $name,
-    mixed $service
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$service</span></span>)</code>
 <span class="desc">Set a new service to the mapper array</span>
 </a>
 <a class="api-item" href="#filterfilter-init">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig">init( array $mapper )</code>
+<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$mapper</span> )</code>
 <span class="desc">Loads the objects in the internal mapper array</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `FILTER_ABSINT = "absint"` `string`
-
--   `FILTER_ALNUM = "alnum"` `string`
-
--   `FILTER_ALPHA = "alpha"` `string`
-
--   `FILTER_BOOL = "bool"` `string`
-
--   `FILTER_EMAIL = "email"` `string`
-
--   `FILTER_FLOAT = "float"` `string`
-
--   `FILTER_INT = "int"` `string`
-
--   `FILTER_IP = "ip"` `string`
-
--   `FILTER_LOWER = "lower"` `string`
-
--   `FILTER_LOWERFIRST = "lowerfirst"` `string`
-
--   `FILTER_REGEX = "regex"` `string`
-
--   `FILTER_REMOVE = "remove"` `string`
-
--   `FILTER_REPLACE = "replace"` `string`
-
--   `FILTER_SPECIAL = "special"` `string`
-
--   `FILTER_SPECIALFULL = "specialfull"` `string`
-
--   `FILTER_STRING = "string"` `string`
-
--   `FILTER_STRING_LEGACY = "stringlegacy"` `string`
-
--   `FILTER_STRIPTAGS = "striptags"` `string`
-
--   `FILTER_TRIM = "trim"` `string`
-
--   `FILTER_UPPER = "upper"` `string`
-
--   `FILTER_UPPERFIRST = "upperfirst"` `string`
-
--   `FILTER_UPPERWORDS = "upperwords"` `string`
-
--   `FILTER_URL = "url"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_ABSINT</span><span class="sm"> = &quot;absint&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_ALNUM</span><span class="sm"> = &quot;alnum&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_ALPHA</span><span class="sm"> = &quot;alpha&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_BOOL</span><span class="sm"> = &quot;bool&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_EMAIL</span><span class="sm"> = &quot;email&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_FLOAT</span><span class="sm"> = &quot;float&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_INT</span><span class="sm"> = &quot;int&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_IP</span><span class="sm"> = &quot;ip&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_LOWER</span><span class="sm"> = &quot;lower&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_LOWERFIRST</span><span class="sm"> = &quot;lowerfirst&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_REGEX</span><span class="sm"> = &quot;regex&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_REMOVE</span><span class="sm"> = &quot;remove&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_REPLACE</span><span class="sm"> = &quot;replace&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_SPECIAL</span><span class="sm"> = &quot;special&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_SPECIALFULL</span><span class="sm"> = &quot;specialfull&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_STRING</span><span class="sm"> = &quot;string&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_STRING_LEGACY</span><span class="sm"> = &quot;stringlegacy&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_STRIPTAGS</span><span class="sm"> = &quot;striptags&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_TRIM</span><span class="sm"> = &quot;trim&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_UPPER</span><span class="sm"> = &quot;upper&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_UPPERFIRST</span><span class="sm"> = &quot;upperfirst&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_UPPERWORDS</span><span class="sm"> = &quot;upperwords&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">FILTER_URL</span><span class="sm"> = &quot;url&quot;</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$mapper = []` `array`
-
--   `protected`{ .vis-protected } `$services = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$mapper</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$services</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -327,13 +367,13 @@ __Uses__ `Phalcon\Filter\Filter`
 <a class="api-item" href="#filterfilterfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">FilterInterface</code>
-<code class="sig">newInstance()</code>
+<code class="sig"><span class="sf">newInstance</span>()</code>
 <span class="desc">Returns a Locator object with all the helpers defined in anonymous</span>
 </a>
 <a class="api-item" href="#filterfilterfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
@@ -381,11 +421,7 @@ Lazy loads, stores and exposes sanitizer objects
 <a class="api-item" href="#filterfilterinterface-sanitize">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">sanitize(
-    mixed $value,
-    mixed $sanitizers,
-    bool $noRecursive = false
-)</code>
+<code class="sig"><span class="sf">sanitize</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$sanitizers</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Sanitizes a value with a specified single or set of sanitizers</span>
 </a>
 </div>
@@ -427,7 +463,7 @@ Sanitizes a value to absolute integer
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeabsint-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -462,7 +498,7 @@ Sanitizes a value to an alphanumeric value
 <div class="api-list">
 <a class="api-item" href="#filtersanitizealnum-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -497,7 +533,7 @@ Sanitizes a value to an alpha value
 <div class="api-list">
 <a class="api-item" href="#filtersanitizealpha-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -532,7 +568,7 @@ Sanitizes a value to boolean
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeboolval-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -567,7 +603,7 @@ Sanitizes an email string
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeemail-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -602,7 +638,7 @@ Sanitizes a value to float
 <div class="api-list">
 <a class="api-item" href="#filtersanitizefloatval-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -637,7 +673,7 @@ Sanitizes a value to integer
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeintval-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -673,10 +709,7 @@ Sanitizes a value to an ip address or CIDR range
 <a class="api-item" href="#filtersanitizeip-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string|false</code>
-<code class="sig">__invoke(
-    string $input,
-    int $filter = 0
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$filter</span><span class="sm"> = 0</span></span>)</code>
 </a>
 </div>
 
@@ -714,7 +747,7 @@ Sanitizes a value to lowercase
 <div class="api-list">
 <a class="api-item" href="#filtersanitizelower-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -749,7 +782,7 @@ Sanitizes a value to lcfirst
 <div class="api-list">
 <a class="api-item" href="#filtersanitizelowerfirst-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -784,11 +817,7 @@ Sanitizes a value performing preg_replace
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeregex-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke(
-    mixed $input,
-    mixed $pattern,
-    mixed $replace
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$pattern</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span></span>)</code>
 </a>
 </div>
 
@@ -827,10 +856,7 @@ Sanitizes a value removing parts of a string
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeremove-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke(
-    mixed $input,
-    mixed $replace
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$replace</span></span>)</code>
 </a>
 </div>
 
@@ -868,11 +894,7 @@ Sanitizes a value replacing parts of a string
 <div class="api-list">
 <a class="api-item" href="#filtersanitizereplace-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke(
-    mixed $input,
-    mixed $from,
-    mixed $to
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$from</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$to</span></span>)</code>
 </a>
 </div>
 
@@ -911,7 +933,7 @@ Sanitizes a value special characters
 <div class="api-list">
 <a class="api-item" href="#filtersanitizespecial-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -946,7 +968,7 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 <div class="api-list">
 <a class="api-item" href="#filtersanitizespecialfull-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -980,10 +1002,7 @@ Sanitizes a value to string
 <a class="api-item" href="#filtersanitizestringval-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">__invoke(
-    string $input,
-    int $flags = 11
-)</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 11</span></span>)</code>
 </a>
 </div>
 
@@ -1022,7 +1041,7 @@ string is passed, the method will return false
 <div class="api-list">
 <a class="api-item" href="#filtersanitizestringvallegacy-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1057,7 +1076,7 @@ Sanitizes a value striptags
 <div class="api-list">
 <a class="api-item" href="#filtersanitizestriptags-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1092,7 +1111,7 @@ Sanitizes a value removing leading and trailing spaces
 <div class="api-list">
 <a class="api-item" href="#filtersanitizetrim-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1127,7 +1146,7 @@ Sanitizes a value to uppercase
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeupper-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1162,7 +1181,7 @@ Sanitizes a value to ucfirst
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeupperfirst-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1197,7 +1216,7 @@ Sanitizes a value to uppercase the first character of each word
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeupperwords-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( string $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1232,7 +1251,7 @@ Sanitizes a value url
 <div class="api-list">
 <a class="api-item" href="#filtersanitizeurl-__invoke">
 <code class="vis vis-public">public</code>
-<code class="sig">__invoke( mixed $input )</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
 </a>
 </div>
 
@@ -1270,190 +1289,185 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` 
 <div class="api-list">
 <a class="api-item" href="#filtervalidation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $validators = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$validators</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Filter\Validation constructor</span>
 </a>
 <a class="api-item" href="#filtervalidation-add">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">add(
-    mixed $field,
-    ValidatorInterface $validator
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
 <span class="desc">Adds a validator to a field</span>
 </a>
 <a class="api-item" href="#filtervalidation-appendmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">appendMessage( MessageInterface $message )</code>
+<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
 <span class="desc">Appends a message to the messages list</span>
 </a>
 <a class="api-item" href="#filtervalidation-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">bind(
-    mixed $entity,
-    mixed $data,
-    array $whitelist = []
-)</code>
+<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Assigns the data to an entity</span>
 </a>
 <a class="api-item" href="#filtervalidation-fails">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">fails()</code>
+<code class="sig"><span class="sf">fails</span>()</code>
 <span class="desc">Verify if validation fails by verifying if there are messages in the current validation</span>
 </a>
 <a class="api-item" href="#filtervalidation-getdata">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getData()</code>
+<code class="sig"><span class="sf">getData</span>()</code>
 </a>
 <a class="api-item" href="#filtervalidation-getentity">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getEntity()</code>
+<code class="sig"><span class="sf">getEntity</span>()</code>
 <span class="desc">Returns the bound entity</span>
 </a>
 <a class="api-item" href="#filtervalidation-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getFilters( string $field = null )</code>
+<code class="sig"><span class="sf">getFilters</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns all the filters or a specific one</span>
 </a>
 <a class="api-item" href="#filtervalidation-getlabel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLabel( mixed $field )</code>
+<code class="sig"><span class="sf">getLabel</span>( <span class="st">mixed</span> <span class="sv">$field</span> )</code>
 <span class="desc">Get label for field</span>
 </a>
 <a class="api-item" href="#filtervalidation-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the registered validators</span>
 </a>
 <a class="api-item" href="#filtervalidation-getvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getValidators()</code>
+<code class="sig"><span class="sf">getValidators</span>()</code>
 <span class="desc">Returns the validators added to the validation</span>
 </a>
 <a class="api-item" href="#filtervalidation-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getValue( string $field )</code>
+<code class="sig"><span class="sf">getValue</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
 <span class="desc">Gets the a value to validate in the array/object data source</span>
 </a>
 <a class="api-item" href="#filtervalidation-getvaluebydata">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getValueByData(
-    mixed $data,
-    string $field
-)</code>
+<code class="sig"><span class="sf">getValueByData</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Gets the a value to validate in the array/object data source</span>
 </a>
 <a class="api-item" href="#filtervalidation-getvaluebyentity">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getValueByEntity(
-    mixed $entity,
-    string $field
-)</code>
+<code class="sig"><span class="sf">getValueByEntity</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Gets the a value to validate in the object entity source</span>
 </a>
 <a class="api-item" href="#filtervalidation-rule">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">rule(
-    mixed $field,
-    ValidatorInterface $validator
-)</code>
-<span class="desc">Alias of `add` method</span>
+<code class="sig"><span class="sf">rule</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
+<span class="desc">Alias of <code>add</code> method</span>
 </a>
 <a class="api-item" href="#filtervalidation-rules">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">rules(
-    mixed $field,
-    array $validators
-)</code>
+<code class="sig"><span class="sf">rules</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$validators</span></span>)</code>
 <span class="desc">Adds the validators to a field</span>
 </a>
 <a class="api-item" href="#filtervalidation-setentity">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEntity( mixed $entity )</code>
+<code class="sig"><span class="sf">setEntity</span>( <span class="st">mixed</span> <span class="sv">$entity</span> )</code>
 <span class="desc">Sets the bound entity</span>
 </a>
 <a class="api-item" href="#filtervalidation-setfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFilters(
-    mixed $field,
-    mixed $filters
-)</code>
+<code class="sig"><span class="sf">setFilters</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span></span>)</code>
 <span class="desc">Adds filters to the field</span>
 </a>
 <a class="api-item" href="#filtervalidation-setlabels">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setLabels( array $labels )</code>
+<code class="sig"><span class="sf">setLabels</span>( <span class="st">array</span> <span class="sv">$labels</span> )</code>
 <span class="desc">Adds labels for fields</span>
 </a>
 <a class="api-item" href="#filtervalidation-setvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setValidators( array $validators )</code>
+<code class="sig"><span class="sf">setValidators</span>( <span class="st">array</span> <span class="sv">$validators</span> )</code>
 </a>
 <a class="api-item" href="#filtervalidation-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages|bool</code>
-<code class="sig">validate(
-    mixed $data = null,
-    mixed $entity = null,
-    array $whitelist = []
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Validate a set of data according to a set of rules</span>
 </a>
 <a class="api-item" href="#filtervalidation-prechecking">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">preChecking(
-    mixed $field,
-    ValidatorInterface $validator
-)</code>
+<code class="sig"><span class="sf">preChecking</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
 <span class="desc">Internal validations, if it returns true, then skip the current validator</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$combinedFieldsValidators = []` `array`
-
--   `protected`{ .vis-protected } `$data` `mixed`
-
--   `protected`{ .vis-protected } `$entity = null` `object|null`
-
--   `protected`{ .vis-protected } `$filters = []` `array`
-
--   `protected`{ .vis-protected } `$labels = []` `array`
-
--   `protected`{ .vis-protected } `$messages` `Messages`
-
--   `protected`{ .vis-protected } `$validators = []` `array`
-
-    List of validators
-
--   `protected`{ .vis-protected } `$values = []` `array`
-
-    Calculated values
-
--   `protected`{ .vis-protected } `$whitelist = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$combinedFieldsValidators</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sv">$data</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">object|null</code>
+<code class="sig"><span class="sv">$entity</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$filters</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$labels</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Messages</code>
+<code class="sig"><span class="sv">$messages</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$validators</span><span class="sm"> = []</span></code>
+<span class="desc">List of validators</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$values</span><span class="sm"> = []</span></code>
+<span class="desc">Calculated values</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$whitelist</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -1748,125 +1762,109 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\Fi
 <div class="api-list">
 <a class="api-item" href="#filtervalidationabstractvalidator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Phalcon\Filter\Validation\Validator constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-getoption">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getOption(
-    string $key,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an option in the validator&#039;s options</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-gettemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTemplate( string $field = null )</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Get the template message</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-gettemplates">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getTemplates()</code>
+<code class="sig"><span class="sf">getTemplates</span>()</code>
 <span class="desc">Get templates collection object</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-hasoption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasOption( string $key )</code>
+<code class="sig"><span class="sf">hasOption</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Checks if an option is defined</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-messagefactory">
 <code class="vis vis-public">public</code>
 <code class="ret">Message</code>
-<code class="sig">messageFactory(
-    Validation $validation,
-    mixed $field,
-    array $replacements = []
-)</code>
+<code class="sig"><span class="sf">messageFactory</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$replacements</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Create a default message by factory</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-setoption">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setOption(
-    string $key,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Sets an option in the validator</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-settemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidatorInterface</code>
-<code class="sig">setTemplate( string $template )</code>
+<code class="sig"><span class="sf">setTemplate</span>( <span class="st">string</span> <span class="sv">$template</span> )</code>
 <span class="desc">Set a new template message</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-settemplates">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidatorInterface</code>
-<code class="sig">setTemplates( array $templates )</code>
+<code class="sig"><span class="sf">setTemplates</span>( <span class="st">array</span> <span class="sv">$templates</span> )</code>
 <span class="desc">Clear current templates and set new from an array,</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-allowempty">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">allowEmpty(
-    mixed $field,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">allowEmpty</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Checks if field can be empty.</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-checkarray">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">checkArray(
-    mixed $value,
-    string $field
-)</code>
+<code class="sig"><span class="sf">checkArray</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Checks if a value is an array and returns the element based on the</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-preparecode">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
-<code class="sig">prepareCode( string $field )</code>
+<code class="sig"><span class="sf">prepareCode</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
 <span class="desc">Prepares a validation code.</span>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidator-preparelabel">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
-<code class="sig">prepareLabel(
-    Validation $validation,
-    string $field
-)</code>
+<code class="sig"><span class="sf">prepareLabel</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Prepares a label for the field.</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$options = []` `array`
-
--   `protected`{ .vis-protected } `$template = null` `string|null`
-
-    Message template
-
--   `protected`{ .vis-protected } `$templates = []` `array`
-
-    Message templates
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$options</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = null</span></code>
+<span class="desc">Message template</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$templates</span><span class="sm"> = []</span></code>
+<span class="desc">Message templates</span>
+</div>
 </div>
 
 ### Methods
@@ -2037,25 +2035,24 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\No
 <a class="api-item" href="#filtervalidationabstractvalidatorcomposite-getvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getValidators()</code>
+<code class="sig"><span class="sf">getValidators</span>()</code>
 </a>
 <a class="api-item" href="#filtervalidationabstractvalidatorcomposite-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$validators = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$validators</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -2142,7 +2139,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsfieldnotprintable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2185,7 +2182,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsfilterserviceunavailable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2228,7 +2225,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidallowedtypes-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2271,7 +2268,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidcallbackreturn-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2314,7 +2311,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvaliddomainoption-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2357,7 +2354,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidfieldtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2400,7 +2397,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidfilterservice-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2443,7 +2440,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidstrictoption-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2486,7 +2483,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidvalidationdata-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2529,7 +2526,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidvalidator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2572,7 +2569,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsinvalidvalidatorscope-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2615,7 +2612,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsmissingmbstring-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2658,7 +2655,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsnodatatovalidate-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2701,7 +2698,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsnovalidators-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2744,7 +2741,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsnovalidatorsincomposite-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $className )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 </div>
 
@@ -2787,7 +2784,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsuniquenessconversionmustbearray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2830,7 +2827,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsuniquenessmodelrequired-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2873,7 +2870,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsuniquenessonlyforphalconmodel-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2916,7 +2913,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationexceptionsvalidationentitynotobject-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct()</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
 </a>
 </div>
 
@@ -2953,105 +2950,85 @@ __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Messages\MessageInterface` · `Phal
 <a class="api-item" href="#filtervalidationvalidationinterface-add">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidationInterface</code>
-<code class="sig">add(
-    mixed $field,
-    ValidatorInterface $validator
-)</code>
+<code class="sig"><span class="sf">add</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
 <span class="desc">Adds a validator to a field</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-appendmessage">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidationInterface</code>
-<code class="sig">appendMessage( MessageInterface $message )</code>
+<code class="sig"><span class="sf">appendMessage</span>( <span class="st">MessageInterface</span> <span class="sv">$message</span> )</code>
 <span class="desc">Appends a message to the messages list</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidationInterface</code>
-<code class="sig">bind(
-    mixed $entity,
-    mixed $data,
-    array $whitelist = []
-)</code>
+<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Assigns the data to an entity</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getentity">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getEntity()</code>
+<code class="sig"><span class="sf">getEntity</span>()</code>
 <span class="desc">Returns the bound entity</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getFilters( string $field = null )</code>
+<code class="sig"><span class="sf">getFilters</span>( <span class="st">string</span> <span class="sv">$field</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns all the filters or a specific one</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getlabel">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLabel( string $field )</code>
+<code class="sig"><span class="sf">getLabel</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
 <span class="desc">Get label for field</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getmessages">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages</code>
-<code class="sig">getMessages()</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
 <span class="desc">Returns the registered validators</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getValidators()</code>
+<code class="sig"><span class="sf">getValidators</span>()</code>
 <span class="desc">Returns the validators added to the validation</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-getvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed|null</code>
-<code class="sig">getValue( string $field )</code>
+<code class="sig"><span class="sf">getValue</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
 <span class="desc">Gets the a value to validate in the array/object data source</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-rule">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidationInterface</code>
-<code class="sig">rule(
-    mixed $field,
-    ValidatorInterface $validator
-)</code>
-<span class="desc">Alias of `add` method</span>
+<code class="sig"><span class="sf">rule</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">ValidatorInterface</span> <span class="sv">$validator</span></span>)</code>
+<span class="desc">Alias of <code>add</code> method</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-rules">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidationInterface</code>
-<code class="sig">rules(
-    string $field,
-    array $validators
-)</code>
+<code class="sig"><span class="sf">rules</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$validators</span></span>)</code>
 <span class="desc">Adds the validators to a field</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-setfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidationInterface</code>
-<code class="sig">setFilters(
-    string $field,
-    mixed $filters
-)</code>
+<code class="sig"><span class="sf">setFilters</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span></span>)</code>
 <span class="desc">Adds filters to the field</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-setlabels">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setLabels( array $labels )</code>
+<code class="sig"><span class="sf">setLabels</span>( <span class="st">array</span> <span class="sv">$labels</span> )</code>
 <span class="desc">Adds labels for fields</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidationinterface-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">Messages|bool</code>
-<code class="sig">validate(
-    mixed $data = null,
-    mixed $entity = null,
-    array $whitelist = []
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$entity</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$whitelist</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Validate a set of data according to a set of rules</span>
 </a>
 </div>
@@ -3216,16 +3193,13 @@ __Uses__ `Phalcon\Filter\Validation`
 <a class="api-item" href="#filtervalidationvalidatorcompositeinterface-getvalidators">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getValidators()</code>
+<code class="sig"><span class="sf">getValidators</span>()</code>
 <span class="desc">Executes the validation</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorcompositeinterface-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
@@ -3282,24 +3256,24 @@ __Uses__ `Phalcon\Factory\AbstractFactory`
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfactory-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $services = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$services</span><span class="sm"> = []</span> )</code>
 <span class="desc">TagFactory constructor.</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfactory-newinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidatorInterface</code>
-<code class="sig">newInstance( string $name )</code>
+<code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Creates a new instance</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getExceptionClass()</code>
+<code class="sig"><span class="sf">getExceptionClass</span>()</code>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfactory-getservices">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig">getServices()</code>
+<code class="sig"><span class="sf">getServices</span>()</code>
 <span class="desc">Returns the available adapters</span>
 </a>
 </div>
@@ -3363,49 +3337,43 @@ __Uses__ `Phalcon\Filter\Validation`
 <a class="api-item" href="#filtervalidationvalidatorinterface-getoption">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getOption(
-    string $key,
-    mixed $defaultValue = null
-)</code>
+<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an option in the validator&#039;s options</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorinterface-gettemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getTemplate( string $field )</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$field</span> )</code>
 <span class="desc">Get the template message</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorinterface-gettemplates">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getTemplates()</code>
+<code class="sig"><span class="sf">getTemplates</span>()</code>
 <span class="desc">Get message templates</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorinterface-hasoption">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasOption( string $key )</code>
+<code class="sig"><span class="sf">hasOption</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Checks if an option is defined</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorinterface-settemplate">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidatorInterface</code>
-<code class="sig">setTemplate( string $template )</code>
+<code class="sig"><span class="sf">setTemplate</span>( <span class="st">string</span> <span class="sv">$template</span> )</code>
 <span class="desc">Set a new template message</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorinterface-settemplates">
 <code class="vis vis-public">public</code>
 <code class="ret">ValidatorInterface</code>
-<code class="sig">setTemplates( array $templates )</code>
+<code class="sig"><span class="sf">setTemplates</span>( <span class="st">array</span> <span class="sv">$templates</span> )</code>
 <span class="desc">Clear current template and set new from an array,</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorinterface-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
@@ -3531,26 +3499,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatoralnum-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoralnum-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must contain only letters and numbers"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must contain only letters and numbers&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3630,26 +3597,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatoralpha-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoralpha-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must contain only letters"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must contain only letters&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3740,26 +3706,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorbetween-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorbetween-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be within the range of :min to :max"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be within the range of :min to :max&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3849,26 +3814,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorcallback-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorcallback-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must match the callback function"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must match the callback function&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -3953,35 +3917,31 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorconfirmation-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorconfirmation-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorconfirmation-compare">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">compare(
-    string $a,
-    string $b
-)</code>
+<code class="sig"><span class="sf">compare</span>(<span class="prm"><span class="st">string</span> <span class="sv">$a</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$b</span></span>)</code>
 <span class="desc">Compare strings</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be the same as :with"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be the same as :with&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4074,26 +4034,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorcreditcard-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorcreditcard-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field is not valid for a credit card number"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field is not valid for a credit card number&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4178,26 +4137,25 @@ __Uses__ `DateTime` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatordate-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatordate-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field is not a valid date"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field is not a valid date&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4277,26 +4235,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatordigit-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatordigit-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be numeric"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be numeric&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4386,26 +4343,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatoremail-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoremail-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be an email address"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be an email address&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4512,26 +4468,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorexclusionin-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorexclusionin-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must not be a part of list: :domain"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must not be a part of list: :domain&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -4648,7 +4603,7 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfile-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 </div>
@@ -4730,114 +4685,104 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkupload">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">checkUpload(
-    Validation $validation,
-    string $field
-)</code>
+<code class="sig"><span class="sf">checkUpload</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Check upload</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkuploadisempty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">checkUploadIsEmpty(
-    Validation $validation,
-    string $field
-)</code>
+<code class="sig"><span class="sf">checkUploadIsEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Check if upload is empty</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkuploadisvalid">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">checkUploadIsValid(
-    Validation $validation,
-    string $field
-)</code>
+<code class="sig"><span class="sf">checkUploadIsValid</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Check if upload is valid</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkuploadmaxsize">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">checkUploadMaxSize(
-    Validation $validation,
-    string $field
-)</code>
+<code class="sig"><span class="sf">checkUploadMaxSize</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Check if uploaded file is larger than PHP allowed size</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getfilesizeinbytes">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
-<code class="sig">getFileSizeInBytes( string $size )</code>
+<code class="sig"><span class="sf">getFileSizeInBytes</span>( <span class="st">string</span> <span class="sv">$size</span> )</code>
 <span class="desc">Convert a string like &quot;2.5MB&quot; in bytes</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getmessagefileempty">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMessageFileEmpty()</code>
+<code class="sig"><span class="sf">getMessageFileEmpty</span>()</code>
 <span class="desc">Empty is empty</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getmessageinisize">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMessageIniSize()</code>
+<code class="sig"><span class="sf">getMessageIniSize</span>()</code>
 <span class="desc">File exceeds the file size set in PHP configuration</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-getmessagevalid">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getMessageValid()</code>
+<code class="sig"><span class="sf">getMessageValid</span>()</code>
 <span class="desc">File is not valid</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-isallowempty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAllowEmpty(
-    Validation $validation,
-    string $field
-)</code>
+<code class="sig"><span class="sf">isAllowEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Check on empty</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-setmessagefileempty">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setMessageFileEmpty( string $message )</code>
+<code class="sig"><span class="sf">setMessageFileEmpty</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 <span class="desc">Empty is empty</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-setmessageinisize">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setMessageIniSize( string $message )</code>
+<code class="sig"><span class="sf">setMessageIniSize</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 <span class="desc">File exceeds the file size set in PHP configuration</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-setmessagevalid">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setMessageValid( string $message )</code>
+<code class="sig"><span class="sf">setMessageValid</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
 <span class="desc">File is not valid</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileabstractfile-checkisuploadedfile">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">checkIsUploadedFile( string $name )</code>
+<code class="sig"><span class="sf">checkIsUploadedFile</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks if a file has been uploaded; Internal check that can be</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$messageFileEmpty = "Field :field must not be empty"` `string`
-
-    Empty is empty
-
--   `protected`{ .vis-protected } `$messageIniSize = "File :field exceeds the maximum file size"` `string`
-
-    File exceeds the file size set in PHP configuration
-
--   `protected`{ .vis-protected } `$messageValid = "Field :field is not valid"` `string`
-
-    File is not valid
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$messageFileEmpty</span><span class="sm"> = &quot;Field :field must not be empty&quot;</span></code>
+<span class="desc">Empty is empty</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$messageIniSize</span><span class="sm"> = &quot;File :field exceeds the maximum file size&quot;</span></code>
+<span class="desc">File exceeds the file size set in PHP configuration</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$messageValid</span><span class="sm"> = &quot;Field :field is not valid&quot;</span></code>
+<span class="desc">File is not valid</span>
+</div>
 </div>
 
 ### Methods
@@ -5036,20 +4981,19 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` ·
 <a class="api-item" href="#filtervalidationvalidatorfilemimetype-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "File :field must be of type: :types"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field must be of type: :types&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5127,26 +5071,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\Fil
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfileresolutionequal-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileresolutionequal-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "The resolution of the field :field has to be equal :resolution"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;The resolution of the field :field has to be equal :resolution&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5237,26 +5180,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\Fil
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfileresolutionmax-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileresolutionmax-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "File :field exceeds the maximum resolution of :resolution"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field exceeds the maximum resolution of :resolution&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5347,26 +5289,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\Fil
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfileresolutionmin-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfileresolutionmin-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "File :field can not have the minimum resolution of :resolution"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field can not have the minimum resolution of :resolution&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5460,29 +5401,24 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\Fil
 <a class="api-item" href="#filtervalidationvalidatorfilesizeequal-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorfilesizeequal-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig">getConditional(
-    double $source,
-    double $target,
-    bool $included = false
-)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "File :field does not have the exact :size file size"` `string|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field does not have the exact :size file size&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5577,21 +5513,19 @@ $validator->add(
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfilesizemax-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig">getConditional(
-    double $source,
-    double $target,
-    bool $included = false
-)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "File :field exceeds the size of :size"` `string|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field exceeds the size of :size&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5673,21 +5607,19 @@ $validator->add(
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorfilesizemin-getconditional">
 <code class="vis vis-protected">protected</code>
-<code class="sig">getConditional(
-    double $source,
-    double $target,
-    bool $included = false
-)</code>
+<code class="sig"><span class="sf">getConditional</span>(<span class="prm"><span class="st">double</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$target</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$included</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Executes the conditional</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "File :field can not have the minimum size of :size"` `string|null`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field can not have the minimum size of :size&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5765,26 +5697,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatoridentical-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoridentical-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field does not have the expected value"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field does not have the expected value&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5869,26 +5800,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorinclusionin-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorinclusionin-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be a part of list: :domain"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be a part of list: :domain&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5985,36 +5915,38 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorip-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorip-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `VERSION_4 = FILTER_FLAG_IPV4` `int`
-
--   `VERSION_6 = FILTER_FLAG_IPV6` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">VERSION_4</span><span class="sm"> = FILTER_FLAG_IPV4</span></code>
+</div>
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">VERSION_6</span><span class="sm"> = FILTER_FLAG_IPV6</span></code>
+</div>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be a valid IP address"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be a valid IP address&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6094,26 +6026,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatornumericality-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatornumericality-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field does not have a valid numeric format"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field does not have a valid numeric format&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6193,26 +6124,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorpresenceof-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorpresenceof-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field is required"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field is required&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6297,26 +6227,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorregex-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorregex-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field does not match the required format"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field does not match the required format&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6425,7 +6354,7 @@ __Uses__ `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Valida
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorstringlength-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 </div>
@@ -6508,26 +6437,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorstringlengthmax-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorstringlengthmax-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must not exceed :max characters long"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must not exceed :max characters long&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6619,26 +6547,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorstringlengthmin-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorstringlengthmin-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be at least :min characters long"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be at least :min characters long&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6755,52 +6682,41 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombi
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatoruniqueness-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoruniqueness-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoruniqueness-getcolumnnamereal">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig">getColumnNameReal(
-    mixed $record,
-    string $field
-)</code>
+<code class="sig"><span class="sf">getColumnNameReal</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">The column map is used in the case to get real column name</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoruniqueness-isuniqueness">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig">isUniqueness(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">isUniqueness</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 </a>
 <a class="api-item" href="#filtervalidationvalidatoruniqueness-isuniquenessmodel">
 <code class="vis vis-protected">protected</code>
-<code class="sig">isUniquenessModel(
-    mixed $record,
-    array $field,
-    array $values
-)</code>
+<code class="sig"><span class="sf">isUniquenessModel</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span></span>)</code>
 <span class="desc">Uniqueness method used for model</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be unique"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be unique&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6914,26 +6830,25 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 <div class="api-list">
 <a class="api-item" href="#filtervalidationvalidatorurl-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( array $options = [] )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
 <a class="api-item" href="#filtervalidationvalidatorurl-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate(
-    Validation $validation,
-    mixed $field
-)</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
 <span class="desc">Executes the validation</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$template = "Field :field must be a url"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;Field :field must be a url&quot;</span></code>
+</div>
 </div>
 
 ### Methods

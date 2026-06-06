@@ -33,68 +33,76 @@ __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiI
 <div class="api-list">
 <a class="api-item" href="#applicationabstractapplication-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( DiInterface $container = null )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">DiInterface</span> <span class="sv">$container</span><span class="sm"> = null</span> )</code>
 <span class="desc">Phalcon\AbstractApplication constructor</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-getdefaultmodule">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDefaultModule()</code>
+<code class="sig"><span class="sf">getDefaultModule</span>()</code>
 <span class="desc">Returns the default module name</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-getmodule">
 <code class="vis vis-public">public</code>
 <code class="ret">array|object</code>
-<code class="sig">getModule( string $name )</code>
+<code class="sig"><span class="sf">getModule</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets the module definition registered in the application via module name</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-getmodules">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getModules()</code>
+<code class="sig"><span class="sf">getModules</span>()</code>
 <span class="desc">Return the modules registered in the application</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-registermodules">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">registerModules(
-    array $modules,
-    bool $merge = false
-)</code>
+<code class="sig"><span class="sf">registerModules</span>(<span class="prm"><span class="st">array</span> <span class="sv">$modules</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$merge</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Register an array of modules present in the application</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-setdefaultmodule">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefaultModule( string $defaultModule )</code>
+<code class="sig"><span class="sf">setDefaultModule</span>( <span class="st">string</span> <span class="sv">$defaultModule</span> )</code>
 <span class="desc">Sets the module name to be used if the router does not return a valid module</span>
 </a>
 <a class="api-item" href="#applicationabstractapplication-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 </div>
 
 ### Properties
 
-<div class="api-list" markdown>
-
--   `protected`{ .vis-protected } `$container = null` `DiInterface|null`
-
--   `protected`{ .vis-protected } `$defaultModule = ""` `string`
-
--   `protected`{ .vis-protected } `$eventsManager = null` `ManagerInterface|null`
-
--   `protected`{ .vis-protected } `$modules = []` `array`
-
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">DiInterface|null</code>
+<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$defaultModule</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface|null</code>
+<code class="sig"><span class="sv">$eventsManager</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$modules</span><span class="sm"> = []</span></code>
+</div>
 </div>
 
 ### Methods
@@ -230,7 +238,7 @@ __Uses__ `Phalcon\Application\Exception`
 <div class="api-list">
 <a class="api-item" href="#applicationexceptionsmodulenotregistered-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig">__construct( string $name )</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 

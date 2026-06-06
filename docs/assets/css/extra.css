@@ -360,6 +360,34 @@
     color: var(--api-protected-fg);
 }
 
+/* Signature token colors, matching the Pygments palette of the
+   fenced code blocks in both color schemes */
+.md-typeset .api-list .sig .sf {
+    color: var(--md-code-hl-function-color, #8250df);
+}
+
+.md-typeset .api-list .sig .st {
+    color: var(--md-code-hl-keyword-color, #0550ae);
+}
+
+.md-typeset .api-list .sig .sv {
+    color: var(--md-code-hl-variable-color, #953800);
+}
+
+.md-typeset .api-list .sig .sc {
+    color: var(--md-code-hl-constant-color, #0550ae);
+}
+
+.md-typeset .api-list .sig .sm {
+    color: var(--md-default-fg-color--light);
+}
+
+/* One parameter per line on signatures with 2+ parameters */
+.md-typeset .api-list .sig .prm {
+    display: block;
+    padding-left: 1.6em;
+}
+
 /* Row descriptions */
 .md-typeset .api-list .desc,
 .md-typeset .api-list li > p:not(:first-child) {

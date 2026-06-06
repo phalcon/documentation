@@ -25,37 +25,37 @@ hide:
 <a class="api-item" href="#contractsauthaccessaccess-allowedif">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">allowedIf()</code>
+<code class="sig"><span class="sf">allowedIf</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthaccessaccess-getexceptactions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getExceptActions()</code>
+<code class="sig"><span class="sf">getExceptActions</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthaccessaccess-getonlyactions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOnlyActions()</code>
+<code class="sig"><span class="sf">getOnlyActions</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthaccessaccess-isallowed">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAllowed( string $actionName )</code>
+<code class="sig"><span class="sf">isAllowed</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
 </a>
 <a class="api-item" href="#contractsauthaccessaccess-redirectto">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
-<code class="sig">redirectTo()</code>
+<code class="sig"><span class="sf">redirectTo</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthaccessaccess-setexceptactions">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setExceptActions( array $exceptActions = [] )</code>
+<code class="sig"><span class="sf">setExceptActions</span>( <span class="st">array</span> <span class="sv">$exceptActions</span><span class="sm"> = []</span> )</code>
 </a>
 <a class="api-item" href="#contractsauthaccessaccess-setonlyactions">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setOnlyActions( array $onlyActions = [] )</code>
+<code class="sig"><span class="sf">setOnlyActions</span>( <span class="st">array</span> <span class="sv">$onlyActions</span><span class="sm"> = []</span> )</code>
 </a>
 </div>
 
@@ -135,31 +135,25 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Secu
 <a class="api-item" href="#contractsauthadapteradapter-fromoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">fromOptions(
-    Security $hasher,
-    array $options
-)</code>
+<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Security</span> <span class="sv">$hasher</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
 <span class="desc">Build an adapter from a flat options map. Used by ManagerFactory to</span>
 </a>
 <a class="api-item" href="#contractsauthadapteradapter-retrievebycredentials">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig">retrieveByCredentials( array $credentials )</code>
+<code class="sig"><span class="sf">retrieveByCredentials</span>( <span class="st">array</span> <span class="sv">$credentials</span> )</code>
 <span class="desc">Find a user matching the given credentials (e.g. [&#039;email&#039; =&gt; &#039;a@b&#039;]).</span>
 </a>
 <a class="api-item" href="#contractsauthadapteradapter-retrievebyid">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig">retrieveById( mixed $id )</code>
+<code class="sig"><span class="sf">retrieveById</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Find a user by their unique identifier.</span>
 </a>
 <a class="api-item" href="#contractsauthadapteradapter-validatecredentials">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validateCredentials(
-    AuthUser $user,
-    array $credentials
-)</code>
+<code class="sig"><span class="sf">validateCredentials</span>(<span class="prm"><span class="st">AuthUser</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$credentials</span></span>)</code>
 <span class="desc">Validate the provided credentials against the given user.</span>
 </a>
 </div>
@@ -236,7 +230,7 @@ all adapters is the optional model class used during user hydration.
 <a class="api-item" href="#contractsauthadapteradapterconfig-getmodel">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getModel()</code>
+<code class="sig"><span class="sf">getModel</span>()</code>
 <span class="desc">Returns the user-model class name to hydrate, if configured.</span>
 </a>
 </div>
@@ -277,17 +271,13 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberTo
 <a class="api-item" href="#contractsauthadapterrememberadapter-createremembertoken">
 <code class="vis vis-public">public</code>
 <code class="ret">RememberToken</code>
-<code class="sig">createRememberToken( AuthUser $user )</code>
+<code class="sig"><span class="sf">createRememberToken</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
 <span class="desc">Create and persist a new remember token for the user.</span>
 </a>
 <a class="api-item" href="#contractsauthadapterrememberadapter-retrievebytoken">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig">retrieveByToken(
-    mixed $id,
-    string $token,
-    string $userAgent = null
-)</code>
+<code class="sig"><span class="sf">retrieveByToken</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Retrieve a user by the remember-me cookie payload.</span>
 </a>
 </div>
@@ -338,16 +328,13 @@ not support remember-me are not forced to implement it.
 <a class="api-item" href="#contractsauthauthremember-createremembertoken">
 <code class="vis vis-public">public</code>
 <code class="ret">RememberToken</code>
-<code class="sig">createRememberToken(
-    string $token,
-    string $userAgent = null
-)</code>
+<code class="sig"><span class="sf">createRememberToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$userAgent</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Persists a new remember token for the user.</span>
 </a>
 <a class="api-item" href="#contractsauthauthremember-getremembertoken">
 <code class="vis vis-public">public</code>
 <code class="ret">RememberToken|null</code>
-<code class="sig">getRememberToken( string $token )</code>
+<code class="sig"><span class="sf">getRememberToken</span>( <span class="st">string</span> <span class="sv">$token</span> )</code>
 <span class="desc">Returns the remember token entry matching the given token value,</span>
 </a>
 </div>
@@ -396,13 +383,13 @@ Implemented by user models that can be authenticated.
 <a class="api-item" href="#contractsauthauthuser-getauthidentifier">
 <code class="vis vis-public">public</code>
 <code class="ret">int|string</code>
-<code class="sig">getAuthIdentifier()</code>
+<code class="sig"><span class="sf">getAuthIdentifier</span>()</code>
 <span class="desc">Returns the unique identifier for the authenticatable user</span>
 </a>
 <a class="api-item" href="#contractsauthauthuser-getauthpassword">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getAuthPassword()</code>
+<code class="sig"><span class="sf">getAuthPassword</span>()</code>
 <span class="desc">Returns the hashed password for the authenticatable user.</span>
 </a>
 </div>
@@ -461,19 +448,13 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser`
 <a class="api-item" href="#contractsauthguardbasicauth-basic">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">basic(
-    string $field = &quot;email&quot;,
-    array $extraConditions = []
-)</code>
+<code class="sig"><span class="sf">basic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Authenticate against HTTP Basic credentials. Returns true on success.</span>
 </a>
 <a class="api-item" href="#contractsauthguardbasicauth-oncebasic">
 <code class="vis vis-public">public</code>
 <code class="ret">false|AuthUser</code>
-<code class="sig">onceBasic(
-    string $field = &quot;email&quot;,
-    array $extraConditions = []
-)</code>
+<code class="sig"><span class="sf">onceBasic</span>(<span class="prm"><span class="st">string</span> <span class="sv">$field</span><span class="sm"> = &quot;email&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$extraConditions</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Like basic() but does not persist; returns the resolved user on success</span>
 </a>
 </div>
@@ -526,59 +507,55 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 <a class="api-item" href="#contractsauthguardguard-check">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">check()</code>
+<code class="sig"><span class="sf">check</span>()</code>
 <span class="desc">Whether the current request is authenticated.</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-fromoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">fromOptions(
-    Adapter $adapter,
-    Collection $container,
-    array $options
-)</code>
+<code class="sig"><span class="sf">fromOptions</span>(<span class="prm"><span class="st">Adapter</span> <span class="sv">$adapter</span>,</span><span class="prm"><span class="st">Collection</span> <span class="sv">$container</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
 <span class="desc">Build a guard from an adapter, the application container, and a flat</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-getlastuserattempted">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig">getLastUserAttempted()</code>
+<code class="sig"><span class="sf">getLastUserAttempted</span>()</code>
 <span class="desc">Returns the last user the guard tried to authenticate during this</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-guest">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">guest()</code>
+<code class="sig"><span class="sf">guest</span>()</code>
 <span class="desc">Whether the current request is unauthenticated.</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-hasuser">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasUser()</code>
+<code class="sig"><span class="sf">hasUser</span>()</code>
 <span class="desc">Whether the guard currently holds a resolved user.</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-id">
 <code class="vis vis-public">public</code>
 <code class="ret">int|string|null</code>
-<code class="sig">id()</code>
+<code class="sig"><span class="sf">id</span>()</code>
 <span class="desc">Returns the authenticated user&#039;s identifier, or null when no</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-setuser">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setUser( AuthUser $user )</code>
+<code class="sig"><span class="sf">setUser</span>( <span class="st">AuthUser</span> <span class="sv">$user</span> )</code>
 <span class="desc">Sets the current user explicitly. Returns $this for fluent chaining.</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-user">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig">user()</code>
+<code class="sig"><span class="sf">user</span>()</code>
 <span class="desc">Returns the resolved user for the current request, or null.</span>
 </a>
 <a class="api-item" href="#contractsauthguardguard-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate( array $credentials = [] )</code>
+<code class="sig"><span class="sf">validate</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
 <span class="desc">Validates the given credentials without logging in.</span>
 </a>
 </div>
@@ -710,38 +687,29 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 <a class="api-item" href="#contractsauthguardguardstateful-attempt">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">attempt(
-    array $credentials = [],
-    bool $remember = false
-)</code>
+<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Attempts to authenticate the user with the given credentials and, on</span>
 </a>
 <a class="api-item" href="#contractsauthguardguardstateful-login">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">login(
-    AuthUser $user,
-    bool $remember = false
-)</code>
+<code class="sig"><span class="sf">login</span>(<span class="prm"><span class="st">AuthUser</span> <span class="sv">$user</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsauthguardguardstateful-loginbyid">
 <code class="vis vis-public">public</code>
 <code class="ret">false|AuthUser</code>
-<code class="sig">loginById(
-    mixed $id,
-    bool $remember = false
-)</code>
+<code class="sig"><span class="sf">loginById</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Logs in the user identified by $id. Returns the resolved user on</span>
 </a>
 <a class="api-item" href="#contractsauthguardguardstateful-logout">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">logout()</code>
+<code class="sig"><span class="sf">logout</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthguardguardstateful-viaremember">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">viaRemember()</code>
+<code class="sig"><span class="sf">viaRemember</span>()</code>
 </a>
 </div>
 
@@ -815,106 +783,99 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `
 <a class="api-item" href="#contractsauthmanager-access">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">access( string $accessName )</code>
+<code class="sig"><span class="sf">access</span>( <span class="st">string</span> <span class="sv">$accessName</span> )</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-addaccesslist">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">addAccessList( array $accessList )</code>
+<code class="sig"><span class="sf">addAccessList</span>( <span class="st">array</span> <span class="sv">$accessList</span> )</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-addguard">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">addGuard(
-    string $nameGuard,
-    Guard $guard,
-    bool $isDefault = false
-)</code>
+<code class="sig"><span class="sf">addGuard</span>(<span class="prm"><span class="st">string</span> <span class="sv">$nameGuard</span>,</span><span class="prm"><span class="st">Guard</span> <span class="sv">$guard</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$isDefault</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-attempt">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">attempt(
-    array $credentials = [],
-    bool $remember = false
-)</code>
+<code class="sig"><span class="sf">attempt</span>(<span class="prm"><span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$remember</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-check">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">check()</code>
+<code class="sig"><span class="sf">check</span>()</code>
 <span class="desc">Whether the default guard reports the current request as authenticated.</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-except">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">except( string $actions )</code>
+<code class="sig"><span class="sf">except</span>( <span class="st">string</span> <span class="sv">$actions</span> )</code>
 <span class="desc">Restricts the active access gate to skip the listed action names.</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-getaccess">
 <code class="vis vis-public">public</code>
 <code class="ret">Access|null</code>
-<code class="sig">getAccess()</code>
+<code class="sig"><span class="sf">getAccess</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-getaccesslist">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAccessList()</code>
+<code class="sig"><span class="sf">getAccessList</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-getdefaultguard">
 <code class="vis vis-public">public</code>
 <code class="ret">Guard|null</code>
-<code class="sig">getDefaultGuard()</code>
+<code class="sig"><span class="sf">getDefaultGuard</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-getguards">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getGuards()</code>
+<code class="sig"><span class="sf">getGuards</span>()</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-guard">
 <code class="vis vis-public">public</code>
 <code class="ret">Guard</code>
-<code class="sig">guard( string $name = null )</code>
+<code class="sig"><span class="sf">guard</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the named guard, or the default guard when $name is null.</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-id">
 <code class="vis vis-public">public</code>
 <code class="ret">int|string|null</code>
-<code class="sig">id()</code>
+<code class="sig"><span class="sf">id</span>()</code>
 <span class="desc">Returns the authenticated user&#039;s identifier from the default guard,</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-logout">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">logout()</code>
+<code class="sig"><span class="sf">logout</span>()</code>
 <span class="desc">Logs the current user out via the default guard.</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-only">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">only( string $actions )</code>
+<code class="sig"><span class="sf">only</span>( <span class="st">string</span> <span class="sv">$actions</span> )</code>
 <span class="desc">Restricts the active access gate to apply only to the listed action names.</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-setaccess">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">setAccess( Access $access )</code>
+<code class="sig"><span class="sf">setAccess</span>( <span class="st">Access</span> <span class="sv">$access</span> )</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-setdefaultguard">
 <code class="vis vis-public">public</code>
 <code class="ret">self</code>
-<code class="sig">setDefaultGuard( Guard $guard )</code>
+<code class="sig"><span class="sf">setDefaultGuard</span>( <span class="st">Guard</span> <span class="sv">$guard</span> )</code>
 </a>
 <a class="api-item" href="#contractsauthmanager-user">
 <code class="vis vis-public">public</code>
 <code class="ret">AuthUser|null</code>
-<code class="sig">user()</code>
+<code class="sig"><span class="sf">user</span>()</code>
 <span class="desc">Returns the resolved user from the default guard, or null.</span>
 </a>
 <a class="api-item" href="#contractsauthmanager-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">validate( array $credentials = [] )</code>
+<code class="sig"><span class="sf">validate</span>( <span class="st">array</span> <span class="sv">$credentials</span><span class="sm"> = []</span> )</code>
 <span class="desc">Validates the given credentials against the default guard without</span>
 </a>
 </div>
@@ -1076,19 +1037,19 @@ A persisted remember-me token row.
 <a class="api-item" href="#contractsauthremembertoken-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete()</code>
+<code class="sig"><span class="sf">delete</span>()</code>
 <span class="desc">Deletes the token from storage.</span>
 </a>
 <a class="api-item" href="#contractsauthremembertoken-gettoken">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getToken()</code>
+<code class="sig"><span class="sf">getToken</span>()</code>
 <span class="desc">Returns the token value stored for this remember entry.</span>
 </a>
 <a class="api-item" href="#contractsauthremembertoken-getuseragent">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getUserAgent()</code>
+<code class="sig"><span class="sf">getUserAgent</span>()</code>
 <span class="desc">Returns the user agent associated with this token, if any.</span>
 </a>
 </div>
@@ -1148,14 +1109,14 @@ Returns the user agent associated with this token, if any.
 <a class="api-item" href="#contractscontaineriocioccontainer-getservice">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">getService( string $serviceName )</code>
-<span class="desc">Returns an instance of the `$serviceName`.</span>
+<code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
+<span class="desc">Returns an instance of the <code>$serviceName</code>.</span>
 </a>
 <a class="api-item" href="#contractscontaineriocioccontainer-hasservice">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasService( string $serviceName )</code>
-<span class="desc">Is the container able to return an instance of the `$serviceName`?</span>
+<code class="sig"><span class="sf">hasService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
+<span class="desc">Is the container able to return an instance of the <code>$serviceName</code>?</span>
 </a>
 </div>
 
@@ -1221,7 +1182,7 @@ Is the container able to return an instance of the `$serviceName`?
 <a class="api-item" href="#contractscontaineriocioccontainerfactory-newcontainer">
 <code class="vis vis-public">public</code>
 <code class="ret">IocContainer</code>
-<code class="sig">newContainer()</code>
+<code class="sig"><span class="sf">newContainer</span>()</code>
 <span class="desc">Returns a new instance of [_IocContainer_][].</span>
 </a>
 </div>
@@ -1327,11 +1288,7 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod`
 <a class="api-item" href="#contractscontainerresolverreflectionmethodresolver-resolvemethod">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resolveMethod(
-    IocContainer $ioc,
-    ReflectionMethod $method,
-    object $instance
-)</code>
+<code class="sig"><span class="sf">resolveMethod</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionMethod</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span></span>)</code>
 </a>
 </div>
 
@@ -1397,10 +1354,7 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionParameter`
 <a class="api-item" href="#contractscontainerresolverreflectionparameterresolver-resolveparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveParameter(
-    IocContainer $ioc,
-    ReflectionParameter $parameter
-)</code>
+<code class="sig"><span class="sf">resolveParameter</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionParameter</span> <span class="sv">$parameter</span></span>)</code>
 </a>
 </div>
 
@@ -1464,7 +1418,7 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer`
 <a class="api-item" href="#contractscontainerresolverresolvable-resolve">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolve( IocContainer $ioc )</code>
+<code class="sig"><span class="sf">resolve</span>( <span class="st">IocContainer</span> <span class="sv">$ioc</span> )</code>
 </a>
 </div>
 
@@ -1526,51 +1480,32 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod` ·
 <a class="api-item" href="#contractscontainerresolverresolverservice-isresolvableclass">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isResolvableClass( string $className )</code>
+<code class="sig"><span class="sf">isResolvableClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerresolverresolverservice-resolvecall">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveCall(
-    IocContainer $ioc,
-    callable $callableObject,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">resolveCall</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerresolverresolverservice-resolveclass">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">resolveClass(
-    IocContainer $ioc,
-    string $className,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">resolveClass</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerresolverresolverservice-resolvemethod">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">resolveMethod(
-    IocContainer $ioc,
-    ReflectionMethod $method,
-    object $instance
-)</code>
+<code class="sig"><span class="sf">resolveMethod</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionMethod</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerresolverresolverservice-resolveparameters">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">resolveParameters(
-    IocContainer $ioc,
-    array $parameters,
-    array $arguments
-)</code>
+<code class="sig"><span class="sf">resolveParameters</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerresolverresolverservice-resolvetype">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">resolveType(
-    IocContainer $ioc,
-    ReflectionType $type
-)</code>
+<code class="sig"><span class="sf">resolveType</span>(<span class="prm"><span class="st">IocContainer</span> <span class="sv">$ioc</span>,</span><span class="prm"><span class="st">ReflectionType</span> <span class="sv">$type</span></span>)</code>
 </a>
 </div>
 
@@ -1723,174 +1658,152 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalc
 <a class="api-item" href="#contractscontainerservicecollection-bind">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">bind(
-    string $interfaceName,
-    string $concrete
-)</code>
+<code class="sig"><span class="sf">bind</span>(<span class="prm"><span class="st">string</span> <span class="sv">$interfaceName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$concrete</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-callableget">
 <code class="vis vis-public">public</code>
 <code class="ret">Closure</code>
-<code class="sig">callableGet( string $name )</code>
+<code class="sig"><span class="sf">callableGet</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-callablenew">
 <code class="vis vis-public">public</code>
 <code class="ret">Closure</code>
-<code class="sig">callableNew( string $name )</code>
+<code class="sig"><span class="sf">callableNew</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-extend">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">extend(
-    string $name,
-    callable $callableObject
-)</code>
+<code class="sig"><span class="sf">extend</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callableObject</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get( string $name )</code>
+<code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-getalias">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getAlias( string $name )</code>
+<code class="sig"><span class="sf">getAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-getbytag">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getByTag( string $tag )</code>
+<code class="sig"><span class="sf">getByTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-getdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">getDefinition( string $name )</code>
+<code class="sig"><span class="sf">getDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-getinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">getInstance( string $name )</code>
+<code class="sig"><span class="sf">getInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-getparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getParameter( string $name )</code>
+<code class="sig"><span class="sf">getParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-getresolver">
 <code class="vis vis-public">public</code>
 <code class="ret">Resolver</code>
-<code class="sig">getResolver()</code>
+<code class="sig"><span class="sf">getResolver</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $name )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-hasalias">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasAlias( string $name )</code>
+<code class="sig"><span class="sf">hasAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-hasdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasDefinition( string $name )</code>
+<code class="sig"><span class="sf">hasDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-hasinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasInstance( string $name )</code>
+<code class="sig"><span class="sf">hasInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-hasparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasParameter( string $name )</code>
+<code class="sig"><span class="sf">hasParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-isautowireenabled">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAutowireEnabled()</code>
+<code class="sig"><span class="sf">isAutowireEnabled</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-new">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">new( string $name )</code>
+<code class="sig"><span class="sf">new</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-newdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">newDefinition( string $name )</code>
+<code class="sig"><span class="sf">newDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-set">
 <code class="vis vis-public">public</code>
 <code class="ret">ServiceDefinition</code>
-<code class="sig">set(
-    string $name,
-    mixed $definition
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$definition</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-setalias">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAlias(
-    string $name,
-    string $alias
-)</code>
+<code class="sig"><span class="sf">setAlias</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-setautowire">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setAutowire( bool $enabled )</code>
+<code class="sig"><span class="sf">setAutowire</span>( <span class="st">bool</span> <span class="sv">$enabled</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-setdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setDefinition(
-    string $name,
-    ServiceDefinition $definition
-)</code>
+<code class="sig"><span class="sf">setDefinition</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">ServiceDefinition</span> <span class="sv">$definition</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-setinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setInstance(
-    string $name,
-    object $instance,
-    string $lifetime
-)</code>
+<code class="sig"><span class="sf">setInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$instance</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$lifetime</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-setparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setParameter(
-    string $name,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">setParameter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-unsetalias">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetAlias( string $name )</code>
+<code class="sig"><span class="sf">unsetAlias</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-unsetdefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetDefinition( string $name )</code>
+<code class="sig"><span class="sf">unsetDefinition</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-unsetinstance">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetInstance( string $name )</code>
+<code class="sig"><span class="sf">unsetInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-unsetinstances">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetInstances( string $lifetime )</code>
+<code class="sig"><span class="sf">unsetInstances</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicecollection-unsetparameter">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">unsetParameter( string $name )</code>
+<code class="sig"><span class="sf">unsetParameter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 </a>
 </div>
 
@@ -2147,87 +2060,87 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer`
 <a class="api-item" href="#contractscontainerservicedefinition-addextender">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">addExtender( callable $extender )</code>
+<code class="sig"><span class="sf">addExtender</span>( <span class="st">callable</span> <span class="sv">$extender</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-buildservice">
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
-<code class="sig">buildService( IocContainer $ioc )</code>
+<code class="sig"><span class="sf">buildService</span>( <span class="st">IocContainer</span> <span class="sv">$ioc</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-getclass">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getClass()</code>
+<code class="sig"><span class="sf">getClass</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-getextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getExtenders()</code>
+<code class="sig"><span class="sf">getExtenders</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-getfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">callable</code>
-<code class="sig">getFactory()</code>
+<code class="sig"><span class="sf">getFactory</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-getlifetime">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getLifetime()</code>
+<code class="sig"><span class="sf">getLifetime</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-getservicename">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getServiceName()</code>
+<code class="sig"><span class="sf">getServiceName</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-hasclass">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasClass()</code>
+<code class="sig"><span class="sf">hasClass</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-hasextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasExtenders()</code>
+<code class="sig"><span class="sf">hasExtenders</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-hasfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasFactory()</code>
+<code class="sig"><span class="sf">hasFactory</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-setclass">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setClass( string $className )</code>
+<code class="sig"><span class="sf">setClass</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-setextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setExtenders( array $extenders )</code>
+<code class="sig"><span class="sf">setExtenders</span>( <span class="st">array</span> <span class="sv">$extenders</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-setfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setFactory( callable $factory )</code>
+<code class="sig"><span class="sf">setFactory</span>( <span class="st">callable</span> <span class="sv">$factory</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-setlifetime">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">setLifetime( string $lifetime )</code>
+<code class="sig"><span class="sf">setLifetime</span>( <span class="st">string</span> <span class="sv">$lifetime</span> )</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-unsetclass">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">unsetClass()</code>
+<code class="sig"><span class="sf">unsetClass</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-unsetextenders">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">unsetExtenders()</code>
+<code class="sig"><span class="sf">unsetExtenders</span>()</code>
 </a>
 <a class="api-item" href="#contractscontainerservicedefinition-unsetfactory">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">unsetFactory()</code>
+<code class="sig"><span class="sf">unsetFactory</span>()</code>
 </a>
 </div>
 
@@ -2381,7 +2294,7 @@ copies will be replaced with the actual Composer dependencies.
 <a class="api-item" href="#contractscontainerserviceprovider-provide">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">provide( Collection $services )</code>
+<code class="sig"><span class="sf">provide</span>( <span class="st">Collection</span> <span class="sv">$services</span> )</code>
 </a>
 </div>
 
@@ -2472,529 +2385,403 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 <a class="api-item" href="#contractsdbadapteradapter-addcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column
-)</code>
+<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
 <span class="desc">Adds a column to a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-addforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addForeignKey(
-    string $tableName,
-    string $schemaName,
-    ReferenceInterface $reference
-)</code>
+<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
 <span class="desc">Adds a foreign key to a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-addindex">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addIndex(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Adds an index to a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-addprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">addPrimaryKey(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Adds a primary key to a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-affectedrows">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">affectedRows()</code>
+<code class="sig"><span class="sf">affectedRows</span>()</code>
 <span class="desc">Returns the number of affected rows by the last INSERT/UPDATE/DELETE</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-begin">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">begin( bool $nesting = true )</code>
+<code class="sig"><span class="sf">begin</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Starts a transaction in the connection</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-close">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">close()</code>
+<code class="sig"><span class="sf">close</span>()</code>
 <span class="desc">Closes active connection returning success. Phalcon automatically closes</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">commit( bool $nesting = true )</code>
+<code class="sig"><span class="sf">commit</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Commits the active transaction in the connection</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-connect">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">connect( array $descriptor = [] )</code>
+<code class="sig"><span class="sf">connect</span>( <span class="st">array</span> <span class="sv">$descriptor</span><span class="sm"> = []</span> )</code>
 <span class="desc">This method is automatically called in \Phalcon\Db\Adapter\Pdo</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-createsavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createSavepoint( string $name )</code>
+<code class="sig"><span class="sf">createSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Creates a new savepoint</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-createtable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createTable(
-    string $tableName,
-    string $schemaName,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Creates a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">createView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Creates a view</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-delete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">delete(
-    mixed $table,
-    string $whereCondition = null,
-    array $placeholders = [],
-    array $dataTypes = []
-)</code>
+<code class="sig"><span class="sf">delete</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Deletes data from a table using custom RDBMS SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">ColumnInterface[]</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an array of Phalcon\Db\Column objects describing a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">IndexInterface[]</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table indexes</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">ReferenceInterface[]</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Lists table references</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-dropcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropColumn(
-    string $tableName,
-    string $schemaName,
-    string $columnName
-)</code>
+<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
 <span class="desc">Drops a column from a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-dropforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropForeignKey(
-    string $tableName,
-    string $schemaName,
-    string $referenceName
-)</code>
+<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
 <span class="desc">Drops a foreign key from a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-dropindex">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropIndex(
-    string $tableName,
-    string $schemaName,
-    string $indexName
-)</code>
+<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$indexName</span></span>)</code>
 <span class="desc">Drop an index from a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-dropprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropPrimaryKey(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Drops primary key from a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-droptable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropTable(
-    string $tableName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Drops a table from a schema/database</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">dropView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Drops a view</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-escapeidentifier">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeIdentifier( mixed $identifier )</code>
+<code class="sig"><span class="sf">escapeIdentifier</span>( <span class="st">mixed</span> <span class="sv">$identifier</span> )</code>
 <span class="desc">Escapes a column/table/schema name</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-escapestring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">escapeString( string $str )</code>
+<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$str</span> )</code>
 <span class="desc">Escapes a value to avoid SQL injections</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-execute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">execute(
-    string $sqlStatement,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">execute</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sends SQL statements to the database server returning the success state.</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-fetchall">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAll(
-    string $sqlQuery,
-    int $fetchMode = 2,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">fetchAll</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$fetchMode</span><span class="sm"> = 2</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Dumps the complete result of a query into an array</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-fetchcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
-<code class="sig">fetchColumn(
-    string $sqlQuery,
-    array $placeholders = [],
-    mixed $column = 0
-)</code>
+<code class="sig"><span class="sf">fetchColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$column</span><span class="sm"> = 0</span></span>)</code>
 <span class="desc">Returns the n&#039;th field of first row in a SQL query result</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-fetchone">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchOne(
-    string $sqlQuery,
-    int $fetchMode = 2,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">fetchOne</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$fetchMode</span><span class="sm"> = 2</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the first row in a SQL query result</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">forUpdate(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
-<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`</span>
+<code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional <code>modifier</code></span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getcolumndefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnDefinition( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Returns the SQL column definition from a column</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getcolumnlist">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnList( mixed $columnList )</code>
+<code class="sig"><span class="sf">getColumnList</span>( <span class="st">mixed</span> <span class="sv">$columnList</span> )</code>
 <span class="desc">Gets a list of columns</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getconnectionid">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getConnectionId()</code>
+<code class="sig"><span class="sf">getConnectionId</span>()</code>
 <span class="desc">Gets the active connection unique identifier</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getdefaultidvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">RawValue</code>
-<code class="sig">getDefaultIdValue()</code>
+<code class="sig"><span class="sf">getDefaultIdValue</span>()</code>
 <span class="desc">Return the default identity value to insert in an identity column</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getdefaultvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">RawValue|null</code>
-<code class="sig">getDefaultValue()</code>
+<code class="sig"><span class="sf">getDefaultValue</span>()</code>
 <span class="desc">Returns the default value to make the RBDM use the default value declared</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getdescriptor">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getDescriptor()</code>
+<code class="sig"><span class="sf">getDescriptor</span>()</code>
 <span class="desc">Return descriptor used to connect to the active database</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getdialect">
 <code class="vis vis-public">public</code>
 <code class="ret">DialectInterface</code>
-<code class="sig">getDialect()</code>
+<code class="sig"><span class="sf">getDialect</span>()</code>
 <span class="desc">Returns internal dialect instance</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getdialecttype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getDialectType()</code>
+<code class="sig"><span class="sf">getDialectType</span>()</code>
 <span class="desc">Returns the name of the dialect used</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getinternalhandler">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getInternalHandler()</code>
+<code class="sig"><span class="sf">getInternalHandler</span>()</code>
 <span class="desc">Return internal PDO handler</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getnestedtransactionsavepointname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getNestedTransactionSavepointName()</code>
+<code class="sig"><span class="sf">getNestedTransactionSavepointName</span>()</code>
 <span class="desc">Returns the savepoint name to use for nested transactions</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getrealsqlstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getRealSQLStatement()</code>
+<code class="sig"><span class="sf">getRealSQLStatement</span>()</code>
 <span class="desc">Active SQL statement in the object without replace bound parameters</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getsqlbindtypes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSQLBindTypes()</code>
+<code class="sig"><span class="sf">getSQLBindTypes</span>()</code>
 <span class="desc">Active SQL statement in the object</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getsqlstatement">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSQLStatement()</code>
+<code class="sig"><span class="sf">getSQLStatement</span>()</code>
 <span class="desc">Active SQL statement in the object</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-getsqlvariables">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSQLVariables()</code>
+<code class="sig"><span class="sf">getSQLVariables</span>()</code>
 <span class="desc">Active SQL statement in the object</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns type of database system the adapter is used for</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-insert">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">insert(
-    string $table,
-    array $values,
-    mixed $fields = null,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">insert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Inserts data into a table using custom RDBMS SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-insertasdict">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">insertAsDict(
-    string $table,
-    mixed $data,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">insertAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Inserts data into a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-isnestedtransactionswithsavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isNestedTransactionsWithSavepoints()</code>
+<code class="sig"><span class="sf">isNestedTransactionsWithSavepoints</span>()</code>
 <span class="desc">Returns if nested transactions should use savepoints</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-isundertransaction">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUnderTransaction()</code>
+<code class="sig"><span class="sf">isUnderTransaction</span>()</code>
 <span class="desc">Checks whether connection is under database transaction</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-lastinsertid">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
-<code class="sig">lastInsertId( string $name = null )</code>
+<code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns insert id for the auto_increment column inserted in the last SQL</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">limit(
-    string $sqlQuery,
-    mixed $number
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Appends a LIMIT clause to sqlQuery argument</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">listTables( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables on a database</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-listviews">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">listViews( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listViews</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all views on a database</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">modifyColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column,
-    ColumnInterface $currentColumn = null
-)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Modifies a table column based on a definition</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-query">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultInterface|bool</code>
-<code class="sig">query(
-    string $sqlStatement,
-    array $bindParams = [],
-    array $bindTypes = []
-)</code>
+<code class="sig"><span class="sf">query</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlStatement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindParams</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sends SQL statements to the database server returning the success state.</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-releasesavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">releaseSavepoint( string $name )</code>
+<code class="sig"><span class="sf">releaseSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Releases given savepoint</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-rollback">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollback( bool $nesting = true )</code>
+<code class="sig"><span class="sf">rollback</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Rollbacks the active transaction in the connection</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-rollbacksavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">rollbackSavepoint( string $name )</code>
+<code class="sig"><span class="sf">rollbackSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Rollbacks given savepoint</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-setnestedtransactionswithsavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">\Phalcon\Db\Adapter\AdapterInterface</code>
-<code class="sig">setNestedTransactionsWithSavepoints( bool $nestedTransactionsWithSavepoints )</code>
+<code class="sig"><span class="sf">setNestedTransactionsWithSavepoints</span>( <span class="st">bool</span> <span class="sv">$nestedTransactionsWithSavepoints</span> )</code>
 <span class="desc">Set if nested transactions should use savepoints</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">sharedLock(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a SQL modified with a shared-lock clause. See the dialect&#039;s</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-supportsequences">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportSequences()</code>
+<code class="sig"><span class="sf">supportSequences</span>()</code>
 <span class="desc">Check whether the database system requires a sequence to produce</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-supportsdefaultvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportsDefaultValue()</code>
+<code class="sig"><span class="sf">supportsDefaultValue</span>()</code>
 <span class="desc">SQLite does not support the DEFAULT keyword</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">tableExists(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">tableOptions(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets creation options from a table</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-update">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">update(
-    string $table,
-    mixed $fields,
-    mixed $values,
-    mixed $whereCondition = null,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">update</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates data on a table using custom RDBMS SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-updateasdict">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">updateAsDict(
-    string $table,
-    mixed $data,
-    mixed $whereCondition = null,
-    mixed $dataTypes = null
-)</code>
+<code class="sig"><span class="sf">updateAsDict</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$whereCondition</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$dataTypes</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Updates data on a table using custom RBDM SQL syntax</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-useexplicitidvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">useExplicitIdValue()</code>
+<code class="sig"><span class="sf">useExplicitIdValue</span>()</code>
 <span class="desc">Check whether the database system requires an explicit value for identity</span>
 </a>
 <a class="api-item" href="#contractsdbadapteradapter-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">viewExists(
-    string $viewName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 </div>
@@ -3763,13 +3550,13 @@ Canonical contract for Phalcon\Db\Check.
 <a class="api-item" href="#contractsdbcheck-getexpression">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getExpression()</code>
+<code class="sig"><span class="sf">getExpression</span>()</code>
 <span class="desc">Gets the CHECK expression (the SQL boolean predicate).</span>
 </a>
 <a class="api-item" href="#contractsdbcheck-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Gets the constraint name. An empty string indicates an unnamed CHECK</span>
 </a>
 </div>
@@ -3826,97 +3613,97 @@ Canonical contract for Phalcon\Db\Column.
 <a class="api-item" href="#contractsdbcolumn-getafterposition">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getAfterPosition()</code>
+<code class="sig"><span class="sf">getAfterPosition</span>()</code>
 <span class="desc">Check whether field absolute to position in table</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-getbindtype">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getBindType()</code>
+<code class="sig"><span class="sf">getBindType</span>()</code>
 <span class="desc">Returns the type of bind handling</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-getdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getDefault()</code>
+<code class="sig"><span class="sf">getDefault</span>()</code>
 <span class="desc">Returns default value of column</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Returns column name</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-getscale">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getScale()</code>
+<code class="sig"><span class="sf">getScale</span>()</code>
 <span class="desc">Returns column scale</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-getsize">
 <code class="vis vis-public">public</code>
 <code class="ret">int|string</code>
-<code class="sig">getSize()</code>
+<code class="sig"><span class="sf">getSize</span>()</code>
 <span class="desc">Returns column size</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">int|string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns column type</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-gettypereference">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getTypeReference()</code>
+<code class="sig"><span class="sf">getTypeReference</span>()</code>
 <span class="desc">Returns column type reference</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-gettypevalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array|string|int</code>
-<code class="sig">getTypeValues()</code>
+<code class="sig"><span class="sf">getTypeValues</span>()</code>
 <span class="desc">Returns column type values</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-hasdefault">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasDefault()</code>
+<code class="sig"><span class="sf">hasDefault</span>()</code>
 <span class="desc">Check whether column has default value</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isautoincrement">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isAutoIncrement()</code>
+<code class="sig"><span class="sf">isAutoIncrement</span>()</code>
 <span class="desc">Auto-Increment</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isFirst()</code>
+<code class="sig"><span class="sf">isFirst</span>()</code>
 <span class="desc">Check whether column have first position in table</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isnotnull">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isNotNull()</code>
+<code class="sig"><span class="sf">isNotNull</span>()</code>
 <span class="desc">Not null</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isnumeric">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isNumeric()</code>
+<code class="sig"><span class="sf">isNumeric</span>()</code>
 <span class="desc">Check whether column have an numeric type</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isprimary">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPrimary()</code>
+<code class="sig"><span class="sf">isPrimary</span>()</code>
 <span class="desc">Column is part of the primary key?</span>
 </a>
 <a class="api-item" href="#contractsdbcolumn-isunsigned">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isUnsigned()</code>
+<code class="sig"><span class="sf">isUnsigned</span>()</code>
 <span class="desc">Returns true if number column is unsigned</span>
 </a>
 </div>
@@ -4088,316 +3875,232 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 <a class="api-item" href="#contractsdbdialect-addcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column
-)</code>
+<code class="sig"><span class="sf">addColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span></span>)</code>
 <span class="desc">Generates SQL to add a column to a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-addforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addForeignKey(
-    string $tableName,
-    string $schemaName,
-    ReferenceInterface $reference
-)</code>
+<code class="sig"><span class="sf">addForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ReferenceInterface</span> <span class="sv">$reference</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-addindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addIndex(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add an index to a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-addprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">addPrimaryKey(
-    string $tableName,
-    string $schemaName,
-    IndexInterface $index
-)</code>
+<code class="sig"><span class="sf">addPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">IndexInterface</span> <span class="sv">$index</span></span>)</code>
 <span class="desc">Generates SQL to add the primary key to a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-createsavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createSavepoint( string $name )</code>
+<code class="sig"><span class="sf">createSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Generate SQL to create a new savepoint</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-createtable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createTable(
-    string $tableName,
-    string $schemaName,
-    array $definition
-)</code>
+<code class="sig"><span class="sf">createTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span></span>)</code>
 <span class="desc">Generates SQL to create a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-createview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">createView(
-    string $viewName,
-    array $definition,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">createView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$definition</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to create a view</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-describecolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeColumns(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeColumns</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to describe a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-describeindexes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeIndexes(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeIndexes</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query indexes on a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-describereferences">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">describeReferences(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">describeReferences</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to query foreign keys on a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-dropcolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropColumn(
-    string $tableName,
-    string $schemaName,
-    string $columnName
-)</code>
+<code class="sig"><span class="sf">dropColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$columnName</span></span>)</code>
 <span class="desc">Generates SQL to delete a column from a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-dropforeignkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropForeignKey(
-    string $tableName,
-    string $schemaName,
-    string $referenceName
-)</code>
+<code class="sig"><span class="sf">dropForeignKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$referenceName</span></span>)</code>
 <span class="desc">Generates SQL to delete a foreign key from a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-dropindex">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropIndex(
-    string $tableName,
-    string $schemaName,
-    string $indexName
-)</code>
+<code class="sig"><span class="sf">dropIndex</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$indexName</span></span>)</code>
 <span class="desc">Generates SQL to delete an index from a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-dropprimarykey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropPrimaryKey(
-    string $tableName,
-    string $schemaName
-)</code>
+<code class="sig"><span class="sf">dropPrimaryKey</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span></span>)</code>
 <span class="desc">Generates SQL to delete primary key from a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-droptable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropTable(
-    string $tableName,
-    string $schemaName,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropTable</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-dropview">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">dropView(
-    string $viewName,
-    string $schemaName = null,
-    bool $ifExists = true
-)</code>
+<code class="sig"><span class="sf">dropView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ifExists</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Generates SQL to drop a view</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-forupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">forUpdate(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
-<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`</span>
+<code class="sig"><span class="sf">forUpdate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<span class="desc">Returns a SQL modified with a FOR UPDATE clause. The optional <code>modifier</code></span>
 </a>
 <a class="api-item" href="#contractsdbdialect-getcolumndefinition">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnDefinition( ColumnInterface $column )</code>
+<code class="sig"><span class="sf">getColumnDefinition</span>( <span class="st">ColumnInterface</span> <span class="sv">$column</span> )</code>
 <span class="desc">Gets the column name in RDBMS</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-getcolumnlist">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getColumnList( array $columnList )</code>
+<code class="sig"><span class="sf">getColumnList</span>( <span class="st">array</span> <span class="sv">$columnList</span> )</code>
 <span class="desc">Gets a list of columns</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-getcustomfunctions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getCustomFunctions()</code>
+<code class="sig"><span class="sf">getCustomFunctions</span>()</code>
 <span class="desc">Returns registered functions</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-getsqlexpression">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSqlExpression(
-    array $expression,
-    string $escapeChar = null,
-    array $bindCounts = []
-)</code>
+<code class="sig"><span class="sf">getSqlExpression</span>(<span class="prm"><span class="st">array</span> <span class="sv">$expression</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$escapeChar</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$bindCounts</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Transforms an intermediate representation for an expression into a</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-limit">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">limit(
-    string $sqlQuery,
-    mixed $number
-)</code>
+<code class="sig"><span class="sf">limit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$number</span></span>)</code>
 <span class="desc">Generates the SQL for LIMIT clause</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-listtables">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">listTables( string $schemaName = null )</code>
+<code class="sig"><span class="sf">listTables</span>( <span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span> )</code>
 <span class="desc">List all tables in database</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-modifycolumn">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">modifyColumn(
-    string $tableName,
-    string $schemaName,
-    ColumnInterface $column,
-    ColumnInterface $currentColumn = null
-)</code>
+<code class="sig"><span class="sf">modifyColumn</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$column</span>,</span><span class="prm"><span class="st">ColumnInterface</span> <span class="sv">$currentColumn</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL to modify a column in a table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-registercustomfunction">
 <code class="vis vis-public">public</code>
 <code class="ret">\Phalcon\Db\Dialect</code>
-<code class="sig">registerCustomFunction(
-    string $name,
-    callable $customFunction
-)</code>
+<code class="sig"><span class="sf">registerCustomFunction</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$customFunction</span></span>)</code>
 <span class="desc">Registers custom SQL functions</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-releasesavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">releaseSavepoint( string $name )</code>
+<code class="sig"><span class="sf">releaseSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Generate SQL to release a savepoint</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-rollbacksavepoint">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">rollbackSavepoint( string $name )</code>
+<code class="sig"><span class="sf">rollbackSavepoint</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Generate SQL to rollback a savepoint</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-select">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">select( array $definition )</code>
+<code class="sig"><span class="sf">select</span>( <span class="st">array</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Builds a SELECT statement</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-sharedlock">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">sharedLock(
-    string $sqlQuery,
-    string $modifier = &quot;&quot;
-)</code>
+<code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a SQL modified with a shared-lock clause. MySQL emits</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-supportsreleasesavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportsReleaseSavepoints()</code>
+<code class="sig"><span class="sf">supportsReleaseSavepoints</span>()</code>
 <span class="desc">Checks whether the platform supports releasing savepoints.</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-supportssavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">supportsSavepoints()</code>
+<code class="sig"><span class="sf">supportsSavepoints</span>()</code>
 <span class="desc">Checks whether the platform supports savepoints</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableExists(
-    string $tableName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">tableExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tableName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.table</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-tableoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">tableOptions(
-    string $table,
-    string $schema = null
-)</code>
+<code class="sig"><span class="sf">tableOptions</span>(<span class="prm"><span class="st">string</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schema</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates the SQL to describe the table creation options</span>
 </a>
 <a class="api-item" href="#contractsdbdialect-viewexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">viewExists(
-    string $viewName,
-    string $schemaName = null
-)</code>
+<code class="sig"><span class="sf">viewExists</span>(<span class="prm"><span class="st">string</span> <span class="sv">$viewName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$schemaName</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Generates SQL checking for the existence of a schema.view</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `LOCK_NONE = ""` `string`
-
-    No row-lock modifier - the default behavior for `forUpdate()`.
-
--   `LOCK_NOWAIT = "NOWAIT"` `string`
-
-    Append `NOWAIT` to the `FOR UPDATE` clause - the query fails immediately
-    if a row it needs is locked instead of blocking. MySQL 8.0+ and
-    PostgreSQL 9.5+ recognize this. SQLite has no row-level locking and
-    silently ignores the modifier.
-
--   `LOCK_SKIP_LOCKED = "SKIP LOCKED"` `string`
-
-    Append `SKIP LOCKED` to the `FOR UPDATE` clause - the query returns
-    rows that are not currently locked and silently skips ones that are.
-    MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">LOCK_NONE</span><span class="sm"> = &quot;&quot;</span></code>
+<span class="desc">No row-lock modifier - the default behavior for <code>forUpdate()</code>.</span>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">LOCK_NOWAIT</span><span class="sm"> = &quot;NOWAIT&quot;</span></code>
+<span class="desc">Append <code>NOWAIT</code> to the <code>FOR UPDATE</code> clause - the query fails immediately
+if a row it needs is locked instead of blocking. MySQL 8.0+ and
+PostgreSQL 9.5+ recognize this. SQLite has no row-level locking and
+silently ignores the modifier.</span>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">LOCK_SKIP_LOCKED</span><span class="sm"> = &quot;SKIP LOCKED&quot;</span></code>
+<span class="desc">Append <code>SKIP LOCKED</code> to the <code>FOR UPDATE</code> clause - the query returns
+rows that are not currently locked and silently skips ones that are.
+MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.</span>
+</div>
 </div>
 
 ### Methods
@@ -4799,19 +4502,19 @@ Canonical contract for Phalcon\Db\Index.
 <a class="api-item" href="#contractsdbindex-getcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Gets the columns that corresponds the index</span>
 </a>
 <a class="api-item" href="#contractsdbindex-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Gets the index name</span>
 </a>
 <a class="api-item" href="#contractsdbindex-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Gets the index type</span>
 </a>
 </div>
@@ -4865,49 +4568,49 @@ Canonical contract for Phalcon\Db\Reference.
 <a class="api-item" href="#contractsdbreference-getcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getColumns()</code>
+<code class="sig"><span class="sf">getColumns</span>()</code>
 <span class="desc">Gets local columns which reference is based</span>
 </a>
 <a class="api-item" href="#contractsdbreference-getname">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getName()</code>
+<code class="sig"><span class="sf">getName</span>()</code>
 <span class="desc">Gets the index name</span>
 </a>
 <a class="api-item" href="#contractsdbreference-getondelete">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getOnDelete()</code>
+<code class="sig"><span class="sf">getOnDelete</span>()</code>
 <span class="desc">Gets the referenced on delete</span>
 </a>
 <a class="api-item" href="#contractsdbreference-getonupdate">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getOnUpdate()</code>
+<code class="sig"><span class="sf">getOnUpdate</span>()</code>
 <span class="desc">Gets the referenced on update</span>
 </a>
 <a class="api-item" href="#contractsdbreference-getreferencedcolumns">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getReferencedColumns()</code>
+<code class="sig"><span class="sf">getReferencedColumns</span>()</code>
 <span class="desc">Gets referenced columns</span>
 </a>
 <a class="api-item" href="#contractsdbreference-getreferencedschema">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getReferencedSchema()</code>
+<code class="sig"><span class="sf">getReferencedSchema</span>()</code>
 <span class="desc">Gets the schema where referenced table is</span>
 </a>
 <a class="api-item" href="#contractsdbreference-getreferencedtable">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getReferencedTable()</code>
+<code class="sig"><span class="sf">getReferencedTable</span>()</code>
 <span class="desc">Gets the referenced table</span>
 </a>
 <a class="api-item" href="#contractsdbreference-getschemaname">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getSchemaName()</code>
+<code class="sig"><span class="sf">getSchemaName</span>()</code>
 <span class="desc">Gets the schema where referenced table is</span>
 </a>
 </div>
@@ -5000,49 +4703,49 @@ Canonical contract for Phalcon\Db result objects.
 <div class="api-list">
 <a class="api-item" href="#contractsdbresult-dataseek">
 <code class="vis vis-public">public</code>
-<code class="sig">dataSeek( int $number )</code>
+<code class="sig"><span class="sf">dataSeek</span>( <span class="st">int</span> <span class="sv">$number</span> )</code>
 <span class="desc">Moves internal resultset cursor to another position letting us to fetch a</span>
 </a>
 <a class="api-item" href="#contractsdbresult-execute">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">execute()</code>
+<code class="sig"><span class="sf">execute</span>()</code>
 <span class="desc">Allows to execute the statement again. Some database systems don&#039;t</span>
 </a>
 <a class="api-item" href="#contractsdbresult-fetch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">fetch()</code>
+<code class="sig"><span class="sf">fetch</span>()</code>
 <span class="desc">Fetches an array/object of strings that corresponds to the fetched row,</span>
 </a>
 <a class="api-item" href="#contractsdbresult-fetchall">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">fetchAll()</code>
+<code class="sig"><span class="sf">fetchAll</span>()</code>
 <span class="desc">Returns an array of arrays containing all the records in the result. This</span>
 </a>
 <a class="api-item" href="#contractsdbresult-fetcharray">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">fetchArray()</code>
+<code class="sig"><span class="sf">fetchArray</span>()</code>
 <span class="desc">Returns an array of strings that corresponds to the fetched row, or FALSE</span>
 </a>
 <a class="api-item" href="#contractsdbresult-getinternalresult">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
-<code class="sig">getInternalResult()</code>
+<code class="sig"><span class="sf">getInternalResult</span>()</code>
 <span class="desc">Gets the internal PDO result object</span>
 </a>
 <a class="api-item" href="#contractsdbresult-numrows">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">numRows()</code>
+<code class="sig"><span class="sf">numRows</span>()</code>
 <span class="desc">Gets number of rows returned by a resultset</span>
 </a>
 <a class="api-item" href="#contractsdbresult-setfetchmode">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">setFetchMode( int $fetchMode )</code>
+<code class="sig"><span class="sf">setFetchMode</span>( <span class="st">int</span> <span class="sv">$fetchMode</span> )</code>
 <span class="desc">Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()</span>
 </a>
 </div>
@@ -5153,32 +4856,27 @@ __Uses__ `Phalcon\Encryption\Security\Random`
 <a class="api-item" href="#contractsencryptionsecuritycryptoutils-computehmac">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">computeHmac(
-    string $data,
-    string $key,
-    string $algorithm,
-    bool $raw = false
-)</code>
+<code class="sig"><span class="sf">computeHmac</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$algorithm</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$raw</span><span class="sm"> = false</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycryptoutils-getrandom">
 <code class="vis vis-public">public</code>
 <code class="ret">Random</code>
-<code class="sig">getRandom()</code>
+<code class="sig"><span class="sf">getRandom</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycryptoutils-getrandombytes">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getRandomBytes()</code>
+<code class="sig"><span class="sf">getRandomBytes</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycryptoutils-getsaltbytes">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getSaltBytes( int $numberBytes = 0 )</code>
+<code class="sig"><span class="sf">getSaltBytes</span>( <span class="st">int</span> <span class="sv">$numberBytes</span><span class="sm"> = 0</span> )</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycryptoutils-setrandombytes">
 <code class="vis vis-public">public</code>
 <code class="ret">Security</code>
-<code class="sig">setRandomBytes( int $randomBytes )</code>
+<code class="sig"><span class="sf">setRandomBytes</span>( <span class="st">int</span> <span class="sv">$randomBytes</span> )</code>
 </a>
 </div>
 
@@ -5246,36 +4944,32 @@ file that was distributed with this source code.
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-checktoken">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">checkToken(
-    string $tokenKey = null,
-    mixed $tokenValue = null,
-    bool $destroyIfValid = true
-)</code>
+<code class="sig"><span class="sf">checkToken</span>(<span class="prm"><span class="st">string</span> <span class="sv">$tokenKey</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$tokenValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$destroyIfValid</span><span class="sm"> = true</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-destroytoken">
 <code class="vis vis-public">public</code>
 <code class="ret">Security</code>
-<code class="sig">destroyToken()</code>
+<code class="sig"><span class="sf">destroyToken</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-getrequesttoken">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getRequestToken()</code>
+<code class="sig"><span class="sf">getRequestToken</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-getsessiontoken">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getSessionToken()</code>
+<code class="sig"><span class="sf">getSessionToken</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-gettoken">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getToken()</code>
+<code class="sig"><span class="sf">getToken</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritycsrfprotection-gettokenkey">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getTokenKey()</code>
+<code class="sig"><span class="sf">getTokenKey</span>()</code>
 </a>
 </div>
 
@@ -5348,49 +5042,42 @@ file that was distributed with this source code.
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-checkhash">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">checkHash(
-    string $password,
-    string $passwordHash,
-    int $maxPassLength = 0
-)</code>
+<code class="sig"><span class="sf">checkHash</span>(<span class="prm"><span class="st">string</span> <span class="sv">$password</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passwordHash</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$maxPassLength</span><span class="sm"> = 0</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-getdefaulthash">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getDefaultHash()</code>
+<code class="sig"><span class="sf">getDefaultHash</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-gethashinformation">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getHashInformation( string $hash )</code>
+<code class="sig"><span class="sf">getHashInformation</span>( <span class="st">string</span> <span class="sv">$hash</span> )</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-getworkfactor">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getWorkFactor()</code>
+<code class="sig"><span class="sf">getWorkFactor</span>()</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-hash">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">hash(
-    string $password,
-    array $options = []
-)</code>
+<code class="sig"><span class="sf">hash</span>(<span class="prm"><span class="st">string</span> <span class="sv">$password</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-islegacyhash">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isLegacyHash( string $passwordHash )</code>
+<code class="sig"><span class="sf">isLegacyHash</span>( <span class="st">string</span> <span class="sv">$passwordHash</span> )</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-setdefaulthash">
 <code class="vis vis-public">public</code>
 <code class="ret">Security</code>
-<code class="sig">setDefaultHash( int $defaultHash )</code>
+<code class="sig"><span class="sf">setDefaultHash</span>( <span class="st">int</span> <span class="sv">$defaultHash</span> )</code>
 </a>
 <a class="api-item" href="#contractsencryptionsecuritypasswordsecurity-setworkfactor">
 <code class="vis vis-public">public</code>
 <code class="ret">Security</code>
-<code class="sig">setWorkFactor( int $workFactor )</code>
+<code class="sig"><span class="sf">setWorkFactor</span>( <span class="st">int</span> <span class="sv">$workFactor</span> )</code>
 </a>
 </div>
 
@@ -5494,43 +5181,43 @@ Canonical contract for Phalcon\Events\Event.
 <a class="api-item" href="#contractseventsevent-getdata">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getData()</code>
+<code class="sig"><span class="sf">getData</span>()</code>
 <span class="desc">Gets event data</span>
 </a>
 <a class="api-item" href="#contractseventsevent-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Gets event type</span>
 </a>
 <a class="api-item" href="#contractseventsevent-iscancelable">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isCancelable()</code>
+<code class="sig"><span class="sf">isCancelable</span>()</code>
 <span class="desc">Check whether the event is cancelable</span>
 </a>
 <a class="api-item" href="#contractseventsevent-isstopped">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isStopped()</code>
+<code class="sig"><span class="sf">isStopped</span>()</code>
 <span class="desc">Check whether the event is currently stopped</span>
 </a>
 <a class="api-item" href="#contractseventsevent-setdata">
 <code class="vis vis-public">public</code>
 <code class="ret">Event</code>
-<code class="sig">setData( mixed $data = null )</code>
+<code class="sig"><span class="sf">setData</span>( <span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span> )</code>
 <span class="desc">Sets event data</span>
 </a>
 <a class="api-item" href="#contractseventsevent-settype">
 <code class="vis vis-public">public</code>
 <code class="ret">Event</code>
-<code class="sig">setType( string $type )</code>
+<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Sets event type</span>
 </a>
 <a class="api-item" href="#contractseventsevent-stop">
 <code class="vis vis-public">public</code>
 <code class="ret">Event</code>
-<code class="sig">stop()</code>
+<code class="sig"><span class="sf">stop</span>()</code>
 <span class="desc">Stops the event preventing propagation</span>
 </a>
 </div>
@@ -5625,13 +5312,13 @@ __Uses__ `Phalcon\Events\ManagerInterface`
 <a class="api-item" href="#contractseventseventsaware-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
-<code class="sig">getEventsManager()</code>
+<code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal events manager</span>
 </a>
 <a class="api-item" href="#contractseventseventsaware-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">setEventsManager( ManagerInterface $eventsManager )</code>
+<code class="sig"><span class="sf">setEventsManager</span>( <span class="st">ManagerInterface</span> <span class="sv">$eventsManager</span> )</code>
 <span class="desc">Sets the events manager</span>
 </a>
 </div>
@@ -5677,118 +5364,107 @@ Canonical contract for Phalcon\Events\Manager.
 <a class="api-item" href="#contractseventsmanager-addsubscriber">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">addSubscriber( Subscriber $subscriber )</code>
+<code class="sig"><span class="sf">addSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
 <span class="desc">Registers an event subscriber. The subscriber&#039;s getSubscribedEvents()</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-areprioritiesenabled">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">arePrioritiesEnabled()</code>
+<code class="sig"><span class="sf">arePrioritiesEnabled</span>()</code>
 <span class="desc">Returns whether priority ordering is currently enabled.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-attach">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">attach(
-    string $eventType,
-    mixed $handler,
-    int $priority = self::DEFAULT_PRIORITY
-)</code>
+<code class="sig"><span class="sf">attach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$priority</span><span class="sm"> = self::DEFAULT_PRIORITY</span></span>)</code>
 <span class="desc">Attach a listener to the events manager.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-clearsubscribers">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clearSubscribers()</code>
+<code class="sig"><span class="sf">clearSubscribers</span>()</code>
 <span class="desc">Removes every registered subscriber and detaches each listener they</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-collectresponses">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">collectResponses( bool $collect )</code>
+<code class="sig"><span class="sf">collectResponses</span>( <span class="st">bool</span> <span class="sv">$collect</span> )</code>
 <span class="desc">Toggle response collection on/off.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-detach">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">detach(
-    string $eventType,
-    mixed $handler
-)</code>
+<code class="sig"><span class="sf">detach</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$handler</span></span>)</code>
 <span class="desc">Detach a listener from the events manager.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-detachall">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">detachAll( string $type = null )</code>
+<code class="sig"><span class="sf">detachAll</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
 <span class="desc">Removes all listeners - globally or for a single event type.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-enablepriorities">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">enablePriorities( bool $enablePriorities )</code>
+<code class="sig"><span class="sf">enablePriorities</span>( <span class="st">bool</span> <span class="sv">$enablePriorities</span> )</code>
 <span class="desc">Toggle priority ordering on/off.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-fire">
 <code class="vis vis-public">public</code>
-<code class="sig">fire(
-    string $eventType,
-    object $source,
-    mixed $data = null,
-    bool $cancelable = true
-)</code>
+<code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventType</span>,</span><span class="prm"><span class="st">object</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$cancelable</span><span class="sm"> = true</span></span>)</code>
 <span class="desc">Fires an event, notifying the active listeners.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-getlisteners">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getListeners( string $type )</code>
+<code class="sig"><span class="sf">getListeners</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Returns all listeners attached to the given event type.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-getresponses">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getResponses()</code>
+<code class="sig"><span class="sf">getResponses</span>()</code>
 <span class="desc">Returns the responses recorded during the last fire (when collecting).</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-getsubscribers">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSubscribers()</code>
+<code class="sig"><span class="sf">getSubscribers</span>()</code>
 <span class="desc">Returns the list of registered subscriber instances.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-haslisteners">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">hasListeners( string $type )</code>
+<code class="sig"><span class="sf">hasListeners</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
 <span class="desc">Check whether the given event type has any listeners.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-iscollecting">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isCollecting()</code>
+<code class="sig"><span class="sf">isCollecting</span>()</code>
 <span class="desc">Check whether the manager is currently collecting responses.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-isvalidhandler">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isValidHandler( mixed $handler )</code>
+<code class="sig"><span class="sf">isValidHandler</span>( <span class="st">mixed</span> <span class="sv">$handler</span> )</code>
 <span class="desc">Returns true when the given handler is an object or callable.</span>
 </a>
 <a class="api-item" href="#contractseventsmanager-removesubscriber">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">removeSubscriber( Subscriber $subscriber )</code>
+<code class="sig"><span class="sf">removeSubscriber</span>( <span class="st">Subscriber</span> <span class="sv">$subscriber</span> )</code>
 <span class="desc">Removes a previously registered subscriber. Detaches every listener the</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `DEFAULT_PRIORITY = 100` `int`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">DEFAULT_PRIORITY</span><span class="sm"> = 100</span></code>
+</div>
 </div>
 
 ### Methods
@@ -5962,7 +5638,7 @@ package exposes a PSR-14 adapter.
 <a class="api-item" href="#contractseventsstoppable-ispropagationstopped">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isPropagationStopped()</code>
+<code class="sig"><span class="sf">isPropagationStopped</span>()</code>
 <span class="desc">Returns true when the event must stop propagating to subsequent</span>
 </a>
 </div>
@@ -6020,7 +5696,7 @@ subscribe to every event of a component, use the prefix as the key:
 <a class="api-item" href="#contractseventssubscriber-getsubscribedevents">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getSubscribedEvents()</code>
+<code class="sig"><span class="sf">getSubscribedEvents</span>()</code>
 <span class="desc">Returns a map of event name =&gt; listener config. Called once per</span>
 </a>
 </div>
@@ -6072,7 +5748,7 @@ Optional keys per definition:
 <a class="api-item" href="#contractsformsschema-load">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">load()</code>
+<code class="sig"><span class="sf">load</span>()</code>
 <span class="desc">Returns an ordered list of normalized element definitions.</span>
 </a>
 </div>
@@ -6112,13 +5788,13 @@ Return format: [value => label] for flat options;
 <a class="api-item" href="#contractshtmlhelperinputselectdata-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAttributes()</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Returns the per-option attribute map.</span>
 </a>
 <a class="api-item" href="#contractshtmlhelperinputselectdata-getoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getOptions()</code>
+<code class="sig"><span class="sf">getOptions</span>()</code>
 </a>
 </div>
 
@@ -6168,7 +5844,7 @@ database record.
 <a class="api-item" href="#contractsmvcmodelrelationcachekeyprovider-getuniquekey">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">getUniqueKey()</code>
+<code class="sig"><span class="sf">getUniqueKey</span>()</code>
 <span class="desc">Returns a string that uniquely identifies this model instance for</span>
 </a>
 </div>
@@ -6210,25 +5886,25 @@ __Uses__ `Phalcon\Paginator\Adapter\AdapterInterface`
 <a class="api-item" href="#contractspaginatoradapter-getlimit">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getLimit()</code>
+<code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Get current rows limit</span>
 </a>
 <a class="api-item" href="#contractspaginatoradapter-paginate">
 <code class="vis vis-public">public</code>
 <code class="ret">Repository</code>
-<code class="sig">paginate()</code>
+<code class="sig"><span class="sf">paginate</span>()</code>
 <span class="desc">Returns a slice of the resultset to show in the pagination</span>
 </a>
 <a class="api-item" href="#contractspaginatoradapter-setcurrentpage">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">setCurrentPage( int $page )</code>
+<code class="sig"><span class="sf">setCurrentPage</span>( <span class="st">int</span> <span class="sv">$page</span> )</code>
 <span class="desc">Set the current page number</span>
 </a>
 <a class="api-item" href="#contractspaginatoradapter-setlimit">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
-<code class="sig">setLimit( int $limit )</code>
+<code class="sig"><span class="sf">setLimit</span>( <span class="st">int</span> <span class="sv">$limit</span> )</code>
 <span class="desc">Set current rows limit</span>
 </a>
 </div>
@@ -6291,91 +5967,106 @@ Phalcon\Paginator\AdapterInterface::paginate()
 <a class="api-item" href="#contractspaginatorrepository-getaliases">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getAliases()</code>
+<code class="sig"><span class="sf">getAliases</span>()</code>
 <span class="desc">Gets the aliases for properties repository</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-getcurrent">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getCurrent()</code>
+<code class="sig"><span class="sf">getCurrent</span>()</code>
 <span class="desc">Gets number of the current page</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-getfirst">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getFirst()</code>
+<code class="sig"><span class="sf">getFirst</span>()</code>
 <span class="desc">Gets number of the first page</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-getitems">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">getItems()</code>
+<code class="sig"><span class="sf">getItems</span>()</code>
 <span class="desc">Gets the items on the current page</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-getlast">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getLast()</code>
+<code class="sig"><span class="sf">getLast</span>()</code>
 <span class="desc">Gets number of the last page</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-getlimit">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getLimit()</code>
+<code class="sig"><span class="sf">getLimit</span>()</code>
 <span class="desc">Gets current rows limit</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-getnext">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getNext()</code>
+<code class="sig"><span class="sf">getNext</span>()</code>
 <span class="desc">Gets number of the next page</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-getprevious">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getPrevious()</code>
+<code class="sig"><span class="sf">getPrevious</span>()</code>
 <span class="desc">Gets number of the previous page</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-gettotalitems">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
-<code class="sig">getTotalItems()</code>
+<code class="sig"><span class="sf">getTotalItems</span>()</code>
 <span class="desc">Gets the total number of items</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-setaliases">
 <code class="vis vis-public">public</code>
 <code class="ret">Repository</code>
-<code class="sig">setAliases( array $aliases )</code>
+<code class="sig"><span class="sf">setAliases</span>( <span class="st">array</span> <span class="sv">$aliases</span> )</code>
 <span class="desc">Sets the aliases for properties repository</span>
 </a>
 <a class="api-item" href="#contractspaginatorrepository-setproperties">
 <code class="vis vis-public">public</code>
 <code class="ret">Repository</code>
-<code class="sig">setProperties( array $properties )</code>
+<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
 <span class="desc">Sets values for properties of the repository</span>
 </a>
 </div>
 
 ### Constants
 
-<div class="api-list" markdown>
-
--   `PROPERTY_CURRENT_PAGE = "current"` `string`
-
--   `PROPERTY_FIRST_PAGE = "first"` `string`
-
--   `PROPERTY_ITEMS = "items"` `string`
-
--   `PROPERTY_LAST_PAGE = "last"` `string`
-
--   `PROPERTY_LIMIT = "limit"` `string`
-
--   `PROPERTY_NEXT_PAGE = "next"` `string`
-
--   `PROPERTY_PREVIOUS_PAGE = "previous"` `string`
-
--   `PROPERTY_TOTAL_ITEMS = "total_items"` `string`
-
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_CURRENT_PAGE</span><span class="sm"> = &quot;current&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_FIRST_PAGE</span><span class="sm"> = &quot;first&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_ITEMS</span><span class="sm"> = &quot;items&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_LAST_PAGE</span><span class="sm"> = &quot;last&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_LIMIT</span><span class="sm"> = &quot;limit&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_NEXT_PAGE</span><span class="sm"> = &quot;next&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_PREVIOUS_PAGE</span><span class="sm"> = &quot;previous&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">PROPERTY_TOTAL_ITEMS</span><span class="sm"> = &quot;total_items&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -6498,184 +6189,165 @@ __Uses__ `ArrayAccess` · `IteratorAggregate`
 <a class="api-item" href="#contractssupportcollection-__get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">__get( string $element )</code>
+<code class="sig"><span class="sf">__get</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 </a>
 <a class="api-item" href="#contractssupportcollection-__isset">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">__isset( string $element )</code>
+<code class="sig"><span class="sf">__isset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 </a>
 <a class="api-item" href="#contractssupportcollection-__set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__set(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">__set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 </a>
 <a class="api-item" href="#contractssupportcollection-__unset">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">__unset( string $element )</code>
+<code class="sig"><span class="sf">__unset</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 </a>
 <a class="api-item" href="#contractssupportcollection-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">clear()</code>
+<code class="sig"><span class="sf">clear</span>()</code>
 <span class="desc">Clears the internal collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-column">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">column( string $propertyOrMethod )</code>
+<code class="sig"><span class="sf">column</span>( <span class="st">string</span> <span class="sv">$propertyOrMethod</span> )</code>
 <span class="desc">Returns the values from a single property/method extracted from every</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-each">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">each( callable $callback )</code>
+<code class="sig"><span class="sf">each</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Invokes the callback for every item in the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-filter">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">filter( callable $callback )</code>
+<code class="sig"><span class="sf">filter</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Returns a new collection of items for which the callback returns true.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-first">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">first()</code>
+<code class="sig"><span class="sf">first</span>()</code>
 <span class="desc">Returns the first value in the collection or null when empty.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">get(
-    string $element,
-    mixed $defaultValue = null,
-    string $cast = null
-)</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns an element from the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-getkeys">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getKeys( bool $insensitive = true )</code>
+<code class="sig"><span class="sf">getKeys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns the keys (insensitive or not) of the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
-<code class="sig">getType()</code>
+<code class="sig"><span class="sf">getType</span>()</code>
 <span class="desc">Returns the configured runtime type guard, or null when not set.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-getvalues">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">getValues()</code>
+<code class="sig"><span class="sf">getValues</span>()</code>
 <span class="desc">Returns the values of the internal array.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">has( string $element )</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Checks whether an element exists in the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-init">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">init( array $data = [] )</code>
+<code class="sig"><span class="sf">init</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
 <span class="desc">Initializes the internal array.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-isempty">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
-<code class="sig">isEmpty()</code>
+<code class="sig"><span class="sf">isEmpty</span>()</code>
 <span class="desc">Returns true when the collection has no entries.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-keys">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">keys( bool $insensitive = true )</code>
+<code class="sig"><span class="sf">keys</span>( <span class="st">bool</span> <span class="sv">$insensitive</span><span class="sm"> = true</span> )</code>
 <span class="desc">Returns the keys (insensitive or not) of the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-last">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">last()</code>
+<code class="sig"><span class="sf">last</span>()</code>
 <span class="desc">Returns the last value in the collection or null when empty.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-map">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">map( callable $callback )</code>
+<code class="sig"><span class="sf">map</span>( <span class="st">callable</span> <span class="sv">$callback</span> )</code>
 <span class="desc">Returns a new collection with the callback applied to every value.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-reduce">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
-<code class="sig">reduce(
-    callable $callback,
-    mixed $initial = null
-)</code>
+<code class="sig"><span class="sf">reduce</span>(<span class="prm"><span class="st">callable</span> <span class="sv">$callback</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$initial</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Reduces the collection to a single value using the callback.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-remove">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">remove( string $element )</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$element</span> )</code>
 <span class="desc">Removes the element from the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-replace">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">replace( array $data )</code>
+<code class="sig"><span class="sf">replace</span>( <span class="st">array</span> <span class="sv">$data</span> )</code>
 <span class="desc">Replaces the collection data with a new array, clearing first.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-set">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
-<code class="sig">set(
-    string $element,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$element</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Stores an element in the collection.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-sort">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">sort(
-    callable $callback = null,
-    int $order = 4
-)</code>
+<code class="sig"><span class="sf">sort</span>(<span class="prm"><span class="st">callable</span> <span class="sv">$callback</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$order</span><span class="sm"> = 4</span></span>)</code>
 <span class="desc">Returns a new collection sorted by value, preserving keys.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">toArray()</code>
+<code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the collection as an array.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-tojson">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig">toJson( int $options = 4194383 )</code>
+<code class="sig"><span class="sf">toJson</span>( <span class="st">int</span> <span class="sv">$options</span><span class="sm"> = 4194383</span> )</code>
 <span class="desc">Returns the collection serialized as a JSON string.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-values">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
-<code class="sig">values()</code>
+<code class="sig"><span class="sf">values</span>()</code>
 <span class="desc">Returns the values of the internal array.</span>
 </a>
 <a class="api-item" href="#contractssupportcollection-where">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig">where(
-    string $propertyOrMethod,
-    mixed $value
-)</code>
+<code class="sig"><span class="sf">where</span>(<span class="prm"><span class="st">string</span> <span class="sv">$propertyOrMethod</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Returns a new collection containing only the items whose</span>
 </a>
 </div>
