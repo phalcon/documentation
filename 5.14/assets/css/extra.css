@@ -115,3 +115,262 @@
 .md-header__button.md-logo svg {
     height: 2rem !important;
 }
+
+/* ============================================================
+   API documentation (api-v2 layout)
+   ============================================================ */
+:root {
+    --api-abstract-bg: #e8f5e9;
+    --api-abstract-fg: #2e7d32;
+    --api-class-bg: #eceff1;
+    --api-class-fg: #546e7a;
+    --api-current-bg: #e0f2f1;
+    --api-final-bg: #ffebee;
+    --api-final-fg: #c62828;
+    --api-interface-bg: #e3f2fd;
+    --api-interface-fg: #1565c0;
+    --api-protected-bg: #fff3e0;
+    --api-protected-fg: #9c5700;
+    --api-type-fg: #00747f;
+}
+
+[data-md-color-scheme="slate"] {
+    --api-abstract-bg: #1d2f1f;
+    --api-abstract-fg: #81c784;
+    --api-class-bg: #262d31;
+    --api-class-fg: #90a4ae;
+    --api-current-bg: #1d3330;
+    --api-final-bg: #331f1f;
+    --api-final-fg: #e57373;
+    --api-interface-bg: #1a2733;
+    --api-interface-fg: #64b5f6;
+    --api-protected-bg: #33291a;
+    --api-protected-fg: #ffb74d;
+    --api-type-fg: #4ec9b0;
+}
+
+/* Class kind badges */
+.md-typeset .badge {
+    display: inline-block;
+    font-size: .6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    padding: .15em .8em;
+    border-radius: 2em;
+    vertical-align: middle;
+}
+
+.md-typeset .badge--abstract {
+    background: var(--api-abstract-bg);
+    color: var(--api-abstract-fg);
+}
+
+.md-typeset .badge--class {
+    background: var(--api-class-bg);
+    color: var(--api-class-fg);
+}
+
+.md-typeset .badge--final {
+    background: var(--api-final-bg);
+    color: var(--api-final-fg);
+}
+
+.md-typeset .badge--interface {
+    background: var(--api-interface-bg);
+    color: var(--api-interface-fg);
+}
+
+/* Source on GitHub button */
+.md-typeset a.src-btn {
+    float: right;
+    margin-left: 1em;
+    padding: .2em .8em;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .3em;
+    font-size: .64rem;
+    font-weight: 500;
+}
+
+.md-typeset a.src-btn:hover {
+    border-color: var(--md-accent-fg-color);
+    text-decoration: none;
+}
+
+/* Hierarchy tree */
+.md-typeset .api-tree {
+    clear: both;
+    margin: 1em 0 .5em;
+    font-size: .75rem;
+}
+
+.md-typeset .api-tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.md-typeset .api-tree ul ul {
+    padding-left: 1.1em;
+}
+
+.md-typeset .api-tree li {
+    margin: .15em 0;
+    position: relative;
+}
+
+.md-typeset .api-tree ul ul > li {
+    padding-left: 1.4em;
+}
+
+.md-typeset .api-tree ul ul > li::before {
+    content: "";
+    position: absolute;
+    left: .3em;
+    top: -.6em;
+    height: 1.5em;
+    width: .85em;
+    border-left: 2px solid var(--md-default-fg-color--lightest);
+    border-bottom: 2px solid var(--md-default-fg-color--lightest);
+    border-bottom-left-radius: .25em;
+}
+
+.md-typeset .api-tree code {
+    background: none;
+    padding: 0;
+}
+
+.md-typeset .api-tree strong > code {
+    background: var(--api-current-bg);
+    padding: .1em .45em;
+    border-radius: .2em;
+}
+
+/* Uses line */
+.md-typeset .api-uses {
+    margin: .4em 0 1.2em;
+    font-size: .64rem;
+    color: var(--md-default-fg-color--light);
+}
+
+/* Public / Protected group separator */
+.md-typeset .api-group {
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    margin: 1.6em 0 .8em;
+    font-size: .6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .api-group::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--md-default-fg-color--lightest);
+}
+
+/* Row lists: method summary (raw HTML rows) and
+   constants / properties (markdown list rows) */
+.md-typeset .api-list {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .3em;
+    margin: .8em 0 1.4em;
+    overflow: hidden;
+}
+
+.md-typeset .api-list > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.md-typeset .api-list .api-item,
+.md-typeset .api-list > ul > li {
+    display: flow-root;
+    margin: 0;
+    padding: .5em .9em .55em;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .api-list .api-item:last-child,
+.md-typeset .api-list > ul > li:last-child {
+    border-bottom: none;
+}
+
+.md-typeset a.api-item,
+.md-typeset a.api-item:hover {
+    color: var(--md-typeset-color);
+    text-decoration: none;
+}
+
+.md-typeset a.api-item:hover {
+    background: var(--md-code-bg-color);
+}
+
+/* Signature text (raw rows keep literal newlines) */
+.md-typeset .api-list code.sig,
+.md-typeset .api-list li > p:first-child > code {
+    background: none;
+    padding: 0;
+    font-size: .7rem;
+    white-space: pre-wrap;
+}
+
+/* Type chip: explicit .ret in raw rows, last inline code in list rows */
+.md-typeset .api-list code.ret,
+.md-typeset .api-list li > p:first-child > code:last-child {
+    float: right;
+    margin-left: .75em;
+    margin-top: .15em;
+    padding: .1em .5em;
+    border-radius: .2em;
+    background: var(--md-code-bg-color);
+    color: var(--api-type-fg);
+    font-size: .6rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* Visibility chips */
+.md-typeset .api-list .vis-public,
+.md-typeset .api-list .vis-protected {
+    float: left;
+    margin-right: .8em;
+    margin-top: .15em;
+    padding: .1em .5em;
+    border-radius: .2em;
+    min-width: 4.6em;
+    text-align: center;
+    font-size: .6rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.md-typeset .api-list .vis-public {
+    background: var(--api-abstract-bg);
+    color: var(--api-abstract-fg);
+}
+
+.md-typeset .api-list .vis-protected {
+    background: var(--api-protected-bg);
+    color: var(--api-protected-fg);
+}
+
+/* Row descriptions */
+.md-typeset .api-list .desc,
+.md-typeset .api-list li > p:not(:first-child) {
+    display: block;
+    clear: left;
+    margin: .25em 0 0;
+    font-size: .64rem;
+    line-height: 1.5;
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .api-list li > p:first-child {
+    margin: 0;
+}
