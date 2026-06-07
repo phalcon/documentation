@@ -656,7 +656,7 @@ conditional execution and much more.
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
+__Uses__ `Closure` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
 { .api-uses }
 
 ### Method Summary
@@ -703,6 +703,11 @@ __Uses__ `Closure` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\E
 <code class="ret">void</code>
 <code class="sig"><span class="sf">detachAll</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = null</span> )</code>
 <span class="desc">Removes all events from the EventsManager</span>
+</a>
+<a class="api-item" href="#eventsmanager-dispatch">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">dispatch</span>(<span class="prm"><span class="st">object</span> <span class="sv">$event</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$source</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Dispatches an object event to its listeners, routed by an explicit name</span>
 </a>
 <a class="api-item" href="#eventsmanager-enablepriorities">
 <code class="vis vis-public">public</code>
@@ -969,7 +974,7 @@ definition, so the cache never needs invalidation.</span>
 
 ### Methods
 
-<div class="api-group">Public · 27</div>
+<div class="api-group">Public · 28</div>
 
 #### `addSubscriber()` { #eventsmanager-addsubscriber }
 
@@ -1040,6 +1045,22 @@ public function detachAll( string $type = null ): void;
 ```
 
 Removes all events from the EventsManager
+
+#### `dispatch()` { #eventsmanager-dispatch }
+
+```php
+public function dispatch(
+    object $event,
+    mixed $name = null,
+    mixed $source = null
+);
+```
+
+Dispatches an object event to its listeners, routed by an explicit name
+(a string, or a [class, method] array) or, failing that, by the event's
+class name. Listeners receive the event object. Propagation stops when
+the event implements Phalcon\Contracts\Events\Stoppable and reports it
+is stopped.
 
 #### `enablePriorities()` { #eventsmanager-enablepriorities }
 

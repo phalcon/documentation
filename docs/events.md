@@ -113,13 +113,24 @@ public function detachAll(string $type = null): void
 Removes all events from the events manager. With a `$type` argument, removes only the queue for that event type.
 
 ```php
+public function dispatch(
+    object $event, 
+    string | array | null $name = null, 
+    ?object $source = null
+): mixed
+```
+
+Dispatches an event object to its listeners, routed by an explicit name or by the event's class name. Returns the last
+listener's return value, or `null` when no queue matches. See [Object and Class-Based Events](#object-and-class-based-events).
+
+```php
 public function enablePriorities(bool $enablePriorities): void
 ```
 
 Sets whether priorities are honored when dispatching (default `false`).
 
 ```php
-final public function fire(
+public function fire(
     string $eventType, 
     object $source, 
     mixed $data = null, 
@@ -154,6 +165,12 @@ public function getListeners(string $type): array
 ```
 
 Returns all the attached listeners of a certain event type.
+
+```php
+public function getMethodExistsCacheLimit(): int
+```
+
+Returns the configured cap on the method-exists cache (`0` means unlimited) - see [Method-Exists Cache](#method-exists-cache).
 
 ```php
 public function getResponses(): array
@@ -220,6 +237,13 @@ public function resume(): void
 ```
 
 Clears the manager-level kill switch set by `halt()`.
+
+```php
+public function setMethodExistsCacheLimit(int $methodExistsCacheLimit): void
+```
+
+Caps the number of distinct handler classes retained in the method-exists cache. `0` (the default) keeps the unbounded
+behavior - see [Method-Exists Cache](#method-exists-cache).
 
 ```php
 public function setStopOnFalse(bool $flag): void
@@ -581,6 +605,170 @@ contributed by every registered subscriber; listeners attached via `attach()` ar
 !!! info "NOTE"
 
     Subscribers are keyed internally by `spl_object_id()`, so re-adding the same instance is a no-op. Registering two distinct instances of the same subscriber class is allowed and attaches the listeners twice.
+
+## Object and Class-Based Events
+
+In addition to the string-based `fire()` API, the manager can dispatch an event **object** and route it to listeners by
+the object's class name or by an explicit name. This follows the dispatch model used by Symfony's EventDispatcher and
+PSR-14, but is built on Phalcon's own contracts - the extension does not require the `psr/event-dispatcher` package.
+
+```php
+public function dispatch(
+    object $event, 
+    string | array | null $name = null, 
+    ?object $source = null
+): mixed
+```
+
+The queue is resolved in this order:
+
+- When `$name` is a string, the queue registered under that exact name is used.
+- When `$name` is a `[class, method]` array, the parts are joined with `:` to form the name; the method portion is used
+  when calling plain-object listeners.
+- When `$name` is `null`, the queue registered under the event object's own class name (`$event::class`) is used.
+
+`dispatch()` returns the last listener's return value, or `null` when no queue matches. String-based `fire()` is
+unaffected and continues to work alongside it.
+
+### Dispatching by Class Name
+
+Attach a listener under an event class name, then dispatch an instance of that class. The listener receives the event
+object as its only argument.
+
+```php
+<?php
+
+use Phalcon\Events\Manager as EventsManager;
+
+final class UserRegistered
+{
+    public function __construct(
+        public readonly int $userId
+    ) {
+    }
+}
+
+$eventsManager = new EventsManager();
+
+$eventsManager->attach(
+    UserRegistered::class,
+    function (UserRegistered $event) {
+        echo 'Welcome user ' . $event->userId;
+    }
+);
+
+$eventsManager->dispatch(new UserRegistered(42));
+```
+
+### Dispatching by Name
+
+Pass an explicit name to route the event object to a named queue. The array form is joined with `:`, so the last two
+calls below are equivalent.
+
+```php
+<?php
+
+use Phalcon\Events\Manager as EventsManager;
+
+final class CacheCleared
+{
+}
+
+$eventsManager = new EventsManager();
+
+$eventsManager->attach(
+    'cache:cleared',
+    function (CacheCleared $event) {
+        // ...
+    }
+);
+
+$eventsManager->dispatch(new CacheCleared(), 'cache:cleared');
+$eventsManager->dispatch(new CacheCleared(), ['cache', 'cleared']);
+```
+
+### Listener Kinds
+
+For an object dispatch, a listener registered under the matched queue is handled as follows:
+
+- A closure or callable - including an invokable object or a `[object, method]` pair - receives the event object as its
+  only argument.
+- A plain object, one that is not itself callable, is dispatched to the method named by the dispatch name. When the name
+  carries no method, or the object has no such method, the listener is skipped.
+
+```php
+<?php
+
+use Phalcon\Events\Manager as EventsManager;
+
+final class OrderPlaced
+{
+}
+
+class OrderListener
+{
+    public function onPlaced(OrderPlaced $event): void
+    {
+        // Called because the dispatch name "order:onPlaced" carries the
+        // "onPlaced" method and OrderListener defines it.
+    }
+}
+
+$eventsManager = new EventsManager();
+$eventsManager->attach('order:onPlaced', new OrderListener());
+
+$eventsManager->dispatch(new OrderPlaced(), ['order', 'onPlaced']);
+```
+
+### Stopping Propagation
+
+When the dispatched event implements [Phalcon\Contracts\Events\Stoppable][contracts-stoppable], the manager checks
+`isPropagationStopped()` after each listener and stops the queue once it returns `true`. This is the object-event
+counterpart of calling `$event->stop()` on a [Phalcon\Events\Event][events-event].
+
+```php
+<?php
+
+use Phalcon\Contracts\Events\Stoppable;
+use Phalcon\Events\Manager as EventsManager;
+
+final class PaymentEvent implements Stoppable
+{
+    private bool $stopped = false;
+
+    public function isPropagationStopped(): bool
+    {
+        return $this->stopped;
+    }
+
+    public function stop(): void
+    {
+        $this->stopped = true;
+    }
+}
+
+$eventsManager = new EventsManager();
+
+$eventsManager->attach(
+    PaymentEvent::class,
+    function (PaymentEvent $event) {
+        $event->stop();
+    }
+);
+
+$eventsManager->attach(
+    PaymentEvent::class,
+    function (PaymentEvent $event) {
+        // Not reached - propagation was stopped by the first listener.
+    }
+);
+
+$eventsManager->dispatch(new PaymentEvent());
+```
+
+!!! info "NOTE"
+
+    Object dispatch and string `fire()` share the same listener store, so a queue attached under a name can be reached by either entry point. Response collection via [`collectResponses()`](#responses) applies to both.
 
 ## Events: Trigger
 
@@ -1202,7 +1390,7 @@ library reading `isPropagationStopped()` sees the same state.
 
 !!! info "NOTE"
 
-    [Phalcon\Events\Event][events-event] is declared `final` to enable C-level direct dispatch on its per-fire getters. If you previously subclassed it, build a sibling class that implements [Phalcon\Contracts\Events\Event][contracts-event] instead.
+    For a custom event type, implement [Phalcon\Contracts\Events\Event][contracts-event] - and [Phalcon\Contracts\Events\Stoppable][contracts-stoppable] when the event must control propagation - rather than extending the concrete [Phalcon\Events\Event][events-event].
 
 ## Custom Manager
 
@@ -1350,7 +1538,7 @@ it is returned.
 
 !!! info "NOTE"
 
-    The events manager can be subclassed. [Phalcon\Events\Manager::fire()][events-manager] was declared `final` in 5.13.0 and reopened in 5.14.0. [Phalcon\Events\Event][events-event] remains `final`; to alter event behavior, implement [Phalcon\Contracts\Events\Event][contracts-event] on a sibling class instead.
+    The events manager can be subclassed. Both [Phalcon\Events\Manager::fire()][events-manager] and [Phalcon\Events\Event][events-event] were declared `final` in 5.13.0 and reopened in 5.14.0. To add a custom event type, implement [Phalcon\Contracts\Events\Event][contracts-event] rather than extending the concrete class.
 
 ## List of Events
 
