@@ -10,7 +10,7 @@ The layer is composed of four building blocks:
 
 - **Guards** answer "is there an authenticated user, and who is it?". Two ship in the box: `session` (cookie/session backed, with remember-me and HTTP Basic) and `token` (bearer/API token).
 - **Adapters** are user providers - they load user records from a backing store. Three ship in the box: `memory`, `model` (Phalcon ORM), and `stream` (JSON file).
-- **Access gates** answer "is this action allowed?". Two ship in the box: `auth` (requires a logged-in user) and `guest` (requires no logged-in user).
+- **Access gates** answer "is this action allowed?". Three ship in the box: `auth` (requires a logged-in user), `guest` (requires no logged-in user), and `acl` (checks the authenticated user's role against a `Phalcon\Acl` adapter).
 - **`AuthUser`** is the authenticated user value object returned by guards.
 
 Guards resolve the framework services they need (request, cookies, session manager) from a container, so they wire against the real application singletons. The container can be the modern `Phalcon\Container\Container` or the classic `Phalcon\Di\Di`.
@@ -83,17 +83,23 @@ Every entry point that takes a container - `ManagerFactory::__construct()`, the 
 - `Phalcon\Container\Container`, the modern service container (it implements `Phalcon\Contracts\Container\Service\Collection`).
 - `Phalcon\Di\DiInterface`, the classic dependency-injection container (for example `Phalcon\Di\FactoryDefault`).
 
-Passing any other type throws a `\TypeError`.
+The intent is Container-first: pass a `Phalcon\Container\Container`. The classic `Phalcon\Di\Di` is supported with provisions - its service definitions must be pre-registered, since it does not autowire. Passing any other type throws a `\TypeError`.
 
-The layer resolves services by their interface ID, through the container's `has()` and `get()` methods. Whichever container is used, these services must be bound under the following IDs:
+Each guard resolves the framework services it needs as shared services from the container. For each service the guard tries three names in order and uses the first the container provides:
 
-| Service ID                               | Required by              |
-|------------------------------------------|--------------------------|
-| `Phalcon\Http\RequestInterface`          | session and token guards |
-| `Phalcon\Http\Response\CookiesInterface` | session guard            |
-| `Phalcon\Session\ManagerInterface`       | session guard            |
+1. an explicit override in the guard `options` under the `services` key;
+2. the service interface ID (its fully-qualified interface name);
+3. the conventional short name.
 
-A service that is not bound throws `Phalcon\Auth\Exception`. `Phalcon\Container\Provider\Web` registers these IDs on a `Phalcon\Container\Container`. A classic `Phalcon\Di\FactoryDefault` does not: it registers `request` and `cookies` under short names and ships no session manager. Bind the three interface IDs explicitly before passing it to the factory.
+| Service | Interface ID                             | Short name | Required by              |
+|---------|------------------------------------------|------------|--------------------------|
+| Request | `Phalcon\Http\RequestInterface`          | `request`  | session and token guards |
+| Cookies | `Phalcon\Http\Response\CookiesInterface` | `cookies`  | session guard            |
+| Session | `Phalcon\Session\ManagerInterface`       | `session`  | session guard            |
+
+This candidate order lets both container styles work without extra aliases. `Phalcon\Container\Provider\Web` binds the interface IDs on a `Phalcon\Container\Container`. A classic `Phalcon\Di\FactoryDefault` registers `request` and `cookies` under their short names, which the guards find directly; it ships no session manager, so a session guard needs one bound under `session` (or the interface ID).
+
+When none of the candidate names resolves, the guard throws `Phalcon\Container\Exceptions\Exception`. Resolution failures raised by the classic `Phalcon\Di\Di` are re-issued as `Phalcon\Container\Exceptions` so a caller catches a single exception family regardless of the container in use.
 
 ```php
 <?php
@@ -101,17 +107,15 @@ A service that is not bound throws `Phalcon\Auth\Exception`. `Phalcon\Container\
 use Phalcon\Auth\ManagerFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Encryption\Security;
-use Phalcon\Http\Request;
-use Phalcon\Http\Response\Cookies;
 use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager as SessionManager;
 
 $di = new FactoryDefault();
 
-// Bind the services the guards resolve, under their interface IDs
-$di->setShared('Phalcon\Http\RequestInterface', Request::class);
-$di->setShared('Phalcon\Http\Response\CookiesInterface', Cookies::class);
-$di->setShared('Phalcon\Session\ManagerInterface', function () {
+// request and cookies already exist on FactoryDefault under their short
+// names, so the guards resolve them directly. Only the session manager has
+// to be added.
+$di->setShared('session', function () {
     $session = new SessionManager();
     $session->setAdapter(new Stream(['savePath' => '/var/app/cache/session']));
 
@@ -121,7 +125,33 @@ $di->setShared('Phalcon\Session\ManagerInterface', function () {
 $factory = new ManagerFactory(new Security(), $di);
 ```
 
-A token-only setup needs only `Phalcon\Http\RequestInterface` bound.
+A token-only setup needs only the request service, which `FactoryDefault` already provides.
+
+To resolve a service from a custom container key, set the `services` override in the guard `options`:
+
+```php
+<?php
+
+$config = [
+    'guards' => [
+        'web' => [
+            'type'    => 'session',
+            'default' => true,
+            'adapter' => [
+                'name'    => 'model',
+                'options' => ['model' => Users::class],
+            ],
+            'options' => [
+                'services' => [
+                    'request' => 'my_request_service',
+                    'cookies' => 'my_cookies_service',
+                    'session' => 'my_session_service',
+                ],
+            ],
+        ],
+    ],
+];
+```
 
 ---
 
@@ -157,7 +187,7 @@ $manager->logout();
 | `id()`                                                     | `int`, `string`, or `null` | The authenticated identifier                                       |
 | `logout()`                                                 | `void`                     | Log out of the default guard (requires a stateful guard)           |
 | `access(string $name)`                                     | `self`                     | Activate an access gate for the current request                    |
-| `only(string ...$actions)`                                 | `self`                     | Restrict the active gate to the listed actions                     |
+| `only(string ...$actions)`                                 | `self`                     | Allow only the listed actions; deny all others                     |
 | `except(string ...$actions)`                               | `self`                     | Apply the active gate to every action except those listed          |
 
 `attempt()` and `logout()` throw `Phalcon\Auth\Exception` when the default guard is not stateful. The `token` guard is stateless; use `validate()` with it.
@@ -306,24 +336,110 @@ A `model` adapter returns your model instance directly, which implements the sam
 
 ## Authorization (Access Gates)
 
-An access gate decides whether the current action is allowed. The built-in gates read guard state:
+An access gate decides whether the current action is allowed. A gate receives the active guard and a context describing the current dispatch (`handler`, `module`, and `params`); the enforcement listener builds that context. The two binary gates read only guard state and ignore the context:
 
 - `Phalcon\Auth\Access\Auth` allows the action when a user is authenticated.
 - `Phalcon\Auth\Access\Guest` allows the action when no user is authenticated.
+
+The `Phalcon\Auth\Access\Acl` gate uses the context to authorize against a `Phalcon\Acl` adapter; it is documented below.
 
 Activate a gate on the manager and scope it to specific actions with `only()` or `except()`:
 
 ```php
 <?php
 
-// Require authentication for 'dashboard' and 'profile' only
+// Allow only 'dashboard' and 'profile' (when authenticated); deny all other actions
 $manager->access('auth')->only('dashboard', 'profile');
 
-// Apply the gate to every action except 'logout'
+// Gate every action except 'logout', which always passes
 $manager->access('auth')->except('logout');
 ```
 
-Gates are enforced per dispatch by a listener. `Phalcon\Auth\Mvc\AuthDispatcherListener` guards MVC dispatch; `Phalcon\Auth\Cli\AuthDispatcherListener` guards CLI tasks. Attach the listener to the dispatcher events manager:
+### ACL Access Gate
+
+`Phalcon\Auth\Access\Acl` authorizes an action against a [`Phalcon\Acl`][acl] adapter, using the authenticated user's role. It brings role-based, per-handler authorization into the Auth layer.
+
+- The ACL **component** is the request handler - the controller name (MVC), task name (CLI), or component name (Micro). When the dispatch carries a module, it is prefixed: `module` + separator + handler.
+- The ACL **access** is the action name.
+- The **role** comes from the authenticated user. A user that implements `Phalcon\Acl\RoleAwareInterface` supplies it through `getRoleName()`. When no user is authenticated, the gate uses the guest role (`guest` by default).
+
+Dispatch or route parameters are passed through to the ACL adapter, so function-based ACL rules receive them.
+
+The gate takes the ACL adapter and an options array. Activate it with `setAccess()`:
+
+```php
+<?php
+
+use Phalcon\Acl\Adapter\Memory as AclMemory;
+use Phalcon\Acl\Enum;
+use Phalcon\Auth\Access\Acl;
+
+$acl = new AclMemory();
+$acl->setDefaultAction(Enum::DENY);
+
+$acl->addRole('admins');
+$acl->addRole('guests');
+
+$acl->addComponent('invoices', ['index', 'edit', 'delete']);
+
+$acl->allow('admins', 'invoices', ['index', 'edit', 'delete']);
+$acl->allow('guests', 'invoices', 'index');
+
+$manager->setAccess(new Acl($acl));
+```
+
+The authenticated user model supplies the role through `Phalcon\Acl\RoleAwareInterface`:
+
+```php
+<?php
+
+use Phalcon\Acl\RoleAwareInterface;
+use Phalcon\Contracts\Auth\AuthUser;
+use Phalcon\Mvc\Model;
+
+class Users extends Model implements AuthUser, RoleAwareInterface
+{
+    public function getAuthIdentifier(): int | string
+    {
+        return $this->id;
+    }
+
+    public function getAuthPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function getRoleName(): string
+    {
+        return $this->role;
+    }
+}
+```
+
+The gate reads two options:
+
+| Option            | Default | Purpose                                                        |
+|-------------------|---------|----------------------------------------------------------------|
+| `guestRole`       | `guest` | ACL role used when no user is authenticated                    |
+| `moduleSeparator` | `:`     | Joins module and handler into the component (`module:handler`) |
+
+```php
+<?php
+
+use Phalcon\Auth\Access\Acl;
+
+$manager->setAccess(
+    new Acl($acl, ['guestRole' => 'anonymous', 'moduleSeparator' => '-'])
+);
+```
+
+A user that is authenticated but does not implement `Phalcon\Acl\RoleAwareInterface` throws `Phalcon\Auth\Exception`.
+
+`except()` works as it does on the binary gates: the listed actions bypass the gate and are always allowed. `only()` differs: with the binary `auth`/`guest` gates an action not listed is denied, whereas with this gate an action not listed is allowed without an ACL check.
+
+### Enforcing Gates
+
+Gates are enforced per dispatch by a listener. `Phalcon\Auth\Mvc\AuthDispatcherListener` guards MVC dispatch, `Phalcon\Auth\Cli\AuthDispatcherListener` guards CLI tasks, and `Phalcon\Auth\Micro\AuthMicroListener` guards [`Phalcon\Mvc\Micro`][micro] applications. Attach the dispatcher listener to the dispatcher events manager:
 
 ```php
 <?php
@@ -352,6 +468,22 @@ class RedirectToLogin extends Auth
     }
 }
 ```
+
+`Phalcon\Auth\Micro\AuthMicroListener` enforces the active gate on a [`Phalcon\Mvc\Micro`][micro] application. Attach it to the `micro` event space:
+
+```php
+<?php
+
+use Phalcon\Auth\Micro\AuthMicroListener;
+use Phalcon\Events\Manager as EventsManager;
+
+$eventsManager = new EventsManager();
+$eventsManager->attach('micro', new AuthMicroListener($manager, 'Api'));
+
+$app->setEventsManager($eventsManager);
+```
+
+The action name is the matched route's name, or the route pattern when the route is unnamed. The ACL component defaults to `Micro`; pass a custom name as the listener's second argument (`Api` above). `redirectTo()` targets are ignored - Micro has no forward mechanism, so a denied action always throws `Phalcon\Auth\Exceptions\AccessDenied`.
 
 ---
 
@@ -422,3 +554,5 @@ try {
 [container]: container.md
 [support-locator]: support-locator.md
 [security]: encryption-security.md
+[acl]: acl.md
+[micro]: application-micro.md
