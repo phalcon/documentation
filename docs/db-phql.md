@@ -1145,6 +1145,54 @@ $records  = $this
 ;
 ```
 
+### Dialect-Specific Operators
+
+PHQL recognizes a fixed set of dialect-specific binary operators in expressions. Each operator is parsed into a binary
+expression and rendered by the active SQL dialect.
+
+- PostgreSQL supports all nine: `@@`, `@>`, `<@`, `&&`, `||`, `->`, `->>`, `#>`, `#>>`
+- MySQL supports the JSON path operators `->` and `->>`
+- SQLite supports `||`, `->`, and `->>`
+
+A dialect renders only the operators it supports. Using an operator the active dialect does not support throws
+`Phalcon\Db\Exceptions\UnsupportedOperator` during SQL generation. The set is fixed; no registration step is required.
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Articles AS a
+    WHERE 
+        a.search_vector @@ plainto_tsquery('english', :term:)";
+
+$records = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'term' => 'phalcon framework',
+        ]
+    )
+;
+```
+
+The PostgreSQL dialect renders the operator verbatim. The bound parameter inside the function call is sent through PDO
+rather than interpolated:
+
+```sql
+WHERE "a"."search_vector" @@ plainto_tsquery('english', :term)
+```
+
+Two operator families are intentionally excluded:
+
+- The JSONB existence operators `?`, `?|`, `?&`, and `@?` conflict with the PDO positional-parameter placeholder. Use
+  the function forms `jsonb_exists()`, `jsonb_exists_any()`, `jsonb_exists_all()`, and `jsonb_path_exists()`.
+- The regular-expression match operators `~`, `~*`, `!~`, and `!~*` are not exposed. Use `regexp_like()` or the engine
+  regular-expression functions.
+
 ### Parameters
 
 PHQL automatically escapes parameters, introducing more security:

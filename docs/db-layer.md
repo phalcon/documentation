@@ -2499,6 +2499,33 @@ conversion in the SELECT to receive a usable representation:
 SELECT id, ST_AsText(location) AS location FROM places;
 ```
 
+The `Phalcon\Db\Geometry` namespace provides value objects for the eight geometry types: `Point`, `LineString`,
+`Polygon`, `MultiPoint`, `MultiLineString`, `MultiPolygon`, `GeometryCollection`, and the shared `GeometryInterface`.
+Each object exposes its coordinates and SRID and renders Well-Known Text through `toWkt()` (also available through
+`__toString()`).
+
+`Phalcon\Db\Geometry\WkbParser` decodes a raw column value into the matching object. It accepts MySQL SRID-prefixed WKB
+and PostGIS EWKB. Coordinates are read in two dimensions; any Z or M ordinates are discarded.
+
+```php
+<?php
+
+use Phalcon\Db\Geometry\WkbParser;
+
+// $raw is the value returned by the database for a POINT column
+$point = (new WkbParser())->parse($raw);
+
+echo $point->getX();    // 1
+echo $point->getY();    // 2
+echo $point->getSrid(); // 4326
+echo $point->toWkt();   // POINT(1 2)
+```
+
+A value that cannot be decoded throws `Phalcon\Db\Exceptions\InvalidWkb`.
+
+Models hydrate spatial columns into these objects on read when `orm.cast_on_hydrate` is enabled. See
+[Spatial Column Hydration](db-models.md) in the models documentation.
+
 ### CHECK Constraints
 
 A `CHECK` constraint enforces a boolean SQL predicate on every row of a table; rows that fail the predicate are rejected

@@ -4273,6 +4273,40 @@ $container->setShared(
 }
 ```
 
+## Spatial Column Hydration
+
+When `orm.cast_on_hydrate` is enabled, spatial columns are hydrated into `Phalcon\Db\Geometry` value objects as records
+are read. The model reads the column type from the metadata and decodes the raw value with
+`Phalcon\Db\Geometry\WkbParser`.
+
+- MySQL returns SRID-prefixed WKB, decoded on read
+- PostgreSQL (PostGIS) returns EWKB, decoded on read
+- SQLite has no native geometry type
+
+With casting disabled, the attribute keeps the raw database value. A value that cannot be decoded is left unchanged.
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+Model::setup(
+    [
+        'castOnHydrate' => true,
+    ]
+);
+
+$place = Places::findFirst("id = 1");
+
+echo get_class($place->location); // Phalcon\Db\Geometry\Point
+echo $place->location->getX();    // 1
+echo $place->location->getY();    // 2
+echo $place->location->toWkt();   // POINT(1 2)
+```
+
+The value-object classes are described under [Spatial / Geometry Columns](db-layer.md) in the database-layer
+documentation.
+
 ## Invalid parameter number
 
 In v5.6, the parameters used to instantiate PDO have reverted to the default settings. Therefore,
