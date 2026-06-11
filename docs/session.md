@@ -514,10 +514,11 @@ $session
 
 ### Custom
 
-The adapters implement PHP's [SessionHandlerInterface][sessionhandlerinterface]. As a result, you can create any adapter
-you need by extending this interface. You can also use any adapter that implements this interface and set the adapter
-to [Phalcon\Session\Manager][session-manager]. There are more adapters available for this component in
-the [Phalcon Incubator][incubator].
+The adapters implement PHP's [SessionHandlerInterface][sessionhandlerinterface] and, as of 5.14.2,
+[SessionUpdateTimestampHandlerInterface][sessionupdatetimestamphandlerinterface] (see [Lazy Write](#lazy-write)). You
+can create any adapter you need by implementing [SessionHandlerInterface][sessionhandlerinterface], and you can set any
+adapter that implements this interface to [Phalcon\Session\Manager][session-manager]. There are more adapters available
+for this component in the [Phalcon Incubator][incubator].
 
 ```php
 <?php
@@ -526,21 +527,94 @@ namespace MyApp\Session\Adapter;
 
 use SessionHandlerInterface;
 
-class Custom extends SessionHandlerInterface
+class Custom implements SessionHandlerInterface
 {
-    public function close() -> bool;
+    public function close(): bool
+    {
+        // ...
+    }
 
-    public function destroy($sessionId) -> bool;
+    public function destroy(string $id): bool
+    {
+        // ...
+    }
 
-    public function gc(int $maxlifetime) -> bool;
+    public function gc(int $max_lifetime): int | false
+    {
+        // ...
+    }
 
-    public function read($sessionId) -> string;
+    public function open(string $path, string $name): bool
+    {
+        // ...
+    }
 
-    public function open($savePath, $sessionName) -> bool;
+    public function read(string $id): string
+    {
+        // ...
+    }
 
-    public function write($sessionId, $data) -> bool;
+    public function write(string $id, string $data): bool
+    {
+        // ...
+    }
 }
 ```
+
+### Lazy Write
+
+As of 5.14.2 every adapter shipped with the component also implements PHP's
+[SessionUpdateTimestampHandlerInterface][sessionupdatetimestamphandlerinterface]. The interface adds two methods,
+`updateTimestamp()` and `validateId()`, and PHP activates two session features when the registered handler provides
+them.
+
+`session.lazy_write` (enabled by default in PHP): when the session data has not changed by the end of the request, PHP
+calls `updateTimestamp()` instead of `write()`.
+
+- `Stream` touches the session file: the modification time is refreshed without rewriting the data, so `gc()` does not remove sessions that are active but unchanged
+- `Redis` and `Libmemcached` delegate to `write()`, refreshing the lifetime of the stored entry
+- `Noop` returns `true` without storing anything
+
+Before 5.14.2 the adapters implemented only [SessionHandlerInterface][sessionhandlerinterface], so PHP fell back to
+calling `write()` on every request regardless of the `session.lazy_write` setting.
+
+`session.use_strict_mode`: when enabled, PHP calls `validateId()` for a session id supplied by the client before
+accepting it. An id with no stored session is rejected and PHP generates a new one, preventing session fixation through
+attacker-chosen ids.
+
+- `Stream` reports whether the session file exists
+- `Redis` and `Libmemcached` report whether the storage entry exists
+- `Noop` accepts every id
+
+```php
+<?php
+
+use Phalcon\Session\Adapter\Stream;
+use Phalcon\Session\Manager;
+
+ini_set('session.lazy_write', '1');
+ini_set('session.use_strict_mode', '1');
+
+$session = new Manager();
+$files   = new Stream(
+    [
+        'savePath' => '/tmp',
+    ]
+);
+
+$session
+    ->setAdapter($files)
+    ->start();
+
+// Read-only request: the data is unchanged at shutdown, so PHP calls
+// updateTimestamp() - the session file is touched, not rewritten.
+$userId = $session->get('userId');
+```
+
+To change how an adapter refreshes an unchanged session, extend it and override `updateTimestamp()`. Returning `true`
+without touching the storage leaves the last-modified time under the control of your application. Note that the
+`Stream` adapter's `gc()` removes session files whose modification time is older than the configured lifetime; an
+overridden `updateTimestamp()` that does not touch the file must account for that.
 
 ## Bag
 
@@ -766,6 +840,8 @@ failure mode. Existing `catch (Phalcon\Session\Exception $e)` blocks continue to
 [session-managerinterface]: api/phalcon_session.md#sessionmanagerinterface
 
 [sessionhandlerinterface]: https://www.php.net/manual/en/class.sessionhandlerinterface.php
+
+[sessionupdatetimestamphandlerinterface]: https://www.php.net/manual/en/class.sessionupdatetimestamphandlerinterface.php
 
 [storage-adapter]: api/phalcon_storage.md#storageadapterabstractadapter
 
