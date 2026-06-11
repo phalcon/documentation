@@ -825,6 +825,24 @@ Will throw
 Will not throw an error because `default` is a reserved word for filters like
 `{{ EXPRESSION | default(VALUE) }}` but in this case, the expression will only output an empty char `''` .
 
+**`default` filter inside `switch`**
+
+As of 5.14.2 the word `default` is treated as the `{% default %}` clause only when it directly follows the opening
+`{%` delimiter inside a `switch` block. Everywhere else it is parsed as a regular identifier, so the `default` filter,
+`{{ default }}` and `{% set default = ... %}` all work inside `switch`-`case` blocks:
+
+```twig
+{% switch status %}
+    {% case 'active' %}
+        {{ label | default('Active') }}
+        {% break %}
+    {% default %}
+        {{ label | default('Unknown') }}
+{% endswitch %}
+```
+
+Earlier versions raised `Syntax error, unexpected token DEFAULT` for the filter form inside a `switch` block.
+
 **nested `switch`**
 
 ```twig

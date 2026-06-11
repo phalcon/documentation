@@ -241,6 +241,10 @@ The available methods are:
 
     The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer since it can be used to execute additional methods that each adapter offers. For instance, for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange`, and other methods not exposed by the Phalcon adapter.
 
+!!! info "NOTE"
+
+    Keys returned by `getKeys()` carry the adapter prefix. As of 5.14.2 the adapters also accept keys that already carry the prefix: `get()`, `has()`, `delete()`, `deleteMultiple()`, `set()`, `setForever()`, `increment()` and `decrement()` strip a leading prefix from the supplied key before applying their own, so the output of `getKeys()` can be passed back to these methods unchanged.
+
 To construct one of these objects, you will need to pass
 a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the constructor and optionally some
 parameters required for the adapter of your choice. The list of options is outlined below.
