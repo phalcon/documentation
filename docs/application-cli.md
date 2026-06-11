@@ -459,11 +459,11 @@ $console = new Console($container);
 $console->registerModules(
     [
         'frontend' => [
-            'className' => BackendModule::class,
+            'className' => FrontendModule::class,
             'path'      => './src/frontend/Module.php',
         ],
         'backend' => [
-            'className' => FrontendModule::class,
+            'className' => BackendModule::class,
             'path'      => './src/backend/Module.php',
         ],
     ]

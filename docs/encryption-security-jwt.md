@@ -165,7 +165,8 @@ as its encoded value.
 [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] is the component responsible for storing and
 calculating the JWT token. It accepts the headers, claims (
 as [Phalcon\Encryption\Security\JWT\Token\Item][security-jwt-token-item] objects), and signature objects in its
-constructor and exposes:
+constructor. The object is a value container: it cannot be cast to a string and does not serialize to JSON - use
+`getToken()` whenever the JWT string itself is needed. It exposes:
 
 ```php
 public function getClaims(): Item
@@ -290,6 +291,10 @@ object which contains all the necessary information for your token. When instant
 to supply the signer class. In the example below we use
 the [Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac] signer.
 
+!!! info "NOTE"
+
+    `Builder::getToken()` returns a `Token` object, not the JWT string. To obtain the string - for an `Authorization` header, a JSON response, or storage - call `getToken()` on the returned object: `$jwtString = $builder->getToken()->getToken();`. The `Token` object itself cannot be cast to a string, and passing it to `json_encode()` or `Response::setJsonContent()` produces an empty JSON object (`{}`) because the object intentionally exposes no public state.
+
 All setters in this component are chainable.
 
 ```php
@@ -390,7 +395,8 @@ Returns the `sub` contents
 public function getToken(): Token
 ```
 
-Returns the token
+Returns a [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] object - not the JWT string. Call
+`getToken()` on the returned object to obtain the string.
 
 ```php
 public function getPassphrase(): string
