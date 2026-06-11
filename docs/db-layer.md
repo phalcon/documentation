@@ -2250,7 +2250,7 @@ The associative array passed in `createTable()` can have the following keys:
 | `indexes`    | An array with indexes defined with [Phalcon\Db\Index][db-index]                           |   Yes    |
 | `references` | An array with references (foreign keys) defined with [Phalcon\Db\Reference][db-reference] |   Yes    |
 | `checks`     | An array with CHECK constraints defined with `Phalcon\Db\Check` - see *CHECK constraints* |   Yes    |
-| `options`    | An array with creation options. (specific to the database system)                         |   Yes    |
+| `options`    | An array with database-specific creation options (`TABLE_COMMENT` - see *Table Comments*) |   Yes    |
 
 ### Alter
 
@@ -2908,6 +2908,57 @@ $connection->dropColumn('events', null, 'legacy_payload');
 
 `addPrimaryKey()`, `dropPrimaryKey()`, `modifyColumn()`, `addForeignKey()`, `dropForeignKey()`, `addCheck()`, and
 `dropCheck()` continue to throw on SQLite because of genuine engine limitations (table rebuild required).
+
+### Table Comments
+
+A table comment stores a human-readable description with the table definition in the database catalog.
+
+- MySQL emits a `COMMENT='...'` table option on `CREATE TABLE`
+- PostgreSQL emits a separate `COMMENT ON TABLE ... IS '...';` statement after the `CREATE TABLE` statement
+- SQLite has no native table comment and ignores the option
+
+Pass the comment in the `TABLE_COMMENT` key of the `options` array in the `createTable()` definition:
+
+```php
+<?php
+
+use Phalcon\Db\Column;
+
+$connection->createTable(
+    'co_invoices',
+    null,
+    [
+        'columns' => [
+            new Column(
+                'inv_id',
+                [
+                    'type'          => Column::TYPE_INTEGER,
+                    'size'          => 10,
+                    'notNull'       => true,
+                    'autoIncrement' => true,
+                    'primary'       => true,
+                ]
+            ),
+        ],
+        'options' => [
+            'TABLE_COMMENT' => 'Customer invoices',
+        ],
+    ]
+);
+```
+
+```sql
+-- MySQL
+CREATE TABLE `co_invoices` (...) COMMENT='Customer invoices';
+
+-- PostgreSQL
+CREATE TABLE "co_invoices" (...); COMMENT ON TABLE "co_invoices" IS 'Customer invoices';
+```
+
+Comment values are escaped by doubling single quotes; the PostgreSQL `COMMENT ON COLUMN` emission for the column-level
+`comment` option is escaped the same way. To read a comment back from a live database, call `tableOptions()` on the
+adapter: MySQL and PostgreSQL return the comment in the `table_comment` element of the result; SQLite returns an empty
+array.
 
 ## The `Phalcon\Contracts\Db` Namespace
 

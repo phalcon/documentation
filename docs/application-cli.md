@@ -504,6 +504,41 @@ src/frontend/Module.php
 php cli.php
 ```
 
+### Module Definitions
+
+As of 5.14.2 the console processes module definitions the same way as `Phalcon\Mvc\Application`. A module can be
+defined as an array (as shown above) or as a `Closure`. The closure receives the DI container as its only argument and
+is invoked when the module starts:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use MyApp\Modules\Backend\ReportWriter;
+use Phalcon\Cli\Console;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\FactoryDefault\Cli as CliDI;
+
+$container = new CliDI();
+$console   = new Console($container);
+
+$console->registerModules(
+    [
+        'backend' => function (DiInterface $container) {
+            $container->setShared('reportWriter', ReportWriter::class);
+        },
+    ]
+);
+```
+
+For array definitions, the class named by `className` is resolved from the container and its `registerAutoloaders()`
+and `registerServices()` methods are called automatically. For closure definitions, the closure body is responsible
+for any service registration; `registerAutoloaders()` and `registerServices()` are not called.
+
+A module name that was never registered raises `Phalcon\Application\Exceptions\ModuleNotRegistered`. A definition that
+is neither an array nor a `Closure` raises `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`.
+
 ### Methods
 
 The CLI application offers the following methods:
@@ -603,7 +638,9 @@ at specific points in the application flow.
 ## Exceptions
 
 Any exception thrown in the `Phalcon\Cli\Console` component will be of type `Phalcon\Cli\Console\Exception`, which
-allows you to trap the exception specifically.
+allows you to trap the exception specifically. The one exception to this rule is an unregistered module name, which
+raises `Phalcon\Application\Exceptions\ModuleNotRegistered` - a subclass of `Phalcon\Application\Exception`, shared
+with `Phalcon\Mvc\Application`.
 
 ### Granular Exceptions
 
@@ -611,11 +648,22 @@ As of 5.14 the CLI Console and Router raise granular subclasses of their respect
 catch a specific failure mode. Existing `catch (Phalcon\Cli\Console\Exception $e)` /
 `catch (Phalcon\Cli\Router\Exception $e)` blocks continue to work unchanged.
 
+As of 5.14.2 module processing is aligned with `Phalcon\Mvc\Application` and two classes have been removed:
+
+- `Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered` is replaced by
+  `Phalcon\Application\Exceptions\ModuleNotRegistered`, which extends `Phalcon\Application\Exception` - **not**
+  `Phalcon\Cli\Console\Exception`. A `catch (Phalcon\Cli\Console\Exception $e)` block no longer traps an unregistered
+  module.
+- `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath` is replaced by
+  `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`.
+
+Update any `catch` blocks that reference the removed classes.
+
 | Class                                                         | Parent                          | Thrown when                                                      |
 |---------------------------------------------------------------|---------------------------------|------------------------------------------------------------------|
-| `Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered`   | `Phalcon\Cli\Console\Exception` | A module name passed to `handle()` was never registered.         |
+| `Phalcon\Application\Exceptions\ModuleNotRegistered`          | `Phalcon\Application\Exception` | A module name passed to `handle()` was never registered.         |
 | `Phalcon\Cli\Console\Exceptions\ContainerRequired`            | `Phalcon\Cli\Console\Exception` | The console is invoked without a DI container.                   |
-| `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath`  | `Phalcon\Cli\Console\Exception` | A module definition `path` entry is not a string.                |
+| `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`      | `Phalcon\Cli\Console\Exception` | A module definition is neither an array nor a `Closure`.         |
 | `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` | `Phalcon\Cli\Console\Exception` | A module definition `path` points at a file that does not exist. |
 | `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable`        | `Phalcon\Cli\Router\Exception`  | A route `beforeMatch` callback is not callable.                  |
 | `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`             | `Phalcon\Cli\Router\Exception`  | Route paths cannot be processed to a routable array.             |
