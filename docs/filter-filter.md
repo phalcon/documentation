@@ -57,6 +57,23 @@ $text = $locator->hello('World');
 
     The [Phalcon\Di\FactoryDefault][factorydefault] container already has a [Phalcon\Filter\Filter][filter-filter] object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
 
+As of 5.14.2 the built-in sanitizer registry is exposed by the static `Filter::getDefaultMapper()` method. It returns
+the name to class map used by the `FilterFactory`, and can be used to construct a stand-alone locator that combines the
+built-in sanitizers with your own:
+
+```php
+<?php
+
+use MyApp\Sanitizers\HelloSanitizer;
+use Phalcon\Filter\Filter;
+
+$services = Filter::getDefaultMapper();
+
+$services['hello'] = HelloSanitizer::class;
+
+$locator = new Filter($services);
+```
+
 ## Built-in
 
 !!! warning "WARNING"
@@ -401,6 +418,29 @@ $locator->sanitize('!100a019', 'int');
 $locator->sanitize('!100a019.01a', 'float');
 ```
 
+### Sanitizing Arrays
+
+When the value passed to `sanitize()` is an array, each element is sanitized individually and an array is returned.
+The recursion is one level deep only: an element that is itself an array is passed to the sanitizer as a single value,
+which raises a `TypeError` for sanitizers that type their value parameter (such as `trim`). Passing `true` as the
+third parameter (`$noRecursive`) disables the per-element behavior and hands the whole array to the sanitizer as one
+value.
+
+```php
+<?php
+
+use Phalcon\Filter\FilterFactory;
+
+$factory = new FilterFactory();
+$locator = $factory->newInstance();
+
+// ['hello', 'world']
+$locator->sanitize(['  hello ', ' world  '], 'trim');
+
+// TypeError: the nested array is passed to `trim` as-is
+$locator->sanitize(['  hello ', [' world  ']], 'trim');
+```
+
 ## Controllers
 
 You can access the [Phalcon\Filter\Filter][filter-filter] object from your controllers when accessing `GET` or `POST`
@@ -648,9 +688,10 @@ Or, if you prefer, you can implement the sanitizer in a class:
 ```php
 <?php
 
+use Phalcon\Contracts\Filter\Sanitizer;
 use Phalcon\Filter\FilterFactory;
 
-class IPv4
+class IPv4 implements Sanitizer
 {
     public function __invoke($value)
     {
@@ -672,6 +713,23 @@ $locator->set(
 // Sanitize with the 'ipv4' filter
 $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```
+
+## The `Phalcon\Contracts\Filter\Sanitizer` Contract
+
+As of 5.14.2 every built-in sanitizer class in `Phalcon\Filter\Sanitize` implements the
+`Phalcon\Contracts\Filter\Sanitizer` interface. The interface defines the sanitizer contract:
+
+- A sanitizer is an invokable object: it exposes a public `__invoke()` method that receives the value to sanitize as
+  its first parameter and returns the sanitized value.
+- Sanitizer-specific parameters (for example the pattern and replacement of `regex`) are declared after the value
+  parameter. `Filter::sanitize()` forwards them in order.
+- A sanitizer operates on a single value. Array handling (see *Sanitizing Arrays*) is performed by
+  `Filter::sanitize()`, not by the sanitizer.
+
+The interface intentionally declares no method. Implementations type their value parameter differently (`string` for
+text-only sanitizers, untyped for coercing ones), and PHP parameter variance does not allow an implementation to
+narrow a parameter declared by an interface. Implementing the interface on custom class-based sanitizers is
+recommended but not required; the locator accepts any callable.
 
 ## Exceptions
 

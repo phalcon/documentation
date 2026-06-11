@@ -1657,6 +1657,10 @@ $validator->add(
 );
 ```
 
+!!! info "NOTE"
+
+    The resolution of an array `attribute` option (used when validating a combination of fields) is specific to the `Uniqueness` validator. As of 5.14.2 it is implemented in `Uniqueness::getOption()`; `getOption()` on every other validator returns the stored option unchanged.
+
 In the model:
 
 ```php
@@ -2189,8 +2193,39 @@ $validation->add(
 );
 ```
 
-The `allowEmpty` option can also be an array of field names. The fields matching the elements of the array will validate
-`true` if they have empty values.
+The `allowEmpty` option accepts three forms:
+
+- `true` - the field is skipped when its value is empty (PHP `empty()` semantics)
+- a list of values, e.g. `[null, '']` - the field is skipped when its value strictly matches one of the listed values.
+  The comparison uses `===`, so `'0'` is not treated as empty unless listed.
+- a per-field map, e.g. `['address' => true, 'phone' => false]` - used with validators that run against multiple
+  fields, enabling the skip per field name
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Regex;
+
+$validation = new Validation();
+
+$validation->add(
+    'telephone',
+    new Regex(
+        [
+            'message'    => 'The telephone is required',
+            'pattern'    => '/\+1 [0-9]+/',
+            'allowEmpty' => [null, ''],
+        ]
+    )
+);
+```
+
+As of 5.14.2 the `allowEmpty` rule is owned by the public `AbstractValidator::isAllowEmpty()` method, and the
+validation run delegates to it before each validator executes. Validators can override the method to define their own
+emptiness semantics - the `File` validators do, treating an upload with `UPLOAD_ERR_NO_FILE` as empty - and custom
+validators extending `AbstractValidator` inherit the behavior described above. The per-field map form is honored
+consistently in this pre-check as well.
 
 ## Recursive Validation
 
