@@ -306,6 +306,7 @@ Phalcon offers a set of built-in validators for this component:
 | [Phalcon\Filter\Validation\Validator\ExclusionIn][validation-validator-exclusionin]                     | Not within value set       |
 | [Phalcon\Filter\Validation\Validator\File][validation-validator-file]                                   | File                       |
 | [Phalcon\Filter\Validation\Validator\File\MimeType][validation-validator-file-mimetype]                 | Mimetype File              |
+| [Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio][validation-validator-file-resolution-aspectratio] | Aspect ratio of File |
 | [Phalcon\Filter\Validation\Validator\File\Resolution\Equal][validation-validator-file-resolution-equal] | Equal resolution of File   |
 | [Phalcon\Filter\Validation\Validator\File\Resolution\Max][validation-validator-file-resolution-max]     | Maximum resolution of File |
 | [Phalcon\Filter\Validation\Validator\File\Resolution\Min][validation-validator-file-resolution-min]     | Minimum resolution of File |
@@ -843,6 +844,8 @@ $validator->add(
             "messageType"          => "Allowed file types are :types",
             "maxResolution"        => "800x600",
             "messageMaxResolution" => "Max resolution of :field is :resolution",
+            "aspectRatio"          => "16x9",
+            "messageAspectRatio"   => "Aspect ratio of :field has to be :ratio",
         ]
     )
 );
@@ -934,6 +937,52 @@ $validator->add(
                 "file"        => "Allowed file types are image/jpeg and image/png",
                 "anotherFile" => "Allowed file types are image/gif and image/bmp",
             ]
+        ]
+    )
+);
+```
+
+### File Resolution AspectRatio
+
+Checks if a file has the exact aspect ratio
+
+The `ratio` option uses the same `WxH` format as the resolution validators (for instance `16x9`). The comparison uses
+integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches `16x9`, 1366x768
+does not. The message supports the `:ratio` placeholder. Available as of 5.14.2.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio;
+
+$validator = new Validation();
+
+$validator->add(
+    "file",
+    new AspectRatio(
+        [
+            "ratio"   => "16x9",
+            "message" => "The aspect ratio of the field :field has to be :ratio",
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new AspectRatio(
+        [
+            "ratio" => [
+                "file"        => "16x9",
+                "anotherFile" => "4x3",
+            ],
+            "message" => [
+                "file"        => "Aspect ratio of file has to be 16x9",
+                "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
+            ],
         ]
     )
 );
@@ -2363,6 +2412,8 @@ specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)`
 [validation-validator-file-abstractfile]: api/phalcon_filter.md#filtervalidationvalidatorfileabstractfile
 
 [validation-validator-file-mimetype]: api/phalcon_filter.md#filtervalidationvalidatorfilemimetype
+
+[validation-validator-file-resolution-aspectratio]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionaspectratio
 
 [validation-validator-file-resolution-equal]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionequal
 
