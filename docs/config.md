@@ -46,7 +46,6 @@ echo $config->path('app.name');         // PHALCON
 
 ### `newInstance`
 
-The allowed values for `name`, which correspond to a different adapter class are:
 Creating a `Phalcon\Config\Config` or any supporting adapter class (`Phalcon\Config\Adapter\*`) is straightforward using
 the `new` keyword. However, Phalcon offers the `Phalcon\Config\ConfigFactory` class for easy instantiation of config
 objects. Calling `newInstance` with the `name`, `fileName`, and a `parameters` array will return the new config object.
@@ -141,6 +140,22 @@ $factory  = new ConfigFactory();
 $config = $factory->load($fileName);
 ```
 
+As of 5.14.2, `load()` resolves the `yml` file extension, or `yml` passed as the `adapter` element, to
+the [Yaml][yaml] adapter:
+
+```php
+<?php
+
+use Phalcon\Config\ConfigFactory;
+
+$fileName = '/app/storage/config.yml';
+$factory  = new ConfigFactory();
+
+$config = $factory->load($fileName);
+```
+
+The alias applies to `load()` only. `newInstance()` requires the registered adapter name `yaml`.
+
 ## Native Array
 
 The [Phalcon\Config\Config][config] component accepts a PHP array in the constructor and loads it up.
@@ -164,6 +179,70 @@ $config = new Config(
     ]
 );
 ```
+
+## Constructor Options
+
+The constructor accepts up to four parameters:
+
+| Parameter      | Default | Description                                                                              |
+|----------------|---------|------------------------------------------------------------------------------------------|
+| `$data`        | `[]`    | The configuration data.                                                                  |
+| `$insensitive` | `true`  | Keys are case-insensitive. Pass `false` to make key lookups case-sensitive.              |
+| `$strictNull`  | `false` | `get()` returns the default value for elements that hold `null`. Pass `true` to return the stored `null` instead. |
+| `$type`        | `null`  | Runtime type guard applied to the configuration values.                                  |
+
+With `$strictNull` enabled, an element that exists and holds `null` is returned as `null`; the default value is
+returned only for elements that do not exist:
+
+```php
+<?php
+
+use Phalcon\Config\Config;
+
+$config = new Config(
+    [
+        'app' => [
+            'name' => null,
+        ],
+    ],
+    true,
+    true
+);
+
+var_dump($config->get('app')->get('name', 'PHALCON')); // NULL
+```
+
+When `$type` is set, every value stored in the object is validated against it. The accepted tokens are `int`,
+`string`, `bool`, `float`, `array`, and `object`; any other string is treated as a class or interface name and checked
+with `instanceof`. A value that fails the check raises `Phalcon\Support\Collection\Exceptions\InvalidValueType`. This
+exception belongs to the `Phalcon\Support` hierarchy and does not extend [Phalcon\Config\Exception][config-exception].
+
+The guard applies to leaf values at every nesting depth. Array values are not themselves validated: they become
+nested [Phalcon\Config\Config][config] objects, and the guard is applied to the values inside them.
+
+```php
+<?php
+
+use Phalcon\Config\Config;
+
+$config = new Config(
+    [
+        'database' => [
+            'port' => 3306,
+        ],
+    ],
+    true,
+    false,
+    'int'
+);
+
+$config->set('timeout', 30);        // stored
+$config->set('host', 'localhost');  // throws InvalidValueType
+```
+
+!!! info "NOTE"
+
+    As of 5.14.2, nested configuration objects inherit all three flags (`$insensitive`, `$strictNull`, `$type`) and the type guard is enforced. In earlier versions, nested objects inherited only `$insensitive` and the type guard was not applied by this component.
 
 ## Get
 
@@ -347,6 +426,10 @@ Phalcon\Config Object
 )
 ``` 
 
+!!! info "NOTE"
+
+    `merge()` accepts an array or a [Phalcon\Config\Config][config] object. Any other value raises `Phalcon\Config\Exceptions\InvalidMergeData`. As of 5.14.2, the configuration object is left unchanged when the argument is rejected; in earlier versions the object was emptied before the exception was raised.
+
 ## Has
 
 Using `has()` you can determine if a particular key exists in the collection.
@@ -366,6 +449,30 @@ If you need to get the object back as an array `toArray()` and `toJson()` are av
 
 For additional information, you can check the [Phalcon\Support\Collection][support-collection] documentation.
 
+## Collection Methods
+
+[Phalcon\Config\Config][config] inherits the transformation methods of
+[Phalcon\Support\Collection][support-collection]: `filter()`, `map()`, `sort()`, and `where()`. Each returns a new
+configuration object and leaves the original unchanged.
+
+```php
+<?php
+
+use Phalcon\Config\Adapter\Ini;
+
+$config = new Ini('/apps/storage/config.ini');
+
+$database = $config->filter(
+    function ($value, $key) {
+        return 'database' === $key;
+    }
+);
+```
+
+!!! info "NOTE"
+
+    As of 5.14.2, these methods also work on objects created by the adapters (`Ini`, `Json`, `Php`, `Yaml`, `Grouped`). In earlier versions, calling them on an adapter instance raised an error, because the returned object was constructed with the adapter constructor signature.
+
 ## Adapters
 
 In addition to the core component [Phalcon\Config\Config][config], designed to accept either a string (file name and
@@ -381,6 +488,10 @@ to load configuration data.
 | [Phalcon\Config\Adapter\Json][json]       | Loads configuration from JSON files. Requires the PHP `json` extension to be present in the system. |
 | [Phalcon\Config\Adapter\Php][php]         | Loads configuration from PHP multidimensional arrays. This adapter offers the best performance.     |
 | [Phalcon\Config\Adapter\Yaml][yaml]       | Loads configuration from YAML files. Requires the PHP `yaml` extension to be present in the system. |
+
+!!! info "NOTE"
+
+    As of 5.14.2, all file based adapters share the same failure contract: when the configuration file cannot be read, `Phalcon\Config\Exceptions\CannotLoadConfigFile` is raised. In earlier versions, the [Json][json] adapter failed inside the JSON decoder and the [Php][php] adapter raised a fatal error when the file was missing.
 
 ### Grouped
 
@@ -487,6 +598,38 @@ $options = [
 $config = new Grouped($options);
 ```
 
+As of 5.14.2, the constructor accepts an optional third parameter:
+a [Phalcon\Config\ConfigFactory][config-configfactory] instance used to load every file based entry. The factory is
+created once and reused for all entries. Supplying your own factory makes custom adapters registered on it available
+to the group:
+
+```php
+<?php
+
+use App\Config\TomlAdapter;
+use Phalcon\Config\Adapter\Grouped;
+use Phalcon\Config\ConfigFactory;
+
+$factory = new ConfigFactory(
+    [
+        'toml' => TomlAdapter::class,
+    ]
+);
+
+$options = [
+    [
+        'adapter'  => 'php',
+        'filePath' => '/apps/storage/config.php',
+    ],
+    [
+        'adapter'  => 'toml',
+        'filePath' => '/apps/storage/database.toml',
+    ],
+];
+
+$config = new Grouped($options, 'php', $factory);
+```
+
 ### Ini
 
 The [Phalcon\Config\Adapter\Ini][ini] adapter uses the optimized PHP function [parse_ini_file][parse-ini-file] to read
@@ -538,7 +681,7 @@ When using [Phalcon\Config\ConfigFactory][config-configfactory], set the mode as
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.ini';
 $factory  = new ConfigFactory();
@@ -557,7 +700,7 @@ Or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.ini';
 $factory  = new ConfigFactory();
@@ -566,7 +709,7 @@ $params = [
     'mode' => INI_SCANNER_NORMAL, 
 ];
 
-$config = $factory->newinstance('ini', $fileName, $params);
+$config = $factory->newInstance('ini', $fileName, $params);
 ```
 
 ### Json
@@ -622,7 +765,7 @@ For [Phalcon\Config\ConfigFactory][config-configfactory], pass the file name:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.json';
 $factory  = new ConfigFactory();
@@ -640,12 +783,12 @@ or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.json';
 $factory  = new ConfigFactory();
 
-$config = $factory->newinstance('json', $fileName);
+$config = $factory->newInstance('json', $fileName);
 ```
 
 ### Php
@@ -699,7 +842,7 @@ For [Phalcon\Config\ConfigFactory][config-configfactory], pass the file name:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.php';
 $factory  = new ConfigFactory();
@@ -717,12 +860,12 @@ or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.php';
 $factory  = new ConfigFactory();
 
-$config = $factory->newinstance('php', $fileName);
+$config = $factory->newInstance('php', $fileName);
 ```
 
 ### Yaml
@@ -788,7 +931,7 @@ For [Phalcon\Config\ConfigFactory][config-configfactory], set the mode as a para
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 define("APPROOT", dirname(__DIR__));
 
@@ -812,7 +955,7 @@ or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 define("APPROOT", dirname(__DIR__));
 
@@ -824,7 +967,7 @@ $callbacks = [
     },
 ];
 
-$config = $factory->newinstance('yaml', $fileName, $callbacks);
+$config = $factory->newInstance('yaml', $fileName, $callbacks);
 ```
 
 ### Custom
