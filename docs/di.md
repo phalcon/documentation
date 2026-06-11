@@ -1576,6 +1576,24 @@ class InvoiceComponent extends AbstractInjectionAware
 }
 ```
 
+!!! warning "WARNING"
+
+    As of version 5.14.1, `Phalcon\Di\Injectable::__get()` no longer caches resolved services as dynamic object properties. Every magic property access (e.g. `$this->cfg`) re-resolves the service through the container. As a result, mutating an **array-valued** service through a magic property no longer works - the write is applied to a temporary copy and is silently lost:
+
+    ```php
+    $this->cfg['namespace'] = 'newvalue';
+
+    echo $this->cfg['namespace']; // still the old value
+    ```
+
+    If your application relies on this pattern, either register the service as an object such as [Phalcon\Config\Config][config] (mutations via array syntax then persist on the shared instance), or assign the service to a real property first and mutate that:
+
+    ```php
+    $this->cfg = $this->getDI()->getShared('cfg');
+
+    $this->cfg['namespace'] = 'newvalue'; // works as before
+    ```
+
 ## Organizing Services in Files
 
 You can better organize your application by moving the service registration to individual files instead of registering
@@ -1887,6 +1905,7 @@ mode. Existing `catch (Phalcon\Di\Exception $e)` blocks continue to work unchang
 | `Phalcon\Di\Exceptions\SetterParametersMustBeArray`       | `Phalcon\Di\Exception` | A setter-injection entry's parameter list is not an array.                           |
 | `Phalcon\Di\Exceptions\UnknownServiceType`                | `Phalcon\Di\Exception` | A service-resolution argument has an unrecognized `type`.                            |
 
+[config]: api/phalcon_config.md
 [container]: container.md
 
 [di]: api/phalcon_di.md#didi

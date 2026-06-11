@@ -460,6 +460,7 @@ The available methods are:
 | `has`            | Checks if an element exists in the cache                                   |
 | `increment`      | Increments a stored number                                                 |
 | `set`            | Stores data in the adapter                                                 |
+| `setForever`     | Stores data in the adapter without an expiration                           |
 
 !!! info "NOTE"
 
@@ -467,7 +468,11 @@ The available methods are:
 
 !!! info "NOTE"
 
-    Keys returned by `getKeys()` carry the adapter prefix. As of 5.14.2 the adapters also accept keys that already carry the prefix: `get()`, `has()`, `delete()`, `deleteMultiple()`, `set()`, `increment()` and `decrement()` strip a leading prefix from the supplied key before applying their own, so the output of `getKeys()` can be passed back to these methods unchanged.
+    Keys returned by `getKeys()` carry the adapter prefix. As of 5.14.2 the adapters also accept keys that already carry the prefix: `get()`, `has()`, `delete()`, `deleteMultiple()`, `set()`, `setForever()`, `increment()` and `decrement()` strip a leading prefix from the supplied key before applying their own, so the output of `getKeys()` can be passed back to these methods unchanged.
+
+!!! warning "NOTE"
+
+    A consequence of the stripping is that a key whose name happens to start with the prefix text addresses the same record as the bare key: with prefix `data-`, `set('data-users', ...)` and `set('users', ...)` write to the same stored entry. If your keys are externally generated identifiers, or can legitimately begin with the prefix text, disable the behavior with the `stripPrefix` option (default `true`) when constructing the adapter.
 
 To construct one of these objects, you will need to pass
 a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the constructor and optionally some
@@ -488,6 +493,7 @@ _adapter_, since the `apcu` functionality is exposed using the `apcu_*` PHP func
 | `lifetime`          | `3600`     |
 | `serializer`        | `null`     |
 | `prefix`            | `ph-apcu-` |
+| `stripPrefix`       | `true`     |
 
 The following example demonstrates how to create a new `Apcu` cache adapter, which will use
 the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a
@@ -525,6 +531,7 @@ event that requires the connection to be active.
 | `lifetime`                                      | `3600`                                |
 | `serializer`                                    | `null`                                |
 | `prefix`                                        | `ph-memc-`                            |
+| `stripPrefix`                                   | `true`                                |
 | `servers[0]['host']`                            | `127.0.0.1`                           |
 | `servers[0]['port']`                            | `11211`                               |
 | `servers[0]['weight']`                          | `1`                                   |
@@ -607,6 +614,7 @@ constructor are:
 | `lifetime`          | `3600`     |
 | `serializer`        | `null`     |
 | `prefix`            | `ph-memo-` |
+| `stripPrefix`       | `true`     |
 
 The following example demonstrates how to create a new `Memory` cache adapter, which will use
 the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a
@@ -644,6 +652,7 @@ the connection to be active.
 | `lifetime`          | `3600`      |
 | `serializer`        | `null`      |
 | `prefix`            | `ph-reds-`  |
+| `stripPrefix`       | `true`      |
 | `host`              | `127.0.0.1` |
 | `port`              | `6379`      |
 | `index`             | `1`         |
@@ -736,6 +745,7 @@ element, resulting in additional reads and writes to the file system.
 | `lifetime`          | `3600`    |
 | `serializer`        | `null`    |
 | `prefix`            | `phstrm-` |
+| `stripPrefix`       | `true`    |
 | `storageDir`        |           |
 
 If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.

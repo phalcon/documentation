@@ -362,7 +362,7 @@ $cookie  = new Cookie(
 
 !!! info "NOTE"
 
-    If your DI container contains the `session` service, the cookies will be stored in the session automatically. If not, they will not be stored, and you are responsible for persisting them if you wish to.
+    If your DI container contains the `session` service and the session has been started, each cookie definition (expiration, path, domain, secure, httponly, options) is stored in the session automatically, under a key prefixed with `_PHCOOKIE_`, and restored from there on later requests. If the service is missing, the session has not been started, or the cookie has no container at all, the cookie still works for the current request - nothing is persisted and no error is raised - and you are responsible for persisting the definition if you wish to. Prior to 5.14.2, `send()` raised a fatal error when a cookie with a non-empty definition had no DI container set.
 
 ### Encryption
 

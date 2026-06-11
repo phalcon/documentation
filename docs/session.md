@@ -66,6 +66,11 @@ indicating success or failure.
     - If the adapter is not set, it will throw an exception
     - It will return the result of `session_start()`
 
+Before starting the session, `start()` checks the session cookie sent by the client. A cookie value containing
+characters outside the PHP session ID alphabet (`a-z`, `A-Z`, `0-9`, `,`, `-`) is discarded, so `session_start()`
+generates a new ID. Prior to 5.14.2 only alphanumeric values were accepted, which discarded valid session cookies
+when `session.sid_bits_per_character` is set to `6` (an alphabet that includes `,` and `-`).
+
 ```php
 <?php
 
@@ -373,6 +378,10 @@ the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] interna
 to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object
 in order for the adapter to be created internally.
 
+The adapter sets the storage key prefix to `sess-memc-` and, as of 5.14.2, disables the storage adapters' prefix
+stripping (`stripPrefix` is set to `false` unless supplied): session ids are externally generated, so an id that
+happens to start with the prefix text must not address the same record as another session.
+
 The available options for Memcached are:
 
 | Name      | Description          |
@@ -439,6 +448,10 @@ $session
 [Phalcon\Session\Adapter\Redis][session-adapter-redis] uses the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis]
 internally to store data in Redis. In order to use this adapter you need the settings for Redis and
 a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
+
+The adapter sets the storage key prefix to `sess-reds-` and, as of 5.14.2, disables the storage adapters' prefix
+stripping (`stripPrefix` is set to `false` unless supplied): session ids are externally generated, so an id that
+happens to start with the prefix text must not address the same record as another session.
 
 The available options for Redis are:
 
@@ -554,6 +567,15 @@ $user->setDI($container);
 $user->name     = 'Dark Helmet';
 $user->password = 12345;
 ```
+
+The bag accepts any [Phalcon\Session\ManagerInterface][session-managerinterface] implementation. As of 5.14.2 the DI
+container is captured from the manager only when the manager provides a `getDI()` method - the supplied
+[Phalcon\Session\Manager][session-manager] does - so managers implementing only the interface can be used as well.
+A container can always be assigned explicitly with `setDI()`, as shown above.
+
+!!! warning "NOTE"
+
+    The bag reads its data from the session once, when it is constructed, and writes the whole group back on every change. Construct the bag after the session has started; a bag constructed before `start()` begins empty and its writes are not persisted.
 
 ## Dependency Injection
 
