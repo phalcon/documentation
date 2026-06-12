@@ -455,14 +455,18 @@ happens to start with the prefix text must not address the same record as anothe
 
 The available options for Redis are:
 
-| Name         | Description                           |
-|--------------|---------------------------------------|
-| `host`       | the host                              |
-| `port`       | the port                              |
-| `index`      | the index                             |
-| `persistent` | whether to persist connections or not |
-| `auth`       | authentication parameters             |
-| `socket`     | socket connection                     |
+| Name             | Description                                                      |
+|------------------|------------------------------------------------------------------|
+| `host`           | the host                                                         |
+| `port`           | the port                                                         |
+| `index`          | the index                                                        |
+| `persistent`     | whether to persist connections or not                            |
+| `auth`           | authentication parameters                                        |
+| `socket`         | socket connection                                                |
+| `lockingEnabled` | enable session locking (see [Session Locking](#session-locking)) |
+| `lockExpiry`     | lifetime of the session lock in seconds                          |
+| `lockRetries`    | maximum number of lock acquisition attempts                      |
+| `lockWaitTime`   | microseconds to pause between lock acquisition attempts          |
 
 ```php
 <?php
@@ -615,6 +619,69 @@ To change how an adapter refreshes an unchanged session, extend it and override 
 without touching the storage leaves the last-modified time under the control of your application. Note that the
 `Stream` adapter's `gc()` removes session files whose modification time is older than the configured lifetime; an
 overridden `updateTimestamp()` that does not touch the file must account for that.
+
+### Session Locking
+
+As of 5.14.2 the [Phalcon\Session\Adapter\Redis][session-adapter-redis] adapter can serialize concurrent requests
+that share a session id. Without locking, two requests arriving with the same session cookie both read the session
+data when they start and both write it back when they finish; the request finishing last overwrites whatever the
+other one wrote. PHP's `files` handler prevents this by locking the session file for the duration of the request;
+a storage backend such as Redis offers no equivalent protection by default.
+
+- `Redis` supports locking through the constructor options listed below
+- `Libmemcached`, `Stream` and `Noop` do not implement locking
+- The session locking offered by the phpredis extension (`redis.session.locking_enabled`) applies only to its own handler (`session.save_handler = redis`) and has no effect on this adapter
+
+Locking is disabled by default and is enabled with the `lockingEnabled` constructor option. When enabled, `read()`
+acquires a per-session lock before returning the session data, and `close()` or `destroy()` releases it, so the
+lock is held for the lifetime of the request. A second request for the same session id waits at `read()` until the
+lock is released or its retries run out. The available options are:
+
+| Name             | Default | Description                                        |
+|------------------|---------|----------------------------------------------------|
+| `lockingEnabled` | `false` | enable session locking                             |
+| `lockExpiry`     | `30`    | lifetime of the lock in seconds                    |
+| `lockRetries`    | `100`   | maximum number of acquisition attempts             |
+| `lockWaitTime`   | `50000` | microseconds to pause between acquisition attempts |
+
+```php
+<?php
+
+use Phalcon\Session\Adapter\Redis;
+use Phalcon\Session\Manager;
+use Phalcon\Storage\AdapterFactory;
+use Phalcon\Storage\SerializerFactory;
+
+$options = [
+    'host'           => '127.0.0.1',
+    'port'           => 6379,
+    'index'          => '1',
+    'lockingEnabled' => true,
+    'lockExpiry'     => 60,
+];
+
+$session           = new Manager();
+$serializerFactory = new SerializerFactory();
+$factory           = new AdapterFactory($serializerFactory);
+$redis             = new Redis($factory, $options);
+
+$session
+    ->setAdapter($redis)
+    ->start();
+```
+
+The lock is a Redis key derived from the session id - `sess-reds-<id>-lock` with the default prefix - created with
+`SET NX EX`. The key carries a lifetime of `lockExpiry` seconds, so a process that dies without releasing the lock
+cannot block the session past that point. Set `lockExpiry` higher than the longest expected request time: when the
+lock expires while its request is still running, another request can acquire it and the protection lapses for that
+overlap.
+
+Each acquisition stores a unique token in the lock key and the release deletes the key only when the token still
+matches. An adapter whose lock has already expired therefore cannot remove a lock acquired by another request in
+the meantime.
+
+When the lock cannot be acquired after `lockRetries` attempts - five seconds in total with the default values -
+`read()` throws `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` and the session does not start.
 
 ## Bag
 
@@ -813,7 +880,7 @@ failure mode. Existing `catch (Phalcon\Session\Exception $e)` blocks continue to
 | `Phalcon\Session\Exceptions\InvalidSessionName`          | `Phalcon\Session\Exception` | The session name passed to `setName()` is not a valid identifier.          |
 | `Phalcon\Session\Exceptions\SessionAlreadyStarted`       | `Phalcon\Session\Exception` | `start()` is called while a session is already active.                     |
 | `Phalcon\Session\Exceptions\SessionModificationDenied`   | `Phalcon\Session\Exception` | A write is attempted on a session whose state does not allow modification. |
-| `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` | `Phalcon\Session\Exception` | The underlying session adapter raises an unrecoverable I/O error.          |
+| `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` | `Phalcon\Session\Exception` | The underlying session adapter raises an unrecoverable I/O error, or the session lock cannot be acquired (see [Session Locking](#session-locking)). |
 | `Phalcon\Session\Adapter\Exceptions\InvalidSavePath`     | `Phalcon\Session\Exception` | The configured save path is not a writable directory.                      |
 | `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` | `Phalcon\Session\Exception` | The save path cannot be determined for the configured adapter.             |
 
