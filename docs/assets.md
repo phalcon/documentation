@@ -210,8 +210,11 @@ $asset = new Js(
 
 ### Custom
 
-Implementing the [Phalcon\Assets\AssetInterface][asset-interface] enables you to create different asset classes that can
-be handled by the [Assets Manager][assets-manager].
+Implementing the [Phalcon\Assets\AssetInterface][asset-interface] - or, preferably, the canonical
+`Phalcon\Contracts\Assets\Asset` contract it now extends - enables you to create asset classes that the
+[Assets Manager][assets-manager] can hold in a collection. The contract covers collection membership only (key, type,
+attributes, and filter flag); rendering an asset through `Manager::output()` requires the concrete
+[Phalcon\Assets\Asset][asset] class. See [Contracts](#contracts).
 
 ## Adding Assets
 
@@ -466,6 +469,10 @@ Assets can be filtered, i.e., manipulated before their output to the view. Altho
 JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v5, we offer only
 the [Phalcon\Assets\Filters\None][filter-none] filter (which does not change the asset contents) and
 the [Phalcon\Assets\FilterInterface][filter-interface] interface, offering the ability to create custom filters.
+
+The `Phalcon\Assets\Filters\Cssmin` and `Phalcon\Assets\Filters\Jsmin` classes are retained as no-op stubs that return
+the content unchanged, and are deprecated. Use `None`, or a custom filter implementing the
+`Phalcon\Contracts\Assets\Filter` contract (see [Contracts](#contracts)).
 
 ### Custom Filters
 
@@ -952,6 +959,37 @@ what is possible using this component. The implementation you choose depends on 
 
 In most cases, your web server, [CDN][cdn], or services such as [Varnish HTTP Cache][varnish] would be preferable.
 
+## Contracts
+
+The canonical interfaces for this component live in the `Phalcon\Contracts\Assets` namespace, with the `Interface`
+suffix dropped. `Phalcon\Assets\AssetInterface` and `Phalcon\Assets\FilterInterface` remain available: each now extends
+its contract and is deprecated. Existing implementations and type hints keep working unchanged; new code should target
+the contracts.
+
+| Deprecated interface             | Canonical contract                |
+|----------------------------------|-----------------------------------|
+| `Phalcon\Assets\AssetInterface`  | `Phalcon\Contracts\Assets\Asset`  |
+| `Phalcon\Assets\FilterInterface` | `Phalcon\Contracts\Assets\Filter` |
+
+`Phalcon\Contracts\Assets\Asset` covers collection membership only - an asset's key, type, attributes, and filter flag.
+The file-output pipeline (`Phalcon\Assets\Manager::output()`) requires the concrete [Phalcon\Assets\Asset][asset] class.
+
+A custom filter implemented against the contract:
+
+```php
+<?php
+
+use Phalcon\Contracts\Assets\Filter;
+
+class LicenseStamper implements Filter
+{
+    public function filter(string $content): string
+    {
+        return '/* (c) 2026 ACME Corp */' . PHP_EOL . PHP_EOL . $content;
+    }
+}
+```
+
 ## Exceptions
 
 Any exceptions thrown in the Assets Manager component will be of type [Phalcon\Assets\Exception][asset-exception]. You
@@ -992,6 +1030,9 @@ failure mode. Existing `catch (Phalcon\Assets\Exception $e)` blocks continue to 
 | `Phalcon\Assets\Exceptions\InvalidFilter`              | `Phalcon\Assets\Exception` | A configured filter does not implement `FilterInterface`.            |
 | `Phalcon\Assets\Exceptions\InvalidTargetPath`          | `Phalcon\Assets\Exception` | A target path configured on a collection is empty or not writable.   |
 | `Phalcon\Assets\Exceptions\TargetPathIsDirectory`      | `Phalcon\Assets\Exception` | The configured target path points at a directory rather than a file. |
+
+As of 5.15 `CollectionNotFound` includes the requested collection name in its message, and any collection filter that
+is not a `Phalcon\Contracts\Assets\Filter` raises `InvalidFilter` instead of producing a fatal error.
 
 [asset]: api/phalcon_assets.md#assetsasset
 
