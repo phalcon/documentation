@@ -537,7 +537,8 @@ and `registerServices()` methods are called automatically. For closure definitio
 for any service registration; `registerAutoloaders()` and `registerServices()` are not called.
 
 A module name that was never registered raises `Phalcon\Application\Exceptions\ModuleNotRegistered`. A definition that
-is neither an array nor a `Closure` raises `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`.
+is neither an array nor a `Closure` raises `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`. As of 5.15 that
+exception names the offending module and the reason it was rejected.
 
 ### Methods
 
@@ -629,6 +630,9 @@ CLI applications in Phalcon are [event-aware][events], allowing you to utilize t
 | `beforeStartModule` | Yes  | Called before processing a module (if modules are used). Useful for pre-processing tasks before a module is executed.  |
 | `boot`              | Yes  | Called when the application boots. It is useful for performing actions during the application's bootstrapping process. |
 
+Unlike [Phalcon\Mvc\Application][mvc-application], where `afterStartModule` is a notification whose return value is
+ignored, the console honors a `false` return from `afterStartModule` and aborts handling (shown as `Stop = Yes` above).
+
 If you are using the [Phalcon\Cli\Dispatcher][cli-dispatcher], you can also leverage the `beforeException` event, which
 can stop operations and is fired from the dispatcher object.
 
@@ -669,6 +673,24 @@ Update any `catch` blocks that reference the removed classes.
 | `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`             | `Phalcon\Cli\Router\Exception`  | Route paths cannot be processed to a routable array.             |
 | `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType`    | `Phalcon\Cli\Router\Exception`  | Arguments passed to `handle()` are not a string or array.        |
 
+As of 5.15 `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The
+constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are
+optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
+
+```php
+<?php
+
+use Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition;
+
+$exception = new InvalidModuleDefinition(
+    'backend',
+    'The module definition object must be a Closure'
+);
+
+echo $exception->getMessage();
+// Invalid module definition for module 'backend': The module definition object must be a Closure
+```
+
 [cli-console]: api/phalcon_cli.md#cliconsole
 
 [cli-console-exception]: api/phalcon_cli.md#cliconsoleexception
@@ -696,6 +718,8 @@ Update any `catch` blocks that reference the removed classes.
 [di]: api/phalcon_di.md#didi
 
 [di-factorydefault-cli]: api/phalcon_di.md#difactorydefaultcli
+
+[mvc-application]: api/phalcon_mvc.md#mvcapplication
 
 [routing]: routing.md
 

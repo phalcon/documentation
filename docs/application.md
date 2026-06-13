@@ -705,6 +705,11 @@ triggered using the type application. The supported events are:
 | `beforeHandleRequest` | Before execute the dispatch loop                               |
 | `afterHandleRequest`  | After execute the dispatch loop                                |
 
+Returning `false` from a listener cancels further processing for the `boot`, `beforeStartModule`, and
+`beforeHandleRequest` events. The `afterStartModule` and `afterHandleRequest` events are notifications fired after the
+work has completed; their return values are not honored. This differs from the CLI console, where a `false` returned
+from `afterStartModule` aborts handling.
+
 Here's an example of how to attach listeners to this component:
 
 ```php
@@ -777,6 +782,24 @@ extends its respective parent (`Phalcon\Application\Exception` or `Phalcon\Mvc\A
 | `Phalcon\Mvc\Application\Exceptions\ContainerRequired`            | `Phalcon\Mvc\Application\Exception` | The application is invoked without a DI container.                                   |
 | `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`      | `Phalcon\Mvc\Application\Exception` | A registered module definition is not a string, array, or callable.                  |
 | `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` | `Phalcon\Mvc\Application\Exception` | The `path` key of a module definition points at a file that does not exist.          |
+
+As of 5.15 `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The
+constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are
+optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
+
+```php
+<?php
+
+use Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition;
+
+$exception = new InvalidModuleDefinition(
+    'frontend',
+    'The module definition must be an array or an object'
+);
+
+echo $exception->getMessage();
+// Invalid module definition for module 'frontend': The module definition must be an array or an object
+```
 
 [application-abstractapplication]: api/phalcon_application.md#applicationabstractapplication
 
