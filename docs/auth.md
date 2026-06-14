@@ -72,7 +72,7 @@ $manager = $factory->load([
 ]);
 ```
 
-`load()` accepts an array or a `Phalcon\Config\ConfigInterface`. Each guard entry declares its `type` (`session` or `token`), an `adapter` (`name` plus adapter `options`), and optional guard `options`. Exactly one guard should be marked `default`.
+`load()` accepts an array or a `Phalcon\Config\ConfigInterface`. Each guard entry declares its `type` (`session` or `token`), an `adapter` (`name` plus adapter `options`), and optional guard `options`. Exactly one guard should be marked `default`. A guard entry missing its `type`, its `adapter`, or the adapter `name` - or providing them with the wrong type - throws `Phalcon\Auth\Exception` with a message naming the offending guard and key.
 
 ---
 
@@ -231,6 +231,7 @@ The session key and remember-cookie name are configurable through the guard `opt
 |----------------|------------|--------------------------------------------------------------------------|
 | `name`         | `auth`     | Session key holding the authenticated identifier                         |
 | `rememberName` | `remember` | Remember-me cookie name                                                  |
+| `rememberTtl`  | `31536000` | Remember-me cookie lifetime in seconds (365 days)                       |
 | `suffix`       | none       | Derives `auth_<suffix>` / `remember_<suffix>` names for multi-guard apps |
 
 ### Token Guard
@@ -275,6 +276,8 @@ Adapters load user rows and verify passwords. All three share password verificat
     ],
 ],
 ```
+
+A configured `model` that does not implement `Phalcon\Contracts\Auth\AuthUser` throws `Phalcon\Auth\Exceptions\DoesNotImplement` when a user is hydrated. The `memory` and `stream` adapters accept the same optional `model` key and enforce the contract identically.
 
 ### Memory Adapter
 
@@ -453,7 +456,7 @@ $eventsManager->attach('dispatch', new AuthDispatcherListener($manager));
 $dispatcher->setEventsManager($eventsManager);
 ```
 
-The listener is a no-op when no gate is active. When a gate denies the action, the listener forwards to the gate's `redirectTo()` target if one is provided; otherwise it throws `Phalcon\Auth\Exceptions\AccessDenied`. The default `redirectTo()` returns `null` - override a gate to supply a forward target.
+Enforcement is opt-in and fail-open: the listener is a no-op when no gate is active. With no gate activated (`$manager->getAccess()` is `null`) every dispatch is allowed, so a gate must be activated for protection to apply. A gate activated with `access()` stays active for the rest of the request - including forwards and nested dispatches - until it is replaced. When a gate denies the action, the listener forwards to the gate's `redirectTo()` target if one is provided; otherwise it throws `Phalcon\Auth\Exceptions\AccessDenied`. The default `redirectTo()` returns `null` - override a gate to supply a forward target.
 
 ```php
 <?php
@@ -511,6 +514,8 @@ $manager->guard('web')->setEventsManager($eventsManager);
 | `auth:beforeLogout` | Before logout             |
 | `auth:afterLogout`  | After logout              |
 
+These events are notifications: they fire as non-cancellable, so returning `false` from a listener (or stopping the event) does not abort the login or logout.
+
 ---
 
 ## Exceptions
@@ -538,7 +543,7 @@ try {
 | `AccessDenied`                | An access gate denies an action and no redirect target is set              |
 | `ConfigRequiresNonEmptyValue` | A guard/adapter config receives a required empty value                     |
 | `DataMustContainIdKey`        | An `AuthUser` is built from data with no scalar `id`                       |
-| `DoesNotImplement`            | Remember-me is used with an adapter/model that lacks the required contract |
+| `DoesNotImplement`            | A required contract is missing: a remember-me adapter/model, a user model that is not an `AuthUser`, or a default guard that is not `GuardStateful` |
 | `FileDoesNotExist`            | The `stream` adapter file is missing                                       |
 | `FileCannotRead`              | The `stream` adapter file cannot be read                                   |
 | `FileNotValidJson`            | The `stream` adapter file is not valid JSON                                |
