@@ -270,6 +270,10 @@ will be as fast as it can be but the list will start growing, the more our appli
 difficult. If however, your application does not have that many components, there is no reason why you cannot use this
 method of autoloading components.
 
+As of 5.15, if a class-map entry points to a file that does not exist, the loader no longer reports the class as loaded.
+It falls through to the namespace and directory strategies, giving them a chance to resolve the class. Previously the
+missing file was reported as loaded, short-circuiting those strategies and surfacing as a `class not found` fatal.
+
 The `setClasses()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to
 `true` when having multiple calls to `setClasses()` so that the class definitions are merged.
 
@@ -573,8 +577,8 @@ The following events are available:
 |--------------------|---------------------------------------------------------------------------------|---------------------|
 | `afterCheckClass`  | Fires at the end of the auto-load process when the class has not been found.    | No                  |
 | `beforeCheckClass` | Fires at the beginning of the auto-load process, before checking for the class. | Yes                 |
-| `beforeCheckPath`  | Fires before checking a directory for a class file.                             | Yes                 |
-| `pathFound`        | Fires when the loader locates a class file or a file in a registered directory  | Yes                 |
+| `beforeCheckPath`  | Fires before checking a path (class map, namespace or directory) for a class.   | Yes                 |
+| `pathFound`        | Fires once when the loader locates a class file or a registered file.           | Yes                 |
 
 In the following example, the `EventsManager` is working with the class loader, offering additional information on the
 operation flow:
@@ -615,8 +619,10 @@ In the above example, we create a new Events Manager object, attach a method to 
 then set it in our autoloader. Every time the loader loops and looks for a particular file in a specific path, the path
 will be printed on the screen.
 
-The `getCheckedPath()` holds the path that is scanned during each iteration of the internal loop. Also, you can use the
-`getfoundPath()` method, which holds the path of the found file during the internal loop.
+The `getCheckedPath()` holds the path that is scanned during each iteration of the internal loop. You can also use the
+`getFoundPath()` method, which holds the path of the file that was loaded. As of 5.15, `getFoundPath()` is populated for
+every lookup strategy - class map, namespace and directory - not only for registered files. The `loader:pathFound` event
+also fires once per loaded file, from the point where the file is required.
 
 For events that can stop operation, all you will need to do is return `false` in the method that is attached to the
 particular event:
@@ -672,6 +678,10 @@ Some things to keep in mind when using the autoloader:
 The `Phalcon\Autoload\Loader` can be instantiated by passing `true` to the constructor, so that you can enable debug
 mode. In debug mode, the loader will collect data about searching and finding files that are requested. You can then use
 the `getDebug()` method to output the debug messages, to diagnose issues.
+
+As of 5.15, the debug trail spans nested autoloads. When a loaded class requires a not-yet-loaded parent, the inner
+autoload no longer resets the trail; the trail is reset only on the outermost call, so it reflects the full resolution
+of the originally requested class.
 
 ```php
 <?php
@@ -879,6 +889,9 @@ failure mode. Existing `catch (Phalcon\Autoload\Exception $e)` blocks continue t
 |---------------------------------------------------------|------------------------------|---------------------------------------------------------------------|
 | `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` | `Phalcon\Autoload\Exception` | A namespace or directory registration is passed a non-array value.  |
 | `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`   | `Phalcon\Autoload\Exception` | The autoload callback registered with `register()` is not callable. |
+
+As of 5.15, when `LoaderDirectoriesNotArray` is raised from a namespace registration, the message names the namespace
+whose directory value was invalid.
 
 [spl-autoload-register]: https://www.php.net/manual/en/function.spl-autoload-register.php
 

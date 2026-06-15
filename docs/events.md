@@ -1596,7 +1596,7 @@ The events available in Phalcon are:
 | [Dispatcher][dispatcher]    | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
 | [Loader][autoload]          | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Loader][autoload]          | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [Loader][autoload]          | `loader:beforeCheckPath`             | Loader                                                  |
+| [Loader][autoload]          | `loader:beforeCheckPath`             | Loader, File Path                                       |
 | [Loader][autoload]          | `loader:pathFound`                   | Loader, File Path                                       |
 | [Micro][application-micro]  | `micro:afterBinding`                 | Micro                                                   |
 | [Micro][application-micro]  | `micro:afterHandleRoute`             | Micro, return value mixed                               |
