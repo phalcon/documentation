@@ -236,7 +236,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.14.0 ./
+git checkout tags/v5.15.0 ./
 zephir fullclean
 zephir build
 ```
@@ -395,7 +395,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.14.0 ./
+git checkout tags/v5.15.0 ./
 zephir fullclean
 zephir build
 ```
@@ -422,7 +422,7 @@ then add it manually in your `ini` file:
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.14.0 ./
+git checkout tags/v5.15.0 ./
 zephir fullclean
 zephir compile
 cd ext
