@@ -63,13 +63,24 @@ the adapter.
 | Option          | Description                                                                                                                                                                |
 |-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `builder`       | Used for [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] and [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor] |
+| `columns`       | Used only by [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] for COUNT rewriting when the builder has a `HAVING` or `GROUP BY` clause. It supplies the column list of the counting subquery and is ignored otherwise. |
 | `cursor`        | Used only for [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor]. The starting cursor value (`null` for the first page)                  |
 | `cursorColumn`  | Used only for [Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor]. The column name used as the cursor key (must be unique and indexed)    |
 | `data`          | The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)                                                                     |
-| `limit` (`int`) | The size of the page slice. If `limit` is negative, an exception will be thrown.                                                                                           |
-| `model`         | The data to paginate. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)                                                                                 |
+| `limit` (`int`) | **Required** by every adapter. The size of the page slice; must be a positive integer. A missing `limit` throws `Phalcon\Paginator\Exceptions\MissingRequiredParameter`; a non-positive value throws `Phalcon\Paginator\Exceptions\InvalidLimit`. |
+| `model`         | **Required** by the [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter. The model class to paginate; `find()` and `count()` are called on it. A missing `model` throws `Phalcon\Paginator\Exceptions\MissingRequiredParameter`. |
 | `page` (`int`)  | The current page                                                                                                                                                           |
 | `repository`    | [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - A repository object setting up the resultset. For more about repositories see below.              |
+
+!!! info "NOTE"
+
+    As of 5.15 every adapter requires the `limit` option, and the
+    [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter requires
+    the `model` option. A missing option throws
+    `Phalcon\Paginator\Exceptions\MissingRequiredParameter` from the
+    constructor. Earlier versions ignored a missing `limit` (reaching a
+    division by zero) and a missing `model` (a notice followed by a fatal
+    error).
 
 The methods exposed are:
 
@@ -187,6 +198,7 @@ set you are. This makes it well-suited for large tables where offset pagination 
 **Requirements and limitations:**
 
 - `cursorColumn` must be a unique, indexed column (typically the primary key).
+- The cursor column must hold numeric values. As of 5.15 a non-numeric value (for example a UUID) throws `Phalcon\Paginator\Exceptions\InvalidCursorColumn`; earlier versions cast it to `0` and ended pagination after the first page.
 - Pages must be traversed sequentially; random access is not supported.
 - `getTotalItems()` and `getLast()` always return `0` - no `COUNT(*)` query is issued.
 - Items are returned as an array of associative arrays, not as model objects.
@@ -373,6 +385,19 @@ The methods exposed are:
 | `setAliases(array $aliases): RepositoryInterface`       | Sets the aliases for properties repository   |
 | `setProperties(array $properties): RepositoryInterface` | Sets values for properties of the repository |
 
+!!! info "NOTE"
+
+    The getters above describe the offset adapters
+    ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model],
+    [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray],
+    [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder]),
+    which report sequential page numbers. The cursor adapter
+    ([Phalcon\Paginator\Adapter\QueryBuilderCursor][paginator-adapter-querybuildercursor])
+    reuses the same object with a different meaning: `getCurrent()` and
+    `getNext()` carry keyset cursor values rather than page numbers, and
+    `getTotalItems()`, `getLast()` and `getPrevious()` are not computed (they
+    return `0`).
+
 You can access the data by using the methods above or use the magic properties as defined in the constants:
 
 ```php
@@ -437,7 +462,7 @@ declare(strict_types=1);
 use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\Adapter\NativeArray;
 
-$repository = = new Repository();
+$repository = new Repository();
 $repository->setAliases(
     [
         'myCurrentPage' => $repository::PROPERTY_CURRENT_PAGE,
@@ -916,10 +941,10 @@ failure mode. Existing `catch (Phalcon\Paginator\Exception $e)` blocks continue 
 |---------------------------------------------------------|-------------------------------|--------------------------------------------------------------------------------------|
 | `Phalcon\Paginator\Exceptions\BuilderModelNotDefined`   | `Phalcon\Paginator\Exception` | The `QueryBuilder` adapter is given a builder that has no model registered.          |
 | `Phalcon\Paginator\Exceptions\InvalidBuilderInstance`   | `Phalcon\Paginator\Exception` | The `QueryBuilder` adapter is given a value that is not a `Builder` instance.        |
-| `Phalcon\Paginator\Exceptions\InvalidCursorColumn`      | `Phalcon\Paginator\Exception` | A cursor-pagination column is missing from the resultset.                            |
+| `Phalcon\Paginator\Exceptions\InvalidCursorColumn`      | `Phalcon\Paginator\Exception` | The `cursorColumn` option is not a non-empty string, or (as of 5.15) the cursor column value in the resultset is not numeric. |
 | `Phalcon\Paginator\Exceptions\InvalidLimit`             | `Phalcon\Paginator\Exception` | The `limit` option is not a positive integer.                                        |
 | `Phalcon\Paginator\Exceptions\MissingColumnsForHaving`  | `Phalcon\Paginator\Exception` | A `QueryBuilder` paginator is given a `HAVING` clause but no explicit `columns`.     |
-| `Phalcon\Paginator\Exceptions\MissingRequiredParameter` | `Phalcon\Paginator\Exception` | A required option (such as `limit` or `page`) is missing from the constructor array. |
+| `Phalcon\Paginator\Exceptions\MissingRequiredParameter` | `Phalcon\Paginator\Exception` | A required option is missing from the constructor array (`limit` for every adapter, plus `model`, `builder`, or `cursorColumn` depending on the adapter). |
 | `Phalcon\Paginator\Exceptions\PaginatorDataNotArray`    | `Phalcon\Paginator\Exception` | The `data` option of the `NativeArray` adapter is not an array.                      |
 
 [mvc-model-query-builder]: api/phalcon_mvc.md#mvcmodelquerybuilder
