@@ -344,8 +344,9 @@ $translator = new NativeArray($interpolator, $options);
 
 **Not Found**
 
-If the option `triggerError` is passed and set to `true` then the `notFound()` method will be called when a key is not
-found. The method will trigger an error.
+If the `triggerError` option is set to `true`, the adapter operates in strict mode. A missing key then throws a
+`Phalcon\Translate\Exceptions\KeyNotFound` exception instead of returning the key. The same option is honored by the
+`Csv` and `Gettext` adapters. See [Missing Keys](#missing-keys) for the fallback behavior of each adapter.
 
 ```php
 <?php
@@ -369,7 +370,7 @@ $translator = $factory->newInstance('array', $options);
 echo $translator->query('unknown');
 ```
 
-The code above will trigger an error when we try to access the `unknown` entry.
+The code above throws `Phalcon\Translate\Exceptions\KeyNotFound` when the `unknown` entry is requested.
 
 ### Csv
 
@@ -404,6 +405,8 @@ $translator = $factory->newInstance('csv', $options);
 In the above example, you can see the usage of `delimiter` and `enclosure`. In most cases, you will not need to supply
 these options but in case your CSV files are somewhat different, you have the option to instruct the adapter as to how
 it will parse the contents of the translation file.
+
+Lines whose first column begins with a `#` are treated as comments and are skipped while the file is parsed.
 
 Creating this adapter can be achieved by using the [Translate Factory][translate-factory], but you can instantiate it
 directly:
@@ -461,6 +464,10 @@ $options = [
 $translator = $factory->newInstance('gettext', $options);
 ```
 
+!!! note "NOTE"
+
+    Creating the `Gettext` adapter changes the locale for the whole process. The adapter calls `setlocale()` and exports the `LC_ALL`, `LANG` and `LANGUAGE` environment variables. `LC_ALL` affects every locale-sensitive operation in the process - `(string)` casts of floats, `strtoupper()` and `strtolower()` tables, date formatting and more - not only translations.
+
 A sample directory structure for the translation files is:
 
 ```bash
@@ -494,6 +501,45 @@ $options      = [
 
 $translator = new Gettext($interpolator, $options);
 ```
+
+### Missing Keys
+
+Each adapter handles a missing translation key differently. By default the key is returned so the application keeps
+rendering. The difference is whether the returned key is interpolated.
+
+| Adapter       | Missing key returns                | Strict mode |
+|---------------|------------------------------------|-------------|
+| `NativeArray` | The key, without interpolation     | Yes         |
+| `Csv`         | The key, with placeholders applied | Yes         |
+| `Gettext`     | The `gettext` fallback (the msgid) | Yes         |
+
+Set the `triggerError` option to `true` to opt into strict mode. A missing key then throws
+`Phalcon\Translate\Exceptions\KeyNotFound` instead of falling back. All three adapters honor the option, which defaults
+to `false`.
+
+```php
+<?php
+
+use Phalcon\Translate\Adapter\Csv;
+use Phalcon\Translate\Exceptions\KeyNotFound;
+use Phalcon\Translate\InterpolatorFactory;
+
+$interpolator = new InterpolatorFactory();
+$options      = [
+    'content'      => '/path/to/translation-file.csv',
+    'triggerError' => true,
+];
+
+$translator = new Csv($interpolator, $options);
+
+try {
+    echo $translator->query('unknown');
+} catch (KeyNotFound $ex) {
+    echo $ex->getMessage();
+}
+```
+
+Override the `notFound()` method on an adapter to change the value returned for a missing key when strict mode is off.
 
 ## Custom
 
