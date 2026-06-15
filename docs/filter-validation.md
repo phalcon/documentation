@@ -2037,6 +2037,54 @@ if (count($messages)) {
 }
 ```
 
+### Iteration and Offsets
+Messages are stored and iterated by integer position. An entry added under a string key through the array-access
+interface stays reachable by that offset but is not visited during iteration. A `foreach` loop walks the integer
+sequence only. Use `appendMessage()` when an entry must take part in iteration.
+
+```php
+<?php
+
+use Phalcon\Messages\Message;
+use Phalcon\Messages\Messages;
+
+$messages = new Messages();
+
+$messages->appendMessage(new Message('Visited during iteration'));
+$messages['database'] = new Message('Reachable by offset only');
+
+foreach ($messages as $message) {
+    echo $message->getMessage(), "\n"; // "Visited during iteration"
+}
+
+echo $messages['database']->getMessage(); // "Reachable by offset only"
+```
+
+### Message Type Enforcement
+Every entry in the collection must implement `Phalcon\Messages\MessageInterface`. Assigning a value of any other type
+through the array-access interface throws `Phalcon\Messages\Exceptions\MessageNotObject` with the message
+`The message must be an instance of MessageInterface`.
+
+```php
+<?php
+
+use Phalcon\Messages\Exceptions\MessageNotObject;
+use Phalcon\Messages\Messages;
+
+$messages = new Messages();
+
+try {
+    $messages[0] = 'not a message';
+} catch (MessageNotObject $ex) {
+    echo $ex->getMessage(); // "The message must be an instance of MessageInterface"
+}
+```
+
+The `appendMessages()` method accepts an array or any `Traversable`. Passing any other value throws
+`Phalcon\Messages\Exceptions\MessagesNotIterable`. The collection implements the
+`Phalcon\Contracts\Messages\Messages` contract. Type-hint against this contract when a method needs to accept the
+message collection without depending on the concrete class.
+
 ## Whitelist
 
 When validating data that will be applied to an entity (e.g. a model), you can restrict which fields are assigned to the

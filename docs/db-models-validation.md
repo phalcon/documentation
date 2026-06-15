@@ -171,6 +171,34 @@ class Invoices extends Model
 }
 ```
 
+### Iteration and Type Enforcement
+The collection returned by `getMessages()` is a [Phalcon\Messages\Messages][messages-messages] instance. It is iterated
+by integer position. A message stored under a string key through the array-access interface stays reachable by that
+offset but is not visited during a `foreach` loop.
+
+```php
+<?php
+
+use Phalcon\Messages\Message;
+use Phalcon\Messages\Messages;
+
+$messages = new Messages();
+
+$messages->appendMessage(new Message('Visited during iteration'));
+$messages['summary'] = new Message('Reachable by offset only');
+
+foreach ($messages as $message) {
+    echo $message->getMessage(), "\n"; // "Visited during iteration"
+}
+```
+
+Every entry must implement `Phalcon\Messages\MessageInterface`. Assigning any other type through the array-access
+interface throws `Phalcon\Messages\Exceptions\MessageNotObject` with the message
+`The message must be an instance of MessageInterface`. The `appendMessages()` method throws
+`Phalcon\Messages\Exceptions\MessagesNotIterable` when its argument is neither an array nor a `Traversable`. The
+collection implements the `Phalcon\Contracts\Messages\Messages` contract, which application code can type-hint against
+instead of the concrete class.
+
 ## Failed Events
 
 Additional events are available when the data validation process finds any inconsistencies:
