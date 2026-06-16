@@ -278,6 +278,10 @@ $logger
 
 Log only to remote and manager
 
+!!! info "NOTE"
+
+    `excludeAdapters()` applies to the next logging call only. The exclusion list is cleared once that call returns - whether or not the message passed the log-level filter - so an exclusion never carries over to a later, unrelated logging call.
+
 !!! warning "WARNING"
 
     Internally, the component loops through the registered adapters and calls the relevant logging method to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
@@ -360,6 +364,39 @@ application such as development mode vs. production.
 !!! danger "DANGER"
 
     It is **never** a good idea to suppress logging levels in your application since even warning errors do require CPU cycles to be processed, and neglecting these errors could potentially lead to unintended circumstances 
+
+### Unknown Levels
+
+`CUSTOM` (`8`) doubles as the sink for any level the logger does not recognize. When `log()` receives a level it cannot
+map - a misspelled level name or an integer outside the defined constants - the message is recorded at the `CUSTOM`
+level instead of raising an exception. The level name is emitted as `custom`.
+
+```php
+<?php
+
+use Phalcon\Logger\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter = new Stream('/storage/logs/main.log');
+$logger  = new Logger(
+    'messages',
+    [
+        'main' => $adapter,
+    ]
+);
+
+// "warnning" is a typo and is not a known level; it is logged as CUSTOM
+$logger->log('warnning', 'Disk space is low');
+```
+
+The log generated is as follows:
+
+```bash
+[Tue, 25 Dec 18 12:13:14 -0400][custom] Disk space is low
+```
+
+`setLogLevel()` follows the same rule: an unrecognized integer is stored as `CUSTOM` rather than throwing. Because
+`CUSTOM` (`8`) sits between `DEBUG` (`7`) and `TRACE` (`9`), the resulting threshold emits every level except `TRACE`.
 
 ## Trace Level
 
@@ -464,6 +501,49 @@ logged until we call the `commit` method in the `manager` adapter.
 !!! info "NOTE"
 
     If you set one or more adapters to be in transaction mode (i.e. call `begin`) and forget to call `commit`, The adapter will call `commit` for you right before it is destroyed.
+
+### Logger-Level Transactions
+
+[Phalcon\Logger\Logger][logger-logger] also exposes `begin()`, `commit()`, and `rollback()` directly. Each method fans
+the call out to every registered adapter that has not been excluded, so a single transaction can span the whole adapter
+stack without reaching into each adapter individually.
+
+| Name                 | Description                                                |
+|----------------------|------------------------------------------------------------|
+| `begin(): static`    | starts a transaction on every non-excluded adapter         |
+| `commit(): static`   | writes the queued messages on every non-excluded adapter   |
+| `rollback(): static` | discards the queued messages on every non-excluded adapter |
+
+```php
+<?php
+
+use Phalcon\Logger\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter1 = new Stream('/logs/first-log.log');
+$adapter2 = new Stream('/remote/second-log.log');
+
+$logger = new Logger(
+    'messages',
+    [
+        'local'  => $adapter1,
+        'remote' => $adapter2,
+    ]
+);
+
+$logger->begin();
+
+$logger->error('Something happened');
+$logger->info('Processing complete');
+
+$logger->commit();
+```
+
+Both messages are queued on the `local` and `remote` adapters while the transaction is open, then written to both log
+files when `commit()` is called. Call `rollback()` in place of `commit()` to discard the queued messages instead of
+writing them. Each method returns the logger instance, so the calls can be chained.
+
+Calling `begin()` while a transaction is already open throws `Phalcon\Logger\Exceptions\TransactionAlreadyActive`.
 
 ### Capping the Transaction Queue
 
