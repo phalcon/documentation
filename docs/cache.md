@@ -979,15 +979,28 @@ As a result `getEventsManager()` and `setEventsManager()` are available for you 
 | `beforeDecrement`      | Fires before the value has been decremented   |         No         |
 | `afterDecrement`       | Fires after the value has been decremented    |         No         |
 
+## Contracts
+
+The canonical interface for this component lives in the `Phalcon\Contracts\Cache` namespace, with the `Interface`
+suffix dropped. `Phalcon\Cache\CacheInterface` remains available: it now extends its contract and is deprecated.
+Existing implementations and type hints keep working unchanged; new code should target the contract.
+
+| Deprecated interface           | Canonical contract              |
+|---------------------------------|---------------------------------|
+| `Phalcon\Cache\CacheInterface`  | `Phalcon\Contracts\Cache\Cache` |
+
+`Phalcon\Contracts\Cache\Cache` declares the PSR-16-shaped cache surface (`get`, `set`, `has`, `delete`, `clear`, and
+the `*Multiple` variants). It does not extend `Psr\SimpleCache\CacheInterface`.
+
 ## Exceptions
 
-Any exceptions thrown in the Cache component will be of
-type [Phalcon\Cache\Exception\Exception][cache-exception-exception] which
-implements [Psr\SimpleCache\CacheException][psr-cache-exception]. Additionally
-the [Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception]
-which implements also the [Psr\SimpleCache\CacheException][psr-invalidargumentexception]. It is thrown when the data
-supplied to the component or any subcomponents is not valid.
-You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exception thrown in the Cache component is of
+type [Phalcon\Cache\Exception\Exception][cache-exception-exception]. Invalid arguments — a cache
+key that is not a string or contains reserved characters, or a non-iterable set of keys passed to
+`getMultiple()` / `setMultiple()` / `deleteMultiple()` — raise
+[Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception]
+instead. Both extend `\Exception`. You can use these exceptions to selectively catch failures from
+this component.
 
 ```php
 <?php
@@ -1008,18 +1021,20 @@ class IndexController extends Controller
 }
 ```
 
-### Granular Exceptions
+### PSR-16 Compatibility
 
-As of 5.14 the component raises granular subclasses under `Phalcon\Cache\Exception\` so callers can catch a specific
-failure mode. The PSR-16 contract requires that argument validation errors implement
-`Psr\SimpleCache\InvalidArgumentException`, so both classes below extend
-`Phalcon\Cache\Exception\InvalidArgumentException` rather than the base `Exception`. Existing
-`catch (Phalcon\Cache\Exception\InvalidArgumentException $e)` blocks continue to work unchanged.
+The class raised for an invalid argument is resolved through
+`Phalcon\Cache\AbstractCache::getExceptionClass()`, which returns
+`Phalcon\Cache\Exception\InvalidArgumentException` by default.
 
-| Class                                          | Parent                                             | Thrown when                                                                                                    |
-|------------------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| `Phalcon\Cache\Exception\CacheKeysNotIterable` | `Phalcon\Cache\Exception\InvalidArgumentException` | An iterable of keys passed to `getMultiple()` / `setMultiple()` / `deleteMultiple()` is not actually iterable. |
-| `Phalcon\Cache\Exception\InvalidCacheKey`      | `Phalcon\Cache\Exception\InvalidArgumentException` | A cache key is not a string or contains characters reserved by PSR-16.                                         |
+The Cache component does not implement PSR-16 (`Psr\SimpleCache`), and neither do its exceptions.
+For PSR-16 interoperability — including a `Psr\SimpleCache\InvalidArgumentException` that callers
+can catch — install the [proxy package][proxy-psr16]. The proxy overrides `getExceptionClass()` to
+return a PSR-16-marked exception, so the marker is restored without any catch-and-rethrow overhead.
+
+```sh
+composer require phalcon/proxy-psr16
+```
 
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 
@@ -1034,10 +1049,6 @@ failure mode. The PSR-16 contract requires that argument validation errors imple
 [memcached]: https://www.php.net/manual/en/book.memcached.php
 
 [redis]: https://github.com/phpredis/phpredis
-
-[psr-cache-exception]: https://www.php-fig.org/psr/psr-16/#22-cacheexception
-
-[psr-invalidargumentexception]: https://www.php-fig.org/psr/psr-16/#23-invalidargumentexception
 
 [cache-cache]: api/phalcon_cache.md#cachecache
 

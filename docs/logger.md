@@ -956,6 +956,19 @@ $logger = $container->getShared('logger');
 
 ```
 
+## Contracts
+
+The canonical interfaces for this component live in the `Phalcon\Contracts\Logger` namespace, with the `Interface`
+suffix dropped. `Phalcon\Logger\LoggerInterface`, `Phalcon\Logger\Adapter\AdapterInterface`, and
+`Phalcon\Logger\Formatter\FormatterInterface` remain available: each now extends its contract and is deprecated.
+Existing implementations and type hints keep working unchanged; new code should target the contracts.
+
+| Deprecated interface                          | Canonical contract                             |
+|-----------------------------------------------|------------------------------------------------|
+| `Phalcon\Logger\LoggerInterface`              | `Phalcon\Contracts\Logger\Logger`              |
+| `Phalcon\Logger\Adapter\AdapterInterface`     | `Phalcon\Contracts\Logger\Adapter\Adapter`     |
+| `Phalcon\Logger\Formatter\FormatterInterface` | `Phalcon\Contracts\Logger\Formatter\Formatter` |
+
 ## Exceptions
 
 Any exceptions thrown in the Logger component will be of type [Phalcon\Logger\Exception][logger-exception]. You can use
