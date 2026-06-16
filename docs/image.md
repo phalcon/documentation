@@ -71,6 +71,39 @@ section.
 you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described
 below in the operations section.
 
+## Blank Images
+
+Each adapter can create a blank, in-memory canvas instead of loading a file. Call the static `create()` method with the
+width and height in pixels. It returns a ready-to-use adapter that you can draw on, composite onto, and save.
+
+- `Phalcon\Image\Adapter\Gd::create()` creates a true-color canvas
+- `Phalcon\Image\Adapter\Imagick::create()` creates a transparent canvas
+
+```php
+<?php
+
+use Phalcon\Image\Adapter\Gd;
+
+$image = Gd::create(640, 480);
+
+$image->background('#ffffff');
+
+$image->save('canvas.png');
+```
+
+The constructor also creates a blank canvas when the supplied file does not exist and both a width and a height are
+given. That dual behavior is kept for backward compatibility but is slated for removal in a future major version; use
+`create()` for new code.
+
+```php
+<?php
+
+use Phalcon\Image\Adapter\Gd;
+
+// Creates a blank canvas because 'canvas.png' does not exist
+$image = new Gd('canvas.png', 640, 480);
+```
+
 ## Operations
 
 ### `background()`
@@ -81,6 +114,9 @@ Sets the background color for the image. The available parameters are:
 |-----------------|----------------------------------------|
 | `string $color` | the color in hex format                |
 | `int $opacity`  | the opacity (optional - default `100`) |
+
+The color must be a valid hex string: `#rgb`, `rgb`, `#rrggbb`, or `rrggbb`. An invalid value throws
+`Phalcon\Image\Exceptions\InvalidColor`.
 
 ```php
 <?php
@@ -189,6 +225,9 @@ $image->save('liquidrescale-image.jpg');
 ### `mask()`
 
 Creates a composite image from two images. Accepts the first image as a parameter.
+
+The mask is read through its `render()` output, so a mask produced by a different adapter (for example an Imagick mask
+applied to a GD image) composites correctly. Each call performs one encode/decode round trip.
 
 ```php
 <?php
@@ -495,6 +534,9 @@ You can add text to your image by calling `text()`. The available parameters are
 | `int $size`        | the size of the font for the text (optional - default `12`) |
 | `string $fontfile` | the font file to be used for the text (optional)            |
 
+The color must be a valid hex string: `#rgb`, `rgb`, `#rrggbb`, or `rrggbb`. An invalid value throws
+`Phalcon\Image\Exceptions\InvalidColor`.
+
 ```php
 <?php
 
@@ -525,6 +567,9 @@ Adds a watermark to an image. The available parameters are:
 | `int $offsetX`                | the X offset (optional)                             |
 | `int $offsetY`                | the Y offset (optional)                             | 
 | `int $opacity`                | the opacity of the image (optional - default `100`) |
+
+The watermark is read through its `render()` output, so a watermark produced by a different adapter composites
+correctly. Each call performs one encode/decode round trip.
 
 The following example puts the watermark in the top left corner of the image:
 
@@ -790,6 +835,7 @@ failure mode. Existing `catch (Phalcon\Image\Exception $e)` blocks continue to w
 | `Phalcon\Image\Exceptions\CompositeFailed`      | `Phalcon\Image\Exception` | A composite/overlay operation fails inside GD or Imagick.                  |
 | `Phalcon\Image\Exceptions\ExtensionNotLoaded`   | `Phalcon\Image\Exception` | The required PHP extension (`gd` or `imagick`) is not loaded.              |
 | `Phalcon\Image\Exceptions\ImageLoadFailed`      | `Phalcon\Image\Exception` | The image file cannot be opened or decoded.                                |
+| `Phalcon\Image\Exceptions\InvalidColor`         | `Phalcon\Image\Exception` | A hex color passed to `background()` or `text()` is not valid.             |
 | `Phalcon\Image\Exceptions\MissingDimensions`    | `Phalcon\Image\Exception` | An operation needs both width and height but neither has been computed.    |
 | `Phalcon\Image\Exceptions\MissingHeight`        | `Phalcon\Image\Exception` | An operation needs a height value and none has been supplied.              |
 | `Phalcon\Image\Exceptions\MissingWidth`         | `Phalcon\Image\Exception` | An operation needs a width value and none has been supplied.               |
