@@ -93,6 +93,8 @@ The last set crumb will not have a link and will only have its text displayed. E
 tags. The whole collection is wrapped in `<dl></dl>` tags. You can use them in conjunction with CSS to format the crumbs
 on screen according to the needs of your application.
 
+When no crumbs have been added, `render()` returns an empty string.
+
 ```php
 echo $breadcrumbs->render();
 ```

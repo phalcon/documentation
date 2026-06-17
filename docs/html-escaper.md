@@ -56,7 +56,7 @@ echo $escaper->js($js);
 ## HTML
 
 You can escape text before printing it to your views using `html()`. Without escaping you could potentially echo unsafe
-data in your HTML output.
+data in your HTML output. Passing `null` returns an empty string.
 
 ```php
 <?php
@@ -91,13 +91,15 @@ method has been renamed. The old method `escapeHtmlAttr()` will be removed in th
 warning.
 
 The method also accepts an array as a parameter. The keys are the attribute names and the values are attribute values.
-If a value is boolean (`true`/`false`) then the attribute will have no value:
+A value of `true` renders the attribute as a bare key, while a value of `null` or `false` skips the attribute entirely:
 
 ```
-['disabled' => true] -> 'disabled`
+['disabled' => true]  -> 'disabled'
+['checked'  => false] -> ''
 ```
 
-The resulting string will have attribute pairs separated by a space.
+The resulting string will have attribute pairs separated by a space. Passing `null` instead of a string or array
+returns an empty string.
 
 ```php
 <?php

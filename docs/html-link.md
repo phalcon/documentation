@@ -169,6 +169,24 @@ echo $serializer->serialize([$link]);
 ;
 ```
 
+As of 5.15.0, `serialize()` emits attribute values as RFC 8288 quoted strings. An embedded double quote or backslash in a
+value is prefixed with a backslash, so a value cannot terminate the field early or produce a malformed header.
+
+```php
+<?php
+
+use Phalcon\Html\Link\EvolvableLink;
+use Phalcon\Html\Link\Serializer\Header;
+
+$serializer = new Header();
+
+$link = (new EvolvableLink('preload', '/app.js'))
+    ->withAttribute('title', 'say "hi"');
+
+echo $serializer->serialize([$link]);
+// </app.js>; rel="preload"; title="say \"hi\""
+```
+
 ### Custom
 
 You can create your serializers for relevant links by extending
