@@ -67,22 +67,27 @@ The above code will print the field names and also the fields to field types arr
 [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] exposes a number of constants that can be used to retrieve attributes
 from the internal collection.
 
-| Name                              | Description                                                                |
-|-----------------------------------|----------------------------------------------------------------------------|
-| `MODELS_ATTRIBUTES`               | Every column in the mapped table                                           |
-| `MODELS_AUTOMATIC_DEFAULT_INSERT` | Fields that must be ignored from `INSERT` SQL statements                   |
-| `MODELS_AUTOMATIC_DEFAULT_UPDATE` | Fields that must be ignored from `UPDATE` SQL statements                   |
-| `MODELS_COLUMN_MAP`               | Column map (aliases)                                                       |
-| `MODELS_DATA_TYPES`               | Every column and its data type                                             |
-| `MODELS_DATA_TYPES_BIND`          | How every column must be bound/cast                                        |
-| `MODELS_DATA_TYPES_NUMERIC`       | The columns that have numeric data types                                   |
-| `MODELS_DEFAULT_VALUES`           | Default values for columns                                                 |
-| `MODELS_EMPTY_STRING_VALUES`      | Columns that allow empty strings                                           |
-| `MODELS_IDENTITY_COLUMN`          | The identity column. `false` if the model does not have an identity column |
-| `MODELS_NON_PRIMARY_KEY`          | Every column that is not part of the primary key                           |
-| `MODELS_NOT_NULL`                 | Every column that does not allow `null` values                             |
-| `MODELS_PRIMARY_KEY`              | Every column part of the primary key                                       |
-| `MODELS_REVERSE_COLUMN_MAP`       | Reverse column map (aliases)                                               |
+| Name                              | Index | Description                                                                |
+|-----------------------------------|:-----:|----------------------------------------------------------------------------|
+| `MODELS_ATTRIBUTES`               |   0   | Every column in the mapped table                                           |
+| `MODELS_PRIMARY_KEY`              |   1   | Every column part of the primary key                                       |
+| `MODELS_NON_PRIMARY_KEY`          |   2   | Every column that is not part of the primary key                           |
+| `MODELS_NOT_NULL`                 |   3   | Every column that does not allow `null` values                             |
+| `MODELS_DATA_TYPES`               |   4   | Every column and its data type                                             |
+| `MODELS_DATA_TYPES_NUMERIC`       |   5   | The columns that have numeric data types                                   |
+| `MODELS_IDENTITY_COLUMN`          |   8   | The identity column. `false` if the model does not have an identity column |
+| `MODELS_DATA_TYPES_BIND`          |   9   | How every column must be bound/cast                                        |
+| `MODELS_AUTOMATIC_DEFAULT_INSERT` |  10   | Fields that must be ignored from `INSERT` SQL statements                   |
+| `MODELS_AUTOMATIC_DEFAULT_UPDATE` |  11   | Fields that must be ignored from `UPDATE` SQL statements                   |
+| `MODELS_DEFAULT_VALUES`           |  12   | Default values for columns                                                 |
+| `MODELS_EMPTY_STRING_VALUES`      |  13   | Columns that allow empty strings                                           |
+| `MODELS_COLUMN_MAP`               |   0   | Column map (aliases)                                                       |
+| `MODELS_REVERSE_COLUMN_MAP`       |   1   | Reverse column map (aliases)                                               |
+
+The first group of constants (`MODELS_ATTRIBUTES` through `MODELS_EMPTY_STRING_VALUES`) indexes the attribute metadata
+array. `MODELS_COLUMN_MAP` and `MODELS_REVERSE_COLUMN_MAP` index a separate column-map array. The two families count
+from `0` independently, so the same index value means different things depending on which array you hold. The metadata
+cache adapters persist these arrays, so the index layout is a stored format.
 
 ## Methods
 
