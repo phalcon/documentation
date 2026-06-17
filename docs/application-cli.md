@@ -291,6 +291,9 @@ or the regenerate action:
 ./cli.php users regenerate
 ```
 
+Action methods receive the routed parameters as positional arguments, followed by any CLI options the dispatcher
+collected (appended as trailing arguments). Declare optional trailing parameters in your action to read those options.
+
 ## Parameters
 
 You can also pass parameters to actions. An example of how to process the parameters can be found above, in the sample
@@ -646,6 +649,47 @@ $router = new Router(false);
 
 For more details about routes and route classes, you can refer to the [Routing][routing] page.
 
+### Router Behavior
+
+Several behaviors are specific to [Phalcon\Cli\Router][cli-router] and its routes:
+
+- `beforeMatch()` validates its callback at registration. Passing a non-callable throws
+  `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` at the registration line, not later inside `handle()`.
+- `handle()` returns the router instance. A string argument (or none) is matched against the registered routes; an
+  array argument bypasses matching and is used as the already-resolved `module`/`task`/`action`/`params`, so
+  `wasMatched()` stays `false` and `getMatchedRoute()` returns `null`.
+- `getParameters()` returns the processed parameters. The older `getParams()` is deprecated in its favor.
+- [Phalcon\Cli\Router\Route][cli-router-route] `::delimiter()` sets a process-global delimiter that each route captures
+  at construction. Set it once during bootstrap, before any routes are created. `Route::reset()` rewinds the internal
+  route-id sequence and is intended for test isolation only.
+- The router always constructs the concrete [Phalcon\Cli\Router\Route][cli-router-route]; there is no injection point
+  for an externally built route, so [Phalcon\Cli\Router\RouteInterface][cli-router-routeinterface] is a marker for type
+  hints. The fluent route API (`beforeMatch()`, `convert()`) lives on the concrete `Route`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Phalcon\Cli\Router;
+use Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable;
+
+$router = new Router();
+
+try {
+    // A non-callable beforeMatch is rejected at registration
+    $router->add('users')
+           ->beforeMatch('not-a-callback');
+} catch (BeforeMatchNotCallable $ex) {
+    echo $ex->getMessage();
+}
+
+// handle() returns the router instance
+$result = $router->handle('users');
+
+echo $result->getTaskName();
+```
+
 ## Events
 
 CLI applications in Phalcon are [event-aware][events], allowing you to utilize the `setEventsManager` and
@@ -719,6 +763,10 @@ $exception = new InvalidModuleDefinition(
 echo $exception->getMessage();
 // Invalid module definition for module 'backend': The module definition object must be a Closure
 ```
+
+As of 5.15 the three router exceptions carry context in their messages. `BeforeMatchNotCallable` and `InvalidRoutePaths`
+include the route pattern, and `RouterArgumentsInvalidType` includes the received type. The constructor parameter is
+optional in each, so the base messages are unchanged when no context is supplied.
 
 [cli-console]: api/phalcon_cli.md#cliconsole
 
