@@ -163,6 +163,10 @@ $encrypted = $crypt->decrypt($text, $key);
 The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call
 to disable it.
 
+!!! info "NOTE"
+
+    `decrypt()` validates the input length before processing. An input that is shorter than the selected cipher requires throws `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`.
+
 ## Base64 Encrypt
 
 The `encryptBase64()` can be used to encrypt a string in a URL-friendly way. It uses `encrypt()` internally and accepts
@@ -222,6 +226,16 @@ component to correctly encrypt or decrypt data. The methods available for this o
 * `setAuthTag()`
 * `setAuthData()`
 * `setAuthTagLength()` - (`16`)
+
+`setAuthTagLength()` accepts a value between `4` and `16` bytes. A value outside that range throws
+`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`.
+
+The auth data, auth tag, and auth tag length are stored on the instance and shared by every `encrypt()` and `decrypt()`
+call. A `Crypt` instance shared through the [Phalcon\Di][di] container is therefore not safe for interleaved AEAD
+operations; use a dedicated instance per operation in that case.
+
+For reference, a signed payload produced by `encrypt()` has the layout `iv ‖ hmac ‖ ciphertext ‖ tag`, where `hmac` is
+present only when signing is enabled and `tag` is present only for `gcm` / `ccm` ciphers.
 
 ### Padding
 
@@ -475,8 +489,13 @@ unpadding data during encryption or decryption.
 | `isoiek`   | `Phalcon\Encryption\Crypt\Padding\IsoIek`   |
 | `noop`     | `Phalcon\Encryption\Crypt\Padding\Noop`     |
 | `pjcs7`    | `Phalcon\Encryption\Crypt\Padding\Pkcs7`    |
+| `pkcs7`    | `Phalcon\Encryption\Crypt\Padding\Pkcs7`    |
 | `space`    | `Phalcon\Encryption\Crypt\Padding\Space`    |
 | `zero`     | `Phalcon\Encryption\Crypt\Padding\Zero`     |
+
+`pkcs7` is the correctly-spelled alias of the original `pjcs7` service; both resolve to
+`Phalcon\Encryption\Crypt\Padding\Pkcs7`. The `padNumberToService()` method maps a `Crypt::PADDING_*` constant to its
+service name and throws `Phalcon\Encryption\Crypt\Exception\Exception` when given a constant it does not recognize.
 
 [Phalcon\Encryption\Crypt\Padding\PadInterface][pad-interface] is also available, should you need to create your own
 padding strategy. Note that you will need to register the new padding class in
@@ -530,6 +549,8 @@ specific failure mode. Existing `catch (Phalcon\Encryption\Crypt\Exception $e)` 
 | `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`          | `Phalcon\Encryption\Crypt\Exception` | `decrypt()` is called without a key configured or supplied.                           |
 | `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`          | `Phalcon\Encryption\Crypt\Exception` | `encrypt()` is called without a key configured or supplied.                           |
 | `Phalcon\Encryption\Crypt\Exception\EncryptionFailed`            | `Phalcon\Encryption\Crypt\Exception` | OpenSSL fails to encrypt the supplied plaintext.                                      |
+| `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`        | `Phalcon\Encryption\Crypt\Exception` | `setAuthTagLength()` is given a length outside the 4 to 16 byte range.                |
+| `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`        | `Phalcon\Encryption\Crypt\Exception` | `decrypt()` is given input shorter than the selected cipher requires.                 |
 | `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`          | `Phalcon\Encryption\Crypt\Exception` | A padded plaintext has a size the configured padding scheme cannot strip.             |
 | `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`   | `Phalcon\Encryption\Crypt\Exception` | OpenSSL cannot determine the IV length for the configured cipher.                     |
 | `Phalcon\Encryption\Crypt\Exception\MissingAuthData`             | `Phalcon\Encryption\Crypt\Exception` | An authenticated cipher (e.g. GCM) is used without supplying auth data.               |

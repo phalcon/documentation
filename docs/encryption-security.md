@@ -219,7 +219,8 @@ $hashed   = $security->hash(
 echo $security->checkHash($password, $hashed); // true / false
 ```
 
-If no options are set, the defaults will be used.
+The `memory_cost`, `time_cost`, and `threads` options supplied to `hash()` are honored for the Argon2 algorithms,
+alongside the `cost`. Any option that is not supplied falls back to its `PASSWORD_ARGON2_DEFAULT_*` value.
 
 ## CSRF Protection
 
@@ -335,11 +336,15 @@ Getter and setter for the default hash that the component will use. By default, 
 
 * `CRYPT_BLOWFISH_A`
 * `CRYPT_BLOWFISH_X`
-* `CRYPT_BLOWFISH_Y`
-* `CRYPT_MD5`
+* `CRYPT_BLOWFISH_Y` (deprecated)
+* `CRYPT_MD5` (deprecated)
 * `CRYPT_SHA256`
 * `CRYPT_SHA512`
 * `CRYPT_DEFAULT`
+
+!!! warning "DEPRECATED"
+
+    `CRYPT_STD_DES`, `CRYPT_EXT_DES`, `CRYPT_BLOWFISH`, and `CRYPT_BLOWFISH_Y` are deprecated and will be removed in a future major version. They were never implemented and resolve to bcrypt. `CRYPT_MD5` is also deprecated as a weak legacy algorithm. Any `defaultHash` value that is not explicitly handled resolves to bcrypt.
 
 **hash()**
 
