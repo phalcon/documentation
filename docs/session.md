@@ -235,6 +235,12 @@ You can also set the session id. The session id is set in an HTTP cookie. You ca
 
     You need to call this method before calling `start()` for the id to take effect
 
+The id must use the PHP session ID alphabet (`a-z`, `A-Z`, `0-9`, `,`, `-`). As of 5.15.0 an id
+containing any other character is rejected with `Phalcon\Session\Exceptions\InvalidSessionId`,
+matching the validation `start()` already performs on the session cookie. Earlier versions passed
+the value straight to `session_id()`, where an invalid id produced a PHP warning and an unusable
+session.
+
 ```php
 <?php
 
@@ -264,6 +270,11 @@ name.
 !!! info "NOTE"
 
     You need to call this method before calling `start()` for the name to take effect
+
+The name must contain only letters, numbers, underscores, or hyphens, and cannot consist only of
+digits. As of 5.15.0 a name that breaks either rule is rejected with
+`Phalcon\Session\Exceptions\InvalidSessionName`. PHP rejects an all-digit `session.name` with a
+warning and leaves the name unchanged; the component now fails with a named exception instead.
 
 ```php
 <?php
@@ -672,7 +683,8 @@ $session
 
 The lock is a Redis key derived from the session id - `sess-reds-<id>-lock` with the default prefix - created with
 `SET NX EX`. The key carries a lifetime of `lockExpiry` seconds, so a process that dies without releasing the lock
-cannot block the session past that point. Set `lockExpiry` higher than the longest expected request time: when the
+cannot block the session past that point. The lock is not refreshed while the request runs, so a request that
+outlives `lockExpiry` loses its lock silently. Set `lockExpiry` higher than the longest expected request time: when the
 lock expires while its request is still running, another request can acquire it and the protection lapses for that
 overlap.
 
@@ -877,6 +889,7 @@ failure mode. Existing `catch (Phalcon\Session\Exception $e)` blocks continue to
 | Class                                                    | Parent                      | Thrown when                                                                |
 |----------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------|
 | `Phalcon\Session\Exceptions\InvalidSessionAdapter`       | `Phalcon\Session\Exception` | The configured adapter does not implement `SessionHandlerInterface`.       |
+| `Phalcon\Session\Exceptions\InvalidSessionId`            | `Phalcon\Session\Exception` | The session id passed to `setId()` contains invalid characters.            |
 | `Phalcon\Session\Exceptions\InvalidSessionName`          | `Phalcon\Session\Exception` | The session name passed to `setName()` is not a valid identifier.          |
 | `Phalcon\Session\Exceptions\SessionAlreadyStarted`       | `Phalcon\Session\Exception` | `start()` is called while a session is already active.                     |
 | `Phalcon\Session\Exceptions\SessionModificationDenied`   | `Phalcon\Session\Exception` | A write is attempted on a session whose state does not allow modification. |
