@@ -2504,6 +2504,10 @@ The `Phalcon\Db\Geometry` namespace provides value objects for the eight geometr
 Each object exposes its coordinates and SRID and renders Well-Known Text through `toWkt()` (also available through
 `__toString()`).
 
+The geometry value objects implement the canonical `Phalcon\Contracts\Db\Geometry\Geometry` contract (`getSrid()`,
+`getType()`, `toWkt()`). New code should type-hint that contract; `Phalcon\Db\Geometry\GeometryInterface` remains as a
+deprecated alias that extends it and will be removed in a future major version.
+
 `Phalcon\Db\Geometry\WkbParser` decodes a raw column value into the matching object. It accepts MySQL SRID-prefixed WKB
 and PostGIS EWKB. Coordinates are read in two dimensions; any Z or M ordinates are discarded.
 
@@ -2892,6 +2896,54 @@ $connection->dropMaterializedView('top_orders', 'public');
 
 The MySQL and SQLite dialects throw `Phalcon\Db\Exception` from each of the three methods - neither engine has a
 materialized-view concept.
+
+### Capability Detection
+
+Several of the features above are supported by only some engines; the unsupported dialects throw a
+`Phalcon\Db\Exception` rather than emit invalid SQL. Each optional capability has a predicate on the dialect, so portable
+code can check support before calling instead of catching the exception:
+
+| Predicate                     | MySQL | PostgreSQL | SQLite |
+|-------------------------------|-------|------------|--------|
+| `supportsReturning()`         | no    | yes        | yes    |
+| `supportsOnConflictUpdate()`  | no    | yes        | yes    |
+| `supportsMaterializedViews()` | no    | yes        | no     |
+| `supportsAlterTable()`        | yes   | yes        | no     |
+
+`supportsAlterTable()` returns `false` on SQLite because it cannot modify existing columns or add or drop foreign keys,
+primary keys, or check constraints through `ALTER TABLE`; basic `ADD COLUMN` and `DROP COLUMN` remain available. The
+related `supportsSavepoints()` and `supportsReleaseSavepoints()` predicates report transaction-savepoint support.
+
+Read a predicate through the dialect, reachable from the adapter with `getDialect()`:
+
+```php
+<?php
+
+use Phalcon\Db\Adapter\Pdo\Postgresql;
+
+$connection = new Postgresql(
+    [
+        'host'     => '127.0.0.1',
+        'username' => 'postgres',
+        'password' => 'secret',
+        'dbname'   => 'store',
+    ]
+);
+
+$dialect = $connection->getDialect();
+
+if ($dialect->supportsReturning()) {
+    $sql = $connection->returning(
+        "INSERT INTO articles (slug, title) VALUES ('hello', 'Hello')",
+        ['id']
+    );
+
+    $row = $connection->fetchOne($sql);
+}
+```
+
+The predicates are declared on `Phalcon\Db\Dialect` with defaults matching the base behavior and overridden per dialect.
+The matching exceptions (`Phalcon\Db\Dialect\Mysql::returning()` and the others) remain as the enforcement backstop.
 
 ### SQLite `DROP COLUMN`
 
