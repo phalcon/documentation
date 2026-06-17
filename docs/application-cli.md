@@ -361,6 +361,35 @@ Array
 )
 ```
 
+## Previous Dispatch Accessors
+
+As of 5.15 the [Phalcon\Cli\Dispatcher][cli-dispatcher] exposes the previous-dispatch getters that were previously
+available only on `Phalcon\Mvc\Dispatcher`. After a `forward()`, they return the task, action, and namespace that were
+active before the forward took place.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace MyApp\Tasks;
+
+use Phalcon\Cli\Task;
+
+class UsersTask extends Task
+{
+    public function mainAction()
+    {
+        echo $this->dispatcher->getPreviousHandlerName();   // previous task name
+        echo $this->dispatcher->getPreviousActionName();    // previous action name
+        echo $this->dispatcher->getPreviousNamespaceName(); // previous namespace name
+    }
+}
+```
+
+The MVC-specific `getPreviousControllerName()` alias is not part of the CLI dispatcher; use
+`getPreviousHandlerName()` to read the previous task name.
+
 ## Chain
 
 You can also chain tasks. To run them one after another, we need to make a small change in our bootstrap: we need to

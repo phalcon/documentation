@@ -230,13 +230,29 @@ public function getParam(
 ): mixed
 ```
 
+Gets a parameter by its name or numeric index. Deprecated as of 5.15; use `getParameter()` instead.
+
+```php
+public function getParameter(
+    mixed $param,
+    string | array $filters = null,
+    mixed $defaultValue = null
+): mixed
+```
+
 Gets a parameter by its name or numeric index
+
+```php
+public function getParameters(): array
+```
+
+Gets action params
 
 ```php
 public function getParams(): array
 ```
 
-Gets action params
+Gets action params. Deprecated as of 5.15; use `getParameters()` instead.
 
 ```php
 public function getPreviousActionName(): string
@@ -248,7 +264,14 @@ Gets previous dispatched action name
 public function getPreviousControllerName(): string
 ```
 
-Gets previous dispatched controller name
+Gets previous dispatched controller name. This is an MVC-specific alias for `getPreviousHandlerName()`.
+
+```php
+public function getPreviousHandlerName(): string
+```
+
+Gets previous dispatched handler name. Available on the base dispatcher as of 5.15, so both
+[Phalcon\Mvc\Dispatcher][mvc-dispatcher] and `Phalcon\Cli\Dispatcher` expose it.
 
 ```php
 public function getPreviousNamespaceName(): string
@@ -264,6 +287,14 @@ Returns value returned by the latest dispatched action
 
 ```php
 public function hasParam(
+    mixed $param
+): bool
+```
+
+Check if a param exists. Deprecated as of 5.15; use `hasParameter()` instead.
+
+```php
+public function hasParameter(
     mixed $param
 ): bool
 ```
@@ -388,10 +419,27 @@ public function setParam(
 ): void
 ```
 
+Set a param by its name or numeric index. Deprecated as of 5.15; use `setParameter()` instead.
+
+```php
+public function setParameter(
+    mixed $param,
+    mixed $value
+): void
+```
+
 Set a param by its name or numeric index
 
 ```php
 public function setParams(
+    array $params
+): void
+```
+
+Sets action params to be dispatched. Deprecated as of 5.15; use `setParameters()` instead.
+
+```php
+public function setParameters(
     array $params
 ): void
 ```
@@ -653,6 +701,10 @@ class InvoicesController extends Controller
 
 In the example above, we get the `invoiceId` as the first parameter passed and automatically sanitize it as an
 `integer`. The second parameter is the `filter` one, which is sanitized as a `string`
+
+!!! info "NOTE"
+
+    As of 5.15 the `getParameter()`, `getParameters()`, `hasParameter()`, `setParameter()`, and `setParameters()` methods are the canonical parameter accessors. The shorter `getParam()`, `getParams()`, `hasParam()`, `setParam()`, and `setParams()` spellings are deprecated and will be removed in a future major release. Both spellings behave identically today, so existing code continues to work.
 
 ## Actions
 
@@ -1075,10 +1127,12 @@ following events are supported:
 | Event Name             | Triggered                                                                                                                    | Can stop |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | `afterBinding`         | After models are bound but before executing route                                                                            |   Yes    |
+| `afterCallAction`      | After executing the action method; the action result is set on the observer.                                                 |    No    |
 | `afterDispatch`        | After executing the controller/action method.                                                                                |   Yes    |
 | `afterDispatchLoop`    | After exiting the dispatch loop                                                                                              |    No    |
 | `afterExecuteRoute`    | After executing the controller/action method.                                                                                |    No    |
 | `afterInitialize`      | Allow to globally initialize the controller in the request                                                                   |    No    |
+| `beforeCallAction`     | Before executing the action method. Listeners may rewrite the handler, action, and params.                                   |    No    |
 | `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                         |   Yes    |
 | `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Yes    |
 | `beforeException`      | Before the dispatcher throws any exception                                                                                   |   Yes    |
@@ -1148,6 +1202,61 @@ class InvoicesController extends Controller
 
     Methods on event listeners accept a [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
 
+## Hook Channels
+
+A single lifecycle point can be intercepted through three independent channels. For any given point they run in this
+order:
+
+1. **Events-manager listener** - for example `dispatch:beforeExecuteRoute`. A listener returning `false` cancels the
+   dispatch; calling `forward()` re-enters the loop; throwing routes the exception through the `beforeException` channel.
+2. **Duck-typed handler method** - for example a `beforeExecuteRoute()` method on the controller or task itself. The
+   presence of the method is cached per class. The `false` and `forward()` cancellation semantics match the event.
+3. **`dispatch:beforeCallAction` observer** - fired immediately before the action method runs. The dispatcher passes a
+   [Phalcon\Support\Collection][support-collection] carrying the mutable keys `handler`, `action`, and `params`.
+   Listeners may rewrite those keys to change what is invoked. The substituted callable is re-validated before the
+   call; a substituted action that does not exist raises a `Phalcon\Dispatcher\Exception` with code
+   `EXCEPTION_ACTION_NOT_FOUND` instead of a fatal error. The matching `dispatch:afterCallAction` event receives the
+   same Collection plus a `result` key holding the action's return value.
+
+```php
+<?php
+
+use Phalcon\Di\Di;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Support\Collection;
+
+$container     = new Di();
+$eventsManager = new Manager();
+
+$eventsManager->attach(
+    'dispatch:beforeCallAction',
+    function (Event $event, Dispatcher $dispatcher, Collection $observer) {
+        // Read the resolved handler, action, and params
+        $action = $observer->get('action');
+
+        // Rewrite the parameters before the action runs
+        $observer->set('params', ['invoiceId' => 100]);
+    }
+);
+
+$eventsManager->attach(
+    'dispatch:afterCallAction',
+    function (Event $event, Dispatcher $dispatcher, Collection $observer) {
+        $result = $observer->get('result');
+    }
+);
+
+$dispatcher = new Dispatcher();
+$dispatcher->setDI($container);
+$dispatcher->setEventsManager($eventsManager);
+```
+
+!!! info "NOTE"
+
+    The `afterBinding` event and method are the one lifecycle point that does not route exceptions through the `beforeException` channel. By the time they run, the parameters are already bound and the action is about to execute, so an exception thrown from an `afterBinding` listener bubbles up unchanged. Returning `false` (cancel) and calling `forward()` are still honored.
+
 ## Events Manager
 
 You can use the `dispatcher::beforeForward` event to change modules and perform redirections more easily.
@@ -1207,10 +1316,44 @@ $dispatcher->forward(
 echo $dispatcher->getModuleName();
 ```
 
+## Interfaces and Contracts
+
+As of 5.15 the dispatcher exposes canonical contracts under the `Phalcon\Contracts` namespace. These are the long-term
+types to code against. The historical `*Interface` types still exist and now extend the matching contract, so existing
+type hints keep working, but they are deprecated and will be removed in a future major release.
+
+| Deprecated interface                     | Canonical contract                        |
+|------------------------------------------|-------------------------------------------|
+| `Phalcon\Dispatcher\DispatcherInterface` | `Phalcon\Contracts\Dispatcher\Dispatcher` |
+| `Phalcon\Mvc\DispatcherInterface`        | `Phalcon\Contracts\Mvc\Dispatcher`        |
+| `Phalcon\Cli\DispatcherInterface`        | `Phalcon\Contracts\Cli\Dispatcher`        |
+
+`Phalcon\Contracts\Mvc\Dispatcher` and `Phalcon\Contracts\Cli\Dispatcher` both extend
+`Phalcon\Contracts\Dispatcher\Dispatcher`, mirroring the previous interface hierarchy. An existing
+`Phalcon\Mvc\Dispatcher` instance is an instance of both its `*Interface` type and the new contract.
+
+```php
+<?php
+
+use Phalcon\Contracts\Mvc\Dispatcher as DispatcherContract;
+
+function configure(DispatcherContract $dispatcher): void
+{
+    $dispatcher->setControllerName('invoices');
+    $dispatcher->setActionName('index');
+}
+```
+
 ## Custom
 
 The [Phalcon\Mvc\DispatcherInterface][mvc-dispatcherinterface] interface must be implemented to create your own
 dispatcher.
+
+!!! info "NOTE"
+
+    As of 5.15, prefer implementing the canonical `Phalcon\Contracts\Mvc\Dispatcher` contract.
+    `Phalcon\Mvc\DispatcherInterface` still works (it extends the contract) but is deprecated. See
+    [Interfaces and Contracts](#interfaces-and-contracts).
 
 ```php
 <?php
@@ -1386,6 +1529,8 @@ mode. Existing `catch (Phalcon\Dispatcher\Exception $e)` blocks continue to work
 [mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvcmodelbinderbindableinterface
 
 [mvc-model-binderinterface]: api/phalcon_mvc.md#mvcmodelbinderinterface
+
+[support-collection]: api/phalcon_support.md#supportcollection
 
 [events]: events.md
 
