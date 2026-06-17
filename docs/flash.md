@@ -172,6 +172,44 @@ or when using Volt
 
     In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
 
+### Session Key
+
+The [Phalcon\Flash\Session][flash-session] adapter stores its messages in the session under a single key, `_flashMessages`
+by default (exposed as the `Phalcon\Flash\Session::SESSION_KEY` constant). Applications that run more than one `Session`
+flasher in the same request - a multi-module application, for instance - would otherwise share that one slot and
+overwrite each other's messages.
+
+As of 5.15 the adapter accepts an optional third constructor argument that sets the session key, so each instance can use
+its own slot. The argument defaults to `_flashMessages`, leaving existing code unaffected.
+
+```php
+<?php
+
+use Phalcon\Html\Escaper;
+use Phalcon\Flash\Session as FlashSession;
+use Phalcon\Session\Adapter\Stream;
+use Phalcon\Session\Manager;
+
+$session = new Manager();
+$session->setHandler(
+    new Stream(
+        [
+            'savePath' => '/tmp',
+        ]
+    )
+);
+
+$escaper = new Escaper();
+
+$adminFlash = new FlashSession($escaper, $session, '_flashAdmin');
+$shopFlash  = new FlashSession($escaper, $session, '_flashShop');
+
+$adminFlash->error('Admin error');
+$shopFlash->success('Order placed');
+```
+
+Each flasher reads and writes only its own key, so the two message sets stay independent across the redirect.
+
 ## Styling
 
 The component (irrespective of the adapter) offers automatic styling of messages on the screen. This means that messages
@@ -487,6 +525,10 @@ echo $flash
 
     When using the [Phalcon\Flash\Direct][flash-direct] component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
 
+!!! info "NOTE"
+
+    `output()` is an echo API and relies on implicit flush being enabled (the default). With implicit flush disabled it does not echo; capture the rendered output instead from the value returned by `message()` (or `error()`, `notice()`, `success()`, `warning()`). In this mode the [Phalcon\Flash\Session][flash-session] adapter no longer discards its accumulated messages.
+
 ## Escaping
 
 By default, the component will escape the contents of the message. There might be times however that you do not wish to
@@ -608,6 +650,16 @@ class InvoicesController extends Controller
     }
 }
 ```
+
+## Contracts
+
+The canonical interface for this component lives in the `Phalcon\Contracts\Flash` namespace, with the `Interface` suffix
+dropped. `Phalcon\Flash\FlashInterface` remains available: it now extends its contract and is deprecated. Existing
+implementations and type hints keep working unchanged; new code should target the contract.
+
+| Deprecated interface           | Canonical contract              |
+|--------------------------------|---------------------------------|
+| `Phalcon\Flash\FlashInterface` | `Phalcon\Contracts\Flash\Flash` |
 
 ## Exceptions
 
