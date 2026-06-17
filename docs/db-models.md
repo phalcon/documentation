@@ -1854,6 +1854,13 @@ abstraction for web applications, simplifying database operations.
 
 [Phalcon\Mvc\Model][mvc-model] also offers several methods for querying records.
 
+A model query can be expressed in four ways, each with an intended lane:
+
+- find-parameter arrays (`find()` / `findFirst()`) for simple lookups;
+- `Phalcon\Mvc\Model\Query\Builder` as the canonical programmatic API;
+- `Phalcon\Mvc\Model\Criteria` as request-bound convenience;
+- raw PHQL via `Phalcon\Mvc\Model\Query` for everything else.
+
 ### `find`
 
 The method returns
@@ -2370,6 +2377,10 @@ $invoices = Invoices::findByInvTotal(
     ]
 );
 ```
+
+!!! info "NOTE"
+
+    The same magic-method mechanism also provides `countBy<property-name>()`, which returns a count instead of records. An unrecognized magic method throws `Phalcon\Mvc\Model\Exceptions\MethodNotFound`. Magic property reads (`$model->property`) resolve a relation alias first, then a `get<Property>()` getter, and raise an "undefined property" notice if neither exists.
 
 ### `findFirstBy*`
 
@@ -4132,6 +4143,10 @@ Model::setup(
     ]
 );
 ```
+
+!!! info "NOTE"
+
+    `Model::setup()` writes these flags to process-global `Phalcon\Support\Settings`. They affect every model in the process at once, so call `setup()` once during bootstrap. It is not per-model or per-container configuration.
 
 The available options are:
 
