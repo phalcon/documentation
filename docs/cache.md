@@ -66,6 +66,10 @@ interface.
 
 Each Cache component contains a supplied Cache adapter which in turn is responsible for all operations.
 
+!!! info "NOTE"
+
+    Cache keys are validated on every operation. A key must be a non-empty string containing only the characters `A-Z`, `a-z`, `0-9`, `-`, `_`, and `.`. An empty key, or one containing any other character, throws `Phalcon\Cache\Exception\InvalidArgumentException` before the operation runs. The same validation applies to every key in the `*Multiple` operations.
+
 ### `get` - `getMultiple`
 
 To get data from the cache you need to call the `get()` method with a key and a default value. If the key exists, or it
@@ -90,7 +94,7 @@ $value = $cache->getMultiple(['my-key1', 'my-key2'], 'default');
 
 !!! info "NOTE"
 
-    If the Redis adapter is used, the adapter will use `mget` to retrieve multiple keys. This is a more efficient way to retrieve multiple keys from Redis.
+    With the Redis adapter, `getMultiple()` uses a single `mget` call to retrieve every key at once, which is more efficient than one round trip per key. Each key is validated first, `Traversable` inputs are accepted, and a corrupt stored entry returns the default value, so the Redis path behaves like the per-key path used by the other adapters.
 
 ### `has`
 
@@ -129,6 +133,10 @@ $value = $cache->setMultiple(
     9600
 );
 ```
+
+!!! info "NOTE"
+
+    Every key is validated before any value is written. If one of the keys is not a legal value, the operation throws `Phalcon\Cache\Exception\InvalidArgumentException` without storing any of the pairs.
 
 ### `delete` - `deleteMultiple` - `clear`
 
@@ -982,6 +990,20 @@ As a result `getEventsManager()` and `setEventsManager()` are available for you 
 | `afterIncrement`       | Fires after the value has been incremented    |         No         |
 | `beforeDecrement`      | Fires before the value has been decremented   |         No         |
 | `afterDecrement`       | Fires after the value has been decremented    |         No         |
+
+### Event Layers
+
+Cache operations can emit `cache:*` events from two layers. The cache facade
+([Phalcon\Cache\AbstractCache][cache-abstract-cache]) fires `cache:before*` and
+`cache:after*` around each operation, and the underlying `Storage` adapter also
+fires `cache:*` events for the same operation. If you wire an events manager
+into both the cache object and its adapter, a single operation emits each event
+twice. Wire the manager into one layer only. The cache facade is the supported
+source for cache-level events, and it is the only layer that emits the multi-key
+`*Multiple` events.
+
+The `before*` events fire only after key validation passes, so an operation that
+throws on an invalid key does not emit its `before*` event.
 
 ## Contracts
 
