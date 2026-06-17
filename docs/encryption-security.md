@@ -700,6 +700,18 @@ $id1 = $uuid->v4();
 $id2 = $uuid->v4();
 ```
 
+### Contracts
+
+The UUID interfaces extend canonical contracts in the `Phalcon\Contracts\Encryption\Security\Uuid` namespace. New code
+should type-hint the contracts. The `*Interface` types remain as deprecated aliases and will be removed in a future
+major version.
+
+| Deprecated interface                                      | Contract                                                   |
+|-----------------------------------------------------------|------------------------------------------------------------|
+| `Phalcon\Encryption\Security\Uuid\UuidInterface`          | `Phalcon\Contracts\Encryption\Security\Uuid\Uuid`          |
+| `Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface` | `Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid` |
+| `Phalcon\Encryption\Security\Uuid\NodeProviderInterface`  | `Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`  |
+
 ## Dependency Injection
 
 If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Encryption\Security][security] is

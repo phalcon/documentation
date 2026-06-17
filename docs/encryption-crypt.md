@@ -502,6 +502,28 @@ padding strategy. Note that you will need to register the new padding class in
 the [Phalcon\Encryption\Crypt\PadFactory][pad-factory] and inject it into the constructor of
 the [Phalcon\Encryption\Crypt][crypt] component.
 
+## Contracts
+
+The encryption interfaces extend canonical contracts in the `Phalcon\Contracts\Encryption\Crypt` namespace. New code
+should type-hint the contracts. The `*Interface` types remain as deprecated aliases and will be removed in a future
+major version.
+
+| Deprecated interface                            | Contract                                         |
+|-------------------------------------------------|--------------------------------------------------|
+| `Phalcon\Encryption\Crypt\CryptInterface`       | `Phalcon\Contracts\Encryption\Crypt\Crypt`       |
+| `Phalcon\Encryption\Crypt\Padding\PadInterface` | `Phalcon\Contracts\Encryption\Crypt\Padding\Pad` |
+
+```php
+<?php
+
+use Phalcon\Contracts\Encryption\Crypt\Crypt;
+
+function encryptValue(Crypt $crypt, string $value): string
+{
+    return $crypt->encrypt($value);
+}
+```
+
 ## Links
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)

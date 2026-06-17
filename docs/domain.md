@@ -62,11 +62,33 @@ $payload = $payloadFactory->newInstance();
 
 There are three interfaces that you can take advantage of if you wish to extend the object.
 
-| Interface           | Description                          |
-|---------------------|--------------------------------------|
-| `ReadableInterface` | contains only read methods           |
-| `WritableInterface` | contains only write methods          |
-| `PayloadInterface`  | contains both read and write methods |
+| Interface            | Description                          |
+|----------------------|--------------------------------------|
+| `ReadableInterface`  | contains only read methods           |
+| `WriteableInterface` | contains only write methods          |
+| `PayloadInterface`   | contains both read and write methods |
+
+The two single-responsibility interfaces describe a narrowing convention for the
+[Action Domain Responder][adr] flow:
+
+- The domain layer builds the payload through `WriteableInterface` (the setters).
+- The responder consumes the finished payload through `ReadableInterface` (the getters).
+
+`PayloadInterface` extends both and exposes the full surface. Type-hinting against the
+narrower interface at each boundary keeps each side to the capability it needs.
+
+## Contracts
+
+The three interfaces above extend canonical contracts in the
+`Phalcon\Contracts\Domain\Payload` namespace. New code should type-hint the contracts.
+The `*Interface` types remain as deprecated aliases and will be removed in a future
+major version.
+
+| Deprecated interface                        | Contract                                     |
+|---------------------------------------------|----------------------------------------------|
+| `Phalcon\Domain\Payload\ReadableInterface`  | `Phalcon\Contracts\Domain\Payload\Readable`  |
+| `Phalcon\Domain\Payload\WriteableInterface` | `Phalcon\Contracts\Domain\Payload\Writeable` |
+| `Phalcon\Domain\Payload\PayloadInterface`   | `Phalcon\Contracts\Domain\Payload\Payload`   |
 
 ## Status Values
 
@@ -97,6 +119,10 @@ your application.
 
 These statuses can be used at the display/view layer of your application to process domain objects retrieved via
 `Payload::getOutput()`.
+
+!!! info "NOTE"
+
+    `ERROR` and `FAILURE` carry distinct meanings. `ERROR` means an exception was raised while the domain layer was running; by convention, `Payload::setException()` pairs with the `ERROR` status. `FAILURE` means the domain layer ran to completion but declined the request (for example, a business rule was not satisfied), with no exception raised.
 
 ## Example
 

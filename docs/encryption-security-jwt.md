@@ -788,6 +788,27 @@ $errors = $tokenObject->validate($validator);
 var_dump($errors);
 ```
 
+## Contracts
+
+The JWT signer interface extends a canonical contract in the
+`Phalcon\Contracts\Encryption\Security\JWT\Signer` namespace. New code should type-hint the contract. The
+`SignerInterface` type remains as a deprecated alias and will be removed in a future major version.
+
+| Deprecated interface                                     | Contract                                                  |
+|----------------------------------------------------------|-----------------------------------------------------------|
+| `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` | `Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer` |
+
+```php
+<?php
+
+use Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer;
+
+function signerAlgorithm(Signer $signer): string
+{
+    return $signer->getAlgorithm();
+}
+```
+
 ## Exceptions
 
 Any exceptions thrown in the Security component will be of the namespace `Phalcon\Encryption\Security\JWT\*`. You can
