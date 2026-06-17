@@ -172,6 +172,10 @@ $garble->unserialize($encrypted);
 echo $garble->getData(); // "I came, I saw, I conquered."
 ``` 
 
+!!! info "NOTE"
+
+    `Phalcon\Storage\Serializer\SerializerInterface` declares `getData()`, `serialize()`, `setData()` and `unserialize()`. After `unserialize()` the adapters also call `isSuccess()` to detect a failed decode; that method is provided by `Phalcon\Storage\Serializer\AbstractSerializer`. A custom serializer that implements the interface directly (as above) is not required to declare `isSuccess()` - the adapters guard the call and treat a missing method as success. Implement `isSuccess()` (returning `false` after a failed `unserialize()`) if you want a corrupt or unreadable entry to resolve to the default value instead of the decoded result.
+
 ## Serializer Factory
 
 Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers
@@ -255,6 +259,24 @@ a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the c
 parameters required for the adapter of your choice. The list of options is outlined below.
 
 The available adapters are:
+
+### Capability matrix
+
+The adapters share one interface but differ in how some operations behave. These differences affect correctness and
+performance:
+
+| Adapter        | Counters (`increment` / `decrement`) | `getKeys()` cost                    | Notes                                                         |
+|----------------|--------------------------------------|-------------------------------------|--------------------------------------------------------------|
+| `Apcu`         | Native, atomic                       | `APCUIterator` regex scan           | Phalcon-side serializers only                                |
+| `Libmemcached` | Native, atomic                       | `getAllKeys()` (server-dependent)   | `getAllKeys()` may be incomplete on modern memcached builds  |
+| `Memory`       | Read-modify-write                    | In-memory array (cheap)             | Per-request only; not shared across processes                |
+| `Redis`        | Native, atomic                       | Non-blocking `SCAN` iteration       | Phalcon-side or backend-native (`OPT_SERIALIZER`) serializers |
+| `RedisCluster` | Native, atomic                       | Blocking `KEYS` across master nodes | Per-node `SCAN` not yet implemented                          |
+| `Stream`       | Read-modify-write (not atomic)       | Recursive directory traversal       | Counter updates are racy across concurrent processes         |
+
+!!! info "NOTE"
+
+    Backend-native serializers (the `Redis` `OPT_SERIALIZER` mappings such as `RedisPhp` or `RedisJson`) change the bytes stored on the server compared to the Phalcon-side serializers. Data written through one is not readable through the other.
 
 ### `Apcu`
 
@@ -813,6 +835,10 @@ As a result `getEventsManager()` and `setEventsManager()` are available for you 
 | `afterIncrement`       | Fires after the value has been incremented    |         No         |
 | `beforeDecrement`      | Fires before the value has been decremented   |         No         |
 | `afterDecrement`       | Fires after the value has been decremented    |         No         |
+
+!!! info "NOTE"
+
+    Each public operation fires only its own `before`/`after` pair. Internal work is routed through the adapter's protected primitives, so a `get()` or `increment()` no longer emits nested `beforeHas`/`afterHas` (or `beforeGet`/`beforeSet`) events from the steps it performs internally. Event listeners therefore observe one event pair per call you make.
 
 ## Exceptions
 

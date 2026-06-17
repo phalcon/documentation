@@ -474,6 +474,10 @@ The available methods are:
 
     A consequence of the stripping is that a key whose name happens to start with the prefix text addresses the same record as the bare key: with prefix `data-`, `set('data-users', ...)` and `set('users', ...)` write to the same stored entry. If your keys are externally generated identifiers, or can legitimately begin with the prefix text, disable the behavior with the `stripPrefix` option (default `true`) when constructing the adapter.
 
+!!! info "NOTE"
+
+    The adapters differ in counter atomicity and in how `getKeys()` is implemented - for example `Redis` enumerates keys with a non-blocking `SCAN`, while `Stream` walks the directory tree. See the [adapter capability matrix](storage.md#capability-matrix) in the Storage documentation for the per-adapter details.
+
 To construct one of these objects, you will need to pass
 a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the constructor and optionally some
 parameters
