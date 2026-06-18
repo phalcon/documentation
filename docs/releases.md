@@ -125,13 +125,28 @@ hide:
         <td class="version-td-right">8.1-8.5</td>
     </tr>
     <tr>
-        <td class="version-td-center previous-version">5.13</td>
+        <td class="version-td-center">5.13</td>
         <td class="version-td-center">May 18, 2026</td>
         <td class="version-td-right">8.1-8.5</td>
     </tr>
     <tr>
-        <td class="version-td-center current-version">5.14</td>
+        <td class="version-td-center">5.14</td>
         <td class="version-td-center">Jul 03, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.14.1</td>
+        <td class="version-td-center">Jul 08, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center previous-version">5.14.2</td>
+        <td class="version-td-center">Jul 12, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center current-version">5.15</td>
+        <td class="version-td-center">Jul 18, 2026</td>
         <td class="version-td-right">8.1-8.5</td>
     </tr>
     </tbody>
