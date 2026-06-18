@@ -31,13 +31,6 @@ Exceptions thrown in Phalcon\Filter will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Exceptions/FilterNotRegistered.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -130,6 +123,12 @@ __Uses__ `Phalcon\Filter\Exceptions\FilterNotRegistered`
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Get a service. If it is not in the mapper array, create a new object,</span>
+</a>
+<a class="api-item" href="#filterfilter-getdefaultmapper">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getDefaultMapper</span>()</code>
+<span class="desc">Returns the default sanitizer name to class map. This is the single</span>
 </a>
 <a class="api-item" href="#filterfilter-has">
 <code class="vis vis-public">public</code>
@@ -271,7 +270,7 @@ __Uses__ `Phalcon\Filter\Exceptions\FilterNotRegistered`
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 7</div>
 
 #### `__call()` { #filterfilter-__call }
 
@@ -301,6 +300,16 @@ public function get( string $name ): mixed;
 Get a service. If it is not in the mapper array, create a new object,
 set it and then return it.
 
+#### `getDefaultMapper()` { #filterfilter-getdefaultmapper }
+
+```php
+public static function getDefaultMapper(): array;
+```
+
+Returns the default sanitizer name to class map. This is the single
+source for the built-in sanitizer registry: when adding a sanitizer,
+add its `FILTER_*` constant and its entry here.
+
 #### `has()` { #filterfilter-has }
 
 ```php
@@ -320,6 +329,14 @@ public function sanitize(
 ```
 
 Sanitizes a value with a specified single or set of sanitizers
+
+Array policy: when `$value` is an array and `$noRecursive` is `false`
+(the default), each element is passed to the sanitizer individually
+and an array is returned - recursion is one level deep only. Elements
+that are themselves arrays are passed to the sanitizer as-is, which
+raises a `TypeError` for sanitizers that type their value parameter
+(e.g. `trim`). When `$noRecursive` is `true`, the whole array is
+passed to the sanitizer as a single value.
 
 #### `set()` { #filterfilter-set }
 
@@ -442,6 +459,11 @@ public function sanitize(
 
 Sanitizes a value with a specified single or set of sanitizers
 
+Array policy: when `$value` is an array and `$noRecursive` is `false`
+(the default), each element is sanitized individually and an array is
+returned - recursion is one level deep only. When `$noRecursive` is
+`true`, the whole array is passed to the sanitizer as a single value.
+
 
 ## Filter\Sanitize\AbsInt
 
@@ -454,9 +476,12 @@ Sanitizes a value to absolute integer
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\AbsInt`**
+- **`Phalcon\Filter\Sanitize\AbsInt`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -489,9 +514,12 @@ Sanitizes a value to an alphanumeric value
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Alnum`**
+- **`Phalcon\Filter\Sanitize\Alnum`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -524,9 +552,12 @@ Sanitizes a value to an alpha value
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Alpha`**
+- **`Phalcon\Filter\Sanitize\Alpha`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -559,9 +590,12 @@ Sanitizes a value to boolean
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\BoolVal`**
+- **`Phalcon\Filter\Sanitize\BoolVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -594,9 +628,12 @@ Sanitizes an email string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Email`**
+- **`Phalcon\Filter\Sanitize\Email`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -629,9 +666,12 @@ Sanitizes a value to float
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\FloatVal`**
+- **`Phalcon\Filter\Sanitize\FloatVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -664,9 +704,12 @@ Sanitizes a value to integer
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\IntVal`**
+- **`Phalcon\Filter\Sanitize\IntVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -699,9 +742,12 @@ Sanitizes a value to an ip address or CIDR range
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Ip`**
+- **`Phalcon\Filter\Sanitize\Ip`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -738,9 +784,12 @@ Sanitizes a value to lowercase
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Lower`**
+- **`Phalcon\Filter\Sanitize\Lower`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -773,9 +822,12 @@ Sanitizes a value to lcfirst
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\LowerFirst`**
+- **`Phalcon\Filter\Sanitize\LowerFirst`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -808,9 +860,12 @@ Sanitizes a value performing preg_replace
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Regex`**
+- **`Phalcon\Filter\Sanitize\Regex`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -847,9 +902,12 @@ Sanitizes a value removing parts of a string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Remove`**
+- **`Phalcon\Filter\Sanitize\Remove`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -885,9 +943,12 @@ Sanitizes a value replacing parts of a string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Replace`**
+- **`Phalcon\Filter\Sanitize\Replace`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -924,9 +985,12 @@ Sanitizes a value special characters
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Special`**
+- **`Phalcon\Filter\Sanitize\Special`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -959,9 +1023,12 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\SpecialFull`**
+- **`Phalcon\Filter\Sanitize\SpecialFull`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -992,9 +1059,12 @@ Sanitizes a value to string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\StringVal`**
+- **`Phalcon\Filter\Sanitize\StringVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1032,9 +1102,12 @@ string is passed, the method will return false
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\StringValLegacy`**
+- **`Phalcon\Filter\Sanitize\StringValLegacy`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1067,9 +1140,12 @@ Sanitizes a value striptags
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Striptags`**
+- **`Phalcon\Filter\Sanitize\Striptags`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1102,9 +1178,12 @@ Sanitizes a value removing leading and trailing spaces
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Trim`**
+- **`Phalcon\Filter\Sanitize\Trim`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1137,9 +1216,12 @@ Sanitizes a value to uppercase
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Upper`**
+- **`Phalcon\Filter\Sanitize\Upper`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1172,9 +1254,12 @@ Sanitizes a value to ucfirst
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\UpperFirst`**
+- **`Phalcon\Filter\Sanitize\UpperFirst`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1207,9 +1292,12 @@ Sanitizes a value to uppercase the first character of each word
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\UpperWords`**
+- **`Phalcon\Filter\Sanitize\UpperWords`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1242,9 +1330,12 @@ Sanitizes a value url
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Url`**
+- **`Phalcon\Filter\Sanitize\Url`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+{ .api-uses }
 
 ### Method Summary
 
@@ -1789,6 +1880,12 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\Fi
 <code class="sig"><span class="sf">hasOption</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Checks if an option is defined</span>
 </a>
+<a class="api-item" href="#filtervalidationabstractvalidator-isallowempty">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isAllowEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
+<span class="desc">Checks whether the field can be considered empty and therefore</span>
+</a>
 <a class="api-item" href="#filtervalidationabstractvalidator-messagefactory">
 <code class="vis vis-public">public</code>
 <code class="ret">Message</code>
@@ -1869,7 +1966,7 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\Fi
 
 ### Methods
 
-<div class="api-group">Public · 10</div>
+<div class="api-group">Public · 11</div>
 
 #### `__construct()` { #filtervalidationabstractvalidator-__construct }
 
@@ -1914,6 +2011,19 @@ public function hasOption( string $key ): bool;
 ```
 
 Checks if an option is defined
+
+#### `isAllowEmpty()` { #filtervalidationabstractvalidator-isallowempty }
+
+```php
+public function isAllowEmpty(
+    Validation $validation,
+    string $field
+): bool;
+```
+
+Checks whether the field can be considered empty and therefore
+skipped, honoring the `allowEmpty` option (boolean flag, list of
+empty values, or per-field map).
 
 #### `messageFactory()` { #filtervalidationabstractvalidator-messagefactory }
 
@@ -2116,13 +2226,6 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/FieldNotPrintable.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2158,13 +2261,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/FilterServiceUnavailable.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2202,13 +2298,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidAllowedTypes.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2244,13 +2333,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidCallbackReturn.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2288,13 +2370,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidDomainOption.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2330,13 +2405,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidFieldType.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2374,13 +2442,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidFilterService.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2416,13 +2477,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidStrictOption.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2460,13 +2514,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidValidationData.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2502,13 +2549,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidValidator.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2546,13 +2586,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/InvalidValidatorScope.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2588,13 +2621,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/MissingMbstring.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2632,13 +2658,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/NoDataToValidate.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2674,13 +2693,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/NoValidators.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2718,13 +2730,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/NoValidatorsInComposite.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2760,13 +2765,6 @@ public function __construct( string $className );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/UniquenessConversionMustBeArray.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2804,13 +2802,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/UniquenessModelRequired.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2847,13 +2838,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/UniquenessOnlyForPhalconModel.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2889,13 +2873,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Exceptions/ValidationEntityNotObject.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3232,13 +3209,6 @@ Executes the validation
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/ValidatorFactory.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -4595,7 +4565,7 @@ $validator->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Get`
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Get`
 { .api-uses }
 
 ### Method Summary
@@ -4669,6 +4639,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
     - **`Phalcon\Filter\Validation\Validator\File\AbstractFile`**
         - [`Phalcon\Filter\Validation\Validator\File\MimeType`](#filtervalidationvalidatorfilemimetype)
+        - [`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`](#filtervalidationvalidatorfileresolutionaspectratio)
         - [`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`](#filtervalidationvalidatorfileresolutionequal)
         - [`Phalcon\Filter\Validation\Validator\File\Resolution\Max`](#filtervalidationvalidatorfileresolutionmax)
         - [`Phalcon\Filter\Validation\Validator\File\Resolution\Min`](#filtervalidationvalidatorfileresolutionmin)
@@ -5001,6 +4972,114 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` ·
 <div class="api-group">Public · 1</div>
 
 #### `validate()` { #filtervalidationvalidatorfilemimetype-validate }
+
+```php
+public function validate(
+    Validation $validation,
+    mixed $field
+): bool;
+```
+
+Executes the validation
+
+
+## Filter\Validation\Validator\File\Resolution\AspectRatio
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/File/Resolution/AspectRatio.zep){ .src-btn }
+
+Checks if a file has the exact aspect ratio
+
+The ratio is compared with integer cross-multiplication, so the image
+dimensions must match the ratio exactly: 1920x1080 matches "16x9",
+1366x768 does not.
+
+```php
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio;
+
+$validator = new Validation();
+
+$validator->add(
+    "file",
+    new AspectRatio(
+        [
+            "ratio"   => "16x9",
+            "message" => "The aspect ratio of the field :field has to be :ratio",
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new AspectRatio(
+        [
+            "ratio" => [
+                "file"        => "16x9",
+                "anotherFile" => "4x3",
+            ],
+            "message" => [
+                "file"        => "Aspect ratio of file has to be 16x9",
+                "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
+            ],
+        ]
+    )
+);
+```
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - **`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`**
+
+</div>
+
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#filtervalidationvalidatorfileresolutionaspectratio-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
+<span class="desc">Constructor</span>
+</a>
+<a class="api-item" href="#filtervalidationvalidatorfileresolutionaspectratio-validate">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
+<span class="desc">Executes the validation</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$template</span><span class="sm"> = &quot;File :field does not have the exact aspect ratio of :ratio&quot;</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `__construct()` { #filtervalidationvalidatorfileresolutionaspectratio-__construct }
+
+```php
+public function __construct( array $options = [] );
+```
+
+Constructor
+
+#### `validate()` { #filtervalidationvalidatorfileresolutionaspectratio-validate }
 
 ```php
 public function validate(
@@ -6685,6 +6764,12 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombi
 <code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span> )</code>
 <span class="desc">Constructor</span>
 </a>
+<a class="api-item" href="#filtervalidationvalidatoruniqueness-getoption">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getOption</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns an option in the validator&#039;s options</span>
+</a>
 <a class="api-item" href="#filtervalidationvalidatoruniqueness-validate">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
@@ -6721,7 +6806,7 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombi
 
 ### Methods
 
-<div class="api-group">Public · 2</div>
+<div class="api-group">Public · 3</div>
 
 #### `__construct()` { #filtervalidationvalidatoruniqueness-__construct }
 
@@ -6730,6 +6815,21 @@ public function __construct( array $options = [] );
 ```
 
 Constructor
+
+#### `getOption()` { #filtervalidationvalidatoruniqueness-getoption }
+
+```php
+public function getOption(
+    string $key,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns an option in the validator's options
+Returns null if the option hasn't set
+
+The `attribute` option can be defined as an array when validating a
+combination of fields; in that case resolve it to the mapped value.
 
 #### `validate()` { #filtervalidationvalidatoruniqueness-validate }
 

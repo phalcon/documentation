@@ -61,7 +61,7 @@ __Uses__ `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInter
 <code class="vis vis-public">public</code>
 <code class="ret">object</code>
 <code class="sig"><span class="sf">newInstance</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Retrieve a shared service instance from the container.</span>
+<span class="desc">Retrieve a service instance from the container.</span>
 </a>
 <a class="api-item" href="#supportabstractlocator-register">
 <code class="vis vis-public">public</code>
@@ -154,7 +154,13 @@ Whether a service with the given name is registered.
 public function newInstance( string $name ): object;
 ```
 
-Retrieve a shared service instance from the container.
+Retrieve a service instance from the container.
+
+On the `DiInterface` path this returns the container's **shared**
+instance (`getShared()`) — despite the name, it is not a fresh build.
+Locators whose services carry per-activation state should override this
+method to resolve a fresh instance; see `Auth\Access\AccessLocator`, which uses
+`ContainerResolver::resolveFresh` for exactly that reason.
 
 #### `register()` { #supportabstractlocator-register }
 
@@ -235,7 +241,7 @@ etc.
 
 </div>
 
-__Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
+__Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `InvalidArgumentException` · `IteratorAggregate` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -692,8 +698,6 @@ public function getKeys( bool $insensitive = true ): array;
 
 Returns the keys (insensitive or not) of the collection.
 
-@deprecated Use {@see self::keys()} instead. Will be removed in a future major release.
-
 #### `getType()` { #supportcollection-gettype }
 
 ```php
@@ -709,8 +713,6 @@ public function getValues(): array;
 ```
 
 Returns the values of the internal array.
-
-@deprecated Use {@see self::values()} instead. Will be removed in a future major release.
 
 #### `has()` { #supportcollection-has }
 
@@ -989,10 +991,6 @@ is treated as a class/interface name and tested with `instanceof`.
 
 Phalcon\Support\Collection\CollectionInterface
 
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Support\Collection} instead.
-
 <div class="api-tree" markdown>
 
 - `ArrayAccess`
@@ -1031,13 +1029,6 @@ __Uses__ `Phalcon\Support\Exception`
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/Exceptions/InvalidValueType.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `InvalidArgumentException`
@@ -1075,13 +1066,6 @@ public function __construct(
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Collection/Exceptions/ReadOnlyViolation.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1909,13 +1893,6 @@ __Uses__ `Phalcon\Support\Exception`
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Exceptions/RequestHalted.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1952,13 +1929,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Exceptions/RuntimeWarning.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2144,6 +2114,12 @@ Returns the available adapters
 
 Abstract class offering methods to help with the Arr namespace. This can
 be moved to a trait once Zephir supports it.
+
+This base exists only for the `Arr` helper hierarchy; it is not a general
+base class. New code that needs these routines should compose the relevant
+invokable helper (for example `Arr\Get`) rather than extending it.
+
+@internal
 
 @todo move to trait when there is support for it
 
@@ -3210,13 +3186,6 @@ public function __invoke(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Exceptions/JsonDecodeError.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `InvalidArgumentException`
@@ -3255,13 +3224,6 @@ public function __construct(
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Json/Exceptions/JsonEncodeError.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3342,6 +3304,12 @@ public function __invoke(
 
 Abstract class offering methods to help with the Str namespace. This can
 be moved to a trait once Zephir supports it.
+
+This base exists only for the `Str` helper hierarchy; it is not a general
+base class. New code that needs these routines should compose the relevant
+invokable helper (for example `Str\Interpolate`) rather than extending it.
+
+@internal
 
 @todo move to trait when there is support for it
 
@@ -3812,13 +3780,6 @@ public function __invoke(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/InsufficientArguments.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -3856,13 +3817,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/InvalidReplaceFormat.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -3880,13 +3834,6 @@ __Uses__ `Phalcon\Support\Helper\Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/Exceptions/SyntaxError.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 

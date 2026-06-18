@@ -1166,13 +1166,6 @@ Class for exceptions thrown by Phalcon\Annotations
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/AnnotationNotFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1208,13 +1201,6 @@ public function __construct( string $name );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/AnnotationsDirectoryNotWritable.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1252,13 +1238,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/CannotReadAnnotationData.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `RuntimeException`
@@ -1293,13 +1272,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/UnknownAnnotationExpression.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 

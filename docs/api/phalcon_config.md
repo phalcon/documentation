@@ -79,7 +79,7 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 <div class="api-list">
 <a class="api-item" href="#configadaptergrouped-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$arrayConfig</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultAdapter</span><span class="sm"> = &quot;php&quot;</span>,</span><span class="prm"><span class="st">ConfigFactory</span> <span class="sv">$factory</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Grouped constructor</span>
 </a>
 </div>
@@ -93,7 +93,8 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 ```php
 public function __construct(
     array $arrayConfig,
-    string $defaultAdapter = "php"
+    string $defaultAdapter = "php",
+    ConfigFactory $factory = null
 );
 ```
 
@@ -215,6 +216,12 @@ protected function cast( mixed $ini ): mixed;
 We have to cast values manually because parse_ini_file() has a poor
 implementation.
 
+Note: this casting is an ini-format compensation and is deliberately
+specific to this adapter. Ini files carry untyped strings, so
+`on/yes/true`, `off/no/false`, `null` and numeric strings are decoded
+here. The json, yaml and php adapters receive natively typed values
+from their parsers and perform no casting.
+
 #### `castArray()` { #configadapterini-castarray }
 
 ```php
@@ -277,7 +284,7 @@ echo $config->models->metadata;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Support\Helper\Json\Decode`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Support\Helper\Json\Decode`
 { .api-uses }
 
 ### Method Summary
@@ -350,7 +357,7 @@ echo $config->database->username;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile`
 { .api-uses }
 
 ### Method Summary
@@ -562,6 +569,12 @@ __Uses__ `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Support\Collec
 <code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Converts recursively the object to an array</span>
 </a>
+<a class="api-item" href="#configconfig-cloneempty">
+<code class="vis vis-protected">protected</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">cloneEmpty</span>( <span class="st">array</span> <span class="sv">$data</span><span class="sm"> = []</span> )</code>
+<span class="desc">Builds a new collection with the given data, carrying over the</span>
+</a>
 <a class="api-item" href="#configconfig-internalmerge">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
@@ -665,7 +678,20 @@ print_r(
 );
 ```
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
+
+#### `cloneEmpty()` { #configconfig-cloneempty }
+
+```php
+protected function cloneEmpty( array $data = [] ): static;
+```
+
+Builds a new collection with the given data, carrying over the
+configuration of the current one. Clone-based instead of
+constructor-based: adapter subclasses (Ini, Json, Php, Yaml, Grouped)
+define file-loading constructors that are incompatible with the
+parent's `(array data, ...)` signature, so `filter()`, `map()`,
+`sort()` and `where()` would otherwise fail on any adapter instance.
 
 #### `internalMerge()` { #configconfig-internalmerge }
 
@@ -688,6 +714,11 @@ protected function setData(
 ```
 
 Sets the collection data
+
+Array values become nested Config objects carrying the `insensitive`,
+`strictNull` and `type` flags of this instance. The `type` guard is
+applied to leaf values only — arrays are not validated themselves;
+the nested Config validates its own leaves.
 
 
 ## Config\ConfigFactory
@@ -740,10 +771,22 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon
 <code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fileName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$params</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a new Config instance</span>
 </a>
+<a class="api-item" href="#configconfigfactory-getadapteraliases">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getAdapterAliases</span>()</code>
+<span class="desc">Adapter name aliases resolved by <code>load()</code> (file extensions that map</span>
+</a>
 <a class="api-item" href="#configconfigfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getExceptionClass</span>()</code>
+</a>
+<a class="api-item" href="#configconfigfactory-getextraarguments">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getExtraArguments</span>()</code>
+<span class="desc">Adapters accepting an extra constructor argument, with the config</span>
 </a>
 <a class="api-item" href="#configconfigfactory-getservices">
 <code class="vis vis-protected">protected</code>
@@ -790,13 +833,32 @@ public function newInstance(
 
 Returns a new Config instance
 
-<div class="api-group">Protected · 3</div>
+<div class="api-group">Protected · 5</div>
+
+#### `getAdapterAliases()` { #configconfigfactory-getadapteraliases }
+
+```php
+protected function getAdapterAliases(): array;
+```
+
+Adapter name aliases resolved by `load()` (file extensions that map
+to a registered adapter)
 
 #### `getExceptionClass()` { #configconfigfactory-getexceptionclass }
 
 ```php
 protected function getExceptionClass(): string;
 ```
+
+#### `getExtraArguments()` { #configconfigfactory-getextraarguments }
+
+```php
+protected function getExtraArguments(): array;
+```
+
+Adapters accepting an extra constructor argument, with the config
+option carrying it and its default value. Single source for the
+parameter-forwarding knowledge used by `load()` and `newInstance()`.
 
 #### `getServices()` { #configconfigfactory-getservices }
 
@@ -919,13 +981,6 @@ Exceptions thrown in Phalcon\Config will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/CannotLoadConfigFile.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -973,13 +1028,6 @@ public function getFileName(): string;
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/ConfigNotArrayOrObject.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1015,13 +1063,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/GroupedAdapterRequiresArray.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1059,13 +1100,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/InvalidMergeData.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1101,13 +1135,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingConfigOption.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1156,13 +1183,6 @@ public function getOption(): string;
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingFileExtension.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1198,13 +1218,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Config/Exceptions/MissingYamlExtension.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 

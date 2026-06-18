@@ -17,6 +17,31 @@ This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher.
 This class can't be instantiated directly, you can use it to create your own
 dispatchers.
 
+## Error protocol
+
+Subclasses (including third-party ones) MUST implement the two abstract
+error hooks {@see throwDispatchException()} and {@see handleException()}.
+The dispatch loop calls them on every error/exception path; a subclass that
+omits them cannot be loaded.
+
+## Hook channels
+
+A single lifecycle point can be intercepted through three independent
+channels. For any given point they run in this order:
+
+1. **Events-manager listener** — e.g. `dispatch:beforeExecuteRoute`. A
+   listener returning `false` cancels; calling `forward()` re-enters the
+   loop; throwing routes through {@see handleException()}.
+2. **Duck-typed handler method** — e.g. a `beforeExecuteRoute()` method on
+   the controller/task itself (presence is cached per class). Same
+   `false` / `forward()` cancellation semantics as the event.
+3. **`dispatch:beforeCallAction` observer** — fired by
+   {@see callActionMethod()} with a `Phalcon\Support\Collection` carrying
+   the mutable keys `handler`, `action` and `params`. Listeners may rewrite
+   those keys to change *what* gets invoked; the substituted callable is
+   re-validated before the call. `dispatch:afterCallAction` receives the
+   same Collection plus a `result` key.
+
 <div class="api-tree" markdown>
 
 - `stdClass`
@@ -139,6 +164,24 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <code class="sig"><span class="sf">getParams</span>()</code>
 <span class="desc">Gets action params</span>
 </a>
+<a class="api-item" href="#dispatcherabstractdispatcher-getpreviousactionname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getPreviousActionName</span>()</code>
+<span class="desc">Gets previous dispatched action name</span>
+</a>
+<a class="api-item" href="#dispatcherabstractdispatcher-getprevioushandlername">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getPreviousHandlerName</span>()</code>
+<span class="desc">Gets previous dispatched handler name</span>
+</a>
+<a class="api-item" href="#dispatcherabstractdispatcher-getpreviousnamespacename">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getPreviousNamespaceName</span>()</code>
+<span class="desc">Gets previous dispatched namespace name</span>
+</a>
 <a class="api-item" href="#dispatcherabstractdispatcher-getreturnedvalue">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
@@ -253,11 +296,21 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 <code class="sig"><span class="sf">wasForwarded</span>()</code>
 <span class="desc">Check if the current executed action was forwarded by another one</span>
 </a>
+<a class="api-item" href="#dispatcherabstractdispatcher-handleexception">
+<code class="vis vis-protected">protected</code>
+<code class="sig"><span class="sf">handleException</span>( <span class="st">\Exception</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Handles a user exception triggered inside the dispatch loop.</span>
+</a>
 <a class="api-item" href="#dispatcherabstractdispatcher-resolveemptyproperties">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">resolveEmptyProperties</span>()</code>
 <span class="desc">Set empty properties to their defaults (where defaults are available)</span>
+</a>
+<a class="api-item" href="#dispatcherabstractdispatcher-throwdispatchexception">
+<code class="vis vis-protected">protected</code>
+<code class="sig"><span class="sf">throwDispatchException</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$exceptionCode</span><span class="sm"> = 0</span></span>)</code>
+<span class="desc">Throws an internal dispatch exception.</span>
 </a>
 <a class="api-item" href="#dispatcherabstractdispatcher-tocamelcase">
 <code class="vis vis-protected">protected</code>
@@ -403,7 +456,7 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 
 ### Methods
 
-<div class="api-group">Public · 37</div>
+<div class="api-group">Public · 40</div>
 
 #### `callActionMethod()` { #dispatcherabstractdispatcher-callactionmethod }
 
@@ -552,7 +605,11 @@ public function getParam(
 
 Gets a param by its name or numeric index
 
-@todo remove this in future versions
+Note: The interface declares `getParam(param, filters = null)` without the
+`defaultValue` argument, so code typed against `DispatcherInterface`
+cannot use the default-value feature. This signature drift is intentional
+for now; the interface and implementation will be aligned in the next
+major version.
 
 #### `getParameter()` { #dispatcherabstractdispatcher-getparameter }
 
@@ -582,7 +639,29 @@ public function getParams(): array;
 
 Gets action params
 
-@todo remove this in future versions
+#### `getPreviousActionName()` { #dispatcherabstractdispatcher-getpreviousactionname }
+
+```php
+public function getPreviousActionName(): string;
+```
+
+Gets previous dispatched action name
+
+#### `getPreviousHandlerName()` { #dispatcherabstractdispatcher-getprevioushandlername }
+
+```php
+public function getPreviousHandlerName(): string;
+```
+
+Gets previous dispatched handler name
+
+#### `getPreviousNamespaceName()` { #dispatcherabstractdispatcher-getpreviousnamespacename }
+
+```php
+public function getPreviousNamespaceName(): string;
+```
+
+Gets previous dispatched namespace name
 
 #### `getReturnedValue()` { #dispatcherabstractdispatcher-getreturnedvalue }
 
@@ -599,7 +678,6 @@ public function hasParam( mixed $param ): bool;
 ```
 
 Check if a param exists
-@todo deprecate this in the future
 
 #### `hasParameter()` { #dispatcherabstractdispatcher-hasparameter }
 
@@ -719,7 +797,6 @@ public function setParam(
 ```
 
 Set a param by its name or numeric index
-@todo deprecate this in the future
 
 #### `setParameter()` { #dispatcherabstractdispatcher-setparameter }
 
@@ -747,7 +824,6 @@ public function setParams( array $params ): void;
 ```
 
 Sets action params to be dispatched
-@todo deprecate this in the future
 
 #### `setReturnedValue()` { #dispatcherabstractdispatcher-setreturnedvalue }
 
@@ -765,7 +841,19 @@ public function wasForwarded(): bool;
 
 Check if the current executed action was forwarded by another one
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 4</div>
+
+#### `handleException()` { #dispatcherabstractdispatcher-handleexception }
+
+```php
+abstract protected function handleException( \Exception $exception );
+```
+
+Handles a user exception triggered inside the dispatch loop.
+
+Subclasses implement the namespace-specific behavior (typically firing
+the `dispatch:beforeException` event so listeners may forward or swallow
+the exception).
 
 #### `resolveEmptyProperties()` { #dispatcherabstractdispatcher-resolveemptyproperties }
 
@@ -774,6 +862,20 @@ protected function resolveEmptyProperties(): void;
 ```
 
 Set empty properties to their defaults (where defaults are available)
+
+#### `throwDispatchException()` { #dispatcherabstractdispatcher-throwdispatchexception }
+
+```php
+abstract protected function throwDispatchException(
+    string $message,
+    int $exceptionCode = 0
+);
+```
+
+Throws an internal dispatch exception.
+
+Subclasses build the namespace-specific exception and route it through
+{@see handleException()} before throwing it when it was not handled.
 
 #### `toCamelCase()` { #dispatcherabstractdispatcher-tocamelcase }
 
@@ -791,324 +893,13 @@ Interface for Phalcon\Dispatcher\AbstractDispatcher
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Dispatcher\DispatcherInterface`**
-    - [`Phalcon\Cli\DispatcherInterface`](phalcon_cli.md#clidispatcherinterface)
-    - [`Phalcon\Mvc\DispatcherInterface`](phalcon_mvc.md#mvcdispatcherinterface)
+- [`Phalcon\Contracts\Dispatcher\Dispatcher`](phalcon_contracts.md#contractsdispatcherdispatcher)
+    - **`Phalcon\Dispatcher\DispatcherInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#dispatcherdispatcherinterface-dispatch">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|bool</code>
-<code class="sig"><span class="sf">dispatch</span>()</code>
-<span class="desc">Dispatches a handle action taking into account the routing parameters</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-forward">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">forward</span>( <span class="st">array</span> <span class="sv">$forward</span> )</code>
-<span class="desc">Forwards the execution flow to another controller/action</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-getactionname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionName</span>()</code>
-<span class="desc">Gets last dispatched action name</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-getactionsuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getActionSuffix</span>()</code>
-<span class="desc">Gets the default action suffix</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-gethandlersuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getHandlerSuffix</span>()</code>
-<span class="desc">Gets the default handler suffix</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-getparam">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Gets a param by its name or numeric index</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-getparameter">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getParameter</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Gets a param by its name or numeric index</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-getparameters">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParameters</span>()</code>
-<span class="desc">Gets action params</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-getparams">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParams</span>()</code>
-<span class="desc">Gets action params</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-getreturnedvalue">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getReturnedValue</span>()</code>
-<span class="desc">Returns value returned by the latest dispatched action</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-hasparam">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">hasParam</span>( <span class="st">mixed</span> <span class="sv">$param</span> )</code>
-<span class="desc">Check if a param exists</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-isfinished">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isFinished</span>()</code>
-<span class="desc">Checks if the dispatch loop is finished or has more pendent</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setactionname">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setActionName</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
-<span class="desc">Sets the action name to be dispatched</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setactionsuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setActionSuffix</span>( <span class="st">string</span> <span class="sv">$actionSuffix</span> )</code>
-<span class="desc">Sets the default action suffix</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setdefaultaction">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">string</span> <span class="sv">$actionName</span> )</code>
-<span class="desc">Sets the default action name</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setdefaultnamespace">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultNamespace</span>( <span class="st">string</span> <span class="sv">$defaultNamespace</span> )</code>
-<span class="desc">Sets the default namespace</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-sethandlersuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setHandlerSuffix</span>( <span class="st">string</span> <span class="sv">$handlerSuffix</span> )</code>
-<span class="desc">Sets the default suffix for the handler</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setmodulename">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setModuleName</span>( <span class="st">string</span> <span class="sv">$moduleName</span><span class="sm"> = null</span> )</code>
-<span class="desc">Sets the module name which the application belongs to</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setnamespacename">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setNamespaceName</span>( <span class="st">string</span> <span class="sv">$namespaceName</span> )</code>
-<span class="desc">Sets the namespace which the controller belongs to</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setparam">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setParam</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$param</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set a param by its name or numeric index</span>
-</a>
-<a class="api-item" href="#dispatcherdispatcherinterface-setparams">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setParams</span>( <span class="st">array</span> <span class="sv">$params</span> )</code>
-<span class="desc">Sets action params to be dispatched</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 21</div>
-
-#### `dispatch()` { #dispatcherdispatcherinterface-dispatch }
-
-```php
-public function dispatch(): mixed|bool;
-```
-
-Dispatches a handle action taking into account the routing parameters
-
-#### `forward()` { #dispatcherdispatcherinterface-forward }
-
-```php
-public function forward( array $forward ): void;
-```
-
-Forwards the execution flow to another controller/action
-
-#### `getActionName()` { #dispatcherdispatcherinterface-getactionname }
-
-```php
-public function getActionName(): string;
-```
-
-Gets last dispatched action name
-
-#### `getActionSuffix()` { #dispatcherdispatcherinterface-getactionsuffix }
-
-```php
-public function getActionSuffix(): string;
-```
-
-Gets the default action suffix
-
-#### `getHandlerSuffix()` { #dispatcherdispatcherinterface-gethandlersuffix }
-
-```php
-public function getHandlerSuffix(): string;
-```
-
-Gets the default handler suffix
-
-#### `getParam()` { #dispatcherdispatcherinterface-getparam }
-
-```php
-public function getParam(
-    mixed $param,
-    mixed $filters = null
-): mixed;
-```
-
-Gets a param by its name or numeric index
-
-#### `getParameter()` { #dispatcherdispatcherinterface-getparameter }
-
-```php
-public function getParameter(
-    mixed $param,
-    mixed $filters = null
-): mixed;
-```
-
-Gets a param by its name or numeric index
-
-#### `getParameters()` { #dispatcherdispatcherinterface-getparameters }
-
-```php
-public function getParameters(): array;
-```
-
-Gets action params
-
-#### `getParams()` { #dispatcherdispatcherinterface-getparams }
-
-```php
-public function getParams(): array;
-```
-
-Gets action params
-
-#### `getReturnedValue()` { #dispatcherdispatcherinterface-getreturnedvalue }
-
-```php
-public function getReturnedValue(): mixed;
-```
-
-Returns value returned by the latest dispatched action
-
-#### `hasParam()` { #dispatcherdispatcherinterface-hasparam }
-
-```php
-public function hasParam( mixed $param ): bool;
-```
-
-Check if a param exists
-
-#### `isFinished()` { #dispatcherdispatcherinterface-isfinished }
-
-```php
-public function isFinished(): bool;
-```
-
-Checks if the dispatch loop is finished or has more pendent
-controllers/tasks to dispatch
-
-#### `setActionName()` { #dispatcherdispatcherinterface-setactionname }
-
-```php
-public function setActionName( string $actionName ): void;
-```
-
-Sets the action name to be dispatched
-
-#### `setActionSuffix()` { #dispatcherdispatcherinterface-setactionsuffix }
-
-```php
-public function setActionSuffix( string $actionSuffix ): void;
-```
-
-Sets the default action suffix
-
-#### `setDefaultAction()` { #dispatcherdispatcherinterface-setdefaultaction }
-
-```php
-public function setDefaultAction( string $actionName ): void;
-```
-
-Sets the default action name
-
-#### `setDefaultNamespace()` { #dispatcherdispatcherinterface-setdefaultnamespace }
-
-```php
-public function setDefaultNamespace( string $defaultNamespace ): void;
-```
-
-Sets the default namespace
-
-#### `setHandlerSuffix()` { #dispatcherdispatcherinterface-sethandlersuffix }
-
-```php
-public function setHandlerSuffix( string $handlerSuffix ): void;
-```
-
-Sets the default suffix for the handler
-
-#### `setModuleName()` { #dispatcherdispatcherinterface-setmodulename }
-
-```php
-public function setModuleName( string $moduleName = null ): void;
-```
-
-Sets the module name which the application belongs to
-
-#### `setNamespaceName()` { #dispatcherdispatcherinterface-setnamespacename }
-
-```php
-public function setNamespaceName( string $namespaceName ): void;
-```
-
-Sets the namespace which the controller belongs to
-
-#### `setParam()` { #dispatcherdispatcherinterface-setparam }
-
-```php
-public function setParam(
-    mixed $param,
-    mixed $value
-): void;
-```
-
-Set a param by its name or numeric index
-
-#### `setParams()` { #dispatcherdispatcherinterface-setparams }
-
-```php
-public function setParams( array $params ): void;
-```
-
-Sets action params to be dispatched
+__Uses__ `Phalcon\Contracts\Dispatcher\Dispatcher`
+{ .api-uses }
 
 
 ## Dispatcher\Exception
@@ -1162,13 +953,6 @@ Exceptions thrown in Phalcon\Dispatcher/* will use this class
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Dispatcher/Exceptions/ForwardInInitializeForbidden.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the
-LICENSE.txt file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 

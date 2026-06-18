@@ -89,6 +89,12 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 <code class="sig"><span class="sf">getEscaperService</span>()</code>
 <span class="desc">Returns the Escaper Service</span>
 </a>
+<a class="api-item" href="#flashabstractflash-message">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">message</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$message</span></span>)</code>
+<span class="desc">Outputs a message. Delivery semantics differ per implementation:</span>
+</a>
 <a class="api-item" href="#flashabstractflash-notice">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
@@ -214,7 +220,7 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 
 ### Methods
 
-<div class="api-group">Public · 20</div>
+<div class="api-group">Public · 21</div>
 
 #### `__construct()` { #flashabstractflash-__construct }
 
@@ -284,6 +290,19 @@ public function getEscaperService(): EscaperInterface;
 ```
 
 Returns the Escaper Service
+
+#### `message()` { #flashabstractflash-message }
+
+```php
+abstract public function message(
+    string $type,
+    mixed $message
+): string|null;
+```
+
+Outputs a message. Delivery semantics differ per implementation:
+`Direct` renders and emits immediately, `Session` stores the raw
+message for output on a later request.
 
 #### `notice()` { #flashabstractflash-notice }
 
@@ -368,6 +387,10 @@ public function setImplicitFlush( bool $implicitFlush ): static;
 
 Set whether the output must be implicitly flushed to the output or
 returned as string
+
+Note: `output()` is an echo API and requires implicit flush to remain
+enabled (the default). With implicit flush disabled, `message()` returns
+the rendered string while `output()` does not emit it.
 
 #### `success()` { #flashabstractflash-success }
 
@@ -476,13 +499,6 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/EscaperServiceUnavailable.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -519,13 +535,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/FlashMessageNotStringOrArray.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -561,13 +570,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Flash/Exceptions/SessionServiceUnavailable.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -607,95 +609,15 @@ public function __construct();
 
 Interface FlashInterface
 
-@package Phalcon\Flash
-
 <div class="api-tree" markdown>
 
-- **`Phalcon\Flash\FlashInterface`**
+- [`Phalcon\Contracts\Flash\Flash`](phalcon_contracts.md#contractsflashflash)
+    - **`Phalcon\Flash\FlashInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#flashflashinterface-error">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">error</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML error message</span>
-</a>
-<a class="api-item" href="#flashflashinterface-message">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">message</span>(<span class="prm"><span class="st">string</span> <span class="sv">$type</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
-<span class="desc">Outputs a message</span>
-</a>
-<a class="api-item" href="#flashflashinterface-notice">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">notice</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML notice/information message</span>
-</a>
-<a class="api-item" href="#flashflashinterface-success">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">success</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML success message</span>
-</a>
-<a class="api-item" href="#flashflashinterface-warning">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">warning</span>( <span class="st">string</span> <span class="sv">$message</span> )</code>
-<span class="desc">Shows a HTML warning message</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 5</div>
-
-#### `error()` { #flashflashinterface-error }
-
-```php
-public function error( string $message ): string|null;
-```
-
-Shows a HTML error message
-
-#### `message()` { #flashflashinterface-message }
-
-```php
-public function message(
-    string $type,
-    string $message
-): string|null;
-```
-
-Outputs a message
-
-#### `notice()` { #flashflashinterface-notice }
-
-```php
-public function notice( string $message ): string|null;
-```
-
-Shows a HTML notice/information message
-
-#### `success()` { #flashflashinterface-success }
-
-```php
-public function success( string $message ): string|null;
-```
-
-Shows a HTML success message
-
-#### `warning()` { #flashflashinterface-warning }
-
-```php
-public function warning( string $message ): string|null;
-```
-
-Shows a HTML warning message
+__Uses__ `Phalcon\Contracts\Flash\Flash`
+{ .api-uses }
 
 
 ## Flash\Session
@@ -720,12 +642,17 @@ Class Session
 
 </div>
 
-__Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Session\ManagerInterface`
+__Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
 { .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
+<a class="api-item" href="#flashsession-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">EscaperInterface</span> <span class="sv">$escaper</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ManagerInterface</span> <span class="sv">$session</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$sessionKey</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Session constructor.</span>
+</a>
 <a class="api-item" href="#flashsession-clear">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -785,9 +712,31 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Sessio
 </div>
 </div>
 
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$sessionKey</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+</div>
+
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 7</div>
+
+#### `__construct()` { #flashsession-__construct }
+
+```php
+public function __construct(
+    EscaperInterface $escaper = null,
+    ManagerInterface $session = null,
+    string $sessionKey = null
+);
+```
+
+Session constructor.
 
 #### `clear()` { #flashsession-clear }
 

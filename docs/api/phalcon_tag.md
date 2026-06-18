@@ -810,8 +810,6 @@ deprecated public static function resetInput(): void;
 Resets the request and internal values to avoid those fields will have
 any default value.
 
-@deprecated Will be removed in 4.0.0
-
 #### `searchField()` { #tag-searchfield }
 
 ```php

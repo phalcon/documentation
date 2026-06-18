@@ -274,7 +274,7 @@ __Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface`
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
-<span class="desc">Sets the default access level (Phalcon\Ac\Enuml::ALLOW or Phalcon\Acl\Enum::DENY)</span>
+<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)</span>
 </a>
 <a class="api-item" href="#acladapteradapterinterface-setnoargumentsdefaultaction">
 <code class="vis vis-public">public</code>
@@ -477,7 +477,7 @@ Check whether role exist in the roles list
 public function setDefaultAction( int $defaultAccess ): void;
 ```
 
-Sets the default access level (Phalcon\Ac\Enuml::ALLOW or Phalcon\Acl\Enum::DENY)
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
 #### `setNoArgumentsDefaultAction()` { #acladapteradapterinterface-setnoargumentsdefaultaction }
 
@@ -691,13 +691,13 @@ __Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Ph
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$access</span></code>
 <span class="desc">Access</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$accessList</span></code>
 <span class="desc">Access List</span>
 </div>
@@ -721,37 +721,37 @@ __Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Ph
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$components</span></code>
 <span class="desc">Components</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$componentsNames</span></code>
 <span class="desc">Component Names</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$functions</span></code>
 <span class="desc">Function List</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">int</code>
 <code class="sig"><span class="sv">$noArgumentsDefaultAction</span><span class="sm"> = Enum::DENY</span></code>
 <span class="desc">Default action for no arguments is <code>allow</code></span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$roleInherits</span></code>
 <span class="desc">Role Inherits</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$roles</span></code>
 <span class="desc">Roles</span>
 </div>
@@ -849,6 +849,10 @@ public function addRole(
 
 Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
 
+If the role already exists this method returns `false` and the
+`accessInherits` argument is ignored; the existing role is left
+unchanged.
+
 ```php
 $acl->addRole(
     new Phalcon\Acl\Role("administrator"),
@@ -872,6 +876,9 @@ public function allow(
 
 Allow access to a role on a component. You can use `*` as wildcard
 
+A `*` role is an eager snapshot: it expands to the roles that exist when
+`allow()` is called, so roles added afterwards do not inherit the grant.
+
 ```php
 // Allow access to guests to search on customers
 $acl->allow("guests", "customers", "search");
@@ -882,8 +889,8 @@ $acl->allow("guests", "customers", ["search", "create"]);
 // Allow access to any role to browse on products
 $acl->allow("*", "products", "browse");
 
-// Allow access to any role to browse on any component
-$acl->allow("*", "*", "browse");
+// Allow access to any role to perform any action on any component
+$acl->allow("*", "*", "*");
 ```
 
 #### `deny()` { #acladaptermemory-deny }
@@ -899,6 +906,9 @@ public function deny(
 
 Deny access to a role on a component. You can use `*` as wildcard
 
+A `*` role is an eager snapshot: it expands to the roles that exist when
+`deny()` is called, so roles added afterwards do not inherit the rule.
+
 ```php
 // Deny access to guests to search on customers
 $acl->deny("guests", "customers", "search");
@@ -909,8 +919,8 @@ $acl->deny("guests", "customers", ["search", "create"]);
 // Deny access to any role to browse on products
 $acl->deny("*", "products", "browse");
 
-// Deny access to any role to browse on any component
-$acl->deny("*", "*", "browse");
+// Deny access to any role to perform any action on any component
+$acl->deny("*", "*", "*");
 ```
 
 #### `dropComponentAccess()` { #acladaptermemory-dropcomponentaccess }

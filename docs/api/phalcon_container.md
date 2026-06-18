@@ -13,33 +13,6 @@ hide:
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Container.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\Container`** — implements [`Phalcon\Contracts\Container\Service\Collection`](phalcon_contracts.md#contractscontainerservicecollection)
@@ -611,33 +584,6 @@ Remove a parameter
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/ContainerFactory.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\ContainerFactory`** — implements [`Phalcon\Contracts\Container\Ioc\IocContainerFactory`](phalcon_contracts.md#contractscontaineriocioccontainerfactory)
@@ -700,33 +646,6 @@ Returns a new container
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/DefinitionType.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\Definition\DefinitionType`**
@@ -759,33 +678,6 @@ copies will be replaced with the actual Composer dependencies.
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/ClosureProcessor.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -843,33 +735,6 @@ Process the Closure
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/ObjectProcessor.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\Definition\Processor\ObjectProcessor`** — implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
@@ -925,33 +790,6 @@ Process the Object
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/ParameterProcessor.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -1009,32 +847,6 @@ Process the parameter
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/Processor.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. They
-are copied and re-implemented here because we need to support PHP 8.1.
-Once we move to min 8.4 and packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\Definition\Processor\Processor`**
@@ -1091,33 +903,6 @@ Process the definition
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/Processor/StringProcessor.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\Definition\Processor\StringProcessor`** — implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
@@ -1173,33 +958,6 @@ Process the class string
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/ServiceDefinition.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -1720,33 +1478,6 @@ Check if frozen
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Definition/ServiceLifetime.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\Definition\ServiceLifetime`**
@@ -1775,33 +1506,6 @@ copies will be replaced with the actual Composer dependencies.
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/CannotExtendResolved.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -1838,33 +1542,6 @@ Cannot extend a resolved service
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/CannotResolveParameter.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -1905,33 +1582,6 @@ Cannot resolve a parameter
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/CircularAliasFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `BaseException`
@@ -1968,32 +1618,6 @@ Circular Alias found
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ContainerThrowable.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. They
-are copied and re-implemented here because we need to support PHP 8.1.
-Once we move to min 8.4 and packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `Throwable`
@@ -2010,33 +1634,6 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Co
 
 <span class="badge badge--final">Final</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/EnvNotDefined.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -2071,33 +1668,6 @@ public function __construct( string $varname );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/Exception.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `BaseException`
@@ -2126,33 +1696,6 @@ __Uses__ `Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/FrozenDefinition.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -2190,33 +1733,6 @@ Definition is frozen
 <span class="badge badge--final">Final</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/InstanceNotFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `BaseException`
@@ -2249,33 +1765,6 @@ public function __construct( string $name );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/InvalidExtender.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -2316,33 +1805,6 @@ Invalid extender (not callable)
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/NoClassSet.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `BaseException`
@@ -2378,33 +1840,6 @@ No set for service
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/NoFactorySet.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -2442,33 +1877,6 @@ No factory for service
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/NoProcessorFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `BaseException`
@@ -2505,33 +1913,6 @@ No processor found
 <span class="badge badge--final">Final</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ParameterNotFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `BaseException`
@@ -2564,33 +1945,6 @@ public function __construct( string $name );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ServiceNotFound.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -2628,33 +1982,6 @@ Service not found
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Exceptions/ServiceNotRegistered.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - `BaseException`
@@ -2690,33 +2017,6 @@ Service not registered
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Provider/Cli.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -2756,33 +2056,6 @@ Provider for commonly used CLI applications
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Provider/Web.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Container\Provider\Web`** — implements [`Phalcon\Contracts\Container\Service\Provider`](phalcon_contracts.md#contractscontainerserviceprovider)
@@ -2820,33 +2093,6 @@ Provider for commonly used Web applications
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/ArrayValues.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -3017,33 +2263,6 @@ protected function resolveValues(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Call.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
@@ -3099,33 +2318,6 @@ Resolve the callable
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/CallableGet.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -3183,33 +2375,6 @@ Resolve to a closure on a get()
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/CallableNew.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
@@ -3266,33 +2431,6 @@ Resolve to a closure on a new()
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/CsEnv.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
@@ -3332,33 +2470,6 @@ Resolve the getEnv() from keys as a comma separated list
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Env.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -3459,33 +2570,6 @@ Return the env value
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/EnvDefault.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
@@ -3539,33 +2623,6 @@ Resolve an environment variable, returning the default if not defined
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/FunctionCall.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -3631,33 +2688,6 @@ Resolve a function
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Get.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
@@ -3713,33 +2743,6 @@ Resolve a shared instance
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/GetCall.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -3810,33 +2813,6 @@ Resolve a shared instance method call
 
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/Lazy.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -3924,33 +2900,6 @@ protected function resolveArguments(
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/LazyFactory.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -4141,33 +3090,6 @@ public static function staticCall(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/NewCall.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
@@ -4238,33 +3160,6 @@ Resolve a new instance method call
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/NewInstance.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
@@ -4320,33 +3215,6 @@ Resolve a new instance
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Lazy/StaticCall.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 
@@ -4417,33 +3285,6 @@ Resolve a static method call
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Container/Resolver/Resolver.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been heavily influenced by CapsulePHP.
-Additionally, there are implementations from ioc-interop, which is a
-Composer dependency, and from service-interop and resolver-interop. The
-latter two are copied and re-implemented here: service-interop is not yet
-published on Packagist, and resolver-interop requires PHP 8.4 (this project
-targets PHP 8.1). Once both packages become available and compatible, the
-copies will be replaced with the actual Composer dependencies.
-
-@link    https://github.com/capsulephp/di
-@license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
-
-@link    https://github.com/ioc-interop/interface
-@license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/service-interop/interface
-@license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
-
-@link    https://github.com/resolver-interop/interface/tree/1.x
-@license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
 
 <div class="api-tree" markdown>
 

@@ -15,6 +15,15 @@ hide:
 
 This component offers caching capabilities for your application.
 
+Event layering: cache operations can emit `cache:*` events from two layers.
+This facade fires `cache:before*`/`cache:after*` around each operation, and
+the underlying `Storage` adapter (whose `eventType` is `"cache"`) also fires
+`cache:before*`/`cache:after*` for the same operation. If an events manager
+is wired into both the facade and the adapter, a single call emits the event
+twice (once from each object). Wire the manager into one layer only; the
+facade is the supported source for cache-level events (it also emits the
+multi-key `cache:*Multiple` events).
+
 <div class="api-tree" markdown>
 
 - **`Phalcon\Cache\AbstractCache`** — implements [`Phalcon\Cache\CacheInterface`](#cachecacheinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
@@ -22,7 +31,7 @@ This component offers caching capabilities for your application.
 
 </div>
 
-__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Exception\CacheKeysNotIterable` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Cache\Exception\InvalidCacheKey` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Traversable`
+__Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Traversable`
 { .api-uses }
 
 ### Method Summary
@@ -32,6 +41,11 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>( <span class="st">AdapterInterface</span> <span class="sv">$adapter</span> )</code>
 <span class="desc">Constructor.</span>
+</a>
+<a class="api-item" href="#cacheabstractcache-get">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Fetches a value from the cache.</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-getadapter">
 <code class="vis vis-public">public</code>
@@ -44,6 +58,12 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 <code class="ret">ManagerInterface|null</code>
 <code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Get the event manager</span>
+</a>
+<a class="api-item" href="#cacheabstractcache-set">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Persists data in the cache, uniquely referenced by a key with an</span>
 </a>
 <a class="api-item" href="#cacheabstractcache-seteventsmanager">
 <code class="vis vis-public">public</code>
@@ -144,7 +164,7 @@ __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<div class="api-group">Public · 6</div>
 
 #### `__construct()` { #cacheabstractcache-__construct }
 
@@ -153,6 +173,17 @@ public function __construct( AdapterInterface $adapter );
 ```
 
 Constructor.
+
+#### `get()` { #cacheabstractcache-get }
+
+```php
+abstract public function get(
+    string $key,
+    mixed $defaultValue = null
+);
+```
+
+Fetches a value from the cache.
 
 #### `getAdapter()` { #cacheabstractcache-getadapter }
 
@@ -169,6 +200,19 @@ public function getEventsManager(): ManagerInterface|null;
 ```
 
 Get the event manager
+
+#### `set()` { #cacheabstractcache-set }
+
+```php
+abstract public function set(
+    string $key,
+    mixed $value,
+    mixed $ttl = null
+): bool;
+```
+
+Persists data in the cache, uniquely referenced by a key with an
+optional expiration TTL time.
 
 #### `setEventsManager()` { #cacheabstractcache-seteventsmanager }
 
@@ -884,185 +928,13 @@ Interface for Phalcon\Cache\Cache
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Cache\CacheInterface`**
+- [`Phalcon\Contracts\Cache\Cache`](phalcon_contracts.md#contractscachecache)
+    - **`Phalcon\Cache\CacheInterface`**
 
 </div>
 
-__Uses__ `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
+__Uses__ `Phalcon\Contracts\Cache\Cache`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#cachecacheinterface-clear">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">clear</span>()</code>
-<span class="desc">Wipes clean the entire cache&#039;s keys.</span>
-</a>
-<a class="api-item" href="#cachecacheinterface-delete">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">delete</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Delete an item from the cache by its unique key.</span>
-</a>
-<a class="api-item" href="#cachecacheinterface-deletemultiple">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">deleteMultiple</span>( <span class="st">mixed</span> <span class="sv">$keys</span> )</code>
-<span class="desc">Deletes multiple cache items in a single operation.</span>
-</a>
-<a class="api-item" href="#cachecacheinterface-get">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Fetches a value from the cache.</span>
-</a>
-<a class="api-item" href="#cachecacheinterface-getmultiple">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">getMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Obtains multiple cache items by their unique keys.</span>
-</a>
-<a class="api-item" href="#cachecacheinterface-has">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Determines whether an item is present in the cache.</span>
-</a>
-<a class="api-item" href="#cachecacheinterface-set">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Persists data in the cache, uniquely referenced by a key with an optional</span>
-</a>
-<a class="api-item" href="#cachecacheinterface-setmultiple">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">setMultiple</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$values</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Persists a set of key =&gt; value pairs in the cache, with an optional TTL.</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 8</div>
-
-#### `clear()` { #cachecacheinterface-clear }
-
-```php
-public function clear(): bool;
-```
-
-Wipes clean the entire cache's keys.
-
-#### `delete()` { #cachecacheinterface-delete }
-
-```php
-public function delete( string $key ): bool;
-```
-
-Delete an item from the cache by its unique key.
-
-#### `deleteMultiple()` { #cachecacheinterface-deletemultiple }
-
-```php
-public function deleteMultiple( mixed $keys ): bool;
-```
-
-Deletes multiple cache items in a single operation.
-
-#### `get()` { #cachecacheinterface-get }
-
-```php
-public function get(
-    string $key,
-    mixed $defaultValue = null
-);
-```
-
-Fetches a value from the cache.
-
-#### `getMultiple()` { #cachecacheinterface-getmultiple }
-
-```php
-public function getMultiple(
-    mixed $keys,
-    mixed $defaultValue = null
-);
-```
-
-Obtains multiple cache items by their unique keys.
-
-#### `has()` { #cachecacheinterface-has }
-
-```php
-public function has( string $key ): bool;
-```
-
-Determines whether an item is present in the cache.
-
-#### `set()` { #cachecacheinterface-set }
-
-```php
-public function set(
-    string $key,
-    mixed $value,
-    mixed $ttl = null
-): bool;
-```
-
-Persists data in the cache, uniquely referenced by a key with an optional
-expiration TTL time.
-
-#### `setMultiple()` { #cachecacheinterface-setmultiple }
-
-```php
-public function setMultiple(
-    mixed $values,
-    mixed $ttl = null
-): bool;
-```
-
-Persists a set of key => value pairs in the cache, with an optional TTL.
-
-
-## Cache\Exception\CacheKeysNotIterable
-
-<span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/CacheKeysNotIterable.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-<div class="api-tree" markdown>
-
-- `\Exception`
-    - [`Phalcon\Cache\Exception\InvalidArgumentException`](#cacheexceptioninvalidargumentexception)
-        - **`Phalcon\Cache\Exception\CacheKeysNotIterable`**
-
-</div>
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#cacheexceptioncachekeysnotiterable-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 1</div>
-
-#### `__construct()` { #cacheexceptioncachekeysnotiterable-__construct }
-
-```php
-public function __construct();
-```
 
 
 ## Cache\Exception\Exception
@@ -1091,47 +963,5 @@ Exceptions thrown in Phalcon\Cache will use this class
 
 - `\Exception`
     - **`Phalcon\Cache\Exception\InvalidArgumentException`**
-        - [`Phalcon\Cache\Exception\CacheKeysNotIterable`](#cacheexceptioncachekeysnotiterable)
-        - [`Phalcon\Cache\Exception\InvalidCacheKey`](#cacheexceptioninvalidcachekey)
 
 </div>
-
-
-## Cache\Exception\InvalidCacheKey
-
-<span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cache/Exception/InvalidCacheKey.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-<div class="api-tree" markdown>
-
-- `\Exception`
-    - [`Phalcon\Cache\Exception\InvalidArgumentException`](#cacheexceptioninvalidargumentexception)
-        - **`Phalcon\Cache\Exception\InvalidCacheKey`**
-
-</div>
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#cacheexceptioninvalidcachekey-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 1</div>
-
-#### `__construct()` { #cacheexceptioninvalidcachekey-__construct }
-
-```php
-public function __construct();
-```

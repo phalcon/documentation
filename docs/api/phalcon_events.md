@@ -321,10 +321,6 @@ if ($event->isCancelable()) {
 
 Phalcon\Events\EventInterface
 
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Events\Event} instead.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Events\Event`](phalcon_contracts.md#contractseventsevent)
@@ -342,10 +338,6 @@ __Uses__ `Phalcon\Contracts\Events\Event`
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/EventsAwareInterface.zep){ .src-btn }
 
 Phalcon\Events\EventsAwareInterface
-
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Events\EventsAware} instead.
 
 <div class="api-tree" markdown>
 
@@ -384,13 +376,6 @@ Exceptions thrown in Phalcon\Events will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/EventNotCancelable.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -427,13 +412,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventHandler.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -469,13 +447,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventSource.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -516,13 +487,6 @@ public function __construct(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidEventType.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -559,13 +523,6 @@ public function __construct( string $eventType );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/InvalidSubscriberConfiguration.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -601,13 +558,6 @@ public function __construct( string $eventName );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/Exceptions/NoListenersForEvent.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1332,10 +1282,6 @@ with no locally attached listeners.
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Events/ManagerInterface.zep){ .src-btn }
 
 Phalcon\Events\ManagerInterface
-
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Events\Manager} instead.
 
 <div class="api-tree" markdown>
 

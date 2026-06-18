@@ -23,7 +23,7 @@ All image adapters must use this class
 
 </div>
 
-__Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
+__Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
 { .api-uses }
 
 ### Method Summary
@@ -146,6 +146,87 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">checkHighLow</span>(<span class="prm"><span class="st">int</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$min</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$max</span><span class="sm"> = 100</span></span>)</code>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processbackground">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processBackground</span>(<span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
+<span class="desc">Renders the supplied colour onto the image as the background. Channels</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processblur">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processBlur</span>( <span class="st">int</span> <span class="sv">$radius</span> )</code>
+<span class="desc">Applies a blur. The radius is already clamped to 1-100.</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processcrop">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processCrop</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span></span>)</code>
+<span class="desc">Crops the image. Width, height and both offsets are already normalized</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processflip">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processFlip</span>( <span class="st">int</span> <span class="sv">$direction</span> )</code>
+<span class="desc">Flips the image. The direction is already normalized to</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processmask">
+<code class="vis vis-protected">protected</code>
+<code class="sig"><span class="sf">processMask</span>( <span class="st">AdapterInterface</span> <span class="sv">$mask</span> )</code>
+<span class="desc">Composites the supplied image as a mask onto this one. The mask is read</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processpixelate">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processPixelate</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
+<span class="desc">Pixelates the image. The amount is already at least 2.</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processreflection">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processReflection</span>(<span class="prm"><span class="st">int</span> <span class="sv">$height</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$fadeIn</span></span>)</code>
+<span class="desc">Adds a reflection. The height is clamped to the image height and the</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processrender">
+<code class="vis vis-protected">protected</code>
+<code class="sig"><span class="sf">processRender</span>(<span class="prm"><span class="st">string</span> <span class="sv">$extension</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
+<span class="desc">Renders the image to a binary string. The extension is non-empty and the</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processresize">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processResize</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
+<span class="desc">Resizes the image. Width and height are already resolved to positive</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processrotate">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processRotate</span>( <span class="st">int</span> <span class="sv">$degrees</span> )</code>
+<span class="desc">Rotates the image. The degrees value is already normalized to -180..180.</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processsave">
+<code class="vis vis-protected">protected</code>
+<code class="sig"><span class="sf">processSave</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$quality</span></span>)</code>
+<span class="desc">Saves the image to the supplied file path.</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processsharpen">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processSharpen</span>( <span class="st">int</span> <span class="sv">$amount</span> )</code>
+<span class="desc">Sharpens the image. The amount is already clamped to 1-100.</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processtext">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processText</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$red</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$green</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blue</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$size</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$fontFile</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Renders text onto the image. The opacity is clamped to 0-100 and the</span>
+</a>
+<a class="api-item" href="#imageadapterabstractadapter-processwatermark">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
+<span class="desc">Composites the supplied watermark onto this image. Offsets and opacity</span>
 </a>
 </div>
 
@@ -283,6 +364,11 @@ public function mask( AdapterInterface $mask ): AdapterInterface;
 
 Composite one image onto another
 
+The mask is read through its public render() output rather than its
+internal handle, so a mask created with a different backend composites
+correctly. The cost is one encode/decode round trip per call, which is
+worth knowing inside loops.
+
 #### `pixelate()` { #imageadapterabstractadapter-pixelate }
 
 ```php
@@ -382,7 +468,12 @@ public function watermark(
 
 Add a watermark to an image with the specified opacity
 
-<div class="api-group">Protected · 1</div>
+The watermark is read through its public render() output rather than its
+internal handle, so a watermark created with a different backend
+composites correctly. The cost is one encode/decode round trip per call,
+which is worth knowing inside loops.
+
+<div class="api-group">Protected · 15</div>
 
 #### `checkHighLow()` { #imageadapterabstractadapter-checkhighlow }
 
@@ -393,6 +484,166 @@ protected function checkHighLow(
     int $max = 100
 ): int;
 ```
+
+#### `processBackground()` { #imageadapterabstractadapter-processbackground }
+
+```php
+abstract protected function processBackground(
+    int $red,
+    int $green,
+    int $blue,
+    int $opacity
+): void;
+```
+
+Renders the supplied colour onto the image as the background. Channels
+are 0-255; the opacity is the validated 0-100 value.
+
+#### `processBlur()` { #imageadapterabstractadapter-processblur }
+
+```php
+abstract protected function processBlur( int $radius ): void;
+```
+
+Applies a blur. The radius is already clamped to 1-100.
+
+#### `processCrop()` { #imageadapterabstractadapter-processcrop }
+
+```php
+abstract protected function processCrop(
+    int $width,
+    int $height,
+    int $offsetX,
+    int $offsetY
+): void;
+```
+
+Crops the image. Width, height and both offsets are already normalized
+to fit within the current canvas.
+
+#### `processFlip()` { #imageadapterabstractadapter-processflip }
+
+```php
+abstract protected function processFlip( int $direction ): void;
+```
+
+Flips the image. The direction is already normalized to
+Enum::HORIZONTAL or Enum::VERTICAL.
+
+#### `processMask()` { #imageadapterabstractadapter-processmask }
+
+```php
+abstract protected function processMask( AdapterInterface $mask );
+```
+
+Composites the supplied image as a mask onto this one. The mask is read
+through its public render() output, so it may be any adapter backend.
+
+#### `processPixelate()` { #imageadapterabstractadapter-processpixelate }
+
+```php
+abstract protected function processPixelate( int $amount ): void;
+```
+
+Pixelates the image. The amount is already at least 2.
+
+#### `processReflection()` { #imageadapterabstractadapter-processreflection }
+
+```php
+abstract protected function processReflection(
+    int $height,
+    int $opacity,
+    bool $fadeIn
+): void;
+```
+
+Adds a reflection. The height is clamped to the image height and the
+opacity to 0-100.
+
+#### `processRender()` { #imageadapterabstractadapter-processrender }
+
+```php
+abstract protected function processRender(
+    string $extension,
+    int $quality
+);
+```
+
+Renders the image to a binary string. The extension is non-empty and the
+quality is already clamped to 1-100. Returns the encoded bytes.
+
+#### `processResize()` { #imageadapterabstractadapter-processresize }
+
+```php
+abstract protected function processResize(
+    int $width,
+    int $height
+): void;
+```
+
+Resizes the image. Width and height are already resolved to positive
+integers per the requested resize mode.
+
+#### `processRotate()` { #imageadapterabstractadapter-processrotate }
+
+```php
+abstract protected function processRotate( int $degrees ): void;
+```
+
+Rotates the image. The degrees value is already normalized to -180..180.
+
+#### `processSave()` { #imageadapterabstractadapter-processsave }
+
+```php
+abstract protected function processSave(
+    string $file,
+    int $quality
+);
+```
+
+Saves the image to the supplied file path.
+
+#### `processSharpen()` { #imageadapterabstractadapter-processsharpen }
+
+```php
+abstract protected function processSharpen( int $amount ): void;
+```
+
+Sharpens the image. The amount is already clamped to 1-100.
+
+#### `processText()` { #imageadapterabstractadapter-processtext }
+
+```php
+abstract protected function processText(
+    string $text,
+    mixed $offsetX,
+    mixed $offsetY,
+    int $opacity,
+    int $red,
+    int $green,
+    int $blue,
+    int $size,
+    string $fontFile = null
+): void;
+```
+
+Renders text onto the image. The opacity is clamped to 0-100 and the
+colour is supplied as separate 0-255 channels.
+
+#### `processWatermark()` { #imageadapterabstractadapter-processwatermark }
+
+```php
+abstract protected function processWatermark(
+    AdapterInterface $watermark,
+    int $offsetX,
+    int $offsetY,
+    int $opacity
+): void;
+```
+
+Composites the supplied watermark onto this image. Offsets and opacity
+are already clamped to the valid range; the watermark is read through
+its public render() output, so it may be any adapter backend.
 
 
 ## Image\Adapter\AdapterInterface
@@ -679,12 +930,21 @@ Add a watermark on an image
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Adapter/Gd.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
+Image manipulation backed by the GD extension.
 
-(c) Phalcon Team <team@phalcon.io>
+Capabilities:
 
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+| Aspect              | Support                                     |
+|---------------------|---------------------------------------------|
+| Load formats        | GIF, JPEG, JPEG 2000, PNG, WEBP, WBMP, XBM  |
+| Render/save formats | GIF, JPEG, PNG, WBMP, WEBP, XBM             |
+| Backend-only API    | none                                        |
+
+Unsupported render/save formats raise
+Phalcon\Image\Exceptions\UnsupportedImageType. Visual semantics differ from
+the Imagick adapter: blur() applies repeated 3x3 Gaussian convolutions
+(the radius is the number of passes), while sharpen and reflection use GD's
+own scales. Switching the factory backend can change the rendered output.
 
 <div class="api-tree" markdown>
 
@@ -702,11 +962,18 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 <a class="api-item" href="#imageadaptergd-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadaptergd-__destruct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__destruct</span>()</code>
 <span class="desc">Destructor</span>
+</a>
+<a class="api-item" href="#imageadaptergd-create">
+<code class="vis vis-public">public</code>
+<code class="ret">AbstractAdapter</code>
+<code class="sig"><span class="sf">create</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
+<span class="desc">Creates a blank true-color canvas of the given dimensions, without the</span>
 </a>
 <a class="api-item" href="#imageadaptergd-getversion">
 <code class="vis vis-public">public</code>
@@ -789,7 +1056,7 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<div class="api-group">Public · 4</div>
 
 #### `__construct()` { #imageadaptergd-__construct }
 
@@ -801,6 +1068,14 @@ public function __construct(
 );
 ```
 
+Loads an image from a file, or creates a blank canvas.
+
+When the file exists it is loaded. When the file does not exist and both
+a width and a height are supplied, a blank true-color canvas is created
+instead - its realpath, mime and type then describe a PNG canvas rather
+than the named file. Prefer Gd::create() for the canvas case; this dual
+mode is slated for removal in the next major version.
+
 #### `__destruct()` { #imageadaptergd-__destruct }
 
 ```php
@@ -808,6 +1083,18 @@ public function __destruct();
 ```
 
 Destructor
+
+#### `create()` { #imageadaptergd-create }
+
+```php
+public static function create(
+    int $width,
+    int $height
+): AbstractAdapter;
+```
+
+Creates a blank true-color canvas of the given dimensions, without the
+load-or-create ambiguity of the constructor.
 
 #### `getVersion()` { #imageadaptergd-getversion }
 
@@ -968,6 +1255,18 @@ if ($image->save()) {
 }
 ```
 
+Capabilities:
+
+| Aspect              | Support                                        |
+|---------------------|------------------------------------------------|
+| Load formats        | Whatever the linked ImageMagick build supports |
+| Render/save formats | Whatever the linked ImageMagick build supports |
+| Backend-only API    | liquidRescale(), setResourceLimit()            |
+
+Visual semantics differ from the Gd adapter: blur() maps the radius to a
+blur sigma, while sharpen and reflection use ImageMagick's own scales.
+Switching the factory backend can change the rendered output.
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
@@ -984,12 +1283,18 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <a class="api-item" href="#imageadapterimagick-__construct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$width</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Constructor</span>
+<span class="desc">Loads an image from a file, or creates a blank canvas.</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-__destruct">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__destruct</span>()</code>
 <span class="desc">Destroys the loaded image to free up resources.</span>
+</a>
+<a class="api-item" href="#imageadapterimagick-create">
+<code class="vis vis-public">public</code>
+<code class="ret">AbstractAdapter</code>
+<code class="sig"><span class="sf">create</span>(<span class="prm"><span class="st">int</span> <span class="sv">$width</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$height</span></span>)</code>
+<span class="desc">Creates a blank transparent canvas of the given dimensions, without the</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-liquidrescale">
 <code class="vis vis-public">public</code>
@@ -1030,7 +1335,7 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <a class="api-item" href="#imageadapterimagick-processmask">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processMask</span>( <span class="st">AdapterInterface</span> <span class="sv">$image</span> )</code>
+<code class="sig"><span class="sf">processMask</span>( <span class="st">AdapterInterface</span> <span class="sv">$mask</span> )</code>
 <span class="desc">Composite one image onto another</span>
 </a>
 <a class="api-item" href="#imageadapterimagick-processpixelate">
@@ -1084,7 +1389,7 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 <a class="api-item" href="#imageadapterimagick-processwatermark">
 <code class="vis vis-protected">protected</code>
 <code class="ret">void</code>
-<code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$image</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
+<code class="sig"><span class="sf">processWatermark</span>(<span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$watermark</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetX</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offsetY</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$opacity</span></span>)</code>
 <span class="desc">Add Watermark</span>
 </a>
 </div>
@@ -1101,7 +1406,7 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 
 ### Methods
 
-<div class="api-group">Public · 4</div>
+<div class="api-group">Public · 5</div>
 
 #### `__construct()` { #imageadapterimagick-__construct }
 
@@ -1113,7 +1418,13 @@ public function __construct(
 );
 ```
 
-Constructor
+Loads an image from a file, or creates a blank canvas.
+
+When the file exists it is loaded. When the file does not exist and both
+a width and a height are supplied, a blank transparent canvas is created
+instead - its realpath, mime and type then describe a PNG canvas rather
+than the named file. Prefer Imagick::create() for the canvas case; this
+dual mode is slated for removal in the next major version.
 
 #### `__destruct()` { #imageadapterimagick-__destruct }
 
@@ -1122,6 +1433,18 @@ public function __destruct();
 ```
 
 Destroys the loaded image to free up resources.
+
+#### `create()` { #imageadapterimagick-create }
+
+```php
+public static function create(
+    int $width,
+    int $height
+): AbstractAdapter;
+```
+
+Creates a blank transparent canvas of the given dimensions, without the
+load-or-create ambiguity of the constructor.
 
 #### `liquidRescale()` { #imageadapterimagick-liquidrescale }
 
@@ -1197,7 +1520,7 @@ Execute a flip.
 #### `processMask()` { #imageadapterimagick-processmask }
 
 ```php
-protected function processMask( AdapterInterface $image ): void;
+protected function processMask( AdapterInterface $mask ): void;
 ```
 
 Composite one image onto another
@@ -1293,7 +1616,7 @@ Execute a text
 
 ```php
 protected function processWatermark(
-    AdapterInterface $image,
+    AdapterInterface $watermark,
     int $offsetX,
     int $offsetY,
     int $opacity
@@ -1307,13 +1630,6 @@ Add Watermark
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Enum.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1377,6 +1693,7 @@ Exceptions thrown in Phalcon\Image will use this class
         - [`Phalcon\Image\Exceptions\CompositeFailed`](#imageexceptionscompositefailed)
         - [`Phalcon\Image\Exceptions\ExtensionNotLoaded`](#imageexceptionsextensionnotloaded)
         - [`Phalcon\Image\Exceptions\ImageLoadFailed`](#imageexceptionsimageloadfailed)
+        - [`Phalcon\Image\Exceptions\InvalidColor`](#imageexceptionsinvalidcolor)
         - [`Phalcon\Image\Exceptions\MissingDimensions`](#imageexceptionsmissingdimensions)
         - [`Phalcon\Image\Exceptions\MissingHeight`](#imageexceptionsmissingheight)
         - [`Phalcon\Image\Exceptions\MissingWidth`](#imageexceptionsmissingwidth)
@@ -1393,13 +1710,6 @@ Exceptions thrown in Phalcon\Image will use this class
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/CompositeFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1437,13 +1747,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ExtensionNotLoaded.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1480,13 +1783,6 @@ public function __construct( string $extension );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ImageLoadFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1518,17 +1814,46 @@ public function __construct( string $file );
 ```
 
 
+## Image\Exceptions\InvalidColor
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/InvalidColor.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\InvalidColor`**
+
+</div>
+
+__Uses__ `Phalcon\Image\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#imageexceptionsinvalidcolor-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$color</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #imageexceptionsinvalidcolor-__construct }
+
+```php
+public function __construct( string $color );
+```
+
+
 ## Image\Exceptions\MissingDimensions
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingDimensions.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1566,13 +1891,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingHeight.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1608,13 +1926,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/MissingWidth.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1652,13 +1963,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResizeFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1694,13 +1998,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/ResourceTypeError.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1738,13 +2035,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/TextRenderingFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1781,13 +2071,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/UnsupportedImageType.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1823,13 +2106,6 @@ public function __construct( string $format = "" );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Image/Exceptions/VersionMismatch.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 

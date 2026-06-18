@@ -25,7 +25,7 @@ Phalcon\Paginator\Adapter\AbstractAdapter
 
 </div>
 
-__Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
@@ -157,10 +157,6 @@ Gets current repository for pagination
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Adapter/AdapterInterface.zep){ .src-btn }
 
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Paginator\Adapter} instead.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Paginator\Adapter`](phalcon_contracts.md#contractspaginatoradapter)
@@ -247,12 +243,17 @@ $paginate = $paginator->paginate();
 
 </div>
 
-__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\RepositoryInterface`
+__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 { .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
+<a class="api-item" href="#paginatoradaptermodel-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$config</span> )</code>
+<span class="desc">Phalcon\Paginator\Adapter\Model constructor</span>
+</a>
 <a class="api-item" href="#paginatoradaptermodel-paginate">
 <code class="vis vis-public">public</code>
 <code class="ret">RepositoryInterface</code>
@@ -263,7 +264,15 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\ResultsetInterface` 
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<div class="api-group">Public · 2</div>
+
+#### `__construct()` { #paginatoradaptermodel-__construct }
+
+```php
+public function __construct( array $config );
+```
+
+Phalcon\Paginator\Adapter\Model constructor
 
 #### `paginate()` { #paginatoradaptermodel-paginate }
 
@@ -418,7 +427,9 @@ __Uses__ `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Pagi
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|string</code>
 <code class="sig"><span class="sv">$columns</span></code>
-<span class="desc">Columns for count query if builder has having or group by</span>
+<span class="desc">Column list used only for COUNT rewriting when the builder carries a
+HAVING or GROUP BY clause. It supplies the columns for the subquery
+that counts the grouped/having result set and is ignored otherwise.</span>
 </div>
 </div>
 
@@ -433,6 +444,11 @@ public function __construct( array $config );
 ```
 
 Phalcon\Paginator\Adapter\QueryBuilder
+
+The `columns` option is not a projection for the paginated rows; it is
+consumed solely by the total-count rewrite when the builder has a
+HAVING or GROUP BY clause (it becomes the column list of the counting
+subquery). It has no effect on plain queries.
 
 #### `getCurrentPage()` { #paginatoradapterquerybuilder-getcurrentpage }
 
@@ -707,13 +723,6 @@ Exceptions thrown in Phalcon\Paginator will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/BuilderModelNotDefined.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -749,13 +758,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidBuilderInstance.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -793,13 +795,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidCursorColumn.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -835,13 +830,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/InvalidLimit.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -879,13 +867,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingColumnsForHaving.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -921,13 +902,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/MissingRequiredParameter.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -976,13 +950,6 @@ public function getParameter(): string;
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/Exceptions/PaginatorDataNotArray.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1018,13 +985,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/PaginatorFactory.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1400,10 +1360,6 @@ Resolve alias property name
 
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Paginator/RepositoryInterface.zep){ .src-btn }
-
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Paginator\Repository} instead.
 
 <div class="api-tree" markdown>
 

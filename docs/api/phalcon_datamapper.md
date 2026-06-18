@@ -1736,13 +1736,6 @@ Locator could not find a named connection.
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/DriverNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `InvalidArgumentException`
@@ -1795,13 +1788,6 @@ Base Exception class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/UnknownDriverMethod.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `BadMethodCallException`
@@ -1836,13 +1822,6 @@ public function __construct( string $message );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/DataMapper/Pdo/Exception/UnknownQueryMethod.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2224,7 +2203,7 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\Exception` Â· `Phalcon\Logger\Enum` Â
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
+<code class="ret">int|string</code>
 <code class="sig"><span class="sv">$logLevel</span><span class="sm"> = 0</span></code>
 </div>
 <div class="api-item">

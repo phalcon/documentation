@@ -85,11 +85,6 @@ __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiI
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">DiInterface|null</code>
-<code class="sig"><span class="sv">$container</span><span class="sm"> = null</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$defaultModule</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
@@ -214,13 +209,6 @@ Exceptions thrown in Phalcon\Application class will use this class
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Application/Exceptions/ModuleNotRegistered.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 

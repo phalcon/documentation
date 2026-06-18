@@ -64,7 +64,7 @@ try {
 
 </div>
 
-__Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidWhereConditions` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\InvalidWhereConditions` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -408,7 +408,7 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setup</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-<span class="desc">Enables/disables options in the Database component</span>
+<span class="desc">Enables/disables options in the Database component.</span>
 </a>
 <a class="api-item" href="#dbadapterabstractadapter-sharedlock">
 <code class="vis vis-public">public</code>
@@ -489,7 +489,7 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">object</code>
+<code class="ret">DialectInterface</code>
 <code class="sig"><span class="sv">$dialect</span></code>
 <span class="desc">Dialect instance</span>
 </div>
@@ -560,6 +560,10 @@ public function __construct( array $descriptor );
 ```
 
 Phalcon\Db\Adapter constructor
+
+Note: the `options` key is forwarded to the static `setup()` method,
+which writes process-global settings affecting every connection in the
+process. See `setup()`.
 
 #### `addCheck()` { #dbadapterabstractadapter-addcheck }
 
@@ -691,6 +695,8 @@ $success = $connection->delete(
 DELETE FROM `robots` WHERE `id` = 101
 ```
 
+Warning! If $whereCondition is string it not escaped.
+
 #### `describeIndexes()` { #dbadapterabstractadapter-describeindexes }
 
 ```php
@@ -708,6 +714,13 @@ print_r(
 );
 ```
 
+This base implementation consumes the dialect's `describeIndexes()` SQL
+as `FETCH_NUM` rows by position: column index 2 is the index key name and
+column index 4 is the indexed column name. A custom dialect's
+`describeIndexes()` SQL must emit columns in that order, or a custom
+adapter must override this method. All bundled adapters except PostgreSQL
+override it.
+
 #### `describeReferences()` { #dbadapterabstractadapter-describereferences }
 
 ```php
@@ -724,6 +737,15 @@ print_r(
     $connection->describeReferences("robots_parts")
 );
 ```
+
+This base implementation consumes the dialect's `describeReferences()`
+SQL as `FETCH_NUM` rows by position: index 1 is the local column, index 2
+the constraint name, index 3 the referenced schema, index 4 the
+referenced table, and index 5 the referenced column. A custom dialect's
+`describeReferences()` SQL must emit columns in that order, or a custom
+adapter must override this method. Every bundled adapter (MySQL,
+PostgreSQL, SQLite) overrides it, so this base implementation has no
+in-tree caller and effectively assumes the PostgreSQL row shape.
 
 #### `dropCheck()` { #dbadapterabstractadapter-dropcheck }
 
@@ -1298,7 +1320,15 @@ Set if nested transactions should use savepoints
 public static function setup( array $options ): void;
 ```
 
-Enables/disables options in the Database component
+Enables/disables options in the Database component.
+
+The flags are stored as process-global `Phalcon\Support\Settings`
+(`db.escape_identifiers`, `db.force_casting`) and therefore affect every
+connection in the process at once, last-writer-wins. Call this once at
+bootstrap; it is not per-connection configuration. Because the
+constructor calls `setup()` whenever a descriptor carries an `options`
+key, constructing one adapter with `options` can change the SQL another,
+already-configured connection generates.
 
 #### `sharedLock()` { #dbadapterabstractadapter-sharedlock }
 
@@ -1330,8 +1360,6 @@ public function supportsDefaultValue(): bool;
 
 Check whether the database system support the DEFAULT
 keyword (SQLite does not support it)
-
-@deprecated Will re removed in the next version
 
 #### `tableExists()` { #dbadapterabstractadapter-tableexists }
 
@@ -1474,10 +1502,6 @@ var_dump(
 
 Phalcon\Db\Adapter\AdapterInterface
 
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Db\Adapter\Adapter} instead.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Db\Adapter\Adapter`](phalcon_contracts.md#contractsdbadapteradapter)
@@ -1493,13 +1517,6 @@ __Uses__ `Phalcon\Contracts\Db\Adapter\Adapter`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Adapter/PdoFactory.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2714,8 +2731,6 @@ public function supportsDefaultValue(): bool;
 
 SQLite does not support the DEFAULT keyword
 
-@deprecated Will re removed in the next version
-
 #### `useExplicitIdValue()` { #dbadapterpdosqlite-useexplicitidvalue }
 
 ```php
@@ -2858,10 +2873,6 @@ Returns the constraint name (may be an empty string for unnamed)
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/CheckInterface.zep){ .src-btn }
 
 Phalcon\Db\CheckInterface
-
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Db\Check} instead.
 
 <div class="api-tree" markdown>
 
@@ -3673,10 +3684,6 @@ Returns true if number column is unsigned
 
 Phalcon\Db\ColumnInterface
 
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Db\Column} instead.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Db\Column`](phalcon_contracts.md#contractsdbcolumn)
@@ -3705,7 +3712,7 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 </div>
 
-__Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -3825,11 +3832,35 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 <code class="sig"><span class="sf">select</span>( <span class="st">array</span> <span class="sv">$definition</span> )</code>
 <span class="desc">Builds a SELECT statement</span>
 </a>
+<a class="api-item" href="#dbdialect-supportsaltertable">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsAlterTable</span>()</code>
+<span class="desc">Checks whether the platform supports the full <code>ALTER TABLE</code> matrix:</span>
+</a>
+<a class="api-item" href="#dbdialect-supportsmaterializedviews">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsMaterializedViews</span>()</code>
+<span class="desc">Checks whether the platform supports materialized views. Only PostgreSQL</span>
+</a>
+<a class="api-item" href="#dbdialect-supportsonconflictupdate">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsOnConflictUpdate</span>()</code>
+<span class="desc">Checks whether the platform supports the <code>ON CONFLICT (...) DO UPDATE</code></span>
+</a>
 <a class="api-item" href="#dbdialect-supportsreleasesavepoints">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">supportsReleaseSavepoints</span>()</code>
 <span class="desc">Checks whether the platform supports releasing savepoints.</span>
+</a>
+<a class="api-item" href="#dbdialect-supportsreturning">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsReturning</span>()</code>
+<span class="desc">Checks whether the platform supports the <code>RETURNING</code> clause. MySQL</span>
 </a>
 <a class="api-item" href="#dbdialect-supportssavepoints">
 <code class="vis vis-public">public</code>
@@ -4020,11 +4051,25 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$escapeChar</span></code>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$guardedOperators</span><span class="sm"> = [...]</span></code>
+<span class="desc">Dialect-specific operators that a concrete dialect must opt into
+via supportedOperators; using one elsewhere throws.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$supportedOperators</span><span class="sm"> = []</span></code>
+<span class="desc">Subset of guardedOperators that this dialect emits. Overridden per
+dialect.</span>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 21</div>
+<div class="api-group">Public · 25</div>
 
 #### `createMaterializedView()` { #dbdialect-creatematerializedview }
 
@@ -4282,6 +4327,36 @@ public function select( array $definition ): string;
 
 Builds a SELECT statement
 
+#### `supportsAlterTable()` { #dbdialect-supportsaltertable }
+
+```php
+public function supportsAlterTable(): bool;
+```
+
+Checks whether the platform supports the full `ALTER TABLE` matrix:
+modifying existing columns and adding or dropping foreign keys, primary
+keys, and check constraints. SQLite returns false - those operations
+throw a dedicated `Sqlite*NotSupported` exception there (basic
+`ADD COLUMN` remains available).
+
+#### `supportsMaterializedViews()` { #dbdialect-supportsmaterializedviews }
+
+```php
+public function supportsMaterializedViews(): bool;
+```
+
+Checks whether the platform supports materialized views. Only PostgreSQL
+returns true; `createMaterializedView()` throws on the other dialects.
+
+#### `supportsOnConflictUpdate()` { #dbdialect-supportsonconflictupdate }
+
+```php
+public function supportsOnConflictUpdate(): bool;
+```
+
+Checks whether the platform supports the `ON CONFLICT (...) DO UPDATE`
+upsert clause. MySQL returns false; `onConflictUpdate()` throws there.
+
 #### `supportsReleaseSavepoints()` { #dbdialect-supportsreleasesavepoints }
 
 ```php
@@ -4289,6 +4364,15 @@ public function supportsReleaseSavepoints(): bool;
 ```
 
 Checks whether the platform supports releasing savepoints.
+
+#### `supportsReturning()` { #dbdialect-supportsreturning }
+
+```php
+public function supportsReturning(): bool;
+```
+
+Checks whether the platform supports the `RETURNING` clause. MySQL
+returns false; `returning()` throws there.
 
 #### `supportsSavepoints()` { #dbdialect-supportssavepoints }
 
@@ -4636,10 +4720,6 @@ Prepares table for this RDBMS
 
 Phalcon\Db\DialectInterface
 
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Db\Dialect} instead.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Db\Dialect`](phalcon_contracts.md#contractsdbdialect)
@@ -4815,6 +4895,12 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a SQL modified with a LOCK IN SHARE MODE clause. The <code>modifier</code></span>
 </a>
+<a class="api-item" href="#dbdialectmysql-supportsonconflictupdate">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsOnConflictUpdate</span>()</code>
+<span class="desc">MySQL does not support the SQL-standard <code>ON CONFLICT (...) DO UPDATE</code></span>
+</a>
 <a class="api-item" href="#dbdialectmysql-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -4855,11 +4941,16 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$escapeChar</span><span class="sm"> = &quot;`&quot;</span></code>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$supportedOperators</span><span class="sm"> = [...]</span></code>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 28</div>
+<div class="api-group">Public · 29</div>
 
 #### `addCheck()` { #dbdialectmysql-addcheck }
 
@@ -5156,6 +5247,15 @@ $sql = $dialect->sharedLock("SELECT * FROM robots");
 echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 ```
 
+#### `supportsOnConflictUpdate()` { #dbdialectmysql-supportsonconflictupdate }
+
+```php
+public function supportsOnConflictUpdate(): bool;
+```
+
+MySQL does not support the SQL-standard `ON CONFLICT (...) DO UPDATE`
+upsert clause; `onConflictUpdate()` throws.
+
 #### `tableExists()` { #dbdialectmysql-tableexists }
 
 ```php
@@ -5393,6 +5493,18 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Returns a SQL modified with a <code>FOR SHARE</code> clause - PostgreSQL&#039;s</span>
 </a>
+<a class="api-item" href="#dbdialectpostgresql-supportsmaterializedviews">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsMaterializedViews</span>()</code>
+<span class="desc">PostgreSQL supports materialized views (<code>CREATE MATERIALIZED VIEW</code>).</span>
+</a>
+<a class="api-item" href="#dbdialectpostgresql-supportsreturning">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsReturning</span>()</code>
+<span class="desc">PostgreSQL supports the <code>RETURNING</code> clause.</span>
+</a>
 <a class="api-item" href="#dbdialectpostgresql-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -5437,11 +5549,16 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$escapeChar</span><span class="sm"> = &quot;\&quot;&quot;</span></code>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$supportedOperators</span><span class="sm"> = [...]</span></code>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 30</div>
+<div class="api-group">Public · 32</div>
 
 #### `addCheck()` { #dbdialectpostgresql-addcheck }
 
@@ -5767,6 +5884,22 @@ echo $dialect->sharedLock(
 // SELECT * FROM robots FOR SHARE NOWAIT
 ```
 
+#### `supportsMaterializedViews()` { #dbdialectpostgresql-supportsmaterializedviews }
+
+```php
+public function supportsMaterializedViews(): bool;
+```
+
+PostgreSQL supports materialized views (`CREATE MATERIALIZED VIEW`).
+
+#### `supportsReturning()` { #dbdialectpostgresql-supportsreturning }
+
+```php
+public function supportsReturning(): bool;
+```
+
+PostgreSQL supports the `RETURNING` clause.
+
 #### `tableExists()` { #dbdialectpostgresql-tableexists }
 
 ```php
@@ -6008,6 +6141,18 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <code class="sig"><span class="sf">sharedLock</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sqlQuery</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modifier</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">SQLite has no row-level shared-lock construct, so the original query</span>
 </a>
+<a class="api-item" href="#dbdialectsqlite-supportsaltertable">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsAlterTable</span>()</code>
+<span class="desc">SQLite cannot modify existing columns or add/drop foreign keys, primary</span>
+</a>
+<a class="api-item" href="#dbdialectsqlite-supportsreturning">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">supportsReturning</span>()</code>
+<span class="desc">SQLite (3.35+) supports the <code>RETURNING</code> clause.</span>
+</a>
 <a class="api-item" href="#dbdialectsqlite-tableexists">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -6042,11 +6187,16 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$escapeChar</span><span class="sm"> = &quot;\&quot;&quot;</span></code>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$supportedOperators</span><span class="sm"> = [...]</span></code>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 30</div>
+<div class="api-group">Public · 32</div>
 
 #### `addCheck()` { #dbdialectsqlite-addcheck }
 
@@ -6368,6 +6518,24 @@ public function sharedLock(
 SQLite has no row-level shared-lock construct, so the original query
 is returned unchanged regardless of the `modifier` argument.
 
+#### `supportsAlterTable()` { #dbdialectsqlite-supportsaltertable }
+
+```php
+public function supportsAlterTable(): bool;
+```
+
+SQLite cannot modify existing columns or add/drop foreign keys, primary
+keys, or check constraints through `ALTER TABLE`; those operations throw
+a dedicated `Sqlite*NotSupported` exception.
+
+#### `supportsReturning()` { #dbdialectsqlite-supportsreturning }
+
+```php
+public function supportsReturning(): bool;
+```
+
+SQLite (3.35+) supports the `RETURNING` clause.
+
 #### `tableExists()` { #dbdialectsqlite-tableexists }
 
 ```php
@@ -6539,6 +6707,7 @@ Exceptions thrown in Phalcon\Db will use this class
         - [`Phalcon\Db\Exceptions\IncompleteBindTypes`](#dbexceptionsincompletebindtypes)
         - [`Phalcon\Db\Exceptions\InvalidBindParameter`](#dbexceptionsinvalidbindparameter)
         - [`Phalcon\Db\Exceptions\InvalidCheckExpression`](#dbexceptionsinvalidcheckexpression)
+        - [`Phalcon\Db\Exceptions\InvalidDialectClass`](#dbexceptionsinvaliddialectclass)
         - [`Phalcon\Db\Exceptions\InvalidGenerationExpression`](#dbexceptionsinvalidgenerationexpression)
         - [`Phalcon\Db\Exceptions\InvalidGroupByExpression`](#dbexceptionsinvalidgroupbyexpression)
         - [`Phalcon\Db\Exceptions\InvalidIndexColumns`](#dbexceptionsinvalidindexcolumns)
@@ -6550,6 +6719,7 @@ Exceptions thrown in Phalcon\Db will use this class
         - [`Phalcon\Db\Exceptions\InvalidSqlExpressionType`](#dbexceptionsinvalidsqlexpressiontype)
         - [`Phalcon\Db\Exceptions\InvalidUnaryExpression`](#dbexceptionsinvalidunaryexpression)
         - [`Phalcon\Db\Exceptions\InvalidWhereConditions`](#dbexceptionsinvalidwhereconditions)
+        - [`Phalcon\Db\Exceptions\InvalidWkb`](#dbexceptionsinvalidwkb)
         - [`Phalcon\Db\Exceptions\MatchedParameterNotFound`](#dbexceptionsmatchedparameternotfound)
         - [`Phalcon\Db\Exceptions\MaterializedViewsNotSupported`](#dbexceptionsmaterializedviewsnotsupported)
         - [`Phalcon\Db\Exceptions\MissingDefinitionKey`](#dbexceptionsmissingdefinitionkey)
@@ -6573,6 +6743,7 @@ Exceptions thrown in Phalcon\Db will use this class
         - [`Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported`](#dbexceptionssqlitedropprimarykeynotsupported)
         - [`Phalcon\Db\Exceptions\TableMustHaveColumn`](#dbexceptionstablemusthavecolumn)
         - [`Phalcon\Db\Exceptions\UnrecognizedDataType`](#dbexceptionsunrecognizeddatatype)
+        - [`Phalcon\Db\Exceptions\UnsupportedOperator`](#dbexceptionsunsupportedoperator)
         - [`Phalcon\Db\Exceptions\UpdateFieldCountMismatch`](#dbexceptionsupdatefieldcountmismatch)
 
 </div>
@@ -6582,13 +6753,6 @@ Exceptions thrown in Phalcon\Db will use this class
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/CannotInsertWithoutData.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -6626,13 +6790,6 @@ public function __construct( string $table );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/CannotPrepareStatement.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -6668,13 +6825,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/CheckExpressionRequired.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -6712,13 +6862,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ColumnTypeRejectsAutoIncrement.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -6754,13 +6897,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ColumnTypeRejectsScale.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -6798,13 +6934,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ColumnTypeRequired.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -6840,13 +6969,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ConflictTargetColumnRequired.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -6884,13 +7006,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ConflictUpdateColumnRequired.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -6926,13 +7041,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ForeignKeyColumnsRequired.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -6970,13 +7078,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/GeneratedAutoIncrementConflict.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7012,13 +7113,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/GeneratedDefaultConflict.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7056,13 +7150,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/IncompleteBindTypes.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7098,13 +7185,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidBindParameter.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7142,13 +7222,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidCheckExpression.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7180,17 +7253,46 @@ public function __construct();
 ```
 
 
+## Db\Exceptions\InvalidDialectClass
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidDialectClass.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidDialectClass`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbexceptionsinvaliddialectclass-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #dbexceptionsinvaliddialectclass-__construct }
+
+```php
+public function __construct( string $className );
+```
+
+
 ## Db\Exceptions\InvalidGenerationExpression
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidGenerationExpression.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7228,13 +7330,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidGroupByExpression.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7270,13 +7365,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidIndexColumns.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7314,13 +7402,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidIndexDirections.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7356,13 +7437,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidIndexWhere.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7400,13 +7474,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidListExpression.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7442,13 +7509,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidOrderByExpression.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7486,13 +7546,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidSqlExpression.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7528,13 +7581,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidSqlExpressionType.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7572,13 +7618,6 @@ public function __construct( string $type );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidUnaryExpression.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7615,13 +7654,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidWhereConditions.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7653,17 +7685,46 @@ public function __construct();
 ```
 
 
+## Db\Exceptions\InvalidWkb
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/InvalidWkb.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidWkb`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbexceptionsinvalidwkb-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$reason</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #dbexceptionsinvalidwkb-__construct }
+
+```php
+public function __construct( string $reason );
+```
+
+
 ## Db\Exceptions\MatchedParameterNotFound
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MatchedParameterNotFound.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7701,13 +7762,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MaterializedViewsNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7743,13 +7797,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MissingDefinitionKey.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7787,13 +7834,6 @@ public function __construct( string $key );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MissingForeignKeyChecks.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7829,13 +7869,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MissingSqliteDatabase.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7873,13 +7906,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/MysqlOnConflictNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -7915,13 +7941,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/NestedTransactionChangeBlocked.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -7959,13 +7978,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/NoActiveTransaction.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8001,13 +8013,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReferencedColumnCountMismatch.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8045,13 +8050,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReferencedColumnsRequired.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8087,13 +8085,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReferencedTableRequired.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8131,13 +8122,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReturningNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8173,13 +8157,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/ReturningRequiresColumn.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8217,13 +8194,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SavepointsNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8259,13 +8229,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterCheckNotSupported.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8303,13 +8266,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterColumnNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8345,13 +8301,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterForeignKeyNotSupported.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8389,13 +8338,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteAlterPrimaryKeyNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8431,13 +8373,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteDropCheckNotSupported.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8475,13 +8410,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteDropForeignKeyNotSupported.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8517,13 +8445,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/SqliteDropPrimaryKeyNotSupported.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8561,13 +8482,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/TableMustHaveColumn.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8604,13 +8518,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/UnrecognizedDataType.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -8645,17 +8552,46 @@ public function __construct(
 ```
 
 
+## Db\Exceptions\UnsupportedOperator
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/UnsupportedOperator.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\UnsupportedOperator`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbexceptionsunsupportedoperator-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$operator</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #dbexceptionsunsupportedoperator-__construct }
+
+```php
+public function __construct( string $operator );
+```
+
+
 ## Db\Exceptions\UpdateFieldCountMismatch
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Exceptions/UpdateFieldCountMismatch.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -8685,6 +8621,891 @@ __Uses__ `Phalcon\Db\Exception`
 
 ```php
 public function __construct();
+```
+
+
+## Db\Geometry\AbstractGeometry
+
+<span class="badge badge--abstract">Abstract</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/AbstractGeometry.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Db\Geometry\AbstractGeometry`** — implements [`Phalcon\Db\Geometry\GeometryInterface`](#dbgeometrygeometryinterface)
+    - [`Phalcon\Db\Geometry\GeometryCollection`](#dbgeometrygeometrycollection)
+    - [`Phalcon\Db\Geometry\LineString`](#dbgeometrylinestring)
+    - [`Phalcon\Db\Geometry\MultiLineString`](#dbgeometrymultilinestring)
+    - [`Phalcon\Db\Geometry\MultiPoint`](#dbgeometrymultipoint)
+    - [`Phalcon\Db\Geometry\MultiPolygon`](#dbgeometrymultipolygon)
+    - [`Phalcon\Db\Geometry\Point`](#dbgeometrypoint)
+    - [`Phalcon\Db\Geometry\Polygon`](#dbgeometrypolygon)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometryabstractgeometry-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometryabstractgeometry-getsrid">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getSrid</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometryabstractgeometry-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometryabstractgeometry-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$srid</span><span class="sm"> = 0</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `__toString()` { #dbgeometryabstractgeometry-__tostring }
+
+```php
+public function __toString(): string;
+```
+
+#### `getSrid()` { #dbgeometryabstractgeometry-getsrid }
+
+```php
+public function getSrid(): int;
+```
+
+#### `getType()` { #dbgeometryabstractgeometry-gettype }
+
+```php
+abstract public function getType(): int;
+```
+
+#### `toWkt()` { #dbgeometryabstractgeometry-towkt }
+
+```php
+abstract public function toWkt(): string;
+```
+
+
+## Db\Geometry\GeometryCollection
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/GeometryCollection.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
+    - **`Phalcon\Db\Geometry\GeometryCollection`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Column`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrygeometrycollection-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$geometries</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span><span class="sm"> = 0</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrygeometrycollection-getgeometries">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getGeometries</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrygeometrycollection-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrygeometrycollection-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$geometries</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `__construct()` { #dbgeometrygeometrycollection-__construct }
+
+```php
+public function __construct(
+    array $geometries,
+    int $srid = 0
+);
+```
+
+#### `getGeometries()` { #dbgeometrygeometrycollection-getgeometries }
+
+```php
+public function getGeometries(): array;
+```
+
+#### `getType()` { #dbgeometrygeometrycollection-gettype }
+
+```php
+public function getType(): int;
+```
+
+#### `toWkt()` { #dbgeometrygeometrycollection-towkt }
+
+```php
+public function toWkt(): string;
+```
+
+
+## Db\Geometry\GeometryInterface
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/GeometryInterface.zep){ .src-btn }
+
+Phalcon\Db\Geometry\GeometryInterface
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Db\Geometry\Geometry`](phalcon_contracts.md#contractsdbgeometrygeometry)
+    - **`Phalcon\Db\Geometry\GeometryInterface`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Db\Geometry\Geometry`
+{ .api-uses }
+
+
+## Db\Geometry\LineString
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/LineString.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
+    - **`Phalcon\Db\Geometry\LineString`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Column`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrylinestring-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$points</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span><span class="sm"> = 0</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrylinestring-getpoints">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getPoints</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrylinestring-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrylinestring-pointswkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">pointsWkt</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrylinestring-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$points</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 5</div>
+
+#### `__construct()` { #dbgeometrylinestring-__construct }
+
+```php
+public function __construct(
+    array $points,
+    int $srid = 0
+);
+```
+
+#### `getPoints()` { #dbgeometrylinestring-getpoints }
+
+```php
+public function getPoints(): array;
+```
+
+#### `getType()` { #dbgeometrylinestring-gettype }
+
+```php
+public function getType(): int;
+```
+
+#### `pointsWkt()` { #dbgeometrylinestring-pointswkt }
+
+```php
+public function pointsWkt(): string;
+```
+
+#### `toWkt()` { #dbgeometrylinestring-towkt }
+
+```php
+public function toWkt(): string;
+```
+
+
+## Db\Geometry\MultiLineString
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/MultiLineString.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
+    - **`Phalcon\Db\Geometry\MultiLineString`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Column`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrymultilinestring-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$lineStrings</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span><span class="sm"> = 0</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrymultilinestring-getlinestrings">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getLineStrings</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrymultilinestring-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrymultilinestring-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$lineStrings</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `__construct()` { #dbgeometrymultilinestring-__construct }
+
+```php
+public function __construct(
+    array $lineStrings,
+    int $srid = 0
+);
+```
+
+#### `getLineStrings()` { #dbgeometrymultilinestring-getlinestrings }
+
+```php
+public function getLineStrings(): array;
+```
+
+#### `getType()` { #dbgeometrymultilinestring-gettype }
+
+```php
+public function getType(): int;
+```
+
+#### `toWkt()` { #dbgeometrymultilinestring-towkt }
+
+```php
+public function toWkt(): string;
+```
+
+
+## Db\Geometry\MultiPoint
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/MultiPoint.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
+    - **`Phalcon\Db\Geometry\MultiPoint`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Column`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrymultipoint-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$points</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span><span class="sm"> = 0</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrymultipoint-getpoints">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getPoints</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrymultipoint-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrymultipoint-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$points</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `__construct()` { #dbgeometrymultipoint-__construct }
+
+```php
+public function __construct(
+    array $points,
+    int $srid = 0
+);
+```
+
+#### `getPoints()` { #dbgeometrymultipoint-getpoints }
+
+```php
+public function getPoints(): array;
+```
+
+#### `getType()` { #dbgeometrymultipoint-gettype }
+
+```php
+public function getType(): int;
+```
+
+#### `toWkt()` { #dbgeometrymultipoint-towkt }
+
+```php
+public function toWkt(): string;
+```
+
+
+## Db\Geometry\MultiPolygon
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/MultiPolygon.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
+    - **`Phalcon\Db\Geometry\MultiPolygon`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Column`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrymultipolygon-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$polygons</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span><span class="sm"> = 0</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrymultipolygon-getpolygons">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getPolygons</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrymultipolygon-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrymultipolygon-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$polygons</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `__construct()` { #dbgeometrymultipolygon-__construct }
+
+```php
+public function __construct(
+    array $polygons,
+    int $srid = 0
+);
+```
+
+#### `getPolygons()` { #dbgeometrymultipolygon-getpolygons }
+
+```php
+public function getPolygons(): array;
+```
+
+#### `getType()` { #dbgeometrymultipolygon-gettype }
+
+```php
+public function getType(): int;
+```
+
+#### `toWkt()` { #dbgeometrymultipolygon-towkt }
+
+```php
+public function toWkt(): string;
+```
+
+
+## Db\Geometry\Point
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/Point.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
+    - **`Phalcon\Db\Geometry\Point`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Column`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrypoint-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">double</span> <span class="sv">$x</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$y</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span><span class="sm"> = 0</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrypoint-coordswkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">coordsWkt</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrypoint-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrypoint-getx">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getX</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrypoint-gety">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getY</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrypoint-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">float</code>
+<code class="sig"><span class="sv">$x</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">float</code>
+<code class="sig"><span class="sv">$y</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `__construct()` { #dbgeometrypoint-__construct }
+
+```php
+public function __construct(
+    double $x,
+    double $y,
+    int $srid = 0
+);
+```
+
+#### `coordsWkt()` { #dbgeometrypoint-coordswkt }
+
+```php
+public function coordsWkt(): string;
+```
+
+#### `getType()` { #dbgeometrypoint-gettype }
+
+```php
+public function getType(): int;
+```
+
+#### `getX()` { #dbgeometrypoint-getx }
+
+```php
+public function getX(): double;
+```
+
+#### `getY()` { #dbgeometrypoint-gety }
+
+```php
+public function getY(): double;
+```
+
+#### `toWkt()` { #dbgeometrypoint-towkt }
+
+```php
+public function toWkt(): string;
+```
+
+
+## Db\Geometry\Polygon
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/Polygon.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
+    - **`Phalcon\Db\Geometry\Polygon`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Column`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrypolygon-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">array</span> <span class="sv">$rings</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span><span class="sm"> = 0</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrypolygon-getrings">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getRings</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrypolygon-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrypolygon-ringswkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">ringsWkt</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrypolygon-towkt">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">toWkt</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$rings</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 5</div>
+
+#### `__construct()` { #dbgeometrypolygon-__construct }
+
+```php
+public function __construct(
+    array $rings,
+    int $srid = 0
+);
+```
+
+#### `getRings()` { #dbgeometrypolygon-getrings }
+
+```php
+public function getRings(): array;
+```
+
+#### `getType()` { #dbgeometrypolygon-gettype }
+
+```php
+public function getType(): int;
+```
+
+#### `ringsWkt()` { #dbgeometrypolygon-ringswkt }
+
+```php
+public function ringsWkt(): string;
+```
+
+#### `toWkt()` { #dbgeometrypolygon-towkt }
+
+```php
+public function toWkt(): string;
+```
+
+
+## Db\Geometry\WkbParser
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Geometry/WkbParser.zep){ .src-btn }
+
+Decodes a spatial column value into a geometry value object.
+
+Handles MySQL's internal format (4-byte little-endian SRID prefix followed
+by standard OGC WKB) and PostGIS EWKB returned as a hex string. 2D only:
+any Z/M ordinates are read past and discarded.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Db\Geometry\WkbParser`**
+
+</div>
+
+__Uses__ `Phalcon\Db\Exceptions\InvalidWkb`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbgeometrywkbparser-parse">
+<code class="vis vis-public">public</code>
+<code class="ret">GeometryInterface</code>
+<code class="sig"><span class="sf">parse</span>( <span class="st">string</span> <span class="sv">$raw</span> )</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-readbyte">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">readByte</span>()</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-readdouble">
+<code class="vis vis-protected">protected</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">readDouble</span>( <span class="st">bool</span> <span class="sv">$little</span> )</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-readgeometry">
+<code class="vis vis-protected">protected</code>
+<code class="ret">GeometryInterface</code>
+<code class="sig"><span class="sf">readGeometry</span>( <span class="st">int</span> <span class="sv">$outerSrid</span> )</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-readpoint">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Point</code>
+<code class="sig"><span class="sf">readPoint</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$little</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasZ</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasM</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$srid</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-readpointlist">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">readPointList</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$little</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasZ</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasM</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-readringlist">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">readRingList</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$little</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasZ</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasM</span></span>)</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-readuint32">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">readUint32</span>( <span class="st">bool</span> <span class="sv">$little</span> )</code>
+</a>
+<a class="api-item" href="#dbgeometrywkbparser-skipextraordinates">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">skipExtraOrdinates</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$little</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasZ</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasM</span></span>)</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$buffer</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$length</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$position</span><span class="sm"> = 0</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `parse()` { #dbgeometrywkbparser-parse }
+
+```php
+public function parse( string $raw ): GeometryInterface;
+```
+
+<div class="api-group">Protected · 8</div>
+
+#### `readByte()` { #dbgeometrywkbparser-readbyte }
+
+```php
+protected function readByte(): int;
+```
+
+#### `readDouble()` { #dbgeometrywkbparser-readdouble }
+
+```php
+protected function readDouble( bool $little ): double;
+```
+
+#### `readGeometry()` { #dbgeometrywkbparser-readgeometry }
+
+```php
+protected function readGeometry( int $outerSrid ): GeometryInterface;
+```
+
+#### `readPoint()` { #dbgeometrywkbparser-readpoint }
+
+```php
+protected function readPoint(
+    bool $little,
+    bool $hasZ,
+    bool $hasM,
+    int $srid
+): Point;
+```
+
+#### `readPointList()` { #dbgeometrywkbparser-readpointlist }
+
+```php
+protected function readPointList(
+    bool $little,
+    bool $hasZ,
+    bool $hasM
+): array;
+```
+
+#### `readRingList()` { #dbgeometrywkbparser-readringlist }
+
+```php
+protected function readRingList(
+    bool $little,
+    bool $hasZ,
+    bool $hasM
+): array;
+```
+
+#### `readUint32()` { #dbgeometrywkbparser-readuint32 }
+
+```php
+protected function readUint32( bool $little ): int;
+```
+
+#### `skipExtraOrdinates()` { #dbgeometrywkbparser-skipextraordinates }
+
+```php
+protected function skipExtraOrdinates(
+    bool $little,
+    bool $hasZ,
+    bool $hasM
+): void;
 ```
 
 
@@ -8949,10 +9770,6 @@ can be flipped back to visible without a rebuild.
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/IndexInterface.zep){ .src-btn }
 
 Phalcon\Db\IndexInterface
-
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Db\Index} instead.
 
 <div class="api-tree" markdown>
 
@@ -9781,10 +10598,6 @@ Schema name
 
 Phalcon\Db\ReferenceInterface
 
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Db\Reference} instead.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Db\Reference`](phalcon_contracts.md#contractsdbreference)
@@ -9802,10 +10615,6 @@ __Uses__ `Phalcon\Contracts\Db\Reference`
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/ResultInterface.zep){ .src-btn }
 
 Phalcon\Db\ResultInterface
-
-@psalm-suppress DeprecatedInterface
-@deprecated Will be removed in a future major release.
-            Use {@see \Phalcon\Contracts\Db\Result} instead.
 
 <div class="api-tree" markdown>
 

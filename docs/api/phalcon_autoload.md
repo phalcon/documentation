@@ -30,13 +30,6 @@ Exceptions thrown in Phalcon\Autoload will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderDirectoriesNotArray.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -53,7 +46,7 @@ __Uses__ `Phalcon\Autoload\Exception`
 <div class="api-list">
 <a class="api-item" href="#autoloadexceptionsloaderdirectoriesnotarray-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span> )</code>
 </a>
 </div>
 
@@ -64,7 +57,7 @@ __Uses__ `Phalcon\Autoload\Exception`
 #### `__construct()` { #autoloadexceptionsloaderdirectoriesnotarray-__construct }
 
 ```php
-public function __construct();
+public function __construct( string $name = "" );
 ```
 
 
@@ -72,13 +65,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exceptions/LoaderMethodNotCallable.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -346,6 +332,11 @@ __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Aut
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$namespaces</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$nestingLevel</span><span class="sm"> = 0</span></code>
 </div>
 </div>
 

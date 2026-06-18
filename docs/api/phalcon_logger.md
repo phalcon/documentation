@@ -34,7 +34,7 @@ files (see Phalcon\Config\Config object).
 
 </div>
 
-__Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured`
+__Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 { .api-uses }
 
 ### Method Summary
@@ -42,7 +42,7 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 <div class="api-list">
 <a class="api-item" href="#loggerabstractlogger-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Constructor.</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-addadapter">
@@ -50,6 +50,18 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 <code class="ret">static</code>
 <code class="sig"><span class="sf">addAdapter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">AdapterInterface</span> <span class="sv">$adapter</span></span>)</code>
 <span class="desc">Add an adapter to the stack. For processing we use FIFO</span>
+</a>
+<a class="api-item" href="#loggerabstractlogger-begin">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">begin</span>()</code>
+<span class="desc">Starts a transaction on every (non-excluded) adapter in the stack.</span>
+</a>
+<a class="api-item" href="#loggerabstractlogger-commit">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">commit</span>()</code>
+<span class="desc">Commits the transaction on every (non-excluded) adapter in the stack.</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-excludeadapters">
 <code class="vis vis-public">public</code>
@@ -87,6 +99,12 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 <code class="sig"><span class="sf">removeAdapter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Removes an adapter from the stack</span>
 </a>
+<a class="api-item" href="#loggerabstractlogger-rollback">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">rollback</span>()</code>
+<span class="desc">Rolls back the transaction on every (non-excluded) adapter in the stack.</span>
+</a>
 <a class="api-item" href="#loggerabstractlogger-setadapters">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
@@ -97,7 +115,7 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setLogLevel</span>( <span class="st">int</span> <span class="sv">$level</span> )</code>
-<span class="desc">Sets the adapters stack overriding what is already there</span>
+<span class="desc">Sets the minimum log level for the logger.</span>
 </a>
 <a class="api-item" href="#loggerabstractlogger-addmessage">
 <code class="vis vis-protected">protected</code>
@@ -133,6 +151,10 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 <div class="api-item">
 <code class="ret">int</code>
 <code class="sig"><span class="sc">CUSTOM</span><span class="sm"> = 8</span></code>
+<span class="desc">Default threshold and fallback sink. It sits between DEBUG (7) and
+TRACE (9) in the ordering, so the default log level excludes TRACE.
+It is also the fallback for unknown message levels and invalid
+setLogLevel() values.</span>
 </div>
 <div class="api-item">
 <code class="ret">int</code>
@@ -175,6 +197,12 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">ClockInterface</code>
+<code class="sig"><span class="sv">$clock</span></code>
+<span class="desc">Clock used to timestamp log items</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$excluded</span><span class="sm"> = []</span></code>
 <span class="desc">The excluded adapters for this log process</span>
@@ -199,7 +227,7 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 
 ### Methods
 
-<div class="api-group">Public · 10</div>
+<div class="api-group">Public · 13</div>
 
 #### `__construct()` { #loggerabstractlogger-__construct }
 
@@ -207,7 +235,8 @@ __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Exception` · `Phalcon\Logger
 public function __construct(
     string $name,
     array $adapters = [],
-    DateTimeZone $timezone = null
+    DateTimeZone $timezone = null,
+    ClockInterface $clock = null
 );
 ```
 
@@ -223,6 +252,22 @@ public function addAdapter(
 ```
 
 Add an adapter to the stack. For processing we use FIFO
+
+#### `begin()` { #loggerabstractlogger-begin }
+
+```php
+public function begin(): static;
+```
+
+Starts a transaction on every (non-excluded) adapter in the stack.
+
+#### `commit()` { #loggerabstractlogger-commit }
+
+```php
+public function commit(): static;
+```
+
+Commits the transaction on every (non-excluded) adapter in the stack.
 
 #### `excludeAdapters()` { #loggerabstractlogger-excludeadapters }
 
@@ -272,6 +317,14 @@ public function removeAdapter( string $name ): static;
 
 Removes an adapter from the stack
 
+#### `rollback()` { #loggerabstractlogger-rollback }
+
+```php
+public function rollback(): static;
+```
+
+Rolls back the transaction on every (non-excluded) adapter in the stack.
+
 #### `setAdapters()` { #loggerabstractlogger-setadapters }
 
 ```php
@@ -286,7 +339,11 @@ Sets the adapters stack overriding what is already there
 public function setLogLevel( int $level ): static;
 ```
 
-Sets the adapters stack overriding what is already there
+Sets the minimum log level for the logger.
+
+An unknown level is not rejected: it is stored as CUSTOM, which sits
+between DEBUG and TRACE in the ordering, so the threshold becomes
+"everything except TRACE".
 
 <div class="api-group">Protected · 3</div>
 
@@ -461,6 +518,12 @@ __Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Ex
 <code class="sig"><span class="sf">begin</span>()</code>
 <span class="desc">Starts a transaction</span>
 </a>
+<a class="api-item" href="#loggeradapterabstractadapter-close">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">close</span>()</code>
+<span class="desc">Closes the logger</span>
+</a>
 <a class="api-item" href="#loggeradapterabstractadapter-commit">
 <code class="vis vis-public">public</code>
 <code class="ret">AdapterInterface</code>
@@ -522,7 +585,7 @@ __Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Ex
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$defaultFormatter</span><span class="sm"> = &quot;Phalcon\\Logger\Formatter\\Line&quot;</span></code>
+<code class="sig"><span class="sv">$defaultFormatter</span><span class="sm"> = &quot;Phalcon\\Logger\\Formatter\\Line&quot;</span></code>
 <span class="desc">Name of the default formatter class</span>
 </div>
 <div class="api-item">
@@ -556,7 +619,7 @@ appended in add().</span>
 
 ### Methods
 
-<div class="api-group">Public · 13</div>
+<div class="api-group">Public · 14</div>
 
 #### `__destruct()` { #loggeradapterabstractadapter-__destruct }
 
@@ -565,6 +628,10 @@ public function __destruct();
 ```
 
 Destructor cleanup
+
+Throwing from a destructor is fatal during script shutdown, so an open
+transaction is auto-committed here (flushing the queued items) rather
+than throwing.
 
 #### `__serialize()` { #loggeradapterabstractadapter-__serialize }
 
@@ -597,6 +664,14 @@ public function begin(): AdapterInterface;
 ```
 
 Starts a transaction
+
+#### `close()` { #loggeradapterabstractadapter-close }
+
+```php
+abstract public function close(): bool;
+```
+
+Closes the logger
 
 #### `commit()` { #loggeradapterabstractadapter-commit }
 
@@ -685,161 +760,19 @@ Interface for Phalcon\Logger adapters
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Logger\Adapter\AdapterInterface`**
+- [`Phalcon\Contracts\Logger\Adapter\Adapter`](phalcon_contracts.md#contractsloggeradapteradapter)
+    - **`Phalcon\Logger\Adapter\AdapterInterface`**
 
 </div>
 
-__Uses__ `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Item`
+__Uses__ `Phalcon\Contracts\Logger\Adapter\Adapter`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#loggeradapteradapterinterface-add">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">add</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Adds a message in the queue</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-begin">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">begin</span>()</code>
-<span class="desc">Starts a transaction</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-close">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">close</span>()</code>
-<span class="desc">Closes the logger</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-commit">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">commit</span>()</code>
-<span class="desc">Commits the internal transaction</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-getformatter">
-<code class="vis vis-public">public</code>
-<code class="ret">FormatterInterface</code>
-<code class="sig"><span class="sf">getFormatter</span>()</code>
-<span class="desc">Returns the internal formatter</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-intransaction">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">inTransaction</span>()</code>
-<span class="desc">Returns the whether the logger is currently in an active transaction or</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-process">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Processes the message in the adapter</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-rollback">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">rollback</span>()</code>
-<span class="desc">Rollbacks the internal transaction</span>
-</a>
-<a class="api-item" href="#loggeradapteradapterinterface-setformatter">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">setFormatter</span>( <span class="st">FormatterInterface</span> <span class="sv">$formatter</span> )</code>
-<span class="desc">Sets the message formatter</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 9</div>
-
-#### `add()` { #loggeradapteradapterinterface-add }
-
-```php
-public function add( Item $item ): AdapterInterface;
-```
-
-Adds a message in the queue
-
-#### `begin()` { #loggeradapteradapterinterface-begin }
-
-```php
-public function begin(): AdapterInterface;
-```
-
-Starts a transaction
-
-#### `close()` { #loggeradapteradapterinterface-close }
-
-```php
-public function close(): bool;
-```
-
-Closes the logger
-
-#### `commit()` { #loggeradapteradapterinterface-commit }
-
-```php
-public function commit(): AdapterInterface;
-```
-
-Commits the internal transaction
-
-#### `getFormatter()` { #loggeradapteradapterinterface-getformatter }
-
-```php
-public function getFormatter(): FormatterInterface;
-```
-
-Returns the internal formatter
-
-#### `inTransaction()` { #loggeradapteradapterinterface-intransaction }
-
-```php
-public function inTransaction(): bool;
-```
-
-Returns the whether the logger is currently in an active transaction or
-not
-
-#### `process()` { #loggeradapteradapterinterface-process }
-
-```php
-public function process( Item $item ): void;
-```
-
-Processes the message in the adapter
-
-#### `rollback()` { #loggeradapteradapterinterface-rollback }
-
-```php
-public function rollback(): AdapterInterface;
-```
-
-Rollbacks the internal transaction
-
-#### `setFormatter()` { #loggeradapteradapterinterface-setformatter }
-
-```php
-public function setFormatter( FormatterInterface $formatter ): AdapterInterface;
-```
-
-Sets the message formatter
 
 
 ## Logger\Adapter\Exceptions\FileOpenFailed
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/FileOpenFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -880,13 +813,6 @@ public function __construct(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/InvalidStreamMode.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -922,13 +848,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Adapter/Exceptions/SyslogOpenFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1407,13 +1326,6 @@ Exceptions thrown in Phalcon\Logger will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/AdapterNotFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1449,13 +1361,6 @@ public function __construct( string $name );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/DeserializationFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1493,13 +1398,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/NoAdaptersConfigured.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1535,13 +1433,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/SerializationFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1579,13 +1470,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/TransactionAlreadyActive.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1621,13 +1505,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Logger/Exceptions/TransactionNotActive.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1773,35 +1650,13 @@ This interface must be implemented by formatters in Phalcon\Logger
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Logger\Formatter\FormatterInterface`**
+- [`Phalcon\Contracts\Logger\Formatter\Formatter`](phalcon_contracts.md#contractsloggerformatterformatter)
+    - **`Phalcon\Logger\Formatter\FormatterInterface`**
 
 </div>
 
-__Uses__ `Phalcon\Logger\Item`
+__Uses__ `Phalcon\Contracts\Logger\Formatter\Formatter`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#loggerformatterformatterinterface-format">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">format</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
-<span class="desc">Applies a format to an item</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 1</div>
-
-#### `format()` { #loggerformatterformatterinterface-format }
-
-```php
-public function format( Item $item ): string;
-```
-
-Applies a format to an item
 
 
 ## Logger\Formatter\Json
@@ -2278,6 +2133,9 @@ public function log(
 
 Logs with an arbitrary level.
 
+An unknown level (a typo or an unmapped value) is not rejected; it maps
+to the CUSTOM level and is logged, rather than raising an exception.
+
 #### `notice()` { #loggerlogger-notice }
 
 ```php
@@ -2428,256 +2286,10 @@ Interface for Phalcon based logger objects.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Logger\LoggerInterface`**
+- [`Phalcon\Contracts\Logger\Logger`](phalcon_contracts.md#contractsloggerlogger)
+    - **`Phalcon\Logger\LoggerInterface`**
 
 </div>
 
-__Uses__ `Phalcon\Logger\Adapter\AdapterInterface`
+__Uses__ `Phalcon\Contracts\Logger\Logger`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#loggerloggerinterface-alert">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">alert</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Action must be taken immediately.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-critical">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">critical</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Critical conditions.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-debug">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">debug</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Detailed debug information.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-emergency">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">emergency</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">System is unusable.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-error">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">error</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Runtime errors that do not require immediate action but should typically</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-getadapter">
-<code class="vis vis-public">public</code>
-<code class="ret">AdapterInterface</code>
-<code class="sig"><span class="sf">getAdapter</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">Returns an adapter from the stack</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-getadapters">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAdapters</span>()</code>
-<span class="desc">Returns the adapter stack array</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-getloglevel">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getLogLevel</span>()</code>
-<span class="desc">Returns the log level</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-getname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getName</span>()</code>
-<span class="desc">Returns the name of the logger</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-info">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">info</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Interesting events.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-log">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">log</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$level</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Logs with an arbitrary level.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-notice">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">notice</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Normal but significant events.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-trace">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">trace</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Extra-verbose diagnostic output.</span>
-</a>
-<a class="api-item" href="#loggerloggerinterface-warning">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">warning</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">Exceptional occurrences that are not errors.</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 14</div>
-
-#### `alert()` { #loggerloggerinterface-alert }
-
-```php
-public function alert(
-    string $message,
-    array $context = []
-): void;
-```
-
-Action must be taken immediately.
-
-Example: Entire website down, database unavailable, etc. This should
-trigger the SMS alerts and wake you up.
-
-#### `critical()` { #loggerloggerinterface-critical }
-
-```php
-public function critical(
-    string $message,
-    array $context = []
-): void;
-```
-
-Critical conditions.
-
-Example: Application component unavailable, unexpected exception.
-
-#### `debug()` { #loggerloggerinterface-debug }
-
-```php
-public function debug(
-    string $message,
-    array $context = []
-): void;
-```
-
-Detailed debug information.
-
-#### `emergency()` { #loggerloggerinterface-emergency }
-
-```php
-public function emergency(
-    string $message,
-    array $context = []
-): void;
-```
-
-System is unusable.
-
-#### `error()` { #loggerloggerinterface-error }
-
-```php
-public function error(
-    string $message,
-    array $context = []
-): void;
-```
-
-Runtime errors that do not require immediate action but should typically
-be logged and monitored.
-
-#### `getAdapter()` { #loggerloggerinterface-getadapter }
-
-```php
-public function getAdapter( string $name ): AdapterInterface;
-```
-
-Returns an adapter from the stack
-
-#### `getAdapters()` { #loggerloggerinterface-getadapters }
-
-```php
-public function getAdapters(): array;
-```
-
-Returns the adapter stack array
-
-#### `getLogLevel()` { #loggerloggerinterface-getloglevel }
-
-```php
-public function getLogLevel(): int;
-```
-
-Returns the log level
-
-#### `getName()` { #loggerloggerinterface-getname }
-
-```php
-public function getName(): string;
-```
-
-Returns the name of the logger
-
-#### `info()` { #loggerloggerinterface-info }
-
-```php
-public function info(
-    string $message,
-    array $context = []
-): void;
-```
-
-Interesting events.
-
-Example: User logs in, SQL logs.
-
-#### `log()` { #loggerloggerinterface-log }
-
-```php
-public function log(
-    mixed $level,
-    string $message,
-    array $context = []
-): void;
-```
-
-Logs with an arbitrary level.
-
-#### `notice()` { #loggerloggerinterface-notice }
-
-```php
-public function notice(
-    string $message,
-    array $context = []
-): void;
-```
-
-Normal but significant events.
-
-#### `trace()` { #loggerloggerinterface-trace }
-
-```php
-public function trace(
-    string $message,
-    array $context = []
-): void;
-```
-
-Extra-verbose diagnostic output.
-
-#### `warning()` { #loggerloggerinterface-warning }
-
-```php
-public function warning(
-    string $message,
-    array $context = []
-): void;
-```
-
-Exceptional occurrences that are not errors.
-
-Example: Use of deprecated APIs, poor use of an API, undesirable things
-that are not necessarily wrong.

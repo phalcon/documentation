@@ -478,120 +478,17 @@ protected function phpFileGetContents( string $filename );
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/AssetInterface.zep){ .src-btn }
 
-Interface for custom Phalcon\Assets resources
+Phalcon\Assets\AssetInterface
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\AssetInterface`**
+- [`Phalcon\Contracts\Assets\Asset`](phalcon_contracts.md#contractsassetsasset)
+    - **`Phalcon\Assets\AssetInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#assetsassetinterface-getassetkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAssetKey</span>()</code>
-<span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsassetinterface-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array|null</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
-</a>
-<a class="api-item" href="#assetsassetinterface-getfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getFilter</span>()</code>
-<span class="desc">Gets if the asset must be filtered or not.</span>
-</a>
-<a class="api-item" href="#assetsassetinterface-gettype">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getType</span>()</code>
-<span class="desc">Gets the asset&#039;s type.</span>
-</a>
-<a class="api-item" href="#assetsassetinterface-setattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setAttributes</span>( <span class="st">array</span> <span class="sv">$attributes</span> )</code>
-<span class="desc">Sets extra HTML attributes.</span>
-</a>
-<a class="api-item" href="#assetsassetinterface-setfilter">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setFilter</span>( <span class="st">bool</span> <span class="sv">$filter</span> )</code>
-<span class="desc">Sets if the asset must be filtered or not.</span>
-</a>
-<a class="api-item" href="#assetsassetinterface-settype">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setType</span>( <span class="st">string</span> <span class="sv">$type</span> )</code>
-<span class="desc">Sets the asset&#039;s type.</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 7</div>
-
-#### `getAssetKey()` { #assetsassetinterface-getassetkey }
-
-```php
-public function getAssetKey(): string;
-```
-
-Gets the asset's key.
-
-#### `getAttributes()` { #assetsassetinterface-getattributes }
-
-```php
-public function getAttributes(): array|null;
-```
-
-Gets extra HTML attributes.
-
-#### `getFilter()` { #assetsassetinterface-getfilter }
-
-```php
-public function getFilter(): bool;
-```
-
-Gets if the asset must be filtered or not.
-
-#### `getType()` { #assetsassetinterface-gettype }
-
-```php
-public function getType(): string;
-```
-
-Gets the asset's type.
-
-#### `setAttributes()` { #assetsassetinterface-setattributes }
-
-```php
-public function setAttributes( array $attributes ): AssetInterface;
-```
-
-Sets extra HTML attributes.
-
-#### `setFilter()` { #assetsassetinterface-setfilter }
-
-```php
-public function setFilter( bool $filter ): AssetInterface;
-```
-
-Sets if the asset must be filtered or not.
-
-#### `setType()` { #assetsassetinterface-settype }
-
-```php
-public function setType( string $type ): AssetInterface;
-```
-
-Sets the asset's type.
+__Uses__ `Phalcon\Contracts\Assets\Asset`
+{ .api-uses }
 
 
 ## Assets\Asset\Css
@@ -1320,13 +1217,6 @@ Exceptions thrown in Phalcon\Assets will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/AssetSourceTargetCollision.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1362,13 +1252,6 @@ public function __construct( string $path );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/CannotReadAsset.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1406,13 +1289,6 @@ public function __construct( string $path );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/CollectionNotFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1429,7 +1305,7 @@ __Uses__ `Phalcon\Assets\Exception`
 <div class="api-list">
 <a class="api-item" href="#assetsexceptionscollectionnotfound-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = &quot;&quot;</span> )</code>
 </a>
 </div>
 
@@ -1440,7 +1316,7 @@ __Uses__ `Phalcon\Assets\Exception`
 #### `__construct()` { #assetsexceptionscollectionnotfound-__construct }
 
 ```php
-public function __construct();
+public function __construct( string $name = "" );
 ```
 
 
@@ -1448,13 +1324,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidAssetSourcePath.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1492,13 +1361,6 @@ public function __construct( string $path );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidAssetTargetPath.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1534,13 +1396,6 @@ public function __construct( string $path );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidFilter.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1578,13 +1433,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/InvalidTargetPath.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1620,13 +1468,6 @@ public function __construct( string $path );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Exceptions/TargetPathIsDirectory.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1664,36 +1505,17 @@ public function __construct( string $path );
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/FilterInterface.zep){ .src-btn }
 
-Interface for custom Phalcon\Assets filters
+Phalcon\Assets\FilterInterface
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\FilterInterface`**
+- [`Phalcon\Contracts\Assets\Filter`](phalcon_contracts.md#contractsassetsfilter)
+    - **`Phalcon\Assets\FilterInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#assetsfilterinterface-filter">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">filter</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Filters the content returning a string with the filtered content</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 1</div>
-
-#### `filter()` { #assetsfilterinterface-filter }
-
-```php
-public function filter( string $content ): string;
-```
-
-Filters the content returning a string with the filtered content
+__Uses__ `Phalcon\Contracts\Assets\Filter`
+{ .api-uses }
 
 
 ## Assets\Filters\Cssmin
@@ -1701,8 +1523,12 @@ Filters the content returning a string with the filtered content
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/CssMin.zep){ .src-btn }
 
-Minify the CSS - removes comments removes newlines and line feeds keeping
-removes last semicolon from last property
+Filter intended to minify CSS content (remove comments, newlines, and line
+feeds, and drop the last semicolon of the last property).
+
+> NOTE: This functionality is not currently available; `filter()` returns
+> the content unchanged.
+{: .alert .alert-info }
 
 <div class="api-tree" markdown>
 
@@ -1736,18 +1562,19 @@ public function filter( string $content ): string;
 
 Filters the content using CSSMIN
 
-> NOTE: This functionality is not currently available
-{: .alert .alert-info }
-
 
 ## Assets\Filters\Jsmin
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Filters/JsMin.zep){ .src-btn }
 
-Deletes the characters which are insignificant to JavaScript. Comments will
-be removed. Tabs will be replaced with spaces. Carriage returns will be
-replaced with linefeeds. Most spaces and linefeeds will be removed.
+Filter intended to minify JavaScript content (remove comments and the
+characters that are insignificant to JavaScript - tabs, carriage returns,
+and most spaces and linefeeds).
+
+> NOTE: This functionality is not currently available; `filter()` returns
+> the content unchanged.
+{: .alert .alert-info }
 
 <div class="api-tree" markdown>
 
@@ -1780,9 +1607,6 @@ public function filter( string $content ): string;
 ```
 
 Filters the content using JSMIN
-
-> NOTE: This functionality is not currently available
-{: .alert .alert-info }
 
 
 ## Assets\Filters\None

@@ -22,7 +22,7 @@ This class helps to work with HTML Attributes
 
 </div>
 
-__Uses__ `Phalcon\Html\Attributes\RenderInterface` · `Phalcon\Html\Exceptions\AttributeNotRenderable` · `Phalcon\Support\Collection`
+__Uses__ `Phalcon\Html\Attributes\RenderInterface` · `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Exceptions\AttributeNotRenderable` · `Phalcon\Support\Collection`
 { .api-uses }
 
 ### Method Summary
@@ -181,9 +181,6 @@ This component offers an easy way to create breadcrumbs for your application.
 The resulting HTML when calling `render()` will have each breadcrumb enclosed
 in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
-@deprecated Will be removed in future version
-Use {@see Phalcon\Html\Helper\Breadcrumbs} instead.
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Html\Breadcrumbs`**
@@ -258,6 +255,10 @@ $breadcrumbs->add("Home", "/");
 // Adding a crumb without a link (normally the last one)
 $breadcrumbs->add("Users");
 ```
+
+Crumbs are stored keyed by their link, so adding two crumbs that share
+the same link - including two link-less crumbs, which share the empty
+string key - keeps only the last one.
 
 #### `clear()` { #htmlbreadcrumbs-clear }
 
@@ -502,7 +503,6 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setHtmlQuoteType</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
-<span class="desc">@deprecated</span>
 </a>
 <a class="api-item" href="#htmlescaper-setjsescaper">
 <code class="vis vis-public">public</code>
@@ -730,8 +730,6 @@ public function setHtmlEscaper( HtmlEscaper $escaper ): static;
 ```php
 public function setHtmlQuoteType( int $flags ): static;
 ```
-
-@deprecated
 
 #### `setJsEscaper()` { #htmlescaper-setjsescaper }
 
@@ -1063,7 +1061,13 @@ public function escape( string $input ): string;
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/EscaperInterface.zep){ .src-btn }
 
-Interface for Phalcon\Html\Escaper
+Interface for Phalcon\Html\Escaper.
+
+This declares the stable context-escaping surface. The concrete
+{@see \Phalcon\Html\Escaper} facade also exposes members that are not part
+of this contract - `setDoubleEncode()`, `getFlags()`, and the per-context
+sub-escaper getters/setters (`getHtmlEscaper()`, `setAttributeEscaper()`,
+and the rest). Type against the concrete class to reach those.
 
 <div class="api-tree" markdown>
 
@@ -1078,7 +1082,7 @@ Interface for Phalcon\Html\Escaper
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">attributes</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-<span class="desc">Escapes a HTML attribute string</span>
+<span class="desc">Escapes a HTML attribute string.</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-css">
 <code class="vis vis-public">public</code>
@@ -1096,7 +1100,7 @@ Interface for Phalcon\Html\Escaper
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">html</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-<span class="desc">Escapes a HTML string</span>
+<span class="desc">Escapes a HTML string.</span>
 </a>
 <a class="api-item" href="#htmlescaperescaperinterface-js">
 <code class="vis vis-public">public</code>
@@ -1134,7 +1138,13 @@ Interface for Phalcon\Html\Escaper
 public function attributes( string $input ): string;
 ```
 
-Escapes a HTML attribute string
+Escapes a HTML attribute string.
+
+The concrete {@see \Phalcon\Html\Escaper} also accepts an array of
+attribute pairs and tolerates `null`: an array is rendered as escaped
+`key="value"` pairs, `null` and `false` values are skipped, and `true`
+renders as a bare key. Callers typed against this interface pass a
+string. The widened signature lands in the next major.
 
 #### `css()` { #htmlescaperescaperinterface-css }
 
@@ -1159,7 +1169,10 @@ Returns the internal encoding used by the escaper
 public function html( string $input ): string;
 ```
 
-Escapes a HTML string
+Escapes a HTML string.
+
+The concrete {@see \Phalcon\Html\Escaper} tolerates `null`, returning an
+empty string for it. The nullable signature lands in the next major.
 
 #### `js()` { #htmlescaperescaperinterface-js }
 
@@ -1374,13 +1387,6 @@ Exceptions thrown in Phalcon\Html will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/AttributeNotRenderable.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1420,13 +1426,6 @@ public function __construct(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/FriendlyTitleConversionFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1463,13 +1462,6 @@ public function __construct( string $message );
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/InvalidResultsetValue.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `InvalidArgumentException`
@@ -1504,13 +1496,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/ServiceNotRegistered.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1547,13 +1532,6 @@ public function __construct( string $name );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Exceptions/UsingRequiresTwoValues.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3858,17 +3836,6 @@ public function getOptions(): array;
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Helper/Input/Select/ResultsetData.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by AuraPHP
-@link    https://github.com/auraphp/Aura.Html
-@license https://github.com/auraphp/Aura.Html/blob/2.x/LICENSE
 
 <div class="api-tree" markdown>
 

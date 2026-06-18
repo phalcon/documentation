@@ -13,10 +13,6 @@ hide:
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Adapter/AbstractAdapter.zep){ .src-btn }
 
-@psalm-type TOptions array{
-    defaultInterpolator?: string
-}
-
 @template TKey of string
 @template TValue of string
 @implements ArrayAccess<TKey, TValue>
@@ -30,7 +26,7 @@ hide:
 
 </div>
 
-__Uses__ `ArrayAccess` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
 { .api-uses }
 
 ### Method Summary
@@ -46,6 +42,12 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Pha
 <code class="ret">string</code>
 <code class="sig"><span class="sf">_</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translateKey</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Returns the translation string of the given key (alias of method &#039;t&#039;)</span>
+</a>
+<a class="api-item" href="#translateadapterabstractadapter-notfound">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">notFound</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
+<span class="desc">Whenever a key is not found this method will be called</span>
 </a>
 <a class="api-item" href="#translateadapterabstractadapter-offsetexists">
 <code class="vis vis-public">public</code>
@@ -95,14 +97,24 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Pha
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">InterpolatorInterface | null</code>
+<code class="sig"><span class="sv">$interpolator</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">InterpolatorFactory</code>
 <code class="sig"><span class="sv">$interpolatorFactory</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$triggerError</span><span class="sm"> = false</span></code>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 7</div>
+<div class="api-group">Public · 8</div>
 
 #### `__construct()` { #translateadapterabstractadapter-__construct }
 
@@ -125,6 +137,14 @@ public function _(
 ```
 
 Returns the translation string of the given key (alias of method 't')
+
+#### `notFound()` { #translateadapterabstractadapter-notfound }
+
+```php
+public function notFound( string $index ): string;
+```
+
+Whenever a key is not found this method will be called
 
 #### `offsetExists()` { #translateadapterabstractadapter-offsetexists }
 
@@ -246,6 +266,17 @@ public function query(
 ```
 
 Returns the translation related to the given key
+
+Missing-key semantics differ per adapter:
+
+| Adapter     | Missing key returns       | Strict mode (triggerError) |
+| ----------- | ------------------------- | -------------------------- |
+| NativeArray | the key, not interpolated | yes                        |
+| Csv         | the key, interpolated     | yes                        |
+| Gettext     | the msgid (gettext)       | yes                        |
+
+With strict mode enabled (the `triggerError` option) a missing key
+throws `KeyNotFound` instead of falling back.
 
 #### `t()` { #translateadapteradapterinterface-t }
 
@@ -688,6 +719,13 @@ public function setLocale(
 
 Sets locale information
 
+Note: this method has process-global side effects. Besides calling
+`setlocale()`, it exports the `LC_ALL`, `LANG` and `LANGUAGE`
+environment variables via `putenv()`. `LC_ALL` affects every
+locale-sensitive operation in the process - `(string)` casts of floats,
+`strtoupper()`/`strtolower()` tables, date formatting and more - not
+just translations.
+
 ```php
 // Set locale to Dutch
 $gettext->setLocale(LC_ALL, ["nl_NL"]);
@@ -737,7 +775,7 @@ Defines translation lists using PHP arrays
 
 </div>
 
-__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -760,12 +798,6 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidD
 <code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
 <span class="desc">Check whether is defined a translation key in the internal array</span>
 </a>
-<a class="api-item" href="#translateadapternativearray-notfound">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">notFound</span>( <span class="st">string</span> <span class="sv">$index</span> )</code>
-<span class="desc">Whenever a key is not found this method will be called</span>
-</a>
 <a class="api-item" href="#translateadapternativearray-query">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -782,7 +814,7 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidD
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 5</div>
 
 #### `__construct()` { #translateadapternativearray-__construct }
 
@@ -810,14 +842,6 @@ public function has( string $index ): bool;
 ```
 
 Check whether is defined a translation key in the internal array
-
-#### `notFound()` { #translateadapternativearray-notfound }
-
-```php
-public function notFound( string $index ): string;
-```
-
-Whenever a key is not found this method will be called
 
 #### `query()` { #translateadapternativearray-query }
 
@@ -868,13 +892,6 @@ Class for exceptions thrown by Phalcon\Translate
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/FileOpenError.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -910,13 +927,6 @@ public function __construct( string $name );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/ImmutableObject.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -954,13 +964,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/InterpolatorNotRegistered.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -977,13 +980,6 @@ __Uses__ `Phalcon\Translate\Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/InvalidDataType.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1021,13 +1017,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/KeyNotFound.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1063,13 +1052,6 @@ public function __construct( string $key );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingContent.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1107,13 +1089,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingGettextExtension.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1149,13 +1124,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/MissingRequiredParameter.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1204,13 +1172,6 @@ public function getParameter(): string;
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Exceptions/TranslatorNotRegistered.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1227,13 +1188,6 @@ __Uses__ `Phalcon\Translate\Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/InterpolatorFactory.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the
-LICENSE.txt file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1334,6 +1288,16 @@ __Uses__ `Phalcon\Support\Helper\Str\Interpolate`
 </a>
 </div>
 
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Interpolate | null</code>
+<code class="sig"><span class="sv">$interpolate</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
 ### Methods
 
 <div class="api-group">Public · 1</div>
@@ -1354,13 +1318,6 @@ Replaces placeholders by the values passed
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/Interpolator/IndexedArray.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1443,20 +1400,6 @@ Replaces placeholders by the values passed
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Translate/TranslateFactory.zep){ .src-btn }
 
 @property InterpolatorFactory $interpolator
-
-@psalm-type TConfig array{
-     adapter: string,
-     options?: array{
-         content: string,
-         delimiter: string,
-         enclosure: string,
-         locale: string,
-         defaultDomain: string,
-         directory: string,
-         category: string,
-         triggerError: bool,
-     }
- }
 
 <div class="api-tree" markdown>
 

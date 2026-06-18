@@ -13,22 +13,15 @@ hide:
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/AbstractAdapter.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
-- **`Phalcon\Session\Adapter\AbstractAdapter`** — implements `SessionHandlerInterface`
+- **`Phalcon\Session\Adapter\AbstractAdapter`** — implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
     - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
 </div>
 
-__Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `SessionHandlerInterface`
+__Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -64,6 +57,18 @@ __Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `SessionHandlerInterface`
 <code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Read</span>
 </a>
+<a class="api-item" href="#sessionadapterabstractadapter-updatetimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<span class="desc">Refresh the session lifetime without changing the session data</span>
+</a>
+<a class="api-item" href="#sessionadapterabstractadapter-validateid">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<span class="desc">Validate the session id (used when strict mode is enabled)</span>
+</a>
 <a class="api-item" href="#sessionadapterabstractadapter-write">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
@@ -90,7 +95,7 @@ __Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `SessionHandlerInterface`
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 8</div>
 
 #### `close()` { #sessionadapterabstractadapter-close }
 
@@ -135,6 +140,25 @@ public function read( mixed $id ): string;
 
 Read
 
+#### `updateTimestamp()` { #sessionadapterabstractadapter-updatetimestamp }
+
+```php
+public function updateTimestamp(
+    mixed $id,
+    mixed $data
+): bool;
+```
+
+Refresh the session lifetime without changing the session data
+
+#### `validateId()` { #sessionadapterabstractadapter-validateid }
+
+```php
+public function validateId( mixed $id ): bool;
+```
+
+Validate the session id (used when strict mode is enabled)
+
 #### `write()` { #sessionadapterabstractadapter-write }
 
 ```php
@@ -166,13 +190,6 @@ protected function getArrVal(
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/AdapterRuntimeError.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -189,13 +206,6 @@ __Uses__ `Phalcon\Session\Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/InvalidSavePath.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -232,13 +242,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Adapter/Exceptions/SavePathUnavailable.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -318,7 +321,8 @@ Libmemcached constructor.
     'defaultSerializer' => 'Php',
     'lifetime' => 3600,
     'serializer' => null,
-    'prefix' => 'sess-memc-'
+    'prefix' => 'sess-memc-',
+    'stripPrefix' => false
 ]
 
 
@@ -344,12 +348,12 @@ $session->setAdapter(new Noop());
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Session\Adapter\Noop`** — implements `SessionHandlerInterface`
+- **`Phalcon\Session\Adapter\Noop`** — implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
 </div>
 
-__Uses__ `SessionHandlerInterface`
+__Uses__ `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -385,6 +389,18 @@ __Uses__ `SessionHandlerInterface`
 <code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Read</span>
 </a>
+<a class="api-item" href="#sessionadapternoop-updatetimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<span class="desc">Refresh the session lifetime without changing the session data</span>
+</a>
+<a class="api-item" href="#sessionadapternoop-validateid">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<span class="desc">Validate the session id (used when strict mode is enabled)</span>
+</a>
 <a class="api-item" href="#sessionadapternoop-write">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
@@ -395,7 +411,7 @@ __Uses__ `SessionHandlerInterface`
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 8</div>
 
 #### `close()` { #sessionadapternoop-close }
 
@@ -440,6 +456,25 @@ public function read( mixed $id ): string;
 
 Read
 
+#### `updateTimestamp()` { #sessionadapternoop-updatetimestamp }
+
+```php
+public function updateTimestamp(
+    mixed $id,
+    mixed $data
+): bool;
+```
+
+Refresh the session lifetime without changing the session data
+
+#### `validateId()` { #sessionadapternoop-validateid }
+
+```php
+public function validateId( mixed $id ): bool;
+```
+
+Validate the session id (used when strict mode is enabled)
+
 #### `write()` { #sessionadapternoop-write }
 
 ```php
@@ -466,7 +501,7 @@ Phalcon\Session\Adapter\Redis
 
 </div>
 
-__Uses__ `Phalcon\Storage\AdapterFactory`
+__Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Storage\AdapterFactory`
 { .api-uses }
 
 ### Method Summary
@@ -477,11 +512,91 @@ __Uses__ `Phalcon\Storage\AdapterFactory`
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">AdapterFactory</span> <span class="sv">$factory</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Constructor</span>
 </a>
+<a class="api-item" href="#sessionadapterredis-close">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">close</span>()</code>
+<span class="desc">Close - releases the session lock if one is held</span>
+</a>
+<a class="api-item" href="#sessionadapterredis-destroy">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">destroy</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<span class="desc">Destroy</span>
+</a>
+<a class="api-item" href="#sessionadapterredis-read">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<span class="desc">Read</span>
+</a>
+<a class="api-item" href="#sessionadapterredis-acquirelock">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">acquireLock</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<span class="desc">Tries to acquire the session lock, pausing <code>lockWaitTime</code> microseconds</span>
+</a>
+<a class="api-item" href="#sessionadapterredis-releaselock">
+<code class="vis vis-protected">protected</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">releaseLock</span>()</code>
+<span class="desc">Releases the session lock - only when this instance still owns it</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$lockAcquired</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$lockExpiry</span><span class="sm"> = 30</span></code>
+<span class="desc">Lock time-to-live in seconds. The lock is not refreshed during the
+request: a request that runs longer than this expiry loses its lock
+silently and a concurrent request may then acquire it (the token-guarded
+release still avoids deleting the newer lock). Raise this above the
+longest expected request to retain the lock for the whole request.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$lockKey</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$lockRetries</span><span class="sm"> = 100</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$lockToken</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$lockWaitTime</span><span class="sm"> = 50000</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$lockingEnabled</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 1</div>
+<div class="api-group">Public · 4</div>
 
 #### `__construct()` { #sessionadapterredis-__construct }
 
@@ -493,6 +608,49 @@ public function __construct(
 ```
 
 Constructor
+
+#### `close()` { #sessionadapterredis-close }
+
+```php
+public function close(): bool;
+```
+
+Close - releases the session lock if one is held
+
+#### `destroy()` { #sessionadapterredis-destroy }
+
+```php
+public function destroy( mixed $id ): bool;
+```
+
+Destroy
+
+#### `read()` { #sessionadapterredis-read }
+
+```php
+public function read( mixed $id ): string;
+```
+
+Read
+
+<div class="api-group">Protected · 2</div>
+
+#### `acquireLock()` { #sessionadapterredis-acquirelock }
+
+```php
+protected function acquireLock( mixed $id ): bool;
+```
+
+Tries to acquire the session lock, pausing `lockWaitTime` microseconds
+between attempts, up to `lockRetries` times
+
+#### `releaseLock()` { #sessionadapterredis-releaselock }
+
+```php
+protected function releaseLock(): void;
+```
+
+Releases the session lock - only when this instance still owns it
 
 
 ## Session\Adapter\Stream
@@ -563,6 +721,18 @@ __Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Se
 <code class="ret">string</code>
 <code class="sig"><span class="sf">read</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
 <span class="desc">Reads data from the adapter</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-updatetimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">updateTimestamp</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
+<span class="desc">Refresh the session file modification time without changing its data</span>
+</a>
+<a class="api-item" href="#sessionadapterstream-validateid">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">mixed</span> <span class="sv">$id</span> )</code>
+<span class="desc">Validate the session id (used when strict mode is enabled)</span>
 </a>
 <a class="api-item" href="#sessionadapterstream-write">
 <code class="vis vis-public">public</code>
@@ -640,7 +810,7 @@ __Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Se
 
 ### Methods
 
-<div class="api-group">Public · 6</div>
+<div class="api-group">Public · 8</div>
 
 #### `__construct()` { #sessionadapterstream-__construct }
 
@@ -682,6 +852,25 @@ public function read( mixed $id ): string;
 ```
 
 Reads data from the adapter
+
+#### `updateTimestamp()` { #sessionadapterstream-updatetimestamp }
+
+```php
+public function updateTimestamp(
+    mixed $id,
+    mixed $data
+): bool;
+```
+
+Refresh the session file modification time without changing its data
+
+#### `validateId()` { #sessionadapterstream-validateid }
+
+```php
+public function validateId( mixed $id ): bool;
+```
+
+Validate the session id (used when strict mode is enabled)
 
 #### `write()` { #sessionadapterstream-write }
 
@@ -1089,6 +1278,7 @@ Exceptions thrown in Phalcon\Session will use this class
         - [`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`](#sessionadapterexceptionsinvalidsavepath)
         - [`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`](#sessionadapterexceptionssavepathunavailable)
         - [`Phalcon\Session\Exceptions\InvalidSessionAdapter`](#sessionexceptionsinvalidsessionadapter)
+        - [`Phalcon\Session\Exceptions\InvalidSessionId`](#sessionexceptionsinvalidsessionid)
         - [`Phalcon\Session\Exceptions\InvalidSessionName`](#sessionexceptionsinvalidsessionname)
         - [`Phalcon\Session\Exceptions\SessionAlreadyStarted`](#sessionexceptionssessionalreadystarted)
         - [`Phalcon\Session\Exceptions\SessionModificationDenied`](#sessionexceptionssessionmodificationdenied)
@@ -1100,13 +1290,6 @@ Exceptions thrown in Phalcon\Session will use this class
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionAdapter.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1139,17 +1322,46 @@ public function __construct();
 ```
 
 
+## Session\Exceptions\InvalidSessionId
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionId.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\InvalidSessionId`**
+
+</div>
+
+__Uses__ `Phalcon\Session\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#sessionexceptionsinvalidsessionid-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #sessionexceptionsinvalidsessionid-__construct }
+
+```php
+public function __construct();
+```
+
+
 ## Session\Exceptions\InvalidSessionName
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/InvalidSessionName.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1187,13 +1399,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionAlreadyStarted.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1229,13 +1434,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Session/Exceptions/SessionModificationDenied.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1286,7 +1484,7 @@ public function __construct();
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `SessionHandlerInterface`
+__Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `SessionHandlerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1373,7 +1571,7 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `P
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface</code>
 <code class="sig"><span class="sf">regenerateId</span>( <span class="st">bool</span> <span class="sv">$deleteOldSession</span><span class="sm"> = true</span> )</code>
-<span class="desc">Regenerates the session id using the adapter.</span>
+<span class="desc">Regenerates the session id via <code>session_regenerate_id()</code> (when the</span>
 </a>
 <a class="api-item" href="#sessionmanager-remove">
 <code class="vis vis-public">public</code>
@@ -1552,7 +1750,9 @@ Check whether a session variable is set in an application context
 public function regenerateId( bool $deleteOldSession = true ): ManagerInterface;
 ```
 
-Regenerates the session id using the adapter.
+Regenerates the session id via `session_regenerate_id()` (when the
+session is active). The registered save handler persists the data
+under the new id.
 
 #### `remove()` { #sessionmanager-remove }
 

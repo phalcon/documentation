@@ -37,7 +37,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 </div>
 
-__Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory`
+__Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength` · `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory`
 { .api-uses }
 
 ### Method Summary
@@ -128,22 +128,22 @@ __Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\
 </a>
 <a class="api-item" href="#encryptioncrypt-setauthdata">
 <code class="vis vis-public">public</code>
-<code class="ret">static</code>
+<code class="ret">CryptInterface</code>
 <code class="sig"><span class="sf">setAuthData</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
 </a>
 <a class="api-item" href="#encryptioncrypt-setauthtag">
 <code class="vis vis-public">public</code>
-<code class="ret">static</code>
+<code class="ret">CryptInterface</code>
 <code class="sig"><span class="sf">setAuthTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
 </a>
 <a class="api-item" href="#encryptioncrypt-setauthtaglength">
 <code class="vis vis-public">public</code>
-<code class="ret">static</code>
+<code class="ret">CryptInterface</code>
 <code class="sig"><span class="sf">setAuthTagLength</span>( <span class="st">int</span> <span class="sv">$length</span> )</code>
 </a>
 <a class="api-item" href="#encryptioncrypt-setcipher">
 <code class="vis vis-public">public</code>
-<code class="ret">static</code>
+<code class="ret">CryptInterface</code>
 <code class="sig"><span class="sf">setCipher</span>( <span class="st">string</span> <span class="sv">$cipher</span> )</code>
 <span class="desc">Sets the cipher algorithm for data encryption and decryption.</span>
 </a>
@@ -155,19 +155,19 @@ __Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\
 </a>
 <a class="api-item" href="#encryptioncrypt-setkey">
 <code class="vis vis-public">public</code>
-<code class="ret">static</code>
+<code class="ret">CryptInterface</code>
 <code class="sig"><span class="sf">setKey</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
 <span class="desc">Sets the encryption key.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-setpadding">
 <code class="vis vis-public">public</code>
-<code class="ret">static</code>
+<code class="ret">CryptInterface</code>
 <code class="sig"><span class="sf">setPadding</span>( <span class="st">int</span> <span class="sv">$scheme</span> )</code>
 <span class="desc">Changes the padding scheme used.</span>
 </a>
 <a class="api-item" href="#encryptioncrypt-usesigning">
 <code class="vis vis-public">public</code>
-<code class="ret">static</code>
+<code class="ret">CryptInterface</code>
 <code class="sig"><span class="sf">useSigning</span>( <span class="st">bool</span> <span class="sv">$useSigning</span> )</code>
 <span class="desc">Sets if the calculating message digest must used.</span>
 </a>
@@ -499,25 +499,25 @@ Returns if the input length for decryption is valid or not
 #### `setAuthData()` { #encryptioncrypt-setauthdata }
 
 ```php
-public function setAuthData( string $data ): static;
+public function setAuthData( string $data ): CryptInterface;
 ```
 
 #### `setAuthTag()` { #encryptioncrypt-setauthtag }
 
 ```php
-public function setAuthTag( string $tag ): static;
+public function setAuthTag( string $tag ): CryptInterface;
 ```
 
 #### `setAuthTagLength()` { #encryptioncrypt-setauthtaglength }
 
 ```php
-public function setAuthTagLength( int $length ): static;
+public function setAuthTagLength( int $length ): CryptInterface;
 ```
 
 #### `setCipher()` { #encryptioncrypt-setcipher }
 
 ```php
-public function setCipher( string $cipher ): static;
+public function setCipher( string $cipher ): CryptInterface;
 ```
 
 Sets the cipher algorithm for data encryption and decryption.
@@ -533,7 +533,7 @@ Set the name of hashing algorithm.
 #### `setKey()` { #encryptioncrypt-setkey }
 
 ```php
-public function setKey( string $key ): static;
+public function setKey( string $key ): CryptInterface;
 ```
 
 Sets the encryption key.
@@ -553,7 +553,7 @@ Good key:
 #### `setPadding()` { #encryptioncrypt-setpadding }
 
 ```php
-public function setPadding( int $scheme ): static;
+public function setPadding( int $scheme ): CryptInterface;
 ```
 
 Changes the padding scheme used.
@@ -561,7 +561,7 @@ Changes the padding scheme used.
 #### `useSigning()` { #encryptioncrypt-usesigning }
 
 ```php
-public function useSigning( bool $useSigning ): static;
+public function useSigning( bool $useSigning ): CryptInterface;
 ```
 
 Sets if the calculating message digest must used.
@@ -689,281 +689,19 @@ Interface for Phalcon\Crypt
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\CryptInterface`**
+- [`Phalcon\Contracts\Encryption\Crypt\Crypt`](phalcon_contracts.md#contractsencryptioncryptcrypt)
+    - **`Phalcon\Encryption\Crypt\CryptInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptcryptinterface-decrypt">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Decrypts a text</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-decryptbase64">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">decryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Decrypt a text that is coded as a base64 string</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-encrypt">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encrypt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Encrypts a text</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-encryptbase64">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">encryptBase64</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Encrypts a text returning the result as a base64 string</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-getauthdata">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthData</span>()</code>
-<span class="desc">Returns authentication data</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-getauthtag">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAuthTag</span>()</code>
-<span class="desc">Returns the authentication tag</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-getauthtaglength">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getAuthTagLength</span>()</code>
-<span class="desc">Returns the authentication tag length</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-getavailableciphers">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAvailableCiphers</span>()</code>
-<span class="desc">Returns a list of available cyphers</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-getcipher">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getCipher</span>()</code>
-<span class="desc">Returns the current cipher</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-getkey">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getKey</span>()</code>
-<span class="desc">Returns the encryption key</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-setauthdata">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setAuthData</span>( <span class="st">string</span> <span class="sv">$data</span> )</code>
-<span class="desc">Sets authentication data</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-setauthtag">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setAuthTag</span>( <span class="st">string</span> <span class="sv">$tag</span> )</code>
-<span class="desc">Sets the authentication tag</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-setauthtaglength">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setAuthTagLength</span>( <span class="st">int</span> <span class="sv">$length</span> )</code>
-<span class="desc">Sets the authentication tag length</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-setcipher">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setCipher</span>( <span class="st">string</span> <span class="sv">$cipher</span> )</code>
-<span class="desc">Sets the cipher algorithm</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-setkey">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setKey</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Sets the encryption key</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-setpadding">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">setPadding</span>( <span class="st">int</span> <span class="sv">$scheme</span> )</code>
-<span class="desc">Changes the padding scheme used.</span>
-</a>
-<a class="api-item" href="#encryptioncryptcryptinterface-usesigning">
-<code class="vis vis-public">public</code>
-<code class="ret">CryptInterface</code>
-<code class="sig"><span class="sf">useSigning</span>( <span class="st">bool</span> <span class="sv">$useSigning</span> )</code>
-<span class="desc">Sets if the calculating message digest must be used.</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 17</div>
-
-#### `decrypt()` { #encryptioncryptcryptinterface-decrypt }
-
-```php
-public function decrypt(
-    string $input,
-    string $key = null
-): string;
-```
-
-Decrypts a text
-
-#### `decryptBase64()` { #encryptioncryptcryptinterface-decryptbase64 }
-
-```php
-public function decryptBase64(
-    string $input,
-    string $key = null
-): string;
-```
-
-Decrypt a text that is coded as a base64 string
-
-#### `encrypt()` { #encryptioncryptcryptinterface-encrypt }
-
-```php
-public function encrypt(
-    string $input,
-    string $key = null
-): string;
-```
-
-Encrypts a text
-
-#### `encryptBase64()` { #encryptioncryptcryptinterface-encryptbase64 }
-
-```php
-public function encryptBase64(
-    string $input,
-    string $key = null
-): string;
-```
-
-Encrypts a text returning the result as a base64 string
-
-#### `getAuthData()` { #encryptioncryptcryptinterface-getauthdata }
-
-```php
-public function getAuthData(): string;
-```
-
-Returns authentication data
-
-#### `getAuthTag()` { #encryptioncryptcryptinterface-getauthtag }
-
-```php
-public function getAuthTag(): string;
-```
-
-Returns the authentication tag
-
-#### `getAuthTagLength()` { #encryptioncryptcryptinterface-getauthtaglength }
-
-```php
-public function getAuthTagLength(): int;
-```
-
-Returns the authentication tag length
-
-#### `getAvailableCiphers()` { #encryptioncryptcryptinterface-getavailableciphers }
-
-```php
-public function getAvailableCiphers(): array;
-```
-
-Returns a list of available cyphers
-
-#### `getCipher()` { #encryptioncryptcryptinterface-getcipher }
-
-```php
-public function getCipher(): string;
-```
-
-Returns the current cipher
-
-#### `getKey()` { #encryptioncryptcryptinterface-getkey }
-
-```php
-public function getKey(): string;
-```
-
-Returns the encryption key
-
-#### `setAuthData()` { #encryptioncryptcryptinterface-setauthdata }
-
-```php
-public function setAuthData( string $data ): CryptInterface;
-```
-
-Sets authentication data
-
-#### `setAuthTag()` { #encryptioncryptcryptinterface-setauthtag }
-
-```php
-public function setAuthTag( string $tag ): CryptInterface;
-```
-
-Sets the authentication tag
-
-#### `setAuthTagLength()` { #encryptioncryptcryptinterface-setauthtaglength }
-
-```php
-public function setAuthTagLength( int $length ): CryptInterface;
-```
-
-Sets the authentication tag length
-
-#### `setCipher()` { #encryptioncryptcryptinterface-setcipher }
-
-```php
-public function setCipher( string $cipher ): CryptInterface;
-```
-
-Sets the cipher algorithm
-
-#### `setKey()` { #encryptioncryptcryptinterface-setkey }
-
-```php
-public function setKey( string $key ): CryptInterface;
-```
-
-Sets the encryption key
-
-#### `setPadding()` { #encryptioncryptcryptinterface-setpadding }
-
-```php
-public function setPadding( int $scheme ): CryptInterface;
-```
-
-Changes the padding scheme used.
-
-#### `useSigning()` { #encryptioncryptcryptinterface-usesigning }
-
-```php
-public function useSigning( bool $useSigning ): CryptInterface;
-```
-
-Sets if the calculating message digest must be used.
+__Uses__ `Phalcon\Contracts\Encryption\Crypt\Crypt`
+{ .api-uses }
 
 
 ## Encryption\Crypt\Exception\DecryptionFailed
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/DecryptionFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -998,13 +736,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/EmptyDecryptionKey.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1038,13 +769,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/EmptyEncryptionKey.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1077,13 +801,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/EncryptionFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1128,6 +845,8 @@ Exceptions thrown in Phalcon\Crypt use this class
         - [`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`](#encryptioncryptexceptionemptydecryptionkey)
         - [`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`](#encryptioncryptexceptionemptyencryptionkey)
         - [`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`](#encryptioncryptexceptionencryptionfailed)
+        - [`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`](#encryptioncryptexceptioninvalidauthtaglength)
+        - [`Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`](#encryptioncryptexceptioninvaliddecryptlength)
         - [`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`](#encryptioncryptexceptioninvalidpaddingsize)
         - [`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`](#encryptioncryptexceptionivlengthcalculationfailed)
         - [`Phalcon\Encryption\Crypt\Exception\Mismatch`](#encryptioncryptexceptionmismatch)
@@ -1139,17 +858,76 @@ Exceptions thrown in Phalcon\Crypt use this class
 </div>
 
 
+## Encryption\Crypt\Exception\InvalidAuthTagLength
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/InvalidAuthTagLength.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#encryptioncryptexceptioninvalidauthtaglength-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #encryptioncryptexceptioninvalidauthtaglength-__construct }
+
+```php
+public function __construct();
+```
+
+
+## Encryption\Crypt\Exception\InvalidDecryptLength
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/InvalidDecryptLength.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#encryptioncryptexceptioninvaliddecryptlength-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #encryptioncryptexceptioninvaliddecryptlength-__construct }
+
+```php
+public function __construct();
+```
+
+
 ## Encryption\Crypt\Exception\InvalidPaddingSize
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/InvalidPaddingSize.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1183,13 +961,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/IvLengthCalculationFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1240,13 +1011,6 @@ Exceptions thrown in Phalcon\Crypt will use this class.
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/MissingAuthData.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1279,13 +1043,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/MissingOpensslExtension.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1320,13 +1077,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/RandomBytesGenerationFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1359,13 +1109,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/UnsupportedAlgorithm.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1413,7 +1156,7 @@ Factory for creating pad classes
 
 </div>
 
-__Uses__ `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Get`
+__Uses__ `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Factory\AbstractFactory`
 { .api-uses }
 
 ### Method Summary
@@ -1700,43 +1443,13 @@ Interface for Phalcon\Encryption\Crypt\Padding
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\PadInterface`**
+- [`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`](phalcon_contracts.md#contractsencryptioncryptpaddingpad)
+    - **`Phalcon\Encryption\Crypt\Padding\PadInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#encryptioncryptpaddingpadinterface-pad">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">pad</span>( <span class="st">int</span> <span class="sv">$paddingSize</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncryptpaddingpadinterface-unpad">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">unpad</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$blockSize</span></span>)</code>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 2</div>
-
-#### `pad()` { #encryptioncryptpaddingpadinterface-pad }
-
-```php
-public function pad( int $paddingSize ): string;
-```
-
-#### `unpad()` { #encryptioncryptpaddingpadinterface-unpad }
-
-```php
-public function unpad(
-    string $input,
-    int $blockSize
-): int;
-```
+__Uses__ `Phalcon\Contracts\Encryption\Crypt\Padding\Pad`
+{ .api-uses }
 
 
 ## Encryption\Crypt\Padding\Pkcs7
@@ -2327,6 +2040,9 @@ public function hash(
 
 Creates a password hash using bcrypt with a pseudo random salt
 
+Any `defaultHash` value that is not explicitly handled (including the
+deprecated, unimplemented constants) resolves to bcrypt.
+
 #### `isLegacyHash()` { #encryptionsecurity-islegacyhash }
 
 ```php
@@ -2418,13 +2134,6 @@ Exceptions thrown in Phalcon\Security will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Exceptions/InvalidRandomInput.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2460,13 +2169,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Exceptions/UnknownHashAlgorithm.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2904,13 +2606,6 @@ Sets a registered claim
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/EmptyPassphrase.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `Exception`
@@ -2943,13 +2638,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidAudience.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2984,13 +2672,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidAudienceType.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `Exception`
@@ -3023,13 +2704,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidClaims.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3066,13 +2740,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidExpirationTime.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `Exception`
@@ -3105,13 +2772,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidHeader.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3148,13 +2808,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/InvalidNotBefore.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `Exception`
@@ -3187,13 +2840,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/MalformedJwtString.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3229,13 +2875,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/MissingJwtTypHeader.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3290,13 +2929,6 @@ __Uses__ `Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/UnsupportedHmacAlgorithm.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3354,13 +2986,6 @@ __Uses__ `Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/WeakPassphrase.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3619,81 +3244,13 @@ Interface for JWT Signer classes
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`**
+- [`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`](phalcon_contracts.md#contractsencryptionsecurityjwtsignersigner)
+    - **`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityjwtsignersignerinterface-getalgheader">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgHeader</span>()</code>
-<span class="desc">Return the value that is used for the &quot;alg&quot; header</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignersignerinterface-getalgorithm">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getAlgorithm</span>()</code>
-<span class="desc">Return the algorithm used</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignersignerinterface-sign">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">sign</span>(<span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Sign a payload using the passphrase</span>
-</a>
-<a class="api-item" href="#encryptionsecurityjwtsignersignerinterface-verify">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">verify</span>(<span class="prm"><span class="st">string</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
-<span class="desc">Verify a passed source with a payload and passphrase</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 4</div>
-
-#### `getAlgHeader()` { #encryptionsecurityjwtsignersignerinterface-getalgheader }
-
-```php
-public function getAlgHeader(): string;
-```
-
-Return the value that is used for the "alg" header
-
-#### `getAlgorithm()` { #encryptionsecurityjwtsignersignerinterface-getalgorithm }
-
-```php
-public function getAlgorithm(): string;
-```
-
-Return the algorithm used
-
-#### `sign()` { #encryptionsecurityjwtsignersignerinterface-sign }
-
-```php
-public function sign(
-    string $payload,
-    string $passphrase
-): string;
-```
-
-Sign a payload using the passphrase
-
-#### `verify()` { #encryptionsecurityjwtsignersignerinterface-verify }
-
-```php
-public function verify(
-    string $source,
-    string $payload,
-    string $passphrase
-): bool;
-```
-
-Verify a passed source with a payload and passphrase
+__Uses__ `Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`
+{ .api-uses }
 
 
 ## Encryption\Security\JWT\Token\AbstractItem
@@ -4149,7 +3706,7 @@ Class Validator
 
 </div>
 
-__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Token`
+__Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Time\Clock\ClockInterface`
 { .api-uses }
 
 ### Method Summary
@@ -4157,7 +3714,7 @@ __Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Ph
 <div class="api-list">
 <a class="api-item" href="#encryptionsecurityjwtvalidator-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Token</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$timeShift</span><span class="sm"> = 0</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">Token</span> <span class="sv">$token</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$timeShift</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">ClockInterface</span> <span class="sv">$clock</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Validator constructor.</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-get">
@@ -4243,7 +3800,8 @@ __Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Ph
 ```php
 public function __construct(
     Token $token,
-    int $timeShift = 0
+    int $timeShift = 0,
+    ClockInterface $clock = null
 );
 ```
 
@@ -4960,41 +4518,15 @@ a DateTimeImmutable. Used by Version1 and Version6.
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/NodeProviderInterface.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by sinbadxiii/cphalcon-uuid
-@link    https://github.com/sinbadxiii/cphalcon-uuid
-
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`**
+- [`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`](phalcon_contracts.md#contractsencryptionsecurityuuidnodeprovider)
+    - **`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidnodeproviderinterface-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 1</div>
-
-#### `getNode()` { #encryptionsecurityuuidnodeproviderinterface-getnode }
-
-```php
-public function getNode(): string;
-```
+__Uses__ `Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`
+{ .api-uses }
 
 
 ## Encryption\Security\Uuid\RandomNodeProvider
@@ -5093,52 +4625,15 @@ Result is cached in the instance property and optionally in APCu.
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Uuid/TimeBasedUuidInterface.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by sinbadxiii/cphalcon-uuid
-@link    https://github.com/sinbadxiii/cphalcon-uuid
-
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`**
+- [`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`](phalcon_contracts.md#contractsencryptionsecurityuuidtimebaseduuid)
+    - **`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`**
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#encryptionsecurityuuidtimebaseduuidinterface-getdatetime">
-<code class="vis vis-public">public</code>
-<code class="ret">\DateTimeImmutable</code>
-<code class="sig"><span class="sf">getDateTime</span>()</code>
-</a>
-<a class="api-item" href="#encryptionsecurityuuidtimebaseduuidinterface-getnode">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getNode</span>()</code>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 2</div>
-
-#### `getDateTime()` { #encryptionsecurityuuidtimebaseduuidinterface-getdatetime }
-
-```php
-public function getDateTime(): \DateTimeImmutable;
-```
-
-#### `getNode()` { #encryptionsecurityuuidtimebaseduuidinterface-getnode }
-
-```php
-public function getNode(): string;
-```
+__Uses__ `Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`
+{ .api-uses }
 
 
 ## Encryption\Security\Uuid\UuidInterface
@@ -5152,30 +4647,13 @@ Also carries the standard RFC 4122 namespace UUIDs as constants.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\Uuid\UuidInterface`**
+- [`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`](phalcon_contracts.md#contractsencryptionsecurityuuiduuid)
+    - **`Phalcon\Encryption\Security\Uuid\UuidInterface`**
 
 </div>
 
-### Constants
-
-<div class="api-list">
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_DNS</span><span class="sm"> = &quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_OID</span><span class="sm"> = &quot;6ba7b812-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_URL</span><span class="sm"> = &quot;6ba7b811-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="ret">string</code>
-<code class="sig"><span class="sc">NAMESPACE_X500</span><span class="sm"> = &quot;6ba7b814-9dad-11d1-80b4-00c04fd430c8&quot;</span></code>
-</div>
-</div>
+__Uses__ `Phalcon\Contracts\Encryption\Security\Uuid\Uuid`
+{ .api-uses }
 
 
 ## Encryption\Security\Uuid\Version1

@@ -13,18 +13,6 @@ hide:
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/ClockInterface.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by lcobucci/clock
-
-@link    https://github.com/lcobucci/clock
-@license https://github.com/lcobucci/clock/blob/3.7.x/LICENSE
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Time\Clock\ClockInterface`**
@@ -60,18 +48,6 @@ public function now(): DateTimeImmutable;
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exception.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by lcobucci/clock
-
-@link    https://github.com/lcobucci/clock
-@license https://github.com/lcobucci/clock/blob/3.7.x/LICENSE
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -85,18 +61,6 @@ Implementation of this file has been influenced by lcobucci/clock
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/Exceptions/InvalidModifier.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by lcobucci/clock
-
-@link    https://github.com/lcobucci/clock
-@license https://github.com/lcobucci/clock/blob/3.7.x/LICENSE
 
 <div class="api-tree" markdown>
 
@@ -114,7 +78,7 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 <div class="api-list">
 <a class="api-item" href="#timeclockexceptionsinvalidmodifier-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modifier</span>,</span><span class="prm"><span class="st">Throwable</span> <span class="sv">$ex</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -126,7 +90,7 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 
 ```php
 public function __construct(
-    string $message,
+    string $modifier,
     Throwable $ex = null
 );
 ```
@@ -136,18 +100,6 @@ public function __construct(
 
 <span class="badge badge--final">Final</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/FrozenClock.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by lcobucci/clock
-
-@link    https://github.com/lcobucci/clock
-@license https://github.com/lcobucci/clock/blob/3.7.x/LICENSE
 
 <div class="api-tree" markdown>
 
@@ -252,18 +204,6 @@ Sets the clock to a new value. All consumers receive the same modification
 
 <span class="badge badge--final">Final</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Time/Clock/SystemClock.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-Implementation of this file has been influenced by lcobucci/clock
-
-@link    https://github.com/lcobucci/clock
-@license https://github.com/lcobucci/clock/blob/3.7.x/LICENSE
 
 <div class="api-tree" markdown>
 

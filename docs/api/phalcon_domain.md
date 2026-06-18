@@ -194,6 +194,10 @@ public function getStatus(): mixed;
 
 Status
 
+Status values are drawn from the `Status` vocabulary.
+
+@see Status
+
 #### `setException()` { #domainpayloadpayload-setexception }
 
 ```php
@@ -242,13 +246,21 @@ public function setStatus( mixed $status ): PayloadInterface;
 
 Sets the payload status.
 
+Status values are drawn from the `Status` vocabulary.
+
+@see Status
+
 
 ## Domain\Payload\PayloadFactory
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/PayloadFactory.zep){ .src-btn }
 
-Factory to create payload objects
+Factory to create payload objects.
+
+It exists so that payload creation can be registered as a service in the DI
+container and substituted in tests, rather than constructing `Payload`
+instances directly.
 
 <div class="api-tree" markdown>
 
@@ -289,10 +301,14 @@ This interface is used for consumers
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface)
-    - **`Phalcon\Domain\Payload\PayloadInterface`** — extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface)
+- [`Phalcon\Contracts\Domain\Payload\Readable`](phalcon_contracts.md#contractsdomainpayloadreadable)
+    - [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface)
+        - **`Phalcon\Domain\Payload\PayloadInterface`** — extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface), [`Phalcon\Contracts\Domain\Payload\Payload`](phalcon_contracts.md#contractsdomainpayloadpayload)
 
 </div>
+
+__Uses__ `Phalcon\Contracts\Domain\Payload\Payload`
+{ .api-uses }
 
 
 ## Domain\Payload\ReadableInterface
@@ -304,106 +320,14 @@ This interface is used for consumers (read only)
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Domain\Payload\ReadableInterface`**
-    - [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
+- [`Phalcon\Contracts\Domain\Payload\Readable`](phalcon_contracts.md#contractsdomainpayloadreadable)
+    - **`Phalcon\Domain\Payload\ReadableInterface`**
+        - [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
 
 </div>
 
-__Uses__ `Throwable`
+__Uses__ `Phalcon\Contracts\Domain\Payload\Readable`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#domainpayloadreadableinterface-getexception">
-<code class="vis vis-public">public</code>
-<code class="ret">Throwable|null</code>
-<code class="sig"><span class="sf">getException</span>()</code>
-<span class="desc">Gets the potential exception thrown in the domain layer</span>
-</a>
-<a class="api-item" href="#domainpayloadreadableinterface-getextras">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getExtras</span>()</code>
-<span class="desc">Gets arbitrary extra values produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadreadableinterface-getinput">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getInput</span>()</code>
-<span class="desc">Gets the input received by the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadreadableinterface-getmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getMessages</span>()</code>
-<span class="desc">Gets the messages produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadreadableinterface-getoutput">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getOutput</span>()</code>
-<span class="desc">Gets the output produced from the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadreadableinterface-getstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getStatus</span>()</code>
-<span class="desc">Gets the status of this payload.</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 6</div>
-
-#### `getException()` { #domainpayloadreadableinterface-getexception }
-
-```php
-public function getException(): Throwable|null;
-```
-
-Gets the potential exception thrown in the domain layer
-
-#### `getExtras()` { #domainpayloadreadableinterface-getextras }
-
-```php
-public function getExtras(): mixed;
-```
-
-Gets arbitrary extra values produced by the domain layer.
-
-#### `getInput()` { #domainpayloadreadableinterface-getinput }
-
-```php
-public function getInput(): mixed;
-```
-
-Gets the input received by the domain layer.
-
-#### `getMessages()` { #domainpayloadreadableinterface-getmessages }
-
-```php
-public function getMessages(): mixed;
-```
-
-Gets the messages produced by the domain layer.
-
-#### `getOutput()` { #domainpayloadreadableinterface-getoutput }
-
-```php
-public function getOutput(): mixed;
-```
-
-Gets the output produced from the domain layer.
-
-#### `getStatus()` { #domainpayloadreadableinterface-getstatus }
-
-```php
-public function getStatus(): mixed;
-```
-
-Gets the status of this payload.
 
 
 ## Domain\Payload\Status
@@ -411,7 +335,18 @@ Gets the status of this payload.
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Domain/Payload/Status.zep){ .src-btn }
 
-Holds the status codes for the payload
+Holds the status codes for the payload.
+
+The two failure-related statuses are distinct, following the Aura.Payload
+lineage:
+
+- `ERROR` means an exception was raised while the domain layer was running.
+  By convention, `Payload::setException()` pairs with the `ERROR` status.
+- `FAILURE` means the domain layer ran to completion but declined the
+  request (for example, a business rule was not satisfied); no exception
+  was raised.
+
+@see Payload
 
 <div class="api-tree" markdown>
 
@@ -514,102 +449,10 @@ This interface is used for consumers (write)
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Domain\Payload\WriteableInterface`**
+- [`Phalcon\Contracts\Domain\Payload\Writeable`](phalcon_contracts.md#contractsdomainpayloadwriteable)
+    - **`Phalcon\Domain\Payload\WriteableInterface`**
 
 </div>
 
-__Uses__ `Throwable`
+__Uses__ `Phalcon\Contracts\Domain\Payload\Writeable`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#domainpayloadwriteableinterface-setexception">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
-<span class="desc">Sets an exception produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadwriteableinterface-setextras">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
-<span class="desc">Sets arbitrary extra values produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadwriteableinterface-setinput">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
-<span class="desc">Sets the input received by the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadwriteableinterface-setmessages">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
-<span class="desc">Sets the messages produced by the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadwriteableinterface-setoutput">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setOutput</span>( <span class="st">mixed</span> <span class="sv">$output</span> )</code>
-<span class="desc">Sets the output produced from the domain layer.</span>
-</a>
-<a class="api-item" href="#domainpayloadwriteableinterface-setstatus">
-<code class="vis vis-public">public</code>
-<code class="ret">PayloadInterface</code>
-<code class="sig"><span class="sf">setStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
-<span class="desc">Sets the status of this payload.</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 6</div>
-
-#### `setException()` { #domainpayloadwriteableinterface-setexception }
-
-```php
-public function setException( Throwable $exception ): PayloadInterface;
-```
-
-Sets an exception produced by the domain layer.
-
-#### `setExtras()` { #domainpayloadwriteableinterface-setextras }
-
-```php
-public function setExtras( mixed $extras ): PayloadInterface;
-```
-
-Sets arbitrary extra values produced by the domain layer.
-
-#### `setInput()` { #domainpayloadwriteableinterface-setinput }
-
-```php
-public function setInput( mixed $input ): PayloadInterface;
-```
-
-Sets the input received by the domain layer.
-
-#### `setMessages()` { #domainpayloadwriteableinterface-setmessages }
-
-```php
-public function setMessages( mixed $messages ): PayloadInterface;
-```
-
-Sets the messages produced by the domain layer.
-
-#### `setOutput()` { #domainpayloadwriteableinterface-setoutput }
-
-```php
-public function setOutput( mixed $output ): PayloadInterface;
-```
-
-Sets the output produced from the domain layer.
-
-#### `setStatus()` { #domainpayloadwriteableinterface-setstatus }
-
-```php
-public function setStatus( mixed $status ): PayloadInterface;
-```
-
-Sets the status of this payload.

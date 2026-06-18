@@ -30,13 +30,6 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exceptions/MessageNotObject.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -72,13 +65,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Messages/Exceptions/MessagesNotIterable.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -527,13 +513,20 @@ Sets message type
 
 Represents a collection of messages
 
+Messages are stored and iterated by integer position. An entry added under a
+string key through the ArrayAccess interface (for example
+`$messages["database"] = $message`) stays reachable by that offset but is not
+visited during iteration (`foreach`), which walks the integer sequence only.
+Use the append methods (`appendMessage()` / `appendMessages()`) when entries
+must take part in iteration.
+
 <div class="api-tree" markdown>
 
-- **`Phalcon\Messages\Messages`** — implements `ArrayAccess`, `Countable`, `Iterator`, `JsonSerializable`
+- **`Phalcon\Messages\Messages`** — implements [`Phalcon\Contracts\Messages\Messages`](phalcon_contracts.md#contractsmessagesmessages), `JsonSerializable`
 
 </div>
 
-__Uses__ `ArrayAccess` · `Countable` · `Iterator` · `JsonSerializable` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Exceptions\MessagesNotIterable`
+__Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Traversable`
 { .api-uses }
 
 ### Method Summary

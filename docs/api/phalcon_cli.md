@@ -24,7 +24,7 @@ This component allows to create CLI applications using Phalcon
 
 </div>
 
-__Uses__ `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exception` · `Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface`
+__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModuleDefinitionInterface`
 { .api-uses }
 
 ### Method Summary
@@ -48,7 +48,7 @@ __Uses__ `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Excep
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
+<code class="ret">array|string</code>
 <code class="sig"><span class="sv">$arguments</span><span class="sm"> = []</span></code>
 </div>
 <div class="api-item">
@@ -95,69 +95,17 @@ Exceptions thrown in Phalcon\Cli\Console will use this class
 - `\Exception`
     - [`Phalcon\Application\Exception`](phalcon_application.md#applicationexception)
         - **`Phalcon\Cli\Console\Exception`**
-            - [`Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered`](#cliconsoleexceptionsconsolemodulenotregistered)
             - [`Phalcon\Cli\Console\Exceptions\ContainerRequired`](#cliconsoleexceptionscontainerrequired)
-            - [`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath`](#cliconsoleexceptionsinvalidmoduledefinitionpath)
+            - [`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`](#cliconsoleexceptionsinvalidmoduledefinition)
             - [`Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound`](#cliconsoleexceptionsmoduledefinitionpathnotfound)
 
 </div>
-
-
-## Cli\Console\Exceptions\ConsoleModuleNotRegistered
-
-<span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ConsoleModuleNotRegistered.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-<div class="api-tree" markdown>
-
-- `\Exception`
-    - [`Phalcon\Application\Exception`](phalcon_application.md#applicationexception)
-        - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
-            - **`Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered`**
-
-</div>
-
-__Uses__ `Phalcon\Cli\Console\Exception`
-{ .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#cliconsoleexceptionsconsolemodulenotregistered-__construct">
-<code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$moduleName</span> )</code>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 1</div>
-
-#### `__construct()` { #cliconsoleexceptionsconsolemodulenotregistered-__construct }
-
-```php
-public function __construct( string $moduleName );
-```
 
 
 ## Cli\Console\Exceptions\ContainerRequired
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ContainerRequired.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -191,24 +139,17 @@ public function __construct();
 ```
 
 
-## Cli\Console\Exceptions\InvalidModuleDefinitionPath
+## Cli\Console\Exceptions\InvalidModuleDefinition
 
 <span class="badge badge--class">Class</span>
-[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/InvalidModuleDefinitionPath.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/InvalidModuleDefinition.zep){ .src-btn }
 
 <div class="api-tree" markdown>
 
 - `\Exception`
     - [`Phalcon\Application\Exception`](phalcon_application.md#applicationexception)
         - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
-            - **`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath`**
+            - **`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`**
 
 </div>
 
@@ -218,9 +159,9 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 ### Method Summary
 
 <div class="api-list">
-<a class="api-item" href="#cliconsoleexceptionsinvalidmoduledefinitionpath-__construct">
+<a class="api-item" href="#cliconsoleexceptionsinvalidmoduledefinition-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$reason</span><span class="sm"> = null</span></span>)</code>
 </a>
 </div>
 
@@ -228,10 +169,13 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 
 <div class="api-group">Public · 1</div>
 
-#### `__construct()` { #cliconsoleexceptionsinvalidmoduledefinitionpath-__construct }
+#### `__construct()` { #cliconsoleexceptionsinvalidmoduledefinition-__construct }
 
 ```php
-public function __construct();
+public function __construct(
+    string $name = null,
+    string $reason = null
+);
 ```
 
 
@@ -239,13 +183,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Console/Exceptions/ModuleDefinitionPathNotFound.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -445,6 +382,10 @@ public function callActionMethod(
 
 Calls the action method.
 
+The CLI options collected by the dispatcher are appended to the
+positional `params` before the call, so a task action receives any
+options as trailing arguments after its declared parameters.
+
 #### `getActiveTask()` { #clidispatcher-getactivetask }
 
 ```php
@@ -568,148 +509,14 @@ Interface for Phalcon\Cli\Dispatcher
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Dispatcher\DispatcherInterface`](phalcon_dispatcher.md#dispatcherdispatcherinterface)
-    - **`Phalcon\Cli\DispatcherInterface`**
+- [`Phalcon\Contracts\Dispatcher\Dispatcher`](phalcon_contracts.md#contractsdispatcherdispatcher)
+    - [`Phalcon\Contracts\Cli\Dispatcher`](phalcon_contracts.md#contractsclidispatcher)
+        - **`Phalcon\Cli\DispatcherInterface`**
 
 </div>
 
-__Uses__ `Phalcon\Dispatcher\DispatcherInterface`
+__Uses__ `Phalcon\Contracts\Cli\Dispatcher`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#clidispatcherinterface-getactivetask">
-<code class="vis vis-public">public</code>
-<code class="ret">TaskInterface</code>
-<code class="sig"><span class="sf">getActiveTask</span>()</code>
-<span class="desc">Returns the active task in the dispatcher</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-getlasttask">
-<code class="vis vis-public">public</code>
-<code class="ret">TaskInterface</code>
-<code class="sig"><span class="sf">getLastTask</span>()</code>
-<span class="desc">Returns the latest dispatched controller</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-getoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getOptions</span>()</code>
-<span class="desc">Get dispatched options</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-gettaskname">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTaskName</span>()</code>
-<span class="desc">Gets last dispatched task name</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-gettasksuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTaskSuffix</span>()</code>
-<span class="desc">Gets default task suffix</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-setdefaulttask">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setDefaultTask</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
-<span class="desc">Sets the default task name</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-setoptions">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setOptions</span>( <span class="st">array</span> <span class="sv">$options</span> )</code>
-<span class="desc">Set the options to be dispatched</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-settaskname">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTaskName</span>( <span class="st">string</span> <span class="sv">$taskName</span> )</code>
-<span class="desc">Sets the task name to be dispatched</span>
-</a>
-<a class="api-item" href="#clidispatcherinterface-settasksuffix">
-<code class="vis vis-public">public</code>
-<code class="ret">void</code>
-<code class="sig"><span class="sf">setTaskSuffix</span>( <span class="st">string</span> <span class="sv">$taskSuffix</span> )</code>
-<span class="desc">Sets the default task suffix</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 9</div>
-
-#### `getActiveTask()` { #clidispatcherinterface-getactivetask }
-
-```php
-public function getActiveTask(): TaskInterface;
-```
-
-Returns the active task in the dispatcher
-
-#### `getLastTask()` { #clidispatcherinterface-getlasttask }
-
-```php
-public function getLastTask(): TaskInterface;
-```
-
-Returns the latest dispatched controller
-
-#### `getOptions()` { #clidispatcherinterface-getoptions }
-
-```php
-public function getOptions(): array;
-```
-
-Get dispatched options
-
-#### `getTaskName()` { #clidispatcherinterface-gettaskname }
-
-```php
-public function getTaskName(): string;
-```
-
-Gets last dispatched task name
-
-#### `getTaskSuffix()` { #clidispatcherinterface-gettasksuffix }
-
-```php
-public function getTaskSuffix(): string;
-```
-
-Gets default task suffix
-
-#### `setDefaultTask()` { #clidispatcherinterface-setdefaulttask }
-
-```php
-public function setDefaultTask( string $taskName ): void;
-```
-
-Sets the default task name
-
-#### `setOptions()` { #clidispatcherinterface-setoptions }
-
-```php
-public function setOptions( array $options ): void;
-```
-
-Set the options to be dispatched
-
-#### `setTaskName()` { #clidispatcherinterface-settaskname }
-
-```php
-public function setTaskName( string $taskName ): void;
-```
-
-Sets the task name to be dispatched
-
-#### `setTaskSuffix()` { #clidispatcherinterface-settasksuffix }
-
-```php
-public function setTaskSuffix( string $taskSuffix ): void;
-```
-
-Sets the default task suffix
 
 
 ## Cli\Dispatcher\Exception
@@ -1014,8 +821,6 @@ public function getParams(): array;
 
 Returns processed extra params
 
-@todo deprecate this in future versions
-
 #### `getRouteById()` { #clirouter-getroutebyid }
 
 ```php
@@ -1196,7 +1001,7 @@ __Uses__ `Phalcon\Cli\Router\RouteInterface`
 <a class="api-item" href="#clirouterinterface-handle">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">handle</span>( <span class="st">mixed</span> <span class="sv">$arguments</span><span class="sm"> = null</span> )</code>
-<span class="desc">Handles routing information received from the rewrite engine</span>
+<span class="desc">Handles routing information received from the rewrite engine.</span>
 </a>
 <a class="api-item" href="#clirouterinterface-setdefaultaction">
 <code class="vis vis-public">public</code>
@@ -1292,7 +1097,6 @@ public function getParams(): array;
 ```
 
 Returns processed extra params
-@todo deprecate this in the future
 
 #### `getRouteById()` { #clirouterinterface-getroutebyid }
 
@@ -1334,7 +1138,13 @@ Returns processed task name
 public function handle( mixed $arguments = null );
 ```
 
-Handles routing information received from the rewrite engine
+Handles routing information received from the rewrite engine.
+
+When `arguments` is a string (or null), it is matched against the
+registered routes. When it is an array, matching is bypassed entirely:
+the array is treated as the already-resolved module/task/action/params,
+so `wasMatched()` stays false and `getMatchedRoute()` returns null even
+though routing succeeded.
 
 #### `setDefaultAction()` { #clirouterinterface-setdefaultaction }
 
@@ -1400,13 +1210,6 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/BeforeMatchNotCallable.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -1423,7 +1226,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#clirouterexceptionsbeforematchnotcallable-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$route</span><span class="sm"> = &quot;&quot;</span> )</code>
 </a>
 </div>
 
@@ -1434,7 +1237,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 #### `__construct()` { #clirouterexceptionsbeforematchnotcallable-__construct }
 
 ```php
-public function __construct();
+public function __construct( string $route = "" );
 ```
 
 
@@ -1442,13 +1245,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/InvalidRoutePaths.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1466,7 +1262,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#clirouterexceptionsinvalidroutepaths-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$route</span><span class="sm"> = &quot;&quot;</span> )</code>
 </a>
 </div>
 
@@ -1477,7 +1273,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 #### `__construct()` { #clirouterexceptionsinvalidroutepaths-__construct }
 
 ```php
-public function __construct();
+public function __construct( string $route = "" );
 ```
 
 
@@ -1485,13 +1281,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/Exceptions/RouterArgumentsInvalidType.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -1509,7 +1298,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 <div class="api-list">
 <a class="api-item" href="#clirouterexceptionsrouterargumentsinvalidtype-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>()</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$type</span><span class="sm"> = &quot;&quot;</span> )</code>
 </a>
 </div>
 
@@ -1520,7 +1309,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 #### `__construct()` { #clirouterexceptionsrouterargumentsinvalidtype-__construct }
 
 ```php
-public function __construct();
+public function __construct( string $type = "" );
 ```
 
 
@@ -1537,7 +1326,7 @@ This class represents every route added to the router
 
 </div>
 
-__Uses__ `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`
+__Uses__ `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`
 { .api-uses }
 
 ### Method Summary
@@ -1569,7 +1358,7 @@ __Uses__ `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">delimiter</span>( <span class="st">string</span> <span class="sv">$delimiter</span><span class="sm"> = null</span> )</code>
-<span class="desc">Set the routing delimiter</span>
+<span class="desc">Set the routing delimiter.</span>
 </a>
 <a class="api-item" href="#clirouterroute-extractnamedparams">
 <code class="vis vis-public">public</code>
@@ -1647,7 +1436,7 @@ __Uses__ `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">reset</span>()</code>
-<span class="desc">Resets the internal route id generator</span>
+<span class="desc">Resets the internal route id generator.</span>
 </a>
 <a class="api-item" href="#clirouterroute-setdescription">
 <code class="vis vis-public">public</code>
@@ -1782,7 +1571,13 @@ parameter
 public static function delimiter( string $delimiter = null ): void;
 ```
 
-Set the routing delimiter
+Set the routing delimiter.
+
+This sets a process-global delimiter that each route captures at
+construction time. Configure it once during bootstrap, before any routes
+are created: routes built before and after a change keep their own
+delimiter, and `Console::setArgument()` reads the current value when it
+parses arguments.
 
 #### `extractNamedParams()` { #clirouterroute-extractnamedparams }
 
@@ -1889,7 +1684,11 @@ Reconfigure the route adding a new pattern and a set of paths
 public static function reset(): void;
 ```
 
-Resets the internal route id generator
+Resets the internal route id generator.
+
+Intended for test isolation only. The router keys its route map by the
+route id, so resetting the sequence while a router still holds routes
+makes newly created routes overwrite existing entries.
 
 #### `setDescription()` { #clirouterroute-setdescription }
 
@@ -1923,6 +1722,13 @@ $router->add(
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Cli/Router/RouteInterface.zep){ .src-btn }
 
 Interface for Phalcon\Cli\Router\Route
+
+Note: `Phalcon\Cli\Router` always constructs and returns the concrete
+`Phalcon\Cli\Router\Route`, and there is no injection point for an externally
+built route, so this interface is a marker for type hints rather than an
+implementable contract. The fluent route API used in practice -
+`beforeMatch()`, `getBeforeMatch()`, `convert()`, and `getConverters()` - is
+declared on the concrete `Route` class, not here.
 
 <div class="api-tree" markdown>
 
@@ -2166,6 +1972,10 @@ class HelloTask extends \Phalcon\Cli\Task
     }
 }
 ```
+
+Action methods receive the routed parameters as positional arguments,
+followed by any CLI options the dispatcher collected (appended as trailing
+arguments). Declare optional trailing parameters to read those options.
 
 <div class="api-tree" markdown>
 

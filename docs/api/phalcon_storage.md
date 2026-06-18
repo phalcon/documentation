@@ -13,13 +13,6 @@ hide:
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/AdapterFactory.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Factory\AbstractConfigFactory`](phalcon_factory.md#factoryabstractconfigfactory)
@@ -130,7 +123,7 @@ Class AbstractAdapter
 
 </div>
 
-__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception`
+__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception` · `Phalcon\Support\Helper\Arr\Get`
 { .api-uses }
 
 ### Method Summary
@@ -298,13 +291,19 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@todo Remove this when we get traits</span>
+<span class="desc">Reads an element from an array, optionally casting it. Delegates to the</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-getfilteredkeys">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getFilteredKeys</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
 <span class="desc">Filters the keys array based on global and passed prefix</span>
+</a>
+<a class="api-item" href="#storageadapterabstractadapter-getkeywithoutprefix">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getKeyWithoutPrefix</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Check if the key has the prefix and remove it, otherwise just return the</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-getprefixedkey">
 <code class="vis vis-protected">protected</code>
@@ -391,6 +390,15 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="ret">SerializerFactory</code>
 <code class="sig"><span class="sv">$serializerFactory</span></code>
 <span class="desc">Serializer Factory</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$stripPrefix</span><span class="sm"> = true</span></code>
+<span class="desc">Whether a leading prefix is stripped from incoming keys before the
+adapter prefix is applied. Disable when keys are externally
+generated identifiers that may legitimately start with the prefix
+text (e.g. session ids).</span>
 </div>
 </div>
 
@@ -549,7 +557,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the event manager
 
-<div class="api-group">Protected · 17</div>
+<div class="api-group">Protected · 18</div>
 
 #### `__construct()` { #storageadapterabstractadapter-__construct }
 
@@ -661,7 +669,10 @@ protected function getArrVal(
 ): mixed;
 ```
 
-@todo Remove this when we get traits
+Reads an element from an array, optionally casting it. Delegates to the
+canonical Support\Helper\Arr\Get helper.
+
+@todo Remove this wrapper when we get traits
 
 #### `getFilteredKeys()` { #storageadapterabstractadapter-getfilteredkeys }
 
@@ -673,6 +684,16 @@ protected function getFilteredKeys(
 ```
 
 Filters the keys array based on global and passed prefix
+
+#### `getKeyWithoutPrefix()` { #storageadapterabstractadapter-getkeywithoutprefix }
+
+```php
+protected function getKeyWithoutPrefix( string $key ): string;
+```
+
+Check if the key has the prefix and remove it, otherwise just return the
+key unaltered. When the `stripPrefix` option is `false` the key is
+always returned unaltered.
 
 #### `getPrefixedKey()` { #storageadapterabstractadapter-getprefixedkey }
 
@@ -941,6 +962,11 @@ from the adapter.
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Apcu.zep){ .src-btn }
 
 Apcu adapter
+
+Capabilities:
+- Counters: native atomic (apcu_inc()/apcu_dec()).
+- getKeys(): APCUIterator regex scan over the shared APCu store.
+- Serializers: Phalcon-side only; no backend-native serializer.
 
 @property array $options
 
@@ -1244,6 +1270,12 @@ protected function phpApcuStore(
 
 Libmemcached adapter
 
+Capabilities:
+- Counters: native atomic (Memcached::increment()/decrement()).
+- getKeys(): Memcached::getAllKeys(), which is server-dependent and may be
+  incomplete or unavailable on modern memcached builds.
+- Serializers: Phalcon-side plus libmemcached's own options.
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
@@ -1461,6 +1493,13 @@ Memory adapter
 
 @property array $data
 @property array $options
+
+Capabilities:
+- Scope: per-request, in-process; nothing is shared across requests or
+  processes and the store is discarded when the request ends.
+- Counters: read-modify-write on the in-memory array.
+- getKeys(): in-memory array scan (cheap).
+- Optional maxItems FIFO cap drops the oldest entry before a new key is set.
 
 <div class="api-tree" markdown>
 
@@ -1697,6 +1736,13 @@ the `setForever()` method.
 
 Redis adapter
 
+Capabilities:
+- Counters: native atomic (incrBy()/decrBy()).
+- getKeys(): non-blocking SCAN iteration.
+- Serializers: Phalcon-side, or backend-native via OPT_SERIALIZER. Native
+  serializers change the bytes at rest and are not interchangeable with
+  Phalcon-side serializers.
+
 @property array $options
 
 <div class="api-tree" markdown>
@@ -1915,6 +1961,12 @@ the `setForever()` method.
 
 RedisCluster adapter
 
+Capabilities (in addition to Redis):
+- Counters: native atomic (incrBy()/decrBy()).
+- getKeys(): blocking KEYS across all master nodes (per-node SCAN is left to
+  the redesign); clear() flushes every master.
+- Serializers: Phalcon-side, or backend-native via OPT_SERIALIZER.
+
 @property array $options
 
 <div class="api-tree" markdown>
@@ -1949,6 +2001,12 @@ __Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storag
 <code class="sig"><span class="sf">getAdapter</span>()</code>
 <span class="desc">Returns the already connected adapter or connects to the Redis</span>
 </a>
+<a class="api-item" href="#storageadapterrediscluster-getkeys">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getKeys</span>( <span class="st">string</span> <span class="sv">$prefix</span><span class="sm"> = &quot;&quot;</span> )</code>
+<span class="desc">Returns all the keys stored</span>
+</a>
 </div>
 
 ### Properties
@@ -1963,7 +2021,7 @@ __Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storag
 
 ### Methods
 
-<div class="api-group">Public · 3</div>
+<div class="api-group">Public · 4</div>
 
 #### `__construct()` { #storageadapterrediscluster-__construct }
 
@@ -2020,6 +2078,18 @@ public function getAdapter(): mixed;
 Returns the already connected adapter or connects to the Redis
 Cluster server(s)
 
+#### `getKeys()` { #storageadapterrediscluster-getkeys }
+
+```php
+public function getKeys( string $prefix = "" ): array;
+```
+
+Returns all the keys stored
+
+RedisCluster::scan() iterates one node at a time, so the blocking KEYS
+command is retained here (phpredis routes it across the masters). The
+per-node SCAN migration is left to the storage redesign.
+
 
 ## Storage\Adapter\Stream
 
@@ -2027,6 +2097,12 @@ Cluster server(s)
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Adapter/Stream.zep){ .src-btn }
 
 Stream adapter
+
+Capabilities:
+- Counters: read-modify-write (doHas()/doGet()/doSet()); not atomic and racy
+  across concurrent processes.
+- getKeys(): recursive directory traversal; cost grows with the entry count.
+- Serializers: Phalcon-side only.
 
 @property string $storageDir
 @property array  $options
@@ -2305,6 +2381,13 @@ protected function phpUnlink( string $filename ): bool;
 
 Weak Adapter
 
+Capabilities:
+- Stores objects only, as WeakReferences; entries vanish when the referenced
+  object is garbage-collected.
+- TTL is ignored; no serializer is used (none/no-op).
+- Counters unsupported: increment()/decrement() return false.
+- setForever() is equivalent to set(); getKeys() reads the in-memory list.
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
@@ -2552,13 +2635,6 @@ Exceptions thrown in Phalcon\Storage will use this class
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/AuthenticationFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2595,13 +2671,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ClusterConnectionFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2619,13 +2688,6 @@ __Uses__ `Phalcon\Storage\Exception`
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/ConnectionFailed.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2642,13 +2704,6 @@ __Uses__ `Phalcon\Storage\Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/DatabaseSelectionFailed.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2686,13 +2741,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/InvalidConfiguration.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2710,13 +2758,6 @@ __Uses__ `Phalcon\Storage\Exception`
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Exceptions/StorageError.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\Exception`
@@ -2733,13 +2774,6 @@ __Uses__ `Phalcon\Storage\Exception`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/SerializerFactory.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -2956,13 +2990,6 @@ If this returns true, then the data is returned as is
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Base64.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
@@ -3036,13 +3063,6 @@ Wrapper for base64_decode
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidSerializationInput.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\InvalidArgumentException`
@@ -3075,13 +3095,6 @@ public function __construct();
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Exceptions/InvalidUnserializationInput.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - `\InvalidArgumentException`
@@ -3113,13 +3126,6 @@ public function __construct();
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Igbinary.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3214,13 +3220,6 @@ Wrapper for `igbinary_serialize`
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Json.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3336,13 +3335,6 @@ Serializer using the built-in Memcached 'php' serializer
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Msgpack.zep){ .src-btn }
 
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
 <div class="api-tree" markdown>
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
@@ -3389,13 +3381,6 @@ protected function doUnserialize( mixed $value );
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/None.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3456,13 +3441,6 @@ Unserializes data
 
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/Php.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
@@ -3596,13 +3574,6 @@ Serializer using the built-in Redis 'php' serializer
 
 <span class="badge badge--interface">Interface</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Storage/Serializer/SerializerInterface.zep){ .src-btn }
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalcon.io>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
 
 <div class="api-tree" markdown>
 
