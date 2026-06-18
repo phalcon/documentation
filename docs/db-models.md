@@ -2980,6 +2980,10 @@ $average = Invoices::average(
 );
 ```
 
+!!! info "NOTE"
+
+    For a non-grouped query, `sum()` and `average()` always return a `float`. When no rows match the conditions, the result is `0.0` (not `null`). `maximum()` and `minimum()` instead return the column value, or `null` when there are no matching rows.
+
 **`MAX` - `MIN`**
 
 ```php
