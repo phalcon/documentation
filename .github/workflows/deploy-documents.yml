@@ -82,7 +82,7 @@ jobs:
           echo "PH_DOCS_ALIAS=$ALIAS" >> $GITHUB_ENV
 
       - name: Deploy
-        if: ${{ env.PH_DOCS_VERSION }} != null
+        if: ${{ env.PH_DOCS_VERSION != null }}
         run: |
           # Publishing implies creating a git commit on the production branch,
           # We will need to create a user for this at some point
