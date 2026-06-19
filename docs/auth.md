@@ -1,800 +1,563 @@
-# Auth
+# Authentication and Authorization
+
 - - -
 
 ## Overview
 
-[Phalcon\Auth\Manager][manager] is a small façade that ties together three concerns:
+`Phalcon\Auth` provides authentication (who the user is) and authorization (what the user may do) behind a single facade, `Phalcon\Auth\Manager`.
 
-- **Authentication** — figuring out *who* the user is. Handled by **guards** (e.g. session-backed login, token-based API auth) that delegate user lookup to **adapters** (Memory, Stream, Model).
-- **Authorization** — deciding what the current user is allowed to do. Handled by **access gates** (`Auth`, `Guest`, or your own).
-- **Configuration** — every adapter and guard takes a typed, immutable configuration object instead of a loose array, so misconfiguration fails fast and IDEs/static analyzers see real types.
+The layer is composed of four building blocks:
 
-The component is intentionally small. The `Manager` keeps a registry of guards and access gates, exposes typed convenience methods (`attempt`, `check`, `id`, `user`, `validate`, `logout`) that delegate to the default guard, and provides an `addAccessList()` / `access()` flow for authorization checks. Every public method on the implementation is also declared on [Phalcon\Contracts\Auth\Manager][manager-contract], so application code can type against the contract and reach the entire facade.
+- **Guards** answer "is there an authenticated user, and who is it?". Two ship in the box: `session` (cookie/session backed, with remember-me and HTTP Basic) and `token` (bearer/API token).
+- **Adapters** are user providers - they load user records from a backing store. Three ship in the box: `memory`, `model` (Phalcon ORM), and `stream` (JSON file).
+- **Access gates** answer "is this action allowed?". Three ship in the box: `auth` (requires a logged-in user), `guest` (requires no logged-in user), and `acl` (checks the authenticated user's role against a `Phalcon\Acl` adapter).
+- **`AuthUser`** is the authenticated user value object returned by guards.
 
-```php
-<?php
+Guards resolve the framework services they need (request, cookies, session manager) from a container, so they wire against the real application singletons. The container can be the modern `Phalcon\Container\Container` or the classic `Phalcon\Di\Di`.
 
-use Phalcon\Auth\Access\AccessLocator;
-use Phalcon\Auth\Adapter\Config\MemoryAdapterConfig;
-use Phalcon\Auth\Adapter\Memory;
-use Phalcon\Auth\Guard\Session as SessionGuard;
-use Phalcon\Auth\Manager;
-use Phalcon\Container\Container;
-use Phalcon\Encryption\Security;
+---
 
-$container = new Container();
-$security  = new Security();
+## Bootstrapping with ManagerFactory
 
-$adapter = new Memory(
-    $security,
-    new MemoryAdapterConfig(
-        [
-            [
-                'id'       => 1, 
-                'email'    => 'alice@example.com', 
-                'password' => $security->hash('secret'),
-            ],
-        ]
-    )
-);
-
-$guard = new SessionGuard(
-    $adapter,
-    $request,    // Phalcon\Http\RequestInterface
-    $cookies,    // Phalcon\Http\Response\CookiesInterface
-    $session     // Phalcon\Session\ManagerInterface
-);
-
-$manager = new Manager(new AccessLocator($container));
-$manager->addGuard('web', $guard, true);
-
-$credentials = [
-    'email'    => 'alice@example.com', 
-    'password' => 'secret',
-];
-if ($manager->attempt($credentials)) {
-    // user is logged in
-}
-```
-
-## Architecture
-
-The component splits into four namespaces, each with a clear contract.
-
-| Namespace              | Role                                                                   |
-|------------------------|------------------------------------------------------------------------|
-| `Phalcon\Auth\Adapter` | Look up users from a backing store (in-memory list, JSON file, model). |
-| `Phalcon\Auth\Guard`   | Drive an authentication flow (session, bearer token).                  |
-| `Phalcon\Auth\Access`  | Authorize the current user for a controller action.                    |
-| `Phalcon\Auth`         | Compose the above behind `Manager`.                                    |
-
-Every adapter, guard, and access gate has a matching `*Config` value object (where it makes sense) and a `*Locator` that resolves names (`'memory'`, `'session'`, `'auth'`) to concrete classes via the DI container.
-
-```text
-+--------------------+
-|    Auth\Manager    |
-+--------------------+
-   |              |
-   v              v
-+--------+   +-----------------+
-| Guard  |   | AccessLocator   |
-| (e.g.  |   | -> Auth, Guest  |
-| Session|   |    custom...    |
-| /Token)|   +-----------------+
-+--------+
-   |
-   v
-+--------+
-| Adapter| -> Memory / Stream / Model
-+--------+
-   |
-   v
-+----------------+
-|  AdapterConfig | (typed; one per adapter)
-+----------------+
-```
-
-## Adapters
-
-An adapter answers two questions:
-
-- `retrieveByCredentials(array $credentials)` — find a user by an arbitrary set of fields.
-- `retrieveById(int|string $id)` — find a user by primary identifier.
-
-A third method, `validateCredentials(AuthUser $user, array $credentials)`, lives on the abstract base and verifies the password against the stored hash. The `password` key in the credentials array is *ignored* during lookup (so passing it alongside an email won't filter by hashed password).
-
-All adapters take a [Phalcon\Encryption\Security][security] instance for password hashing plus a typed config object.
-
-### Memory
-
-Use [Phalcon\Auth\Adapter\Memory][adapter-memory] for tests and small read-only user lists. The user rows are stored in process memory and indexed by id for `O(1)` `retrieveById`.
-
-```php
-<?php
-
-use Phalcon\Auth\Adapter\Config\MemoryAdapterConfig;
-use Phalcon\Auth\Adapter\Memory;
-use Phalcon\Encryption\Security;
-
-$security = new Security();
-$adapter  = new Memory(
-    $security,
-    new MemoryAdapterConfig(
-        users: [
-            [
-                'id'       => 1,
-                'email'    => 'alice@example.com',
-                'password' => $security->hash('secret'),
-            ],
-        ],
-        model: null   // optional model class for hydration
-    )
-);
-
-$credentials = ['email' => 'alice@example.com'];
-$user        = $adapter->retrieveByCredentials($credentials);
-```
-
-If `model` is set in the config, the adapter hydrates rows into instances of that class (calling `assign($row)` if the method exists) instead of returning a generic [Phalcon\Auth\AuthUser][authuser]. This lets your application user model carry domain methods on the result.
-
-### Stream
-
-Use [Phalcon\Auth\Adapter\Stream][adapter-stream] when the user list lives in a JSON file on disk. The file is re-read on every call — wrap with caching if hot.
-
-```php
-<?php
-
-use Phalcon\Auth\Adapter\Config\StreamAdapterConfig;
-use Phalcon\Auth\Adapter\Stream;
-use Phalcon\Encryption\Security;
-
-$adapter = new Stream(
-    new Security(),
-    new StreamAdapterConfig(
-        file: __DIR__ . '/users.json',
-        model: null
-    )
-);
-```
-
-`users.json` must be a JSON array of user records:
-
-```json
-[
-    {"id": 1, "email": "alice@example.com", "password": "$2y$..."},
-    {"id": 2, "email": "bob@example.com",   "password": "$2y$..."}
-]
-```
-
-Stream throws [Phalcon\Auth\Exception][exception] on:
-
-- file does not exist;
-- file cannot be read;
-- file is not valid JSON;
-- file is valid JSON but not a top-level array.
-
-The disk-side helpers (`phpFileExists`, `phpFileGetContents`) come from the `Phalcon\Traits\Php\FileTrait`, which means a test subclass can override them to fake the disk without touching the real filesystem.
-
-### Model
-
-Use [Phalcon\Auth\Adapter\Model][adapter-model] when the user table is a Phalcon model. Lookups go through `findFirst` with bound parameters built from the credentials array.
-
-```php
-<?php
-
-use App\Models\User;
-use Phalcon\Auth\Adapter\Config\ModelAdapterConfig;
-use Phalcon\Auth\Adapter\Model;
-use Phalcon\Encryption\Security;
-
-$adapter = new Model(
-    new Security(),
-    new ModelAdapterConfig(User::class)
-);
-
-$credentials = ['email' => 'alice@example.com'];
-$user = $adapter->retrieveByCredentials($credentials);
-```
-
-`ModelAdapterConfig` requires the model class name; constructing one with an empty string throws `Phalcon\Auth\Exception` immediately. This catches "I forgot to set the model" at boot time instead of at first auth attempt.
-
-The Model adapter also implements [Phalcon\Contracts\Auth\Adapter\RememberAdapter][remember-adapter], which means the Session guard's "remember me" cookie path works against it as long as your model class implements [Phalcon\Contracts\Auth\AuthRemember][auth-remember] (i.e. `createRememberToken()` and `getRememberToken()`).
-
-### AdapterLocator
-
-Adapters can also be resolved by short name from the DI container via [Phalcon\Auth\Adapter\AdapterLocator][adapter-locator]:
-
-| Name     | Class                         |
-|----------|-------------------------------|
-| `memory` | `Phalcon\Auth\Adapter\Memory` |
-| `model`  | `Phalcon\Auth\Adapter\Model`  |
-| `stream` | `Phalcon\Auth\Adapter\Stream` |
-
-```php
-<?php
-
-use Phalcon\Auth\Adapter\AdapterLocator;
-
-$locator = new AdapterLocator($container);
-$adapter = $locator->newInstance('memory');
-
-// Custom adapter registered at construction time
-$locator = new AdapterLocator($container, ['ldap' => MyLdapAdapter::class]);
-$adapter = $locator->newInstance('ldap');
-```
-
-`register($name, $class)` validates that the class implements [Phalcon\Contracts\Auth\Adapter\Adapter][adapter-contract] before adding it; an attempt to register an unrelated class throws `Phalcon\Auth\Exception`.
-
-## Guards
-
-A guard implements [Phalcon\Contracts\Auth\Guard\Guard][guard-contract] and represents one authentication mechanism. The component ships with two guards.
-
-### Session
-
-[Phalcon\Auth\Guard\Session][guard-session] is the typical browser-facing guard: stateful, session-backed, with optional remember-me cookies.
-
-```php
-<?php
-
-use Phalcon\Auth\Adapter\Config\MemoryAdapterConfig;
-use Phalcon\Auth\Adapter\Memory;
-use Phalcon\Auth\Guard\Config\SessionGuardConfig;
-use Phalcon\Auth\Guard\Session as SessionGuard;
-use Phalcon\Encryption\Security;
-
-$security = new Security();
-$adapter  = new Memory(
-    $security, 
-    new MemoryAdapterConfig(
-        [
-            [
-                'id'       => 1, 
-                'email'    => 'alice@example.com', 
-                'password' => $security->hash('secret'),
-            ],
-        ]
-    )
-);
-
-$guard = new SessionGuard(
-    adapter: $adapter,
-    request: $request,                // Phalcon\Http\RequestInterface
-    cookies: $cookies,                // Phalcon\Http\Response\CookiesInterface
-    session: $sessionManager,         // Phalcon\Session\ManagerInterface
-    config:  new SessionGuardConfig() // optional; defaults are fine today
-);
-
-$credentials = [
-    'email'    => 'alice@example.com', 
-    'password' => 'secret',
-];
-if ($guard->attempt($credentials) {
-    // session now holds the user id under $guard->getName()
-}
-
-// Subsequent requests:
-$user = $guard->user();
-if ($guard->check()) {
-    echo 'Hello ' . $user->getAuthIdentifier();
-}
-
-$guard->logout();
-```
-
-Common operations:
-
-| Method                         | Description                                                     |
-|--------------------------------|-----------------------------------------------------------------|
-| `attempt(array, bool)`         | Validate credentials, log in on success, optional remember-me.  |
-| `once(array)`                  | Validate without persisting to session.                         |
-| `login(AuthUser, bool)`        | Log a known user in directly (no credential check).             |
-| `loginById(int\|string, bool)` | Resolve a user by id and log them in.                           |
-| `logout()`                     | Clear session + remember cookie.                                |
-| `basic(string, array)`         | Drive HTTP Basic auth via the request's `getBasicAuth()`.       |
-| `onceBasic(...)`               | Same, without persisting.                                       |
-| `check()` / `guest()` / `id()` | State queries.                                                  |
-| `viaRemember()`                | True if the active session was restored from a remember cookie. |
-
-Calling `login($user, remember: true)` requires the configured adapter to implement [RememberAdapter][remember-adapter]; the guard throws `Phalcon\Auth\Exception` otherwise.
-
-### Token
-
-[Phalcon\Auth\Guard\Token][guard-token] is the API-style guard: stateless, reads a bearer token from the query string or `Authorization` header, looks the user up by storage key.
-
-```php
-<?php
-
-use Phalcon\Auth\Adapter\Config\MemoryAdapterConfig;
-use Phalcon\Auth\Adapter\Memory;
-use Phalcon\Auth\Guard\Config\TokenGuardConfig;
-use Phalcon\Auth\Guard\Token as TokenGuard;
-use Phalcon\Encryption\Security;
-
-$security = new Security();
-$adapter  = new Memory(
-    $security, 
-    new MemoryAdapterConfig(
-        [
-            [
-                'id'        => 1,
-                'email'     => 'alice@example.com',
-                'password'  => 'unused',
-                'api_token' => 'abcdef123',
-            ],
-        ]
-    )
-);
-
-$guard = new TokenGuard(
-    $adapter,
-    $request,
-    new TokenGuardConfig(
-        inputKey:   'api_token',  // request key (?api_token=... or Bearer <token>)
-        storageKey: 'api_token'   // adapter row key
-    )
-);
-
-$user = $guard->user();   // resolved from query/header on first call, cached after
-$ok   = $guard->validate(
-    ['api_token' => 'abcdef123']
-);
-```
-
-`TokenGuardConfig` requires both `inputKey` and `storageKey`; passing an empty string for either throws `Phalcon\Auth\Exception` at construction time.
-
-`getTokenForRequest()` looks for a non-empty token in this order:
-
-1. The request's query/POST under `inputKey`.
-2. The `Authorization: Bearer <token>` header (with the leading `Bearer ` stripped).
-
-If neither is present, it returns `null` and `user()` returns `null`.
-
-### GuardLocator
-
-Like adapters, guards have a [Phalcon\Auth\Guard\GuardLocator][guard-locator]:
-
-| Name      | Class                        |
-|-----------|------------------------------|
-| `session` | `Phalcon\Auth\Guard\Session` |
-| `token`   | `Phalcon\Auth\Guard\Token`   |
-
-```php
-<?php
-
-use Phalcon\Auth\Guard\GuardLocator;
-
-$locator = new GuardLocator($container);
-$guard   = $locator->newInstance('session');
-```
-
-The container must be wired so that the locator can autowire the guard's dependencies (adapter, request, cookies, session manager, the relevant config). See [Container autowiring](#container-autowiring) below.
-
-## Manager
-
-[Phalcon\Auth\Manager][manager] is the single entry point your application code talks to.
-
-```php
-<?php
-
-use Phalcon\Auth\Access\AccessLocator;
-use Phalcon\Auth\Manager;
-use Phalcon\Container\Container;
-
-$manager = new Manager(new AccessLocator(new Container()));
-$manager->addGuard('web', $sessionGuard, isDefault: true);
-$manager->addGuard('api', $tokenGuard);
-
-// Default guard is used when no name is passed:
-$credentials = [
-    'email'    => 'a@b', 
-    'password' => 'p',
-];
-$manager->attempt($credentials);
-$manager->check();
-$manager->user();
-$manager->logout();
-
-// Other guards by name:
-$manager->guard('api')->user();
-```
-
-The convenience methods above (`attempt`, `check`, `id`, `user`, `validate`, `logout`) are declared on both [Phalcon\Auth\Manager][manager] and the [Phalcon\Contracts\Auth\Manager][manager-contract] interface — application code can hold either type and call them. `attempt()` and `logout()` route through `$this->guard()` and require the default guard to implement [Phalcon\Contracts\Auth\Guard\GuardStateful][guard-stateful]; if not, they throw `Phalcon\Auth\Exception`.
-
-For guard-specific behavior that lives outside the contract — e.g. `loginById()`, `onceBasic()`, `viaRemember()` on the Session guard — call through `$manager->guard()` and narrow with `instanceof` against the relevant capability interface (`GuardStateful`, [BasicAuth][basic-auth], etc.):
-
-```php
-<?php
-
-use Phalcon\Auth\Guard\Session as SessionGuard;
-
-$guard = $manager->guard();
-if ($guard instanceof SessionGuard) {
-    $guard->loginById(1, remember: true);
-}
-```
-
-### Access lists and gates
-
-An access gate decides whether the current user may execute a given action. Gates implement [Phalcon\Contracts\Auth\Access\Access][access-contract]; the component ships with two:
-
-- [Phalcon\Auth\Access\Auth][access-auth] — allows when the default guard reports `check() === true`.
-- [Phalcon\Auth\Access\Guest][access-guest] — allows when the default guard reports `check() === false`.
-
-Gates are looked up by name via [Phalcon\Auth\Access\AccessLocator][access-locator] (`'auth'`, `'guest'`, or any custom name you register). `Manager::addAccessList()` is the single registration entry point — it forwards each entry directly to the underlying locator; `Manager::getAccessList()` reads back the locator's full registry.
+`Phalcon\Auth\ManagerFactory` builds a fully wired `Manager` from a configuration tree. It needs a password hasher (`Phalcon\Encryption\Security`) and a container that provides the framework services the guards consume - either a `Phalcon\Container\Container` or a `Phalcon\Di\DiInterface`. The built-in `Phalcon\Container\Provider\Web` registers those services on a `Phalcon\Container\Container`.
 
 ```php
 <?php
 
 use Phalcon\Auth\Access\Auth;
 use Phalcon\Auth\Access\Guest;
+use Phalcon\Auth\ManagerFactory;
+use Phalcon\Container\ContainerFactory;
+use Phalcon\Container\Provider\Web;
+use Phalcon\Encryption\Security;
 
-$manager
-    ->addAccessList(
-        [
-            'auth'  => Auth::class,
-            'guest' => Guest::class,
-            'admin' => App\Access\Admin::class,
-        ]
-    )
-    ->access('auth')               // activate the 'auth' gate
-    ->only('dashboard', 'profile') // gate applies only to these actions
-;
+$container = (new ContainerFactory())
+    ->addProvider(new Web())
+    ->newContainer();
 
-if ($manager->getAccess()?->isAllowed('dashboard')) {
-    // proceed
-}
+/**
+ * Alternative 
+ *
+$container = new Phalcon\Di\FactoryDefault();
+*/
+
+$factory = new ManagerFactory(new Security(), $container);
+
+$manager = $factory->load([
+    'guards' => [
+        'web' => [
+            'type'    => 'session',
+            'default' => true,
+            'adapter' => [
+                'name'    => 'model',
+                'options' => ['model' => Users::class],
+            ],
+        ],
+        'api' => [
+            'type'    => 'token',
+            'adapter' => [
+                'name'    => 'model',
+                'options' => ['model' => Users::class],
+            ],
+            'options' => [
+                'inputKey'   => 'api_token',
+                'storageKey' => 'api_token',
+            ],
+        ],
+    ],
+    'access' => [
+        'auth'  => Auth::class,
+        'guest' => Guest::class,
+    ],
+]);
 ```
 
-`only(...)` and `except(...)` can scope a gate to a subset of actions; both throw `Phalcon\Auth\Exception` if no gate has been activated yet. Registering a class that doesn't implement `Access` throws on `addAccessList()` immediately — failures surface at boot, not at the first action.
+`load()` accepts an array or a `Phalcon\Config\ConfigInterface`. Each guard entry declares its `type` (`session` or `token`), an `adapter` (`name` plus adapter `options`), and optional guard `options`. Exactly one guard should be marked `default`. A guard entry missing its `type`, its `adapter`, or the adapter `name` - or providing them with the wrong type - throws `Phalcon\Auth\Exception` with a message naming the offending guard and key.
 
-`access($name)` constructs the gate directly with `new $class($this)`, which guarantees the gate's `protected Manager $manager` is the same instance you called `access()` on — gates can rely on `$this->manager->guard()->check()` without any container plumbing.
+---
 
-### Custom access gates
+## The Container
 
-Extend [Phalcon\Auth\Access\AbstractAccess][access-abstract], which gives you the manager reference, the `only`/`except` action lists, and the `isAllowed` plumbing. Implement `allowedIf()` (and optionally `redirectTo()`):
+Every entry point that takes a container - `ManagerFactory::__construct()`, the guards' `fromOptions()` factories, and the adapter, guard, and access locators - accepts either of two container types:
+
+- `Phalcon\Container\Container`, the modern service container (it implements `Phalcon\Contracts\Container\Service\Collection`).
+- `Phalcon\Di\DiInterface`, the classic dependency-injection container (for example `Phalcon\Di\FactoryDefault`).
+
+The intent is Container-first: pass a `Phalcon\Container\Container`. The classic `Phalcon\Di\Di` is supported with provisions - its service definitions must be pre-registered, since it does not autowire. Passing any other type throws a `\TypeError`.
+
+Each guard resolves the framework services it needs as shared services from the container. For each service the guard tries three names in order and uses the first the container provides:
+
+1. an explicit override in the guard `options` under the `services` key;
+2. the service interface ID (its fully-qualified interface name);
+3. the conventional short name.
+
+| Service | Interface ID                             | Short name | Required by              |
+|---------|------------------------------------------|------------|--------------------------|
+| Request | `Phalcon\Http\RequestInterface`          | `request`  | session and token guards |
+| Cookies | `Phalcon\Http\Response\CookiesInterface` | `cookies`  | session guard            |
+| Session | `Phalcon\Session\ManagerInterface`       | `session`  | session guard            |
+
+This candidate order lets both container styles work without extra aliases. `Phalcon\Container\Provider\Web` binds the interface IDs on a `Phalcon\Container\Container`. A classic `Phalcon\Di\FactoryDefault` registers `request` and `cookies` under their short names, which the guards find directly; it ships no session manager, so a session guard needs one bound under `session` (or the interface ID).
+
+When none of the candidate names resolves, the guard throws `Phalcon\Container\Exceptions\Exception`. Resolution failures raised by the classic `Phalcon\Di\Di` are re-issued as `Phalcon\Container\Exceptions` so a caller catches a single exception family regardless of the container in use.
 
 ```php
 <?php
 
-namespace App\Access;
+use Phalcon\Auth\ManagerFactory;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Encryption\Security;
+use Phalcon\Session\Adapter\Stream;
+use Phalcon\Session\Manager as SessionManager;
 
-use Phalcon\Auth\Access\AbstractAccess;
+$di = new FactoryDefault();
 
-final class Admin extends AbstractAccess
+// request and cookies already exist on FactoryDefault under their short
+// names, so the guards resolve them directly. Only the session manager has
+// to be added.
+$di->setShared('session', function () {
+    $session = new SessionManager();
+    $session->setAdapter(new Stream(['savePath' => '/var/app/cache/session']));
+
+    return $session;
+});
+
+$factory = new ManagerFactory(new Security(), $di);
+```
+
+A token-only setup needs only the request service, which `FactoryDefault` already provides.
+
+To resolve a service from a custom container key, set the `services` override in the guard `options`:
+
+```php
+<?php
+
+$config = [
+    'guards' => [
+        'web' => [
+            'type'    => 'session',
+            'default' => true,
+            'adapter' => [
+                'name'    => 'model',
+                'options' => ['model' => Users::class],
+            ],
+            'options' => [
+                'services' => [
+                    'request' => 'my_request_service',
+                    'cookies' => 'my_cookies_service',
+                    'session' => 'my_session_service',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+---
+
+## The Manager
+
+The `Manager` is the entry point for both authentication and authorization. Authentication calls delegate to the active guard; authorization calls drive the active access gate.
+
+```php
+<?php
+
+// Authenticate against the default guard
+if ($manager->attempt(['email' => 'jane@example.com', 'password' => 's3cret'])) {
+    $user = $manager->user();
+    echo $user->getAuthIdentifier();
+}
+
+$manager->check();   // bool - is someone authenticated on the default guard
+$manager->id();      // int|string|null - the authenticated identifier
+
+// Reach a specific guard by name
+$manager->guard('api')->validate(['api_token' => $token]);
+
+$manager->logout();
+```
+
+| Method                                                     | Returns                    | Purpose                                                            |
+|------------------------------------------------------------|----------------------------|--------------------------------------------------------------------|
+| `guard(?string $name = null)`                              | `Guard`                    | The named guard, or the default guard when `$name` is `null`       |
+| `attempt(array $credentials = [], bool $remember = false)` | `bool`                     | Authenticate against the default guard (requires a stateful guard) |
+| `validate(array $credentials = [])`                        | `bool`                     | Verify credentials without logging in                              |
+| `check()`                                                  | `bool`                     | Whether a user is authenticated                                    |
+| `user()`                                                   | `AuthUser` or `null`       | The authenticated user                                             |
+| `id()`                                                     | `int`, `string`, or `null` | The authenticated identifier                                       |
+| `logout()`                                                 | `void`                     | Log out of the default guard (requires a stateful guard)           |
+| `access(string $name)`                                     | `self`                     | Activate an access gate for the current request                    |
+| `only(string ...$actions)`                                 | `self`                     | Allow only the listed actions; deny all others                     |
+| `except(string ...$actions)`                               | `self`                     | Apply the active gate to every action except those listed          |
+
+`attempt()` and `logout()` throw `Phalcon\Auth\Exception` when the default guard is not stateful. The `token` guard is stateless; use `validate()` with it.
+
+---
+
+## Guards
+
+### Session Guard
+
+`Phalcon\Auth\Guard\Session` keeps the authenticated identifier in the session manager and supports remember-me cookies and HTTP Basic. It implements `GuardStateful` and `BasicAuth`.
+
+```php
+<?php
+
+$session = $manager->guard('web');
+
+// Verify credentials, start a session, set a remember-me cookie
+$session->attempt(
+    ['email' => 'jane@example.com', 'password' => 's3cret'],
+    true
+);
+
+// Log a known user in by identifier
+$session->loginById(42);
+
+// One-off authentication that does not persist a session
+$session->once(['email' => 'jane@example.com', 'password' => 's3cret']);
+
+// HTTP Basic authentication against the 'email' field
+$session->basic('email');
+
+$session->logout();
+```
+
+Remember-me requires an adapter that implements `Phalcon\Contracts\Auth\Adapter\RememberAdapter` (the `model` adapter does). Passing `true` to `attempt()`/`login()` with an adapter that does not implement it throws `Phalcon\Auth\Exceptions\DoesNotImplement`.
+
+The session key and remember-cookie name are configurable through the guard `options`:
+
+| Option         | Default    | Purpose                                                                  |
+|----------------|------------|--------------------------------------------------------------------------|
+| `name`         | `auth`     | Session key holding the authenticated identifier                         |
+| `rememberName` | `remember` | Remember-me cookie name                                                  |
+| `rememberTtl`  | `31536000` | Remember-me cookie lifetime in seconds (365 days)                       |
+| `suffix`       | none       | Derives `auth_<suffix>` / `remember_<suffix>` names for multi-guard apps |
+
+### Token Guard
+
+`Phalcon\Auth\Guard\Token` authenticates API requests by a token. It reads the token from the request input key, or from an `Authorization: Bearer <token>` header. It is stateless - it has no `login()`/`logout()`.
+
+```php
+<?php
+
+$api = $manager->guard('api');
+
+// Resolves the user from the request token (input key or Bearer header)
+$user = $api->user();
+
+// Verify a token explicitly
+$api->validate(['api_token' => 'the-token-value']);
+```
+
+| Option | Purpose |
+|---|---|
+| `inputKey` | Request field that carries the token (for example `api_token`) |
+| `storageKey` | Column/field the adapter matches the token against |
+
+Both options are required and must be non-empty; an empty value throws `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`.
+
+---
+
+## User Providers (Adapters)
+
+Adapters load user rows and verify passwords. All three share password verification via `Phalcon\Encryption\Security::checkHash()` against the user's stored hash.
+
+### Model Adapter
+
+`Phalcon\Auth\Adapter\Model` loads users through the Phalcon ORM. The model class must implement `Phalcon\Contracts\Auth\AuthUser`; for remember-me it must also implement `Phalcon\Contracts\Auth\AuthRemember`.
+
+```php
+'adapter' => [
+    'name'    => 'model',
+    'options' => [
+        'model'    => Users::class,
+        'idColumn' => 'id',        // optional, defaults to 'id'
+    ],
+],
+```
+
+A configured `model` that does not implement `Phalcon\Contracts\Auth\AuthUser` throws `Phalcon\Auth\Exceptions\DoesNotImplement` when a user is hydrated. The `memory` and `stream` adapters accept the same optional `model` key and enforce the contract identically.
+
+### Memory Adapter
+
+`Phalcon\Auth\Adapter\Memory` serves an in-memory list of user rows. It is useful for tests and small read-only user sets.
+
+```php
+'adapter' => [
+    'name'    => 'memory',
+    'options' => [
+        'users' => [
+            ['id' => 1, 'email' => 'jane@example.com', 'password' => '<hashed>'],
+            ['id' => 2, 'email' => 'john@example.com', 'password' => '<hashed>'],
+        ],
+    ],
+],
+```
+
+### Stream Adapter
+
+`Phalcon\Auth\Adapter\Stream` reads users from a JSON file containing an array of user records.
+
+```php
+'adapter' => [
+    'name'    => 'stream',
+    'options' => [
+        'file' => '/var/app/config/users.json',
+    ],
+],
+```
+
+```json
+[
+    {"id": 1, "email": "jane@example.com", "password": "<hashed>"},
+    {"id": 2, "email": "john@example.com", "password": "<hashed>"}
+]
+```
+
+The `stream` adapter throws `Phalcon\Auth\Exceptions\FileDoesNotExist`, `FileCannotRead`, `FileNotValidJson`, or `FileDoesNotContainJson` when the file is missing, unreadable, or not a JSON array.
+
+---
+
+## The Authenticated User
+
+When a `model` adapter is not configured, array-backed adapters (`memory`, `stream`) return a `Phalcon\Auth\AuthUser` value object. Its data must contain a scalar `id` key (`int` or `string`); otherwise the constructor throws `Phalcon\Auth\Exceptions\DataMustContainIdKey`.
+
+```php
+<?php
+
+$user = $manager->user();
+
+$user->getAuthIdentifier();  // int|string - the 'id'
+$user->getAuthPassword();    // string - the stored hash, or '' when absent
+$user->toArray();            // the underlying user row
+```
+
+A `model` adapter returns your model instance directly, which implements the same `Phalcon\Contracts\Auth\AuthUser` contract.
+
+---
+
+## Authorization (Access Gates)
+
+An access gate decides whether the current action is allowed. A gate receives the active guard and a context describing the current dispatch (`handler`, `module`, and `params`); the enforcement listener builds that context. The two binary gates read only guard state and ignore the context:
+
+- `Phalcon\Auth\Access\Auth` allows the action when a user is authenticated.
+- `Phalcon\Auth\Access\Guest` allows the action when no user is authenticated.
+
+The `Phalcon\Auth\Access\Acl` gate uses the context to authorize against a `Phalcon\Acl` adapter; it is documented below.
+
+Activate a gate on the manager and scope it to specific actions with `only()` or `except()`:
+
+```php
+<?php
+
+// Allow only 'dashboard' and 'profile' (when authenticated); deny all other actions
+$manager->access('auth')->only('dashboard', 'profile');
+
+// Gate every action except 'logout', which always passes
+$manager->access('auth')->except('logout');
+```
+
+### ACL Access Gate
+
+`Phalcon\Auth\Access\Acl` authorizes an action against a [`Phalcon\Acl`][acl] adapter, using the authenticated user's role. It brings role-based, per-handler authorization into the Auth layer.
+
+- The ACL **component** is the request handler - the controller name (MVC), task name (CLI), or component name (Micro). When the dispatch carries a module, it is prefixed: `module` + separator + handler.
+- The ACL **access** is the action name.
+- The **role** comes from the authenticated user. A user that implements `Phalcon\Acl\RoleAwareInterface` supplies it through `getRoleName()`. When no user is authenticated, the gate uses the guest role (`guest` by default).
+
+Dispatch or route parameters are passed through to the ACL adapter, so function-based ACL rules receive them.
+
+The gate takes the ACL adapter and an options array. Activate it with `setAccess()`:
+
+```php
+<?php
+
+use Phalcon\Acl\Adapter\Memory as AclMemory;
+use Phalcon\Acl\Enum;
+use Phalcon\Auth\Access\Acl;
+
+$acl = new AclMemory();
+$acl->setDefaultAction(Enum::DENY);
+
+$acl->addRole('admins');
+$acl->addRole('guests');
+
+$acl->addComponent('invoices', ['index', 'edit', 'delete']);
+
+$acl->allow('admins', 'invoices', ['index', 'edit', 'delete']);
+$acl->allow('guests', 'invoices', 'index');
+
+$manager->setAccess(new Acl($acl));
+```
+
+The authenticated user model supplies the role through `Phalcon\Acl\RoleAwareInterface`:
+
+```php
+<?php
+
+use Phalcon\Acl\RoleAwareInterface;
+use Phalcon\Contracts\Auth\AuthUser;
+use Phalcon\Mvc\Model;
+
+class Users extends Model implements AuthUser, RoleAwareInterface
 {
-    public function allowedIf(): bool
+    public function getAuthIdentifier(): int | string
     {
-        $user = $this->manager->user();
-
-        return $user !== null && ($user->toArray()['role'] ?? null) === 'admin';
+        return $this->id;
     }
 
-    public function redirectTo(): ?array
+    public function getAuthPassword(): string
     {
-        return [
-            'controller' => 'session',
-            'action'     => 'login',
-        ];
+        return $this->password;
+    }
+
+    public function getRoleName(): string
+    {
+        return $this->role;
     }
 }
 ```
 
-Then register: `$manager->addAccessList(['admin' => App\Access\Admin::class])`.
+The gate reads two options:
 
-### Dispatcher listeners
+| Option            | Default | Purpose                                                        |
+|-------------------|---------|----------------------------------------------------------------|
+| `guestRole`       | `guest` | ACL role used when no user is authenticated                    |
+| `moduleSeparator` | `:`     | Joins module and handler into the component (`module:handler`) |
 
-Two listeners enforce the active gate during dispatch — one for MVC, one for CLI. They share a single enforcement algorithm via [Phalcon\Auth\AbstractAuthDispatcherListener][abstract-listener]; each concrete listener only contributes the dispatcher-typed action lookup and (MVC only) a forward callback for `Access::redirectTo()`:
+```php
+<?php
 
-- [Phalcon\Auth\Mvc\AuthDispatcherListener][mvc-listener] — attaches to the MVC dispatcher's `beforeExecuteRoute` and either forwards to the gate's `redirectTo()` target or throws `Phalcon\Auth\Exception` on a deny.
-- [Phalcon\Auth\Cli\AuthDispatcherListener][cli-listener] — same for CLI tasks; throws on deny (no redirect concept on the CLI).
+use Phalcon\Auth\Access\Acl;
+
+$manager->setAccess(
+    new Acl($acl, ['guestRole' => 'anonymous', 'moduleSeparator' => '-'])
+);
+```
+
+A user that is authenticated but does not implement `Phalcon\Acl\RoleAwareInterface` throws `Phalcon\Auth\Exception`.
+
+`except()` works as it does on the binary gates: the listed actions bypass the gate and are always allowed. `only()` differs: with the binary `auth`/`guest` gates an action not listed is denied, whereas with this gate an action not listed is allowed without an ACL check.
+
+### Enforcing Gates
+
+Gates are enforced per dispatch by a listener. `Phalcon\Auth\Mvc\AuthDispatcherListener` guards MVC dispatch, `Phalcon\Auth\Cli\AuthDispatcherListener` guards CLI tasks, and `Phalcon\Auth\Micro\AuthMicroListener` guards [`Phalcon\Mvc\Micro`][micro] applications. Attach the dispatcher listener to the dispatcher events manager:
 
 ```php
 <?php
 
 use Phalcon\Auth\Mvc\AuthDispatcherListener;
+use Phalcon\Events\Manager as EventsManager;
 
-$eventsManager->attach(
-    'dispatch:beforeExecuteRoute', 
-    new AuthDispatcherListener($manager)
-);
+$eventsManager = new EventsManager();
+$eventsManager->attach('dispatch', new AuthDispatcherListener($manager));
+
+$dispatcher->setEventsManager($eventsManager);
 ```
 
-The listener no-ops if no gate has been activated yet, so it's safe to attach unconditionally.
-
-## ManagerFactory
-
-[Phalcon\Auth\ManagerFactory][manager-factory] builds a fully wired `Manager` from a single config tree. Useful when you keep your auth wiring in `app.php` or a YAML/PHP config and want one call to materialize the whole thing.
-
-The factory's required constructor arguments are a [Phalcon\Encryption\Security][security] for password hashing and a container ([Phalcon\Container\Service\Collection][collection] — implemented by [Phalcon\Container\Container][container]). Three optional locator parameters — `?AdapterLocator`, `?GuardLocator`, `?AccessLocator` — let callers pre-register custom adapters, guards, or access gates before the factory wires anything; when omitted, the factory constructs default locators internally. Framework-shared services (`RequestInterface`, `CookiesInterface`, `SessionManagerInterface`) are pulled from the container so guards wire against the real application singletons rather than separately constructed copies.
+Enforcement is opt-in and fail-open: the listener is a no-op when no gate is active. With no gate activated (`$manager->getAccess()` is `null`) every dispatch is allowed, so a gate must be activated for protection to apply. A gate activated with `access()` stays active for the rest of the request - including forwards and nested dispatches - until it is replaced. When a gate denies the action, the listener forwards to the gate's `redirectTo()` target if one is provided; otherwise it throws `Phalcon\Auth\Exceptions\AccessDenied`. The default `redirectTo()` returns `null` - override a gate to supply a forward target.
 
 ```php
 <?php
 
-use Phalcon\Auth\ManagerFactory;
-use Phalcon\Encryption\Security;
+use Phalcon\Auth\Access\Auth;
 
-$factory = new ManagerFactory(new Security(), $container);
-$manager = $factory->load(
-    [
-        'guards' => [
-            'web' => [
-                'type'    => 'session',
-                'default' => true,
-                'adapter' => [
-                    'name'    => 'memory',
-                    'options' => [
-                        'users' => [
-                            [
-                                'id'       => 1, 
-                                'email'    => 'alice@example.com', 
-                                'password' => $security->hash('secret'),
-                            ],
-                        ],
-                    ],
-                ],
-                'options' => [],
-            ],
-            'api' => [
-                'type'    => 'token',
-                'adapter' => [
-                    'name'    => 'memory',
-                    'options' => ['users' => [/* ... */]],
-                ],
-                'options' => [
-                    'inputKey'   => 'api_token',
-                    'storageKey' => 'api_token',
-                ],
-            ],
-        ],
-        'access' => [
-            'auth'  => Phalcon\Auth\Access\Auth::class,
-            'guest' => Phalcon\Auth\Access\Guest::class,
-        ],
-    ]
-);
-```
-
-### Registering custom adapters and guards
-
-When the application needs an adapter or guard outside the built-in catalog, build the relevant locator, call `register()`, and pass the locator to `ManagerFactory`:
-
-```php
-<?php
-
-use Phalcon\Auth\Adapter\AdapterLocator;
-use Phalcon\Auth\Guard\GuardLocator;
-use Phalcon\Auth\ManagerFactory;
-use Phalcon\Encryption\Security;
-
-$adapters = (new AdapterLocator($container))
-    ->register('redis', App\Auth\Adapter\Redis::class);
-
-$guards = (new GuardLocator($container))
-    ->register('jwt', App\Auth\Guard\Jwt::class);
-
-$factory = new ManagerFactory(
-    new Security(),
-    $container,
-    adapterLocator: $adapters,
-    guardLocator:   $guards,
-);
-
-$manager = $factory->load(
-    [
-        'guards' => [
-            'web' => [
-                'type'    => 'jwt',
-                'default' => true,
-                'adapter' => [
-                    'name'    => 'redis', 
-                    'options' => [/* ... */]],
-                'options' => [/* ... */],
-            ],
-        ],
-    ]
-);
-```
-
-`AdapterLocator::register()` and `GuardLocator::register()` both validate that the supplied class implements the matching contract ([Adapter][adapter-contract] / [Guard][guard-contract]) and throw `Phalcon\Auth\Exception` otherwise — wrong type fails at registration, not at `load()`. Custom classes wired this way must declare a `static fromOptions()` method matching the contract: adapters receive `(Security $hasher, array $options)`, guards receive `(Adapter $adapter, Collection $container, array $options)`.
-
-The same pattern works for the access locator if you want the factory's `access` map to include custom gates without going through `Manager::addAccessList()` after the fact.
-
-### Container responsibilities
-
-The factory expects the container to expose the following services. The default `Web` provider already binds them; the `Cli` provider binds whatever is meaningful for the CLI surface (typically `RequestInterface` is not used).
-
-| Service                                             | Required by                  |
-|-----------------------------------------------------|------------------------------|
-| [Phalcon\Http\RequestInterface][request]            | `session` and `token` guards |
-| [Phalcon\Http\Response\CookiesInterface][cookies]   | `session` guard              |
-| [Phalcon\Session\ManagerInterface][session-manager] | `session` guard              |
-
-If a required service is not bound, the factory throws [Phalcon\Auth\Exception][exception] at `load()` time, naming the missing service id — failures surface at boot, not on first request. Same behavior for missing required adapter options (`file` for stream, `model` for model; `users` is optional and defaults to `[]` for memory) and missing required guard options (`inputKey` / `storageKey` for token).
-
-`load()` also accepts a [Phalcon\Config\ConfigInterface][config] in place of the raw array — handy when your config tree comes from `Phalcon\Config\Config`.
-
-## Container autowiring
-
-Every adapter and guard takes its dependencies via constructor injection, so the new [Phalcon\Container\Container][container] can resolve the entire auth tree from a single `$container->get(Token::class)` call — provided the right bindings are in place.
-
-The default `Phalcon\Container\Provider\Web` and `Phalcon\Container\Provider\Cli` providers register `AccessLocator`. The remaining auth-specific bindings need a thin closure registration:
-
-```php
-<?php
-
-use Phalcon\Auth\Adapter\Config\MemoryAdapterConfig;
-use Phalcon\Auth\Adapter\Memory;
-use Phalcon\Auth\Guard\Config\TokenGuardConfig;
-use Phalcon\Container\Service\Collection;
-use Phalcon\Contracts\Auth\Adapter\Adapter;
-
-// Adapter chosen at boot:
-$services->bind(Adapter::class, Memory::class);
-
-// Memory's config: provide the row list once.
-$services->set(
-    MemoryAdapterConfig::class, 
-    static function (Collection $c): MemoryAdapterConfig {
-        return new MemoryAdapterConfig(
-            [
-                [
-                    'id'       => 1, 
-                    'email'    => 'alice@example.com', 
-                    'password' => /* hashed */ '...',
-                ],
-            ]
-        );
-    }
-);
-
-// Token guard's config (only if you use the token guard):
-$services->set(
-    TokenGuardConfig::class, 
-    static function (Collection $c): TokenGuardConfig {
-        return new TokenGuardConfig('api_token', 'api_token');
-    }
-);
-```
-
-After this, `$container->get(Phalcon\Auth\Guard\Token::class)` autowires Adapter, RequestInterface (already bound by the Web provider), and TokenGuardConfig — no manual `new` required.
-
-!!! info "NOTE"
-
-    `MemoryAdapterConfig` and `SessionGuardConfig` have all-default constructor arguments, so they autowire to a sensible empty default if you don't bind them. `StreamAdapterConfig`, `ModelAdapterConfig`, and `TokenGuardConfig` have required scalar arguments that *cannot* come from autowiring; you must provide a closure binding for them or instantiate them yourself.
-
-### Why the `AccessLocator` binding uses a closure
-
-`AbstractLocator` takes a `Phalcon\Container\Service\Collection|Phalcon\Di\DiInterface` as its first constructor argument — a union type that the resolver does not autowire. The closure short-circuits this: the registered factory receives the container as `$c` and threads it through.
-
-```php
-$services->set(
-    AccessLocator::class, 
-    static function (Collection $c): AccessLocator {
-        return new AccessLocator($c);
-    }
-);
-```
-
-The `Web` and `Cli` providers ship with this binding already.
-
-## Custom adapters and guards
-
-### Custom adapter
-
-Extend [Phalcon\Auth\Adapter\AbstractAdapter][adapter-abstract] and implement the [Adapter][adapter-contract] contract — including the static `fromOptions(Security $hasher, array $options): static` method, which `ManagerFactory` calls when wiring from a config tree. If your data source is an iterable list of rows, [Phalcon\Auth\Adapter\AbstractArrayAdapter][adapter-abstract-array] gives you `retrieveByCredentials` / `retrieveById` / `hydrate` for free; you only implement `loadUsers()`. Use the helpers in [Phalcon\Auth\Internal\Options][internal-options] (`requireString`, `arrayOption`, `stringOrNull`, `resolveService`) to parse the options map consistently.
-
-```php
-<?php
-
-namespace App\Auth\Adapter;
-
-use App\Auth\Adapter\Config\LdapAdapterConfig;
-use Phalcon\Auth\Adapter\AbstractAdapter;
-use Phalcon\Contracts\Auth\AuthUser;
-use Phalcon\Contracts\Encryption\Security\Security;
-
-/**
- * @extends AbstractAdapter<LdapAdapterConfig>
- */
-final class Ldap extends AbstractAdapter
+class RedirectToLogin extends Auth
 {
-    public function __construct(Security $hasher, LdapAdapterConfig $config)
+    public function redirectTo(): array | null
     {
-        parent::__construct($hasher, $config);
-    }
-
-    public function retrieveByCredentials(array $credentials): ?AuthUser
-    {
-        // Bind to LDAP using $this->config->getDsn()
-    }
-
-    public function retrieveById(int | string $id): ?AuthUser
-    {
-        // ...
+        return ['controller' => 'session', 'action' => 'login'];
     }
 }
 ```
 
-The matching `LdapAdapterConfig` should extend [Phalcon\Auth\Adapter\Config\AbstractAdapterConfig][adapter-config-abstract] and implement [Phalcon\Contracts\Auth\Adapter\AdapterConfig][adapter-config-contract]. The abstract base already implements the contract, so just extend it and add your own getters.
-
-### Custom guard
-
-Extend [Phalcon\Auth\Guard\AbstractGuard][guard-abstract] and implement the [Guard][guard-contract] contract — including the static `fromOptions(Adapter $adapter, Collection $container, array $options): static` method, which `ManagerFactory` calls to materialize the guard from config. The abstract base provides `getAdapter`, `getConfig`, `check`, `guest`, `hasUser`, `id`, `setAdapter`, `setUser`, plus `hasValidCredentials()` for password verification. If the guard owns its login lifecycle (write-to-session, log-out, etc.) implement [Phalcon\Contracts\Auth\Guard\GuardStateful][guard-stateful] so `Manager::attempt()` and `Manager::logout()` recognize it.
+`Phalcon\Auth\Micro\AuthMicroListener` enforces the active gate on a [`Phalcon\Mvc\Micro`][micro] application. Attach it to the `micro` event space:
 
 ```php
 <?php
 
-namespace App\Auth\Guard;
+use Phalcon\Auth\Micro\AuthMicroListener;
+use Phalcon\Events\Manager as EventsManager;
 
-use App\Auth\Guard\Config\ApiKeyGuardConfig;
-use Phalcon\Auth\Guard\AbstractGuard;
-use Phalcon\Contracts\Auth\Adapter\Adapter;
-use Phalcon\Contracts\Auth\AuthUser;
+$eventsManager = new EventsManager();
+$eventsManager->attach('micro', new AuthMicroListener($manager, 'Api'));
 
-/**
- * @extends AbstractGuard<ApiKeyGuardConfig>
- */
-final class ApiKey extends AbstractGuard
-{
-    public function __construct(Adapter $adapter, ApiKeyGuardConfig $config)
-    {
-        parent::__construct($adapter, $config);
-    }
+$app->setEventsManager($eventsManager);
+```
 
-    public function user(): ?AuthUser
-    {
-        // resolve from $this->config->getHeaderName(), call $this->adapter
-    }
+The action name is the matched route's name, or the route pattern when the route is unnamed. The ACL component defaults to `Micro`; pass a custom name as the listener's second argument (`Api` above). `redirectTo()` targets are ignored - Micro has no forward mechanism, so a denied action always throws `Phalcon\Auth\Exceptions\AccessDenied`.
 
-    public function validate(array $credentials = []): bool
-    {
-        // ...
-    }
+---
+
+## Events
+
+The session guard fires events around login and logout on its events manager. Attach an events manager to the guard to observe them.
+
+```php
+<?php
+
+use Phalcon\Events\Manager as EventsManager;
+
+$eventsManager = new EventsManager();
+$eventsManager->attach('auth', function ($event, $guard) {
+    // $event->getType(): beforeLogin, afterLogin, beforeLogout, afterLogout
+});
+
+$manager->guard('web')->setEventsManager($eventsManager);
+```
+
+| Event               | Fired                     |
+|---------------------|---------------------------|
+| `auth:beforeLogin`  | Before a login is applied |
+| `auth:afterLogin`   | After a successful login  |
+| `auth:beforeLogout` | Before logout             |
+| `auth:afterLogout`  | After logout              |
+
+These events are notifications: they fire as non-cancellable, so returning `false` from a listener (or stopping the event) does not abort the login or logout.
+
+---
+
+## Exceptions
+
+Every exception thrown by the layer extends `Phalcon\Auth\Exception`. Granular subclasses live under `Phalcon\Auth\Exceptions`. Catch the parent to handle any failure, or a subclass to react to a single cause.
+
+```php
+<?php
+
+use Phalcon\Auth\Exception;
+use Phalcon\Auth\Exceptions\AccessDenied;
+
+try {
+    $manager->access('auth')->only('admin');
+    // ... dispatch ...
+} catch (AccessDenied $ex) {
+    // authorization denied for an action with no redirect target
+} catch (Exception $ex) {
+    // any other auth failure
 }
 ```
 
-Register either through the locator (`$locator->register('apikey', ApiKey::class)`) or directly via `$manager->addGuard('apikey', $instance)`.
+| Exception                     | Thrown when                                                                |
+|-------------------------------|----------------------------------------------------------------------------|
+| `AccessDenied`                | An access gate denies an action and no redirect target is set              |
+| `ConfigRequiresNonEmptyValue` | A guard/adapter config receives a required empty value                     |
+| `DataMustContainIdKey`        | An `AuthUser` is built from data with no scalar `id`                       |
+| `DoesNotImplement`            | A required contract is missing: a remember-me adapter/model, a user model that is not an `AuthUser`, or a default guard that is not `GuardStateful` |
+| `FileDoesNotExist`            | The `stream` adapter file is missing                                       |
+| `FileCannotRead`              | The `stream` adapter file cannot be read                                   |
+| `FileNotValidJson`            | The `stream` adapter file is not valid JSON                                |
+| `FileDoesNotContainJson`      | The `stream` adapter file does not decode to an array                      |
 
-## Static analysis
+---
 
-Every adapter and guard carries `@template` annotations (`@extends AbstractAdapter<MemoryAdapterConfig>`, `@extends AbstractGuard<TokenGuardConfig>`) so PHPStan sees `$this->config` as the concrete config type inside the subclass. The contracts (`Adapter`, `RememberAdapter`, `Guard`, `GuardStateful`, `BasicAuth`, `Access`, `AdapterConfig`, `GuardConfig`) all live under `Phalcon\Contracts\Auth\*` so user code can depend on the contract namespace without pulling in implementation classes.
-
-[abstract-listener]: api/phalcon_auth.md#auth-abstractauthdispatcherlistener
-[access-abstract]: api/phalcon_auth.md#auth-access-abstractaccess
-[access-auth]: api/phalcon_auth.md#auth-access-auth
-[access-contract]: api/phalcon_auth.md#contracts-auth-access-access
-[access-guest]: api/phalcon_auth.md#auth-access-guest
-[access-locator]: api/phalcon_auth.md#auth-access-accesslocator
-[adapter-abstract-array]: api/phalcon_auth.md#auth-adapter-abstractarrayadapter
-[adapter-abstract]: api/phalcon_auth.md#auth-adapter-abstractadapter
-[adapter-config-abstract]: api/phalcon_auth.md#auth-adapter-config-abstractadapterconfig
-[adapter-config-contract]: api/phalcon_auth.md#contracts-auth-adapter-adapterconfig
-[adapter-contract]: api/phalcon_auth.md#contracts-auth-adapter-adapter
-[adapter-locator]: api/phalcon_auth.md#auth-adapter-adapterlocator
-[adapter-memory]: api/phalcon_auth.md#auth-adapter-memory
-[adapter-model]: api/phalcon_auth.md#auth-adapter-model
-[adapter-stream]: api/phalcon_auth.md#auth-adapter-stream
-[auth-remember]: api/phalcon_auth.md#contracts-auth-authremember
-[authuser]: api/phalcon_auth.md#auth-authuser
-[basic-auth]: api/phalcon_auth.md#contracts-auth-guard-basicauth
-[cli-listener]: api/phalcon_auth.md#auth-cli-authdispatcherlistener
-[collection]: di.md
-[config]: config.md
-[container]: di.md
-[cookies]: response.md#cookies
-[exception]: api/phalcon_auth.md#auth-exception
-[guard-abstract]: api/phalcon_auth.md#auth-guard-abstractguard
-[guard-contract]: api/phalcon_auth.md#contracts-auth-guard-guard
-[guard-locator]: api/phalcon_auth.md#auth-guard-guardlocator
-[guard-session]: api/phalcon_auth.md#auth-guard-session
-[guard-stateful]: api/phalcon_auth.md#contracts-auth-guard-guardstateful
-[guard-token]: api/phalcon_auth.md#auth-guard-token
-[internal-options]: api/phalcon_auth.md#auth-internal-options
-[manager-contract]: api/phalcon_auth.md#contracts-auth-manager
-[manager-factory]: api/phalcon_auth.md#auth-managerfactory
-[manager]: api/phalcon_auth.md#auth-manager
-[mvc-listener]: api/phalcon_auth.md#auth-mvc-authdispatcherlistener
-[remember-adapter]: api/phalcon_auth.md#contracts-auth-adapter-rememberadapter
-[request]: request.md
+[manager]: api/phalcon_auth.md#authmanager
+[manager-factory]: api/phalcon_auth.md#authmanagerfactory
+[auth-user]: api/phalcon_auth.md#authauthuser
+[session-guard]: api/phalcon_auth.md#authguardsession
+[token-guard]: api/phalcon_auth.md#authguardtoken
+[container]: container.md
+[support-locator]: support-locator.md
 [security]: encryption-security.md
-[session-manager]: session.md
+[acl]: acl.md
+[micro]: application-micro.md

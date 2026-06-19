@@ -1,8 +1,11 @@
 # Helper
+
 - - -
 
 ## Overview
-[Phalcon\Support\HelperFactory][support-helper] offers support methods that manipulate arrays, files, JSON, numbers, and strings. The factory replaces the `Phalcon\Text` component, offering the same functionality and more.
+
+[Phalcon\Support\HelperFactory][support-helper] offers support methods that manipulate arrays, files, JSON, numbers, and
+strings. The factory replaces the `Phalcon\Text` component, offering the same functionality and more.
 
 ```php
 <?php
@@ -12,71 +15,73 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
  ```
 
-The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper class or by calling the helper class directly as a method on the helper factory. The factory acts as a service locator, caching the objects to be reused if need be, in the same request.
+The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper
+class or by calling the helper class directly as a method on the helper factory. The factory acts as a service locator,
+caching the objects to be reused if need be, in the same request.
 
 ## Available Classes
 
-| Type    | Name            | Class                                      |
-|---------|-----------------|--------------------------------------------|
-| Array   | `blacklist`     | `Phalcon\Support\Helper\Arr\Blacklist`     |
-| Array   | `chunk`         | `Phalcon\Support\Helper\Arr\Chunk`         |
-| Array   | `filter`        | `Phalcon\Support\Helper\Arr\Filter`        |
-| Array   | `first`         | `Phalcon\Support\Helper\Arr\First`         |
-| Array   | `firstKey`      | `Phalcon\Support\Helper\Arr\FirstKey`      |
-| Array   | `flatten`       | `Phalcon\Support\Helper\Arr\Flatten`       |
-| Array   | `get`           | `Phalcon\Support\Helper\Arr\Get`           |
-| Array   | `group`         | `Phalcon\Support\Helper\Arr\Group`         |
-| Array   | `has`           | `Phalcon\Support\Helper\Arr\Has`           |
-| Array   | `isUnique`      | `Phalcon\Support\Helper\Arr\IsUnique`      |
-| Array   | `last`          | `Phalcon\Support\Helper\Arr\Last`          |
-| Array   | `lastKey`       | `Phalcon\Support\Helper\Arr\LastKey`       |
-| Array   | `order`         | `Phalcon\Support\Helper\Arr\Order`         |
-| Array   | `pluck`         | `Phalcon\Support\Helper\Arr\Pluck`         |
-| Array   | `set`           | `Phalcon\Support\Helper\Arr\Set`           |
-| Array   | `sliceLeft`     | `Phalcon\Support\Helper\Arr\SliceLeft`     |
-| Array   | `sliceRight`    | `Phalcon\Support\Helper\Arr\SliceRight`    |
-| Array   | `split`         | `Phalcon\Support\Helper\Arr\Split`         |
-| Array   | `toObject`      | `Phalcon\Support\Helper\Arr\ToObject`      |
-| Array   | `validateAll`   | `Phalcon\Support\Helper\Arr\ValidateAll`   |
-| Array   | `validateAny`   | `Phalcon\Support\Helper\Arr\ValidateAny`   |
-| Array   | `whitelist`     | `Phalcon\Support\Helper\Arr\Whitelist`     |
-| File    | `basename`      | `Phalcon\Support\Helper\File\Basename`     |
-| JSON    | `decode`        | `Phalcon\Support\Helper\Json\Decode`       |
-| JSON    | `encode`        | `Phalcon\Support\Helper\Json\Encode`       |
-| Number  | `isBetween`     | `Phalcon\Support\Helper\Number\IsBetween`  |
-| String  | `camelize`      | `Phalcon\Support\Helper\Str\Camelize`      |
-| String  | `concat`        | `Phalcon\Support\Helper\Str\Concat`        |
-| String  | `countVowels`   | `Phalcon\Support\Helper\Str\CountVowels`   |
-| String  | `decapitalize`  | `Phalcon\Support\Helper\Str\Decapitalize`  |
-| String  | `decrement`     | `Phalcon\Support\Helper\Str\Decrement`     |
-| String  | `dirFromFile`   | `Phalcon\Support\Helper\Str\DirFromFile`   |
-| String  | `dirSeparator`  | `Phalcon\Support\Helper\Str\DirSeparator`  |
-| String  | `dynamic`       | `Phalcon\Support\Helper\Str\Dynamic`       |
-| String  | `endsWith`      | `Phalcon\Support\Helper\Str\EndsWith`      |
-| String  | `firstBetween`  | `Phalcon\Support\Helper\Str\FirstBetween`  |
-| String  | `friendly`      | `Phalcon\Support\Helper\Str\Friendly`      |
-| String  | `humanize`      | `Phalcon\Support\Helper\Str\Humanize`      |
-| String  | `includes`      | `Phalcon\Support\Helper\Str\Includes`      |
-| String  | `increment`     | `Phalcon\Support\Helper\Str\Increment`     |
-| String  | `interpolate`   | `Phalcon\Support\Helper\Str\Interpolate`   |
-| String  | `isAnagram`     | `Phalcon\Support\Helper\Str\IsAnagram`     |
-| String  | `isLower`       | `Phalcon\Support\Helper\Str\IsLower`       |
-| String  | `isPalindrome`  | `Phalcon\Support\Helper\Str\IsPalindrome`  |
-| String  | `isUpper`       | `Phalcon\Support\Helper\Str\IsUpper`       |
-| String  | `kebabCase`     | `Phalcon\Support\Helper\Str\KebabCase`     |
-| String  | `len`           | `Phalcon\Support\Helper\Str\Len`           |
-| String  | `lower`         | `Phalcon\Support\Helper\Str\Lower`         |
-| String  | `pascalCase`    | `Phalcon\Support\Helper\Str\PascalCase`    |
-| String  | `prefix`        | `Phalcon\Support\Helper\Str\Prefix`        |
-| String  | `random`        | `Phalcon\Support\Helper\Str\Random`        |
-| String  | `reduceSlashes` | `Phalcon\Support\Helper\Str\ReduceSlashes` |
-| String  | `snakeCase`     | `Phalcon\Support\Helper\Str\SnakeCase`     |
-| String  | `startsWith`    | `Phalcon\Support\Helper\Str\StartsWith`    |
-| String  | `suffix`        | `Phalcon\Support\Helper\Str\Suffix`        |
-| String  | `ucwords`       | `Phalcon\Support\Helper\Str\Ucwords`       |
-| String  | `uncamelize`    | `Phalcon\Support\Helper\Str\Uncamelize`    |
-| String  | `underscore`    | `Phalcon\Support\Helper\Str\Underscore`    |
-| String  | `upper`         | `Phalcon\Support\Helper\Str\Upper`         |
+| Type   | Name            | Class                                      |
+|--------|-----------------|--------------------------------------------|
+| Array  | `blacklist`     | `Phalcon\Support\Helper\Arr\Blacklist`     |
+| Array  | `chunk`         | `Phalcon\Support\Helper\Arr\Chunk`         |
+| Array  | `filter`        | `Phalcon\Support\Helper\Arr\Filter`        |
+| Array  | `first`         | `Phalcon\Support\Helper\Arr\First`         |
+| Array  | `firstKey`      | `Phalcon\Support\Helper\Arr\FirstKey`      |
+| Array  | `flatten`       | `Phalcon\Support\Helper\Arr\Flatten`       |
+| Array  | `get`           | `Phalcon\Support\Helper\Arr\Get`           |
+| Array  | `group`         | `Phalcon\Support\Helper\Arr\Group`         |
+| Array  | `has`           | `Phalcon\Support\Helper\Arr\Has`           |
+| Array  | `isUnique`      | `Phalcon\Support\Helper\Arr\IsUnique`      |
+| Array  | `last`          | `Phalcon\Support\Helper\Arr\Last`          |
+| Array  | `lastKey`       | `Phalcon\Support\Helper\Arr\LastKey`       |
+| Array  | `order`         | `Phalcon\Support\Helper\Arr\Order`         |
+| Array  | `pluck`         | `Phalcon\Support\Helper\Arr\Pluck`         |
+| Array  | `set`           | `Phalcon\Support\Helper\Arr\Set`           |
+| Array  | `sliceLeft`     | `Phalcon\Support\Helper\Arr\SliceLeft`     |
+| Array  | `sliceRight`    | `Phalcon\Support\Helper\Arr\SliceRight`    |
+| Array  | `split`         | `Phalcon\Support\Helper\Arr\Split`         |
+| Array  | `toObject`      | `Phalcon\Support\Helper\Arr\ToObject`      |
+| Array  | `validateAll`   | `Phalcon\Support\Helper\Arr\ValidateAll`   |
+| Array  | `validateAny`   | `Phalcon\Support\Helper\Arr\ValidateAny`   |
+| Array  | `whitelist`     | `Phalcon\Support\Helper\Arr\Whitelist`     |
+| File   | `basename`      | `Phalcon\Support\Helper\File\Basename`     |
+| JSON   | `decode`        | `Phalcon\Support\Helper\Json\Decode`       |
+| JSON   | `encode`        | `Phalcon\Support\Helper\Json\Encode`       |
+| Number | `isBetween`     | `Phalcon\Support\Helper\Number\IsBetween`  |
+| String | `camelize`      | `Phalcon\Support\Helper\Str\Camelize`      |
+| String | `concat`        | `Phalcon\Support\Helper\Str\Concat`        |
+| String | `countVowels`   | `Phalcon\Support\Helper\Str\CountVowels`   |
+| String | `decapitalize`  | `Phalcon\Support\Helper\Str\Decapitalize`  |
+| String | `decrement`     | `Phalcon\Support\Helper\Str\Decrement`     |
+| String | `dirFromFile`   | `Phalcon\Support\Helper\Str\DirFromFile`   |
+| String | `dirSeparator`  | `Phalcon\Support\Helper\Str\DirSeparator`  |
+| String | `dynamic`       | `Phalcon\Support\Helper\Str\Dynamic`       |
+| String | `endsWith`      | `Phalcon\Support\Helper\Str\EndsWith`      |
+| String | `firstBetween`  | `Phalcon\Support\Helper\Str\FirstBetween`  |
+| String | `friendly`      | `Phalcon\Support\Helper\Str\Friendly`      |
+| String | `humanize`      | `Phalcon\Support\Helper\Str\Humanize`      |
+| String | `includes`      | `Phalcon\Support\Helper\Str\Includes`      |
+| String | `increment`     | `Phalcon\Support\Helper\Str\Increment`     |
+| String | `interpolate`   | `Phalcon\Support\Helper\Str\Interpolate`   |
+| String | `isAnagram`     | `Phalcon\Support\Helper\Str\IsAnagram`     |
+| String | `isLower`       | `Phalcon\Support\Helper\Str\IsLower`       |
+| String | `isPalindrome`  | `Phalcon\Support\Helper\Str\IsPalindrome`  |
+| String | `isUpper`       | `Phalcon\Support\Helper\Str\IsUpper`       |
+| String | `kebabCase`     | `Phalcon\Support\Helper\Str\KebabCase`     |
+| String | `len`           | `Phalcon\Support\Helper\Str\Len`           |
+| String | `lower`         | `Phalcon\Support\Helper\Str\Lower`         |
+| String | `pascalCase`    | `Phalcon\Support\Helper\Str\PascalCase`    |
+| String | `prefix`        | `Phalcon\Support\Helper\Str\Prefix`        |
+| String | `random`        | `Phalcon\Support\Helper\Str\Random`        |
+| String | `reduceSlashes` | `Phalcon\Support\Helper\Str\ReduceSlashes` |
+| String | `snakeCase`     | `Phalcon\Support\Helper\Str\SnakeCase`     |
+| String | `startsWith`    | `Phalcon\Support\Helper\Str\StartsWith`    |
+| String | `suffix`        | `Phalcon\Support\Helper\Str\Suffix`        |
+| String | `ucwords`       | `Phalcon\Support\Helper\Str\Ucwords`       |
+| String | `uncamelize`    | `Phalcon\Support\Helper\Str\Uncamelize`    |
+| String | `underscore`    | `Phalcon\Support\Helper\Str\Underscore`    |
+| String | `upper`         | `Phalcon\Support\Helper\Str\Upper`         |
 
 ```php
 <?php
@@ -89,6 +94,7 @@ $upper = $helper->newInstance('upper');
 ```
 
 ## Methods
+
 The methods can be called directly from the helper factory.
 
 ```php
@@ -234,7 +240,8 @@ var_dump($result);
 
 `first(array $collection, callable $method = null): mixed`
 
-Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
+Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates
+`true`
 
 ```php
 <?php
@@ -257,7 +264,8 @@ echo $result; // 'Phalcon'
 
 `firstKey(array $collection, callable $method = null): mixed`
 
-Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
+Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first
+that validates `true`
 
 ```php
 <?php
@@ -301,7 +309,8 @@ var_dump($result);
 
 `get(array $collection, mixed $index, mixed $defaultValue = null, string $cast = null): mixed`
 
-Gets an array element by key and if it does not exist returns the default. It also allows for casting the returned value to a specific type using `settype` internally
+Gets an array element by key and if it does not exist returns the default. It also allows for casting the returned value
+to a specific type using `settype` internally
 
 ```php
 <?php
@@ -428,7 +437,8 @@ echo $helper->isUnique($source); // false
 
 `last(array $collection, callable $method = null): mixed`
 
-Returns the last element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
+Returns the last element of the collection. If a `callable` is passed, the element returned is the first that validates
+`true`
 
 ```php
 <?php
@@ -451,7 +461,8 @@ echo $result; // 'Framework'
 
 `lastKey(array $collection, callable $method = null): mixed`
 
-Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
+Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first
+that validates `true`
 
 ```php
 <?php
@@ -474,7 +485,8 @@ echo $result; // 'two'
 
 `order(array $collection, mixed $attribute, string $order = 'asc'): array`
 
-Sorts a collection of arrays or objects by an attribute of the object. It supports ascending/descending sorts but also flags that are identical to the ones used by `ksort` and `krsort`
+Sorts a collection of arrays or objects by an attribute of the object. It supports ascending/descending sorts but also
+flags that are identical to the ones used by `ksort` and `krsort`
 
 ```php
 <?php
@@ -875,7 +887,8 @@ var_dump($result);
 
 `basename(string $uri, string $suffix = null): string`
 
-Gets the filename from a given path, Same as PHP's `basename()` but has non-ASCII support. PHP's `basename()` does not properly support streams or filenames beginning with a non-US-ASCII character.
+Gets the filename from a given path, Same as PHP's `basename()` but has non-ASCII support. PHP's `basename()` does not
+properly support streams or filenames beginning with a non-US-ASCII character.
 
 ```php
 <?php
@@ -1021,7 +1034,8 @@ echo $result; // '@test.test2.test.34'
 
 `countVowels(string $text): int`
 
-Returns the number of vowels in a provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string
+Returns the number of vowels in a provided string. Uses a regular expression to count the number of vowels (A, E, I, O,
+U) in a string
 
 ```php
 <?php
@@ -1041,7 +1055,8 @@ echo $result; // 9
 
 `decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
 
-Decapitalizes the first letter of the string and then adds it with the rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
+Decapitalizes the first letter of the string and then adds it with the rest of the string. Omit the upperRest parameter
+to keep the rest of the string intact, or set it to true to convert to uppercase.
 
 ```php
 <?php
@@ -1121,7 +1136,8 @@ echo $result; // '/home/phalcon/'
 
 `dynamic(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|"): string`
 
-Generates random text in accordance with the template. The template is defined by the left and right delimiter, and it can contain values separated by the separator
+Generates random text in accordance with the template. The template is defined by the left and right delimiter, and it
+can contain values separated by the separator
 
 ```php
 <?php
@@ -1185,7 +1201,8 @@ echo $result; // 'custom'
 
 `friendly(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null): string`
 
-Changes a text to a URL-friendly one. Replaces commonly known accented characters with their Latin equivalents. If a `replace` string or array is passed, it will also be used to replace those characters with a space.
+Changes a text to a URL-friendly one. Replaces commonly known accented characters with their Latin equivalents. If a
+`replace` string or array is passed, it will also be used to replace those characters with a space.
 
 ```php
 <?php
@@ -1654,5 +1671,23 @@ $result = $helper->upper($source);
 
 echo $result; // 'PHALCON FRAMEWORK'
 ```
+
+## Exceptions
+
+Any exception thrown in the `Phalcon\Support\Helper` namespace will be of type `Phalcon\Support\Exception`. You can use
+this exception to selectively catch exceptions thrown only from this component.
+
+### Granular Exceptions
+
+As of 5.14 the component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific
+failure mode. Existing `catch (Phalcon\Support\Exception $e)` blocks continue to work unchanged.
+
+| Class                                                         | Parent                      | Thrown when                                                                        |
+|---------------------------------------------------------------|-----------------------------|------------------------------------------------------------------------------------|
+| `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`      | `Phalcon\Support\Exception` | `json_decode()` returns an error code on the supplied input.                       |
+| `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`      | `Phalcon\Support\Exception` | `json_encode()` returns an error code on the supplied input.                       |
+| `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments` | `Phalcon\Support\Exception` | A `Str` helper that requires N parameters receives fewer than N.                   |
+| `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`  | `Phalcon\Support\Exception` | A `Str::interpolate()` placeholder does not match a key in the replacements array. |
+| `Phalcon\Support\Helper\Str\Exceptions\SyntaxError`           | `Phalcon\Support\Exception` | A regex-based helper is given a pattern that PCRE cannot compile.                  |
 
 [support-helper]: api/phalcon_support.md#supporthelperfactory

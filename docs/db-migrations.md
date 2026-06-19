@@ -1,4 +1,5 @@
 # Database Migrations
+
 - - -
 
 !!! info "NOTE"
@@ -130,20 +131,19 @@ The tables below show the Migration Class methods. They are stored by order of e
 
 **Running to up**
 
-| Method name        | Description                                        |
-|--------------------|----------------------------------------------------|
-| `morph`            | Morph table structure                              |
+| Method name        | Description                                            |
+|--------------------|--------------------------------------------------------|
+| `morph`            | Morph table structure                                  |
 | `afterCreateTable` | Make something immediately after the table was created |
-| `up`               | Table is created and ready to work with            |
-| `afterUp`          | Extra method to work for some specific cases       |
-
+| `up`               | Table is created and ready to work with                |
+| `afterUp`          | Extra method to work for some specific cases           |
 
 **Running to down**
 
-| Method name | Description                                                                                                        |
-|-------------|--------------------------------------------------------------------------------------------------------------------|
-| `down`      | Normally you put here table drop or data truncation                                                                |
-| `aferDown`  | Extra method to work after all was cleaned up                                                                      |
+| Method name | Description                                                                                                            |
+|-------------|------------------------------------------------------------------------------------------------------------------------|
+| `down`      | Normally you put here table drop or data truncation                                                                    |
+| `aferDown`  | Extra method to work after all was cleaned up                                                                          |
 | `morph`     | (**from previous migration**) As the migration was moved backward, there need to be all returned to the previous state |
 
 ## CLI Arguments and options
@@ -163,7 +163,7 @@ The tables below show the Migration Class methods. They are stored by order of e
 | `--config=s`               | Configuration file                                                                       |
 | `--migrations=s`           | Migrations directory. Use comma separated string to specify multiple directories         |
 | `--directory=s`            | Directory where the project was created                                                  |
-| `--table=s`                | Table to migrate. Table name or table prefix with an asterisk. Default: all                 |
+| `--table=s`                | Table to migrate. Table name or table prefix with an asterisk. Default: all              |
 | `--version=s`              | Version to migrate                                                                       |
 | `--descr=s`                | Migration description (used for timestamp-based migration)                               |
 | `--data=s`                 | Export data ['always' or 'oncreate'] (Data is imported during migration run)             |
@@ -185,6 +185,7 @@ Use `'migrationsTsBased' => true` in the config file or `--ts-based` option in C
 Also, you need to specify the suffix `descr`, which could be anything you want, for example: semantic version.
 
 Current command
+
 ```
 vendor/bin/phalcon-migrations generate --ts-based --descr=1.0.0
 ```

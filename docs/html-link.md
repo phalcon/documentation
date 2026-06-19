@@ -1,23 +1,33 @@
 # HTML Link
+
 - - -
 
 ## Overview
-[Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink], [Phalcon\Html\Link\EvolvableLinkProvider][html-link-evolvablelinkprovider], [Phalcon\Html\Link\Link][html-link-link] and [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] are classes that implement the interfaces based on [PSR-13][psr-13], but with much stricter types
+
+[Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink], [Phalcon\Html\Link\EvolvableLinkProvider][html-link-evolvablelinkprovider], [Phalcon\Html\Link\Link][html-link-link]
+and [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] are classes that implement the interfaces based
+on [PSR-13][psr-13], but with much stricter types
 
 !!! info "NOTE"
 
     This component does not generate any HTML links. It just stores the links. You will need to create your serializers that will parse these objects and generate the necessary output. The [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer is available for you to use.
 
 ### Operations
-The `Phalcon\Html\Link\*` components implement methods that are in line with [PSR-13][psr-13], but do not implement the particular interface. A package that implements [PSR-13][psr-13] is available, that uses the `Phalcon\Html\Link\*` components. The package is located [here][proxy-psr13]. To use it, you will need to have Phalcon installed and then using composer you can install the proxy package.
+
+The `Phalcon\Html\Link\*` components implement methods that are in line with [PSR-13][psr-13], but do not implement the
+particular interface. A package that implements [PSR-13][psr-13] is available, that uses the `Phalcon\Html\Link\*`
+components. The package is located [here][proxy-psr13]. To use it, you will need to have Phalcon installed and then
+using composer you can install the proxy package.
 
 ```sh
 composer require phalcon/proxy-psr13
 ```
 
-Using the proxy classes allows you to follow [PSR-13][psr-13] and use it with any other package that needs that interface.
+Using the proxy classes allows you to follow [PSR-13][psr-13] and use it with any other package that needs that
+interface.
 
 ## Link
+
 The [Phalcon\Html\Link\Link][html-link-link] is used to create a link and assign attributes to it upon construction.
 
 ```php
@@ -40,7 +50,10 @@ $link = new Link('payment', $href, $attributes);
 ```
 
 ## LinkProvider
-The [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] is used as a container of [Phalcon\Html\Link\Link][html-link-link] objects. You can add them in the provider and then access them as a whole or retrieve them by `rel`.
+
+The [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] is used as a container
+of [Phalcon\Html\Link\Link][html-link-link] objects. You can add them in the provider and then access them as a whole or
+retrieve them by `rel`.
 
 ```php
 <?php
@@ -65,7 +78,9 @@ var_dump(
 ```
 
 ## EvolvableLink
-Link objects are immutable. However, there is a need to manipulate them based on your application needs. The [Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink] is available, allowing you to manipulate the link.
+
+Link objects are immutable. However, there is a need to manipulate them based on your application needs.
+The [Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink] is available, allowing you to manipulate the link.
 
 ```php
 <?php
@@ -90,7 +105,10 @@ var_dump(
 ```
 
 ## EvolvableLinkProvider
-The [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] is used as a container of [Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink] objects. You can add them in the provider and then access them as a whole or retrieve them by `rel`.
+
+The [Phalcon\Html\Link\LinkProvider][html-link-linkprovider] is used as a container
+of [Phalcon\Html\Link\EvolvableLink][html-link-evolvablelink] objects. You can add them in the provider and then access
+them as a whole or retrieve them by `rel`.
 
 ```php
 <?php
@@ -115,8 +133,12 @@ var_dump(
 ```
 
 ## Serializers
+
 ### Header
-You can use a serializer to parse the `Phalcon\Html\Link\*` objects and create the necessary headers. Phalcon comes with the [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer, to help with the task of serializing links for the headers:
+
+You can use a serializer to parse the `Phalcon\Html\Link\*` objects and create the necessary headers. Phalcon comes with
+the [Phalcon\Html\Link\Serializer\Header][html-link-serializer-header] serializer, to help with the task of serializing
+links for the headers:
 
 ```php
 <?php
@@ -147,8 +169,28 @@ echo $serializer->serialize([$link]);
 ;
 ```
 
+As of 5.15.0, `serialize()` emits attribute values as RFC 8288 quoted strings. An embedded double quote or backslash in a
+value is prefixed with a backslash, so a value cannot terminate the field early or produce a malformed header.
+
+```php
+<?php
+
+use Phalcon\Html\Link\EvolvableLink;
+use Phalcon\Html\Link\Serializer\Header;
+
+$serializer = new Header();
+
+$link = (new EvolvableLink('preload', '/app.js'))
+    ->withAttribute('title', 'say "hi"');
+
+echo $serializer->serialize([$link]);
+// </app.js>; rel="preload"; title="say \"hi\""
+```
+
 ### Custom
-You can create your serializers for relevant links by extending the [Phalcon\Html\Link\Serializer\SerializerInterface][html-link-serializer-serializerinterface]
+
+You can create your serializers for relevant links by extending
+the [Phalcon\Html\Link\Serializer\SerializerInterface][html-link-serializer-serializerinterface]
 
 ```php
 <?php
@@ -167,11 +209,19 @@ class Custom implements SerializerInterface
 ```
 
 [php-fig]: https://www.php-fig.org/
+
 [proxy-psr13]: https://github.com/phalcon/proxy-psr13
+
 [psr-13]: https://www.php-fig.org/psr/psr-13/
+
 [html-link-evolvablelink]: api/phalcon_html.md#htmllinkevolvablelink
+
 [html-link-evolvablelinkprovider]: api/phalcon_html.md#htmllinkevolvablelink
+
 [html-link-link]: api/phalcon_html.md#htmllinklink
+
 [html-link-linkprovider]: api/phalcon_html.md#htmllinklinkprovider
+
 [html-link-serializer-header]: api/phalcon_html.md#htmllinkserializerheader
+
 [html-link-serializer-serializerinterface]: api/phalcon_html.md#htmllinkserializerserializerinterface

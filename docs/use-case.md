@@ -3,6 +3,7 @@
 Throughout this documentation, we are going to assume that we are building an accounting application.
 
 ## Requirements
+
 - MVC application using [Phalcon\Mvc\Application][application]
 - Store data in a database (MariaDB/MySQL)
 - Offer a UI for users to work

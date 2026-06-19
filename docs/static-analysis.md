@@ -1,9 +1,11 @@
 # Static Analysis
+
 - - -
 
 ## Overview
 
-Using a static analysis tool in your project can dramatically increase your code quality and highlight potential bugs before they are exposed.
+Using a static analysis tool in your project can dramatically increase your code quality and highlight potential bugs
+before they are exposed.
 
 ## Integrating Psalm with Phalcon
 
@@ -23,7 +25,8 @@ or by manually adding it to `composer.json`:
 
 ### Phalcon IDE Stubs
 
-Phalcon provides a stub library that provides support for most IDEs. Psalm requires these stubs in order to properly analyze the codebase. These files exist in the [Phalcon IDE Stubs](https://github.com/phalcon/ide-stubs) repository.
+Phalcon provides a stub library that provides support for most IDEs. Psalm requires these stubs in order to properly
+analyze the codebase. These files exist in the [Phalcon IDE Stubs](https://github.com/phalcon/ide-stubs) repository.
 
 You can use the IDE Stubs library by adding it as a dependency:
 
@@ -43,13 +46,16 @@ or by manually adding it to `composer.json`:
 
 ## Initializing Psalm
 
-Run the command `vendor/bin/psalm --init` in the root of your project to initialize Psalm. Psalm will create a default project configuration file called `psalm.xml` at the root of your project.
+Run the command `vendor/bin/psalm --init` in the root of your project to initialize Psalm. Psalm will create a default
+project configuration file called `psalm.xml` at the root of your project.
 
 ### Sample Configuration with Phalcon Stubs
 
-The configuration file below serves as a good base to use in your project. Replace the contents in `psalm.xml` with the contents below and update any parameters applicable to your project settings.
+The configuration file below serves as a good base to use in your project. Replace the contents in `psalm.xml` with the
+contents below and update any parameters applicable to your project settings.
 
-If you find that you need to stub additional Phalcon components, add them to the stub section of the configuration with the full path to their location in the `ide-stubs` package.
+If you find that you need to stub additional Phalcon components, add them to the stub section of the configuration with
+the full path to their location in the `ide-stubs` package.
 
 ```xml
 <?xml version="1.0"?>
@@ -115,6 +121,7 @@ Psalm was able to infer types for 92.9630% of the codebase
 Fix your errors, and re-run Psalm!
 
 ## Resources
+
 - [Psalm Documentation](https://psalm.dev/docs/)
 - [Static Analysis with Psalm PHP](https://www.twilio.com/blog/static-analysis-with-psalm-php)
 - [What Is Static Code Analysis?](https://www.perforce.com/blog/sca/what-static-analysis)

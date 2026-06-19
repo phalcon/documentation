@@ -1,8 +1,13 @@
 # Dispatcher Component
+
 - - -
 
 ## Overview
-The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling the action of that controller.
+
+The [Phalcon\Mvc\Dispatcher][mvc-dispatcher] is the component responsible for instantiating controllers and executing
+the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting
+the module name, controller name, action name, and optional parameters contained in it, and then instantiating a
+controller and calling the action of that controller.
 
 ```php
 <?php
@@ -21,6 +26,7 @@ $dispatcher->setParams([]);
 
 $controller = $dispatcher->dispatch();
 ```
+
 ## Methods
 
 ```php
@@ -30,18 +36,24 @@ public function callActionMethod(
     array $params = []
 )
 ```
+
 Calls an action method with a handler and parameters
 
 ```php
 public function dispatch(): object | bool
 ```
-Process the results of the router by calling into the appropriate controller action(s) including any routing data or injected parameters. Returns the dispatched handler class (the Controller for Mvc dispatching or a Task for CLI dispatching) or `false` if an exception occurred and the operation was stopped by returning `false` in the exception handler. Throws an Exception if any uncaught or unhandled exception occurs during the dispatcher process.
+
+Process the results of the router by calling into the appropriate controller action(s) including any routing data or
+injected parameters. Returns the dispatched handler class (the Controller for Mvc dispatching or a Task for CLI
+dispatching) or `false` if an exception occurred and the operation was stopped by returning `false` in the exception
+handler. Throws an Exception if any uncaught or unhandled exception occurs during the dispatcher process.
 
 ```php
 public function forward(
     array $forward
 ): void
 ```
+
 Forwards the execution flows to another controller/action.
 
 ```php
@@ -105,26 +117,31 @@ $this->dispatcher->forward(
 ```php
 public function getActionName(): string
 ```
+
 Gets the latest dispatched action name
 
 ```php
 public function getActionSuffix(): string
 ```
+
 Gets the default action suffix
 
 ```php
 public function getActiveController(): ControllerInterface
 ```
+
 Returns the active controller in the dispatcher
 
 ```php
 public function getActiveMethod(): string
 ```
+
 Returns the current method to be/executed in the dispatcher
 
 ```php
 public function getBoundModels(): array
 ```
+
 Returns bound models from binder instance
 
 ```php
@@ -150,46 +167,59 @@ class InvoicesController extends Controller
 ```php
 public function getControllerClass(): string
 ```
+
 Possible controller class name that will be located to dispatch the request
 
 ```php
 public function getControllerName(): string
 ```
+
 Gets last dispatched controller name
+
+!!! warning "WARNING"
+
+    `getControllerName()` returns the controller name exactly as it was defined - no case conversion is applied. When using string-based route definitions (e.g. `$router->add('/path', 'Page::action')`), the name returned will match the case used in the route string (`'Page'`). In Phalcon 4, this value was automatically uncamelized (e.g. `'HogeHoge'` became `'hoge_hoge'`). That conversion was removed in Phalcon 5. If your code (or Volt templates) compares `getControllerName()` against a lowercase or uncamelized value, you must update those comparisons to match the exact case used in your route definitions.
 
 ```php
 public function getDefaultNamespace(): string
 ```
+
 Returns the default namespace
 
 ```php
 public function getHandlerClass(): string
 ```
+
 Possible class name that will be located to dispatch the request
 
 ```php
 public function getHandlerSuffix(): string
 ```
+
 Gets the default handler suffix
 
 ```php
 public function getLastController(): ControllerInterface
 ```
+
 Returns the latest dispatched controller
 
 ```php
 public function getModelBinder(): BinderInterface | null
 ```
+
 Gets the model binder
 
 ```php
 public function getModuleName(): string
 ```
+
 Gets the module where the controller class is
 
 ```php
 public function getNamespaceName(): string
 ```
+
 Gets a namespace to be prepended to the current handler name
 
 ```php
@@ -199,31 +229,60 @@ public function getParam(
     mixed $defaultValue = null
 ): mixed
 ```
+
+Gets a parameter by its name or numeric index. Deprecated as of 5.15; use `getParameter()` instead.
+
+```php
+public function getParameter(
+    mixed $param,
+    string | array $filters = null,
+    mixed $defaultValue = null
+): mixed
+```
+
 Gets a parameter by its name or numeric index
+
+```php
+public function getParameters(): array
+```
+
+Gets action params
 
 ```php
 public function getParams(): array
 ```
-Gets action params
+
+Gets action params. Deprecated as of 5.15; use `getParameters()` instead.
 
 ```php
 public function getPreviousActionName(): string
 ```
+
 Gets previous dispatched action name
 
 ```php
 public function getPreviousControllerName(): string
 ```
-Gets previous dispatched controller name
+
+Gets previous dispatched controller name. This is an MVC-specific alias for `getPreviousHandlerName()`.
+
+```php
+public function getPreviousHandlerName(): string
+```
+
+Gets previous dispatched handler name. Available on the base dispatcher as of 5.15, so both
+[Phalcon\Mvc\Dispatcher][mvc-dispatcher] and `Phalcon\Cli\Dispatcher` expose it.
 
 ```php
 public function getPreviousNamespaceName(): string
 ```
+
 Gets previous dispatched namespace name
 
 ```php
 public function getReturnedValue(): mixed
 ```
+
 Returns value returned by the latest dispatched action
 
 ```php
@@ -231,11 +290,21 @@ public function hasParam(
     mixed $param
 ): bool
 ```
+
+Check if a param exists. Deprecated as of 5.15; use `hasParameter()` instead.
+
+```php
+public function hasParameter(
+    mixed $param
+): bool
+```
+
 Check if a param exists
 
 ```php
 public function isFinished(): bool
 ```
+
 Check if the dispatch loop is finished or has more pending controllers/tasks to dispatch
 
 ```php
@@ -243,6 +312,7 @@ public function setActionName(
     string $actionName
 ): void
 ```
+
 Sets the action name to be dispatched
 
 ```php
@@ -250,6 +320,7 @@ public function setActionSuffix(
     string $actionSuffix
 ): void
 ```
+
 Sets the default action suffix
 
 ```php
@@ -257,6 +328,7 @@ public function setControllerName(
     string $controllerName
 )
 ```
+
 Sets the controller name to be dispatched
 
 ```php
@@ -264,6 +336,7 @@ public function setControllerSuffix(
     string $controllerSuffix
 )
 ```
+
 Sets the default controller suffix
 
 ```php
@@ -271,6 +344,7 @@ public function setDefaultAction(
     string $actionName
 ): void
 ```
+
 Sets the default action name
 
 ```php
@@ -278,6 +352,7 @@ public function setDefaultController(
     string $controllerName
 )
 ```
+
 Sets the default controller name
 
 ```php
@@ -285,6 +360,7 @@ public function setDefaultNamespace(
     string $namespaceName
 ): void
 ```
+
 Sets the default namespace
 
 ```php
@@ -292,6 +368,7 @@ public function setHandlerSuffix(
     string $handlerSuffix
 ): void
 ```
+
 Sets the default suffix for the handler
 
 ```php
@@ -300,6 +377,7 @@ public function setModelBinder(
     mixed $cache = null
 ): DispatcherInterface
 ```
+
 Enable model binding during dispatch
 
 ```php
@@ -323,6 +401,7 @@ public function setModuleName(
     string $moduleName
 ): void
 ```
+
 Sets the module where the controller is (only informative)
 
 ```php
@@ -330,6 +409,7 @@ public function setNamespaceName(
     string $namespaceName
 ): void
 ```
+
 Sets the namespace where the controller class is
 
 ```php
@@ -338,6 +418,16 @@ public function setParam(
     mixed $value
 ): void
 ```
+
+Set a param by its name or numeric index. Deprecated as of 5.15; use `setParameter()` instead.
+
+```php
+public function setParameter(
+    mixed $param,
+    mixed $value
+): void
+```
+
 Set a param by its name or numeric index
 
 ```php
@@ -345,6 +435,15 @@ public function setParams(
     array $params
 ): void
 ```
+
+Sets action params to be dispatched. Deprecated as of 5.15; use `setParameters()` instead.
+
+```php
+public function setParameters(
+    array $params
+): void
+```
+
 Sets action params to be dispatched
 
 ```php
@@ -352,15 +451,22 @@ public function setReturnedValue(
     mixed $value
 ): void
 ```
+
 Sets the latest returned value by an action manually
 
 ```php
 public function wasForwarded(): bool
 ```
+
 Check if the current executed action was forwarded by another one
 
 ## Dispatch Loop
-This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within the [Phalcon\Mvc\Dispatcher][mvc-dispatcher] component.
+
+This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work
+occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required
+actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts
+again. To better illustrate this, the following example shows approximately the process performed within
+the [Phalcon\Mvc\Dispatcher][mvc-dispatcher] component.
 
 ```php
 <?php
@@ -384,10 +490,16 @@ while (true !== $finished) {
     $finished = true;
 }
 ```
-In the code above, we calculate the controller name, instantiate it, and call the relevant action. After that, we finish the loop. The example is very simplified and lacks validations, filters, and additional checks, but it demonstrates the normal flow of operation within the dispatcher.
+
+In the code above, we calculate the controller name, instantiate it, and call the relevant action. After that, we finish
+the loop. The example is very simplified and lacks validations, filters, and additional checks, but it demonstrates the
+normal flow of operation within the dispatcher.
 
 ## Forwarding
-The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in situations when checking if the user has access to certain areas and if not allowed to be forwarded to other controllers and actions, thus allowing you to reuse code.
+
+The dispatch loop allows you to forward the execution flow to another controller/action. This is very useful in
+situations when checking if the user has access to certain areas and if not allowed to be forwarded to other controllers
+and actions, thus allowing you to reuse code.
 
 ```php
 <?php
@@ -429,6 +541,7 @@ $this->dispatcher->forward(
     ]
 );
 ```
+
 Forward flow to another action in the current controller
 
 ```php
@@ -441,6 +554,7 @@ $this->dispatcher->forward(
     ]
 );
 ```
+
 Forward flow to another action in the current controller, passing parameters
 
 A `forward` action accepts the following parameters:
@@ -453,14 +567,19 @@ A `forward` action accepts the following parameters:
 | `namespace`  | A valid namespace name where the controller is part of. |
 
 ## Parameters
+
 ### Preparing
-By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your application to accept any URL schema that suits your application. This is particularly useful when upgrading your application and want to transform some legacy URLs. For instance, you might want your URLs to be:
+
+By using events or hook points available by the [Phalcon\Mvc\Dispatcher][mvc-dispatcher], you can easily adjust your
+application to accept any URL schema that suits your application. This is particularly useful when upgrading your
+application and want to transform some legacy URLs. For instance, you might want your URLs to be:
 
 ```
 https://domain.com/controller/key1/value1/key2/value
 ```
 
-Since parameters are passed in the order that they are defined in the URL to actions, you can transform them into the desired schema:
+Since parameters are passed in the order that they are defined in the URL to actions, you can transform them into the
+desired schema:
 
 ```php
 <?php
@@ -549,7 +668,9 @@ $container->set(
 ```
 
 ## Getting
-When a route provides named parameters you can receive them in a controller, a view, or any other component that extends [Phalcon\Di\Injectable][di-factorydefault]
+
+When a route provides named parameters you can receive them in a controller, a view, or any other component that
+extends [Phalcon\Di\Injectable][di-factorydefault]
 
 ```php
 <?php
@@ -577,12 +698,20 @@ class InvoicesController extends Controller
     }
 }
 ```
-In the example above, we get the `invoiceId` as the first parameter passed and automatically sanitize it as an `integer`. The second parameter is the `filter` one, which is sanitized as a `string`
+
+In the example above, we get the `invoiceId` as the first parameter passed and automatically sanitize it as an
+`integer`. The second parameter is the `filter` one, which is sanitized as a `string`
+
+!!! info "NOTE"
+
+    As of 5.15 the `getParameter()`, `getParameters()`, `hasParameter()`, `setParameter()`, and `setParameters()` methods are the canonical parameter accessors. The shorter `getParam()`, `getParams()`, `hasParam()`, `setParam()`, and `setParams()` spellings are deprecated and will be removed in a future major release. Both spellings behave identically today, so existing code continues to work.
 
 ## Actions
+
 You can also define an arbitrary schema for actions `before` the dispatch loop is invoked.
 
 ### Camelize Names
+
 If the original URL is
 
 ```
@@ -624,6 +753,7 @@ $container->set(
 ```
 
 ### Filter File Extensions
+
 If the original URL always contains a `.php` extension:
 
 ```
@@ -668,7 +798,9 @@ $container->set(
     The code above can be used as is or adjusted to help with legacy URL transformations or other use cases where we need to manipulate the action name.
 
 ### Model Injection
-There are instances that you might want to inject automatically model instances that have been matched with the parameters passed in the URL.
+
+There are instances that you might want to inject automatically model instances that have been matched with the
+parameters passed in the URL.
 
 Our controller is:
 
@@ -689,7 +821,10 @@ class InvoicesController extends Controller
     }
 }
 ```
-The `viewAction` receives an instance of the model `Invoices`. If you try to execute this method without any checks and manipulations, the call will fail. You can however inspect the passed parameters before the dispatch loop and manipulate the parameters accordingly.
+
+The `viewAction` receives an instance of the model `Invoices`. If you try to execute this method without any checks and
+manipulations, the call will fail. You can however inspect the passed parameters before the dispatch loop and manipulate
+the parameters accordingly.
 
 ```php
 <?php
@@ -746,11 +881,17 @@ $container->set(
     }
 );
 ```
-In the example above, we get the controller class and active method from the dispatcher. Looping through the parameters, we use reflection to check the method to be executed. We calculate the model name and also check if the parameter is expecting a model name. If yes, we override the parameter by passing the model found. If an exception was thrown, we can handle that accordingly, for instance, if the class or action does not exist or the record has not been found.
 
-The above example has been simplified. You can adjust it according to your needs and inject any kind of dependency or model into an action before it gets executed.
+In the example above, we get the controller class and active method from the dispatcher. Looping through the parameters,
+we use reflection to check the method to be executed. We calculate the model name and also check if the parameter is
+expecting a model name. If yes, we override the parameter by passing the model found. If an exception was thrown, we can
+handle that accordingly, for instance, if the class or action does not exist or the record has not been found.
 
-The dispatcher also comes with an option to handle this internally for all models passed into a controller action by using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] object.
+The above example has been simplified. You can adjust it according to your needs and inject any kind of dependency or
+model into an action before it gets executed.
+
+The dispatcher also comes with an option to handle this internally for all models passed into a controller action by
+using the [Phalcon\Mvc\Model\Binder][mvc-model-binder] object.
 
 ```php
 <?php
@@ -767,11 +908,12 @@ $dispatcher->setModelBinder(
 return $dispatcher;
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The [Phalcon\Mvc\Model\Binder][mvc-model-binder] component uses PHP's Reflection API internally, which consumes additional processing cycles. For that reason, it has the ability to use a `cache` instance or a cache service name. To use this feature, you can pass the cache service name or instance as the second argument in the `setModelBinder()` method or by just passing the cache instance in the `Binder` constructor.
 
-Also, by using the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface] in controllers, you can define the models binding in base controllers.
+Also, by using the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface] in controllers, you
+can define the models binding in base controllers.
 
 In the example below, we have a base controller `CrudController` which `InvoicesController` extends from.
 
@@ -794,7 +936,10 @@ class CrudController extends Controller
 }
 ```
 
-In the `InvoicesController` we will define which model the controller is associated with. This is done by implementing the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface], which will make the `getModelName()` method available. This method is used to return the model name. It can return a string with just one model name or an associative array with the key as the parameter name.
+In the `InvoicesController` we will define which model the controller is associated with. This is done by implementing
+the [Phalcon\Mvc\Model\Binder\BindableInterface][mvc-model-binder-bindableinterface], which will make the
+`getModelName()` method available. This method is used to return the model name. It can return a string with just one
+model name or an associative array with the key as the parameter name.
 
 ```php
 <?php
@@ -810,9 +955,11 @@ class InvoicesController extends CrudController implements BindableInterface
 }
 ```
 
-By declaring the model associated with the `InvoicesController` the binder can check the controller for the `getModelName()` method before passing the defined model into the parent `view` action.
+By declaring the model associated with the `InvoicesController` the binder can check the controller for the
+`getModelName()` method before passing the defined model into the parent `view` action.
 
-If your project structure does not use any base controllers, you can of course still bind the model directly into the controller action:
+If your project structure does not use any base controllers, you can of course still bind the model directly into the
+controller action:
 
 ```php
 <?php
@@ -832,12 +979,14 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Currently, the binder will only use the model's primary key to perform a `findFirst()`. An example route for the above would be `/posts/show/{1}`
 
 ## Not-Found (404)
-If an [Events Manager][events] has been defined, you can use it to intercept exceptions that are thrown when the controller/action pair is not found.
+
+If an [Events Manager][events] has been defined, you can use it to intercept exceptions that are thrown when the
+controller/action pair is not found.
 
 ```php
 <?php
@@ -965,28 +1114,34 @@ class ExceptionsPlugin
 }
 ```
 
-!!! danger "NOTE"
+!!! danger "DANGER"
 
     Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
 
 ## Events
-[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to a [Manager][events] if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Event Name             | Triggered                                                                                                                   | Can stop |
-|------------------------|-----------------------------------------------------------------------------------------------------------------------------|:--------:|
-| `afterBinding`         | After models are bound but before executing route                                                                           |   Yes    |
-| `afterDispatch`        | After executing the controller/action method.                                                                               |   Yes    |
-| `afterDispatchLoop`    | After exiting the dispatch loop                                                                                             |    No    |
-| `afterExecuteRoute`    | After executing the controller/action method.                                                                               |    No    |
-| `afterInitialize`      | Allow to globally initialize the controller in the request                                                                  |    No    |
-| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Yes    |
-| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                       |   Yes    |
-| `beforeException`      | Before the dispatcher throws any exception                                                                                  |   Yes    |
+[Phalcon\Mvc\Dispatcher][mvc-dispatcher] is able to send events to a [Manager][events] if it is present. Events are
+triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The
+following events are supported:
+
+| Event Name             | Triggered                                                                                                                    | Can stop |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------|:--------:|
+| `afterBinding`         | After models are bound but before executing route                                                                            |   Yes    |
+| `afterCallAction`      | After executing the action method; the action result is set on the observer.                                                 |    No    |
+| `afterDispatch`        | After executing the controller/action method.                                                                                |   Yes    |
+| `afterDispatchLoop`    | After exiting the dispatch loop                                                                                              |    No    |
+| `afterExecuteRoute`    | After executing the controller/action method.                                                                                |    No    |
+| `afterInitialize`      | Allow to globally initialize the controller in the request                                                                   |    No    |
+| `beforeCallAction`     | Before executing the action method. Listeners may rewrite the handler, action, and params.                                   |    No    |
+| `beforeDispatch`       | After entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                         |   Yes    |
+| `beforeDispatchLoop`   | Before entering in the dispatch loop. The Dispatcher only knows the information passed by the Router.                        |   Yes    |
+| `beforeException`      | Before the dispatcher throws any exception                                                                                   |   Yes    |
 | `beforeExecuteRoute`   | Before executing the controller/action method. The Dispatcher has initialized the controller and knows if the action exists. |   Yes    |
-| `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                           |    No    |
-| `beforeNotFoundAction` | when the action was not found in the controller                                                                             |   Yes    |
+| `beforeForward`        | Before forwarding to a controller/action method. (MVC Dispatcher)                                                            |    No    |
+| `beforeNotFoundAction` | when the action was not found in the controller                                                                              |   Yes    |
 
-The [INVO][invo] sample application, demonstrates how you can take advantage of dispatching events, implementing a security filter with [Acl][acl]
+The [INVO][invo] sample application, demonstrates how you can take advantage of dispatching events, implementing a
+security filter with [Acl][acl]
 
 The following example demonstrates how to attach listeners to this component:
 
@@ -1018,7 +1173,8 @@ $container->set(
 );
 ```
 
-An instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as callbacks:
+An instantiated controller automatically acts as a listener for dispatch events, so you can implement methods as
+callbacks:
 
 ```php
 <?php
@@ -1042,11 +1198,67 @@ class InvoicesController extends Controller
 }
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Methods on event listeners accept a [Phalcon\Events\Event][events-event] object as their first parameter - methods in controllers do not.
 
+## Hook Channels
+
+A single lifecycle point can be intercepted through three independent channels. For any given point they run in this
+order:
+
+1. **Events-manager listener** - for example `dispatch:beforeExecuteRoute`. A listener returning `false` cancels the
+   dispatch; calling `forward()` re-enters the loop; throwing routes the exception through the `beforeException` channel.
+2. **Duck-typed handler method** - for example a `beforeExecuteRoute()` method on the controller or task itself. The
+   presence of the method is cached per class. The `false` and `forward()` cancellation semantics match the event.
+3. **`dispatch:beforeCallAction` observer** - fired immediately before the action method runs. The dispatcher passes a
+   [Phalcon\Support\Collection][support-collection] carrying the mutable keys `handler`, `action`, and `params`.
+   Listeners may rewrite those keys to change what is invoked. The substituted callable is re-validated before the
+   call; a substituted action that does not exist raises a `Phalcon\Dispatcher\Exception` with code
+   `EXCEPTION_ACTION_NOT_FOUND` instead of a fatal error. The matching `dispatch:afterCallAction` event receives the
+   same Collection plus a `result` key holding the action's return value.
+
+```php
+<?php
+
+use Phalcon\Di\Di;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Support\Collection;
+
+$container     = new Di();
+$eventsManager = new Manager();
+
+$eventsManager->attach(
+    'dispatch:beforeCallAction',
+    function (Event $event, Dispatcher $dispatcher, Collection $observer) {
+        // Read the resolved handler, action, and params
+        $action = $observer->get('action');
+
+        // Rewrite the parameters before the action runs
+        $observer->set('params', ['invoiceId' => 100]);
+    }
+);
+
+$eventsManager->attach(
+    'dispatch:afterCallAction',
+    function (Event $event, Dispatcher $dispatcher, Collection $observer) {
+        $result = $observer->get('result');
+    }
+);
+
+$dispatcher = new Dispatcher();
+$dispatcher->setDI($container);
+$dispatcher->setEventsManager($eventsManager);
+```
+
+!!! info "NOTE"
+
+    The `afterBinding` event and method are the one lifecycle point that does not route exceptions through the `beforeException` channel. By the time they run, the parameters are already bound and the action is about to execute, so an exception thrown from an `afterBinding` listener bubbles up unchanged. Returning `false` (cancel) and calling `forward()` are still honored.
+
 ## Events Manager
+
 You can use the `dispatcher::beforeForward` event to change modules and perform redirections more easily.
 
 ```php
@@ -1104,8 +1316,44 @@ $dispatcher->forward(
 echo $dispatcher->getModuleName();
 ```
 
+## Interfaces and Contracts
+
+As of 5.15 the dispatcher exposes canonical contracts under the `Phalcon\Contracts` namespace. These are the long-term
+types to code against. The historical `*Interface` types still exist and now extend the matching contract, so existing
+type hints keep working, but they are deprecated and will be removed in a future major release.
+
+| Deprecated interface                     | Canonical contract                        |
+|------------------------------------------|-------------------------------------------|
+| `Phalcon\Dispatcher\DispatcherInterface` | `Phalcon\Contracts\Dispatcher\Dispatcher` |
+| `Phalcon\Mvc\DispatcherInterface`        | `Phalcon\Contracts\Mvc\Dispatcher`        |
+| `Phalcon\Cli\DispatcherInterface`        | `Phalcon\Contracts\Cli\Dispatcher`        |
+
+`Phalcon\Contracts\Mvc\Dispatcher` and `Phalcon\Contracts\Cli\Dispatcher` both extend
+`Phalcon\Contracts\Dispatcher\Dispatcher`, mirroring the previous interface hierarchy. An existing
+`Phalcon\Mvc\Dispatcher` instance is an instance of both its `*Interface` type and the new contract.
+
+```php
+<?php
+
+use Phalcon\Contracts\Mvc\Dispatcher as DispatcherContract;
+
+function configure(DispatcherContract $dispatcher): void
+{
+    $dispatcher->setControllerName('invoices');
+    $dispatcher->setActionName('index');
+}
+```
+
 ## Custom
-The [Phalcon\Mvc\DispatcherInterface][mvc-dispatcherinterface] interface must be implemented to create your own dispatcher.
+
+The [Phalcon\Mvc\DispatcherInterface][mvc-dispatcherinterface] interface must be implemented to create your own
+dispatcher.
+
+!!! info "NOTE"
+
+    As of 5.15, prefer implementing the canonical `Phalcon\Contracts\Mvc\Dispatcher` contract.
+    `Phalcon\Mvc\DispatcherInterface` still works (it extends the contract) but is deprecated. See
+    [Interfaces and Contracts](#interfaces-and-contracts).
 
 ```php
 <?php
@@ -1247,14 +1495,43 @@ class MyDispatcher implements DispatcherInterface
     public function setParams(array $params): void;
 }
 ```
+
+## Exceptions
+
+Any exception thrown by the `Phalcon\Dispatcher\AbstractDispatcher` or its MVC/CLI subclasses will be a
+`Phalcon\Dispatcher\Exception` (or its `Phalcon\Mvc\Dispatcher\Exception` / `Phalcon\Cli\Dispatcher\Exception`
+subclass). You can use this exception to selectively catch exceptions thrown only from this component.
+
+### Granular Exceptions
+
+As of 5.14 the dispatcher raises granular subclasses of its `Exception` types so callers can catch a specific failure
+mode. Existing `catch (Phalcon\Dispatcher\Exception $e)` blocks continue to work unchanged.
+
+| Class                                                          | Parent                             | Thrown when                                                                     |
+|----------------------------------------------------------------|------------------------------------|---------------------------------------------------------------------------------|
+| `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`   | `Phalcon\Dispatcher\Exception`     | `forward()` is invoked from within a controller's `initialize()` (not allowed). |
+| `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable` | `Phalcon\Mvc\Dispatcher\Exception` | The dispatcher cannot resolve the `response` service from the DI container.     |
+
 [di-factorydefault]: api/phalcon_di.md#difactorydefault
+
 [events-event]: api/phalcon_events.md#eventsevent
+
 [invo]: https://github.com/phalcon/invo
+
 [mvc-dispatcher]: api/phalcon_mvc.md#mvcdispatcher
+
 [mvc-dispatcher-exception]: api/phalcon_mvc.md#mvcdispatcherexception
+
 [mvc-dispatcherinterface]: api/phalcon_mvc.md#mvcdispatcherinterface
+
 [mvc-model-binder]: api/phalcon_mvc.md#mvcmodelbinder
+
 [mvc-model-binder-bindableinterface]: api/phalcon_mvc.md#mvcmodelbinderbindableinterface
+
 [mvc-model-binderinterface]: api/phalcon_mvc.md#mvcmodelbinderinterface
+
+[support-collection]: api/phalcon_support.md#supportcollection
+
 [events]: events.md
+
 [acl]: acl.md

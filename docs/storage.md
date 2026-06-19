@@ -1,11 +1,19 @@
 # Storage Component
+
 - - -
 
 ## Overview
-The `Phalcon\Storage` namespace contains components that help with storing data in different storages. The component is heavily integrated into [Phalcon\Cache\Cache][cache] as well as [Phalcon\Session][session]. It offers serialization of data based on various serialization adapters, and storage of data based on various storage adapters. Factories help with the creation of all necessary objects for the component to work.
+
+The `Phalcon\Storage` namespace contains components that help with storing data in different storages. The component is
+heavily integrated into [Phalcon\Cache\Cache][cache] as well as [Phalcon\Session][session]. It offers serialization of
+data based on various serialization adapters, and storage of data based on various storage adapters. Factories help with
+the creation of all necessary objects for the component to work.
 
 ## Serializers
-The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable][serializable] interface and thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before saving it to the storage and after retrieving it from the storage.
+
+The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable][serializable] interface and
+thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before
+saving it to the storage and after retrieving it from the storage.
 
 !!! info "NOTE"
 
@@ -14,50 +22,71 @@ The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Se
 The storage adapter can be configured to use a different serializer. The available serializers are:
 
 ### `Base64`
-This serializer uses the `base64_encode` and `base64_decode` methods to serialize data. The input must be of type `string`, therefore this serializer has obvious limitations
+
+This serializer uses the `base64_encode` and `base64_decode` methods to serialize data. The input must be of type
+`string`, therefore this serializer has obvious limitations
 
 ### `Igbinary`
-The `igbinary` serializes relies on the `igbinary_serialize` and `igbinary_unserialize` methods. Those methods are exposed via the [igbinary][igbinary] PHP extension, which has to be installed and loaded on the target system.
+
+The `igbinary` serializes relies on the `igbinary_serialize` and `igbinary_unserialize` methods. Those methods are
+exposed via the [igbinary][igbinary] PHP extension, which has to be installed and loaded on the target system.
 
 ### `Json`
+
 The `JSON` serializer uses `json_encode` and `json_decode`. The target system must have JSON support available for PHP.
 
 ### `MemcachedIgbinary`
-This serializer can be used when using `Memcached`. It corresponds to the built-in Igbinary serializer that `Memcached` has.
+
+This serializer can be used when using `Memcached`. It corresponds to the built-in Igbinary serializer that `Memcached`
+has.
 
 ### `MemcachedJson`
+
 This serializer can be used when using `Memcached`. It corresponds to the built-in JSON serializer that `Memcached` has.
 
 ### `MemcachedPhp`
+
 This serializer can be used when using `Memcached`. It corresponds to the built-in PHP serializer that `Memcached` has.
 
 ### `Msgpack`
-Similar to `igbinary` the `msgpack` serializer uses `msgpack_pack` and `msgpack_unpack` for serializing and unserializing data. This, along with `igbinary` is one of the fastest and most efficient serializers. However, it requires that the [msgpack][msgpack] PHP extension is loaded on the target system.
+
+Similar to `igbinary` the `msgpack` serializer uses `msgpack_pack` and `msgpack_unpack` for serializing and
+unserializing data. This, along with `igbinary` is one of the fastest and most efficient serializers. However, it
+requires that the [msgpack][msgpack] PHP extension is loaded on the target system.
 
 ### `None`
-This serializer does not transform the data at all. Both its `serialize` and `unserialize` get and set the data without altering it.
+
+This serializer does not transform the data at all. Both its `serialize` and `unserialize` get and set the data without
+altering it.
 
 ### `Php`
+
 This is the default serializer. It uses PHP's `serialize` and `unserialize` methods for data transformations.
 
 ### `RedisIgbinary`
+
 This serializer can be used when using `Redis`. It corresponds to the built-in Igbinary serializer that `Redis` has.
 
 ### `RedisJson`
+
 This serializer can be used when using `Redis`. It corresponds to the built-in JSON serializer that `Redis` has.
 
 ### `RedisMsgpack`
+
 This serializer can be used when using `Redis`. It corresponds to the built-in Msgpack serializer that `Redis` has.
 
 ### `RedisNone`
+
 This serializer can be used when using `Redis`. It corresponds to the built-in None serializer that `Redis` has.
 
 ### `RedisPhp`
+
 This serializer can be used when using `Redis`. It corresponds to the built-in PHP serializer that `Redis` has.
 
-
 ### Custom
-Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface][storage-serializer-serializerinterface]` which can be implemented in a custom class. The class can offer the serialization you require.
+
+Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface][storage-serializer-serializerinterface]` which
+can be implemented in a custom class. The class can offer the serialization you require.
 
 ```php
 <?php
@@ -118,6 +147,7 @@ class Garble implements SerializerInterface
 ```
 
 Using it:
+
 ```php
 <?php
 
@@ -142,8 +172,19 @@ $garble->unserialize($encrypted);
 echo $garble->getData(); // "I came, I saw, I conquered."
 ``` 
 
+!!! info "NOTE"
+
+    `Phalcon\Storage\Serializer\SerializerInterface` declares `getData()`, `serialize()`, `setData()` and `unserialize()`. After `unserialize()` the adapters also call `isSuccess()` to detect a failed decode; that method is provided by `Phalcon\Storage\Serializer\AbstractSerializer`. A custom serializer that implements the interface directly (as above) is not required to declare `isSuccess()` - the adapters guard the call and treat a missing method as success. Implement `isSuccess()` (returning `false` after a failed `unserialize()`) if you want a corrupt or unreadable entry to resolve to the default value instead of the decoded result.
+
 ## Serializer Factory
-Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\SerializerFactory][storage-serializerfactory] class, so that developers can easily instantiate serializer classes. All the above serializers are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) serializer classes. The only thing to consider is choosing the name of the serializer in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+
+Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers
+the [Phalcon\Storage\SerializerFactory][storage-serializerfactory] class, so that developers can easily instantiate
+serializer classes. All the above serializers are registered in the factory and lazy loaded when called. The factory
+also allows you to register additional (custom) serializer classes. The only thing to consider is choosing the name of
+the serializer in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The
+objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same
+request, you will get the same object back.
 
 The example below shows how you can create a `Json` serializer either using the `new` keyword or the factory:
 
@@ -158,6 +199,7 @@ $jsonSerializer = new Json();
 $factory        = new SerializerFactory();
 $jsonSerializer = $factory->newInstance('json');
 ```
+
 The parameters you can use for the factory are:
 
 | **Name**             | **Class**                                                                             |
@@ -178,33 +220,69 @@ The parameters you can use for the factory are:
 | `redis_php`          | [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php]                   |
 
 ## Adapters
-The `Phalcon\Storage\Adapter` namespace offers classes that implement the [Phalcon\Storage\Adapter\AdapterInterface][storage-adapter-adapterinterface] interface. It exposes common methods that are used to perform operations on the storage adapter. These adapters act as wrappers to respective backend code.
+
+The `Phalcon\Storage\Adapter` namespace offers classes that implement
+the [Phalcon\Storage\Adapter\AdapterInterface][storage-adapter-adapterinterface] interface. It exposes common methods
+that are used to perform operations on the storage adapter. These adapters act as wrappers to respective backend code.
 
 The available methods are:
 
-| Method       | Description                                                                |
-|--------------|----------------------------------------------------------------------------|
-| `clear`      | Flushes/clears the store                                                   |
-| `decrement`  | Decrements a stored number                                                 |
-| `delete`     | Deletes data from the adapter                                              |
-| `get`        | Reads data from the adapter                                                |
-| `getAdapter` | Returns the already connected adapter or connects to the backend server(s) |
-| `getKeys`    | Returns all the keys stored (optional filter parameter)                    |
-| `getPrefix`  | Returns the prefix for the keys                                            |
-| `has`        | Checks if an element exists in the store                                   |
-| `increment`  | Increments a stored number                                                 |
-| `set`        | Stores data in the adapter                                                 |
+| Method           | Description                                                                |
+|------------------|----------------------------------------------------------------------------|
+| `clear`          | Flushes/clears the store                                                   |
+| `decrement`      | Decrements a stored number                                                 |
+| `delete`         | Deletes data from the adapter                                              |
+| `deleteMultiple` | Deletes multiple keys from the adapter in a single operation               |
+| `get`            | Reads data from the adapter                                                |
+| `getAdapter`     | Returns the already connected adapter or connects to the backend server(s) |
+| `getKeys`        | Returns all the keys stored (optional filter parameter)                    |
+| `getPrefix`      | Returns the prefix for the keys                                            |
+| `has`            | Checks if an element exists in the store                                   |
+| `increment`      | Increments a stored number                                                 |
+| `set`            | Stores data in the adapter                                                 |
+| `setForever`     | Stores data in the adapter without an expiration                           |
 
 !!! info "NOTE"
 
     The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer since it can be used to execute additional methods that each adapter offers. For instance, for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange`, and other methods not exposed by the Phalcon adapter.
 
-To construct one of these objects, you will need to pass a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the constructor and optionally some parameters required for the adapter of your choice. The list of options is outlined below.
+!!! info "NOTE"
+
+    Keys returned by `getKeys()` carry the adapter prefix. As of 5.14.2 the adapters also accept keys that already carry the prefix: `get()`, `has()`, `delete()`, `deleteMultiple()`, `set()`, `setForever()`, `increment()` and `decrement()` strip a leading prefix from the supplied key before applying their own, so the output of `getKeys()` can be passed back to these methods unchanged.
+
+!!! warning "NOTE"
+
+    A consequence of the stripping is that a key whose name happens to start with the prefix text addresses the same record as the bare key: with prefix `data-`, `set('data-users', ...)` and `set('users', ...)` write to the same stored entry. If your keys are externally generated identifiers, or can legitimately begin with the prefix text, disable the behavior with the `stripPrefix` option (default `true`) when constructing the adapter. The `Phalcon\Session` adapters disable it automatically.
+
+To construct one of these objects, you will need to pass
+a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object in the constructor and optionally some
+parameters required for the adapter of your choice. The list of options is outlined below.
 
 The available adapters are:
 
+### Capability matrix
+
+The adapters share one interface but differ in how some operations behave. These differences affect correctness and
+performance:
+
+| Adapter        | Counters (`increment` / `decrement`) | `getKeys()` cost                    | Notes                                                         |
+|----------------|--------------------------------------|-------------------------------------|--------------------------------------------------------------|
+| `Apcu`         | Native, atomic                       | `APCUIterator` regex scan           | Phalcon-side serializers only                                |
+| `Libmemcached` | Native, atomic                       | `getAllKeys()` (server-dependent)   | `getAllKeys()` may be incomplete on modern memcached builds  |
+| `Memory`       | Read-modify-write                    | In-memory array (cheap)             | Per-request only; not shared across processes                |
+| `Redis`        | Native, atomic                       | Non-blocking `SCAN` iteration       | Phalcon-side or backend-native (`OPT_SERIALIZER`) serializers |
+| `RedisCluster` | Native, atomic                       | Blocking `KEYS` across master nodes | Per-node `SCAN` not yet implemented                          |
+| `Stream`       | Read-modify-write (not atomic)       | Recursive directory traversal       | Counter updates are racy across concurrent processes         |
+
+!!! info "NOTE"
+
+    Backend-native serializers (the `Redis` `OPT_SERIALIZER` mappings such as `RedisPhp` or `RedisJson`) change the bytes stored on the server compared to the Phalcon-side serializers. Data written through one is not readable through the other.
+
 ### `Apcu`
-This adapter uses `Apcu` to store the data. In order to use this adapter, you will need to have [apcu][apcu] enabled in your target system. This class does not use an actual _adapter_, since the `apcu` functionality is exposed using the `apcu_*` PHP functions.
+
+This adapter uses `Apcu` to store the data. In order to use this adapter, you will need to have [apcu][apcu] enabled in
+your target system. This class does not use an actual _adapter_, since the `apcu` functionality is exposed using the
+`apcu_*` PHP functions.
 
 | Option              | Default    |
 |---------------------|------------|
@@ -212,8 +290,10 @@ This adapter uses `Apcu` to store the data. In order to use this adapter, you wi
 | `lifetime`          | `3600`     |
 | `serializer`        | `null`     |
 | `prefix`            | `ph-apcu-` |
+| `stripPrefix`       | `true`     |
 
-The following example demonstrates how to create a new `Apcu` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200.
+The following example demonstrates how to create a new `Apcu` storage adapter, which will use
+the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200.
 
 ```php
 <?php
@@ -231,10 +311,13 @@ $options = [
 $adapter = new Apcu($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the
+`defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
 
 ### `Libmemcached`
-This adapter utilizes PHP's [memcached][memcached] extension to connect to Memcached servers. The adapter used is an instance of the `Memcached` class, created after the first event that requires the connection to be active.
+
+This adapter utilizes PHP's [memcached][memcached] extension to connect to Memcached servers. The adapter used is an
+instance of the `Memcached` class, created after the first event that requires the connection to be active.
 
 | Option                                          | Default                               |
 |-------------------------------------------------|---------------------------------------|
@@ -242,6 +325,7 @@ This adapter utilizes PHP's [memcached][memcached] extension to connect to Memca
 | `lifetime`                                      | `3600`                                |
 | `serializer`                                    | `null`                                |
 | `prefix`                                        | `ph-memc-`                            |
+| `stripPrefix`                                   | `true`                                |
 | `servers[0]['host']`                            | `127.0.0.1`                           |
 | `servers[0]['port']`                            | `11211`                               |
 | `servers[0]['weight']`                          | `1`                                   |
@@ -254,9 +338,14 @@ This adapter utilizes PHP's [memcached][memcached] extension to connect to Memca
 | `client[\Memcached::OPT_REMOVE_FAILED_SERVERS]` | `true`                                |
 | `client[\Memcached::OPT_RETRY_TIMEOUT]`         | `1`                                   |
 
-You can specify more than one server in the options array passed in the constructor. If `SASL` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the options or the class cannot add one or more servers in the pool, a `Phalcon\Storage\Exception` will be thrown.
+You can specify more than one server in the options array passed in the constructor. If `SASL` data is defined, the
+adapter will try to authenticate using the passed data. If there is an error in the options or the class cannot add one
+or more servers in the pool, a `Phalcon\Storage\Exception` will be thrown.
 
-The following example demonstrates how to create a new `Libmemcached` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the first server with weight `1` connecting to port `11211` and `10.4.13.110` as the second server with weight `5` again connecting to port `11211`.
+The following example demonstrates how to create a new `Libmemcached` storage adapter, which will use
+the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will
+use the `10.4.13.100` as the first server with weight `1` connecting to port `11211` and `10.4.13.110` as the second
+server with weight `5` again connecting to port `11211`.
 
 ```php
 <?php
@@ -286,18 +375,27 @@ $options = [
 $adapter = new Libmemcached($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the
+`defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
 
-**Serializers**: The `Memcached` class which is the adapter that the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] uses, offers support for serializing out of the box. The built-in serializers are:
+**Serializers**: The `Memcached` class which is the adapter that
+the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] uses, offers support for serializing out of the
+box. The built-in serializers are:
 
 * `\Memcached::SERIALIZER_PHP`
 * `\Memcached::SERIALIZER_JSON`
 * `\Memcached::SERIALIZER_IGBINARY`
 
-The [igbinary][igbinary] built-in serializer is only available if `igbinary` is present in the target system and [Memcached][memcached] extension is compiled with it. To enable these serializers, you can use the [Phalcon\Storage\Serializer\MemcachedIgbinary][storage-serializer-memcached-igbinary], [Phalcon\Storage\Serializer\MemcachedJson][storage-serializer-memcached-json] or [Phalcon\Storage\Serializer\MemcachedPhp][storage-serializer-memcached-php]
+The [igbinary][igbinary] built-in serializer is only available if `igbinary` is present in the target system
+and [Memcached][memcached] extension is compiled with it. To enable these serializers, you can use
+the [Phalcon\Storage\Serializer\MemcachedIgbinary][storage-serializer-memcached-igbinary], [Phalcon\Storage\Serializer\MemcachedJson][storage-serializer-memcached-json]
+or [Phalcon\Storage\Serializer\MemcachedPhp][storage-serializer-memcached-php]
 
 ### `Memory`
-This adapter uses the computer's memory to store the data. As all data is stored in memory, there is no persistence, meaning that once the request is completed, the data is lost. This adapter can be used for testing or temporary storage during a particular request. The options available for the constructor are:
+
+This adapter uses the computer's memory to store the data. As all data is stored in memory, there is no persistence,
+meaning that once the request is completed, the data is lost. This adapter can be used for testing or temporary storage
+during a particular request. The options available for the constructor are:
 
 | Option              | Default    |
 |---------------------|------------|
@@ -305,8 +403,10 @@ This adapter uses the computer's memory to store the data. As all data is stored
 | `lifetime`          | `3600`     |
 | `serializer`        | `null`     |
 | `prefix`            | `ph-memo-` |
+| `stripPrefix`       | `true`     |
 
-The following example demonstrates how to create a new `Memory` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200.
+The following example demonstrates how to create a new `Memory` storage adapter, which will use
+the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200.
 
 ```php
 <?php
@@ -324,10 +424,29 @@ $options = [
 $adapter = new Memory($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the
+`defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
+
+The adapter retains every key set for its lifetime. In long-running PHP processes (Swoole, RoadRunner, queue workers)
+call `setMaxItems()` to evict the oldest entry FIFO before a new key is stored once the cap is reached.
+
+```php
+<?php
+
+use Phalcon\Storage\Adapter\Memory;
+use Phalcon\Storage\SerializerFactory;
+
+$adapter = new Memory(new SerializerFactory());
+$adapter->setMaxItems(10000);
+```
+
+The default value `0` preserves the original unbounded behavior. `getMaxItems()` returns the current cap. Eviction is
+FIFO by insertion order; existing keys updated via `set()` are not promoted.
 
 ### `Redis`
-This adapter utilizes PHP's [redis][redis] extension to connect to a Redis server. The adapter used is an instance of the `Redis` class, created after the first event that requires the connection to be active.
+
+This adapter utilizes PHP's [redis][redis] extension to connect to a Redis server. The adapter used is an instance of
+the `Redis` class, created after the first event that requires the connection to be active.
 
 | Option              | Default     |
 |---------------------|-------------|
@@ -335,16 +454,21 @@ This adapter utilizes PHP's [redis][redis] extension to connect to a Redis serve
 | `lifetime`          | `3600`      |
 | `serializer`        | `null`      |
 | `prefix`            | `ph-reds-`  |
+| `stripPrefix`       | `true`      |
 | `host`              | `127.0.0.1` |
 | `port`              | `6379`      |
 | `index`             | `1`         |
 | `persistent`        | `false`     |
 | `auth`              |             |
 | `socket`            |             |
+| `ssl`               |             |
 
-If `auth` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the options, or the server cannot connect or authenticate, a `Phalcon\Storage\Exception` will be thrown.
+If `auth` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the
+options, or the server cannot connect or authenticate, a `Phalcon\Storage\Exception` will be thrown.
 
-The following example demonstrates how to create a new `Redis` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the host, connect to port `6379`, and select the index `1`.
+The following example demonstrates how to create a new `Redis` storage adapter, which will use
+the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will
+use the `10.4.13.100` as the host, connect to port `6379`, and select the index `1`.
 
 ```php
 <?php
@@ -365,22 +489,32 @@ $options = [
 $adapter = new Redis($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the
+`defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
 
-**Serializers**: The `Redis` class which is the adapter that the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis] uses, offers support for serializing out of the box. The built-in serializers are:
+**Serializers**: The `Redis` class which is the adapter that the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis]
+uses, offers support for serializing out of the box. The built-in serializers are:
 
 * `\Redis::SERIALIZER_NONE`
 * `\Redis::SERIALIZER_PHP`
 * `\Redis::SERIALIZER_IGBINARY`
 * `\Redis::SERIALIZER_MSGPACK`
 
-The [igbinary][igbinary] and built-in serializer are only available if `igbinary` is present in the target system and [Redis][redis] extension is compiled with it. The same applies to [msgpack][msgpack] built-in serializer. It is only available if `msgpack` is present in the target system and the [Redis][redis] extension is compiled with it. To enable these serializers, you can use the [Phalcon\Storage\Serializer\RedisIgbinary][storage-serializer-redis-igbinary], [Phalcon\Storage\Serializer\RedisJson][storage-serializer-redis-json], [Phalcon\Storage\Serializer\RedisMsgpack][storage-serializer-redis-msgpack], [Phalcon\Storage\Serializer\RedisNone][storage-serializer-redis-none] or [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php].
+The [igbinary][igbinary] and built-in serializer are only available if `igbinary` is present in the target system
+and [Redis][redis] extension is compiled with it. The same applies to [msgpack][msgpack] built-in serializer. It is only
+available if `msgpack` is present in the target system and the [Redis][redis] extension is compiled with it. To enable
+these serializers, you can use
+the [Phalcon\Storage\Serializer\RedisIgbinary][storage-serializer-redis-igbinary], [Phalcon\Storage\Serializer\RedisJson][storage-serializer-redis-json], [Phalcon\Storage\Serializer\RedisMsgpack][storage-serializer-redis-msgpack], [Phalcon\Storage\Serializer\RedisNone][storage-serializer-redis-none]
+or [Phalcon\Storage\Serializer\RedisPhp][storage-serializer-redis-php].
 
 **NOTE** `increment` - `decrement`
 
-At this point in time, there is an issue with `Redis`, where the internal `Redis` serializer does not skip scalar values because it can only store strings. As a result, if you use `increment` after a `set` for a number, will not return a number:
+At this point in time, there is an issue with `Redis`, where the internal `Redis` serializer does not skip scalar values
+because it can only store strings. As a result, if you use `increment` after a `set` for a number, will not return a
+number:
 
-The way to store numbers and use the `increment` (or `decrement`) is to either remove the internal serializer for `Redis`
+The way to store numbers and use the `increment` (or `decrement`) is to either remove the internal serializer for
+`Redis`
 
 ```php
 $storage->getAdapter()->setOption(\Redis::OPT_SERIALIZER, \Redis::SERIALIZER_NONE);
@@ -396,8 +530,73 @@ $storage->increment('my-key', 3);
 echo $storage->get('my-key');      // 3
 ```
 
+### `RedisCluster`
+
+This adapter utilizes PHP's [redis][redis] extension to connect to a Redis Cluster. It extends the `Redis` adapter and
+shares its serializer support, but connects to multiple nodes and uses `ph-redc-` as its default key prefix.
+
+You can connect either by supplying seed hosts directly, or by referencing a named cluster configured in `redis.ini`.
+
+| Option              | Default              |
+|---------------------|----------------------|
+| `defaultSerializer` | `Php`                |
+| `lifetime`          | `3600`               |
+| `serializer`        | `null`               |
+| `prefix`            | `ph-redc-`           |
+| `stripPrefix`       | `true`               |
+| `name`              | `null`               |
+| `hosts`             | `['127.0.0.1:6379']` |
+| `timeout`           | `0`                  |
+| `readTimeout`       | `0`                  |
+| `persistent`        | `false`              |
+| `auth`              | `''`                 |
+| `context`           | `null`               |
+
+**Connecting by seed hosts:**
+
+```php
+<?php
+
+use Phalcon\Storage\Adapter\RedisCluster;
+use Phalcon\Storage\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+
+$options = [
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
+    'hosts'             => ['redis-node-1:7000', 'redis-node-2:7001'],
+];
+
+$adapter = new RedisCluster($serializerFactory, $options);
+```
+
+**Connecting by named cluster (configured in `redis.ini`):**
+
+```ini
+; redis.ini
+redis.clusters.seeds = "mycluster[]=localhost:7000&mycluster[]=localhost:7001"
+redis.clusters.timeout = "mycluster=5"
+redis.clusters.read_timeout = "mycluster=10"
+```
+
+```php
+<?php
+
+use Phalcon\Storage\Adapter\RedisCluster;
+use Phalcon\Storage\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+
+$adapter = new RedisCluster($serializerFactory, ['name' => 'mycluster']);
+```
+
 ### `Stream`
-This adapter is the simplest to set up since it uses the target system's file system (it only requires a storage path that is writeable). It is one of the slowest storage adapters since the data has to be written to the file system. Each file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the storage element, resulting in additional reads and writes to the file system.
+
+This adapter is the simplest to set up since it uses the target system's file system (it only requires a storage path
+that is writeable). It is one of the slowest storage adapters since the data has to be written to the file system. Each
+file created corresponds to a key stored. The file contains additional metadata to calculate the lifetime of the storage
+element, resulting in additional reads and writes to the file system.
 
 | Option              | Default   |
 |---------------------|-----------|
@@ -405,6 +604,7 @@ This adapter is the simplest to set up since it uses the target system's file sy
 | `lifetime`          | `3600`    |
 | `serializer`        | `null`    |
 | `prefix`            | `phstrm-` |
+| `stripPrefix`       | `true`    |
 | `storageDir`        |           |
 
 If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
@@ -413,7 +613,9 @@ If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 
     The adapter utilizes logic to store files in separate subdirectories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux-based systems.
 
-The following example demonstrates how to create a new `Stream` storage adapter, which will use the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will store the data in `/data/storage`.
+The following example demonstrates how to create a new `Stream` storage adapter, which will use
+the [Phalcon\Storage\Serializer\Json][storage-serializer-json] serializer and have a default lifetime of 7200. It will
+store the data in `/data/storage`.
 
 ```php
 <?php
@@ -432,10 +634,13 @@ $options = [
 $adapter = new Stream($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
+The above example used a [Phalcon\Storage\SerializerFactory][storage-serializerfactory] object and the
+`defaultSerializer` option to tell the adapter to instantiate the relevant serializer.
 
 ### Custom
-Phalcon also offers the [Phalcon\Storage\Adapter\AdapterInterface][storage-adapter-adapterinterface] which can be implemented in a custom class. The class can offer the storage adapter functionality you require.
+
+Phalcon also offers the [Phalcon\Storage\Adapter\AdapterInterface][storage-adapter-adapterinterface] which can be
+implemented in a custom class. The class can offer the storage adapter functionality you require.
 
 ```php
 <?php
@@ -466,6 +671,14 @@ class Custom implements AdapterInterface
      * Deletes data from the adapter
      */
     public function delete(string $key): bool
+    {
+        // Custom implementation
+    }
+
+    /**
+     * Deletes multiple keys from the adapter
+     */
+    public function deleteMultiple(array $keys): bool
     {
         // Custom implementation
     }
@@ -530,6 +743,7 @@ class Custom implements AdapterInterface
 ```
 
 Using it:
+
 ```php
 <?php
 
@@ -543,9 +757,17 @@ $custom->set('my-key', $data);
 ``` 
 
 ## Adapter Factory
-Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\AdapterFactory][storage-adapterfactory] class, so that you can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+
+Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers
+the [Phalcon\Storage\AdapterFactory][storage-adapterfactory] class, so that you can easily instantiate cache adapter
+classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you
+to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in
+comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are
+cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you
+will get the same object back.
 
 The example below shows how you can create an `Apcu` cache adapter with the `new` keyword or the factory:
+
 ```php
 <?php
 
@@ -582,12 +804,13 @@ $adapter = $adapterFactory->newInstance('apcu', $options);
 
 The parameters you can use for the factory are:
 
-| Name           | Adapter                                                            |
-|----------------|--------------------------------------------------------------------|
+| Name           | Adapter                                                              |
+|----------------|----------------------------------------------------------------------|
 | `apcu`         | [Phalcon\Storage\Adapter\Apcu][storage-adapter-apcu]                 |
 | `libmemcached` | [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] |
 | `memory`       | [Phalcon\Storage\Adapter\Memory][storage-adapter-memory]             |
 | `redis`        | [Phalcon\Storage\Adapter\Redis][storage-adapter-redis]               |
+| `redisCluster` | [Phalcon\Storage\Adapter\RedisCluster][storage-adapter-rediscluster] |
 | `stream`       | [Phalcon\Storage\Adapter\Stream][storage-adapter-stream]             |
 
 ## Events
@@ -596,53 +819,116 @@ The [Phalcon\Storage\AbstractAdapter][storage-adapter-abstractadapter] object im
 [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces.
 As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Event             | Description                                 | Can stop operation |
-|-------------------|---------------------------------------------|:------------------:|
-| `beforeSet`       | Fires before the value is set               |         No         |
-| `afterSet`        | Fires after the value has been set          |         No         |
-| `beforeGet`       | Fires before the value is requested         |         No         |
-| `afterGet`        | Fires after the value has been requested    |         No         |
-| `beforeHas`       | Fires before the value is requested         |         No         |
-| `afterHas`        | Fires after the value has been requested    |         No         |
-| `beforeDelete`    | Fires before the value is deleted           |         No         |
-| `afterDelete`     | Fires after the value has been deleted      |         No         |
-| `beforeIncrement` | Fires before the value has been incremented |         No         |
-| `afterIncrement`  | Fires after the value has been incremented  |         No         |
-| `beforeDecrement` | Fires before the value has been decremented |         No         |
-| `afterDecrement`  | Fires after the value has been decremented  |         No         |
+| Event                  | Description                                   | Can stop operation |
+|------------------------|-----------------------------------------------|:------------------:|
+| `beforeSet`            | Fires before the value is set                 |         No         |
+| `afterSet`             | Fires after the value has been set            |         No         |
+| `beforeGet`            | Fires before the value is requested           |         No         |
+| `afterGet`             | Fires after the value has been requested      |         No         |
+| `beforeHas`            | Fires before the value is requested           |         No         |
+| `afterHas`             | Fires after the value has been requested      |         No         |
+| `beforeDelete`         | Fires before the value is deleted             |         No         |
+| `afterDelete`          | Fires after the value has been deleted        |         No         |
+| `beforeDeleteMultiple` | Fires before multiple values are deleted      |         No         |
+| `afterDeleteMultiple`  | Fires after multiple values have been deleted |         No         |
+| `beforeIncrement`      | Fires before the value has been incremented   |         No         |
+| `afterIncrement`       | Fires after the value has been incremented    |         No         |
+| `beforeDecrement`      | Fires before the value has been decremented   |         No         |
+| `afterDecrement`       | Fires after the value has been decremented    |         No         |
+
+!!! info "NOTE"
+
+    Each public operation fires only its own `before`/`after` pair. Internal work is routed through the adapter's protected primitives, so a `get()` or `increment()` no longer emits nested `beforeHas`/`afterHas` (or `beforeGet`/`beforeSet`) events from the steps it performs internally. Event listeners therefore observe one event pair per call you make.
+
+## Exceptions
+
+Any exception thrown in the Storage component will be of type `Phalcon\Storage\Exception`. You can use this exception to
+selectively catch exceptions thrown only from this component.
+
+### Granular Exceptions
+
+As of 5.14 the component raises granular subclasses of `Phalcon\Storage\Exception` so callers can catch a specific
+failure mode. Existing `catch (Phalcon\Storage\Exception $e)` blocks continue to work unchanged.
+
+| Class                                                               | Parent                      | Thrown when                                                                |
+|---------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------|
+| `Phalcon\Storage\Exceptions\AuthenticationFailed`                   | `Phalcon\Storage\Exception` | A Redis / Memcached server rejects the configured credentials.             |
+| `Phalcon\Storage\Exceptions\ClusterConnectionFailed`                | `Phalcon\Storage\Exception` | The Redis cluster connection cannot be established.                        |
+| `Phalcon\Storage\Exceptions\ConnectionFailed`                       | `Phalcon\Storage\Exception` | The single-node Redis / Memcached connection cannot be established.        |
+| `Phalcon\Storage\Exceptions\DatabaseSelectionFailed`                | `Phalcon\Storage\Exception` | The configured Redis database index cannot be selected.                    |
+| `Phalcon\Storage\Exceptions\InvalidConfiguration`                   | `Phalcon\Storage\Exception` | The adapter receives configuration values it cannot make sense of.         |
+| `Phalcon\Storage\Exceptions\StorageError`                           | `Phalcon\Storage\Exception` | The underlying driver raises an error that does not match the cases above. |
+| `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput`   | `Phalcon\Storage\Exception` | A serializer is given input it cannot serialize (typically a resource).    |
+| `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` | `Phalcon\Storage\Exception` | A serializer is given an opaque payload it cannot decode.                  |
 
 [serializable]: https://www.php.net/manual/en/class.serializable.php
+
 [igbinary]: https://github.com/igbinary/igbinary7
+
 [msgpack]: https://msgpack.org/
+
 [apcu]: https://www.php.net/manual/en/book.apcu.php
+
 [memcached]: https://www.php.net/manual/en/book.memcached.php
+
 [redis]: https://github.com/phpredis/phpredis
+
 [storage-adapter-abstractadapter]: api/phalcon_storage.md#storageadapterabstractadapter
+
 [storage-adapter-adapterinterface]: api/phalcon_storage.md#storageadapteradapterinterface
+
 [storage-adapter-apcu]: api/phalcon_storage.md#storageadapterapcu
+
 [storage-adapter-libmemcached]: api/phalcon_storage.md#storageadapterlibmemcached
+
 [storage-adapter-memory]: api/phalcon_storage.md#storageadaptermemory
+
 [storage-adapter-redis]: api/phalcon_storage.md#storageadapterredis
+
+[storage-adapter-rediscluster]: api/phalcon_storage.md#storageadapterrediscluster
+
 [storage-adapter-stream]: api/phalcon_storage.md#storageadapterstream
+
 [storage-adapterfactory]: api/phalcon_storage.md#storageadapterfactory
+
 [storage-exception]: api/phalcon_storage.md#storageexception
+
 [storage-serializer-abstractserializer]: api/phalcon_storage.md#storageserializerabstractserializer
+
 [storage-serializer-base64]: api/phalcon_storage.md#storageserializerbase64
+
 [storage-serializer-igbinary]: api/phalcon_storage.md#storageserializerigbinary
+
 [storage-serializer-json]: api/phalcon_storage.md#storageserializerjson
+
 [storage-serializer-msgpack]: api/phalcon_storage.md#storageserializermsgpack
+
 [storage-serializer-none]: api/phalcon_storage.md#storageserializernone
+
 [storage-serializer-php]: api/phalcon_storage.md#storageserializerphp
+
 [storage-serializer-memcached-igbinary]: api/phalcon_storage.md#storageserializermemcachedigbinary
+
 [storage-serializer-memcached-json]: api/phalcon_storage.md#storageserializermemcachedjson
+
 [storage-serializer-memcached-php]: api/phalcon_storage.md#storageserializermemcachedphp
+
 [storage-serializer-redis-igbinary]: api/phalcon_storage.md#storageserializerredisigbinary
+
 [storage-serializer-redis-json]: api/phalcon_storage.md#storageserializerredisjson
+
 [storage-serializer-redis-msgpack]: api/phalcon_storage.md#storageserializerredismsgpack
+
 [storage-serializer-redis-none]: api/phalcon_storage.md#storageserializerredisnone
+
 [storage-serializer-redis-php]: api/phalcon_storage.md#storageserializerredisphp
+
 [storage-serializer-serializerinterface]: api/phalcon_storage.md#storageserializerserializerinterface
+
 [storage-serializerfactory]: api/phalcon_storage.md#storageserializerfactory
+
 [cache]: cache.md
+
 [session]: session.md
+
 [events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface

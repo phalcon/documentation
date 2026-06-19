@@ -1,13 +1,22 @@
 # Config Component
+
 - - -
 
 ## Overview
 
-Almost all applications require configuration data for proper operation. This configuration includes parameters and initial settings such as the location of log files, database connection values, registered services, etc. The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy, object-oriented way.
+Almost all applications require configuration data for proper operation. This configuration includes parameters and
+initial settings such as the location of log files, database connection values, registered services, etc.
+The [Phalcon\Config\Config][config] is designed to store this configuration data in an easy, object-oriented way.
 
-It represents a tree whose leaves are configuration values. Each child node of a [Phalcon\Config\Config][config] is named and is either an external node that contains a configuration value or a sub-collection which is itself a [Phalcon\Config\Config][config] instance holding nested values. It provides methods to access such configuration collections. Each [Phalcon\Config\Config][config] instance represents a virtual object that can be traversed in the fashion of true object properties.
+It represents a tree whose leaves are configuration values. Each child node of a [Phalcon\Config\Config][config] is
+named and is either an external node that contains a configuration value or a sub-collection which is itself
+a [Phalcon\Config\Config][config] instance holding nested values. It provides methods to access such configuration
+collections. Each [Phalcon\Config\Config][config] instance represents a virtual object that can be traversed in the
+fashion of true object properties.
 
-This class can be instantiated using a PHP array directly or by reading configuration files from various formats, as described further down in the adapters section. [Phalcon\Config\Config][config] extends the [Phalcon\Support\Collection][collection] object, inheriting its functionality.
+This class can be instantiated using a PHP array directly or by reading configuration files from various formats, as
+described further down in the adapters section. [Phalcon\Config\Config][config] extends
+the [Phalcon\Support\Collection][collection] object, inheriting its functionality.
 
 ```php
 <?php
@@ -34,10 +43,12 @@ echo $config->path('app.name');         // PHALCON
 ```
 
 ## Factory
+
 ### `newInstance`
 
-The allowed values for `name`, which correspond to a different adapter class are:
-Creating a `Phalcon\Config\Config` or any supporting adapter class (`Phalcon\Config\Adapter\*`) is straightforward using the `new` keyword. However, Phalcon offers the `Phalcon\Config\ConfigFactory` class for easy instantiation of config objects. Calling `newInstance` with the `name`, `fileName`, and a `parameters` array will return the new config object.
+Creating a `Phalcon\Config\Config` or any supporting adapter class (`Phalcon\Config\Adapter\*`) is straightforward using
+the `new` keyword. However, Phalcon offers the `Phalcon\Config\ConfigFactory` class for easy instantiation of config
+objects. Calling `newInstance` with the `name`, `fileName`, and a `parameters` array will return the new config object.
 
 The allowed values for `name`, corresponding to different adapter classes, are:
 
@@ -82,11 +93,15 @@ $factory  = new ConfigFactory();
 $config = $factory->newInstance('php', $fileName);
 ```
 
-The third parameter for `newInstance`, an array, is not required in this case. However, other adapter types may use it, so you can supply it depending on the adapter type. More information on what can be contained in the `parameters` array can be found in the adapters section.
+The third parameter for `newInstance`, an array, is not required in this case. However, other adapter types may use it,
+so you can supply it depending on the adapter type. More information on what can be contained in the `parameters` array
+can be found in the adapters section.
 
 ### `load`
 
-The `Phalcon\Config\ConfigFactory` also offers the `load` method, which accepts a string or an array as a parameter. If a string is passed, it is treated as the `fileName` of the file to load, and the file extension determines the adapter used.
+The `Phalcon\Config\ConfigFactory` also offers the `load` method, which accepts a string or an array as a parameter. If
+a string is passed, it is treated as the `fileName` of the file to load, and the file extension determines the adapter
+used.
 
 ```php
 <?php
@@ -99,7 +114,9 @@ $factory  = new ConfigFactory();
 $config = $factory->load($fileName);
 ```
 
-If an array is passed, the `adapter` element is required to specify the adapter to create. Additionally, `filePath` is required to specify where the file to load is located. More information on what can be contained in the array can be found in the adapters section.
+If an array is passed, the `adapter` element is required to specify the adapter to create. Additionally, `filePath` is
+required to specify where the file to load is located. More information on what can be contained in the array can be
+found in the adapters section.
 
 Given an INI configuration file `/app/storage/config.ini`
 
@@ -123,34 +140,24 @@ $factory  = new ConfigFactory();
 $config = $factory->load($fileName);
 ```
 
-## Exceptions
-
-Any exceptions thrown in the [Phalcon\Config\Config][config] component will be of type [Phalcon\Config\Exception][config-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
-
-php
-
+As of 5.14.2, `load()` resolves the `yml` file extension, or `yml` passed as the `adapter` element, to
+the [Yaml][yaml] adapter:
 
 ```php
 <?php
 
-use Phalcon\Config\Exception;
-use Phalcon\Mvc\Controller;
+use Phalcon\Config\ConfigFactory;
 
-class IndexController extends Controller
-{
-    public function index()
-    {
-        try {
-            // Get some configuration values
-            $this->config->database->dbname;
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
-    }
-}
+$fileName = '/app/storage/config.yml';
+$factory  = new ConfigFactory();
+
+$config = $factory->load($fileName);
 ```
 
+The alias applies to `load()` only. `newInstance()` requires the registered adapter name `yaml`.
+
 ## Native Array
+
 The [Phalcon\Config\Config][config] component accepts a PHP array in the constructor and loads it up.
 
 ```php
@@ -173,7 +180,72 @@ $config = new Config(
 );
 ```
 
+## Constructor Options
+
+The constructor accepts up to four parameters:
+
+| Parameter      | Default | Description                                                                              |
+|----------------|---------|------------------------------------------------------------------------------------------|
+| `$data`        | `[]`    | The configuration data.                                                                  |
+| `$insensitive` | `true`  | Keys are case-insensitive. Pass `false` to make key lookups case-sensitive.              |
+| `$strictNull`  | `false` | `get()` returns the default value for elements that hold `null`. Pass `true` to return the stored `null` instead. |
+| `$type`        | `null`  | Runtime type guard applied to the configuration values.                                  |
+
+With `$strictNull` enabled, an element that exists and holds `null` is returned as `null`; the default value is
+returned only for elements that do not exist:
+
+```php
+<?php
+
+use Phalcon\Config\Config;
+
+$config = new Config(
+    [
+        'app' => [
+            'name' => null,
+        ],
+    ],
+    true,
+    true
+);
+
+var_dump($config->get('app')->get('name', 'PHALCON')); // NULL
+```
+
+When `$type` is set, every value stored in the object is validated against it. The accepted tokens are `int`,
+`string`, `bool`, `float`, `array`, and `object`; any other string is treated as a class or interface name and checked
+with `instanceof`. A value that fails the check raises `Phalcon\Support\Collection\Exceptions\InvalidValueType`. This
+exception belongs to the `Phalcon\Support` hierarchy and does not extend [Phalcon\Config\Exception][config-exception].
+
+The guard applies to leaf values at every nesting depth. Array values are not themselves validated: they become
+nested [Phalcon\Config\Config][config] objects, and the guard is applied to the values inside them.
+
+```php
+<?php
+
+use Phalcon\Config\Config;
+
+$config = new Config(
+    [
+        'database' => [
+            'port' => 3306,
+        ],
+    ],
+    true,
+    false,
+    'int'
+);
+
+$config->set('timeout', 30);        // stored
+$config->set('host', 'localhost');  // throws InvalidValueType
+```
+
+!!! info "NOTE"
+
+    As of 5.14.2, nested configuration objects inherit all three flags (`$insensitive`, `$strictNull`, `$type`) and the type guard is enforced. In earlier versions, nested objects inherited only `$insensitive` and the type guard was not applied by this component.
+
 ## Get
+
 ### Magic
 
 Retrieve data using the key as a property (magic method):
@@ -196,11 +268,16 @@ echo $config
         ->get('name');  // PHALCON
 ```
 
-Since [Phalcon\Config\Config][config] extends [Phalcon\Support\Collection][collection], you can also pass a second parameter in `get()` that will act as the default value returned if the config element is not defined.
+Since [Phalcon\Config\Config][config] extends [Phalcon\Support\Collection][collection], you can also pass a second
+parameter in `get()` that will act as the default value returned if the config element is not defined.
 
 ## Path
 
-Using `path()` allows for easy retrieval of a sub-item, however deep it might be. The mandatory argument is a string indicating the requested node's path. The string is a pathname containing the names of each of the node's ancestors and its own, starting from level 1. The root node's pathname is the empty string and a level 1 node's pathname is its own name. The pathname of a node at level 2 or more consists of its parent's pathname followed by the delimiter (by default `.`) followed by its name.
+Using `path()` allows for easy retrieval of a sub-item, however deep it might be. The mandatory argument is a string
+indicating the requested node's path. The string is a pathname containing the names of each of the node's ancestors and
+its own, starting from level 1. The root node's pathname is the empty string and a level 1 node's pathname is its own
+name. The pathname of a node at level 2 or more consists of its parent's pathname followed by the delimiter (by default
+`.`) followed by its name.
 
 ```php
 <?php
@@ -210,7 +287,9 @@ echo $config->get('app')->get('name');  // PHALCON
 echo $config->path('app.name');  // PHALCON
 ```
 
-`path()` also accepts a `defaultValue` which, if set, will be returned if the element is not found or is not set in the config object. The last parameter `path()` accepts is the delimiter which separates the names in the pathname (mandatory argument).
+`path()` also accepts a `defaultValue` which, if set, will be returned if the element is not found or is not set in the
+config object. The last parameter `path()` accepts is the delimiter which separates the names in the pathname (mandatory
+argument).
 
 ```php
 <?php
@@ -219,7 +298,8 @@ echo $config->path('app-name', 'default', '-');     // PHALCON
 echo $config->path('app-unknown', 'default', '-');  // default
 ```
 
-Use the `getPathDelimiter()` and `setPathDelimiter()` methods to get and set the delimiter that the Config will use by default.
+Use the `getPathDelimiter()` and `setPathDelimiter()` methods to get and set the delimiter that the Config will use by
+default.
 
 Functional programming in conjunction with `path()` can be used to obtain configuration data:
 
@@ -256,15 +336,19 @@ echo config('app-name', 'default', '-');     // PHALCON
 echo config('app-unknown', 'default', '-');  // default
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     If the keys from your data contain special characters such as `.` or `-`, and you choose to use the same character for your delimiter when using the `path()` method, you will not get the desired results back, since `path()` will interpret the delimiter as a new nested level.
 
 ## Merge
 
-There are times when we might need to merge configuration data coming from two different config objects. For instance, we might have one config object that contains our base/default settings, while a second config object loads options that are specific to the system the application is running on (i.e. test, development, production, etc.). The system-specific data can come from a `.env` file and loaded with a [DotEnv][dotenv] library.
+There are times when we might need to merge configuration data coming from two different config objects. For instance,
+we might have one config object that contains our base/default settings, while a second config object loads options that
+are specific to the system the application is running on (i.e. test, development, production, etc.). The system-specific
+data can come from a `.env` file and loaded with a [DotEnv][dotenv] library.
 
-In the above scenario, we will need to merge the second configuration object with the first one. `merge()` allows us to do this, merging the two config objects recursively.
+In the above scenario, we will need to merge the second configuration object with the first one. `merge()` allows us to
+do this, merging the two config objects recursively.
 
 ```php
 <?php
@@ -342,23 +426,58 @@ Phalcon\Config Object
 )
 ``` 
 
+!!! info "NOTE"
+
+    `merge()` accepts an array or a [Phalcon\Config\Config][config] object. Any other value raises `Phalcon\Config\Exceptions\InvalidMergeData`. As of 5.14.2, the configuration object is left unchanged when the argument is rejected; in earlier versions the object was emptied before the exception was raised.
+
 ## Has
+
 Using `has()` you can determine if a particular key exists in the collection.
 
 ## Set
+
 The component also supports `set()` which allows you to programmatically add or change loaded data.
 
 ## Serialization
-The object can be serialized and saved in a file or a cache service using the `serialize()` method. The reverse can be achieved using the `unserialize` method
+
+The object can be serialized and saved in a file or a cache service using the `serialize()` method. The reverse can be
+achieved using the `unserialize` method
 
 ## `toArray` / `toJson`
+
 If you need to get the object back as an array `toArray()` and `toJson()` are available.
 
 For additional information, you can check the [Phalcon\Support\Collection][support-collection] documentation.
 
+## Collection Methods
+
+[Phalcon\Config\Config][config] inherits the transformation methods of
+[Phalcon\Support\Collection][support-collection]: `filter()`, `map()`, `sort()`, and `where()`. Each returns a new
+configuration object and leaves the original unchanged.
+
+```php
+<?php
+
+use Phalcon\Config\Adapter\Ini;
+
+$config = new Ini('/apps/storage/config.ini');
+
+$database = $config->filter(
+    function ($value, $key) {
+        return 'database' === $key;
+    }
+);
+```
+
+!!! info "NOTE"
+
+    As of 5.14.2, these methods also work on objects created by the adapters (`Ini`, `Json`, `Php`, `Yaml`, `Grouped`). In earlier versions, calling them on an adapter instance raised an error, because the returned object was constructed with the adapter constructor signature.
+
 ## Adapters
 
-In addition to the core component [Phalcon\Config\Config][config], designed to accept either a string (file name and path) or a native PHP array, several adapters are available. These adapters facilitate the reading of various file types to load configuration data.
+In addition to the core component [Phalcon\Config\Config][config], designed to accept either a string (file name and
+path) or a native PHP array, several adapters are available. These adapters facilitate the reading of various file types
+to load configuration data.
 
 ### Available Adapters
 
@@ -370,9 +489,15 @@ In addition to the core component [Phalcon\Config\Config][config], designed to a
 | [Phalcon\Config\Adapter\Php][php]         | Loads configuration from PHP multidimensional arrays. This adapter offers the best performance.     |
 | [Phalcon\Config\Adapter\Yaml][yaml]       | Loads configuration from YAML files. Requires the PHP `yaml` extension to be present in the system. |
 
+!!! info "NOTE"
+
+    As of 5.14.2, all file based adapters share the same failure contract: when the configuration file cannot be read, `Phalcon\Config\Exceptions\CannotLoadConfigFile` is raised. In earlier versions, the [Json][json] adapter failed inside the JSON decoder and the [Php][php] adapter raised a fatal error when the file was missing.
+
 ### Grouped
 
-The [Phalcon\Config\Adapter\Grouped][grouped] adapter allows the creation of a [Phalcon\Config\Config][config] object from multiple sources without creating each object separately. It accepts an array configuration with necessary data, defaulting to php as the default adapter.
+The [Phalcon\Config\Adapter\Grouped][grouped] adapter allows the creation of a [Phalcon\Config\Config][config] object
+from multiple sources without creating each object separately. It accepts an array configuration with necessary data,
+defaulting to php as the default adapter.
 
 Constructor parameters for the multidimensional array include:
 
@@ -403,9 +528,12 @@ $options = [
 $config = new Grouped($options);
 ```
 
-The keys set for each array element (representing one configuration file) mirror the constructor parameters of each adapter. More information regarding the parameters required or optional can be found in the relevant section describing each adapter.
+The keys set for each array element (representing one configuration file) mirror the constructor parameters of each
+adapter. More information regarding the parameters required or optional can be found in the relevant section describing
+each adapter.
 
-You can also use `array` as the adapter value. If you choose to do so, you will need to use `config` as the second key, with values that represent the actual values of the configuration you want to load.
+You can also use `array` as the adapter value. If you choose to do so, you will need to use `config` as the second key,
+with values that represent the actual values of the configuration you want to load.
 
 ```php
 <?php
@@ -470,9 +598,44 @@ $options = [
 $config = new Grouped($options);
 ```
 
+As of 5.14.2, the constructor accepts an optional third parameter:
+a [Phalcon\Config\ConfigFactory][config-configfactory] instance used to load every file based entry. The factory is
+created once and reused for all entries. Supplying your own factory makes custom adapters registered on it available
+to the group:
+
+```php
+<?php
+
+use App\Config\TomlAdapter;
+use Phalcon\Config\Adapter\Grouped;
+use Phalcon\Config\ConfigFactory;
+
+$factory = new ConfigFactory(
+    [
+        'toml' => TomlAdapter::class,
+    ]
+);
+
+$options = [
+    [
+        'adapter'  => 'php',
+        'filePath' => '/apps/storage/config.php',
+    ],
+    [
+        'adapter'  => 'toml',
+        'filePath' => '/apps/storage/database.toml',
+    ],
+];
+
+$config = new Grouped($options, 'php', $factory);
+```
+
 ### Ini
 
-The [Phalcon\Config\Adapter\Ini][ini] adapter uses the optimized PHP function [parse_ini_file][parse-ini-file] to read configuration from INI files. Each section represents a top-level element, and sub-elements are nested if keys contain the `.` separator. The default scanning method is `INI_SCANNER_RAW`, but this can be overridden by passing a different mode in the constructor.
+The [Phalcon\Config\Adapter\Ini][ini] adapter uses the optimized PHP function [parse_ini_file][parse-ini-file] to read
+configuration from INI files. Each section represents a top-level element, and sub-elements are nested if keys contain
+the `.` separator. The default scanning method is `INI_SCANNER_RAW`, but this can be overridden by passing a different
+mode in the constructor.
 
 Example INI file:
 
@@ -518,7 +681,7 @@ When using [Phalcon\Config\ConfigFactory][config-configfactory], set the mode as
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.ini';
 $factory  = new ConfigFactory();
@@ -537,7 +700,7 @@ Or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.ini';
 $factory  = new ConfigFactory();
@@ -546,7 +709,7 @@ $params = [
     'mode' => INI_SCANNER_NORMAL, 
 ];
 
-$config = $factory->newinstance('ini', $fileName, $params);
+$config = $factory->newInstance('ini', $fileName, $params);
 ```
 
 ### Json
@@ -555,7 +718,9 @@ $config = $factory->newinstance('ini', $fileName, $params);
 
     Requires PHP's `json` extension to be present in the system
 
-JSON is a widely used format, suitable for transporting data between applications and storing configuration data. [Phalcon\Config\Adapter\Json][json] internally uses `json_decode()` to convert a JSON file to a PHP native array and parse it accordingly.
+JSON is a widely used format, suitable for transporting data between applications and storing configuration
+data. [Phalcon\Config\Adapter\Json][json] internally uses `json_decode()` to convert a JSON file to a PHP native array
+and parse it accordingly.
 
 Example JSON file:
 
@@ -600,7 +765,7 @@ For [Phalcon\Config\ConfigFactory][config-configfactory], pass the file name:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.json';
 $factory  = new ConfigFactory();
@@ -618,17 +783,19 @@ or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.json';
 $factory  = new ConfigFactory();
 
-$config = $factory->newinstance('json', $fileName);
+$config = $factory->newInstance('json', $fileName);
 ```
 
 ### Php
 
-The [Phalcon\Config\Adapter\Php][php] adapter reads a PHP file that returns an array, loading it into the [Phalcon\Config\Config][config] object. Configuration can be stored as a PHP array in a file, and the adapter will read and parse it accordingly.
+The [Phalcon\Config\Adapter\Php][php] adapter reads a PHP file that returns an array, loading it into
+the [Phalcon\Config\Config][config] object. Configuration can be stored as a PHP array in a file, and the adapter will
+read and parse it accordingly.
 
 Example PHP file:
 
@@ -675,7 +842,7 @@ For [Phalcon\Config\ConfigFactory][config-configfactory], pass the file name:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.php';
 $factory  = new ConfigFactory();
@@ -693,12 +860,12 @@ or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 $fileName = '/app/storage/config.php';
 $factory  = new ConfigFactory();
 
-$config = $factory->newinstance('php', $fileName);
+$config = $factory->newInstance('php', $fileName);
 ```
 
 ### Yaml
@@ -707,7 +874,9 @@ $config = $factory->newinstance('php', $fileName);
 
     Requires PHP's yaml extension to be present in the system
 
-YAML is another common file format, and [Phalcon\Config\Adapter\Yaml][yaml] requires the `yaml` PHP extension. It uses the PHP function [yaml_parse_file][yaml-parse-file] to read YAML files. The adapter accepts a second parameter, callbacks, as an array supplying content handlers for YAML nodes.
+YAML is another common file format, and [Phalcon\Config\Adapter\Yaml][yaml] requires the `yaml` PHP extension. It uses
+the PHP function [yaml_parse_file][yaml-parse-file] to read YAML files. The adapter accepts a second parameter,
+callbacks, as an array supplying content handlers for YAML nodes.
 
 Example YAML file:
 
@@ -762,7 +931,7 @@ For [Phalcon\Config\ConfigFactory][config-configfactory], set the mode as a para
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 define("APPROOT", dirname(__DIR__));
 
@@ -786,7 +955,7 @@ or when using the `newInstance()`:
 ```php
 <?php
 
-use Phalcon\Cache\CacheFactory;
+use Phalcon\Config\ConfigFactory;
 
 define("APPROOT", dirname(__DIR__));
 
@@ -798,15 +967,18 @@ $callbacks = [
     },
 ];
 
-$config = $factory->newinstance('yaml', $fileName, $callbacks);
+$config = $factory->newInstance('yaml', $fileName, $callbacks);
 ```
 
 ### Custom
+
 For additional adapters, explore the [Phalcon Incubator][phalcon-incubator].
 
 ## Dependency Injection
 
-As with most Phalcon components, you can store the [Phalcon\Config\Config][config] object in your [Phalcon\Di\Di][di] container. By doing so, you can access your configuration object from controllers, models, views, and any component that implements `Injectable`.
+As with most Phalcon components, you can store the [Phalcon\Config\Config][config] object in your [Phalcon\Di\Di][di]
+container. By doing so, you can access your configuration object from controllers, models, views, and any component that
+implements `Injectable`.
 
 Example of service registration and access in the container:
 
@@ -855,19 +1027,75 @@ Also in views (Volt syntax)
 {{ config.database.dbname }}
 ```
 
+## Exceptions
+
+Any exceptions thrown in the [Phalcon\Config\Config][config] component will be of
+type [Phalcon\Config\Exception][config-exception]. You can use this exception to selectively catch exceptions thrown
+only from this component.
+
+```php
+<?php
+
+use Phalcon\Config\Exception;
+use Phalcon\Mvc\Controller;
+
+class IndexController extends Controller
+{
+    public function index()
+    {
+        try {
+            // Get some configuration values
+            $this->config->database->dbname;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+}
+```
+
+### Granular Exceptions
+
+As of 5.14 the component raises granular subclasses of `Phalcon\Config\Exception` so callers can catch a specific
+failure mode. Existing `catch (Phalcon\Config\Exception $e)` blocks continue to work unchanged.
+
+| Class                                                   | Parent                     | Thrown when                                                                          |
+|---------------------------------------------------------|----------------------------|--------------------------------------------------------------------------------------|
+| `Phalcon\Config\Exceptions\CannotLoadConfigFile`        | `Phalcon\Config\Exception` | A configuration file cannot be opened or its contents cannot be parsed.              |
+| `Phalcon\Config\Exceptions\ConfigNotArrayOrObject`      | `Phalcon\Config\Exception` | The value passed to the constructor is not an array or object.                       |
+| `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray` | `Phalcon\Config\Exception` | The `Grouped` adapter is given a non-array configuration entry.                      |
+| `Phalcon\Config\Exceptions\InvalidMergeData`            | `Phalcon\Config\Exception` | The data passed to `merge()` is not a `Config` or array.                             |
+| `Phalcon\Config\Exceptions\MissingConfigOption`         | `Phalcon\Config\Exception` | A required option (such as `filePath` or `adapter`) is missing in a `Grouped` entry. |
+| `Phalcon\Config\Exceptions\MissingFileExtension`        | `Phalcon\Config\Exception` | The configuration file does not have an extension and no adapter is declared.        |
+| `Phalcon\Config\Exceptions\MissingYamlExtension`        | `Phalcon\Config\Exception` | A YAML configuration file is requested but the `yaml` PHP extension is not loaded.   |
+
 [config]: api/phalcon_config.md
+
 [collection]: support-collection.md
+
 [phalcon-incubator]: https://github.com/phalcon/incubator
+
 [grouped]: api/phalcon_config.md#configadaptergrouped
+
 [ini]: api/phalcon_config.md#configadapterini
+
 [json]: api/phalcon_config.md#configadapterjson
+
 [php]: api/phalcon_config.md#configadapterphp
+
 [yaml]: api/phalcon_config.md#configadapteryaml
+
 [config-config]: api/phalcon_config.md#configconfig
+
 [config-configfactory]: api/phalcon_config.md#configconfigfactory
+
 [config-exception]: api/phalcon_config.md#configexception
+
 [dotenv]: https://github.com/josegonzalez/php-dotenv
+
 [parse-ini-file]: https://www.php.net/manual/en/function.parse-ini-file.php
+
 [yaml-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php
+
 [di]: di.md
+
 [support-collection]: support-collection.md

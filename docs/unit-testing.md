@@ -1,9 +1,11 @@
 # Unit Testing
+
 - - -
 
 ## Overview
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
+Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most
+functional bugs and better maintain your software.
 
 ## Integrating PHPUnit with Phalcon
 
@@ -21,7 +23,8 @@ or by manually adding it to `composer.json`:
 }
 ```
 
-Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called `Unit`:
+Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called
+`Unit`:
 
 ```
 app/
@@ -32,7 +35,8 @@ tests/Unit/
 
 ### Configure Test Namespace
 
-In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and modify it to fit your needs.
+In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and
+modify it to fit your needs.
 
 ```json
 {
@@ -48,7 +52,8 @@ Now, create a `phpunit.xml` file as follows:
 
 ### The `phpunit.xml` file
 
-Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests under the `tests/Unit` directory.
+Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests
+under the `tests/Unit` directory.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -71,7 +76,8 @@ Modify the `phpunit.xml` below to fit your needs and save it in your project roo
 
 ### Phalcon Incubator Test
 
-Phalcon provides a test library that provides a few abstract classes you can use to bootstrap the Unit Tests themselves. These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
+Phalcon provides a test library that provides a few abstract classes you can use to bootstrap the Unit Tests themselves.
+These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
 
 You can use the Incubator test library by adding it as a dependency:
 
@@ -91,11 +97,15 @@ or by manually adding it to `composer.json`:
 
 ## Creating a Unit Test
 
-It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are loaded so all you need to do is create the files, and phpunit will run the tests for you.
+It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to
+autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are
+loaded so all you need to do is create the files, and phpunit will run the tests for you.
 
-This example does not contain a config file, as in most cases you should be mocking your dependencies. If you happen to need one, you can add it to the `DI` in the `AbstractUnitTest`.
+This example does not contain a config file, as in most cases you should be mocking your dependencies. If you happen to
+need one, you can add it to the `DI` in the `AbstractUnitTest`.
 
 ### Abstract Unit Test
+
 First, create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
 
 ```php
@@ -209,6 +219,7 @@ Tests: 1, Assertions: 2, Failures: 1.
 ```
 
 ## Resources
+
 - [PHPUnit Documentation](https://phpunit.de/documentation.html)
 - [Getting Started with TDD in PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
 - [Writing Great Unit Tests](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)

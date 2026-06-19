@@ -1,43 +1,51 @@
 # Data Mapper
+
 - - -
 
 !!! info "NOTE"
 
     These components have been heavily influenced by [Aura PHP][auraphp] and [Atlas PHP][atlasphp] 
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     The full implementation of a DataMapper is not yet complete. There are however a few components that can be used in any project, such as the `Connection` and `Query/Select` 
 
 ## Overview
 
-The Data Mapper pattern as described by [Martin Fowler][datamapper] in [Patterns of Enterprise Application Architecture][eaa] is:
+The Data Mapper pattern as described by [Martin Fowler][datamapper]
+in [Patterns of Enterprise Application Architecture][eaa] is:
 
 !!! info "NOTE"
 
     A layer of Mappers that moves data between objects and a database while keeping them independent of each other and the mapper itself.
 
-The `Phalcon\DataMapper` namespace contains components to help with accessing your data source, with the [Data Mapper][datamapper].
+The `Phalcon\DataMapper` namespace contains components to help with accessing your data source, with
+the [Data Mapper][datamapper].
 
 ## PDO
 
 ### Connection
 
-One of the components required by this implementation is a PDO connector. The [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] offers a wrapper to PHP's PDO implementation, making it easier to maintain connections.
+One of the components required by this implementation is a PDO connector.
+The [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] offers a wrapper to PHP's PDO implementation, making
+it easier to maintain connections.
 
 **Connecting to a source**
 
-Connecting to a database requires the DSN string as well as the username and the password of the account with permission to access the database we need to connect to.
+Connecting to a database requires the DSN string as well as the username and the password of the account with permission
+to access the database we need to connect to.
 
 The DSN is as follows:
 
-|   Engine    | DSN                                                                      |
-|:-----------:|--------------------------------------------------------------------------|
-|    Mysql    | `mysql:host=<host>;dbname=<database name>;charset=<charset>;port=<port>` |
-| Postgresql  | `pgsql:host=<host>;dbname=<database name>`                               |
-|   Sqlite    | `sqlite:<file>`                                                          |
+|   Engine   | DSN                                                                      |
+|:----------:|--------------------------------------------------------------------------|
+|   Mysql    | `mysql:host=<host>;dbname=<database name>;charset=<charset>;port=<port>` |
+| Postgresql | `pgsql:host=<host>;dbname=<database name>`                               |
+|   Sqlite   | `sqlite:<file>`                                                          |
 
-You will only need to substitute the values in `<>` with the respective values for your environment. The `charset` and `port` are optional for `Mysql`. For `Sqlite` you can use `memory` as the `<file>` but the database will not persist. A file name in an appropriate location will create the necessary storage file for `Sqlite`.
+You will only need to substitute the values in `<>` with the respective values for your environment. The `charset` and
+`port` are optional for `Mysql`. For `Sqlite` you can use `memory` as the `<file>` but the database will not persist. A
+file name in an appropriate location will create the necessary storage file for `Sqlite`.
 
 ```php
 <?php
@@ -90,64 +98,82 @@ public function __construct(
     ProfilerInterface $profiler = null
 )
 ```
-Constructs the object. The `$dsn`, `$username` and `$password` are used to connect to the source. The `$options` allows for additional `PDO` options to be specified. The `$queries` array contains a list of queries that will be executed when the connection is established. The `$profiler` is an optional object implementing the `ProfilerInterface` interface, used to profile the connection.
+
+Constructs the object. The `$dsn`, `$username` and `$password` are used to connect to the source. The `$options` allows
+for additional `PDO` options to be specified. The `$queries` array contains a list of queries that will be executed when
+the connection is established. The `$profiler` is an optional object implementing the `ProfilerInterface` interface,
+used to profile the connection.
 
 ```php
 public function __debugInfo():  array
 ```
+
 The purpose of this method is to hide sensitive data from stack traces (such as usernames, passwords).
 
 ```php
 public function beginTransaction(): bool
 ```
+
 Begins a transaction. If the profiler is enabled, the operation will be recorded.
 
 ```php
 public function commit(): bool
 ```
+
 Commits the existing transaction. If the profiler is enabled, the operation will be recorded.
 
 ```php
 abstract public function connect(): void;
 ```
+
 Connects to the database.
 
 ```php
 abstract public function disconnect(): void;
 ```
+
 Disconnects from the database.
 
 ```php
 public function errorCode(): string | null
 ```
+
 Gets the most recent error code.
 
 ```php
 public function errorInfo(): array
 ```
+
 Gets the most recent error info.
 
 ```php
 public function exec(string $statement): int
 ```
-Executes an SQL statement and returns the number of affected rows. If the profiler is enabled, the operation will be recorded.
+
+Executes an SQL statement and returns the number of affected rows. If the profiler is enabled, the operation will be
+recorded.
 
 ```php
 public function fetchAffected(string $statement, array $values = []): int
 ```
+
 Performs a statement and returns the number of affected rows.
 
 ```php
 public function fetchAll(string $statement, array $values = []): array
 ```
+
 Fetches a sequential array of rows from the database; the rows are returned as associative arrays.
 
 ```php
 public function fetchAssoc(string $statement, array $values = []): array
 ```
-Fetches an associative array of rows from the database; the rows are returned as associative arrays, and the array of rows is keyed on the first column of each row.
 
-If multiple rows have the same first column value, the last row with that value will overwrite earlier rows. This method is more resource intensive and should be avoided if possible.
+Fetches an associative array of rows from the database; the rows are returned as associative arrays, and the array of
+rows is keyed on the first column of each row.
+
+If multiple rows have the same first column value, the last row with that value will overwrite earlier rows. This method
+is more resource intensive and should be avoided if possible.
 
 ```php
 public function fetchColumn(
@@ -156,6 +182,7 @@ public function fetchColumn(
     int $column = 0
 ): array
 ```
+
 Fetches a column of rows as a sequential array (default first one).
 
 ```php
@@ -165,7 +192,9 @@ public function fetchGroup(
     int $flags = \PDO::FETCH_ASSOC
 ): array 
 ```
-Fetches multiple from the database as an associative array. The first column will be the index key. The default flags are `PDO::FETCH_ASSOC` | `PDO::FETCH_GROUP`
+
+Fetches multiple from the database as an associative array. The first column will be the index key. The default flags
+are `PDO::FETCH_ASSOC` | `PDO::FETCH_GROUP`
 
 ```php
 public function fetchObject(
@@ -175,9 +204,12 @@ public function fetchObject(
     array $arguments = []
 ): object 
 ```
+
 Fetches one row from the database as an object where the column values are mapped to object properties.
 
-Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object returned is `\stdClass`
+Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially
+have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object
+returned is `\stdClass`
 
 ```php
 public function fetchObjects(
@@ -187,68 +219,85 @@ public function fetchObjects(
     array $arguments = []
 ): array {
 ```
-Fetches a sequential array of rows from the database; the rows are returned as objects where the column values are mapped to object properties.
 
-Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object returned is `\stdClass`
+Fetches a sequential array of rows from the database; the rows are returned as objects where the column values are
+mapped to object properties.
+
+Since PDO injects property values before invoking the constructor, any initializations for defaults that you potentially
+have in your object's constructor, will override the values that have been injected by `fetchObject`. The default object
+returned is `\stdClass`
 
 ```php
 public function fetchOne(string $statement, array $values = []): array
 ```
+
 Fetches one row from the database as an associative array.
 
 ```php
 public function fetchPairs(string $statement, array $values = []): array
 ```
+
 Fetches an associative array of rows as key-value pairs (first column is the key, second column is the value).
 
 ```php
 public function fetchValue(string $statement, array $values = [])
 ```
+
 Fetches the very first value (i.e., first column of the first row).
 
 ```php
 public function getAdapter(): \PDO
 ```
+
 Return the inner PDO (if any)
 
 ```php
 public function getAttribute(int $attribute): var
 ```
+
 Retrieve a database connection attribute
 
 ```php
 public static function getAvailableDrivers(): array
 ```
+
 Return an array of available PDO drivers (empty array if none available)
 
 ```php
 public function getDriverName(): string
 ```
+
 Return the driver name
 
 ```php
 public function getProfiler(): <ProfilerInterface>
 ```
+
 Returns the Profiler instance.
 
 ```php
 public function getQuoteNames(string $driver = ""): array
 ```
+
 Gets the quote parameters based on the driver
 
 ```php
 public function inTransaction(): bool
 ```
-Is a transaction currently active? If the profiler is enabled, the operation will be recorded. If the profiler is enabled, the operation will be recorded.
+
+Is a transaction currently active? If the profiler is enabled, the operation will be recorded. If the profiler is
+enabled, the operation will be recorded.
 
 ```php
 public function isConnected(): bool
 ```
+
 Is the PDO connection active?
 
 ```php
 public function lastInsertId(string $name = null): string
 ```
+
 Returns the last inserted autoincrement sequence value. If the profiler is enabled, the operation will be recorded.
 
 ```php
@@ -257,7 +306,10 @@ public function perform(
     array $values = []
 ): \PDOStatement
 ```
-Performs a query with bound values and returns the resulting PDOStatement; array $values will be passed through `quote()` and their respective placeholders will be replaced in the query string. If the profiler is enabled, the operation will be recorded.
+
+Performs a query with bound values and returns the resulting PDOStatement; array $values will be passed through
+`quote()` and their respective placeholders will be replaced in the query string. If the profiler is enabled, the
+operation will be recorded.
 
 ```php
 public function prepare(
@@ -265,31 +317,39 @@ public function prepare(
     array $options = []
 ): \PDOStatement
 ```
+
 Prepares an SQL statement for execution.
 
 ```php
 public function query(string $statement, ...$fetch): <\PDOStatement> | bool
 ```
+
 Queries the database and returns a PDOStatement. If the profiler is enabled, the operation will be recorded.
 
 ```php
 public function quote(mixed $value, int $type = \PDO::PARAM_STR): string
 ```
-Quotes a value for use in an SQL statement. This differs from `PDO::quote()` in that it will convert an array into a string of comma-separated quoted values. The default type is `PDO::PARAM_STR`
+
+Quotes a value for use in an SQL statement. This differs from `PDO::quote()` in that it will convert an array into a
+string of comma-separated quoted values. The default type is `PDO::PARAM_STR`
 
 ```php
 public function rollBack(): bool
 ```
-Rolls back the current transaction, and restores autocommit mode. If the profiler is enabled, the operation will be recorded.
+
+Rolls back the current transaction, and restores autocommit mode. If the profiler is enabled, the operation will be
+recorded.
 
 ```php
 public function setAttribute(int $attribute, mixed $value): bool
 ```
+
 Set a database connection attribute
 
 ```php
 public function setProfiler(ProfilerInterface $profiler)
 ```
+
 Sets the Profiler instance.
 
 ```php
@@ -300,6 +360,7 @@ protected function fetchData(
     array $values = []
 ): array
 ```
+
 Helper method to get data from PDO based on the method passed
 
 ```php
@@ -309,17 +370,26 @@ protected function performBind(
     mixed $arguments
 ): void
 ```
+
 Bind a value using the proper `PDO::PARAM_*` type.
 
 ### Connection - Decorated
 
 ### ConnectionLocator
-Applications with high traffic may utilize multiple database servers. For instance, one could employ a high-powered database server for writes, while smaller ones with memory based tables for reads. 
 
-The [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] allows you to define multiple [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] objects for reading and writing. All these objects are lazy-loaded, instantiated only when necessary. 
+Applications with high traffic may utilize multiple database servers. For instance, one could employ a high-powered
+database server for writes, while smaller ones with memory based tables for reads.
+
+The [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] allows you to define
+multiple [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] objects for reading and writing. All these
+objects are lazy-loaded, instantiated only when necessary.
 
 #### Instantiation
-The easiest way to create a [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] to instantiate it and pass a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] object to it. Additionally, the constructor can optionally receive two arrays, one for the write connections and one for the read connections. The first connection is always the `master` one.
+
+The easiest way to create a [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] to instantiate it
+and pass a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] object to it. Additionally, the constructor
+can optionally receive two arrays, one for the write connections and one for the read connections. The first connection
+is always the `master` one.
 
 ```php
 
@@ -353,26 +423,33 @@ public function __construct(
     array $write = []
 )
 ```
+
 Constructor.
 
 ```php
 public function getMaster():  ConnectionInterface
 ```
+
 Returns the default connection object.
 
 ```php
 public function getRead(string $name = ""):  ConnectionInterface
 ```
-Returns a read connection by name; if no name is given, picks a random connection; if no read connections are present, returns the default connection.
+
+Returns a read connection by name; if no name is given, picks a random connection; if no read connections are present,
+returns the default connection.
 
 ```php
 public function getWrite(string $name = ""):  ConnectionInterface
 ```
-Returns a write connection by name; if no name is given, picks a random connection; if no write connections are present, returns the default connection.
+
+Returns a write connection by name; if no name is given, picks a random connection; if no write connections are present,
+returns the default connection.
 
 ```php
 public function setMaster(ConnectionInterface $callableObject):  ConnectionLocatorInterface
 ```
+
 Sets the default connection factory.
 
 ```php
@@ -381,6 +458,7 @@ public function setRead(
     callable $callableObject
 ):  ConnectionLocatorInterface
 ```
+
 Sets a read connection factory by name.
 
 ```php
@@ -389,6 +467,7 @@ public function setWrite(
     callable $callableObject
 ): ConnectionLocatorInterface
 ```
+
 Sets a write connection factory by name.
 
 ```php
@@ -397,13 +476,19 @@ protected function getConnection(
     string $name = ""
 ):  ConnectionInterface
 ```
+
 Returns a connection by name.
 
 #### Configuration
-Once the [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] is created, you can add as many additional read or write connections as required. You can do so either during the construction of the locator or at runtime.
+
+Once the [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] is created, you can add as many
+additional read or write connections as required. You can do so either during the construction of the locator or at
+runtime.
 
 ##### Runtime
-First, you create the [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] object with the master connection. The master connection is the connection that will be used when read or write connections are not defined.
+
+First, you create the [Phalcon\DataMapper\ConnectionLocator][datamapper-pdo-connectionlocator] object with the master
+connection. The master connection is the connection that will be used when read or write connections are not defined.
 
 ```php
 <?php
@@ -420,6 +505,7 @@ $locator = new ConnectionLocator(
 ```
 
 Now you can add as many read and write servers as required
+
 ```php
 <?php
 
@@ -473,7 +559,9 @@ $locator->addRead(
 ```
 
 ##### On construction
-You can also set everything up when the locator is being constructed. This is particularly useful when setting up the locator as a service in a DI container.
+
+You can also set everything up when the locator is being constructed. This is particularly useful when setting up the
+locator as a service in a DI container.
 
 ```php
 <?php
@@ -527,21 +615,32 @@ $locator = new ConnectionLocator(
 );
 ```
 
-
 #### Getting Connections
+
 Getting a connection from the locator will instantiate the object if it is not instantiated yet and then return it.
 
 - `getMaster()` will return the master/default [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
-- `getRead()` will return a random read [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]; after the first call, `getRead()` will always return the same [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]. (If no read Connections are defined, it will return the default connection.)
-- `getWrite()` will return a random write [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]; after the first call, `getWrite()` will always return the same [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]. (If no write Connections are defined, it will return the default connection.)
+- `getRead()` will return a random read [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]; after the first
+  call, `getRead()` will always return the same [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]. (If no
+  read Connections are defined, it will return the default connection.)
+- `getWrite()` will return a random write [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]; after the
+  first call, `getWrite()` will always return the same [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection]. (
+  If no write Connections are defined, it will return the default connection.)
 
-You can retrieve a specific read or write connection by passing its name (as it was registered), to the `getRead()` or `getWrite()` methods.
+You can retrieve a specific read or write connection by passing its name (as it was registered), to the `getRead()` or
+`getWrite()` methods.
 
 ### Profiler
 
-The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] is a component that allows you to profile database connections. That entails logging which queries have been executed and where they came from in the codebase, as well as what their execution time is. The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] accepts a [Phalcon\Logger\Logger][logger] object to log all the information collected to a file. By default, the [Phalcon\DataMapper\Profiler\MemoryLogger][datamapper-pdo-profiler-memorylogger] is used.
+The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] is a component that allows you to profile
+database connections. That entails logging which queries have been executed and where they came from in the codebase, as
+well as what their execution time is. The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler]
+accepts a [Phalcon\Logger\Logger][logger] object to log all the information collected to a file. By default,
+the [Phalcon\DataMapper\Profiler\MemoryLogger][datamapper-pdo-profiler-memorylogger] is used.
 
-The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] can be activated by calling the `setActive()` method. The method accepts a boolean flag, which serves also as the deactivation method. Data is only logged when the profiler is active.
+The [Phalcon\DataMapper\Profiler\Profiler][datamapper-pdo-profiler-profiler] can be activated by calling the
+`setActive()` method. The method accepts a boolean flag, which serves also as the deactivation method. Data is only
+logged when the profiler is active.
 
 ```php
 <?php
@@ -583,6 +682,7 @@ $connection = new Connection(
 $profiler = $connection->getProfiler();
 $profiler->setActive(true)
 ```
+
 and to retrieve the data stored:
 
 ```php
@@ -629,38 +729,48 @@ The parameters available are:
 
 ### Factory
 
-The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick and easy creation of query objects, whether this is `select`, `insert`, `update` or `delete. The methods exposed by the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection], binding the resulting object with the connection.  
+The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick and easy creation of query
+objects, whether this is `select`, `insert`, `update` or `delete. The methods exposed by
+the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept
+a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection], binding the resulting object with the connection.
 
 #### Methods
 
 ```php
 public function __construct(string selectClass = "")
 ```
-QueryFactory constructor. Optionally accepts the name of a class that can be used for `Select` statements. By default, it is [Phalcon\DataMapper\Query\Select][datamapper-query-select].
+
+QueryFactory constructor. Optionally accepts the name of a class that can be used for `Select` statements. By default,
+it is [Phalcon\DataMapper\Query\Select][datamapper-query-select].
 
 ```php
 public function newBind(): Bind
 ```
+
 Create a new Bind object
 
 ```php
 public function newDelete(Connection $connection): Delete
 ```
+
 Create a new Delete object
 
 ```php
 public function newInsert(Connection $connection): Insert
 ```
+
 Create a new Insert object
 
 ```php
 public function newSelect(Connection $connection): Select
 ```
+
 Create a new Select object
 
 ```php
 public function newUpdate(Connection $connection): Update
 ```
+
 Create a new Update object
 
 #### Example
@@ -695,10 +805,10 @@ $select     = $factory->newSelect($connection);
 
 #### Methods
 
-
 ```php
 public function __construct(Connection $connection, Bind $bind)
 ```
+
 Delete constructor.
 
 ```php
@@ -708,6 +818,7 @@ public function andWhere(
     int $type = -1
 ): Delete
 ```
+
 Sets a `AND` for a `WHERE` condition
 
 ```php
@@ -717,51 +828,61 @@ public function appendWhere(
     int $type = -1
 ): Delete
 ```
+
 Concatenates to the most recent `WHERE` clause
 
 ```php
 public function bindInline(mixed $value, int $type = -1): string
 ```
+
 Binds a value inline
 
 ```php
 public function bindValue(string key, mixed $value, int $type = -1): Delete
 ```
+
 Binds a value - auto-detects the type if necessary
 
 ```php
 public function bindValues(array values): Delete
 ```
+
 Binds an array of values
 
 ```php
 public function from(string table): Delete
 ```
+
 Adds table(s) in the query
 
 ```php
 public function getBindValues(): array
 ```
+
 Returns all the bound values
 
 ```php
 public function getStatement(): string
 ```
+
 @return string
 
 ```php
 public function limit(int $limit): Delete
 ```
+
 Sets the `LIMIT` clause
 
 ```php
 public function offset(int $offset): Delete
 ```
+
 Sets the `OFFSET` clause
 
 ```php
 public function orderBy(var $orderBy): Delete
 ```
+
 Sets the `ORDER BY`
 
 ```php
@@ -771,11 +892,13 @@ public function orWhere(
     int $type = -1
 ): Delete
 ```
+
 Sets a `OR` for a `WHERE` condition
 
 ```php
 public function perform()
 ```
+
 Performs a statement in the connection
 
 ```php
@@ -784,61 +907,73 @@ public function quoteIdentifier(
     int $type = \PDO::PARAM_STR
 ): string 
 ```
+
 Quotes the identifier
 
 ```php
 public function reset(): Delete
 ```
+
 Resets the internal array
 
 ```php
 public function resetColumns(): Delete
 ```
+
 Resets the columns
 
 ```php
 public function resetFlags(): Delete
 ```
+
 Resets the flags
 
 ```php
 public function resetFrom(): Delete
 ```
+
 Resets the from
 
 ```php
 public function resetGroupBy(): Delete
 ```
+
 Resets the group by
 
 ```php
 public function resetHaving(): Delete
 ```
+
 Resets the having
 
 ```php
 public function resetLimit(): Delete
 ```
+
 Resets the limit and offset
 
 ```php
 public function resetOrderBy(): Delete
 ```
+
 Resets the order by
 
 ```php
 public function resetWhere(): Delete
 ```
+
 Resets the where
 
 ```php
 public function returning(array $columns): Delete
 ```
+
 Adds the `RETURNING` clause
 
 ```php
 public function setFlag(string $flag, bool $enable = true): void
 ```
+
 Sets a flag for the query such as "DISTINCT"
 
 ```php
@@ -848,11 +983,13 @@ public function where(
     int $type = -1
 ): Delete
 ```
+
 Sets a `WHERE` condition
 
 ```php
 public function whereEquals(array $columnsValues): Delete
 ```
+
 sw
 
 ```php
@@ -864,6 +1001,7 @@ protected function addCondition(
     int $type = -1
 ): void 
 ```
+
 Appends a conditional
 
 ```php
@@ -874,60 +1012,74 @@ protected function appendCondition(
     int $type = -1
 ): void 
 ```
+
 Concatenates a conditional
 
 ```php
 protected function buildBy(string $type): string
 ```
+
 Builds a `BY` list
 
 ```php
 protected function buildCondition(string $type): string
 ```
+
 Builds the conditional string
 
 ```php
 protected function buildFlags()
 ```
+
 Builds the flags statement(s)
 
 ```php
 protected function buildLimitEarly(): string
 ```
+
 Builds the early `LIMIT` clause - MS SQLServer
 
 ```php
 protected function buildLimit(): string
 ```
+
 Builds the `LIMIT` clause
 
 ```php
 protected function buildLimitCommon(): string
 ```
+
 Builds the `LIMIT` clause for all drivers
 
 ```php
 protected function buildLimitSqlsrv(): string
 ```
+
 Builds the `LIMIT` clause for MSSQLServer
 
 ```php
 protected function buildReturning(): string
 ```
+
 Builds the `RETURNING` clause
 
 ```php
 protected function indent(array $collection, string $glue = ""): string
 ```
+
 Indents a collection
 
 ```php
 protected function processValue(string $store, mixed $data): void
 ```
+
 Processes a value (array or string) and merges it with the store
 
 #### Activation
-To instantiate a [Phalcon\DataMapper\Query\Delete][datamapper-query-delete] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
+
+To instantiate a [Phalcon\DataMapper\Query\Delete][datamapper-query-delete] builder, you can use
+the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with
+a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
 
 ```php
 <?php
@@ -1008,7 +1160,8 @@ $delete->perform();
 
 ##### LIMIT/OFFSET
 
-Certain databases (MySQL, SQLite) accept a `LIMIT` and/or `OFFSET` clause. You can use the `limit()` and `offset()` methods to specify them.
+Certain databases (MySQL, SQLite) accept a `LIMIT` and/or `OFFSET` clause. You can use the `limit()` and `offset()`
+methods to specify them.
 
 ```php
 $delete
@@ -1054,7 +1207,8 @@ $delete->perform();
 
 ##### Flags
 
-You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `LOW_PRIORITY` flag as follows:
+You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL
+`LOW_PRIORITY` flag as follows:
 
 ```php
 $delete
@@ -1077,7 +1231,6 @@ $delete->perform();
 // RETURNING inv_id, inv_cst_id
 ```
 
-
 ### Insert
 
 #### Methods
@@ -1085,140 +1238,170 @@ $delete->perform();
 ```php
 public function __construct(Connection $connection, Bind $bind)
 ```
+
 Insert constructor.
 
 ```php
 public function bindInline(mixed $value, int $type = -1): string
 ```
+
 Binds a value inline
 
 ```php
 public function bindValue(string $key, mixed $value, int $type = -1): Insert
 ```
+
 Binds a value - auto-detects the type if necessary
 
 ```php
 public function bindValues(array $values): Insert
 ```
+
 Binds an array of values
 
 ```php
 public function column(string $column, mixed $value = null, int $type = -1): Insert
 ```
+
 Sets a column for the `INSERT` query
 
 ```php
 public function columns(array $columns): Insert
 ```
+
 Mass sets columns and values for the `INSERT`
 
 ```php
 public function getBindValues(): array
 ```
+
 Returns all the bound values
 
 ```php
 public function getLastInsertId(string $name = null): string
 ```
+
 Returns the id of the last inserted record
 
 ```php
 public function getStatement(): string
 ```
+
 Returns the statement produced
 
 ```php
 public function into(string $table): Insert
 ```
+
 Adds table(s) in the query
 
 ```php
 public function perform()
 ```
+
 Performs a statement in the connection
 
 ```php
 public function quoteIdentifier(string $name, int $type = \PDO::PARAM_STR): string {
 ```
+
 Quotes the identifier
 
 ```php
 public function reset(): Insert
 ```
+
 Resets the internal array
 
 ```php
 public function resetColumns(): Insert
 ```
+
 Resets the `columns`
 
 ```php
 public function resetFlags(): Insert
 ```
+
 Resets the `flags`
 
 ```php
 public function resetFrom(): Insert
 ```
+
 Resets the `from`
 
 ```php
 public function resetGroupBy(): Insert
 ```
+
 Resets the `group by`
 
 ```php
 public function resetHaving(): Insert
 ```
+
 Resets the `having`
 
 ```php
 public function resetLimit(): Insert
 ```
+
 Resets the `limit` and `offset`
 
 ```php
 public function resetOrderBy(): Insert
 ```
+
 Resets the `order by`
 
 ```php
 public function resetWhere(): Insert
 ```
+
 Resets the `where`
 
 ```php
 public function returning(array $columns): Insert
 ```
+
 Adds the `RETURNING` clause
 
 ```php
 public function set(string $column, mixed $value = null): Insert
 ```
+
 Sets a `column = value` condition
 
 ```php
 public function setFlag(string $flag, bool $enable = true): void
 ```
+
 Sets a flag for the query such as `DISTINCT`
 
 ```php
 protected function buildFlags()
 ```
+
 Builds the flags statement(s)
 
 ```php
 protected function buildReturning(): string
 ```
+
 Builds the `RETURNING` clause
 
 ```php
 protected function indent(array $collection, string $glue = ""): string
 ```
+
 Indents a collection
 
 #### Activation
-To instantiate a [Phalcon\DataMapper\Query\Insert][datamapper-query-insert] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
+
+To instantiate a [Phalcon\DataMapper\Query\Insert][datamapper-query-insert] builder, you can use
+the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with
+a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
 
 ```php
 <?php
@@ -1260,7 +1443,9 @@ $insert->perform();
 ```
 
 ##### Columns
-You can use the `column()` method to specify a column and its bound value. The last optional parameter is the bind type used by `PDO`. This is set automatically for `string`, `integer`, `float` and `null` values.
+
+You can use the `column()` method to specify a column and its bound value. The last optional parameter is the bind type
+used by `PDO`. This is set automatically for `string`, `integer`, `float` and `null` values.
 
 ```php
 $insert
@@ -1294,7 +1479,9 @@ $insert->perform();
 // )
 ```
 
-You can also use the `columns()` method which accepts an array of elements. If the key is a `string` it is considered the field name, and its value will be the value of the field. Alternatively, for an array element with a numeric key, the value of that element will be the field name.
+You can also use the `columns()` method which accepts an array of elements. If the key is a `string` it is considered
+the field name, and its value will be the value of the field. Alternatively, for an array element with a numeric key,
+the value of that element will be the field name.
 
 ```php
 $insert
@@ -1322,7 +1509,10 @@ $insert->perform();
     When using the `columns()` method, you cannot define the `PDO` type of each field/value pair.
 
 ##### Values
-Bound values are automatically quoted and escaped. There are however cases, where we need to set a specific value to a field without it being escaped. A common example is to utilize the `NOW()` keyword assigned to a date field. For that purpose, we can use the `set()` method.
+
+Bound values are automatically quoted and escaped. There are however cases, where we need to set a specific value to a
+field without it being escaped. A common example is to utilize the `NOW()` keyword assigned to a date field. For that
+purpose, we can use the `set()` method.
 
 ```php
 $insert
@@ -1342,6 +1532,7 @@ $insert->perform();
 ```
 
 ##### Statement
+
 The object can return the constructed statement by calling the `getStatement()` method.
 
 ```php
@@ -1362,7 +1553,9 @@ echo $insert->getStatement();
 ```
 
 ##### Returning
-Some databases (notably PostgreSQL) recognize a `RETURNING` clause. You can use the `returning()` method to do so, passing an array of fields to be returned.
+
+Some databases (notably PostgreSQL) recognize a `RETURNING` clause. You can use the `returning()` method to do so,
+passing an array of fields to be returned.
 
 ```php
 $insert
@@ -1413,7 +1606,9 @@ $insert->perform();
 ```
 
 ##### Flags
-You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `LOW_PRIORITY` flag as follows:
+
+You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL
+`LOW_PRIORITY` flag as follows:
 
 ```php
 $insert
@@ -1436,7 +1631,10 @@ $insert->perform();
 ### Select
 
 #### Activation
-To instantiate a [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
+
+To instantiate a [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder, you can use
+the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with
+a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
 
 ```php
 <?php
@@ -1466,7 +1664,9 @@ $select     = $factory->newSelect($connection);
 
 #### Execution
 
-The [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder acts as a proxy to the [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] object. As such, the following methods are available, once the query is built:
+The [Phalcon\DataMapper\Query\Select][datamapper-query-select] builder acts as a proxy to
+the [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection] object. As such, the following methods are available,
+once the query is built:
 
 - `fetchAffected()`
 - `fetchAll()`
@@ -1498,7 +1698,8 @@ var_dump($records);
 
 ##### Columns
 
-To add columns to the Select, use the `columns()` method and pass the columns as an array.  If a key is defined as a string, it will be used as an alias for the column.
+To add columns to the Select, use the `columns()` method and pass the columns as an array. If a key is defined as a
+string, it will be used as an alias for the column.
 
 **Column Names**
 
@@ -1596,6 +1797,7 @@ $select
 ```
 
 ##### `JOIN`
+
 To add a JOIN clause, use the join() method:
 
 **LEFT**
@@ -1679,7 +1881,8 @@ $select
 
 ##### WHERE
 
-To add WHERE conditions, use the where() method. Additional calls to `where()` will implicitly `AND` the subsequent condition.
+To add WHERE conditions, use the where() method. Additional calls to `where()` will implicitly `AND` the subsequent
+condition.
 
 **Single**
 
@@ -1741,7 +1944,8 @@ $select
 
 **`whereEquals`**
 
-There is an additional `whereEquals()` convenience method that adds a series of `AND` equality conditions for you based on an array of key-value pairs:
+There is an additional `whereEquals()` convenience method that adds a series of `AND` equality conditions for you based
+on an array of key-value pairs:
 
 - Given an array value, the condition will be `IN ()`.
 - Given an empty array, the condition will be `FALSE` (which means the query will return no results).
@@ -1773,6 +1977,7 @@ $select
 ```
 
 ##### `GROUP BY`
+
 To add `GROUP BY` expressions, use the `groupBy()` method and pass each expression as a variadic argument.
 
 ```php
@@ -1860,6 +2065,7 @@ $select
 ```
 
 ##### `DISTINCT`
+
 You can set the `DISTINCT` clause as follows:
 
 ```php
@@ -1879,11 +2085,13 @@ $select
 // SELECT DISTINCT inv_id, inc_cst_id
 // FROM co_invoices
 ```
+
 !!! info "NOTE"
 
     The method accepts an optional boolean parameter to enable (`true`) or disable (`false`) the flag.
 
 ##### `FOR UPDATE`
+
 You can set the `FOR UPDATE` clause as follows:
 
 ```php
@@ -1911,7 +2119,8 @@ $select
 
 ##### Flags
 
-You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `HIGH_PRIORITY` flag like so:
+You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL
+`HIGH_PRIORITY` flag like so:
 
 ```php
 <?php
@@ -1925,6 +2134,7 @@ $select
 ```
 
 ##### `UNION`
+
 To `UNION` or `UNION ALL` the current `Select` with a followup statement, call one the `union*()` methods:
 
 ```php
@@ -1961,7 +2171,10 @@ $select
 ```
 
 #### Reset
-The `Select` class exposes the `reset()` method, that allows you to reset the object to its original state and reuse it (e.g., to re-issue a statement to get a `COUNT(*)` without a `LIMIT`, to find the total number of rows to be paginated over).
+
+The `Select` class exposes the `reset()` method, that allows you to reset the object to its original state and reuse
+it (e.g., to re-issue a statement to get a `COUNT(*)` without a `LIMIT`, to find the total number of rows to be
+paginated over).
 
 Additionally, the following methods allow you to reset specific areas of the query:
 
@@ -1975,7 +2188,11 @@ Additionally, the following methods allow you to reset specific areas of the que
 - `resetFlags()` - Resets the `flags`
 
 #### Subselect Objects
-If you want to create a subselect, call the `subSelect()` method. When you are done building the subselect, give it an alias using the `asAlias()` method; the object itself can be used in the desired condition or expression. When used in the `FROM` condition, you will need to call the `getStatement()` method, to return the correct SQL statement back to the `Select` object.
+
+If you want to create a subselect, call the `subSelect()` method. When you are done building the subselect, give it an
+alias using the `asAlias()` method; the object itself can be used in the desired condition or expression. When used in
+the `FROM` condition, you will need to call the `getStatement()` method, to return the correct SQL statement back to the
+`Select` object.
 
 ```php
 <?php
@@ -2095,7 +2312,6 @@ public function appendWhere(
 ```
 
 Concatenates to the most recent `WHERE` clause
-
 
 ```php
 public function bindInline(mixed $value, int $type = -1): string
@@ -2290,7 +2506,6 @@ public function whereEquals(array $columnsValues): Update
 
 Sets a `WHERE` condition with equality
 
-
 ```php
 protected function addCondition(
     string $store,
@@ -2302,7 +2517,6 @@ protected function addCondition(
 ```
 
 Appends a conditional
-
 
 ```php
 protected function appendCondition(
@@ -2375,9 +2589,11 @@ protected function processValue(string $store, mixed $data): void
 
 Processes a value (array or string) and merges it with the store
 
-
 #### Activation
-To instantiate a [Phalcon\DataMapper\Query\Update][datamapper-query-update] builder, you can use the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
+
+To instantiate a [Phalcon\DataMapper\Query\Update][datamapper-query-update] builder, you can use
+the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] with
+a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection].
 
 ```php
 <?php
@@ -2440,7 +2656,8 @@ $update->perform();
 
     The PDO parameter type will be automatically set for `strings`, `integers`, `floats` and `nulls`. You can utilize the third parameter of `column()` to set the desired type.
 
-Instead of calling the `column()` method multiple times, you can always call `columns()` with an array, where the array keys are the field names and the array values are the desired values to update.
+Instead of calling the `column()` method multiple times, you can always call `columns()` with an array, where the array
+keys are the field names and the array values are the desired values to update.
 
 ```php
 $update
@@ -2461,15 +2678,13 @@ $update->perform();
 //      inv_status_flag = :inv_status_flag
 ```
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Using the `columns()` method you are not able to set the type of each parameter.
-
 
 #### WHERE
 
 The `WHERE` methods for the `UPDATE` work exactly the same as the ones for `Select`
-
 
 ##### ORDER BY
 
@@ -2501,7 +2716,8 @@ $update->perform();
 
 ##### LIMIT/OFFSET
 
-Certain databases (MySQL, SQLite) accept a `LIMIT` and/or `OFFSET` clause. You can use the `limit()` and `offset()` methods to specify them.
+Certain databases (MySQL, SQLite) accept a `LIMIT` and/or `OFFSET` clause. You can use the `limit()` and `offset()`
+methods to specify them.
 
 ```php
 $update
@@ -2532,7 +2748,8 @@ $update->perform();
 
 ##### RETURNING
 
-Some databases (notably PostgreSQL) recognize a `RETURNING` clause. You can use the `returning()` method to do so, passing an array of fields to be returned.
+Some databases (notably PostgreSQL) recognize a `RETURNING` clause. You can use the `returning()` method to do so,
+passing an array of fields to be returned.
 
 ```php
 $update
@@ -2564,8 +2781,8 @@ $update->perform();
 
 ##### Flags
 
-You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL `LOW_PRIORITY` flag as follows:
-
+You can set flags recognized by your database server using the `setFlag()` method. For example, you can set a MySQL
+`LOW_PRIORITY` flag as follows:
 
 ```php
 $update
@@ -2596,30 +2813,72 @@ $update->perform();
 // RETURNING inv_id, inv_cst_id
 ```
 
+## Exceptions
+
+Any exceptions thrown in the [Phalcon\DataMapper\Pdo][datamapper-pdo-connection] component will be of type
+`Phalcon\DataMapper\Pdo\Exception\Exception`. You can use this exception to selectively catch exceptions thrown only
+from this component.
+
+### Granular Exceptions
+
+As of 5.14 the component raises granular subclasses under `Phalcon\DataMapper\Pdo\Exception\` so callers can catch a
+specific failure mode. Existing `catch (Phalcon\DataMapper\Pdo\Exception\Exception $e)` blocks continue to work
+unchanged.
+
+| Class                                                  | Parent                                       | Thrown when                                                                                       |
+|--------------------------------------------------------|----------------------------------------------|---------------------------------------------------------------------------------------------------|
+| `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`  | `Phalcon\DataMapper\Pdo\Exception\Exception` | A DSN names a PDO driver that has not been compiled into the running PHP binary.                  |
+| `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` | `Phalcon\DataMapper\Pdo\Exception\Exception` | A magic method call targets a driver method that does not exist on the PDO connection.            |
+| `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`  | `Phalcon\DataMapper\Pdo\Exception\Exception` | A `Query\Select` magic call routes to a method that the underlying query builder does not expose. |
 
 [auraphp]: https://github.com/auraphp
+
 [atlasphp]: https://github.com/atlasphp
+
 [datamapper]: https://martinfowler.com/eaaCatalog/dataMapper.html
+
 [datamapper-pdo-connection]: api/phalcon_datamapper.md#datamapperpdoconnection
+
 [datamapper-pdo-connection-abstractconnection]: api/phalcon_datamapper.md#datamapperpdoconnectionabstractconnection
+
 [datamapper-pdo-connection-connectioninterface]: api/phalcon_datamapper.md#datamapperpdoconnectionconnectioninterface
+
 [datamapper-pdo-connection-decorated]: api/phalcon_datamapper.md#datamapperpdoconnectiondecorated
+
 [datamapper-pdo-connection-pdointerface]: api/phalcon_datamapper.md#datamapperpdoconnection-pdointerface
+
 [datamapper-pdo-connectionlocator]: api/phalcon_datamapper.md#datamapperpdoconnectionlocator
+
 [datamapper-pdo-connectionlocatorinterface]: api/phalcon_datamapper.md#datamapperpdoconnectionlocatorinterface
+
 [datamapper-pdo-exception-cannotdisconnect]: api/phalcon_datamapper.md#datamapperpdoexceptioncannotdisconnect
+
 [datamapper-pdo-exception-connectionnotfound]: api/phalcon_datamapper.md#datamapperpdoexceptionconnectionnotfound
+
 [datamapper-pdo-exception-exception]: api/phalcon_datamapper.md#datamapperpdoexceptionexception
+
 [datamapper-pdo-profiler-memorylogger]: api/phalcon_datamapper.md#datamapperpdoprofilermemorylogger
+
 [datamapper-pdo-profiler-profiler]: api/phalcon_datamapper.md#datamapperpdoprofilerprofiler
+
 [datamapper-pdo-profiler-profilerinterface]: api/phalcon_datamapper.md#datamapperpdoprofilerprofilerinterface
+
 [datamapper-query-abstractconditions]: api/phalcon_datamapper.md#datamapperqueryabstractconditions
+
 [datamapper-query-abstractquery]: api/phalcon_datamapper.md#datamapperqueryabstractquery
+
 [datamapper-query-bind]: api/phalcon_datamapper.md#datamapperquerybind
+
 [datamapper-query-delete]: api/phalcon_datamapper.md#datamapperquerydelete
+
 [datamapper-query-insert]: api/phalcon_datamapper.md#datamapperqueryinsert
+
 [datamapper-query-queryfactory]: api/phalcon_datamapper.md#datamapperqueryqueryfactory
+
 [datamapper-query-select]: api/phalcon_datamapper.md#datamapperqueryselect
+
 [datamapper-query-update]: api/phalcon_datamapper.md#datamapperqueryupdate
+
 [eaa]: https://martinfowler.com/books/eaa.html
+
 [logger]: logger.md

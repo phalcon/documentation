@@ -1,8 +1,12 @@
 # Model Relationships
+
 - - -
 
 ## Overview
-[Database normalization][db-normalization] is a process where data is split into different tables and links are created between those tables, in order to increase flexibility, reduce data redundancy, and improve data integrity. Relationships are defined in the `initialize` method of each model.
+
+[Database normalization][db-normalization] is a process where data is split into different tables and links are created
+between those tables, in order to increase flexibility, reduce data redundancy, and improve data integrity.
+Relationships are defined in the `initialize` method of each model.
 
 The following types of relationships are available:
 
@@ -63,7 +67,11 @@ hasManyToMany(
 )
 ```
 
-Relationships can be unidirectional or bidirectional, and each can be simple (a one-to-one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from the source model easily and in a uniform way.
+Relationships can be unidirectional or bidirectional, and each can be simple (a one-to-one model) or more complex (a
+combination of models). The model manager manages foreign key constraints for these relationships, the definition of
+these helps referential integrity as well as easy and fast access of related records to a model. Through the
+implementation of relations, it is easy to access data in related models from the source model easily and in a uniform
+way.
 
 ```php
 <?php
@@ -91,13 +99,19 @@ class Invoices extends Model
 ```
 
 ## Unidirectional
+
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 ## Bidirectional
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+
+The bidirectional relations build relationships in both models and each model defines the inverse relationship of the
+other.
 
 ## Setup
-In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasMany()`, `hasManyToMany()`, `hasOne()`, and  `hasOneThrough()`, define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters:
+
+In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`,
+`hasMany()`, `hasManyToMany()`, `hasOne()`, and  `hasOneThrough()`, define the relationship between one or more fields
+from the current model to fields in another model. Each of these methods requires 3 parameters:
 
 - local fields
 - referenced model
@@ -267,7 +281,9 @@ class Products extends Model
 }
 ```
 
-The first parameter indicates the field of the local model used in the relationship; the second indicates the name of the referenced model, and the third is the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.
+The first parameter indicates the field of the local model used in the relationship; the second indicates the name of
+the referenced model, and the third is the field name in the referenced model. You could also use arrays to define
+multiple fields in the relationship.
 
 Many-to-many relationships require 3 models and define the attributes involved in the relationship:
 
@@ -306,11 +322,16 @@ class Invoices extends Model
 ```
 
 ## Parameters
-Depending on the needs of our application we might want to store data in one table, that describes different behaviors. For instance, you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the _status_ of the customer (e.g. active, inactive, etc.).
 
-Using relationships, you can get only those `Customers` that relate to our `Invoices` that have a certain `cst_status_flag`. Defining that constraint in the relationship allows you to let the model do all the work.
+Depending on the needs of our application we might want to store data in one table, that describes different behaviors.
+For instance, you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing
+the _status_ of the customer (e.g. active, inactive, etc.).
 
-It also accepts a closure, which is evaluated every time before the related records are accessed. This enables the conditions to be automatically updated between queries.
+Using relationships, you can get only those `Customers` that relate to our `Invoices` that have a certain
+`cst_status_flag`. Defining that constraint in the relationship allows you to let the model do all the work.
+
+It also accepts a closure, which is evaluated every time before the related records are accessed. This enables the
+conditions to be automatically updated between queries.
 
 ```php
 <?php
@@ -370,7 +391,9 @@ class Invoices extends Model
 ```
 
 ## Multiple Fields
-There are times when relationships need to be defined on a combination of fields and not only one. Consider the following example:
+
+There are times when relationships need to be defined on a combination of fields and not only one. Consider the
+following example:
 
 ```php
 <?php
@@ -406,9 +429,12 @@ class Parts extends Model
 }
 ```
 
-In the above, we have a `Products` model which has `prd_id`, `prd_type_flag`, and `prd_name` fields. The `Parts` model contains `par_id`, `par_prd_id`, `par_type_flag`, and `par_name`. The relationship exists based on the product's unique id as well as the type.
+In the above, we have a `Products` model which has `prd_id`, `prd_type_flag`, and `prd_name` fields. The `Parts` model
+contains `par_id`, `par_prd_id`, `par_type_flag`, and `par_name`. The relationship exists based on the product's unique
+id as well as the type.
 
-Using the relationship options, as seen above, binding one field between the two models will not return the results we need. We can use an array with the necessary fields to define the relationship.
+Using the relationship options, as seen above, binding one field between the two models will not return the results we
+need. We can use an array with the necessary fields to define the relationship.
 
 ```php
 <?php
@@ -448,7 +474,34 @@ class Products extends Model
 
     The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
+### Reusable Cache Key Override
+
+When a relation is marked `'reusable' => true`, the Model Manager memoises the resolved related record so that repeated
+traversals of the same association inside one request return the cached object. By default, the cache key is derived
+from object identity, which means two PHP instances representing the same row do not share the entry.
+
+A model can supply a stable key by implementing `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider`:
+
+```php
+<?php
+
+use Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider;
+use Phalcon\Mvc\Model;
+
+class Customers extends Model implements CacheKeyProvider
+{
+    public function getUniqueKey(): string
+    {
+        return 'customer:' . $this->cst_id;
+    }
+}
+```
+
+The return value of `getUniqueKey()` replaces the object-identity key when looking up the reusable cache, so different
+PHP instances of the same logical row will hit the same entry. See [Caching][db-models-cache] for further details.
+
 ## Accessing
+
 There are several ways that we can access the relationships of a model.
 
 - Magic `__get`, `__set`
@@ -456,7 +509,9 @@ There are several ways that we can access the relationships of a model.
 - `getRelated`
 
 ### `__get()`
-You can use the magic method to access the relationship. Assigning an `alias` to the relationship simplifies accessing the related data. The name of the property is the same as the one defined in the `alias`.
+
+You can use the magic method to access the relationship. Assigning an `alias` to the relationship simplifies accessing
+the related data. The name of the property is the same as the one defined in the `alias`.
 
 ```php
 <?php
@@ -498,10 +553,13 @@ foreach ($invoice->products as $product) {
 }
 ```
 
-Using the magic `__get` allows you to access the relationship directly but does not offer additional functionality such as filtering or ordering on the relationship.
+Using the magic `__get` allows you to access the relationship directly but does not offer additional functionality such
+as filtering or ordering on the relationship.
 
 ### `get*()`
-You can access the same relationship by using a getter method, starting with _get_ and using the name of the relationship.
+
+You can access the same relationship by using a getter method, starting with _get_ and using the name of the
+relationship.
 
 ```php
 <?php
@@ -542,7 +600,9 @@ foreach ($invoice->getProducts() as $product) {
     echo $invoice->prd_name;
 }
 ```
-This magic-getter also allows us to perform certain operations when accessing the relationship such as ordering the relationship:
+
+This magic-getter also allows us to perform certain operations when accessing the relationship such as ordering the
+relationship:
 
 ```php
 <?php
@@ -565,8 +625,8 @@ foreach ($products as $product) {
     echo $invoice->prd_name;
 }
 ```
-You can also add additional conditionals to the relationship:
 
+You can also add additional conditionals to the relationship:
 
 ```php
 <?php
@@ -665,6 +725,7 @@ echo $invoice->countProducts();
 ```
 
 ### `getRelated()`
+
 You can access the same relationship by using `getRelated()` and defining which relationship you want to get.
 
 ```php
@@ -702,7 +763,9 @@ foreach ($invoice->getRelated('products') as $product) {
     echo $invoice->prd_name;
 }
 ```
-The second parameter of `getRelated()` is an array that offers additional options to be set such as filtering and ordering.
+
+The second parameter of `getRelated()` is an array that offers additional options to be set such as filtering and
+ordering.
 
 ```php
 <?php
@@ -732,6 +795,7 @@ foreach ($products as $product) {
 ```
 
 ### `setRelated()`
+
 You can set the same relationship by using `setRelated()` and defining which relationship you want to set.
 
 ```php
@@ -750,7 +814,9 @@ $customer->setRelated('invoices', [$invoice]);
 ```
 
 ## Aliases
-Accessing a relationship can be achieved by using the name of the remote table. Due to naming conventions, this might not be that easy and could lead to confusion. As seen above, you can define an `alias` to the relationship.
+
+Accessing a relationship can be achieved by using the name of the remote table. Due to naming conventions, this might
+not be that easy and could lead to confusion. As seen above, you can define an `alias` to the relationship.
 
 ```php
 <?php
@@ -818,7 +884,8 @@ class Invoices extends Model
 }
 ```
 
-If your table structure has self-joins, you will not be able to access those relationships without aliases because you will be using the same model.
+If your table structure has self-joins, you will not be able to access those relationships without aliases because you
+will be using the same model.
 
 ```php
 <?php
@@ -859,7 +926,10 @@ class Parts extends Model
     }
 }
 ```
-In the example above, we have a `Part` that has a relationship with one or more `Part` objects. Each `Part` can consist of other parts that construct it. As a result, we end up with a self-join relationship. For a telephone `Part` we have the following children:
+
+In the example above, we have a `Part` that has a relationship with one or more `Part` objects. Each `Part` can consist
+of other parts that construct it. As a result, we end up with a self-join relationship. For a telephone `Part` we have
+the following children:
 
 ```php
 <?php
@@ -885,7 +955,12 @@ echo $phone->getParent();
 ```
 
 ## Caching
-Accessing related data can significantly increase the number of queries in your database. You can reduce this load as much as possible, by utilizing the `reusable` option in your relationship. Setting this option to `true` will instruct Phalcon to cache the results of the relationship the first time it is accessed, so that subsequent calls to the same relationship can use the cached resultset and not request the data again from the database. This cache is active during the same request.
+
+Accessing related data can significantly increase the number of queries in your database. You can reduce this load as
+much as possible, by utilizing the `reusable` option in your relationship. Setting this option to `true` will instruct
+Phalcon to cache the results of the relationship the first time it is accessed, so that subsequent calls to the same
+relationship can use the cached resultset and not request the data again from the database. This cache is active during
+the same request.
 
 !!! info "NOTE"
 
@@ -917,7 +992,10 @@ class Invoices extends Model
 ```
 
 ## Autocompletion
-Most IDEs and editors with auto-completion capabilities can not detect the correct types when using magic getters (both methods and properties). To address this issue, you can use the class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
+
+Most IDEs and editors with auto-completion capabilities can not detect the correct types when using magic getters (both
+methods and properties). To address this issue, you can use the class docblock that specifies what magic actions are
+available, helping the IDE to produce a better auto-completion:
 
 ```php
 <?php
@@ -961,7 +1039,9 @@ class Invoices extends Model
 ```
 
 ## Conditionals
-You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
+
+You can also create relationships based on conditionals. When querying based on the relationship the condition will be
+automatically appended to the query:
 
 ```php
 <?php
@@ -1039,7 +1119,8 @@ class Companies extends Model
 }
 ```
 
-Additionally, you can use the parameters of `getInvoices()` or `getRelated()` on the model, to further filter or order your relationship:
+Additionally, you can use the parameters of `getInvoices()` or `getRelated()` on the model, to further filter or order
+your relationship:
 
 ```php
 <?php
@@ -1073,7 +1154,10 @@ $unpaidInvoices = $company->getRelated(
 ```
 
 ## Virtual Foreign Keys
-By default, relationships do not have any constraints attached to them, to check related data when adding, updating, or deleting records. You can however attach validations to your relationships, to ensure the integrity of data. This can be done with the last parameter of the relationship-related method.
+
+By default, relationships do not have any constraints attached to them, to check related data when adding, updating, or
+deleting records. You can however attach validations to your relationships, to ensure the integrity of data. This can be
+done with the last parameter of the relationship-related method.
 
 The cross table `InvoicesProducts` can be slightly changed to demonstrate this functionality:
 
@@ -1119,7 +1203,9 @@ class InvoicesProducts extends Model
 }
 ```
 
-If you alter a `belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have reference valid ids in the respective models. Similarly, if a `hasMany()`/`hasOne()` is changed to define the `foreignKey`, it will validate that records can or cannot if the record has related data.
+If you alter a `belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on
+those fields have reference valid ids in the respective models. Similarly, if a `hasMany()`/`hasOne()` is changed to
+define the `foreignKey`, it will validate that records can or cannot if the record has related data.
 
 ```php
 <?php
@@ -1199,7 +1285,11 @@ class InvoicesProducts extends Model
 ```
 
 ### Cascade/Restrict
-Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data. You can define these constraints that mimic the RDBMS functionality for `CASCADE` and `RESTRICT` by using the `action` option in `foreignKey`. The [Phalcon\Mvc\Model\Relation][mvc-model-relation] underlying object offers two constants:
+
+Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain
+the integrity of data. You can define these constraints that mimic the RDBMS functionality for `CASCADE` and `RESTRICT`
+by using the `action` option in `foreignKey`. The [Phalcon\Mvc\Model\Relation][mvc-model-relation] underlying object
+offers two constants:
 
 - `Relation::ACTION_CASCADE`
 - `Relation::ACTION_RESTRICT`
@@ -1238,9 +1328,11 @@ class Products extends Model
 The code above allows you to delete all the related records if the primary record is deleted (cascade delete).
 
 ## Operations
+
 You can perform operations using relationships if a resultset returns complete objects.
 
 ### Save
+
 Magic properties can be used to store a record and its related properties:
 
 ```php
@@ -1296,13 +1388,18 @@ $customer->invoices = [
 $customer->save();
 ```
 
-The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship of the customer as an array. The customer record is then saved, which also saves the two invoices in the database and links them to the customer.
+The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship
+of the customer as an array. The customer record is then saved, which also saves the two invoices in the database and
+links them to the customer.
 
-Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an __update__, and as a result, it will perform a replacement. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
+Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records.
+Phalcon does not know which records need to be added or removed using an __update__, and as a result, it will perform a
+replacement. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
 
-Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages generated during the save process of the whole transaction will be passed back to the user for more information.
+Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages
+generated during the save process of the whole transaction will be passed back to the user for more information.
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     Adding related entities by overloading the following methods/events is **not** possible:
     
@@ -1312,7 +1409,136 @@ Saving data with the above syntax will implicitly create a transaction and commi
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
+### Synchronizing Many-to-Many Records
+
+Assigning an array to a many-to-many relationship and calling `save()` is additive by default. Records in the array are
+inserted or kept. Records that were linked before but are absent from the array stay linked. Synchronization changes
+this: the assigned array becomes the complete set of related records. Links missing from the array are deleted, new
+links are created, and existing links are kept.
+
+- Synchronization applies to `hasManyToMany()` relationships only.
+- It operates on the intermediate (pivot) table and behaves identically on MySQL, PostgreSQL, and SQLite.
+- The default additive behavior is unchanged unless you opt in.
+
+Enable it on the relationship definition with the `sync` option. Every save of that relationship then synchronizes.
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
+
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'alias' => 'products',
+                'sync'  => true,
+            ]
+        );
+    }
+}
+```
+
+With the option enabled, the assigned array is authoritative on every save:
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+// Link invoice 1 to product 1 and product 2
+$invoice->products = [$product1, $product2];
+$invoice->save();
+
+// product2 is dropped from the array
+$invoice->products = [$product1, $product3];
+$invoice->save();
+
+// invoice 1 is now linked to product 1 and product 3 only.
+// The link to product2 is deleted. product2 itself is not deleted.
+```
+
+Assigning an empty array removes every link for that relationship:
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+$invoice->products = [];
+$invoice->save();
+
+// All intermediate rows for invoice 1 are removed.
+```
+
+To synchronize without changing the relationship definition, use `Phalcon\Mvc\Model::setSync()`. It enables or disables
+synchronization for the next `save()` only, and the flag is cleared once the save completes. The method returns the
+model instance, so it chains before `save()`.
+
+`setSync()` accepts:
+
+- no argument or `"*"` - every many-to-many relationship on the model
+- a single alias string - that one relationship
+- an array of alias strings - those relationships
+- an optional second argument (`bool`, default `true`) - pass `false` to disable synchronization instead of
+  enabling it
+
+A per-save call takes precedence over the relationship's `sync` option for that save.
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+// Synchronize only the "products" relationship on this save
+$invoice->products = [$product1];
+$invoice->setSync('products')->save();
+
+// Synchronize every many-to-many relationship on this save
+$invoice->setSync()->save();
+
+// Synchronize a specific set of relationships on this save
+$invoice->setSync(['products', 'categories'])->save();
+```
+
+The second argument disables synchronization for a single save. This keeps a save additive even when the relationship is
+defined with `'sync' => true`:
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(1);
+
+// "*" targets every relationship; false keeps this save additive
+$invoice->products = [$product1];
+$invoice->setSync('*', false)->save();
+
+// Disable synchronization for specific relationships on this save
+$invoice->setSync(['products', 'categories'], false)->save();
+```
+
+Synchronization runs inside the same implicit transaction as the rest of the save. If a delete fails, the transaction is
+rolled back and the messages are available through `Phalcon\Mvc\Model::getMessages()`.
+
 ### Update
+
 Instead of doing this:
 
 ```php
@@ -1368,6 +1594,7 @@ $customer->getInvoices()->update(
 ```
 
 ### Delete
+
 Instead of doing this:
 
 ```php
@@ -1398,7 +1625,7 @@ $customer->getInvoices()->delete();
 
 `delete()` also accepts an anonymous function to filter what records must be deleted:
 
-!!! warning "NOTE"
+!!! warning "WARNING"
 
     `delete()` only works safely with `hasMany()` relationships. The deletion callback runs before the actual deletion of the parent model.
     
@@ -1410,7 +1637,6 @@ $customer->getInvoices()->delete();
     
     - Deleting related models that the parent depends on via a foreign key (e.g., belongsTo or hasOne where FK is in parent)
 
-
 ```php
 <?php
 
@@ -1421,8 +1647,8 @@ $customer->getInvoices()->delete(
 );
 ```
 
-
 ### Messages
+
 You can append messages from another model.
 
 ```php
@@ -1445,7 +1671,6 @@ foreach ($messages as $message) {
 }
 ```
 
-
 For better error reporting you can retrieve the name of the Model and Reference Model from the Message MetaData:
 
 ```php
@@ -1467,7 +1692,10 @@ if ( false === $customer->save() ) {
 }
 ```
 
+[db-models-cache]: db-models-cache.md
 
 [db-normalization]: https://en.wikipedia.org/wiki/Database_normalization
+
 [mvc-model]: api/phalcon_mvc.md#mvcmodel
+
 [mvc-model-relation]: api/phalcon_mvc.md#mvcmodelrelation

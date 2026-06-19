@@ -2,6 +2,7 @@
 hide:
     - toc
 ---
+
 # Release History
 
 <table>
@@ -89,19 +90,64 @@ hide:
         <td class="version-td-right">8.0-8.3</td>
     </tr>
     <tr>
-        <td class="version-td-center previous-version">5.6</td>
+        <td class="version-td-center">5.6</td>
         <td class="version-td-center">January 01, 2024</td>
         <td class="version-td-right">8.0-8.3</td>
     </tr>
     <tr>
-        <td class="version-td-center previous-version">5.7</td>
+        <td class="version-td-center">5.7</td>
         <td class="version-td-center">May 17, 2024</td>
         <td class="version-td-right">8.0-8.3</td>
     </tr>
     <tr>
-        <td class="version-td-center current-version">5.8</td>
+        <td class="version-td-center">5.8</td>
         <td class="version-td-center">Jun 09, 2024</td>
         <td class="version-td-right">8.0-8.3</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.9</td>
+        <td class="version-td-center">Mar 10, 2025</td>
+        <td class="version-td-right">8.1-8.4</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.10</td>
+        <td class="version-td-center">Dec 25, 2025</td>
+        <td class="version-td-right">8.1-8.4</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.11</td>
+        <td class="version-td-center">Apr 03, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.12</td>
+        <td class="version-td-center">Apr 29, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.13</td>
+        <td class="version-td-center">May 18, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.14</td>
+        <td class="version-td-center">Jul 03, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center">5.14.1</td>
+        <td class="version-td-center">Jul 08, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center previous-version">5.14.2</td>
+        <td class="version-td-center">Jul 12, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
+    </tr>
+    <tr>
+        <td class="version-td-center current-version">5.15</td>
+        <td class="version-td-center">Jul 18, 2026</td>
+        <td class="version-td-right">8.1-8.5</td>
     </tr>
     </tbody>
 </table>

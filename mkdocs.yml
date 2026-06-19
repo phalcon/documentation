@@ -332,6 +332,7 @@ nav:
       - Application: application.md
       - Micro: application-micro.md
       - CLI: application-cli.md
+      - Container: container.md
       - DI Container: di.md
       - MVC: mvc.md
       - Namespaces: namespaces.md
@@ -368,7 +369,7 @@ nav:
   - Business Logic:
       - Access Control Lists: acl.md
       - Annotations: annotations.md
-      - Auth: auth.md
+      - Authentication: auth.md
       - Controllers: controllers.md
       - Dispatcher: dispatcher.md
       - Event Manager: events.md
@@ -402,6 +403,7 @@ nav:
           - Domain: domain.md
           - Helper: support-helper.md
           - Registry: support-registry.md
+          - Settings: support-settings.md
           - Version: support-version.md
   - API: api/index.md
   - Discussions: https://github.com/orgs/phalcon/discussions
