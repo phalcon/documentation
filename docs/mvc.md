@@ -16,8 +16,7 @@ MVC benefits include:
 * Making it clear where different types of code belong for easier maintenance
 
 If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon
-classes are written in Zephir, which is translated to C, offering a high-performance implementation of the MVC pattern
-in PHP applications.
+offers a high-performance implementation of the MVC pattern in PHP applications.
 
 ## Models
 

@@ -5,8 +5,8 @@
 ## Overview
 
 Websites and web applications are vulnerable to [XSS][xss] attacks and although PHP provides escaping functionality, in
-some contexts, it is not sufficient/appropriate. [Phalcon\Html\Escaper][escaper] provides contextual escaping and is
-written in [Zephir][zephir], providing minimal overhead when escaping different kinds of texts.
+some contexts, it is not sufficient/appropriate. [Phalcon\Html\Escaper][escaper] provides contextual escaping with
+minimal overhead when escaping different kinds of texts.
 
 We designed this component based on the [XSS (Cross-Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by
 the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset.

@@ -465,14 +465,23 @@ If no `url` service is available, the previous behavior (bare `/` prefix) is ret
 
 ### Built-In Filters
 
-Assets can be filtered, i.e., manipulated before their output to the view. Although Phalcon v3 offered minifiers for
-JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v5, we offer only
-the [Phalcon\Assets\Filters\None][filter-none] filter (which does not change the asset contents) and
-the [Phalcon\Assets\FilterInterface][filter-interface] interface, offering the ability to create custom filters.
+Assets can be filtered, i.e., manipulated before their output to the view. Phalcon offers the following built-in
+filters:
 
-The `Phalcon\Assets\Filters\Cssmin` and `Phalcon\Assets\Filters\Jsmin` classes are retained as no-op stubs that return
-the content unchanged, and are deprecated. Use `None`, or a custom filter implementing the
-`Phalcon\Contracts\Assets\Filter` contract (see [Contracts](#contracts)).
+* [Phalcon\Assets\Filters\CssMin][filter-cssmin] - minifies CSS
+* [Phalcon\Assets\Filters\JsMin][filter-jsmin] - minifies JavaScript
+* [Phalcon\Assets\Filters\None][filter-none] - does not change the asset contents
+
+The `CssMin` and `JsMin` filters perform real minification, removing comments, newlines and unnecessary whitespace from
+your CSS and JavaScript. The minification is powered by the [matthiasmullie/minify][matthias-minify] library, which is
+installed as a dependency of the framework, so no additional setup is required.
+
+!!! info "NOTE"
+
+    Real CSS/JS minification is available **only** in the pure PHP version of Phalcon (v6). The C extension (`cphalcon`) does not support these minifiers and ships `CssMin`/`JsMin` as no-op stubs.
+
+You can also implement your own filters using the [Phalcon\Assets\FilterInterface][filter-interface] interface (or the
+`Phalcon\Contracts\Assets\Filter` contract, see [Contracts](#contracts)), offering the ability to create custom filters.
 
 ### Custom Filters
 
@@ -1064,11 +1073,17 @@ is not a `Phalcon\Contracts\Assets\Filter` raises `InvalidFilter` instead of pro
 
 [di-factorydefault]: api/phalcon_di.md#difactorydefault
 
+[filter-cssmin]: api/phalcon_assets.md#assetsfilterscssmin
+
 [filter-interface]: api/phalcon_assets.md#assetsfilterinterface
+
+[filter-jsmin]: api/phalcon_assets.md#assetsfiltersjsmin
 
 [filter-none]: api/phalcon_assets.md#assetsfiltersnone
 
 [jquery]: https://jquery.com
+
+[matthias-minify]: https://github.com/matthiasmullie/minify
 
 [sass]: https://sass-lang.com
 

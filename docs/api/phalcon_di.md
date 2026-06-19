@@ -18,7 +18,7 @@ This abstract class offers common access to the DI in a class
 <div class="api-tree" markdown>
 
 - `stdClass`
-    - **`Phalcon\Di\AbstractInjectionAware`** — implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
+    - **`Phalcon\Di\AbstractInjectionAware`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
         - [`Phalcon\Assets\Manager`](phalcon_assets.md#assetsmanager)
         - [`Phalcon\Cli\Router`](phalcon_cli.md#clirouter)
         - [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher)
@@ -130,7 +130,7 @@ $request = $di->getRequest();
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Di\Di`** — implements [`Phalcon\Di\DiInterface`](#didiinterface)
+- **`Phalcon\Di\Di`** - implements [`Phalcon\Di\DiInterface`](#didiinterface)
     - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 
 </div>
@@ -2004,7 +2004,7 @@ accessing a public property with the same name of a registered service
 <div class="api-tree" markdown>
 
 - `stdClass`
-    - **`Phalcon\Di\Injectable`** — implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
+    - **`Phalcon\Di\Injectable`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
         - [`Phalcon\Application\AbstractApplication`](phalcon_application.md#applicationabstractapplication)
         - [`Phalcon\Cli\Task`](phalcon_cli.md#clitask)
         - [`Phalcon\Filter\Validation`](phalcon_filter.md#filtervalidation)
@@ -2167,7 +2167,7 @@ $request = service->resolve();
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Di\Service`** — implements [`Phalcon\Di\ServiceInterface`](#diserviceinterface)
+- **`Phalcon\Di\Service`** - implements [`Phalcon\Di\ServiceInterface`](#diserviceinterface)
 
 </div>
 

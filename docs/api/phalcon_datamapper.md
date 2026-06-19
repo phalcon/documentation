@@ -120,7 +120,7 @@ Manages Connection instances for default, read, and write connections.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\DataMapper\Pdo\ConnectionLocator`** — implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface)
+- **`Phalcon\DataMapper\Pdo\ConnectionLocator`** - implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface)
 
 </div>
 
@@ -420,7 +420,7 @@ methods
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** — implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
+- **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** - implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
     - [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
     - [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
 
@@ -1862,7 +1862,7 @@ A memory-based logger.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\DataMapper\Pdo\Profiler\MemoryLogger`** — implements [`Phalcon\Logger\LoggerInterface`](phalcon_logger.md#loggerloggerinterface)
+- **`Phalcon\DataMapper\Pdo\Profiler\MemoryLogger`** - implements [`Phalcon\Logger\LoggerInterface`](phalcon_logger.md#loggerloggerinterface)
 
 </div>
 
@@ -2112,7 +2112,7 @@ Sends query profiles to a logger.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\DataMapper\Pdo\Profiler\Profiler`** — implements [`Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`](#datamapperpdoprofilerprofilerinterface)
+- **`Phalcon\DataMapper\Pdo\Profiler\Profiler`** - implements [`Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`](#datamapperpdoprofilerprofilerinterface)
 
 </div>
 

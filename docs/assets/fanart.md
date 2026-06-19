@@ -2,7 +2,7 @@
 
 Phalcon Framework
 
-A full-stack PHP framework delivered as a PHP extension,
+A full-stack PHP framework,
 offering lower resource consumption and high performance.
 
 <3 Phalcon Team

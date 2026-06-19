@@ -98,7 +98,7 @@ Lazy loads, stores and exposes sanitizer objects
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Filter`** — implements [`Phalcon\Filter\FilterInterface`](#filterfilterinterface)
+- **`Phalcon\Filter\Filter`** - implements [`Phalcon\Filter\FilterInterface`](#filterfilterinterface)
 
 </div>
 
@@ -476,7 +476,7 @@ Sanitizes a value to absolute integer
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\AbsInt`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\AbsInt`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -514,7 +514,7 @@ Sanitizes a value to an alphanumeric value
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Alnum`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Alnum`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -552,7 +552,7 @@ Sanitizes a value to an alpha value
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Alpha`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Alpha`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -590,7 +590,7 @@ Sanitizes a value to boolean
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\BoolVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\BoolVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -628,7 +628,7 @@ Sanitizes an email string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Email`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Email`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -666,7 +666,7 @@ Sanitizes a value to float
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\FloatVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\FloatVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -704,7 +704,7 @@ Sanitizes a value to integer
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\IntVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\IntVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -742,7 +742,7 @@ Sanitizes a value to an ip address or CIDR range
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Ip`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Ip`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -784,7 +784,7 @@ Sanitizes a value to lowercase
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Lower`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Lower`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -822,7 +822,7 @@ Sanitizes a value to lcfirst
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\LowerFirst`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\LowerFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -860,7 +860,7 @@ Sanitizes a value performing preg_replace
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Regex`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Regex`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -902,7 +902,7 @@ Sanitizes a value removing parts of a string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Remove`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Remove`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -943,7 +943,7 @@ Sanitizes a value replacing parts of a string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Replace`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Replace`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -985,7 +985,7 @@ Sanitizes a value special characters
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Special`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Special`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1023,7 +1023,7 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\SpecialFull`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\SpecialFull`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1059,7 +1059,7 @@ Sanitizes a value to string
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\StringVal`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\StringVal`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1102,7 +1102,7 @@ string is passed, the method will return false
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\StringValLegacy`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\StringValLegacy`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1140,7 +1140,7 @@ Sanitizes a value striptags
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Striptags`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Striptags`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1178,7 +1178,7 @@ Sanitizes a value removing leading and trailing spaces
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Trim`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Trim`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1216,7 +1216,7 @@ Sanitizes a value to uppercase
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Upper`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Upper`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1254,7 +1254,7 @@ Sanitizes a value to ucfirst
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\UpperFirst`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\UpperFirst`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1292,7 +1292,7 @@ Sanitizes a value to uppercase the first character of each word
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\UpperWords`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\UpperWords`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1330,7 +1330,7 @@ Sanitizes a value url
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Sanitize\Url`** — implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
+- **`Phalcon\Filter\Sanitize\Url`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](phalcon_contracts.md#contractsfiltersanitizer)
 
 </div>
 
@@ -1368,7 +1368,7 @@ Allows to validate data using custom or built-in validators
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Filter\Validation`** — implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
+        - **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
 
 </div>
 
@@ -1819,7 +1819,7 @@ This is a base class for validators
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Filter\Validation\AbstractValidator`** — implements [`Phalcon\Filter\Validation\ValidatorInterface`](#filtervalidationvalidatorinterface)
+- **`Phalcon\Filter\Validation\AbstractValidator`** - implements [`Phalcon\Filter\Validation\ValidatorInterface`](#filtervalidationvalidatorinterface)
     - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
     - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
     - [`Phalcon\Filter\Validation\Validator\Alnum`](#filtervalidationvalidatoralnum)
@@ -2130,7 +2130,7 @@ This is a base class for combined fields validators
 <div class="api-tree" markdown>
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-    - **`Phalcon\Filter\Validation\AbstractValidatorComposite`** — implements [`Phalcon\Filter\Validation\ValidatorCompositeInterface`](#filtervalidationvalidatorcompositeinterface)
+    - **`Phalcon\Filter\Validation\AbstractValidatorComposite`** - implements [`Phalcon\Filter\Validation\ValidatorCompositeInterface`](#filtervalidationvalidatorcompositeinterface)
         - [`Phalcon\Filter\Validation\Validator\File`](#filtervalidationvalidatorfile)
         - [`Phalcon\Filter\Validation\Validator\StringLength`](#filtervalidationvalidatorstringlength)
 

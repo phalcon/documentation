@@ -17,7 +17,7 @@ Phalcon\Paginator\Adapter\AbstractAdapter
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Paginator\Adapter\AbstractAdapter`** — implements [`Phalcon\Paginator\Adapter\AdapterInterface`](#paginatoradapteradapterinterface)
+- **`Phalcon\Paginator\Adapter\AbstractAdapter`** - implements [`Phalcon\Paginator\Adapter\AdapterInterface`](#paginatoradapteradapterinterface)
     - [`Phalcon\Paginator\Adapter\Model`](#paginatoradaptermodel)
     - [`Phalcon\Paginator\Adapter\NativeArray`](#paginatoradapternativearray)
     - [`Phalcon\Paginator\Adapter\QueryBuilder`](#paginatoradapterquerybuilder)
@@ -1109,7 +1109,7 @@ Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Paginator\Repository`** — implements [`Phalcon\Paginator\RepositoryInterface`](#paginatorrepositoryinterface), `JsonSerializable`
+- **`Phalcon\Paginator\Repository`** - implements [`Phalcon\Paginator\RepositoryInterface`](#paginatorrepositoryinterface), `JsonSerializable`
 
 </div>
 

@@ -157,7 +157,7 @@ public function newInstance( string $name ): object;
 Retrieve a service instance from the container.
 
 On the `DiInterface` path this returns the container's **shared**
-instance (`getShared()`) — despite the name, it is not a fresh build.
+instance (`getShared()`) - despite the name, it is not a fresh build.
 Locators whose services carry per-activation state should override this
 method to resolve a fresh instance; see `Auth\Access\AccessLocator`, which uses
 `ContainerResolver::resolveFresh` for exactly that reason.
@@ -232,7 +232,7 @@ etc.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Collection`** — implements [`Phalcon\Support\Collection\CollectionInterface`](#supportcollectioncollectioninterface), `Countable`, `JsonSerializable`
+- **`Phalcon\Support\Collection`** - implements [`Phalcon\Support\Collection\CollectionInterface`](#supportcollectioncollectioninterface), `Countable`, `JsonSerializable`
     - [`Phalcon\Config\Config`](phalcon_config.md#configconfig)
     - [`Phalcon\Html\Attributes`](phalcon_html.md#htmlattributes)
     - [`Phalcon\Session\Bag`](phalcon_session.md#sessionbag)

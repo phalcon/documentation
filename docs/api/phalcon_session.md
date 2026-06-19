@@ -15,7 +15,7 @@ hide:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Session\Adapter\AbstractAdapter`** — implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
     - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
@@ -348,7 +348,7 @@ $session->setAdapter(new Noop());
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Session\Adapter\Noop`** — implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\Noop`** - implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
 </div>
@@ -999,7 +999,7 @@ $user->age  = 22;
 <div class="api-tree" markdown>
 
 - [`Phalcon\Support\Collection`](phalcon_support.md#supportcollection)
-    - **`Phalcon\Session\Bag`** — implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+    - **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
 
 </div>
 
@@ -1480,7 +1480,7 @@ public function __construct();
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Session\Manager`** — implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
+        - **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
 
 </div>
 

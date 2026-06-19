@@ -40,9 +40,9 @@ pull request, it could be:
 
 ## Documentation
 
-If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the
-documentation for any typographic or context errors. You could also enhance the documentation with more examples on the
-respective pages.
+If contributing code seems daunting, there are plenty of other areas that you can contribute to. You can always check
+the documentation for any typographic or context errors. You could also enhance the documentation with more examples on
+the respective pages.
 
 All you have to do is go to our [documentation][phalcon-documentation] repository, fork it, make the changes, and send
 us a pull request.
@@ -68,20 +68,6 @@ translating the documentation into different languages.
   information.
 - As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web
   server, memory, etc.
-- If you're submitting a [Segmentation Fault][segfault] error, we require a backtrace. Please check
-  the [Generating a Backtrace](#generating-a-backtrace) section for more information.
-
-### Generating a Backtrace
-
-Sometimes due to [Segmentation Fault][segfault] error, Phalcon could crash some of your web server processes. In order
-to help us find the cause of this segmentation fault, we will need the crash backtrace.
-
-Please check the following links for instructions on how to generate the backtrace:
-
-* [Generating a gdb backtrace][gdb]
-* [Generating a backtrace, with a compiler, on Win32][gdb-w32]
-* [Debugging Symbols][symbols]
-* [Building PHP][building-php]
 
 ## Pull Request Checklist
 
@@ -91,11 +77,9 @@ Please check the following links for instructions on how to generate the backtra
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull
   request. Please check our [testing][env] page for more information on how to set up a test environment and how to
   write tests.
-- Since Phalcon is written in [Zephir][zephir], please do not submit commits that modify the C-generated files directly
 - Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take
   advantage of the supplied `.editorconfig` file that comes with this repository and not have to worry about coding
-  standards. All tests (PHP code), follow the [PSR-12][psr-12] standard
-- Remove any change to `ext/kernel`, `*.zep.c`, and `*.zep.h` files before submitting the pull request
+  standards. All code follows the [PSR-12][psr-12] standard
 - More information [here][pr].
 
 Before submitting **new functionality**, please open a [NFR][nfr] as a new issue on GitHub to discuss the impact of
@@ -132,19 +116,7 @@ Thanks!
 
 [tests]: reproducible-tests.md
 
-[segfault]: https://en.wikipedia.org/wiki/Segmentation_fault
-
-[gdb]: https://bugs.php.net/bugs-generating-backtrace.php
-
-[gdb-w32]: https://bugs.php.net/bugs-generating-backtrace-win32.php
-
-[symbols]: https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols
-
-[building-php]: https://www.phpinternalsbook.com/build_system/building_php.html
-
 [env]: testing-environment.md
-
-[zephir]: https://zephir-lang.com
 
 [psr-12]: https://www.php-fig.org/psr/
 

@@ -26,7 +26,7 @@ multi-key `cache:*Multiple` events).
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Cache\AbstractCache`** — implements [`Phalcon\Cache\CacheInterface`](#cachecacheinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+- **`Phalcon\Cache\AbstractCache`** - implements [`Phalcon\Cache\CacheInterface`](#cachecacheinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
     - [`Phalcon\Cache\Cache`](#cachecache)
 
 </div>
@@ -465,7 +465,7 @@ Apcu adapter
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
     - [`Phalcon\Storage\Adapter\Apcu`](phalcon_storage.md#storageadapterapcu)
-        - **`Phalcon\Cache\Adapter\Apcu`** — implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+        - **`Phalcon\Cache\Adapter\Apcu`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
@@ -494,7 +494,7 @@ Libmemcached adapter
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
     - [`Phalcon\Storage\Adapter\Libmemcached`](phalcon_storage.md#storageadapterlibmemcached)
-        - **`Phalcon\Cache\Adapter\Libmemcached`** — implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+        - **`Phalcon\Cache\Adapter\Libmemcached`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
@@ -523,7 +523,7 @@ Memory adapter
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
     - [`Phalcon\Storage\Adapter\Memory`](phalcon_storage.md#storageadaptermemory)
-        - **`Phalcon\Cache\Adapter\Memory`** — implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+        - **`Phalcon\Cache\Adapter\Memory`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
@@ -552,7 +552,7 @@ Redis adapter
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
     - [`Phalcon\Storage\Adapter\Redis`](phalcon_storage.md#storageadapterredis)
-        - **`Phalcon\Cache\Adapter\Redis`** — implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+        - **`Phalcon\Cache\Adapter\Redis`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
@@ -582,7 +582,7 @@ RedisCluster adapter
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
     - [`Phalcon\Storage\Adapter\Redis`](phalcon_storage.md#storageadapterredis)
         - [`Phalcon\Storage\Adapter\RedisCluster`](phalcon_storage.md#storageadapterrediscluster)
-            - **`Phalcon\Cache\Adapter\RedisCluster`** — implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+            - **`Phalcon\Cache\Adapter\RedisCluster`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
@@ -611,7 +611,7 @@ Stream adapter
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
     - [`Phalcon\Storage\Adapter\Stream`](phalcon_storage.md#storageadapterstream)
-        - **`Phalcon\Cache\Adapter\Stream`** — implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+        - **`Phalcon\Cache\Adapter\Stream`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
@@ -640,7 +640,7 @@ WeakCache implementation based on WeakReference
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](phalcon_storage.md#storageadapterabstractadapter)
     - [`Phalcon\Storage\Adapter\Weak`](phalcon_storage.md#storageadapterweak)
-        - **`Phalcon\Cache\Adapter\Weak`** — implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+        - **`Phalcon\Cache\Adapter\Weak`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 

@@ -108,7 +108,7 @@ Stores a message from various components
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Messages\Message`** — implements [`Phalcon\Messages\MessageInterface`](#messagesmessageinterface), `JsonSerializable`
+- **`Phalcon\Messages\Message`** - implements [`Phalcon\Messages\MessageInterface`](#messagesmessageinterface), `JsonSerializable`
 
 </div>
 
@@ -522,7 +522,7 @@ must take part in iteration.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Messages\Messages`** — implements [`Phalcon\Contracts\Messages\Messages`](phalcon_contracts.md#contractsmessagesmessages), `JsonSerializable`
+- **`Phalcon\Messages\Messages`** - implements [`Phalcon\Contracts\Messages\Messages`](phalcon_contracts.md#contractsmessagesmessages), `JsonSerializable`
 
 </div>
 

@@ -505,8 +505,7 @@ According to MVC guidelines, database interactions must be done through models t
 
 ## Creating a Model
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of
-development, it simplifies it.
+Phalcon's ORM is designed to simplify development rather than increase its complexity.
 
 Before creating our first model, we need to create a database table using a database access tool or the database command
 line utility. For this tutorial we are using MySQL as our database, A simple table to store registered users can be

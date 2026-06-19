@@ -2,13 +2,9 @@
 
 - - -
 
-Last update: 2019-07-04
-
-Phalcon is written in [Zephir][zephir], a language that the Phalcon Team invented and is actively developing. Therefore,
-there are no established coding standards that developers can follow, should they wish to.
-
-In this document, we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is
-a variant of [PSR-12][psr-12] developed by [PHP-FIG][php-fig]
+Phalcon is written in PHP and follows the [PSR-12][psr-12] coding standard developed by [PHP-FIG][php-fig], with a few
+additional conventions outlined below. All code must pass the static analyzer (`phpstan`) and the coding standard
+checks (`phpcs`) before it can be merged.
 
 ## Files
 
@@ -20,7 +16,7 @@ a variant of [PSR-12][psr-12] developed by [PHP-FIG][php-fig]
 - Folders are also named StudlyCaps and the folder/sub-folder tree follows the namespace of the class.
 
 ```php
-phalcon/Acl/Adapter/Memory.zep
+src/Acl/Adapter/Memory.php
 ```
 
 ```php
@@ -60,8 +56,8 @@ namespace Phalcon\Acl;
 
 class Enum
 {
-    const ALLOW = 1;
-    const DENY  = 0;
+    public const ALLOW = 1;
+    public const DENY  = 0;
 }
 ```
 
@@ -84,7 +80,7 @@ class Memory extends Adapter
     /**
      * @var string | null
      */
-    protected activeKey = "" { get };
+    protected string | null $activeKey = "";
 }
 ```
 
@@ -101,20 +97,19 @@ class Memory extends Adapter
   visibility; `static` must be declared after the visibility.
 
 ```php
-abstract public function getElement() -> var;
+abstract public function getElement(): mixed;
 
-final public function getElement() -> var;
+final public function getElement(): mixed;
 
-public static function getElement() -> var;
+public static function getElement(): mixed;
 ```
 
 - Control structure keywords must have one space after them; method and function calls must not.
 - Opening braces for control structures must go on the same line, and closing braces must go on the next line after the
   body.
-- Control structures such as `if` must not have parentheses around the conditional, unless it is a complex one.
 
 ```php
-if typeof variable === "array" {
+if (is_array($variable)) {
 
 }
 ```
@@ -126,19 +121,13 @@ if typeof variable === "array" {
 - Method arguments with default values must go at the end of the argument list.
 
 ```php
-public function setElement(string! name, var value) -> void;
+public function setElement(string $name, mixed $value): void;
 ```
 
 - Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the
   first item in the list must be on the next line, and there must be only one argument per line.
 
-### PHP Files
-
-PHP files such as tests must follow [PSR-12][psr-12].
-
 
 [php-fig]: https://www.php-fig.org/
 
 [psr-12]: https://www.php-fig.org/psr/psr-12/
-
-[zephir]: https://zephir-lang.com

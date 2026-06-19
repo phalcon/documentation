@@ -363,7 +363,7 @@ $invoice->setEventsManager($eventsManager);
 $invoice->inv_cst_id = 10;
 $invoice->inv_title  = 'Invalid Invoice';
 $invoice->inv_total  = 0;
-$invoice->save(); // Will NOT create the record — the beforeCreate was cancelled
+$invoice->save(); // Will NOT create the record - the beforeCreate was cancelled
 ```
 
 !!! info "NOTE"

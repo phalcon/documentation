@@ -6,7 +6,7 @@
 
 The components under the `Phalcon\Db` namespace are the ones responsible for powering
 the  [Phalcon\Mvc\Model][mvc-model] class - the `Model` in MVC for the framework. It consists of an independent
-high-level abstraction layer for database systems completely written in C.
+high-level abstraction layer for database systems.
 
 This component allows for a lower level of database manipulation than using traditional models.
 

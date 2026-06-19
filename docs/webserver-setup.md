@@ -383,53 +383,22 @@ latest WampServer version is highly recommended.
 
     Paths in this guide should be relative, according to your installation WAMP
 
-### Download Phalcon
+### Install Phalcon
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension. Load
-up the `phpinfo` page provided by WAMP and check the `Architecture` and `Extension Build` values. Those will allow you
-to download the correct DLL. For a thread-safe, x64 using VS16 and PHP 8.1, you will need to download the following
-file:
+Phalcon v6 is a pure PHP package, so there is no DLL to download and no `php.ini` changes are required. Install it in
+your project with [Composer](installation.md):
 
-```
-phalcon-php8.1-ts-windows2019-vs16-x64.zip
+```bash
+composer require phalcon/phalcon
 ```
 
-If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL.
-
-WAMP has both 32 and 64-bit versions. From the download section, you can download the Phalcon DLL that suits your WAMP
-installation.
-
-Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP
-is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php8.1.0\ext` (assuming your WAMP
-installation installed PHP 8.1.0).
-
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. It can be edited with Notepad or a similar
-program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
-
-```ini
-extension=php_phalcon.dll
-```
-
-and save it.
-
-Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the
-file:
-
-```ini
-extension=php_phalcon.dll 
-```
-
-and save it.
-
-!!! warning "WARNING"
-
-    The path above might differ depending on the apache installation you have for your web server. Adjust it accordingly.
+Then configure the Apache server bundled with WAMP using the [Apache](#apache) instructions above so that friendly URLs
+are routed to your application.
 
 Restart the Apache Web Server. Do a single click on the WampServer icon in the system tray. Choose
 `Restart All Services` from the pop-up menu. Check out that the tray icon will become green again.
 
-Open your browser to navigate to `https://localhost`. The WAMP welcome page will appear. Check the section
-`extensions loaded` to ensure that Phalcon was loaded.
+Open your browser to navigate to `https://localhost`. The WAMP welcome page will appear.
 
 !!! success "NOTE"
 
@@ -445,39 +414,20 @@ Windows. Using the latest XAMPP version is highly recommended.
 
     Paths in this guide should be relative, according to your installation WAMP
 
-### Download Phalcon
+### Install Phalcon
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension. Load
-up the `phpinfo` page provided by WAMP and check the `Architecture` and `Extension Build` values. Those will allow you
-to download the correct DLL. For a thread-safe, x64 using VS16 and PHP 8.1, you will need to download the following
-file:
+As with WAMP, Phalcon v6 is a pure PHP package, so there is no DLL to download and no `php.ini` changes are required.
+Install it in your project with [Composer](installation.md):
 
-```
-phalcon-php8.1-ts-windows2019-vs16-x64.zip
+```bash
+composer require phalcon/phalcon
 ```
 
-If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL.
+Then configure the Apache server bundled with XAMPP using the [Apache](#apache) instructions above so that friendly URLs
+are routed to your application.
 
-XAMPP offers both 32 and 64-bit versions of Apache and PHP: Phalcon has dlls for both, just choose the right dll for the
-installed version.
-
-Extract the `php_phalcon.dll` from the archive and copy the file `php_phalcon.dll` to the PHP extensions directory. If
-you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
-
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php8.1.0\php.ini`. It can be edited with Notepad or a similar
-program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
-
-```ini
-extension=php_phalcon.dll
-```
-
-and save it.
-
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. Open your browser
-to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
-
-[phpinfo][phpinfo] will output a significant amount of information on the screen about the current state of PHP. Scroll
-down to check if the Phalcon extension has been loaded correctly.
+Restart the Apache Web Server from the XAMPP Control Center. Open your browser to navigate to `https://localhost`. The
+XAMPP welcome page will appear.
 
 !!! success "NOTE"
 
@@ -568,12 +518,8 @@ https://example.cc {
 
 [nginx_installation]: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
-[notepad_plus]: https://notepad-plus-plus.org/
-
 [php_fpm]: https://php.net/manual/en/install.fpm.php
 
 [wamp]: https://www.wampserver.com/en/
 
 [xampp]: https://www.apachefriends.org/download.html
-
-[phpinfo]: https://php.net/manual/en/function.phpinfo.php

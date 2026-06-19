@@ -6,10 +6,8 @@ The [Phalcon\Cache\Cache][cache-cache] is a component that offers a lightweight 
 used with your Phalcon applications.
 
 Frequently used data or already processed/calculated data, can be stored in a cache storage for easier and faster
-retrieval. Since [Phalcon\Cache\Cache][cache-cache] is written in
-Zephir, and therefore compiled as C code, it can achieve higher performance while reducing the overhead that comes with
-getting data from any storage container. Some examples that
-warrant the use of a cache are:
+retrieval. Using [Phalcon\Cache\Cache][cache-cache] can help reduce the overhead that comes with getting data from any
+storage container. Some examples that warrant the use of a cache are:
 
 * You are making complex calculations and the output does not change frequently
 * You are producing HTML using the same data all the time (same HTML)
@@ -1021,9 +1019,9 @@ the `*Multiple` variants). It does not extend `Psr\SimpleCache\CacheInterface`.
 ## Exceptions
 
 Any exception thrown in the Cache component is of
-type [Phalcon\Cache\Exception\Exception][cache-exception-exception]. Invalid arguments — a cache
+type [Phalcon\Cache\Exception\Exception][cache-exception-exception]. Invalid arguments - a cache
 key that is not a string or contains reserved characters, or a non-iterable set of keys passed to
-`getMultiple()` / `setMultiple()` / `deleteMultiple()` — raise
+`getMultiple()` / `setMultiple()` / `deleteMultiple()` - raise
 [Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception]
 instead. Both extend `\Exception`. You can use these exceptions to selectively catch failures from
 this component.
@@ -1054,8 +1052,8 @@ The class raised for an invalid argument is resolved through
 `Phalcon\Cache\Exception\InvalidArgumentException` by default.
 
 The Cache component does not implement PSR-16 (`Psr\SimpleCache`), and neither do its exceptions.
-For PSR-16 interoperability — including a `Psr\SimpleCache\InvalidArgumentException` that callers
-can catch — install the [proxy package][proxy-psr16]. The proxy overrides `getExceptionClass()` to
+For PSR-16 interoperability - including a `Psr\SimpleCache\InvalidArgumentException` that callers
+can catch - install the [proxy package][proxy-psr16]. The proxy overrides `getExceptionClass()` to
 return a PSR-16-marked exception, so the marker is restored without any catch-and-rethrow overhead.
 
 ```sh

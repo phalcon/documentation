@@ -476,7 +476,7 @@ Class AbstractAdapter
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Logger\Adapter\AbstractAdapter`** — implements [`Phalcon\Logger\Adapter\AdapterInterface`](#loggeradapteradapterinterface)
+- **`Phalcon\Logger\Adapter\AbstractAdapter`** - implements [`Phalcon\Logger\Adapter\AdapterInterface`](#loggeradapteradapterinterface)
     - [`Phalcon\Logger\Adapter\Noop`](#loggeradapternoop)
     - [`Phalcon\Logger\Adapter\Stream`](#loggeradapterstream)
     - [`Phalcon\Logger\Adapter\Syslog`](#loggeradaptersyslog)
@@ -1547,7 +1547,7 @@ Class AbstractFormatter
 <div class="api-tree" markdown>
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr)
-    - **`Phalcon\Logger\Formatter\AbstractFormatter`** — implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
+    - **`Phalcon\Logger\Formatter\AbstractFormatter`** - implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
         - [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
         - [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
 
@@ -1971,7 +1971,7 @@ from config files (see Phalcon\Config\Config object).
 <div class="api-tree" markdown>
 
 - [`Phalcon\Logger\AbstractLogger`](#loggerabstractlogger)
-    - **`Phalcon\Logger\Logger`** — implements [`Phalcon\Logger\LoggerInterface`](#loggerloggerinterface)
+    - **`Phalcon\Logger\Logger`** - implements [`Phalcon\Logger\LoggerInterface`](#loggerloggerinterface)
 
 </div>
 

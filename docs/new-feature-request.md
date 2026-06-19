@@ -30,8 +30,8 @@ In the following cases a new feature request will be rejected **if**:
 * Submitted/proposed classes/components don't follow the [Single Responsibility Principle][srp]
 * Uses static methods - (not allowed)
 
-To send a NFR you do not need to provide Zephir or C code or develop the feature. New Feature requests explain the goal
-of the intended implementation and start a discussion on how best to implement it.
+To send a NFR you do not need to provide any code or develop the feature. New Feature requests explain the goal of the
+intended implementation and start a discussion on how best to implement it.
 
 All NFRs should be posted as a new issue on [GitHub][issues]. Please make sure to use the prefix `[NFR]` in the title of
 your issue.

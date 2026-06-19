@@ -156,7 +156,6 @@ plugins:
         'en/filter-validation.md': filter-validation.md
         'en/flash.md': flash.md
         'en/forms.md': forms.md
-        'en/generating-backtrace.md': generating-backtrace.md
         'en/html-attributes.md': html-attributes.md
         'en/html-breadcrumbs.md': html-breadcrumbs.md
         'en/html-escaper.md': html-escaper.md
@@ -304,7 +303,6 @@ nav:
           - Requesting a change: new-feature-request.md
           - Issuing a Pull Request: new-pull-request.md
       - Guides:
-          - Backtrace Generation: generating-backtrace.md
           - Reproducible Tests: reproducible-tests.md
           - Testing environment: testing-environment.md
           - Coding Standard: coding-standard.md

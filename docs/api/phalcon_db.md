@@ -59,7 +59,7 @@ try {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Adapter\AbstractAdapter`** — implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+- **`Phalcon\Db\Adapter\AbstractAdapter`** - implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
     - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 
 </div>
@@ -2787,7 +2787,7 @@ $connection->addCheck("products", null, $positivePrice);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Check`** — implements [`Phalcon\Db\CheckInterface`](#dbcheckinterface)
+- **`Phalcon\Db\Check`** - implements [`Phalcon\Db\CheckInterface`](#dbcheckinterface)
 
 </div>
 
@@ -2915,7 +2915,7 @@ $connection->addColumn("robots", null, $column);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Column`** — implements [`Phalcon\Db\ColumnInterface`](#dbcolumninterface)
+- **`Phalcon\Db\Column`** - implements [`Phalcon\Db\ColumnInterface`](#dbcolumninterface)
 
 </div>
 
@@ -3705,7 +3705,7 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Dialect`** — implements [`Phalcon\Db\DialectInterface`](#dbdialectinterface)
+- **`Phalcon\Db\Dialect`** - implements [`Phalcon\Db\DialectInterface`](#dbdialectinterface)
     - [`Phalcon\Db\Dialect\Mysql`](#dbdialectmysql)
     - [`Phalcon\Db\Dialect\Postgresql`](#dbdialectpostgresql)
     - [`Phalcon\Db\Dialect\Sqlite`](#dbdialectsqlite)
@@ -8631,7 +8631,7 @@ public function __construct();
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Geometry\AbstractGeometry`** — implements [`Phalcon\Db\Geometry\GeometryInterface`](#dbgeometrygeometryinterface)
+- **`Phalcon\Db\Geometry\AbstractGeometry`** - implements [`Phalcon\Db\Geometry\GeometryInterface`](#dbgeometrygeometryinterface)
     - [`Phalcon\Db\Geometry\GeometryCollection`](#dbgeometrygeometrycollection)
     - [`Phalcon\Db\Geometry\LineString`](#dbgeometrylinestring)
     - [`Phalcon\Db\Geometry\MultiLineString`](#dbgeometrymultilinestring)
@@ -9558,7 +9558,7 @@ $connection->addIndex("robots", null, $hidden);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Index`** — implements [`Phalcon\Db\IndexInterface`](#dbindexinterface)
+- **`Phalcon\Db\Index`** - implements [`Phalcon\Db\IndexInterface`](#dbindexinterface)
 
 </div>
 
@@ -10393,7 +10393,7 @@ $reference = new \Phalcon\Db\Reference(
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Reference`** — implements [`Phalcon\Db\ReferenceInterface`](#dbreferenceinterface)
+- **`Phalcon\Db\Reference`** - implements [`Phalcon\Db\ReferenceInterface`](#dbreferenceinterface)
 
 </div>
 
@@ -10648,7 +10648,7 @@ while ($robot = $result->fetchArray()) {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Db\Result\PdoResult`** — implements [`Phalcon\Db\ResultInterface`](#dbresultinterface)
+- **`Phalcon\Db\Result\PdoResult`** - implements [`Phalcon\Db\ResultInterface`](#dbresultinterface)
 
 </div>
 

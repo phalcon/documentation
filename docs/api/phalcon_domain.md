@@ -17,7 +17,7 @@ Holds the payload
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Domain\Payload\Payload`** — implements [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
+- **`Phalcon\Domain\Payload\Payload`** - implements [`Phalcon\Domain\Payload\PayloadInterface`](#domainpayloadpayloadinterface)
 
 </div>
 
@@ -303,7 +303,7 @@ This interface is used for consumers
 
 - [`Phalcon\Contracts\Domain\Payload\Readable`](phalcon_contracts.md#contractsdomainpayloadreadable)
     - [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface)
-        - **`Phalcon\Domain\Payload\PayloadInterface`** — extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface), [`Phalcon\Contracts\Domain\Payload\Payload`](phalcon_contracts.md#contractsdomainpayloadpayload)
+        - **`Phalcon\Domain\Payload\PayloadInterface`** - extends [`Phalcon\Domain\Payload\ReadableInterface`](#domainpayloadreadableinterface), [`Phalcon\Domain\Payload\WriteableInterface`](#domainpayloadwriteableinterface), [`Phalcon\Contracts\Domain\Payload\Payload`](phalcon_contracts.md#contractsdomainpayloadpayload)
 
 </div>
 

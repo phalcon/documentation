@@ -13,8 +13,8 @@ used for managing the rules of interaction with a corresponding database table. 
 database will correspond to one model in your application. The bulk of your application's business logic will be
 concentrated in the models.
 
-The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving developers high
-performance when interacting with databases while is also easy to use.
+The [Phalcon\Mvc\Model][mvc-model] gives developers high performance when interacting with databases while also being
+easy to use.
 
 !!! warning "WARNING"
 

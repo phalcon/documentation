@@ -17,7 +17,7 @@ This is the base class for Phalcon\Annotations adapters
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Annotations\Adapter\AbstractAdapter`** — implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
+- **`Phalcon\Annotations\Adapter\AbstractAdapter`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
     - [`Phalcon\Annotations\Adapter\Apcu`](#annotationsadapterapcu)
     - [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
     - [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
@@ -958,7 +958,7 @@ $annotation = $classAnnotations->get("Cacheable");
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Annotations\Collection`** — implements `Iterator`, `Countable`
+- **`Phalcon\Annotations\Collection`** - implements `Iterator`, `Countable`
 
 </div>
 
@@ -1313,7 +1313,7 @@ Parses docblocks returning an array with the found annotations
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Annotations\Reader`** — implements [`Phalcon\Annotations\ReaderInterface`](#annotationsreaderinterface)
+- **`Phalcon\Annotations\Reader`** - implements [`Phalcon\Annotations\ReaderInterface`](#annotationsreaderinterface)
 
 </div>
 

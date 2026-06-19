@@ -19,7 +19,7 @@ Provide OO wrappers to manage a HTTP cookie.
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Http\Cookie`** — implements [`Phalcon\Http\Cookie\CookieInterface`](#httpcookiecookieinterface)
+        - **`Phalcon\Http\Cookie`** - implements [`Phalcon\Http\Cookie\CookieInterface`](#httpcookiecookieinterface)
 
 </div>
 
@@ -1420,7 +1420,7 @@ $request->getLanguages();
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Http\Request`** — implements [`Phalcon\Http\RequestInterface`](#httprequestinterface), [`Phalcon\Http\Message\RequestMethodInterface`](#httpmessagerequestmethodinterface)
+        - **`Phalcon\Http\Request`** - implements [`Phalcon\Http\RequestInterface`](#httprequestinterface), [`Phalcon\Http\Message\RequestMethodInterface`](#httpmessagerequestmethodinterface)
 
 </div>
 
@@ -3874,7 +3874,7 @@ class PostsController extends Controller
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Http\Request\File`** — implements [`Phalcon\Http\Request\FileInterface`](#httprequestfileinterface)
+- **`Phalcon\Http\Request\File`** - implements [`Phalcon\Http\Request\FileInterface`](#httprequestfileinterface)
 
 </div>
 
@@ -4223,7 +4223,7 @@ $response->send();
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Http\Response`** — implements [`Phalcon\Http\ResponseInterface`](#httpresponseinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface), [`Phalcon\Http\Message\ResponseStatusCodeInterface`](#httpmessageresponsestatuscodeinterface)
+- **`Phalcon\Http\Response`** - implements [`Phalcon\Http\ResponseInterface`](#httpresponseinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface), [`Phalcon\Http\Message\ResponseStatusCodeInterface`](#httpmessageresponsestatuscodeinterface)
 
 </div>
 
@@ -5275,7 +5275,7 @@ $di->set(
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Http\Response\Cookies`** — implements [`Phalcon\Http\Response\CookiesInterface`](#httpresponsecookiesinterface)
+        - **`Phalcon\Http\Response\Cookies`** - implements [`Phalcon\Http\Response\CookiesInterface`](#httpresponsecookiesinterface)
 
 </div>
 
@@ -5850,7 +5850,7 @@ This class is a bag to manage the response headers
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Http\Response\Headers`** — implements [`Phalcon\Http\Response\HeadersInterface`](#httpresponseheadersinterface), `IteratorAggregate`
+- **`Phalcon\Http\Response\Headers`** - implements [`Phalcon\Http\Response\HeadersInterface`](#httpresponseheadersinterface), `IteratorAggregate`
 
 </div>
 

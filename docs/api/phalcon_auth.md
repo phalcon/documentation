@@ -112,7 +112,7 @@ Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Auth\Access\AbstractAccess`** — implements [`Phalcon\Contracts\Auth\Access\Access`](phalcon_contracts.md#contractsauthaccessaccess)
+- **`Phalcon\Auth\Access\AbstractAccess`** - implements [`Phalcon\Contracts\Auth\Access\Access`](phalcon_contracts.md#contractsauthaccessaccess)
     - [`Phalcon\Auth\Access\Acl`](#authaccessacl)
     - [`Phalcon\Auth\Access\Auth`](#authaccessauth)
     - [`Phalcon\Auth\Access\Guest`](#authaccessguest)
@@ -517,7 +517,7 @@ protected function allowedIf( Guard $guard ): bool;
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Auth\Adapter\AbstractAdapter`** — implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](phalcon_contracts.md#contractsauthadapteradapter)
+- **`Phalcon\Auth\Adapter\AbstractAdapter`** - implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](phalcon_contracts.md#contractsauthadapteradapter)
     - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
     - [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
 
@@ -815,7 +815,7 @@ protected function getServices(): array;
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** — implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](phalcon_contracts.md#contractsauthadapteradapterconfig)
+- **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](phalcon_contracts.md#contractsauthadapteradapterconfig)
     - [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
     - [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
     - [`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`](#authadapterconfigstreamadapterconfig)
@@ -1147,7 +1147,7 @@ Phalcon Model-backed adapter.
 <div class="api-tree" markdown>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-    - **`Phalcon\Auth\Adapter\Model`** — implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](phalcon_contracts.md#contractsauthadapterrememberadapter)
+    - **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](phalcon_contracts.md#contractsauthadapterrememberadapter)
 
 </div>
 
@@ -1356,7 +1356,7 @@ when no application model class is configured.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Auth\AuthUser`** — implements [`Phalcon\Contracts\Auth\AuthUser`](phalcon_contracts.md#contractsauthauthuser)
+- **`Phalcon\Auth\AuthUser`** - implements [`Phalcon\Contracts\Auth\AuthUser`](phalcon_contracts.md#contractsauthauthuser)
 
 </div>
 
@@ -1831,7 +1831,7 @@ public function __construct(
 <div class="api-tree" markdown>
 
 - [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - **`Phalcon\Auth\Guard\AbstractGuard`** — implements [`Phalcon\Contracts\Auth\Guard\Guard`](phalcon_contracts.md#contractsauthguardguard)
+    - **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](phalcon_contracts.md#contractsauthguardguard)
         - [`Phalcon\Auth\Guard\Session`](#authguardsession)
         - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
@@ -2016,7 +2016,7 @@ user should be ?AuthUser
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** — implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](phalcon_contracts.md#contractsauthguardguardconfig)
+- **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** - implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](phalcon_contracts.md#contractsauthguardguardconfig)
     - [`Phalcon\Auth\Guard\Config\SessionGuardConfig`](#authguardconfigsessionguardconfig)
     - [`Phalcon\Auth\Guard\Config\TokenGuardConfig`](#authguardconfigtokenguardconfig)
 
@@ -2266,7 +2266,7 @@ protected function getServices(): array;
 
 - [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
     - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-        - **`Phalcon\Auth\Guard\Session`** — implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](phalcon_contracts.md#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](phalcon_contracts.md#contractsauthguardbasicauth)
+        - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](phalcon_contracts.md#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](phalcon_contracts.md#contractsauthguardbasicauth)
 
 </div>
 
@@ -2978,7 +2978,7 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Auth\Manager`** — implements [`Phalcon\Contracts\Auth\Manager`](phalcon_contracts.md#contractsauthmanager)
+- **`Phalcon\Auth\Manager`** - implements [`Phalcon\Contracts\Auth\Manager`](phalcon_contracts.md#contractsauthmanager)
 
 </div>
 

@@ -14,8 +14,8 @@ Your pull request must include:
 * Update the relevant `CHANGELOG.md`
 * Contain unit tests
 * Updates to the documentation and usage examples as necessary
-* Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-12][psr-12] while for Zephir
-  code, we have a `.editorconfig` file available at the root of the repository to help you follow the standards.
+* Your code must abide by the coding standards that Phalcon uses. We follow [PSR-12][psr-12], and a `.editorconfig` file
+  is available at the root of the repository to help you follow the standards.
 
 !!! danger "DANGER"
 

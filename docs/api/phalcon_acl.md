@@ -18,7 +18,7 @@ Adapter for Phalcon\Acl adapters
 <div class="api-tree" markdown>
 
 - [`Phalcon\Events\AbstractEventsAware`](phalcon_events.md#eventsabstracteventsaware)
-    - **`Phalcon\Acl\Adapter\AbstractAdapter`** — implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+    - **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
         - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
 
 </div>
@@ -1050,7 +1050,7 @@ This class defines component entity and its description
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Acl\Component`** — implements [`Phalcon\Acl\ComponentInterface`](#aclcomponentinterface)
+- **`Phalcon\Acl\Component`** - implements [`Phalcon\Acl\ComponentInterface`](#aclcomponentinterface)
 
 </div>
 
@@ -1622,7 +1622,7 @@ This class defines role entity and its description
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Acl\Role`** — implements [`Phalcon\Acl\RoleInterface`](#aclroleinterface)
+- **`Phalcon\Acl\Role`** - implements [`Phalcon\Acl\RoleInterface`](#aclroleinterface)
 
 </div>
 

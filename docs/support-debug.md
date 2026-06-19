@@ -11,8 +11,8 @@ offers information such as the file, line, message, numeric code, backtrace, etc
 frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the
 developer or user.
 
-Despite being written in C, Phalcon executes methods in the PHP userland, providing the same debugging capabilities as
-other PHP-based frameworks offer.
+Phalcon executes methods in the PHP userland, providing the same debugging capabilities as other PHP-based frameworks
+offer.
 
 ## Constructor
 
@@ -445,9 +445,9 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. The exception information
-contains parameters and method calls that were involved in the call that generated the exception fragment
-above. [Exception::getTrace()][exception_gettrace] provides additional information if necessary.
+As demonstrated above, the exception information contains parameters and method calls that were involved in the call
+that generated the exception fragment above. [Exception::getTrace()][exception_gettrace] provides additional information
+if necessary.
 
 ### Granular Exceptions
 

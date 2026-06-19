@@ -16,11 +16,13 @@ must meet, and the attribution we require.
 AI assistants work best when they are configured against the authoritative sources for the project. Before using an
 assistant on a Phalcon contribution, point it at the following references:
 
-- The [cphalcon][cphalcon] repository. Note that the framework is written in [Zephir][zephir]; the source files live in
-  the `phalcon/` folder, and the generated C files live in the `ext/` folder. Pull requests must not modify generated
-  files directly.
+- The [phalcon][phalcon] repository - the pure PHP implementation of the framework (v6). This is where the framework
+  source lives; the classes are plain PHP under the `src/` folder.
+- The [cphalcon][cphalcon] repository - the original C extension implementation. Phalcon's PHP code is kept in sync with
+  it, so it is a useful reference for expected behavior. Note that cphalcon is written in [Zephir][zephir]; its source
+  files live in the `phalcon/` folder and the generated C files live in the `ext/` folder. Pull requests to cphalcon
+  must not modify generated files directly.
 - The [Phalcon documentation][phalcon-documentation] (this site) for public APIs, behavior, and usage examples.
-- The [Zephir language documentation][zephir-docs] when authoring or modifying `*.zep` files.
 - The [PSR-12][psr-12] coding standard, which Phalcon follows for all PHP code (including tests).
 - The project's testing layout (`tests/`, the various `phpunit.*.xml` configurations) so the assistant generates tests
   in the right place and shape.
@@ -94,6 +96,8 @@ When in doubt, add the trailer. Over-attribution is harmless; under-attribution 
 
 [kernel-ai]: https://docs.kernel.org/process/coding-assistants.html
 
+[phalcon]: https://github.com/phalcon/phalcon
+
 [phalcon-documentation]: https://github.com/phalcon/documentation
 
 [phpstan]: https://phpstan.org
@@ -101,5 +105,3 @@ When in doubt, add the trailer. Over-attribution is harmless; under-attribution 
 [psr-12]: https://www.php-fig.org/psr/
 
 [zephir]: https://zephir-lang.com
-
-[zephir-docs]: https://docs.zephir-lang.com

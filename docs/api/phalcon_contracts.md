@@ -5526,7 +5526,7 @@ capability it needs, even though the concrete payload implements both.
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable)
-    - **`Phalcon\Contracts\Domain\Payload\Payload`** — extends [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable), [`Phalcon\Contracts\Domain\Payload\Writeable`](#contractsdomainpayloadwriteable)
+    - **`Phalcon\Contracts\Domain\Payload\Payload`** - extends [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable), [`Phalcon\Contracts\Domain\Payload\Writeable`](#contractsdomainpayloadwriteable)
 
 </div>
 
@@ -6500,7 +6500,7 @@ public function setWorkFactor( int $workFactor ): Security;
 <div class="api-tree" markdown>
 
 - [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils)
-    - **`Phalcon\Contracts\Encryption\Security\Security`** — extends [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils), [`Phalcon\Contracts\Encryption\Security\CsrfProtection`](#contractsencryptionsecuritycsrfprotection), [`Phalcon\Contracts\Encryption\Security\PasswordSecurity`](#contractsencryptionsecuritypasswordsecurity)
+    - **`Phalcon\Contracts\Encryption\Security\Security`** - extends [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils), [`Phalcon\Contracts\Encryption\Security\CsrfProtection`](#contractsencryptionsecuritycsrfprotection), [`Phalcon\Contracts\Encryption\Security\PasswordSecurity`](#contractsencryptionsecuritypasswordsecurity)
 
 </div>
 
@@ -7895,7 +7895,7 @@ during iteration (`foreach`), which walks the integer sequence only.
 <div class="api-tree" markdown>
 
 - `ArrayAccess`
-    - **`Phalcon\Contracts\Messages\Messages`** — extends `ArrayAccess`, `Countable`, `Iterator`
+    - **`Phalcon\Contracts\Messages\Messages`** - extends `ArrayAccess`, `Countable`, `Iterator`
 
 </div>
 
@@ -8437,7 +8437,7 @@ Canonical contract for Phalcon\Support\Collection.
 <div class="api-tree" markdown>
 
 - `ArrayAccess`
-    - **`Phalcon\Contracts\Support\Collection`** — extends `ArrayAccess`, `IteratorAggregate`
+    - **`Phalcon\Contracts\Support\Collection`** - extends `ArrayAccess`, `IteratorAggregate`
         - [`Phalcon\Support\Collection\CollectionInterface`](phalcon_support.md#supportcollectioncollectioninterface)
 
 </div>

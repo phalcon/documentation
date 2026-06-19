@@ -247,7 +247,7 @@ $handle = $dispatcher->dispatch();
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher)
-            - **`Phalcon\Cli\Dispatcher`** — implements [`Phalcon\Cli\DispatcherInterface`](#clidispatcherinterface)
+            - **`Phalcon\Cli\Dispatcher`** - implements [`Phalcon\Cli\DispatcherInterface`](#clidispatcherinterface)
 
 </div>
 
@@ -563,7 +563,7 @@ echo $router->getTaskName();
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Cli\Router`** — implements [`Phalcon\Cli\RouterInterface`](#clirouterinterface)
+        - **`Phalcon\Cli\Router`** - implements [`Phalcon\Cli\RouterInterface`](#clirouterinterface)
 
 </div>
 
@@ -1322,7 +1322,7 @@ This class represents every route added to the router
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Cli\Router\Route`** — implements [`Phalcon\Cli\Router\RouteInterface`](#clirouterrouteinterface)
+- **`Phalcon\Cli\Router\Route`** - implements [`Phalcon\Cli\Router\RouteInterface`](#clirouterrouteinterface)
 
 </div>
 
@@ -1981,7 +1981,7 @@ arguments). Declare optional trailing parameters to read those options.
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Cli\Task`** — implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Cli\Task`** - implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 

@@ -17,7 +17,7 @@ All image adapters must use this class
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Image\Adapter\AbstractAdapter`** — implements [`Phalcon\Image\Adapter\AdapterInterface`](#imageadapteradapterinterface)
+- **`Phalcon\Image\Adapter\AbstractAdapter`** - implements [`Phalcon\Image\Adapter\AdapterInterface`](#imageadapteradapterinterface)
     - [`Phalcon\Image\Adapter\Gd`](#imageadaptergd)
     - [`Phalcon\Image\Adapter\Imagick`](#imageadapterimagick)
 
