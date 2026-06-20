@@ -38,19 +38,19 @@ The moving parts:
 The contracts live in the `Phalcon\Contracts\Queue` namespace and are pure
 interfaces.
 
-| Interface              | Purpose                                                            |
-| ---------------------- | ------------------------------------------------------------------ |
-| `ConnectionFactory`    | Builds a `Context`; the entry point of every adapter.              |
+| Interface              | Purpose                                                                           |
+|------------------------|-----------------------------------------------------------------------------------|
+| `ConnectionFactory`    | Builds a `Context`; the entry point of every adapter.                             |
 | `Context`              | A transport session; factory for messages, destinations, producers and consumers. |
-| `Destination`          | Marker for a message destination (`Queue` or `Topic`).             |
-| `Queue`                | A point-to-point destination (`getQueueName()`).                   |
-| `Topic`                | A publish/subscribe destination (`getTopicName()`).                |
-| `Message`              | Body, application properties, transport headers and messaging metadata. |
-| `Producer`             | Sends messages; supports delivery delay, priority and time to live. |
-| `Consumer`             | Receives, acknowledges and rejects messages from a single queue.   |
-| `SubscriptionConsumer` | Consumes from several queues at once via callbacks.                |
-| `Processor`            | Handles one message; returns `ACK` / `REJECT` / `REQUEUE`.         |
-| `VisibilityAware`      | Marker for consumers that support a visibility timeout.            |
+| `Destination`          | Marker for a message destination (`Queue` or `Topic`).                            |
+| `Queue`                | A point-to-point destination (`getQueueName()`).                                  |
+| `Topic`                | A publish/subscribe destination (`getTopicName()`).                               |
+| `Message`              | Body, application properties, transport headers and messaging metadata.           |
+| `Producer`             | Sends messages; supports delivery delay, priority and time to live.               |
+| `Consumer`             | Receives, acknowledges and rejects messages from a single queue.                  |
+| `SubscriptionConsumer` | Consumes from several queues at once via callbacks.                               |
+| `Processor`            | Handles one message; returns `ACK` / `REJECT` / `REQUEUE`.                        |
+| `VisibilityAware`      | Marker for consumers that support a visibility timeout.                           |
 
 ### Processor return values
 
@@ -58,7 +58,7 @@ interfaces.
 returns to tell the consumer what to do with the message:
 
 | Constant             | Value             | Meaning                              |
-| -------------------- | ----------------- | ------------------------------------ |
+|----------------------|-------------------|--------------------------------------|
 | `Processor::ACK`     | `enqueue.ack`     | The message was handled; remove it.  |
 | `Processor::REJECT`  | `enqueue.reject`  | Discard the message.                 |
 | `Processor::REQUEUE` | `enqueue.requeue` | Put the message back for redelivery. |
@@ -72,17 +72,17 @@ all queue errors can be caught with a single type. A concrete
 `Phalcon\Queue\Exceptions\Exception` is the base for the typed exceptions
 below.
 
-| Exception                                   | Thrown when…                                          |
-| ------------------------------------------- | ----------------------------------------------------- |
-| `Exception`                                 | Generic queue error; base of all the others.          |
-| `InvalidDestinationException`               | A destination is not valid for the operation.         |
-| `InvalidMessageException`                   | A message is not valid for the operation.             |
-| `DeliveryDelayNotSupportedException`        | The transport does not support a delivery delay.      |
-| `PriorityNotSupportedException`             | The transport does not support message priority.      |
-| `PurgeQueueNotSupportedException`           | The transport does not support purging a queue.       |
-| `SubscriptionConsumerNotSupportedException` | The transport does not support subscription consumers.|
-| `TemporaryQueueNotSupportedException`       | The transport does not support temporary queues.      |
-| `TimeToLiveNotSupportedException`           | The transport does not support a message time to live.|
+| Exception                                   | Thrown when…                                           |
+|---------------------------------------------|--------------------------------------------------------|
+| `Exception`                                 | Generic queue error; base of all the others.           |
+| `InvalidDestinationException`               | A destination is not valid for the operation.          |
+| `InvalidMessageException`                   | A message is not valid for the operation.              |
+| `DeliveryDelayNotSupportedException`        | The transport does not support a delivery delay.       |
+| `PriorityNotSupportedException`             | The transport does not support message priority.       |
+| `PurgeQueueNotSupportedException`           | The transport does not support purging a queue.        |
+| `SubscriptionConsumerNotSupportedException` | The transport does not support subscription consumers. |
+| `TemporaryQueueNotSupportedException`       | The transport does not support temporary queues.       |
+| `TimeToLiveNotSupportedException`           | The transport does not support a message time to live. |
 
 ## Adapters
 
