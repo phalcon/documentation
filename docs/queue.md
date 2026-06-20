@@ -5,9 +5,9 @@
 !!! info "NOTE"
 
     This component is under active development. The contracts, exception
-    hierarchy, factories and the **Memory** and **Stream** adapters are
-    available now; the Redis and Beanstalk adapters and the consumer runner
-    are delivered in later phases and are noted as such.
+    hierarchy, factories and the **Memory**, **Stream** and **Redis** adapters
+    are available now; the Beanstalk adapter and the consumer runner are
+    delivered in later phases and are noted as such.
 
 ## Overview
 
@@ -173,11 +173,52 @@ time to live.
     `flock` is not reliable on NFS; use the Redis adapter for cross-host
     setups.
 
-### Redis and Beanstalk
+### Redis
+
+`Phalcon\Queue\Adapter\Redis` is a server-backed transport built on the
+`redis` extension. Each queue is a Redis list - messages are `LPUSH`ed on send
+and `RPOP`/`BRPOP`ed on receive, giving FIFO delivery that is shared across
+every process and host that connects to the same server.
+
+```php
+use Phalcon\Queue\Adapter\Redis\RedisConnectionFactory;
+
+$context = (new RedisConnectionFactory([
+    'host'   => '127.0.0.1',
+    'port'   => 6379,
+    'index'  => 0,
+    'auth'   => 'secret',
+    'prefix' => 'phalcon_queue:',
+]))->createContext();
+```
+
+Options: `host` (default `127.0.0.1`), `port` (default `6379`), `timeout`
+(connection timeout in seconds), `persistent`/`persistentId` (use a persistent
+connection), `auth` (a password, or `[user, password]` for ACL auth), `index`
+(database to `SELECT`), `prefix` (key prefix for every queue, default
+`phalcon_queue:`) and `pollInterval` (milliseconds between subscription poll
+passes, default `200`).
+
+Unlike Memory and Stream, the Redis transport **supports a delivery delay**.
+A delayed message is parked in a companion sorted set (`<prefix><queue>:delayed`)
+scored by its due time, and is promoted into the queue list once due:
+
+```php
+$context->createProducer()
+    ->setDeliveryDelay(5000) // milliseconds
+    ->send($queue, $context->createMessage('later'));
+```
+
+The consumer's blocking `receive()` uses the native `BRPOP` (waking once a
+second to promote due delayed messages) instead of polling. Message priority
+and time to live are not supported - the matching setters throw
+`PriorityNotSupportedException` and `TimeToLiveNotSupportedException`.
+
+### Beanstalk
 
 !!! info "NOTE"
 
-    Delivered in later phases.
+    Delivered in a later phase.
 
 ## Consumer
 
