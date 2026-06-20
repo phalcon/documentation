@@ -103,7 +103,9 @@ behavior of the component visually.
 | `getVersion()`    | `string` | Returns the link to the current version documentation               |
 
 Extending the component and overriding the `getCssSources()` for instance to return different CSS HTML directives will
-change the appearance of the output on screen. The output CSS classes are based on [Bootstrap CSS][bootstrap].
+change the appearance of the output on screen. By default the component serves a single `debug.css` and `debug.js`
+bundle from the configured URI (see `setUri()` below). For broader changes to the markup, swap the renderer instead
+(see the [Renderer](#renderer) section).
 
 ## Setters
 
@@ -116,6 +118,100 @@ application.
 | `setShowFileFragment(bool $showFileFragment)` | Show/Hide the file fragment in the output (related to the exception)                                |
 | `setShowFiles(bool $showFiles)`               | Show/Hide the files in the backtrace                                                                |
 | `setUri(string $uri)`                         | The base URI for static resources (see also the Getters section for customization of the component) |
+
+## Renderer
+
+[Phalcon\Support\Debug][debug] is a thin coordinator: it collects the data for an uncaught exception and then delegates
+the HTML generation to a *renderer*. The default renderer is [Phalcon\Support\Debug\Renderer\HtmlRenderer][debug-htmlrenderer],
+which produces the exception page (masthead, error card, tabbed Request/Server/Included Files/Memory/Variables context,
+and collapsible backtrace frames).
+
+You can retrieve or replace the renderer at runtime:
+
+| Method                              | Returns    | Description                            |
+|-------------------------------------|------------|----------------------------------------|
+| `getRenderer()`                     | `Renderer` | Returns the currently active renderer  |
+| `setRenderer(Renderer $renderer)`   | `static`   | Replaces the renderer used for output  |
+
+Every renderer implements [Phalcon\Contracts\Support\Debug\Renderer][debug-renderer-contract]:
+
+```php
+<?php
+
+namespace Phalcon\Contracts\Support\Debug;
+
+use Phalcon\Support\Debug\Report\ExceptionReport;
+
+interface Renderer extends TemplateAware
+{
+    public function getCssSources(string $uri): string;
+
+    public function getJsSources(string $uri): string;
+
+    public function getVersion(): string;
+
+    public function render(ExceptionReport $report): string;
+}
+```
+
+The `render()` method receives a [Phalcon\Support\Debug\Report\ExceptionReport][debug-report] value object holding the
+collected data (class name, message, file, line, backtrace, superglobals, included files, memory usage, and any
+variables added with `debugVar()`). To produce a completely different output (for example JSON for an API, or a
+slimmed-down page), implement the contract and register it:
+
+```php
+<?php
+
+use MyApp\Debug\JsonRenderer;
+use Phalcon\Support\Debug;
+
+$debug = new Debug();
+
+$debug
+    ->setRenderer(new JsonRenderer())
+    ->listen();
+```
+
+### Templates
+
+Rather than concatenating HTML in code, the default renderer keeps its markup in a set of named template strings. Each
+template uses `%placeholder%` tokens that are filled with the relevant data when the page is rendered. Renderers expose
+this through [Phalcon\Contracts\Support\Debug\TemplateAware][debug-templateaware-contract]:
+
+```php
+<?php
+
+namespace Phalcon\Contracts\Support\Debug;
+
+interface TemplateAware
+{
+    public function getTemplate(string $name): string;
+
+    public function setTemplate(string $name, string $template): static;
+}
+```
+
+This lets you tweak a single piece of the output without subclassing the renderer. For instance, to change the version
+badge in the masthead:
+
+```php
+<?php
+
+use Phalcon\Support\Debug;
+
+$debug    = new Debug();
+$renderer = $debug->getRenderer();
+
+$renderer->setTemplate(
+    'version',
+    "<a class='version-badge' href='%link%' target='_new'><b>Phalcon %version%</b></a>"
+);
+
+$debug->listen();
+```
+
+The same `%placeholder%` mechanism is used by [Phalcon\Support\Debug\Dump][debug-dump], which also implements
+`TemplateAware`, so its individual output fragments can be overridden in the same way.
 
 ## Variables
 
@@ -459,13 +555,19 @@ specific failure mode. Existing `catch (Phalcon\Support\Debug\Exception $e)` blo
 | `Phalcon\Support\Debug\Exceptions\RequestHalted`  | `Phalcon\Support\Debug\Exception` | The debug handler aborts the current request after rendering the trace. |
 | `Phalcon\Support\Debug\Exceptions\RuntimeWarning` | `Phalcon\Support\Debug\Exception` | A non-fatal runtime warning is converted into a typed exception.        |
 
-[bootstrap]: https://getbootstrap.com/
-
 [debug]: api/phalcon_support.md#supportdebug
 
 [debug-dump]: api/phalcon_support.md#supportdebugdump
 
 [debug-exception]: api/phalcon_support.md#supportdebugexception
+
+[debug-htmlrenderer]: api/phalcon_support.md#supportdebugrendererhtmlrenderer
+
+[debug-renderer-contract]: api/phalcon_contracts.md#contractssupportdebugrenderer
+
+[debug-report]: api/phalcon_support.md#supportdebugreportexceptionreport
+
+[debug-templateaware-contract]: api/phalcon_contracts.md#contractssupportdebugtemplateaware
 
 [exception]: https://www.php.net/manual/en/language.exceptions.php
 
