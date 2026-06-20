@@ -5,9 +5,9 @@
 !!! info "NOTE"
 
     This component is under active development. The contracts, exception
-    hierarchy, factories and the **Memory**, **Stream** and **Redis** adapters
-    are available now; the Beanstalk adapter and the consumer runner are
-    delivered in later phases and are noted as such.
+    hierarchy, factories and the **Memory**, **Stream**, **Redis** and
+    **Beanstalk** adapters are available now; the consumer runner is delivered
+    in a later phase and is noted as such.
 
 ## Overview
 
@@ -216,9 +216,46 @@ and time to live are not supported - the matching setters throw
 
 ### Beanstalk
 
-!!! info "NOTE"
+`Phalcon\Queue\Adapter\Beanstalk` talks to a [Beanstalkd][beanstalkd] server
+over a dependency-free socket client (no extension required). A queue maps to a
+Beanstalkd *tube*; producers `put` jobs on it and consumers `reserve` them.
 
-    Delivered in a later phase.
+```php
+use Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory;
+
+$context = (new BeanstalkConnectionFactory([
+    'host' => '127.0.0.1',
+    'port' => 11300,
+    'ttr'  => 86400,
+]))->createContext();
+```
+
+Options: `host` (default `127.0.0.1`), `port` (default `11300`), `persistent`
+(use a persistent socket), `ttr` (default time-to-run in seconds for every job,
+default `86400`) and `pollInterval` (milliseconds between subscription poll
+passes, default `200`).
+
+Beanstalk supports both a **delivery delay** (rounded down to whole seconds -
+Beanstalkd's granularity) and **message priority**; it has no message expiry,
+so time to live is not supported and `setTimeToLive()` throws
+`TimeToLiveNotSupportedException`.
+
+A reserved job is not removed until it is acknowledged: `acknowledge()` deletes
+it, while `reject()` releases it back to the tube (with requeue) or buries it.
+Because Beanstalkd gives every reserved job a time-to-run window, the consumer
+implements `Phalcon\Contracts\Queue\VisibilityAware` and exposes `touch()` to
+extend that window for long-running work:
+
+```php
+$consumer = $context->createConsumer($queue);
+$message  = $consumer->receive();
+
+if ($consumer instanceof \Phalcon\Contracts\Queue\VisibilityAware) {
+    $consumer->touch($message); // I need more time
+}
+
+$consumer->acknowledge($message);
+```
 
 ## Consumer
 
@@ -287,3 +324,4 @@ $di->setShared('queue', function () use ($di) {
 [queue-interop]: https://github.com/queue-interop/queue-interop
 [storage]: storage.md
 [cache]: cache.md
+[beanstalkd]: https://beanstalkd.github.io/
