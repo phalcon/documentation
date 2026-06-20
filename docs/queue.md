@@ -4,9 +4,10 @@
 
 !!! info "NOTE"
 
-    This component is under active development. The contracts and exception
-    hierarchy described below are stable; the adapters, consumer runner and
-    factories are delivered in later phases and are noted as such.
+    This component is under active development. The contracts, exception
+    hierarchy, factories and the **Memory** and **Stream** adapters are
+    available now; the Redis and Beanstalk adapters and the consumer runner
+    are delivered in later phases and are noted as such.
 
 ## Overview
 
@@ -32,6 +33,37 @@ The moving parts:
 - **Message** - the payload plus its properties, headers and metadata.
 - **Processor** - your handler for a single message; returns `ACK`, `REJECT`
   or `REQUEUE`.
+
+## Quick start
+
+The Memory adapter needs no external services, so it is the quickest way to
+see the component end to end - produce a message and consume it in the same
+process:
+
+```php
+use Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory;
+
+$context = (new MemoryConnectionFactory())->createContext();
+$queue   = $context->createQueue('emails');
+
+// produce
+$context->createProducer()->send(
+    $queue,
+    $context->createMessage('{"to":"someone@example.com"}')
+);
+
+// consume
+$consumer = $context->createConsumer($queue);
+$message  = $consumer->receiveNoWait();
+
+if ($message !== null) {
+    // ... handle $message->getBody() ...
+    $consumer->acknowledge($message);
+}
+```
+
+The same code runs against any adapter - only the way you build the
+`$context` changes (see [Factories](#factories)).
 
 ## Contracts
 
@@ -86,10 +118,66 @@ below.
 
 ## Adapters
 
+Adapters live under `Phalcon\Queue\Adapter`. Every adapter ships the same set
+of classes (`ConnectionFactory`, `Context`, `Producer`, `Consumer`,
+`Message`, `Queue`, `Topic`, `SubscriptionConsumer`); shared behavior lives in
+the `Phalcon\Queue\Adapter\Abstract*` base classes.
+
+### Memory
+
+`Phalcon\Queue\Adapter\Memory` is a pure in-process, FIFO transport. The named
+queues are held by the `MemoryContext`, so a producer and a consumer created
+from the *same* context share them. There is no persistence and no
+cross-process visibility, which makes it ideal for tests and for in-process
+fan-out where the producer and consumer run in the same PHP process.
+
+Build a context directly:
+
+```php
+use Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory;
+
+$context = (new MemoryConnectionFactory())->createContext();
+```
+
+The Memory transport delivers immediately, so it does not support a delivery
+delay, message priority or a time to live. Calling the matching `Producer`
+setter with a non-null value throws the relevant exception
+(`DeliveryDelayNotSupportedException`, `PriorityNotSupportedException` or
+`TimeToLiveNotSupportedException`).
+
+### Stream
+
+`Phalcon\Queue\Adapter\Stream` stores each queue as an append-only file under a
+configurable directory, using `flock` for cross-process safety. Unlike Memory
+it survives process restarts and can be shared between processes on the same
+host. Each message is one line of `base64(serialize(...))`; produces use an
+`FILE_APPEND | LOCK_EX` write and consumes take the first line under an
+exclusive lock.
+
+```php
+use Phalcon\Queue\Adapter\Stream\StreamConnectionFactory;
+
+$context = (new StreamConnectionFactory([
+    'storageDir'   => '/var/data/queues',
+    'pollInterval' => 200,
+]))->createContext();
+```
+
+Options: `storageDir` (defaults to the system temp directory) and
+`pollInterval` (milliseconds between consumer poll attempts, default `200`).
+Like Memory, the Stream transport does not support delivery delay, priority or
+time to live.
+
+!!! warning "NOTE"
+
+    `flock` is not reliable on NFS; use the Redis adapter for cross-host
+    setups.
+
+### Redis and Beanstalk
+
 !!! info "NOTE"
 
-    Documented as each adapter ships. Planned for v1: **Memory**, **Stream**,
-    **Redis** and **Beanstalk**.
+    Delivered in later phases.
 
 ## Consumer
 
@@ -101,11 +189,59 @@ below.
 
 ## Factories
 
-!!! info "NOTE"
+The factories follow the same conventions as `Phalcon\Storage` and
+`Phalcon\Cache`.
 
-    `Phalcon\Queue\AdapterFactory` and `Phalcon\Queue\QueueFactory` follow the
-    `Phalcon\Storage` / `Phalcon\Cache` factory conventions and are documented
-    when they ship.
+### AdapterFactory
+
+`Phalcon\Queue\AdapterFactory` maps an adapter name to its `ConnectionFactory`:
+
+```php
+use Phalcon\Queue\AdapterFactory;
+
+$adapterFactory    = new AdapterFactory();
+$connectionFactory = $adapterFactory->newInstance('memory');
+$context           = $connectionFactory->createContext();
+```
+
+### QueueFactory
+
+`Phalcon\Queue\QueueFactory` builds a `Context` directly from the standard
+Phalcon config shape (`adapter` plus an optional `options` array). It accepts
+an array or a `Phalcon\Config\Config` object:
+
+```php
+use Phalcon\Queue\QueueFactory;
+
+$factory = new QueueFactory();
+$context = $factory->load(
+    [
+        'adapter' => 'memory',
+        'options' => [],
+    ]
+);
+```
+
+### Dependency injection
+
+`Phalcon\Di\FactoryDefault` and `Phalcon\Di\FactoryDefault\Cli` both register
+a shared `queueFactory` service, so a context can be built from your
+application config:
+
+```php
+$context = $di->get('queueFactory')->load(
+    $di->get('config')->queue
+);
+```
+
+If you prefer a ready-built context available directly as a service, register
+one in your bootstrap:
+
+```php
+$di->setShared('queue', function () use ($di) {
+    return $di->get('queueFactory')->load($di->get('config')->queue);
+});
+```
 
 [queue-interop]: https://github.com/queue-interop/queue-interop
 [storage]: storage.md
