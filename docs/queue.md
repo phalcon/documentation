@@ -2,13 +2,6 @@
 
 - - -
 
-!!! info "NOTE"
-
-    This component is under active development. The contracts, exception
-    hierarchy, factories and the **Memory**, **Stream**, **Redis** and
-    **Beanstalk** adapters are available now; the consumer runner is delivered
-    in a later phase and is noted as such.
-
 ## Overview
 
 The `Phalcon\Queue` namespace provides a first-class queue / messaging
@@ -36,34 +29,105 @@ The moving parts:
 
 ## Quick start
 
-The Memory adapter needs no external services, so it is the quickest way to
-see the component end to end - produce a message and consume it in the same
-process:
+A queue worker is the main use case: enqueue messages, then run a long-running
+process that pulls them and hands each to your code. Write a `Processor` for the
+work, bind it to a queue, and run it inside a `Worker`.
+
+A processor handles one message and returns `ACK`, `REJECT` or `REQUEUE`:
 
 ```php
-use Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory;
+<?php
 
-$context = (new MemoryConnectionFactory())->createContext();
-$queue   = $context->createQueue('emails');
+use Phalcon\Contracts\Queue\Context;
+use Phalcon\Contracts\Queue\Message;
+use Phalcon\Contracts\Queue\Processor;
 
-// produce
-$context->createProducer()->send(
-    $queue,
-    $context->createMessage('{"to":"someone@example.com"}')
-);
+class SendEmailProcessor implements Processor
+{
+    public function process(Message $message, Context $context): string
+    {
+        $payload = json_decode($message->getBody(), true);
 
-// consume
-$consumer = $context->createConsumer($queue);
-$message  = $consumer->receiveNoWait();
+        if (!isset($payload['to'])) {
+            return Processor::REJECT;   // malformed - drop it, no redelivery
+        }
 
-if ($message !== null) {
-    // ... handle $message->getBody() ...
-    $consumer->acknowledge($message);
+        try {
+            // ... the real work ...
+            // $this->mailer->send($payload['to'], $payload['subject'], $payload['body']);
+        } catch (\Throwable $exception) {
+            return Processor::REQUEUE;  // transient failure - put it back
+        }
+
+        return Processor::ACK;          // handled - remove it
+    }
 }
 ```
 
-The same code runs against any adapter - only the way you build the
-`$context` changes (see [Factories](#factories)).
+A worker drains the queue, calling the processor for each message and stopping
+on a lifetime bound or a signal:
+
+```php
+<?php
+
+use Phalcon\Queue\Adapter\Redis\RedisConnectionFactory;
+use Phalcon\Queue\Consumer\QueueConsumer;
+use Phalcon\Queue\Consumer\Worker;
+use Phalcon\Queue\Consumer\WorkerOptions;
+
+// Build the Redis-backed context.
+$context = (new RedisConnectionFactory([
+    'host'   => '127.0.0.1',
+    'port'   => 6379,
+    'prefix' => 'phalcon_queue:',
+]))->createContext();
+
+// Bind each queue to the processor that drains it.
+$consumer = new QueueConsumer($context);
+$consumer->bind(
+    $context->createQueue('emails'),
+    new SendEmailProcessor()
+);
+
+// Stop after 1000 messages, one hour, or 128 MB - whichever comes first.
+$options = new WorkerOptions(
+    1000, // maxMessages
+    3600, // maxSeconds
+    128,  // maxMemory (MB)
+    30    // jitter (seconds)
+);
+
+$processed = (new Worker($consumer, $options))->run();
+
+echo $processed . ' messages processed' . PHP_EOL;
+```
+
+Enqueue work from anywhere in the application:
+
+```php
+<?php
+
+use Phalcon\Queue\Adapter\Redis\RedisConnectionFactory;
+
+$context = (new RedisConnectionFactory(['host' => '127.0.0.1']))->createContext();
+$queue   = $context->createQueue('emails');
+
+$context->createProducer()->send(
+    $queue,
+    $context->createMessage(
+        json_encode([
+            'to'      => 'someone@example.com',
+            'subject' => 'Welcome',
+            'body'    => 'Thanks for signing up.',
+        ])
+    )
+);
+```
+
+The example uses Redis; change the adapter to switch transport (see
+[Adapters](#adapters)), or use the Memory adapter to run it with no external
+services. [Consumer](#consumer) documents the processor semantics, worker
+lifetime options, scaling, the CLI task and events.
 
 ## Contracts
 
@@ -143,12 +207,31 @@ from the *same* context share them. There is no persistence and no
 cross-process visibility, which makes it ideal for tests and for in-process
 fan-out where the producer and consumer run in the same PHP process.
 
-Build a context directly:
+Because it needs no external services, it runs the producer and consumer in the
+same process - useful for tests and for seeing the raw API end to end:
 
 ```php
+<?php
+
 use Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory;
 
 $context = (new MemoryConnectionFactory())->createContext();
+$queue   = $context->createQueue('emails');
+
+// produce
+$context->createProducer()->send(
+    $queue,
+    $context->createMessage('{"to":"someone@example.com"}')
+);
+
+// consume
+$consumer = $context->createConsumer($queue);
+$message  = $consumer->receiveNoWait();
+
+if ($message !== null) {
+    // ... handle $message->getBody() ...
+    $consumer->acknowledge($message);
+}
 ```
 
 The Memory transport delivers immediately, so it does not support a delivery
@@ -277,11 +360,82 @@ continues from the correct tube without any application change.
 
 ## Consumer
 
-!!! info "NOTE"
+The [Quick start](#quick-start) shows the full worker flow end to end. This
+section documents each piece: the `Processor` you write, the `QueueConsumer`
+that dispatches to it, and the `Worker` that runs the loop. The low-level
+`Consumer` - driving the loop yourself, as the [Memory](#memory) example does -
+remains available when you do not want the runner.
 
-    The consumption runner (`QueueConsumer`), the long-running `Worker` (with
-    bounded lifetime and graceful shutdown) and the CLI consumer task are
-    documented when they ship.
+### Processor
+
+A `Phalcon\Contracts\Queue\Processor` is the unit of work for a single message.
+Its `process()` method returns one of the
+[`ACK` / `REJECT` / `REQUEUE`](#processor-return-values) constants, which the
+runner turns into an acknowledge, a discard, or a requeue. A processor that
+throws is caught and the message is rejected. The Quick start has a complete
+`Processor`.
+
+### QueueConsumer
+
+`Phalcon\Queue\Consumer\QueueConsumer` binds one or more queues to their
+processors and drives the consumption loop. It is built from a `Context`, and
+`bind()` registers a queue/processor pair. On each pass it reads the next
+message from every bound queue and calls the processor; the return value becomes
+an `acknowledge()`, a `reject()` (discard), or a `reject()` with requeue. A
+processor that throws is caught and the message is rejected.
+
+`consume()` runs the loop until a timeout in milliseconds (`0` blocks forever).
+For a process with lifetime limits and signal handling, use a `Worker` instead.
+
+### Worker
+
+`Phalcon\Queue\Consumer\Worker` is the operational shell around a
+`QueueConsumer`. It runs the loop until a lifetime bound trips, then returns the
+number of messages processed. With `ext-pcntl` available it installs handlers
+for `SIGTERM`, `SIGINT` and `SIGQUIT` and stops gracefully - the message in
+flight always finishes before the loop ends.
+
+The bounds come from `Phalcon\Queue\Consumer\WorkerOptions`; a value of `0`
+means "no limit". The worker stops on whichever trips first:
+
+- `maxMessages` - maximum number of messages to process
+- `maxSeconds` - maximum run time in seconds
+- `maxMemory` - memory ceiling in megabytes
+- `jitter` - seconds added at random to `maxSeconds`, so a pool of workers does
+  not restart in lockstep
+
+### Running multiple workers
+
+One `Worker` is one process. To process a queue in parallel, run the worker
+script several times under a process supervisor (systemd, Supervisor, or a
+container orchestrator). Every worker reads from the same Redis queue as a
+competing consumer, so each message is delivered to exactly one of them. The
+lifetime bounds let each process exit periodically to release memory, and
+`jitter` staggers those restarts so the pool does not cycle at once.
+
+### Command-line consumer
+
+`Phalcon\Queue\Cli\ConsumerTask` runs a worker from the Phalcon CLI. It reads
+the context from the `queueFactory` service and the `config->queue`
+configuration, binds the queue named in the first argument to the processor
+service named in the second, and runs a `Worker` whose bounds come from the
+command options. It is not registered automatically; add it to your own
+`Phalcon\Cli\Console`.
+
+```bash
+<task> emails sendEmailProcessor \
+    --max-messages=1000 --max-time=3600 --max-memory=128 --jitter=30
+```
+
+### Events
+
+`QueueConsumer` fires lifecycle events through the events manager, named by the
+constants on `Phalcon\Queue\Consumer\Events`: `queue:beforeStart`,
+`queue:beforeReceive`, `queue:afterReceive`, `queue:beforeProcess`,
+`queue:afterProcess`, `queue:processorException` and `queue:afterEnd`. Attach an
+events manager to add logging or metrics. Returning `false` from
+`queue:beforeStart` prevents the run from starting; returning `false` from
+`queue:beforeProcess` skips the current message.
 
 ## Factories
 
