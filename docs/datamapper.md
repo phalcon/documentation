@@ -135,6 +135,12 @@ abstract public function disconnect(): void;
 Disconnects from the database.
 
 ```php
+public function ensureConnection(): void
+```
+
+Ensures the connection is alive, reconnecting in place when the liveness probe fails.
+
+```php
 public function errorCode(): string | null
 ```
 
@@ -258,6 +264,12 @@ public function getAttribute(int $attribute): var
 Retrieve a database connection attribute
 
 ```php
+public function getAutoReconnect(): bool
+```
+
+Returns whether transparent auto-reconnect is enabled.
+
+```php
 public static function getAvailableDrivers(): array
 ```
 
@@ -312,6 +324,13 @@ Performs a query with bound values and returns the resulting PDOStatement; array
 operation will be recorded.
 
 ```php
+public function ping(): bool
+```
+
+Checks whether the underlying connection is still alive by issuing a trivial query. Returns `false` when there is no
+handle or the probe fails.
+
+```php
 public function prepare(
     string $statement,
     array $options = []
@@ -347,6 +366,12 @@ public function setAttribute(int $attribute, mixed $value): bool
 Set a database connection attribute
 
 ```php
+public function setAutoReconnect(bool $autoReconnect): static
+```
+
+Enables or disables transparent auto-reconnect on a lost connection.
+
+```php
 public function setProfiler(ProfilerInterface $profiler)
 ```
 
@@ -372,6 +397,42 @@ protected function performBind(
 ```
 
 Bind a value using the proper `PDO::PARAM_*` type.
+
+#### Connection Liveness and Auto-Reconnect
+
+Long-running processes can keep a connection open longer than the database server permits. When the server closes an
+idle connection, the next statement fails with a "gone away" error. The connection provides a liveness probe and an
+opt-in transparent retry to handle this.
+
+- MySQL recognizes a lost connection from driver error codes `2006` and `2013`
+- PostgreSQL recognizes it from SQLSTATE `08003`, `08006`, `57P01`, `57P02`, and `57P03`, with a message fallback
+- SQLite is file-based and has no "gone away" condition, so auto-reconnect is a no-op
+
+`ping()` runs a `SELECT 1` and returns `true` when the connection is alive, or `false` otherwise. `ensureConnection()`
+calls `ping()` and reconnects in place when the probe fails. The existing `isConnected()` method is unchanged and stays
+a cheap presence check.
+
+Auto-reconnect is disabled by default. When `setAutoReconnect(true)` is set and a statement fails on a lost connection
+outside a transaction, `exec()`, `perform()`, `prepare()`, and `query()` reconnect and retry once. A failure inside a
+transaction is re-thrown without a retry, because the transaction state is lost when the connection drops. This
+connection has no events manager, so it does not fire an event; the `Phalcon\Db\Adapter\Pdo` adapters fire a
+`db:connectionLost` event for the same condition.
+
+```php
+<?php
+
+use Phalcon\DataMapper\Pdo\Connection;
+
+$dsn        = 'mysql:host=127.0.0.1;dbname=phalcon_test;charset=utf8mb4';
+$connection = new Connection($dsn, 'phalcon', 'secret');
+
+$connection->setAutoReconnect(true);
+
+// At the top of a long-running loop
+$connection->ensureConnection();
+
+$invoices = $connection->fetchAll('SELECT inv_id, inv_title FROM co_invoices');
+```
 
 ### Connection - Decorated
 
