@@ -116,12 +116,24 @@ below.
 | `TemporaryQueueNotSupportedException`       | The transport does not support temporary queues.       |
 | `TimeToLiveNotSupportedException`           | The transport does not support a message time to live. |
 
+Transport connection failures - an unreachable server, a failed authentication,
+or a database index that cannot be selected - are surfaced as `Exception`, so
+they are caught through `QueueThrowable` like every other queue error.
+
 ## Adapters
 
 Adapters live under `Phalcon\Queue\Adapter`. Every adapter ships the same set
-of classes (`ConnectionFactory`, `Context`, `Producer`, `Consumer`,
-`Message`, `Queue`, `Topic`, `SubscriptionConsumer`); shared behavior lives in
-the `Phalcon\Queue\Adapter\Abstract*` base classes.
+of classes (`ConnectionFactory`, `Context`, `Producer`, `Consumer`, `Message`,
+`SubscriptionConsumer`). The `Queue` and `Topic` destinations are the shared
+`Phalcon\Queue\Adapter\GenericQueue` and `Phalcon\Queue\Adapter\GenericTopic`,
+returned by every `Context` from `createQueue()` and `createTopic()`. Shared
+behavior lives in the `Phalcon\Queue\Adapter\Abstract*` base classes
+(`AbstractConsumer`, `AbstractMessage` and `AbstractSubscriptionConsumer`).
+
+The server-backed adapters (Stream, Redis and Beanstalk) serialize the message
+envelope - body, properties and headers - to the transport. On receive the
+payload is decoded without allowing object instantiation, so a stored entry
+cannot be used to reconstruct arbitrary PHP objects.
 
 ### Memory
 
@@ -164,7 +176,8 @@ $context = (new StreamConnectionFactory([
 ```
 
 Options: `storageDir` (defaults to the system temp directory) and
-`pollInterval` (milliseconds between consumer poll attempts, default `200`).
+`pollInterval` (milliseconds between poll passes, applied to both the consumer
+and the subscription consumer, default `200`).
 Like Memory, the Stream transport does not support delivery delay, priority or
 time to live.
 
@@ -256,6 +269,11 @@ if ($consumer instanceof \Phalcon\Contracts\Queue\VisibilityAware) {
 
 $consumer->acknowledge($message);
 ```
+
+The socket client reconnects automatically when the connection to the server is
+lost. A reconnect replays the session state the consumer established, so the
+tube it watches - and the tube a producer uses - is restored and consumption
+continues from the correct tube without any application change.
 
 ## Consumer
 
