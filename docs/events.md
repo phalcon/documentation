@@ -1555,6 +1555,10 @@ The events available in Phalcon are:
 | [Application][application]  | `application:beforeStartModule`      | Application, Module                                     |
 | [Application][application]  | `application:boot`                   | Application                                             |
 | [Application][application]  | `application:viewRender`             | Application, View                                       |
+| [Auth][auth]                | `auth:afterLogin`                    | Auth                                                    |
+| [Auth][auth]                | `auth:afterLogout`                   | Auth, User                                              |
+| [Auth][auth]                | `auth:beforeLogin`                   | Auth                                                    |
+| [Auth][auth]                | `auth:beforeLogout`                  | Auth, User                                              |
 | [Cache][cache]              | `cache:afterSet`                     | Cache                                                   |
 | [Cache][cache]              | `cache:afterGet`                     | Cache                                                   |
 | [Cache][cache]              | `cache:afterHas`                     | Cache                                                   |
@@ -1567,6 +1571,12 @@ The events available in Phalcon are:
 | [Cache][cache]              | `cache:beforeIncrement`              | Cache                                                   |
 | [Cache][cache]              | `cache:beforeDecrement`              | Cache                                                   |
 | [Cache][cache]              | `cache:beforeDelete`                 | Cache                                                   |
+| [Cache][cache]              | `cache:afterGetMultiple`             | Cache                                                   |
+| [Cache][cache]              | `cache:afterSetMultiple`             | Cache                                                   |
+| [Cache][cache]              | `cache:afterDeleteMultiple`          | Cache                                                   |
+| [Cache][cache]              | `cache:beforeGetMultiple`            | Cache                                                   |
+| [Cache][cache]              | `cache:beforeSetMultiple`            | Cache                                                   |
+| [Cache][cache]              | `cache:beforeDeleteMultiple`         | Cache                                                   |
 | [CLI][application-cli]      | `dispatch:beforeException`           | Console, Exception                                      |
 | [Console][application-cli]  | `console:afterHandleTask`            | Console, Task                                           |
 | [Console][application-cli]  | `console:afterStartModule`           | Console, Module                                         |
@@ -1575,6 +1585,7 @@ The events available in Phalcon are:
 | [Console][application-cli]  | `console:boot`                       | Console                                                 |
 | [Db][db-layer]              | `db:afterQuery`                      | Db                                                      |
 | [Db][db-layer]              | `db:beforeQuery`                     | Db                                                      |
+| [Db][db-layer]              | `db:connectionLost`                  | Db                                                      |
 | [Db][db-layer]              | `db:beginTransaction`                | Db                                                      |
 | [Db][db-layer]              | `db:createSavepoint`                 | Db, Savepoint Name                                      |
 | [Db][db-layer]              | `db:commitTransaction`               | Db                                                      |
@@ -1730,6 +1741,8 @@ failure mode. Existing `catch (Phalcon\Events\Exception $e)` blocks continue to 
 [application]: application.md
 
 [application-cli]: application-cli.md
+
+[auth]: auth.md
 
 [cache]: cache.md
 
