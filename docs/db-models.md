@@ -1801,6 +1801,62 @@ The ORM expects camel case naming and underscores are commonly removed. It is th
 properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure
 proper mapping of your properties to their database counterparts.
 
+### Setters During Hydration
+
+When the ORM loads records from the database - through `find()`, `findFirst()`, or any other path that runs through
+`Phalcon\Mvc\Model::cloneResultMap()` - it hydrates each row into a model instance. By default, hydration assigns the
+column values directly to the model properties and does not call setter methods.
+
+This default keeps setter side effects out of the load path. A setter that runs an ORM query would otherwise execute on
+every hydrated record, and a setter that queries its own model would recurse: each `findFirst()` call hydrates a record,
+which calls the setter, which calls `findFirst()` again.
+
+To call setters during hydration, enable `orm.call_setters_on_hydration` (default `false`):
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+use Phalcon\Support\Settings;
+
+Settings::set('orm.call_setters_on_hydration', true);
+
+// Setters now run while records are hydrated by find() / findFirst()
+$invoice = Invoices::findFirst('inv_id = 4');
+```
+
+The ORM calls `set` followed by the camel-cased column name. For the `inv_title` column it calls `setInvTitle()`:
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    public $inv_title;
+
+    public function setInvTitle(?string $title): void
+    {
+        $this->inv_title = strtoupper((string) $title);
+    }
+}
+```
+
+With `orm.call_setters_on_hydration` enabled, `findFirst()` stores the upper-cased title. With the default, the raw
+database value is stored.
+
+Hydration setters are independent of `Phalcon\Mvc\Model::assign()`. `assign()` - used for mass assignment, for example
+from `$_POST` - calls setters by default, and that behavior is controlled by the separate `orm.disable_assign_setters`
+setting. Changing one setting does not affect the other.
+
+!!! warning "WARNING"
+
+    Calling setters during hydration runs user code for every loaded record. Avoid setters that issue ORM queries or
+    other expensive operations when this setting is enabled.
+
 ## Records To Objects
 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties.

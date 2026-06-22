@@ -50,11 +50,12 @@ Only the keys listed below are recognised. Calls to `set()` for any other key ar
 | `db.escape_identifiers`                 | `bool` | Escape identifiers in generated SQL                                                                                    |
 | `db.force_casting`                      | `bool` | Force bind-parameter casting in PDO                                                                                    |
 | `form.strict_entity_property_check`     | `bool` | Strict property-existence check in `Form::bind()`                                                                      |
+| `orm.call_setters_on_hydration`         | `bool` | Call model setters during ORM hydration (`find()` / `findFirst()`); `false` (default) skips them                       |
 | `orm.case_insensitive_column_map`       | `bool` | Case-insensitive lookup of column-map keys                                                                             |
 | `orm.cast_last_insert_id_to_int`        | `bool` | Cast `lastInsertId` to `int` on auto-increment columns                                                                 |
 | `orm.cast_on_hydrate`                   | `bool` | Cast values to the column type during hydration                                                                        |
 | `orm.column_renaming`                   | `bool` | Honour the column-map during attribute lookup                                                                          |
-| `orm.disable_assign_setters`            | `bool` | Skip setter methods in `Model::assign()` / `cloneResultMap()`                                                          |
+| `orm.disable_assign_setters`            | `bool` | Skip setter methods in `Model::assign()` only (not hydration; see `orm.call_setters_on_hydration`)                     |
 | `orm.dynamic_update`                    | `bool` | Issue `UPDATE` statements only for changed columns                                                                     |
 | `orm.enable_implicit_joins`             | `bool` | Allow PHQL to auto-join related models                                                                                 |
 | `orm.enable_literals`                   | `bool` | Allow literals on the right-hand side of PHQL expressions                                                              |
