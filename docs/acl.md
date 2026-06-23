@@ -46,9 +46,11 @@ designated components.
 
 ## Activation
 
-[Phalcon\Acl][acl-acl] uses adapters to manage roles and components. Currently the built-in adapter
-is [Phalcon\Acl\Adapter\Memory][acl-adapter-memory]. The memory adapter is fast but non-persistent, so you should
-persist the ACL (cache or file) in production to avoid rebuilding it on every request.
+[Phalcon\Acl][acl-acl] uses adapters to manage roles and components. Two adapters are built in:
+[Phalcon\Acl\Adapter\Memory][acl-adapter-memory] and [Phalcon\Acl\Adapter\Storage](#storage-adapter). The memory
+adapter is fast but non-persistent, so you should persist the ACL (cache or file) in production to avoid rebuilding it
+on every request. The [storage adapter](#storage-adapter) does this for you by saving the whole policy to a
+[Phalcon\Storage][storage] backend.
 
 The [Phalcon\Acl][acl-acl] constructor takes an adapter as its first parameter for retrieving information related to the
 control list.
@@ -476,6 +478,12 @@ interfaces:
 * [Phalcon\Acl\RoleAwareInterface][acl-roleaware] for Role
 * [Phalcon\Acl\ComponentAwareInterface][acl-componentaware] for Component
 
+!!! info
+
+    These two interfaces are deprecated bridges to `Phalcon\Contracts\Acl\RoleAware` and
+    `Phalcon\Contracts\Acl\ComponentAware`. The examples below still work unchanged; new code should implement the
+    contracts. See [Contracts](#contracts).
+
 ### Role
 
 You can implement the [Phalcon\Acl\RoleAwareInterface][acl-roleaware] in your custom class with its own logic. The
@@ -731,6 +739,75 @@ if ($acl->isAllowed('manager', 'admin', 'dashboard')) {
 It is a good practice to not serialize the ACL during development to ensure that your ACL is rebuilt with every request,
 while other adapters or means of serializing and storing the ACL in production.
 
+## Storage Adapter
+
+`Phalcon\Acl\Adapter\Storage` extends the memory adapter and persists the whole policy to any
+[Phalcon\Storage][storage] backend — Redis, Apcu, Stream or Memcached. It replaces the manual
+`serialize()`/`unserialize()` step shown above: the policy is saved as a single snapshot and reloaded automatically when
+the adapter is constructed.
+
+The constructor takes a storage adapter and an optional cache key (default `acl-data`). All access checks still run in
+memory, exactly as they do with the memory adapter; the backend is only a snapshot store.
+
+```php
+<?php
+
+use Phalcon\Acl\Adapter\Storage;
+use Phalcon\Storage\Adapter\Stream;
+use Phalcon\Storage\SerializerFactory;
+
+$backend = new Stream(
+    new SerializerFactory(),
+    [
+        'storageDir' => '/app/storage/acl',
+    ]
+);
+
+// Loads an existing snapshot from the backend if one is present
+$acl = new Storage($backend, 'acl-data');
+
+// Build the policy once
+$acl->addRole('manager');
+$acl->addComponent('reports', ['list', 'add', 'view']);
+$acl->allow('manager', 'reports', 'list');
+
+// Persist the snapshot to the backend
+$acl->save();
+```
+
+On a later request, constructing the adapter against the same backend restores the policy without rebuilding it:
+
+```php
+<?php
+
+use Phalcon\Acl\Adapter\Storage;
+use Phalcon\Storage\Adapter\Stream;
+use Phalcon\Storage\SerializerFactory;
+
+$backend = new Stream(
+    new SerializerFactory(),
+    [
+        'storageDir' => '/app/storage/acl',
+    ]
+);
+
+// The constructor calls load(), repopulating roles, components and access
+$acl = new Storage($backend, 'acl-data');
+
+// Returns `true` from the restored snapshot
+$acl->isAllowed('manager', 'reports', 'list');
+```
+
+The adapter implements the `Phalcon\Contracts\Acl\Adapter\Persistable` contract, which declares `save(): bool` and
+`load(): bool`. `save()` writes the current policy; `load()` replaces the in-memory policy with the stored snapshot and
+returns `false` when the backend holds no snapshot, leaving an empty policy.
+
+!!! warning "Callable rules are not persisted"
+
+    Function-based rules registered through the closure form of `allow()` and `deny()` are not part of the snapshot,
+    because closures cannot be serialized. The static rule set and role inheritance are saved in full, but any closure
+    rules must be re-registered in code after the adapter loads. See [Function-Based Access](#function-based-access).
+
 ## Events
 
 [Phalcon\Acl][acl-acl] can work in conjunction with the [Events Manager][events] if present, to fire events to your
@@ -779,8 +856,29 @@ $acl->setEventsManager($eventsManager);
 
 ## Custom
 
-The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must be implemented to create your own ACL
-adapters or extend the existing ones.
+Implement the `Phalcon\Contracts\Acl\Adapter\Adapter` contract to create your own ACL adapter or extend an existing one.
+The legacy [Phalcon\Acl\Adapter\AdapterInterface][acl-adapter-adapterinterface] interface still works — it now extends
+that contract — but it is deprecated. See [Contracts](#contracts).
+
+## Contracts
+
+The ACL interfaces now live in the `Phalcon\Contracts\Acl` namespace, which is their canonical home. The new
+`Phalcon\Contracts\Acl\Adapter\Persistable` contract used by the [storage adapter](#storage-adapter) is defined there as
+well.
+
+The legacy interfaces remain as deprecated bridges that extend the new contracts, so existing type hints and
+`instanceof` checks keep working without any change. New code should use the replacements below.
+
+| Deprecated interface                   | Replacement contract                    |
+|----------------------------------------|-----------------------------------------|
+| `Phalcon\Acl\Adapter\AdapterInterface` | `Phalcon\Contracts\Acl\Adapter\Adapter` |
+| `Phalcon\Acl\RoleInterface`            | `Phalcon\Contracts\Acl\Role`            |
+| `Phalcon\Acl\ComponentInterface`       | `Phalcon\Contracts\Acl\Component`       |
+| `Phalcon\Acl\RoleAwareInterface`       | `Phalcon\Contracts\Acl\RoleAware`       |
+| `Phalcon\Acl\ComponentAwareInterface`  | `Phalcon\Contracts\Acl\ComponentAware`  |
+
+`Phalcon\Acl\Adapter\Memory::getActiveKey()` is also deprecated. Use `getActiveRole()`, `getActiveComponent()` and
+`getActiveAccess()` to read the role, component and access currently being checked.
 
 ## Exceptions
 
@@ -850,6 +948,8 @@ mode. Legacy `catch (Phalcon\Acl\Exception $e)` still works because every subcla
 [acl-roleinterface]: api/phalcon_acl.md#aclroleawareinterface
 
 [codeception]: https://codeception.com
+
+[storage]: storage.md
 
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
 
