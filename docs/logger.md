@@ -9,16 +9,10 @@ different back-ends using different adapters. It also offers transaction logging
 logging formats. You can use the [Phalcon\Logger\Logger][logger-logger] for any logging need your application has, from
 debugging processes to tracing application flow.
 
-The [Phalcon\Logger\Logger][logger-logger] implements methods that are in line with [PSR-3][psr-3], but does not
-implement the particular interface. A package that implements [PSR-3][psr-3] is available, that
-uses [Phalcon\Logger\Logger][logger-logger]. The package is located [here][proxy-psr3]. To use it, you will need to have
-Phalcon installed and then using composer you can install the proxy package.
-
-```sh
-composer require phalcon/proxy-psr3
-```
-
-Using the proxy classes allows you to follow [PSR-3][psr-3] and use it with any other package that needs that interface.
+The [Phalcon\Logger\Logger][logger-logger] implements methods that are in line with [PSR-3][psr-3] but does not
+implement `Psr\Log\LoggerInterface` directly. The [phalcon/bridge-psr3][bridge-psr3] package bridges the two standards
+in both directions: the Phalcon logger can be consumed as a PSR-3 logger, and a PSR-3 logger can be used as a Phalcon
+log adapter. See the PSR-3 section below for installation and usage.
 
 The [Phalcon\Logger\Logger][logger-logger] implements only the logging functionality and accepts one or more adapters
 that would be responsible for doing the work of logging. This implementation separates the responsibilities of the
@@ -956,6 +950,82 @@ $logger = $container->getShared('logger');
 
 ```
 
+## PSR-3
+
+[Phalcon\Logger\Logger][logger-logger] implements methods that are in line with [PSR-3][psr-3] but does not implement
+`Psr\Log\LoggerInterface` directly. The [phalcon/bridge-psr3][bridge-psr3] package bridges the two standards in both
+directions.
+
+- Requires PHP 8.1 or later
+- Works with the Phalcon C extension or the `phalcon/phalcon` package
+- Targets `psr/log` (PSR-3) version 3
+
+Install the package with composer:
+
+```sh
+composer require phalcon/bridge-psr3
+```
+
+The package provides two classes, one for each direction.
+
+### Phalcon Logger as a PSR-3 Logger
+
+`Phalcon\Bridge\Psr3\Logger` is a `Psr\Log\LoggerInterface` backed by Phalcon logging adapters. Use it when a component
+requires a PSR-3 logger and the output needs to pass through Phalcon. The constructor matches
+[Phalcon\Logger\Logger][logger-logger]: a name and an array of named adapters.
+
+```php
+<?php
+
+use Phalcon\Bridge\Psr3\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$logger = new Logger(
+    'application',
+    [
+        'main' => new Stream('/storage/logs/application.log'),
+    ]
+);
+
+// $logger is a Psr\Log\LoggerInterface
+$logger->info('Order placed');
+$logger->error('Payment gateway timed out');
+```
+
+The returned object can be passed to any consumer that type-hints `Psr\Log\LoggerInterface`.
+
+### PSR-3 Logger as a Phalcon Adapter
+
+`Phalcon\Bridge\Psr3\Adapter` is a Phalcon log adapter that forwards every message to a wrapped
+`Psr\Log\LoggerInterface`. Use it when a PSR-3 logger already exists, such as Monolog, and it needs to act as a Phalcon
+logging back-end. Register it on a [Phalcon\Logger\Logger][logger-logger] like any other adapter.
+
+```php
+<?php
+
+use Monolog\Logger as Monolog;
+use Phalcon\Bridge\Psr3\Adapter;
+use Phalcon\Logger\Logger;
+
+$psr = new Monolog('application');
+
+$logger = new Logger(
+    'application',
+    [
+        'psr' => new Adapter($psr),
+    ]
+);
+
+// The message is forwarded to the PSR-3 logger
+$logger->warning('Disk space is low');
+```
+
+The result is a [Phalcon\Logger\Logger][logger-logger], so it can be injected wherever Phalcon expects a logger, such as
+the DataMapper profiler.
+
+Phalcon level names map to the matching PSR-3 levels. The two Phalcon-only levels, `CUSTOM` (`8`) and `TRACE` (`9`), are
+forwarded to the PSR-3 `debug` level, because PSR-3 defines no equivalent.
+
 ## Contracts
 
 The canonical interfaces for this component live in the `Phalcon\Contracts\Logger` namespace, with the `Interface`
@@ -1051,7 +1121,7 @@ failure mode. Existing `catch (Phalcon\Logger\Exception $e)` blocks continue to 
 
 [logger-item]: api/phalcon_logger.md#loggeritem
 
-[proxy-psr3]: https://github.com/phalcon/proxy-psr3
+[bridge-psr3]: https://github.com/phalcon/bridge-psr3
 
 [psr-3]: https://www.php-fig.org/psr/psr-3/
 
