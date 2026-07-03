@@ -4,152 +4,92 @@
 
 ## Overview
 
-Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most
-functional bugs and better maintain your software.
+Tests protect your application. A test suite catches regressions before they reach production and documents how your code is meant to behave. This page shows how to test a Phalcon application with [Talon][talon], the Phalcon test harness. Talon fronts PHPUnit and provides ready-to-extend base classes, so you write tests with minimal boilerplate.
 
-## Integrating PHPUnit with Phalcon
+This page covers unit tests. For database, functional, and browser tests, and the full list of base classes and helpers, see the [Talon][talon] reference. To build and test the framework itself, see the [Testing environment][testing-environment] guide.
+
+## Install
+
+Add PHPUnit and Talon as development dependencies:
 
 ```bash
-composer require --dev phpunit/phpunit:^9.0
+composer require --dev phpunit/phpunit phalcon/talon
 ```
 
-or by manually adding it to `composer.json`:
+Talon runs on both the Phalcon v5 C extension and the Phalcon v6 `phalcon/phalcon` package, and uses whichever is present.
 
-```json
-{
-  "require-dev": {
-    "phpunit/phpunit": "^9.0"
-  }
-}
-```
+## Directory Layout
 
-Once PHPUnit is installed, create a directory called `tests` in project root directory with a subdirectory called
-`Unit`:
+Create a `tests` directory with a `Unit` subdirectory and a bootstrap file:
 
 ```
-app/
-src/
 public/
-tests/Unit/
+src/
+tests/
+    Unit/
+    bootstrap.php
 ```
 
-### Configure Test Namespace
+## Autoload the Test Namespace
 
-In order to autoload our test directory, we must add our test namespace to composer. Add the below to composer and
-modify it to fit your needs.
+Map a test namespace to the `tests` directory in `composer.json`:
 
 ```json
 {
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests"
-    }
-  }
-}
-```
-
-Now, create a `phpunit.xml` file as follows:
-
-### The `phpunit.xml` file
-
-Modify the `phpunit.xml` below to fit your needs and save it in your project root directory. This will run any tests
-under the `tests/Unit` directory.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         verbose="true"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
-
-    <testsuite name="Phalcon - Unit Test">
-        <directory>./tests/Unit</directory>
-    </testsuite>
-</phpunit>
-```
-
-### Phalcon Incubator Test
-
-Phalcon provides a test library that provides a few abstract classes you can use to bootstrap the Unit Tests themselves.
-These files exist in [Phalcon Incubator Test](https://github.com/phalcon/incubator-test) repository.
-
-You can use the Incubator test library by adding it as a dependency:
-
-```bash
-composer require --dev phalcon/incubator-test:^v1.0.0-alpha.1
-```
-
-or by manually adding it to `composer.json`:
-
-```json
-{
-    "require-dev": {
-        "phalcon/incubator-test": "^v1.0.0-alpha.1"
-    }
-}
-```
-
-## Creating a Unit Test
-
-It is always wise to autoload your classes using namespaces. The configuration below assumes that you are using PSR-4 to
-autoload your project classes via a composer configuration. Doing so, the autoloader will make sure the proper files are
-loaded so all you need to do is create the files, and phpunit will run the tests for you.
-
-This example does not contain a config file, as in most cases you should be mocking your dependencies. If you happen to
-need one, you can add it to the `DI` in the `AbstractUnitTest`.
-
-### Abstract Unit Test
-
-First, create a base Unit Test called `AbstractUnitTest.php` in your `tests/Unit` directory:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace Tests\Unit;
-
-use Phalcon\Di\Di;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Incubator\Test\PHPUnit\UnitTestCase;
-use PHPUnit\Framework\IncompleteTestError;
-
-abstract class AbstractUnitTest extends UnitTestCase
-{
-    private bool $loaded = false;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $di = new FactoryDefault();
-
-        Di::reset();
-        Di::setDefault($di);
-
-        $this->loaded = true;
-    }
-
-    public function __destruct()
-    {
-        if (!$this->loaded) {
-            throw new IncompleteTestError(
-                "Please run parent::setUp()."
-            );
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     }
 }
 ```
 
-### Your First Test
+Refresh the autoloader after editing `composer.json`:
 
-Create the test below and save it in your `tests/Unit` directory.
+```bash
+composer dump-autoload
+```
+
+## Bootstrap
+
+Boot Talon from `tests/bootstrap.php`. The one-liner form reads its configuration from the environment:
+
+```php
+<?php
+
+// tests/bootstrap.php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Phalcon\Talon\Settings;
+use Phalcon\Talon\Talon;
+
+Talon::boot(Settings::fromEnv());
+```
+
+## PHPUnit Configuration
+
+Save a `phpunit.xml.dist` file in the project root. It points PHPUnit at the bootstrap file and the `tests/Unit` directory:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache">
+    <testsuites>
+        <testsuite name="unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+```
+
+## Write a Test
+
+Unit test classes extend `Phalcon\Talon\PHPUnit\AbstractUnitTestCase`. Beyond the standard PHPUnit assertions, the base class adds reflection helpers such as `callProtectedMethod()`, so you can exercise internal logic without changing its visibility:
 
 ```php
 <?php
@@ -158,69 +98,69 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-class UnitTest extends AbstractUnitTest
-{
-    public function testTestCase(): void
-    {
-        $this->assertEquals(
-            "roman",
-            "roman",
-            "This will pass"
-        );
+use App\Calculator;
+use Phalcon\Talon\PHPUnit\AbstractUnitTestCase;
 
-        $this->assertEquals(
-            "hope",
-            "ava",
-            "This will fail"
+final class CalculatorTest extends AbstractUnitTestCase
+{
+    public function testAdd(): void
+    {
+        $calculator = new Calculator();
+
+        $this->assertSame(5, $calculator->add(2, 3));
+    }
+
+    public function testProtectedRounding(): void
+    {
+        $calculator = new Calculator();
+
+        $this->assertSame(
+            3,
+            $this->callProtectedMethod($calculator, 'roundValue', 2.5)
         );
     }
 }
 ```
 
-If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
+`AbstractUnitTestCase` also provides `getProtectedProperty()`, `setProtectedProperty()`, `invokeMethod()`, and filesystem helpers such as `getNewFileName()` and `safeDeleteFile()`. See the [Talon][talon] page for the full list.
 
-```php
-    protected function setUp(): void
-    {
-        parent::setUp();
-        
-        //...
-    }
-````
+## Run the Tests
 
-### Running Unit Tests
-
-When you execute `vendor/bin/phpunit` in your command line, you will get the following output:
+Run the suite with PHPUnit:
 
 ```bash
-$ phpunit
-PHPUnit 9.5.23 by Sebastian Bergmann and contributors.
+vendor/bin/phpunit
+```
 
-Runtime:       PHP 8.1.8 with Xdebug 3.1.5
-Configuration: /var/www//phpunit.xml
+Talon also discovers `phpunit.xml.dist` as the `unit` suite, so you can run it through the Talon runner:
 
-Time: 3 ms, Memory: 3.25Mb
+```bash
+vendor/bin/talon run
+```
 
+A failing assertion is reported by PHPUnit:
+
+```bash
 There was 1 failure:
 
-1) Test\Unit\UnitTest::testTestCase
-This will fail
-Failed asserting that two strings are equal.
---- Expected
-+++ Actual
-@@ @@
--'hope'
-+'ava'
+1) Tests\Unit\CalculatorTest::testAdd
+Failed asserting that 4 is identical to 5.
 
-/var/www/tests/Unit/UnitTest.php:25
+/app/tests/Unit/CalculatorTest.php:16
 
 FAILURES!
-Tests: 1, Assertions: 2, Failures: 1.
+Tests: 2, Assertions: 2, Failures: 1.
 ```
+
+## Next Steps
+
+- Database, functional, and browser tests, and the full base-class and trait reference: the [Talon][talon] page.
+- Building and testing the Phalcon extension itself: the [Testing environment][testing-environment] guide.
 
 ## Resources
 
-- [PHPUnit Documentation](https://phpunit.de/documentation.html)
-- [Getting Started with TDD in PHP](https://www.sitepoint.com/re-introducing-phpunit-getting-started-tdd-php/)
-- [Writing Great Unit Tests](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/)
-- [What Is Mocking In PHP Unit Testing](https://www.clariontech.com/blog/what-is-mocking-in-php-unit-testing)
+- [PHPUnit documentation][phpunit]
+
+[phpunit]: https://phpunit.de
+[talon]: talon.md
+[testing-environment]: testing-environment.md
