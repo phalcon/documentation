@@ -4,8 +4,7 @@
 
 ## Overview
 
-[Phalcon\Filter\Validation][validation] is an independent validation component that validates an arbitrary set of data.
-This component can be used to implement validation rules on data objects that do not belong to a model or collection.
+[Phalcon\Filter\Validation][validation] is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
 The following example shows its basic usage:
 
@@ -54,8 +53,7 @@ if (count($messages)) {
 }
 ```
 
-The loosely-coupled design of this component allows you to create your own validators along with the ones provided by
-the framework.
+The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
 ## Methods
 
@@ -90,8 +88,7 @@ public function bind(
 ): ValidationInterface
 ```
 
-Assigns the data to an entity. The entity is used to obtain the validation values. When `$whitelist` is supplied, only
-the fields listed in it will be assigned to the entity; all other fields are skipped.
+Assigns the data to an entity. The entity is used to obtain the validation values. When `$whitelist` is supplied, only the fields listed in it will be assigned to the entity; all other fields are skipped.
 
 ```php
 public function getEntity(): object
@@ -198,8 +195,7 @@ public function validate(
 ): Messages
 ```
 
-Validate a set of data according to a set of rules. When `$whitelist` is supplied, only the listed fields are bound to
-`$entity`; validation itself still runs over all configured fields.
+Validate a set of data according to a set of rules. When `$whitelist` is supplied, only the listed fields are bound to `$entity`; validation itself still runs over all configured fields.
 
 ```php
 public function fails(): bool
@@ -227,9 +223,7 @@ if ($validation->fails()) {
 
 ## Activation
 
-Validation chains can be initialized in a direct manner by just adding validators to
-the [Phalcon\Filter\Validation][validation] object. You can put your validations in a separate file for better code
-reuse and organization.
+Validation chains can be initialized in a direct manner by adding validators to the [Phalcon\Filter\Validation][validation] object. You can put your validations in a separate file for better code reuse and organization.
 
 ```php
 <?php
@@ -401,9 +395,7 @@ $validator->add(
 
 ### Between
 
-Validates that a value is between an inclusive range of two values. The validation passes if for a value `L`, the
-minimum is less or equal to `L`, and `L` is less or equal to the maximum. The boundaries are included in this
-validation. The formula is:
+Validates that a value is between an inclusive range of two values. The validation passes if for a value `L`, the minimum is less or equal to `L`, and `L` is less or equal to the maximum. The boundaries are included in this validation. The formula is:
 
 ```
 minimum <= value <= maximum
@@ -454,11 +446,7 @@ $validator->add(
 
 ### Callback
 
-By using [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] you can execute a custom function
-that must return boolean or a new validator class which will be used to validate the same field. By returning `true`
-validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will
-pass data depending on what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then the entity will be passed,
-otherwise data (i.e. an array like `$_POST`). There is an example:
+By using [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] you can execute a custom function that must return boolean or a new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending on what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then the entity will be passed, otherwise data (i.e. an array like `$_POST`). There is an example:
 
 ```php
 <?php
@@ -725,8 +713,7 @@ $validator->add(
 
 ### Email
 
-Checks if a value has a correct e-mail format. If the data to be validated contains UTF-8 characters, you can set the
-`allowUTF8` option to `true` to allow them.
+Checks if a value has a correct e-mail format. If the data to be validated contains UTF-8 characters, you can set the `allowUTF8` option to `true` to allow them.
 
 ```php
 <?php
@@ -946,9 +933,7 @@ $validator->add(
 
 Checks if a file has the exact aspect ratio
 
-The `ratio` option uses the same `WxH` format as the resolution validators (for instance `16x9`). The comparison uses
-integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches `16x9`, 1366x768
-does not. The message supports the `:ratio` placeholder. Available as of 5.14.2.
+The `ratio` option uses the same `WxH` format as the resolution validators (for instance `16x9`). The comparison uses integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches `16x9`, 1366x768 does not. The message supports the `:ratio` placeholder. Available as of 5.14.2.
 
 ```php
 <?php
@@ -1494,9 +1479,7 @@ $validation->add(
 
 ### StringLength
 
-Validates that a string has the specified maximum and minimum constraints. The validation passes if for a string length
-`L`, the minimum is less or equal to `L` and `L` is less or equal to the maximum. The boundaries are included in this
-validation. The formula is:
+Validates that a string has the specified maximum and minimum constraints. The validation passes if for a string length `L`, the minimum is less or equal to `L` and `L` is less or equal to the maximum. The boundaries are included in this validation. The formula is:
 
 ```
 minimum <= string length <= maximum
@@ -1564,8 +1547,7 @@ $validation->add(
 
 ### StringLength Max
 
-Validates that a string has the specified maximum constraints. The validation passes if for a string length `L` it is
-less or equal to the maximum. The formula is:
+Validates that a string has the specified maximum constraints. The validation passes if for a string length `L` it is less or equal to the maximum. The formula is:
 
 ```
 string length <= maximum
@@ -1616,8 +1598,7 @@ $validation->add(
 
 ### StringLength Min
 
-Validates that a string has the specified minimum constraints. The validation passes if for a string length `L` it is
-more or equal to the minimum. The formula is:
+Validates that a string has the specified minimum constraints. The validation passes if for a string length `L` it is more or equal to the minimum. The formula is:
 
 ```
 minimum <= string length 
@@ -1735,8 +1716,7 @@ $validator->add(
 );
 ```
 
-It is possible to convert values before validation. This is useful in situations where values need to be converted for
-the database lookup:
+It is possible to convert values before validation. This is useful in situations where values need to be converted for the database lookup:
 
 ```php
 <?php
@@ -1860,8 +1840,7 @@ $validator->add(
 );
 ```
 
-You can also pass the `flags` option in the array, defining `FILTER_FLAG_PATH_REQUIRED` or `FILTER_FLAG_QUERY_REQUIRED`
-if necessary.
+You can also pass the `flags` option in the array, defining `FILTER_FLAG_PATH_REQUIRED` or `FILTER_FLAG_QUERY_REQUIRED` if necessary.
 
 ```php
 <?php
@@ -1924,11 +1903,7 @@ $messages = $validation->validate(
 
 ### Custom Validators
 
-You can create your own validators by implementing
-the [Phalcon\Filter\Validation\ValidatorInterface][validation-validatorinterface]
-or [Phalcon\Filter\Validation\Validator\CompositeInterface][validation-validatorcompositeinterface]. You can also extend
-the [Phalcon\Filter\Validation\AbstractCombinedFieldsValidator][validation-abstractcombinedfieldsvalidator], [Phalcon\Filter\Validation\AbstractValidator][validation-abstractvalidator]
-or [Phalcon\Filter\Validation\AbstractValidatorComposite][validation-abstractvalidatorcomposite].
+You can create your own validators by implementing the [Phalcon\Filter\Validation\ValidatorInterface][validation-validatorinterface] or [Phalcon\Filter\Validation\Validator\CompositeInterface][validation-validatorcompositeinterface]. You can also extend the [Phalcon\Filter\Validation\AbstractCombinedFieldsValidator][validation-abstractcombinedfieldsvalidator], [Phalcon\Filter\Validation\AbstractValidator][validation-abstractvalidator] or [Phalcon\Filter\Validation\AbstractValidatorComposite][validation-abstractvalidatorcomposite].
 
 ```php
 <?php
@@ -1981,12 +1956,9 @@ It is important that validators return a valid `boolean` value indicating if the
 
 ## Messages
 
-[Phalcon\Filter\Validation][validation] utilizes the [Phalcon\Messages\Messages][messages-messages] collection,
-providing a flexible way to output or store the validation messages generated during the validation processes.
+[Phalcon\Filter\Validation][validation] utilizes the [Phalcon\Messages\Messages][messages-messages] collection, providing a flexible way to output or store the validation messages generated during the validation processes.
 
-Each message consists of an instance of the class [Phalcon\Messages\Message][messages-message]. The set of messages
-generated can be retrieved with the `getMessages()` method. Each message provides extended information such as the field
-that generated the message or the message type:
+Each message consists of an instance of the class [Phalcon\Messages\Message][messages-message]. The set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information such as the field that generated the message or the message type:
 
 ```php
 <?php
@@ -2002,8 +1974,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a `message` parameter to change/translate the default message in each validator. You can also use the
-placeholder `:field` in the message to be replaced by the label of the field:
+You can pass a `message` parameter to change/translate the default message in each validator. You can also use the placeholder `:field` in the message to be replaced by the label of the field:
 
 ```php
 <?php
@@ -2020,8 +1991,7 @@ $validation->add(
 );
 ```
 
-By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for
-a specific field using the `filter()` method:
+By default, the `getMessages()` method returns all the messages generated during validation. You can filter messages for a specific field using the `filter()` method:
 
 ```php
 <?php
@@ -2038,9 +2008,7 @@ if (count($messages)) {
 ```
 
 ### Iteration and Offsets
-Messages are stored and iterated by integer position. An entry added under a string key through the array-access
-interface stays reachable by that offset but is not visited during iteration. A `foreach` loop walks the integer
-sequence only. Use `appendMessage()` when an entry must take part in iteration.
+Messages are stored and iterated by integer position. An entry added under a string key through the array-access interface stays reachable by that offset but is not visited during iteration. A `foreach` loop walks the integer sequence only. Use `appendMessage()` when an entry must take part in iteration.
 
 ```php
 <?php
@@ -2061,9 +2029,7 @@ echo $messages['database']->getMessage(); // "Reachable by offset only"
 ```
 
 ### Message Type Enforcement
-Every entry in the collection must implement `Phalcon\Messages\MessageInterface`. Assigning a value of any other type
-through the array-access interface throws `Phalcon\Messages\Exceptions\MessageNotObject` with the message
-`The message must be an instance of MessageInterface`.
+Every entry in the collection must implement `Phalcon\Messages\MessageInterface`. Assigning a value of any other type through the array-access interface throws `Phalcon\Messages\Exceptions\MessageNotObject` with the message `The message must be an instance of MessageInterface`.
 
 ```php
 <?php
@@ -2080,16 +2046,11 @@ try {
 }
 ```
 
-The `appendMessages()` method accepts an array or any `Traversable`. Passing any other value throws
-`Phalcon\Messages\Exceptions\MessagesNotIterable`. The collection implements the
-`Phalcon\Contracts\Messages\Messages` contract. Type-hint against this contract when a method needs to accept the
-message collection without depending on the concrete class.
+The `appendMessages()` method accepts an array or any `Traversable`. Passing any other value throws `Phalcon\Messages\Exceptions\MessagesNotIterable`. The collection implements the `Phalcon\Contracts\Messages\Messages` contract. Type-hint against this contract when a method needs to accept the message collection without depending on the concrete class.
 
 ## Whitelist
 
-When validating data that will be applied to an entity (e.g. a model), you can restrict which fields are assigned to the
-entity by passing a `$whitelist` array. Only the fields listed in the whitelist will be bound; all other incoming fields
-are ignored. Validators still run over all configured fields regardless of the whitelist.
+When validating data that will be applied to an entity (e.g. a model), you can restrict which fields are assigned to the entity by passing a `$whitelist` array. Only the fields listed in the whitelist will be bound; all other incoming fields are ignored. Validators still run over all configured fields regardless of the whitelist.
 
 ```php
 <?php
@@ -2146,14 +2107,11 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing are performed using the [filter][filter-filter] component. You can add more filters to this
-component or use the built-in ones.
+Filtering and sanitizing are performed using the [filter][filter-filter] component. You can add more filters to this component or use the built-in ones.
 
 ## Events
 
-When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to
-perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is
-automatically canceled:
+When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically canceled:
 
 ```php
 <?php
@@ -2196,8 +2154,7 @@ class LoginValidation extends Validation
 
 ## Cancelling Validations
 
-By default, all validators assigned to a field are tested regardless if one of them has failed or not. You can change
-this behavior by telling the validation component which validator may stop the validation:
+By default, all validators assigned to a field are tested regardless if one of them has failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
 ```php
 <?php
@@ -2239,11 +2196,9 @@ $validation->add(
 );
 ```
 
-The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the
-remaining validators in the chain are not executed.
+The first validator has the option `cancelOnFail` with a value of `true`, therefore if that validator fails the remaining validators in the chain are not executed.
 
-If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail`
-option:
+If you are creating custom validators you can dynamically stop the validation chain by setting the `cancelOnFail` option:
 
 ```php
 <?php
@@ -2293,10 +2248,8 @@ $validation->add(
 The `allowEmpty` option accepts three forms:
 
 - `true` - the field is skipped when its value is empty (PHP `empty()` semantics)
-- a list of values, e.g. `[null, '']` - the field is skipped when its value strictly matches one of the listed values.
-  The comparison uses `===`, so `'0'` is not treated as empty unless listed.
-- a per-field map, e.g. `['address' => true, 'phone' => false]` - used with validators that run against multiple
-  fields, enabling the skip per field name
+- a list of values, e.g. `[null, '']` - the field is skipped when its value strictly matches one of the listed values. The comparison uses `===`, so `'0'` is not treated as empty unless listed.
+- a per-field map, e.g. `['address' => true, 'phone' => false]` - used with validators that run against multiple fields, enabling the skip per field name
 
 ```php
 <?php
@@ -2318,16 +2271,11 @@ $validation->add(
 );
 ```
 
-As of 5.14.2 the `allowEmpty` rule is owned by the public `AbstractValidator::isAllowEmpty()` method, and the
-validation run delegates to it before each validator executes. Validators can override the method to define their own
-emptiness semantics - the `File` validators do, treating an upload with `UPLOAD_ERR_NO_FILE` as empty - and custom
-validators extending `AbstractValidator` inherit the behavior described above. The per-field map form is honored
-consistently in this pre-check as well.
+As of 5.14.2 the `allowEmpty` rule is owned by the public `AbstractValidator::isAllowEmpty()` method, and the validation run delegates to it before each validator executes. Validators can override the method to define their own emptiness semantics - the `File` validators do, treating an upload with `UPLOAD_ERR_NO_FILE` as empty - and custom validators extending `AbstractValidator` inherit the behavior described above. The per-field map form is honored consistently in this pre-check as well.
 
 ## Recursive Validation
 
-You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the
-`CompanyValidation` instance will also check the `PhoneValidation` instance:
+You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
 ```php
 <?php
@@ -2361,10 +2309,7 @@ class CompanyValidation extends Validation
 
 ## Exceptions
 
-Any exceptions thrown in the `Phalcon\Filter\Validation` namespace will be of
-type [Phalcon\Filter\Validation\Exception][validation-exception]
-or [Phalcon\Filter\Validation\Validator\Exception][validation-validator-exception]. You can use this exception to
-selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the `Phalcon\Filter\Validation` namespace will be of type [Phalcon\Filter\Validation\Exception][validation-exception] or [Phalcon\Filter\Validation\Validator\Exception][validation-validator-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -2392,8 +2337,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Filter\Validation\Exception` so callers can catch a
-specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)` blocks continue to work unchanged.
+As of 5.14 the component raises granular subclasses of `Phalcon\Filter\Validation\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                  | Parent                                | Thrown when                                                                      |
 |------------------------------------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------|
@@ -2417,90 +2361,47 @@ specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)`
 | `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`   | `Phalcon\Filter\Validation\Exception` | The `Uniqueness` validator is given an entity that is not a `Phalcon\Mvc\Model`. |
 | `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`       | `Phalcon\Filter\Validation\Exception` | `setEntity()` is given a value that is not an object.                            |
 
-[messages-message]: api/phalcon_messages.md#messagesmessage
-
-[messages-messages]: api/phalcon_messages.md#messagesmessages
-
-[validation]: api/phalcon_filter.md#filtervalidation
-
-[validation-abstractcombinedfieldsvalidator]: api/phalcon_filter.md#filtervalidationabstractcombinedfieldsvalidator
-
-[validation-abstractvalidator]: api/phalcon_filter.md#filtervalidationabstractvalidator
-
-[validation-abstractvalidatorcomposite]: api/phalcon_filter.md#filtervalidationabstractvalidatorcomposite
-
-[validation-exception]: api/phalcon_filter.md#filtervalidationexception
-
-[validation-validationinterface]: api/phalcon_filter.md#filtervalidationvalidationinterface
-
-[validation-validator-alnum]: api/phalcon_filter.md#filtervalidationvalidatoralnum
-
-[validation-validator-alpha]: api/phalcon_filter.md#filtervalidationvalidatoralpha
-
-[validation-validator-between]: api/phalcon_filter.md#filtervalidationvalidatorbetween
-
-[validation-validator-callback]: api/phalcon_filter.md#filtervalidationvalidatorcallback
-
-[validation-validator-confirmation]: api/phalcon_filter.md#filtervalidationvalidatorconfirmation
-
-[validation-validator-creditcard]: api/phalcon_filter.md#filtervalidationvalidatorcreditcard
-
-[validation-validator-date]: api/phalcon_filter.md#filtervalidationvalidatordate
-
-[validation-validator-digit]: api/phalcon_filter.md#filtervalidationvalidatordigit
-
-[validation-validator-email]: api/phalcon_filter.md#filtervalidationvalidatoremail
-
-[validation-validator-exception]: api/phalcon_filter.md#filtervalidationvalidatorexception
-
-[validation-validator-exclusionin]: api/phalcon_filter.md#filtervalidationvalidatorexclusionin
-
-[validation-validator-file]: api/phalcon_filter.md#filtervalidationvalidatorfile
-
-[validation-validator-file-abstractfile]: api/phalcon_filter.md#filtervalidationvalidatorfileabstractfile
-
-[validation-validator-file-mimetype]: api/phalcon_filter.md#filtervalidationvalidatorfilemimetype
-
-[validation-validator-file-resolution-aspectratio]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionaspectratio
-
-[validation-validator-file-resolution-equal]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionequal
-
-[validation-validator-file-resolution-max]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionmax
-
-[validation-validator-file-resolution-min]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionmin
-
-[validation-validator-file-size-equal]: api/phalcon_filter.md#filtervalidationvalidatorfilesizeequal
-
-[validation-validator-file-size-max]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemax
-
-[validation-validator-file-size-min]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemin
-
-[validation-validator-identical]: api/phalcon_filter.md#filtervalidationvalidatoridentical
-
-[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin
-
-[validation-validator-ip]: api/phalcon_filter.md#filtervalidationvalidatorip
-
-[validation-validator-numericality]: api/phalcon_filter.md#filtervalidationvalidatornumericality
-
-[validation-validator-presenceof]: api/phalcon_filter.md#filtervalidationvalidatorpresenceof
-
-[validation-validator-regex]: api/phalcon_filter.md#filtervalidationvalidatorregex
-
-[validation-validator-stringlength]: api/phalcon_filter.md#filtervalidationvalidatorstringlength
-
-[validation-validator-stringlength-max]: api/phalcon_filter.md#filtervalidationvalidatorstringlengthmax
-
-[validation-validator-stringlength-min]: api/phalcon_filter.md#filtervalidationvalidatorstringlengthmin
-
-[validation-validator-uniqueness]: api/phalcon_filter.md#filtervalidationvalidatoruniqueness
-
-[validation-validator-url]: api/phalcon_filter.md#filtervalidationvalidatorurl
-
-[validation-validatorcompositeinterface]: api/phalcon_filter.md#filtervalidationvalidatorcompositeinterface
-
-[validation-validatorfactory]: api/phalcon_filter.md#filtervalidationvalidatorfactory
-
-[validation-validatorinterface]: api/phalcon_filter.md#filtervalidationvalidatorinterface
-
 [filter-filter]: filter-filter.md
+[messages-message]: api/phalcon_messages.md#messagesmessage
+[messages-messages]: api/phalcon_messages.md#messagesmessages
+[validation]: api/phalcon_filter.md#filtervalidation
+[validation-abstractcombinedfieldsvalidator]: api/phalcon_filter.md#filtervalidationabstractcombinedfieldsvalidator
+[validation-abstractvalidator]: api/phalcon_filter.md#filtervalidationabstractvalidator
+[validation-abstractvalidatorcomposite]: api/phalcon_filter.md#filtervalidationabstractvalidatorcomposite
+[validation-exception]: api/phalcon_filter.md#filtervalidationexception
+[validation-validationinterface]: api/phalcon_filter.md#filtervalidationvalidationinterface
+[validation-validator-alnum]: api/phalcon_filter.md#filtervalidationvalidatoralnum
+[validation-validator-alpha]: api/phalcon_filter.md#filtervalidationvalidatoralpha
+[validation-validator-between]: api/phalcon_filter.md#filtervalidationvalidatorbetween
+[validation-validator-callback]: api/phalcon_filter.md#filtervalidationvalidatorcallback
+[validation-validator-confirmation]: api/phalcon_filter.md#filtervalidationvalidatorconfirmation
+[validation-validator-creditcard]: api/phalcon_filter.md#filtervalidationvalidatorcreditcard
+[validation-validator-date]: api/phalcon_filter.md#filtervalidationvalidatordate
+[validation-validator-digit]: api/phalcon_filter.md#filtervalidationvalidatordigit
+[validation-validator-email]: api/phalcon_filter.md#filtervalidationvalidatoremail
+[validation-validator-exception]: api/phalcon_filter.md#filtervalidationvalidatorexception
+[validation-validator-exclusionin]: api/phalcon_filter.md#filtervalidationvalidatorexclusionin
+[validation-validator-file]: api/phalcon_filter.md#filtervalidationvalidatorfile
+[validation-validator-file-abstractfile]: api/phalcon_filter.md#filtervalidationvalidatorfileabstractfile
+[validation-validator-file-mimetype]: api/phalcon_filter.md#filtervalidationvalidatorfilemimetype
+[validation-validator-file-resolution-aspectratio]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionaspectratio
+[validation-validator-file-resolution-equal]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionequal
+[validation-validator-file-resolution-max]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionmax
+[validation-validator-file-resolution-min]: api/phalcon_filter.md#filtervalidationvalidatorfileresolutionmin
+[validation-validator-file-size-equal]: api/phalcon_filter.md#filtervalidationvalidatorfilesizeequal
+[validation-validator-file-size-max]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemax
+[validation-validator-file-size-min]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemin
+[validation-validator-identical]: api/phalcon_filter.md#filtervalidationvalidatoridentical
+[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin
+[validation-validator-ip]: api/phalcon_filter.md#filtervalidationvalidatorip
+[validation-validator-numericality]: api/phalcon_filter.md#filtervalidationvalidatornumericality
+[validation-validator-presenceof]: api/phalcon_filter.md#filtervalidationvalidatorpresenceof
+[validation-validator-regex]: api/phalcon_filter.md#filtervalidationvalidatorregex
+[validation-validator-stringlength]: api/phalcon_filter.md#filtervalidationvalidatorstringlength
+[validation-validator-stringlength-max]: api/phalcon_filter.md#filtervalidationvalidatorstringlengthmax
+[validation-validator-stringlength-min]: api/phalcon_filter.md#filtervalidationvalidatorstringlengthmin
+[validation-validator-uniqueness]: api/phalcon_filter.md#filtervalidationvalidatoruniqueness
+[validation-validator-url]: api/phalcon_filter.md#filtervalidationvalidatorurl
+[validation-validatorcompositeinterface]: api/phalcon_filter.md#filtervalidationvalidatorcompositeinterface
+[validation-validatorfactory]: api/phalcon_filter.md#filtervalidationvalidatorfactory
+[validation-validatorinterface]: api/phalcon_filter.md#filtervalidationvalidatorinterface
