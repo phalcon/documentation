@@ -310,6 +310,6 @@ For questions, join the [Discord][discord] server or our [Discussions][discussio
 [docker_compose]: https://docs.docker.com/compose/install/
 [docker_installation]: https://docs.docker.com/engine/installation/
 [phalcon-2]: https://blog.phalcon.io/post/phalcon-2-0-the-future
-[talon]: https://github.com/phalcon/talon
+[talon]: talon.md
 [zephir]: https://zephir-lang.com
 [zephir_docs]: https://docs.zephir-lang.com

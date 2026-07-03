@@ -80,6 +80,6 @@ When in doubt, add the trailer. Over-attribution is harmless; under-attribution 
 [phalcon-org]: https://github.com/phalcon
 [phpstan]: https://phpstan.org
 [psr-12]: https://www.php-fig.org/psr/psr-12/
-[talon]: https://github.com/phalcon/talon
+[talon]: talon.md
 [zephir]: https://zephir-lang.com
 [zephir-docs]: https://docs.zephir-lang.com
