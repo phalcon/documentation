@@ -16,13 +16,11 @@ The available components are:
 
 ## Exceptions
 
-Any exception thrown in the `Phalcon\Html` namespace will be of type `Phalcon\Html\Exception`. You can use this
-exception to selectively catch exceptions thrown only from this component.
+Any exception thrown in the `Phalcon\Html` namespace will be of type `Phalcon\Html\Exception`. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Html\Exception` so callers can catch a specific
-failure mode. Existing `catch (Phalcon\Html\Exception $e)` blocks continue to work unchanged.
+As of 5.14 the component raises granular subclasses of `Phalcon\Html\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Html\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                   | Parent                   | Thrown when                                                                 |
 |---------------------------------------------------------|--------------------------|-----------------------------------------------------------------------------|
@@ -33,11 +31,7 @@ failure mode. Existing `catch (Phalcon\Html\Exception $e)` blocks continue to wo
 | `Phalcon\Html\Exceptions\UsingRequiresTwoValues`        | `Phalcon\Html\Exception` | The `using` option for a select/checkbox helper is not a two-element array. |
 
 [html-attributes]: html-attributes.md
-
 [html-breadcrumbs]: html-breadcrumbs.md
-
 [html-escaper]: html-escaper.md
-
 [html-link]: html-link.md
-
 [html-tagfactory]: html-tagfactory.md
