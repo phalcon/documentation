@@ -74,6 +74,10 @@ jobs:
           VERSION="${LINE%%|*}"
           ALIAS="${LINE#*|}"
 
+          # Trim stray whitespace / CRLF so the alias gate matches exactly
+          VERSION=$(printf '%s' "$VERSION" | tr -d '[:space:]')
+          ALIAS=$(printf '%s' "$ALIAS" | tr -d '[:space:]')
+
           # Print the extracted values for verification
           echo "Version: $VERSION"
           echo "Alias: $ALIAS"
@@ -82,7 +86,7 @@ jobs:
           echo "PH_DOCS_ALIAS=$ALIAS" >> $GITHUB_ENV
 
       - name: Deploy
-        if: ${{ env.PH_DOCS_VERSION != null }}
+        if: ${{ env.PH_DOCS_VERSION != '' }}
         run: |
           # Publishing implies creating a git commit on the production branch,
           # We will need to create a user for this at some point
@@ -91,12 +95,40 @@ jobs:
           git config user.email nikos@niden.net
           git fetch --no-tags --prune --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages
           mike deploy \
-            --update-aliases \
-            --alias-type=redirect \
             --push \
-            ${{ env.PH_DOCS_VERSION }} \
-            ${{ env.PH_DOCS_ALIAS }}
+            ${{ env.PH_DOCS_VERSION }}
           echo "Deployed"
+
+      - name: Point Cloudflare /latest at this version
+        if: ${{ env.PH_DOCS_ALIAS == 'latest' }}
+        env:
+          CF_API_TOKEN:  ${{ secrets.CF_API_TOKEN }}
+          CF_ZONE_ID:    ${{ secrets.CF_ZONE_ID }}
+          CF_RULESET_ID: ${{ secrets.CF_RULESET_ID }}
+          CF_RULE_ID:    ${{ secrets.CF_RULE_ID }}
+        run: |
+          echo "Pointing /latest -> /${PH_DOCS_VERSION} at Cloudflare"
+          curl -sS --fail-with-body -X PATCH \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/rulesets/${CF_RULESET_ID}/rules/${CF_RULE_ID}" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data @- <<JSON
+          {
+            "action": "redirect",
+            "description": "Documentation Latest",
+            "enabled": true,
+            "expression": "(http.request.full_uri wildcard r\"https://docs.phalcon.io/latest/*\")",
+            "action_parameters": {
+              "from_value": {
+                "status_code": 301,
+                "target_url": {
+                  "expression": "wildcard_replace(http.request.full_uri, r\"https://docs.phalcon.io/latest/*\", r\"https://docs.phalcon.io/${PH_DOCS_VERSION}/\${1}\")"
+                },
+                "preserve_query_string": true
+              }
+            }
+          }
+          JSON
 
 #          git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
 #          mike deploy \
