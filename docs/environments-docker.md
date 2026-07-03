@@ -4,81 +4,51 @@
 
 ## Introduction
 
-Since Version 5.9.2, we provide production-ready Docker images for your convenience. By default, the Docker images run as user `phalcon` in group `phalcon` with `UID` and `GID` 1000.
+Phalcon is distributed as a Composer package (`phalcon/phalcon`), so it does not require a dedicated Docker image or a compiled extension. Any official [PHP Docker image][php-docker] can run a Phalcon application. You add Phalcon to your project with Composer, the same way you add any other dependency.
 
-You can override those values by providing a different user and group in your Docker Compose or stack file. You can also use the Dockerfiles in our [Docker images repository](https://github.com/phalcon/docker) to permanently change those values.
+## Dockerfile
 
-## How to download?
+Start from an official PHP image, install the PHP extensions your application needs, add Composer, and let Composer pull in Phalcon as a project dependency:
 
-We provide our Docker images on the Docker Hub and GitHub. See the following table for the addresses:
+```dockerfile
+FROM php:8.3-fpm
 
-| Provider   | Pull command example                                  |
-|------------|-------------------------------------------------------|
-| Docker Hub | `docker pull phalconphp/cphalcon:v5.14.0-php8.4`      |
-| GitHub     | `docker pull ghcr.io/phalcon/cphalcon:v5.14.0-php8.4` |
+# Helper to install PHP extensions
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN chmod +x /usr/local/bin/install-php-extensions \
+    && install-php-extensions pdo_mysql gd intl
 
-!!! info "NOTE"
+# Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-    We do not provide a "latest" tag on our Docker images.
+WORKDIR /app
+COPY . /app
 
-The tag for our Docker images has the following build: `v[Phalcon Release]-php[PHP Version]`. As an example, if you want to install Phalcon Version 5.8.0 on PHP 8.2, the tag would be `v5.8.0-php8.2`.
+# Phalcon is installed as a project dependency
+RUN composer install --no-dev --optimize-autoloader
+```
 
-## How do we build the docker images?
+If you are adding Phalcon to an existing project, run:
 
-As the base we use the official PHP FPM Docker image based on Debian Linux. We integrate a basic healthcheck and all configurations needed to run a basic Phalcon application.
-
-Take a look at our [Docker images repository](https://github.com/phalcon/docker) for more details.
+```bash
+composer require phalcon/phalcon
+```
 
 ## Extensions
 
-The following list of extensions is installed additional to the extensions of the PHP Docker image in every release:
+Phalcon is loosely coupled and does not require additional extensions to load. However, some components rely on PHP extensions to work. For example `pdo_mysql` / `pdo_pgsql` for database access, `gd` or `imagick` for the Image component, `openssl` for the Security and Crypt components, and `redis` or `memcached` for cache and session adapters. Install only the extensions your application uses, as shown in the `install-php-extensions` line above.
 
-- apcu
-- gd
-- gettext
-- igbinary
-- imagick
-- intl
-- mysqli
-- mysqlnd
-- opcache
-- pdo_mysql
-- pdo_pgsql
-- pgsql
-- phalcon
-- redis
-- xsl
-- yaml
-- zip
-
-## Extending the Docker image
-
-The provided Docker image is usually all you need to run a basic Phalcon application. For more advanced applications, you may need to install another extension.
-
-Let's say you want to install the `memcached` extension. Phalcon provides a way to do so:
-
-```dockerfile
-FROM phalconphp/cphalcon:v5.16.0-php8.4
-
-RUN set -eux \
-  && install-php-extensions memcached
-```
-
-For a full list of supported extensions using this method, please see the [Documentation](https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions). For other extensions not covered by this method, please see the official PHP Docker image [Documentation](https://hub.docker.com/_/php/).
-
-## Notes
-
-We provide production-ready images. That means we do not install anything else you might need in a local development environment. For example, we do not have installed `curl` or `composer`. This minimizes the possibility to download malicious content inside your Docker image. We also do not install `xdebug` or tools like `top` or `git`.
+For the full list of extensions available through this helper, see the [docker-php-extension-installer][ext-installer] documentation. For other extensions, see the official PHP Docker image [documentation][php-docker].
 
 ## Credits
 
-We want to thank the following people for providing us with tools for building production-ready Docker images:
+We want to thank the following people for providing us with tools for building Docker images:
 
 [PHP](https://github.com/php/)
-: The PHP Team for providing us the base image including the newest PHP Versions.
+: The PHP Team for providing the base images including the newest PHP versions.
 
 [mlocati](https://github.com/mlocati/docker-php-extension-installer)
-: For providing an even better PHP extension installer and a lot of supported extensions.
+: For the PHP extension installer and the large list of supported extensions.
 
-[renatomefi](https://github.com/renatomefi/php-fpm-healthcheck)
-: For the FPM healthcheck script.
+[ext-installer]: https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions
+[php-docker]: https://hub.docker.com/_/php/

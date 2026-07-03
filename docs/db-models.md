@@ -8,7 +8,7 @@ The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. It is a class that connect
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
-The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving developers high performance when interacting with databases while also being straightforward to use.
+The [Phalcon\Mvc\Model][mvc-model] is a full-featured ORM for PHP, giving developers a straightforward way to interact with databases.
 
 !!! warning "WARNING"
 
@@ -4167,8 +4167,8 @@ $container->setShared(
         $connection->setEventsManager($eventsManager);
 
         return $connection;
-    );
-}
+    }
+);
 ```
 
 ## Spatial Column Hydration
@@ -4204,7 +4204,7 @@ The value-object classes are described under [Spatial / Geometry Columns](db-lay
 
 ## Invalid parameter number
 
-In v5.6, the parameters used to instantiate PDO have reverted to the default settings. Therefore, `PDO::ATTR_EMULATE_PREPARES` defaults to `true`.
+The parameters used to instantiate PDO use the default settings. Therefore, `PDO::ATTR_EMULATE_PREPARES` defaults to `true`.
 
 However, if you encounter the following message in your code, when a bound parameter is used more than once in a query:
 
@@ -4263,7 +4263,7 @@ Any exceptions thrown in the `Phalcon\Mvc\Model` namespace will be of type `Phal
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                          | Parent                        | Thrown when                                                                           |
 |----------------------------------------------------------------|-------------------------------|---------------------------------------------------------------------------------------|

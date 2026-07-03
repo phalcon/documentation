@@ -99,7 +99,7 @@ Returns the bound entity
 ```php
 public function getFilters(
     string $field = null
-): mixed | null
+): mixed
 ```
 
 Returns all the filters or a specific one
@@ -127,19 +127,19 @@ Returns the validators added to the validation
 ```php
 public function getValue(
     string $field
-): mixed | null
+): mixed
 ```
 
 Gets a value to validate in the array/object data source
 
 ```php
-public function getValueByEntity(mixed $entity, string $field): mixed | null
+public function getValueByEntity(mixed $entity, string $field): mixed
 ```
 
 Gets the value to validate in the object entity source
 
 ```php
-public function getValueByData(mixed $data, string $field): mixed | null
+public function getValueByData(mixed $data, string $field): mixed
 ```
 
 Gets the value to validate in the array/object data source
@@ -851,6 +851,7 @@ $validator->add(
             "messageSize" => [
                 "file"        => "file exceeds the max size 2M",
                 "anotherFile" => "anotherFile exceeds the max size 4M",
+            ],
             "allowedTypes" => [
                 "file"        => [
                     "image/jpeg",
@@ -933,7 +934,7 @@ $validator->add(
 
 Checks if a file has the exact aspect ratio
 
-The `ratio` option uses the same `WxH` format as the resolution validators (for instance `16x9`). The comparison uses integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches `16x9`, 1366x768 does not. The message supports the `:ratio` placeholder. Available as of 5.14.2.
+The `ratio` option uses the same `WxH` format as the resolution validators (for instance `16x9`). The comparison uses integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches `16x9`, 1366x768 does not. The message supports the `:ratio` placeholder.
 
 ```php
 <?php
@@ -1117,7 +1118,7 @@ Checks if a value has a correct file
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\File\Size;
+use Phalcon\Filter\Validation\Validator\File\Size\Equal;
 
 $validator = new Validation();
 
@@ -1164,7 +1165,7 @@ Checks if a value has a correct file
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\File\Size;
+use Phalcon\Filter\Validation\Validator\File\Size\Max;
 
 $validator = new Validation();
 
@@ -1211,7 +1212,7 @@ Checks if a value has a correct file
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\File\Size;
+use Phalcon\Filter\Validation\Validator\File\Size\Min;
 
 $validator = new Validation();
 
@@ -1352,7 +1353,7 @@ $validator->add(
         [
             "message"       => ":field must contain only ip addresses",
             // v6 and v4. The same if not specified
-            "version"       => IP::VERSION_4 | Ip::VERSION_6, 
+            "version"       => Ip::VERSION_4 | Ip::VERSION_6, 
             // False if not specified. Ignored for v6
             "allowReserved" => false,
             // False if not specified
@@ -1450,7 +1451,6 @@ $validation->add(
             'message' => 'The name is required',
         ]
     )
-);
 );
 ```
 
@@ -1689,7 +1689,7 @@ $validator->add(
 
 !!! info "NOTE"
 
-    The resolution of an array `attribute` option (used when validating a combination of fields) is specific to the `Uniqueness` validator. As of 5.14.2 it is implemented in `Uniqueness::getOption()`; `getOption()` on every other validator returns the stored option unchanged.
+    The resolution of an array `attribute` option (used when validating a combination of fields) is specific to the `Uniqueness` validator. It is implemented in `Uniqueness::getOption()`; `getOption()` on every other validator returns the stored option unchanged.
 
 In the model:
 
@@ -2271,7 +2271,7 @@ $validation->add(
 );
 ```
 
-As of 5.14.2 the `allowEmpty` rule is owned by the public `AbstractValidator::isAllowEmpty()` method, and the validation run delegates to it before each validator executes. Validators can override the method to define their own emptiness semantics - the `File` validators do, treating an upload with `UPLOAD_ERR_NO_FILE` as empty - and custom validators extending `AbstractValidator` inherit the behavior described above. The per-field map form is honored consistently in this pre-check as well.
+The `allowEmpty` rule is owned by the public `AbstractValidator::isAllowEmpty()` method, and the validation run delegates to it before each validator executes. Validators can override the method to define their own emptiness semantics - the `File` validators do, treating an upload with `UPLOAD_ERR_NO_FILE` as empty - and custom validators extending `AbstractValidator` inherit the behavior described above. The per-field map form is honored consistently in this pre-check as well.
 
 ## Recursive Validation
 
@@ -2337,7 +2337,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Filter\Validation\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Filter\Validation\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                  | Parent                                | Thrown when                                                                      |
 |------------------------------------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------|

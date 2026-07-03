@@ -8,7 +8,7 @@
 
 Furthermore, the Devilbox provides an identical and reproducible development environment for different host operating systems.
 
-This example will use `phalcon` to install Phalcon from within the Devilbox PHP container. After completing the steps listed below, you will have a working Phalcon setup ready to be served via HTTP and HTTPS.
+This example uses Composer to install Phalcon from within the Devilbox PHP container. After completing the steps listed below, you will have a working Phalcon setup ready to be served via HTTP and HTTPS.
 
 ## Configuration
 
@@ -57,12 +57,14 @@ devilbox@php-8.0 in /shared/httpd $ mkdir my-phalcon
 
 ### Install Phalcon
 
-Navigate into your newly created vhost directory and install Phalcon with `phalcon` cli.
+Phalcon is a Composer package, so you add it as a project dependency rather than installing a PHP extension. Navigate into your newly created vhost directory and scaffold a project with `composer create-project`. This creates a `phalconphp` directory containing the application, with Phalcon already installed through Composer:
 
 ```bash
 devilbox@php-8.0 in /shared/httpd $ cd my-phalcon
-devilbox@php-8.0 in /shared/httpd/my-phalcon $ phalcon project phalconphp
+devilbox@php-8.0 in /shared/httpd/my-phalcon $ composer create-project phalcon/invo phalconphp
 ```
+
+To add Phalcon to an existing project instead, run `composer require phalcon/phalcon` inside that project.
 
 The directory structure looks like this after the installation:
 

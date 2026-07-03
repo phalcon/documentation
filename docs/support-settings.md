@@ -23,16 +23,11 @@ Settings::reset();                            // void
 `Settings::get($key)` resolves a setting in this order:
 
 1. PHP-level override stored by a prior `Settings::set($key, $value)` call.
-2. The C-level value returned by `globals_get($key)` - honouring `php.ini`, `.htaccess`, and per-virtualhost configuration.
-3. `null` if the key is not recognised.
+2. `null` if the key is not recognised.
 
-`Settings::set()` stores the value in the PHP-level override array only. It **does not** call `globals_set()`, so the underlying C struct is never modified. This keeps an override scoped to the current request (and the PHP process state) without leaking into other projects that share the same PHP worker.
+`Settings::set()` stores the value in the PHP-level override array only. This keeps an override scoped to the current request (and the PHP process state) without leaking into other projects that share the same PHP worker.
 
 `Settings::reset()` clears every override that was previously stored via `set()`, restoring `get()` to return the `globals_get()` fallback for each key. It does not touch C-level configuration.
-
-!!! info "NOTE"
-
-    In non-ZTS (non-thread-safe) PHP builds, `globals_get()` reads from a process-level C struct. Because `set()` never writes to that struct, any value set by `ini_set("phalcon.orm.*", ...)` or by `globals_set()` from other code remains visible through `get()` as the fallback for keys that have no PHP-level override. In ZTS builds, each thread has its own copy of the struct.
 
 ## Recognised keys
 
@@ -100,15 +95,5 @@ use Phalcon\Support\Settings;
 
 Settings::reset();
 ```
-
-## Migrating from `globals_get` / `globals_set`
-
-Before [Phalcon\Support\Settings][support-settings], the recommended way to read or change these toggles from PHP was to call `globals_get()` / `globals_set()` directly. Internally the framework now routes every such access through `Settings::get()` / `Settings::set()` so per-project overrides cannot leak across projects sharing the same PHP worker. Application code should follow suit:
-
-| Before                               | After                                                |
-|--------------------------------------|------------------------------------------------------|
-| `globals_get('orm.events')`          | `Phalcon\Support\Settings::get('orm.events')`        |
-| `globals_set('orm.events', false)`   | `Phalcon\Support\Settings::set('orm.events', false)` |
-| `ini_set('phalcon.orm.events', '0')` | `Phalcon\Support\Settings::set('orm.events', false)` |
 
 [support-settings]: api/phalcon_support.md#supportsettings

@@ -37,7 +37,7 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
 
 !!! warning "WARNING"
 
-    Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing the Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the [installation][installation] page and complete the installation prior to continuing with this tutorial.
+    Phalcon is installed as a Composer package with `composer require phalcon/phalcon`. Its code lives in the `vendor` directory and is loaded through Composer's autoloader. If you have not installed Phalcon yet, head over to the [installation][installation] page and complete the installation prior to continuing with this tutorial.
 
 If this is all brand new it is recommended that you install the [Phalcon Devtools][devtools] also. The DevTools leverage PHP's built-in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
 
@@ -457,7 +457,7 @@ According to MVC guidelines, database interactions must be done through models t
 
 ## Creating a Model
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon includes a full-featured ORM for PHP. Instead of increasing the complexity of development, it simplifies it.
 
 Before creating our first model, we need to create a database table using a database access tool or the database command line utility. For this tutorial we are using MySQL as our database, A simple table to store registered users can be created as follows:
 
@@ -693,7 +693,7 @@ In the above template, the most important line is the call to the `getContent()`
 
 ## Conclusion
 
-As you can see, building an application with Phalcon is straightforward. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time, you will enjoy a nice performance boost.
+As you can see, building an application with Phalcon is straightforward.
 
 If you are ready to learn more check out the [Vökuró Tutorial][tutorial-vokuro] next.
 
