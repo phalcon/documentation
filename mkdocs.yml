@@ -84,6 +84,7 @@ plugins:
         'helper.md': 'support-helper.md'
         'registry.md': 'support-registry.md'
         'version.md': 'support-version.md'
+        'migrations.md': 'db-migrations.md'
         'en/acl.md': acl.md
         'en/annotations.md': annotations.md
         'en/api/index.md': api/index.md
@@ -307,6 +308,7 @@ nav:
           - Backtrace Generation: generating-backtrace.md
           - Reproducible Tests: reproducible-tests.md
           - Testing environment: testing-environment.md
+          - Talon: talon.md
           - Coding Standard: coding-standard.md
       - Sponsoring: sponsors.md
   - Getting Started:
