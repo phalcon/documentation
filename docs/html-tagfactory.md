@@ -230,73 +230,73 @@ public function inputColor(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Color
+): Generic
 
 public function inputDate(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Date
+): Generic
 
 public function inputDateTime(
     string $name, 
     string $value = null, 
     array $attributes = []
-): DateTime
+): Generic
 
 public function inputDateTimeLocal(
     string $name, 
     string $value = null, 
     array $attributes = []
-): DateTimeLocal
+): Generic
 
 public function inputEmail(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Email
+): Generic
 
 public function inputFile(
     string $name, 
     string $value = null, 
     array $attributes = []
-): File
+): Generic
 
 public function inputHidden(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Hidden
+): Generic
 
 public function inputImage(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Image
+): Generic
 
 public function inputInput(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Input
+): Generic
 
 public function inputMonth(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Month
+): Generic
 
 public function inputNumeric(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Numeric
+): Generic
 
 public function inputPassword(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Password
+): Generic
 
 public function inputRadio(
     string $name, 
@@ -308,13 +308,13 @@ public function inputRange(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Range
+): Generic
 
 public function inputSearch(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Search
+): Generic
 
 public function inputSelect(
     string $name, 
@@ -326,19 +326,19 @@ public function inputSubmit(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Submit
+): Generic
 
 public function inputTel(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Tel
+): Generic
 
 public function inputText(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Text
+): Generic
 
 public function inputTextarea(
     string $name, 
@@ -350,19 +350,19 @@ public function inputTime(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Time
+): Generic
 
 public function inputUrl(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Url
+): Generic
 
 public function inputWeek(
     string $name, 
     string $value = null, 
     array $attributes = []
-): Week
+): Generic
 
 public function label(
     string $label, 
@@ -1254,7 +1254,7 @@ echo $result;
 // <label for="my_id">
 //     <input type="checkbox"
 //         id="my_id"
-//         name="x_name"
+//         name="my_name"
 //         value="yes"
 //         checked="checked" />
 //     some text
@@ -1328,7 +1328,7 @@ echo $container->tag->inputCheckboxGroup(
 
 ### Generic input
 
-[Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] backs every type-only `<input>` (color, date, email, file, etc.). Pass the HTML5 `type` either as the second constructor argument, or after construction via `setType()`.
+[Phalcon\Html\Helper\Input\Generic][html-helper-input-generic] backs every type-only `<input>` (color, date, email, file, etc.). Pass the HTML5 `type` either as the third constructor argument, or after construction via `setType()`.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1351,7 +1351,7 @@ use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Input\Generic;
 
 $escaper = new Escaper();
-$helper  = new Generic($escaper, 'color');
+$helper  = new Generic($escaper, null, 'color');
 $options = [
     'class' => 'my-class',
     'name'  => 'my-name',
@@ -1500,7 +1500,7 @@ echo $result;
 // <label for="my_id">
 //     <input type="radio"
 //         id="my_id"
-//         name="x_name"
+//         name="my_name"
 //         value="yes"
 //         checked="checked" />
 //     some text
@@ -1888,13 +1888,13 @@ public function addHttp(string $httpEquiv, string $content): Meta
 Adds an HTTP meta tag
 
 ```php
-public function addName(string name, string content) -> <Meta>
+public function addName(string $name, string $content): Meta
 ```
 
 Adds a name meta tag
 
 ```php
-public function addProperty(string name, string content) -> <Meta>
+public function addProperty(string $name, string $content): Meta
 ```
 
 Adds a property meta tag
@@ -1959,7 +1959,7 @@ $escaper = new Escaper();
 $helper  = new Ol($escaper);
 $options = [
     'id' => 'carsList',
-]
+];
 
 $result = $helper('    ', PHP_EOL, $options);
 
@@ -1973,9 +1973,9 @@ $result
 echo $result;
 // <ol id="carsList">
 //     <li class="active">Ferrari</li>
-//     <li>> Ford</li>
-//     <li>> Dodge</li>
-//     <li>> Toyota</li>
+//     <li>>Ford</li>
+//     <li>>Dodge</li>
+//     <li>>Toyota</li>
 // </ol>
 ```
 
@@ -2275,7 +2275,7 @@ Returns the title
 public function set(
     string $text, 
     bool $raw = false
-)): Title
+): Title
 ```
 
 Sets the title
@@ -2284,7 +2284,7 @@ Sets the title
 public function setSeparator(
     string $separator, 
     bool $raw = false
-)): Title
+): Title
 ```
 
 Sets the separator
@@ -2302,13 +2302,13 @@ Prepends text to the current document title
 <?php
 
 use Phalcon\Html\Escaper;
-use Phalcon\Html\Helper\Ul;
+use Phalcon\Html\Helper\Title;
 
 $escaper = new Escaper();
-$helper  = new Ul($escaper);
+$helper  = new Title($escaper);
 $options = [
     'id' => 'carsList',
-]
+];
 
 $result = $helper();
 
@@ -2357,7 +2357,7 @@ $escaper = new Escaper();
 $helper  = new Ul($escaper);
 $options = [
     'id' => 'carsList',
-]
+];
 
 $result = $helper('    ', PHP_EOL, $options);
 
@@ -2371,9 +2371,9 @@ $result
 echo $result;
 // <ul id="carsList">
 //     <li class="active">Ferrari</li>
-//     <li>> Ford</li>
-//     <li>> Dodge</li>
-//     <li>> Toyota</li>
+//     <li>>Ford</li>
+//     <li>>Dodge</li>
+//     <li>>Toyota</li>
 // </ul>
 ```
 
