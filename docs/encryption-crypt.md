@@ -10,16 +10,13 @@
 
 !!! danger "DANGER"
 
-    **DOES NOT** support insecure algorithms or ECB mode: `des*`, `rc2*`, `rc4*`, `*ecb`. 
+    **DOES NOT** support insecure algorithms or ECB mode: `des*`, `rc2*`, `rc4*`, `*ecb`.
 
-Phalcon provides encryption facilities via the [Phalcon\Encryption\Crypt][crypt] component. This class offers simple
-object-oriented wrappers to the [openssl][openssl] PHP's encryption library.
+Phalcon provides encryption facilities via the [Phalcon\Encryption\Crypt][crypt] component. This class offers simple object-oriented wrappers to the [openssl][openssl] PHP's encryption library.
 
 By default, this component utilizes the `AES-256-CFB` cipher.
 
-The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In
-theory, it is not crackable since the combinations of keys are massive. Although the NSA has categorized this
-in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory, it is not crackable since the combinations of keys are massive. Although the NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
 
 !!! warning "WARNING"
 
@@ -42,8 +39,7 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-If no parameters are passed in the constructor, the component will use the `aes-256-cfb` cipher with signing by default.
-You can always change the cipher as well as disable signing.
+If no parameters are passed in the constructor, the component will use the `aes-256-cfb` cipher with signing by default. You can always change the cipher as well as disable signing.
 
 !!! warning "WARNING"
 
@@ -90,8 +86,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 ## Encrypt
 
-The `encrypt()` method encrypts a string. The component will use the previously set cipher, which has been set in the
-constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
+The `encrypt()` method encrypts a string. The component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
 
 ```php
 <?php
@@ -119,8 +114,7 @@ $text      = 'This is the text that you want to encrypt.';
 $encrypted = $crypt->encrypt($text, $key);
 ```
 
-The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call
-to disable it.
+The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
 
 !!! warning "WARNING"
 
@@ -128,9 +122,7 @@ to disable it.
 
 ## Decrypt
 
-The `decrypt()` method decrypts a string. Similar to `encrypt()` the component will use the previously set cipher, which
-has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be
-used.
+The `decrypt()` method decrypts a string. Similar to `encrypt()` the component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
 
 ```php
 <?php
@@ -160,8 +152,7 @@ $text      = 'T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb
 $encrypted = $crypt->decrypt($text, $key);
 ```
 
-The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call
-to disable it.
+The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
 
 !!! info "NOTE"
 
@@ -169,78 +160,60 @@ to disable it.
 
 ## Base64 Encrypt
 
-The `encryptBase64()` can be used to encrypt a string in a URL-friendly way. It uses `encrypt()` internally and accepts
-the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to
-`false`) which will perform string replacements for non URL _friendly_ characters such as `+` or `/`.
+The `encryptBase64()` can be used to encrypt a string in a URL-friendly way. It uses `encrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for non URL _friendly_ characters such as `+` or `/`.
 
 ## Base64 Decrypt
 
-The `decryptBase64()` can be used to decrypt a string in a URL-friendly way. Similar to `encryptBase64()` it uses
-`decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third
-parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL _friendly_
-characters such as `+` or `/`.
+The `decryptBase64()` can be used to decrypt a string in a URL-friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL _friendly_ characters such as `+` or `/`.
 
 ## Functionality
 
 ### Ciphers
 
-The getter `getCipher()` returns the currently selected cipher. If none has been explicitly defined either by the setter
-`setCipher()` or the constructor of the object the `aes-256-cfb` is selected by default. The `aes-256-gcm` is the
-preferable cipher.
+The getter `getCipher()` returns the currently selected cipher. If none has been explicitly defined either by the setter `setCipher()` or the constructor of the object the `aes-256-cfb` is selected by default. The `aes-256-gcm` is the preferable cipher.
 
 You can always get an array of all the available ciphers for your system by calling  `getAvailableCiphers()`.
 
 ### Hash Algorithm
 
-The getter `getHashAlgo()` returns the hashing algorithm used by the component. If none has been explicitly defined by
-the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is
-wrong, a [Phalcon\Encryption\Crypt\Exception][crypt-exception] will be thrown.
+The getter `getHashAlgo()` returns the hashing algorithm used by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Encryption\Crypt\Exception][crypt-exception] will be thrown.
 
-You can always get an array of all the available hashing algorithms for your system by calling
-`getAvailableHashAlgos()`.
+You can always get an array of all the available hashing algorithms for your system by calling `getAvailableHashAlgos()`.
 
 ### Keys
 
-The component offers a getter and a setter for the key to be used. Once the key is set, it will be used for any
-encrypting or decrypting operation (provided that the `key` parameter is not defined when using these methods).
+The component offers a getter and a setter for the key to be used. Once the key is set, it will be used for any encrypting or decrypting operation (provided that the `key` parameter is not defined when using these methods).
 
 * `getKey()`: Returns the encryption key.
 * `setKey()` Sets the encryption key.
 
 !!! danger "DANGER"
 
-    You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application, you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher. 
+    You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application, you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher.
 
     Several online services can generate random and strong text that can be used for a key. Alternatively, you can always use the `hash()` methods from the [Phalcon\Security][encryption-security] component, which can offer a strong key by hashing a string.
 
 ### Signing
 
-To instruct the component to use signing or not, `useSigning` is available. It accepts a boolean which sets a flag
-internally, specifying whether signing will be used or not.
+To instruct the component to use signing or not, `useSigning` is available. It accepts a boolean which sets a flag internally, specifying whether signing will be used or not.
 
 ### Auth Data
 
-If the cipher selected is of type `gcm` or `ccm` (what the cipher name ends with), auth data is required for the
-component to correctly encrypt or decrypt data. The methods available for this operation are:
+If the cipher selected is of type `gcm` or `ccm` (what the cipher name ends with), auth data is required for the component to correctly encrypt or decrypt data. The methods available for this operation are:
 
 * `setAuthTag()`
 * `setAuthData()`
 * `setAuthTagLength()` - (`16`)
 
-`setAuthTagLength()` accepts a value between `4` and `16` bytes. A value outside that range throws
-`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`.
+`setAuthTagLength()` accepts a value between `4` and `16` bytes. A value outside that range throws `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`.
 
-The auth data, auth tag, and auth tag length are stored on the instance and shared by every `encrypt()` and `decrypt()`
-call. A `Crypt` instance shared through the [Phalcon\Di][di] container is therefore not safe for interleaved AEAD
-operations; use a dedicated instance per operation in that case.
+The auth data, auth tag, and auth tag length are stored on the instance and shared by every `encrypt()` and `decrypt()` call. A `Crypt` instance shared through the [Phalcon\Di][di] container is therefore not safe for interleaved AEAD operations; use a dedicated instance per operation in that case.
 
-For reference, a signed payload produced by `encrypt()` has the layout `iv ‖ hmac ‖ ciphertext ‖ tag`, where `hmac` is
-present only when signing is enabled and `tag` is present only for `gcm` / `ccm` ciphers.
+For reference, a signed payload produced by `encrypt()` has the layout `iv ‖ hmac ‖ ciphertext ‖ tag`, where `hmac` is present only when signing is enabled and `tag` is present only for `gcm` / `ccm` ciphers.
 
 ### Padding
 
-You can also set the padding used by the component by using `setPadding()`. By default, the component will use
-`PADDING_DEFAULT`. The available padding constants are:
+You can also set the padding used by the component by using `setPadding()`. By default, the component will use `PADDING_DEFAULT`. The available padding constants are:
 
 * `PADDING_ANSI_X_923`
 * `PADDING_DEFAULT`
@@ -252,9 +225,7 @@ You can also set the padding used by the component by using `setPadding()`. By d
 
 ## Dependency Injection
 
-As with most Phalcon components, you can store the [Phalcon\Encryption\Crypt][crypt] object in your [Phalcon\Di][di]
-container. By doing so, you will be able to access your configuration object from controllers, models, views, and any
-component that implements `Injectable`.
+As with most Phalcon components, you can store the [Phalcon\Encryption\Crypt][crypt] object in your [Phalcon\Di][di] container. By doing so, you will be able to access your configuration object from controllers, models, views, and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -479,8 +450,7 @@ Use a message digest (signing) to be used or not
 
 ## PadFactory
 
-The [Phalcon\Encryption\Crypt\PadFactory][pad-factory] is an object that instantiates classes to be used for padding and
-unpadding data during encryption or decryption.
+The [Phalcon\Encryption\Crypt\PadFactory][pad-factory] is an object that instantiates classes to be used for padding and unpadding data during encryption or decryption.
 
 | Name       | Class                                       |
 |------------|---------------------------------------------|
@@ -493,20 +463,13 @@ unpadding data during encryption or decryption.
 | `space`    | `Phalcon\Encryption\Crypt\Padding\Space`    |
 | `zero`     | `Phalcon\Encryption\Crypt\Padding\Zero`     |
 
-`pkcs7` is the correctly-spelled alias of the original `pjcs7` service; both resolve to
-`Phalcon\Encryption\Crypt\Padding\Pkcs7`. The `padNumberToService()` method maps a `Crypt::PADDING_*` constant to its
-service name and throws `Phalcon\Encryption\Crypt\Exception\Exception` when given a constant it does not recognize.
+`pkcs7` is the correctly-spelled alias of the original `pjcs7` service; both resolve to `Phalcon\Encryption\Crypt\Padding\Pkcs7`. The `padNumberToService()` method maps a `Crypt::PADDING_*` constant to its service name and throws `Phalcon\Encryption\Crypt\Exception\Exception` when given a constant it does not recognize.
 
-[Phalcon\Encryption\Crypt\Padding\PadInterface][pad-interface] is also available, should you need to create your own
-padding strategy. Note that you will need to register the new padding class in
-the [Phalcon\Encryption\Crypt\PadFactory][pad-factory] and inject it into the constructor of
-the [Phalcon\Encryption\Crypt][crypt] component.
+[Phalcon\Encryption\Crypt\Padding\PadInterface][pad-interface] is also available, should you need to create your own padding strategy. Note that you will need to register the new padding class in the [Phalcon\Encryption\Crypt\PadFactory][pad-factory] and inject it into the constructor of the [Phalcon\Encryption\Crypt][crypt] component.
 
 ## Contracts
 
-The encryption interfaces extend canonical contracts in the `Phalcon\Contracts\Encryption\Crypt` namespace. New code
-should type-hint the contracts. The `*Interface` types remain as deprecated aliases and will be removed in a future
-major version.
+The encryption interfaces extend canonical contracts in the `Phalcon\Contracts\Encryption\Crypt` namespace. New code should type-hint the contracts. The `*Interface` types remain as deprecated aliases and will be removed in a future major version.
 
 | Deprecated interface                            | Contract                                         |
 |-------------------------------------------------|--------------------------------------------------|
@@ -535,10 +498,7 @@ function encryptValue(Crypt $crypt, string $value): string
 
 ## Exceptions
 
-Exceptions thrown in the [Phalcon\Encryption\Crypt][crypt] component will be of
-type [Phalcon\Encryption\Crypt\Exception][crypt-exception]. If however, you are using signing and the calculated hash
-for `decrypt()` does not match, [Phalcon\Encryption\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these
-exceptions to selectively catch exceptions thrown only from this component.
+Exceptions thrown in the [Phalcon\Encryption\Crypt][crypt] component will be of type [Phalcon\Encryption\Crypt\Exception][crypt-exception]. If however, you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Encryption\Crypt\Mismatch][crypt-mismatch] will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -562,8 +522,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses under `Phalcon\Encryption\Crypt\Exception\` so callers can catch a
-specific failure mode. Existing `catch (Phalcon\Encryption\Crypt\Exception $e)` blocks continue to work unchanged.
+As of 5.14 the component raises granular subclasses under `Phalcon\Encryption\Crypt\Exception\` so callers can catch a specific failure mode. Existing `catch (Phalcon\Encryption\Crypt\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                            | Parent                               | Thrown when                                                                           |
 |------------------------------------------------------------------|--------------------------------------|---------------------------------------------------------------------------------------|
@@ -581,25 +540,14 @@ specific failure mode. Existing `catch (Phalcon\Encryption\Crypt\Exception $e)` 
 | `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`        | `Phalcon\Encryption\Crypt\Exception` | The configured cipher or hashing algorithm is not available in the current PHP build. |
 
 [base64]: https://www.php.net/manual/en/function.base64-encode.php
-
 [cipher_methods]: https://www.php.net/manual/en/function.openssl-get-cipher-methods.php
-
-[openssl]: https://www.php.net/manual/en/book.openssl.php
-
-[suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
-
 [crypt]: api/phalcon_encryption.md#encryptioncrypt
-
 [crypt-cryptinterface]: api/phalcon_encryption.md#encryptioncryptcryptinterface
-
 [crypt-exception]: api/phalcon_encryption.md#encryptioncryptexceptionexception
-
 [crypt-mismatch]: api/phalcon_encryption.md#encryptioncryptexceptionmismatch
-
-[pad-factory]: api/phalcon_encryption.md#encryptioncryptpadfactory
-
-[pad-interface]: api/phalcon_encryption.md#encryptioncryptpaddingpadinterface
-
 [di]: di.md
-
 [encryption-security]: encryption-security.md
+[openssl]: https://www.php.net/manual/en/book.openssl.php
+[pad-factory]: api/phalcon_encryption.md#encryptioncryptpadfactory
+[pad-interface]: api/phalcon_encryption.md#encryptioncryptpaddingpadinterface
+[suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography

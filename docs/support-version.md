@@ -4,8 +4,7 @@
 
 ## Overview
 
-[Phalcon\Support\Version][version] is a small but handy class, that returns the current version of Phalcon installed in
-your system.
+[Phalcon\Support\Version][version] is a small but handy class, that returns the current version of Phalcon installed in your system.
 
 ## Constants
 

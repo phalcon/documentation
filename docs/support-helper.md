@@ -4,8 +4,7 @@
 
 ## Overview
 
-[Phalcon\Support\HelperFactory][support-helper] offers support methods that manipulate arrays, files, JSON, numbers, and
-strings. The factory replaces the `Phalcon\Text` component, offering the same functionality and more.
+[Phalcon\Support\HelperFactory][support-helper] offers support methods that manipulate arrays, files, JSON, numbers, and strings. The factory replaces the `Phalcon\Text` component, offering the same functionality and more.
 
 ```php
 <?php
@@ -15,9 +14,7 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
  ```
 
-The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper
-class or by calling the helper class directly as a method on the helper factory. The factory acts as a service locator,
-caching the objects to be reused if need be, in the same request.
+The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper class or by calling the helper class directly as a method on the helper factory. The factory acts as a service locator, caching the objects to be reused if need be, in the same request.
 
 ## Available Classes
 
@@ -240,8 +237,7 @@ var_dump($result);
 
 `first(array $collection, callable $method = null): mixed`
 
-Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates
-`true`
+Returns the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
 <?php
@@ -264,8 +260,7 @@ echo $result; // 'Phalcon'
 
 `firstKey(array $collection, callable $method = null): mixed`
 
-Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first
-that validates `true`
+Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
 <?php
@@ -309,8 +304,7 @@ var_dump($result);
 
 `get(array $collection, mixed $index, mixed $defaultValue = null, string $cast = null): mixed`
 
-Gets an array element by key and if it does not exist returns the default. It also allows for casting the returned value
-to a specific type using `settype` internally
+Gets an array element by key and if it does not exist returns the default. It also allows for casting the returned value to a specific type using `settype` internally
 
 ```php
 <?php
@@ -437,8 +431,7 @@ echo $helper->isUnique($source); // false
 
 `last(array $collection, callable $method = null): mixed`
 
-Returns the last element of the collection. If a `callable` is passed, the element returned is the first that validates
-`true`
+Returns the last element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
 <?php
@@ -461,8 +454,7 @@ echo $result; // 'Framework'
 
 `lastKey(array $collection, callable $method = null): mixed`
 
-Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first
-that validates `true`
+Returns the key of the first element of the collection. If a `callable` is passed, the element returned is the first that validates `true`
 
 ```php
 <?php
@@ -485,8 +477,7 @@ echo $result; // 'two'
 
 `order(array $collection, mixed $attribute, string $order = 'asc'): array`
 
-Sorts a collection of arrays or objects by an attribute of the object. It supports ascending/descending sorts but also
-flags that are identical to the ones used by `ksort` and `krsort`
+Sorts a collection of arrays or objects by an attribute of the object. It supports ascending/descending sorts but also flags that are identical to the ones used by `ksort` and `krsort`
 
 ```php
 <?php
@@ -887,8 +878,7 @@ var_dump($result);
 
 `basename(string $uri, string $suffix = null): string`
 
-Gets the filename from a given path, Same as PHP's `basename()` but has non-ASCII support. PHP's `basename()` does not
-properly support streams or filenames beginning with a non-US-ASCII character.
+Gets the filename from a given path, Same as PHP's `basename()` but has non-ASCII support. PHP's `basename()` does not properly support streams or filenames beginning with a non-US-ASCII character.
 
 ```php
 <?php
@@ -1034,8 +1024,7 @@ echo $result; // '@test.test2.test.34'
 
 `countVowels(string $text): int`
 
-Returns the number of vowels in a provided string. Uses a regular expression to count the number of vowels (A, E, I, O,
-U) in a string
+Returns the number of vowels in a provided string. Uses a regular expression to count the number of vowels (A, E, I, O, U) in a string
 
 ```php
 <?php
@@ -1055,8 +1044,7 @@ echo $result; // 9
 
 `decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string`
 
-Decapitalizes the first letter of the string and then adds it with the rest of the string. Omit the upperRest parameter
-to keep the rest of the string intact, or set it to true to convert to uppercase.
+Decapitalizes the first letter of the string and then adds it with the rest of the string. Omit the upperRest parameter to keep the rest of the string intact, or set it to true to convert to uppercase.
 
 ```php
 <?php
@@ -1136,8 +1124,7 @@ echo $result; // '/home/phalcon/'
 
 `dynamic(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|"): string`
 
-Generates random text in accordance with the template. The template is defined by the left and right delimiter, and it
-can contain values separated by the separator
+Generates random text in accordance with the template. The template is defined by the left and right delimiter, and it can contain values separated by the separator
 
 ```php
 <?php
@@ -1201,8 +1188,7 @@ echo $result; // 'custom'
 
 `friendly(string $text, string $separator = '-', bool $lowercase = true, mixed $replace = null): string`
 
-Changes a text to a URL-friendly one. Replaces commonly known accented characters with their Latin equivalents. If a
-`replace` string or array is passed, it will also be used to replace those characters with a space.
+Changes a text to a URL-friendly one. Replaces commonly known accented characters with their Latin equivalents. If a `replace` string or array is passed, it will also be used to replace those characters with a space.
 
 ```php
 <?php
@@ -1674,13 +1660,11 @@ echo $result; // 'PHALCON FRAMEWORK'
 
 ## Exceptions
 
-Any exception thrown in the `Phalcon\Support\Helper` namespace will be of type `Phalcon\Support\Exception`. You can use
-this exception to selectively catch exceptions thrown only from this component.
+Any exception thrown in the `Phalcon\Support\Helper` namespace will be of type `Phalcon\Support\Exception`. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific
-failure mode. Existing `catch (Phalcon\Support\Exception $e)` blocks continue to work unchanged.
+As of 5.14 the component raises granular subclasses of `Phalcon\Support\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Support\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                         | Parent                      | Thrown when                                                                        |
 |---------------------------------------------------------------|-----------------------------|------------------------------------------------------------------------------------|
