@@ -121,11 +121,9 @@ $migration::run([
 
 ## Migration methods
 
-Each migration is a separate class that works as an entity for a specific database table.
-Inside each class, different methods can occur during migration running.
+Each migration is a separate class that works as an entity for a specific database table. Inside each class, different methods can occur during migration running.
 
-Each migration file (and class) can implement specific methods, that will be executed based on the operation requested.
-There are no restrictions on the logic encapsulated in each method.
+Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
 
 The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
 
@@ -180,9 +178,7 @@ The tables below show the Migration Class methods. They are stored by order of e
 
 ## Timestamp based migrations
 
-Using this approach is useful when more than one developer is participating in the database structure management.
-Use `'migrationsTsBased' => true` in the config file or `--ts-based` option in CLI environment.
-Also, you need to specify the suffix `descr`, which could be anything you want, for example: semantic version.
+Using this approach is useful when more than one developer is participating in the database structure management. Use `'migrationsTsBased' => true` in the config file or `--ts-based` option in CLI environment. Also, you need to specify the suffix `descr`, which could be anything you want, for example: semantic version.
 
 Current command
 

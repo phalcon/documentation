@@ -4,12 +4,9 @@
 
 ## Overview
 
-[Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to reuse code. Although you
-can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Traits require
-you to use exactly the same field names for common code to work. Behaviors are more flexible.
+[Behaviors][mvc-model-behavior] are shared constructs that several models may adopt in order to reuse code. Although you can use [traits][traits] to reuse code, behaviors have several benefits that make them more appealing. Traits require you to use exactly the same field names for common code to work. Behaviors are more flexible.
 
-The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before
-as an alternative to implement behaviors.
+The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement behaviors.
 
 A behavior must be added in the model initializer, a model can have zero or more behaviors:
 
@@ -68,8 +65,7 @@ The following built-in behaviors are provided by the framework:
 
 ## Timestampable
 
-This behavior receives an array of options, the first level key must be an event name indicating when the column must be
-assigned:
+This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
 ```php
 <?php
@@ -91,9 +87,7 @@ public function initialize()
 }
 ```
 
-Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it
-will be used as the format of the [date][date] function. `format` can also be an anonymous function offering additional
-functionality to generate any kind of timestamp string:
+Each event can have its own options, `field` is the name of the column that must be updated, if `format` is a string it will be used as the format of the [date][date] function. `format` can also be an anonymous function offering additional functionality to generate any kind of timestamp string:
 
 ```php
 <?php
@@ -174,8 +168,7 @@ class Invoices extends Model
 }
 ```
 
-This behavior accepts two options: `field` and `value`, `field` determines what field must be updated, and `value` is
-the value to be deleted. Assuming that our table has the following rows:
+This behavior accepts two options: `field` and `value`, `field` determines what field must be updated, and `value` is the value to be deleted. Assuming that our table has the following rows:
 
 ```sql
 mysql> select * from co_invoices;
@@ -219,13 +212,9 @@ mysql> select * from co_invoices;
 
 ## Custom
 
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing
-the [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] or
-extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior] which exposes most of the methods required for implementing
-custom behaviors.
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] or extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior] which exposes most of the methods required for implementing custom behaviors.
 
-The [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] requires two methods to be present in your custom
-behavior:
+The [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] requires two methods to be present in your custom behavior:
 
 ```php 
 public function missingMethod(
@@ -253,8 +242,7 @@ Additionally, if you extend [Phalcon\Mvc\Model\Behavior][mvc-model-behavior], yo
 | `getOptions(string $eventName = null)` | Returns the behavior options related to an event              |
 | `mustTakeAction(string $eventName)`    | Checks whether the behavior must take action on certain event |
 
-The following behavior is an example, it implements the `Blameable` behavior which helps identify the user that is
-performing operations on a model:
+The following behavior is an example, it implements the `Blameable` behavior which helps identify the user that is performing operations on a model:
 
 ```php
 <?php
@@ -290,8 +278,7 @@ class Blameable extends Behavior
 }
 ```
 
-The above is a very simple behavior, but it illustrates how to create a behavior. Adding the behavior to a model is
-illustrated below:
+The above is a very simple behavior, but it illustrates how to create a behavior. Adding the behavior to a model is illustrated below:
 
 ```php
 <?php
@@ -343,8 +330,7 @@ $title = $invoice->getSlug();
 
 ## Traits
 
-You can use [Traits][traits] to re-use code in your classes, this is another way to implement custom behaviors. The
-following trait implements a simple version of the `Timestampable` behavior:
+You can use [Traits][traits] to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the `Timestampable` behavior:
 
 ```php
 <?php
@@ -382,32 +368,22 @@ class Invoices extends Model
 
 ## Exceptions
 
-Any exceptions thrown in the `Phalcon\Mvc\Model\Behavior` namespace will be of type `Phalcon\Mvc\Model\Exception`. You
-can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the `Phalcon\Mvc\Model\Behavior` namespace will be of type `Phalcon\Mvc\Model\Exception`. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific
-failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
+As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                         | Parent                        | Thrown when                                                                                                          |
 |---------------------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption` | `Phalcon\Mvc\Model\Exception` | A behavior is configured without an option it cannot operate without (e.g. `field` or `format` for `Timestampable`). |
 
 [date]: https://php.net/manual/en/function.date.php
-
-[events-list]: events.md#list-of-events
-
-[mvc-model-behavior]: api/phalcon_mvc.md#mvcmodelbehavior
-
-[mvc-model-behavior-softdelete]: api/phalcon_mvc.md#mvcmodelbehaviorsoftdelete
-
-[mvc-model-behavior-timestampable]: api/phalcon_mvc.md#mvcmodelbehaviortimestampable
-
-[mvc-model-behaviorinterface]: api/phalcon_mvc.md#mvcmodelbehaviorinterface
-
-[time]: https://php.net/manual/en/function.time.php
-
-[traits]: https://php.net/manual/en/language.oop5.traits.php
-
 [events]: events.md
+[events-list]: events.md#list-of-events
+[mvc-model-behavior]: api/phalcon_mvc.md#mvcmodelbehavior
+[mvc-model-behavior-softdelete]: api/phalcon_mvc.md#mvcmodelbehaviorsoftdelete
+[mvc-model-behavior-timestampable]: api/phalcon_mvc.md#mvcmodelbehaviortimestampable
+[mvc-model-behaviorinterface]: api/phalcon_mvc.md#mvcmodelbehaviorinterface
+[time]: https://php.net/manual/en/function.time.php
+[traits]: https://php.net/manual/en/language.oop5.traits.php
