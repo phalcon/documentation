@@ -1,22 +1,22 @@
-# Phalcon Framework: A PHP framework built as an extension for PHP
+# Phalcon Framework: A full-stack PHP framework
 
-**A full-stack PHP framework delivered as a C-extension**
+**A full-stack framework for PHP, written in PHP**
 
-[![Phalcon](https://github.com/phalcon/cphalcon/actions/workflows/main.yml/badge.svg?branch=5.0.x)](https://github.com/phalcon/cphalcon/actions/workflows/main.yml)
+[![Phalcon](https://github.com/phalcon/phalcon/actions/workflows/main.yml/badge.svg?branch=v6.0.x)](https://github.com/phalcon/phalcon/actions/workflows/main.yml)
 
 ## Mission :rocket:
 
-Our mission is to empower developers with an advanced, feature-rich tool: Phalcon. This framework is designed to facilitate the development of applications with minimal server resource consumption and optimal performance.
+Our mission is to empower developers with an advanced, feature-rich tool: Phalcon. This framework is designed to facilitate the development of robust, maintainable applications.
 
 ## What is Phalcon :question:
 
-Phalcon is an open-source full-stack framework for PHP, distinguished by its unique architecture written as a C-extension. This means that it is implemented in C and directly integrated into PHP for enhanced performance.
+Phalcon is an open-source, full-stack framework for PHP, written in PHP. It is distributed as a Composer package and requires PHP 8.1 or later; there is no extension to compile or install.
 
-Its innovative architecture ensures that the framework is always memory-resident, providing functionality on demand without the overhead of file stats and reads typically in traditional PHP frameworks.
+Its components are designed to work together as a full-stack framework or to be used individually in any PHP application. The code base targets modern PHP and follows the relevant PSR standards.
 
 ## Usage :memo:
 
-Phalcon is designed to be developer-friendly, and you don't need to be familiar with the C language to utilize its power. The framework's interface is exposed as PHP classes under the `Phalcon` namespace, making it accessible and straightforward to use.
+The framework's interface is exposed as PHP classes under the `Phalcon` namespace, installed with Composer (`composer require phalcon/phalcon`), making it accessible and straightforward to use.
 
 Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based on the needs of their applications.
 
@@ -78,7 +78,7 @@ Feel free to connect with us using our social media accounts:
 [discussions]: https://phalcon.io/discussions
 [fb]: https://phalcon.io/fb
 [gab]: https://phalcon.io/gab
-[github]: https://github.com/phalcon/cphalcon
+[github]: https://github.com/phalcon/phalcon
 [github_docs]: https://github.com/phalcon/docs
 [github_sponsors]: https://github.com/sponsors/phalcon
 [lbry]: https://phalcon.io/lbry
