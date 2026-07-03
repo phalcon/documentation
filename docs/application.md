@@ -4,8 +4,7 @@
 
 ## Overview
 
-The `Phalcon\Mvc\Application` component encapsulates the operations required to run an MVC application. It integrates
-all the necessary components and services, providing a full-stack application experience.
+The `Phalcon\Mvc\Application` component encapsulates the operations required to run an MVC application. It integrates all the necessary components and services, providing a full-stack application experience.
 
 ## Quick Start
 
@@ -118,7 +117,7 @@ public function handle(
 ): ResponseInterface | bool
 ```
 
-Handles an MVC request. Accepts the server URI (usually `$_SERVER['REQUEST_URI`]`)
+Handles an MVC request. Accepts the server URI (usually `$_SERVER['REQUEST_URI']`)
 
 ```php
 public function sendCookiesOnHandleRequest(
@@ -142,14 +141,11 @@ public function useImplicitView(
 ): Application
 ```
 
-This is enabled by default. The view is implicitly buffering all the output. You can fully disable the view component
-using this method
+This is enabled by default. The view is implicitly buffering all the output. You can fully disable the view component using this method
 
 ## Activation
 
-[Phalcon\Mvc\Application][mvc-application] performs all the work necessary to glue all the necessary components together
-so that the application can run. There are several ways that you can bootstrap your application. The most common way to
-bootstrap the application is:
+[Phalcon\Mvc\Application][mvc-application] performs all the work necessary to glue all the necessary components together so that the application can run. There are several ways that you can bootstrap your application. The most common way to bootstrap the application is:
 
 ```php
 <?php
@@ -188,8 +184,7 @@ $response = $application->handle(
 
 ## Manual Bootstrapping
 
-If you prefer not to use [Phalcon\Mvc\Application][mvc-application], you can manually handle the bootstrapping process
-based on your application's requirements. Below are alternative approaches for manual bootstrapping:
+If you prefer not to use [Phalcon\Mvc\Application][mvc-application], you can manually handle the bootstrapping process based on your application's requirements. Below are alternative approaches for manual bootstrapping:
 
 ### Standard Web Application
 
@@ -360,9 +355,7 @@ if ($response instanceof ResponseInterface) {
 }
 ```
 
-Choose the option that best fits your application's needs. Depending on your requirements, you may have full control
-over instantiation and component replacement to extend default functionality. The manual bootstrapping method should
-align with your application's specific use case.
+Choose the option that best fits your application's needs. Depending on your requirements, you may have full control over instantiation and component replacement to extend default functionality. The manual bootstrapping method should align with your application's specific use case.
 
 ## Single - Multi Module
 
@@ -370,8 +363,7 @@ align with your application's specific use case.
 
 ### Single Module
 
-In Single module MVC applications, there is only one module. Namespaces are optional. The structure typically looks like
-this:
+In Single module MVC applications, there is only one module. Namespaces are optional. The structure typically looks like this:
 
 ```plaintext
 single/
@@ -480,12 +472,7 @@ try {
 
 ### Multi-Module
 
-A multi-module application utilizes a shared document root for more than one module. Modules help organize components,
-enhance maintainability, and isolate functionality. Each module must implement
-the [Phalcon\Mvc\ModuleDefinitionInterface][mvc-moduledefinitioninterface] to ensure proper functionality. The directory
-structure typically includes subdirectories within the `apps/` directory, where each subdirectory has its MVC structure.
-Additionally, each module directory contains a `Module.php` file to configure module-specific settings, such as
-autoloaders and custom services.
+A multi-module application utilizes a shared document root for more than one module. Modules help organize components, enhance maintainability, and isolate functionality. Each module must implement the [Phalcon\Mvc\ModuleDefinitionInterface][mvc-moduledefinitioninterface] to ensure proper functionality. The directory structure typically includes subdirectories within the `apps/` directory, where each subdirectory has its MVC structure. Additionally, each module directory contains a `Module.php` file to configure module-specific settings, such as autoloaders and custom services.
 
 **Directory Structure**
 
@@ -508,8 +495,7 @@ multiple/
     js/
 ```
 
-In each module directory, the `Module.php` file is responsible for registering autoloaders and services for the specific
-module. Here is an example `Module.php` file for the `Multi\Back` module:
+In each module directory, the `Module.php` file is responsible for registering autoloaders and services for the specific module. Here is an example `Module.php` file for the `Multi\Back` module:
 
 ```php
 <?php
@@ -568,9 +554,7 @@ class Module implements ModuleDefinitionInterface
 }
 ```
 
-**Bootstrap File for Multi-Module Architecture**
-The bootstrap file for a multi-module MVC architecture requires a slightly modified setup. The router is explicitly
-configured, and modules are registered with the application. Here is an example bootstrap file:
+**Bootstrap File for Multi-Module Architecture** The bootstrap file for a multi-module MVC architecture requires a slightly modified setup. The router is explicitly configured, and modules are registered with the application. Here is an example bootstrap file:
 
 ```php
 <?php
@@ -644,8 +628,7 @@ try {
 }
 ```
 
-Alternatively, you can keep the module configuration in your bootstrap file using anonymous functions to register
-modules. Here's an example:
+Alternatively, you can keep the module configuration in your bootstrap file using anonymous functions to register modules. Here's an example:
 
 ```php
 <?php
@@ -686,16 +669,13 @@ $application->registerModules(
 );
 ```
 
-When a [Phalcon\Mvc\Application][mvc-application] has modules registered, it's crucial that every matched route returns
-a valid module. Each registered module has an associated class exposing methods for the module setup.
+When a [Phalcon\Mvc\Application][mvc-application] has modules registered, it's crucial that every matched route returns a valid module. Each registered module has an associated class exposing methods for the module setup.
 
-Module definition classes must implement two methods: `registerAutoloaders()` and `registerServices()`. These methods
-will be called by the [Phalcon\Mvc\Application][mvc-application] accordingly.
+Module definition classes must implement two methods: `registerAutoloaders()` and `registerServices()`. These methods will be called by the [Phalcon\Mvc\Application][mvc-application] accordingly.
 
 ## Events
 
-[Phalcon\Mvc\Application][mvc-application] can send events to the [EventsManager][events] if present. Events are
-triggered using the type application. The supported events are:
+[Phalcon\Mvc\Application][mvc-application] can send events to the [EventsManager][events] if present. Events are triggered using the type application. The supported events are:
 
 | Event Name            | Triggered                                                      |
 |-----------------------|----------------------------------------------------------------|
@@ -705,10 +685,7 @@ triggered using the type application. The supported events are:
 | `beforeHandleRequest` | Before execute the dispatch loop                               |
 | `afterHandleRequest`  | After execute the dispatch loop                                |
 
-Returning `false` from a listener cancels further processing for the `boot`, `beforeStartModule`, and
-`beforeHandleRequest` events. The `afterStartModule` and `afterHandleRequest` events are notifications fired after the
-work has completed; their return values are not honored. This differs from the CLI console, where a `false` returned
-from `afterStartModule` aborts handling.
+Returning `false` from a listener cancels further processing for the `boot`, `beforeStartModule`, and `beforeHandleRequest` events. The `afterStartModule` and `afterHandleRequest` events are notifications fired after the work has completed; their return values are not honored. This differs from the CLI console, where a `false` returned from `afterStartModule` aborts handling.
 
 Here's an example of how to attach listeners to this component:
 
@@ -736,10 +713,7 @@ $manager->attach(
 
 ## Exceptions
 
-Any exceptions thrown in the [Phalcon\Mvc\Application][mvc-application] component will be of
-type [Phalcon\Mvc\Application\Exception][mvc-application-exception]
-or [Phalcon\Application\Exception][application-exception]. You can use this exception to selectively catch exceptions
-thrown only from this component.
+Any exceptions thrown in the [Phalcon\Mvc\Application][mvc-application] component will be of type [Phalcon\Mvc\Application\Exception][mvc-application-exception] or [Phalcon\Application\Exception][application-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -772,9 +746,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Every subclass
-extends its respective parent (`Phalcon\Application\Exception` or `Phalcon\Mvc\Application\Exception`), so existing
-`catch` blocks against the umbrella types continue to work unchanged.
+The component raises granular subclasses so callers can catch a specific failure mode. Every subclass extends its respective parent (`Phalcon\Application\Exception` or `Phalcon\Mvc\Application\Exception`), so existing `catch` blocks against the umbrella types continue to work unchanged.
 
 | Class                                                             | Parent                              | Thrown when                                                                          |
 |-------------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------|
@@ -783,9 +755,7 @@ extends its respective parent (`Phalcon\Application\Exception` or `Phalcon\Mvc\A
 | `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`      | `Phalcon\Mvc\Application\Exception` | A registered module definition is not a string, array, or callable.                  |
 | `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` | `Phalcon\Mvc\Application\Exception` | The `path` key of a module definition points at a file that does not exist.          |
 
-As of 5.15 `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The
-constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are
-optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
+`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
 
 ```php
 <?php
@@ -801,16 +771,9 @@ echo $exception->getMessage();
 // Invalid module definition for module 'frontend': The module definition must be an array or an object
 ```
 
-[application-abstractapplication]: api/phalcon_application.md#applicationabstractapplication
-
 [application-exception]: api/phalcon_application.md#applicationexception
-
-[mvc-application]: api/phalcon_mvc.md#mvcapplication
-
-[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception
-
-[mvc-moduledefinitioninterface]: api/phalcon_mvc.md#mvcmoduledefinitioninterface
-
-[mvc-examples]: https://github.com/phalcon/mvc
-
 [events]: events.md
+[mvc-application]: api/phalcon_mvc.md#mvcapplication
+[mvc-application-exception]: api/phalcon_mvc.md#mvcapplicationexception
+[mvc-examples]: https://github.com/phalcon/mvc
+[mvc-moduledefinitioninterface]: api/phalcon_mvc.md#mvcmoduledefinitioninterface

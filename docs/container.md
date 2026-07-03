@@ -1,4 +1,5 @@
 # Container
+
 - - -
 
 ## Overview
@@ -7,9 +8,9 @@
 
 `Container` is the recommended choice for new projects. `Phalcon\Di\Di` remains fully supported and is not being removed.
 
-!!! info "WARNING"
+!!! warning "WARNING"
 
-    `Container` cannot be used with components that use the Inversion of Control methodology in Phalcon. That is, the container is available in the component, and it is used to retrive a different service to be used in that component. An example is the `Response` object which internally retrieves the `Filter` service for filtering. For this to happen, we need to widen the `getDI()` and `setDI()` which will affect backwards compatibiity. As such, Container cannot be used out of the box for this version. This refers to the `Registering as the Framework Default` section below. In the next major version we will change the interfaces to offer this functionality. 
+    `Container` cannot be used with components that use the Inversion of Control methodology in Phalcon. That is, the container is available in the component, and it is used to retrieve a different service to be used in that component. An example is the `Response` object which internally retrieves the `Filter` service for filtering. For this to happen, we need to widen the `getDI()` and `setDI()` which will affect backwards compatibility. As such, Container cannot be used out of the box for this version. This refers to the `Registering as the Framework Default` section below. In the next major version we will change the interfaces to offer this functionality.
 
 !!! info "NOTE"
 
@@ -596,7 +597,7 @@ use Phalcon\Container\Definition\ServiceLifetime;
 
 $container = new Container();
 
-// Inject pre-built instances - setInstance() is fluent
+// Inject pre-built instances — setInstance() is fluent
 $container
     ->setInstance('request', $requestObject, ServiceLifetime::SCOPED)
     ->setInstance('response', $responseObject, ServiceLifetime::SCOPED);
@@ -647,13 +648,3 @@ try {
 | `NoFactorySet` | A factory-backed definition is resolved with no factory set |
 | `InvalidExtender` | An extender returns a non-object |
 | `EnvNotDefined` | `Lazy::env()` reads an environment variable that is not defined |
-
-[container]: api/phalcon_container.md#container
-[container-factory]: api/phalcon_container.md#containerfactory
-[container-throwable]: api/phalcon_container.md#containerexceptionscontainerthrowable
-[container-servicenotfound]: api/phalcon_container.md#containerexceptionsservicenotfound
-[container-frozendefinition]: api/phalcon_container.md#containerexceptionsfrozendefinition
-[container-servicelifetime]: api/phalcon_container.md#containerdefinitionservicelifetime
-[container-servicedefinition]: api/phalcon_container.md#containerdefinitionservicedefinition
-[di]: di.md
-[application]: application.md

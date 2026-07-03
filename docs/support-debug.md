@@ -8,7 +8,7 @@
 
 PHP offers tools to debug applications with notices, warnings, errors, and exceptions. The [Exception class][exception] offers information such as the file, line, message, numeric code, backtrace, etc. of where an error occurred. OOP frameworks like Phalcon mainly use this class to encapsulate this functionality and provide information back to the developer or user.
 
-Despite being written in C, Phalcon executes methods in the PHP userland, providing the same debugging capabilities as other PHP-based frameworks offer.
+Phalcon executes methods in the PHP userland, providing the same debugging capabilities as other PHP-based frameworks offer.
 
 ## Constructor
 
@@ -462,11 +462,11 @@ PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
 #15 {main}
 ```
 
-As demonstrated above, it does not matter that Phalcon is compiled as a PHP extension. The exception information contains parameters and method calls that were involved in the call that generated the exception fragment above. [Exception::getTrace()][exception_gettrace] provides additional information if necessary.
+As demonstrated above, the exception information contains parameters and method calls that were involved in the call that generated the exception fragment above. [Exception::getTrace()][exception_gettrace] provides additional information if necessary.
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Support\Debug\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Support\Debug\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Support\Debug\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Support\Debug\Exception $e)` blocks continue to work unchanged.
 
 | Class                                             | Parent                            | Thrown when                                                             |
 |---------------------------------------------------|-----------------------------------|-------------------------------------------------------------------------|

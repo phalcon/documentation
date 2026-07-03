@@ -4,13 +4,11 @@
 
 ## Overview
 
-The `Phalcon\Image` namespace exposes an adapter that offers image manipulating functionality. These adapters are
-designed to allow multiple operations to be performed on the same image.
+The `Phalcon\Image` namespace exposes an adapter that offers image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
 ## Adapters
 
-This component uses adapters that offer methods to manipulate images. You can easily create your own adapter using
-the [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface].
+This component uses adapters that offer methods to manipulate images. You can create your own adapter using the [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface].
 
 | Class                                                  | Description                                       |
 |--------------------------------------------------------|---------------------------------------------------|
@@ -61,20 +59,15 @@ Each adapter offers getters to provide information about the component:
 
 ## GD
 
-[Phalcon\Image\Adapters\Gd][image-adapter-gd] utilizes the [GD PHP extension][gd]. In order for you to use this adapter,
-the extension has to be present in your system. The adapter offers all the methods described below in the operations
-section.
+[Phalcon\Image\Adapter\Gd][image-adapter-gd] utilizes the [GD PHP extension][gd]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
 ## Imagick
 
-[Phalcon\Image\Adapters\Imagick][image-adapter-imagick] utilizes the [ImageMagick PHP extension][imagick]. In order for
-you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described
-below in the operations section.
+[Phalcon\Image\Adapter\Imagick][image-adapter-imagick] utilizes the [ImageMagick PHP extension][imagick]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
 ## Blank Images
 
-Each adapter can create a blank, in-memory canvas instead of loading a file. Call the static `create()` method with the
-width and height in pixels. It returns a ready-to-use adapter that you can draw on, composite onto, and save.
+Each adapter can create a blank, in-memory canvas instead of loading a file. Call the static `create()` method with the width and height in pixels. It returns a ready-to-use adapter that you can draw on, composite onto, and save.
 
 - `Phalcon\Image\Adapter\Gd::create()` creates a true-color canvas
 - `Phalcon\Image\Adapter\Imagick::create()` creates a transparent canvas
@@ -91,9 +84,7 @@ $image->background('#ffffff');
 $image->save('canvas.png');
 ```
 
-The constructor also creates a blank canvas when the supplied file does not exist and both a width and a height are
-given. That dual behavior is kept for backward compatibility but is slated for removal in a future major version; use
-`create()` for new code.
+The constructor also creates a blank canvas when the supplied file does not exist and both a width and a height are given. That dual behavior is kept for backward compatibility but is slated for removal in a future major version; use `create()` for new code.
 
 ```php
 <?php
@@ -115,8 +106,7 @@ Sets the background color for the image. The available parameters are:
 | `string $color` | the color in hex format                |
 | `int $opacity`  | the opacity (optional - default `100`) |
 
-The color must be a valid hex string: `#rgb`, `rgb`, `#rrggbb`, or `rrggbb`. An invalid value throws
-`Phalcon\Image\Exceptions\InvalidColor`.
+The color must be a valid hex string: `#rgb`, `rgb`, `#rrggbb`, or `rrggbb`. An invalid value throws `Phalcon\Image\Exceptions\InvalidColor`.
 
 ```php
 <?php
@@ -132,8 +122,7 @@ $image->save('background-image.jpg');
 
 ### `blur()`
 
-Blurs the image. The passed integer parameter specifies the radius for the blur operation. The range is between 0 (no
-effect) and 100 (very blurry):
+Blurs the image. The passed integer parameter specifies the radius for the blur operation. The range is between 0 (no effect) and 100 (very blurry):
 
 ```php
 <?php
@@ -179,8 +168,7 @@ $image->save('crop-image.jpg');
 
 ### `flip()`
 
-You can flip an image horizontally or vertically. The `flip()` method accepts an integer, signifying the direction. You
-can use the constants for this operation:
+You can flip an image horizontally or vertically. The `flip()` method accepts an integer, signifying the direction. You can use the constants for this operation:
 
 - `Phalcon\Image\Enum::HORIZONTAL`
 - `Phalcon\Image\Enum::VERTICAL`
@@ -200,8 +188,7 @@ $image->save('flip-image.jpg');
 
 ### `liquidRescale()`
 
-This method is only available in the [Phalcon\Image\Imagick][image-adapter-imagick] adapter. It uses
-the [liquid][imagick-liquidrescale] rescaling method to rescale the image. The method accepts the following parameters:
+This method is only available in the [Phalcon\Image\Imagick][image-adapter-imagick] adapter. It uses the [liquid][imagick-liquidrescale] rescaling method to rescale the image. The method accepts the following parameters:
 
 | Parameter       | Description                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------|
@@ -213,9 +200,9 @@ the [liquid][imagick-liquidrescale] rescaling method to rescale the image. The m
 ```php
 <?php
 
-use Phalcon\Image\Adapter\Gd;
+use Phalcon\Image\Adapter\Imagick;
 
-$image = new Gd('image.jpg');
+$image = new Imagick('image.jpg');
 
 $image->liquidRescale(500, 200, 3, 25);
 
@@ -226,8 +213,7 @@ $image->save('liquidrescale-image.jpg');
 
 Creates a composite image from two images. Accepts the first image as a parameter.
 
-The mask is read through its `render()` output, so a mask produced by a different adapter (for example an Imagick mask
-applied to a GD image) composites correctly. Each call performs one encode/decode round trip.
+The mask is read through its `render()` output, so a mask produced by a different adapter (for example an Imagick mask applied to a GD image) composites correctly. Each call performs one encode/decode round trip.
 
 ```php
 <?php
@@ -244,8 +230,7 @@ $front->save('mask-image.jpg');
 
 ### `pixelate()`
 
-Adds pixelation to the image. The method accepts a single integer parameter. The higher the number, the more pixelated
-the image becomes:
+Adds pixelation to the image. The method accepts a single integer parameter. The higher the number, the more pixelated the image becomes:
 
 ```php
 <?php
@@ -399,8 +384,7 @@ $image->save('resize-tensile-image.jpg');
 
 **WIDTH**
 
-The height will automatically be generated to keep the proportions the same; if you specify a height, it will be
-ignored.
+The height will automatically be generated to keep the proportions the same; if you specify a height, it will be ignored.
 
 ```php
 <?php
@@ -417,8 +401,7 @@ $image->save('resize-width-image.jpg');
 
 ### `rotate()`
 
-Rotates an image based on the given degrees. Positive numbers rotate the image clockwise while negative
-counterclockwise.
+Rotates an image based on the given degrees. Positive numbers rotate the image clockwise while negative counterclockwise.
 
 The following example rotates an image by 90 degrees clockwise
 
@@ -436,8 +419,7 @@ $image->save('rotate-image.jpg');
 
 ### `save()`
 
-After manipulating your image, you will most likely want to save it. If you wish to just get the result of the
-manipulations back as a string, you can use the `render()` method.
+After manipulating your image, you will most likely want to save it. If you wish to get the result of the manipulations back as a string, you can use the `render()` method.
 
 The `save()` method accepts the filename and quality as parameters:
 
@@ -474,8 +456,7 @@ $image->rotate(90);
 $image->save('rotate-image.jpg');
 ```
 
-You can also change the format of the image using a different extension. This functionality depends on the adapter you
-are working with.
+You can also change the format of the image using a different extension. This functionality depends on the adapter you are working with.
 
 ```php
 <?php
@@ -505,8 +486,7 @@ $image->save('rotate-image.jpg', 90);
 
 ### `sharpen()`
 
-Sharpens the image. The passed integer parameter specifies the amount for the sharpening operation. The range is between
-0 (no effect) and 100 (very sharp):
+Sharpens the image. The passed integer parameter specifies the amount for the sharpening operation. The range is between 0 (no effect) and 100 (very sharp):
 
 ```php
 <?php
@@ -534,8 +514,7 @@ You can add text to your image by calling `text()`. The available parameters are
 | `int $size`        | the size of the font for the text (optional - default `12`) |
 | `string $fontfile` | the font file to be used for the text (optional)            |
 
-The color must be a valid hex string: `#rgb`, `rgb`, `#rrggbb`, or `rrggbb`. An invalid value throws
-`Phalcon\Image\Exceptions\InvalidColor`.
+The color must be a valid hex string: `#rgb`, `rgb`, `#rrggbb`, or `rrggbb`. An invalid value throws `Phalcon\Image\Exceptions\InvalidColor`.
 
 ```php
 <?php
@@ -568,8 +547,7 @@ Adds a watermark to an image. The available parameters are:
 | `int $offsetY`                | the Y offset (optional)                             | 
 | `int $opacity`                | the opacity of the image (optional - default `100`) |
 
-The watermark is read through its `render()` output, so a watermark produced by a different adapter composites
-correctly. Each call performs one encode/decode round trip.
+The watermark is read through its `render()` output, so a watermark produced by a different adapter composites correctly. Each call performs one encode/decode round trip.
 
 The following example puts the watermark in the top left corner of the image:
 
@@ -595,8 +573,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-You can also manipulate the watermarked image before applying it to the main image. In the following example, we resize,
-rotate, and sharpen the watermark and put it in the bottom right corner with a 10px margin:
+You can also manipulate the watermarked image before applying it to the main image. In the following example, we resize, rotate, and sharpen the watermark and put it in the bottom right corner with a 10px margin:
 
 ```php
 <?php
@@ -629,14 +606,12 @@ $image->save('watermark-image.jpg');
 
 ### `newInstance`
 
-The [Phalcon\Image\ImageFactory][image-imagefactory] offers an easy way to create image adapter objects. There are two
-adapters already preset for you:
+The [Phalcon\Image\ImageFactory][image-imagefactory] offers a way to create image adapter objects. There are two adapters already preset for you:
 
 - `gd`- [Phalcon\Image\Adapter\Gd][image-adapter-gd]
 - `imagick` - [Phalcon\Image\Adapter\Imagick][image-adapter-imagick]
 
-Calling `newInstance()` with the relevant key as well as parameters will return the relevant adapter. The factory always
-returns a new instance of [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface].
+Calling `newInstance()` with the relevant key as well as parameters will return the relevant adapter. The factory always returns a new instance of [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface].
 
 ```php
 <?php
@@ -659,9 +634,7 @@ The available parameters for `newInstance()` are:
 
 ### `load`
 
-The Image Factory also offers the `load` method, which accepts a configuration object. This object can be an array or
-a [Phalcon\Config\Config][config] object, with directives that are used to set up the image adapter. The object requires
-the `adapter` element, as well as the `file` element. `width` and `height` can also be set as options.
+The Image Factory also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config\Config][config] object, with directives that are used to set up the image adapter. The object requires the `adapter` element, as well as the `file` element. `width` and `height` can also be set as options.
 
 ```php
 <?php
@@ -681,9 +654,7 @@ $image = $factory->load($options);
 
 ## Custom
 
-The [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface] interface must be implemented in order to
-create your own image adapters or extend the existing ones. You can then easily add it to
-the [Phalcon\Image\ImageFactory][image-imagefactory].
+The [Phalcon\Image\Adapter\AdapterInterface][image-adapter-adapterinterface] interface must be implemented in order to create your own image adapters or extend the existing ones. You can then add it to the [Phalcon\Image\ImageFactory][image-imagefactory].
 
 ```php
 <?php
@@ -760,7 +731,7 @@ class MyImageAdapter implements AdapterInterface
     /**
      * Rotate the image
      */
-    public function rotate(int degrees);
+    public function rotate(int $degrees);
 
     /**
      * Save the image
@@ -799,8 +770,7 @@ class MyImageAdapter implements AdapterInterface
 
 ## Exceptions
 
-Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception][image-exception]. You can use
-this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception][image-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -827,8 +797,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Image\Exception` so callers can catch a specific
-failure mode. Existing `catch (Phalcon\Image\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Image\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Image\Exception $e)` blocks continue to work unchanged.
 
 | Class                                           | Parent                    | Thrown when                                                                |
 |-------------------------------------------------|---------------------------|----------------------------------------------------------------------------|
@@ -845,24 +814,14 @@ failure mode. Existing `catch (Phalcon\Image\Exception $e)` blocks continue to w
 | `Phalcon\Image\Exceptions\UnsupportedImageType` | `Phalcon\Image\Exception` | The image MIME type is not supported by the configured adapter.            |
 | `Phalcon\Image\Exceptions\VersionMismatch`      | `Phalcon\Image\Exception` | The installed GD or Imagick version is older than the component's minimum. |
 
-[gd]: https://php.net/manual/en/book.image.php
-
-[imagick]: https://php.net/manual/en/book.imagick.php
-
-[image-adapter-abstractadapter]: api/phalcon_image.md#imageadapterabstractadapter
-
-[image-adapter-adapterinterface]: api/phalcon_image.md#imageadapteradapterinterface
-
-[image-adapter-gd]: api/phalcon_image.md#imageadaptergd
-
-[image-adapter-imagick]: api/phalcon_image.md#imageadapterimagick
-
-[image-enum]: api/phalcon_image.md#imageenum
-
-[image-exception]: api/phalcon_image.md#imageexception
-
-[image-imagefactory]: api/phalcon_image.md#imageimagefactory
-
-[imagick-liquidrescale]: https://www.php.net/manual/en/imagick.liquidrescaleimage.php
-
 [config]: config.md
+[gd]: https://php.net/manual/en/book.image.php
+[image-adapter-abstractadapter]: api/phalcon_image.md#imageadapterabstractadapter
+[image-adapter-adapterinterface]: api/phalcon_image.md#imageadapteradapterinterface
+[image-adapter-gd]: api/phalcon_image.md#imageadaptergd
+[image-adapter-imagick]: api/phalcon_image.md#imageadapterimagick
+[image-enum]: api/phalcon_image.md#imageenum
+[image-exception]: api/phalcon_image.md#imageexception
+[image-imagefactory]: api/phalcon_image.md#imageimagefactory
+[imagick]: https://php.net/manual/en/book.imagick.php
+[imagick-liquidrescale]: https://www.php.net/manual/en/imagick.liquidrescaleimage.php

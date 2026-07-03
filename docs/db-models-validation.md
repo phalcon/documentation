@@ -37,12 +37,9 @@ class Customers extends Model
 
 ## Data Integrity
 
-Data integrity is essential in every application. You can implement validators in your models to introduce another layer
-of validation so that you can ensure that data is stored in your database that enforces your business rules.
+Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforces your business rules.
 
-The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in
-validators that can be used at this stage of validation. All validators available are under
-the [Phalcon\Validation][filter-validation] namespace.
+The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Filter\Validation][filter-validation] namespace.
 
 ```php
 <?php
@@ -88,10 +85,7 @@ class Invoices extends Model
 }
 ```
 
-The above example performs a validation using the built-in
-validator [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of
-the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail
-and return `false`.
+The above example performs a validation using the built-in validator [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`.
 
 !!! warning "WARNING"
 
@@ -99,12 +93,9 @@ and return `false`.
 
 ## Messages
 
-[Phalcon\Mvc\Model][mvc-model] utilizes the [Phalcon\Messages\Messages][messages-messages] collection to store any
-validation messages that have been generated during the validation process.
+[Phalcon\Mvc\Model][mvc-model] utilizes the [Phalcon\Messages\Messages][messages-messages] collection to store any validation messages that have been generated during the validation process.
 
-Each message is an instance of [Phalcon\Messages\Message][messages-message] and the set of messages generated can be
-retrieved with the `getMessages()` method. Each message provides additional information such as the field name that
-generated the message or the message type:
+Each message is an instance of [Phalcon\Messages\Message][messages-message] and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides additional information such as the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -130,8 +121,7 @@ if (false === $invoice->save()) {
 | `InvalidValue`         | A validator failed because of an invalid value                                                                         |
 | `PresenceOf`           | A field with a non `null` attribute on the database is trying to insert/update a `null` value                          |
 
-The `getMessages()` method can be overridden in a model to replace/translate the default messages generated
-automatically by the ORM:
+The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
 ```php
 <?php
@@ -154,8 +144,8 @@ class Invoices extends Model
                     break;
 
                 case 'InvalidUpdateAttempt':
-                    $messages[] = "The record cannot be updated '
-                                . 'because it doesn't exist";
+                    $messages[] = 'The record cannot be updated '
+                                . 'because it does not exist';
                     break;
 
                 case 'PresenceOf':
@@ -172,9 +162,7 @@ class Invoices extends Model
 ```
 
 ### Iteration and Type Enforcement
-The collection returned by `getMessages()` is a [Phalcon\Messages\Messages][messages-messages] instance. It is iterated
-by integer position. A message stored under a string key through the array-access interface stays reachable by that
-offset but is not visited during a `foreach` loop.
+The collection returned by `getMessages()` is a [Phalcon\Messages\Messages][messages-messages] instance. It is iterated by integer position. A message stored under a string key through the array-access interface stays reachable by that offset but is not visited during a `foreach` loop.
 
 ```php
 <?php
@@ -192,12 +180,7 @@ foreach ($messages as $message) {
 }
 ```
 
-Every entry must implement `Phalcon\Messages\MessageInterface`. Assigning any other type through the array-access
-interface throws `Phalcon\Messages\Exceptions\MessageNotObject` with the message
-`The message must be an instance of MessageInterface`. The `appendMessages()` method throws
-`Phalcon\Messages\Exceptions\MessagesNotIterable` when its argument is neither an array nor a `Traversable`. The
-collection implements the `Phalcon\Contracts\Messages\Messages` contract, which application code can type-hint against
-instead of the concrete class.
+Every entry must implement `Phalcon\Messages\MessageInterface`. Assigning any other type through the array-access interface throws `Phalcon\Messages\Exceptions\MessageNotObject` with the message `The message must be an instance of MessageInterface`. The `appendMessages()` method throws `Phalcon\Messages\Exceptions\MessagesNotIterable` when its argument is neither an array nor a `Traversable`. The collection implements the `Phalcon\Contracts\Messages\Messages` contract, which application code can type-hint against instead of the concrete class.
 
 ## Failed Events
 
@@ -210,8 +193,7 @@ Additional events are available when the data validation process finds any incon
 
 ## Custom
 
-The [validation][filter-validation] document explains in detail how you can create your own validators. You can use such
-validators and reuse them among several models. A validator also can be as simple as:
+The [validation][filter-validation] document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
 
 ```php
 <?php
@@ -219,7 +201,7 @@ validators and reuse them among several models. A validator also can be as simpl
 namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Message;
+use Phalcon\Messages\Message;
 
 class Invoices extends Model
 {
@@ -242,14 +224,9 @@ class Invoices extends Model
 }
 ```
 
-[mvc-model]: api/phalcon_mvc.md#mvcmodel
-
-[mvc-model-validationfailed]: api/phalcon_mvc.md#mvcmodelvalidationfailed
-
-[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin
-
-[messages-message]: api/phalcon_messages.md#messagesmessage
-
-[messages-messages]: api/phalcon_messages.md#messagesmessages
-
 [filter-validation]: filter-validation.md
+[messages-message]: api/phalcon_messages.md#messagesmessage
+[messages-messages]: api/phalcon_messages.md#messagesmessages
+[mvc-model]: api/phalcon_mvc.md#mvcmodel
+[mvc-model-validationfailed]: api/phalcon_mvc.md#mvcmodelvalidationfailed
+[validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin

@@ -1,36 +1,28 @@
-# Phalcon Framework: A full-stack PHP framework
+# Phalcon Framework: A PHP framework built as an extension for PHP
 
-**A full-stack, high-performance framework written in pure PHP**
+**A full-stack PHP framework delivered as a C-extension**
 
-[![Phalcon](https://github.com/phalcon/phalcon/actions/workflows/main.yml/badge.svg?branch=v6.0.x)](https://github.com/phalcon/phalcon/actions/workflows/main.yml)
+[![Phalcon](https://github.com/phalcon/cphalcon/actions/workflows/main.yml/badge.svg?branch=5.0.x)](https://github.com/phalcon/cphalcon/actions/workflows/main.yml)
 
 ## Mission :rocket:
 
-Our mission is to empower developers with an advanced, feature-rich tool: Phalcon. This framework is designed to
-facilitate the development of powerful applications with minimal server resource consumption and optimal performance.
+Our mission is to empower developers with an advanced, feature-rich tool: Phalcon. This framework is designed to facilitate the development of applications with minimal server resource consumption and optimal performance.
 
 ## What is Phalcon :question:
 
-Phalcon is an open-source full-stack framework for PHP. Originally delivered as a C-extension, from v6 onwards Phalcon
-is implemented in pure PHP, distributed as a [Composer][composer] package. This means there is nothing to compile and
-nothing to install on your web server: you simply add it to your project like any other PHP library.
+Phalcon is an open-source full-stack framework for PHP, distinguished by its unique architecture written as a C-extension. This means that it is implemented in C and directly integrated into PHP for enhanced performance.
 
-Its design focuses on low overhead and high performance, providing functionality on demand while remaining loosely
-coupled, so you only load the components your application needs.
+Its innovative architecture ensures that the framework is always memory-resident, providing functionality on demand without the overhead of file stats and reads typically in traditional PHP frameworks.
 
 ## Usage :memo:
 
-Phalcon is designed to be developer-friendly. The framework's interface is exposed as PHP classes under the `Phalcon`
-namespace, making it accessible and easy to use.
+Phalcon is designed to be developer-friendly, and you don't need to be familiar with the C language to utilize its power. The framework's interface is exposed as PHP classes under the `Phalcon` namespace, making it accessible and straightforward to use.
 
-Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based on the
-needs of their applications.
+Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based on the needs of their applications.
 
 You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality.
 
-Since this is a community-driven project, you can share your thoughts and requests for functionality you need by issuing
-a [New Feature Request][new-feature-request] and if you wish vote in GitHub
-for [existing NFRs][new-feature-request-list].
+Since this is a community-driven project, you can share your thoughts and requests for functionality you need by issuing a [New Feature Request][new-feature-request] and if you wish vote in GitHub for [existing NFRs][new-feature-request-list].
 
 Feel free to connect with us using our social media accounts:
 
@@ -81,39 +73,20 @@ Feel free to connect with us using our social media accounts:
 
 </div>
 
-
-[composer]: https://getcomposer.org/
-
-[github]: https://github.com/phalcon/phalcon
-
-[github_docs]: https://github.com/phalcon/docs
-
-[new-feature-request]: new-feature-request.md
-
-[new-feature-request-list]: new-feature-request-list.md
-
-[discord]: https://phalcon.io/discord
-
-[discussions]: https://phalcon.io/discussions
-
-[github_sponsors]: https://github.com/sponsors/phalcon
-
-[opencollective_sponsors]: https://phalcon.io/fund
-
-[telegram]: https://phalcon.io/telegram
-
-[gab]: https://phalcon.io/gab
-
-[mewe]: https://phalcon.io/mewe
-
-[reddit]: https://phalcon.io/reddit
-
-[fb]: https://phalcon.io/fb
-
-[t]: https://phalcon.io/t
-
 [bitchute]: https://phalcon.io/bitchute
-
+[discord]: https://phalcon.io/discord
+[discussions]: https://phalcon.io/discussions
+[fb]: https://phalcon.io/fb
+[gab]: https://phalcon.io/gab
+[github]: https://github.com/phalcon/cphalcon
+[github_docs]: https://github.com/phalcon/docs
+[github_sponsors]: https://github.com/sponsors/phalcon
 [lbry]: https://phalcon.io/lbry
-
+[mewe]: https://phalcon.io/mewe
+[new-feature-request]: new-feature-request.md
+[new-feature-request-list]: new-feature-request-list.md
+[opencollective_sponsors]: https://phalcon.io/fund
+[reddit]: https://phalcon.io/reddit
+[t]: https://phalcon.io/t
+[telegram]: https://phalcon.io/telegram
 [youtube]: https://phalcon.io/youtube

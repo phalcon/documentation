@@ -4,12 +4,7 @@
 
 ## Overview
 
-When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to
-know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as
-relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object offers this functionality, transparently
-querying the database and generating the necessary data from the database schema. The data can then be stored in a data
-store (such as Redis, APCu, etc.) to ensure that the database is not queried for the schema every time a query is
-executed.
+When using [Phalcon\Mvc\Model][mvc-model] classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData][mvc-model-metadata] object offers this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu, etc.) to ensure that the database is not queried for the schema every time a query is executed.
 
 !!! warning "WARNING"
 
@@ -33,8 +28,7 @@ $dataTypes = $metadata->getDataTypes($invoice);
 print_r($dataTypes);
 ```
 
-The above code will print the field names and also the fields to field types array. We use `attributes` as an alias of
-`fields`.
+The above code will print the field names and also the fields to field types array. We use `attributes` as an alias of `fields`.
 
 ```php
 [
@@ -64,8 +58,7 @@ The above code will print the field names and also the fields to field types arr
 
 ## Constants
 
-[Phalcon\Mvc\Model\MetaData][mvc-model-metadata] exposes a number of constants that can be used to retrieve attributes
-from the internal collection.
+[Phalcon\Mvc\Model\MetaData][mvc-model-metadata] exposes a number of constants that can be used to retrieve attributes from the internal collection.
 
 | Name                              | Index | Description                                                                |
 |-----------------------------------|:-----:|----------------------------------------------------------------------------|
@@ -84,10 +77,7 @@ from the internal collection.
 | `MODELS_COLUMN_MAP`               |   0   | Column map (aliases)                                                       |
 | `MODELS_REVERSE_COLUMN_MAP`       |   1   | Reverse column map (aliases)                                               |
 
-The first group of constants (`MODELS_ATTRIBUTES` through `MODELS_EMPTY_STRING_VALUES`) indexes the attribute metadata
-array. `MODELS_COLUMN_MAP` and `MODELS_REVERSE_COLUMN_MAP` index a separate column-map array. The two families count
-from `0` independently, so the same index value means different things depending on which array you hold. The metadata
-cache adapters persist these arrays, so the index layout is a stored format.
+The first group of constants (`MODELS_ATTRIBUTES` through `MODELS_EMPTY_STRING_VALUES`) indexes the attribute metadata array. `MODELS_COLUMN_MAP` and `MODELS_REVERSE_COLUMN_MAP` index a separate column-map array. The two families count from `0` independently, so the same index value means different things depending on which array you hold. The metadata cache adapters persist these arrays, so the index layout is a stored format.
 
 ## Methods
 
@@ -518,12 +508,11 @@ Initialize the metadata for certain table
 
 ## Adapters
 
-Retrieving the metadata is an expensive database operation, and we certainly do not want to perform it every time we run
-a query. We can however use one of many adapters available in order to cache the metadata.
+Retrieving the metadata is an expensive database operation, and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
 
 !!! info "NOTE"
 
-    For local development, the [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory] adapter is recommended so that any changes to the database can be reflected immediately. 
+    For local development, the [Phalcon\Mvc\Models\MetaData\Memory][mvc-model-metadata-memory] adapter is recommended so that any changes to the database can be reflected immediately.
 
 | Adapter                                                                     | Description                                                                                         |
 |-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -535,12 +524,9 @@ a query. We can however use one of many adapters available in order to cache the
 
 ### APCu
 
-This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. The extension must be present in
-your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable
-for production applications.
+This adapter uses the [Alternative PHP Cache (APC)][apcu] to store the table metadata. The extension must be present in your system for this metadata cache to work. If the server is restarted, the data will be lost. This adapter is suitable for production applications.
 
-The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant
-cache object. You can also pass an array with additional options for the cache to operate.
+The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
 
 The default prefix is `ph-mm-apcu-` and the lifetime is `172,000` (48 hours).
 
@@ -570,14 +556,11 @@ $container->set(
 
 ### Libmemcached
 
-This adapter uses the [Memcached Server][memcached] to store the table metadata. The extension must be present in your
-system for this metadata cache to work. This adapter is suitable for production applications.
+This adapter uses the [Memcached Server][memcached] to store the table metadata. The extension must be present in your system for this metadata cache to work. This adapter is suitable for production applications.
 
-The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant
-cache object. You can also pass an array with additional options for the cache to operate.
+The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
 
-The default prefix is `ph-mm-memc-` and the lifetime is `172,000` (48 hours). The `persistenId` is preset to
-`php-mm-mcid-`.
+The default prefix is `ph-mm-memc-` and the lifetime is `172,000` (48 hours). The `persistenId` is preset to `php-mm-mcid-`.
 
 ```php
 <?php
@@ -612,9 +595,7 @@ $container->set(
 
 ### Memory
 
-This adapter uses the server's memory to store the metadata cache. The cache is available only during the request, and
-then the cache is lost. This cache is more suitable for development since it accommodates the frequent changes in the
-database during development.
+This adapter uses the server's memory to store the metadata cache. The cache is available only during the request, and then the cache is lost. This cache is more suitable for development since it accommodates the frequent changes in the database during development.
 
 ```php
 <?php
@@ -633,11 +614,9 @@ $container->set(
 
 ### Redis
 
-This adapter uses the [Redis][redis] to store the table metadata. The extension must be present in your system for this
-metadata cache to work. This adapter is suitable for production applications.
+This adapter uses the [Redis][redis] to store the table metadata. The extension must be present in your system for this metadata cache to work. This adapter is suitable for production applications.
 
-The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant
-cache object. You can also pass an array with additional options for the cache to operate.
+The adapter receives a [Phalcon\Cache\AdapterFactory][cache-adapter-factory] class in order to instantiate the relevant cache object. You can also pass an array with additional options for the cache to operate.
 
 The default prefix is `ph-mm-reds-` and the lifetime is `172,000` (48 hours).
 
@@ -670,11 +649,9 @@ $container->set(
 
 ### Stream
 
-This adapter uses the file system to store the table metadata. This adapter is suitable for production applications but
-not recommended since it introduces an increase in I/O.
+This adapter uses the file system to store the table metadata. This adapter is suitable for production applications but not recommended since it introduces an increase in I/O.
 
-The adapter can accept a `metaDadaDir` option with a directory where the metadata will be stored. The default directory
-is the current directory.
+The adapter can accept a `metaDadaDir` option with a directory where the metadata will be stored. The default directory is the current directory.
 
 ```php
 <?php
@@ -695,8 +672,7 @@ $container->set(
 );
 ```
 
-You can use the `orm.exception_on_failed_metadata_save` option in your `php.ini` file to force the component to throw an
-exception if there is an error storing the metadata or if the target directory is not writeable.
+You can use the `orm.exception_on_failed_metadata_save` option in your `php.ini` file to force the component to throw an exception if there is an error storing the metadata or if the target directory is not writeable.
 
 ```ini
 orm.exception_on_failed_metadata_save = true
@@ -704,8 +680,7 @@ orm.exception_on_failed_metadata_save = true
 
 ## Strategies
 
-The default strategy to obtain the model's metadata is database introspection. Using this strategy, the information
-schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
+The default strategy to obtain the model's metadata is database introspection. Using this strategy, the information schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
 
 ```php
 <?php
@@ -774,8 +749,7 @@ class Invoices extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the
-`@Column` annotation are handled as simple class attributes.
+Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
 
 The following annotations are supported:
 
@@ -830,10 +804,7 @@ $container->set(
 
 ### Manual
 
-Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically.
-However, you have the option to define the metadata manually. This strategy overrides any strategy that has been set on
-the metadata manager. Columns added, modified, or removed from the mapped table must be manually updated in the model
-for everything to work properly.
+Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically. However, you have the option to define the metadata manually. This strategy overrides any strategy that has been set on the metadata manager. Columns added, modified, or removed from the mapped table must be manually updated in the model for everything to work properly.
 
 To set the metadata, we use the `metaData` method in a model:
 
@@ -886,6 +857,7 @@ class Invoices extends Model
                 'inv_created_by',
                 'inv_updated_at',
                 'inv_updated_by',
+            ],
 
             MetaData::MODELS_DATA_TYPES => [
                 'inv_id'          => Column::TYPE_INTEGER,
@@ -951,8 +923,7 @@ class Invoices extends Model
 
 ### Custom
 
-Phalcon offers the [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface][mvc-model-metadata-strategyinterface]
-interface, allowing you to create your own Strategy class.
+Phalcon offers the [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface][mvc-model-metadata-strategyinterface] interface, allowing you to create your own Strategy class.
 
 ```php
 <?php
@@ -962,7 +933,7 @@ namespace MyApp\Components\Strategy;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Di\DiInterface;
 
-class MyStrategy StrategyInterface
+class MyStrategy implements StrategyInterface
 {
     public function getColumnMaps(
         ModelInterface $model, 
@@ -979,13 +950,11 @@ class MyStrategy StrategyInterface
 
 ## Exceptions
 
-Any exceptions thrown in the `Phalcon\Mvc\Model\MetaData` namespace will be of type `Phalcon\Mvc\Model\Exception`. You
-can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the `Phalcon\Mvc\Model\MetaData` namespace will be of type `Phalcon\Mvc\Model\Exception`. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific
-failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                 | Parent                        | Thrown when                                                                  |
 |-----------------------------------------------------------------------|-------------------------------|------------------------------------------------------------------------------|
@@ -1001,34 +970,19 @@ failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue 
 | `Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass` | `Phalcon\Mvc\Model\Exception` | The annotations strategy finds no annotated properties on the model class.   |
 | `Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`            | `Phalcon\Mvc\Model\Exception` | The model's table cannot be located via `tableExists()`.                     |
 
-[apcu]: https://www.php.net/manual/en/book.apcu.php
-
-[memcached]: https://www.memcached.org
-
-[redis]: https://redis.io
-
-[mvc-model]: api/phalcon_mvc.md#mvcmodel
-
-[mvc-model-metadata]: api/phalcon_mvc.md#mvcmodelmetadata
-
-[mvc-model-metadata-apcu]: api/phalcon_mvc.md#mvcmodelmetadataapcu
-
-[mvc-model-metadata-libmemcached]: api/phalcon_mvc.md#mvcmodelmetadatalibmemcached
-
-[mvc-model-metadata-memory]: api/phalcon_mvc.md#mvcmodelmetadatamemory
-
-[mvc-model-metadata-redis]: api/phalcon_mvc.md#mvcmodelmetadataredis
-
-[mvc-model-metadata-strategy-annotations]: api/phalcon_mvc.md#mvcmodelmetadatastrategyannotations
-
-[mvc-model-metadata-strategy-introspection]: api/phalcon_mvc.md#mvcmodelmetadatastrategyintrospection
-
-[mvc-model-metadata-strategyinterface]: api/phalcon_mvc.md#mvcmodelmetadatastrategystrategyinterface
-
-[mvc-model-metadata-stream]: api/phalcon_mvc.md#mvcmodelmetadatastream
-
-[mvc-model-metadatainterface]: api/phalcon_mvc.md#mvcmodelmetadatainterface
-
-[cache-adapter-factory]: cache.md#adapter-factory
-
 [annotations]: annotations.md
+[apcu]: https://www.php.net/manual/en/book.apcu.php
+[cache-adapter-factory]: cache.md#adapter-factory
+[memcached]: https://www.memcached.org
+[mvc-model]: api/phalcon_mvc.md#mvcmodel
+[mvc-model-metadata]: api/phalcon_mvc.md#mvcmodelmetadata
+[mvc-model-metadata-apcu]: api/phalcon_mvc.md#mvcmodelmetadataapcu
+[mvc-model-metadata-libmemcached]: api/phalcon_mvc.md#mvcmodelmetadatalibmemcached
+[mvc-model-metadata-memory]: api/phalcon_mvc.md#mvcmodelmetadatamemory
+[mvc-model-metadata-redis]: api/phalcon_mvc.md#mvcmodelmetadataredis
+[mvc-model-metadata-strategy-annotations]: api/phalcon_mvc.md#mvcmodelmetadatastrategyannotations
+[mvc-model-metadata-strategy-introspection]: api/phalcon_mvc.md#mvcmodelmetadatastrategyintrospection
+[mvc-model-metadata-strategyinterface]: api/phalcon_mvc.md#mvcmodelmetadatastrategystrategyinterface
+[mvc-model-metadata-stream]: api/phalcon_mvc.md#mvcmodelmetadatastream
+[mvc-model-metadatainterface]: api/phalcon_mvc.md#mvcmodelmetadatainterface
+[redis]: https://redis.io

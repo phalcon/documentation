@@ -4,9 +4,7 @@
 
 ## Overview
 
-[Phalcon\Support\Settings][support-settings] is a PHP-userland layer for reading and overriding the Phalcon extension's
-`ini` settings (`orm.*`, `db.*`, `form.*`). It replaces the `globals_get()` / `globals_set()` builtins that were
-previously sprinkled across the framework with a single class that is safe to use from application code.
+[Phalcon\Support\Settings][support-settings] is a PHP-userland layer for reading and overriding the Phalcon extension's `ini` settings (`orm.*`, `db.*`, `form.*`). It replaces the `globals_get()` / `globals_set()` builtins that were previously sprinkled across the framework with a single class that is safe to use from application code.
 
 The component exposes three static methods. There is nothing to instantiate.
 
@@ -25,16 +23,12 @@ Settings::reset();                            // void
 `Settings::get($key)` resolves a setting in this order:
 
 1. PHP-level override stored by a prior `Settings::set($key, $value)` call.
-2. The C-level value returned by `globals_get($key)` - honouring `php.ini`, `.htaccess`, and per-virtualhost
-   configuration.
+2. The C-level value returned by `globals_get($key)` - honouring `php.ini`, `.htaccess`, and per-virtualhost configuration.
 3. `null` if the key is not recognised.
 
-`Settings::set()` stores the value in the PHP-level override array only. It **does not** call `globals_set()`, so the
-underlying C struct is never modified. This keeps an override scoped to the current request (and the PHP process state)
-without leaking into other projects that share the same PHP worker.
+`Settings::set()` stores the value in the PHP-level override array only. It **does not** call `globals_set()`, so the underlying C struct is never modified. This keeps an override scoped to the current request (and the PHP process state) without leaking into other projects that share the same PHP worker.
 
-`Settings::reset()` clears every override that was previously stored via `set()`, restoring `get()` to return the
-`globals_get()` fallback for each key. It does not touch C-level configuration.
+`Settings::reset()` clears every override that was previously stored via `set()`, restoring `get()` to return the `globals_get()` fallback for each key. It does not touch C-level configuration.
 
 !!! info "NOTE"
 
@@ -42,8 +36,7 @@ without leaking into other projects that share the same PHP worker.
 
 ## Recognised keys
 
-Only the keys listed below are recognised. Calls to `set()` for any other key are silently ignored, and `get()` returns
-`null` for unknown keys.
+Only the keys listed below are recognised. Calls to `set()` for any other key are silently ignored, and `get()` returns `null` for unknown keys.
 
 | Key                                     | Type   | Notes                                                                                                                  |
 |-----------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------|
@@ -110,10 +103,7 @@ Settings::reset();
 
 ## Migrating from `globals_get` / `globals_set`
 
-Before [Phalcon\Support\Settings][support-settings], the recommended way to read or change these toggles from PHP was to
-call `globals_get()` / `globals_set()` directly. Internally the framework now routes every such access through
-`Settings::get()` / `Settings::set()` so per-project overrides cannot leak across projects sharing the same PHP worker.
-Application code should follow suit:
+Before [Phalcon\Support\Settings][support-settings], the recommended way to read or change these toggles from PHP was to call `globals_get()` / `globals_set()` directly. Internally the framework now routes every such access through `Settings::get()` / `Settings::set()` so per-project overrides cannot leak across projects sharing the same PHP worker. Application code should follow suit:
 
 | Before                               | After                                                |
 |--------------------------------------|------------------------------------------------------|

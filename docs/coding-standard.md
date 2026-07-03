@@ -2,21 +2,22 @@
 
 - - -
 
-Phalcon is written in PHP and follows the [PSR-12][psr-12] coding standard developed by [PHP-FIG][php-fig], with a few
-additional conventions outlined below. All code must pass the static analyzer (`phpstan`) and the coding standard
-checks (`phpcs`) before it can be merged.
+Last update: 2019-07-04
+
+Phalcon is written in [Zephir][zephir], a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
+
+In this document, we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a variant of [PSR-12][psr-12] developed by [PHP-FIG][php-fig]
 
 ## Files
 
-* Files must use only UTF-8 without BOM.
-
+- Files must use only UTF-8 without BOM.
 - File names must be named StudlyCaps.
 - All files must use the Unix LF (linefeed) line ending.
 - All files must end with a single blank line.
 - Folders are also named StudlyCaps and the folder/sub-folder tree follows the namespace of the class.
 
 ```php
-src/Acl/Adapter/Memory.php
+phalcon/Acl/Adapter/Memory.zep
 ```
 
 ```php
@@ -32,8 +33,7 @@ class Memory extends Adapter
 
 - Code must use 4 spaces for indenting, not tabs.
 - Lines should be 80 characters or fewer. The hard limit on line length is 120 characters.
-- There must be one blank line after the namespace declaration, and there must be one blank line after the block of use
-  declarations.
+- There must be one blank line after the namespace declaration, and there must be one blank line after the block of use declarations.
 - There must not be trailing whitespace at the end of non-blank lines.
 - Blank lines may be added to improve readability and to indicate related blocks of code.
 - There must not be more than one statement per line.
@@ -50,14 +50,22 @@ class Memory extends Adapter
 - Class constants must be declared in all upper case with underscore separators.
 - Class constants must appear at the top of the class.
 - Class constants must be sorted alphabetically by constant name.
+- Class constants must have a docblock that defines their type with the `@var` declaration.
 
 ```php
 namespace Phalcon\Acl;
 
 class Enum
 {
-    public const ALLOW = 1;
-    public const DENY  = 0;
+    /**
+     * @var int
+     */
+    const ALLOW = 1;
+
+    /**
+     * @var int
+     */
+    const DENY = 0;
 }
 ```
 
@@ -67,8 +75,7 @@ class Enum
 - Class properties must be sorted alphabetically based on name.
 - Whenever possible, properties must have a default value.
 - Whenever possible, properties must have a docblock that defines their type with the `@var` declaration.
-- Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword
-  such as `default`, `namespace` etc.
+- Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
 
 ```php
 namespace Phalcon\Acl\Adapter;
@@ -80,36 +87,41 @@ class Memory extends Adapter
     /**
      * @var string | null
      */
-    protected string | null $activeKey = "";
+    protected activeKey = "";
+
+    /**
+     * @return string | null
+     */
+    public function getActiveKey() -> string | null
+    {
+        return this->activeKey;
+    }
 }
 ```
 
 ### Methods
 
 - Method names must be declared in camelCase.
-- Methods must be sorted alphabetically and based on their visibility. The order is `public`, `protected`, and
-  `private`. `__construct` if defined must be at the top of the class, as well as any other PHP magic methods (also
-  sorted alphabetically).
+- Methods must be sorted alphabetically and based on their visibility. The order is `public`, `protected`, and `private`. `__construct` if defined must be at the top of the class, as well as any other PHP magic methods (also sorted alphabetically).
 - Method names must not be prefixed with underscore `_`.
 - All methods must have a return type. If the method does not return anything it should be marked `void`
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
-- Visibility must be declared on all properties and methods; `abstract` and `final` must be declared before the
-  visibility; `static` must be declared after the visibility.
+- Visibility must be declared on all properties and methods; `abstract` and `final` must be declared before the visibility; `static` must be declared after the visibility.
 
 ```php
-abstract public function getElement(): mixed;
+abstract public function getElement() -> var;
 
-final public function getElement(): mixed;
+final public function getElement() -> var;
 
-public static function getElement(): mixed;
+public static function getElement() -> var;
 ```
 
 - Control structure keywords must have one space after them; method and function calls must not.
-- Opening braces for control structures must go on the same line, and closing braces must go on the next line after the
-  body.
+- Opening braces for control structures must go on the same line, and closing braces must go on the next line after the body.
+- Control structures such as `if` must not have parentheses around the conditional, unless it is a complex one.
 
 ```php
-if (is_array($variable)) {
+if typeof variable === "array" {
 
 }
 ```
@@ -121,13 +133,15 @@ if (is_array($variable)) {
 - Method arguments with default values must go at the end of the argument list.
 
 ```php
-public function setElement(string $name, mixed $value): void;
+public function setElement(string name, var value) -> void;
 ```
 
-- Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the
-  first item in the list must be on the next line, and there must be only one argument per line.
+- Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the first item in the list must be on the next line, and there must be only one argument per line.
 
+### PHP Files
+
+PHP files such as tests must follow [PSR-12][psr-12].
 
 [php-fig]: https://www.php-fig.org/
-
 [psr-12]: https://www.php-fig.org/psr/psr-12/
+[zephir]: https://zephir-lang.com

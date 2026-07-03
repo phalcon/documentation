@@ -520,8 +520,7 @@ These events are notifications: they fire as non-cancellable, so returning `fals
 
 ## Exceptions
 
-Any exceptions thrown in the `Phalcon\Auth` namespace will be of type `Phalcon\Auth\Exception`. You can use
-this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the `Phalcon\Auth` namespace will be of type `Phalcon\Auth\Exception`. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -541,8 +540,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Auth\Exception` so callers can catch a specific
-failure mode. Existing `catch (Phalcon\Auth\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Auth\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Auth\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                 | Parent                   | Thrown when                                                                 |
 |-------------------------------------------------------|--------------------------|-----------------------------------------------------------------------------|
@@ -567,13 +565,13 @@ failure mode. Existing `catch (Phalcon\Auth\Exception $e)` blocks continue to wo
 
 ---
 
+[acl]: acl.md
+[auth-user]: api/phalcon_auth.md#authauthuser
+[container]: container.md
 [manager]: api/phalcon_auth.md#authmanager
 [manager-factory]: api/phalcon_auth.md#authmanagerfactory
-[auth-user]: api/phalcon_auth.md#authauthuser
-[session-guard]: api/phalcon_auth.md#authguardsession
-[token-guard]: api/phalcon_auth.md#authguardtoken
-[container]: container.md
-[support-locator]: support-locator.md
-[security]: encryption-security.md
-[acl]: acl.md
 [micro]: application-micro.md
+[security]: encryption-security.md
+[session-guard]: api/phalcon_auth.md#authguardsession
+[support-locator]: support-locator.md
+[token-guard]: api/phalcon_auth.md#authguardtoken

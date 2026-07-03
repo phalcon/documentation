@@ -2,367 +2,587 @@
 
 - - -
 
-!!! warning "Changed in v6"
-
-    The annotations component has been rewritten. In v5 and earlier, annotations were read from class, method, and property **docblocks** (for example `@Column(type="integer")`) by a dedicated parser written in C. In v6 the component reads native [PHP 8 attributes][php-attributes] (`#[Column(type: 'integer')]`) through the Reflection API. Docblock annotations are no longer supported. Any code or template that relied on the docblock syntax must be migrated to attributes.
-
 ## Overview
 
-The `Phalcon\Annotations` namespace reads [PHP 8 attributes][php-attributes] from classes, methods, properties, and
-class constants. It returns them as objects you can inspect at runtime.
+The `Phalcon\Annotations` namespace provides general-purpose components that parse and cache annotations in PHP applications.
 
-Despite the historical name, the component does not parse anything. There is no lexer and no grammar. `Phalcon\Annotations\Parser\Reader` calls `ReflectionClass::getAttributes()` and wraps each `ReflectionAttribute` in a
-`Phalcon\Annotations\Parser\Annotation` object. It is an attributes reader.
+## Usage
 
-The component is used internally by two framework features:
-
-- The model metadata strategy reads model-mapping attributes (`Column`, `Primary`, `Identity`).
-- The annotations router reads routing attributes (`Route`, `RoutePrefix`, and the HTTP verb attributes).
-
-You can also read your own attributes with the same API.
-
-## Reading Attributes
-
-`Phalcon\Annotations\Annotations` is the entry point. Its constructor requires a cache adapter that implements
-`Phalcon\Annotations\Adapter\AdapterInterface`. The adapter stores the reflected results so a class is only reflected
-once.
+Annotations are extracted from docblocks in classes, methods, and properties. An annotation can be placed at any position in the docblock:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
-use Phalcon\Annotations\Adapter\Memory;
-use Phalcon\Annotations\Annotations;
-use Phalcon\Storage\SerializerFactory;
-
-$serializerFactory = new SerializerFactory();
-$adapter           = new Memory($serializerFactory);
-
-$annotations = new Annotations($adapter);
-
-$reflection = $annotations->get(Invoices::class);
-```
-
-`get()` accepts a class name or an object and returns a `Phalcon\Annotations\Parser\Reflection`. From the reflection
-you read the attributes grouped by location:
-
-```php
-$classAttributes      = $reflection->getClassAnnotations();      // Collection | null
-$methodAttributes     = $reflection->getMethodsAnnotations();    // array of Collection, keyed by method
-$propertyAttributes   = $reflection->getPropertiesAnnotations(); // array of Collection, keyed by property
-$constantAttributes   = $reflection->getConstantsAnnotations();  // array of Collection, keyed by constant
-```
-
-For a single method, property, or constant, the component offers direct accessors that return a
-`Phalcon\Annotations\Parser\Collection`:
-
-```php
-$methodAttributes   = $annotations->getMethod(Invoices::class, 'viewAction');
-$propertyAttributes = $annotations->getProperty(Invoices::class, 'id');
-$constantAttributes = $annotations->getConstant(Invoices::class, 'STATUS_PAID');
-```
-
-### Collection
-
-A `Collection` holds the attributes found at one location. Attribute names are stored as the **short class name**, so
-`#[Phalcon\Annotations\Models\MetaData\Column]` is looked up as `Column`.
-
-```php
-$propertyAttributes = $annotations->getProperty(Invoices::class, 'id');
-
-if ($propertyAttributes->has('Column')) {
-    $column = $propertyAttributes->get('Column'); // Annotation
-
-    echo $column->getNamedArgument('type');
-}
-
-foreach ($propertyAttributes as $attribute) {
-    echo $attribute->getName();
-}
-```
-
-`get()` throws a `Phalcon\Annotations\Parser\Exception` when the requested name is not present. Call `has()` first, or
-use `getAll()` to retrieve every attribute of a given name.
-
-### Annotation
-
-Each entry in a collection is a `Phalcon\Annotations\Parser\Annotation`. It exposes the attribute name and the
-arguments it was constructed with.
-
-| Method                       | Returns                                                |
-|------------------------------|--------------------------------------------------------|
-| `getName()`                  | The short attribute name (for example `Column`)        |
-| `getArguments()`             | All arguments as an array                              |
-| `getArgument($position)`     | A single argument by integer position or string name  |
-| `getNamedArgument($name)`    | A single argument by name                              |
-| `hasArgument($position)`     | Whether an argument exists at that position or name    |
-| `numberArguments()`          | The number of arguments                                |
-
-```php
-$methodAttributes = $annotations->getMethod(Invoices::class, 'viewAction');
-$route            = $methodAttributes->get('Get');
-
-echo $route->getArgument(0);            // the route pattern, passed positionally
-echo $route->getNamedArgument('name');  // the route name, passed by name
-```
-
-Positional arguments are keyed by integer (`getArgument(0)`); named arguments are keyed by name
-(`getNamedArgument('name')`). This mirrors how the attribute was written in the source.
-
-## Defining Attributes
-
-An attribute is a plain PHP class marked with the `#[Attribute]` attribute. Declare the targets it applies to, and
-declare its arguments as constructor parameters.
-
-```php
-<?php
-
-namespace MyApp\Attributes;
-
-use Attribute;
-
-#[Attribute(Attribute::TARGET_METHOD)]
-class Cacheable
+/**
+ * This is the class description
+ *
+ * @AmazingClass(true)
+ */
+class Example
 {
-    public function __construct(
-        public int $lifetime = 3600
-    ) {
-    }
-}
-```
+    /**
+     * This is a property with a special feature
+     *
+     * @SpecialFeature
+     */
+    protected $someProperty;
 
-Apply it, then read it back with the component:
-
-```php
-<?php
-
-namespace MyApp\Controllers;
-
-use MyApp\Attributes\Cacheable;
-use Phalcon\Mvc\Controller;
-
-class ReportsController extends Controller
-{
-    #[Cacheable(lifetime: 86400)]
-    public function yearlyAction(): void
+    /**
+     * This is a method
+     *
+     * @SpecialFeature
+     */
+    public function someMethod()
     {
+        // ...
     }
 }
 ```
 
-```php
-$attributes = $annotations->getMethod(ReportsController::class, 'yearlyAction');
+An annotation has the following syntax:
 
-if ($attributes->has('Cacheable')) {
-    $lifetime = $attributes->get('Cacheable')->getNamedArgument('lifetime');
-}
+```php
+/**
+ * @Annotation-Name
+ * @Annotation-Name(param1, param2, ...)
+ */
 ```
 
-## Model Metadata Attributes
-
-Phalcon ships attributes that describe how a model maps to a database table. They live in the
-`Phalcon\Annotations\Models\MetaData` namespace.
-
-| Attribute   | Target    | Arguments                                                                                              |
-|-------------|-----------|--------------------------------------------------------------------------------------------------------|
-| `Column`    | property  | `column`, `type`, `length`, `nullable`, `skipOnInsert`, `skipOnUpdate`, `allowEmptyString`, `default`  |
-| `Primary`   | property  | none                                                                                                   |
-| `Identity`  | property  | none                                                                                                   |
-
-The model metadata strategy reads `Column`, `Primary`, and `Identity` to build the table column map. The model's table
-name is set with the `getSource()` method, shown below.
+Additionally, an annotation can be placed at any part of a docblock:
 
 ```php
 <?php
 
-namespace MyApp\Models;
+/**
+ * This is a property with a special feature
+ *
+ * @SpecialFeature
+ *
+ * More comments
+ *
+ * @AnotherSpecialFeature(true)
+ */
+```
 
-use Phalcon\Annotations\Models\MetaData\Column;
-use Phalcon\Annotations\Models\MetaData\Identity;
-use Phalcon\Annotations\Models\MetaData\Primary;
+While the parser is highly flexible, it is recommended for code maintainability and understanding to place annotations at the end of the docblock:
+
+```php
+<?php
+
+/**
+ * This is a property with a special feature
+ * More comments
+ *
+ * @SpecialFeature({someParameter='the value', false})
+ * @AnotherSpecialFeature(true)
+```
+
+An example for a model is:
+
+```php
+<?php
+
 use Phalcon\Mvc\Model;
 
-class Invoices extends Model
+/**
+ * Customers
+ *
+ * Represents a customer record
+ *
+ * @Source('co_customers');
+ * @HasMany("cst_id", "Invoices", "inv_cst_id")
+ */
+class Customers extends Model
 {
-    #[Primary]
-    #[Identity]
-    #[Column(column: 'inv_id', type: 'integer', nullable: false)]
-    public int $id;
+    /**
+     * @Primary
+     * @Identity
+     * @Column(type="integer", nullable=false, column="cst_id")
+     */
+    public $id;
 
-    #[Column(column: 'inv_title', type: 'string', nullable: false)]
-    public string $title;
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_first")
+     */
+    public $nameFirst;
 
-    #[Column(column: 'inv_total', type: 'decimal', nullable: false)]
-    public float $total;
-
-    public function getSource(): string
-    {
-        return 'co_invoices';
-    }
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_last")
+     */
+    public $nameLast;
 }
 ```
 
-The `column` argument sets the database column name. The `type` argument maps to a `Phalcon\Db\Column` type. To make a
-model use these attributes, configure its metadata component with the annotations strategy. See
-[Models Metadata][db-models] for details.
+## Types
 
-## Routing Attributes
-
-Phalcon ships attributes that declare routes on a controller. They live in the `Phalcon\Annotations\Router` namespace
-and are read by `Phalcon\Mvc\Router\Annotations`.
-
-| Attribute      | Target  | Description                                                          |
-|----------------|---------|---------------------------------------------------------------------|
-| `RoutePrefix`  | class   | Prefixes every route in the controller. Argument: `prefix`          |
-| `Route`        | method  | Declares a route. Arguments: `route`, `methods`, `name`, `paths`, `converters` |
-| `Get`          | method  | A `Route` restricted to the `GET` method                            |
-| `Post`         | method  | A `Route` restricted to the `POST` method                           |
-| `Put`          | method  | A `Route` restricted to the `PUT` method                            |
-| `Patch`        | method  | A `Route` restricted to the `PATCH` method                          |
-| `Delete`       | method  | A `Route` restricted to the `DELETE` method                         |
-| `Head`         | method  | A `Route` restricted to the `HEAD` method                           |
-| `Options`      | method  | A `Route` restricted to the `OPTIONS` method                        |
-| `Connect`      | method  | A `Route` restricted to the `CONNECT` method                        |
-| `Purge`        | method  | A `Route` restricted to the `PURGE` method                          |
-| `Trace`        | method  | A `Route` restricted to the `TRACE` method                          |
-
-The verb attributes are thin subclasses of `Route` that preset the HTTP method. Use `Route` directly when a route
-answers more than one method.
+Annotations may or may not have parameters. A parameter could be a simple literal (`strings`, `number`, `boolean`, `null`), an `array`, a hashed list, or another annotation:
 
 ```php
-<?php
-
-namespace MyApp\Controllers;
-
-use Phalcon\Annotations\Router\Get;
-use Phalcon\Annotations\Router\Post;
-use Phalcon\Annotations\Router\RoutePrefix;
-use Phalcon\Mvc\Controller;
-
-#[RoutePrefix('/invoices')]
-class InvoicesController extends Controller
-{
-    #[Get('/')]
-    public function indexAction(): void
-    {
-    }
-
-    #[Get('/view/{id:[0-9]+}', name: 'invoices-view')]
-    public function viewAction(int $id): void
-    {
-    }
-
-    #[Post('/')]
-    public function createAction(): void
-    {
-    }
-}
+/**
+ * @SomeAnnotation
 ```
 
-For registering the controllers with the annotations router, see [Routing][routing].
+Simple Annotation
+
+```php
+/**
+ * @SomeAnnotation('hello', 'world', 1, 2, 3, false, true)
+```
+
+Annotation with parameters
+
+```php
+/**
+ * @SomeAnnotation(first='hello', second='world', third=1)
+ * @SomeAnnotation(first: 'hello', second: 'world', third: 1)
+```
+
+Annotation with named parameters
+
+```php
+/**
+ * @SomeAnnotation([1, 2, 3, 4])
+ * @SomeAnnotation({1, 2, 3, 4})
+```
+
+Passing an array
+
+```php
+/**
+ * @SomeAnnotation({first=1, second=2, third=3})
+ * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
+ * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3})
+ * @SomeAnnotation(['first': 1, 'second': 2, 'third': 3])
+```
+
+Passing a hash as a parameter
+
+```php
+/**
+ * @SomeAnnotation({'name'='SomeName', 'other'={
+ *     'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3},
+ * }})
+```
+
+Nested arrays/hashes
+
+```php
+/**
+ * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
+```
+
+Nested Annotations
 
 ## Adapters
 
-The adapter passed to `Phalcon\Annotations\Annotations` caches the reflected attributes. The following adapters are
-available in the `Phalcon\Annotations\Adapter` namespace. Each extends the matching `Phalcon\Storage\Adapter` class, so
-its constructor accepts a `Phalcon\Storage\SerializerFactory` and an options array.
+This component employs adapters to cache or not cache the parsed and processed annotations, thereby improving performance:
 
-| Adapter        | Description                                                  |
-|----------------|-------------------------------------------------------------|
-| `Apcu`         | Stores the cache in APCu. Suitable for production.          |
-| `Libmemcached` | Stores the cache in Memcached.                              |
-| `Memory`       | Stores the cache in memory. Rebuilt per request. Suitable for development. |
-| `Redis`        | Stores the cache in Redis.                                  |
-| `Stream`       | Stores the cache in files on disk.                          |
-| `Weak`         | Stores the cache using weak references.                     |
+| Adapter                                                          | Description                                                                  |
+|------------------------------------------------------------------|------------------------------------------------------------------------------|
+| [Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu]     | Use APCu to store parsed and processed annotations (production)              |
+| [Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] | Use memory to store annotations (development)                                |
+| [Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] | Use a file stream to store annotations. Must be used with a byte-code cache. |
 
-Construct an adapter directly:
+### Apcu
 
-```php
-<?php
+[Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu] stores the parsed and processed annotations using the APCu cache. This adapter is suitable for production systems. However, once the web server restarts, the cache will be cleared and will have to be rebuilt. The adapter accepts two parameters in the constructor's options array:
 
-use Phalcon\Annotations\Adapter\Stream;
-use Phalcon\Storage\SerializerFactory;
-
-$serializerFactory = new SerializerFactory();
-
-$adapter = new Stream(
-    $serializerFactory,
-    [
-        'storageDir' => '/app/storage/cache/annotations',
-    ]
-);
-```
-
-Or create one through `Phalcon\Annotations\AdapterFactory`, which resolves the adapter by name:
-
-```php
-<?php
-
-use Phalcon\Annotations\AdapterFactory;
-use Phalcon\Annotations\Annotations;
-use Phalcon\Storage\SerializerFactory;
-
-$serializerFactory = new SerializerFactory();
-$adapterFactory    = new AdapterFactory($serializerFactory);
-
-$adapter     = $adapterFactory->newInstance('apcu', ['lifetime' => 86400]);
-$annotations = new Annotations($adapter);
-```
-
-The factory accepts the names `apcu`, `libmemcached`, `memory`, `redis`, `stream`, and `weak`.
-
-When you register the component in the DI container under the name `annotations`, both the model metadata strategy and
-the annotations router resolve it from there.
+- `prefix` - the prefix for the key stored
+- `lifetime` - the cache lifetime
 
 ```php
 <?php
 
 use Phalcon\Annotations\Adapter\Apcu;
-use Phalcon\Annotations\Annotations;
+
+$adapter = new Apcu(
+    [
+        'prefix'   => 'my-prefix',
+        'lifetime' => 3600,
+    ]
+);
+```
+
+Internally, the adapter stores data prefixing every key with _`PHAN`. This setting cannot be changed. It, however, gives you the option to scan APCu for keys that are prefixed with _`PHAN` and clear them if needed.
+
+```php
+<?php
+
+use APCuIterator;
+
+$result   = true;
+$pattern  = "/^_PHAN/";
+$iterator = new APCuIterator($pattern);
+
+if (true === is_object($iterator)) {
+    return false;
+}
+
+foreach ($iterator as $item) {
+    if (true !== apcu_delete($item["key"])) {
+        $result = false;
+    }
+}
+
+return $result;
+```
+
+### Memory
+
+[Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes while developing your application.
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+
+$adapter = new Memory();
+```
+
+### Stream
+
+[Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] stores the parsed and processed annotations in a file on the server. This adapter can be used in production systems, but it will increase the I/O since for every request the annotations cache files will need to be read from the file system. The adapter accepts one parameter in the constructor's `$options` array:
+
+- `annotationsDir` - the directory to store the annotations cache
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Stream;
+
+$adapter = new Stream(
+    [
+        'annotationsDir' => '/app/storage/cache/annotations',
+    ]
+);
+```
+
+If there is a problem with storing the data in the folder due to permissions or any other reason, a [Phalcon\Annotations\Exception][annotations-exception] will be thrown.
+
+### Custom
+
+[Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface] is available
+
+## Limiting the In-Memory Cache
+
+Each adapter caches parsed [Phalcon\Annotations\Reflection][annotations-reflection] results keyed by class name. The cache lives for the adapter instance lifetime and is bounded in practice by the number of annotated classes in the application.
+
+For long-running processes that load classes dynamically (test runners, code generators, multi-tenant workers) call `setAnnotationsLimit()` to clear the cache when adding a new class would exceed the cap; the cache repopulates lazily on subsequent reads.
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+
+$adapter = new Memory();
+$adapter->setAnnotationsLimit(500);
+```
+
+The default value `0` preserves the original unbounded behavior. `getAnnotationsLimit()` returns the current cap. The cap applies uniformly to every adapter (`Apcu`, `Memory`, `Stream`, custom) because the methods live on [Phalcon\Annotations\Adapter\AbstractAdapter][annotations-adapter-abstractadapter].
+
+## Examples
+
+### Controller-based Access
+
+You can use annotations to define which areas are controlled by the ACL. This can be achieved by registering a plugin in the events manager listening to the `beforeExecuteRoute` event, or by implementing the method in your base controller.
+
+First, set the annotations manager in your DI container:
+
+```php
+<?php
+
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Storage\SerializerFactory;
+use Phalcon\Annotations\Adapter\Apcu;
 
 $container = new FactoryDefault();
 
 $container->set(
     'annotations',
     function () {
-        $serializerFactory = new SerializerFactory();
-        $adapter           = new Apcu($serializerFactory, ['lifetime' => 86400]);
-
-        return new Annotations($adapter);
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
     }
 );
 ```
 
-## Exceptions
-
-Exceptions thrown by this component are of type `Phalcon\Annotations\Parser\Exception`, which extends the SPL
-`\Exception`. The most common case is calling `Collection::get()` with a name that does not exist.
+Now, in the base controller, implement the `beforeExecuteRoute` method:
 
 ```php
 <?php
 
-use MyApp\Models\Invoices;
-use Phalcon\Annotations\Adapter\Memory;
-use Phalcon\Annotations\Annotations;
-use Phalcon\Annotations\Parser\Exception;
-use Phalcon\Storage\SerializerFactory;
+namespace MyApp\Controllers;
 
-$serializerFactory = new SerializerFactory();
-$annotations       = new Annotations(new Memory($serializerFactory));
+use Phalcon\Annotations\Adapter\Apcu;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\Controller;
+use MyApp\Components\Auth;
 
-try {
-    $attributes = $annotations->getProperty(Invoices::class, 'id');
-    $column     = $attributes->get('Column');
-} catch (Exception $ex) {
-    echo $ex->getMessage();
+/**
+ * @property Apcu $annotations
+ * @property Auth $auth 
+ */
+class BaseController extends Controller
+{
+    /**
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExecuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        $controllerName = $dispatcher->getControllerClass();
+
+        $annotations = $this
+            ->annotations
+            ->get($controllerName)
+        ;
+
+        $exists = $annotations
+            ->getClassAnnotations()
+            ->has('Private')
+        ;
+        
+        if (!$exists) {
+            return true;
+        }
+
+        if ($this->auth->isLoggedIn()) {
+            return true;
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
+    }
 }
 ```
 
-[php-attributes]: https://www.php.net/manual/en/language.attributes.php
+In your controllers, specify:
 
-[db-models]: db-models.md
+```php
+<?php
 
-[routing]: routing.md
+namespace MyApp\Controllers;
+
+use MyApp\Controllers\BaseController;
+
+/**
+ * @Private(true) 
+ */
+class Invoices extends BaseController
+{
+    public function indexAction()
+    {
+    }
+}
+```
+
+### Group-based Access
+
+You might want to expand on the above and offer more granular access control for your application. For this, also use the `beforeExecuteRoute` in the controller but add the access metadata on each action. If you need a specific controller to be "locked," you can also use the initialize method.
+
+First, set the annotations manager in your DI container:
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Annotations\Adapter\Apcu;
+
+$container = new FactoryDefault();
+
+$container->set(
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
+    }
+);
+```
+
+Now, in the base controller, implement the `beforeExecuteRoute` method:
+
+```php
+<?php
+
+namespace MyApp\Controllers;
+
+use Phalcon\Annotations\Adapter\Apcu;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\Controller;
+use MyApp\Components\Auth;
+
+/**
+ * @property Apcu $annotations
+ * @property Auth $auth 
+ */
+class BaseController extends Controller
+{
+    /**
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExecuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        $controllerName = $dispatcher->getControllerClass();
+        $actionName     = $dispatcher->getActionName() . 'Action';
+
+        $data = $this
+            ->annotations
+            ->getMethod($controllerName, $actionName)
+        ;
+        $access    = $data->get('Access');
+        $aclGroups = $access->getArguments();
+
+        $user   = $this->acl->getUser();
+        $groups = $user->getRelated('groups');
+        
+        $userGroups = [];
+        foreach ($groups as $group) {
+            $userGroups[] = $group->grp_name;
+        }
+
+        $allowed = array_intersect($userGroups, $aclGroups);
+        $allowed = (count($allowed) > 0);
+        
+        if ($allowed) {
+            return true;
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
+    }
+}
+```
+
+In your controllers:
+
+```php
+<?php
+
+namespace MyApp\Controllers;
+
+use MyApp\Controllers\BaseController;
+
+/**
+ * @Private(true) 
+ */
+class Invoices extends BaseController
+{
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     *     'Users',
+     *     'Guests'
+     * )
+     */
+    public function indexAction()
+    {
+    }
+
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function listAction()
+    {
+    }
+
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function viewAction()
+    {
+    }
+}
+```
+
+## Additional Resources
+
+* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalcon.io/post/tutorial-creating-a-custom-models-initializer)
+
+## Exceptions
+
+Any exceptions thrown in the `Phalcon\Annotations` namespace will be of type [Phalcon\Annotations\Exception][annotations-exception]. You can use these exceptions to selectively catch exceptions thrown only from this component.
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+use Phalcon\Annotations\Exception;
+use Phalcon\Mvc\Controller;
+
+class IndexController extends Controller
+{
+    public function index()
+    {
+        try {
+            $adapter = new Memory();
+
+            $reflector   = $adapter->get('Invoices');
+            $annotations = $reflector->getClassAnnotations();
+
+            foreach ($annotations as $annotation) {
+                echo $annotation->getExpression('unknown-expression');
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+}
+```
+
+### Granular Exceptions
+
+The component raises granular subclasses so callers can catch a specific failure mode. Three subclasses extend `Phalcon\Annotations\Exception`; one keeps its original SPL parent (`RuntimeException`) because the historical throw site used that type.
+
+| Class                                                            | Parent                          | Thrown when                                                                   |
+|------------------------------------------------------------------|---------------------------------|-------------------------------------------------------------------------------|
+| `Phalcon\Annotations\Exceptions\AnnotationNotFound`              | `Phalcon\Annotations\Exception` | A named annotation is requested from a `Collection` that does not contain it. |
+| `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` | `Phalcon\Annotations\Exception` | The `Stream` adapter fails to write a serialized annotation file.             |
+| `Phalcon\Annotations\Exceptions\CannotReadAnnotationData`        | `RuntimeException`              | The `Stream` adapter cannot read a serialized annotation file.                |
+| `Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`     | `Phalcon\Annotations\Exception` | An annotation expression has an unrecognized AST type.                        |
+
+[annotations-adapter-abstractadapter]: api/phalcon_annotations.md#annotationsadapterabstractadapter
+[annotations-adapter-adapterinterface]: api/phalcon_annotations.md#annotationsadapteradapterinterface
+[annotations-adapter-apcu]: api/phalcon_annotations.md#annotationsadapterapcu
+[annotations-adapter-memory]: api/phalcon_annotations.md#annotationsadaptermemory
+[annotations-adapter-stream]: api/phalcon_annotations.md#annotationsadapterstream
+[annotations-annotation]: api/phalcon_annotations.md#annotationsannotation
+[annotations-annotationsfactory]: api/phalcon_annotations.md#annotationsannotationsfactory
+[annotations-collection]: api/phalcon_annotations.md#annotationscollection
+[annotations-exception]: api/phalcon_annotations.md#annotationsexception
+[annotations-reader]: api/phalcon_annotations.md#annotationsreader
+[annotations-readerinterface]: api/phalcon_annotations.md#annotationsreaderinterface
+[annotations-reflection]: api/phalcon_annotations.md#annotationsreflection
+[config]: config.md

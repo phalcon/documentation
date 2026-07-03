@@ -4,8 +4,7 @@
 
 ## Overview
 
-[Phalcon\Support\Version][version] is a small but handy class, that returns the current version of Phalcon installed in
-your system.
+[Phalcon\Support\Version][version] is a small but handy class, that returns the current version of Phalcon installed in your system.
 
 ## Constants
 
@@ -32,13 +31,12 @@ use Phalcon\Support\Version;
 
 $version = new Version();
 
-var_dump($version->getVersion);
-// 5.0.0RC4
-// [5, 0, 0, 3, 4] 
+var_dump($version->getVersion());
+// [6, 0, 0, 1, 1] 
 ```
 
 ```php
-protected function get(): string
+public function get(): string
 ```
 
 Return the version
@@ -51,11 +49,11 @@ use Phalcon\Support\Version;
 $version = new Version();
 
 echo $version->get();
-// 5.0.0RC4
+// 6.0.0alpha1
 ```
 
 ```php
-protected function getId(): string
+public function getId(): string
 ```
 
 Return the version as a number string
@@ -68,7 +66,7 @@ use Phalcon\Support\Version;
 $version = new Version();
 
 echo $version->getId();
-// 5000034
+// 6000011
 ```
 
 [version]: api/phalcon_support.md#supportversion
