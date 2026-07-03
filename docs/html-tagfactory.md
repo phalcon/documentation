@@ -94,44 +94,49 @@ The registered names for respective helpers are:
 
 ### Registration Pipeline
 
-Starting with v5.12.2, [Phalcon\Html\TagFactory][html-tagfactory] no longer extends `Phalcon\Factory\AbstractFactory`. The internal recipe map accepts three forms when registering or overriding helpers via `set()`:
+Starting with v5.12.2, [Phalcon\Html\TagFactory][html-tagfactory] no longer extends `Phalcon\Factory\AbstractFactory`. Every helper is registered as a zero-argument `Closure` that returns the fully constructed helper. `set()` accepts only a `Closure`:
 
-- A class-string: `'a' => Phalcon\Html\Helper\Anchor::class`
-- A closure or callable: `'a' => fn($escaper) => new Anchor($escaper)`
-- A tuple `[className, [depKey, ...]]` or `[className, [depKey, ...], [extraArg, ...]]`. Dependency keys are resolved from the factory's internal services (`escaper`, `escaperAttribute`, `response`, `url`, ...) and `extraArg`s are appended verbatim.
+```php
+public function set(string $name, Closure $definition): void
+```
 
-Resolved instances are cached lazily per name in a separate `instances` map. Calling `set()` with a new recipe invalidates the previously cached instance, so the next resolution returns a fresh helper. `has()` reports against the recipe map (registered names) instead of the resolved-instance map.
+The closure takes no arguments and captures whatever the helper needs — the escaper, the shared `doctype` helper (through `newInstance('doctype')`), the `response` or `url` services — from its own scope. There is no class-string form, no tuple form, and no dependency-key resolution; the closure supplies every constructor argument itself. The built-in helpers are registered the same way, for example `inputColor` is `fn() => new Generic($escaper, $this->newInstance('doctype'), 'color')`.
+
+Resolved instances are cached lazily per name in a separate `instances` map. Calling `set()` with a new closure invalidates the previously cached instance, so the next resolution returns a fresh helper. `has()` reports against the registered names, not the resolved-instance map.
 
 ```php
 <?php
 
 use Phalcon\Html\Escaper;
 use Phalcon\Html\Helper\Anchor;
+use Phalcon\Html\Helper\Input\Generic;
 use Phalcon\Html\TagFactory;
 
-$factory = new TagFactory(new Escaper());
+$escaper = new Escaper();
+$factory = new TagFactory($escaper);
 
-// Class-string recipe
-$factory->set('a', Anchor::class);
-
-// Closure recipe
-$factory->set('a', function ($escaper) {
-    return new Anchor($escaper);
-});
-
-// Tuple recipe with extra constructor args
-// (this is how `inputColor` is registered: Generic with type='color')
+// Register or override a helper with a zero-argument closure
 $factory->set(
-    'inputColor',
-    [
-        \Phalcon\Html\Helper\Input\Generic::class,
-        ['escaper'],
-        ['color'],
-    ]
+    'a',
+    function () use ($escaper, $factory) {
+        return new Anchor($escaper, $factory->newInstance('doctype'));
+    }
 );
 
-// Override invalidates the previously cached instance
-$factory->set('a', MyAnchor::class);
+// The closure supplies any extra constructor arguments itself
+// (this is how `inputColor` is registered: Generic with type 'color')
+$factory->set(
+    'inputColor',
+    function () use ($escaper, $factory) {
+        return new Generic($escaper, $factory->newInstance('doctype'), 'color');
+    }
+);
+
+// Re-registering a name invalidates the previously cached instance
+$factory->set(
+    'a',
+    fn() => new Anchor($escaper, $factory->newInstance('doctype'))
+);
 ```
 
 ### Raw Factory Variants
