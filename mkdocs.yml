@@ -84,6 +84,7 @@ plugins:
         'helper.md': 'support-helper.md'
         'registry.md': 'support-registry.md'
         'version.md': 'support-version.md'
+        'migrations.md': 'db-migrations.md'
         'en/acl.md': acl.md
         'en/annotations.md': annotations.md
         'en/api/index.md': api/index.md
@@ -150,12 +151,12 @@ plugins:
         'en/encryption-security-jwt.md': encryption-security-jwt.md
         'en/encryption-security.md': encryption-security.md
         'en/environments-devilbox.md': environments-devilbox.md
-        'en/environments-nanobox.md': environments-nanobox.md
         'en/events.md': events.md
         'en/filter-filter.md': filter-filter.md
         'en/filter-validation.md': filter-validation.md
         'en/flash.md': flash.md
         'en/forms.md': forms.md
+        'en/generating-backtrace.md': generating-backtrace.md
         'en/html-attributes.md': html-attributes.md
         'en/html-breadcrumbs.md': html-breadcrumbs.md
         'en/html-escaper.md': html-escaper.md
@@ -303,8 +304,10 @@ nav:
           - Requesting a change: new-feature-request.md
           - Issuing a Pull Request: new-pull-request.md
       - Guides:
+          - Backtrace Generation: generating-backtrace.md
           - Reproducible Tests: reproducible-tests.md
           - Testing environment: testing-environment.md
+          - Talon: talon.md
           - Coding Standard: coding-standard.md
       - Sponsoring: sponsors.md
   - Getting Started:
@@ -312,12 +315,10 @@ nav:
       - Webserver Setup: webserver-setup.md
       - Environments:
           - Devilbox: environments-devilbox.md
-          - Nanobox: environments-nanobox.md
           - Docker: environments-docker.md
       - Development Tools:
           - Devtools: devtools.md
           - Debug: support-debug.md
-          - Migrations: db-migrations.md
           - Unit Testing: unit-testing.md
       - Tutorials:
           - Basic: tutorial-basic.md

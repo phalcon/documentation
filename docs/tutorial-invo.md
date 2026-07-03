@@ -4,9 +4,7 @@
 
 ## Overview
 
-[INVO][github_invo] is a sample invoicing application. It lets users manage companies, products, and product types,
-sign up, and log in. On the client side it uses [Bootstrap][bootstrap] for the UI. INVO does not generate real
-invoices. It demonstrates how common tasks are implemented with Phalcon:
+[INVO][github_invo] is a sample invoicing application. It lets users manage companies, products, and product types, sign up, and log in. On the client side it uses [Bootstrap][bootstrap] for the UI. INVO does not generate real invoices. It demonstrates how common tasks are implemented with Phalcon:
 
 - Session authentication (login and signup)
 - ACL-based access control (frontend and backend separation)
@@ -44,21 +42,18 @@ There are three ways to obtain and run INVO. Pick the one that matches your work
 - The `openssl` and `pdo` extensions. For MySQL, `pdo_mysql`.
 - MySQL 8.0 as the data store.
 - [Composer][composer].
-- For the v5 path, the Phalcon C extension. See the [installation][installation] page for the full list of platforms
-  and install methods.
+- For the v5 path, the Phalcon C extension. See the [installation][installation] page for the full list of platforms and install methods.
 
 ### Composer (`create-project`)
 
-This is the shortest path on a local PHP host. Composer downloads the application from Packagist, installs the
-dependencies, and runs a post-create hook:
+This is the shortest path on a local PHP host. Composer downloads the application from Packagist, installs the dependencies, and runs a post-create hook:
 
 ```bash
 composer create-project phalcon/invo invo
 cd invo
 ```
 
-The `post-create-project-cmd` hook copies `.env.example` to `.env` if no `.env` exists, then prints the next steps to
-the terminal:
+The `post-create-project-cmd` hook copies `.env.example` to `.env` if no `.env` exists, then prints the next steps to the terminal:
 
 ```text
 INVO is ready (.env created from .env.example). Next steps:
@@ -67,9 +62,7 @@ INVO is ready (.env created from .env.example). Next steps:
   tests:  vendor/bin/talon run
 ```
 
-Out of the box the application runs on the bundled `phalcon/phalcon` (v6) package, so no extension is required. To run on
-the Phalcon v5 C extension instead, install it with [PIE][pie] (see the [installation][installation] page). Once the
-extension is loaded, PHP prefers it automatically and the bundled v6 package is shadowed. It can stay installed.
+Out of the box the application runs on the bundled `phalcon/phalcon` (v6) package, so no extension is required. To run on the Phalcon v5 C extension instead, install it with [PIE][pie] (see the [installation][installation] page). Once the extension is loaded, PHP prefers it automatically and the bundled v6 package is shadowed. It can stay installed.
 
 After the project is created, edit `.env` for your database, then create the schema:
 
@@ -85,8 +78,7 @@ php -S localhost:8080 -t public .htrouter.php
 
 ### Docker
 
-The Docker stack requires nothing on the host except Docker itself. No PHP, no extensions, and no database are needed
-locally. The stack defines two services: the application (`app`) and a MySQL 8.0 database (`mysql`).
+The Docker stack requires nothing on the host except Docker itself. No PHP, no extensions, and no database are needed locally. The stack defines two services: the application (`app`) and a MySQL 8.0 database (`mysql`).
 
 From the project root:
 
@@ -110,8 +102,7 @@ Then open `http://localhost:8080` and log in with the seeded demo account:
 
 **Choosing the Phalcon version**
 
-The image installs one distribution at a time, selected by the `PHALCON_VARIANT` build argument. The v5 image compiles
-the C extension. The v6 image installs the `phalcon/phalcon` package instead.
+The image installs one distribution at a time, selected by the `PHALCON_VARIANT` build argument. The v5 image compiles the C extension. The v6 image installs the `phalcon/phalcon` package instead.
 
 ```bash
 docker compose up -d --build                      # v5 (C extension, default)
@@ -120,16 +111,14 @@ PHALCON_VARIANT=v6 docker compose up -d --build   # v6 (phalcon/phalcon, alpha)
 
 **Choosing the PHP version**
 
-The image is built for one PHP version at a time, selected by the `PHP_VERSION` build argument. The default is `8.5`,
-and `8.2` through `8.5` are supported:
+The image is built for one PHP version at a time, selected by the `PHP_VERSION` build argument. The default is `8.5`, and `8.2` through `8.5` are supported:
 
 ```bash
 docker compose up -d --build                  # PHP 8.5 (default)
 PHP_VERSION=8.2 docker compose up -d --build  # PHP 8.2
 ```
 
-The container keeps the same name across rebuilds, so each rebuild replaces the previous one. To run several versions
-side by side, give each its own Compose project and prefix:
+The container keeps the same name across rebuilds, so each rebuild replaces the previous one. To run several versions side by side, give each its own Compose project and prefix:
 
 ```bash
 PHP_VERSION=8.2 PROJECT_PREFIX=invo82 docker compose -p invo82 up -d --build
@@ -139,19 +128,15 @@ PHP_VERSION=8.2 PROJECT_PREFIX=invo82 docker compose -p invo82 up -d --build
 
 To run INVO directly on your host:
 
-1. Install the Phalcon v5 extension with [PIE][pie]. To run on v6 instead, skip this step and rely on the bundled
-   `phalcon/phalcon` package.
+1. Install the Phalcon v5 extension with [PIE][pie]. To run on v6 instead, skip this step and rely on the bundled `phalcon/phalcon` package.
 2. Install the PHP dependencies with `composer install`.
-3. Copy `.env.example` to `.env` and point `DB_HOST` at your host (the Docker defaults use the `mysql` service name, so
-   a local host uses `127.0.0.1`).
+3. Copy `.env.example` to `.env` and point `DB_HOST` at your host (the Docker defaults use the `mysql` service name, so a local host uses `127.0.0.1`).
 4. Create the schema with `composer migrate`.
-5. Serve the application with `php -S localhost:8080 -t public .htrouter.php`, or set up a virtual host as described on
-   the [webserver setup][webserver-setup] page.
+5. Serve the application with `php -S localhost:8080 -t public .htrouter.php`, or set up a virtual host as described on the [webserver setup][webserver-setup] page.
 
 ## Structure
 
-INVO follows the [PDS skeleton][pds-skeleton] layout. The application source lives under `src`, the views under
-`themes`, and all tooling configuration under `resources`:
+INVO follows the [PDS skeleton][pds-skeleton] layout. The application source lives under `src`, the views under `themes`, and all tooling configuration under `resources`:
 
 ```bash
 invo/
@@ -198,16 +183,13 @@ invo/
 | `themes/invo`          | Volt views                                              |
 | `var`                  | Runtime cache and logs                                  |
 
-Phalcon does not impose a directory structure. This layout is INVO's own. The entry point is `public/index.php`. Set up
-your web server using the [webserver setup][webserver-setup] page.
+Phalcon does not impose a directory structure. This layout is INVO's own. The entry point is `public/index.php`. Set up your web server using the [webserver setup][webserver-setup] page.
 
 Once the application is running, open it in your browser. You will see a screen similar to this:
 
 ![](assets/images/content/tutorial-invo-1.png)
 
-The application is divided into two parts, a frontend and a backend. The frontend is a public area where visitors can
-read about INVO and request contact information. The backend is an administrative area where registered users manage
-their products and customers.
+The application is divided into two parts, a frontend and a backend. The frontend is a public area where visitors can read about INVO and request contact information. The backend is an administrative area where registered users manage their products and customers.
 
 ## Routing
 
@@ -223,8 +205,7 @@ For example, `/session/start` executes `SessionController` and its `startAction`
 
 ### Entry
 
-The entry point is `public/index.php`. It loads the composer autoloader, loads the environment variables from `.env`
-with [Dotenv][dotenv], and runs the application:
+The entry point is `public/index.php`. It loads the composer autoloader, loads the environment variables from `.env` with [Dotenv][dotenv], and runs the application:
 
 ```php
 <?php
@@ -254,19 +235,17 @@ The composer autoloader is configured in `composer.json`, mapping the `Invo` nam
 
 ```json
 "autoload": {
-    "psr-4": {
-        "Invo\\": "src/"
-    }
+"psr-4": {
+"Invo\\": "src/"
+}
 }
 ```
 
-`Dotenv::createImmutable($rootPath)->load()` reads the `.env` file in the project root. A `.env.example` file ships with
-the application. Copy it to `.env` and edit it for your environment.
+`Dotenv::createImmutable($rootPath)->load()` reads the `.env` file in the project root. A `.env.example` file ships with the application. Copy it to `.env` and edit it for your environment.
 
 ### Application
 
-The application logic is wrapped in the `Invo\Application` class. It creates the DI container, stores the root path in
-it, creates the MVC application, and registers the providers:
+The application logic is wrapped in the `Invo\Application` class. It creates the DI container, stores the root path in it, creates the MVC application, and registers the providers:
 
 ```php
 <?php
@@ -328,9 +307,7 @@ class Application
 }
 ```
 
-The container is a [Phalcon\Di\FactoryDefault][di-factorydefault], which has many services pre-registered for a
-full-stack MVC application. The constructor reads `config/providers.php`, which returns an array of provider classes, and
-registers each one:
+The container is a [Phalcon\Di\FactoryDefault][di-factorydefault], which has many services pre-registered for a full-stack MVC application. The constructor reads `config/providers.php`, which returns an array of provider classes, and registers each one:
 
 ```php
 <?php
@@ -362,8 +339,7 @@ The available providers are:
 | `ViewProvider`       | Views                                             |
 | `VoltProvider`       | Volt view engine                                  |
 
-Each provider implements the [Phalcon\Di\ServiceProviderInterface][di]. As an example, `ConfigProvider` loads
-`config/config.php`:
+Each provider implements the [Phalcon\Di\ServiceProviderInterface][di]. As an example, `ConfigProvider` loads `config/config.php`:
 
 ```php
 <?php
@@ -417,8 +393,7 @@ INVO reads installation-specific values from a `.env` file with [Dotenv][dotenv]
 
 ### `config.php`
 
-`config/config.php` returns a [Phalcon\Config\Config][config] object built from the environment variables. It groups the
-settings into `database` and `application` sections:
+`config/config.php` returns a [Phalcon\Config\Config][config] object built from the environment variables. It groups the settings into `database` and `application` sections:
 
 ```php
 <?php
@@ -446,17 +421,13 @@ return new Config([
 ]);
 ```
 
-Phalcon does not enforce a convention for settings. Sections organize the options into groups that make sense for the
-application. The `database` and `application` sections are read later during bootstrapping.
+Phalcon does not enforce a convention for settings. Sections organize the options into groups that make sense for the application. The `database` and `application` sections are read later during bootstrapping.
 
 ## Dependency Injection
 
-Because Phalcon is decoupled, a container gives every part of the application access to the registered services. The
-container is a [Phalcon\Di\Di][di]. It performs dependency injection and service location, instantiating components as
-they are needed.
+Because Phalcon is decoupled, a container gives every part of the application access to the registered services. The container is a [Phalcon\Di\Di][di]. It performs dependency injection and service location, instantiating components as they are needed.
 
-Most services are registered with anonymous functions, so the objects are created lazily. In `SessionProvider`, the
-closure only runs the first time the application requests the `session` service:
+Most services are registered with anonymous functions, so the objects are created lazily. In `SessionProvider`, the closure only runs the first time the application requests the `session` service:
 
 ```php
 <?php
@@ -488,18 +459,15 @@ class SessionProvider implements ServiceProviderInterface
 }
 ```
 
-You are free to change the adapter or add initialization. The service is registered with the name `session`. This
-convention lets the framework identify the active service in the container.
+You are free to change the adapter or add initialization. The service is registered with the name `session`. This convention lets the framework identify the active service in the container.
 
 ## Log in
 
-A login page gives access to the backend controllers. The separation between backend and frontend controllers is
-logical, not physical. All controllers are in `src/Controllers`.
+A login page gives access to the backend controllers. The separation between backend and frontend controllers is logical, not physical. All controllers are in `src/Controllers`.
 
 To enter the system, users provide a username or email and a password. User data is stored in the `users` table.
 
-The database connection is registered as the `db` service in `DatabaseProvider`. It reads the `database` section from
-the configuration:
+The database connection is registered as the `db` service in `DatabaseProvider`. It reads the `database` section from the configuration:
 
 ```php
 <?php
@@ -529,8 +497,7 @@ class DatabaseProvider implements ServiceProviderInterface
 }
 ```
 
-The adapter class is resolved from the `adapter` setting, which is `Mysql`, so the service returns a MySQL PDO adapter.
-You can add functionality here, such as a [Logger][logger] or a profiler, or change the adapter to a different RDBMS.
+The adapter class is resolved from the `adapter` setting, which is `Mysql`, so the service returns a MySQL PDO adapter. You can add functionality here, such as a [Logger][logger] or a profiler, or change the adapter to a different RDBMS.
 
 The login form is a [Phalcon\Forms\Form][forms] object, `Invo\Forms\LoginForm`:
 
@@ -587,8 +554,7 @@ public function indexAction(): void
 }
 ```
 
-We use [Volt][volt] as the template engine. It is a built-in engine inspired by [Jinja][jinja]. If you have used
-[Jinja][jinja] or [Twig][twig], the syntax will look familiar.
+We use [Volt][volt] as the template engine. It is a built-in engine inspired by [Jinja][jinja]. If you have used [Jinja][jinja] or [Twig][twig], the syntax will look familiar.
 
 The `SessionController::startAction` validates the submitted data and checks for a valid user in the database:
 
@@ -655,17 +621,13 @@ class SessionController extends ControllerBase
 }
 ```
 
-The controller accesses several services as public properties, such as `$this->flash`, `$this->request`,
-`$this->security`, and `$this->session`. [Controllers][controllers] in Phalcon are tied to the container, so every
-registered service is available as a property with the same name as the service. Services are shared, so the same
-instance is returned throughout a request.
+The controller accesses several services as public properties, such as `$this->flash`, `$this->request`, `$this->security`, and `$this->session`. [Controllers][controllers] in Phalcon are tied to the container, so every registered service is available as a property with the same name as the service. Services are shared, so the same instance is returned throughout a request.
 
 !!! info "NOTE"
 
     For more about container services, see the [Dependency Injection][di] document.
 
-`startAction` first checks whether the request is a `POST` with `isPost()`. If not, the user is redirected to the login
-form:
+`startAction` first checks whether the request is a `POST` with `isPost()`. If not, the user is redirected to the login form:
 
 ```php
 <?php
@@ -705,8 +667,7 @@ $user = Users::findFirst(
 
     Note the use of bound parameters. The placeholders `:email:` and `:active:` mark where values should go. The values are then bound with the `bind` parameter. This replaces the values safely, without the risk of SQL injection.
 
-The password is not part of the query. The stored password is a one-way hash, and the plaintext password is verified
-against it with `checkHash()` from the [Phalcon\Encryption\Security][encryption-security] component:
+The password is not part of the query. The stored password is a one-way hash, and the plaintext password is verified against it with `checkHash()` from the [Phalcon\Encryption\Security][encryption-security] component:
 
 ```php
 <?php
@@ -716,8 +677,7 @@ if ($user && $this->security->checkHash($password, $user->password)) {
 }
 ```
 
-If the credentials match, the user is registered in the session and forwarded to the dashboard (`Invoices` controller,
-`index` action) with a welcome message:
+If the credentials match, the user is registered in the session and forwarded to the dashboard (`Invoices` controller, `index` action) with a welcome message:
 
 ```php
 <?php
@@ -739,15 +699,11 @@ If the credentials do not match, the user is forwarded to the login page with a 
 
 ## Backend Security
 
-The backend is a private area for registered users only. Every time a user requests a controller and action, the
-application verifies that the current role (stored in the session) has access. If not, it forwards to the home page.
+The backend is a private area for registered users only. Every time a user requests a controller and action, the application verifies that the current role (stored in the session) has access. If not, it forwards to the home page.
 
-To do this, INVO uses the [Dispatcher][dispatcher] component. When a URL is requested, the [Route][routing] component
-identifies the controller and action, and the [Dispatcher][dispatcher] loads the controller and executes the action.
+To do this, INVO uses the [Dispatcher][dispatcher] component. When a URL is requested, the [Route][routing] component identifies the controller and action, and the [Dispatcher][dispatcher] loads the controller and executes the action.
 
-The framework normally creates the dispatcher automatically. INVO replaces the default dispatcher in the container with
-one that has an [Events Manager][events] attached. The events manager fires events that let us intercept the flow before
-the action runs. This is done in `DispatcherProvider`:
+The framework normally creates the dispatcher automatically. INVO replaces the default dispatcher in the container with one that has an [Events Manager][events] attached. The events manager fires events that let us intercept the flow before the action runs. This is done in `DispatcherProvider`:
 
 ```php
 <?php
@@ -792,9 +748,7 @@ class DispatcherProvider implements ServiceProviderInterface
 
 ### Events
 
-The [Events Manager][events] attaches listeners to a type of event. The event type here is `dispatch`. INVO attaches
-listeners to the `beforeExecuteRoute` and `beforeException` events. It uses them to check permissions and to catch
-not-found pages.
+The [Events Manager][events] attaches listeners to a type of event. The event type here is `dispatch`. INVO attaches listeners to the `beforeExecuteRoute` and `beforeException` events. It uses them to check permissions and to catch not-found pages.
 
 When `beforeExecuteRoute` fires, the `SecurityPlugin` is notified:
 
@@ -818,8 +772,7 @@ $eventsManager->attach(
 );
 ```
 
-`SecurityPlugin` is in `src/Plugins/SecurityPlugin.php`. It implements a `beforeExecuteRoute` method, matching the
-dispatcher event name:
+`SecurityPlugin` is in `src/Plugins/SecurityPlugin.php`. It implements a `beforeExecuteRoute` method, matching the dispatcher event name:
 
 ```php
 <?php
@@ -843,12 +796,9 @@ class SecurityPlugin extends Injectable
 }
 ```
 
-The event method receives the [Phalcon\Events\Event][events-event] object as the first parameter, with information about
-the event, and the object that produced it (the dispatcher) as the second. A plugin does not have to extend
-[Phalcon\Di\Injectable][di-injectable], but doing so gives easier access to the container services.
+The event method receives the [Phalcon\Events\Event][events-event] object as the first parameter, with information about the event, and the object that produced it (the dispatcher) as the second. A plugin does not have to extend [Phalcon\Di\Injectable][di-injectable], but doing so gives easier access to the container services.
 
-The plugin verifies the role in the current session against the [ACL][acl]. If access is denied, it forwards to an error
-page:
+The plugin verifies the role in the current session against the [ACL][acl]. If access is denied, it forwards to an error page:
 
 ```php
 <?php
@@ -903,10 +853,7 @@ class SecurityPlugin extends Injectable
 }
 ```
 
-The plugin reads `auth` from the `session` service. If it is set, the role is `Users`. Otherwise it is `Guests`. It then
-reads the controller and action names and the ACL, and checks `isAllowed` for the role, controller, and action. If the
-controller is unknown, it forwards to the 404 page. If access is denied, it forwards to the 401 page and destroys the
-session. Returning `false` stops the dispatch.
+The plugin reads `auth` from the `session` service. If it is set, the role is `Users`. Otherwise it is `Guests`. It then reads the controller and action names and the ACL, and checks `isAllowed` for the role, controller, and action. If the controller is unknown, it forwards to the 404 page. If access is denied, it forwards to the 401 page and destroys the session. Returning `false` stops the dispatch.
 
 ### ACL
 
@@ -938,8 +885,7 @@ foreach ($roles as $role) {
 }
 ```
 
-A [Phalcon\Acl\Adapter\Memory][acl] object is created. The default action is `DENY`, set with `setDefaultAction()`. INVO
-has two roles, `Guests` (not logged in) and `Users`. They are registered with `addRole()`.
+A [Phalcon\Acl\Adapter\Memory][acl] object is created. The default action is `DENY`, set with `setDefaultAction()`. INVO has two roles, `Guests` (not logged in) and `Users`. They are registered with `addRole()`.
 
 Components map to areas of the application (controller and actions). They control which role can access which component:
 
@@ -973,11 +919,9 @@ foreach ($publicResources as $resource => $actions) {
 }
 ```
 
-The private (backend) components are registered first, then the public (frontend) ones. The array key is the controller
-name and the value is the list of actions.
+The private (backend) components are registered first, then the public (frontend) ones. The array key is the controller name and the value is the list of actions.
 
-With roles and components registered, the two are linked. `Users` has access to the public and private components.
-`Guests` only have access to the public components:
+With roles and components registered, the two are linked. `Users` has access to the public and private components. `Guests` only have access to the public components:
 
 ```php
 <?php
@@ -1001,8 +945,7 @@ foreach ($privateResources as $resource => $actions) {
 
 ## CRUD
 
-The backend provides forms and logic for CRUD operations. INVO implements [CRUD][crud] (Create, Read, Update, Delete)
-for companies, products, and product types. For products, the following files are used:
+The backend provides forms and logic for CRUD operations. INVO implements [CRUD][crud] (Create, Read, Update, Delete) for companies, products, and product types. For products, the following files are used:
 
 ```bash
 invo/
@@ -1059,8 +1002,7 @@ class ProductsController extends ControllerBase
 
 ## Search Form
 
-CRUD starts with the search form. It shows each field of the `products` table so the user can enter search criteria. The
-`products` table relates to `product_types`, so that field is populated from the `ProductTypes` model.
+CRUD starts with the search form. It shows each field of the `products` table so the user can enter search criteria. The `products` table relates to `product_types`, so that field is populated from the `ProductTypes` model.
 
 `indexAction` passes a new `ProductsForm` to the view:
 
@@ -1075,8 +1017,7 @@ public function indexAction(): void
 }
 ```
 
-`ProductsForm` (`src/Forms/ProductsForm.php`) defines the fields shown to the user. The `id` and `name` fields come from
-a shared trait, `IdAndNameFieldsTrait`, reused by the company and product-type forms:
+`ProductsForm` (`src/Forms/ProductsForm.php`) defines the fields shown to the user. The `id` and `name` fields come from a shared trait, `IdAndNameFieldsTrait`, reused by the company and product-type forms:
 
 ```php
 <?php
@@ -1133,8 +1074,7 @@ class ProductsForm extends Form
 }
 ```
 
-Each element follows the same setup. The trait creates the `name` element, attaches a label, applies filters for
-sanitization, and adds a validator:
+Each element follows the same setup. The trait creates the `name` element, attaches a label, applies filters for sanitization, and adds a validator:
 
 ```php
 <?php
@@ -1163,8 +1103,7 @@ $name->addValidators(
 $this->add($name);
 ```
 
-The `id` field is a hidden element when editing, and the product type is a `Select` element populated with
-`ProductTypes::find()`:
+The `id` field is a hidden element when editing, and the product type is a `Select` element populated with `ProductTypes::find()`:
 
 ```php
 <?php
@@ -1184,8 +1123,7 @@ $type = new Select(
 );
 ```
 
-The `Select` element uses the resultset from `ProductTypes::find()` to fill the HTML `select`. Once the form is passed to
-the view, it is rendered:
+The `Select` element uses the resultset from `ProductTypes::find()` to fill the HTML `select`. Once the form is passed to the view, it is rendered:
 
 ```twig
 <div class="row mb-3">
@@ -1219,8 +1157,7 @@ When submitted, the `search` action runs the search from the data entered by the
 
 ## Search
 
-The `search` action has two operations. On `POST`, it runs the search from the submitted data. On `GET`, it moves the
-paginator to the requested page. The HTTP method is checked with the [Request][request] component:
+The `search` action has two operations. On `POST`, it runs the search from the submitted data. On `GET`, it moves the paginator to the requested page. The HTTP method is checked with the [Request][request] component:
 
 ```php
 <?php
@@ -1237,8 +1174,7 @@ public function searchAction(): void
 }
 ```
 
-[Phalcon\Mvc\Model\Criteria][mvc-model-criteria] builds the search conditions from the data types and values in the
-form:
+[Phalcon\Mvc\Model\Criteria][mvc-model-criteria] builds the search conditions from the data types and values in the form:
 
 ```php
 <?php
@@ -1265,8 +1201,7 @@ The produced parameters are stored in the controller's persistent bag:
 $this->persistent->searchParams = $query->getParams();
 ```
 
-The `persistent` property is a session bag, a [Phalcon\Session\Bag][session-persistent-data] that persists data between
-requests. It is independent per controller.
+The `persistent` property is a session bag, a [Phalcon\Session\Bag][session-persistent-data] that persists data between requests. It is independent per controller.
 
 The query runs from the built parameters:
 
@@ -1305,8 +1240,7 @@ $paginator = new Paginator(
 $page = $paginator->paginate();
 ```
 
-The [paginator][db-pagination] receives the results, a per-page limit, and the page number. `paginate()` returns the
-chunk for the current page, which is passed to the view:
+The [paginator][db-pagination] receives the results, a per-page limit, and the page number. `paginate()` returns the chunk for the current page, which is passed to the view:
 
 ```php
 <?php
@@ -1354,9 +1288,7 @@ A Volt `for` is the equivalent of a PHP `foreach`. It also supports `loop.first`
 {% endfor %}
 ```
 
-`product.id` in Volt is the same as `$product->id` in PHP. Some fields are rendered differently. For example,
-`product.getProductTypes().name` reads the related product type. To understand it, look at the `Products` model
-(`src/Models/Products.php`):
+`product.id` in Volt is the same as `$product->id` in PHP. Some fields are rendered differently. For example, `product.getProductTypes().name` reads the related product type. To understand it, look at the `Products` model (`src/Models/Products.php`):
 
 ```php
 <?php
@@ -1392,9 +1324,7 @@ class Products extends Model
 }
 ```
 
-`initialize()` is called once per request. It defines a relationship: the `product_types_id` attribute of `Products`
-relates to the `id` of `ProductTypes`, with the alias `productTypes`. The alias exposes the related record through the
-`getProductTypes()` magic method:
+`initialize()` is called once per request. It defines a relationship: the `product_types_id` attribute of `Products` relates to the `id` of `ProductTypes`, with the alias `productTypes`. The alias exposes the related record through the `getProductTypes()` magic method:
 
 ```twig
 <td>{{ product.getProductTypes().name }}</td>
@@ -1412,8 +1342,7 @@ In PHP this is:
 <?php echo sprintf('%.2f', $product->price) ?>
 ```
 
-Whether a product is active is rendered with a model helper, `getActiveDetail()`, which returns `Yes` or `No` from the
-`active` field:
+Whether a product is active is rendered with a model helper, `getActiveDetail()`, which returns `Yes` or `No` from the `active` field:
 
 ```twig
 <td>{{ product.getActiveDetail() }}</td>
@@ -1421,8 +1350,7 @@ Whether a product is active is rendered with a model helper, `getActiveDetail()`
 
 ## Create/Update
 
-Records are created and updated through the `new` and `edit` views. The submitted data is sent to the `create` and
-`save` actions.
+Records are created and updated through the `new` and `edit` views. The submitted data is sent to the `create` and `save` actions.
 
 To create a product, the submitted data is assigned to a new `Products` instance:
 
@@ -1451,8 +1379,7 @@ public function createAction(): void
 }
 ```
 
-The form filters sanitize the input when the data is passed to it. Filtering is optional but recommended. The ORM also
-escapes the data and casts it according to the column types.
+The form filters sanitize the input when the data is passed to it. Filtering is optional but recommended. The ORM also escapes the data and casts it according to the column types.
 
 Validation runs through the form:
 
@@ -1478,8 +1405,7 @@ if (true !== $form->isValid($data, $product)) {
 }
 ```
 
-`isValid()` runs every validator on the form. If validation fails, `$messages` holds the failures. If validation passes,
-the record is saved:
+`isValid()` runs every validator on the form. If validation fails, `$messages` holds the failures. If validation passes, the record is saved:
 
 ```php
 <?php
@@ -1507,8 +1433,7 @@ $this->dispatcher->forward([
 ]);
 ```
 
-If `save()` fails, the messages are shown and the user returns to `products/new`. If it succeeds, the form is cleared and
-the user is redirected to `products/index` with a success message.
+If `save()` fails, the messages are shown and the user returns to `products/new`. If it succeeds, the form is cleared and the user is redirected to `products/index` with a success message.
 
 To update a product, the existing record is loaded and bound to the form:
 
@@ -1539,13 +1464,11 @@ public function editAction($id): void
 }
 ```
 
-The record is bound to the form by passing the model as the first argument. The user can change the values and submit
-them to the `save` action, which validates and saves them the same way as `create`.
+The record is bound to the form by passing the model as the first argument. The user can change the values and submit them to the `save` action, which validates and saves them the same way as `create`.
 
 ## Dynamic Titles
 
-As you navigate the application, the page title changes to indicate the current area. Each controller sets its own title
-in `initialize()`:
+As you navigate the application, the page title changes to indicate the current area. Each controller sets its own title in `initialize()`:
 
 ```php
 <?php
@@ -1565,8 +1488,7 @@ class ProductsController extends ControllerBase
 }
 ```
 
-`parent::initialize()` is called first. `ControllerBase` prepends the application name to the title and sets the
-`main` layout:
+`parent::initialize()` is called first. `ControllerBase` prepends the application name to the title and sets the `main` layout:
 
 ```php
 <?php
@@ -1617,33 +1539,33 @@ The title is rendered in the main template (`themes/invo/index.volt`) with the V
 - [INVO - GitHub Repository][github_invo]
 - [Phalcon v6 - GitHub Repository][phalcon6]
 
-[github_invo]: https://github.com/phalcon/invo
-[phalcon6]: https://github.com/phalcon/phalcon
+[acl]: acl.md
 [bootstrap]: https://getbootstrap.com
 [composer]: https://getcomposer.org
+[config]: config.md
+[controllers]: controllers.md
 [crud]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
-[jinja]: https://jinja.palletsprojects.com
-[twig]: https://twig.symfony.com
-[dotenv]: https://github.com/vlucas/phpdotenv
-[pds-skeleton]: https://github.com/php-pds/skeleton
-[pie]: https://github.com/php/pie
-[events-event]: api/phalcon_events.md#eventsevent
-[di-injectable]: api/phalcon_di.md#diinjectable
-[mvc-model-criteria]: api/phalcon_mvc.md#mvcmodelcriteria
-[webserver-setup]: webserver-setup.md
-[installation]: installation.md
-[routing]: routing.md
+[db-pagination]: db-pagination.md
 [di]: di.md
 [di-factorydefault]: di.md#factory-default
-[config]: config.md
-[volt]: volt.md
-[controllers]: controllers.md
-[encryption-security]: encryption-security.md
+[di-injectable]: api/phalcon_di.md#diinjectable
 [dispatcher]: dispatcher.md
-[db-pagination]: db-pagination.md
-[session-persistent-data]: session.md#persistent-data
-[logger]: logger.md
+[dotenv]: https://github.com/vlucas/phpdotenv
+[encryption-security]: encryption-security.md
 [events]: events.md
-[acl]: acl.md
+[events-event]: api/phalcon_events.md#eventsevent
 [forms]: forms.md
+[github_invo]: https://github.com/phalcon/invo
+[installation]: installation.md
+[jinja]: https://jinja.palletsprojects.com
+[logger]: logger.md
+[mvc-model-criteria]: api/phalcon_mvc.md#mvcmodelcriteria
+[pds-skeleton]: https://github.com/php-pds/skeleton
+[phalcon6]: https://github.com/phalcon/phalcon
+[pie]: https://github.com/php/pie
 [request]: request.md
+[routing]: routing.md
+[session-persistent-data]: session.md#persistent-data
+[twig]: https://twig.symfony.com
+[volt]: volt.md
+[webserver-setup]: webserver-setup.md

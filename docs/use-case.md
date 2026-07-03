@@ -1,5 +1,7 @@
 # Use Case
 
+- - -
+
 Throughout this documentation, we are going to assume that we are building an accounting application.
 
 ## Requirements

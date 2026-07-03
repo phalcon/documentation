@@ -2,213 +2,314 @@
 
 - - -
 
-# Overview
+## Overview
 
-Phalcon v6 is a pure PHP framework, so contributing to it requires nothing more than a working PHP environment and
-[Composer][composer]. There is no extension to compile and no Zephir toolchain to set up. The test suite is built on
-[PHPUnit][phpunit] and is kept in sync with the [cphalcon][cphalcon] suite, so a test written here can run against the C
-extension and vice versa.
+Phalcon was originally written in C, which limited contributions because most PHP developers do not work in C. To make contributing approachable, the team introduced [Zephir][zephir], a language with a syntax close to PHP and JavaScript that compiles to a PHP extension. The Phalcon codebase was rewritten in Zephir for [Phalcon 2.0][phalcon-2], and Zephir has been central to Phalcon's development ever since.
 
-# The Challenge
+## The Challenge
 
-Building a feature-rich framework necessitates a comprehensive development environment supporting various features and
-associated services. For example, validating ORM functionality across different database adapters (e.g., `MySQL`,
-`Postgresql`, `Sqlite`) requires the installation of relevant PHP extensions and databases. Similarly, to execute the
-testing suite for Phalcon's extensive functionality, developers must have access to services such as Redis and
-Memcached.
+Building a feature-rich framework requires a development environment with many services. Validating the ORM across database adapters (`MySQL`, `PostgreSQL`, `SQLite`) requires the relevant PHP extensions and databases. Running the full test suite requires more still, such as Redis and Memcached. Add the range of supported PHP versions (8.1 through 8.5), and a local setup becomes involved.
 
-Considering the diverse PHP versions (e.g., PHP 8.1, 8.2, 8.3, 8.4), setting all of this up by hand becomes intricate.
+## Solution
 
-# Solution
+Phalcon previously used `nanobox`, which is now discontinued. The development environment is now built on Docker. A few commands bring up every service and PHP version needed to build the extension and run the tests.
 
-To streamline these requirements we use Docker. With just a few commands, developers can seamlessly contribute to
-Phalcon and execute tests promptly, with all the required extensions and services already configured.
+## Installation
 
-# Installation
+Before you begin, install Docker. If you have not installed it yet, follow the instructions [here][docker_installation]. You will also need `docker compose`; installation details are [here][docker_compose].
 
-Before you begin, ensure that Docker is installed on your machine. If you haven't installed it yet, follow the
-instructions [here][docker_installation]. Additionally, you'll need `docker compose` - installation details can be
-found [here][docker_compose].
+## Running the Development Environment
 
-# Running the Development Environment
+**1. Fork the repository.** Fork the [cphalcon][cphalcon] repository to your GitHub account. Navigate to the [cphalcon][cphalcon] page and click the Fork button at the top right.
 
-1. Fork the Repository
-   Start by forking the [phalcon][phalcon] repository to your GitHub account. If you haven't done this already,
-   navigate to the [phalcon][phalcon] page in your browser and click the Fork button located at the top right of the
-   screen.
-
-2. Clone the Fork
-   Clone the forked repository to a directory of your choice. The example below assumes the GitHub account is `niden`;
-   replace it with your own account.
+**2. Clone the fork.** Clone the forked repository to a directory of your choice. The example below assumes the GitHub account is `niden`; replace it with your own.
 
 ```bash
-git clone git@github.com:niden/phalcon
+git clone git@github.com:niden/cphalcon
 ```
 
-3. Build the Environment
-   Navigate to the phalcon folder (or your chosen repository location) and build the containers with the following
-   command:
+**3. Build the environment.** Navigate to the `cphalcon` folder and build the containers:
 
 ```bash
-docker compose build 
+docker compose build
 ```
 
-This process may take some time, depending on your machine's specifications. It is not required frequently, only when
-changes occur in the dockerfiles or when you choose to rebuild your containers.
+This may take some time, depending on your machine. It is not run frequently, only when the Dockerfiles change or you choose to rebuild.
 
-# Starting the Environment
+## Starting the Environment
 
-Once all the containers have been built, initiate the environment using the following command:
+Once the containers are built, start the environment:
 
 ```bash
 docker compose up -d
 ```
 
-The above command, utilizing the `docker-compose.yml` file from the repository, runs the environment in the background,
-allowing you to reuse your terminal. To stop the environment:
+The command uses the `docker-compose.yml` file from the repository and runs the environment in the background, so your terminal stays free. To stop the environment:
 
 ```bash
 docker compose down
 ```
 
-# Environment Configuration
+## Service Networking
+
+The service containers (databases, cache, queue) are not published to the host. They are reachable over the internal Compose network by their service name, for example `mysql`, `mariadb`, `postgres`, `redis`, `memcached`, and `beanstalkd`. You run the tests from inside a PHP development container, which reaches each service by that name. Because no host ports are published, you can run this environment alongside other projects without port collisions.
 
 ## Entering the Environment
 
-To enter the environment, specify the desired PHP version environment. The following environments are available:
+The environment provides one container per supported PHP version:
 
-`phalcon-dev-8.1`
-`phalcon-dev-8.2`
-`phalcon-dev-8.3`
-`phalcon-dev-8.4`
-
-For example, to enter the PHP 8.1 environment:
-
-```bash
-docker exec -it phalcon-dev-8.1 /bin/bash
+```
+cphalcon-dev-8.1
+cphalcon-dev-8.2
+cphalcon-dev-8.3
+cphalcon-dev-8.4
+cphalcon-dev-8.5
 ```
 
-You'll be prompted with:
+To enter the PHP 8.1 container:
 
 ```bash
-root@phalcon-dev-81:/srv#
+docker exec -it cphalcon-dev-8.1 /bin/bash
 ```
 
-You are now inside the environment with all the necessary extensions and services. To exit, type `exit` and press
-Enter:
+You will be prompted with:
 
 ```bash
-root@phalcon-dev-81:/srv# exit
+root@cphalcon-dev-8.1:/srv#
 ```
+
+You are now inside the environment with the extensions and services available. To exit, type `exit`:
+
+```bash
+root@cphalcon-dev-8.1:/srv# exit
+```
+
+## Aliases
+
+The development containers define aliases in the `.bashrc` under `resources/docker/develop/`. The most useful ones:
+
+| Alias    | Command                                     |
+|----------|---------------------------------------------|
+| `g`      | `git`                                       |
+| `h`      | `history`                                   |
+| `l`      | `ls -lF`                                    |
+| `zephir` | `./vendor/bin/zephir`                       |
+| `zf`     | `./vendor/bin/zephir fullclean`             |
+| `zg`     | `./vendor/bin/zephir generate`              |
+| `zs`     | `./vendor/bin/zephir stubs`                 |
+| `cpl`    | `zf && zg && cd ext/ && ./install && cd ..` |
 
 ## Composer
 
-Before proceeding, install the dependencies:
+Install the dependencies:
 
 ```bash
-root@phalcon-dev-81:/srv# composer install
+root@cphalcon-dev-8.1:/srv# composer install
 ```
 
 ### Composer commands
 
-Composer is configured to facilitate testing. Execute the commands as follows:
+Composer is configured to build and test the extension. Run a command with:
 
 ```bash
 composer <command>
 ```
 
-Example:
+For example:
 
 ```bash
 # Run the code sniffer
 composer cs
 ```
 
-| Command          | Description                          |
-|------------------|--------------------------------------|
-| `analyze`        | Run static analysis (`phpstan`)      |
-| `cs`             | Run CodeSniffer (`phpcs`)            |
-| `cs-fix`         | Run CodeSniffer fix (`phpcbf`)       |
-| `test-unit`      | Run unit tests                       |
-| `test-db-mysql`  | Run MySQL database tests             |
-| `test-db-pgsql`  | Run PostgreSQL database tests        |
-| `test-db-sqlite` | Run SQLite database tests            |
-| `test-db`        | Run all database tests               |
-| `test-all`       | Run unit and all database tests      |
+The test scripts run through [Talon][talon], the Phalcon test runner (see below):
+
+| Command              | Description                                    |
+|----------------------|------------------------------------------------|
+| `analyze`            | Run Psalm static analysis                      |
+| `cs`                 | Run CodeSniffer (`phpcs`)                       |
+| `cs-fix`             | Apply CodeSniffer fixes (`phpcbf`)              |
+| `cs-fixer`           | Run PHP CS Fixer (dry run)                      |
+| `cs-fixer-fix`       | Apply PHP CS Fixer                             |
+| `test-unit`          | Run the unit suite (`talon run unit`)          |
+| `test-unit-coverage` | Run the unit suite with Clover coverage        |
+| `test-db-mysql`      | Run the MySQL database suite                    |
+| `test-db-pgsql`      | Run the PostgreSQL database suite              |
+| `test-db-sqlite`     | Run the SQLite database suite                   |
+| `test-db`            | Run all database suites (mysql, pgsql, sqlite)  |
+| `test-all`           | Run every suite                               |
+
+## Check Zephir
+
+Zephir is installed by Composer. Confirm it is available:
+
+```bash
+root@cphalcon-dev-8.1:/srv# zephir
+```
+
+## Compile Phalcon
+
+Compile the extension with Zephir using the `cpl` alias:
+
+```bash
+root@cphalcon-dev-8.1:/srv# cpl
+```
+
+## Check Extensions
+
+Verify the extension is loaded:
+
+```bash
+root@cphalcon-dev-8.1:/srv# php -m
+```
+
+Check for `phalcon` in the list of installed modules.
 
 ## Setup Databases
 
-The repository ships with a `.env` file in the project root that is preconfigured for the Docker services. The database
-hosts point to the service containers (`phalcon-mysql`, `phalcon-postgres`, `phalcon-redis`, etc.), so no additional
-configuration is required to run the test suite inside the environment.
-
-# Running Tests
-
-## Unit
+Create a `.env` file in the project root from the Docker template:
 
 ```bash
-root@phalcon-dev-81:/srv# composer test-unit
+root@cphalcon-dev-8.1:/srv# cp tests/support/_config/.env.docker .env
 ```
 
-To run a single test file or directory, call PHPUnit directly:
+## Testing with Talon
+
+Phalcon runs its suites through [Talon][talon], the Phalcon test runner. Talon is a harness over PHPUnit: it loads the correct Phalcon build, applies the suite configuration, and runs the tests. In cphalcon it loads the C extension you have compiled. The same runner is used across the Phalcon projects, on both the v5 C extension and the v6 `phalcon/phalcon` package, and Talon uses whichever is present.
+
+Suites are declared in `talon.php` at the repository root. Each suite maps to a PHPUnit configuration under `resources/`:
+
+| Suite    | PHPUnit configuration          |
+|----------|--------------------------------|
+| `unit`   | `resources/phpunit.xml.dist`   |
+| `mysql`  | `resources/phpunit.mysql.xml`  |
+| `pgsql`  | `resources/phpunit.pgsql.xml`  |
+| `sqlite` | `resources/phpunit.sqlite.xml` |
+
+Run a suite directly with:
 
 ```bash
-root@phalcon-dev-81:/srv# vendor/bin/phpunit -c resources/phpunit.xml.dist tests/unit/some/folder/SomeTest.php
+root@cphalcon-dev-8.1:/srv# ./vendor/bin/talon run unit
 ```
 
-## Database
+The Composer scripts wrap these calls, so `composer test-unit` runs `talon run unit`. For the full Talon reference, see the [Talon][talon] page.
+
+## Running Tests
+
+### Unit
+
+Run the unit suite:
 
 ```bash
-root@phalcon-dev-81:/srv# composer test-db-mysql
-root@phalcon-dev-81:/srv# composer test-db-pgsql
-root@phalcon-dev-81:/srv# composer test-db-sqlite
-root@phalcon-dev-81:/srv# composer test-db
+root@cphalcon-dev-8.1:/srv# composer test-unit
 ```
 
-# Development
-
-Open your preferred editor and start developing in PHP. Since Phalcon v6 is pure PHP, there is no compilation step:
-edit the files under the `src/` folder and run the tests directly.
+Run a subset by passing PHPUnit arguments after `--`:
 
 ```bash
-root@phalcon-dev-81:/srv# composer test-unit
+# a single test method by name
+root@cphalcon-dev-8.1:/srv# ./vendor/bin/talon run unit -- --filter testConnect
+
+# a specific directory
+root@cphalcon-dev-8.1:/srv# ./vendor/bin/talon run unit -- tests/unit/<subdirectory>
 ```
 
-All code must pass the static analyzer and the coding standard checks (PSR-12) before it can be merged:
+### Database
+
+Run the database suites:
 
 ```bash
-root@phalcon-dev-81:/srv# composer analyze
-root@phalcon-dev-81:/srv# composer cs
+root@cphalcon-dev-8.1:/srv# composer test-db-mysql
+root@cphalcon-dev-8.1:/srv# composer test-db-pgsql
+root@cphalcon-dev-8.1:/srv# composer test-db-sqlite
+root@cphalcon-dev-8.1:/srv# composer test-db
 ```
 
-# Services
+### Coverage
+
+Generate a Clover coverage report for the unit suite:
+
+```bash
+root@cphalcon-dev-8.1:/srv# composer test-unit-coverage
+```
+
+## Development
+
+Open your editor and develop in Zephir. After changing any `.zep` file (inside the `phalcon` folder), recompile the extension:
+
+```bash
+root@cphalcon-dev-8.1:/srv# cpl
+```
+
+Then run the tests:
+
+```bash
+root@cphalcon-dev-8.1:/srv# composer test-unit
+```
+
+For Zephir documentation, see the [Zephir Docs][zephir_docs].
+
+## Services
 
 The available services are:
 
+- Beanstalkd
 - MariaDB
 - Memcached
 - MySQL
 - PostgreSQL
-- Redis (including a Redis cluster)
+- Redis (including a Redis Cluster)
 
-Database schema dumps are located under `tests/support/assets/schema/`.
+Enabled PHP extensions include:
+
+- apcu
+- ctype
+- curl
+- dom
+- fileinfo
+- gd
+- gettext
+- gmp
+- iconv
+- igbinary
+- imagick
+- intl
+- json
+- mbstring
+- memcached
+- mongodb
+- msgpack
+- opcache
+- pdo
+- pdo_mysql
+- pdo_pgsql
+- pdo_sqlite
+- phar
+- redis
+- session
+- simplexml
+- sqlite3
+- tokenizer
+- xdebug
+- xml
+- xmlwriter
+- yaml
+- zephir_parser
+- zip
+- zlib
+
+Database schema dumps are located under `tests/support/assets/db/schemas`.
 
 For questions, join the [Discord][discord] server or our [Discussions][discussions].
 
 <3 Phalcon Team
 
-[composer]: https://getcomposer.org
-
-[phalcon]: https://github.com/phalcon/phalcon
-
 [cphalcon]: https://github.com/phalcon/cphalcon
-
-[phpunit]: https://phpunit.de
-
 [discord]: https://phalcon.io/discord
-
-[docker_installation]: https://docs.docker.com/engine/installation/
-
-[docker_compose]: https://docs.docker.com/compose/install/
-
 [discussions]: https://phalcon.io/discussions
+[docker_compose]: https://docs.docker.com/compose/install/
+[docker_installation]: https://docs.docker.com/engine/installation/
+[phalcon-2]: https://blog.phalcon.io/post/phalcon-2-0-the-future
+[talon]: talon.md
+[zephir]: https://zephir-lang.com
+[zephir_docs]: https://docs.zephir-lang.com

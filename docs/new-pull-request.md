@@ -2,8 +2,7 @@
 
 - - -
 
-A pull request for Phalcon must be against our main repository [cphalcon][cphalcon]. It is a collection of changes to
-the code that:
+A pull request for Phalcon should target the correct repository in the [Phalcon organization][phalcon-org]. The C extension (Phalcon v5) lives in [cphalcon][cphalcon]; the PHP implementation (Phalcon v6) lives in [phalcon/phalcon][phalcon]. The sample applications, tooling, and documentation each have their own repository. This page uses `cphalcon` for its examples, but the same process applies to any of them. A pull request is a collection of changes to the code that:
 
 - fix a bug (current issue)
 - introduce new functionality or enhancement.
@@ -14,24 +13,19 @@ Your pull request must include:
 * Update the relevant `CHANGELOG.md`
 * Contain unit tests
 * Updates to the documentation and usage examples as necessary
-* Your code must abide by the coding standards that Phalcon uses. We follow [PSR-12][psr-12], and a `.editorconfig` file
-  is available at the root of the repository to help you follow the standards.
+* Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-12][psr-12] while for Zephir code, we have a `.editorconfig` file available at the root of the repository to help you follow the standards.
 
 !!! danger "DANGER"
 
     **We do not accept Pull Requests to the `master` branch**
 
-If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can
-utilize the template we have in GitHub to present this information. If no issue exists, please create one.
+If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in GitHub to present this information. If no issue exists, please create one.
 
-For new functionality, **we will need to have an issue created and referenced**. If the functionality you are
-introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
+For new functionality, **we will need to have an issue created and referenced**. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
 
-Additionally, any new functionality that introduces breaking changes will not be accepted for the current release but
-instead will need to be updated to target the next major version.
+Additionally, any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version.
 
-It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community to get
-feedback, and guidance and to work on a release plan that will benefit everyone.
+It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community to get feedback, and guidance and to work on a release plan that will benefit everyone.
 
 ## Branch and Commits
 
@@ -77,5 +71,6 @@ Any commits you add now to your branch will appear tied to the `12345` issue.
 Doing the above allows everyone to see which commits relate to which issue.
 
 [cphalcon]: https://github.com/phalcon/cphalcon
-
+[phalcon]: https://github.com/phalcon/phalcon
+[phalcon-org]: https://github.com/phalcon
 [psr-12]: https://www.php-fig.org/psr/psr-12/

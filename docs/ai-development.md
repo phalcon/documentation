@@ -4,51 +4,40 @@
 
 # Using AI Coding Assistants
 
-The Phalcon project welcomes contributions developed with the assistance of AI coding assistants (also referred to as
-Large Language Models, or LLMs). Like any other tool a contributor uses, an AI assistant is just that: a tool. The
-contributor remains fully responsible for every line of code they submit, regardless of how it was produced.
+The Phalcon project welcomes contributions developed with the assistance of AI coding assistants (also referred to as Large Language Models, or LLMs). Like any other tool a contributor uses, an AI assistant is just that: a tool. The contributor remains fully responsible for every line of code they submit, regardless of how it was produced.
 
-This page describes how to use AI assistants effectively when contributing to Phalcon, the quality bar your contribution
-must meet, and the attribution we require.
+This page describes how to use AI assistants effectively when contributing to Phalcon, the quality bar your contribution must meet, and the attribution we require.
+
+!!! info "Applies to every Phalcon repository"
+
+    This guidance is not limited to `cphalcon`. It applies to every repository in the [Phalcon organization][phalcon-org], including the PHP framework, the sample applications, the incubator, and the tooling repositories. Some examples below are specific to the [cphalcon][cphalcon] repository (Zephir source, generated C files), but the quality bar and the `Assisted-by:` attribution apply to a contribution to any Phalcon repository.
 
 ## Recommendations for Use
 
-AI assistants work best when they are configured against the authoritative sources for the project. Before using an
-assistant on a Phalcon contribution, point it at the following references:
+AI assistants work best when they are configured against the authoritative sources for the project. Before using an assistant on a Phalcon contribution, point it at the following references:
 
-- The [phalcon][phalcon] repository - the pure PHP implementation of the framework (v6). This is where the framework
-  source lives; the classes are plain PHP under the `src/` folder.
-- The [cphalcon][cphalcon] repository - the original C extension implementation. Phalcon's PHP code is kept in sync with
-  it, so it is a useful reference for expected behavior. Note that cphalcon is written in [Zephir][zephir]; its source
-  files live in the `phalcon/` folder and the generated C files live in the `ext/` folder. Pull requests to cphalcon
-  must not modify generated files directly.
+- The [cphalcon][cphalcon] repository. Note that the framework is written in [Zephir][zephir]; the source files live in the `phalcon/` folder, and the generated C files live in the `ext/` folder. Pull requests must not modify generated files directly.
 - The [Phalcon documentation][phalcon-documentation] (this site) for public APIs, behavior, and usage examples.
+- The [Zephir language documentation][zephir-docs] when authoring or modifying `*.zep` files.
 - The [PSR-12][psr-12] coding standard, which Phalcon follows for all PHP code (including tests).
-- The project's testing layout (`tests/`, the various `phpunit.*.xml` configurations) so the assistant generates tests
-  in the right place and shape.
+- The project's testing layout. Tests live under `tests/` and run through [Talon][talon], the Phalcon test runner. The `talon.php` suite map ties each suite (`unit`, `mysql`, `pgsql`, `sqlite`) to its PHPUnit configuration, so the assistant generates tests in the right place and shape and runs them with `talon run <suite>`.
 
-Treat the output of an AI assistant the way you would treat a patch from a stranger on the internet: review it
-carefully, verify any API references against the actual source, and run the tests before submitting.
+Treat the output of an AI assistant the way you would treat a patch from a stranger on the internet: review it carefully, verify any API references against the actual source, and run the tests before submitting.
 
 ## Quality Expectations
 
-A contribution developed with AI assistance is held to exactly the same quality bar as any other contribution.
-Specifically:
+A contribution developed with AI assistance is held to exactly the same quality bar as any other contribution. Specifically:
 
-- Tests must be added or updated, and must pass on the relevant `phpunit` suites (unit, and database suites where
-  applicable).
+- Tests must be added or updated, and must pass on the relevant [Talon][talon] suites: `talon run unit`, and the database suites (`talon run mysql`, `talon run pgsql`, `talon run sqlite`) where applicable.
 - Static analysis must pass: [PHPCS][psr-12] for PHP code style and [PHPStan][phpstan] where applicable.
-- No fabricated APIs, classes, methods, or behaviors. AI assistants will sometimes invent references that look plausible
-  but do not exist. Verify every symbol against the current source before submitting.
+- No fabricated APIs, classes, methods, or behaviors. AI assistants will sometimes invent references that look plausible but do not exist. Verify every symbol against the current source before submitting.
 - The pull request guidelines in the [Contributing][contributions] page apply unchanged.
 
-If your contribution does not meet these requirements, the fact that an AI assistant helped produce it does not change
-the outcome of the review.
+If your contribution does not meet these requirements, the fact that an AI assistant helped produce it does not change the outcome of the review.
 
 ## Attribution
 
-Phalcon follows a model similar to the [Linux kernel's coding-assistants policy][kernel-ai]: when an AI coding assistant
-has materially contributed to a commit, the commit must carry a trailer identifying the assistant.
+Phalcon follows a model similar to the [Linux kernel's coding-assistants policy][kernel-ai]: when an AI coding assistant has materially contributed to a commit, the commit must carry a trailer identifying the assistant.
 
 ### The `Assisted-by:` trailer
 
@@ -58,11 +47,9 @@ Add an `Assisted-by:` trailer to the commit message for every commit where an AI
 Assisted-by: Claude Code
 ```
 
-The token after `Assisted-by:` is the name of the assistant (for example `Claude Code`, `GitHub Copilot`, `Cursor`,
-`Gemini`). Versioning is optional and tends to age poorly, so a plain name is preferred.
+The token after `Assisted-by:` is the name of the assistant (for example `Claude Code`, `GitHub Copilot`, `Cursor`, `Gemini`). Versioning is optional and tends to age poorly, so a plain name is preferred.
 
-The trailer goes at the bottom of the commit message, alongside any other trailers (such as `Signed-off-by:` or
-`Co-authored-by:`):
+The trailer goes at the bottom of the commit message, alongside any other trailers (such as `Signed-off-by:` or `Co-authored-by:`):
 
 ```
 mvc: fix dispatcher event ordering when forwarding
@@ -72,15 +59,11 @@ A short explanation of the change.
 Assisted-by: Claude Code
 ```
 
-The trailer is required at the **commit** level, not at the pull request level. Commits get cherry-picked, backported,
-and read in isolation through `git log` and `git blame`, so the attribution must travel with the commit. A pull request
-series may legitimately mix commits that carry the trailer with commits that do not.
+The trailer is required at the **commit** level, not at the pull request level. Commits get cherry-picked, backported, and read in isolation through `git log` and `git blame`, so the attribution must travel with the commit. A pull request series may legitimately mix commits that carry the trailer with commits that do not.
 
 ### What counts as "material" assistance
 
-The trailer is required when the assistant has contributed in a way that meaningfully shaped the change: generating the
-implementation, generating the tests, designing the approach, refactoring the structure, or writing significant portions
-of the code or documentation.
+The trailer is required when the assistant has contributed in a way that meaningfully shaped the change: generating the implementation, generating the tests, designing the approach, refactoring the structure, or writing significant portions of the code or documentation.
 
 The trailer is **not** required for trivial mechanical edits, such as:
 
@@ -90,18 +73,13 @@ The trailer is **not** required for trivial mechanical edits, such as:
 
 When in doubt, add the trailer. Over-attribution is harmless; under-attribution is not.
 
-[cphalcon]: https://github.com/phalcon/cphalcon
-
 [contributions]: contributions.md
-
+[cphalcon]: https://github.com/phalcon/cphalcon
 [kernel-ai]: https://docs.kernel.org/process/coding-assistants.html
-
-[phalcon]: https://github.com/phalcon/phalcon
-
 [phalcon-documentation]: https://github.com/phalcon/documentation
-
+[phalcon-org]: https://github.com/phalcon
 [phpstan]: https://phpstan.org
-
-[psr-12]: https://www.php-fig.org/psr/
-
+[psr-12]: https://www.php-fig.org/psr/psr-12/
+[talon]: talon.md
 [zephir]: https://zephir-lang.com
+[zephir-docs]: https://docs.zephir-lang.com

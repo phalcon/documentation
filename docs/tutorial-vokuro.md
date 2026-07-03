@@ -4,8 +4,7 @@
 
 ## Vökuró
 
-[Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This
-application focuses on:
+[Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
 
 - User login (security)
 - User signup (security)
@@ -45,25 +44,21 @@ There are three ways to obtain and run Vökuró. Pick the one that matches your 
 ### Requirements
 
 - PHP 8.1 through 8.5.
-- The `openssl` extension. Depending on your database, one of `pdo_mysql`, `pdo_pgsql`, or `pdo_sqlite`. The `mbstring`
-  and `intl` extensions are also used.
+- The `openssl` extension. Depending on your database, one of `pdo_mysql`, `pdo_pgsql`, or `pdo_sqlite`. The `mbstring` and `intl` extensions are also used.
 - One of MySQL 8.0, PostgreSQL, or SQLite as the data store.
 - [Composer][composer].
-- For the v5 path, the Phalcon C extension. See the [installation][installation] page for the full list of platforms
-  and install methods.
+- For the v5 path, the Phalcon C extension. See the [installation][installation] page for the full list of platforms and install methods.
 
 ### Composer (`create-project`)
 
-This is the shortest path on a local PHP host. Composer downloads the application from Packagist, installs the
-dependencies, and runs a post-create hook:
+This is the shortest path on a local PHP host. Composer downloads the application from Packagist, installs the dependencies, and runs a post-create hook:
 
 ```bash
 composer create-project phalcon/vokuro vokuro
 cd vokuro
 ```
 
-The `post-create-project-cmd` hook copies `resources/.env.example` to `.env` if no `.env` exists, then prints the next
-steps to the terminal:
+The `post-create-project-cmd` hook copies `resources/.env.example` to `.env` if no `.env` exists, then prints the next steps to the terminal:
 
 ```text
 Vokuro is ready (.env created from resources/.env.example). Next steps:
@@ -72,9 +67,7 @@ Vokuro is ready (.env created from resources/.env.example). Next steps:
   tests:  vendor/bin/talon run
 ```
 
-Out of the box the application runs on the bundled `phalcon/phalcon` (v6) package, so no extension is required. To run on
-the Phalcon v5 C extension instead, install it with [PIE][pie] (see the [installation][installation] page). Once the
-extension is loaded, PHP prefers it automatically and the bundled v6 package is shadowed. It can stay installed.
+Out of the box the application runs on the bundled `phalcon/phalcon` (v6) package, so no extension is required. To run on the Phalcon v5 C extension instead, install it with [PIE][pie] (see the [installation][installation] page). Once the extension is loaded, PHP prefers it automatically and the bundled v6 package is shadowed. It can stay installed.
 
 After the project is created, edit `.env` for your database, then create and seed the schema:
 
@@ -91,9 +84,7 @@ php -S localhost:8080 -t public .htrouter.php
 
 ### Docker
 
-The Docker stack requires nothing on the host except Docker itself. No PHP, no extensions, and no database are needed
-locally. The stack defines three services: the application (`app`), a MySQL 8.0 database (`mysql`), and a
-[Mailpit][mailpit] SMTP catcher (`mailpit`) that captures outgoing e-mail so nothing leaves the host.
+The Docker stack requires nothing on the host except Docker itself. No PHP, no extensions, and no database are needed locally. The stack defines three services: the application (`app`), a MySQL 8.0 database (`mysql`), and a [Mailpit][mailpit] SMTP catcher (`mailpit`) that captures outgoing e-mail so nothing leaves the host.
 
 From the project root:
 
@@ -126,8 +117,7 @@ Log in with one of the seeded accounts:
 
 **Choosing the Phalcon version**
 
-The image installs one distribution at a time, selected by the `PHALCON_VARIANT` build argument. The v5 image compiles
-the C extension. The v6 image installs the `phalcon/phalcon` package instead.
+The image installs one distribution at a time, selected by the `PHALCON_VARIANT` build argument. The v5 image compiles the C extension. The v6 image installs the `phalcon/phalcon` package instead.
 
 ```bash
 docker compose up -d --build                      # v5 (C extension, default)
@@ -136,16 +126,14 @@ PHALCON_VARIANT=v6 docker compose up -d --build   # v6 (phalcon/phalcon, alpha)
 
 **Choosing the PHP version**
 
-The image is built for one PHP version at a time, selected by the `PHP_VERSION` build argument. The default is `8.5`,
-and `8.1` through `8.5` are supported:
+The image is built for one PHP version at a time, selected by the `PHP_VERSION` build argument. The default is `8.5`, and `8.1` through `8.5` are supported:
 
 ```bash
 docker compose up -d --build                  # PHP 8.5 (default)
 PHP_VERSION=8.1 docker compose up -d --build  # PHP 8.1
 ```
 
-The container keeps the same name across rebuilds, so each rebuild replaces the previous one. To run several versions
-side by side, give each its own Compose project and prefix:
+The container keeps the same name across rebuilds, so each rebuild replaces the previous one. To run several versions side by side, give each its own Compose project and prefix:
 
 ```bash
 PHP_VERSION=8.1 PROJECT_PREFIX=vokuro81 docker compose -p vokuro81 up -d --build
@@ -153,14 +141,11 @@ PHP_VERSION=8.1 PROJECT_PREFIX=vokuro81 docker compose -p vokuro81 up -d --build
 
 ### Local (non-Docker)
 
-To run Vökuró directly on your host, follow the walkthrough in the repository's own
-[docs/installation.md][installation-vokuro]. The steps are:
+To run Vökuró directly on your host, follow the walkthrough in the repository's own [docs/installation.md][installation-vokuro]. The steps are:
 
-1. Install the Phalcon v5 extension with [PIE][pie]. To run on v6 instead, skip this step and require the package with
-   `composer require phalcon/phalcon:^6.0@alpha`.
+1. Install the Phalcon v5 extension with [PIE][pie]. To run on v6 instead, skip this step and require the package with `composer require phalcon/phalcon:^6.0@alpha`.
 2. Install the PHP dependencies with `composer install`.
-3. Copy `resources/.env.example` to `.env` and point `DB_HOST` at your host (the Docker defaults use the `mysql` service
-   name, so a local host uses `127.0.0.1`).
+3. Copy `resources/.env.example` to `.env` and point `DB_HOST` at your host (the Docker defaults use the `mysql` service name, so a local host uses `127.0.0.1`).
 4. Create and seed the database with `composer migrate` and `composer seed`.
 5. Serve the application with `php -S localhost:8080 -t public .htrouter.php`.
 
@@ -170,8 +155,7 @@ Once the configuration is in place, visiting the address will present a screen s
 
 ## Structure
 
-Vökuró follows the [PDS skeleton][pds-skeleton] layout. The application source lives under `src`, the views under
-`themes`, and all tooling configuration under `resources`:
+Vökuró follows the [PDS skeleton][pds-skeleton] layout. The application source lives under `src`, the views under `themes`, and all tooling configuration under `resources`:
 
 ```bash
 vokuro/
@@ -225,10 +209,7 @@ vokuro/
 
 ### `.env`
 
-Vökuró uses the [Dotenv][dotenv] library by Vance Lucas. The library reads a `.env` file in the project root, which
-holds configuration parameters such as the database host, username, and password. A `resources/.env.example` file ships
-with the application. Copy it to `.env` and edit it to match your environment. The `create-project` hook performs this
-copy for you.
+Vökuró uses the [Dotenv][dotenv] library by Vance Lucas. The library reads a `.env` file in the project root, which holds configuration parameters such as the database host, username, and password. A `resources/.env.example` file ships with the application. Copy it to `.env` and edit it to match your environment. The `create-project` hook performs this copy for you.
 
 The available options are:
 
@@ -257,8 +238,7 @@ The available options are:
 
 ### Database
 
-Vökuró uses [Phinx][phinx] for migrations and seeding. Phinx reads its own configuration file, `resources/phinx.php`,
-which in turn reads the `.env` file. You do not need to edit `phinx.php`. All database settings live in `.env`.
+Vökuró uses [Phinx][phinx] for migrations and seeding. Phinx reads its own configuration file, `resources/phinx.php`, which in turn reads the `.env` file. You do not need to edit `phinx.php`. All database settings live in `.env`.
 
 Migrations and seeders are wrapped in Composer scripts. To create the schema and load the sample data:
 
@@ -278,13 +258,11 @@ Migrations are not run on container boot. They are decoupled so you control when
 
 ### Config files
 
-The `config/` folder holds four files. You do not need to change them to start the application, but this is where you
-customize behavior.
+The `config/` folder holds four files. You do not need to change them to start the application, but this is where you customize behavior.
 
 **acl.php**
 
-Returns an array of private resources, keyed by controller with an array of actions. These controller/action pairs
-require an authenticated user:
+Returns an array of private resources, keyed by controller with an array of actions. These controller/action pairs require an authenticated user:
 
 ```php
 <?php
@@ -315,8 +293,7 @@ return [
 ];
 ```
 
-If you use Vökuró as a starting point, modify this file to add or remove the routes that must sit behind the login
-mechanism.
+If you use Vökuró as a starting point, modify this file to add or remove the routes that must sit behind the login mechanism.
 
 !!! info "NOTE"
 
@@ -324,21 +301,17 @@ mechanism.
 
 **config.php**
 
-Holds the configuration parameters that Vökuró needs. Most values are populated from `.env` through [Dotenv][dotenv], so
-you rarely change this file. It also defines the log, view, cache, and session paths.
+Holds the configuration parameters that Vökuró needs. Most values are populated from `.env` through [Dotenv][dotenv], so you rarely change this file. It also defines the log, view, cache, and session paths.
 
-One value to note is `useMail`. Set it to `false` to stop Vökuró from connecting to a mail server when a user registers.
-This is useful on a local machine or in a test environment.
+One value to note is `useMail`. Set it to `false` to stop Vökuró from connecting to a mail server when a user registers. This is useful on a local machine or in a test environment.
 
 **providers.php**
 
-Contains the list of provider classes that Vökuró registers in the DI container. Add a class here to register a new
-service. Remove or comment out a class to disable one.
+Contains the list of provider classes that Vökuró registers in the DI container. Add a class here to register a new service. Remove or comment out a class to disable one.
 
 **routes.php**
 
-Contains the application-specific routes. The router already registers the default route, so this file only defines
-non-standard routes. Vökuró registers two:
+Contains the application-specific routes. The router already registers the default route, so this file only defines non-standard routes. Vökuró registers two:
 
 ```php
 <?php
@@ -370,15 +343,11 @@ The default route remains:
 
 ### Providers
 
-Vökuró uses classes called Providers to register services in the DI container. This is one way to register services.
-Nothing stops you from putting all registrations in a single file.
+Vökuró uses classes called Providers to register services in the DI container. This is one way to register services. Nothing stops you from putting all registrations in a single file.
 
-Vökuró uses one file per service, plus a `config/providers.php` array that lists the classes to register. This keeps
-each service in a small, separate file, and lets you register or disable a service by editing the array without deleting
-files.
+Vökuró uses one file per service, plus a `config/providers.php` array that lists the classes to register. This keeps each service in a small, separate file, and lets you register or disable a service by editing the array without deleting files.
 
-The provider classes are in `src/Providers`. Each one implements the
-[Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface. See the bootstrapping section below.
+The provider classes are in `src/Providers`. Each one implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface. See the bootstrapping section below.
 
 ## Composer
 
@@ -394,8 +363,7 @@ Vökuró uses [Composer][composer] to install its PHP dependencies. The runtime 
 }
 ```
 
-The Phalcon extension is not a hard requirement. It is listed under `suggest`, because the application can run on the
-`phalcon/phalcon` (v6) package that is pulled in as a development dependency. For a fresh install:
+The Phalcon extension is not a hard requirement. It is listed under `suggest`, because the application can run on the `phalcon/phalcon` (v6) package that is pulled in as a development dependency. For a fresh install:
 
 ```bash
 composer install
@@ -422,8 +390,7 @@ The `composer.json` `autoload` entry maps the `Vokuro` namespace to the `src` fo
 
 ### Composer scripts
 
-Vökuró defines Composer scripts for quality checks, tests, and the database. Run them on the host, or inside the
-container with `docker compose exec app composer <script>`:
+Vökuró defines Composer scripts for quality checks, tests, and the database. Run them on the host, or inside the container with `docker compose exec app composer <script>`:
 
 | Script                  | Description                                                            |
 |-------------------------|-----------------------------------------------------------------------|
@@ -445,8 +412,7 @@ container with `docker compose exec app composer <script>`:
 
 ### Entry
 
-The entry point is `public/index.php`. It bootstraps and runs the application, and serves as the single point of entry,
-which makes it easier to trap errors and protect files.
+The entry point is `public/index.php`. It bootstraps and runs the application, and serves as the single point of entry, which makes it easier to trap errors and protect files.
 
 ```php
 <?php
@@ -482,12 +448,9 @@ A `try`/`catch` block wraps all operations, so errors are caught and displayed o
 
     This is tutorial code, not a production application. If a database error occurs, the `catch` block echoes the exception, which can contain the database credentials. Rework this code before deploying.
 
-The composer autoloader is loaded so the supporting libraries and the `Vokuro` namespaced classes are available. The
-environment variables from `.env` are then loaded with `createUnsafeImmutable($rootPath)->safeLoad()`. Finally, the
-application runs.
+The composer autoloader is loaded so the supporting libraries and the `Vokuro` namespaced classes are available. The environment variables from `.env` are then loaded with `createUnsafeImmutable($rootPath)->safeLoad()`. Finally, the application runs.
 
-Requests are routed through `.htrouter.php` when you use the built-in PHP web server. It serves existing files from
-`public` directly and forwards everything else to `public/index.php`:
+Requests are routed through `.htrouter.php` when you use the built-in PHP web server. It serves existing files from `public` directly and forwards everything else to `public/index.php`:
 
 ```php
 <?php
@@ -611,15 +574,11 @@ class Application
 }
 ```
 
-The constructor creates a [Phalcon\Di\FactoryDefault][di] container, which has many services already registered. It then
-creates a [Phalcon\Mvc\Application][application] and stores the root path.
+The constructor creates a [Phalcon\Di\FactoryDefault][di] container, which has many services already registered. It then creates a [Phalcon\Mvc\Application][application] and stores the root path.
 
-The class registers itself in the DI container under the name `bootstrap`, so the application is reachable from anywhere
-through the container.
+The class registers itself in the DI container under the name `bootstrap`, so the application is reachable from anywhere through the container.
 
-The constructor then registers the providers. It reads `config/providers.php`, loops through the class names, and calls
-`register()` on each with the DI container. Each provider implements the
-[Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface.
+The constructor then registers the providers. It reads `config/providers.php`, loops through the class names, and calls `register()` on each with the DI container. Each provider implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface.
 
 The available providers are:
 
@@ -643,13 +602,11 @@ The available providers are:
 | `UrlProvider`            | URL handling                                      |
 | `ViewProvider`           | Views and view engine                             |
 
-`run()` computes the request URI relative to the configured base URI, hands it to the application, and returns the
-content. Internally the application calculates the route, dispatches the controller and view, and returns the response.
+`run()` computes the request URI relative to the configured base URI, hands it to the application, and returns the content. Internally the application calculates the route, dispatches the controller and view, and returns the response.
 
 ## Database
 
-Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSQL, or SQLite. For this tutorial, we use MySQL. The tables the
-application uses are:
+Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSQL, or SQLite. For this tutorial, we use MySQL. The tables the application uses are:
 
 | Table                 | Description                              |
 |-----------------------|------------------------------------------|
@@ -666,9 +623,7 @@ application uses are:
 
 ## Models
 
-Following the [Model-View-Controller][mvc] pattern, Vökuró has one model per database table (excluding `phinxlog`). The
-models let you interact with the tables in an object-oriented manner. They live in `src/Models`. Each model defines its
-fields, source table, and any relationships. Some models also define validation rules.
+Following the [Model-View-Controller][mvc] pattern, Vökuró has one model per database table (excluding `phinxlog`). The models let you interact with the tables in an object-oriented manner. They live in `src/Models`. Each model defines its fields, source table, and any relationships. Some models also define validation rules.
 
 ```php
 <?php
@@ -725,8 +680,7 @@ echo $successLogin->ipAddress;
 
     The property names match the case (upper/lower) of the field names in the table.
 
-In `initialize()`, the model defines a relationship to the `Users` model, with local and remote fields and an `alias`.
-The related user is then reachable through the alias:
+In `initialize()`, the model defines a relationship to the `Users` model, with local and remote fields and an `alias`. The related user is then reachable through the alias:
 
 ```php
 echo $successLogin->user->name;
@@ -738,12 +692,9 @@ echo $successLogin->user->name;
 
 ## Controllers
 
-Following the [Model-View-Controller][mvc] pattern, Vökuró has one controller per parent route. The `AboutController`
-handles the `/about` route. All controllers live in `src/Controllers`.
+Following the [Model-View-Controller][mvc] pattern, Vökuró has one controller per parent route. The `AboutController` handles the `/about` route. All controllers live in `src/Controllers`.
 
-The default controller is `IndexController`. Controller classes carry the `Controller` suffix. Actions carry the
-`Action` suffix, and the default action is `indexAction`. Visiting the site at the root URL calls `IndexController`
-and runs `indexAction`.
+The default controller is `IndexController`. Controller classes carry the `Controller` suffix. Actions carry the `Action` suffix, and the default action is `indexAction`. Visiting the site at the root URL calls `IndexController` and runs `indexAction`.
 
 Unless you register specific routes, the default route maps:
 
@@ -835,9 +786,7 @@ The available views are:
 | `Users`       | `delete`         | `/users/delete.volt`           | Delete user                                 |
 | `Users`       | `edit`           | `/users/edit.volt`             | Edit user                                   |
 
-The `index.volt` file contains the main layout of the page, including stylesheet and JavaScript references. The
-`layouts` directory contains layouts used across the application, for instance a `public` one for anonymous users and a
-`private` one for logged-in users. Individual views are injected into the layouts to form the final page.
+The `index.volt` file contains the main layout of the page, including stylesheet and JavaScript references. The `layouts` directory contains layouts used across the application, for instance a `public` one for anonymous users and a `private` one for logged-in users. Individual views are injected into the layouts to form the final page.
 
 ## Components
 
@@ -845,11 +794,9 @@ Vökuró uses several components that provide functionality across the applicati
 
 ### Acl
 
-`Vokuro\Plugins\Acl\Acl` implements an [Access Control List][acl-def] for the application. The ACL controls which user
-has access to which resource. See the [ACL page][acl] for details.
+`Vokuro\Plugins\Acl\Acl` implements an [Access Control List][acl-def] for the application. The ACL controls which user has access to which resource. See the [ACL page][acl] for details.
 
-The component reads the private resources from `config/acl.php`, the controller/action pairs that require
-authentication. It also holds human-readable descriptions for the actions used throughout the application.
+The component reads the private resources from `config/acl.php`, the controller/action pairs that require authentication. It also holds human-readable descriptions for the actions used throughout the application.
 
 The component exposes the following methods:
 
@@ -889,10 +836,7 @@ The component exposes the following methods:
 
 ### Mail
 
-`Vokuro\Plugins\Mail\Mail` is a wrapper around [Symfony Mailer][symfony-mailer]. It exposes `buildMessage()`,
-`getTemplate()`, and `send()`. `getTemplate()` reads a template from the views and populates it with data.
-`buildMessage()` assembles a `Symfony\Component\Mime\Email` from its arguments. `send()` renders a template and sends the
-message.
+`Vokuro\Plugins\Mail\Mail` is a wrapper around [Symfony Mailer][symfony-mailer]. It exposes `buildMessage()`, `getTemplate()`, and `send()`. `getTemplate()` reads a template from the views and populates it with data. `buildMessage()` assembles a `Symfony\Component\Mime\Email` from its arguments. `send()` renders a template and sends the message.
 
 | Method                                            | Returns  | Description                                                      |
 |---------------------------------------------------|----------|-----------------------------------------------------------------|
@@ -908,8 +852,7 @@ message.
 
 ### Controller
 
-To access all the areas of Vökuró you need an account. Vökuró lets you sign up by clicking the `Create an Account`
-button.
+To access all the areas of Vökuró you need an account. Vökuró lets you sign up by clicking the `Create an Account` button.
 
 This navigates to `/session/signup`, which calls `SessionController` and `signupAction`:
 
@@ -956,8 +899,7 @@ The workflow of the application is:
     - Form shows again, nothing else happens
 - Submit data (post)
     - Errors
-        - Form validators have errors, send the form to
-          the view, render the form (errors show)
+        - Form validators have errors, send the form to the view, render the form (errors show)
     - No errors
         - Data is sanitized
         - New model created
@@ -971,10 +913,7 @@ The workflow of the application is:
 
 ### Form
 
-To validate user-supplied data, Vökuró uses [Phalcon\Forms\Form][forms] and the
-[Phalcon\Filter\Validation][filter-validation] classes. These create HTML elements and attach validators. The form is
-passed to the view, which renders the HTML elements. When the user submits data, the posted data is passed back to the
-form, and the validators return any error messages.
+To validate user-supplied data, Vökuró uses [Phalcon\Forms\Form][forms] and the [Phalcon\Filter\Validation][filter-validation] classes. These create HTML elements and attach validators. The form is passed to the view, which renders the HTML elements. When the user submits data, the posted data is passed back to the form, and the validators return any error messages.
 
 !!! info "NOTE"
 
@@ -1190,19 +1129,13 @@ $email->addValidators(
 $this->add($email);
 ```
 
-First, a `Text` object is created with the name `email` and the label `E-Mail`. Validators are then attached. They are
-invoked after the user submits the data.
+First, a `Text` object is created with the name `email` and the label `E-Mail`. Validators are then attached. They are invoked after the user submits the data.
 
-The `PresenceOf` validator produces the message `The e-mail is required` when the field is empty. It checks the passed
-array (usually `$_POST`), in this case `$_POST['email']`. The `Email` validator checks for a valid address. Validators
-belong in an array, so you attach as many as you need to any element. The last step adds the element to the form.
+The `PresenceOf` validator produces the message `The e-mail is required` when the field is empty. It checks the passed array (usually `$_POST`), in this case `$_POST['email']`. The `Email` validator checks for a valid address. Validators belong in an array, so you attach as many as you need to any element. The last step adds the element to the form.
 
 The `terms` element has an `Identical` validator that requires the checkbox value to equal `yes`.
 
-The `password` and `confirmPassword` elements are both of type `Password`. The user must type the password twice, and
-the two must match. The `password` field has a `PresenceOf` validator (it is required) and a `StringLength` validator
-(at least 8 characters). It also has a `Confirmation` validator that ties `password` to `confirmPassword`. When it runs,
-it compares both elements. If they differ, validation fails.
+The `password` and `confirmPassword` elements are both of type `Password`. The user must type the password twice, and the two must match. The `password` field has a `PresenceOf` validator (it is required) and a `StringLength` validator (at least 8 characters). It also has a `Confirmation` validator that ties `password` to `confirmPassword`. When it runs, it compares both elements. If they differ, validation fails.
 
 ### View
 
@@ -1276,19 +1209,15 @@ The view renders the elements:
 {{ link_to('session/login', "&larr; Back to Login") }}
 ```
 
-The view variable for the `SignUpForm` object is `form`. In PHP you call `$form->render()`; in Volt you call
-`form.render()`.
+The view variable for the `SignUpForm` object is `form`. In PHP you call `$form->render()`; in Volt you call `form.render()`.
 
-The conditional at the top checks whether the form has errors, and if so attaches the `is-invalid` CSS class to the
-element. This class adds a red border and shows the message.
+The conditional at the top checks whether the form has errors, and if so attaches the `is-invalid` CSS class to the element. This class adds a red border and shows the message.
 
-To render each element, call `render()` on `form` with the element name. `form.label()` with the same name creates the
-`<label>` tag. At the end, the view renders the `csrf` hidden field and the `Sign Up` submit button.
+To render each element, call `render()` on `form` with the element name. `form.label()` with the same name creates the `<label>` tag. At the end, the view renders the `csrf` hidden field and the `Sign Up` submit button.
 
 ### Post
 
-When the user fills out the form and clicks `Sign Up`, the form self-posts to the same controller and action
-(`/session/signup`). The action processes the posted data:
+When the user fills out the form and clicks `Sign Up`, the form self-posts to the same controller and action (`/session/signup`). The action processes the posted data:
 
 ```php
 <?php
@@ -1376,15 +1305,13 @@ The [Phalcon\Http\Request][request] object returns the posted data:
 $this->request->getPost()
 ```
 
-The posted data is passed to the form and validated with `isValid()`. This fires every validator. If any fail, the form
-collects the messages and returns `false`:
+The posted data is passed to the form and validated with `isValid()`. This fires every validator. If any fail, the form collects the messages and returns `false`:
 
 ```php
 if (false !== $form->isValid($this->request->getPost())) {
 ```
 
-If the data is valid, the [Phalcon\Http\Request][request] object retrieves and sanitizes each value. The example below
-strips tags from the `name` string:
+If the data is valid, the [Phalcon\Http\Request][request] object retrieves and sanitizes each value. The example below strips tags from the `name` string:
 
 ```php
 $name = $this
@@ -1393,8 +1320,7 @@ $name = $this
 ;
 ```
 
-Clear-text passwords are never stored. The [Phalcon\Encryption\Security][encryption-security] component hashes the
-password into a one-way hash, and that is stored instead:
+Clear-text passwords are never stored. The [Phalcon\Encryption\Security][encryption-security] component hashes the password into a one-way hash, and that is stored instead:
 
 ```php
 $password = $this
@@ -1433,8 +1359,7 @@ If `$user->save()` returns `true`, the user is forwarded to the home page (`inde
 
 **Relationships**
 
-The `Users` model applies logic in the `afterSave` and `beforeValidationOnCreate` events. The setup happens in
-`initialize()`, where the [relationships][db-models-relationships] are defined.
+The `Users` model applies logic in the `afterSave` and `beforeValidationOnCreate` events. The setup happens in `initialize()`, where the [relationships][db-models-relationships] are defined.
 
 To check all the successful logins for a user, you could query both tables directly:
 
@@ -1568,16 +1493,13 @@ class Users extends Model
 }
 ```
 
-There is one `belongsTo` and three `hasMany` relationships. Each has an alias for easier access. The `belongsTo`
-relationship also sets `reusable` to on. When the relationship is called more than once in the same request, Phalcon
-runs the query only the first time and caches the result set. Subsequent calls use the cache.
+There is one `belongsTo` and three `hasMany` relationships. Each has an alias for easier access. The `belongsTo` relationship also sets `reusable` to on. When the relationship is called more than once in the same request, Phalcon runs the query only the first time and caches the result set. Subsequent calls use the cache.
 
 The relationships also define foreign-key messages. If a relationship is violated, the defined message is raised.
 
 **Events**
 
-[Phalcon\Mvc\Model][db-models] fires specific [events][events]. These methods can live in a listener or in the model.
-The `Users` model uses `afterSave` and `beforeValidationOnCreate`.
+[Phalcon\Mvc\Model][db-models] fires specific [events][events]. These methods can live in a listener or in the model. The `Users` model uses `afterSave` and `beforeValidationOnCreate`.
 
 ```php
 <?php
@@ -1621,9 +1543,7 @@ class Users extends Model
 }
 ```
 
-`beforeValidationOnCreate` fires on every new record, before validation. If the password is empty, it generates a random
-string, hashes it with [Phalcon\Encryption\Security][encryption-security], and sets the flag to change the password. If
-the password is set, it sets `mustChangePassword` to `N`. It then sets the `active`, `suspended`, and `banned` defaults.
+`beforeValidationOnCreate` fires on every new record, before validation. If the password is empty, it generates a random string, hashes it with [Phalcon\Encryption\Security][encryption-security], and sets the flag to change the password. If the password is set, it sets `mustChangePassword` to `N`. It then sets the `active`, `suspended`, and `banned` defaults.
 
 ```php
 <?php
@@ -1658,8 +1578,7 @@ class Users extends Model
 }
 ```
 
-`afterSave` fires right after a record is saved. If e-mail is enabled (`useMail` in `config/config.php`) and the user is
-inactive, it creates and saves an `EmailConfirmations` record, then shows a notice.
+`afterSave` fires right after a record is saved. If e-mail is enabled (`useMail` in `config/config.php`) and the user is inactive, it creates and saves an `EmailConfirmations` record, then shows a notice.
 
 !!! info "NOTE"
 
@@ -1667,9 +1586,7 @@ inactive, it creates and saves an `EmailConfirmations` record, then shows a noti
 
 **Validation**
 
-The model's `validation()` method attaches validators to fields. For `Users`, the `email` must be unique, so the
-`Uniqueness` [validator][filter-validation] is attached. It fires before any save, and returns the message if validation
-fails.
+The model's `validation()` method attaches validators to fields. For `Users`, the `email` must be unique, so the `Uniqueness` [validator][filter-validation] is attached. It fires before any save, and returns the message if validation fails.
 
 ```php
 <?php
@@ -1704,8 +1621,7 @@ class Users extends Model
 
 ## Conclusion
 
-Vökuró is a sample application that demonstrates features Phalcon offers. It is not a solution that fits all needs. Use
-it as a starting point for your own application.
+Vökuró is a sample application that demonstrates features Phalcon offers. It is not a solution that fits all needs. Use it as a starting point for your own application.
 
 ## References
 
@@ -1726,31 +1642,31 @@ it as a starting point for your own application.
 - [Vökuró - GitHub Repository][github_vokuro]
 - [Phalcon v6 - GitHub Repository][phalcon6]
 
-[github_vokuro]: https://github.com/phalcon/vokuro
-[phalcon6]: https://github.com/phalcon/phalcon
-[installation-vokuro]: https://github.com/phalcon/vokuro/blob/master/docs/installation.md
+[acl]: acl.md
 [acl-def]: https://en.wikipedia.org/wiki/Access-control_list
+[application]: application.md
 [composer]: https://getcomposer.org
+[db-models]: db-models.md
+[db-models-relationships]: db-models-relationships.md
+[di]: di.md
 [di-serviceproviderinterface]: api/phalcon_di.md#diserviceproviderinterface
 [dotenv]: https://github.com/vlucas/phpdotenv
-[mvc]: https://en.wikipedia.org/wiki/Model–view–controller
-[phinx]: https://github.com/cakephp/phinx
-[symfony-mailer]: https://symfony.com/doc/current/mailer.html
-[mailpit]: https://mailpit.axllent.org
-[pie]: https://github.com/php/pie
-[talon]: https://github.com/phalcon/talon
-[pds-skeleton]: https://github.com/php-pds/skeleton
-[installation]: installation.md
-[acl]: acl.md
-[forms]: forms.md
-[response]: response.md
-[encryption-security]: encryption-security.md
 [encryption-crypt]: encryption-crypt.md
-[filter-validation]: filter-validation.md
-[di]: di.md
-[application]: application.md
-[volt]: volt.md
-[db-models-relationships]: db-models-relationships.md
+[encryption-security]: encryption-security.md
 [events]: events.md
+[filter-validation]: filter-validation.md
+[forms]: forms.md
+[github_vokuro]: https://github.com/phalcon/vokuro
+[installation]: installation.md
+[installation-vokuro]: https://github.com/phalcon/vokuro/blob/master/docs/installation.md
+[mailpit]: https://mailpit.axllent.org
+[mvc]: https://en.wikipedia.org/wiki/Model–view–controller
+[pds-skeleton]: https://github.com/php-pds/skeleton
+[phalcon6]: https://github.com/phalcon/phalcon
+[phinx]: https://github.com/cakephp/phinx
+[pie]: https://github.com/php/pie
 [request]: request.md
-[db-models]: db-models.md
+[response]: response.md
+[symfony-mailer]: https://symfony.com/doc/current/mailer.html
+[talon]: https://github.com/phalcon/talon
+[volt]: volt.md

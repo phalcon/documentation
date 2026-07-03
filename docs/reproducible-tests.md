@@ -6,6 +6,8 @@
 
     If you have found a bug, you can open an issue in [GitHub][issues]. Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist][gist] to post any code you want to share with us.
 
+You can provide a small standalone script (shown below) or a failing test for the suite. To add a test to the suite, see the [Testing environment][testing-environment] guide, which covers the Talon test runner and the suite layout.
+
 ## Creating a Small Script
 
 A small PHP file can be used to showcase how to reproduce the issue:
@@ -16,7 +18,7 @@ A small PHP file can be used to showcase how to reproduce the issue:
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\Injectable;
 use Phalcon\Session\Manager;
-use Phalcon\Session\Adapter\Files;
+use Phalcon\Session\Adapter\Stream;
 use Phalcon\Http\Response\Cookies;
 
 $container = new FactoryDefault();
@@ -24,13 +26,13 @@ $container = new FactoryDefault();
 // Register your custom services
 $container['session'] = function() {
     $session = new Manager();
-    $adapter = new Files(
+    $adapter = new Stream(
         [
-            'save_path' => '/tmp',
-         ]
+            'savePath' => '/tmp',
+        ]
     );
 
-    $session->setHandler($adapter);
+    $session->setAdapter($adapter);
 
     $session->start();
     
@@ -60,7 +62,7 @@ class SomeClass extends Injectable
     }
 }
 
-$class = new MyClass();
+$class = new SomeClass();
 
 $class->setDI($container);
 
@@ -196,7 +198,7 @@ $application->handle(
 
 !!! info "NOTE"
 
-    You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository).
+    You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/support/assets/db/schemas/` in the repository).
 
 ```php
 <?php
@@ -230,7 +232,7 @@ $eventsManager->attach(
 
 $container['db']             = $connection;
 $container['modelsManager']  = new ModelsManager();
-$container['modelsMetadata'] = new ModelsMetadata();
+$container['modelsMetadata'] = new ModelsMetaData();
 
 if (true !== $connection->tableExists('user', 'test')) {
     $connection->execute(
@@ -264,6 +266,6 @@ class User extends Model
 echo User::createNewUserReturnId();
 ```
 
-[issues]: https://github.com/phalcon/cphalcon/issues
-
 [gist]: https://gist.github.com/
+[issues]: https://github.com/phalcon/cphalcon/issues
+[testing-environment]: testing-environment.md
