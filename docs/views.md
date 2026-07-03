@@ -4,12 +4,9 @@
 
 ## Overview
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform
-tasks related solely to the presentation of the data. Views format the content that you need to send back to the
-user/web browser that initiated the request.
+Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views format the content that you need to send back to the user/web browser that initiated the request.
 
-[Phalcon\Mvc\View][mvc-view] and [Phalcon\Mvc\View\Simple][mvc-view-simple] are responsible for managing the view layer
-of your MVC application.
+[Phalcon\Mvc\View][mvc-view] and [Phalcon\Mvc\View\Simple][mvc-view-simple] are responsible for managing the view layer of your MVC application.
 
 ```php
 <?php
@@ -395,8 +392,7 @@ public function setLayoutsDir(
 ): View
 ```
 
-Sets the layouts subdirectory. It must be a directory under the views directory. Depending on your platform, always add
-a trailing slash or backslash
+Sets the layouts subdirectory. It must be a directory under the views directory. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setLayoutsDir(
@@ -424,8 +420,7 @@ public function setPartialsDir(
 ): View
 ```
 
-Sets a partials subdirectory. Must be a directory under the views directory. Depending on your platform, always add a
-trailing slash or backslash
+Sets a partials subdirectory. Must be a directory under the views directory. Depending on your platform, always add a trailing slash or backslash
 
 ```php
 $view->setPartialsDir(
@@ -562,16 +557,11 @@ $container->set(
 );
 ```
 
-If no engine is defined, the [Phalcon\Mvc\View\Engine\Php][mvc-view-engine-php] will be automatically registered for
-you. These are files that contain both PHP and HTML code and have the extension `.phtml`. For more information regarding
-the [Volt][volt] template engine, please check the relevant document.
+If no engine is defined, the [Phalcon\Mvc\View\Engine\Php][mvc-view-engine-php] will be automatically registered for you. These are files that contain both PHP and HTML code and have the extension `.phtml`. For more information regarding the [Volt][volt] template engine, please check the relevant document.
 
 ## Views in Controllers
 
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its
-cycle. The view component will look in the views folder for a folder named the same name as the last controller executed
-and then for a file named the last action executed. For instance, if a request is made to the URL
-*https://dev.phalcon.ld/admin/invoices/view/12345*, Phalcon will parse the URL as follows:
+Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named the same name as the last controller executed and then for a file named the last action executed. For instance, if a request is made to the URL *https://dev.phalcon.ld/admin/invoices/view/12345*, Phalcon will parse the URL as follows:
 
 | Server Address    | `127.0.0.1` |
 |-------------------|-------------|
@@ -580,8 +570,7 @@ and then for a file named the last action executed. For instance, if a request i
 | Action            | `view`      |
 | Parameter         | `12345`     |
 
-The dispatcher will look for an `InvoicesController` and its action `viewAction`. A simple controller file for this
-example:
+The dispatcher will look for an `InvoicesController` and its action `viewAction`. A simple controller file for this example:
 
 ```php
 <?php
@@ -601,17 +590,13 @@ class InvoicesController extends Controller
 }
 ```
 
-The `setVar()` method allows us to create view variables on demand so that they can be used in the view template. The
-example above demonstrates how to pass the `$invoiceId` parameter to the respective view template.
+The `setVar()` method allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates how to pass the `$invoiceId` parameter to the respective view template.
 
 ## Hierarchical Rendering
 
-[Phalcon\Mvc\View][mvc-view] is the default component for rendering views in Phalcon and supports a hierarchy of files.
-This hierarchy allows for common layout points (commonly used views), as well as controller-named folders defining
-respective view templates.
+[Phalcon\Mvc\View][mvc-view] is the default component for rendering views in Phalcon and supports a hierarchy of files. This hierarchy allows for common layout points (commonly used views), as well as controller-named folders defining respective view templates.
 
-The default rendering engine for the view component is PHP. As a result, all view-related files need to have the
-`.phtml` extension. For the above example:
+The default rendering engine for the view component is PHP. As a result, all view-related files need to have the `.phtml` extension. For the above example:
 
 ```
 https://dev.phalcon.ld/admin/invoices/view/12345
@@ -625,8 +610,7 @@ Assuming that the views directory is `app/views`, the view component will find a
 | Controller Layout | app/views/layouts/invoices.phtml | Controller-related view. It will be rendered for every action executed in the `InvoicesController`. |
 | Main Layout       | app/views/index.phtml            | Application related view. It shows on every controller/action of the application                    |
 
-You are not required to implement all the files mentioned above. [Phalcon\Mvc\View][mvc-view] will simply move to the
-next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
+You are not required to implement all the files mentioned above. [Phalcon\Mvc\View][mvc-view] will move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
 
 ```php
 <!-- app/views/invoices/view.phtml -->
@@ -693,12 +677,9 @@ The generated HTML will be:
 
 ### Templates
 
-Templates are views that can be used to share common view code. They act as controller layouts, so you need to place
-them in the `layouts` directory.
+Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the `layouts` directory.
 
-Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the
-layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is
-rendered after the main layout (`layouts/posts.phtml`):
+Templates can be rendered before the layout (using `$this->view->setTemplateBefore()`) or they can be rendered after the layout (using `this->view->setTemplateAfter()`). In the following example the template (`layouts/common.phtml`) is rendered after the main layout (`layouts/posts.phtml`):
 
 ```php
 <?php
@@ -864,8 +845,7 @@ If we had used `$this->view->setTemplateBefore('common')`, this would be the fin
 
 ### Render Levels
 
-As seen above, [Phalcon\Mvc\View][mvc-view] supports a view hierarchy. You might need to control the level of rendering
-produced by the view component. The method `Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
+As seen above, [Phalcon\Mvc\View][mvc-view] supports a view hierarchy. You might need to control the level of rendering produced by the view component. The method `Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
 
 This method can be invoked from the controller or from a superior view layer to interfere with the rendering process.
 
@@ -911,8 +891,7 @@ The available render levels are:
 
 ### Disabling Render Levels
 
-You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all
-in the whole application:
+You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
 ```php
 <?php
@@ -962,8 +941,7 @@ class InvoicesController extends Controller
 
 ### Disabling the View
 
-If your controller does not produce any output for the view (or does not even have one) you may disable the view
-component to avoid unnecessary processing:
+If your controller does not produce any output for the view (or does not even have one) you may disable the view component to avoid unnecessary processing:
 
 ```php
 <?php
@@ -1034,12 +1012,9 @@ class InvoicesController extends Controller
 
     You can use `echo` when calling `$view->render()`, which will output the contents of the rendering process on screen. This **only works** with [Phalcon\Mvc\View\Simple][mvc-view-simple] and **not** with [Phalcon\Mvc\View][mvc-view]. Using `echo` with the latter will produce a warning.
 
-[Phalcon\Mvc\View\Simple][mvc-view-simple] is an alternative component to [Phalcon\Mvc\View][mvc-view]. It keeps most of
-the philosophy of [Phalcon\Mvc\View][mvc-view] but lacks a hierarchy of files which is, in fact, the main feature of its
-counterpart.
+[Phalcon\Mvc\View\Simple][mvc-view-simple] is an alternative component to [Phalcon\Mvc\View][mvc-view]. It keeps most of the philosophy of [Phalcon\Mvc\View][mvc-view] but lacks a hierarchy of files which is, in fact, the main feature of its counterpart.
 
-This component allows you to have control of when a view is rendered and its location. In addition, this component can
-leverage view inheritance available in template engines such as [Volt][volt] and others.
+This component allows you to have control of when a view is rendered and its location. In addition, this component can leverage view inheritance available in template engines such as [Volt][volt] and others.
 
 The default component must be replaced in the service container:
 
@@ -1085,8 +1060,7 @@ try {
 }
 ```
 
-To render a view it is necessary to call the render method explicitly indicating the relative path to the view you want
-to display:
+To render a view it is necessary to call the render method explicitly indicating the relative path to the view you want to display:
 
 ```php
 <?php
@@ -1129,8 +1103,7 @@ class InvoicesController extends Controller
 }
 ```
 
-This is different to the `render` that [Phalcon\Mvc\View][mvc-view] implements, which uses controllers and actions as
-parameters:
+This is different to the `render` that [Phalcon\Mvc\View][mvc-view] implements, which uses controllers and actions as parameters:
 
 ```php
 <?php
@@ -1153,9 +1126,7 @@ echo $simpleView->render('invoices/view', $params);
 
 ### Picking Views
 
-As mentioned above, when [Phalcon\Mvc\View][mvc-view] is managed by [Phalcon\Mvc\Application][application], the view
-rendered is the one related to the last controller and action executed. You could override this by using the `pick()`
-method:
+As mentioned above, when [Phalcon\Mvc\View][mvc-view] is managed by [Phalcon\Mvc\Application][application], the view rendered is the one related to the last controller and action executed. You could override this by using the `pick()` method:
 
 ```php
 <?php
@@ -1193,12 +1164,9 @@ class InvoicesController extends Controller
 
 ## Partials
 
-Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be
-reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of
-a response to its own file.
+Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
 
-One way to use partials is to treat them as HTML fragments that can be injected wherever needed with any necessary
-parameters:
+One way to use partials is to treat them as HTML fragments that can be injected wherever needed with any necessary parameters:
 
 ```php
 <div class='top'>
@@ -1217,8 +1185,7 @@ parameters:
 </div>
 ```
 
-The `partial()` method does accept a second parameter as an array of variables/parameters that only will exist in the
-scope of the partial:
+The `partial()` method does accept a second parameter as an array of variables/parameters that only will exist in the scope of the partial:
 
 ```php
 <?php 
@@ -1234,8 +1201,7 @@ scope of the partial:
 
 ## Values
 
-[Phalcon\Mvc\View][mvc-view] is available in each controller using the view variable (`$this->view`). You can use that
-object to set variables directly to the view from a controller action by using the `setVar()` method.
+[Phalcon\Mvc\View][mvc-view] is available in each controller using the view variable (`$this->view`). You can use that object to set variables directly to the view from a controller action by using the `setVar()` method.
 
 ```php
 <?php
@@ -1274,9 +1240,7 @@ class InvoicesController extends Controller
 }
 ```
 
-A variable with the name of the first parameter of `setVar()` will be created in the view, ready to be used. The
-variable can be of any type, from a simple `string`, `integer` etc. variable to a more complex structure such as
-`array`, collection, etc.
+A variable with the name of the first parameter of `setVar()` will be created in the view, ready to be used. The variable can be of any type, from a simple `string`, `integer` etc. variable to a more complex structure such as `array`, collection, etc.
 
 ```php
 <h1>
@@ -1296,8 +1260,7 @@ variable can be of any type, from a simple `string`, `integer` etc. variable to 
 
 ## Template Engines
 
-Template Engines help designers to create views without the use of complicated syntax. Phalcon includes a powerful and
-fast templating engine called [Volt][volt] that helps with view development while not sacrificing processing speed.
+Template Engines help designers to create views without the use of complicated syntax. Phalcon includes a fast templating engine called [Volt][volt] that helps with view development while not sacrificing processing speed.
 
 ### PHP
 
@@ -1323,8 +1286,7 @@ $container->set(
 
 ### Volt
 
-You might want to use [Volt][volt] as your template engine. To set it up you need to register the engine and pass it to
-the view component.
+You might want to use [Volt][volt] as your template engine. To set it up you need to register the engine and pass it to the view component.
 
 ```php
 <?php
@@ -1376,21 +1338,15 @@ $container->set(
 
 ### Mustache/Twig/Smarty
 
-If you like to use [Mustache][mustache], [Twig][twig], or [Smarty][smarty] as your template engine, you can visit
-our [incubator][incubator-engines] repository for examples of how to activate these engines in your application
+If you like to use [Mustache][mustache], [Twig][twig], or [Smarty][smarty] as your template engine, you can visit our [incubator][incubator-engines] repository for examples of how to activate these engines in your application
 
 ### Custom
 
-When using an external template engine, [Phalcon\Mvc\View][mvc-view] provides exactly the same view hierarchy, and it is
-still possible to access the API inside these templates. If you want to create your own template engine, you can
-leverage the API to perform the operations you need.
+When using an external template engine, [Phalcon\Mvc\View][mvc-view] provides exactly the same view hierarchy, and it is still possible to access the API inside these templates. If you want to create your own template engine, you can leverage the API to perform the operations you need.
 
-A template engine adapter is a class that acts as a bridge between [Phalcon\Mvc\View][mvc-view] and the template engine
-itself. Usually, it only needs two methods implemented: `__construct()` and `render()`. The first one receives
-the [Phalcon\Mvc\View][mvc-view] instance that creates the engine adapter and the DI container used by the application.
+A template engine adapter is a class that acts as a bridge between [Phalcon\Mvc\View][mvc-view] and the template engine itself. Usually, it only needs two methods implemented: `__construct()` and `render()`. The first one receives the [Phalcon\Mvc\View][mvc-view] instance that creates the engine adapter and the DI container used by the application.
 
-The method `render()` accepts an absolute path to the view file and the view parameters set using
-`$this->view->setVar()`. You could read or require it when it's necessary.
+The method `render()` accepts an absolute path to the view file and the view parameters set using `$this->view->setVar()`. You could read or require it when it's necessary.
 
 ```php
 <?php
@@ -1428,14 +1384,9 @@ class CustomEngine extends AbstractEngine
 }
 ```
 
-You can now replace the template engine with your own in the view setup part of your code. You can always use more than
-one engine at a time. To achieve this you need to call `Phalcon\Mvc\View::registerEngines()` which accepts an array with
-setup instructions on which engines are registered. The key of each engine is the extension of the files you need to
-process. You cannot register two engines with the same key.
+You can now replace the template engine with your own in the view setup part of your code. You can always use more than one engine at a time. To achieve this you need to call `Phalcon\Mvc\View::registerEngines()` which accepts an array with setup instructions on which engines are registered. The key of each engine is the extension of the files you need to process. You cannot register two engines with the same key.
 
-The order that the template engines is defined with `Phalcon\Mvc\View::registerEngines()` defines the priority of
-execution. If [Phalcon\Mvc\View][mvc-view] finds two views with the same name but different extensions, it will only
-render the first one.
+The order that the template engines is defined with `Phalcon\Mvc\View::registerEngines()` defines the priority of execution. If [Phalcon\Mvc\View][mvc-view] finds two views with the same name but different extensions, it will only render the first one.
 
 ```php
 <?php
@@ -1471,8 +1422,7 @@ $container->set(
 
 ## Dependency Injection
 
-Since our view is registered in our Dependency Injection container, the services available in the container are also
-available in the view. Each service is available by a property with the same name as the defined service.
+Since our view is registered in our Dependency Injection container, the services available in the container are also available in the view. Each service is available by a property with the same name as the defined service.
 
 ```js
 <script type='text/javascript'>
@@ -1487,19 +1437,15 @@ $.ajax({
 </script>
 ```
 
-In the example above, we are utilizing the [Phalcon\Mvc\Url][mvc-url] component in our javascript code, to correctly set
-up the URL in our application. The service is available in the view by accessing `$this->url`.
+In the example above, we are utilizing the [Phalcon\Mvc\Url][mvc-url] component in our javascript code, to correctly set up the URL in our application. The service is available in the view by accessing `$this->url`.
 
 ## Stand Alone
 
-You can also use the view as a _glue_ component in your application. You will only need to have the proper setup and
-then use the view to return processed results.
+You can also use the view as a _glue_ component in your application. You will only need to have the proper setup and then use the view to return processed results.
 
 ### Hierarchical Rendering
 
-Once you set up the view with the options that are necessary for your application, you can pass variables to it, as seen
-above, then call `start()`, `render()`, and `finish()`. This will allow the view to compile the data and prepare it for
-you. You can print the content produced by calling `getContent()`.
+Once you set up the view with the options that are necessary for your application, you can pass variables to it, as seen above, then call `start()`, `render()`, and `finish()`. This will allow the view to compile the data and prepare it for you. You can print the content produced by calling `getContent()`.
 
 ```php
 <?php
@@ -1554,9 +1500,7 @@ echo $view->getRender(
 
     You can use `echo` when calling `$view->render()`, which will output the contents of the rendering process on screen. This **only works** with [Phalcon\Mvc\View\Simple][mvc-view-simple] and **not** with [Phalcon\Mvc\View][mvc-view]. Using `echo` with the latter will produce a warning.
 
-You can also use the much smaller [Phalcon\Mvc\View\Simple][mvc-view-simple] as a stand-alone component. This component
-is extremely useful when you want to render a template that is not always tied to your application structure. An example
-is rendering HTML code required by emails.
+You can also use the much smaller [Phalcon\Mvc\View\Simple][mvc-view-simple] as a stand-alone component. This component is extremely useful when you want to render a template that is not always tied to your application structure. An example is rendering HTML code required by emails.
 
 ```php
 <?php
@@ -1578,15 +1522,11 @@ echo $view->render(
 );
 ```
 
-In the above example, we set up the engine and then echo a rendered template on the screen (`templates/welcome`). We can
-also send parameters to the template by issuing an array as the second parameter. The keys are the names of the
-variables.
+In the above example, we set up the engine and then echo a rendered template on the screen (`templates/welcome`). We can also send parameters to the template by issuing an array as the second parameter. The keys are the names of the variables.
 
 ## Events
 
-[Phalcon\Mvc\View][mvc-view] and [Phalcon\Mvc\View\Simple][mvc-view-simple] are able to send events to
-an [Events Manager][events] if it is present. Events are triggered using the type `view`. If an event returns `false` it
-can stop the active operation. The following events are supported:
+[Phalcon\Mvc\View][mvc-view] and [Phalcon\Mvc\View\Simple][mvc-view-simple] are able to send events to an [Events Manager][events] if it is present. Events are triggered using the type `view`. If an event returns `false` it can stop the active operation. The following events are supported:
 
 | Event Name         | Triggered                           | Can stop |
 |--------------------|-------------------------------------|:--------:|
@@ -1632,8 +1572,7 @@ $container->set(
 );
 ```
 
-The following example demonstrates how you can create a plugin that _tidies up_ your HTML produced by the render process
-using [Tidy][tidy].
+The following example demonstrates how you can create a plugin that _tidies up_ your HTML produced by the render process using [Tidy][tidy].
 
 ```php
 <?php
@@ -1679,10 +1618,7 @@ $manager->attach(
 
 ## Exceptions
 
-Any exceptions thrown in the view components ([Phalcon\Mvc\View][mvc-view]
-or [Phalcon\Mvc\View\Simple][mvc-view-simple]) will be of type [Phalcon\Mvc\Exception][mvc-view-exception]
-or [Phalcon\View\Engine\Volt\Exception][mvc-view-engine-volt-exception] if you are using [Volt][volt]. You can use this
-exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the view components ([Phalcon\Mvc\View][mvc-view] or [Phalcon\Mvc\View\Simple][mvc-view-simple]) will be of type [Phalcon\Mvc\Exception][mvc-view-exception] or [Phalcon\View\Engine\Volt\Exception][mvc-view-engine-volt-exception] if you are using [Volt][volt]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -1717,8 +1653,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the view components raise granular subclasses of `Phalcon\Mvc\View\Exception` so callers can catch a
-specific failure mode. Existing `catch (Phalcon\Mvc\View\Exception $e)` blocks continue to work unchanged.
+As of 5.14 the view components raise granular subclasses of `Phalcon\Mvc\View\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\View\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                       | Parent                       | Thrown when                                                                         |
 |-------------------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------|
@@ -1730,42 +1665,23 @@ specific failure mode. Existing `catch (Phalcon\Mvc\View\Exception $e)` blocks c
 | `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`       | `Phalcon\Mvc\View\Exception` | The main view needs services (such as `eventsManager`) that are not registered.     |
 | `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`      | `Phalcon\Mvc\View\Exception` | An entry of the `viewsDir` array is not a string.                                   |
 
-[incubator-engines]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine
-
-[mvc-view]: api/phalcon_mvc.md#mvcview
-
-[mvc-view-engine-abstractengine]: api/phalcon_mvc.md#mvcviewengineabstractengine
-
-[mvc-view-engine-engineinterface]: api/phalcon_mvc.md#mvcviewengineengineinterface
-
-[mvc-view-engine-php]: api/phalcon_mvc.md#mvcviewenginephp
-
-[mvc-view-engine-volt]: api/phalcon_mvc.md#mvcviewenginevolt
-
-[mvc-view-engine-volt-compiler]: api/phalcon_mvc.md#mvcviewenginevoltcompiler
-
-[mvc-view-engine-volt-exception]: api/phalcon_mvc.md#mvcviewenginevoltexception
-
-[mvc-view-exception]: api/phalcon_mvc.md#mvcviewexception
-
-[mvc-view-simple]: api/phalcon_mvc.md#mvcviewsimple
-
-[mvc-viewbaseinterface]: api/phalcon_mvc.md#mvcviewbaseinterface
-
-[mvc-viewinterface]: api/phalcon_mvc.md#mvcviewinterface
-
-[mustache]: https://github.com/bobthecow/mustache.php
-
-[smarty]: https://www.smarty.net/
-
-[tidy]: https://www.php.net/manual/en/book.tidy.php
-
-[twig]: https://twig.symfony.com/
-
-[volt]: volt.md
-
 [application]: application.md
-
 [events]: events.md
-
+[incubator-engines]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine
+[mustache]: https://github.com/bobthecow/mustache.php
 [mvc-url]: mvc-url.md
+[mvc-view]: api/phalcon_mvc.md#mvcview
+[mvc-view-engine-abstractengine]: api/phalcon_mvc.md#mvcviewengineabstractengine
+[mvc-view-engine-engineinterface]: api/phalcon_mvc.md#mvcviewengineengineinterface
+[mvc-view-engine-php]: api/phalcon_mvc.md#mvcviewenginephp
+[mvc-view-engine-volt]: api/phalcon_mvc.md#mvcviewenginevolt
+[mvc-view-engine-volt-compiler]: api/phalcon_mvc.md#mvcviewenginevoltcompiler
+[mvc-view-engine-volt-exception]: api/phalcon_mvc.md#mvcviewenginevoltexception
+[mvc-view-exception]: api/phalcon_mvc.md#mvcviewexception
+[mvc-view-simple]: api/phalcon_mvc.md#mvcviewsimple
+[mvc-viewbaseinterface]: api/phalcon_mvc.md#mvcviewbaseinterface
+[mvc-viewinterface]: api/phalcon_mvc.md#mvcviewinterface
+[smarty]: https://www.smarty.net/
+[tidy]: https://www.php.net/manual/en/book.tidy.php
+[twig]: https://twig.symfony.com/
+[volt]: volt.md
