@@ -545,23 +545,13 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Auth\Exception` 
 | Class                                                 | Parent                   | Thrown when                                                                 |
 |-------------------------------------------------------|--------------------------|-----------------------------------------------------------------------------|
 | `Phalcon\Auth\Exceptions\AccessDenied`                | `Phalcon\Auth\Exception` | An access gate denies an action and no redirect target is set.              |
-| `Phalcon\Auth\Exceptions\AccessNotRegistered`         | `Phalcon\Auth\Exception` | `Manager::access()` names an access gate that is not registered.            |
-| `Phalcon\Auth\Exceptions\ActiveAccessRequired`        | `Phalcon\Auth\Exception` | `except()` or `only()` is called before `access()` activates a gate.        |
 | `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue` | `Phalcon\Auth\Exception` | A guard or adapter config receives a required empty value.                  |
 | `Phalcon\Auth\Exceptions\DataMustContainIdKey`        | `Phalcon\Auth\Exception` | An `AuthUser` is built from data with no scalar `id`.                       |
-| `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`   | `Phalcon\Auth\Exception` | A guard is requested with no name and no default guard is registered.       |
 | `Phalcon\Auth\Exceptions\DoesNotImplement`            | `Phalcon\Auth\Exception` | A required contract is missing: a remember-me adapter or model, a user model that is not an `AuthUser`, a default guard that is not `GuardStateful`, or an authenticated user that is not `RoleAwareInterface`. |
 | `Phalcon\Auth\Exceptions\FileCannotRead`              | `Phalcon\Auth\Exception` | The `stream` adapter file cannot be read.                                   |
 | `Phalcon\Auth\Exceptions\FileDoesNotContainJson`      | `Phalcon\Auth\Exception` | The `stream` adapter file does not decode to an array.                      |
 | `Phalcon\Auth\Exceptions\FileDoesNotExist`            | `Phalcon\Auth\Exception` | The `stream` adapter file is missing.                                       |
 | `Phalcon\Auth\Exceptions\FileNotValidJson`            | `Phalcon\Auth\Exception` | The `stream` adapter file is not valid JSON.                                |
-| `Phalcon\Auth\Exceptions\GuardNotDefined`             | `Phalcon\Auth\Exception` | A guard is requested by a name that is not registered on the manager.       |
-| `Phalcon\Auth\Exceptions\MissingHandlerContext`       | `Phalcon\Auth\Exception` | The ACL access gate is invoked without a `handler` context key.             |
-| `Phalcon\Auth\Exceptions\OptionRequiresArray`         | `Phalcon\Auth\Exception` | A factory option that must be a non-empty array is missing or not an array. |
-| `Phalcon\Auth\Exceptions\OptionRequiresString`        | `Phalcon\Auth\Exception` | A factory option that must be a non-empty string is missing or empty.       |
-| `Phalcon\Auth\Exceptions\SessionNamesMustDiffer`      | `Phalcon\Auth\Exception` | A session guard resolves the same value for `name` and `rememberName`.      |
-| `Phalcon\Auth\Exceptions\UnknownAdapter`              | `Phalcon\Auth\Exception` | `ManagerFactory` is asked to build an adapter whose name is not registered. |
-| `Phalcon\Auth\Exceptions\UnknownGuard`                | `Phalcon\Auth\Exception` | `ManagerFactory` is asked to build a guard whose type is not registered.    |
 
 ---
 
