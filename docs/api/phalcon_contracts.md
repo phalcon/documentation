@@ -8424,6 +8424,989 @@ public function setProperties( array $properties ): Repository;
 Sets values for properties of the repository
 
 
+## Contracts\Queue\ConnectionFactory
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/ConnectionFactory.zep){ .src-btn }
+
+Builds a Context: the entry point of every adapter.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\ConnectionFactory`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueconnectionfactory-createcontext">
+<code class="vis vis-public">public</code>
+<code class="ret">Context</code>
+<code class="sig"><span class="sf">createContext</span>()</code>
+<span class="desc">Creates a context (a session/connection to the transport).</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `createContext()` { #contractsqueueconnectionfactory-createcontext }
+
+```php
+public function createContext(): Context;
+```
+
+Creates a context (a session/connection to the transport).
+
+
+## Contracts\Queue\Consumer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Consumer.zep){ .src-btn }
+
+Receives messages from a single queue.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Consumer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueconsumer-acknowledge">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">acknowledge</span>( <span class="st">Message</span> <span class="sv">$message</span> )</code>
+<span class="desc">Acknowledges the message; the transport may then discard it.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-getqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">getQueue</span>()</code>
+<span class="desc">Returns the queue this consumer reads from.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-receive">
+<code class="vis vis-public">public</code>
+<code class="ret">Message|null</code>
+<code class="sig"><span class="sf">receive</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
+<span class="desc">Receives a message, blocking up to timeout milliseconds (0 = block</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-receivenowait">
+<code class="vis vis-public">public</code>
+<code class="ret">Message|null</code>
+<code class="sig"><span class="sf">receiveNoWait</span>()</code>
+<span class="desc">Receives a message without blocking, or null when none is ready.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-reject">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">reject</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$requeue</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Rejects the message. When requeue is true the transport redelivers it.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 5</div>
+
+#### `acknowledge()` { #contractsqueueconsumer-acknowledge }
+
+```php
+public function acknowledge( Message $message ): void;
+```
+
+Acknowledges the message; the transport may then discard it.
+
+#### `getQueue()` { #contractsqueueconsumer-getqueue }
+
+```php
+public function getQueue(): Queue;
+```
+
+Returns the queue this consumer reads from.
+
+#### `receive()` { #contractsqueueconsumer-receive }
+
+```php
+public function receive( int $timeout = 0 ): Message|null;
+```
+
+Receives a message, blocking up to timeout milliseconds (0 = block
+until one is available). Returns null when none arrives in time.
+
+#### `receiveNoWait()` { #contractsqueueconsumer-receivenowait }
+
+```php
+public function receiveNoWait(): Message|null;
+```
+
+Receives a message without blocking, or null when none is ready.
+
+#### `reject()` { #contractsqueueconsumer-reject }
+
+```php
+public function reject(
+    Message $message,
+    bool $requeue = false
+): void;
+```
+
+Rejects the message. When requeue is true the transport redelivers it.
+
+
+## Contracts\Queue\Context
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Context.zep){ .src-btn }
+
+A session with the transport. Factory for messages, destinations,
+producers and consumers.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Context`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuecontext-close">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">close</span>()</code>
+<span class="desc">Closes the context and releases its resources.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createconsumer">
+<code class="vis vis-public">public</code>
+<code class="ret">Consumer</code>
+<code class="sig"><span class="sf">createConsumer</span>( <span class="st">Destination</span> <span class="sv">$destination</span> )</code>
+<span class="desc">Creates a consumer for the given destination.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createmessage">
+<code class="vis vis-public">public</code>
+<code class="ret">Message</code>
+<code class="sig"><span class="sf">createMessage</span>(<span class="prm"><span class="st">string</span> <span class="sv">$body</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$headers</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Creates a message with an optional body, properties and headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createproducer">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">createProducer</span>()</code>
+<span class="desc">Creates a producer.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">createQueue</span>( <span class="st">string</span> <span class="sv">$queueName</span> )</code>
+<span class="desc">Creates a queue destination by name.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createsubscriptionconsumer">
+<code class="vis vis-public">public</code>
+<code class="ret">SubscriptionConsumer</code>
+<code class="sig"><span class="sf">createSubscriptionConsumer</span>()</code>
+<span class="desc">Creates a subscription consumer for consuming from several queues.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createtemporaryqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">createTemporaryQueue</span>()</code>
+<span class="desc">Creates a temporary queue tied to the lifetime of the context.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createtopic">
+<code class="vis vis-public">public</code>
+<code class="ret">Topic</code>
+<code class="sig"><span class="sf">createTopic</span>( <span class="st">string</span> <span class="sv">$topicName</span> )</code>
+<span class="desc">Creates a topic destination by name.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-purgequeue">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">purgeQueue</span>( <span class="st">Queue</span> <span class="sv">$queue</span> )</code>
+<span class="desc">Removes all messages from the given queue.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 9</div>
+
+#### `close()` { #contractsqueuecontext-close }
+
+```php
+public function close(): void;
+```
+
+Closes the context and releases its resources.
+
+#### `createConsumer()` { #contractsqueuecontext-createconsumer }
+
+```php
+public function createConsumer( Destination $destination ): Consumer;
+```
+
+Creates a consumer for the given destination.
+
+#### `createMessage()` { #contractsqueuecontext-createmessage }
+
+```php
+public function createMessage(
+    string $body = "",
+    array $properties = [],
+    array $headers = []
+): Message;
+```
+
+Creates a message with an optional body, properties and headers.
+
+#### `createProducer()` { #contractsqueuecontext-createproducer }
+
+```php
+public function createProducer(): Producer;
+```
+
+Creates a producer.
+
+#### `createQueue()` { #contractsqueuecontext-createqueue }
+
+```php
+public function createQueue( string $queueName ): Queue;
+```
+
+Creates a queue destination by name.
+
+#### `createSubscriptionConsumer()` { #contractsqueuecontext-createsubscriptionconsumer }
+
+```php
+public function createSubscriptionConsumer(): SubscriptionConsumer;
+```
+
+Creates a subscription consumer for consuming from several queues.
+
+#### `createTemporaryQueue()` { #contractsqueuecontext-createtemporaryqueue }
+
+```php
+public function createTemporaryQueue(): Queue;
+```
+
+Creates a temporary queue tied to the lifetime of the context.
+
+#### `createTopic()` { #contractsqueuecontext-createtopic }
+
+```php
+public function createTopic( string $topicName ): Topic;
+```
+
+Creates a topic destination by name.
+
+#### `purgeQueue()` { #contractsqueuecontext-purgequeue }
+
+```php
+public function purgeQueue( Queue $queue ): void;
+```
+
+Removes all messages from the given queue.
+
+
+## Contracts\Queue\Destination
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Destination.zep){ .src-btn }
+
+Marker interface for a message destination: a Queue or a Topic.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Destination`**
+    - [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
+    - [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
+
+</div>
+
+
+## Contracts\Queue\Message
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Message.zep){ .src-btn }
+
+A message exchanged through the transport. Carries a body, application
+properties, transport headers and the standard messaging metadata.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Message`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuemessage-getbody">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getBody</span>()</code>
+<span class="desc">Returns the message body.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getCorrelationId</span>()</code>
+<span class="desc">Returns the correlation id used to correlate request/reply messages.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getheader">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single header value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
+<span class="desc">Returns all transport headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getMessageId</span>()</code>
+<span class="desc">Returns the message id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getProperties</span>()</code>
+<span class="desc">Returns all application properties.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single property value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getReplyTo</span>()</code>
+<span class="desc">Returns the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-gettimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getTimestamp</span>()</code>
+<span class="desc">Returns the timestamp (in milliseconds) or null when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-isredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRedelivered</span>()</code>
+<span class="desc">Whether the message has been redelivered.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setbody">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setBody</span>( <span class="st">string</span> <span class="sv">$body</span> )</code>
+<span class="desc">Sets the message body.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setCorrelationId</span>( <span class="st">string</span> <span class="sv">$correlationId</span> )</code>
+<span class="desc">Sets the correlation id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setheader">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single transport header.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeaders</span>( <span class="st">array</span> <span class="sv">$headers</span> )</code>
+<span class="desc">Replaces all transport headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setMessageId</span>( <span class="st">string</span> <span class="sv">$messageId</span> )</code>
+<span class="desc">Sets the message id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
+<span class="desc">Replaces all application properties.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single application property.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setRedelivered</span>( <span class="st">bool</span> <span class="sv">$redelivered</span> )</code>
+<span class="desc">Marks the message as redelivered.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setReplyTo</span>( <span class="st">string</span> <span class="sv">$replyTo</span> )</code>
+<span class="desc">Sets the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-settimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setTimestamp</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
+<span class="desc">Sets the timestamp (in milliseconds).</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 20</div>
+
+#### `getBody()` { #contractsqueuemessage-getbody }
+
+```php
+public function getBody(): string;
+```
+
+Returns the message body.
+
+#### `getCorrelationId()` { #contractsqueuemessage-getcorrelationid }
+
+```php
+public function getCorrelationId(): string|null;
+```
+
+Returns the correlation id used to correlate request/reply messages.
+
+#### `getHeader()` { #contractsqueuemessage-getheader }
+
+```php
+public function getHeader(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single header value, or the default when it is not set.
+
+#### `getHeaders()` { #contractsqueuemessage-getheaders }
+
+```php
+public function getHeaders(): array;
+```
+
+Returns all transport headers.
+
+#### `getMessageId()` { #contractsqueuemessage-getmessageid }
+
+```php
+public function getMessageId(): string|null;
+```
+
+Returns the message id.
+
+#### `getProperties()` { #contractsqueuemessage-getproperties }
+
+```php
+public function getProperties(): array;
+```
+
+Returns all application properties.
+
+#### `getProperty()` { #contractsqueuemessage-getproperty }
+
+```php
+public function getProperty(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single property value, or the default when it is not set.
+
+#### `getReplyTo()` { #contractsqueuemessage-getreplyto }
+
+```php
+public function getReplyTo(): string|null;
+```
+
+Returns the reply-to destination name.
+
+#### `getTimestamp()` { #contractsqueuemessage-gettimestamp }
+
+```php
+public function getTimestamp(): int|null;
+```
+
+Returns the timestamp (in milliseconds) or null when it is not set.
+
+#### `isRedelivered()` { #contractsqueuemessage-isredelivered }
+
+```php
+public function isRedelivered(): bool;
+```
+
+Whether the message has been redelivered.
+
+#### `setBody()` { #contractsqueuemessage-setbody }
+
+```php
+public function setBody( string $body ): void;
+```
+
+Sets the message body.
+
+#### `setCorrelationId()` { #contractsqueuemessage-setcorrelationid }
+
+```php
+public function setCorrelationId( string $correlationId ): void;
+```
+
+Sets the correlation id.
+
+#### `setHeader()` { #contractsqueuemessage-setheader }
+
+```php
+public function setHeader(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single transport header.
+
+#### `setHeaders()` { #contractsqueuemessage-setheaders }
+
+```php
+public function setHeaders( array $headers ): void;
+```
+
+Replaces all transport headers.
+
+#### `setMessageId()` { #contractsqueuemessage-setmessageid }
+
+```php
+public function setMessageId( string $messageId ): void;
+```
+
+Sets the message id.
+
+#### `setProperties()` { #contractsqueuemessage-setproperties }
+
+```php
+public function setProperties( array $properties ): void;
+```
+
+Replaces all application properties.
+
+#### `setProperty()` { #contractsqueuemessage-setproperty }
+
+```php
+public function setProperty(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single application property.
+
+#### `setRedelivered()` { #contractsqueuemessage-setredelivered }
+
+```php
+public function setRedelivered( bool $redelivered ): void;
+```
+
+Marks the message as redelivered.
+
+#### `setReplyTo()` { #contractsqueuemessage-setreplyto }
+
+```php
+public function setReplyTo( string $replyTo ): void;
+```
+
+Sets the reply-to destination name.
+
+#### `setTimestamp()` { #contractsqueuemessage-settimestamp }
+
+```php
+public function setTimestamp( int $timestamp ): void;
+```
+
+Sets the timestamp (in milliseconds).
+
+
+## Contracts\Queue\Processor
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Processor.zep){ .src-btn }
+
+Processes a single message. The return value tells the consumer what to
+do next: acknowledge, reject, or requeue.
+
+The literal constant values are kept compatible with the wider interop
+ecosystem.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Processor`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueprocessor-process">
+<code class="vis vis-public">public</code>
+<code class="ret">string|object</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">Context</span> <span class="sv">$context</span></span>)</code>
+<span class="desc">Processes the message and returns one of the ACK / REJECT / REQUEUE</span>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">ACK</span><span class="sm"> = &quot;enqueue.ack&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">REJECT</span><span class="sm"> = &quot;enqueue.reject&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">REQUEUE</span><span class="sm"> = &quot;enqueue.requeue&quot;</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `process()` { #contractsqueueprocessor-process }
+
+```php
+public function process(
+    Message $message,
+    Context $context
+): string|object;
+```
+
+Processes the message and returns one of the ACK / REJECT / REQUEUE
+constants, or an object whose string form is one of those values.
+
+
+## Contracts\Queue\Producer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Producer.zep){ .src-btn }
+
+Sends messages to a destination.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Producer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueproducer-getdeliverydelay">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getDeliveryDelay</span>()</code>
+<span class="desc">Returns the delivery delay (in milliseconds) or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-getpriority">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getPriority</span>()</code>
+<span class="desc">Returns the message priority or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-gettimetolive">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getTimeToLive</span>()</code>
+<span class="desc">Returns the time to live (in milliseconds) or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-send">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">send</span>(<span class="prm"><span class="st">Destination</span> <span class="sv">$destination</span>,</span><span class="prm"><span class="st">Message</span> <span class="sv">$message</span></span>)</code>
+<span class="desc">Sends a message to the given destination.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-setdeliverydelay">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setDeliveryDelay</span>( <span class="st">mixed</span> <span class="sv">$deliveryDelay</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the delivery delay (in milliseconds). Null clears it.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-setpriority">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setPriority</span>( <span class="st">mixed</span> <span class="sv">$priority</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the message priority. Null clears it.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-settimetolive">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setTimeToLive</span>( <span class="st">mixed</span> <span class="sv">$timeToLive</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the time to live (in milliseconds). Null clears it.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 7</div>
+
+#### `getDeliveryDelay()` { #contractsqueueproducer-getdeliverydelay }
+
+```php
+public function getDeliveryDelay(): int|null;
+```
+
+Returns the delivery delay (in milliseconds) or null when not set.
+
+#### `getPriority()` { #contractsqueueproducer-getpriority }
+
+```php
+public function getPriority(): int|null;
+```
+
+Returns the message priority or null when not set.
+
+#### `getTimeToLive()` { #contractsqueueproducer-gettimetolive }
+
+```php
+public function getTimeToLive(): int|null;
+```
+
+Returns the time to live (in milliseconds) or null when not set.
+
+#### `send()` { #contractsqueueproducer-send }
+
+```php
+public function send(
+    Destination $destination,
+    Message $message
+): void;
+```
+
+Sends a message to the given destination.
+
+#### `setDeliveryDelay()` { #contractsqueueproducer-setdeliverydelay }
+
+```php
+public function setDeliveryDelay( mixed $deliveryDelay = null ): Producer;
+```
+
+Sets the delivery delay (in milliseconds). Null clears it.
+
+#### `setPriority()` { #contractsqueueproducer-setpriority }
+
+```php
+public function setPriority( mixed $priority = null ): Producer;
+```
+
+Sets the message priority. Null clears it.
+
+#### `setTimeToLive()` { #contractsqueueproducer-settimetolive }
+
+```php
+public function setTimeToLive( mixed $timeToLive = null ): Producer;
+```
+
+Sets the time to live (in milliseconds). Null clears it.
+
+
+## Contracts\Queue\Queue
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Queue.zep){ .src-btn }
+
+A queue destination (point-to-point).
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
+    - **`Phalcon\Contracts\Queue\Queue`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuequeue-getqueuename">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getQueueName</span>()</code>
+<span class="desc">Returns the queue name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getQueueName()` { #contractsqueuequeue-getqueuename }
+
+```php
+public function getQueueName(): string;
+```
+
+Returns the queue name.
+
+
+## Contracts\Queue\SubscriptionConsumer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/SubscriptionConsumer.zep){ .src-btn }
+
+Consumes from several queues at once, dispatching each message to the
+callback registered for its consumer.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\SubscriptionConsumer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-consume">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">consume</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
+<span class="desc">Starts consuming, blocking up to timeout milliseconds (0 = block</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-subscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">subscribe</span>(<span class="prm"><span class="st">Consumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callback</span></span>)</code>
+<span class="desc">Subscribes a consumer; the callback receives each delivered message.</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribe</span>( <span class="st">Consumer</span> <span class="sv">$consumer</span> )</code>
+<span class="desc">Removes a previously subscribed consumer.</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribeall">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribeAll</span>()</code>
+<span class="desc">Removes every subscribed consumer.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `consume()` { #contractsqueuesubscriptionconsumer-consume }
+
+```php
+public function consume( int $timeout = 0 ): void;
+```
+
+Starts consuming, blocking up to timeout milliseconds (0 = block
+until a message is available).
+
+#### `subscribe()` { #contractsqueuesubscriptionconsumer-subscribe }
+
+```php
+public function subscribe(
+    Consumer $consumer,
+    callable $callback
+): void;
+```
+
+Subscribes a consumer; the callback receives each delivered message.
+
+#### `unsubscribe()` { #contractsqueuesubscriptionconsumer-unsubscribe }
+
+```php
+public function unsubscribe( Consumer $consumer ): void;
+```
+
+Removes a previously subscribed consumer.
+
+#### `unsubscribeAll()` { #contractsqueuesubscriptionconsumer-unsubscribeall }
+
+```php
+public function unsubscribeAll(): void;
+```
+
+Removes every subscribed consumer.
+
+
+## Contracts\Queue\Topic
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Topic.zep){ .src-btn }
+
+A topic destination (publish/subscribe).
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
+    - **`Phalcon\Contracts\Queue\Topic`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuetopic-gettopicname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTopicName</span>()</code>
+<span class="desc">Returns the topic name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getTopicName()` { #contractsqueuetopic-gettopicname }
+
+```php
+public function getTopicName(): string;
+```
+
+Returns the topic name.
+
+
+## Contracts\Queue\VisibilityAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/VisibilityAware.zep){ .src-btn }
+
+Marker contract for a consumer that supports a visibility timeout
+(for example Beanstalk TTR or an SQS visibility timeout). Callers detect
+support with `instanceof`. It carries no behavior and commits to no class
+shape.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\VisibilityAware`**
+
+</div>
+
+
 ## Contracts\Support\Collection
 
 <span class="badge badge--interface">Interface</span>
@@ -8854,3 +9837,144 @@ public function where(
 
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.
+
+
+## Contracts\Support\Debug\Renderer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Support/Debug/Renderer.zep){ .src-btn }
+
+Canonical contract for Phalcon\Support\Debug renderers. Turns an
+ExceptionReport into output.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Support\Debug\TemplateAware`](#contractssupportdebugtemplateaware)
+    - **`Phalcon\Contracts\Support\Debug\Renderer`**
+
+</div>
+
+__Uses__ `Phalcon\Support\Debug\Report\ExceptionReport`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractssupportdebugrenderer-getcsssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getCssSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Returns the CSS sources block for the given base URI.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-getjssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getJsSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Returns the JavaScript sources block for the given base URI.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-getversion">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getVersion</span>()</code>
+<span class="desc">Returns the framework version block.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-render">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">ExceptionReport</span> <span class="sv">$report</span> )</code>
+<span class="desc">Renders the report.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `getCssSources()` { #contractssupportdebugrenderer-getcsssources }
+
+```php
+public function getCssSources( string $uri ): string;
+```
+
+Returns the CSS sources block for the given base URI.
+
+#### `getJsSources()` { #contractssupportdebugrenderer-getjssources }
+
+```php
+public function getJsSources( string $uri ): string;
+```
+
+Returns the JavaScript sources block for the given base URI.
+
+#### `getVersion()` { #contractssupportdebugrenderer-getversion }
+
+```php
+public function getVersion(): string;
+```
+
+Returns the framework version block.
+
+#### `render()` { #contractssupportdebugrenderer-render }
+
+```php
+public function render( ExceptionReport $report ): string;
+```
+
+Renders the report.
+
+
+## Contracts\Support\Debug\TemplateAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Support/Debug/TemplateAware.zep){ .src-btn }
+
+Canonical contract for components that render through named, overridable
+template strings.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Support\Debug\TemplateAware`**
+    - [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractssupportdebugtemplateaware-gettemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns the template for the given name (override if set, default</span>
+</a>
+<a class="api-item" href="#contractssupportdebugtemplateaware-settemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$template</span></span>)</code>
+<span class="desc">Overrides the template for the given name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `getTemplate()` { #contractssupportdebugtemplateaware-gettemplate }
+
+```php
+public function getTemplate( string $name ): string;
+```
+
+Returns the template for the given name (override if set, default
+otherwise).
+
+#### `setTemplate()` { #contractssupportdebugtemplateaware-settemplate }
+
+```php
+public function setTemplate(
+    string $name,
+    string $template
+): static;
+```
+
+Overrides the template for the given name.

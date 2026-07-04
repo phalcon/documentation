@@ -1689,6 +1689,12 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">convertBoundParams</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sql</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Converts bound parameters such as :name: or ?1 into PDO bind params ?</span>
 </a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-ensureconnection">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">ensureConnection</span>()</code>
+<span class="desc">Ensures the connection is alive, reconnecting in place if it is not.</span>
+</a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-escapestring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -1706,6 +1712,12 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="ret">\PDOStatement</code>
 <code class="sig"><span class="sf">executePrepared</span>(<span class="prm"><span class="st">\PDOStatement</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes a prepared statement binding. This function uses integer indexes</span>
+</a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-getautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getAutoReconnect</span>()</code>
+<span class="desc">Returns whether transparent auto-reconnect is enabled.</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-geterrorinfo">
 <code class="vis vis-public">public</code>
@@ -1737,6 +1749,12 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the insert id for the auto_increment/serial column inserted in</span>
 </a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-ping">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">ping</span>()</code>
+<span class="desc">Checks whether the underlying connection is still alive by issuing a</span>
+</a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-prepare">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
@@ -1755,11 +1773,23 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">rollback</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Rollbacks the active transaction in the connection</span>
 </a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-setautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setAutoReconnect</span>( <span class="st">bool</span> <span class="sv">$autoReconnect</span> )</code>
+<span class="desc">Enables or disables transparent auto-reconnect on a lost connection.</span>
+</a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-getdsndefaults">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
+</a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes whether an exception represents a lost (&quot;gone away&quot;)</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-preparerealsql">
 <code class="vis vis-protected">protected</code>
@@ -1789,6 +1819,13 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autoReconnect</span><span class="sm"> = false</span></code>
+<span class="desc">Whether to transparently reconnect and retry once when a query fails
+because the connection was lost. Opt-in; off by default.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">\PDO</code>
 <code class="sig"><span class="sv">$pdo</span></code>
 <span class="desc">PDO Handler</span>
@@ -1797,7 +1834,7 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 
 ### Methods
 
-<div class="api-group">Public · 18</div>
+<div class="api-group">Public · 22</div>
 
 #### `__construct()` { #dbadapterpdoabstractpdo-__construct }
 
@@ -1900,6 +1937,14 @@ print_r(
 );
 ```
 
+#### `ensureConnection()` { #dbadapterpdoabstractpdo-ensureconnection }
+
+```php
+public function ensureConnection(): void;
+```
+
+Ensures the connection is alive, reconnecting in place if it is not.
+
 #### `escapeString()` { #dbadapterpdoabstractpdo-escapestring }
 
 ```php
@@ -1973,6 +2018,14 @@ $result = $connection->executePrepared(
 );
 ```
 
+#### `getAutoReconnect()` { #dbadapterpdoabstractpdo-getautoreconnect }
+
+```php
+public function getAutoReconnect(): bool;
+```
+
+Returns whether transparent auto-reconnect is enabled.
+
 #### `getErrorInfo()` { #dbadapterpdoabstractpdo-geterrorinfo }
 
 ```php
@@ -2041,6 +2094,15 @@ $success = $connection->insert(
 $id = $connection->lastInsertId();
 ```
 
+#### `ping()` { #dbadapterpdoabstractpdo-ping }
+
+```php
+public function ping(): bool;
+```
+
+Checks whether the underlying connection is still alive by issuing a
+trivial query. Returns false if there is no handle or the probe fails.
+
 #### `prepare()` { #dbadapterpdoabstractpdo-prepare }
 
 ```php
@@ -2103,7 +2165,15 @@ public function rollback( bool $nesting = true ): bool;
 
 Rollbacks the active transaction in the connection
 
-<div class="api-group">Protected · 2</div>
+#### `setAutoReconnect()` { #dbadapterpdoabstractpdo-setautoreconnect }
+
+```php
+public function setAutoReconnect( bool $autoReconnect ): static;
+```
+
+Enables or disables transparent auto-reconnect on a lost connection.
+
+<div class="api-group">Protected · 3</div>
 
 #### `getDsnDefaults()` { #dbadapterpdoabstractpdo-getdsndefaults }
 
@@ -2112,6 +2182,16 @@ abstract protected function getDsnDefaults(): array;
 ```
 
 Returns PDO adapter DSN defaults as a key-value map.
+
+#### `isConnectionError()` { #dbadapterpdoabstractpdo-isconnectionerror }
+
+```php
+protected function isConnectionError( \Throwable $exception ): bool;
+```
+
+Recognizes whether an exception represents a lost ("gone away")
+connection. The base adapter cannot know driver specifics, so it
+returns false; concrete adapters override this.
 
 #### `prepareRealSql()` { #dbadapterpdoabstractpdo-preparerealsql }
 
@@ -2191,6 +2271,12 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
+</a>
+<a class="api-item" href="#dbadapterpdomysql-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes a MySQL &quot;server has gone away&quot; / &quot;Lost connection&quot; failure</span>
 </a>
 </div>
 
@@ -2276,7 +2362,7 @@ print_r(
 );
 ```
 
-<div class="api-group">Protected · 1</div>
+<div class="api-group">Protected · 2</div>
 
 #### `getDsnDefaults()` { #dbadapterpdomysql-getdsndefaults }
 
@@ -2285,6 +2371,15 @@ protected function getDsnDefaults(): array;
 ```
 
 Returns PDO adapter DSN defaults as a key-value map.
+
+#### `isConnectionError()` { #dbadapterpdomysql-isconnectionerror }
+
+```php
+protected function isConnectionError( \Throwable $exception ): bool;
+```
+
+Recognizes a MySQL "server has gone away" / "Lost connection" failure
+by the driver error code (2006 / 2013) with a message fallback.
 
 
 ## Db\Adapter\Pdo\Postgresql
@@ -2380,6 +2475,12 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
+</a>
+<a class="api-item" href="#dbadapterpdopostgresql-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes a PostgreSQL connection-loss failure by SQLSTATE</span>
 </a>
 </div>
 
@@ -2521,7 +2622,7 @@ public function useExplicitIdValue(): bool;
 Check whether the database system requires an explicit value for identity
 columns
 
-<div class="api-group">Protected · 1</div>
+<div class="api-group">Protected · 2</div>
 
 #### `getDsnDefaults()` { #dbadapterpdopostgresql-getdsndefaults }
 
@@ -2530,6 +2631,16 @@ protected function getDsnDefaults(): array;
 ```
 
 Returns PDO adapter DSN defaults as a key-value map.
+
+#### `isConnectionError()` { #dbadapterpdopostgresql-isconnectionerror }
+
+```php
+protected function isConnectionError( \Throwable $exception ): bool;
+```
+
+Recognizes a PostgreSQL connection-loss failure by SQLSTATE
+(connection exception class 08, or admin/crash shutdown 57P0x) with a
+message fallback.
 
 
 ## Db\Adapter\Pdo\Sqlite

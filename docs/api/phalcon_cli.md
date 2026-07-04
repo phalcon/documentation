@@ -1982,6 +1982,7 @@ arguments). Declare optional trailing parameters to read those options.
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Cli\Task`** — implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+            - [`Phalcon\Queue\Cli\ConsumerTask`](phalcon_queue.md#queuecliconsumertask)
 
 </div>
 
