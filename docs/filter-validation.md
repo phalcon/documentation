@@ -878,6 +878,31 @@ $validator->add(
 );
 ```
 
+The File validator forwards an `allowWildcards` option to the [File MimeType](#file-mimetype) check it builds from `allowedTypes`. Set it to `true` to treat each `allowedTypes` entry as an anchored regular expression:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\File;
+
+$validator = new Validation();
+
+$validator->add(
+    "file",
+    new File(
+        [
+            "allowedTypes"   => [
+                "image/.*",
+                "video/.*",
+            ],
+            "allowWildcards" => true,
+            "messageType"    => "Allowed file types are :types",
+        ]
+    )
+);
+```
+
 ### File MimeType
 
 Checks if a value has a correct file mime type
@@ -928,6 +953,33 @@ $validator->add(
     )
 );
 ```
+
+By default the detected MIME type must match one of the configured `types` exactly. Set the `allowWildcards` option to `true` to match each configured entry as an anchored regular expression instead, which accepts a whole MIME family without listing every subtype:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\File\MimeType;
+
+$validator = new Validation();
+
+$validator->add(
+    "file",
+    new MimeType(
+        [
+            "types" => [
+                "image/.*",
+                "video/.*",
+            ],
+            "allowWildcards" => true,
+            "message"        => "Allowed file types are :types",
+        ]
+    )
+);
+```
+
+Each entry is anchored on both ends (`#^...$#`), so `image/.*` matches `image/png` and `image/jpeg` but not `text/plain`. An exact string comparison is tried first, so literal types that contain regular-expression metacharacters, such as `image/svg+xml`, still match themselves. The option defaults to `false`, which preserves the exact-match behavior.
 
 ### File Resolution AspectRatio
 
