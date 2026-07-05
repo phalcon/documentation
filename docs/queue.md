@@ -130,6 +130,7 @@ The contracts live in the `Phalcon\Contracts\Queue` namespace and are pure inter
 | `SubscriptionConsumer` | Consumes from several queues at once via callbacks.                               |
 | `Processor`            | Handles one message; returns `ACK` / `REJECT` / `REQUEUE`.                        |
 | `VisibilityAware`      | Marker for consumers that support a visibility timeout.                           |
+| `Inspectable`          | Marker for transports that can report per-queue statistics (`getStats()`).        |
 
 ### Processor return values
 
@@ -278,6 +279,31 @@ $consumer->acknowledge($message);
 ```
 
 The socket client reconnects automatically when the connection to the server is lost. A reconnect replays the session state the consumer established, so the tube it watches - and the tube a producer uses - is restored and consumption continues from the correct tube without any application change.
+
+`BeanstalkContext` implements [`Phalcon\Contracts\Queue\Inspectable`](#contracts). Detect the capability with `instanceof`, then call `getStats()` with a queue to read the Beanstalkd `stats-tube` fields for its tube. The read runs on its own short-lived connection, so it never shares the producer socket.
+
+```php
+<?php
+
+use Phalcon\Contracts\Queue\Inspectable;
+use Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory;
+
+$context = (new BeanstalkConnectionFactory([
+    'host' => '127.0.0.1',
+    'port' => 11300,
+]))->createContext();
+
+$queue = $context->createQueue('emails');
+
+if ($context instanceof Inspectable) {
+    $stats = $context->getStats($queue);
+
+    echo $stats['current-jobs-ready'], PHP_EOL;
+    echo $stats['current-jobs-buried'], PHP_EOL;
+}
+```
+
+The returned array is adapter-native. For Beanstalk it is the full `stats-tube` field set - `current-jobs-ready`, `current-jobs-reserved`, `current-jobs-delayed`, `current-jobs-buried`, `current-jobs-urgent`, `total-jobs`, the `cmd-*` counters and the tube-configuration fields - with numeric values cast to `int` and `name` kept as a string. The five `current-jobs-*` backlog keys are always present; an unknown tube (no jobs, not used or watched) reports them as `0`.
 
 ## Consumer
 

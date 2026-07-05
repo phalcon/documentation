@@ -1727,11 +1727,16 @@ Only methods marked with valid annotations are used as routes. The available ann
 
 | Annotation    | Description                                                                    | Usage                              |
 |---------------|--------------------------------------------------------------------------------|------------------------------------|
+| `Connect`     | Restrict the HTTP method to `CONNECT`                                          | `@Connect('/invoices/tunnel')`     |
 | `Delete`      | Restrict the HTTP method to `DELETE`                                           | `@Delete('/invoices/delete/{id}')` |
 | `Get`         | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
-| `Options`     | Restrict the HTTP method to `OPTIONS`                                          | `@Option('/invoices/info')`        |
+| `Head`        | Restrict the HTTP method to `HEAD`                                             | `@Head('/invoices/search')`        |
+| `Options`     | Restrict the HTTP method to `OPTIONS`                                          | `@Options('/invoices/info')`       |
+| `Patch`       | Restrict the HTTP method to `PATCH`                                            | `@Patch('/invoices/save')`         |
 | `Post`        | Restrict the HTTP method to `POST`                                             | `@Post('/invoices/save')`          |
+| `Purge`       | Restrict the HTTP method to `PURGE`                                            | `@Purge('/invoices/cache/{id}')`   |
 | `Put`         | Restrict the HTTP method to `PUT`                                              | `@Put('/invoices/save')`           |
+| `Trace`       | Restrict the HTTP method to `TRACE`                                            | `@Trace('/invoices/debug')`        |
 | `Route`       | Mark a method as a route. Must be placed in a method docblock                  | `@Route('/invoices/show')`         |
 | `RoutePrefix` | Prefix to be prepended to each route URI. Must be placed in the class docblock | `@RoutePrefix('/invoices')`        |
 
