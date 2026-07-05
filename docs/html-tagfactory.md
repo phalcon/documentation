@@ -100,7 +100,7 @@ Starting with v5.12.2, [Phalcon\Html\TagFactory][html-tagfactory] no longer exte
 public function set(string $name, Closure $definition): void
 ```
 
-The closure takes no arguments and captures whatever the helper needs — the escaper, the shared `doctype` helper (through `newInstance('doctype')`), the `response` or `url` services — from its own scope. There is no class-string form, no tuple form, and no dependency-key resolution; the closure supplies every constructor argument itself. The built-in helpers are registered the same way, for example `inputColor` is `fn() => new Generic($escaper, $this->newInstance('doctype'), 'color')`.
+The closure takes no arguments and captures whatever the helper needs - the escaper, the shared `doctype` helper (through `newInstance('doctype')`), the `response` or `url` services - from its own scope. There is no class-string form, no tuple form, and no dependency-key resolution; the closure supplies every constructor argument itself. The built-in helpers are registered the same way, for example `inputColor` is `fn() => new Generic($escaper, $this->newInstance('doctype'), 'color')`.
 
 Resolved instances are cached lazily per name in a separate `instances` map. Calling `set()` with a new closure invalidates the previously cached instance, so the next resolution returns a fresh helper. `has()` reports against the registered names, not the resolved-instance map.
 

@@ -114,7 +114,7 @@ if ($event->isCancelable()) {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Events\Event`** — implements [`Phalcon\Events\EventInterface`](#eventseventinterface), [`Phalcon\Contracts\Events\Stoppable`](phalcon_contracts.md#contractseventsstoppable)
+- **`Phalcon\Events\Event`** - implements [`Phalcon\Events\EventInterface`](#eventseventinterface), [`Phalcon\Contracts\Events\Stoppable`](phalcon_contracts.md#contractseventsstoppable)
 
 </div>
 
@@ -602,7 +602,7 @@ conditional execution and much more.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Events\Manager`** — implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface)
+- **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface)
 
 </div>
 

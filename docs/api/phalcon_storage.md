@@ -113,7 +113,7 @@ Class AbstractAdapter
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Storage\Adapter\AbstractAdapter`** — implements [`Phalcon\Storage\Adapter\AdapterInterface`](#storageadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+- **`Phalcon\Storage\Adapter\AbstractAdapter`** - implements [`Phalcon\Storage\Adapter\AdapterInterface`](#storageadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
     - [`Phalcon\Storage\Adapter\Apcu`](#storageadapterapcu)
     - [`Phalcon\Storage\Adapter\Libmemcached`](#storageadapterlibmemcached)
     - [`Phalcon\Storage\Adapter\Memory`](#storageadaptermemory)
@@ -2857,7 +2857,7 @@ Returns the available adapters
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Storage\Serializer\AbstractSerializer`** — implements [`Phalcon\Storage\Serializer\SerializerInterface`](#storageserializerserializerinterface)
+- **`Phalcon\Storage\Serializer\AbstractSerializer`** - implements [`Phalcon\Storage\Serializer\SerializerInterface`](#storageserializerserializerinterface)
     - [`Phalcon\Storage\Serializer\Base64`](#storageserializerbase64)
     - [`Phalcon\Storage\Serializer\Igbinary`](#storageserializerigbinary)
     - [`Phalcon\Storage\Serializer\Json`](#storageserializerjson)

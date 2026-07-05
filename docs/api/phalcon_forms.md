@@ -17,7 +17,7 @@ This is a base class for form elements
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Forms\Element\AbstractElement`** — implements [`Phalcon\Forms\Element\ElementInterface`](#formselementelementinterface)
+- **`Phalcon\Forms\Element\AbstractElement`** - implements [`Phalcon\Forms\Element\ElementInterface`](#formselementelementinterface)
     - [`Phalcon\Forms\Element\Check`](#formselementcheck)
     - [`Phalcon\Forms\Element\CheckGroup`](#formselementcheckgroup)
     - [`Phalcon\Forms\Element\Date`](#formselementdate)
@@ -2347,7 +2347,7 @@ This component allows to build forms using an object-oriented interface
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Forms\Form`** — implements `Countable`, `Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](phalcon_html.md#htmlattributesattributesinterface)
+        - **`Phalcon\Forms\Form`** - implements `Countable`, `Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](phalcon_html.md#htmlattributesattributesinterface)
 
 </div>
 
@@ -3206,7 +3206,7 @@ Supplies form element definitions from a PHP array.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Forms\Loader\ArrayLoader`** — implements [`Phalcon\Contracts\Forms\Schema`](phalcon_contracts.md#contractsformsschema)
+- **`Phalcon\Forms\Loader\ArrayLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](phalcon_contracts.md#contractsformsschema)
 
 </div>
 
@@ -3282,7 +3282,7 @@ disk first; otherwise the value is treated as a raw JSON string.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Forms\Loader\JsonLoader`** — implements [`Phalcon\Contracts\Forms\Schema`](phalcon_contracts.md#contractsformsschema)
+- **`Phalcon\Forms\Loader\JsonLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](phalcon_contracts.md#contractsformsschema)
 
 </div>
 
@@ -3356,7 +3356,7 @@ directly; otherwise the value is treated as a raw YAML string.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Forms\Loader\YamlLoader`** — implements [`Phalcon\Contracts\Forms\Schema`](phalcon_contracts.md#contractsformsschema)
+- **`Phalcon\Forms\Loader\YamlLoader`** - implements [`Phalcon\Contracts\Forms\Schema`](phalcon_contracts.md#contractsformsschema)
 
 </div>
 

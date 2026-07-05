@@ -19,7 +19,7 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Application\AbstractApplication`** — implements [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Application\AbstractApplication`** - implements [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Cli\Console`](phalcon_cli.md#cliconsole)
             - [`Phalcon\Mvc\Application`](phalcon_mvc.md#mvcapplication)
 

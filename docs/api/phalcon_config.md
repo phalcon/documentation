@@ -524,7 +524,7 @@ $config = new \Phalcon\Config\Config(
 <div class="api-tree" markdown>
 
 - [`Phalcon\Support\Collection`](phalcon_support.md#supportcollection)
-    - **`Phalcon\Config\Config`** — implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
+    - **`Phalcon\Config\Config`** - implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
         - [`Phalcon\Config\Adapter\Grouped`](#configadaptergrouped)
         - [`Phalcon\Config\Adapter\Ini`](#configadapterini)
         - [`Phalcon\Config\Adapter\Json`](#configadapterjson)
@@ -717,7 +717,7 @@ Sets the collection data
 
 Array values become nested Config objects carrying the `insensitive`,
 `strictNull` and `type` flags of this instance. The `type` guard is
-applied to leaf values only — arrays are not validated themselves;
+applied to leaf values only - arrays are not validated themselves;
 the nested Config validates its own leaves.
 
 

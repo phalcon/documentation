@@ -33,7 +33,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt`** — implements [`Phalcon\Encryption\Crypt\CryptInterface`](#encryptioncryptcryptinterface)
+- **`Phalcon\Encryption\Crypt`** - implements [`Phalcon\Encryption\Crypt\CryptInterface`](#encryptioncryptcryptinterface)
 
 </div>
 
@@ -1245,7 +1245,7 @@ Class Ansi
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\Ansi`** — implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
+- **`Phalcon\Encryption\Crypt\Padding\Ansi`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -1295,7 +1295,7 @@ Class Iso10126
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\Iso10126`** — implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
+- **`Phalcon\Encryption\Crypt\Padding\Iso10126`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -1345,7 +1345,7 @@ Class IsoIek
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\IsoIek`** — implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
+- **`Phalcon\Encryption\Crypt\Padding\IsoIek`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -1395,7 +1395,7 @@ Class Noop
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\Noop`** — implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
+- **`Phalcon\Encryption\Crypt\Padding\Noop`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -1463,7 +1463,7 @@ Class Pkcs7
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\Pkcs7`** — implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
+- **`Phalcon\Encryption\Crypt\Padding\Pkcs7`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -1513,7 +1513,7 @@ Class Space
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\Space`** — implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
+- **`Phalcon\Encryption\Crypt\Padding\Space`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -1563,7 +1563,7 @@ Class Zero
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Crypt\Padding\Zero`** — implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
+- **`Phalcon\Encryption\Crypt\Padding\Zero`** - implements [`Phalcon\Encryption\Crypt\Padding\PadInterface`](#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -1627,7 +1627,7 @@ if ($user) {
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Encryption\Security`** — implements [`Phalcon\Contracts\Encryption\Security\Security`](phalcon_contracts.md#contractsencryptionsecuritysecurity)
+        - **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](phalcon_contracts.md#contractsencryptionsecuritysecurity)
 
 </div>
 
@@ -3024,7 +3024,7 @@ Abstract class helping with the signer classes
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`** — implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
+- **`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`** - implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
     - [`Phalcon\Encryption\Security\JWT\Signer\Hmac`](#encryptionsecurityjwtsignerhmac)
 
 </div>
@@ -3158,7 +3158,7 @@ No signing class
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\JWT\Signer\None`** — implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
+- **`Phalcon\Encryption\Security\JWT\Signer\None`** - implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
 
 </div>
 
@@ -4369,7 +4369,7 @@ Shared base for all UUID version objects.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\Uuid\AbstractUuid`** — implements [`Phalcon\Encryption\Security\Uuid\UuidInterface`](#encryptionsecurityuuiduuidinterface)
+- **`Phalcon\Encryption\Security\Uuid\AbstractUuid`** - implements [`Phalcon\Encryption\Security\Uuid\UuidInterface`](#encryptionsecurityuuiduuidinterface)
     - [`Phalcon\Encryption\Security\Uuid\Version1`](#encryptionsecurityuuidversion1)
     - [`Phalcon\Encryption\Security\Uuid\Version3`](#encryptionsecurityuuidversion3)
     - [`Phalcon\Encryption\Security\Uuid\Version4`](#encryptionsecurityuuidversion4)
@@ -4542,7 +4542,7 @@ Used as a fallback when no hardware MAC address is available.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\Uuid\RandomNodeProvider`** — implements [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](#encryptionsecurityuuidnodeproviderinterface)
+- **`Phalcon\Encryption\Security\Uuid\RandomNodeProvider`** - implements [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](#encryptionsecurityuuidnodeproviderinterface)
 
 </div>
 
@@ -4591,7 +4591,7 @@ Platform support:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Encryption\Security\Uuid\SysNodeProvider`** — implements [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](#encryptionsecurityuuidnodeproviderinterface)
+- **`Phalcon\Encryption\Security\Uuid\SysNodeProvider`** - implements [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](#encryptionsecurityuuidnodeproviderinterface)
 
 </div>
 
@@ -4673,7 +4673,7 @@ as fallback.
 <div class="api-tree" markdown>
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-    - **`Phalcon\Encryption\Security\Uuid\Version1`** — implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
+    - **`Phalcon\Encryption\Security\Uuid\Version1`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
 </div>
 
@@ -4868,7 +4868,7 @@ that sort lexicographically in chronological order.
 <div class="api-tree" markdown>
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-    - **`Phalcon\Encryption\Security\Uuid\Version6`** — implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
+    - **`Phalcon\Encryption\Security\Uuid\Version6`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
 </div>
 

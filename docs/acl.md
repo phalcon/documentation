@@ -676,7 +676,7 @@ It is a good practice to not serialize the ACL during development to ensure that
 
 ## Storage Adapter
 
-`Phalcon\Acl\Adapter\Storage` extends the memory adapter and persists the whole policy to any [Phalcon\Storage][storage] backend — Redis, Apcu, Stream or Memcached. It replaces the manual `serialize()`/`unserialize()` step shown above: the policy is saved as a single snapshot and reloaded automatically when the adapter is constructed.
+`Phalcon\Acl\Adapter\Storage` extends the memory adapter and persists the whole policy to any [Phalcon\Storage][storage] backend - Redis, Apcu, Stream or Memcached. It replaces the manual `serialize()`/`unserialize()` step shown above: the policy is saved as a single snapshot and reloaded automatically when the adapter is constructed.
 
 The constructor takes a storage adapter and an optional cache key (default `acl-data`). All access checks still run in memory, exactly as they do with the memory adapter; the backend is only a snapshot store.
 
@@ -781,7 +781,7 @@ $acl->setEventsManager($eventsManager);
 
 ## Custom
 
-Implement the `Phalcon\Contracts\Acl\Adapter\Adapter` contract to create your own ACL adapter or extend an existing one. The legacy [Phalcon\Acl\Adapter\AdapterInterface][acl-adapter-adapterinterface] interface still works — it now extends that contract — but it is deprecated. See [Contracts](#contracts).
+Implement the `Phalcon\Contracts\Acl\Adapter\Adapter` contract to create your own ACL adapter or extend an existing one. The legacy [Phalcon\Acl\Adapter\AdapterInterface][acl-adapter-adapterinterface] interface still works - it now extends that contract - but it is deprecated. See [Contracts](#contracts).
 
 ## Contracts
 

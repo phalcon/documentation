@@ -21,7 +21,7 @@ $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Asset`** — implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
+- **`Phalcon\Assets\Asset`** - implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
     - [`Phalcon\Assets\Asset\Css`](#assetsassetcss)
     - [`Phalcon\Assets\Asset\Js`](#assetsassetjs)
 
@@ -594,7 +594,7 @@ Collection of asset objects
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Collection`** — implements `Countable`, `IteratorAggregate`
+- **`Phalcon\Assets\Collection`** - implements `Countable`, `IteratorAggregate`
 
 </div>
 
@@ -1532,7 +1532,7 @@ feeds, and drop the last semicolon of the last property).
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Filters\Cssmin`** — implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
+- **`Phalcon\Assets\Filters\Cssmin`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
 
 </div>
 
@@ -1578,7 +1578,7 @@ and most spaces and linefeeds).
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Filters\Jsmin`** — implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
+- **`Phalcon\Assets\Filters\Jsmin`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
 
 </div>
 
@@ -1618,7 +1618,7 @@ Returns the content without make any modification to the original source
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Filters\None`** — implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
+- **`Phalcon\Assets\Filters\None`** - implements [`Phalcon\Assets\FilterInterface`](#assetsfilterinterface)
 
 </div>
 
@@ -1662,7 +1662,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Assets\Inline`** — implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
+- **`Phalcon\Assets\Inline`** - implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
     - [`Phalcon\Assets\Inline\Css`](#assetsinlinecss)
     - [`Phalcon\Assets\Inline\Js`](#assetsinlinejs)
 

@@ -8,14 +8,14 @@
 
 Talon provides three things:
 
-- **Traits** — the framework-neutral core. Each trait carries a group of helpers (reflection, filesystem, database, functional, browser, services).
-- **PHPUnit base classes** — ready-to-extend test cases that compose the traits for each kind of test.
-- **A command-line runner** — `vendor/bin/talon`, which runs PHPUnit once per mapped suite.
+- **Traits** - the framework-neutral core. Each trait carries a group of helpers (reflection, filesystem, database, functional, browser, services).
+- **PHPUnit base classes** - ready-to-extend test cases that compose the traits for each kind of test.
+- **A command-line runner** - `vendor/bin/talon`, which runs PHPUnit once per mapped suite.
 
 Talon runs on both Phalcon distributions and uses whichever is present:
 
-- **Phalcon v5** — the `ext-phalcon` C extension.
-- **Phalcon v6** — the `phalcon/phalcon` PHP package.
+- **Phalcon v5** - the `ext-phalcon` C extension.
+- **Phalcon v6** - the `phalcon/phalcon` PHP package.
 
 The same test suite runs against either one. Talon is used across the Phalcon projects, including [cphalcon][cphalcon], the sample applications, and the PHP framework itself. To see it driving the cphalcon suites, see the [Testing environment][testing-environment] guide.
 
@@ -50,7 +50,7 @@ use Phalcon\Talon\Talon;
 Talon::boot(Settings::fromEnv());
 ```
 
-When you need setup hooks (for example, raising the memory limit or creating output directories), use the bootstrap `Runner`. It runs your callbacks `before` or `after` each bootstrap `Stage` — `Stage::Settings`, `Stage::Environment`, and `Stage::Directories`:
+When you need setup hooks (for example, raising the memory limit or creating output directories), use the bootstrap `Runner`. It runs your callbacks `before` or `after` each bootstrap `Stage` - `Stage::Settings`, `Stage::Environment`, and `Stage::Directories`:
 
 ```php
 <?php
@@ -193,7 +193,7 @@ final class HomeTest extends AbstractFunctionalTestCase
 
 ### Browser tests
 
-For multi-request flows — login, forms, redirects — `AbstractBrowserTestCase` drives your application **in-process**, with no web server, through a [symfony/browser-kit][browser-kit] bridge. Cookies and the session are kept across requests, and redirects are followed automatically:
+For multi-request flows - login, forms, redirects - `AbstractBrowserTestCase` drives your application **in-process**, with no web server, through a [symfony/browser-kit][browser-kit] bridge. Cookies and the session are kept across requests, and redirects are followed automatically:
 
 ```php
 <?php

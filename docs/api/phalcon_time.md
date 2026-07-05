@@ -103,7 +103,7 @@ public function __construct(
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Time\Clock\FrozenClock`** — implements [`Phalcon\Time\Clock\ClockInterface`](#timeclockclockinterface)
+- **`Phalcon\Time\Clock\FrozenClock`** - implements [`Phalcon\Time\Clock\ClockInterface`](#timeclockclockinterface)
 
 </div>
 
@@ -207,7 +207,7 @@ Sets the clock to a new value. All consumers receive the same modification
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Time\Clock\SystemClock`** — implements [`Phalcon\Time\Clock\ClockInterface`](#timeclockclockinterface)
+- **`Phalcon\Time\Clock\SystemClock`** - implements [`Phalcon\Time\Clock\ClockInterface`](#timeclockclockinterface)
 
 </div>
 

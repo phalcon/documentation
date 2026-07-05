@@ -15,7 +15,7 @@ hide:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Container`** — implements [`Phalcon\Contracts\Container\Service\Collection`](phalcon_contracts.md#contractscontainerservicecollection)
+- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](phalcon_contracts.md#contractscontainerservicecollection)
 
 </div>
 
@@ -586,7 +586,7 @@ Remove a parameter
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\ContainerFactory`** — implements [`Phalcon\Contracts\Container\Ioc\IocContainerFactory`](phalcon_contracts.md#contractscontaineriocioccontainerfactory)
+- **`Phalcon\Container\ContainerFactory`** - implements [`Phalcon\Contracts\Container\Ioc\IocContainerFactory`](phalcon_contracts.md#contractscontaineriocioccontainerfactory)
 
 </div>
 
@@ -681,7 +681,7 @@ Returns a new container
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Definition\Processor\ClosureProcessor`** — implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
+- **`Phalcon\Container\Definition\Processor\ClosureProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
 </div>
 
@@ -737,7 +737,7 @@ Process the Closure
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Definition\Processor\ObjectProcessor`** — implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
+- **`Phalcon\Container\Definition\Processor\ObjectProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
 </div>
 
@@ -793,7 +793,7 @@ Process the Object
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Definition\Processor\ParameterProcessor`** — implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
+- **`Phalcon\Container\Definition\Processor\ParameterProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
 </div>
 
@@ -905,7 +905,7 @@ Process the definition
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Definition\Processor\StringProcessor`** — implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
+- **`Phalcon\Container\Definition\Processor\StringProcessor`** - implements [`Phalcon\Container\Definition\Processor\Processor`](#containerdefinitionprocessorprocessor)
 
 </div>
 
@@ -1622,7 +1622,7 @@ Circular Alias found
 
 - `Throwable`
     - [`Phalcon\Contracts\Container\Ioc\IocThrowable`](phalcon_contracts.md#contractscontaineriociocthrowable)
-        - **`Phalcon\Container\Exceptions\ContainerThrowable`** — extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](phalcon_contracts.md#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](phalcon_contracts.md#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](phalcon_contracts.md#contractscontainerservicethrowable)
+        - **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](phalcon_contracts.md#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](phalcon_contracts.md#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](phalcon_contracts.md#contractscontainerservicethrowable)
 
 </div>
 
@@ -1671,7 +1671,7 @@ public function __construct( string $varname );
 <div class="api-tree" markdown>
 
 - `BaseException`
-    - **`Phalcon\Container\Exceptions\Exception`** — implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
+    - **`Phalcon\Container\Exceptions\Exception`** - implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
         - [`Phalcon\Container\Exceptions\CannotExtendResolved`](#containerexceptionscannotextendresolved)
         - [`Phalcon\Container\Exceptions\CannotResolveParameter`](#containerexceptionscannotresolveparameter)
         - [`Phalcon\Container\Exceptions\CircularAliasFound`](#containerexceptionscircularaliasfound)
@@ -2020,7 +2020,7 @@ Service not registered
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Provider\Cli`** — implements [`Phalcon\Contracts\Container\Service\Provider`](phalcon_contracts.md#contractscontainerserviceprovider)
+- **`Phalcon\Container\Provider\Cli`** - implements [`Phalcon\Contracts\Container\Service\Provider`](phalcon_contracts.md#contractscontainerserviceprovider)
 
 </div>
 
@@ -2058,7 +2058,7 @@ Provider for commonly used CLI applications
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Provider\Web`** — implements [`Phalcon\Contracts\Container\Service\Provider`](phalcon_contracts.md#contractscontainerserviceprovider)
+- **`Phalcon\Container\Provider\Web`** - implements [`Phalcon\Contracts\Container\Service\Provider`](phalcon_contracts.md#contractscontainerserviceprovider)
 
 </div>
 
@@ -2097,7 +2097,7 @@ Provider for commonly used Web applications
 <div class="api-tree" markdown>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-    - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** — implements `ArrayAccess`, `Countable`, `IteratorAggregate`
+    - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `ArrayAccess`, `Countable`, `IteratorAggregate`
 
 </div>
 
@@ -2816,7 +2816,7 @@ Resolve a shared instance method call
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Resolver\Lazy\Lazy`** — implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](phalcon_contracts.md#contractscontainerresolverresolvable)
+- **`Phalcon\Container\Resolver\Lazy\Lazy`** - implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](phalcon_contracts.md#contractscontainerresolverresolvable)
     - [`Phalcon\Container\Resolver\Lazy\ArrayValues`](#containerresolverlazyarrayvalues)
     - [`Phalcon\Container\Resolver\Lazy\Call`](#containerresolverlazycall)
     - [`Phalcon\Container\Resolver\Lazy\CallableGet`](#containerresolverlazycallableget)
@@ -3288,7 +3288,7 @@ Resolve a static method call
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Resolver\Resolver`** — implements [`Phalcon\Contracts\Container\Resolver\ResolverService`](phalcon_contracts.md#contractscontainerresolverresolverservice)
+- **`Phalcon\Container\Resolver\Resolver`** - implements [`Phalcon\Contracts\Container\Resolver\ResolverService`](phalcon_contracts.md#contractscontainerresolverresolverservice)
 
 </div>
 

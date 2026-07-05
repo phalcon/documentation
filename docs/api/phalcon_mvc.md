@@ -340,7 +340,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\Controller`** — implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\Controller`** - implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
@@ -502,7 +502,7 @@ $controller = $dispatcher->dispatch();
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
         - [`Phalcon\Dispatcher\AbstractDispatcher`](phalcon_dispatcher.md#dispatcherabstractdispatcher)
-            - **`Phalcon\Mvc\Dispatcher`** — implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
+            - **`Phalcon\Mvc\Dispatcher`** - implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
 
 </div>
 
@@ -915,7 +915,7 @@ $app->handle("/say/welcome/Phalcon");
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\Micro`** — implements `ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\Micro`** - implements `ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
@@ -1624,7 +1624,7 @@ $app->mount($collection);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Micro\Collection`** — implements [`Phalcon\Mvc\Micro\CollectionInterface`](#mvcmicrocollectioninterface)
+- **`Phalcon\Mvc\Micro\Collection`** - implements [`Phalcon\Mvc\Micro\CollectionInterface`](#mvcmicrocollectioninterface)
 
 </div>
 
@@ -2809,7 +2809,7 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Mvc\Model`** — implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `Serializable`, `JsonSerializable`
+        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `Serializable`, `JsonSerializable`
 
 </div>
 
@@ -6072,7 +6072,7 @@ This is an optional base class for ORM behaviors
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Behavior`** — implements [`Phalcon\Mvc\Model\BehaviorInterface`](#mvcmodelbehaviorinterface)
+- **`Phalcon\Mvc\Model\Behavior`** - implements [`Phalcon\Mvc\Model\BehaviorInterface`](#mvcmodelbehaviorinterface)
     - [`Phalcon\Mvc\Model\Behavior\SoftDelete`](#mvcmodelbehaviorsoftdelete)
     - [`Phalcon\Mvc\Model\Behavior\Timestampable`](#mvcmodelbehaviortimestampable)
 
@@ -6376,7 +6376,7 @@ This is an class for binding models into params for handler
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Binder`** — implements [`Phalcon\Mvc\Model\BinderInterface`](#mvcmodelbinderinterface)
+- **`Phalcon\Mvc\Model\Binder`** - implements [`Phalcon\Mvc\Model\BinderInterface`](#mvcmodelbinderinterface)
 
 </div>
 
@@ -6714,7 +6714,7 @@ $invoices = Invoices::query()
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Criteria`** — implements [`Phalcon\Mvc\Model\CriteriaInterface`](#mvcmodelcriteriainterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+- **`Phalcon\Mvc\Model\Criteria`** - implements [`Phalcon\Mvc\Model\CriteriaInterface`](#mvcmodelcriteriainterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
 
 </div>
 
@@ -9930,7 +9930,7 @@ $robot = new Robots($di);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Manager`** — implements [`Phalcon\Mvc\Model\ManagerInterface`](#mvcmodelmanagerinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+- **`Phalcon\Mvc\Model\Manager`** - implements [`Phalcon\Mvc\Model\ManagerInterface`](#mvcmodelmanagerinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
@@ -12319,7 +12319,7 @@ is defined:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\MetaData`** — implements [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Mvc\Model\MetaDataInterface`](#mvcmodelmetadatainterface)
+- **`Phalcon\Mvc\Model\MetaData`** - implements [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface), [`Phalcon\Mvc\Model\MetaDataInterface`](#mvcmodelmetadatainterface)
     - [`Phalcon\Mvc\Model\MetaData\Apcu`](#mvcmodelmetadataapcu)
     - [`Phalcon\Mvc\Model\MetaData\Libmemcached`](#mvcmodelmetadatalibmemcached)
     - [`Phalcon\Mvc\Model\MetaData\Memory`](#mvcmodelmetadatamemory)
@@ -14377,7 +14377,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\MetaData\Strategy\Annotations`** — implements [`Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`](#mvcmodelmetadatastrategystrategyinterface)
+- **`Phalcon\Mvc\Model\MetaData\Strategy\Annotations`** - implements [`Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`](#mvcmodelmetadatastrategystrategyinterface)
 
 </div>
 
@@ -14437,7 +14437,7 @@ Queries the table meta-data in order to introspect the model's metadata
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\MetaData\Strategy\Introspection`** — implements [`Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`](#mvcmodelmetadatastrategystrategyinterface)
+- **`Phalcon\Mvc\Model\MetaData\Strategy\Introspection`** - implements [`Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`](#mvcmodelmetadatastrategystrategyinterface)
 
 </div>
 
@@ -14695,7 +14695,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Query`** — implements [`Phalcon\Mvc\Model\QueryInterface`](#mvcmodelqueryinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+- **`Phalcon\Mvc\Model\Query`** - implements [`Phalcon\Mvc\Model\QueryInterface`](#mvcmodelqueryinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
 
 </div>
 
@@ -15935,7 +15935,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Query\Builder`** — implements [`Phalcon\Mvc\Model\Query\BuilderInterface`](#mvcmodelquerybuilderinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+- **`Phalcon\Mvc\Model\Query\Builder`** - implements [`Phalcon\Mvc\Model\Query\BuilderInterface`](#mvcmodelquerybuilderinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
 
 </div>
 
@@ -19871,7 +19871,7 @@ if ($status->success()) {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Query\Status`** — implements [`Phalcon\Mvc\Model\Query\StatusInterface`](#mvcmodelquerystatusinterface)
+- **`Phalcon\Mvc\Model\Query\Status`** - implements [`Phalcon\Mvc\Model\Query\StatusInterface`](#mvcmodelquerystatusinterface)
 
 </div>
 
@@ -20040,7 +20040,7 @@ This class represents a relationship between two models
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Relation`** — implements [`Phalcon\Mvc\Model\RelationInterface`](#mvcmodelrelationinterface)
+- **`Phalcon\Mvc\Model\Relation`** - implements [`Phalcon\Mvc\Model\RelationInterface`](#mvcmodelrelationinterface)
 
 </div>
 
@@ -20687,7 +20687,7 @@ while ($robots->valid()) {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Resultset`** — implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `Iterator`, `SeekableIterator`, `Countable`, `ArrayAccess`, `Serializable`, `JsonSerializable`
+- **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `Iterator`, `SeekableIterator`, `Countable`, `ArrayAccess`, `Serializable`, `JsonSerializable`
     - [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
     - [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
 
@@ -21727,7 +21727,7 @@ This objects implements the ArrayAccess interface to allow access the object as 
 <div class="api-tree" markdown>
 
 - `\stdClass`
-    - **`Phalcon\Mvc\Model\Row`** — implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `ArrayAccess`, `JsonSerializable`
+    - **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `ArrayAccess`, `JsonSerializable`
 
 </div>
 
@@ -21933,7 +21933,7 @@ try {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Transaction`** — implements [`Phalcon\Mvc\Model\TransactionInterface`](#mvcmodeltransactioninterface)
+- **`Phalcon\Mvc\Model\Transaction`** - implements [`Phalcon\Mvc\Model\TransactionInterface`](#mvcmodeltransactioninterface)
 
 </div>
 
@@ -22535,7 +22535,7 @@ try {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Transaction\Manager`** — implements [`Phalcon\Mvc\Model\Transaction\ManagerInterface`](#mvcmodeltransactionmanagerinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+- **`Phalcon\Mvc\Model\Transaction\Manager`** - implements [`Phalcon\Mvc\Model\Transaction\ManagerInterface`](#mvcmodeltransactionmanagerinterface), [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
 
 </div>
 
@@ -23203,7 +23203,7 @@ echo $router->getControllerName();
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Mvc\Router`** — implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
 
 </div>
@@ -25788,7 +25788,7 @@ $router->mount($blog);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Router\Group`** — implements [`Phalcon\Mvc\Router\GroupInterface`](#mvcroutergroupinterface)
+- **`Phalcon\Mvc\Router\Group`** - implements [`Phalcon\Mvc\Router\GroupInterface`](#mvcroutergroupinterface)
 
 </div>
 
@@ -26606,7 +26606,7 @@ This class represents every route added to the router
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Router\Route`** — implements [`Phalcon\Mvc\Router\RouteInterface`](#mvcrouterrouteinterface)
+- **`Phalcon\Mvc\Router\Route`** - implements [`Phalcon\Mvc\Router\RouteInterface`](#mvcrouterrouteinterface)
 
 </div>
 
@@ -27532,7 +27532,7 @@ echo $url->get(
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Mvc\Url`** — implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
+        - **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
 
 </div>
 
@@ -28056,7 +28056,7 @@ echo $view->getContent();
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\View`** — implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
@@ -29754,7 +29754,7 @@ basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\View\Engine\AbstractEngine`** — implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\View\Engine\AbstractEngine`** - implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Mvc\View\Engine\Php`](#mvcviewenginephp)
             - [`Phalcon\Mvc\View\Engine\Volt`](#mvcviewenginevolt)
 
@@ -30025,7 +30025,7 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
-            - **`Phalcon\Mvc\View\Engine\Volt`** — implements [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+            - **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 
@@ -30285,7 +30285,7 @@ require $compiler->getCompiledTemplatePath();
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\View\Engine\Volt\Compiler`** — implements [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
+- **`Phalcon\Mvc\View\Engine\Volt\Compiler`** - implements [`Phalcon\Di\InjectionAwareInterface`](phalcon_di.md#diinjectionawareinterface)
 
 </div>
 
@@ -32496,7 +32496,7 @@ echo $view->render(
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\View\Simple`** — implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
 
 </div>
 

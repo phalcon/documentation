@@ -19,7 +19,7 @@ hide:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Translate\Adapter\AbstractAdapter`** — implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `ArrayAccess`
+- **`Phalcon\Translate\Adapter\AbstractAdapter`** - implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `ArrayAccess`
     - [`Phalcon\Translate\Adapter\Csv`](#translateadaptercsv)
     - [`Phalcon\Translate\Adapter\Gettext`](#translateadaptergettext)
     - [`Phalcon\Translate\Adapter\NativeArray`](#translateadapternativearray)
@@ -1270,7 +1270,7 @@ Class AssociativeArray
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Translate\Interpolator\AssociativeArray`** — implements [`Phalcon\Translate\Interpolator\InterpolatorInterface`](#translateinterpolatorinterpolatorinterface)
+- **`Phalcon\Translate\Interpolator\AssociativeArray`** - implements [`Phalcon\Translate\Interpolator\InterpolatorInterface`](#translateinterpolatorinterpolatorinterface)
 
 </div>
 
@@ -1321,7 +1321,7 @@ Replaces placeholders by the values passed
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Translate\Interpolator\IndexedArray`** — implements [`Phalcon\Translate\Interpolator\InterpolatorInterface`](#translateinterpolatorinterpolatorinterface)
+- **`Phalcon\Translate\Interpolator\IndexedArray`** - implements [`Phalcon\Translate\Interpolator\InterpolatorInterface`](#translateinterpolatorinterpolatorinterface)
 
 </div>
 

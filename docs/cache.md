@@ -871,7 +871,7 @@ The canonical interface for this component lives in the `Phalcon\Contracts\Cache
 
 ## Exceptions
 
-Any exception thrown in the Cache component is of type [Phalcon\Cache\Exception\Exception][cache-exception-exception]. Invalid arguments — a cache key that is not a string or contains reserved characters, or a non-iterable set of keys passed to `getMultiple()` / `setMultiple()` / `deleteMultiple()` — raise [Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception] instead. Both extend `\Exception`. You can use these exceptions to selectively catch failures from this component.
+Any exception thrown in the Cache component is of type [Phalcon\Cache\Exception\Exception][cache-exception-exception]. Invalid arguments - a cache key that is not a string or contains reserved characters, or a non-iterable set of keys passed to `getMultiple()` / `setMultiple()` / `deleteMultiple()` - raise [Phalcon\Cache\Exception\InvalidArgumentException][cache-exception-invalidargumentexception] instead. Both extend `\Exception`. You can use these exceptions to selectively catch failures from this component.
 
 ```php
 <?php
@@ -896,7 +896,7 @@ class IndexController extends Controller
 
 The class raised for an invalid argument is resolved through `Phalcon\Cache\AbstractCache::getExceptionClass()`, which returns `Phalcon\Cache\Exception\InvalidArgumentException` by default.
 
-The Cache component does not implement PSR-16 (`Psr\SimpleCache`), and neither do its exceptions. For PSR-16 interoperability — including a `Psr\SimpleCache\InvalidArgumentException` that callers can catch — install the [proxy package][proxy-psr16]. The proxy overrides `getExceptionClass()` to return a PSR-16-marked exception, so the marker is restored without any catch-and-rethrow overhead.
+The Cache component does not implement PSR-16 (`Psr\SimpleCache`), and neither do its exceptions. For PSR-16 interoperability - including a `Psr\SimpleCache\InvalidArgumentException` that callers can catch - install the [proxy package][proxy-psr16]. The proxy overrides `getExceptionClass()` to return a PSR-16-marked exception, so the marker is restored without any catch-and-rethrow overhead.
 
 ```sh
 composer require phalcon/proxy-psr16

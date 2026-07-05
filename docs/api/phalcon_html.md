@@ -18,7 +18,7 @@ This class helps to work with HTML Attributes
 <div class="api-tree" markdown>
 
 - [`Phalcon\Support\Collection`](phalcon_support.md#supportcollection)
-    - **`Phalcon\Html\Attributes`** — implements [`Phalcon\Html\Attributes\RenderInterface`](#htmlattributesrenderinterface)
+    - **`Phalcon\Html\Attributes`** - implements [`Phalcon\Html\Attributes\RenderInterface`](#htmlattributesrenderinterface)
 
 </div>
 
@@ -358,7 +358,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Html\Escaper`** — implements [`Phalcon\Html\Escaper\EscaperInterface`](#htmlescaperescaperinterface)
+- **`Phalcon\Html\Escaper`** - implements [`Phalcon\Html\Escaper\EscaperInterface`](#htmlescaperescaperinterface)
 
 </div>
 
@@ -3765,7 +3765,7 @@ array values define optgroups.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Html\Helper\Input\Select\ArrayData`** — implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](phalcon_contracts.md#contractshtmlhelperinputselectdata)
+- **`Phalcon\Html\Helper\Input\Select\ArrayData`** - implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](phalcon_contracts.md#contractshtmlhelperinputselectdata)
 
 </div>
 
@@ -3839,7 +3839,7 @@ public function getOptions(): array;
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Html\Helper\Input\Select\ResultsetData`** — implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](phalcon_contracts.md#contractshtmlhelperinputselectdata)
+- **`Phalcon\Html\Helper\Input\Select\ResultsetData`** - implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](phalcon_contracts.md#contractshtmlhelperinputselectdata)
 
 </div>
 
@@ -5274,7 +5274,7 @@ Class Phalcon\Html\Link\EvolvableLink
 
 - [`Phalcon\Html\Link\AbstractLink`](#htmllinkabstractlink)
     - [`Phalcon\Html\Link\Link`](#htmllinklink)
-        - **`Phalcon\Html\Link\EvolvableLink`** — implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
+        - **`Phalcon\Html\Link\EvolvableLink`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
 
 </div>
 
@@ -5392,7 +5392,7 @@ Class Phalcon\Html\Link\EvolvableLinkProvider
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
     - [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
-        - **`Phalcon\Html\Link\EvolvableLinkProvider`** — implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
+        - **`Phalcon\Html\Link\EvolvableLinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
 
 </div>
 
@@ -5771,7 +5771,7 @@ Class Phalcon\Html\Link\Link
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Link\AbstractLink`](#htmllinkabstractlink)
-    - **`Phalcon\Html\Link\Link`** — implements [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
+    - **`Phalcon\Html\Link\Link`** - implements [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
         - [`Phalcon\Html\Link\EvolvableLink`](#htmllinkevolvablelink)
 
 </div>
@@ -5866,7 +5866,7 @@ Returns whether or not this is a templated link.
 <div class="api-tree" markdown>
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
-    - **`Phalcon\Html\Link\LinkProvider`** — implements [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
+    - **`Phalcon\Html\Link\LinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
         - [`Phalcon\Html\Link\EvolvableLinkProvider`](#htmllinkevolvablelinkprovider)
 
 </div>
@@ -5929,7 +5929,7 @@ Class Phalcon\Http\Link\Serializer\Header
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Html\Link\Serializer\Header`** — implements [`Phalcon\Html\Link\Serializer\SerializerInterface`](#htmllinkserializerserializerinterface)
+- **`Phalcon\Html\Link\Serializer\Header`** - implements [`Phalcon\Html\Link\Serializer\SerializerInterface`](#htmllinkserializerserializerinterface)
 
 </div>
 

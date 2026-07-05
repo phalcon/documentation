@@ -29,13 +29,13 @@ omits them cannot be loaded.
 A single lifecycle point can be intercepted through three independent
 channels. For any given point they run in this order:
 
-1. **Events-manager listener** — e.g. `dispatch:beforeExecuteRoute`. A
+1. **Events-manager listener** - e.g. `dispatch:beforeExecuteRoute`. A
    listener returning `false` cancels; calling `forward()` re-enters the
    loop; throwing routes through {@see handleException()}.
-2. **Duck-typed handler method** — e.g. a `beforeExecuteRoute()` method on
+2. **Duck-typed handler method** - e.g. a `beforeExecuteRoute()` method on
    the controller/task itself (presence is cached per class). Same
    `false` / `forward()` cancellation semantics as the event.
-3. **`dispatch:beforeCallAction` observer** — fired by
+3. **`dispatch:beforeCallAction` observer** - fired by
    {@see callActionMethod()} with a `Phalcon\Support\Collection` carrying
    the mutable keys `handler`, `action` and `params`. Listeners may rewrite
    those keys to change *what* gets invoked; the substituted callable is
@@ -46,7 +46,7 @@ channels. For any given point they run in this order:
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Dispatcher\AbstractDispatcher`** — implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Dispatcher\AbstractDispatcher`** - implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
             - [`Phalcon\Cli\Dispatcher`](phalcon_cli.md#clidispatcher)
             - [`Phalcon\Mvc\Dispatcher`](phalcon_mvc.md#mvcdispatcher)
 

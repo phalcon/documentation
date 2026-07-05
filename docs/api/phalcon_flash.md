@@ -29,7 +29,7 @@ Class AbstractFlash
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Flash\AbstractFlash`** — implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
+        - **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
             - [`Phalcon\Flash\Direct`](#flashdirect)
             - [`Phalcon\Flash\Session`](#flashsession)
 
