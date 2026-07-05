@@ -8,8 +8,8 @@
 
 The component is used internally by two features, and can also read any attribute you define yourself:
 
-- **Routing** — the `Phalcon\Annotations\Router\*` attributes (`#[Route]`, `#[Get]`, `#[Post]`, `#[RoutePrefix]`, ...) consumed by [Phalcon\Mvc\Router\Annotations][mvc-router-annotations]. See [Annotation-Based Routing](#annotation-based-routing).
-- **Model metadata** — the `Phalcon\Annotations\Models\MetaData\*` attributes (`#[Source]`, `#[Column]`, `#[Primary]`, `#[Identity]`) consumed by the model metadata `Annotations` strategy. See [Attribute-Based Model Metadata](#attribute-based-model-metadata).
+- **Routing** - the `Phalcon\Annotations\Router\*` attributes (`#[Route]`, `#[Get]`, `#[Post]`, `#[RoutePrefix]`, ...) consumed by [Phalcon\Mvc\Router\Annotations][mvc-router-annotations]. See [Annotation-Based Routing](#annotation-based-routing).
+- **Model metadata** - the `Phalcon\Annotations\Models\MetaData\*` attributes (`#[Source]`, `#[Column]`, `#[Primary]`, `#[Identity]`) consumed by the model metadata `Annotations` strategy. See [Attribute-Based Model Metadata](#attribute-based-model-metadata).
 
 !!! info "NOTE"
 
@@ -155,7 +155,7 @@ public function numberArguments(): int
 
 !!! info "NOTE"
 
-    `getName()` returns the attribute's short class name (`Route`, `Column`, ...), not its fully-qualified name. The arguments are the raw values as written in the attribute — positional arguments keyed by integer (`0`, `1`, ...) and named arguments keyed by the name written. They are **not** validated against the attribute class constructor, so a named argument is readable even if the attribute class does not declare a matching parameter.
+    `getName()` returns the attribute's short class name (`Route`, `Column`, ...), not its fully-qualified name. The arguments are the raw values as written in the attribute - positional arguments keyed by integer (`0`, `1`, ...) and named arguments keyed by the name written. They are **not** validated against the attribute class constructor, so a named argument is readable even if the attribute class does not declare a matching parameter.
 
 ### Reading Attributes Directly
 
@@ -212,7 +212,7 @@ foreach ($reflection->getPropertiesAnnotations() as $property => $collection) {
 
 ## Adapters
 
-The service caches parsed reflections through a storage adapter so a class is only reflected once. Every adapter under `Phalcon\Annotations\Adapter` extends the matching [Phalcon\Storage][storage] adapter and is constructed like one — with a `Phalcon\Storage\SerializerFactory` and an options array.
+The service caches parsed reflections through a storage adapter so a class is only reflected once. Every adapter under `Phalcon\Annotations\Adapter` extends the matching [Phalcon\Storage][storage] adapter and is constructed like one - with a `Phalcon\Storage\SerializerFactory` and an options array.
 
 | Adapter                                                                     | Backing store             | Suitable for                                             |
 |-----------------------------------------------------------------------------|---------------------------|----------------------------------------------------------|
@@ -283,7 +283,7 @@ $adapter = $factory->newInstance(
 
 ### Custom
 
-Implement [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface] — which extends `Phalcon\Storage\Adapter\AdapterInterface` — to create your own cache backend.
+Implement [Phalcon\Annotations\Adapter\AdapterInterface][annotations-adapter-adapterinterface] - which extends `Phalcon\Storage\Adapter\AdapterInterface` - to create your own cache backend.
 
 ## Annotation-Based Routing
 

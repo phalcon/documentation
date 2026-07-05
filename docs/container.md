@@ -597,7 +597,7 @@ use Phalcon\Container\Definition\ServiceLifetime;
 
 $container = new Container();
 
-// Inject pre-built instances — setInstance() is fluent
+// Inject pre-built instances - setInstance() is fluent
 $container
     ->setInstance('request', $requestObject, ServiceLifetime::SCOPED)
     ->setInstance('response', $responseObject, ServiceLifetime::SCOPED);

@@ -91,6 +91,14 @@ public function bind(
 Assigns the data to an entity. The entity is used to obtain the validation values. When `$whitelist` is supplied, only the fields listed in it will be assigned to the entity; all other fields are skipped.
 
 ```php
+public static function getDefaultMessage(
+    string $validatorClassName
+): string
+```
+
+Returns the default message registered for a validator class, or an empty string when none has been registered
+
+```php
 public function getEntity(): object
 ```
 
@@ -161,6 +169,14 @@ public function rules(
 ```
 
 Adds the validators to a field
+
+```php
+public static function setDefaultMessages(
+    array $messages = []
+): array
+```
+
+Registers default messages for validators, keyed by validator class name. Calls are merged with any previously registered defaults. Returns the full map of registered defaults.
 
 ```php
 public function setEntity(
@@ -879,6 +895,31 @@ $validator->add(
 );
 ```
 
+The File validator forwards an `allowWildcards` option to the [File MimeType](#file-mimetype) check it builds from `allowedTypes`. Set it to `true` to treat each `allowedTypes` entry as an anchored regular expression:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\File;
+
+$validator = new Validation();
+
+$validator->add(
+    "file",
+    new File(
+        [
+            "allowedTypes"   => [
+                "image/.*",
+                "video/.*",
+            ],
+            "allowWildcards" => true,
+            "messageType"    => "Allowed file types are :types",
+        ]
+    )
+);
+```
+
 ### File MimeType
 
 Checks if a value has a correct file mime type
@@ -929,6 +970,33 @@ $validator->add(
     )
 );
 ```
+
+By default the detected MIME type must match one of the configured `types` exactly. Set the `allowWildcards` option to `true` to match each configured entry as an anchored regular expression instead, which accepts a whole MIME family without listing every subtype:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\File\MimeType;
+
+$validator = new Validation();
+
+$validator->add(
+    "file",
+    new MimeType(
+        [
+            "types" => [
+                "image/.*",
+                "video/.*",
+            ],
+            "allowWildcards" => true,
+            "message"        => "Allowed file types are :types",
+        ]
+    )
+);
+```
+
+Each entry is anchored on both ends (`#^...$#`), so `image/.*` matches `image/png` and `image/jpeg` but not `text/plain`. An exact string comparison is tried first, so literal types that contain regular-expression metacharacters, such as `image/svg+xml`, still match themselves. The option defaults to `false`, which preserves the exact-match behavior.
 
 ### File Resolution AspectRatio
 
@@ -2006,6 +2074,69 @@ if (count($messages)) {
     }
 }
 ```
+
+### Default Messages
+You can register a default failure message for a validator class. The default is used whenever that validator runs without a message of its own. This lets you translate or override the built-in message of every validator of a given type in one place, instead of passing a `message` option to each instance.
+
+Register defaults with the static `Phalcon\Filter\Validation::setDefaultMessages()` method, keyed by validator class name. Read a registered default with `Phalcon\Filter\Validation::getDefaultMessage()`. Calls to `setDefaultMessages()` are merged, so defaults can be registered incrementally.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+
+Validation::setDefaultMessages(
+    [
+        PresenceOf::class => 'Default message :field is required',
+    ]
+);
+
+$validation = new Validation();
+$validation->add('name', new PresenceOf());
+
+$messages = $validation->validate([]);
+
+echo $messages[0]->getMessage(); // "Default message name is required"
+```
+
+The message for a validator is resolved in the following order, from highest priority to lowest:
+
+1. A per-field template set on the validator through `setTemplates()`.
+2. A message set on the validator instance - the `message` or `template` option, or `setTemplate()`.
+3. A default registered for the validator class through `setDefaultMessages()`.
+4. The validator's built-in class default message.
+
+A message set on the validator instance therefore always takes precedence over a registered default:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+
+Validation::setDefaultMessages(
+    [
+        PresenceOf::class => 'Default message :field is required',
+    ]
+);
+
+$validation = new Validation();
+$validation->add(
+    'name',
+    new PresenceOf(
+        [
+            'message' => 'Custom message :field is required',
+        ]
+    )
+);
+
+$messages = $validation->validate([]);
+
+echo $messages[0]->getMessage(); // "Custom message name is required"
+```
+
+The `:field` placeholder is replaced with the field label, as in any validator message. Registered defaults apply to every validator whose message is produced through the message factory (`getTemplate()` / `messageFactory()`) - the built-in validators and any custom validator extending [Phalcon\Filter\Validation\AbstractValidator][validation-abstractvalidator]. The `File` validators' upload-specific messages (`messageFileEmpty`, `messageIniSize` and `messageValid`) are produced separately and are not affected; set those through their own options.
 
 ### Iteration and Offsets
 Messages are stored and iterated by integer position. An entry added under a string key through the array-access interface stays reachable by that offset but is not visited during iteration. A `foreach` loop walks the integer sequence only. Use `appendMessage()` when an entry must take part in iteration.
