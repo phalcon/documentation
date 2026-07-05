@@ -3979,6 +3979,53 @@ If conditions have been defined, we are checking if we have the `id` as a field 
 
 The `selectReadConnection()` method is called every time we need to get data from the database, and returns the correct connection to be used.
 
+### Sticky Connections
+
+When you split reads and writes across two connections, a read issued immediately after a write can reach the read connection before it reflects the change, returning stale data or missing a row you just inserted. To avoid this within a single request, the models manager offers an opt-in *sticky* mode.
+
+When sticky is enabled and a model performs a write (`insert`, `update` or `delete`) during the request cycle, any subsequent read for that model's write connection service is served from the **write** connection instead of the read connection. This guarantees that data written earlier in the request can be read back immediately.
+
+Sticky is disabled by default, so the standard read/write split is preserved unless you turn it on. Enable it on the models manager:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model\Manager;
+
+/** @var Manager $manager */
+$manager = $container->get('modelsManager');
+
+$manager->setSticky(true);
+```
+
+With sticky active, a read after a write is routed to the write connection:
+
+```php
+<?php
+
+$invoice            = new Invoices();
+$invoice->inv_title = 'Sticky invoice';
+$invoice->save();               // executed on the write connection
+
+// Because a write happened during this request, the following read is
+// served from the write connection, so the new row is guaranteed to be found.
+$invoices = Invoices::find();
+```
+
+A few things to keep in mind:
+
+- Tracking is scoped to the **write connection service**. Writing through one model only makes reads sticky for models that share the same write service; models on a different write service are unaffected.
+- A model bound to a transaction still uses the transaction connection, which always takes precedence over sticky routing.
+- The sticky state lives on the models manager for the duration of the request. In a traditional PHP-FPM setup a fresh manager is created on every request, so nothing needs to be reset. In long-running runtimes (e.g. Swoole or RoadRunner) where the manager instance is reused across requests, call `resetConnectionState()` between requests to clear the tracking:
+
+```php
+<?php
+
+$manager->resetConnectionState();
+```
+
+Writes are recorded internally through the manager's `registerWrite()` method, which the model calls automatically after a successful `insert`, `update` or `delete`; you do not normally need to call it yourself.
+
 ## Dependency Injection
 
 [Phalcon\Mvc\Model][mvc-model] is tightly bound to the DI container. You can retrieve the container by using the `getDI` method. Therefore, you have access to all services registered in the DI container.
