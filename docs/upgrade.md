@@ -85,7 +85,7 @@ composer require phalcon/phalcon
 [phalcon-translate]: translate.md
 [phalcon-volt]: volt.md
 [php-support]: https://www.php.net/supported-versions.php
-[proxy-psr3]: https://github.com/phalcon/proxy-psr3
+[bridge-psr3]: https://github.com/phalcon/bridge-psr3
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 [psr-3]: https://www.php-fig.org/psr/psr-3/
 [psr-extension]: https://github.com/jbboehr/php-psr
