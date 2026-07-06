@@ -569,6 +569,39 @@ $validator->add(
 );
 ```
 
+The closure passed as the `callback` option is bound to the validator instance before it is called, so inside the closure `$this` refers to the [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] validator. This lets the callback call the validator's own public methods - such as `$this->setTemplate()` - to change the failure message depending on which check failed. Only closures are bound; string function names and `[object, method]` callables are invoked as-is.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Callback;
+
+$validation = new Validation();
+$validation->add(
+    'title',
+    new Callback(
+        [
+            'callback' => function ($data) {
+                if (!is_string($data['title'])) {
+                    $this->setTemplate('Title is not a string');
+
+                    return false;
+                }
+
+                if (strlen($data['title']) > 10) {
+                    $this->setTemplate('Title too long');
+
+                    return false;
+                }
+
+                return true;
+            },
+        ]
+    )
+);
+```
+
 ### Confirmation
 
 Checks that two values have the same value
