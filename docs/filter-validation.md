@@ -323,6 +323,7 @@ Phalcon offers a set of built-in validators for this component:
 | [Phalcon\Filter\Validation\Validator\File\Size\Equal][validation-validator-file-size-equal]             | Equal File Size            |
 | [Phalcon\Filter\Validation\Validator\File\Size\Max][validation-validator-file-size-max]                 | Maximum File Size          |
 | [Phalcon\Filter\Validation\Validator\File\Size\Min][validation-validator-file-size-min]                 | Minimum File Size          |
+| [Phalcon\Filter\Validation\Validator\Files][validation-validator-files]                                 | Array of files             |
 | [Phalcon\Filter\Validation\Validator\Identical][validation-validator-identical]                         | Equal specific value       |
 | [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]                     | Within value set           |
 | [Phalcon\Filter\Validation\Validator\Ip][validation-validator-ip]                                       | IP                         |
@@ -1347,6 +1348,62 @@ $validator->add(
                 "file"        => "file exceeds the min size 2M",
                 "anotherFile" => "anotherFile exceeds the min size 4M",
             ],
+        ]
+    )
+);
+```
+
+### Files
+
+Checks that a field holds a correct array of uploaded files.
+
+The `Files` validator accepts the same options as [File](#file) and applies them to every file in the field. It validates the `<input type="file" name="photos[]" multiple>` case, where one input carries several files. Validation stops at the first file that fails a rule.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Files;
+
+$validator = new Validation();
+
+$validator->add(
+    "photos",
+    new Files(
+        [
+            "maxSize"      => "2M",
+            "messageSize"  => ":field exceeds the max size (:size)",
+            "allowedTypes" => [
+                "image/jpeg",
+                "image/png",
+            ],
+            "messageType"  => "Allowed file types are :types",
+        ]
+    )
+);
+```
+
+PHP delivers a multiple-file input as one `$_FILES` entry whose `name`, `type`, `tmp_name`, `error` and `size` members each hold one value per file. The validator normalizes that structure into individual files and validates each one through a `File` validator built from the supplied options. A single (non-`multiple`) file entry is also accepted and validated as one file.
+
+Set the `allowEmpty` option to `true` to pass validation when no file is uploaded:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Files;
+
+$validator = new Validation();
+
+$validator->add(
+    "photos",
+    new Files(
+        [
+            "allowedTypes" => [
+                "image/jpeg",
+                "image/png",
+            ],
+            "allowEmpty"   => true,
         ]
     )
 );
@@ -2555,6 +2612,7 @@ The component raises granular subclasses of `Phalcon\Filter\Validation\Exception
 [validation-validator-file-size-equal]: api/phalcon_filter.md#filtervalidationvalidatorfilesizeequal
 [validation-validator-file-size-max]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemax
 [validation-validator-file-size-min]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemin
+[validation-validator-files]: api/phalcon_filter.md#filtervalidationvalidatorfiles
 [validation-validator-identical]: api/phalcon_filter.md#filtervalidationvalidatoridentical
 [validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin
 [validation-validator-ip]: api/phalcon_filter.md#filtervalidationvalidatorip
