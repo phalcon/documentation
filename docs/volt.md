@@ -1518,11 +1518,48 @@ Rendering `index.volt` produces:
 </html>
 ```
 
-Note the call to the function `super()`. With that function, it is possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
+Note the call to the function `super()`. With that function, it is possible to render the contents of the parent block. As partials, the path set to `extends` is, by default, a relative path under the current views directory (i.e. `app/views/`). Absolute and template-relative paths are also supported; see [Path Resolution](#path-resolution).
 
 !!! warning "WARNING"
 
     By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended to initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
+
+### Path Resolution
+
+The path passed to `{% extends %}` and `{% include %}` is resolved when the template is compiled. Three forms are accepted:
+
+- A plain path such as `layouts/base.volt` resolves relative to the views directory (`app/views/`). This is the default.
+- A path that begins with `./` or `../` resolves relative to the directory of the template being compiled, not the views directory.
+- An absolute path is used unchanged. A Unix path begins with `/`; a Windows path begins with a drive letter (for example `C:\`) or a UNC prefix (`\\`).
+
+Available since Phalcon 5.17.0.
+
+A template-relative path lets a template reference a sibling directory without repeating the views-directory prefix. Given a template stored at `app/views/themes/dark/index.volt`:
+
+```twig
+{# app/views/themes/dark/index.volt #}
+{% extends '../light/base.volt' %}
+
+{% block content %}
+    <h1>Dark theme</h1>
+{% endblock %}
+
+```
+
+The parent template resolves to `app/views/themes/light/base.volt`.
+
+An absolute path targets a template stored outside the views directory:
+
+```twig
+{% extends '/var/www/shared/layouts/base.volt' %}
+
+{% block content %}
+    <h1>Shared layout</h1>
+{% endblock %}
+
+```
+
+The same rules apply to `{% include %}`. When the resolved template does not exist as the parent is compiled, Volt throws `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`.
 
 ## Autoescape Mode
 
