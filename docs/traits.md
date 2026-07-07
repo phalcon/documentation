@@ -8,7 +8,7 @@ The `Phalcon\Traits` namespace is a collection of small, focused traits used thr
 
 Consolidating shared behavior in traits keeps the implementation in one place: a fix or improvement to a trait is immediately picked up by every class that uses it.
 
-The traits follow the layout of the components they support, so a trait lives under a namespace that mirrors its area of responsibility. For instance, array helper traits live under `Phalcon\Traits\Support\Helper\Arr`.
+The traits follow the layout of the components they support, so a trait lives under a namespace that mirrors its area of responsibility. For instance, array helper traits live under `Phalcon\Traits\Support\Helper\Arr`, while wrappers for native PHP functions live under `Phalcon\Traits\Php`.
 
 !!! info "NOTE"
 
@@ -16,9 +16,10 @@ The traits follow the layout of the components they support, so a trait lives un
 
 ## Available Traits
 
-| Group | Trait                                          | Description                                                              |
-|-------|------------------------------------------------|-------------------------------------------------------------------------|
-| Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait`   | Read an array element by key with a default value and an optional cast.  |
+| Group | Trait                                        | Description                                                             |
+|-------|----------------------------------------------|-------------------------------------------------------------------------|
+| Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait` | Read an array element by key with a default value and an optional cast. |
+| File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
 
 - - -
 
@@ -45,12 +46,12 @@ protected function getArrVal(
 
 **Parameters**
 
-| Name            | Type      | Default | Description                                                                                                  |
-|-----------------|-----------|---------|--------------------------------------------------------------------------------------------------------------|
-| `$collection`   | `array`   | -       | The source array to read from.                                                                               |
-| `$index`        | `mixed`   | -       | The key to look up in the array.                                                                             |
-| `$defaultValue` | `mixed`   | `null`  | Returned when `$index` does not exist in `$collection`.                                                      |
-| `$cast`         | `?string` | `null`  | When set, the returned value is cast to this type via `settype()` (e.g. `bool`, `int`, `string`, `array`).  |
+| Name            | Type      | Default | Description                                                                                                |
+|-----------------|-----------|---------|------------------------------------------------------------------------------------------------------------|
+| `$collection`   | `array`   | -       | The source array to read from.                                                                             |
+| `$index`        | `mixed`   | -       | The key to look up in the array.                                                                           |
+| `$defaultValue` | `mixed`   | `null`  | Returned when `$index` does not exist in `$collection`.                                                    |
+| `$cast`         | `?string` | `null`  | When set, the returned value is cast to this type via `settype()` (e.g. `bool`, `int`, `string`, `array`). |
 
 **Returns** the value stored at `$index`, or `$defaultValue` when the key is absent - cast to `$cast` when one is supplied.
 
@@ -82,5 +83,64 @@ class MyAdapter
 !!! info "NOTE"
 
     `Phalcon\Traits\Support\Helper\Arr\GetTrait` is used internally by a number of core components - among them the `Session`, `Storage` and `Mvc\Model\MetaData` adapters, `Http\Cookie`, `Http\Request\File`, `Logger\LoggerFactory` and `Image\ImageFactory` - to read constructor options while providing sensible defaults.
+
+- - -
+
+## Php
+
+Traits that wrap native PHP functions behind protected methods. Isolating these calls in a method makes them straightforward to override in a test double, so behavior such as filesystem access can be simulated without touching the real environment.
+
+### `FileTrait`
+
+`Phalcon\Traits\Php\FileTrait`
+
+Provides overridable wrappers around PHP's filesystem functions. Each method forwards its arguments to the matching PHP function and returns its result unchanged.
+
+| Method                                                                                                 | Wraps                 | Description                                                                    |
+|--------------------------------------------------------------------------------------------------------|-----------------------|--------------------------------------------------------------------------------|
+| `phpFclose($handle)`                                                                                   | `fclose()`            | Closes an open file pointer.                                                   |
+| `phpFgetCsv($stream, $length = 0, $separator = ",", $enclosure = "\"", $escape = "\\")`                | `fgetcsv()`           | Reads a line from a file pointer and parses the CSV fields.                    |
+| `phpFileExists($filename)`                                                                             | `file_exists()`       | Checks whether a file or directory exists.                                     |
+| `phpFileGetContents($filename, $useIncludePath = false, $context = null, $offset = 0, $length = null)` | `file_get_contents()` | Reads an entire file into a string.                                            |
+| `phpFilePutContents($filename, $data, $flags = 0, $context = null)`                                    | `file_put_contents()` | Writes a string to a file.                                                     |
+| `phpFopen($filename, $mode, $useIncludePath = false, $context = null)`                                 | `fopen()`             | Opens a file (or URL) and returns a resource.                                  |
+| `phpFwrite($handle, $data, $length = null)`                                                            | `fwrite()`            | Binary-safe write; when `$length` is supplied, writes at most that many bytes. |
+| `phpIsWritable($filename)`                                                                             | `is_writable()`       | Tells whether a filename is writable.                                          |
+| `phpUnlink($filename, $context = null)`                                                                | `unlink()`            | Deletes a file.                                                                |
+
+All methods are `protected`; call them from inside the class with `$this->methodName()`.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\FileTrait;
+
+class MyStore
+{
+    use FileTrait;
+
+    public function save(string $file, string $data): bool
+    {
+        return false !== $this->phpFilePutContents($file, $data);
+    }
+
+    public function load(string $file): string
+    {
+        if (false === $this->phpFileExists($file)) {
+            return "";
+        }
+
+        $contents = $this->phpFileGetContents($file);
+
+        return false === $contents ? "" : $contents;
+    }
+}
+```
+
+!!! info "NOTE"
+
+    These wrappers exist mainly so that filesystem interactions can be replaced in unit tests by overriding the relevant method in a test subclass. They are used internally across the framework - for example by the `Session`, `Storage`, `Annotations` and `Mvc\Model\MetaData` stream adapters, the `Volt` compiler, `Mvc\View`, `Http\Request`, `Config\Adapter\Json` and the `Assets` components.
 
 [settype]: https://www.php.net/manual/en/function.settype.php
