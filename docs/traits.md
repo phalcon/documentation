@@ -20,6 +20,7 @@ The traits follow the layout of the components they support, so a trait lives un
 |-------|----------------------------------------------|-------------------------------------------------------------------------|
 | Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait` | Read an array element by key with a default value and an optional cast. |
 | File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
+| Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
 
 - - -
 
@@ -142,5 +143,49 @@ class MyStore
 !!! info "NOTE"
 
     These wrappers exist mainly so that filesystem interactions can be replaced in unit tests by overriding the relevant method in a test subclass. They are used internally across the framework - for example by the `Session`, `Storage`, `Annotations` and `Mvc\Model\MetaData` stream adapters, the `Volt` compiler, `Mvc\View`, `Http\Request`, `Config\Adapter\Json` and the `Assets` components.
+
+### `IniTrait`
+
+`Phalcon\Traits\Php\IniTrait`
+
+Provides overridable wrappers around PHP's ini functions. `ini_get()` is exposed as three typed getters (string, bool, int), each returning a default when the option is not set; `parse_ini_file()` is wrapped as-is. Every method has a `static` counterpart (prefixed `static`) for callers that have no instance - for example a static factory or a static settings reader.
+
+| Method | Static counterpart | Wraps | Description |
+|--------|--------------------|-------|-------------|
+| `phpIniGet($input, $defaultValue = "")` | `staticPhpIniGet(...)` | `ini_get()` | Returns the option value, or `$defaultValue` when it is not set. |
+| `phpIniGetBool($input, $defaultValue = false)` | `staticPhpIniGetBool(...)` | `ini_get()` | Interprets the option as a boolean - `true` for `true`/`on`/`yes`/`y`/`1` (case-insensitive), otherwise `$defaultValue`. |
+| `phpIniGetInt($input, $defaultValue = 0)` | `staticPhpIniGetInt(...)` | `ini_get()` | Returns the option cast to `int`, or `$defaultValue` when it is not set. |
+| `phpParseIniFile($filename, $processSections = false, $scannerMode = 0)` | `staticPhpParseIniFile(...)` | `parse_ini_file()` | Parses an ini file into an array. |
+
+Both the instance and static methods are `protected`. Because Zephir cannot call a `static` method through `$this`, the pair lets a class read ini values from either an instance context (`$this->phpIniGet(...)`) or a static one (`self::staticPhpIniGet(...)`).
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\IniTrait;
+
+class MyComponent
+{
+    use IniTrait;
+
+    public function __construct()
+    {
+        // instance context
+        $path = $this->phpIniGet('session.save_path', '/tmp');
+    }
+
+    public static function isEnabled(): bool
+    {
+        // static context - no $this available
+        return self::staticPhpIniGetBool('my.feature.enabled');
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Session\Adapter\Stream` (reading `session.save_path`) and `Phalcon\Config\Adapter\Ini` (parsing the ini file).
 
 [settype]: https://www.php.net/manual/en/function.settype.php
