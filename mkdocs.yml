@@ -276,6 +276,7 @@ nav:
           - Helper: support-helper.md
           - Registry: support-registry.md
           - Settings: support-settings.md
+          - Traits: traits.md
           - Version: support-version.md
   - API: api/index.md
   - Discussions: https://github.com/orgs/phalcon/discussions
