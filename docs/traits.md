@@ -25,6 +25,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | String| `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` | Build a nested directory path from a file name, with an optional path-safety guard. |
 | String| `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` | Ensure a directory string ends with exactly one `DIRECTORY_SEPARATOR`. |
 | String| `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` | Check whether a string ends with a given substring (case-insensitive by default). |
+| String| `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` | Check whether a string starts with a given substring (case-insensitive by default). |
 
 - - -
 
@@ -227,6 +228,54 @@ class MyValidator
 !!! info "NOTE"
 
     Used internally by `Phalcon\Support\Helper\Str\AbstractStr` - the base for the `Str\EndsWith` and `Str\Concat` helpers.
+
+### `Str\StartsWithTrait`
+
+`Phalcon\Traits\Support\Helper\Str\StartsWithTrait`
+
+Reports whether a string starts with a given substring. The comparison is case-insensitive by default and multibyte-aware - both sides are lowercased with `mb_strtolower()` before the prefix is checked (via the native `starts_with()`) - and an empty haystack always returns `false`.
+
+**Method**
+
+```php
+protected function toStartsWith(
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
+): bool
+```
+
+**Parameters**
+
+| Name          | Type     | Default | Description                                                                                 |
+|---------------|----------|---------|---------------------------------------------------------------------------------------------|
+| `$haystack`   | `string` | -       | The string to search in.                                                                    |
+| `$needle`     | `string` | -       | The prefix to look for.                                                                      |
+| `$ignoreCase` | `bool`   | `true`  | When `true` (default) the match ignores case; pass `false` for a case-sensitive comparison. |
+
+**Returns** `true` when `$haystack` starts with `$needle`, `false` otherwise (including when `$haystack` is empty).
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\StartsWithTrait;
+
+class MyRequest
+{
+    use StartsWithTrait;
+
+    public function isBearer(string $header): bool
+    {
+        return $this->toStartsWith($header, "Bearer ", false);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Str\AbstractStr` - the base for the `Str\StartsWith` and `Str\Concat` helpers.
 
 - - -
 
