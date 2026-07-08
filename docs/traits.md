@@ -327,7 +327,7 @@ class MyLogger
 
 !!! info "NOTE"
 
-    Used internally by `Phalcon\Support\Helper\Str\Interpolate`, the `Str` base `AbstractStr`, and `Phalcon\Logger\Formatter\AbstractFormatter` for PSR-3 message interpolation when formatting log entries.
+    Used internally by `Phalcon\Support\Helper\Str\Interpolate`, the `Str` base `AbstractStr`, `Phalcon\Logger\Formatter\AbstractFormatter` (PSR-3 message interpolation when formatting log entries), and `Phalcon\Translate\Interpolator\AssociativeArray` (associative-array placeholder replacement in translations).
 
 - - -
 
