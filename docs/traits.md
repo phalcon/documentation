@@ -26,6 +26,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | String| `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` | Ensure a directory string ends with exactly one `DIRECTORY_SEPARATOR`. |
 | String| `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` | Check whether a string ends with a given substring (case-insensitive by default). |
 | String| `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` | Check whether a string starts with a given substring (case-insensitive by default). |
+| String| `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` | Substitute context values into `%placeholder%` tokens in a string (PSR-3 message interpolation). |
 
 - - -
 
@@ -276,6 +277,57 @@ class MyRequest
 !!! info "NOTE"
 
     Used internally by `Phalcon\Support\Helper\Str\AbstractStr` - the base for the `Str\StartsWith` and `Str\Concat` helpers.
+
+### `Str\InterpolateTrait`
+
+`Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+
+Substitutes values from a `context` array into placeholder tokens in a string - the [PSR-3](https://www.php-fig.org/psr/psr-3/) message-interpolation convention. Each `context` key is wrapped in the left/right delimiters (both `%` by default) and replaced with its value using `strtr()`. An empty context, or a subject that contains no opening delimiter, is returned unchanged.
+
+**Method**
+
+```php
+protected function toInterpolate(
+    string $input,
+    array $context = [],
+    string $left = "%",
+    string $right = "%"
+): string
+```
+
+**Parameters**
+
+| Name       | Type     | Default | Description                                                                      |
+|------------|----------|---------|----------------------------------------------------------------------------------|
+| `$input`   | `string` | -       | The subject string containing the placeholders.                                  |
+| `$context` | `array`  | `[]`    | Key/value pairs; each `$left . $key . $right` occurrence is replaced by value.   |
+| `$left`    | `string` | `"%"`   | The opening delimiter that precedes each key.                                    |
+| `$right`   | `string` | `"%"`   | The closing delimiter that follows each key.                                     |
+
+**Returns** the interpolated string, or `$input` unchanged when `$context` is empty or the subject has no opening delimiter.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
+
+class MyLogger
+{
+    use InterpolateTrait;
+
+    public function render(string $message, array $context): string
+    {
+        // "User 42 logged in" from "User %id% logged in" + ["id" => 42]
+        return $this->toInterpolate($message, $context);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Str\Interpolate`, the `Str` base `AbstractStr`, and `Phalcon\Logger\Formatter\AbstractFormatter` for PSR-3 message interpolation when formatting log entries.
 
 - - -
 
