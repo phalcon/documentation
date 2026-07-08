@@ -22,6 +22,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
 | Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
 | Info  | `Phalcon\Traits\Php\InfoTrait`               | Overridable wrappers around PHP's runtime-inspection functions (`extension_loaded`, `function_exists`). |
+| String| `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` | Build a nested directory path from a file name, with an optional path-safety guard. |
 
 - - -
 
@@ -85,6 +86,53 @@ class MyAdapter
 !!! info "NOTE"
 
     `Phalcon\Traits\Support\Helper\Arr\GetTrait` is used internally by a number of core components - among them the `Session`, `Storage` and `Mvc\Model\MetaData` adapters, `Http\Cookie`, `Http\Request\File`, `Logger\LoggerFactory` and `Image\ImageFactory` - to read constructor options while providing sensible defaults.
+
+### `Str\DirFromFileTrait`
+
+`Phalcon\Traits\Support\Helper\Str\DirFromFileTrait`
+
+Turns a file name into a calculated nested directory path, so a large number of files can be spread across sub-directories rather than living in a single folder. The name is taken without its extension, its leading characters are split into two-character segments, and those segments are joined with `/`.
+
+**Method**
+
+```php
+protected function toDirFromFile(
+    string $file,
+    bool $filesystemSafe = false
+): string
+```
+
+**Parameters**
+
+| Name              | Type     | Default | Description                                                                                                                                                                             |
+|-------------------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$file`           | `string` | -       | The file name the directory structure is derived from.                                                                                                                                |
+| `$filesystemSafe` | `bool`   | `false` | When `true`, replaces `.` with `-` in the generated segments so the result can never contain a `..` component that would escape the base directory. Enable it whenever the path is written to disk from untrusted input. |
+
+**Returns** the calculated directory path with a trailing `/` (for example `te/st/fi/` for `testfile`). The method is multibyte-aware - it uses `mb_*` functions - so names containing multibyte characters are split by character rather than by byte.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\DirFromFileTrait;
+
+class MyCache
+{
+    use DirFromFileTrait;
+
+    public function pathFor(string $key): string
+    {
+        // nested two-character segments; $filesystemSafe blocks "../" traversal
+        return $this->toDirFromFile($key, true);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Str\DirFromFile` (the public string helper, default behavior) and by `Phalcon\Storage\Adapter\Stream`, which enables `$filesystemSafe` so cache files are spread safely across sub-directories.
 
 - - -
 
