@@ -21,6 +21,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait` | Read an array element by key with a default value and an optional cast. |
 | File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
 | Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
+| Info  | `Phalcon\Traits\Php\InfoTrait`               | Overridable wrappers around PHP's runtime-inspection functions (`extension_loaded`, `function_exists`). |
 
 - - -
 
@@ -187,5 +188,44 @@ class MyComponent
 !!! info "NOTE"
 
     Used internally by `Phalcon\Session\Adapter\Stream` (reading `session.save_path`) and `Phalcon\Config\Adapter\Ini` (parsing the ini file).
+
+### `InfoTrait`
+
+`Phalcon\Traits\Php\InfoTrait`
+
+Provides overridable wrappers around PHP's runtime-inspection functions. Isolating these checks behind a method lets a test double report an extension or function as present or absent without changing the real environment.
+
+| Method | Wraps | Description |
+|--------|-------|-------------|
+| `phpExtensionLoaded($name)` | `extension_loaded()` | Returns whether the named PHP extension is loaded. |
+| `phpFunctionExists($functionName)` | `function_exists()` | Returns whether the named function is defined. |
+
+Both methods are `protected`; call them from inside the class with `$this->methodName()`.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\InfoTrait;
+
+class MyComponent
+{
+    use InfoTrait;
+
+    public function encode(string $value): string
+    {
+        if (false === $this->phpFunctionExists('mb_convert_case')) {
+            return strtoupper($value);
+        }
+
+        return mb_convert_case($value, MB_CASE_UPPER);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally across the framework wherever an extension or function needs to be probed - for example the `Volt` compiler and the `mb_*` guards in the `Filter` sanitizers/validators, `extension_loaded("yaml")` in `Config\Adapter\Yaml` and `Forms\Loader\YamlLoader`, and `function_exists` checks in `Encryption\Crypt`, `Translate\Adapter\Gettext`, `Http\Response`, `Image\Adapter\Gd` and others.
 
 [settype]: https://www.php.net/manual/en/function.settype.php
