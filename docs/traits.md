@@ -29,6 +29,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | String| `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` | Substitute context values into `%placeholder%` tokens in a string (PSR-3 message interpolation). |
 | String| `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait` | Convert a camel-cased string to a lower-cased, delimited one (`CamelCase` → `camel_case`). |
 | String| `Phalcon\Traits\Support\Helper\Str\LowerTrait` | Lowercase a string in a multibyte-safe way (`mb_convert_case`). |
+| String| `Phalcon\Traits\Support\Helper\Str\UpperTrait` | Uppercase a string in a multibyte-safe way (`mb_convert_case`). |
 
 - - -
 
@@ -424,6 +425,53 @@ class MyNormalizer
 !!! info "NOTE"
 
     Used internally by the `Str` base `AbstractStr` and, through it, the `Str\Lower`, `Str\IsLower` and `Str\Decapitalize` helpers.
+
+### `Str\UpperTrait`
+
+`Phalcon\Traits\Support\Helper\Str\UpperTrait`
+
+Uppercases a string in a multibyte-safe way using `mb_convert_case()` with `MB_CASE_UPPER`, so accented and other non-ASCII letters are folded correctly.
+
+**Method**
+
+```php
+protected function toUpper(
+    string $text,
+    string $encoding = "UTF-8"
+): string
+```
+
+**Parameters**
+
+| Name        | Type     | Default   | Description                                  |
+|-------------|----------|-----------|----------------------------------------------|
+| `$text`     | `string` | -         | The string to uppercase.                     |
+| `$encoding` | `string` | `"UTF-8"` | The character encoding used by mbstring.     |
+
+**Returns** the uppercased string.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\UpperTrait;
+
+class MyNormalizer
+{
+    use UpperTrait;
+
+    public function code(string $value): string
+    {
+        // "café" -> "CAFÉ"
+        return $this->toUpper($value);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by the `Str` base `AbstractStr` and, through it, the `Str\Upper`, `Str\IsUpper` and `Str\Decapitalize` helpers.
 
 - - -
 
