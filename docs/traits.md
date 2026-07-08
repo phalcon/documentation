@@ -24,6 +24,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | Info  | `Phalcon\Traits\Php\InfoTrait`               | Overridable wrappers around PHP's runtime-inspection functions (`extension_loaded`, `function_exists`). |
 | String| `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` | Build a nested directory path from a file name, with an optional path-safety guard. |
 | String| `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` | Ensure a directory string ends with exactly one `DIRECTORY_SEPARATOR`. |
+| String| `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` | Check whether a string ends with a given substring (case-insensitive by default). |
 
 - - -
 
@@ -177,6 +178,55 @@ class MyLoader
 !!! info "NOTE"
 
     Used internally by `Phalcon\Support\Helper\Str\DirSeparator` and by the components that build filesystem paths from configured directories - `Phalcon\Session\Adapter\Stream`, `Phalcon\Storage\Adapter\Stream`, `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple`.
+
+### `Str\EndsWithTrait`
+
+`Phalcon\Traits\Support\Helper\Str\EndsWithTrait`
+
+Reports whether a string ends with a given substring. The comparison is case-insensitive by default and multibyte-aware - both sides are lowercased with `mb_strtolower()` before the suffix is checked (via the native `ends_with()`) - and an empty haystack always returns `false`.
+
+**Method**
+
+```php
+protected function toEndsWith(
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
+): bool
+```
+
+**Parameters**
+
+| Name          | Type     | Default | Description                                                                                 |
+|---------------|----------|---------|---------------------------------------------------------------------------------------------|
+| `$haystack`   | `string` | -       | The string to search in.                                                                    |
+| `$needle`     | `string` | -       | The suffix to look for.                                                                     |
+| `$ignoreCase` | `bool`   | `true`  | When `true` (default) the match ignores case; pass `false` for a case-sensitive comparison. |
+
+**Returns** `true` when `$haystack` ends with `$needle`, `false` otherwise (including when `$haystack` is empty).
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\EndsWithTrait;
+
+class MyValidator
+{
+    use EndsWithTrait;
+
+    public function isImage(string $file): bool
+    {
+        return $this->toEndsWith($file, ".png")
+            || $this->toEndsWith($file, ".jpg");
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Str\AbstractStr` - the base for the `Str\EndsWith` and `Str\Concat` helpers.
 
 - - -
 
