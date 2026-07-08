@@ -23,6 +23,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
 | Info  | `Phalcon\Traits\Php\InfoTrait`               | Overridable wrappers around PHP's runtime-inspection functions (`extension_loaded`, `function_exists`). |
 | String| `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` | Build a nested directory path from a file name, with an optional path-safety guard. |
+| String| `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` | Ensure a directory string ends with exactly one `DIRECTORY_SEPARATOR`. |
 
 - - -
 
@@ -133,6 +134,49 @@ class MyCache
 !!! info "NOTE"
 
     Used internally by `Phalcon\Support\Helper\Str\DirFromFile` (the public string helper, default behavior) and by `Phalcon\Storage\Adapter\Stream`, which enables `$filesystemSafe` so cache files are spread safely across sub-directories.
+
+### `Str\DirSeparatorTrait`
+
+`Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+
+Normalizes a directory string so it ends with exactly one `DIRECTORY_SEPARATOR`. Any trailing separators are trimmed and a single one is appended, so the result is safe to concatenate with a file name or a sub-directory.
+
+**Method**
+
+```php
+protected function toDirSeparator(string $directory): string
+```
+
+**Parameters**
+
+| Name         | Type     | Default | Description                        |
+|--------------|----------|---------|------------------------------------|
+| `$directory` | `string` | -       | The directory string to normalize. |
+
+**Returns** the directory with exactly one trailing `DIRECTORY_SEPARATOR` (for example `/var/www/` for both `/var/www` and `/var/www///`).
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
+
+class MyLoader
+{
+    use DirSeparatorTrait;
+
+    public function pathFor(string $dir, string $file): string
+    {
+        // "/base/" + "view.phtml" regardless of trailing slashes on $dir
+        return $this->toDirSeparator($dir) . $file;
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Str\DirSeparator` and by the components that build filesystem paths from configured directories - `Phalcon\Session\Adapter\Stream`, `Phalcon\Storage\Adapter\Stream`, `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple`.
 
 - - -
 
