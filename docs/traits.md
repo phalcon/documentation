@@ -27,6 +27,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | String| `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` | Check whether a string ends with a given substring (case-insensitive by default). |
 | String| `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` | Check whether a string starts with a given substring (case-insensitive by default). |
 | String| `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` | Substitute context values into `%placeholder%` tokens in a string (PSR-3 message interpolation). |
+| String| `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait` | Convert a camel-cased string to a lower-cased, delimited one (`CamelCase` → `camel_case`). |
 
 - - -
 
@@ -328,6 +329,53 @@ class MyLogger
 !!! info "NOTE"
 
     Used internally by `Phalcon\Support\Helper\Str\Interpolate`, the `Str` base `AbstractStr`, `Phalcon\Logger\Formatter\AbstractFormatter` (PSR-3 message interpolation when formatting log entries), and `Phalcon\Translate\Interpolator\AssociativeArray` (associative-array placeholder replacement in translations).
+
+### `Str\UncamelizeTrait`
+
+`Phalcon\Traits\Support\Helper\Str\UncamelizeTrait`
+
+Converts a camel-cased string into a lower-cased, delimited one - for example `CamelCase` → `camel_case`. It wraps the native Zephir `uncamelize()` builtin: every uppercase ASCII letter is lower-cased and preceded by the delimiter (except a leading one, which is only lower-cased).
+
+**Method**
+
+```php
+protected function toUncamelize(
+    string $text,
+    string $delimiter = "_"
+): string
+```
+
+**Parameters**
+
+| Name         | Type     | Default | Description                                                                  |
+|--------------|----------|---------|------------------------------------------------------------------------------|
+| `$text`      | `string` | -       | The camel-cased string to convert.                                           |
+| `$delimiter` | `string` | `"_"`   | A single character inserted before each (now lower-cased) uppercase letter.  |
+
+**Returns** the de-camelized string - e.g. `myProperty` → `my_property`, or `myAction` → `my-action` when called with `"-"`.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\UncamelizeTrait;
+
+class MyResolver
+{
+    use UncamelizeTrait;
+
+    public function toColumn(string $property): string
+    {
+        // "firstName" -> "first_name"
+        return $this->toUncamelize($property);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Str\Uncamelize`. The `$delimiter` must be a single character (the native builtin's requirement).
 
 - - -
 
