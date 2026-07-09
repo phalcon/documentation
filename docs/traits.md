@@ -18,10 +18,17 @@ The traits follow the layout of the components they support, so a trait lives un
 
 | Group | Trait                                        | Description                                                             |
 |-------|----------------------------------------------|-------------------------------------------------------------------------|
+| APCu  | `Phalcon\Traits\Php\ApcuTrait`               | Overridable wrappers around PHP's APCu functions (`apcu_fetch`, `apcu_store`, `apcu_delete`, ...). |
 | Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait` | Read an array element by key with a default value and an optional cast. |
 | File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
 | Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
 | Info  | `Phalcon\Traits\Php\InfoTrait`               | Overridable wrappers around PHP's runtime-inspection functions (`extension_loaded`, `function_exists`). |
+| OpenSSL| `Phalcon\Traits\Php\OpensslTrait`           | Overridable wrappers around PHP's OpenSSL functions (`openssl_cipher_iv_length`, `openssl_random_pseudo_bytes`). |
+| YAML  | `Phalcon\Traits\Php\YamlTrait`               | Overridable wrapper around PHP's `yaml_parse_file()`. |
+| Base64| `Phalcon\Traits\Php\Base64Trait`             | base64 wrappers plus base64url helpers (`doEncodeUrl`/`doDecodeUrl`). |
+| Igbinary| `Phalcon\Traits\Php\IgbinaryTrait`         | Wrappers around `igbinary_serialize`/`igbinary_unserialize`. |
+| MsgPack| `Phalcon\Traits\Php\MsgpackTrait`           | Wrappers around `msgpack_pack`/`msgpack_unpack`. |
+| Serialize| `Phalcon\Traits\Php\SerializeTrait`       | Wrappers around PHP's `serialize`/`unserialize`. |
 | String| `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` | Build a nested directory path from a file name, with an optional path-safety guard. |
 | String| `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` | Ensure a directory string ends with exactly one `DIRECTORY_SEPARATOR`. |
 | String| `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` | Check whether a string ends with a given substring (case-insensitive by default). |
@@ -479,6 +486,48 @@ class MyNormalizer
 
 Traits that wrap native PHP functions behind protected methods. Isolating these calls in a method makes them straightforward to override in a test double, so behavior such as filesystem access can be simulated without touching the real environment.
 
+### `ApcuTrait`
+
+`Phalcon\Traits\Php\ApcuTrait`
+
+Provides overridable wrappers around PHP's APCu functions. Each method forwards to the matching `apcu_*` function; `phpApcuIterator()` constructs an `APCUIterator`.
+
+| Method | Wraps | Description |
+|--------|-------|-------------|
+| `phpApcuDec($key, $step = 1)`            | `apcu_dec()`        | Atomically decrease a stored integer.                 |
+| `phpApcuDelete($key)`                    | `apcu_delete()`     | Remove one or more stored entries.                    |
+| `phpApcuExists($key)`                    | `apcu_exists()`     | Check whether one or more keys exist.                 |
+| `phpApcuFetch($key)`                     | `apcu_fetch()`      | Read a stored value.                                  |
+| `phpApcuInc($key, $step = 1)`            | `apcu_inc()`        | Atomically increase a stored integer.                 |
+| `phpApcuIterator($pattern)`              | `new APCUIterator()`| Build an iterator over keys matching a PCRE pattern.  |
+| `phpApcuStore($key, $payload, $ttl = 0)` | `apcu_store()`      | Write a value, with an optional TTL in seconds.       |
+
+All methods are `protected`; call them from inside the class with `$this->methodName()`.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\ApcuTrait;
+
+class MyStore
+{
+    use ApcuTrait;
+
+    public function remember(string $key, mixed $value): void
+    {
+        if (false === $this->phpApcuExists($key)) {
+            $this->phpApcuStore($key, $value, 3600);
+        }
+    }
+}
+```
+
+!!! info "NOTE"
+
+    These wrappers exist so APCu access can be replaced in unit tests. Used internally by `Phalcon\Storage\Adapter\Apcu` - and, through it, `Phalcon\Cache\Adapter\Apcu` - to back the APCu storage and cache adapters.
+
 ### `FileTrait`
 
 `Phalcon\Traits\Php\FileTrait`
@@ -614,5 +663,172 @@ class MyComponent
 !!! info "NOTE"
 
     Used internally across the framework wherever an extension or function needs to be probed - for example the `Volt` compiler and the `mb_*` guards in the `Filter` sanitizers/validators, `extension_loaded("yaml")` in `Config\Adapter\Yaml` and `Forms\Loader\YamlLoader`, and `function_exists` checks in `Encryption\Crypt`, `Translate\Adapter\Gettext`, `Http\Response`, `Image\Adapter\Gd` and others.
+
+### `OpensslTrait`
+
+`Phalcon\Traits\Php\OpensslTrait`
+
+Provides overridable wrappers around two of PHP's OpenSSL functions, so their results can be substituted in a test double (for example to simulate a failure).
+
+| Method | Wraps | Description |
+|--------|-------|-------------|
+| `phpOpensslCipherIvLength($cipher)`    | `openssl_cipher_iv_length()`    | Return the IV byte length for a cipher method (or `false`). |
+| `phpOpensslRandomPseudoBytes($length)` | `openssl_random_pseudo_bytes()` | Generate a string of cryptographically strong pseudo-random bytes. |
+
+All methods are `protected`; call them from inside the class with `$this->methodName()`.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\OpensslTrait;
+
+class MyCipher
+{
+    use OpensslTrait;
+
+    public function newIv(string $cipher): string
+    {
+        $length = (int) $this->phpOpensslCipherIvLength($cipher);
+
+        return $this->phpOpensslRandomPseudoBytes($length);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Encryption\Crypt` for IV-length lookup and random IV generation; isolating the calls lets a test double simulate OpenSSL failures.
+
+### `YamlTrait`
+
+`Phalcon\Traits\Php\YamlTrait`
+
+Provides an overridable wrapper around PHP's `yaml_parse_file()`, so YAML file parsing can be substituted in a test double. The function's by-reference `$ndocs` output is handled by an internal throwaway variable (Zephir cannot declare a by-reference parameter), so it is not part of the method signature.
+
+**Method**
+
+```php
+protected function phpYamlParseFile(
+    string $filename,
+    int $pos = 0,
+    array $callbacks = []
+): mixed
+```
+
+**Parameters**
+
+| Name         | Type     | Default | Description                                              |
+|--------------|----------|---------|----------------------------------------------------------|
+| `$filename`  | `string` | -       | Path to the YAML file to parse.                          |
+| `$pos`       | `int`    | `0`     | The document within the stream to read.                  |
+| `$callbacks` | `array`  | `[]`    | Content handlers for YAML nodes, keyed by tag.           |
+
+**Returns** the parsed value, or `false` on failure.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\YamlTrait;
+
+class MyConfig
+{
+    use YamlTrait;
+
+    public function load(string $file): array
+    {
+        $data = $this->phpYamlParseFile($file);
+
+        return is_array($data) ? $data : [];
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Config\Adapter\Yaml` to parse the configuration file; isolating the call lets a test double simulate a parse failure.
+
+### `Base64Trait`
+
+`Phalcon\Traits\Php\Base64Trait`
+
+Wrappers around PHP's base64 functions, plus helpers for the URL-safe "base64url" variant (used by JWT and similar).
+
+| Method | Wraps / does | Description |
+|--------|--------------|-------------|
+| `phpBase64Encode($input)`                  | `base64_encode()` | Encode a string as base64.                                            |
+| `phpBase64Decode($input, $strict = false)` | `base64_decode()` | Decode a base64 string.                                               |
+| `doEncodeUrl($input)`                      | base64url encode  | `base64_encode` with `+/`→`-_` and the `=` padding stripped.          |
+| `doDecodeUrl($input)`                      | base64url decode  | Re-pads, maps `-_`→`+/`, then `base64_decode` (returns `""` on error). |
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\Base64Trait;
+
+class MyToken
+{
+    use Base64Trait;
+
+    public function segment(string $json): string
+    {
+        return $this->doEncodeUrl($json); // URL-safe, unpadded
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Storage\Serializer\Base64` (the `phpBase64*` wrappers) and by `Phalcon\Encryption\Crypt`, `Phalcon\Encryption\Security\JWT\Builder` and `Phalcon\Encryption\Security\JWT\Token\Parser` (the `doEncodeUrl`/`doDecodeUrl` helpers).
+
+### `IgbinaryTrait`
+
+`Phalcon\Traits\Php\IgbinaryTrait`
+
+Overridable wrappers around the `igbinary` extension's functions, so igbinary (de)serialization can be substituted in tests.
+
+| Method | Wraps | Description |
+|--------|-------|-------------|
+| `phpIgbinarySerialize($value)`   | `igbinary_serialize()`   | Serialize a value to the igbinary binary format. |
+| `phpIgbinaryUnserialize($value)` | `igbinary_unserialize()` | Restore a value from igbinary data.              |
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Storage\Serializer\Igbinary` (and, through it, `Phalcon\Storage\Serializer\Msgpack`, which extends it).
+
+### `MsgpackTrait`
+
+`Phalcon\Traits\Php\MsgpackTrait`
+
+Overridable wrappers around the `msgpack` extension's functions.
+
+| Method | Wraps | Description |
+|--------|-------|-------------|
+| `phpMsgpackPack($value)`   | `msgpack_pack()`   | Pack a value into the MessagePack format. |
+| `phpMsgpackUnpack($value)` | `msgpack_unpack()` | Unpack a value from MessagePack data.     |
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Storage\Serializer\Msgpack`.
+
+### `SerializeTrait`
+
+`Phalcon\Traits\Php\SerializeTrait`
+
+Overridable wrappers around PHP's native `serialize()`/`unserialize()`.
+
+| Method | Wraps | Description |
+|--------|-------|-------------|
+| `phpSerialize($value)`                 | `serialize()`   | Serialize a value to PHP's storable representation. |
+| `phpUnserialize($data, $options = [])` | `unserialize()` | Restore a value from a serialized string.           |
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Storage\Serializer\Php`.
 
 [settype]: https://www.php.net/manual/en/function.settype.php
