@@ -21,6 +21,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | APCu  | `Phalcon\Traits\Php\ApcuTrait`               | Overridable wrappers around PHP's APCu functions (`apcu_fetch`, `apcu_store`, `apcu_delete`, ...). |
 | Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait` | Read an array element by key with a default value and an optional cast. |
 | File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
+| Header| `Phalcon\Traits\Php\HeaderTrait`             | Overridable wrapper around PHP's `headers_sent()`. |
 | Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
 | Info  | `Phalcon\Traits\Php\InfoTrait`               | Overridable wrappers around PHP's runtime-inspection functions (`extension_loaded`, `function_exists`). |
 | OpenSSL| `Phalcon\Traits\Php\OpensslTrait`           | Overridable wrappers around PHP's OpenSSL functions (`openssl_cipher_iv_length`, `openssl_random_pseudo_bytes`). |
@@ -580,6 +581,45 @@ class MyStore
 !!! info "NOTE"
 
     These wrappers exist mainly so that filesystem interactions can be replaced in unit tests by overriding the relevant method in a test subclass. They are used internally across the framework - for example by the `Session`, `Storage`, `Annotations` and `Mvc\Model\MetaData` stream adapters, the `Volt` compiler, `Mvc\View`, `Http\Request`, `Config\Adapter\Json` and the `Assets` components.
+
+### `HeaderTrait`
+
+`Phalcon\Traits\Php\HeaderTrait`
+
+Provides an overridable wrapper around PHP's `headers_sent()`, so whether the HTTP headers have already been sent can be simulated in a test double.
+
+| Method | Wraps | Description |
+|--------|-------|-------------|
+| `phpHeadersSent()` | `headers_sent()` | Returns whether the HTTP headers have already been sent. |
+
+The method is `protected`; call it from inside the class with `$this->methodName()`.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Php\HeaderTrait;
+
+class MySession
+{
+    use HeaderTrait;
+
+    public function start(): bool
+    {
+        if (true === $this->phpHeadersSent()) {
+            return false;
+        }
+
+        // ... start the session ...
+        return true;
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Session\Manager`, which refuses to start a session once the HTTP headers have been sent.
 
 ### `IniTrait`
 
