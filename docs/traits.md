@@ -21,6 +21,8 @@ The traits follow the layout of the components they support, so a trait lives un
 | APCu  | `Phalcon\Traits\Php\ApcuTrait`               | Overridable wrappers around PHP's APCu functions (`apcu_fetch`, `apcu_store`, `apcu_delete`, ...). |
 | Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait` | Read an array element by key with a default value and an optional cast. |
 | Array | `Phalcon\Traits\Support\Helper\Arr\FilterTrait` | Filter a collection with `array_filter()` using an optional callable. |
+| JSON  | `Phalcon\Traits\Support\Helper\Json\EncodeTrait` | Encode data with `json_encode()`, throwing the native `\JsonException` on failure. |
+| JSON  | `Phalcon\Traits\Support\Helper\Json\DecodeTrait` | Decode a string with `json_decode()`, throwing the native `\JsonException` on failure. |
 | File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
 | Header| `Phalcon\Traits\Php\HeaderTrait`             | Overridable wrapper around PHP's `headers_sent()`. |
 | Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
@@ -153,6 +155,104 @@ class MyCollection
 !!! info "NOTE"
 
     `Phalcon\Traits\Support\Helper\Arr\FilterTrait` is used internally by the `Arr` helper classes that filter collections - `Blacklist`, `Filter`, `First`, `FirstKey`, `Last`, `LastKey`, `ValidateAll`, `ValidateAny` and `Whitelist`.
+
+### `Json\EncodeTrait`
+
+`Phalcon\Traits\Support\Helper\Json\EncodeTrait`
+
+Encodes data using PHP's [json_encode()][json_encode]. On failure it throws the native [\JsonException][jsonexception] - a leaf dependency, so the trait carries no framework coupling. The framework-flavored exception (`JsonEncodeError`) is added by the `Support` helper class that wraps the trait.
+
+**Method**
+
+```php
+protected static function toEncode(
+    mixed $data,
+    int $options = 79,
+    int $depth = 512
+): string
+```
+
+**Parameters**
+
+| Name       | Type    | Default | Description                                                                                                                                     |
+|------------|---------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$data`    | `mixed` | -       | The value to encode.                                                                                                                            |
+| `$options` | `int`   | `79`    | Bitmask of `json_encode()` options. The default `79` is `JSON_HEX_TAG` \| `JSON_HEX_APOS` \| `JSON_HEX_AMP` \| `JSON_HEX_QUOT` \| `JSON_UNESCAPED_SLASHES`. |
+| `$depth`   | `int`   | `512`   | Maximum recursion depth.                                                                                                                        |
+
+**Returns** the JSON-encoded string. Throws `\JsonException` when the data cannot be encoded.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Json\EncodeTrait;
+
+class MyEncoder
+{
+    use EncodeTrait;
+
+    public function toJson(array $data): string
+    {
+        return $this->toEncode($data);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Json\Encode` (which catches the native `\JsonException` and rethrows its own `JsonEncodeError`) and by `Phalcon\Logger\Formatter\Json`.
+
+### `Json\DecodeTrait`
+
+`Phalcon\Traits\Support\Helper\Json\DecodeTrait`
+
+Decodes a string using PHP's [json_decode()][json_decode]. On failure it throws the native [\JsonException][jsonexception] - a leaf dependency, so the trait carries no framework coupling. The framework-flavored exception (`JsonDecodeError`) is added by the `Support` helper class that wraps the trait.
+
+**Method**
+
+```php
+protected static function toDecode(
+    string $data,
+    bool $associative = false,
+    int $depth = 512,
+    int $options = 79
+): mixed
+```
+
+**Parameters**
+
+| Name           | Type     | Default | Description                                             |
+|----------------|----------|---------|---------------------------------------------------------|
+| `$data`        | `string` | -       | The JSON string to decode.                              |
+| `$associative` | `bool`   | `false` | When `true`, objects are decoded to associative arrays. |
+| `$depth`       | `int`    | `512`   | Maximum recursion depth.                                |
+| `$options`     | `int`    | `79`    | Bitmask of `json_decode()` options.                     |
+
+**Returns** the decoded value (its type depends on the JSON and `$associative`). Throws `\JsonException` when the data cannot be decoded.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Json\DecodeTrait;
+
+class MyDecoder
+{
+    use DecodeTrait;
+
+    public function fromJson(string $json): array
+    {
+        return $this->toDecode($json, true);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Json\Decode` (which catches the native `\JsonException` and rethrows its own `JsonDecodeError`).
 
 ### `Str\DirFromFileTrait`
 
@@ -924,4 +1024,7 @@ Overridable wrappers around PHP's native `serialize()`/`unserialize()`.
     Used internally by `Phalcon\Storage\Serializer\Php`.
 
 [array_filter]: https://www.php.net/manual/en/function.array-filter.php
+[json_decode]: https://www.php.net/manual/en/function.json-decode.php
+[json_encode]: https://www.php.net/manual/en/function.json-encode.php
+[jsonexception]: https://www.php.net/manual/en/class.jsonexception.php
 [settype]: https://www.php.net/manual/en/function.settype.php
