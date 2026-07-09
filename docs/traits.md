@@ -38,6 +38,7 @@ The traits follow the layout of the components they support, so a trait lives un
 | String| `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` | Check whether a string ends with a given substring (case-insensitive by default). |
 | String| `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` | Check whether a string starts with a given substring (case-insensitive by default). |
 | String| `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` | Substitute context values into `%placeholder%` tokens in a string (PSR-3 message interpolation). |
+| String| `Phalcon\Traits\Support\Helper\Str\CamelizeTrait` | Convert a delimited string to camel case (`camel_case` → `CamelCase`), optionally lower-first. |
 | String| `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait` | Convert a camel-cased string to a lower-cased, delimited one (`CamelCase` → `camel_case`). |
 | String| `Phalcon\Traits\Support\Helper\Str\LowerTrait` | Lowercase a string in a multibyte-safe way (`mb_convert_case`). |
 | String| `Phalcon\Traits\Support\Helper\Str\UpperTrait` | Uppercase a string in a multibyte-safe way (`mb_convert_case`). |
@@ -491,6 +492,55 @@ class MyLogger
 !!! info "NOTE"
 
     Used internally by `Phalcon\Support\Helper\Str\Interpolate`, the `Str` base `AbstractStr`, `Phalcon\Logger\Formatter\AbstractFormatter` (PSR-3 message interpolation when formatting log entries), and `Phalcon\Translate\Interpolator\AssociativeArray` (associative-array placeholder replacement in translations).
+
+### `Str\CamelizeTrait`
+
+`Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
+
+Converts a delimited string into camel case - for example `camel_case` → `CamelCase`, or `camelCase` when `$lowerFirst` is `true`. It wraps the native Zephir `camelize()` builtin and, when a lower first letter is requested, applies `lcfirst()` to the result.
+
+**Method**
+
+```php
+public function toCamelize(
+    string $text,
+    string $delimiters = "-_",
+    bool $lowerFirst = false
+): string
+```
+
+**Parameters**
+
+| Name          | Type     | Default | Description                                                                                  |
+|---------------|----------|---------|----------------------------------------------------------------------------------------------|
+| `$text`       | `string` | -       | The delimited string to convert.                                                             |
+| `$delimiters` | `string` | `"-_"`  | The characters treated as word boundaries; the letter following each is upper-cased.         |
+| `$lowerFirst` | `bool`   | `false` | When `true`, the first letter is lower-cased, producing `camelCase` instead of `CamelCase`.  |
+
+**Returns** the camel-cased string - e.g. `coco_bongo` → `CocoBongo`, or `cocoBongo` when `$lowerFirst` is `true`.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Str\CamelizeTrait;
+
+class MyResolver
+{
+    use CamelizeTrait;
+
+    public function toClassName(string $name): string
+    {
+        // "gilmore_girls" -> "GilmoreGirls"
+        return $this->toCamelize($name);
+    }
+}
+```
+
+!!! info "NOTE"
+
+    Used internally by `Phalcon\Support\Helper\Str\Camelize`.
 
 ### `Str\UncamelizeTrait`
 
