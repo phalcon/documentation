@@ -20,6 +20,7 @@ The traits follow the layout of the components they support, so a trait lives un
 |-------|----------------------------------------------|-------------------------------------------------------------------------|
 | APCu  | `Phalcon\Traits\Php\ApcuTrait`               | Overridable wrappers around PHP's APCu functions (`apcu_fetch`, `apcu_store`, `apcu_delete`, ...). |
 | Array | `Phalcon\Traits\Support\Helper\Arr\GetTrait` | Read an array element by key with a default value and an optional cast. |
+| Array | `Phalcon\Traits\Support\Helper\Arr\FilterTrait` | Filter a collection with `array_filter()` using an optional callable. |
 | File  | `Phalcon\Traits\Php\FileTrait`               | Overridable thin wrappers around PHP's filesystem functions.            |
 | Header| `Phalcon\Traits\Php\HeaderTrait`             | Overridable wrapper around PHP's `headers_sent()`. |
 | Ini   | `Phalcon\Traits\Php\IniTrait`                | Overridable wrappers around PHP's ini functions, each with a static counterpart. |
@@ -101,6 +102,57 @@ class MyAdapter
 !!! info "NOTE"
 
     `Phalcon\Traits\Support\Helper\Arr\GetTrait` is used internally by a number of core components - among them the `Session`, `Storage` and `Mvc\Model\MetaData` adapters, `Http\Cookie`, `Http\Request\File`, `Logger\LoggerFactory` and `Image\ImageFactory` - to read constructor options while providing sensible defaults.
+
+### `Arr\FilterTrait`
+
+`Phalcon\Traits\Support\Helper\Arr\FilterTrait`
+
+Filters a collection using PHP's [array_filter()][array_filter] with an optional callable. When no callable is supplied - or the supplied value is not callable - the collection is returned unchanged.
+
+**Method**
+
+```php
+protected function toFilter(
+    array $collection,
+    callable|null $method = null
+): array
+```
+
+**Parameters**
+
+| Name          | Type             | Default | Description                                                                                                          |
+|---------------|------------------|---------|--------------------------------------------------------------------------------------------------------------------|
+| `$collection` | `array`          | -       | The source array to filter.                                                                                        |
+| `$method`     | `callable\|null` | `null`  | The callback used to decide which elements to keep. When omitted (or not callable), `$collection` is returned as-is. |
+
+**Returns** the filtered array, or the original `$collection` when no valid callable is provided.
+
+**Example**
+
+```php
+<?php
+
+use Phalcon\Traits\Support\Helper\Arr\FilterTrait;
+
+class MyCollection
+{
+    use FilterTrait;
+
+    public function positives(array $numbers): array
+    {
+        return $this->toFilter(
+            $numbers,
+            function ($value) {
+                return $value > 0;
+            }
+        );
+    }
+}
+```
+
+!!! info "NOTE"
+
+    `Phalcon\Traits\Support\Helper\Arr\FilterTrait` is used internally by the `Arr` helper classes that filter collections - `Blacklist`, `Filter`, `First`, `FirstKey`, `Last`, `LastKey`, `ValidateAll`, `ValidateAny` and `Whitelist`.
 
 ### `Str\DirFromFileTrait`
 
@@ -871,4 +923,5 @@ Overridable wrappers around PHP's native `serialize()`/`unserialize()`.
 
     Used internally by `Phalcon\Storage\Serializer\Php`.
 
+[array_filter]: https://www.php.net/manual/en/function.array-filter.php
 [settype]: https://www.php.net/manual/en/function.settype.php
