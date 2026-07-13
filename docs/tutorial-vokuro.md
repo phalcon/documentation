@@ -349,6 +349,8 @@ Vökuró uses one file per service, plus a `config/providers.php` array that lis
 
 The provider classes are in `src/Providers`. Each one implements the [Phalcon\Di\ServiceProviderInterface][di-serviceproviderinterface] interface. See the bootstrapping section below.
 
+Two of the providers wire up the [debug bar][debug-bar]. `EventsManagerProvider` registers a single events manager as a shared service, and `DbProvider`, `ViewProvider`, `RouterProvider`, and `DispatcherProvider` hand it to their components so the bar's streamed collectors receive their events. `DebugBarProvider` then boots the bar against the application. The bar runs in development only, gated by `APP_ENV`.
+
 ## Composer
 
 Vökuró uses [Composer][composer] to install its PHP dependencies. The runtime dependencies are:
@@ -357,6 +359,7 @@ Vökuró uses [Composer][composer] to install its PHP dependencies. The runtime 
 "require": {
     "php": ">=8.1",
     "ext-openssl": "*",
+    "phalcon/debugbar": "^0.1.0",
     "robmorgan/phinx": "^0.16",
     "symfony/mailer": "^6.4",
     "vlucas/phpdotenv": "^5.6"
@@ -1639,6 +1642,7 @@ Vökuró is a sample application that demonstrates features Phalcon offers. It i
 - [Phalcon Forms][forms]
 - [Phalcon HTTP Response][response]
 - [Phalcon Security][encryption-security]
+- [Phalcon Debug Bar][debug-bar]
 - [Vökuró - GitHub Repository][github_vokuro]
 - [Phalcon v6 - GitHub Repository][phalcon6]
 
@@ -1648,6 +1652,7 @@ Vökuró is a sample application that demonstrates features Phalcon offers. It i
 [composer]: https://getcomposer.org
 [db-models]: db-models.md
 [db-models-relationships]: db-models-relationships.md
+[debug-bar]: debug-bar.md
 [di]: di.md
 [di-serviceproviderinterface]: api/phalcon_di.md#diserviceproviderinterface
 [dotenv]: https://github.com/vlucas/phpdotenv

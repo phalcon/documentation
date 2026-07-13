@@ -143,6 +143,7 @@ plugins:
         'en/db-odm.md': db-odm.md
         'en/db-pagination.md': db-pagination.md
         'en/db-phql.md': db-phql.md
+        'en/debug-bar.md': debug-bar.md
         'en/devtools.md': devtools.md
         'en/di.md': di.md
         'en/dispatcher.md': dispatcher.md
@@ -319,6 +320,7 @@ nav:
       - Development Tools:
           - Devtools: devtools.md
           - Debug: support-debug.md
+          - Debug Bar: debug-bar.md
           - Unit Testing: unit-testing.md
       - Tutorials:
           - Basic: tutorial-basic.md
