@@ -193,6 +193,7 @@ nav:
       - Development Tools:
           - Devtools: devtools.md
           - Debug: support-debug.md
+          - Debug Bar: debug-bar.md
           - Unit Testing: unit-testing.md
       - Tutorials:
           - Basic: tutorial-basic.md
