@@ -99,11 +99,12 @@ use Phalcon\DebugBar\Provider;
 
 ## Collectors
 
-Each collector contributes one tab. A collector reads its data in one of three ways:
+Each collector contributes one tab. A collector reads its data in one of four ways:
 
 - **Snapshot** - reads state when the response is assembled.
 - **Streamed** - subscribes to framework events and accumulates as they fire.
 - **Manual** - fed through the `Debug` facade.
+- **Adapter** - captured from a `Phalcon\Logger` through the debug bar's logger adapter.
 
 | Name         | Source                                                   | Inflow            |
 |--------------|----------------------------------------------------------|-------------------|
@@ -111,6 +112,7 @@ Each collector contributes one tab. A collector reads its data in one of three w
 | `config`     | The `config` service, flattened and redacted             | snapshot          |
 | `database`   | SQL statements, bound parameters, and timings            | streamed          |
 | `exceptions` | Throwables, with stack traces                            | manual + streamed |
+| `logger`     | Log entries captured from a `Phalcon\Logger` adapter     | adapter           |
 | `messages`   | Messages recorded through the facade                     | manual            |
 | `request`    | Request method, URI, query, post, and headers (redacted) | snapshot          |
 | `route`      | Matched module, controller, action, and parameters       | streamed          |
@@ -179,6 +181,49 @@ try {
 
 The `exceptions` collector also captures throwables automatically. It subscribes to `dispatch:beforeException`, records the throwable, and leaves it to bubble - the bar never handles or swallows it. A throwable appears in the panel only when the request still finishes with a rendered response; a caught exception, or one the application forwards to an error page, qualifies, while a fully unhandled one aborts before the bar renders.
 
+## Capturing Logs
+
+`Phalcon\DebugBar\Logger\Adapter` is a `Phalcon\Logger` adapter. Attach it to the application logger and every logged item is captured in the bar's `logger` collector, shown in the "Logs" tab. This is separate from the `messages` collector: `logger` is the automatic application log, while `messages` is what the code records by hand through the `Debug` facade.
+
+- Phalcon 5 (the C extension) exposes the `Phalcon\Logger` adapter contract the adapter builds on.
+- Phalcon 6 (`phalcon/phalcon`) exposes the same contract. The adapter attaches the same way on either runtime.
+
+The adapter forwards each `Phalcon\Logger\Item` to the active bar through `Phalcon\DebugBar\Debug::getBar()`, reading the item's level name, message, and PSR-3 context. Forwarding no-ops when the `logger` collector is absent or disabled, so the adapter is safe to leave attached. `Debug::getBar()` returns `null` until the bar boots, so guard the call.
+
+```php
+<?php
+
+use Phalcon\DebugBar\Debug;
+use Phalcon\DebugBar\Logger\Adapter;
+use Phalcon\Logger\Adapter\Stream;
+use Phalcon\Logger\Logger;
+
+$logger = new Logger('messages', ['main' => new Stream('/var/log/app.log')]);
+
+$bar = Debug::getBar();
+
+if (null !== $bar) {
+    $logger->addAdapter('debugbar', new Adapter($bar));
+}
+
+$logger->info('user login', ['user_id' => 42]);
+$logger->error('payment declined', ['order_id' => 1001]);
+```
+
+Each entry keeps its log level as the label and its message beside it. An entry logged with PSR-3 context becomes collapsible: the level and message stay visible and expand to the context, rendered as pretty-printed JSON. An entry logged without context renders as a plain row.
+
+The `logger` collector is registered by default. Disable it, like any collector, through the `collectors` key:
+
+```php
+<?php
+
+use Phalcon\DebugBar\Provider;
+
+(new Provider($application, [
+    'collectors' => ['logger' => false],
+]))->boot();
+```
+
 ## Redaction and Access Control
 
 `Phalcon\DebugBar\Security\Redactor` guards data before it leaves PHP. It matches keys case-insensitively through nested arrays and applies two tiers:
@@ -213,6 +258,7 @@ The bar sits at the bottom of the page. Each collector is a tab; a tab shows a b
 - **grid** panels (version, request, config, session, route) render a key and value table.
 - **list** panels (time, messages, database, view, cache) render labelled rows.
 - **exceptions** panels render one collapsible entry per throwable; the summary line stays visible and expands to the stack trace.
+- **logs** panels (logger) render one entry per logged item; an entry with context is collapsible - the level and message stay visible and expand to the context.
 
 A handle at the right of the tab row collapses the whole bar to a corner button, so it never covers the host page's own controls. The collapsed state is remembered across page loads.
 
