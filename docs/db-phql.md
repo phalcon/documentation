@@ -1521,6 +1521,30 @@ $records  = $this
 ;
 ```
 
+Updating a column from an expression that references the column. The expression can carry a bound placeholder:
+
+```php
+<?php
+
+$phql = "
+    UPDATE Invoices
+    SET
+        inv_total = inv_total + :amount:
+    WHERE
+        inv_id = :invoiceId:";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'amount'    => 25,
+            'invoiceId' => 4,
+        ]
+    )
+;
+```
+
 An `UPDATE` statement performs the update in two phases:
 
 * If the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,

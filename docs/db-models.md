@@ -2584,6 +2584,78 @@ $invoices = Invoices::find(
 $calculated = $invoices->calculate();
 ```
 
+### Custom Resultset Rows
+
+A query that does not map every row to a single model returns `Phalcon\Mvc\Model\Row` instances. This happens when a query selects individual columns instead of a full model, or when it joins more than one model. `Phalcon\Mvc\Model\Query::setResultsetRowClass()` replaces that default row class with one of your own, so the rows can expose reusable methods.
+
+The class must exist and must be a subclass of `Phalcon\Mvc\Model\Row`. A class that cannot be found throws `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`. A class that is not a subclass of `Phalcon\Mvc\Model\Row` throws `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`.
+
+First, define the row class:
+
+```php
+<?php
+
+namespace MyApp\Mvc\Model\Row;
+
+use Phalcon\Mvc\Model\Row;
+
+class InvoiceRow extends Row
+{
+    public function getFormattedTotal(): string
+    {
+        return number_format((float) $this->readAttribute('inv_total'), 2);
+    }
+}
+```
+
+Set the class on the query before it runs. A query created from PHQL that selects columns returns the custom row:
+
+```php
+<?php
+
+use MyApp\Mvc\Model\Row\InvoiceRow;
+use MyApp\Models\Invoices;
+
+$phql  = 'SELECT inv_id, inv_total FROM ' . Invoices::class;
+$query = $this->modelsManager->createQuery($phql);
+
+$query->setResultsetRowClass(InvoiceRow::class);
+
+$rows = $query->execute();
+
+foreach ($rows as $row) {
+    echo $row->getFormattedTotal();
+}
+```
+
+The query builder exposes the same query through `getQuery()`, so joins are covered as well:
+
+```php
+<?php
+
+use MyApp\Mvc\Model\Row\InvoiceRow;
+use MyApp\Models\Customers;
+use MyApp\Models\Invoices;
+
+$builder = $this->modelsManager->createBuilder();
+
+$builder
+    ->columns([Customers::class . '.*', Invoices::class . '.*'])
+    ->from(Customers::class)
+    ->join(
+        Invoices::class,
+        Invoices::class . '.inv_cst_id = ' . Customers::class . '.cst_id'
+    )
+;
+
+$query = $builder->getQuery();
+$query->setResultsetRowClass(InvoiceRow::class);
+
+$rows = $query->execute();
+```
+
+`Phalcon\Mvc\Model\Query::getResultsetRowClass()` returns the configured class name. It returns an empty string when the query uses the default `Phalcon\Mvc\Model\Row`.
+
 ### Filtering Resultsets
 
 The most efficient way to filter data is by setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP:
