@@ -2628,7 +2628,7 @@ foreach ($rows as $row) {
 }
 ```
 
-The query builder exposes the same query through `getQuery()`, so joins are covered as well:
+The query builder has its own `Phalcon\Mvc\Model\Query\Builder::setResultsetRowClass()`. It stores the class and forwards it to the query returned by `getQuery()`, so column selections and joins built through the builder are covered as well:
 
 ```php
 <?php
@@ -2646,15 +2646,47 @@ $builder
         Invoices::class,
         Invoices::class . '.inv_cst_id = ' . Customers::class . '.cst_id'
     )
+    ->setResultsetRowClass(InvoiceRow::class)
 ;
 
-$query = $builder->getQuery();
-$query->setResultsetRowClass(InvoiceRow::class);
-
-$rows = $query->execute();
+$rows = $builder->getQuery()->execute();
 ```
 
-`Phalcon\Mvc\Model\Query::getResultsetRowClass()` returns the configured class name. It returns an empty string when the query uses the default `Phalcon\Mvc\Model\Row`.
+The builder stores the class without validating it. The checks above run when the builder creates the query, so an unknown class or a class that is not a subclass of `Phalcon\Mvc\Model\Row` throws when `getQuery()` is called.
+
+`Phalcon\Mvc\Model\Query::getResultsetRowClass()` and `Phalcon\Mvc\Model\Query\Builder::getResultsetRowClass()` return the configured class name. They return an empty string when the default `Phalcon\Mvc\Model\Row` is used.
+
+The custom row class also flows through pagination. `Phalcon\Paginator\Adapter\QueryBuilder` builds its query from the builder passed to it, so a class set with `Phalcon\Mvc\Model\Query\Builder::setResultsetRowClass()` applies to the paginated rows. Every item returned by `getItems()` is an instance of the custom class:
+
+```php
+<?php
+
+use MyApp\Mvc\Model\Row\InvoiceRow;
+use MyApp\Models\Invoices;
+use Phalcon\Paginator\Adapter\QueryBuilder;
+
+$builder = $this->modelsManager->createBuilder();
+
+$builder
+    ->columns('inv_id, inv_total')
+    ->from(Invoices::class)
+    ->setResultsetRowClass(InvoiceRow::class)
+;
+
+$paginator = new QueryBuilder(
+    [
+        'builder' => $builder,
+        'limit'   => 20,
+        'page'    => 1,
+    ]
+);
+
+$page = $paginator->paginate();
+
+foreach ($page->getItems() as $row) {
+    echo $row->getFormattedTotal();
+}
+```
 
 ### Filtering Resultsets
 
