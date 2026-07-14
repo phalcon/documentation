@@ -20,6 +20,8 @@ This component makes use of adapters to store the logged messages. The use of ad
 | [Phalcon\Logger\Adapter\Stream][logger-adapter-stream] | Logs messages on a file stream               |
 | [Phalcon\Logger\Adapter\Syslog][logger-adapter-syslog] | Logs messages to the Syslog                  |
 
+The [phalcon/debugbar][debug-bar] package provides an additional adapter, `Phalcon\DebugBar\Logger\Adapter`, that forwards logged messages to the debug bar. Attach it alongside your other adapters to capture the application log in the bar's "Logs" tab.
+
 ### Stream
 
 This adapter is used when we want to log messages to a particular file stream. Usually, this is the most used one: logging to a file in the file system.
@@ -1007,6 +1009,7 @@ The component raises granular subclasses of `Phalcon\Logger\Exception` so caller
 [bridge-psr3]: https://github.com/phalcon/bridge-psr3
 [config]: api/phalcon_config.md/#configconfig
 [date-formats]: https://www.php.net/manual/en/function.date.php
+[debug-bar]: debug-bar.md
 [factorydefault]: api/phalcon_di.md/#difactorydefault
 [fifo]: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 [logger-abstractlogger]: api/phalcon_logger.md#loggerabstractlogger
