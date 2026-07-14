@@ -188,7 +188,7 @@ The `exceptions` collector also captures throwables automatically. It subscribes
 - Phalcon 5 (the C extension) exposes the `Phalcon\Logger` adapter contract the adapter builds on.
 - Phalcon 6 (`phalcon/phalcon`) exposes the same contract. The adapter attaches the same way on either runtime.
 
-The adapter forwards each `Phalcon\Logger\Item` to the active bar through `Phalcon\DebugBar\Debug::getBar()`, reading the item's level name, message, and PSR-3 context. Forwarding no-ops when the `logger` collector is absent or disabled, so the adapter is safe to leave attached. `Debug::getBar()` returns `null` until the bar boots, so guard the call.
+The adapter forwards each `Phalcon\Logger\Item` to the active bar through `Phalcon\DebugBar\Debug::getBar()`, reading the item's level name, message, and PSR-3 context. Forwarding no-ops when the `logger` collector is absent or disabled, so the adapter is safe to leave attached. The adapter also accepts a `null` bar - which `Debug::getBar()` returns until the bar boots - so it can be attached unconditionally.
 
 ```php
 <?php
@@ -199,12 +199,7 @@ use Phalcon\Logger\Adapter\Stream;
 use Phalcon\Logger\Logger;
 
 $logger = new Logger('messages', ['main' => new Stream('/var/log/app.log')]);
-
-$bar = Debug::getBar();
-
-if (null !== $bar) {
-    $logger->addAdapter('debugbar', new Adapter($bar));
-}
+$logger->addAdapter('debugbar', new Adapter(Debug::getBar()));
 
 $logger->info('user login', ['user_id' => 42]);
 $logger->error('payment declined', ['order_id' => 1001]);
