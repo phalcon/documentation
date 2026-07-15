@@ -539,7 +539,7 @@ Sets the token object.
 public function validateAudience(array|string $audience): Validator
 ```
 
-Validates the audience. If it is not included in the token's `aud`, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the audience. If it is not included in the token's `aud`, a `Validation: audience not allowed` error is added. An audience that is not a `string` or an `array` raises a `TypeError`.
 
 ```php
 public function validateClaim(string $name, mixed $value): Validator
@@ -561,37 +561,43 @@ $validator
 public function validateExpiration(int $timestamp): Validator
 ```
 
-Validates the expiration time. If the `exp` value stored in the token is less than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the expiration time. If the `exp` value stored in the token is less than now, a `Validation: the token has expired` error is added.
 
 ```php
-public function validateId(string $id): Validator
+public function validateId(string|null $jwtId = null): Validator
 ```
 
-Validates the id. If it is not the same as the `jti` value stored in the token, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the id. If it is not the same as the `jti` value stored in the token, a `Validation: incorrect Id` error is added. A `null` id is not validated.
 
 ```php
 public function validateIssuedAt(int $timestamp): Validator
 ```
 
-Validates the `issued at` time. If the `iat` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the `issued at` time. If the `iat` value stored in the token is greater than now, a `Validation: the token cannot be used yet (future)` error is added.
 
 ```php
-public function validateIssuer(string $issuer): Validator
+public function validateIssuer(string|null $issuer = null): Validator
 ```
 
-Validates the issuer. If it is not the same as the `iss` value stored in the token, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the issuer. If it is not the same as the `iss` value stored in the token, a `Validation: incorrect issuer` error is added. A `null` issuer is not validated.
 
 ```php
 public function validateNotBefore(int $timestamp): Validator
 ```
 
-Validates the not before time. If the `nbf` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the not before time. If the `nbf` value stored in the token is greater than now, a `Validation: the token cannot be used yet (not before)` error is added.
 
 ```php
 public function validateSignature(SignerInterface $signer, string $passphrase): Validator
 ```
 
-Validates the signature of the token. If the signature is not valid, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the signature of the token. If the signature is not valid, a `Validation: the signature does not match` error is added.
+
+```php
+public function validateSubject(string|null $subject = null): Validator
+```
+
+Validates the subject. If it is not the same as the `sub` value stored in the token, a `Validation: incorrect subject` error is added. A `null` subject is not validated.
 
 #### Example
 
@@ -662,6 +668,9 @@ Validate the token claims. The validators that are executed are:
 - `validateIssuedAt()`
 - `validateIssuer()`
 - `validateNotBefore()`
+- `validateSubject()`
+
+A claim with no value set in the validator is skipped. The constructor sets `exp`, `iat` and `nbf` to the current time; `aud`, `jti`, `iss` and `sub` are unset unless you `set()` them.
 
 You can extend the [Phalcon\Encryption\Security\JWT\Validator][security-jwt-validator] and [Phalcon\Encryption\Security\JWT\Token\Token][security-jwt-token-token] objects to include more validators and execute them (as seen below).
 
@@ -802,7 +811,6 @@ The component raises granular subclasses so callers can catch a specific failure
 |-----------------------------------------------------------------------|----------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | `Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`          | `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`            | A signing or validation call is made without a passphrase.                     |
 | `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`          | `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`            | The token's `aud` claim does not match the audience supplied to the validator. |
-| `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`      | `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`            | The audience supplied to the validator is not a string or array of strings.    |
 | `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`            | `InvalidArgumentException`                                                 | The decoded claims segment is not a JSON object.                               |
 | `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`    | `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`            | The token has expired (`exp` claim is in the past).                            |
 | `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`            | `InvalidArgumentException`                                                 | The decoded header segment is not a JSON object.                               |
