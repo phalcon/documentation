@@ -1549,6 +1549,8 @@ The events available in Phalcon are:
 | [Storage][storage]          | `storage:beforeIncrement`            | Storage                                                 |
 | [Storage][storage]          | `storage:beforeDecrement`            | Storage                                                 |
 | [Storage][storage]          | `storage:beforeDelete`               | Storage                                                 |
+| [Storage][storage]          | `storage:afterDeleteMultiple`        | Storage                                                 |
+| [Storage][storage]          | `storage:beforeDeleteMultiple`       | Storage                                                 |
 | [View][views]               | `view:afterCompile`                  | Volt                                                    |
 | [View][views]               | `view:afterRender`                   | View                                                    |
 | [View][views]               | `view:afterRenderView`               | View                                                    |

@@ -830,26 +830,38 @@ The parameters you can use for the factory are:
 
 The [Phalcon\Cache\AbstractCache][cache-abstract-cache] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Event                  | Description                                   | Can stop operation |
-|------------------------|-----------------------------------------------|:------------------:|
-| `beforeSet`            | Fires before the value is set                 |         No         |
-| `afterSet`             | Fires after the value has been set            |         No         |
-| `beforeGet`            | Fires before the value is requested           |         No         |
-| `afterGet`             | Fires after the value has been requested      |         No         |
-| `beforeHas`            | Fires before the value is requested           |         No         |
-| `afterHas`             | Fires after the value has been requested      |         No         |
-| `beforeDelete`         | Fires before the value is deleted             |         No         |
-| `afterDelete`          | Fires after the value has been deleted        |         No         |
-| `beforeDeleteMultiple` | Fires before multiple values are deleted      |         No         |
-| `afterDeleteMultiple`  | Fires after multiple values have been deleted |         No         |
-| `beforeIncrement`      | Fires before the value has been incremented   |         No         |
-| `afterIncrement`       | Fires after the value has been incremented    |         No         |
-| `beforeDecrement`      | Fires before the value has been decremented   |         No         |
-| `afterDecrement`       | Fires after the value has been decremented    |         No         |
+| Event                  | Description                                     | Emitted by | Can stop operation |
+|------------------------|-------------------------------------------------|------------|:------------------:|
+| `beforeSet`            | Fires before the value is set                   | Both       |         No         |
+| `afterSet`             | Fires after the value has been set              | Both       |         No         |
+| `beforeGet`            | Fires before the value is requested             | Both       |         No         |
+| `afterGet`             | Fires after the value has been requested        | Both       |         No         |
+| `beforeHas`            | Fires before the value is requested             | Both       |         No         |
+| `afterHas`             | Fires after the value has been requested        | Both       |         No         |
+| `beforeDelete`         | Fires before the value is deleted               | Both       |         No         |
+| `afterDelete`          | Fires after the value has been deleted          | Both       |         No         |
+| `beforeDeleteMultiple` | Fires before multiple values are deleted        | Both       |         No         |
+| `afterDeleteMultiple`  | Fires after multiple values have been deleted   | Both       |         No         |
+| `beforeGetMultiple`    | Fires before multiple values are requested      | Facade     |         No         |
+| `afterGetMultiple`     | Fires after multiple values have been requested | Facade     |         No         |
+| `beforeSetMultiple`    | Fires before multiple values are set            | Facade     |         No         |
+| `afterSetMultiple`     | Fires after multiple values have been set       | Facade     |         No         |
+| `beforeIncrement`      | Fires before the value has been incremented     | Adapter    |         No         |
+| `afterIncrement`       | Fires after the value has been incremented      | Adapter    |         No         |
+| `beforeDecrement`      | Fires before the value has been decremented     | Adapter    |         No         |
+| `afterDecrement`       | Fires after the value has been decremented      | Adapter    |         No         |
+
+The `Emitted by` column refers to the two layers described below: the cache facade ([Phalcon\Cache\Cache][cache-cache]) and the underlying cache adapter (for instance [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]).
 
 ### Event Layers
 
-Cache operations can emit `cache:*` events from two layers. The cache facade ([Phalcon\Cache\AbstractCache][cache-abstract-cache]) fires `cache:before*` and `cache:after*` around each operation, and the underlying `Storage` adapter also fires `cache:*` events for the same operation. If you wire an events manager into both the cache object and its adapter, a single operation emits each event twice. Wire the manager into one layer only. The cache facade is the supported source for cache-level events, and it is the only layer that emits the multi-key `*Multiple` events.
+Cache operations can emit `cache:*` events from two layers. The cache facade ([Phalcon\Cache\AbstractCache][cache-abstract-cache]) fires `cache:before*` and `cache:after*` around each operation, and the underlying `Storage` adapter also fires `cache:*` events for the same operation. If you wire an events manager into both the cache object and its adapter, a single operation emits each event twice. Wire the manager into one layer only. The cache facade is the supported source for cache-level events.
+
+The two layers do not emit an identical set of events:
+
+* `cache:beforeGetMultiple`, `cache:afterGetMultiple`, `cache:beforeSetMultiple` and `cache:afterSetMultiple` are emitted by the facade only. The adapter offers no `getMultiple()` or `setMultiple()` method.
+* `cache:beforeIncrement`, `cache:afterIncrement`, `cache:beforeDecrement` and `cache:afterDecrement` are emitted by the adapter only. The facade offers no `increment()` or `decrement()` method, so these events never reach an events manager wired into the facade alone. Listen for them on the adapter, which you can reach with `getAdapter()`.
+* `cache:beforeDeleteMultiple` and `cache:afterDeleteMultiple` are emitted by both layers, since the facade delegates `deleteMultiple()` to the adapter method of the same name.
 
 The `before*` events fire only after key validation passes, so an operation that throws on an invalid key does not emit its `before*` event.
 
