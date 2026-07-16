@@ -10,7 +10,7 @@ Our mission is to empower developers with an advanced, feature-rich tool: Phalco
 
 ## What is Phalcon :question:
 
-Phalcon is an open-source full-stack framework for PHP, distinguished by its unique architecture written as a C-extension. This means that it is implemented in C and directly integrated into PHP for enhanced performance.
+Phalcon is an open-source full-stack framework for PHP, distinguished by its unique architecture written as a C-extension. This means that it is implemented in C and directly integrated into PHP for enhanced performance!
 
 Its innovative architecture ensures that the framework is always memory-resident, providing functionality on demand without the overhead of file stats and reads typically in traditional PHP frameworks.
 
