@@ -3,19 +3,21 @@ import json
 
 print("Getting NFR Reactions")
 
-comments = 'https://api.github.com/repos/phalcon/cphalcon/issues/14608/comments?page='
-result = {}
-for i in range(1, 10):
-    url = f"{comments}{i}"
-    headers = {
-        'Accept': 'application/vnd.github.squirrel-girl-preview+json',
-        'User-Agent': 'Phalcon Agent'
-    }
+comments = 'https://api.github.com/repos/phalcon/cphalcon/issues/14608/comments'
+headers = {
+    'Accept': 'application/vnd.github.squirrel-girl-preview+json',
+    'User-Agent': 'Phalcon Agent'
+}
 
-    response = requests.get(url, headers=headers)
+result = {}
+page = 1
+while True:
+    url = f"{comments}?per_page=100&page={page}"
+
+    response = requests.get(url, headers=headers, timeout=30)
     content = response.text
 
-    print(f"Got content {i}")
+    print(f"Got page {page}")
     data = json.loads(content)
 
     for comment in data:
@@ -26,11 +28,16 @@ for i in range(1, 10):
         plusone = reactions.get('+1', 0)
 
         body = body.split('\n')[0].replace('\r', '').replace('\r\n', '')
+        body = body.replace('\\', '\\\\').replace('|', '\\|').replace('[', '\\[').replace(']', '\\]')
         plusone = f"{int(plusone):03}"
         result[f"{plusone}-{id}"] = {
             'reaction': plusone,
             'body': f"[{body}]({url})"
         }
+
+    if len(data) < 100:
+        break
+    page += 1
 
 print("Sorting Results")
 sorted_result = dict(sorted(result.items(), key=lambda item: item[0], reverse=True))

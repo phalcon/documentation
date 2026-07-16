@@ -193,6 +193,7 @@ nav:
       - Development Tools:
           - Devtools: devtools.md
           - Debug: support-debug.md
+          - Debug Bar: debug-bar.md
           - Unit Testing: unit-testing.md
       - Tutorials:
           - Basic: tutorial-basic.md
@@ -276,6 +277,7 @@ nav:
           - Helper: support-helper.md
           - Registry: support-registry.md
           - Settings: support-settings.md
+          - Traits: traits.md
           - Version: support-version.md
   - API: api/index.md
   - Discussions: https://github.com/orgs/phalcon/discussions

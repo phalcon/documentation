@@ -2584,6 +2584,110 @@ $invoices = Invoices::find(
 $calculated = $invoices->calculate();
 ```
 
+### Custom Resultset Rows
+
+A query that does not map every row to a single model returns `Phalcon\Mvc\Model\Row` instances. This happens when a query selects individual columns instead of a full model, or when it joins more than one model. `Phalcon\Mvc\Model\Query::setResultsetRowClass()` replaces that default row class with one of your own, so the rows can expose reusable methods.
+
+The class must exist and must be a subclass of `Phalcon\Mvc\Model\Row`. A class that cannot be found throws `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`. A class that is not a subclass of `Phalcon\Mvc\Model\Row` throws `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`.
+
+First, define the row class:
+
+```php
+<?php
+
+namespace MyApp\Mvc\Model\Row;
+
+use Phalcon\Mvc\Model\Row;
+
+class InvoiceRow extends Row
+{
+    public function getFormattedTotal(): string
+    {
+        return number_format((float) $this->readAttribute('inv_total'), 2);
+    }
+}
+```
+
+Set the class on the query before it runs. A query created from PHQL that selects columns returns the custom row:
+
+```php
+<?php
+
+use MyApp\Mvc\Model\Row\InvoiceRow;
+use MyApp\Models\Invoices;
+
+$phql  = 'SELECT inv_id, inv_total FROM ' . Invoices::class;
+$query = $this->modelsManager->createQuery($phql);
+
+$query->setResultsetRowClass(InvoiceRow::class);
+
+$rows = $query->execute();
+
+foreach ($rows as $row) {
+    echo $row->getFormattedTotal();
+}
+```
+
+The query builder has its own `Phalcon\Mvc\Model\Query\Builder::setResultsetRowClass()`. It stores the class and forwards it to the query returned by `getQuery()`, so column selections and joins built through the builder are covered as well:
+
+```php
+<?php
+
+use MyApp\Mvc\Model\Row\InvoiceRow;
+use MyApp\Models\Customers;
+use MyApp\Models\Invoices;
+
+$builder = $this->modelsManager->createBuilder();
+
+$builder
+    ->columns([Customers::class . '.*', Invoices::class . '.*'])
+    ->from(Customers::class)
+    ->join(
+        Invoices::class,
+        Invoices::class . '.inv_cst_id = ' . Customers::class . '.cst_id'
+    )
+    ->setResultsetRowClass(InvoiceRow::class)
+;
+
+$rows = $builder->getQuery()->execute();
+```
+
+The builder stores the class without validating it. The checks above run when the builder creates the query, so an unknown class or a class that is not a subclass of `Phalcon\Mvc\Model\Row` throws when `getQuery()` is called.
+
+`Phalcon\Mvc\Model\Query::getResultsetRowClass()` and `Phalcon\Mvc\Model\Query\Builder::getResultsetRowClass()` return the configured class name. They return an empty string when the default `Phalcon\Mvc\Model\Row` is used.
+
+The custom row class also flows through pagination. `Phalcon\Paginator\Adapter\QueryBuilder` builds its query from the builder passed to it, so a class set with `Phalcon\Mvc\Model\Query\Builder::setResultsetRowClass()` applies to the paginated rows. Every item returned by `getItems()` is an instance of the custom class:
+
+```php
+<?php
+
+use MyApp\Mvc\Model\Row\InvoiceRow;
+use MyApp\Models\Invoices;
+use Phalcon\Paginator\Adapter\QueryBuilder;
+
+$builder = $this->modelsManager->createBuilder();
+
+$builder
+    ->columns('inv_id, inv_total')
+    ->from(Invoices::class)
+    ->setResultsetRowClass(InvoiceRow::class)
+;
+
+$paginator = new QueryBuilder(
+    [
+        'builder' => $builder,
+        'limit'   => 20,
+        'page'    => 1,
+    ]
+);
+
+$page = $paginator->paginate();
+
+foreach ($page->getItems() as $row) {
+    echo $row->getFormattedTotal();
+}
+```
+
 ### Filtering Resultsets
 
 The most efficient way to filter data is by setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP:
@@ -3978,6 +4082,53 @@ In the above example, we are checking the `$intermediate` array, which is an arr
 If conditions have been defined, we are checking if we have the `id` as a field in the conditions, and retrieve its value. If the `id` is between `0` and `100000` then we use `dbShard1`, alternatively `dbShard2`.
 
 The `selectReadConnection()` method is called every time we need to get data from the database, and returns the correct connection to be used.
+
+### Sticky Connections
+
+When you split reads and writes across two connections, a read issued immediately after a write can reach the read connection before it reflects the change, returning stale data or missing a row you just inserted. To avoid this within a single request, the models manager offers an opt-in *sticky* mode.
+
+When sticky is enabled and a model performs a write (`insert`, `update` or `delete`) during the request cycle, any subsequent read for that model's write connection service is served from the **write** connection instead of the read connection. This guarantees that data written earlier in the request can be read back immediately.
+
+Sticky is disabled by default, so the standard read/write split is preserved unless you turn it on. Enable it on the models manager:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model\Manager;
+
+/** @var Manager $manager */
+$manager = $container->get('modelsManager');
+
+$manager->setSticky(true);
+```
+
+With sticky active, a read after a write is routed to the write connection:
+
+```php
+<?php
+
+$invoice            = new Invoices();
+$invoice->inv_title = 'Sticky invoice';
+$invoice->save();               // executed on the write connection
+
+// Because a write happened during this request, the following read is
+// served from the write connection, so the new row is guaranteed to be found.
+$invoices = Invoices::find();
+```
+
+A few things to keep in mind:
+
+- Tracking is scoped to the **write connection service**. Writing through one model only makes reads sticky for models that share the same write service; models on a different write service are unaffected.
+- A model bound to a transaction still uses the transaction connection, which always takes precedence over sticky routing.
+- The sticky state lives on the models manager for the duration of the request. In a traditional PHP-FPM setup a fresh manager is created on every request, so nothing needs to be reset. In long-running runtimes (e.g. Swoole or RoadRunner) where the manager instance is reused across requests, call `resetConnectionState()` between requests to clear the tracking:
+
+```php
+<?php
+
+$manager->resetConnectionState();
+```
+
+Writes are recorded internally through the manager's `registerWrite()` method, which the model calls automatically after a successful `insert`, `update` or `delete`; you do not normally need to call it yourself.
 
 ## Dependency Injection
 

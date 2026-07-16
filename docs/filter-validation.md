@@ -91,6 +91,14 @@ public function bind(
 Assigns the data to an entity. The entity is used to obtain the validation values. When `$whitelist` is supplied, only the fields listed in it will be assigned to the entity; all other fields are skipped.
 
 ```php
+public static function getDefaultMessage(
+    string $validatorClassName
+): string
+```
+
+Returns the default message registered for a validator class, or an empty string when none has been registered
+
+```php
 public function getEntity(): object
 ```
 
@@ -99,7 +107,7 @@ Returns the bound entity
 ```php
 public function getFilters(
     string $field = null
-): mixed | null
+): mixed
 ```
 
 Returns all the filters or a specific one
@@ -127,19 +135,19 @@ Returns the validators added to the validation
 ```php
 public function getValue(
     string $field
-): mixed | null
+): mixed
 ```
 
 Gets a value to validate in the array/object data source
 
 ```php
-public function getValueByEntity(mixed $entity, string $field): mixed | null
+public function getValueByEntity(mixed $entity, string $field): mixed
 ```
 
 Gets the value to validate in the object entity source
 
 ```php
-public function getValueByData(mixed $data, string $field): mixed | null
+public function getValueByData(mixed $data, string $field): mixed
 ```
 
 Gets the value to validate in the array/object data source
@@ -161,6 +169,14 @@ public function rules(
 ```
 
 Adds the validators to a field
+
+```php
+public static function setDefaultMessages(
+    array $messages = []
+): array
+```
+
+Registers default messages for validators, keyed by validator class name. Calls are merged with any previously registered defaults. Returns the full map of registered defaults.
 
 ```php
 public function setEntity(
@@ -307,6 +323,7 @@ Phalcon offers a set of built-in validators for this component:
 | [Phalcon\Filter\Validation\Validator\File\Size\Equal][validation-validator-file-size-equal]             | Equal File Size            |
 | [Phalcon\Filter\Validation\Validator\File\Size\Max][validation-validator-file-size-max]                 | Maximum File Size          |
 | [Phalcon\Filter\Validation\Validator\File\Size\Min][validation-validator-file-size-min]                 | Minimum File Size          |
+| [Phalcon\Filter\Validation\Validator\Files][validation-validator-files]                                 | Array of files             |
 | [Phalcon\Filter\Validation\Validator\Identical][validation-validator-identical]                         | Equal specific value       |
 | [Phalcon\Filter\Validation\Validator\InclusionIn][validation-validator-inclusionin]                     | Within value set           |
 | [Phalcon\Filter\Validation\Validator\Ip][validation-validator-ip]                                       | IP                         |
@@ -548,6 +565,39 @@ $validator->add(
                     );
                 }
             }
+        ]
+    )
+);
+```
+
+The closure passed as the `callback` option is bound to the validator instance before it is called, so inside the closure `$this` refers to the [Phalcon\Filter\Validation\Validator\Callback][validation-validator-callback] validator. This lets the callback call the validator's own public methods - such as `$this->setTemplate()` - to change the failure message depending on which check failed. Only closures are bound; string function names and `[object, method]` callables are invoked as-is.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Callback;
+
+$validation = new Validation();
+$validation->add(
+    'title',
+    new Callback(
+        [
+            'callback' => function ($data) {
+                if (!is_string($data['title'])) {
+                    $this->setTemplate('Title is not a string');
+
+                    return false;
+                }
+
+                if (strlen($data['title']) > 10) {
+                    $this->setTemplate('Title too long');
+
+                    return false;
+                }
+
+                return true;
+            },
         ]
     )
 );
@@ -851,6 +901,7 @@ $validator->add(
             "messageSize" => [
                 "file"        => "file exceeds the max size 2M",
                 "anotherFile" => "anotherFile exceeds the max size 4M",
+            ],
             "allowedTypes" => [
                 "file"        => [
                     "image/jpeg",
@@ -1169,7 +1220,7 @@ Checks if a value has a correct file
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\File\Size;
+use Phalcon\Filter\Validation\Validator\File\Size\Equal;
 
 $validator = new Validation();
 
@@ -1216,7 +1267,7 @@ Checks if a value has a correct file
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\File\Size;
+use Phalcon\Filter\Validation\Validator\File\Size\Max;
 
 $validator = new Validation();
 
@@ -1263,7 +1314,7 @@ Checks if a value has a correct file
 <?php
 
 use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\File\Size;
+use Phalcon\Filter\Validation\Validator\File\Size\Min;
 
 $validator = new Validation();
 
@@ -1297,6 +1348,62 @@ $validator->add(
                 "file"        => "file exceeds the min size 2M",
                 "anotherFile" => "anotherFile exceeds the min size 4M",
             ],
+        ]
+    )
+);
+```
+
+### Files
+
+Checks that a field holds a correct array of uploaded files.
+
+The `Files` validator accepts the same options as [File](#file) and applies them to every file in the field. It validates the `<input type="file" name="photos[]" multiple>` case, where one input carries several files. Validation stops at the first file that fails a rule.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Files;
+
+$validator = new Validation();
+
+$validator->add(
+    "photos",
+    new Files(
+        [
+            "maxSize"      => "2M",
+            "messageSize"  => ":field exceeds the max size (:size)",
+            "allowedTypes" => [
+                "image/jpeg",
+                "image/png",
+            ],
+            "messageType"  => "Allowed file types are :types",
+        ]
+    )
+);
+```
+
+PHP delivers a multiple-file input as one `$_FILES` entry whose `name`, `type`, `tmp_name`, `error` and `size` members each hold one value per file. The validator normalizes that structure into individual files and validates each one through a `File` validator built from the supplied options. A single (non-`multiple`) file entry is also accepted and validated as one file.
+
+Set the `allowEmpty` option to `true` to pass validation when no file is uploaded:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Files;
+
+$validator = new Validation();
+
+$validator->add(
+    "photos",
+    new Files(
+        [
+            "allowedTypes" => [
+                "image/jpeg",
+                "image/png",
+            ],
+            "allowEmpty"   => true,
         ]
     )
 );
@@ -1404,7 +1511,7 @@ $validator->add(
         [
             "message"       => ":field must contain only ip addresses",
             // v6 and v4. The same if not specified
-            "version"       => IP::VERSION_4 | Ip::VERSION_6, 
+            "version"       => Ip::VERSION_4 | Ip::VERSION_6, 
             // False if not specified. Ignored for v6
             "allowReserved" => false,
             // False if not specified
@@ -1502,7 +1609,6 @@ $validation->add(
             'message' => 'The name is required',
         ]
     )
-);
 );
 ```
 
@@ -2059,6 +2165,69 @@ if (count($messages)) {
 }
 ```
 
+### Default Messages
+You can register a default failure message for a validator class. The default is used whenever that validator runs without a message of its own. This lets you translate or override the built-in message of every validator of a given type in one place, instead of passing a `message` option to each instance.
+
+Register defaults with the static `Phalcon\Filter\Validation::setDefaultMessages()` method, keyed by validator class name. Read a registered default with `Phalcon\Filter\Validation::getDefaultMessage()`. Calls to `setDefaultMessages()` are merged, so defaults can be registered incrementally.
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+
+Validation::setDefaultMessages(
+    [
+        PresenceOf::class => 'Default message :field is required',
+    ]
+);
+
+$validation = new Validation();
+$validation->add('name', new PresenceOf());
+
+$messages = $validation->validate([]);
+
+echo $messages[0]->getMessage(); // "Default message name is required"
+```
+
+The message for a validator is resolved in the following order, from highest priority to lowest:
+
+1. A per-field template set on the validator through `setTemplates()`.
+2. A message set on the validator instance - the `message` or `template` option, or `setTemplate()`.
+3. A default registered for the validator class through `setDefaultMessages()`.
+4. The validator's built-in class default message.
+
+A message set on the validator instance therefore always takes precedence over a registered default:
+
+```php
+<?php
+
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+
+Validation::setDefaultMessages(
+    [
+        PresenceOf::class => 'Default message :field is required',
+    ]
+);
+
+$validation = new Validation();
+$validation->add(
+    'name',
+    new PresenceOf(
+        [
+            'message' => 'Custom message :field is required',
+        ]
+    )
+);
+
+$messages = $validation->validate([]);
+
+echo $messages[0]->getMessage(); // "Custom message name is required"
+```
+
+The `:field` placeholder is replaced with the field label, as in any validator message. Registered defaults apply to every validator whose message is produced through the message factory (`getTemplate()` / `messageFactory()`) - the built-in validators and any custom validator extending [Phalcon\Filter\Validation\AbstractValidator][validation-abstractvalidator]. The `File` validators' upload-specific messages (`messageFileEmpty`, `messageIniSize` and `messageValid`) are produced separately and are not affected; set those through their own options.
+
 ### Iteration and Offsets
 Messages are stored and iterated by integer position. An entry added under a string key through the array-access interface stays reachable by that offset but is not visited during iteration. A `foreach` loop walks the integer sequence only. Use `appendMessage()` when an entry must take part in iteration.
 
@@ -2443,6 +2612,7 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Filter\Validatio
 [validation-validator-file-size-equal]: api/phalcon_filter.md#filtervalidationvalidatorfilesizeequal
 [validation-validator-file-size-max]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemax
 [validation-validator-file-size-min]: api/phalcon_filter.md#filtervalidationvalidatorfilesizemin
+[validation-validator-files]: api/phalcon_filter.md#filtervalidationvalidatorfiles
 [validation-validator-identical]: api/phalcon_filter.md#filtervalidationvalidatoridentical
 [validation-validator-inclusionin]: api/phalcon_filter.md#filtervalidationvalidatorinclusionin
 [validation-validator-ip]: api/phalcon_filter.md#filtervalidationvalidatorip

@@ -830,7 +830,7 @@ The [Logger][phalcon-logger] component has been moved to the `Logger` namespace.
 
 #### `Phalcon\Logger\AbstractLogger`
 
-- Added `Phalcon\Logger\AbstractLogger` with common functionality, to be used by packages that wish to alter interfaces to the logger while keeping the same functionality (see [proxy-psr3][proxy-psr3])
+- Added `Phalcon\Logger\AbstractLogger` with common functionality, to be used by packages that wish to alter interfaces to the logger while keeping the same functionality (see [bridge-psr3][bridge-psr3])
 
 #### `Phalcon\Logger\Adapter\Stream`
 
@@ -1326,7 +1326,7 @@ If you wish to keep your Volt code the way it is, without changing method signat
 [phalcon-translate]: translate.md
 [phalcon-volt]: volt.md
 [php-support]: https://www.php.net/supported-versions.php
-[proxy-psr3]: https://github.com/phalcon/proxy-psr3
+[bridge-psr3]: https://github.com/phalcon/bridge-psr3
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 [psr-3]: https://www.php-fig.org/psr/psr-3/
 [psr-extension]: https://github.com/jbboehr/php-psr

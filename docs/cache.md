@@ -42,13 +42,7 @@ $cache = new Cache($adapter);
 
 ### Operations
 
-The cache component implements methods that are inline with [PSR-16][psr-16], but does not implement the particular interface. A package that implements [PSR-16][psr-16] is available, that uses [Phalcon\Cache\Cache][cache-cache]. The package is located [here][proxy-psr16]. To use it, you will need to have Phalcon installed and then using composer you can install the proxy package.
-
-```sh
-composer require phalcon/proxy-psr16
-```
-
-Using the proxy classes allows you to follow [PSR-16][psr-16] and use it with any other package that needs that interface.
+The cache component implements methods that are in line with [PSR-16][psr-16] but does not implement `Psr\SimpleCache\CacheInterface` directly. The [phalcon/bridge-psr16][bridge-psr16] package bridges the two standards in both directions: a Phalcon cache can be consumed as a PSR-16 cache, and any PSR-16 cache can be used as a Phalcon cache back-end. See the [PSR-16](#psr-16) section below for installation and usage.
 
 Each Cache component contains a supplied Cache adapter which in turn is responsible for all operations.
 
@@ -836,26 +830,38 @@ The parameters you can use for the factory are:
 
 The [Phalcon\Cache\AbstractCache][cache-abstract-cache] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Event                  | Description                                   | Can stop operation |
-|------------------------|-----------------------------------------------|:------------------:|
-| `beforeSet`            | Fires before the value is set                 |         No         |
-| `afterSet`             | Fires after the value has been set            |         No         |
-| `beforeGet`            | Fires before the value is requested           |         No         |
-| `afterGet`             | Fires after the value has been requested      |         No         |
-| `beforeHas`            | Fires before the value is requested           |         No         |
-| `afterHas`             | Fires after the value has been requested      |         No         |
-| `beforeDelete`         | Fires before the value is deleted             |         No         |
-| `afterDelete`          | Fires after the value has been deleted        |         No         |
-| `beforeDeleteMultiple` | Fires before multiple values are deleted      |         No         |
-| `afterDeleteMultiple`  | Fires after multiple values have been deleted |         No         |
-| `beforeIncrement`      | Fires before the value has been incremented   |         No         |
-| `afterIncrement`       | Fires after the value has been incremented    |         No         |
-| `beforeDecrement`      | Fires before the value has been decremented   |         No         |
-| `afterDecrement`       | Fires after the value has been decremented    |         No         |
+| Event                  | Description                                     | Emitted by | Can stop operation |
+|------------------------|-------------------------------------------------|------------|:------------------:|
+| `beforeSet`            | Fires before the value is set                   | Both       |         No         |
+| `afterSet`             | Fires after the value has been set              | Both       |         No         |
+| `beforeGet`            | Fires before the value is requested             | Both       |         No         |
+| `afterGet`             | Fires after the value has been requested        | Both       |         No         |
+| `beforeHas`            | Fires before the value is requested             | Both       |         No         |
+| `afterHas`             | Fires after the value has been requested        | Both       |         No         |
+| `beforeDelete`         | Fires before the value is deleted               | Both       |         No         |
+| `afterDelete`          | Fires after the value has been deleted          | Both       |         No         |
+| `beforeDeleteMultiple` | Fires before multiple values are deleted        | Both       |         No         |
+| `afterDeleteMultiple`  | Fires after multiple values have been deleted   | Both       |         No         |
+| `beforeGetMultiple`    | Fires before multiple values are requested      | Facade     |         No         |
+| `afterGetMultiple`     | Fires after multiple values have been requested | Facade     |         No         |
+| `beforeSetMultiple`    | Fires before multiple values are set            | Facade     |         No         |
+| `afterSetMultiple`     | Fires after multiple values have been set       | Facade     |         No         |
+| `beforeIncrement`      | Fires before the value has been incremented     | Adapter    |         No         |
+| `afterIncrement`       | Fires after the value has been incremented      | Adapter    |         No         |
+| `beforeDecrement`      | Fires before the value has been decremented     | Adapter    |         No         |
+| `afterDecrement`       | Fires after the value has been decremented      | Adapter    |         No         |
+
+The `Emitted by` column refers to the two layers described below: the cache facade ([Phalcon\Cache\Cache][cache-cache]) and the underlying cache adapter (for instance [Phalcon\Cache\Adapter\Apcu][cache-adapter-apcu]).
 
 ### Event Layers
 
-Cache operations can emit `cache:*` events from two layers. The cache facade ([Phalcon\Cache\AbstractCache][cache-abstract-cache]) fires `cache:before*` and `cache:after*` around each operation, and the underlying `Storage` adapter also fires `cache:*` events for the same operation. If you wire an events manager into both the cache object and its adapter, a single operation emits each event twice. Wire the manager into one layer only. The cache facade is the supported source for cache-level events, and it is the only layer that emits the multi-key `*Multiple` events.
+Cache operations can emit `cache:*` events from two layers. The cache facade ([Phalcon\Cache\AbstractCache][cache-abstract-cache]) fires `cache:before*` and `cache:after*` around each operation, and the underlying `Storage` adapter also fires `cache:*` events for the same operation. If you wire an events manager into both the cache object and its adapter, a single operation emits each event twice. Wire the manager into one layer only. The cache facade is the supported source for cache-level events.
+
+The two layers do not emit an identical set of events:
+
+* `cache:beforeGetMultiple`, `cache:afterGetMultiple`, `cache:beforeSetMultiple` and `cache:afterSetMultiple` are emitted by the facade only. The adapter offers no `getMultiple()` or `setMultiple()` method.
+* `cache:beforeIncrement`, `cache:afterIncrement`, `cache:beforeDecrement` and `cache:afterDecrement` are emitted by the adapter only. The facade offers no `increment()` or `decrement()` method, so these events never reach an events manager wired into the facade alone. Listen for them on the adapter, which you can reach with `getAdapter()`.
+* `cache:beforeDeleteMultiple` and `cache:afterDeleteMultiple` are emitted by both layers, since the facade delegates `deleteMultiple()` to the adapter method of the same name.
 
 The `before*` events fire only after key validation passes, so an operation that throws on an invalid key does not emit its `before*` event.
 
@@ -892,15 +898,67 @@ class IndexController extends Controller
 }
 ```
 
-### PSR-16 Compatibility
+## PSR-16
 
-The class raised for an invalid argument is resolved through `Phalcon\Cache\AbstractCache::getExceptionClass()`, which returns `Phalcon\Cache\Exception\InvalidArgumentException` by default.
+[Phalcon\Cache\Cache][cache-cache] implements methods that are in line with [PSR-16][psr-16] but does not implement `Psr\SimpleCache\CacheInterface` directly, and its exceptions are not PSR-16 typed. The [phalcon/bridge-psr16][bridge-psr16] package bridges the two standards in both directions.
 
-The Cache component does not implement PSR-16 (`Psr\SimpleCache`), and neither do its exceptions. For PSR-16 interoperability - including a `Psr\SimpleCache\InvalidArgumentException` that callers can catch - install the [proxy package][proxy-psr16]. The proxy overrides `getExceptionClass()` to return a PSR-16-marked exception, so the marker is restored without any catch-and-rethrow overhead.
+- Requires PHP 8.1 or later
+- Works with the Phalcon C extension or the `phalcon/phalcon` package
+- Targets `psr/simple-cache` (PSR-16) version 3
+
+Install the package with composer:
 
 ```sh
-composer require phalcon/proxy-psr16
+composer require phalcon/bridge-psr16
 ```
+
+The package provides two classes, one for each direction, plus a `Psr\SimpleCache\InvalidArgumentException` so illegal-key failures can be caught through the PSR-16 marker.
+
+### Phalcon Cache as a PSR-16 Cache
+
+`Phalcon\Bridge\Psr16\Cache` is a `Psr\SimpleCache\CacheInterface` backed by a Phalcon cache adapter. Use it when a component requires a PSR-16 cache and the storage needs to go through Phalcon. Its constructor takes any [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface], such as one built with [Phalcon\Cache\AdapterFactory][cache-adapterfactory].
+
+```php
+<?php
+
+use Phalcon\Bridge\Psr16\Cache;
+use Phalcon\Cache\AdapterFactory;
+use Phalcon\Storage\SerializerFactory;
+
+$adapterFactory = new AdapterFactory(new SerializerFactory());
+$adapter        = $adapterFactory->newInstance('memory');
+
+$cache = new Cache($adapter);
+
+// $cache is a Psr\SimpleCache\CacheInterface
+$cache->set('user.42', ['name' => 'Phalcon'], 3600);
+$data = $cache->get('user.42');
+```
+
+An illegal key raises `Phalcon\Bridge\Psr16\Exception\InvalidArgumentException`, which implements `Psr\SimpleCache\InvalidArgumentException`, so callers can catch the PSR-16 marker.
+
+### PSR-16 Cache as a Phalcon Backend
+
+`Phalcon\Bridge\Psr16\Adapter` is a Phalcon cache adapter that forwards every operation to a wrapped `Psr\SimpleCache\CacheInterface`. Use it when a PSR-16 cache already exists, such as Symfony Cache, and it needs to back a [Phalcon\Cache\Cache][cache-cache]. Serialization is left to the PSR-16 cache to avoid double-encoding.
+
+```php
+<?php
+
+use Phalcon\Bridge\Psr16\Adapter;
+use Phalcon\Cache\Cache;
+use Phalcon\Storage\SerializerFactory;
+
+// Any Psr\SimpleCache\CacheInterface, e.g. Symfony's Psr16Cache
+$psr = new Symfony\Component\Cache\Psr16Cache(/* ... */);
+
+$adapter = new Adapter(new SerializerFactory(), $psr);
+$cache   = new Cache($adapter);
+
+// Phalcon cache calls now flow into the PSR-16 cache
+$cache->set('key', 'value');
+```
+
+PSR-16 has no atomic counters or key enumeration, so `increment()` / `decrement()` are emulated non-atomically and `getKeys()` returns an empty array.
 
 [apcu]: https://www.php.net/manual/en/book.apcu.php
 [cache-abstract-cache]: api/phalcon_cache.md#cacheabstractcache
@@ -920,7 +978,7 @@ composer require phalcon/proxy-psr16
 [igbinary]: https://github.com/igbinary/igbinary7
 [memcached]: https://www.php.net/manual/en/book.memcached.php
 [msgpack]: https://msgpack.org/
-[proxy-psr16]: https://github.com/phalcon/proxy-psr16
+[bridge-psr16]: https://github.com/phalcon/bridge-psr16
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 [redis]: https://github.com/phpredis/phpredis
 [serializable]: https://www.php.net/manual/en/class.serializable.php
