@@ -28,6 +28,7 @@ while True:
         plusone = reactions.get('+1', 0)
 
         body = body.split('\n')[0].replace('\r', '').replace('\r\n', '')
+        body = body.replace('\\', '\\\\').replace('|', '\\|').replace('[', '\\[').replace(']', '\\]')
         plusone = f"{int(plusone):03}"
         result[f"{plusone}-{id}"] = {
             'reaction': plusone,
