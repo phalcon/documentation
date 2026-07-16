@@ -84,8 +84,12 @@ jobs:
           git config user.name niden
           git config user.email nikos@niden.net
           git fetch --no-tags --prune --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages
-          docker run --rm -v "$PWD":/docs --entrypoint sh phalcon-docs -c \
-            "git config --global --add safe.directory /docs && mike deploy --push ${{ env.PH_DOCS_VERSION }}"
+          # Build and commit inside the container; push from the runner.
+          # checkout@v6 keeps its credentials outside the workspace, so they
+          # are not visible inside the container.
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/docs -v "$PWD":/docs \
+            --entrypoint mike phalcon-docs deploy ${{ env.PH_DOCS_VERSION }}
+          git push origin gh-pages
           echo "Deployed"
 
       - name: Point Cloudflare /latest at this version
