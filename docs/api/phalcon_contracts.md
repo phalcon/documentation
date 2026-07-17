@@ -8,6 +8,619 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Contracts\Acl\Adapter\Adapter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Acl/Adapter/Adapter.zep){ .src-btn }
+
+Canonical contract for Phalcon\Acl adapters
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Adapter\Adapter`**
+    - [`Phalcon\Acl\Adapter\AdapterInterface`](phalcon_acl.md#acladapteradapterinterface)
+
+</div>
+
+__Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsacladapteradapter-addcomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponent</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$componentValue</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds a component to the ACL list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-addcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Adds access to components</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-addinherit">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addInherit</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$roleToInherits</span></span>)</code>
+<span class="desc">Do a role inherit from another existing role</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-addrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">addRole</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$role</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessInherits</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Adds a role to the ACL list. Second parameter lets to inherit access data</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-allow">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">allow</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Allow access to a role on a component</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-deny">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">deny</span>(<span class="prm"><span class="st">string</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$func</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Deny access to a role on a component</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-dropcomponentaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">dropComponentAccess</span>(<span class="prm"><span class="st">string</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$accessList</span></span>)</code>
+<span class="desc">Removes access from a component</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getactiveaccess">
+<code class="vis vis-public">public</code>
+<code class="ret">null|string</code>
+<code class="sig"><span class="sf">getActiveAccess</span>()</code>
+<span class="desc">Returns the access which the list is checking if some role can access it</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getactivecomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">null|string</code>
+<code class="sig"><span class="sf">getActiveComponent</span>()</code>
+<span class="desc">Returns the component which the list is checking if some role can access</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getactiverole">
+<code class="vis vis-public">public</code>
+<code class="ret">null|string</code>
+<code class="sig"><span class="sf">getActiveRole</span>()</code>
+<span class="desc">Returns the role which the list is checking if it&#039;s allowed to certain</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getcomponents">
+<code class="vis vis-public">public</code>
+<code class="ret">ComponentInterface[]</code>
+<code class="sig"><span class="sf">getComponents</span>()</code>
+<span class="desc">Return an array with every component registered in the list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getDefaultAction</span>()</code>
+<span class="desc">Returns the default ACL access level</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getinheritedroles">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getInheritedRoles</span>( <span class="st">string</span> <span class="sv">$roleName</span><span class="sm"> = &quot;&quot;</span> )</code>
+<span class="desc">Returns the inherited roles for a passed role name. If no role name</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getNoArgumentsDefaultAction</span>()</code>
+<span class="desc">Returns the default ACL access level for no arguments provided in</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-getroles">
+<code class="vis vis-public">public</code>
+<code class="ret">RoleInterface[]</code>
+<code class="sig"><span class="sf">getRoles</span>()</code>
+<span class="desc">Return an array with every role registered in the list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-isallowed">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isAllowed</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$roleName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$componentName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$access</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parameters</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Check whether a role is allowed to access an action from a component</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-iscomponent">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isComponent</span>( <span class="st">string</span> <span class="sv">$componentName</span> )</code>
+<span class="desc">Check whether component exist in the components list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-isrole">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRole</span>( <span class="st">string</span> <span class="sv">$roleName</span> )</code>
+<span class="desc">Check whether role exist in the roles list</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-setdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)</span>
+</a>
+<a class="api-item" href="#contractsacladapteradapter-setnoargumentsdefaultaction">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setNoArgumentsDefaultAction</span>( <span class="st">int</span> <span class="sv">$defaultAccess</span> )</code>
+<span class="desc">Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 20</div>
+
+#### `addComponent()` { #contractsacladapteradapter-addcomponent }
+
+```php
+public function addComponent(
+    mixed $componentValue,
+    mixed $accessList
+): bool;
+```
+
+Adds a component to the ACL list
+
+Access names can be a particular action, by example
+search, update, delete, etc. or a list of them
+
+#### `addComponentAccess()` { #contractsacladapteradapter-addcomponentaccess }
+
+```php
+public function addComponentAccess(
+    string $componentName,
+    mixed $accessList
+): bool;
+```
+
+Adds access to components
+
+#### `addInherit()` { #contractsacladapteradapter-addinherit }
+
+```php
+public function addInherit(
+    string $roleName,
+    mixed $roleToInherits
+): bool;
+```
+
+Do a role inherit from another existing role
+
+#### `addRole()` { #contractsacladapteradapter-addrole }
+
+```php
+public function addRole(
+    mixed $role,
+    mixed $accessInherits = null
+): bool;
+```
+
+Adds a role to the ACL list. Second parameter lets to inherit access data
+from other existing role
+
+#### `allow()` { #contractsacladapteradapter-allow }
+
+```php
+public function allow(
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
+): void;
+```
+
+Allow access to a role on a component
+
+#### `deny()` { #contractsacladapteradapter-deny }
+
+```php
+public function deny(
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
+): void;
+```
+
+Deny access to a role on a component
+
+#### `dropComponentAccess()` { #contractsacladapteradapter-dropcomponentaccess }
+
+```php
+public function dropComponentAccess(
+    string $componentName,
+    mixed $accessList
+): void;
+```
+
+Removes access from a component
+
+#### `getActiveAccess()` { #contractsacladapteradapter-getactiveaccess }
+
+```php
+public function getActiveAccess(): null|string;
+```
+
+Returns the access which the list is checking if some role can access it
+
+#### `getActiveComponent()` { #contractsacladapteradapter-getactivecomponent }
+
+```php
+public function getActiveComponent(): null|string;
+```
+
+Returns the component which the list is checking if some role can access
+it
+
+#### `getActiveRole()` { #contractsacladapteradapter-getactiverole }
+
+```php
+public function getActiveRole(): null|string;
+```
+
+Returns the role which the list is checking if it's allowed to certain
+component/access
+
+#### `getComponents()` { #contractsacladapteradapter-getcomponents }
+
+```php
+public function getComponents(): ComponentInterface[];
+```
+
+Return an array with every component registered in the list
+
+#### `getDefaultAction()` { #contractsacladapteradapter-getdefaultaction }
+
+```php
+public function getDefaultAction(): int;
+```
+
+Returns the default ACL access level
+
+#### `getInheritedRoles()` { #contractsacladapteradapter-getinheritedroles }
+
+```php
+public function getInheritedRoles( string $roleName = "" ): array;
+```
+
+Returns the inherited roles for a passed role name. If no role name
+has been specified it will return the whole array. If the role has not
+been found it returns an empty array
+
+#### `getNoArgumentsDefaultAction()` { #contractsacladapteradapter-getnoargumentsdefaultaction }
+
+```php
+public function getNoArgumentsDefaultAction(): int;
+```
+
+Returns the default ACL access level for no arguments provided in
+isAllowed action if there exists func for accessKey
+
+#### `getRoles()` { #contractsacladapteradapter-getroles }
+
+```php
+public function getRoles(): RoleInterface[];
+```
+
+Return an array with every role registered in the list
+
+#### `isAllowed()` { #contractsacladapteradapter-isallowed }
+
+```php
+public function isAllowed(
+    mixed $roleName,
+    mixed $componentName,
+    string $access,
+    array $parameters = null
+): bool;
+```
+
+Check whether a role is allowed to access an action from a component
+
+#### `isComponent()` { #contractsacladapteradapter-iscomponent }
+
+```php
+public function isComponent( string $componentName ): bool;
+```
+
+Check whether component exist in the components list
+
+#### `isRole()` { #contractsacladapteradapter-isrole }
+
+```php
+public function isRole( string $roleName ): bool;
+```
+
+Check whether role exist in the roles list
+
+#### `setDefaultAction()` { #contractsacladapteradapter-setdefaultaction }
+
+```php
+public function setDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+
+#### `setNoArgumentsDefaultAction()` { #contractsacladapteradapter-setnoargumentsdefaultaction }
+
+```php
+public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
+```
+
+Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+for no arguments provided in isAllowed action if there exists func for
+accessKey
+
+
+## Contracts\Acl\Adapter\Persistable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Acl/Adapter/Persistable.zep){ .src-btn }
+
+Contract for ACL adapters that persist their policy to a backing store as a
+whole-policy snapshot (coarse granularity).
+
+NOTE: callable (closure) rules registered via allow()/deny() are NOT
+persisted - closures are not serializable. Re-register them in code after
+load(). The static rule set and role inheritance are persisted in full.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Adapter\Persistable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsacladapterpersistable-load">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">load</span>()</code>
+<span class="desc">Loads the policy snapshot from the backing store, replacing current</span>
+</a>
+<a class="api-item" href="#contractsacladapterpersistable-save">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">save</span>()</code>
+<span class="desc">Persists the current policy snapshot to the backing store.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `load()` { #contractsacladapterpersistable-load }
+
+```php
+public function load(): bool;
+```
+
+Loads the policy snapshot from the backing store, replacing current
+in-memory state. Returns false if no snapshot was found.
+
+#### `save()` { #contractsacladapterpersistable-save }
+
+```php
+public function save(): bool;
+```
+
+Persists the current policy snapshot to the backing store.
+
+
+## Contracts\Acl\Component
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Acl/Component.zep){ .src-btn }
+
+Canonical contract for an ACL component entity.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Component`**
+    - [`Phalcon\Acl\ComponentInterface`](phalcon_acl.md#aclcomponentinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclcomponent-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+<span class="desc">Magic method __toString</span>
+</a>
+<a class="api-item" href="#contractsaclcomponent-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+<span class="desc">Returns component description</span>
+</a>
+<a class="api-item" href="#contractsaclcomponent-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+<span class="desc">Returns the component name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `__toString()` { #contractsaclcomponent-__tostring }
+
+```php
+public function __toString(): string;
+```
+
+Magic method __toString
+
+#### `getDescription()` { #contractsaclcomponent-getdescription }
+
+```php
+public function getDescription(): string|null;
+```
+
+Returns component description
+
+#### `getName()` { #contractsaclcomponent-getname }
+
+```php
+public function getName(): string;
+```
+
+Returns the component name
+
+
+## Contracts\Acl\ComponentAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Acl/ComponentAware.zep){ .src-btn }
+
+Canonical contract for ACL component-aware objects.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\ComponentAware`**
+    - [`Phalcon\Acl\ComponentAwareInterface`](phalcon_acl.md#aclcomponentawareinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclcomponentaware-getcomponentname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getComponentName</span>()</code>
+<span class="desc">Returns component name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getComponentName()` { #contractsaclcomponentaware-getcomponentname }
+
+```php
+public function getComponentName(): string;
+```
+
+Returns component name
+
+
+## Contracts\Acl\Role
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Acl/Role.zep){ .src-btn }
+
+Canonical contract for an ACL role entity.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\Role`**
+    - [`Phalcon\Acl\RoleInterface`](phalcon_acl.md#aclroleinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclrole-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+<span class="desc">Magic method __toString</span>
+</a>
+<a class="api-item" href="#contractsaclrole-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+<span class="desc">Returns role description</span>
+</a>
+<a class="api-item" href="#contractsaclrole-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+<span class="desc">Returns the role name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `__toString()` { #contractsaclrole-__tostring }
+
+```php
+public function __toString(): string;
+```
+
+Magic method __toString
+
+#### `getDescription()` { #contractsaclrole-getdescription }
+
+```php
+public function getDescription(): string|null;
+```
+
+Returns role description
+
+#### `getName()` { #contractsaclrole-getname }
+
+```php
+public function getName(): string;
+```
+
+Returns the role name
+
+
+## Contracts\Acl\RoleAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Acl/RoleAware.zep){ .src-btn }
+
+Canonical contract for ACL role-aware objects.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Acl\RoleAware`**
+    - [`Phalcon\Acl\RoleAwareInterface`](phalcon_acl.md#aclroleawareinterface)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsaclroleaware-getrolename">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getRoleName</span>()</code>
+<span class="desc">Returns role name</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getRoleName()` { #contractsaclroleaware-getrolename }
+
+```php
+public function getRoleName(): string;
+```
+
+Returns role name
+
+
 ## Contracts\Assets\Asset
 
 <span class="badge badge--interface">Interface</span>
@@ -3352,16 +3965,16 @@ public function fetchColumn(
 Returns the n'th field of first row in a SQL query result
 
 ```php
-// Getting count of robots
-$robotsCount = $connection->fetchColumn("SELECT COUNT(*) FROM robots");
-print_r($robotsCount);
+// Getting count of invoices
+$invoicesCount = $connection->fetchColumn("SELECT COUNT(*) FROM co_invoices");
+print_r($invoicesCount);
 
-// Getting name of last edited robot
-$robot = $connection->fetchColumn(
-    "SELECT id, name FROM robots ORDER BY modified DESC",
+// Getting the title of the last created invoice
+$invoice = $connection->fetchColumn(
+    "SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC",
     1
 );
-print_r($robot);
+print_r($invoice);
 ```
 
 #### `fetchOne()` { #contractsdbadapteradapter-fetchone }
@@ -3432,16 +4045,16 @@ Returns the default value to make the RBDM use the default value declared
 in the table definition
 
 ```php
-// Inserting a new robot with a valid default value for the column 'year'
+// Inserting a new invoice with a valid default value for the column 'inv_total'
 $success = $connection->insert(
-    "robots",
+    "co_invoices",
     [
-        "Astro Boy",
+        "Test Invoice",
         $connection->getDefaultValue()
     ],
     [
-        "name",
-        "year",
+        "inv_title",
+        "inv_total",
     ]
 );
 ```
@@ -3554,17 +4167,17 @@ public function insertAsDict(
 Inserts data into a table using custom RBDM SQL syntax
 
 ```php
-// Inserting a new robot
+// Inserting a new invoice
 $success = $connection->insertAsDict(
-    "robots",
+    "co_invoices",
     [
-        "name" => "Astro Boy",
-        "year" => 1952,
+        "inv_title" => "Test Invoice",
+        "inv_total" => 100,
     ]
 );
 
 // Next SQL sentence is sent to the database system
-INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+INSERT INTO `co_invoices` (`inv_title`, `inv_total`) VALUES ("Test Invoice", 100);
 ```
 
 #### `isNestedTransactionsWithSavepoints()` { #contractsdbadapteradapter-isnestedtransactionswithsavepoints }
@@ -3760,17 +4373,17 @@ Updates data on a table using custom RBDM SQL syntax
 Another, more convenient syntax
 
 ```php
-// Updating existing robot
+// Updating existing invoice
 $success = $connection->updateAsDict(
-    "robots",
+    "co_invoices",
     [
-        "name" => "New Astro Boy",
+        "inv_title" => "New Test Invoice",
     ],
-    "id = 101"
+    "inv_id = 101"
 );
 
 // Next SQL sentence is sent to the database system
-UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+UPDATE `co_invoices` SET `inv_title` = "New Test Invoice" WHERE inv_id = 101
 ```
 
 #### `useExplicitIdValue()` { #contractsdbadapteradapter-useexplicitidvalue }
@@ -8424,6 +9037,1033 @@ public function setProperties( array $properties ): Repository;
 Sets values for properties of the repository
 
 
+## Contracts\Queue\ConnectionFactory
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/ConnectionFactory.zep){ .src-btn }
+
+Builds a Context: the entry point of every adapter.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\ConnectionFactory`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueconnectionfactory-createcontext">
+<code class="vis vis-public">public</code>
+<code class="ret">Context</code>
+<code class="sig"><span class="sf">createContext</span>()</code>
+<span class="desc">Creates a context (a session/connection to the transport).</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `createContext()` { #contractsqueueconnectionfactory-createcontext }
+
+```php
+public function createContext(): Context;
+```
+
+Creates a context (a session/connection to the transport).
+
+
+## Contracts\Queue\Consumer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Consumer.zep){ .src-btn }
+
+Receives messages from a single queue.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Consumer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueconsumer-acknowledge">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">acknowledge</span>( <span class="st">Message</span> <span class="sv">$message</span> )</code>
+<span class="desc">Acknowledges the message; the transport may then discard it.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-getqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">getQueue</span>()</code>
+<span class="desc">Returns the queue this consumer reads from.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-receive">
+<code class="vis vis-public">public</code>
+<code class="ret">Message|null</code>
+<code class="sig"><span class="sf">receive</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
+<span class="desc">Receives a message, blocking up to timeout milliseconds (0 = block</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-receivenowait">
+<code class="vis vis-public">public</code>
+<code class="ret">Message|null</code>
+<code class="sig"><span class="sf">receiveNoWait</span>()</code>
+<span class="desc">Receives a message without blocking, or null when none is ready.</span>
+</a>
+<a class="api-item" href="#contractsqueueconsumer-reject">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">reject</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$requeue</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Rejects the message. When requeue is true the transport redelivers it.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 5</div>
+
+#### `acknowledge()` { #contractsqueueconsumer-acknowledge }
+
+```php
+public function acknowledge( Message $message ): void;
+```
+
+Acknowledges the message; the transport may then discard it.
+
+#### `getQueue()` { #contractsqueueconsumer-getqueue }
+
+```php
+public function getQueue(): Queue;
+```
+
+Returns the queue this consumer reads from.
+
+#### `receive()` { #contractsqueueconsumer-receive }
+
+```php
+public function receive( int $timeout = 0 ): Message|null;
+```
+
+Receives a message, blocking up to timeout milliseconds (0 = block
+until one is available). Returns null when none arrives in time.
+
+#### `receiveNoWait()` { #contractsqueueconsumer-receivenowait }
+
+```php
+public function receiveNoWait(): Message|null;
+```
+
+Receives a message without blocking, or null when none is ready.
+
+#### `reject()` { #contractsqueueconsumer-reject }
+
+```php
+public function reject(
+    Message $message,
+    bool $requeue = false
+): void;
+```
+
+Rejects the message. When requeue is true the transport redelivers it.
+
+
+## Contracts\Queue\Context
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Context.zep){ .src-btn }
+
+A session with the transport. Factory for messages, destinations,
+producers and consumers.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Context`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuecontext-close">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">close</span>()</code>
+<span class="desc">Closes the context and releases its resources.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createconsumer">
+<code class="vis vis-public">public</code>
+<code class="ret">Consumer</code>
+<code class="sig"><span class="sf">createConsumer</span>( <span class="st">Destination</span> <span class="sv">$destination</span> )</code>
+<span class="desc">Creates a consumer for the given destination.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createmessage">
+<code class="vis vis-public">public</code>
+<code class="ret">Message</code>
+<code class="sig"><span class="sf">createMessage</span>(<span class="prm"><span class="st">string</span> <span class="sv">$body</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$headers</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Creates a message with an optional body, properties and headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createproducer">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">createProducer</span>()</code>
+<span class="desc">Creates a producer.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">createQueue</span>( <span class="st">string</span> <span class="sv">$queueName</span> )</code>
+<span class="desc">Creates a queue destination by name.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createsubscriptionconsumer">
+<code class="vis vis-public">public</code>
+<code class="ret">SubscriptionConsumer</code>
+<code class="sig"><span class="sf">createSubscriptionConsumer</span>()</code>
+<span class="desc">Creates a subscription consumer for consuming from several queues.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createtemporaryqueue">
+<code class="vis vis-public">public</code>
+<code class="ret">Queue</code>
+<code class="sig"><span class="sf">createTemporaryQueue</span>()</code>
+<span class="desc">Creates a temporary queue tied to the lifetime of the context.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-createtopic">
+<code class="vis vis-public">public</code>
+<code class="ret">Topic</code>
+<code class="sig"><span class="sf">createTopic</span>( <span class="st">string</span> <span class="sv">$topicName</span> )</code>
+<span class="desc">Creates a topic destination by name.</span>
+</a>
+<a class="api-item" href="#contractsqueuecontext-purgequeue">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">purgeQueue</span>( <span class="st">Queue</span> <span class="sv">$queue</span> )</code>
+<span class="desc">Removes all messages from the given queue.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 9</div>
+
+#### `close()` { #contractsqueuecontext-close }
+
+```php
+public function close(): void;
+```
+
+Closes the context and releases its resources.
+
+#### `createConsumer()` { #contractsqueuecontext-createconsumer }
+
+```php
+public function createConsumer( Destination $destination ): Consumer;
+```
+
+Creates a consumer for the given destination.
+
+#### `createMessage()` { #contractsqueuecontext-createmessage }
+
+```php
+public function createMessage(
+    string $body = "",
+    array $properties = [],
+    array $headers = []
+): Message;
+```
+
+Creates a message with an optional body, properties and headers.
+
+#### `createProducer()` { #contractsqueuecontext-createproducer }
+
+```php
+public function createProducer(): Producer;
+```
+
+Creates a producer.
+
+#### `createQueue()` { #contractsqueuecontext-createqueue }
+
+```php
+public function createQueue( string $queueName ): Queue;
+```
+
+Creates a queue destination by name.
+
+#### `createSubscriptionConsumer()` { #contractsqueuecontext-createsubscriptionconsumer }
+
+```php
+public function createSubscriptionConsumer(): SubscriptionConsumer;
+```
+
+Creates a subscription consumer for consuming from several queues.
+
+#### `createTemporaryQueue()` { #contractsqueuecontext-createtemporaryqueue }
+
+```php
+public function createTemporaryQueue(): Queue;
+```
+
+Creates a temporary queue tied to the lifetime of the context.
+
+#### `createTopic()` { #contractsqueuecontext-createtopic }
+
+```php
+public function createTopic( string $topicName ): Topic;
+```
+
+Creates a topic destination by name.
+
+#### `purgeQueue()` { #contractsqueuecontext-purgequeue }
+
+```php
+public function purgeQueue( Queue $queue ): void;
+```
+
+Removes all messages from the given queue.
+
+
+## Contracts\Queue\Destination
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Destination.zep){ .src-btn }
+
+Marker interface for a message destination: a Queue or a Topic.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Destination`**
+    - [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
+    - [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
+
+</div>
+
+
+## Contracts\Queue\Inspectable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Inspectable.zep){ .src-btn }
+
+Optional capability contract for a transport that can report statistics for
+a queue (for example ready, delayed and buried job counts). Callers detect
+support with `instanceof`.
+
+The array returned by getStats() is ADAPTER-NATIVE: its keys and their
+semantics are defined by the implementing adapter and are NOT guaranteed to
+be uniform across adapters. It is an inspection surface, not a portable or
+normalized schema. Each implementation documents the exact keys it returns.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Inspectable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueinspectable-getstats">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getStats</span>( <span class="st">Queue</span> <span class="sv">$queue</span> )</code>
+<span class="desc">Returns statistics for the given queue.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getStats()` { #contractsqueueinspectable-getstats }
+
+```php
+public function getStats( Queue $queue ): array;
+```
+
+Returns statistics for the given queue.
+
+
+## Contracts\Queue\Message
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Message.zep){ .src-btn }
+
+A message exchanged through the transport. Carries a body, application
+properties, transport headers and the standard messaging metadata.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Message`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuemessage-getbody">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getBody</span>()</code>
+<span class="desc">Returns the message body.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getCorrelationId</span>()</code>
+<span class="desc">Returns the correlation id used to correlate request/reply messages.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getheader">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single header value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
+<span class="desc">Returns all transport headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getMessageId</span>()</code>
+<span class="desc">Returns the message id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getProperties</span>()</code>
+<span class="desc">Returns all application properties.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single property value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-getreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getReplyTo</span>()</code>
+<span class="desc">Returns the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-gettimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getTimestamp</span>()</code>
+<span class="desc">Returns the timestamp (in milliseconds) or null when it is not set.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-isredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRedelivered</span>()</code>
+<span class="desc">Whether the message has been redelivered.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setbody">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setBody</span>( <span class="st">string</span> <span class="sv">$body</span> )</code>
+<span class="desc">Sets the message body.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setCorrelationId</span>( <span class="st">string</span> <span class="sv">$correlationId</span> )</code>
+<span class="desc">Sets the correlation id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setheader">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single transport header.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeaders</span>( <span class="st">array</span> <span class="sv">$headers</span> )</code>
+<span class="desc">Replaces all transport headers.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setMessageId</span>( <span class="st">string</span> <span class="sv">$messageId</span> )</code>
+<span class="desc">Sets the message id.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
+<span class="desc">Replaces all application properties.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single application property.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setRedelivered</span>( <span class="st">bool</span> <span class="sv">$redelivered</span> )</code>
+<span class="desc">Marks the message as redelivered.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-setreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setReplyTo</span>( <span class="st">string</span> <span class="sv">$replyTo</span> )</code>
+<span class="desc">Sets the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#contractsqueuemessage-settimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setTimestamp</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
+<span class="desc">Sets the timestamp (in milliseconds).</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 20</div>
+
+#### `getBody()` { #contractsqueuemessage-getbody }
+
+```php
+public function getBody(): string;
+```
+
+Returns the message body.
+
+#### `getCorrelationId()` { #contractsqueuemessage-getcorrelationid }
+
+```php
+public function getCorrelationId(): string|null;
+```
+
+Returns the correlation id used to correlate request/reply messages.
+
+#### `getHeader()` { #contractsqueuemessage-getheader }
+
+```php
+public function getHeader(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single header value, or the default when it is not set.
+
+#### `getHeaders()` { #contractsqueuemessage-getheaders }
+
+```php
+public function getHeaders(): array;
+```
+
+Returns all transport headers.
+
+#### `getMessageId()` { #contractsqueuemessage-getmessageid }
+
+```php
+public function getMessageId(): string|null;
+```
+
+Returns the message id.
+
+#### `getProperties()` { #contractsqueuemessage-getproperties }
+
+```php
+public function getProperties(): array;
+```
+
+Returns all application properties.
+
+#### `getProperty()` { #contractsqueuemessage-getproperty }
+
+```php
+public function getProperty(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single property value, or the default when it is not set.
+
+#### `getReplyTo()` { #contractsqueuemessage-getreplyto }
+
+```php
+public function getReplyTo(): string|null;
+```
+
+Returns the reply-to destination name.
+
+#### `getTimestamp()` { #contractsqueuemessage-gettimestamp }
+
+```php
+public function getTimestamp(): int|null;
+```
+
+Returns the timestamp (in milliseconds) or null when it is not set.
+
+#### `isRedelivered()` { #contractsqueuemessage-isredelivered }
+
+```php
+public function isRedelivered(): bool;
+```
+
+Whether the message has been redelivered.
+
+#### `setBody()` { #contractsqueuemessage-setbody }
+
+```php
+public function setBody( string $body ): void;
+```
+
+Sets the message body.
+
+#### `setCorrelationId()` { #contractsqueuemessage-setcorrelationid }
+
+```php
+public function setCorrelationId( string $correlationId ): void;
+```
+
+Sets the correlation id.
+
+#### `setHeader()` { #contractsqueuemessage-setheader }
+
+```php
+public function setHeader(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single transport header.
+
+#### `setHeaders()` { #contractsqueuemessage-setheaders }
+
+```php
+public function setHeaders( array $headers ): void;
+```
+
+Replaces all transport headers.
+
+#### `setMessageId()` { #contractsqueuemessage-setmessageid }
+
+```php
+public function setMessageId( string $messageId ): void;
+```
+
+Sets the message id.
+
+#### `setProperties()` { #contractsqueuemessage-setproperties }
+
+```php
+public function setProperties( array $properties ): void;
+```
+
+Replaces all application properties.
+
+#### `setProperty()` { #contractsqueuemessage-setproperty }
+
+```php
+public function setProperty(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single application property.
+
+#### `setRedelivered()` { #contractsqueuemessage-setredelivered }
+
+```php
+public function setRedelivered( bool $redelivered ): void;
+```
+
+Marks the message as redelivered.
+
+#### `setReplyTo()` { #contractsqueuemessage-setreplyto }
+
+```php
+public function setReplyTo( string $replyTo ): void;
+```
+
+Sets the reply-to destination name.
+
+#### `setTimestamp()` { #contractsqueuemessage-settimestamp }
+
+```php
+public function setTimestamp( int $timestamp ): void;
+```
+
+Sets the timestamp (in milliseconds).
+
+
+## Contracts\Queue\Processor
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Processor.zep){ .src-btn }
+
+Processes a single message. The return value tells the consumer what to
+do next: acknowledge, reject, or requeue.
+
+The literal constant values are kept compatible with the wider interop
+ecosystem.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Processor`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueprocessor-process">
+<code class="vis vis-public">public</code>
+<code class="ret">string|object</code>
+<code class="sig"><span class="sf">process</span>(<span class="prm"><span class="st">Message</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">Context</span> <span class="sv">$context</span></span>)</code>
+<span class="desc">Processes the message and returns one of the ACK / REJECT / REQUEUE</span>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">ACK</span><span class="sm"> = &quot;enqueue.ack&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">REJECT</span><span class="sm"> = &quot;enqueue.reject&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="ret">string</code>
+<code class="sig"><span class="sc">REQUEUE</span><span class="sm"> = &quot;enqueue.requeue&quot;</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `process()` { #contractsqueueprocessor-process }
+
+```php
+public function process(
+    Message $message,
+    Context $context
+): string|object;
+```
+
+Processes the message and returns one of the ACK / REJECT / REQUEUE
+constants, or an object whose string form is one of those values.
+
+
+## Contracts\Queue\Producer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Producer.zep){ .src-btn }
+
+Sends messages to a destination.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\Producer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueueproducer-getdeliverydelay">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getDeliveryDelay</span>()</code>
+<span class="desc">Returns the delivery delay (in milliseconds) or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-getpriority">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getPriority</span>()</code>
+<span class="desc">Returns the message priority or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-gettimetolive">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getTimeToLive</span>()</code>
+<span class="desc">Returns the time to live (in milliseconds) or null when not set.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-send">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">send</span>(<span class="prm"><span class="st">Destination</span> <span class="sv">$destination</span>,</span><span class="prm"><span class="st">Message</span> <span class="sv">$message</span></span>)</code>
+<span class="desc">Sends a message to the given destination.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-setdeliverydelay">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setDeliveryDelay</span>( <span class="st">mixed</span> <span class="sv">$deliveryDelay</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the delivery delay (in milliseconds). Null clears it.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-setpriority">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setPriority</span>( <span class="st">mixed</span> <span class="sv">$priority</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the message priority. Null clears it.</span>
+</a>
+<a class="api-item" href="#contractsqueueproducer-settimetolive">
+<code class="vis vis-public">public</code>
+<code class="ret">Producer</code>
+<code class="sig"><span class="sf">setTimeToLive</span>( <span class="st">mixed</span> <span class="sv">$timeToLive</span><span class="sm"> = null</span> )</code>
+<span class="desc">Sets the time to live (in milliseconds). Null clears it.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 7</div>
+
+#### `getDeliveryDelay()` { #contractsqueueproducer-getdeliverydelay }
+
+```php
+public function getDeliveryDelay(): int|null;
+```
+
+Returns the delivery delay (in milliseconds) or null when not set.
+
+#### `getPriority()` { #contractsqueueproducer-getpriority }
+
+```php
+public function getPriority(): int|null;
+```
+
+Returns the message priority or null when not set.
+
+#### `getTimeToLive()` { #contractsqueueproducer-gettimetolive }
+
+```php
+public function getTimeToLive(): int|null;
+```
+
+Returns the time to live (in milliseconds) or null when not set.
+
+#### `send()` { #contractsqueueproducer-send }
+
+```php
+public function send(
+    Destination $destination,
+    Message $message
+): void;
+```
+
+Sends a message to the given destination.
+
+#### `setDeliveryDelay()` { #contractsqueueproducer-setdeliverydelay }
+
+```php
+public function setDeliveryDelay( mixed $deliveryDelay = null ): Producer;
+```
+
+Sets the delivery delay (in milliseconds). Null clears it.
+
+#### `setPriority()` { #contractsqueueproducer-setpriority }
+
+```php
+public function setPriority( mixed $priority = null ): Producer;
+```
+
+Sets the message priority. Null clears it.
+
+#### `setTimeToLive()` { #contractsqueueproducer-settimetolive }
+
+```php
+public function setTimeToLive( mixed $timeToLive = null ): Producer;
+```
+
+Sets the time to live (in milliseconds). Null clears it.
+
+
+## Contracts\Queue\Queue
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Queue.zep){ .src-btn }
+
+A queue destination (point-to-point).
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
+    - **`Phalcon\Contracts\Queue\Queue`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuequeue-getqueuename">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getQueueName</span>()</code>
+<span class="desc">Returns the queue name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getQueueName()` { #contractsqueuequeue-getqueuename }
+
+```php
+public function getQueueName(): string;
+```
+
+Returns the queue name.
+
+
+## Contracts\Queue\SubscriptionConsumer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/SubscriptionConsumer.zep){ .src-btn }
+
+Consumes from several queues at once, dispatching each message to the
+callback registered for its consumer.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\SubscriptionConsumer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-consume">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">consume</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
+<span class="desc">Starts consuming, blocking up to timeout milliseconds (0 = block</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-subscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">subscribe</span>(<span class="prm"><span class="st">Consumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callback</span></span>)</code>
+<span class="desc">Subscribes a consumer; the callback receives each delivered message.</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribe</span>( <span class="st">Consumer</span> <span class="sv">$consumer</span> )</code>
+<span class="desc">Removes a previously subscribed consumer.</span>
+</a>
+<a class="api-item" href="#contractsqueuesubscriptionconsumer-unsubscribeall">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribeAll</span>()</code>
+<span class="desc">Removes every subscribed consumer.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `consume()` { #contractsqueuesubscriptionconsumer-consume }
+
+```php
+public function consume( int $timeout = 0 ): void;
+```
+
+Starts consuming, blocking up to timeout milliseconds (0 = block
+until a message is available).
+
+#### `subscribe()` { #contractsqueuesubscriptionconsumer-subscribe }
+
+```php
+public function subscribe(
+    Consumer $consumer,
+    callable $callback
+): void;
+```
+
+Subscribes a consumer; the callback receives each delivered message.
+
+#### `unsubscribe()` { #contractsqueuesubscriptionconsumer-unsubscribe }
+
+```php
+public function unsubscribe( Consumer $consumer ): void;
+```
+
+Removes a previously subscribed consumer.
+
+#### `unsubscribeAll()` { #contractsqueuesubscriptionconsumer-unsubscribeall }
+
+```php
+public function unsubscribeAll(): void;
+```
+
+Removes every subscribed consumer.
+
+
+## Contracts\Queue\Topic
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/Topic.zep){ .src-btn }
+
+A topic destination (publish/subscribe).
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
+    - **`Phalcon\Contracts\Queue\Topic`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsqueuetopic-gettopicname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTopicName</span>()</code>
+<span class="desc">Returns the topic name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getTopicName()` { #contractsqueuetopic-gettopicname }
+
+```php
+public function getTopicName(): string;
+```
+
+Returns the topic name.
+
+
+## Contracts\Queue\VisibilityAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Queue/VisibilityAware.zep){ .src-btn }
+
+Marker contract for a consumer that supports a visibility timeout
+(for example Beanstalk TTR or an SQS visibility timeout). Callers detect
+support with `instanceof`. It carries no behavior and commits to no class
+shape.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Queue\VisibilityAware`**
+
+</div>
+
+
 ## Contracts\Support\Collection
 
 <span class="badge badge--interface">Interface</span>
@@ -8854,3 +10494,144 @@ public function where(
 
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.
+
+
+## Contracts\Support\Debug\Renderer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Support/Debug/Renderer.zep){ .src-btn }
+
+Canonical contract for Phalcon\Support\Debug renderers. Turns an
+ExceptionReport into output.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\Support\Debug\TemplateAware`](#contractssupportdebugtemplateaware)
+    - **`Phalcon\Contracts\Support\Debug\Renderer`**
+
+</div>
+
+__Uses__ `Phalcon\Support\Debug\Report\ExceptionReport`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractssupportdebugrenderer-getcsssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getCssSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Returns the CSS sources block for the given base URI.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-getjssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getJsSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+<span class="desc">Returns the JavaScript sources block for the given base URI.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-getversion">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getVersion</span>()</code>
+<span class="desc">Returns the framework version block.</span>
+</a>
+<a class="api-item" href="#contractssupportdebugrenderer-render">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">ExceptionReport</span> <span class="sv">$report</span> )</code>
+<span class="desc">Renders the report.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `getCssSources()` { #contractssupportdebugrenderer-getcsssources }
+
+```php
+public function getCssSources( string $uri ): string;
+```
+
+Returns the CSS sources block for the given base URI.
+
+#### `getJsSources()` { #contractssupportdebugrenderer-getjssources }
+
+```php
+public function getJsSources( string $uri ): string;
+```
+
+Returns the JavaScript sources block for the given base URI.
+
+#### `getVersion()` { #contractssupportdebugrenderer-getversion }
+
+```php
+public function getVersion(): string;
+```
+
+Returns the framework version block.
+
+#### `render()` { #contractssupportdebugrenderer-render }
+
+```php
+public function render( ExceptionReport $report ): string;
+```
+
+Renders the report.
+
+
+## Contracts\Support\Debug\TemplateAware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Support/Debug/TemplateAware.zep){ .src-btn }
+
+Canonical contract for components that render through named, overridable
+template strings.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Support\Debug\TemplateAware`**
+    - [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractssupportdebugtemplateaware-gettemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns the template for the given name (override if set, default</span>
+</a>
+<a class="api-item" href="#contractssupportdebugtemplateaware-settemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$template</span></span>)</code>
+<span class="desc">Overrides the template for the given name.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `getTemplate()` { #contractssupportdebugtemplateaware-gettemplate }
+
+```php
+public function getTemplate( string $name ): string;
+```
+
+Returns the template for the given name (override if set, default
+otherwise).
+
+#### `setTemplate()` { #contractssupportdebugtemplateaware-settemplate }
+
+```php
+public function setTemplate(
+    string $name,
+    string $template
+): static;
+```
+
+Overrides the template for the given name.

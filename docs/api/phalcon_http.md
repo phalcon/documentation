@@ -23,7 +23,7 @@ Provide OO wrappers to manage a HTTP cookie.
 
 </div>
 
-__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exception` · `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort` · `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired` · `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable` · `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Response\Exception` · `Phalcon\Session\ManagerInterface`
+__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exception` · `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort` · `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired` · `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable` · `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Response\Exception` · `Phalcon\Http\Traits\EncryptionAwareTrait` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -92,12 +92,6 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getValue</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns the cookie&#039;s value.</span>
-</a>
-<a class="api-item" href="#httpcookie-isusingencryption">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isUsingEncryption</span>()</code>
-<span class="desc">Check if the cookie is using implicit encryption</span>
 </a>
 <a class="api-item" href="#httpcookie-restore">
 <code class="vis vis-public">public</code>
@@ -234,11 +228,6 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$useEncryption</span><span class="sm"> = false</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">mixed|null</code>
 <code class="sig"><span class="sv">$value</span><span class="sm"> = null</span></code>
 </div>
@@ -246,7 +235,7 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 
 ### Methods
 
-<div class="api-group">Public · 23</div>
+<div class="api-group">Public · 22</div>
 
 #### `__construct()` { #httpcookie-__construct }
 
@@ -348,14 +337,6 @@ public function getValue(
 ```
 
 Returns the cookie's value.
-
-#### `isUsingEncryption()` { #httpcookie-isusingencryption }
-
-```php
-public function isUsingEncryption(): bool;
-```
-
-Check if the cookie is using implicit encryption
 
 #### `restore()` { #httpcookie-restore }
 
@@ -1424,7 +1405,7 @@ $request->getLanguages();
 
 </div>
 
-__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Message\RequestMethodInterface` · `Phalcon\Http\Request\Exception` · `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Request\Exceptions\InvalidHost` · `Phalcon\Http\Request\Exceptions\InvalidHttpMethod` · `Phalcon\Http\Request\Exceptions\MissingFilters` · `Phalcon\Http\Request\Exceptions\SanitizerNotFound` · `Phalcon\Http\Request\File` · `Phalcon\Http\Request\FileInterface` · `Phalcon\Support\Helper\Json\Decode` · `stdClass`
+__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Message\RequestMethodInterface` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Request\Exception` · `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Request\Exceptions\InvalidHost` · `Phalcon\Http\Request\Exceptions\InvalidHttpMethod` · `Phalcon\Http\Request\Exceptions\MissingFilters` · `Phalcon\Http\Request\Exceptions\SanitizerNotFound` · `Phalcon\Http\Request\File` · `Phalcon\Http\Request\FileInterface` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait` · `stdClass`
 { .api-uses }
 
 ### Method Summary
@@ -1441,6 +1422,12 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getAcceptableContent</span>()</code>
 <span class="desc">Gets an array with mime/types and their quality accepted by the</span>
+</a>
+<a class="api-item" href="#httprequest-getattributes">
+<code class="vis vis-public">public</code>
+<code class="ret">AttributeBag</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
+<span class="desc">Returns the request attributes bag. Attributes are arbitrary,</span>
 </a>
 <a class="api-item" href="#httprequest-getbasicauth">
 <code class="vis vis-public">public</code>
@@ -1887,6 +1874,11 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">AttributeBag|null</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">FilterInterface|null</code>
 <code class="sig"><span class="sv">$filterService</span><span class="sm"> = null</span></code>
 </div>
@@ -1929,7 +1921,7 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 
 ### Methods
 
-<div class="api-group">Public · 68</div>
+<div class="api-group">Public · 69</div>
 
 #### `get()` { #httprequest-get }
 
@@ -1962,6 +1954,24 @@ public function getAcceptableContent(): array;
 
 Gets an array with mime/types and their quality accepted by the
 browser/client from _SERVER["HTTP_ACCEPT"]
+
+#### `getAttributes()` { #httprequest-getattributes }
+
+```php
+public function getAttributes(): AttributeBag;
+```
+
+Returns the request attributes bag. Attributes are arbitrary,
+application-defined values attached to the request during its
+lifecycle (router, dispatcher, security components etc.). The bag
+is created empty on first access and the same instance is returned
+on every subsequent call.
+
+```php
+$request->getAttributes()->set("user", $user);
+
+$user = $request->getAttributes()->get("user");
+```
 
 #### `getBasicAuth()` { #httprequest-getbasicauth }
 
@@ -3645,6 +3655,379 @@ public function numFiles( bool $onlySuccessful = false ): int;
 Returns the number of files available
 
 
+## Http\Request\Bag\AbstractBag
+
+<span class="badge badge--abstract">Abstract</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Bag/AbstractBag.zep){ .src-btn }
+
+Shared base for the HTTP request bags. A bag is a string-keyed value store
+backed by a raw array, exposing `get/has/set/remove/all` plus typed readers
+for cast-with-default access.
+
+Two protected hooks (`normalizeKey`, `normalizeItems`) let subclasses
+change key handling without restating the surface.
+
+The ArrayAccess append form (`$bag[] = $value`) is rejected with a
+NullKeyException: bags are always string-keyed, so an auto-indexed write
+could never be addressed by the caller.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Http\Request\Bag\AbstractBag`** - implements `ArrayAccess`, `Countable`, `IteratorAggregate`
+    - [`Phalcon\Http\Request\Bag\AttributeBag`](#httprequestbagattributebag)
+
+</div>
+
+__Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Http\Request\Exceptions\NullKeyException` · `Traversable`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#httprequestbagabstractbag-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">array</span> <span class="sv">$items</span><span class="sm"> = []</span> )</code>
+<span class="desc">AbstractBag constructor.</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-all">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">all</span>()</code>
+<span class="desc">Returns all the elements of the bag</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-count">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">count</span>()</code>
+<span class="desc">Returns the number of elements in the bag</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-get">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns an element of the bag, or the default value if it is not set</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-getarray">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getArray</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$defaultValue</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Returns an element of the bag as an array. The default value is</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-getbool">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getBool</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$defaultValue</span><span class="sm"> = false</span></span>)</code>
+<span class="desc">Returns an element of the bag cast to bool, or the default value if</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-getfloat">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getFloat</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">double</span> <span class="sv">$defaultValue</span><span class="sm"> = 0.0</span></span>)</code>
+<span class="desc">Returns an element of the bag cast to float, or the default value if</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-getint">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getInt</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$defaultValue</span><span class="sm"> = 0</span></span>)</code>
+<span class="desc">Returns an element of the bag cast to int, or the default value if</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-getiterator">
+<code class="vis vis-public">public</code>
+<code class="ret">Traversable</code>
+<code class="sig"><span class="sf">getIterator</span>()</code>
+<span class="desc">Returns the iterator of the bag</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-getstring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getString</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$defaultValue</span><span class="sm"> = &quot;&quot;</span></span>)</code>
+<span class="desc">Returns an element of the bag cast to string, or the default value if</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-has">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Checks whether an element exists in the bag</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-offsetexists">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">offsetExists</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Whether an offset exists</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-offsetget">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">offsetGet</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Offset to retrieve</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-offsetset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">offsetSet</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$offset</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Offset to set</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-offsetunset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">offsetUnset</span>( <span class="st">mixed</span> <span class="sv">$offset</span> )</code>
+<span class="desc">Offset to unset</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-remove">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">remove</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Removes an element from the bag</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-set">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">set</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets an element in the bag</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-normalizeitems">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">normalizeItems</span>( <span class="st">array</span> <span class="sv">$items</span> )</code>
+<span class="desc">Normalizes the items at construction time. Identity in the base;</span>
+</a>
+<a class="api-item" href="#httprequestbagabstractbag-normalizekey">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">normalizeKey</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Normalizes a key for lookups and writes. Identity in the base;</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$items</span><span class="sm"> = []</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 17</div>
+
+#### `__construct()` { #httprequestbagabstractbag-__construct }
+
+```php
+public function __construct( array $items = [] );
+```
+
+AbstractBag constructor.
+
+#### `all()` { #httprequestbagabstractbag-all }
+
+```php
+public function all(): array;
+```
+
+Returns all the elements of the bag
+
+#### `count()` { #httprequestbagabstractbag-count }
+
+```php
+public function count(): int;
+```
+
+Returns the number of elements in the bag
+
+#### `get()` { #httprequestbagabstractbag-get }
+
+```php
+public function get(
+    string $key,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns an element of the bag, or the default value if it is not set
+
+#### `getArray()` { #httprequestbagabstractbag-getarray }
+
+```php
+public function getArray(
+    string $key,
+    array $defaultValue = []
+): array;
+```
+
+Returns an element of the bag as an array. The default value is
+returned if the element is not set or is not an array
+
+#### `getBool()` { #httprequestbagabstractbag-getbool }
+
+```php
+public function getBool(
+    string $key,
+    bool $defaultValue = false
+): bool;
+```
+
+Returns an element of the bag cast to bool, or the default value if
+it is not set
+
+#### `getFloat()` { #httprequestbagabstractbag-getfloat }
+
+```php
+public function getFloat(
+    string $key,
+    double $defaultValue = 0.0
+): double;
+```
+
+Returns an element of the bag cast to float, or the default value if
+it is not set
+
+#### `getInt()` { #httprequestbagabstractbag-getint }
+
+```php
+public function getInt(
+    string $key,
+    int $defaultValue = 0
+): int;
+```
+
+Returns an element of the bag cast to int, or the default value if
+it is not set
+
+#### `getIterator()` { #httprequestbagabstractbag-getiterator }
+
+```php
+public function getIterator(): Traversable;
+```
+
+Returns the iterator of the bag
+
+#### `getString()` { #httprequestbagabstractbag-getstring }
+
+```php
+public function getString(
+    string $key,
+    string $defaultValue = ""
+): string;
+```
+
+Returns an element of the bag cast to string, or the default value if
+it is not set
+
+#### `has()` { #httprequestbagabstractbag-has }
+
+```php
+public function has( string $key ): bool;
+```
+
+Checks whether an element exists in the bag
+
+#### `offsetExists()` { #httprequestbagabstractbag-offsetexists }
+
+```php
+public function offsetExists( mixed $offset ): bool;
+```
+
+Whether an offset exists
+
+@link https://php.net/manual/en/arrayaccess.offsetexists.php
+
+#### `offsetGet()` { #httprequestbagabstractbag-offsetget }
+
+```php
+public function offsetGet( mixed $offset ): mixed;
+```
+
+Offset to retrieve
+
+@link https://php.net/manual/en/arrayaccess.offsetget.php
+
+#### `offsetSet()` { #httprequestbagabstractbag-offsetset }
+
+```php
+public function offsetSet(
+    mixed $offset,
+    mixed $value
+): void;
+```
+
+Offset to set
+
+@link https://php.net/manual/en/arrayaccess.offsetset.php
+
+#### `offsetUnset()` { #httprequestbagabstractbag-offsetunset }
+
+```php
+public function offsetUnset( mixed $offset ): void;
+```
+
+Offset to unset
+
+@link https://php.net/manual/en/arrayaccess.offsetunset.php
+
+#### `remove()` { #httprequestbagabstractbag-remove }
+
+```php
+public function remove( string $key ): void;
+```
+
+Removes an element from the bag
+
+#### `set()` { #httprequestbagabstractbag-set }
+
+```php
+public function set(
+    string $key,
+    mixed $value
+): void;
+```
+
+Sets an element in the bag
+
+<div class="api-group">Protected · 2</div>
+
+#### `normalizeItems()` { #httprequestbagabstractbag-normalizeitems }
+
+```php
+protected function normalizeItems( array $items ): array;
+```
+
+Normalizes the items at construction time. Identity in the base;
+subclasses can override it to normalize keys
+
+#### `normalizeKey()` { #httprequestbagabstractbag-normalizekey }
+
+```php
+protected function normalizeKey( string $key ): string;
+```
+
+Normalizes a key for lookups and writes. Identity in the base;
+subclasses can override it to change key handling
+
+
+## Http\Request\Bag\AttributeBag
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Bag/AttributeBag.zep){ .src-btn }
+
+Holds the request attributes: arbitrary, application-defined values
+attached to the request during its lifecycle (router, dispatcher,
+security components etc.). Unlike the other request bags, it is not
+hydrated from a superglobal - it always starts empty.
+
+The base class supplies the entire surface; this class exists as a
+distinct type so DI typing and IDE autocomplete stay precise.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Http\Request\Bag\AbstractBag`](#httprequestbagabstractbag)
+    - **`Phalcon\Http\Request\Bag\AttributeBag`**
+
+</div>
+
+
 ## Http\Request\Exception
 
 <span class="badge badge--class">Class</span>
@@ -3661,6 +4044,7 @@ Exceptions thrown in Phalcon\Http\Request will use this class
         - [`Phalcon\Http\Request\Exceptions\FilterServiceUnavailable`](#httprequestexceptionsfilterserviceunavailable)
         - [`Phalcon\Http\Request\Exceptions\InvalidHttpMethod`](#httprequestexceptionsinvalidhttpmethod)
         - [`Phalcon\Http\Request\Exceptions\MissingFilters`](#httprequestexceptionsmissingfilters)
+        - [`Phalcon\Http\Request\Exceptions\NullKeyException`](#httprequestexceptionsnullkeyexception)
         - [`Phalcon\Http\Request\Exceptions\SanitizerNotFound`](#httprequestexceptionssanitizernotfound)
 
 </div>
@@ -3809,6 +4193,46 @@ public function __construct( string $name );
 ```
 
 
+## Http\Request\Exceptions\NullKeyException
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Request/Exceptions/NullKeyException.zep){ .src-btn }
+
+Thrown by AbstractBag::offsetSet() when a null offset is used (the
+ArrayAccess append form). Bags are always string-keyed, so an
+auto-indexed write could never be addressed by the caller.
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Http\Request\Exception`](#httprequestexception)
+        - **`Phalcon\Http\Request\Exceptions\NullKeyException`**
+
+</div>
+
+__Uses__ `Phalcon\Http\Request\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#httprequestexceptionsnullkeyexception-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #httprequestexceptionsnullkeyexception-__construct }
+
+```php
+public function __construct();
+```
+
+
 ## Http\Request\Exceptions\SanitizerNotFound
 
 <span class="badge badge--class">Class</span>
@@ -3877,6 +4301,9 @@ class PostsController extends Controller
 - **`Phalcon\Http\Request\File`** - implements [`Phalcon\Http\Request\FileInterface`](#httprequestfileinterface)
 
 </div>
+
+__Uses__ `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+{ .api-uses }
 
 ### Method Summary
 
@@ -4227,7 +4654,7 @@ $response->send();
 
 </div>
 
-__Uses__ `DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\Message\ResponseStatusCodeInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage` · `Phalcon\Http\Response\Exceptions\ResponseAlreadySent` · `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable` · `Phalcon\Http\Response\Headers` · `Phalcon\Http\Response\HeadersInterface` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Mvc\ViewInterface` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Encode`
+__Uses__ `DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\Message\ResponseStatusCodeInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage` · `Phalcon\Http\Response\Exceptions\ResponseAlreadySent` · `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable` · `Phalcon\Http\Response\Headers` · `Phalcon\Http\Response\HeadersInterface` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Mvc\ViewInterface` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\UrlTrait`
 { .api-uses }
 
 ### Method Summary
@@ -5279,7 +5706,7 @@ $di->set(
 
 </div>
 
-__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exception` · `Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable`
+__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exception` · `Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable` · `Phalcon\Http\Traits\EncryptionAwareTrait`
 { .api-uses }
 
 ### Method Summary
@@ -5319,12 +5746,6 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isSent</span>()</code>
 <span class="desc">Returns if the headers have already been sent</span>
-</a>
-<a class="api-item" href="#httpresponsecookies-isusingencryption">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isUsingEncryption</span>()</code>
-<span class="desc">Returns if the bag is automatically encrypting/decrypting cookies</span>
 </a>
 <a class="api-item" href="#httpresponsecookies-reset">
 <code class="vis vis-public">public</code>
@@ -5382,16 +5803,11 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Pha
 <code class="sig"><span class="sv">$signKey</span><span class="sm"> = null</span></code>
 <span class="desc">The cookie&#039;s sign key.</span>
 </div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$useEncryption</span><span class="sm"> = true</span></code>
-</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 12</div>
+<div class="api-group">Public · 11</div>
 
 #### `__construct()` { #httpresponsecookies-__construct }
 
@@ -5445,14 +5861,6 @@ public function isSent(): bool;
 ```
 
 Returns if the headers have already been sent
-
-#### `isUsingEncryption()` { #httpresponsecookies-isusingencryption }
-
-```php
-public function isUsingEncryption(): bool;
-```
-
-Returns if the bag is automatically encrypting/decrypting cookies
 
 #### `reset()` { #httpresponsecookies-reset }
 

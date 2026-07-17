@@ -21,6 +21,7 @@ This abstract class offers access to the events manager
     - [`Phalcon\Acl\Adapter\AbstractAdapter`](phalcon_acl.md#acladapterabstractadapter)
     - [`Phalcon\Auth\Guard\AbstractGuard`](phalcon_auth.md#authguardabstractguard)
     - [`Phalcon\Autoload\Loader`](phalcon_autoload.md#autoloadloader)
+    - [`Phalcon\Queue\Consumer\QueueConsumer`](phalcon_queue.md#queueconsumerqueueconsumer)
 
 </div>
 

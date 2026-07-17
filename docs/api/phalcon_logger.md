@@ -970,7 +970,7 @@ $logger->close();
 
 </div>
 
-__Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Item`
+__Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Item` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -998,22 +998,6 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\A
 <code class="ret">void</code>
 <code class="sig"><span class="sf">process</span>( <span class="st">Item</span> <span class="sv">$item</span> )</code>
 <span class="desc">Processes the message i.e. writes it to the file</span>
-</a>
-<a class="api-item" href="#loggeradapterstream-phpfclose">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFclose</span>( <span class="st">mixed</span> <span class="sv">$handle</span> )</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
-<a class="api-item" href="#loggeradapterstream-phpfopen">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
-<a class="api-item" href="#loggeradapterstream-phpfwrite">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFwrite</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handle</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
 </a>
 </div>
 
@@ -1078,38 +1062,6 @@ public function process( Item $item ): void;
 ```
 
 Processes the message i.e. writes it to the file
-
-<div class="api-group">Protected · 3</div>
-
-#### `phpFclose()` { #loggeradapterstream-phpfclose }
-
-```php
-protected function phpFclose( mixed $handle ): bool;
-```
-
-@todo to be removed when we get traits
-
-#### `phpFopen()` { #loggeradapterstream-phpfopen }
-
-```php
-protected function phpFopen(
-    string $filename,
-    string $mode
-);
-```
-
-@todo to be removed when we get traits
-
-#### `phpFwrite()` { #loggeradapterstream-phpfwrite }
-
-```php
-protected function phpFwrite(
-    mixed $handle,
-    string $message
-);
-```
-
-@todo to be removed when we get traits
 
 
 ## Logger\Adapter\Syslog
@@ -1546,14 +1498,13 @@ Class AbstractFormatter
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr)
-    - **`Phalcon\Logger\Formatter\AbstractFormatter`** - implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
-        - [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
-        - [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
+- **`Phalcon\Logger\Formatter\AbstractFormatter`** - implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
+    - [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
+    - [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
 
 </div>
 
-__Uses__ `DateTimeImmutable` · `Phalcon\Logger\Item` · `Phalcon\Support\Helper\Str\AbstractStr`
+__Uses__ `DateTimeImmutable` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1668,13 +1619,12 @@ Formats messages using JSON encoding
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr)
-    - [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
-        - **`Phalcon\Logger\Formatter\Json`**
+- [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
+    - **`Phalcon\Logger\Formatter\Json`**
 
 </div>
 
-__Uses__ `JsonException` · `Phalcon\Logger\Item`
+__Uses__ `JsonException` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Json\EncodeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1727,9 +1677,8 @@ Class Line
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Support\Helper\Str\AbstractStr`](phalcon_support.md#supporthelperstrabstractstr)
-    - [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
-        - **`Phalcon\Logger\Formatter\Line`**
+- [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
+    - **`Phalcon\Logger\Formatter\Line`**
 
 </div>
 
@@ -2191,7 +2140,7 @@ Factory creating logger objects
 
 </div>
 
-__Uses__ `DateTimeZone` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory`
+__Uses__ `DateTimeZone` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2212,12 +2161,6 @@ __Uses__ `DateTimeZone` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\
 <code class="ret">Logger</code>
 <code class="sig"><span class="sf">newInstance</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$adapters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">DateTimeZone</span> <span class="sv">$timezone</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Returns a Logger object</span>
-</a>
-<a class="api-item" href="#loggerloggerfactory-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@todo Remove this when we get traits</span>
 </a>
 <a class="api-item" href="#loggerloggerfactory-getexceptionclass">
 <code class="vis vis-protected">protected</code>
@@ -2256,19 +2199,7 @@ public function newInstance(
 
 Returns a Logger object
 
-<div class="api-group">Protected · 2</div>
-
-#### `getArrVal()` { #loggerloggerfactory-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null
-): mixed;
-```
-
-@todo Remove this when we get traits
+<div class="api-group">Protected · 1</div>
 
 #### `getExceptionClass()` { #loggerloggerfactory-getexceptionclass }
 

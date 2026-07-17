@@ -581,7 +581,7 @@ $annotations = new Stream(
 
 </div>
 
-__Uses__ `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `RuntimeException`
+__Uses__ `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Traits\Php\FileTrait` · `RuntimeException`
 { .api-uses }
 
 ### Method Summary
@@ -851,7 +851,7 @@ Factory to create annotations components
 
 </div>
 
-__Uses__ `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Get`
+__Uses__ `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary

@@ -461,6 +461,12 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="sig"><span class="sf">disconnect</span>()</code>
 <span class="desc">Disconnects from the database.</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-ensureconnection">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">ensureConnection</span>()</code>
+<span class="desc">Ensures the connection is alive, reconnecting in place if it is not.</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-errorcode">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
@@ -550,6 +556,12 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="sig"><span class="sf">getAttribute</span>( <span class="st">int</span> <span class="sv">$attribute</span> )</code>
 <span class="desc">Retrieve a database connection attribute</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-getautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getAutoReconnect</span>()</code>
+<span class="desc">Returns whether transparent auto-reconnect is enabled.</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-getavailabledrivers">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
@@ -598,6 +610,12 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="sig"><span class="sf">perform</span>(<span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Performs a query with bound values and returns the resulting</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-ping">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">ping</span>()</code>
+<span class="desc">Checks whether the underlying connection is still alive by issuing a</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-prepare">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement|bool</code>
@@ -628,6 +646,12 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="sig"><span class="sf">setAttribute</span>(<span class="prm"><span class="st">int</span> <span class="sv">$attribute</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Set a database connection attribute</span>
 </a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-setautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setAutoReconnect</span>( <span class="st">bool</span> <span class="sv">$autoReconnect</span> )</code>
+<span class="desc">Enables or disables transparent auto-reconnect on a lost connection.</span>
+</a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-setprofiler">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
@@ -639,6 +663,12 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="ret">array</code>
 <code class="sig"><span class="sf">fetchData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$arguments</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$values</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Helper method to get data from PDO based on the method passed</span>
+</a>
+<a class="api-item" href="#datamapperpdoconnectionabstractconnection-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes a lost (&quot;gone away&quot;) connection. Detection is driver-agnostic:</span>
 </a>
 <a class="api-item" href="#datamapperpdoconnectionabstractconnection-performbind">
 <code class="vis vis-protected">protected</code>
@@ -653,6 +683,13 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autoReconnect</span><span class="sm"> = false</span></code>
+<span class="desc">Whether to transparently reconnect and retry once when a statement fails
+because the connection was lost. Opt-in; off by default.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">\PDO</code>
 <code class="sig"><span class="sv">$pdo</span></code>
 </div>
@@ -661,11 +698,19 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 <code class="ret">ProfilerInterface</code>
 <code class="sig"><span class="sv">$profiler</span></code>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$transactionLevel</span><span class="sm"> = 0</span></code>
+<span class="desc">Current transaction nesting level. Tracked locally rather than via
+PDO::inTransaction() because some drivers report a broken connection as
+being &quot;in transaction&quot;.</span>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 34</div>
+<div class="api-group">Public · 38</div>
 
 #### `__call()` { #datamapperpdoconnectionabstractconnection-__call }
 
@@ -712,6 +757,16 @@ abstract public function disconnect(): void;
 ```
 
 Disconnects from the database.
+
+#### `ensureConnection()` { #datamapperpdoconnectionabstractconnection-ensureconnection }
+
+```php
+public function ensureConnection(): void;
+```
+
+Ensures the connection is alive, reconnecting in place if it is not.
+disconnect() is required first because connect() is idempotent and will
+not rebuild a dead-but-present handle.
 
 #### `errorCode()` { #datamapperpdoconnectionabstractconnection-errorcode }
 
@@ -893,6 +948,14 @@ public function getAttribute( int $attribute ): mixed;
 
 Retrieve a database connection attribute
 
+#### `getAutoReconnect()` { #datamapperpdoconnectionabstractconnection-getautoreconnect }
+
+```php
+public function getAutoReconnect(): bool;
+```
+
+Returns whether transparent auto-reconnect is enabled.
+
 #### `getAvailableDrivers()` { #datamapperpdoconnectionabstractconnection-getavailabledrivers }
 
 ```php
@@ -966,6 +1029,15 @@ PDOStatement; array values will be passed through `quote()` and their
 respective placeholders will be replaced in the query string. If the
 profiler is enabled, the operation will be recorded.
 
+#### `ping()` { #datamapperpdoconnectionabstractconnection-ping }
+
+```php
+public function ping(): bool;
+```
+
+Checks whether the underlying connection is still alive by issuing a
+trivial query. Returns false if there is no handle or the probe fails.
+
 #### `prepare()` { #datamapperpdoconnectionabstractconnection-prepare }
 
 ```php
@@ -1019,6 +1091,14 @@ public function setAttribute(
 
 Set a database connection attribute
 
+#### `setAutoReconnect()` { #datamapperpdoconnectionabstractconnection-setautoreconnect }
+
+```php
+public function setAutoReconnect( bool $autoReconnect ): static;
+```
+
+Enables or disables transparent auto-reconnect on a lost connection.
+
 #### `setProfiler()` { #datamapperpdoconnectionabstractconnection-setprofiler }
 
 ```php
@@ -1027,7 +1107,7 @@ public function setProfiler( ProfilerInterface $profiler ): static;
 
 Sets the Profiler instance.
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
 
 #### `fetchData()` { #datamapperpdoconnectionabstractconnection-fetchdata }
 
@@ -1041,6 +1121,17 @@ protected function fetchData(
 ```
 
 Helper method to get data from PDO based on the method passed
+
+#### `isConnectionError()` { #datamapperpdoconnectionabstractconnection-isconnectionerror }
+
+```php
+protected function isConnectionError( \Throwable $exception ): bool;
+```
+
+Recognizes a lost ("gone away") connection. Detection is driver-agnostic:
+the driver name is not queried because the underlying connection may be
+dead by this point. The MySQL error codes and PostgreSQL SQLSTATEs do not
+overlap, so all known signatures are checked unconditionally.
 
 #### `performBind()` { #datamapperpdoconnectionabstractconnection-performbind }
 

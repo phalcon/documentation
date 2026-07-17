@@ -37,7 +37,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 </div>
 
-__Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength` · `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory`
+__Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength` · `Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory` · `Phalcon\Traits\Php\Base64Trait` · `Phalcon\Traits\Php\HashTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\OpensslTrait`
 { .api-uses }
 
 ### Method Summary
@@ -214,21 +214,6 @@ __Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\
 <code class="ret">static</code>
 <code class="sig"><span class="sf">initializeAvailableCiphers</span>()</code>
 <span class="desc">Initialize available cipher algorithms.</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-phpfunctionexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFunctionExists</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
-<a class="api-item" href="#encryptioncrypt-phpopensslcipherivlength">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
-<code class="sig"><span class="sf">phpOpensslCipherIvLength</span>( <span class="st">string</span> <span class="sv">$cipher</span> )</code>
-</a>
-<a class="api-item" href="#encryptioncrypt-phpopensslrandompseudobytes">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpOpensslRandomPseudoBytes</span>( <span class="st">int</span> <span class="sv">$length</span> )</code>
 </a>
 </div>
 
@@ -566,7 +551,7 @@ public function useSigning( bool $useSigning ): CryptInterface;
 
 Sets if the calculating message digest must used.
 
-<div class="api-group">Protected · 11</div>
+<div class="api-group">Protected · 8</div>
 
 #### `checkCipherHashIsAvailable()` { #encryptioncrypt-checkcipherhashisavailable }
 
@@ -658,26 +643,6 @@ protected function initializeAvailableCiphers(): static;
 ```
 
 Initialize available cipher algorithms.
-
-#### `phpFunctionExists()` { #encryptioncrypt-phpfunctionexists }
-
-```php
-protected function phpFunctionExists( string $name ): bool;
-```
-
-@todo to be removed when we get traits
-
-#### `phpOpensslCipherIvLength()` { #encryptioncrypt-phpopensslcipherivlength }
-
-```php
-protected function phpOpensslCipherIvLength( string $cipher ): int|bool;
-```
-
-#### `phpOpensslRandomPseudoBytes()` { #encryptioncrypt-phpopensslrandompseudobytes }
-
-```php
-protected function phpOpensslRandomPseudoBytes( int $length );
-```
 
 
 ## Encryption\Crypt\CryptInterface
@@ -1631,7 +1596,7 @@ if ($user) {
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface`
+__Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2216,7 +2181,7 @@ JWT Builder
 
 </div>
 
-__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Item` · `Phalcon\Encryption\Security\JWT\Token\Signature` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Helper\Json\Encode`
+__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Item` · `Phalcon\Encryption\Security\JWT\Token\Signature` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\Base64Trait`
 { .api-uses }
 
 ### Method Summary
@@ -3074,7 +3039,7 @@ HMAC signing class
 
 </div>
 
-__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException` · `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`
+__Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException` · `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm` · `Phalcon\Traits\Php\HashTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3455,7 +3420,7 @@ signature. It returns a token object populated with the decoded information.
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader` · `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString` · `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader` · `Phalcon\Support\Helper\Json\Decode`
+__Uses__ `InvalidArgumentException` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader` · `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString` · `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\Base64Trait`
 { .api-uses }
 
 ### Method Summary
@@ -3610,6 +3575,7 @@ __Uses__ `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\En
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">validate</span>( <span class="st">Validator</span> <span class="sv">$validator</span> )</code>
+<span class="desc">Validate the token against the claims registered in the validator.</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwttokentoken-verify">
 <code class="vis vis-public">public</code>
@@ -3680,6 +3646,11 @@ Return the token
 ```php
 public function validate( Validator $validator ): array;
 ```
+
+Validate the token against the claims registered in the validator.
+
+Only claims that have a value in the validator are checked. A claim left
+as null expresses no expectation and is skipped.
 
 #### `verify()` { #encryptionsecurityjwttokentoken-verify }
 
@@ -3762,7 +3733,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateid">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span> )</code>
+<code class="sig"><span class="sf">validateId</span>( <span class="st">string</span> <span class="sv">$id</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the id of the token</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuedat">
@@ -3774,7 +3745,7 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validateissuer">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
-<code class="sig"><span class="sf">validateIssuer</span>( <span class="st">string</span> <span class="sv">$issuer</span> )</code>
+<code class="sig"><span class="sf">validateIssuer</span>( <span class="st">string</span> <span class="sv">$issuer</span><span class="sm"> = null</span> )</code>
 <span class="desc">Validate the issuer of the token</span>
 </a>
 <a class="api-item" href="#encryptionsecurityjwtvalidator-validatenotbefore">
@@ -3789,11 +3760,17 @@ __Uses__ `DateTimeImmutable` · `Phalcon\Encryption\Security\JWT\Exceptions\Inva
 <code class="sig"><span class="sf">validateSignature</span>(<span class="prm"><span class="st">SignerInterface</span> <span class="sv">$signer</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$passphrase</span></span>)</code>
 <span class="desc">Validate the signature of the token</span>
 </a>
+<a class="api-item" href="#encryptionsecurityjwtvalidator-validatesubject">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">validateSubject</span>( <span class="st">string</span> <span class="sv">$subject</span><span class="sm"> = null</span> )</code>
+<span class="desc">Validate the subject of the token</span>
+</a>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 13</div>
+<div class="api-group">Public · 14</div>
 
 #### `__construct()` { #encryptionsecurityjwtvalidator-__construct }
 
@@ -3872,10 +3849,12 @@ Validate the expiration time of the token
 #### `validateId()` { #encryptionsecurityjwtvalidator-validateid }
 
 ```php
-public function validateId( string $id ): static;
+public function validateId( string $id = null ): static;
 ```
 
 Validate the id of the token
+
+A null id expresses no expectation and is skipped.
 
 #### `validateIssuedAt()` { #encryptionsecurityjwtvalidator-validateissuedat }
 
@@ -3885,13 +3864,18 @@ public function validateIssuedAt( int $timestamp ): static;
 
 Validate the issued at (iat) of the token
 
+A token issued at exactly $timestamp is valid. Only a token issued after
+it, i.e. in the future, is rejected.
+
 #### `validateIssuer()` { #encryptionsecurityjwtvalidator-validateissuer }
 
 ```php
-public function validateIssuer( string $issuer ): static;
+public function validateIssuer( string $issuer = null ): static;
 ```
 
 Validate the issuer of the token
+
+A null issuer expresses no expectation and is skipped.
 
 #### `validateNotBefore()` { #encryptionsecurityjwtvalidator-validatenotbefore }
 
@@ -3900,6 +3884,9 @@ public function validateNotBefore( int $timestamp ): static;
 ```
 
 Validate the notbefore (nbf) of the token
+
+A token is valid at exactly $timestamp. Only a timestamp before the
+"nbf" claim is rejected.
 
 #### `validateSignature()` { #encryptionsecurityjwtvalidator-validatesignature }
 
@@ -3911,6 +3898,16 @@ public function validateSignature(
 ```
 
 Validate the signature of the token
+
+#### `validateSubject()` { #encryptionsecurityjwtvalidator-validatesubject }
+
+```php
+public function validateSubject( string $subject = null ): static;
+```
+
+Validate the subject of the token
+
+A null subject expresses no expectation and is skipped.
 
 
 ## Encryption\Security\Random
@@ -4594,6 +4591,9 @@ Platform support:
 - **`Phalcon\Encryption\Security\Uuid\SysNodeProvider`** - implements [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](#encryptionsecurityuuidnodeproviderinterface)
 
 </div>
+
+__Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`
+{ .api-uses }
 
 ### Method Summary
 

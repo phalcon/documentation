@@ -19,6 +19,7 @@ hide:
     - [`Phalcon\Cache\CacheFactory`](phalcon_cache.md#cachecachefactory)
     - [`Phalcon\Factory\AbstractFactory`](#factoryabstractfactory)
     - [`Phalcon\Logger\LoggerFactory`](phalcon_logger.md#loggerloggerfactory)
+    - [`Phalcon\Queue\QueueFactory`](phalcon_queue.md#queuequeuefactory)
 
 </div>
 
@@ -109,6 +110,7 @@ protected function getExceptionClass(): string;
         - [`Phalcon\Image\ImageFactory`](phalcon_image.md#imageimagefactory)
         - [`Phalcon\Logger\AdapterFactory`](phalcon_logger.md#loggeradapterfactory)
         - [`Phalcon\Paginator\PaginatorFactory`](phalcon_paginator.md#paginatorpaginatorfactory)
+        - [`Phalcon\Queue\AdapterFactory`](phalcon_queue.md#queueadapterfactory)
         - [`Phalcon\Storage\AdapterFactory`](phalcon_storage.md#storageadapterfactory)
         - [`Phalcon\Storage\SerializerFactory`](phalcon_storage.md#storageserializerfactory)
         - [`Phalcon\Support\HelperFactory`](phalcon_support.md#supporthelperfactory)

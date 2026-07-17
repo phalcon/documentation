@@ -123,7 +123,7 @@ Class AbstractAdapter
 
 </div>
 
-__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception` · `Phalcon\Support\Helper\Arr\Get`
+__Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -286,12 +286,6 @@ __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAw
 <code class="ret">void</code>
 <code class="sig"><span class="sf">fire</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$keys</span></span>)</code>
 <span class="desc">Trigger an event for the eventsManager.</span>
-</a>
-<a class="api-item" href="#storageadapterabstractadapter-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Reads an element from an array, optionally casting it. Delegates to the</span>
 </a>
 <a class="api-item" href="#storageadapterabstractadapter-getfilteredkeys">
 <code class="vis vis-protected">protected</code>
@@ -557,7 +551,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the event manager
 
-<div class="api-group">Protected · 18</div>
+<div class="api-group">Protected · 17</div>
 
 #### `__construct()` { #storageadapterabstractadapter-__construct }
 
@@ -657,22 +651,6 @@ protected function fire(
 ```
 
 Trigger an event for the eventsManager.
-
-#### `getArrVal()` { #storageadapterabstractadapter-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null,
-    string $cast = null
-): mixed;
-```
-
-Reads an element from an array, optionally casting it. Delegates to the
-canonical Support\Helper\Arr\Get helper.
-
-@todo Remove this wrapper when we get traits
 
 #### `getFilteredKeys()` { #storageadapterabstractadapter-getfilteredkeys }
 
@@ -978,7 +956,7 @@ Capabilities:
 
 </div>
 
-__Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+__Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Traits\Php\ApcuTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1047,42 +1025,6 @@ __Uses__ `APCUIterator` · `DateInterval` · `Exception` · `Phalcon\Storage\Ser
 <code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
 </a>
-<a class="api-item" href="#storageadapterapcu-phpapcudec">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|int</code>
-<code class="sig"><span class="sf">phpApcuDec</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$step</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">@todo Remove the below once we get traits</span>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcudelete">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|array</code>
-<code class="sig"><span class="sf">phpApcuDelete</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcuexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|array</code>
-<code class="sig"><span class="sf">phpApcuExists</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcufetch">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">phpApcuFetch</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcuinc">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|int</code>
-<code class="sig"><span class="sf">phpApcuInc</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$step</span><span class="sm"> = 1</span></span>)</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcuiterator">
-<code class="vis vis-protected">protected</code>
-<code class="ret">APCUIterator|bool</code>
-<code class="sig"><span class="sf">phpApcuIterator</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterapcu-phpapcustore">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool|array</code>
-<code class="sig"><span class="sf">phpApcuStore</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$ttl</span><span class="sm"> = 0</span></span>)</code>
-</a>
 </div>
 
 ### Properties
@@ -1138,7 +1080,7 @@ public function setForever(
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
 
-<div class="api-group">Protected · 14</div>
+<div class="api-group">Protected · 7</div>
 
 #### `doDecrement()` { #storageadapterapcu-dodecrement }
 
@@ -1207,60 +1149,6 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
-
-#### `phpApcuDec()` { #storageadapterapcu-phpapcudec }
-
-```php
-protected function phpApcuDec(
-    mixed $key,
-    int $step = 1
-): bool|int;
-```
-
-@todo Remove the below once we get traits
-
-#### `phpApcuDelete()` { #storageadapterapcu-phpapcudelete }
-
-```php
-protected function phpApcuDelete( mixed $key ): bool|array;
-```
-
-#### `phpApcuExists()` { #storageadapterapcu-phpapcuexists }
-
-```php
-protected function phpApcuExists( mixed $key ): bool|array;
-```
-
-#### `phpApcuFetch()` { #storageadapterapcu-phpapcufetch }
-
-```php
-protected function phpApcuFetch( mixed $key ): mixed;
-```
-
-#### `phpApcuInc()` { #storageadapterapcu-phpapcuinc }
-
-```php
-protected function phpApcuInc(
-    mixed $key,
-    int $step = 1
-): bool|int;
-```
-
-#### `phpApcuIterator()` { #storageadapterapcu-phpapcuiterator }
-
-```php
-protected function phpApcuIterator( string $pattern ): APCUIterator|bool;
-```
-
-#### `phpApcuStore()` { #storageadapterapcu-phpapcustore }
-
-```php
-protected function phpApcuStore(
-    mixed $key,
-    mixed $payload,
-    int $ttl = 0
-): bool|array;
-```
 
 
 ## Storage\Adapter\Libmemcached
@@ -2115,7 +2003,7 @@ Capabilities:
 
 </div>
 
-__Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator`
+__Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator`
 { .api-uses }
 
 ### Method Summary
@@ -2180,32 +2068,6 @@ __Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storag
 <code class="sig"><span class="sf">doSet</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ttl</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Stores data in the adapter. If the TTL is <code>null</code> (default) or not defined</span>
 </a>
-<a class="api-item" href="#storageadapterstream-phpfileexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFileExists</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-<span class="desc">@todo Remove the methods below when we get traits</span>
-</a>
-<a class="api-item" href="#storageadapterstream-phpfilegetcontents">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|bool</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-</a>
-<a class="api-item" href="#storageadapterstream-phpfileputcontents">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int|bool</code>
-<code class="sig"><span class="sf">phpFilePutContents</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span></span>)</code>
-</a>
-<a class="api-item" href="#storageadapterstream-phpfopen">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
-</a>
-<a class="api-item" href="#storageadapterstream-phpunlink">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpUnlink</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-</a>
 </div>
 
 ### Properties
@@ -2266,7 +2128,7 @@ public function setForever(
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
 
-<div class="api-group">Protected · 11</div>
+<div class="api-group">Protected · 6</div>
 
 #### `doDecrement()` { #storageadapterstream-dodecrement }
 
@@ -2332,46 +2194,6 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
-
-#### `phpFileExists()` { #storageadapterstream-phpfileexists }
-
-```php
-protected function phpFileExists( string $filename ): bool;
-```
-
-@todo Remove the methods below when we get traits
-
-#### `phpFileGetContents()` { #storageadapterstream-phpfilegetcontents }
-
-```php
-protected function phpFileGetContents( string $filename ): string|bool;
-```
-
-#### `phpFilePutContents()` { #storageadapterstream-phpfileputcontents }
-
-```php
-protected function phpFilePutContents(
-    string $filename,
-    mixed $data,
-    int $flags = 0,
-    mixed $context = null
-): int|bool;
-```
-
-#### `phpFopen()` { #storageadapterstream-phpfopen }
-
-```php
-protected function phpFopen(
-    string $filename,
-    string $mode
-): mixed;
-```
-
-#### `phpUnlink()` { #storageadapterstream-phpunlink }
-
-```php
-protected function phpUnlink( string $filename ): bool;
-```
 
 
 ## Storage\Adapter\Weak
@@ -2997,7 +2819,7 @@ If this returns true, then the data is returned as is
 
 </div>
 
-__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`
+__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\Base64Trait`
 { .api-uses }
 
 ### Method Summary
@@ -3014,11 +2836,6 @@ __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `P
 <code class="ret">void</code>
 <code class="sig"><span class="sf">unserialize</span>( <span class="st">mixed</span> <span class="sv">$data</span> )</code>
 <span class="desc">Unserializes data</span>
-</a>
-<a class="api-item" href="#storageserializerbase64-phpbase64decode">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpBase64Decode</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strict</span><span class="sm"> = false</span></span>)</code>
-<span class="desc">Wrapper for base64_decode</span>
 </a>
 </div>
 
@@ -3043,19 +2860,6 @@ public function unserialize( mixed $data ): void;
 Unserializes data
 
 @retrun void
-
-<div class="api-group">Protected · 1</div>
-
-#### `phpBase64Decode()` { #storageserializerbase64-phpbase64decode }
-
-```php
-protected function phpBase64Decode(
-    string $input,
-    bool $strict = false
-);
-```
-
-Wrapper for base64_decode
 
 
 ## Storage\Serializer\Exceptions\InvalidSerializationInput
@@ -3135,6 +2939,9 @@ public function __construct();
 
 </div>
 
+__Uses__ `Phalcon\Traits\Php\IgbinaryTrait`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -3161,12 +2968,6 @@ public function __construct();
 <code class="sig"><span class="sf">doUnserialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
 <span class="desc">Unserialize</span>
 </a>
-<a class="api-item" href="#storageserializerigbinary-phpigbinaryserialize">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">phpIgbinarySerialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
-<span class="desc">Wrapper for <code>igbinary_serialize</code></span>
-</a>
 </div>
 
 ### Methods
@@ -3189,7 +2990,7 @@ public function unserialize( mixed $data ): void;
 
 Unserializes data
 
-<div class="api-group">Protected · 3</div>
+<div class="api-group">Protected · 2</div>
 
 #### `doSerialize()` { #storageserializerigbinary-doserialize }
 
@@ -3206,14 +3007,6 @@ protected function doUnserialize( mixed $value );
 ```
 
 Unserialize
-
-#### `phpIgbinarySerialize()` { #storageserializerigbinary-phpigbinaryserialize }
-
-```php
-protected function phpIgbinarySerialize( mixed $value ): string|null;
-```
-
-Wrapper for `igbinary_serialize`
 
 
 ## Storage\Serializer\Json
@@ -3343,6 +3136,9 @@ Serializer using the built-in Memcached 'php' serializer
 
 </div>
 
+__Uses__ `Phalcon\Traits\Php\MsgpackTrait`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -3449,7 +3245,7 @@ Unserializes data
 
 </div>
 
-__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`
+__Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\SerializeTrait`
 { .api-uses }
 
 ### Method Summary

@@ -794,17 +794,10 @@ Create a new instance of the object
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/AbstractEscaper.zep){ .src-btn }
 
-Shared base for the per-context escaper objects. Holds the encoding,
-htmlspecialchars flag, and double-encode toggle, plus the encoding
-detection / normalization utilities used by the CSS and JS escapers.
+Shared base for the per-context escaper objects.
 
-Each concrete context (`HtmlEscaper`, `AttributeEscaper`, `CssEscaper`,
-`JsEscaper`, `UrlEscaper`) extends this so that callers can configure
-one context without affecting the others.
-
-@property bool   $doubleEncode
-@property string $encoding
-@property int    $flags
+@todo Remove in v7. Kept only for backwards compatibility; compose
+Phalcon\Html\Escaper\Traits\EscaperTrait directly instead of extending this.
 
 <div class="api-tree" markdown>
 
@@ -817,132 +810,8 @@ one context without affecting the others.
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#htmlescaperabstractescaper-detectencoding">
-<code class="vis vis-public">public</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">detectEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-<span class="desc">Detects the character encoding of a string. Special-handling for</span>
-</a>
-<a class="api-item" href="#htmlescaperabstractescaper-getdoubleencode">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">getDoubleEncode</span>()</code>
-</a>
-<a class="api-item" href="#htmlescaperabstractescaper-getencoding">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getEncoding</span>()</code>
-</a>
-<a class="api-item" href="#htmlescaperabstractescaper-getflags">
-<code class="vis vis-public">public</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sf">getFlags</span>()</code>
-</a>
-<a class="api-item" href="#htmlescaperabstractescaper-normalizeencoding">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">normalizeEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
-<span class="desc">Normalizes a string&#039;s encoding to UTF-32, used by the CSS and JS</span>
-</a>
-<a class="api-item" href="#htmlescaperabstractescaper-setdoubleencode">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setDoubleEncode</span>( <span class="st">bool</span> <span class="sv">$doubleEncode</span> )</code>
-</a>
-<a class="api-item" href="#htmlescaperabstractescaper-setencoding">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setEncoding</span>( <span class="st">string</span> <span class="sv">$encoding</span> )</code>
-</a>
-<a class="api-item" href="#htmlescaperabstractescaper-setflags">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setFlags</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
-</a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$doubleEncode</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$encoding</span><span class="sm"> = &quot;utf-8&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$flags</span><span class="sm"> = 11</span></code>
-<span class="desc">ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401</span>
-</div>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 8</div>
-
-#### `detectEncoding()` { #htmlescaperabstractescaper-detectencoding }
-
-```php
-final public function detectEncoding( string $input ): string|null;
-```
-
-Detects the character encoding of a string. Special-handling for
-chr(172) and chr(128) to chr(159) which fail to be detected by
-`mb_detect_encoding()`.
-
-#### `getDoubleEncode()` { #htmlescaperabstractescaper-getdoubleencode }
-
-```php
-public function getDoubleEncode(): bool;
-```
-
-#### `getEncoding()` { #htmlescaperabstractescaper-getencoding }
-
-```php
-public function getEncoding(): string;
-```
-
-#### `getFlags()` { #htmlescaperabstractescaper-getflags }
-
-```php
-public function getFlags(): int;
-```
-
-#### `normalizeEncoding()` { #htmlescaperabstractescaper-normalizeencoding }
-
-```php
-final public function normalizeEncoding( string $input ): string;
-```
-
-Normalizes a string's encoding to UTF-32, used by the CSS and JS
-escapers before invoking the C-level escape routines.
-
-#### `setDoubleEncode()` { #htmlescaperabstractescaper-setdoubleencode }
-
-```php
-public function setDoubleEncode( bool $doubleEncode ): static;
-```
-
-#### `setEncoding()` { #htmlescaperabstractescaper-setencoding }
-
-```php
-public function setEncoding( string $encoding ): static;
-```
-
-#### `setFlags()` { #htmlescaperabstractescaper-setflags }
-
-```php
-public function setFlags( int $flags ): static;
-```
+__Uses__ `Phalcon\Html\Escaper\Traits\EscaperTrait`
+{ .api-uses }
 
 
 ## Html\Escaper\AttributeEscaper
@@ -1329,6 +1198,9 @@ Escapes a string for use as a URL component via `rawurlencode`.
     - **`Phalcon\Html\Escaper\UrlEscaper`**
 
 </div>
+
+__Uses__ `Phalcon\Traits\Php\UrlTrait`
+{ .api-uses }
 
 ### Method Summary
 

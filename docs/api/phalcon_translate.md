@@ -302,7 +302,7 @@ Returns the translation string of the given key
 
 </div>
 
-__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -336,11 +336,6 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpen
 <code class="ret">array</code>
 <code class="sig"><span class="sf">toArray</span>()</code>
 <span class="desc">Returns the internal array</span>
-</a>
-<a class="api-item" href="#translateadaptercsv-phpfopen">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
 </a>
 </div>
 
@@ -404,19 +399,6 @@ public function toArray(): array;
 
 Returns the internal array
 
-<div class="api-group">Protected · 1</div>
-
-#### `phpFopen()` { #translateadaptercsv-phpfopen }
-
-```php
-protected function phpFopen(
-    string $filename,
-    string $mode
-);
-```
-
-@todo to be removed when we get traits
-
 
 ## Translate\Adapter\Gettext
 
@@ -447,7 +429,7 @@ Allows translations using gettext
 
 </div>
 
-__Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+__Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 { .api-uses }
 
 ### Method Summary
@@ -537,12 +519,6 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingG
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getOptionsDefault</span>()</code>
 <span class="desc">Gets default options</span>
-</a>
-<a class="api-item" href="#translateadaptergettext-phpfunctionexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFunctionExists</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-<span class="desc">@todo to be removed when we get traits</span>
 </a>
 <a class="api-item" href="#translateadaptergettext-prepareoptions">
 <code class="vis vis-protected">protected</code>
@@ -734,7 +710,7 @@ $gettext->setLocale(LC_ALL, ["nl_NL"]);
 $gettext->setLocale(LC_ALL, ["de_DE@euro", "de_DE", "de", "ge"]);
 ```
 
-<div class="api-group">Protected · 3</div>
+<div class="api-group">Protected · 2</div>
 
 #### `getOptionsDefault()` { #translateadaptergettext-getoptionsdefault }
 
@@ -743,14 +719,6 @@ protected function getOptionsDefault(): array;
 ```
 
 Gets default options
-
-#### `phpFunctionExists()` { #translateadaptergettext-phpfunctionexists }
-
-```php
-protected function phpFunctionExists( string $name ): bool;
-```
-
-@todo to be removed when we get traits
 
 #### `prepareOptions()` { #translateadaptergettext-prepareoptions }
 
@@ -1274,7 +1242,7 @@ Class AssociativeArray
 
 </div>
 
-__Uses__ `Phalcon\Support\Helper\Str\Interpolate`
+__Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1286,16 +1254,6 @@ __Uses__ `Phalcon\Support\Helper\Str\Interpolate`
 <code class="sig"><span class="sf">replacePlaceholders</span>(<span class="prm"><span class="st">string</span> <span class="sv">$translation</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Replaces placeholders by the values passed</span>
 </a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">Interpolate | null</code>
-<code class="sig"><span class="sv">$interpolate</span><span class="sm"> = null</span></code>
-</div>
 </div>
 
 ### Methods

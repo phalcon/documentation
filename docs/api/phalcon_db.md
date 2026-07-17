@@ -685,14 +685,14 @@ public function delete(
 Deletes data from a table using custom RBDM SQL syntax
 
 ```php
-// Deleting existing robot
+// Deleting existing invoice
 $success = $connection->delete(
-    "robots",
-    "id = 101"
+    "co_invoices",
+    "inv_id = 101"
 );
 
 // Next SQL sentence is generated
-DELETE FROM `robots` WHERE `id` = 101
+DELETE FROM `co_invoices` WHERE `inv_id` = 101
 ```
 
 Warning! If $whereCondition is string it not escaped.
@@ -710,7 +710,7 @@ Lists table indexes
 
 ```php
 print_r(
-    $connection->describeIndexes("robots_parts")
+    $connection->describeIndexes("co_orders_x_products")
 );
 ```
 
@@ -734,7 +734,7 @@ Lists table references
 
 ```php
 print_r(
-    $connection->describeReferences("robots_parts")
+    $connection->describeReferences("co_orders_x_products")
 );
 ```
 
@@ -852,13 +852,13 @@ Escapes a column/table/schema name
 
 ```php
 $escapedTable = $connection->escapeIdentifier(
-    "robots"
+    "co_invoices"
 );
 
 $escapedTable = $connection->escapeIdentifier(
     [
         "store",
-        "robots",
+        "co_invoices",
     ]
 );
 ```
@@ -877,26 +877,26 @@ public function fetchAll(
 Dumps the complete result of a query into an array
 
 ```php
-// Getting all robots with associative indexes only
-$robots = $connection->fetchAll(
-    "SELECT * FROM robots",
+// Getting all invoices with associative indexes only
+$invoices = $connection->fetchAll(
+    "SELECT * FROM co_invoices",
     \Phalcon\Db\Enum::FETCH_ASSOC
 );
 
-foreach ($robots as $robot) {
-    print_r($robot);
+foreach ($invoices as $invoice) {
+    print_r($invoice);
 }
 
- // Getting all robots that contains word "robot" withing the name
-$robots = $connection->fetchAll(
-    "SELECT * FROM robots WHERE name LIKE :name",
+ // Getting all invoices whose title contains the word "Test"
+$invoices = $connection->fetchAll(
+    "SELECT * FROM co_invoices WHERE inv_title LIKE :inv_title",
     \Phalcon\Db\Enum::FETCH_ASSOC,
     [
-        "name" => "%robot%",
+        "inv_title" => "%Test%",
     ]
 );
-foreach($robots as $robot) {
-    print_r($robot);
+foreach($invoices as $invoice) {
+    print_r($invoice);
 }
 ```
 
@@ -913,16 +913,16 @@ public function fetchColumn(
 Returns the n'th field of first row in a SQL query result
 
 ```php
-// Getting count of robots
-$robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
-print_r($robotsCount);
+// Getting count of invoices
+$invoicesCount = $connection->fetchColumn("SELECT count(*) FROM co_invoices");
+print_r($invoicesCount);
 
-// Getting name of last edited robot
-$robot = $connection->fetchColumn(
-    "SELECT id, name FROM robots ORDER BY modified DESC",
+// Getting the title of the last created invoice
+$invoice = $connection->fetchColumn(
+    "SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC",
     1
 );
-print_r($robot);
+print_r($invoice);
 ```
 
 #### `fetchOne()` { #dbadapterabstractadapter-fetchone }
@@ -939,16 +939,16 @@ public function fetchOne(
 Returns the first row in a SQL query result
 
 ```php
-// Getting first robot
-$robot = $connection->fetchOne("SELECT * FROM robots");
-print_r($robot);
+// Getting first invoice
+$invoice = $connection->fetchOne("SELECT * FROM co_invoices");
+print_r($invoice);
 
-// Getting first robot with associative indexes only
-$robot = $connection->fetchOne(
-    "SELECT * FROM robots",
+// Getting first invoice with associative indexes only
+$invoice = $connection->fetchOne(
+    "SELECT * FROM co_invoices",
     \Phalcon\Db\Enum::FETCH_ASSOC
 );
-print_r($robot);
+print_r($invoice);
 ```
 
 #### `forUpdate()` { #dbadapterabstractadapter-forupdate }
@@ -997,18 +997,18 @@ public function getDefaultIdValue(): RawValue;
 Returns the default identity value to be inserted in an identity column
 
 ```php
-// Inserting a new robot with a valid default value for the column 'id'
+// Inserting a new invoice with a valid default value for the column 'inv_id'
 $success = $connection->insert(
-    "robots",
+    "co_invoices",
     [
         $connection->getDefaultIdValue(),
-        "Astro Boy",
-        1952,
+        "Test Invoice",
+        100,
     ],
     [
-        "id",
-        "name",
-        "year",
+        "inv_id",
+        "inv_title",
+        "inv_total",
     ]
 );
 ```
@@ -1023,16 +1023,16 @@ Returns the default value to make the RBDM use the default value declared
 in the table definition
 
 ```php
-// Inserting a new robot with a valid default value for the column 'year'
+// Inserting a new invoice with a valid default value for the column 'inv_total'
 $success = $connection->insert(
-    "robots",
+    "co_invoices",
     [
-        "Astro Boy",
+        "Test Invoice",
         $connection->getDefaultValue()
     ],
     [
-        "name",
-        "year",
+        "inv_title",
+        "inv_total",
     ]
 );
 ```
@@ -1133,15 +1133,15 @@ public function insert(
 Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
-// Inserting a new robot
+// Inserting a new invoice
 $success = $connection->insert(
-    "robots",
-    ["Astro Boy", 1952],
-    ["name", "year"]
+    "co_invoices",
+    ["Test Invoice", 100],
+    ["inv_title", "inv_total"]
 );
 
 // Next SQL sentence is sent to the database system
-INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+INSERT INTO `co_invoices` (`inv_title`, `inv_total`) VALUES ("Test Invoice", 100);
 ```
 
 #### `insertAsDict()` { #dbadapterabstractadapter-insertasdict }
@@ -1157,17 +1157,17 @@ public function insertAsDict(
 Inserts data into a table using custom RBDM SQL syntax
 
 ```php
-// Inserting a new robot
+// Inserting a new invoice
 $success = $connection->insertAsDict(
-    "robots",
+    "co_invoices",
     [
-        "name" => "Astro Boy",
-        "year" => 1952,
+        "inv_title" => "Test Invoice",
+        "inv_total" => 100,
     ]
 );
 
 // Next SQL sentence is sent to the database system
-INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+INSERT INTO `co_invoices` (`inv_title`, `inv_total`) VALUES ("Test Invoice", 100);
 ```
 
 #### `isNestedTransactionsWithSavepoints()` { #dbadapterabstractadapter-isnestedtransactionswithsavepoints }
@@ -1190,7 +1190,7 @@ public function limit(
 Appends a LIMIT clause to $sqlQuery argument
 
 ```php
-echo $connection->limit("SELECT * FROM robots", 5);
+echo $connection->limit("SELECT * FROM co_invoices", 5);
 ```
 
 #### `listTables()` { #dbadapterabstractadapter-listtables }
@@ -1391,7 +1391,7 @@ Gets creation options from a table
 
 ```php
 print_r(
-    $connection->tableOptions("robots")
+    $connection->tableOptions("co_invoices")
 );
 ```
 
@@ -1410,24 +1410,24 @@ public function update(
 Updates data on a table using custom RBDM SQL syntax
 
 ```php
-// Updating existing robot
+// Updating existing invoice
 $success = $connection->update(
-    "robots",
-    ["name"],
-    ["New Astro Boy"],
-    "id = 101"
+    "co_invoices",
+    ["inv_title"],
+    ["New Test Invoice"],
+    "inv_id = 101"
 );
 
 // Next SQL sentence is sent to the database system
-UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+UPDATE `co_invoices` SET `inv_title` = "New Test Invoice" WHERE inv_id = 101
 
-// Updating existing robot with array condition and $dataTypes
+// Updating existing invoice with array condition and $dataTypes
 $success = $connection->update(
-    "robots",
-    ["name"],
-    ["New Astro Boy"],
+    "co_invoices",
+    ["inv_title"],
+    ["New Test Invoice"],
     [
-        "conditions" => "id = ?",
+        "conditions" => "inv_id = ?",
         "bind"       => [$some_unsafe_id],
         "bindTypes"  => [PDO::PARAM_INT], // use only if you use $dataTypes param
     ],
@@ -1455,17 +1455,17 @@ Updates data on a table using custom RBDM SQL syntax
 Another, more convenient syntax
 
 ```php
-// Updating existing robot
+// Updating existing invoice
 $success = $connection->updateAsDict(
-    "robots",
+    "co_invoices",
     [
-        "name" => "New Astro Boy",
+        "inv_title" => "New Test Invoice",
     ],
-    "id = 101"
+    "inv_id = 101"
 );
 
 // Next SQL sentence is sent to the database system
-UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+UPDATE `co_invoices` SET `inv_title` = "New Test Invoice" WHERE inv_id = 101
 ```
 
 #### `useExplicitIdValue()` { #dbadapterabstractadapter-useexplicitidvalue }
@@ -1526,7 +1526,7 @@ __Uses__ `Phalcon\Contracts\Db\Adapter\Adapter`
 
 </div>
 
-__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Get`
+__Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1689,6 +1689,12 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">convertBoundParams</span>(<span class="prm"><span class="st">string</span> <span class="sv">$sql</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Converts bound parameters such as :name: or ?1 into PDO bind params ?</span>
 </a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-ensureconnection">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">ensureConnection</span>()</code>
+<span class="desc">Ensures the connection is alive, reconnecting in place if it is not.</span>
+</a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-escapestring">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -1706,6 +1712,12 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="ret">\PDOStatement</code>
 <code class="sig"><span class="sf">executePrepared</span>(<span class="prm"><span class="st">\PDOStatement</span> <span class="sv">$statement</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$placeholders</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$dataTypes</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Executes a prepared statement binding. This function uses integer indexes</span>
+</a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-getautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getAutoReconnect</span>()</code>
+<span class="desc">Returns whether transparent auto-reconnect is enabled.</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-geterrorinfo">
 <code class="vis vis-public">public</code>
@@ -1737,6 +1749,12 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">lastInsertId</span>( <span class="st">string</span> <span class="sv">$name</span><span class="sm"> = null</span> )</code>
 <span class="desc">Returns the insert id for the auto_increment/serial column inserted in</span>
 </a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-ping">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">ping</span>()</code>
+<span class="desc">Checks whether the underlying connection is still alive by issuing a</span>
+</a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-prepare">
 <code class="vis vis-public">public</code>
 <code class="ret">\PDOStatement</code>
@@ -1755,11 +1773,23 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">rollback</span>( <span class="st">bool</span> <span class="sv">$nesting</span><span class="sm"> = true</span> )</code>
 <span class="desc">Rollbacks the active transaction in the connection</span>
 </a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-setautoreconnect">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setAutoReconnect</span>( <span class="st">bool</span> <span class="sv">$autoReconnect</span> )</code>
+<span class="desc">Enables or disables transparent auto-reconnect on a lost connection.</span>
+</a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-getdsndefaults">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
+</a>
+<a class="api-item" href="#dbadapterpdoabstractpdo-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes whether an exception represents a lost (&quot;gone away&quot;)</span>
 </a>
 <a class="api-item" href="#dbadapterpdoabstractpdo-preparerealsql">
 <code class="vis vis-protected">protected</code>
@@ -1789,6 +1819,13 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$autoReconnect</span><span class="sm"> = false</span></code>
+<span class="desc">Whether to transparently reconnect and retry once when a query fails
+because the connection was lost. Opt-in; off by default.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">\PDO</code>
 <code class="sig"><span class="sv">$pdo</span></code>
 <span class="desc">PDO Handler</span>
@@ -1797,7 +1834,7 @@ __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon
 
 ### Methods
 
-<div class="api-group">Public · 18</div>
+<div class="api-group">Public · 22</div>
 
 #### `__construct()` { #dbadapterpdoabstractpdo-__construct }
 
@@ -1818,7 +1855,7 @@ executed in the database system
 
 ```php
 $connection->execute(
-    "DELETE FROM robots"
+    "DELETE FROM co_invoices"
 );
 
 echo $connection->affectedRows(), " were deleted";
@@ -1892,13 +1929,21 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 ```php
 print_r(
     $connection->convertBoundParams(
-        "SELECT * FROM robots WHERE name = :name:",
+        "SELECT * FROM co_invoices WHERE inv_title = :inv_title:",
         [
-            "Bender",
+            "Test Invoice",
         ]
     )
 );
 ```
+
+#### `ensureConnection()` { #dbadapterpdoabstractpdo-ensureconnection }
+
+```php
+public function ensureConnection(): void;
+```
+
+Ensures the connection is alive, reconnecting in place if it is not.
 
 #### `escapeString()` { #dbadapterpdoabstractpdo-escapestring }
 
@@ -1930,14 +1975,14 @@ return any rows
 ```php
 // Inserting data
 $success = $connection->execute(
-    "INSERT INTO robots VALUES (1, 'Astro Boy')"
+    "INSERT INTO co_invoices VALUES (1, 'Test Invoice')"
 );
 
 $success = $connection->execute(
-    "INSERT INTO robots VALUES (?, ?)",
+    "INSERT INTO co_invoices VALUES (?, ?)",
     [
         1,
-        "Astro Boy",
+        "Test Invoice",
     ]
 );
 ```
@@ -1959,19 +2004,27 @@ starting from zero
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-    "SELECT * FROM robots WHERE name = :name"
+    "SELECT * FROM co_invoices WHERE inv_title = :inv_title"
 );
 
 $result = $connection->executePrepared(
     $statement,
     [
-        "name" => "Voltron",
+        "inv_title" => "Test Invoice",
     ],
     [
-        "name" => Column::BIND_PARAM_STR,
+        "inv_title" => Column::BIND_PARAM_STR,
     ]
 );
 ```
+
+#### `getAutoReconnect()` { #dbadapterpdoabstractpdo-getautoreconnect }
+
+```php
+public function getAutoReconnect(): bool;
+```
+
+Returns whether transparent auto-reconnect is enabled.
 
 #### `getErrorInfo()` { #dbadapterpdoabstractpdo-geterrorinfo }
 
@@ -2024,22 +2077,31 @@ Returns the insert id for the auto_increment/serial column inserted in
 the latest executed SQL statement
 
 ```php
-// Inserting a new robot
+// Inserting a new invoice
 $success = $connection->insert(
-    "robots",
+    "co_invoices",
     [
-        "Astro Boy",
-        1952,
+        "Test Invoice",
+        100,
     ],
     [
-        "name",
-        "year",
+        "inv_title",
+        "inv_total",
     ]
 );
 
 // Getting the generated id
 $id = $connection->lastInsertId();
 ```
+
+#### `ping()` { #dbadapterpdoabstractpdo-ping }
+
+```php
+public function ping(): bool;
+```
+
+Checks whether the underlying connection is still alive by issuing a
+trivial query. Returns false if there is no handle or the probe fails.
 
 #### `prepare()` { #dbadapterpdoabstractpdo-prepare }
 
@@ -2053,16 +2115,16 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-    "SELECT * FROM robots WHERE name = :name"
+    "SELECT * FROM co_invoices WHERE inv_title = :inv_title"
 );
 
 $result = $connection->executePrepared(
     $statement,
     [
-        "name" => "Voltron",
+        "inv_title" => "Test Invoice",
     ],
     [
-        "name" => Column::BIND_PARAM_INT,
+        "inv_title" => Column::BIND_PARAM_INT,
     ]
 );
 ```
@@ -2084,13 +2146,13 @@ returning rows
 ```php
 // Querying data
 $resultset = $connection->query(
-    "SELECT * FROM robots WHERE type = 'mechanical'"
+    "SELECT * FROM co_invoices WHERE inv_status_flag = 1"
 );
 
 $resultset = $connection->query(
-    "SELECT * FROM robots WHERE type = ?",
+    "SELECT * FROM co_invoices WHERE inv_status_flag = ?",
     [
-        "mechanical",
+        1,
     ]
 );
 ```
@@ -2103,7 +2165,15 @@ public function rollback( bool $nesting = true ): bool;
 
 Rollbacks the active transaction in the connection
 
-<div class="api-group">Protected · 2</div>
+#### `setAutoReconnect()` { #dbadapterpdoabstractpdo-setautoreconnect }
+
+```php
+public function setAutoReconnect( bool $autoReconnect ): static;
+```
+
+Enables or disables transparent auto-reconnect on a lost connection.
+
+<div class="api-group">Protected · 3</div>
 
 #### `getDsnDefaults()` { #dbadapterpdoabstractpdo-getdsndefaults }
 
@@ -2112,6 +2182,16 @@ abstract protected function getDsnDefaults(): array;
 ```
 
 Returns PDO adapter DSN defaults as a key-value map.
+
+#### `isConnectionError()` { #dbadapterpdoabstractpdo-isconnectionerror }
+
+```php
+protected function isConnectionError( \Throwable $exception ): bool;
+```
+
+Recognizes whether an exception represents a lost ("gone away")
+connection. The base adapter cannot know driver specifics, so it
+returns false; concrete adapters override this.
 
 #### `prepareRealSql()` { #dbadapterpdoabstractpdo-preparerealsql }
 
@@ -2192,6 +2272,12 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
 </a>
+<a class="api-item" href="#dbadapterpdomysql-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes a MySQL &quot;server has gone away&quot; / &quot;Lost connection&quot; failure</span>
+</a>
 </div>
 
 ### Properties
@@ -2255,7 +2341,7 @@ Lists table indexes
 
 ```php
 print_r(
-    $connection->describeIndexes("robots_parts")
+    $connection->describeIndexes("co_orders_x_products")
 );
 ```
 
@@ -2272,11 +2358,11 @@ Lists table references
 
 ```php
 print_r(
-    $connection->describeReferences("robots_parts")
+    $connection->describeReferences("co_orders_x_products")
 );
 ```
 
-<div class="api-group">Protected · 1</div>
+<div class="api-group">Protected · 2</div>
 
 #### `getDsnDefaults()` { #dbadapterpdomysql-getdsndefaults }
 
@@ -2285,6 +2371,15 @@ protected function getDsnDefaults(): array;
 ```
 
 Returns PDO adapter DSN defaults as a key-value map.
+
+#### `isConnectionError()` { #dbadapterpdomysql-isconnectionerror }
+
+```php
+protected function isConnectionError( \Throwable $exception ): bool;
+```
+
+Recognizes a MySQL "server has gone away" / "Lost connection" failure
+by the driver error code (2006 / 2013) with a message fallback.
 
 
 ## Db\Adapter\Pdo\Postgresql
@@ -2381,6 +2476,12 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 <code class="sig"><span class="sf">getDsnDefaults</span>()</code>
 <span class="desc">Returns PDO adapter DSN defaults as a key-value map.</span>
 </a>
+<a class="api-item" href="#dbadapterpdopostgresql-isconnectionerror">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isConnectionError</span>( <span class="st">\Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Recognizes a PostgreSQL connection-loss failure by SQLSTATE</span>
+</a>
 </div>
 
 ### Properties
@@ -2461,7 +2562,7 @@ Lists table references
 
 ```php
 print_r(
-    $connection->describeReferences("robots_parts")
+    $connection->describeReferences("co_orders_x_products")
 );
 ```
 
@@ -2474,18 +2575,18 @@ public function getDefaultIdValue(): RawValue;
 Returns the default identity value to be inserted in an identity column
 
 ```php
-// Inserting a new robot with a valid default value for the column 'id'
+// Inserting a new invoice with a valid default value for the column 'inv_id'
 $success = $connection->insert(
-    "robots",
+    "co_invoices",
     [
         $connection->getDefaultIdValue(),
-        "Astro Boy",
-        1952,
+        "Test Invoice",
+        100,
     ],
     [
-        "id",
-        "name",
-        "year",
+        "inv_id",
+        "inv_title",
+        "inv_total",
     ]
 );
 ```
@@ -2521,7 +2622,7 @@ public function useExplicitIdValue(): bool;
 Check whether the database system requires an explicit value for identity
 columns
 
-<div class="api-group">Protected · 1</div>
+<div class="api-group">Protected · 2</div>
 
 #### `getDsnDefaults()` { #dbadapterpdopostgresql-getdsndefaults }
 
@@ -2530,6 +2631,16 @@ protected function getDsnDefaults(): array;
 ```
 
 Returns PDO adapter DSN defaults as a key-value map.
+
+#### `isConnectionError()` { #dbadapterpdopostgresql-isconnectionerror }
+
+```php
+protected function isConnectionError( \Throwable $exception ): bool;
+```
+
+Recognizes a PostgreSQL connection-loss failure by SQLSTATE
+(connection exception class 08, or admin/crash shutdown 57P0x) with a
+message fallback.
 
 
 ## Db\Adapter\Pdo\Sqlite
@@ -2684,7 +2795,7 @@ Lists table indexes
 
 ```php
 print_r(
-    $connection->describeIndexes("robots_parts")
+    $connection->describeIndexes("co_orders_x_products")
 );
 ```
 
@@ -2709,16 +2820,16 @@ Returns the default value to make the RBDM use the default value declared
 in the table definition
 
 ```php
-// Inserting a new robot with a valid default value for the column 'year'
+// Inserting a new invoice with a valid default value for the column 'inv_total'
 $success = $connection->insert(
-    "robots",
+    "co_invoices",
     [
-        "Astro Boy",
+        "Test Invoice",
         $connection->getDefaultValue(),
     ],
     [
-        "name",
-        "year",
+        "inv_title",
+        "inv_total",
     ]
 );
 ```
@@ -2910,7 +3021,7 @@ $column = new Column(
 );
 
 // Add column to existing table
-$connection->addColumn("robots", null, $column);
+$connection->addColumn("co_invoices", null, $column);
 ```
 
 <div class="api-tree" markdown>
@@ -4140,20 +4251,20 @@ Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
 appends a row-lock disposition keyword.
 
 ```php
-$sql = $dialect->forUpdate("SELECT * FROM robots");
-echo $sql; // SELECT * FROM robots FOR UPDATE
+$sql = $dialect->forUpdate("SELECT * FROM co_invoices");
+echo $sql; // SELECT * FROM co_invoices FOR UPDATE
 
 $sql = $dialect->forUpdate(
-    "SELECT * FROM robots",
+    "SELECT * FROM co_invoices",
     Dialect::LOCK_NOWAIT
 );
-echo $sql; // SELECT * FROM robots FOR UPDATE NOWAIT
+echo $sql; // SELECT * FROM co_invoices FOR UPDATE NOWAIT
 
 $sql = $dialect->forUpdate(
-    "SELECT * FROM robots",
+    "SELECT * FROM co_invoices",
     Dialect::LOCK_SKIP_LOCKED
 );
-echo $sql; // SELECT * FROM robots FOR UPDATE SKIP LOCKED
+echo $sql; // SELECT * FROM co_invoices FOR UPDATE SKIP LOCKED
 ```
 
 #### `getColumnList()` { #dbdialect-getcolumnlist }
@@ -4233,15 +4344,15 @@ public function limit(
 Generates the SQL for LIMIT clause
 
 ```php
-// SELECT * FROM robots LIMIT 10
+// SELECT * FROM co_invoices LIMIT 10
 echo $dialect->limit(
-    "SELECT * FROM robots",
+    "SELECT * FROM co_invoices",
     10
 );
 
-// SELECT * FROM robots LIMIT 10 OFFSET 50
+// SELECT * FROM co_invoices LIMIT 10 OFFSET 50
 echo $dialect->limit(
-    "SELECT * FROM robots",
+    "SELECT * FROM co_invoices",
     [10, 50]
 );
 ```
@@ -5242,9 +5353,9 @@ no `NOWAIT` / `SKIP LOCKED` variant. Callers needing those modifiers
 should target PostgreSQL or stay on `forUpdate()`.
 
 ```php
-$sql = $dialect->sharedLock("SELECT * FROM robots");
+$sql = $dialect->sharedLock("SELECT * FROM co_invoices");
 
-echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
+echo $sql; // SELECT * FROM co_invoices LOCK IN SHARE MODE
 ```
 
 #### `supportsOnConflictUpdate()` { #dbdialectmysql-supportsonconflictupdate }
@@ -5874,14 +5985,14 @@ appends a row-lock disposition keyword (pass `Dialect::LOCK_NOWAIT`
 or `Dialect::LOCK_SKIP_LOCKED`).
 
 ```php
-echo $dialect->sharedLock("SELECT * FROM robots");
-// SELECT * FROM robots FOR SHARE
+echo $dialect->sharedLock("SELECT * FROM co_invoices");
+// SELECT * FROM co_invoices FOR SHARE
 
 echo $dialect->sharedLock(
-    "SELECT * FROM robots",
+    "SELECT * FROM co_invoices",
     Dialect::LOCK_NOWAIT
 );
-// SELECT * FROM robots FOR SHARE NOWAIT
+// SELECT * FROM co_invoices FOR SHARE NOWAIT
 ```
 
 #### `supportsMaterializedViews()` { #dbdialectpostgresql-supportsmaterializedviews }
@@ -9551,9 +9662,9 @@ $hidden = new \Phalcon\Db\Index(
     ]
 );
 
-$connection->addIndex("robots", null, $unique);
-$connection->addIndex("robots", null, $primary);
-$connection->addIndex("robots", null, $hidden);
+$connection->addIndex("co_invoices", null, $unique);
+$connection->addIndex("co_invoices", null, $primary);
+$connection->addIndex("co_invoices", null, $hidden);
 ```
 
 <div class="api-tree" markdown>
@@ -9842,7 +9953,7 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 </div>
 
-__Uses__ `Phalcon\Db\Profiler\Item`
+__Uses__ `Phalcon\Db\Profiler\Item` · `Phalcon\Db\Traits\ElapsedTimeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -9872,23 +9983,11 @@ __Uses__ `Phalcon\Db\Profiler\Item`
 <code class="sig"><span class="sf">getProfiles</span>()</code>
 <span class="desc">Returns all the processed profiles</span>
 </a>
-<a class="api-item" href="#dbprofiler-gettotalelapsedmilliseconds">
-<code class="vis vis-public">public</code>
-<code class="ret">double</code>
-<code class="sig"><span class="sf">getTotalElapsedMilliseconds</span>()</code>
-<span class="desc">Returns the total time in milliseconds spent by the profiles</span>
-</a>
 <a class="api-item" href="#dbprofiler-gettotalelapsednanoseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
 <code class="sig"><span class="sf">getTotalElapsedNanoseconds</span>()</code>
 <span class="desc">Returns the total time in nanoseconds spent by the profiles</span>
-</a>
-<a class="api-item" href="#dbprofiler-gettotalelapsedseconds">
-<code class="vis vis-public">public</code>
-<code class="ret">double</code>
-<code class="sig"><span class="sf">getTotalElapsedSeconds</span>()</code>
-<span class="desc">Returns the total time in seconds spent by the profiles</span>
 </a>
 <a class="api-item" href="#dbprofiler-reset">
 <code class="vis vis-public">public</code>
@@ -9949,7 +10048,7 @@ profile FIFO before a new one is appended.</span>
 
 ### Methods
 
-<div class="api-group">Public · 11</div>
+<div class="api-group">Public · 9</div>
 
 #### `getLastProfile()` { #dbprofiler-getlastprofile }
 
@@ -9984,14 +10083,6 @@ public function getProfiles(): Item[];
 
 Returns all the processed profiles
 
-#### `getTotalElapsedMilliseconds()` { #dbprofiler-gettotalelapsedmilliseconds }
-
-```php
-public function getTotalElapsedMilliseconds(): double;
-```
-
-Returns the total time in milliseconds spent by the profiles
-
 #### `getTotalElapsedNanoseconds()` { #dbprofiler-gettotalelapsednanoseconds }
 
 ```php
@@ -9999,14 +10090,6 @@ public function getTotalElapsedNanoseconds(): double;
 ```
 
 Returns the total time in nanoseconds spent by the profiles
-
-#### `getTotalElapsedSeconds()` { #dbprofiler-gettotalelapsedseconds }
-
-```php
-public function getTotalElapsedSeconds(): double;
-```
-
-Returns the total time in seconds spent by the profiles
 
 #### `reset()` { #dbprofiler-reset }
 
@@ -10059,6 +10142,9 @@ This class identifies each profile in a Phalcon\Db\Profiler
 
 </div>
 
+__Uses__ `Phalcon\Db\Traits\ElapsedTimeTrait`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -10092,23 +10178,11 @@ This class identifies each profile in a Phalcon\Db\Profiler
 <code class="sig"><span class="sf">getSqlVariables</span>()</code>
 <span class="desc">Return the SQL variables related to the profile</span>
 </a>
-<a class="api-item" href="#dbprofileritem-gettotalelapsedmilliseconds">
-<code class="vis vis-public">public</code>
-<code class="ret">double</code>
-<code class="sig"><span class="sf">getTotalElapsedMilliseconds</span>()</code>
-<span class="desc">Returns the total time in milliseconds spent by the profile</span>
-</a>
 <a class="api-item" href="#dbprofileritem-gettotalelapsednanoseconds">
 <code class="vis vis-public">public</code>
 <code class="ret">double</code>
 <code class="sig"><span class="sf">getTotalElapsedNanoseconds</span>()</code>
 <span class="desc">Returns the total time in nanoseconds spent by the profile</span>
-</a>
-<a class="api-item" href="#dbprofileritem-gettotalelapsedseconds">
-<code class="vis vis-public">public</code>
-<code class="ret">double</code>
-<code class="sig"><span class="sf">getTotalElapsedSeconds</span>()</code>
-<span class="desc">Returns the total time in seconds spent by the profile</span>
 </a>
 <a class="api-item" href="#dbprofileritem-setfinaltime">
 <code class="vis vis-public">public</code>
@@ -10179,7 +10253,7 @@ This class identifies each profile in a Phalcon\Db\Profiler
 
 ### Methods
 
-<div class="api-group">Public · 13</div>
+<div class="api-group">Public · 11</div>
 
 #### `getFinalTime()` { #dbprofileritem-getfinaltime }
 
@@ -10221,14 +10295,6 @@ public function getSqlVariables(): array;
 
 Return the SQL variables related to the profile
 
-#### `getTotalElapsedMilliseconds()` { #dbprofileritem-gettotalelapsedmilliseconds }
-
-```php
-public function getTotalElapsedMilliseconds(): double;
-```
-
-Returns the total time in milliseconds spent by the profile
-
 #### `getTotalElapsedNanoseconds()` { #dbprofileritem-gettotalelapsednanoseconds }
 
 ```php
@@ -10236,14 +10302,6 @@ public function getTotalElapsedNanoseconds(): double;
 ```
 
 Returns the total time in nanoseconds spent by the profile
-
-#### `getTotalElapsedSeconds()` { #dbprofileritem-gettotalelapsedseconds }
-
-```php
-public function getTotalElapsedSeconds(): double;
-```
-
-Returns the total time in seconds spent by the profile
 
 #### `setFinalTime()` { #dbprofileritem-setfinaltime }
 
@@ -10635,14 +10693,14 @@ __Uses__ `Phalcon\Contracts\Db\Result`
 Encapsulates the resultset internals
 
 ```php
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM co_invoices ORDER BY inv_title");
 
 $result->setFetchMode(
     \Phalcon\Db\Enum::FETCH_NUM
 );
 
-while ($robot = $result->fetchArray()) {
-    print_r($robot);
+while ($invoice = $result->fetchArray()) {
+    print_r($invoice);
 }
 ```
 
@@ -10787,7 +10845,7 @@ certain row
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots ORDER BY name"
+    "SELECT * FROM co_invoices ORDER BY inv_title"
 );
 
 // Move to third row on result
@@ -10822,14 +10880,14 @@ or FALSE if there are no more rows. This method is affected by the active
 fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM co_invoices ORDER BY inv_title");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_OBJ
 );
 
-while ($robot = $result->fetch()) {
-    echo $robot->name;
+while ($invoice = $result->fetch()) {
+    echo $invoice->inv_title;
 }
 ```
 
@@ -10849,10 +10907,10 @@ This method is affected by the active fetch flag set using
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots ORDER BY name"
+    "SELECT * FROM co_invoices ORDER BY inv_title"
 );
 
-$robots = $result->fetchAll();
+$invoices = $result->fetchAll();
 ```
 
 #### `fetchArray()` { #dbresultpdoresult-fetcharray }
@@ -10866,14 +10924,14 @@ if there are no more rows. This method is affected by the active fetch
 flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 
 ```php
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("SELECT * FROM co_invoices ORDER BY inv_title");
 
 $result->setFetchMode(
     \Phalcon\Enum::FETCH_NUM
 );
 
-while ($robot = result->fetchArray()) {
-    print_r($robot);
+while ($invoice = result->fetchArray()) {
+    print_r($invoice);
 }
 ```
 
@@ -10895,7 +10953,7 @@ Gets number of rows returned by a resultset
 
 ```php
 $result = $connection->query(
-    "SELECT * FROM robots ORDER BY name"
+    "SELECT * FROM co_invoices ORDER BY inv_title"
 );
 
 echo "There are ", $result->numRows(), " rows in the resultset";

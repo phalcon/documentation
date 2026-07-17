@@ -67,7 +67,7 @@ $application->main();
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Application\Exception` · `Phalcon\Mvc\Application\Exceptions\ContainerRequired` · `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` · `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Mvc\Router\RouteInterface`
+__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Application\Exception` · `Phalcon\Mvc\Application\Exceptions\ContainerRequired` · `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` · `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2769,22 +2769,22 @@ giving to developers high performance when interacting with databases while
 is also easy to use.
 
 ```php
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-if ($robot->save() === false) {
-    echo "Umh, We can store robots: ";
+if ($invoice->save() === false) {
+    echo "Umh, We can store invoices: ";
 
-    $messages = $robot->getMessages();
+    $messages = $invoice->getMessages();
 
     foreach ($messages as $message) {
         echo $message;
     }
 } else {
-    echo "Great, a new robot was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -2809,11 +2809,11 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 - `stdClass`
     - [`Phalcon\Di\AbstractInjectionAware`](phalcon_di.md#diabstractinjectionaware)
-        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `Serializable`, `JsonSerializable`
+        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `JsonSerializable`
 
 </div>
 
-__Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Enum` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `Serializable`
+__Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Enum` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
 { .api-uses }
 
 ### Method Summary
@@ -3638,7 +3638,7 @@ Setups a behavior in a model
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Behavior\Timestampable;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
@@ -3679,13 +3679,13 @@ Appends a customized message on the validation process
 use Phalcon\Mvc\Model;
 use Phalcon\Messages\Message as Message;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function beforeSave()
     {
         if ($this->name === "Peter") {
             $message = new Message(
-                "Sorry, but a robot cannot be named Peter"
+                "Sorry, but an invoice cannot be named Peter"
             );
 
             $this->appendMessage($message);
@@ -3716,16 +3716,16 @@ public function assign(
 Assigns values to a model from an array
 
 ```php
-$robot->assign(
+$invoice->assign(
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
+        "name" => "Test Invoice",
         "year" => 1952,
     ]
 );
 
 // Assign by db row, column map needed
-$robot->assign(
+$invoice->assign(
     $dbRow,
     [
         "db_type" => "type",
@@ -3735,7 +3735,7 @@ $robot->assign(
 );
 
 // Allow assign only name and year
-$robot->assign(
+$invoice->assign(
     $_POST,
     [
         "name",
@@ -3747,7 +3747,7 @@ $robot->assign(
 
 ini_set("phalcon.orm.disable_assign_setters", true);
 
-$robot->assign(
+$invoice->assign(
     $_POST,
     [
         "name",
@@ -3770,24 +3770,24 @@ instance for when the GROUP condition is used. The results will
 contain the average of each group.
 
 ```php
-// What's the average price of robots?
-$average = Robots::average(
+// What's the average price of invoices?
+$average = Invoices::average(
     [
-        "column" => "price",
+        "column" => "inv_total",
     ]
 );
 
 echo "The average price is ", $average, "\n";
 
-// What's the average price of mechanical robots?
-$average = Robots::average(
+// What's the average price of paid invoices?
+$average = Invoices::average(
     [
-        "type = 'mechanical'",
-        "column" => "price",
+        "inv_status_flag = 1",
+        "column" => "inv_total",
     ]
 );
 
-echo "The average price of mechanical robots is ", $average, "\n";
+echo "The average price of paid invoices is ", $average, "\n";
 ```
 
 #### `cloneResult()` { #mvcmodel-cloneresult }
@@ -3803,11 +3803,11 @@ public static function cloneResult(
 Assigns values to a model from an array returning a new model
 
 ```php
-$robot = Phalcon\Mvc\Model::cloneResult(
-    new Robots(),
+$invoice = Phalcon\Mvc\Model::cloneResult(
+    new Invoices(),
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
+        "name" => "Test Invoice",
         "year" => 1952,
     ]
 );
@@ -3828,11 +3828,11 @@ public static function cloneResultMap(
 Assigns values to a model from an array, returning a new model.
 
 ```php
-$robot = \Phalcon\Mvc\Model::cloneResultMap(
-    new Robots(),
+$invoice = \Phalcon\Mvc\Model::cloneResultMap(
+    new Invoices(),
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
+        "name" => "Test Invoice",
         "year" => 1952,
     ]
 );
@@ -3863,15 +3863,15 @@ instance for when the GROUP condition is used. The results will
 contain the count of each group.
 
 ```php
-// How many robots are there?
-$number = Robots::count();
+// How many invoices are there?
+$number = Invoices::count();
 
 echo "There are ", $number, "\n";
 
-// How many mechanical robots are there?
-$number = Robots::count("type = 'mechanical'");
+// How many paid invoices are there?
+$number = Invoices::count("inv_status_flag = 1");
 
-echo "There are ", $number, " mechanical robots\n";
+echo "There are ", $number, " paid invoices\n";
 ```
 
 #### `create()` { #mvcmodel-create }
@@ -3885,27 +3885,27 @@ persistence it will throw an exception
 Returning true on success or false otherwise.
 
 ```php
-// Creating a new robot
-$robot = new Robots();
+// Creating a new invoice
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-$robot->create();
+$invoice->create();
 
 // Passing an array to create
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->assign(
+$invoice->assign(
     [
         "type" => "mechanical",
-        "name" => "Astro Boy",
+        "name" => "Test Invoice",
         "year" => 1952,
     ]
 );
 
-$robot->create();
+$invoice->create();
 ```
 
 #### `delete()` { #mvcmodel-delete }
@@ -3917,14 +3917,14 @@ public function delete(): bool;
 Deletes a model instance. Returning true on success or false otherwise.
 
 ```php
-$robot = Robots::findFirst("id=100");
+$invoice = Invoices::findFirst("id=100");
 
-$robot->delete();
+$invoice->delete();
 
-$robots = Robots::find("type = 'mechanical'");
+$invoices = Invoices::find("inv_status_flag = 1");
 
-foreach ($robots as $robot) {
-    $robot->delete();
+foreach ($invoices as $invoice) {
+    $invoice->delete();
 }
 ```
 
@@ -3947,7 +3947,7 @@ Returns a simple representation of the object that can be used with
 
 ```php
 var_dump(
-    $robot->dump()
+    $invoice->dump()
 );
 ```
 
@@ -3960,32 +3960,32 @@ public static function find( mixed $parameters = null ): ResultsetInterface;
 Query for a set of records that match the specified conditions
 
 ```php
-// How many robots are there?
-$robots = Robots::find();
+// How many invoices are there?
+$invoices = Invoices::find();
 
-echo "There are ", count($robots), "\n";
+echo "There are ", count($invoices), "\n";
 
-// How many mechanical robots are there?
-$robots = Robots::find(
-    "type = 'mechanical'"
+// How many paid invoices are there?
+$invoices = Invoices::find(
+    "inv_status_flag = 1"
 );
 
-echo "There are ", count($robots), "\n";
+echo "There are ", count($invoices), "\n";
 
-// Get and print virtual robots ordered by name
-$robots = Robots::find(
+// Get and print virtual invoices ordered by name
+$invoices = Invoices::find(
     [
         "type = 'virtual'",
         "order" => "name",
     ]
 );
 
-foreach ($robots as $robot) {
-    echo $robot->name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
-// Get first 100 virtual robots ordered by name
-$robots = Robots::find(
+// Get first 100 virtual invoices ordered by name
+$invoices = Invoices::find(
     [
         "type = 'virtual'",
         "order" => "name",
@@ -3993,8 +3993,8 @@ $robots = Robots::find(
     ]
 );
 
-foreach ($robots as $robot) {
-    echo $robot->name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
 // encapsulate find it into an running transaction esp. useful for application unit-tests
@@ -4003,10 +4003,10 @@ foreach ($robots as $robot) {
 $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction->begin();
 
-$newRobot = new Robot();
-$newRobot->setTransaction($myTransaction);
+$newInvoices = new Invoices();
+$newInvoices->setTransaction($myTransaction);
 
-$newRobot->assign(
+$newInvoices->assign(
     [
         'name' => 'test',
         'type' => 'mechanical',
@@ -4014,23 +4014,23 @@ $newRobot->assign(
     ]
 );
 
-$newRobot->save();
+$newInvoices->save();
 
-$resultInsideTransaction = Robot::find(
+$resultInsideTransaction = Invoices::find(
     [
         'name' => 'test',
         Model::TRANSACTION_INDEX => $myTransaction,
     ]
 );
 
-$resultOutsideTransaction = Robot::find(['name' => 'test']);
+$resultOutsideTransaction = Invoices::find(['name' => 'test']);
 
-foreach ($setInsideTransaction as $robot) {
-    echo $robot->name, "\n";
+foreach ($setInsideTransaction as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
-foreach ($setOutsideTransaction as $robot) {
-    echo $robot->name, "\n";
+foreach ($setOutsideTransaction as $invoice) {
+    echo $invoice->inv_title, "\n";
 }
 
 // reverts all not commited changes
@@ -4042,72 +4042,72 @@ $myTransaction1->begin();
 $myTransaction2 = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction2->begin();
 
- // add a new robots
-$firstNewRobot = new Robot();
-$firstNewRobot->setTransaction($myTransaction1);
-$firstNewRobot->assign(
+ // add a new invoices
+$firstNewInvoices = new Invoices();
+$firstNewInvoices->setTransaction($myTransaction1);
+$firstNewInvoices->assign(
     [
-        'name' => 'first-transaction-robot',
+        'name' => 'first-transaction-invoice',
         'type' => 'mechanical',
         'year' => 1944,
     ]
 );
-$firstNewRobot->save();
+$firstNewInvoices->save();
 
-$secondNewRobot = new Robot();
-$secondNewRobot->setTransaction($myTransaction2);
-$secondNewRobot->assign(
+$secondNewInvoices = new Invoices();
+$secondNewInvoices->setTransaction($myTransaction2);
+$secondNewInvoices->assign(
     [
-        'name' => 'second-transaction-robot',
+        'name' => 'second-transaction-invoice',
         'type' => 'fictional',
         'year' => 1984,
     ]
 );
-$secondNewRobot->save();
+$secondNewInvoices->save();
 
-// this transaction will find the robot.
-$resultInFirstTransaction = Robot::find(
+// this transaction will find the invoice.
+$resultInFirstTransaction = Invoices::find(
     [
-        'name'                   => 'first-transaction-robot',
+        'name'                   => 'first-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction1,
     ]
 );
 
-// this transaction won't find the robot.
-$resultInSecondTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultInSecondTransaction = Invoices::find(
     [
-        'name'                   => 'first-transaction-robot',
+        'name'                   => 'first-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction2,
     ]
 );
 
-// this transaction won't find the robot.
-$resultOutsideAnyExplicitTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultOutsideAnyExplicitTransaction = Invoices::find(
     [
-        'name' => 'first-transaction-robot',
+        'name' => 'first-transaction-invoice',
     ]
 );
 
-// this transaction won't find the robot.
-$resultInFirstTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultInFirstTransaction = Invoices::find(
     [
-        'name'                   => 'second-transaction-robot',
+        'name'                   => 'second-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction2,
     ]
 );
 
-// this transaction will find the robot.
-$resultInSecondTransaction = Robot::find(
+// this transaction will find the invoice.
+$resultInSecondTransaction = Invoices::find(
     [
-        'name'                   => 'second-transaction-robot',
+        'name'                   => 'second-transaction-invoice',
         Model::TRANSACTION_INDEX => $myTransaction1,
     ]
 );
 
-// this transaction won't find the robot.
-$resultOutsideAnyExplicitTransaction = Robot::find(
+// this transaction won't find the invoice.
+$resultOutsideAnyExplicitTransaction = Invoices::find(
     [
-        'name' => 'second-transaction-robot',
+        'name' => 'second-transaction-invoice',
     ]
 );
 
@@ -4124,62 +4124,62 @@ public static function findFirst( mixed $parameters = null ): mixed|null;
 Query the first record that matches the specified conditions
 
 ```php
-// What's the first robot in robots table?
-$robot = Robots::findFirst();
+// What's the first invoice in invoices table?
+$invoice = Invoices::findFirst();
 
-echo "The robot name is ", $robot->name;
+echo "The invoice name is ", $invoice->inv_title;
 
-// What's the first mechanical robot in robots table?
-$robot = Robots::findFirst(
-    "type = 'mechanical'"
+// What's the first paid invoice in invoices table?
+$invoice = Invoices::findFirst(
+    "inv_status_flag = 1"
 );
 
-echo "The first mechanical robot name is ", $robot->name;
+echo "The first paid invoice name is ", $invoice->inv_title;
 
-// Get first virtual robot ordered by name
-$robot = Robots::findFirst(
+// Get first virtual invoice ordered by name
+$invoice = Invoices::findFirst(
     [
         "type = 'virtual'",
         "order" => "name",
     ]
 );
 
-echo "The first virtual robot name is ", $robot->name;
+echo "The first virtual invoice name is ", $invoice->inv_title;
 
 // behaviour with transaction
 $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
 $myTransaction->begin();
 
-$newRobot = new Robot();
-$newRobot->setTransaction($myTransaction);
-$newRobot->assign(
+$newInvoices = new Invoices();
+$newInvoices->setTransaction($myTransaction);
+$newInvoices->assign(
     [
         'name' => 'test',
         'type' => 'mechanical',
         'year' => 1944,
     ]
 );
-$newRobot->save();
+$newInvoices->save();
 
-$findsARobot = Robot::findFirst(
+$findsAInvoices = Invoices::findFirst(
     [
         'name'                   => 'test',
         Model::TRANSACTION_INDEX => $myTransaction,
     ]
 );
 
-$doesNotFindARobot = Robot::findFirst(
+$doesNotFindAInvoices = Invoices::findFirst(
     [
         'name' => 'test',
     ]
 );
 
-var_dump($findARobot);
-var_dump($doesNotFindARobot);
+var_dump($findAInvoices);
+var_dump($doesNotFindAInvoices);
 
 $transaction->commit();
 
-$doesFindTheRobotNow = Robot::findFirst(
+$doesFindTheInvoicesNow = Invoices::findFirst(
     [
         'name' => 'test',
     ]
@@ -4214,13 +4214,13 @@ public function getChangedFields(): array;
 Returns a list of changed values.
 
 ```php
-$robots = Robots::findFirst();
-print_r($robots->getChangedFields()); // []
+$invoices = Invoices::findFirst();
+print_r($invoices->getChangedFields()); // []
 
-$robots->deleted = 'Y';
+$invoices->deleted = 'Y';
 
-$robots->getChangedFields();
-print_r($robots->getChangedFields()); // ["deleted"]
+$invoices->getChangedFields();
+print_r($invoices->getChangedFields()); // ["deleted"]
 ```
 
 #### `getDirtyState()` { #mvcmodel-getdirtystate }
@@ -4249,22 +4249,22 @@ public function getMessages( mixed $filter = null ): MessageInterface[];
 Returns array of validation messages
 
 ```php
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-if ($robot->save() === false) {
-    echo "Umh, We can't store robots right now ";
+if ($invoice->save() === false) {
+    echo "Umh, We can't store invoices right now ";
 
-    $messages = $robot->getMessages();
+    $messages = $invoice->getMessages();
 
     foreach ($messages as $message) {
         echo $message;
     }
 } else {
-    echo "Great, a new robot was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -4368,16 +4368,16 @@ public function getUpdatedFields(): array;
 Returns a list of updated values.
 
 ```php
-$robots = Robots::findFirst();
-print_r($robots->getChangedFields()); // []
+$invoices = Invoices::findFirst();
+print_r($invoices->getChangedFields()); // []
 
-$robots->deleted = 'Y';
+$invoices->deleted = 'Y';
 
-$robots->getChangedFields();
-print_r($robots->getChangedFields()); // ["deleted"]
-$robots->save();
-print_r($robots->getChangedFields()); // []
-print_r($robots->getUpdatedFields()); // ["deleted"]
+$invoices->getChangedFields();
+print_r($invoices->getChangedFields()); // ["deleted"]
+$invoices->save();
+print_r($invoices->getChangedFields()); // []
+print_r($invoices->getUpdatedFields()); // ["deleted"]
 ```
 
 #### `getWriteConnection()` { #mvcmodel-getwriteconnection }
@@ -4410,19 +4410,19 @@ Check if a specific attribute has changed
 This only works if the model is keeping data snapshots
 
 ```php
-$robot = new Robots();
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-$robot->create();
+$invoice->create();
 
-$robot->type = "hydraulic";
+$invoice->inv_status_flag = "hydraulic";
 
-$hasChanged = $robot->hasChanged("type"); // returns true
-$hasChanged = $robot->hasChanged(["type", "name"]); // returns true
-$hasChanged = $robot->hasChanged(["type", "name"], true); // returns false
+$hasChanged = $invoice->hasChanged("type"); // returns true
+$hasChanged = $invoice->hasChanged(["type", "name"]); // returns true
+$hasChanged = $invoice->hasChanged(["type", "name"], true); // returns false
 ```
 
 #### `hasSnapshotData()` { #mvcmodel-hassnapshotdata }
@@ -4457,17 +4457,17 @@ Only returns true if the records were previously fetched
 through the model without any additional parameters.
 
 ```php
-$robot = Robots::findFirst();
-var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+$invoice = Invoices::findFirst();
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
 
-$robotsParts = $robot->getRobotsParts(['id > 0']);
-var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+$invoicesParts = $invoice->getOrdersProducts(['id > 0']);
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
 
-$robotsParts = $robot->getRobotsParts(); // or $robot->robotsParts
-var_dump($robot->isRelationshipLoaded('robotsParts')); // true
+$invoicesParts = $invoice->getOrdersProducts(); // or $invoice->ordersProducts
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // true
 
-$robot->robotsParts = [new RobotsParts()];
-var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+$invoice->ordersProducts = [new OrdersProducts()];
+var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
 ```
 
 #### `jsonSerialize()` { #mvcmodel-jsonserialize }
@@ -4479,7 +4479,7 @@ public function jsonSerialize(): array;
 Serializes the object for json_encode
 
 ```php
-echo json_encode($robot);
+echo json_encode($invoice);
 ```
 
 #### `maximum()` { #mvcmodel-maximum }
@@ -4492,24 +4492,24 @@ Returns the maximum value of a column for a result-set of rows that match
 the specified conditions
 
 ```php
-// What is the maximum robot id?
-$id = Robots::maximum(
+// What is the maximum invoice id?
+$id = Invoices::maximum(
     [
         "column" => "id",
     ]
 );
 
-echo "The maximum robot id is: ", $id, "\n";
+echo "The maximum invoice id is: ", $id, "\n";
 
-// What is the maximum id of mechanical robots?
-$sum = Robots::maximum(
+// What is the maximum id of paid invoices?
+$sum = Invoices::maximum(
     [
-        "type = 'mechanical'",
+        "inv_status_flag = 1",
         "column" => "id",
     ]
 );
 
-echo "The maximum robot id of mechanical robots is ", $id, "\n";
+echo "The maximum invoice id of paid invoices is ", $id, "\n";
 ```
 
 #### `minimum()` { #mvcmodel-minimum }
@@ -4522,24 +4522,24 @@ Returns the minimum value of a column for a result-set of rows that match
 the specified conditions
 
 ```php
-// What is the minimum robot id?
-$id = Robots::minimum(
+// What is the minimum invoice id?
+$id = Invoices::minimum(
     [
         "column" => "id",
     ]
 );
 
-echo "The minimum robot id is: ", $id;
+echo "The minimum invoice id is: ", $id;
 
-// What is the minimum id of mechanical robots?
-$sum = Robots::minimum(
+// What is the minimum id of paid invoices?
+$sum = Invoices::minimum(
     [
-        "type = 'mechanical'",
+        "inv_status_flag = 1",
         "column" => "id",
     ]
 );
 
-echo "The minimum robot id of mechanical robots is ", $id;
+echo "The minimum invoice id of paid invoices is ", $id;
 ```
 
 #### `query()` { #mvcmodel-query }
@@ -4559,7 +4559,7 @@ public function readAttribute( string $attribute ): mixed|null;
 Reads an attribute value by its name
 
 ```php
-echo $robot->readAttribute("name");
+echo $invoice->readAttribute("name");
 ```
 
 #### `refresh()` { #mvcmodel-refresh }
@@ -4580,21 +4580,21 @@ Inserts or updates a model instance. Returning true on success or false
 otherwise.
 
 ```php
-// Creating a new robot
-$robot = new Robots();
+// Creating a new invoice
+$invoice = new Invoices();
 
-$robot->type = "mechanical";
-$robot->name = "Astro Boy";
-$robot->year = 1952;
+$invoice->inv_status_flag = "mechanical";
+$invoice->inv_title = "Test Invoice";
+$invoice->inv_total = 1952;
 
-$robot->save();
+$invoice->save();
 
-// Updating a robot name
-$robot = Robots::findFirst("id = 100");
+// Updating an invoice name
+$invoice = Invoices::findFirst("id = 100");
 
-$robot->name = "Biomass";
+$invoice->inv_title = "Biomass";
 
-$robot->save();
+$invoice->save();
 ```
 
 #### `serialize()` { #mvcmodel-serialize }
@@ -4711,25 +4711,25 @@ try {
 
     $transaction = $txManager->get();
 
-    $robot = new Robots();
+    $invoice = new Invoices();
 
-    $robot->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-    $robot->name       = "WALL·E";
-    $robot->created_at = date("Y-m-d");
+    $invoice->inv_title       = "WALL·E";
+    $invoice->created_at = date("Y-m-d");
 
-    if ($robot->save() === false) {
-        $transaction->rollback("Can't save robot");
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
     }
 
-    $robotPart = new RobotParts();
+    $invoicePart = new OrdersProducts();
 
-    $robotPart->setTransaction($transaction);
+    $invoicePart->setTransaction($transaction);
 
-    $robotPart->type = "head";
+    $invoicePart->type = "head";
 
-    if ($robotPart->save() === false) {
-        $transaction->rollback("Robot part cannot be saved");
+    if ($invoicePart->save() === false) {
+        $transaction->rollback("Invoices part cannot be saved");
     }
 
     $transaction->commit();
@@ -4778,24 +4778,24 @@ Calculates the sum on a column for a result-set of rows that match the
 specified conditions
 
 ```php
-// How much are all robots?
-$sum = Robots::sum(
+// How much are all invoices?
+$sum = Invoices::sum(
     [
-        "column" => "price",
+        "column" => "inv_total",
     ]
 );
 
-echo "The total price of robots is ", $sum, "\n";
+echo "The total price of invoices is ", $sum, "\n";
 
-// How much are mechanical robots?
-$sum = Robots::sum(
+// How much are paid invoices?
+$sum = Invoices::sum(
     [
-        "type = 'mechanical'",
-        "column" => "price",
+        "inv_status_flag = 1",
+        "column" => "inv_total",
     ]
 );
 
-echo "The total price of mechanical robots is  ", $sum, "\n";
+echo "The total price of paid invoices is  ", $sum, "\n";
 ```
 
 #### `toArray()` { #mvcmodel-toarray }
@@ -4811,7 +4811,7 @@ Returns the instance as an array representation
 
 ```php
 print_r(
-    $robot->toArray()
+    $invoice->toArray()
 );
 ```
 
@@ -4899,7 +4899,7 @@ public function writeAttribute(
 Writes an attribute value by its name
 
 ```php
-$robot->writeAttribute("name", "Rosey");
+$invoice->writeAttribute("name", "Rosey");
 ```
 
 <div class="api-group">Protected · 30</div>
@@ -4914,7 +4914,7 @@ Sets a list of attributes that must be skipped from the
 generated UPDATE statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -4941,13 +4941,13 @@ protected function belongsTo(
 Setup a reverse 1-1 or n-1 relation between two models
 
 ```php
-class RobotsParts extends \Phalcon\Mvc\Model
+class OrdersProducts extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->belongsTo(
-            "robots_id",
-            Robots::class,
+            "oxp_ord_id",
+            Invoices::class,
             "id"
         );
     }
@@ -5074,14 +5074,14 @@ protected function hasMany(
 Setup a 1-n relation between two models
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->hasMany(
             "id",
-            RobotsParts::class,
-            "robots_id"
+            OrdersProducts::class,
+            "oxp_ord_id"
         );
     }
 }
@@ -5105,17 +5105,17 @@ Setup an n-n relation between two models, through an intermediate
 relation
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
-        // Setup a many-to-many relation to Parts through RobotsParts
+        // Setup a many-to-many relation to Parts through OrdersProducts
         $this->hasManyToMany(
             "id",
-            RobotsParts::class,
-            "robots_id",
-            "parts_id",
-            Parts::class,
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
             "id",
         );
     }
@@ -5136,14 +5136,14 @@ protected function hasOne(
 Setup a 1-1 relation between two models
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->hasOne(
             "id",
-            RobotsDescription::class,
-            "robots_id"
+            InvoicesDescription::class,
+            "oxp_ord_id"
         );
     }
 }
@@ -5167,17 +5167,17 @@ Setup a 1-1 relation between two models, through an intermediate
 relation
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
-        // Setup a 1-1 relation to one item from Parts through RobotsParts
+        // Setup a 1-1 relation to one item from Parts through OrdersProducts
         $this->hasOneThrough(
             "id",
-            RobotsParts::class,
-            "robots_id",
-            "parts_id",
-            Parts::class,
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
             "id",
         );
     }
@@ -5206,7 +5206,7 @@ Sets if the model must keep the original record snapshot in memory
 ```php
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
@@ -5299,7 +5299,7 @@ Sets a list of attributes that must be skipped from the
 generated INSERT/UPDATE statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -5322,7 +5322,7 @@ Sets a list of attributes that must be skipped from the
 generated INSERT statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -5345,7 +5345,7 @@ Sets a list of attributes that must be skipped from the
 generated UPDATE statement
 
 ```php
-class Robots extends \Phalcon\Mvc\Model
+class Invoices extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
@@ -5369,7 +5369,7 @@ Sets if a model must use dynamic update instead of the all-field update
 ```php
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
@@ -7914,17 +7914,17 @@ Adds an INNER join to the query
 
 ```php
 $criteria->innerJoin(
-    Robots::class
+    Orders::class
 );
 
 $criteria->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id"
 );
 
 $criteria->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -7943,8 +7943,8 @@ Adds a LEFT join to the query
 
 ```php
 $criteria->leftJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -8025,8 +8025,8 @@ Adds a RIGHT join to the query
 
 ```php
 $criteria->rightJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -8159,6 +8159,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`](#mvcmodelqueryexceptionsinvalidinjectedmetadata)
         - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`](#mvcmodelqueryexceptionsinvalidquerycacheservice)
         - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`](#mvcmodelqueryexceptionsinvalidresultsetclass)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`](#mvcmodelqueryexceptionsinvalidresultsetrowclass)
         - [`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`](#mvcmodelqueryexceptionsjoinaliasalreadyused)
         - [`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`](#mvcmodelqueryexceptionsjoinfieldcountmismatch)
         - [`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`](#mvcmodelqueryexceptionsmissingcachekey)
@@ -8175,6 +8176,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`](#mvcmodelqueryexceptionsrelationshipnotfound)
         - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`](#mvcmodelqueryexceptionsresultsetclassnotfound)
         - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`](#mvcmodelqueryexceptionsresultsetnoncacheable)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`](#mvcmodelqueryexceptionsresultsetrowclassnotfound)
         - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`](#mvcmodelqueryexceptionsunknownbindtype)
         - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`](#mvcmodelqueryexceptionsunknowncolumntype)
         - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`](#mvcmodelqueryexceptionsunknownjointype)
@@ -9899,6 +9901,80 @@ public function __construct( string $className );
 ```
 
 
+## Mvc\Model\Hydration\CaseInsensitiveColumnMap
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Hydration/CaseInsensitiveColumnMap.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Hydration\CaseInsensitiveColumnMap`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelhydrationcaseinsensitivecolumnmap-caseinsensitivecolumnmap">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">caseInsensitiveColumnMap</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `caseInsensitiveColumnMap()` { #mvcmodelhydrationcaseinsensitivecolumnmap-caseinsensitivecolumnmap }
+
+```php
+public static function caseInsensitiveColumnMap(
+    mixed $columnMap,
+    mixed $key
+): string;
+```
+
+
+## Mvc\Model\Hydration\CloneResultMapHydrate
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Hydration/CloneResultMapHydrate.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Support\Settings`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelhydrationcloneresultmaphydrate-cloneresultmaphydrate">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">cloneResultMapHydrate</span>(<span class="prm"><span class="st">array</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$columnMap</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$hydrationMode</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$calledClass</span><span class="sm"> = &quot;Phalcon\\Mvc\\Model&quot;</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `cloneResultMapHydrate()` { #mvcmodelhydrationcloneresultmaphydrate-cloneresultmaphydrate }
+
+```php
+public static function cloneResultMapHydrate(
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode,
+    string $calledClass = "Phalcon\\Mvc\\Model"
+);
+```
+
+
 ## Mvc\Model\Manager
 
 <span class="badge badge--class">Class</span>
@@ -9925,7 +10001,7 @@ $di->set(
     }
 );
 
-$robot = new Robots($di);
+$invoice = new Invoices($di);
 ```
 
 <div class="api-tree" markdown>
@@ -10283,11 +10359,23 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="sig"><span class="sf">notifyEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">Receives events generated in the models and dispatches them to an</span>
 </a>
+<a class="api-item" href="#mvcmodelmanager-registerwrite">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">registerWrite</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
+<span class="desc">Marks the model&#039;s write connection service as written-to for the</span>
+</a>
 <a class="api-item" href="#mvcmodelmanager-removebehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">removeBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$behaviorClass</span></span>)</code>
 <span class="desc">Removes a behavior from a model</span>
+</a>
+<a class="api-item" href="#mvcmodelmanager-resetconnectionstate">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">resetConnectionState</span>()</code>
+<span class="desc">Clears the per-request sticky write tracking. Call this between</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setconnectionservice">
 <code class="vis vis-public">public</code>
@@ -10342,6 +10430,12 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
 <span class="desc">Stores a reusable record in the internal list</span>
+</a>
+<a class="api-item" href="#mvcmodelmanager-setsticky">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setSticky</span>( <span class="st">bool</span> <span class="sv">$sticky</span> )</code>
+<span class="desc">Enables or disables sticky connections. When enabled, once a model has</span>
 </a>
 <a class="api-item" href="#mvcmodelmanager-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
@@ -10409,6 +10503,14 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$customEventsManager</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$dirtyWriteServices</span><span class="sm"> = []</span></code>
+<span class="desc">Write connection services that have been written to during the current
+request cycle. Used by the sticky mechanism to route reads to the write
+connection after a write.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -10525,6 +10627,13 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$sticky</span><span class="sm"> = false</span></code>
+<span class="desc">Whether reads should stick to the write connection after a write has
+occurred during the current request cycle.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$writeConnectionServices</span><span class="sm"> = []</span></code>
 </div>
@@ -10532,7 +10641,7 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 
 ### Methods
 
-<div class="api-group">Public · 70</div>
+<div class="api-group">Public · 73</div>
 
 #### `__destruct()` { #mvcmodelmanager-__destruct }
 
@@ -10666,23 +10775,23 @@ public function executeQuery(
 Creates a Phalcon\Mvc\Model\Query and execute it
 
 ```php
-$model = new Robots();
+$model = new Invoices();
 $manager = $model->getModelsManager();
 
 // \Phalcon\Mvc\Model\Resultset\Simple
-$manager->executeQuery('SELECT * FROM Robots');
+$manager->executeQuery('SELECT * FROM Invoices');
 
 // \Phalcon\Mvc\Model\Resultset\Complex
-$manager->executeQuery('SELECT COUNT(type) FROM Robots GROUP BY type');
+$manager->executeQuery('SELECT COUNT(inv_status_flag) FROM Invoices GROUP BY inv_status_flag');
 
 // \Phalcon\Mvc\Model\Query\StatusInterface
-$manager->executeQuery('INSERT INTO Robots (id) VALUES (1)');
+$manager->executeQuery('INSERT INTO Invoices (inv_id) VALUES (1)');
 
 // \Phalcon\Mvc\Model\Query\StatusInterface
-$manager->executeQuery('UPDATE Robots SET id = 0 WHERE id = :id:', ['id' => 1]);
+$manager->executeQuery('UPDATE Invoices SET inv_id = 0 WHERE inv_id = :id:', ['id' => 1]);
 
 // \Phalcon\Mvc\Model\Query\StatusInterface
-$manager->executeQuery('DELETE FROM Robots WHERE id = :id:', ['id' => 1]);
+$manager->executeQuery('DELETE FROM Invoices WHERE inv_id = :id:', ['id' => 1]);
 ```
 
 #### `existsBelongsTo()` { #mvcmodelmanager-existsbelongsto }
@@ -10750,7 +10859,7 @@ Gets all the belongsTo relations defined in a model
 
 ```php
 $relations = $modelsManager->getBelongsTo(
-    new Robots()
+    new Invoices()
 );
 ```
 
@@ -11107,7 +11216,7 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-    new Robots(),
+    new Invoices(),
     "name"
 );
 ```
@@ -11158,6 +11267,16 @@ Receives events generated in the models and dispatches them to an
 events-manager if available. Notify the behaviors that are listening in
 the model
 
+#### `registerWrite()` { #mvcmodelmanager-registerwrite }
+
+```php
+public function registerWrite( ModelInterface $model ): void;
+```
+
+Marks the model's write connection service as written-to for the
+current request cycle. Used by the sticky mechanism to route
+subsequent reads to the write connection.
+
 #### `removeBehavior()` { #mvcmodelmanager-removebehavior }
 
 ```php
@@ -11168,6 +11287,16 @@ public function removeBehavior(
 ```
 
 Removes a behavior from a model
+
+#### `resetConnectionState()` { #mvcmodelmanager-resetconnectionstate }
+
+```php
+public function resetConnectionState(): void;
+```
+
+Clears the per-request sticky write tracking. Call this between
+requests in long-running runtimes (e.g. Swoole, RoadRunner) where the
+manager instance is reused across requests.
 
 #### `setConnectionService()` { #mvcmodelmanager-setconnectionservice }
 
@@ -11229,9 +11358,9 @@ $di->set(
     }
 );
 
-$robots = new Robots();
+$invoices = new Invoices();
 
-echo $robots->getSource(); // wp_robots
+echo $invoices->getSource(); // wp_co_invoices
 ```
 
 $param string $prefix
@@ -11280,6 +11409,16 @@ public function setReusableRecords(
 ```
 
 Stores a reusable record in the internal list
+
+#### `setSticky()` { #mvcmodelmanager-setsticky }
+
+```php
+public function setSticky( bool $sticky ): void;
+```
+
+Enables or disables sticky connections. When enabled, once a model has
+written to its write connection during the current request cycle, any
+further reads for that write service use the write connection.
 
 #### `setWriteConnectionService()` { #mvcmodelmanager-setwriteconnectionservice }
 
@@ -11627,11 +11766,23 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <code class="sig"><span class="sf">notifyEvent</span>(<span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span></span>)</code>
 <span class="desc">Receives events generated in the models and dispatches them to an events-manager if available</span>
 </a>
+<a class="api-item" href="#mvcmodelmanagerinterface-registerwrite">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">registerWrite</span>( <span class="st">ModelInterface</span> <span class="sv">$model</span> )</code>
+<span class="desc">Marks the model&#039;s write connection service as written-to for the</span>
+</a>
 <a class="api-item" href="#mvcmodelmanagerinterface-removebehavior">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
 <code class="sig"><span class="sf">removeBehavior</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$behaviorClass</span></span>)</code>
 <span class="desc">Removes a behavior from a model</span>
+</a>
+<a class="api-item" href="#mvcmodelmanagerinterface-resetconnectionstate">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">resetConnectionState</span>()</code>
+<span class="desc">Clears the per-request sticky write tracking</span>
 </a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setconnectionservice">
 <code class="vis vis-public">public</code>
@@ -11663,6 +11814,12 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 <code class="sig"><span class="sf">setReusableRecords</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
 <span class="desc">Stores a reusable record in the internal list</span>
 </a>
+<a class="api-item" href="#mvcmodelmanagerinterface-setsticky">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setSticky</span>( <span class="st">bool</span> <span class="sv">$sticky</span> )</code>
+<span class="desc">Enables or disables sticky connections</span>
+</a>
 <a class="api-item" href="#mvcmodelmanagerinterface-setwriteconnectionservice">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">setWriteConnectionService</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$connectionService</span></span>)</code>
@@ -11678,7 +11835,7 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 
 ### Methods
 
-<div class="api-group">Public · 55</div>
+<div class="api-group">Public · 58</div>
 
 #### `addBehavior()` { #mvcmodelmanagerinterface-addbehavior }
 
@@ -12119,7 +12276,7 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-    new Robots(),
+    new Invoices(),
     "name"
 );
 ```
@@ -12169,6 +12326,15 @@ public function notifyEvent(
 Receives events generated in the models and dispatches them to an events-manager if available
 Notify the behaviors that are listening in the model
 
+#### `registerWrite()` { #mvcmodelmanagerinterface-registerwrite }
+
+```php
+public function registerWrite( ModelInterface $model ): void;
+```
+
+Marks the model's write connection service as written-to for the
+current request cycle (sticky connections)
+
 #### `removeBehavior()` { #mvcmodelmanagerinterface-removebehavior }
 
 ```php
@@ -12179,6 +12345,14 @@ public function removeBehavior(
 ```
 
 Removes a behavior from a model
+
+#### `resetConnectionState()` { #mvcmodelmanagerinterface-resetconnectionstate }
+
+```php
+public function resetConnectionState(): void;
+```
+
+Clears the per-request sticky write tracking
 
 #### `setConnectionService()` { #mvcmodelmanagerinterface-setconnectionservice }
 
@@ -12236,6 +12410,14 @@ public function setReusableRecords(
 
 Stores a reusable record in the internal list
 
+#### `setSticky()` { #mvcmodelmanagerinterface-setsticky }
+
+```php
+public function setSticky( bool $sticky ): void;
+```
+
+Enables or disables sticky connections
+
 #### `setWriteConnectionService()` { #mvcmodelmanagerinterface-setwriteconnectionservice }
 
 ```php
@@ -12277,7 +12459,7 @@ A standard Phalcon\Mvc\Model\MetaData can be used to query model attributes:
 $metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
 
 $attributes = $metaData->getAttributes(
-    new Robots()
+    new Invoices()
 );
 
 print_r($attributes);
@@ -12328,7 +12510,7 @@ is defined:
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -12550,12 +12732,6 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` ·
 <code class="sig"><span class="sf">writeMetaDataIndex</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Writes meta-data for certain model using a MODEL_* constant</span>
 </a>
-<a class="api-item" href="#mvcmodelmetadata-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@todo Remove this when we get traits</span>
-</a>
 <a class="api-item" href="#mvcmodelmetadata-initialize">
 <code class="vis vis-protected">protected</code>
 <code class="sig"><span class="sf">initialize</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$table</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$schema</span></span>)</code>
@@ -12706,7 +12882,7 @@ Returns table attributes names (fields)
 ```php
 print_r(
     $metaData->getAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12722,7 +12898,7 @@ Returns attributes that must be ignored from the INSERT SQL generation
 ```php
 print_r(
     $metaData->getAutomaticCreateAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12738,7 +12914,7 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 ```php
 print_r(
     $metaData->getAutomaticUpdateAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12754,7 +12930,7 @@ Returns attributes and their bind data types
 ```php
 print_r(
     $metaData->getBindTypes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12770,7 +12946,7 @@ Returns the column map if any
 ```php
 print_r(
     $metaData->getColumnMap(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12802,7 +12978,7 @@ Returns attributes and their data types
 ```php
 print_r(
     $metaData->getDataTypes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12818,7 +12994,7 @@ Returns attributes which types are numerical
 ```php
 print_r(
     $metaData->getDataTypesNumeric(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12834,7 +13010,7 @@ Returns attributes (which have default values) and their default values
 ```php
 print_r(
     $metaData->getDefaultValues(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12850,7 +13026,7 @@ Returns attributes allow empty strings
 ```php
 print_r(
     $metaData->getEmptyStringAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12866,7 +13042,7 @@ Returns the name of identity field (if one is present)
 ```php
 print_r(
     $metaData->getIdentityField(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12901,7 +13077,7 @@ Returns an array of fields which are not part of the primary key
 ```php
 print_r(
     $metaData->getNonPrimaryKeyAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12917,7 +13093,7 @@ Returns an array of not null attributes
 ```php
 print_r(
     $metaData->getNotNullAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12933,7 +13109,7 @@ Returns an array of fields which are part of the primary key
 ```php
 print_r(
     $metaData->getPrimaryKeyAttributes(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12949,7 +13125,7 @@ Returns the reverse column map if any
 ```php
 print_r(
     $metaData->getReverseColumnMap(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -12976,7 +13152,7 @@ Check if a model has certain attribute
 ```php
 var_dump(
     $metaData->hasAttribute(
-        new Robots(),
+        new Invoices(),
         "name"
     )
 );
@@ -13026,7 +13202,7 @@ Reads the ordered/reversed column map for certain model
 ```php
 print_r(
     $metaData->readColumnMap(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -13045,7 +13221,7 @@ Reads column-map information for certain model using a MODEL_* constant
 ```php
 print_r(
     $metaData->readColumnMapIndex(
-        new Robots(),
+        new Invoices(),
         MetaData::MODELS_REVERSE_COLUMN_MAP
     )
 );
@@ -13062,7 +13238,7 @@ Reads the complete meta-data for certain model
 ```php
 print_r(
     $metaData->readMetaData(
-        new Robots()
+        new Invoices()
     )
 );
 ```
@@ -13081,7 +13257,7 @@ Reads meta-data for certain model
 ```php
 print_r(
     $metaData->readMetaDataIndex(
-        new Robots(),
+        new Invoices(),
         0
     )
 );
@@ -13112,7 +13288,7 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
 $metaData->setAutomaticCreateAttributes(
-    new Robots(),
+    new Invoices(),
     [
         "created_at" => true,
     ]
@@ -13132,7 +13308,7 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 $metaData->setAutomaticUpdateAttributes(
-    new Robots(),
+    new Invoices(),
     [
         "modified_at" => true,
     ]
@@ -13160,7 +13336,7 @@ Set the attributes that allow empty string values
 
 ```php
 $metaData->setEmptyStringAttributes(
-    new Robots(),
+    new Invoices(),
     [
         "name" => true,
     ]
@@ -13201,7 +13377,7 @@ Writes meta-data for certain model using a MODEL_* constant
 ```php
 print_r(
     $metaData->writeColumnMapIndex(
-        new Robots(),
+        new Invoices(),
         MetaData::MODELS_REVERSE_COLUMN_MAP,
         [
             "leName" => "name",
@@ -13210,19 +13386,7 @@ print_r(
 );
 ```
 
-<div class="api-group">Protected · 4</div>
-
-#### `getArrVal()` { #mvcmodelmetadata-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null
-): mixed;
-```
-
-@todo Remove this when we get traits
+<div class="api-group">Protected · 3</div>
 
 #### `initialize()` { #mvcmodelmetadata-initialize }
 
@@ -14572,7 +14736,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
 
 </div>
 
-__Uses__ `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -14672,17 +14836,17 @@ use Phalcon\Mvc\Model\Transaction;
 // $di needs to have the service "db" registered for this to work
 $di = Phalcon\Di\FactoryDefault::getDefault();
 
-$phql = 'SELECT * FROM robot';
+$phql = 'SELECT * FROM Invoices';
 
 $myTransaction = new Transaction($di);
 $myTransaction->begin();
 
-$newRobot = new Robot();
-$newRobot->setTransaction($myTransaction);
-$newRobot->type = "mechanical";
-$newRobot->name = "Astro Boy";
-$newRobot->year = 1952;
-$newRobot->save();
+$newInvoice = new Invoices();
+$newInvoice->setTransaction($myTransaction);
+$newInvoice->inv_status_flag = 1;
+$newInvoice->inv_title = "Test Invoice";
+$newInvoice->inv_total = 100;
+$newInvoice->save();
 
 $queryWithTransaction = new Query($phql, $di);
 $queryWithTransaction->setTransaction($myTransaction);
@@ -14699,7 +14863,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 </div>
 
-__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -14763,6 +14927,12 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <code class="sig"><span class="sf">getIntermediate</span>()</code>
 <span class="desc">Returns the intermediate representation of the PHQL statement</span>
 </a>
+<a class="api-item" href="#mvcmodelquery-getresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getResultsetRowClass</span>()</code>
+<span class="desc">Returns the class that will be used to hydrate rows that are not mapped</span>
+</a>
 <a class="api-item" href="#mvcmodelquery-getsingleresult">
 <code class="vis vis-public">public</code>
 <code class="ret">ModelInterface</code>
@@ -14821,6 +14991,12 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 <code class="ret">QueryInterface</code>
 <code class="sig"><span class="sf">setIntermediate</span>( <span class="st">array</span> <span class="sv">$intermediate</span> )</code>
 <span class="desc">Allows to set the IR to be executed</span>
+</a>
+<a class="api-item" href="#mvcmodelquery-setresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">QueryInterface</code>
+<code class="sig"><span class="sf">setResultsetRowClass</span>( <span class="st">string</span> <span class="sv">$resultsetRowClass</span> )</code>
+<span class="desc">Sets the class used to hydrate rows that are not mapped to a model</span>
 </a>
 <a class="api-item" href="#mvcmodelquery-setsharedlock">
 <code class="vis vis-public">public</code>
@@ -15110,6 +15286,11 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalco
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$sharedLock</span><span class="sm"> = false</span></code>
 </div>
@@ -15161,7 +15342,7 @@ transaction instead of this one</span>
 
 ### Methods
 
-<div class="api-group">Public · 24</div>
+<div class="api-group">Public · 26</div>
 
 #### `__construct()` { #mvcmodelquery-__construct }
 
@@ -15250,6 +15431,16 @@ public function getIntermediate(): array;
 
 Returns the intermediate representation of the PHQL statement
 
+#### `getResultsetRowClass()` { #mvcmodelquery-getresultsetrowclass }
+
+```php
+public function getResultsetRowClass(): string;
+```
+
+Returns the class that will be used to hydrate rows that are not mapped
+to a model (custom columns/joins). An empty string means the default
+Phalcon\Mvc\Model\Row is used.
+
 #### `getSingleResult()` { #mvcmodelquery-getsingleresult }
 
 ```php
@@ -15272,9 +15463,9 @@ and arrays with bound parameters and their types (only works in SELECT statement
 
 ```php
 [
-    'sql' => 'SELECT * FROM parts WHERE robot = :robot',
-    'bind' => ['robot' => 123],
-    'bindTypes => ['robot' => 1] // 1 corresponds to int
+    'sql' => 'SELECT * FROM co_invoices WHERE inv_cst_id = :cst_id',
+    'bind' => ['cst_id' => 123],
+    'bindTypes => ['cst_id' => 1] // 1 corresponds to int
 ]
 ```
 
@@ -15348,6 +15539,16 @@ public function setIntermediate( array $intermediate ): QueryInterface;
 ```
 
 Allows to set the IR to be executed
+
+#### `setResultsetRowClass()` { #mvcmodelquery-setresultsetrowclass }
+
+```php
+public function setResultsetRowClass( string $resultsetRowClass ): QueryInterface;
+```
+
+Sets the class used to hydrate rows that are not mapped to a model
+(custom columns/joins). The class must be a subclass of
+Phalcon\Mvc\Model\Row.
 
 #### `setSharedLock()` { #mvcmodelquery-setsharedlock }
 
@@ -16096,6 +16297,12 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <code class="sig"><span class="sf">getQuery</span>()</code>
 <span class="desc">Returns the query built</span>
 </a>
+<a class="api-item" href="#mvcmodelquerybuilder-getresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getResultsetRowClass</span>()</code>
+<span class="desc">Returns the class that will be used to hydrate rows that are not mapped</span>
+</a>
 <a class="api-item" href="#mvcmodelquerybuilder-getwhere">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">getWhere</span>()</code>
@@ -16221,6 +16428,12 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <code class="sig"><span class="sf">setDI</span>( <span class="st">DiInterface</span> <span class="sv">$container</span> )</code>
 <span class="desc">Sets the DependencyInjector container</span>
 </a>
+<a class="api-item" href="#mvcmodelquerybuilder-setresultsetrowclass">
+<code class="vis vis-public">public</code>
+<code class="ret">BuilderInterface</code>
+<code class="sig"><span class="sf">setResultsetRowClass</span>( <span class="st">string</span> <span class="sv">$resultsetRowClass</span> )</code>
+<span class="desc">Sets the class used to hydrate rows that are not mapped to a model</span>
+</a>
 <a class="api-item" href="#mvcmodelquerybuilder-where">
 <code class="vis vis-public">public</code>
 <code class="ret">BuilderInterface</code>
@@ -16333,6 +16546,11 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$sharedLock</span><span class="sm"> = false</span></code>
 </div>
@@ -16340,7 +16558,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 
 ### Methods
 
-<div class="api-group">Public · 48</div>
+<div class="api-group">Public · 50</div>
 
 #### `__construct()` { #mvcmodelquerybuilder-__construct }
 
@@ -16365,14 +16583,14 @@ public function addFrom(
 Add a model to take part of the query
 
 ```php
-// Load data from models Robots
+// Load data from models Invoices
 $builder->addFrom(
-    Robots::class
+    Invoices::class
 );
 
-// Load data from model 'Robots' using 'r' as alias in PHQL
+// Load data from model 'Invoices' using 'r' as alias in PHQL
 $builder->addFrom(
-    Robots::class,
+    Invoices::class,
     "r"
 );
 ```
@@ -16390,10 +16608,10 @@ public function andHaving(
 Appends a condition to the current HAVING conditions clause using a AND operator
 
 ```php
-$builder->andHaving("SUM(Robots.price) > 0");
+$builder->andHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->andHaving(
-    "SUM(Robots.price) > :sum:",
+    "SUM(Invoices.inv_total) > :sum:",
     [
         "sum" => 100,
     ]
@@ -16446,7 +16664,7 @@ public function betweenHaving(
 Appends a BETWEEN condition to the current HAVING conditions clause
 
 ```php
-$builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
+$builder->betweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 ```
 
 #### `betweenWhere()` { #mvcmodelquerybuilder-betweenwhere }
@@ -16551,20 +16769,20 @@ Sets the models who makes part of the query
 
 ```php
 $builder->from(
-    Robots::class
+    Invoices::class
 );
 
 $builder->from(
     [
-        Robots::class,
-        RobotsParts::class,
+        Invoices::class,
+        OrdersProducts::class,
     ]
 );
 
 $builder->from(
     [
-        "r"  => Robots::class,
-        "rp" => RobotsParts::class,
+        "r"  => Invoices::class,
+        "rp" => OrdersProducts::class,
     ]
 );
 ```
@@ -16689,6 +16907,16 @@ public function getQuery(): QueryInterface;
 
 Returns the query built
 
+#### `getResultsetRowClass()` { #mvcmodelquerybuilder-getresultsetrowclass }
+
+```php
+public function getResultsetRowClass(): string;
+```
+
+Returns the class that will be used to hydrate rows that are not mapped
+to a model (custom columns/joins). An empty string means the default
+Phalcon\Mvc\Model\Row is used.
+
 #### `getWhere()` { #mvcmodelquerybuilder-getwhere }
 
 ```php
@@ -16708,7 +16936,7 @@ Sets a GROUP BY clause
 ```php
 $builder->groupBy(
     [
-        "Robots.name",
+        "Invoices.inv_title",
     ]
 );
 ```
@@ -16726,10 +16954,10 @@ public function having(
 Sets the HAVING condition clause
 
 ```php
-$builder->having("SUM(Robots.price) > 0");
+$builder->having("SUM(Invoices.inv_total) > 0");
 
 $builder->having(
-    "SUM(Robots.price) > :sum:",
+    "SUM(Invoices.inv_total) > :sum:",
     [
         "sum" => 100,
     ]
@@ -16749,7 +16977,7 @@ public function inHaving(
 Appends an IN condition to the current HAVING conditions clause
 
 ```php
-$builder->inHaving("SUM(Robots.price)", [100, 200]);
+$builder->inHaving("SUM(Invoices.inv_total)", [100, 200]);
 ```
 
 #### `inWhere()` { #mvcmodelquerybuilder-inwhere }
@@ -16784,21 +17012,21 @@ public function innerJoin(
 Adds an INNER join to the query
 
 ```php
-// Inner Join model 'Robots' with automatic conditions and alias
+// Inner Join model 'Invoices' with automatic conditions and alias
 $builder->innerJoin(
-    Robots::class
+    Invoices::class
 );
 
-// Inner Join model 'Robots' specifying conditions
+// Inner Join model 'Invoices' specifying conditions
 $builder->innerJoin(
-    Robots::class,
-    "Robots.id = RobotsParts.robots_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
-// Inner Join model 'Robots' specifying conditions and alias
+// Inner Join model 'Invoices' specifying conditions and alias
 $builder->innerJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -16817,28 +17045,28 @@ public function join(
 Adds an :type: join (by default type - INNER) to the query
 
 ```php
-// Inner Join model 'Robots' with automatic conditions and alias
+// Inner Join model 'Invoices' with automatic conditions and alias
 $builder->join(
-    Robots::class
+    Invoices::class
 );
 
-// Inner Join model 'Robots' specifying conditions
+// Inner Join model 'Invoices' specifying conditions
 $builder->join(
-    Robots::class,
-    "Robots.id = RobotsParts.robots_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
-// Inner Join model 'Robots' specifying conditions and alias
+// Inner Join model 'Invoices' specifying conditions and alias
 $builder->join(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 
-// Left Join model 'Robots' specifying conditions, alias and type of join
+// Left Join model 'Invoices' specifying conditions, alias and type of join
 $builder->join(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r",
     "LEFT"
 );
@@ -16858,8 +17086,8 @@ Adds a LEFT join to the query
 
 ```php
 $builder->leftJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -16895,7 +17123,7 @@ public function notBetweenHaving(
 Appends a NOT BETWEEN condition to the current HAVING conditions clause
 
 ```php
-$builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
+$builder->notBetweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 ```
 
 #### `notBetweenWhere()` { #mvcmodelquerybuilder-notbetweenwhere }
@@ -16928,7 +17156,7 @@ public function notInHaving(
 Appends a NOT IN condition to the current HAVING conditions clause
 
 ```php
-$builder->notInHaving("SUM(Robots.price)", [100, 200]);
+$builder->notInHaving("SUM(Invoices.inv_total)", [100, 200]);
 ```
 
 #### `notInWhere()` { #mvcmodelquerybuilder-notinwhere }
@@ -16972,10 +17200,10 @@ public function orHaving(
 Appends a condition to the current HAVING conditions clause using an OR operator
 
 ```php
-$builder->orHaving("SUM(Robots.price) > 0");
+$builder->orHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->orHaving(
-    "SUM(Robots.price) > :sum:",
+    "SUM(Invoices.inv_total) > :sum:",
     [
         "sum" => 100,
     ]
@@ -17015,9 +17243,9 @@ public function orderBy( mixed $orderBy ): BuilderInterface;
 Sets an ORDER BY condition clause
 
 ```php
-$builder->orderBy("Robots.name");
-$builder->orderBy(["1", "Robots.name"]);
-$builder->orderBy(["Robots.name DESC"]);
+$builder->orderBy("Invoices.inv_title");
+$builder->orderBy(["1", "Invoices.inv_title"]);
+$builder->orderBy(["Invoices.inv_title DESC"]);
 ```
 
 #### `rightJoin()` { #mvcmodelquerybuilder-rightjoin }
@@ -17034,8 +17262,8 @@ Adds a RIGHT join to the query
 
 ```php
 $builder->rightJoin(
-    Robots::class,
-    "r.id = RobotsParts.robots_id",
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
     "r"
 );
 ```
@@ -17069,6 +17297,17 @@ public function setDI( DiInterface $container ): void;
 ```
 
 Sets the DependencyInjector container
+
+#### `setResultsetRowClass()` { #mvcmodelquerybuilder-setresultsetrowclass }
+
+```php
+public function setResultsetRowClass( string $resultsetRowClass ): BuilderInterface;
+```
+
+Sets the class used to hydrate rows that are not mapped to a model
+(custom columns/joins). The class must be a subclass of
+Phalcon\Mvc\Model\Row. Validation is performed by the underlying
+Phalcon\Mvc\Model\Query when the query is built.
 
 #### `where()` { #mvcmodelquerybuilder-where }
 
@@ -18857,6 +19096,42 @@ public function __construct( string $className );
 ```
 
 
+## Mvc\Model\Query\Exceptions\InvalidResultsetRowClass
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/InvalidResultsetRowClass.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelqueryexceptionsinvalidresultsetrowclass-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelqueryexceptionsinvalidresultsetrowclass-__construct }
+
+```php
+public function __construct( string $className );
+```
+
+
 ## Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed
 
 <span class="badge badge--class">Class</span>
@@ -19454,6 +19729,42 @@ public function __construct();
 ```
 
 
+## Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Query/Exceptions/ResultsetRowClassNotFound.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelqueryexceptionsresultsetrowclassnotfound-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelqueryexceptionsresultsetrowclassnotfound-__construct }
+
+```php
+public function __construct( string $className );
+```
+
+
 ## Mvc\Model\Query\Exceptions\UnknownBindType
 
 <span class="badge badge--class">Class</span>
@@ -19806,7 +20117,7 @@ parser with a very low memory footprint that is also thread-safe.
 use Phalcon\Mvc\Model\Query\Lang;
 
 $intermediate = Lang::parsePHQL(
-    "SELECT r.* FROM Robots r LIMIT 10"
+    "SELECT r.* FROM Invoices r LIMIT 10"
 );
 ```
 
@@ -19851,15 +20162,15 @@ information and the related messages produced by the
 model which finally executes the operations when it fails
 
 ```php
-$phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
+$phql = "UPDATE Invoices SET inv_title = :inv_title:, inv_status_flag = :inv_status_flag:, inv_total = :inv_total: WHERE inv_id = :inv_id:";
 
 $status = $app->modelsManager->executeQuery(
     $phql,
     [
-        "id"   => 100,
-        "name" => "Astroy Boy",
-        "type" => "mechanical",
-        "year" => 1959,
+        "inv_id"          => 100,
+        "inv_title"       => "Test Invoice",
+        "inv_status_flag" => 1,
+        "inv_total"       => 1959,
     ]
 );
 
@@ -20651,33 +20962,33 @@ serializing.
 ```php
 
 // Using a standard foreach
-$robots = Robots::find(
+$invoices = Invoices::find(
     [
-        "type = 'virtual'",
-        "order" => "name",
+        "inv_status_flag = 1",
+        "order" => "inv_title",
     ]
 );
 
-foreach ($robots as robot) {
-    echo robot->name, "\n";
+foreach ($invoices as invoice) {
+    echo invoice->inv_title, "\n";
 }
 
 // Using a while
-$robots = Robots::find(
+$invoices = Invoices::find(
     [
-        "type = 'virtual'",
-        "order" => "name",
+        "inv_status_flag = 1",
+        "order" => "inv_title",
     ]
 );
 
-$robots->rewind();
+$invoices->rewind();
 
-while ($robots->valid()) {
-    $robot = $robots->current();
+while ($invoices->valid()) {
+    $invoice = $invoices->current();
 
-    echo $robot->name, "\n";
+    echo $invoice->inv_title, "\n";
 
-    $robots->next();
+    $invoices->next();
 }
 ```
 @template TKey
@@ -20687,13 +20998,13 @@ while ($robots->valid()) {
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `Iterator`, `SeekableIterator`, `Countable`, `ArrayAccess`, `Serializable`, `JsonSerializable`
+- **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `Iterator`, `SeekableIterator`, `Countable`, `ArrayAccess`, `JsonSerializable`
     - [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
     - [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
 
 </div>
 
-__Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSerializable` · `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Enum` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\CursorIsImmutable` · `Phalcon\Mvc\Model\Exceptions\IndexNotInCursor` · `Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService` · `Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `SeekableIterator` · `Serializable`
+__Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSerializable` · `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Enum` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\CursorIsImmutable` · `Phalcon\Mvc\Model\Exceptions\IndexNotInCursor` · `Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService` · `Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `SeekableIterator`
 { .api-uses }
 
 ### Method Summary
@@ -20975,10 +21286,10 @@ public function filter( callable $filter ): ModelInterface[];
 Filters a resultset returning only those the developer requires
 
 ```php
-$filtered = $robots->filter(
-    function ($robot) {
-        if ($robot->id < 3) {
-            return $robot;
+$filtered = $invoices->filter(
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
         }
     }
 );
@@ -21001,21 +21312,21 @@ public function getFirst(): mixed|null;
 Get first row in the resultset
 
 ```php
-$model = new Robots();
+$model = new Invoices();
 $manager = $model->getModelsManager();
 
-// \Robots
-$manager->createQuery('SELECT * FROM Robots')
+// \Invoices
+$manager->createQuery('SELECT * FROM Invoices')
         ->execute()
         ->getFirst();
 
 // \Phalcon\Mvc\Model\Row
-$manager->createQuery('SELECT r.id FROM Robots AS r')
+$manager->createQuery('SELECT r.inv_id FROM Invoices AS r')
         ->execute()
         ->getFirst();
 
 // NULL
-$manager->createQuery('SELECT r.id FROM Robots AS r WHERE r.name = "NON-EXISTENT"')
+$manager->createQuery('SELECT r.inv_id FROM Invoices AS r WHERE r.inv_title = "NON-EXISTENT"')
         ->execute()
         ->getFirst();
 ```
@@ -21076,9 +21387,9 @@ Returns serialised model objects as array for json_encode.
 Calls jsonSerialize on each object if present
 
 ```php
-$robots = Robots::find();
+$invoices = Invoices::find();
 
-echo json_encode($robots);
+echo json_encode($invoices);
 ```
 
 #### `key()` { #mvcmodelresultset-key }
@@ -21313,10 +21624,10 @@ public function filter( callable $filter ): ModelInterface[];
 Filters a resultset returning only those the developer requires
 
 ```php
-$filtered = $robots->filter(
-    function ($robot) {
-        if ($robot->id < 3) {
-            return $robot;
+$filtered = $invoices->filter(
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
         }
     }
 );
@@ -21443,7 +21754,7 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <div class="api-list">
 <a class="api-item" href="#mvcmodelresultsetcomplex-__construct">
 <code class="vis vis-public">public</code>
-<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnTypes</span>,</span><span class="prm"><span class="st">ResultInterface</span> <span class="sv">$result</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span></span>)</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$columnTypes</span>,</span><span class="prm"><span class="st">ResultInterface</span> <span class="sv">$result</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$cache</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></span>)</code>
 <span class="desc">Phalcon\Mvc\Model\Resultset\Complex constructor</span>
 </a>
 <a class="api-item" href="#mvcmodelresultsetcomplex-__serialize">
@@ -21497,6 +21808,11 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 <span class="desc">Unserialised result-set hydrated all rows already. unserialise() sets
 disableHydration to true</span>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$resultsetRowClass</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
 </div>
 
 ### Methods
@@ -21509,7 +21825,8 @@ disableHydration to true</span>
 public function __construct(
     mixed $columnTypes,
     ResultInterface $result = null,
-    mixed $cache = null
+    mixed $cache = null,
+    string $resultsetRowClass = ""
 );
 ```
 
@@ -21850,7 +22167,7 @@ public function readAttribute( string $attribute );
 Reads an attribute value by its name
 
 ```php
-echo $robot->readAttribute("name");
+echo $invoice->readAttribute("inv_title");
 ```
 
 #### `setDirtyState()` { #mvcmodelrow-setdirtystate }
@@ -21881,7 +22198,7 @@ public function writeAttribute(
 Writes an attribute value by its name
 
 ```php
-$robot->writeAttribute("name", "Rosey");
+$invoice->writeAttribute("inv_title", "Test Invoice");
 ```
 
 
@@ -21904,25 +22221,25 @@ try {
 
     $transaction = $manager->get();
 
-    $robot = new Robots();
+    $invoice = new Invoices();
 
-    $robot->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-    $robot->name       = "WALL·E";
-    $robot->created_at = date("Y-m-d");
+    $invoice->inv_title    = "Test Invoice";
+    $invoice->inv_created_at = date("Y-m-d");
 
-    if ($robot->save() === false) {
-        $transaction->rollback("Can't save robot");
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
     }
 
-    $robotPart = new RobotParts();
+    $product = new Products();
 
-    $robotPart->setTransaction($transaction);
+    $product->setTransaction($transaction);
 
-    $robotPart->type = "head";
+    $product->prd_name = "Widget";
 
-    if ($robotPart->save() === false) {
-        $transaction->rollback("Can't save robot part");
+    if ($product->save() === false) {
+        $transaction->rollback("Can't save product");
     }
 
     $transaction->commit();
@@ -22506,25 +22823,25 @@ try {
 
    $transaction = $transactionManager->get();
 
-   $robot = new Robots();
+   $invoice = new Invoices();
 
-   $robot->setTransaction($transaction);
+   $invoice->setTransaction($transaction);
 
-   $robot->name       = "WALL·E";
-   $robot->created_at = date("Y-m-d");
+   $invoice->inv_title       = "Test Invoice";
+   $invoice->inv_created_at = date("Y-m-d");
 
-   if ($robot->save() === false) {
-       $transaction->rollback("Can't save robot");
+   if ($invoice->save() === false) {
+       $transaction->rollback("Can't save invoice");
    }
 
-   $robotPart = new RobotParts();
+   $product = new Products();
 
-   $robotPart->setTransaction($transaction);
+   $product->setTransaction($transaction);
 
-   $robotPart->type = "head";
+   $product->prd_name = "Widget";
 
-   if ($robotPart->save() === false) {
-       $transaction->rollback("Can't save robot part");
+   if ($product->save() === false) {
+       $transaction->rollback("Can't save product");
    }
 
    $transaction->commit();
@@ -23208,7 +23525,7 @@ echo $router->getControllerName();
 
 </div>
 
-__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource` · `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface`
+__Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource` · `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -24889,8 +25206,8 @@ $di->setShared(
         // Use the annotations router
         $router = new Annotations(false);
 
-        // This will do the same as above but only if the handled uri starts with /robots
-        $router->addResource("Robots", "/robots");
+        // This will do the same as above but only if the handled uri starts with /invoices
+        $router->addResource("Invoices", "/invoices");
 
         return $router;
     }
@@ -27536,7 +27853,7 @@ echo $url->get(
 
 </div>
 
-__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface`
+__Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\ReduceSlashes`
 { .api-uses }
 
 ### Method Summary
@@ -28060,7 +28377,7 @@ echo $view->getContent();
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`
+__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 { .api-uses }
 
 ### Method Summary
@@ -28148,12 +28465,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">getBasePath</span>()</code>
 <span class="desc">Gets base path</span>
 </a>
-<a class="api-item" href="#mvcview-getcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>()</code>
-<span class="desc">Returns output from another view stage</span>
-</a>
 <a class="api-item" href="#mvcview-getcontrollername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -28189,12 +28500,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">getMainView</span>()</code>
 <span class="desc">Returns the name of the main view</span>
 </a>
-<a class="api-item" href="#mvcview-getparamstoview">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParamsToView</span>()</code>
-<span class="desc">Returns parameters to views</span>
-</a>
 <a class="api-item" href="#mvcview-getpartial">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -28207,11 +28512,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">getPartialsDir</span>()</code>
 <span class="desc">Gets the current partials sub-directory</span>
 </a>
-<a class="api-item" href="#mvcview-getregisteredengines">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
-</a>
 <a class="api-item" href="#mvcview-getrender">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -28222,12 +28522,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getRenderLevel</span>()</code>
-</a>
-<a class="api-item" href="#mvcview-getvar">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Returns a parameter previously set in the view</span>
 </a>
 <a class="api-item" href="#mvcview-getviewsdir">
 <code class="vis vis-public">public</code>
@@ -28288,12 +28582,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">setBasePath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
 <span class="desc">Sets base path. Depending of your platform, always add a trailing slash</span>
 </a>
-<a class="api-item" href="#mvcview-setcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Externally sets the view content</span>
-</a>
 <a class="api-item" href="#mvcview-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -28347,12 +28635,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setTemplateBefore</span>( <span class="st">mixed</span> <span class="sv">$templateBefore</span> )</code>
 <span class="desc">Sets a template before the controller layout</span>
-</a>
-<a class="api-item" href="#mvcview-setvar">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set a single view parameter</span>
 </a>
 <a class="api-item" href="#mvcview-setvars">
 <code class="vis vis-public">public</code>
@@ -28458,11 +28740,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$content</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
 <code class="sig"><span class="sv">$controllerName</span></code>
 </div>
 <div class="api-item">
@@ -28527,11 +28804,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$renderLevel</span><span class="sm"> = 5</span></code>
 </div>
@@ -28548,18 +28820,13 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
-<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
 <code class="sig"><span class="sv">$viewsDirs</span><span class="sm"> = []</span></code>
 </div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 53</div>
+<div class="api-group">Public · 47</div>
 
 #### `__construct()` { #mvcview-__construct }
 
@@ -28695,14 +28962,6 @@ public function getBasePath(): string;
 
 Gets base path
 
-#### `getContent()` { #mvcview-getcontent }
-
-```php
-public function getContent(): string;
-```
-
-Returns output from another view stage
-
 #### `getControllerName()` { #mvcview-getcontrollername }
 
 ```php
@@ -28749,14 +29008,6 @@ public function getMainView(): string;
 
 Returns the name of the main view
 
-#### `getParamsToView()` { #mvcview-getparamstoview }
-
-```php
-public function getParamsToView(): array;
-```
-
-Returns parameters to views
-
 #### `getPartial()` { #mvcview-getpartial }
 
 ```php
@@ -28791,12 +29042,6 @@ public function getPartialsDir(): string;
 
 Gets the current partials sub-directory
 
-#### `getRegisteredEngines()` { #mvcview-getregisteredengines }
-
-```php
-public function getRegisteredEngines(): array;
-```
-
 #### `getRender()` { #mvcview-getrender }
 
 ```php
@@ -28825,14 +29070,6 @@ $template = $this->view->getRender(
 ```php
 public function getRenderLevel(): int;
 ```
-
-#### `getVar()` { #mvcview-getvar }
-
-```php
-public function getVar( string $key ): mixed|null;
-```
-
-Returns a parameter previously set in the view
 
 #### `getViewsDir()` { #mvcview-getviewsdir }
 
@@ -28976,18 +29213,6 @@ or backslash
 $view->setBasePath(__DIR__ . "/");
 ```
 
-#### `setContent()` { #mvcview-setcontent }
-
-```php
-public function setContent( string $content ): static;
-```
-
-Externally sets the view content
-
-```php
-$this->view->setContent("<h1>hello</h1>");
-```
-
 #### `setEventsManager()` { #mvcview-seteventsmanager }
 
 ```php
@@ -29096,21 +29321,6 @@ public function setTemplateBefore( mixed $templateBefore ): static;
 ```
 
 Sets a template before the controller layout
-
-#### `setVar()` { #mvcview-setvar }
-
-```php
-public function setVar(
-    string $key,
-    mixed $value
-): static;
-```
-
-Set a single view parameter
-
-```php
-$this->view->setVar("products", $products);
-```
 
 #### `setVars()` { #mvcview-setvars }
 
@@ -30029,7 +30239,7 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 
 </div>
 
-__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired` · `Phalcon\Mvc\View\Exception`
+__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired` · `Phalcon\Mvc\View\Exception` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary
@@ -30289,7 +30499,7 @@ require $compiler->getCompiledTemplatePath();
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`
+__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -32500,7 +32710,7 @@ echo $view->render(
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`
+__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 { .api-uses }
 
 ### Method Summary
@@ -32529,34 +32739,11 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">getActiveRenderPath</span>()</code>
 <span class="desc">Returns the path of the view that is currently rendered</span>
 </a>
-<a class="api-item" href="#mvcviewsimple-getcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getContent</span>()</code>
-<span class="desc">Returns output from another view stage</span>
-</a>
 <a class="api-item" href="#mvcviewsimple-geteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">ManagerInterface|null</code>
 <code class="sig"><span class="sf">getEventsManager</span>()</code>
 <span class="desc">Returns the internal event manager</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-getparamstoview">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getParamsToView</span>()</code>
-<span class="desc">Returns parameters to views</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-getregisteredengines">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
-</a>
-<a class="api-item" href="#mvcviewsimple-getvar">
-<code class="vis vis-public">public</code>
-<code class="ret">mixed|null</code>
-<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
-<span class="desc">Returns a parameter previously set in the view</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-getviewsdir">
 <code class="vis vis-public">public</code>
@@ -32582,12 +32769,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Renders a view</span>
 </a>
-<a class="api-item" href="#mvcviewsimple-setcontent">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
-<span class="desc">Externally sets the view content</span>
-</a>
 <a class="api-item" href="#mvcviewsimple-seteventsmanager">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -32599,12 +32780,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setParamToView</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Adds parameters to views (alias of setVar)</span>
-</a>
-<a class="api-item" href="#mvcviewsimple-setvar">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
-<span class="desc">Set a single view parameter</span>
 </a>
 <a class="api-item" href="#mvcviewsimple-setvars">
 <code class="vis vis-public">public</code>
@@ -32642,11 +32817,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$content</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">EngineInterface[]|false</code>
 <code class="sig"><span class="sv">$engines</span><span class="sm"> = false</span></code>
 </div>
@@ -32662,16 +32832,6 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$viewsDir</span></code>
 </div>
@@ -32679,7 +32839,7 @@ __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Ph
 
 ### Methods
 
-<div class="api-group">Public · 19</div>
+<div class="api-group">Public · 13</div>
 
 #### `__construct()` { #mvcviewsimple-__construct }
 
@@ -32724,14 +32884,6 @@ public function getActiveRenderPath(): string;
 
 Returns the path of the view that is currently rendered
 
-#### `getContent()` { #mvcviewsimple-getcontent }
-
-```php
-public function getContent(): string;
-```
-
-Returns output from another view stage
-
 #### `getEventsManager()` { #mvcviewsimple-geteventsmanager }
 
 ```php
@@ -32739,28 +32891,6 @@ public function getEventsManager(): ManagerInterface|null;
 ```
 
 Returns the internal event manager
-
-#### `getParamsToView()` { #mvcviewsimple-getparamstoview }
-
-```php
-public function getParamsToView(): array;
-```
-
-Returns parameters to views
-
-#### `getRegisteredEngines()` { #mvcviewsimple-getregisteredengines }
-
-```php
-public function getRegisteredEngines(): array;
-```
-
-#### `getVar()` { #mvcviewsimple-getvar }
-
-```php
-public function getVar( string $key ): mixed|null;
-```
-
-Returns a parameter previously set in the view
 
 #### `getViewsDir()` { #mvcviewsimple-getviewsdir }
 
@@ -32825,18 +32955,6 @@ public function render(
 
 Renders a view
 
-#### `setContent()` { #mvcviewsimple-setcontent }
-
-```php
-public function setContent( string $content ): static;
-```
-
-Externally sets the view content
-
-```php
-$this->view->setContent("<h1>hello</h1>");
-```
-
 #### `setEventsManager()` { #mvcviewsimple-seteventsmanager }
 
 ```php
@@ -32858,21 +32976,6 @@ Adds parameters to views (alias of setVar)
 
 ```php
 $this->view->setParamToView("products", $products);
-```
-
-#### `setVar()` { #mvcviewsimple-setvar }
-
-```php
-public function setVar(
-    string $key,
-    mixed $value
-): static;
-```
-
-Set a single view parameter
-
-```php
-$this->view->setVar("products", $products);
 ```
 
 #### `setVars()` { #mvcviewsimple-setvars }

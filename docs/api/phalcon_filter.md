@@ -788,7 +788,7 @@ Sanitizes a value to lowercase
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1220,7 +1220,7 @@ Sanitizes a value to uppercase
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1296,7 +1296,7 @@ Sanitizes a value to uppercase the first character of each word
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+__Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1412,6 +1412,12 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` 
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getData</span>()</code>
 </a>
+<a class="api-item" href="#filtervalidation-getdefaultmessage">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getDefaultMessage</span>( <span class="st">string</span> <span class="sv">$validatorClassName</span> )</code>
+<span class="desc">Returns the default message registered for a validator class, or an</span>
+</a>
 <a class="api-item" href="#filtervalidation-getentity">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
@@ -1472,6 +1478,12 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` 
 <code class="sig"><span class="sf">rules</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$field</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$validators</span></span>)</code>
 <span class="desc">Adds the validators to a field</span>
 </a>
+<a class="api-item" href="#filtervalidation-setdefaultmessages">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">setDefaultMessages</span>( <span class="st">array</span> <span class="sv">$messages</span><span class="sm"> = []</span> )</code>
+<span class="desc">Registers default messages for validators, keyed by validator class</span>
+</a>
 <a class="api-item" href="#filtervalidation-setentity">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -1524,6 +1536,17 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` 
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$defaultMessages</span><span class="sm"> = []</span></code>
+<span class="desc">Default messages for validators, keyed by validator class name
+
+Declared without an array initializer on purpose: an initialized static
+array makes Zephir emit a zephir_init_static_properties() function that
+fails to compile in the single-file build. It is null until first set
+and treated as an empty array by the accessors below.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">object|null</code>
 <code class="sig"><span class="sv">$entity</span><span class="sm"> = null</span></code>
 </div>
@@ -1563,7 +1586,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` 
 
 ### Methods
 
-<div class="api-group">Public · 21</div>
+<div class="api-group">Public · 23</div>
 
 #### `__construct()` { #filtervalidation-__construct }
 
@@ -1626,6 +1649,15 @@ Verify if validation fails by verifying if there are messages in the current val
 ```php
 public function getData(): mixed;
 ```
+
+#### `getDefaultMessage()` { #filtervalidation-getdefaultmessage }
+
+```php
+public static function getDefaultMessage( string $validatorClassName ): string;
+```
+
+Returns the default message registered for a validator class, or an
+empty string when none has been registered.
 
 #### `getEntity()` { #filtervalidation-getentity }
 
@@ -1718,6 +1750,17 @@ public function rules(
 ```
 
 Adds the validators to a field
+
+#### `setDefaultMessages()` { #filtervalidation-setdefaultmessages }
+
+```php
+public static function setDefaultMessages( array $messages = [] ): array;
+```
+
+Registers default messages for validators, keyed by validator class
+name. A registered default is used when a validator does not define its
+own message; a message set on the validator instance still wins. Calls
+are merged, so defaults can be registered incrementally.
 
 #### `setEntity()` { #filtervalidation-setentity }
 
@@ -1833,6 +1876,7 @@ This is a base class for validators
     - [`Phalcon\Filter\Validation\Validator\Email`](#filtervalidationvalidatoremail)
     - [`Phalcon\Filter\Validation\Validator\ExclusionIn`](#filtervalidationvalidatorexclusionin)
     - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - [`Phalcon\Filter\Validation\Validator\Files`](#filtervalidationvalidatorfiles)
     - [`Phalcon\Filter\Validation\Validator\Identical`](#filtervalidationvalidatoridentical)
     - [`Phalcon\Filter\Validation\Validator\InclusionIn`](#filtervalidationvalidatorinclusionin)
     - [`Phalcon\Filter\Validation\Validator\Ip`](#filtervalidationvalidatorip)
@@ -1955,6 +1999,15 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\Fi
 <code class="ret">string|null</code>
 <code class="sig"><span class="sv">$template</span><span class="sm"> = null</span></code>
 <span class="desc">Message template</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$templateChanged</span><span class="sm"> = false</span></code>
+<span class="desc">Whether the template/message has been explicitly assigned on the
+instance (constructor <code>message</code>/<code>template</code> option or setTemplate()).
+While false, <code>template</code> still holds the validator&#039;s class default and a
+global default registered via Validation::setDefaultMessages() applies.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -2127,6 +2180,11 @@ Prepares a label for the field.
 
 This is a base class for combined fields validators
 
+@todo Remove in v7. Kept only for backwards compatibility; compose
+Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait directly (with
+extends AbstractValidator implements ValidatorCompositeInterface) instead of
+extending this.
+
 <div class="api-tree" markdown>
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
@@ -2136,55 +2194,8 @@ This is a base class for combined fields validators
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`
+__Uses__ `Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`
 { .api-uses }
-
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#filtervalidationabstractvalidatorcomposite-getvalidators">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getValidators</span>()</code>
-</a>
-<a class="api-item" href="#filtervalidationabstractvalidatorcomposite-validate">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
-<span class="desc">Executes the validation</span>
-</a>
-</div>
-
-### Properties
-
-<div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$validators</span><span class="sm"> = []</span></code>
-</div>
-</div>
-
-### Methods
-
-<div class="api-group">Public · 2</div>
-
-#### `getValidators()` { #filtervalidationabstractvalidatorcomposite-getvalidators }
-
-```php
-public function getValidators(): array;
-```
-
-#### `validate()` { #filtervalidationabstractvalidatorcomposite-validate }
-
-```php
-public function validate(
-    Validation $validation,
-    mixed $field
-): bool;
-```
-
-Executes the validation
 
 
 ## Filter\Validation\Exception
@@ -3879,7 +3890,7 @@ $validator->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message`
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary
@@ -4565,7 +4576,7 @@ $validator->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Get`
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
@@ -4943,7 +4954,7 @@ $validator->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Messages\Message`
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary
@@ -5718,6 +5729,108 @@ protected function getConditional(
 Executes the conditional
 
 
+## Filter\Validation\Validator\Files
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/Files.zep){ .src-btn }
+
+Validates an array of uploaded files by delegating each file to the `File`
+validator. Accepts the same options as `Phalcon\Filter\Validation\Validator\File`
+and forwards them to each delegated file. A standard multiple-file upload
+(`<input name="files[]" type="file" multiple>`) arrives as a transposed
+`$_FILES` node; this validator normalizes it into individual files and fails
+on the first file that violates a rule.
+
+```php
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Validator\Files as FilesValidator;
+
+$validation = new Validation();
+
+$validation->add(
+    "photos",
+    new FilesValidator(
+        [
+            "maxSize"      => "2M",
+            "messageSize"  => ":field exceeds the max file size (:size)",
+            "allowedTypes" => ["image/jpeg", "image/png"],
+            "messageType"  => "Allowed file types are :types",
+        ]
+    )
+);
+```
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
+    - **`Phalcon\Filter\Validation\Validator\Files`**
+
+</div>
+
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages` · `Phalcon\Messages\Messages`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#filtervalidationvalidatorfiles-isallowempty">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isAllowEmpty</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$field</span></span>)</code>
+<span class="desc">Whole-field empty check: true when the field carries no uploaded files.</span>
+</a>
+<a class="api-item" href="#filtervalidationvalidatorfiles-validate">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
+<span class="desc">Executes the validation, delegating each file to a <code>File</code> validator.</span>
+</a>
+<a class="api-item" href="#filtervalidationvalidatorfiles-normalizefiles">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">normalizeFiles</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+<span class="desc">Normalizes a single file or a transposed multi-file <code>$_FILES</code> node into a</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `isAllowEmpty()` { #filtervalidationvalidatorfiles-isallowempty }
+
+```php
+public function isAllowEmpty(
+    Validation $validation,
+    string $field
+): bool;
+```
+
+Whole-field empty check: true when the field carries no uploaded files.
+
+#### `validate()` { #filtervalidationvalidatorfiles-validate }
+
+```php
+public function validate(
+    Validation $validation,
+    mixed $field
+): bool;
+```
+
+Executes the validation, delegating each file to a `File` validator.
+
+<div class="api-group">Protected · 1</div>
+
+#### `normalizeFiles()` { #filtervalidationvalidatorfiles-normalizefiles }
+
+```php
+protected function normalizeFiles( mixed $value ): array;
+```
+
+Normalizes a single file or a transposed multi-file `$_FILES` node into a
+list of single-file structures.
+
+
 ## Filter\Validation\Validator\Identical
 
 <span class="badge badge--class">Class</span>
@@ -6425,7 +6538,7 @@ $validation->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`
+__Uses__ `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`
 { .api-uses }
 
 ### Method Summary
@@ -6508,7 +6621,7 @@ $validation->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message`
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary
@@ -6618,7 +6731,7 @@ $validation->add(
 
 </div>
 
-__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message`
+__Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary

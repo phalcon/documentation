@@ -27,7 +27,7 @@ $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 
 </div>
 
-__Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
+__Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\HashTrait`
 { .api-uses }
 
 ### Method Summary
@@ -43,12 +43,6 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getAssetKey</span>()</code>
 <span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsasset-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-<span class="desc">Gets extra HTML attributes.</span>
 </a>
 <a class="api-item" href="#assetsasset-getcontent">
 <code class="vis vis-public">public</code>
@@ -84,21 +78,6 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 <code class="sig"><span class="sf">getRealTargetUri</span>()</code>
 <span class="desc">Returns the real target uri for the generated HTML</span>
 </a>
-<a class="api-item" href="#assetsasset-getsourcepath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSourcePath</span>()</code>
-</a>
-<a class="api-item" href="#assetsasset-gettargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTargetPath</span>()</code>
-</a>
-<a class="api-item" href="#assetsasset-gettargeturi">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTargetUri</span>()</code>
-</a>
 <a class="api-item" href="#assetsasset-gettype">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -115,12 +94,6 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isAutoVersion</span>()</code>
 <span class="desc">Checks if the asset is using auto version</span>
-</a>
-<a class="api-item" href="#assetsasset-islocal">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isLocal</span>()</code>
-<span class="desc">Checks if the asset is local or not</span>
 </a>
 <a class="api-item" href="#assetsasset-setattributes">
 <code class="vis vis-public">public</code>
@@ -139,35 +112,11 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 <code class="sig"><span class="sf">setFilter</span>( <span class="st">bool</span> <span class="sv">$filter</span> )</code>
 <span class="desc">Sets if the asset must be filtered or not</span>
 </a>
-<a class="api-item" href="#assetsasset-setislocal">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setIsLocal</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Sets if the asset is local or external</span>
-</a>
 <a class="api-item" href="#assetsasset-setpath">
 <code class="vis vis-public">public</code>
 <code class="ret">AssetInterface</code>
 <code class="sig"><span class="sf">setPath</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
 <span class="desc">Sets the asset&#039;s path</span>
-</a>
-<a class="api-item" href="#assetsasset-setsourcepath">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setSourcePath</span>( <span class="st">string</span> <span class="sv">$sourcePath</span> )</code>
-<span class="desc">Sets the asset&#039;s source path</span>
-</a>
-<a class="api-item" href="#assetsasset-settargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setTargetPath</span>( <span class="st">string</span> <span class="sv">$targetPath</span> )</code>
-<span class="desc">Sets the asset&#039;s target path</span>
-</a>
-<a class="api-item" href="#assetsasset-settargeturi">
-<code class="vis vis-public">public</code>
-<code class="ret">AssetInterface</code>
-<code class="sig"><span class="sf">setTargetUri</span>( <span class="st">string</span> <span class="sv">$targetUri</span> )</code>
-<span class="desc">Sets a target uri for the generated HTML</span>
 </a>
 <a class="api-item" href="#assetsasset-settype">
 <code class="vis vis-public">public</code>
@@ -181,26 +130,11 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 <code class="sig"><span class="sf">setVersion</span>( <span class="st">string</span> <span class="sv">$version</span> )</code>
 <span class="desc">Sets the asset&#039;s version</span>
 </a>
-<a class="api-item" href="#assetsasset-phpfileexists">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpFileExists</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
-<a class="api-item" href="#assetsasset-phpfilegetcontents">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-</a>
 </div>
 
 ### Properties
 
 <div class="api-list">
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$attributes</span></code>
-</div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
@@ -213,28 +147,8 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sv">$isLocal</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$path</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$sourcePath</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$targetPath</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$targetUri</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -251,7 +165,7 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 
 ### Methods
 
-<div class="api-group">Public · 26</div>
+<div class="api-group">Public · 17</div>
 
 #### `__construct()` { #assetsasset-__construct }
 
@@ -276,14 +190,6 @@ public function getAssetKey(): string;
 ```
 
 Gets the asset's key.
-
-#### `getAttributes()` { #assetsasset-getattributes }
-
-```php
-public function getAttributes(): array;
-```
-
-Gets extra HTML attributes.
 
 #### `getContent()` { #assetsasset-getcontent }
 
@@ -330,24 +236,6 @@ public function getRealTargetUri(): string;
 
 Returns the real target uri for the generated HTML
 
-#### `getSourcePath()` { #assetsasset-getsourcepath }
-
-```php
-public function getSourcePath(): string;
-```
-
-#### `getTargetPath()` { #assetsasset-gettargetpath }
-
-```php
-public function getTargetPath(): string;
-```
-
-#### `getTargetUri()` { #assetsasset-gettargeturi }
-
-```php
-public function getTargetUri(): string;
-```
-
 #### `getType()` { #assetsasset-gettype }
 
 ```php
@@ -369,14 +257,6 @@ public function isAutoVersion(): bool;
 ```
 
 Checks if the asset is using auto version
-
-#### `isLocal()` { #assetsasset-islocal }
-
-```php
-public function isLocal(): bool;
-```
-
-Checks if the asset is local or not
 
 #### `setAttributes()` { #assetsasset-setattributes }
 
@@ -400,14 +280,6 @@ public function setFilter( bool $filter ): AssetInterface;
 
 Sets if the asset must be filtered or not
 
-#### `setIsLocal()` { #assetsasset-setislocal }
-
-```php
-public function setIsLocal( bool $flag ): AssetInterface;
-```
-
-Sets if the asset is local or external
-
 #### `setPath()` { #assetsasset-setpath }
 
 ```php
@@ -415,30 +287,6 @@ public function setPath( string $path ): AssetInterface;
 ```
 
 Sets the asset's path
-
-#### `setSourcePath()` { #assetsasset-setsourcepath }
-
-```php
-public function setSourcePath( string $sourcePath ): AssetInterface;
-```
-
-Sets the asset's source path
-
-#### `setTargetPath()` { #assetsasset-settargetpath }
-
-```php
-public function setTargetPath( string $targetPath ): AssetInterface;
-```
-
-Sets the asset's target path
-
-#### `setTargetUri()` { #assetsasset-settargeturi }
-
-```php
-public function setTargetUri( string $targetUri ): AssetInterface;
-```
-
-Sets a target uri for the generated HTML
 
 #### `setType()` { #assetsasset-settype }
 
@@ -455,22 +303,6 @@ public function setVersion( string $version ): AssetInterface;
 ```
 
 Sets the asset's version
-
-<div class="api-group">Protected · 2</div>
-
-#### `phpFileExists()` { #assetsasset-phpfileexists }
-
-```php
-protected function phpFileExists( string $filename ): bool;
-```
-
-@todo to be removed when we get traits
-
-#### `phpFileGetContents()` { #assetsasset-phpfilegetcontents }
-
-```php
-protected function phpFileGetContents( string $filename );
-```
 
 
 ## Assets\AssetInterface
@@ -598,7 +430,7 @@ Collection of asset objects
 
 </div>
 
-__Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
+__Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Assets\Traits\SourceTargetTrait` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -657,11 +489,6 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getAssets</span>()</code>
 </a>
-<a class="api-item" href="#assetscollection-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
-</a>
 <a class="api-item" href="#assetscollection-getcodes">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
@@ -694,25 +521,10 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 <code class="sig"><span class="sf">getRealTargetPath</span>( <span class="st">string</span> <span class="sv">$basePath</span> )</code>
 <span class="desc">Returns the complete location where the joined/filtered collection must</span>
 </a>
-<a class="api-item" href="#assetscollection-getsourcepath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getSourcePath</span>()</code>
-</a>
 <a class="api-item" href="#assetscollection-gettargetislocal">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getTargetIsLocal</span>()</code>
-</a>
-<a class="api-item" href="#assetscollection-gettargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTargetPath</span>()</code>
-</a>
-<a class="api-item" href="#assetscollection-gettargeturi">
-<code class="vis vis-public">public</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getTargetUri</span>()</code>
 </a>
 <a class="api-item" href="#assetscollection-getversion">
 <code class="vis vis-public">public</code>
@@ -730,11 +542,6 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isAutoVersion</span>()</code>
 <span class="desc">Checks if collection is using auto version</span>
-</a>
-<a class="api-item" href="#assetscollection-islocal">
-<code class="vis vis-public">public</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">isLocal</span>()</code>
 </a>
 <a class="api-item" href="#assetscollection-join">
 <code class="vis vis-public">public</code>
@@ -759,41 +566,17 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 <code class="sig"><span class="sf">setFilters</span>( <span class="st">array</span> <span class="sv">$filters</span> )</code>
 <span class="desc">Sets an array of filters in the collection</span>
 </a>
-<a class="api-item" href="#assetscollection-setislocal">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setIsLocal</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
-<span class="desc">Sets if the collection uses local assets by default</span>
-</a>
 <a class="api-item" href="#assetscollection-setprefix">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setPrefix</span>( <span class="st">string</span> <span class="sv">$prefix</span> )</code>
 <span class="desc">Sets a common prefix for all the assets</span>
 </a>
-<a class="api-item" href="#assetscollection-setsourcepath">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setSourcePath</span>( <span class="st">string</span> <span class="sv">$sourcePath</span> )</code>
-<span class="desc">Sets a base source path for all the assets in this collection</span>
-</a>
 <a class="api-item" href="#assetscollection-settargetislocal">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setTargetIsLocal</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
 <span class="desc">Sets if the target local or not</span>
-</a>
-<a class="api-item" href="#assetscollection-settargetpath">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setTargetPath</span>( <span class="st">string</span> <span class="sv">$targetPath</span> )</code>
-<span class="desc">Sets the target path of the file for the filtered/join output</span>
-</a>
-<a class="api-item" href="#assetscollection-settargeturi">
-<code class="vis vis-public">public</code>
-<code class="ret">static</code>
-<code class="sig"><span class="sf">setTargetUri</span>( <span class="st">string</span> <span class="sv">$targetUri</span> )</code>
-<span class="desc">Sets a target uri for the generated HTML</span>
 </a>
 <a class="api-item" href="#assetscollection-setversion">
 <code class="vis vis-public">public</code>
@@ -819,11 +602,6 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$attributes</span><span class="sm"> = []</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$autoVersion</span><span class="sm"> = false</span></code>
 <span class="desc">Should version be determined from file modification time</span>
@@ -841,11 +619,6 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
-<code class="sig"><span class="sv">$isLocal</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
 <code class="sig"><span class="sv">$join</span><span class="sm"> = true</span></code>
 </div>
 <div class="api-item">
@@ -855,23 +628,8 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$sourcePath</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$targetIsLocal</span><span class="sm"> = true</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$targetPath</span><span class="sm"> = &quot;&quot;</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sv">$targetUri</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -882,7 +640,7 @@ __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
 
 ### Methods
 
-<div class="api-group">Public · 35</div>
+<div class="api-group">Public · 26</div>
 
 #### `add()` { #assetscollection-add }
 
@@ -978,12 +736,6 @@ Return the count of the assets
 public function getAssets(): array;
 ```
 
-#### `getAttributes()` { #assetscollection-getattributes }
-
-```php
-public function getAttributes(): array;
-```
-
 #### `getCodes()` { #assetscollection-getcodes }
 
 ```php
@@ -1027,28 +779,10 @@ public function getRealTargetPath( string $basePath ): string;
 Returns the complete location where the joined/filtered collection must
 be written
 
-#### `getSourcePath()` { #assetscollection-getsourcepath }
-
-```php
-public function getSourcePath(): string;
-```
-
 #### `getTargetIsLocal()` { #assetscollection-gettargetislocal }
 
 ```php
 public function getTargetIsLocal(): bool;
-```
-
-#### `getTargetPath()` { #assetscollection-gettargetpath }
-
-```php
-public function getTargetPath(): string;
-```
-
-#### `getTargetUri()` { #assetscollection-gettargeturi }
-
-```php
-public function getTargetUri(): string;
 ```
 
 #### `getVersion()` { #assetscollection-getversion }
@@ -1085,12 +819,6 @@ public function isAutoVersion(): bool;
 
 Checks if collection is using auto version
 
-#### `isLocal()` { #assetscollection-islocal }
-
-```php
-public function isLocal(): bool;
-```
-
 #### `join()` { #assetscollection-join }
 
 ```php
@@ -1122,14 +850,6 @@ public function setFilters( array $filters ): static;
 
 Sets an array of filters in the collection
 
-#### `setIsLocal()` { #assetscollection-setislocal }
-
-```php
-public function setIsLocal( bool $flag ): static;
-```
-
-Sets if the collection uses local assets by default
-
 #### `setPrefix()` { #assetscollection-setprefix }
 
 ```php
@@ -1138,14 +858,6 @@ public function setPrefix( string $prefix ): static;
 
 Sets a common prefix for all the assets
 
-#### `setSourcePath()` { #assetscollection-setsourcepath }
-
-```php
-public function setSourcePath( string $sourcePath ): static;
-```
-
-Sets a base source path for all the assets in this collection
-
 #### `setTargetIsLocal()` { #assetscollection-settargetislocal }
 
 ```php
@@ -1153,22 +865,6 @@ public function setTargetIsLocal( bool $flag ): static;
 ```
 
 Sets if the target local or not
-
-#### `setTargetPath()` { #assetscollection-settargetpath }
-
-```php
-public function setTargetPath( string $targetPath ): static;
-```
-
-Sets the target path of the file for the filtered/join output
-
-#### `setTargetUri()` { #assetscollection-settargeturi }
-
-```php
-public function setTargetUri( string $targetUri ): static;
-```
-
-Sets a target uri for the generated HTML
 
 #### `setVersion()` { #assetscollection-setversion }
 
@@ -1668,6 +1364,9 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 </div>
 
+__Uses__ `Phalcon\Assets\Traits\AttributesTrait` · `Phalcon\Traits\Php\HashTrait`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -1681,11 +1380,6 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getAssetKey</span>()</code>
 <span class="desc">Gets the asset&#039;s key.</span>
-</a>
-<a class="api-item" href="#assetsinline-getattributes">
-<code class="vis vis-public">public</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">getAttributes</span>()</code>
 </a>
 <a class="api-item" href="#assetsinline-getcontent">
 <code class="vis vis-public">public</code>
@@ -1727,11 +1421,6 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sv">$attributes</span></code>
-</div>
-<div class="api-item">
-<code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$content</span></code>
 </div>
@@ -1749,7 +1438,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ### Methods
 
-<div class="api-group">Public · 9</div>
+<div class="api-group">Public · 8</div>
 
 #### `__construct()` { #assetsinline-__construct }
 
@@ -1771,12 +1460,6 @@ public function getAssetKey(): string;
 ```
 
 Gets the asset's key.
-
-#### `getAttributes()` { #assetsinline-getattributes }
-
-```php
-public function getAttributes(): array;
-```
 
 #### `getContent()` { #assetsinline-getcontent }
 
@@ -1924,7 +1607,7 @@ Manages collections of CSS/JavaScript assets
 
 </div>
 
-__Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory`
+__Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary

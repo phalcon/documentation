@@ -21,7 +21,7 @@ hide:
 
 </div>
 
-__Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
+__Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -74,12 +74,6 @@ __Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `SessionHandlerInterface`
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 <span class="desc">Write</span>
-</a>
-<a class="api-item" href="#sessionadapterabstractadapter-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@todo Remove this when we get traits</span>
 </a>
 </div>
 
@@ -169,20 +163,6 @@ public function write(
 ```
 
 Write
-
-<div class="api-group">Protected · 1</div>
-
-#### `getArrVal()` { #sessionadapterabstractadapter-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null
-): mixed;
-```
-
-@todo Remove this when we get traits
 
 
 ## Session\Adapter\Exceptions\AdapterRuntimeError
@@ -688,7 +668,7 @@ $session->setAdapter($files);
 
 </div>
 
-__Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`
+__Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 { .api-uses }
 
 ### Method Summary
@@ -739,12 +719,6 @@ __Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Se
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">write</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$id</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
 </a>
-<a class="api-item" href="#sessionadapterstream-getarrval">
-<code class="vis vis-protected">protected</code>
-<code class="ret">mixed</code>
-<code class="sig"><span class="sf">getArrVal</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$index</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cast</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@todo Remove this when we get traits</span>
-</a>
 <a class="api-item" href="#sessionadapterstream-getglobfiles">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|false</code>
@@ -756,38 +730,6 @@ __Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Se
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getPrefixedName</span>( <span class="st">mixed</span> <span class="sv">$name</span> )</code>
 <span class="desc">Helper method to get the name prefixed</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-phpfileexists">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFileExists</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-<span class="desc">@link https://php.net/manual/en/function.file-exists.php</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-phpfilegetcontents">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-<span class="desc">@link https://php.net/manual/en/function.file-get-contents.php</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-phpfileputcontents">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFilePutContents</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">@link https://php.net/manual/en/function.file-put-contents.php</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-phpfopen">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span></span>)</code>
-<span class="desc">@link https://php.net/manual/en/function.fopen.php</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-phpiniget">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">phpIniGet</span>( <span class="st">string</span> <span class="sv">$varname</span> )</code>
-<span class="desc">Gets the value of a configuration option</span>
-</a>
-<a class="api-item" href="#sessionadapterstream-phpiswritable">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpIsWritable</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
-<span class="desc">Tells whether the filename is writable</span>
 </a>
 </div>
 
@@ -881,20 +823,7 @@ public function write(
 ): bool;
 ```
 
-<div class="api-group">Protected · 9</div>
-
-#### `getArrVal()` { #sessionadapterstream-getarrval }
-
-```php
-protected function getArrVal(
-    array $collection,
-    mixed $index,
-    mixed $defaultValue = null,
-    string $cast = null
-): mixed;
-```
-
-@todo Remove this when we get traits
+<div class="api-group">Protected · 2</div>
 
 #### `getGlobFiles()` { #sessionadapterstream-getglobfiles }
 
@@ -911,67 +840,6 @@ protected function getPrefixedName( mixed $name ): string;
 ```
 
 Helper method to get the name prefixed
-
-#### `phpFileExists()` { #sessionadapterstream-phpfileexists }
-
-```php
-protected function phpFileExists( string $filename );
-```
-
-@link https://php.net/manual/en/function.file-exists.php
-
-#### `phpFileGetContents()` { #sessionadapterstream-phpfilegetcontents }
-
-```php
-protected function phpFileGetContents( string $filename );
-```
-
-@link https://php.net/manual/en/function.file-get-contents.php
-
-#### `phpFilePutContents()` { #sessionadapterstream-phpfileputcontents }
-
-```php
-protected function phpFilePutContents(
-    string $filename,
-    mixed $data,
-    int $flags = 0,
-    mixed $context = null
-);
-```
-
-@link https://php.net/manual/en/function.file-put-contents.php
-
-#### `phpFopen()` { #sessionadapterstream-phpfopen }
-
-```php
-protected function phpFopen(
-    string $filename,
-    string $mode
-);
-```
-
-@link https://php.net/manual/en/function.fopen.php
-
-#### `phpIniGet()` { #sessionadapterstream-phpiniget }
-
-```php
-protected function phpIniGet( string $varname ): string;
-```
-
-Gets the value of a configuration option
-
-@link https://php.net/manual/en/function.ini-get.php
-@link https://php.net/manual/en/ini.list.php
-
-#### `phpIsWritable()` { #sessionadapterstream-phpiswritable }
-
-```php
-protected function phpIsWritable( string $filename ): bool;
-```
-
-Tells whether the filename is writable
-
-@link https://php.net/manual/en/function.is-writable.php
 
 
 ## Session\Bag
@@ -1484,7 +1352,7 @@ public function __construct();
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `SessionHandlerInterface`
+__Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
 { .api-uses }
 
 ### Method Summary
@@ -1620,12 +1488,6 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `P
 <code class="ret">int</code>
 <code class="sig"><span class="sf">status</span>()</code>
 <span class="desc">Returns the status of the current session.</span>
-</a>
-<a class="api-item" href="#sessionmanager-phpheaderssent">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpHeadersSent</span>()</code>
-<span class="desc">Checks if or where headers have been sent</span>
 </a>
 </div>
 
@@ -1822,18 +1684,6 @@ public function status(): int;
 ```
 
 Returns the status of the current session.
-
-<div class="api-group">Protected · 1</div>
-
-#### `phpHeadersSent()` { #sessionmanager-phpheaderssent }
-
-```php
-protected function phpHeadersSent(): bool;
-```
-
-Checks if or where headers have been sent
-
-@link https://php.net/manual/en/function.headers-sent.php
 
 
 ## Session\ManagerInterface

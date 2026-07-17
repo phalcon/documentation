@@ -24,7 +24,7 @@ This component allows to create CLI applications using Phalcon
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModuleDefinitionInterface`
+__Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1982,6 +1982,7 @@ arguments). Declare optional trailing parameters to read those options.
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
         - **`Phalcon\Cli\Task`** - implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+            - [`Phalcon\Queue\Cli\ConsumerTask`](phalcon_queue.md#queuecliconsumertask)
 
 </div>
 

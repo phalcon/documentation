@@ -155,7 +155,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Traits\Php\IniTrait`
 { .api-uses }
 
 ### Method Summary
@@ -183,11 +183,6 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <code class="sig"><span class="sf">parseIniString</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
 <span class="desc">Build multidimensional array from string</span>
 </a>
-<a class="api-item" href="#configadapterini-phpparseinifile">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpParseIniFile</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$processSections</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$scannerMode</span><span class="sm"> = 1</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
-</a>
 </div>
 
 ### Methods
@@ -205,7 +200,7 @@ public function __construct(
 
 Ini constructor.
 
-<div class="api-group">Protected · 4</div>
+<div class="api-group">Protected · 3</div>
 
 #### `cast()` { #configadapterini-cast }
 
@@ -238,18 +233,6 @@ protected function parseIniString(
 ```
 
 Build multidimensional array from string
-
-#### `phpParseIniFile()` { #configadapterini-phpparseinifile }
-
-```php
-protected function phpParseIniFile(
-    string $filename,
-    bool $processSections = false,
-    int $scannerMode = 1
-);
-```
-
-@todo to be removed when we get traits
 
 
 ## Config\Adapter\Json
@@ -284,7 +267,7 @@ echo $config->models->metadata;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Support\Helper\Json\Decode`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -432,7 +415,7 @@ echo $config->models->metadata;
 
 </div>
 
-__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Config\Exceptions\MissingYamlExtension`
+__Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Config\Exceptions\MissingYamlExtension` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\YamlTrait`
 { .api-uses }
 
 ### Method Summary
@@ -442,16 +425,6 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filePath</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$callbacks</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Phalcon\Config\Adapter\Yaml constructor</span>
-</a>
-<a class="api-item" href="#configadapteryaml-phpextensionloaded">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">phpExtensionLoaded</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
-</a>
-<a class="api-item" href="#configadapteryaml-phpyamlparsefile">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpYamlParseFile</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$pos</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$ndocs</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$callbacks</span><span class="sm"> = []</span></span>)</code>
-<span class="desc">@todo to be removed when we get traits</span>
 </a>
 </div>
 
@@ -469,27 +442,6 @@ public function __construct(
 ```
 
 Phalcon\Config\Adapter\Yaml constructor
-
-<div class="api-group">Protected · 2</div>
-
-#### `phpExtensionLoaded()` { #configadapteryaml-phpextensionloaded }
-
-```php
-protected function phpExtensionLoaded( string $name ): bool;
-```
-
-#### `phpYamlParseFile()` { #configadapteryaml-phpyamlparsefile }
-
-```php
-protected function phpYamlParseFile(
-    mixed $filename,
-    mixed $pos = 0,
-    mixed $ndocs = null,
-    mixed $callbacks = []
-);
-```
-
-@todo to be removed when we get traits
 
 
 ## Config\Config

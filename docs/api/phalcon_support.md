@@ -1243,7 +1243,8 @@ Set an element in the collection
 <span class="badge badge--class">Class</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug.zep){ .src-btn }
 
-Provides debug capabilities to Phalcon applications
+Listens for uncaught exceptions and renders them. Acts as a thin coordinator
+delegating data collection to ReportBuilder and presentation to a Renderer.
 
 <div class="api-tree" markdown>
 
@@ -1251,12 +1252,16 @@ Provides debug capabilities to Phalcon applications
 
 </div>
 
-__Uses__ `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
+__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
 { .api-uses }
 
 ### Method Summary
 
 <div class="api-list">
+<a class="api-item" href="#supportdebug-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
 <a class="api-item" href="#supportdebug-clearvars">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
@@ -1280,6 +1285,12 @@ __Uses__ `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\De
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getJsSources</span>()</code>
 <span class="desc">Returns the JavaScript sources</span>
+</a>
+<a class="api-item" href="#supportdebug-getrenderer">
+<code class="vis vis-public">public</code>
+<code class="ret">Renderer</code>
+<code class="sig"><span class="sf">getRenderer</span>()</code>
+<span class="desc">Returns the renderer used to produce the output</span>
 </a>
 <a class="api-item" href="#supportdebug-getversion">
 <code class="vis vis-public">public</code>
@@ -1335,6 +1346,12 @@ __Uses__ `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\De
 <code class="sig"><span class="sf">setBlacklist</span>( <span class="st">array</span> <span class="sv">$blacklist</span> )</code>
 <span class="desc">Sets if files the exception&#039;s backtrace must be showed</span>
 </a>
+<a class="api-item" href="#supportdebug-setrenderer">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setRenderer</span>( <span class="st">Renderer</span> <span class="sv">$renderer</span> )</code>
+<span class="desc">Sets the renderer used to produce the output</span>
+</a>
 <a class="api-item" href="#supportdebug-setshowbacktrace">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
@@ -1358,30 +1375,6 @@ __Uses__ `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\De
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setUri</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
 <span class="desc">Change the base URI for static resources</span>
-</a>
-<a class="api-item" href="#supportdebug-escapestring">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
-<span class="desc">Escapes a string with htmlentities</span>
-</a>
-<a class="api-item" href="#supportdebug-getarraydump">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
-<code class="sig"><span class="sf">getArrayDump</span>(<span class="prm"><span class="st">array</span> <span class="sv">$argument</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$n</span><span class="sm"> = 0</span></span>)</code>
-<span class="desc">Produces a recursive representation of an array</span>
-</a>
-<a class="api-item" href="#supportdebug-getvardump">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">getVarDump</span>( <span class="st">mixed</span> <span class="sv">$variable</span> )</code>
-<span class="desc">Produces an string representation of a variable</span>
-</a>
-<a class="api-item" href="#supportdebug-showtraceitem">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">showTraceItem</span>(<span class="prm"><span class="st">int</span> <span class="sv">$number</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$trace</span></span>)</code>
-<span class="desc">Shows a backtrace item</span>
 </a>
 </div>
 
@@ -1410,6 +1403,16 @@ __Uses__ `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\De
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">Renderer</code>
+<code class="sig"><span class="sv">$renderer</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ReportBuilder</code>
+<code class="sig"><span class="sv">$reportBuilder</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$showBackTrace</span><span class="sm"> = true</span></code>
 </div>
@@ -1432,7 +1435,13 @@ __Uses__ `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\De
 
 ### Methods
 
-<div class="api-group">Public · 17</div>
+<div class="api-group">Public · 20</div>
+
+#### `__construct()` { #supportdebug-__construct }
+
+```php
+public function __construct();
+```
 
 #### `clearVars()` { #supportdebug-clearvars }
 
@@ -1465,6 +1474,14 @@ public function getJsSources(): string;
 ```
 
 Returns the JavaScript sources
+
+#### `getRenderer()` { #supportdebug-getrenderer }
+
+```php
+public function getRenderer(): Renderer;
+```
+
+Returns the renderer used to produce the output
 
 #### `getVersion()` { #supportdebug-getversion }
 
@@ -1546,6 +1563,14 @@ public function setBlacklist( array $blacklist ): static;
 
 Sets if files the exception's backtrace must be showed
 
+#### `setRenderer()` { #supportdebug-setrenderer }
+
+```php
+public function setRenderer( Renderer $renderer ): static;
+```
+
+Sets the renderer used to produce the output
+
 #### `setShowBackTrace()` { #supportdebug-setshowbacktrace }
 
 ```php
@@ -1579,46 +1604,6 @@ public function setUri( string $uri ): static;
 
 Change the base URI for static resources
 
-<div class="api-group">Protected · 4</div>
-
-#### `escapeString()` { #supportdebug-escapestring }
-
-```php
-protected function escapeString( string $value ): string;
-```
-
-Escapes a string with htmlentities
-
-#### `getArrayDump()` { #supportdebug-getarraydump }
-
-```php
-protected function getArrayDump(
-    array $argument,
-    mixed $n = 0
-): string|null;
-```
-
-Produces a recursive representation of an array
-
-#### `getVarDump()` { #supportdebug-getvardump }
-
-```php
-protected function getVarDump( mixed $variable ): string;
-```
-
-Produces an string representation of a variable
-
-#### `showTraceItem()` { #supportdebug-showtraceitem }
-
-```php
-final protected function showTraceItem(
-    int $number,
-    array $trace
-): string;
-```
-
-Shows a backtrace item
-
 
 ## Support\Debug\Dump
 
@@ -1643,11 +1628,11 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Support\Debug\Dump`**
+- **`Phalcon\Support\Debug\Dump`** - implements [`Phalcon\Contracts\Support\Debug\TemplateAware`](phalcon_contracts.md#contractssupportdebugtemplateaware)
 
 </div>
 
-__Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Reflection` · `ReflectionClass` · `ReflectionProperty` · `stdClass`
+__Uses__ `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Reflection` · `ReflectionClass` · `ReflectionProperty` · `stdClass`
 { .api-uses }
 
 ### Method Summary
@@ -1669,6 +1654,12 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Re
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getDetailed</span>()</code>
 </a>
+<a class="api-item" href="#supportdebugdump-gettemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns the template for the given name (override if set, default</span>
+</a>
 <a class="api-item" href="#supportdebugdump-one">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
@@ -1685,6 +1676,12 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Re
 <code class="ret">array</code>
 <code class="sig"><span class="sf">setStyles</span>( <span class="st">array</span> <span class="sv">$styles</span><span class="sm"> = []</span> )</code>
 <span class="desc">Set styles for vars type</span>
+</a>
+<a class="api-item" href="#supportdebugdump-settemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$template</span></span>)</code>
+<span class="desc">Overrides the template for the given name.</span>
 </a>
 <a class="api-item" href="#supportdebugdump-tojson">
 <code class="vis vis-public">public</code>
@@ -1703,6 +1700,12 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Re
 <code class="ret">string</code>
 <code class="sig"><span class="sf">variables</span>()</code>
 <span class="desc">Returns an HTML string of debugging information about any number of</span>
+</a>
+<a class="api-item" href="#supportdebugdump-defaulttemplate">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">defaultTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns the embedded default template for the given name.</span>
 </a>
 <a class="api-item" href="#supportdebugdump-getstyle">
 <code class="vis vis-protected">protected</code>
@@ -1736,11 +1739,21 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Re
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$styles</span><span class="sm"> = []</span></code>
 </div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$templates</span><span class="sm"> = []</span></code>
+<span class="desc">Template overrides keyed by name.
+
+@todo Move getTemplate()/setTemplate()/templates into a shared trait once
+      Zephir supports traits (mirrors
+      Phalcon\Support\Debug\Traits\TemplateAwareTrait in the PHP source).</span>
+</div>
 </div>
 
 ### Methods
 
-<div class="api-group">Public · 9</div>
+<div class="api-group">Public · 11</div>
 
 #### `__construct()` { #supportdebugdump-__construct }
 
@@ -1767,6 +1780,15 @@ Alias of variables() method
 public function getDetailed(): bool;
 ```
 
+#### `getTemplate()` { #supportdebugdump-gettemplate }
+
+```php
+public function getTemplate( string $name ): string;
+```
+
+Returns the template for the given name (override if set, default
+otherwise).
+
 #### `one()` { #supportdebugdump-one }
 
 ```php
@@ -1791,6 +1813,17 @@ public function setStyles( array $styles = [] ): array;
 ```
 
 Set styles for vars type
+
+#### `setTemplate()` { #supportdebugdump-settemplate }
+
+```php
+public function setTemplate(
+    string $name,
+    string $template
+): static;
+```
+
+Overrides the template for the given name.
 
 #### `toJson()` { #supportdebugdump-tojson }
 
@@ -1845,7 +1878,15 @@ $baz = new stdClass();
 echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 ```
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 3</div>
+
+#### `defaultTemplate()` { #supportdebugdump-defaulttemplate }
+
+```php
+protected function defaultTemplate( string $name ): string;
+```
+
+Returns the embedded default template for the given name.
 
 #### `getStyle()` { #supportdebugdump-getstyle }
 
@@ -1936,6 +1977,785 @@ public function __construct();
     - **`Phalcon\Support\Debug\Exceptions\RuntimeWarning`**
 
 </div>
+
+
+## Support\Debug\Renderer\HtmlRenderer
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Renderer/HtmlRenderer.zep){ .src-btn }
+
+Renders an ExceptionReport as the HTML debug page using embedded, overridable
+template strings filled by strtr. All styling and interactivity (theme, tabs,
+syntax highlighting, copy/editor links) are provided by the external
+debug.css / debug.js assets.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Support\Debug\Renderer\HtmlRenderer`** - implements [`Phalcon\Contracts\Support\Debug\Renderer`](phalcon_contracts.md#contractssupportdebugrenderer)
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Version`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-getcsssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getCssSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-getjssources">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getJsSources</span>( <span class="st">string</span> <span class="sv">$uri</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-gettemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns the template for the given name (override if set, default</span>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-getversion">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getVersion</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-render">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">render</span>( <span class="st">ExceptionReport</span> <span class="sv">$report</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-settemplate">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setTemplate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$template</span></span>)</code>
+<span class="desc">Overrides the template for the given name.</span>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-defaulttemplate">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">defaultTemplate</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
+<span class="desc">Returns the embedded default template for the given name.</span>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-escapestring">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">escapeString</span>( <span class="st">string</span> <span class="sv">$value</span> )</code>
+<span class="desc">Escapes a string with htmlentities</span>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-getarraydump">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getArrayDump</span>(<span class="prm"><span class="st">array</span> <span class="sv">$argument</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$number</span><span class="sm"> = 0</span></span>)</code>
+<span class="desc">Produces a recursive representation of an array</span>
+</a>
+<a class="api-item" href="#supportdebugrendererhtmlrenderer-getvardump">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getVarDump</span>( <span class="st">mixed</span> <span class="sv">$variable</span> )</code>
+<span class="desc">Produces a string representation of a variable</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$templates</span><span class="sm"> = []</span></code>
+<span class="desc">Template overrides keyed by name.
+
+@todo Move getTemplate()/setTemplate()/templates into a shared trait once
+      Zephir supports traits (mirrors
+      Phalcon\Support\Debug\Traits\TemplateAwareTrait in the PHP source).</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `getCssSources()` { #supportdebugrendererhtmlrenderer-getcsssources }
+
+```php
+public function getCssSources( string $uri ): string;
+```
+
+#### `getJsSources()` { #supportdebugrendererhtmlrenderer-getjssources }
+
+```php
+public function getJsSources( string $uri ): string;
+```
+
+#### `getTemplate()` { #supportdebugrendererhtmlrenderer-gettemplate }
+
+```php
+public function getTemplate( string $name ): string;
+```
+
+Returns the template for the given name (override if set, default
+otherwise).
+
+#### `getVersion()` { #supportdebugrendererhtmlrenderer-getversion }
+
+```php
+public function getVersion(): string;
+```
+
+#### `render()` { #supportdebugrendererhtmlrenderer-render }
+
+```php
+public function render( ExceptionReport $report ): string;
+```
+
+#### `setTemplate()` { #supportdebugrendererhtmlrenderer-settemplate }
+
+```php
+public function setTemplate(
+    string $name,
+    string $template
+): static;
+```
+
+Overrides the template for the given name.
+
+<div class="api-group">Protected · 4</div>
+
+#### `defaultTemplate()` { #supportdebugrendererhtmlrenderer-defaulttemplate }
+
+```php
+protected function defaultTemplate( string $name ): string;
+```
+
+Returns the embedded default template for the given name.
+
+#### `escapeString()` { #supportdebugrendererhtmlrenderer-escapestring }
+
+```php
+protected function escapeString( string $value ): string;
+```
+
+Escapes a string with htmlentities
+
+#### `getArrayDump()` { #supportdebugrendererhtmlrenderer-getarraydump }
+
+```php
+protected function getArrayDump(
+    array $argument,
+    int $number = 0
+): string|null;
+```
+
+Produces a recursive representation of an array
+
+#### `getVarDump()` { #supportdebugrendererhtmlrenderer-getvardump }
+
+```php
+protected function getVarDump( mixed $variable ): string;
+```
+
+Produces a string representation of a variable
+
+
+## Support\Debug\ReportBuilder
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/ReportBuilder.zep){ .src-btn }
+
+Collects the runtime data for an exception (backtrace, superglobals, included
+files, memory, variables) into an ExceptionReport. Holds no presentation
+logic.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Support\Debug\ReportBuilder`**
+
+</div>
+
+__Uses__ `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#supportdebugreportbuilder-build">
+<code class="vis vis-public">public</code>
+<code class="ret">ExceptionReport</code>
+<code class="sig"><span class="sf">build</span>(<span class="prm"><span class="st">\Throwable</span> <span class="sv">$exception</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$blacklist</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showBackTrace</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showFiles</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showFileFragment</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$uri</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$data</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `build()` { #supportdebugreportbuilder-build }
+
+```php
+public function build(
+    \Throwable $exception,
+    array $blacklist,
+    bool $showBackTrace,
+    bool $showFiles,
+    bool $showFileFragment,
+    string $uri,
+    array $data
+): ExceptionReport;
+```
+
+
+## Support\Debug\Report\BacktraceItem
+
+<span class="badge badge--final">Final</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Report/BacktraceItem.zep){ .src-btn }
+
+Represents a single resolved frame of an exception backtrace.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Support\Debug\Report\BacktraceItem`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#supportdebugreportbacktraceitem-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$functionName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$type</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$className</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$classLink</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$functionLink</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$hasArgs</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$args</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$file</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$line</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$fragment</span><span class="sm"> = null</span></span>)</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getargs">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getArgs</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getclasslink">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getClassLink</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getclassname">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getClassName</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getfile">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getFile</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getfragment">
+<code class="vis vis-public">public</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sf">getFragment</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getfunctionlink">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getFunctionLink</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getfunctionname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getFunctionName</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-getline">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getLine</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-gettype">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getType</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportbacktraceitem-hasargs">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">hasArgs</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$args</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$classLink</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$className</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$file</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$fragment</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$functionLink</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$functionName</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$hasArgs</span><span class="sm"> = false</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sv">$line</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$type</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 11</div>
+
+#### `__construct()` { #supportdebugreportbacktraceitem-__construct }
+
+```php
+public function __construct(
+    string $functionName,
+    mixed $type = null,
+    mixed $className = null,
+    mixed $classLink = null,
+    mixed $functionLink = null,
+    bool $hasArgs = false,
+    array $args = [],
+    mixed $file = null,
+    mixed $line = null,
+    mixed $fragment = null
+);
+```
+
+#### `getArgs()` { #supportdebugreportbacktraceitem-getargs }
+
+```php
+public function getArgs(): array;
+```
+
+#### `getClassLink()` { #supportdebugreportbacktraceitem-getclasslink }
+
+```php
+public function getClassLink(): string|null;
+```
+
+#### `getClassName()` { #supportdebugreportbacktraceitem-getclassname }
+
+```php
+public function getClassName(): string|null;
+```
+
+#### `getFile()` { #supportdebugreportbacktraceitem-getfile }
+
+```php
+public function getFile(): string|null;
+```
+
+#### `getFragment()` { #supportdebugreportbacktraceitem-getfragment }
+
+```php
+public function getFragment(): array|null;
+```
+
+#### `getFunctionLink()` { #supportdebugreportbacktraceitem-getfunctionlink }
+
+```php
+public function getFunctionLink(): string|null;
+```
+
+#### `getFunctionName()` { #supportdebugreportbacktraceitem-getfunctionname }
+
+```php
+public function getFunctionName(): string;
+```
+
+#### `getLine()` { #supportdebugreportbacktraceitem-getline }
+
+```php
+public function getLine(): int|null;
+```
+
+#### `getType()` { #supportdebugreportbacktraceitem-gettype }
+
+```php
+public function getType(): string|null;
+```
+
+#### `hasArgs()` { #supportdebugreportbacktraceitem-hasargs }
+
+```php
+public function hasArgs(): bool;
+```
+
+
+## Support\Debug\Report\ExceptionReport
+
+<span class="badge badge--final">Final</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Debug/Report/ExceptionReport.zep){ .src-btn }
+
+Carries all data collected for an exception, ready to be rendered. Holds no
+presentation logic.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Support\Debug\Report\ExceptionReport`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#supportdebugreportexceptionreport-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$className</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$message</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$file</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$line</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$showBackTrace</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$uri</span></span>)</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getbacktrace">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getBacktrace</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getclassname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getClassName</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getfile">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getFile</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getincludedfiles">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getIncludedFiles</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getline">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getLine</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getmemoryusage">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getMemoryUsage</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getmessage">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getMessage</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getpeakmemoryusage">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getPeakMemoryUsage</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getrequest">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getRequest</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getserver">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getServer</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-geturi">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getUri</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-getvariables">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getVariables</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-hasvariables">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">hasVariables</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-isshowbacktrace">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isShowBackTrace</span>()</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-setbacktrace">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setBacktrace</span>( <span class="st">array</span> <span class="sv">$backtrace</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-setincludedfiles">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setIncludedFiles</span>( <span class="st">array</span> <span class="sv">$includedFiles</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-setmemoryusage">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setMemoryUsage</span>( <span class="st">int</span> <span class="sv">$memoryUsage</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-setpeakmemoryusage">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setPeakMemoryUsage</span>( <span class="st">int</span> <span class="sv">$peakMemoryUsage</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-setrequest">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setRequest</span>( <span class="st">array</span> <span class="sv">$request</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-setserver">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setServer</span>( <span class="st">array</span> <span class="sv">$server</span> )</code>
+</a>
+<a class="api-item" href="#supportdebugreportexceptionreport-setvariables">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setVariables</span>( <span class="st">array</span> <span class="sv">$variables</span> )</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">BacktraceItem[]</code>
+<code class="sig"><span class="sv">$backtrace</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$className</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$file</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$includedFiles</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$line</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$memoryUsage</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$message</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$peakMemoryUsage</span><span class="sm"> = 0</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$request</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$server</span><span class="sm"> = []</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$showBackTrace</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$uri</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$variables</span><span class="sm"> = []</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 22</div>
+
+#### `__construct()` { #supportdebugreportexceptionreport-__construct }
+
+```php
+public function __construct(
+    string $className,
+    string $message,
+    string $file,
+    int $line,
+    bool $showBackTrace,
+    string $uri
+);
+```
+
+#### `getBacktrace()` { #supportdebugreportexceptionreport-getbacktrace }
+
+```php
+public function getBacktrace(): array;
+```
+
+#### `getClassName()` { #supportdebugreportexceptionreport-getclassname }
+
+```php
+public function getClassName(): string;
+```
+
+#### `getFile()` { #supportdebugreportexceptionreport-getfile }
+
+```php
+public function getFile(): string;
+```
+
+#### `getIncludedFiles()` { #supportdebugreportexceptionreport-getincludedfiles }
+
+```php
+public function getIncludedFiles(): array;
+```
+
+#### `getLine()` { #supportdebugreportexceptionreport-getline }
+
+```php
+public function getLine(): int;
+```
+
+#### `getMemoryUsage()` { #supportdebugreportexceptionreport-getmemoryusage }
+
+```php
+public function getMemoryUsage(): int;
+```
+
+#### `getMessage()` { #supportdebugreportexceptionreport-getmessage }
+
+```php
+public function getMessage(): string;
+```
+
+#### `getPeakMemoryUsage()` { #supportdebugreportexceptionreport-getpeakmemoryusage }
+
+```php
+public function getPeakMemoryUsage(): int;
+```
+
+#### `getRequest()` { #supportdebugreportexceptionreport-getrequest }
+
+```php
+public function getRequest(): array;
+```
+
+#### `getServer()` { #supportdebugreportexceptionreport-getserver }
+
+```php
+public function getServer(): array;
+```
+
+#### `getUri()` { #supportdebugreportexceptionreport-geturi }
+
+```php
+public function getUri(): string;
+```
+
+#### `getVariables()` { #supportdebugreportexceptionreport-getvariables }
+
+```php
+public function getVariables(): array;
+```
+
+#### `hasVariables()` { #supportdebugreportexceptionreport-hasvariables }
+
+```php
+public function hasVariables(): bool;
+```
+
+#### `isShowBackTrace()` { #supportdebugreportexceptionreport-isshowbacktrace }
+
+```php
+public function isShowBackTrace(): bool;
+```
+
+#### `setBacktrace()` { #supportdebugreportexceptionreport-setbacktrace }
+
+```php
+public function setBacktrace( array $backtrace ): static;
+```
+
+#### `setIncludedFiles()` { #supportdebugreportexceptionreport-setincludedfiles }
+
+```php
+public function setIncludedFiles( array $includedFiles ): static;
+```
+
+#### `setMemoryUsage()` { #supportdebugreportexceptionreport-setmemoryusage }
+
+```php
+public function setMemoryUsage( int $memoryUsage ): static;
+```
+
+#### `setPeakMemoryUsage()` { #supportdebugreportexceptionreport-setpeakmemoryusage }
+
+```php
+public function setPeakMemoryUsage( int $peakMemoryUsage ): static;
+```
+
+#### `setRequest()` { #supportdebugreportexceptionreport-setrequest }
+
+```php
+public function setRequest( array $request ): static;
+```
+
+#### `setServer()` { #supportdebugreportexceptionreport-setserver }
+
+```php
+public function setServer( array $server ): static;
+```
+
+#### `setVariables()` { #supportdebugreportexceptionreport-setvariables }
+
+```php
+public function setVariables( array $variables ): static;
+```
 
 
 ## Support\Exception
@@ -2112,16 +2932,11 @@ Returns the available adapters
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Arr/AbstractArr.zep){ .src-btn }
 
-Abstract class offering methods to help with the Arr namespace. This can
-be moved to a trait once Zephir supports it.
-
-This base exists only for the `Arr` helper hierarchy; it is not a general
-base class. New code that needs these routines should compose the relevant
-invokable helper (for example `Arr\Get`) rather than extending it.
-
 @internal
 
-@todo move to trait when there is support for it
+@todo Remove in v7. Kept only for backwards compatibility; compose
+Phalcon\Traits\Support\Helper\Arr\FilterTrait directly instead of extending
+this.
 
 <div class="api-tree" markdown>
 
@@ -2138,31 +2953,8 @@ invokable helper (for example `Arr\Get`) rather than extending it.
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#supporthelperarrabstractarr-tofilter">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">toFilter</span>(<span class="prm"><span class="st">array</span> <span class="sv">$collection</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$method</span><span class="sm"> = null</span></span>)</code>
-<span class="desc">Helper method to filter the collection</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Protected · 1</div>
-
-#### `toFilter()` { #supporthelperarrabstractarr-tofilter }
-
-```php
-protected function toFilter(
-    array $collection,
-    mixed $method = null
-): array;
-```
-
-Helper method to filter the collection
+__Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
+{ .api-uses }
 
 
 ## Support\Helper\Arr\Blacklist
@@ -2411,6 +3203,9 @@ It also allows for casting the returned value to a specific type using
 
 </div>
 
+__Uses__ `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -2449,6 +3244,9 @@ Groups the elements of an array based on the passed callable
 - **`Phalcon\Support\Helper\Arr\Group`**
 
 </div>
+
+__Uses__ `Phalcon\Traits\Php\InfoTrait`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3100,7 +3898,7 @@ JsonDecodeError
 
 </div>
 
-__Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`
+__Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError` · `Phalcon\Traits\Support\Helper\Json\DecodeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3153,7 +3951,7 @@ JsonEncodeError
 
 </div>
 
-__Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`
+__Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError` · `Phalcon\Traits\Support\Helper\Json\EncodeTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3302,21 +4100,17 @@ public function __invoke(
 <span class="badge badge--abstract">Abstract</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Support/Helper/Str/AbstractStr.zep){ .src-btn }
 
-Abstract class offering methods to help with the Str namespace. This can
-be moved to a trait once Zephir supports it.
-
-This base exists only for the `Str` helper hierarchy; it is not a general
-base class. New code that needs these routines should compose the relevant
-invokable helper (for example `Str\Interpolate`) rather than extending it.
+Abstract class offering methods to help with the Str namespace.
 
 @internal
 
-@todo move to trait when there is support for it
+@todo Remove in v7. Kept only for backwards compatibility; compose the
+      individual Phalcon\Traits\Support\Helper\Str\* traits directly instead
+      of extending this.
 
 <div class="api-tree" markdown>
 
 - **`Phalcon\Support\Helper\Str\AbstractStr`**
-    - [`Phalcon\Logger\Formatter\AbstractFormatter`](phalcon_logger.md#loggerformatterabstractformatter)
     - [`Phalcon\Support\Helper\Str\Concat`](#supporthelperstrconcat)
     - [`Phalcon\Support\Helper\Str\Decapitalize`](#supporthelperstrdecapitalize)
     - [`Phalcon\Support\Helper\Str\EndsWith`](#supporthelperstrendswith)
@@ -3329,105 +4123,8 @@ invokable helper (for example `Str\Interpolate`) rather than extending it.
 
 </div>
 
-### Method Summary
-
-<div class="api-list">
-<a class="api-item" href="#supporthelperstrabstractstr-toendswith">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">toEndsWith</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Check if a string ends with a given string</span>
-</a>
-<a class="api-item" href="#supporthelperstrabstractstr-tointerpolate">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toInterpolate</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$context</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$left</span><span class="sm"> = &quot;%&quot;</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$right</span><span class="sm"> = &quot;%&quot;</span></span>)</code>
-<span class="desc">Interpolates context values into the message placeholders</span>
-</a>
-<a class="api-item" href="#supporthelperstrabstractstr-tolower">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toLower</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-<span class="desc">Lowercases a string using mbstring</span>
-</a>
-<a class="api-item" href="#supporthelperstrabstractstr-tostartswith">
-<code class="vis vis-protected">protected</code>
-<code class="ret">bool</code>
-<code class="sig"><span class="sf">toStartsWith</span>(<span class="prm"><span class="st">string</span> <span class="sv">$haystack</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$needle</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$ignoreCase</span><span class="sm"> = true</span></span>)</code>
-<span class="desc">Check if a string starts with a given string</span>
-</a>
-<a class="api-item" href="#supporthelperstrabstractstr-toupper">
-<code class="vis vis-protected">protected</code>
-<code class="ret">string</code>
-<code class="sig"><span class="sf">toUpper</span>(<span class="prm"><span class="st">string</span> <span class="sv">$text</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$encoding</span><span class="sm"> = &quot;UTF-8&quot;</span></span>)</code>
-<span class="desc">Uppercases a string using mbstring</span>
-</a>
-</div>
-
-### Methods
-
-<div class="api-group">Protected · 5</div>
-
-#### `toEndsWith()` { #supporthelperstrabstractstr-toendswith }
-
-```php
-protected function toEndsWith(
-    string $haystack,
-    string $needle,
-    bool $ignoreCase = true
-): bool;
-```
-
-Check if a string ends with a given string
-
-#### `toInterpolate()` { #supporthelperstrabstractstr-tointerpolate }
-
-```php
-protected function toInterpolate(
-    string $input,
-    array $context = [],
-    string $left = "%",
-    string $right = "%"
-): string;
-```
-
-Interpolates context values into the message placeholders
-
-@see https://www.php-fig.org/psr/psr-3/ Section 1.2 Message
-
-#### `toLower()` { #supporthelperstrabstractstr-tolower }
-
-```php
-protected function toLower(
-    string $text,
-    string $encoding = "UTF-8"
-): string;
-```
-
-Lowercases a string using mbstring
-
-#### `toStartsWith()` { #supporthelperstrabstractstr-tostartswith }
-
-```php
-protected function toStartsWith(
-    string $haystack,
-    string $needle,
-    bool $ignoreCase = true
-): bool;
-```
-
-Check if a string starts with a given string
-
-#### `toUpper()` { #supporthelperstrabstractstr-toupper }
-
-```php
-protected function toUpper(
-    string $text,
-    string $encoding = "UTF-8"
-): string;
-```
-
-Uppercases a string using mbstring
+__Uses__ `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Phalcon\Traits\Support\Helper\Str\LowerTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` · `Phalcon\Traits\Support\Helper\Str\UpperTrait`
+{ .api-uses }
 
 
 ## Support\Helper\Str\Camelize
@@ -3439,10 +4136,12 @@ Converts strings to upperCamelCase or lowerCamelCase
 
 <div class="api-tree" markdown>
 
-- [`Phalcon\Support\Helper\Str\PascalCase`](#supporthelperstrpascalcase)
-    - **`Phalcon\Support\Helper\Str\Camelize`**
+- **`Phalcon\Support\Helper\Str\Camelize`**
 
 </div>
+
+__Uses__ `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
+{ .api-uses }
 
 ### Method Summary
 
@@ -3493,7 +4192,7 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
 <a class="api-item" href="#supporthelperstrconcat-__invoke">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sf">__invoke</span>()</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$delimiter</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$many</span></span>)</code>
 </a>
 </div>
 
@@ -3504,7 +4203,10 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
 #### `__invoke()` { #supporthelperstrconcat-__invoke }
 
 ```php
-public function __invoke(): string;
+public function __invoke(
+    string $delimiter,
+    string $many
+): string;
 ```
 
 
@@ -3636,6 +4338,9 @@ directory structure with the filename in the end
 
 </div>
 
+__Uses__ `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -3670,6 +4375,9 @@ DIRECTORY_SEPARATOR
 - **`Phalcon\Support\Helper\Str\DirSeparator`**
 
 </div>
+
+__Uses__ `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+{ .api-uses }
 
 ### Method Summary
 
@@ -4074,6 +4782,9 @@ right and left tokens are `%`
 
 </div>
 
+__Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+{ .api-uses }
+
 ### Method Summary
 
 <div class="api-list">
@@ -4371,7 +5082,6 @@ Converts strings to PascalCase style
 <div class="api-tree" markdown>
 
 - **`Phalcon\Support\Helper\Str\PascalCase`**
-    - [`Phalcon\Support\Helper\Str\Camelize`](#supporthelperstrcamelize)
     - [`Phalcon\Support\Helper\Str\KebabCase`](#supporthelperstrkebabcase)
     - [`Phalcon\Support\Helper\Str\SnakeCase`](#supporthelperstrsnakecase)
 
@@ -4725,6 +5435,9 @@ Converts strings to non camelized style
 - **`Phalcon\Support\Helper\Str\Uncamelize`**
 
 </div>
+
+__Uses__ `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait`
+{ .api-uses }
 
 ### Method Summary
 

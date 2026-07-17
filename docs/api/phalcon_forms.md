@@ -3286,7 +3286,7 @@ disk first; otherwise the value is treated as a raw JSON string.
 
 </div>
 
-__Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\InvalidJsonSchema` · `Phalcon\Forms\Exceptions\JsonSchemaNotArray` · `Phalcon\Support\Helper\Json\Decode`
+__Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\InvalidJsonSchema` · `Phalcon\Forms\Exceptions\JsonSchemaNotArray` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -3300,10 +3300,6 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phal
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">load</span>()</code>
-</a>
-<a class="api-item" href="#formsloaderjsonloader-phpfilegetcontents">
-<code class="vis vis-protected">protected</code>
-<code class="sig"><span class="sf">phpFileGetContents</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
 </a>
 </div>
 
@@ -3333,14 +3329,6 @@ public function __construct( string $source );
 public function load(): array;
 ```
 
-<div class="api-group">Protected · 1</div>
-
-#### `phpFileGetContents()` { #formsloaderjsonloader-phpfilegetcontents }
-
-```php
-protected function phpFileGetContents( string $filename );
-```
-
 
 ## Forms\Loader\YamlLoader
 
@@ -3360,7 +3348,7 @@ directly; otherwise the value is treated as a raw YAML string.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\YamlExtensionRequired` · `Phalcon\Forms\Exceptions\YamlSchemaNotArray`
+__Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\YamlExtensionRequired` · `Phalcon\Forms\Exceptions\YamlSchemaNotArray` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary

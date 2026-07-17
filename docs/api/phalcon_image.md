@@ -953,7 +953,7 @@ own scales. Switching the factory backend can change the rendered output.
 
 </div>
 
-__Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch`
+__Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`
 { .api-uses }
 
 ### Method Summary
@@ -1274,7 +1274,7 @@ Switching the factory backend can change the rendered output.
 
 </div>
 
-__Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError`
+__Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -2153,7 +2153,7 @@ Factory to create adapters for image manipulation
 
 </div>
 
-__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface`
+__Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 { .api-uses }
 
 ### Method Summary
