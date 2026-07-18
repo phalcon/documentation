@@ -40,8 +40,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Build documentation image
-        run: docker build -t phalcon-docs resources/docker
+      - name: Install Zensical and mike
+        run: |
+          pip install --no-cache-dir zensical==0.0.51
+          pip install --no-cache-dir "git+https://github.com/squidfunk/mike.git"
 
       - name: Get sponsors and fanart
         run: |
@@ -50,9 +52,10 @@ jobs:
           wget -O overrides/fanart.md \
             https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html
 
-      - name: Update NFR list
-        run: |
-          docker run --rm -v "$PWD":/docs --entrypoint python phalcon-docs update-nfr.py
+      # NFR list update disabled for now (not essential).
+      # - name: Update NFR list
+      #   run: |
+      #     docker run --rm -v "$PWD":/docs --entrypoint python phalcon-docs update-nfr.py
 
       - name: Determine versioning parameters
         id: determine-versioning
@@ -78,17 +81,13 @@ jobs:
       - name: Deploy
         if: ${{ env.PH_DOCS_VERSION != '' }}
         run: |
-          # Publishing implies creating a git commit on the production branch,
-          # We will need to create a user for this at some point
-          echo "Deploying with Mike"
+          echo "Deploying with Mike (zensical)"
           git config user.name niden
           git config user.email nikos@niden.net
           git fetch --no-tags --prune --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages
-          # Build and commit inside the container; push from the runner.
-          # checkout@v6 keeps its credentials outside the workspace, so they
-          # are not visible inside the container.
-          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/docs -v "$PWD":/docs \
-            --entrypoint mike phalcon-docs deploy ${{ env.PH_DOCS_VERSION }}
+          # mike (the zensical-compatible fork) builds via `zensical build` and
+          # commits to gh-pages; push from the runner.
+          mike deploy ${{ env.PH_DOCS_VERSION }}
           git push origin gh-pages
           echo "Deployed"
 
