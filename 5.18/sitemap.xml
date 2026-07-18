@@ -100,6 +100,48 @@
         <loc>https://docs.phalcon.io/5.18/mvc/</loc>
       </url>
       <url>
+        <loc>https://docs.phalcon.io/5.18/adr/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-actions/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-domain/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-payload/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-responders/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-input/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-front-controller/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-router/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-dispatcher/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-middleware/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-emitter/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-error-responder/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/adr-container/</loc>
+      </url>
+      <url>
+        <loc>https://docs.phalcon.io/5.18/mvc-to-adr/</loc>
+      </url>
+      <url>
         <loc>https://docs.phalcon.io/5.18/namespaces/</loc>
       </url>
       <url>
