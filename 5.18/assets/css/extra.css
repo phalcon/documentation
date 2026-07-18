@@ -1,0 +1,471 @@
+:root {
+    --md-primary-fg-color: #273646;
+    --md-primary-fg-color--light: #374c62;
+    --md-primary-fg-color--dark: #1c2631;
+}
+
+.phalcon-blog__sponsors-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.phalcon-blog__sponsors-items img {
+    max-width: 140px;
+    width: 100%;
+}
+
+.phalcon-blog__sponsors-items a {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(39,54,70,.4);
+    padding: 10px 15px;
+    border-radius: 4px;
+    width: 46%;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: all .2s ease;
+}
+
+@media screen and (max-width: 600px) {
+    .phalcon-blog__sponsors-items a {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.phalcon-blog__sponsors-items a:hover {
+    border-color: #273646;
+}
+
+[data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a {
+    background-color: #ffffffb3;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a {
+    color: #00bda4 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active {
+    color: #00bda4 !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+    color: #02d3b8 !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active:hover {
+    color: #02d3b8 !important;
+}
+
+[data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a {
+    color: #000000 !important;
+    font-weight: bold;
+}
+
+[data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a:hover {
+    border-color: #00bda4 !important;
+    color: #000000 !important;
+    opacity: .9;
+}
+
+/* Releases page table */
+.version-th-center, .version-td-center {
+    text-align: center;
+}
+.version-th-right, .version-td-right {
+    text-align: right;
+}
+.current-version {
+    background-color: #d4f4b4;
+}
+.previous-version {
+    background-color: #fef8c6;
+}
+
+/* Releases page legend */
+.legend {
+    padding-left: 0.3em;
+    white-space: nowrap;
+}
+
+.legend-old-version {
+    border-left: 1.2em solid #fdb3ab;
+}
+
+.legend-old-version-supported {
+    border-left: 1.2em solid #fef8c6;
+}
+
+.legend-latest {
+    border-left: 1.2em solid #d4f4b4;
+}
+
+.legend-preview {
+    border-left: 1.2em solid #fed1a0;
+}
+
+.legend-future {
+    border-left: 1.2em solid #c1e6f5;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+    height: 2rem !important;
+}
+
+/* ============================================================
+   API documentation (api-v2 layout)
+   ============================================================ */
+:root {
+    --api-abstract-bg: #e8f5e9;
+    --api-abstract-fg: #2e7d32;
+    --api-class-bg: #eceff1;
+    --api-class-fg: #546e7a;
+    --api-current-bg: #e0f2f1;
+    --api-final-bg: #ffebee;
+    --api-final-fg: #c62828;
+    --api-interface-bg: #e3f2fd;
+    --api-interface-fg: #1565c0;
+    --api-protected-bg: #fff3e0;
+    --api-protected-fg: #9c5700;
+    --api-type-fg: #00747f;
+}
+
+[data-md-color-scheme="slate"] {
+    --api-abstract-bg: #1d2f1f;
+    --api-abstract-fg: #81c784;
+    --api-class-bg: #262d31;
+    --api-class-fg: #90a4ae;
+    --api-current-bg: #1d3330;
+    --api-final-bg: #331f1f;
+    --api-final-fg: #e57373;
+    --api-interface-bg: #1a2733;
+    --api-interface-fg: #64b5f6;
+    --api-protected-bg: #33291a;
+    --api-protected-fg: #ffb74d;
+    --api-type-fg: #4ec9b0;
+}
+
+/* Class kind badges */
+.md-typeset .badge {
+    display: inline-block;
+    font-size: .6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    padding: .15em .8em;
+    border-radius: 2em;
+    vertical-align: middle;
+}
+
+.md-typeset .badge--abstract {
+    background: var(--api-abstract-bg);
+    color: var(--api-abstract-fg);
+}
+
+.md-typeset .badge--class {
+    background: var(--api-class-bg);
+    color: var(--api-class-fg);
+}
+
+.md-typeset .badge--final {
+    background: var(--api-final-bg);
+    color: var(--api-final-fg);
+}
+
+.md-typeset .badge--interface {
+    background: var(--api-interface-bg);
+    color: var(--api-interface-fg);
+}
+
+/* Source on GitHub button */
+.md-typeset a.src-btn {
+    float: right;
+    margin-left: 1em;
+    padding: .2em .8em;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .3em;
+    font-size: .64rem;
+    font-weight: 500;
+}
+
+.md-typeset a.src-btn:hover {
+    border-color: var(--md-accent-fg-color);
+    text-decoration: none;
+}
+
+/* Hierarchy tree */
+.md-typeset .api-tree {
+    clear: both;
+    margin: 1em 0 .5em;
+    font-size: .75rem;
+}
+
+.md-typeset .api-tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.md-typeset .api-tree ul ul {
+    padding-left: 1.1em;
+}
+
+.md-typeset .api-tree li {
+    margin: .15em 0;
+    position: relative;
+}
+
+.md-typeset .api-tree ul ul > li {
+    padding-left: 1.4em;
+}
+
+.md-typeset .api-tree ul ul > li::before {
+    content: "";
+    position: absolute;
+    left: .3em;
+    top: -.6em;
+    height: 1.5em;
+    width: .85em;
+    border-left: 2px solid var(--md-default-fg-color--lightest);
+    border-bottom: 2px solid var(--md-default-fg-color--lightest);
+    border-bottom-left-radius: .25em;
+}
+
+.md-typeset .api-tree code {
+    background: none;
+    padding: 0;
+}
+
+.md-typeset .api-tree strong > code {
+    background: var(--api-current-bg);
+    padding: .1em .45em;
+    border-radius: .2em;
+}
+
+/* Uses line */
+.md-typeset .api-uses {
+    margin: .4em 0 1.2em;
+    font-size: .64rem;
+    color: var(--md-default-fg-color--light);
+}
+
+/* Public / Protected group separator */
+.md-typeset .api-group {
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    margin: 1.6em 0 .8em;
+    font-size: .6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .api-group::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--md-default-fg-color--lightest);
+}
+
+/* Row lists: method summary (raw HTML rows) and
+   constants / properties (markdown list rows) */
+.md-typeset .api-list {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .3em;
+    margin: .8em 0 1.4em;
+    overflow: hidden;
+}
+
+.md-typeset .api-list > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.md-typeset .api-list .api-item,
+.md-typeset .api-list > ul > li {
+    display: flow-root;
+    margin: 0;
+    padding: .5em .9em .55em;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .api-list .api-item:last-child,
+.md-typeset .api-list > ul > li:last-child {
+    border-bottom: none;
+}
+
+.md-typeset a.api-item,
+.md-typeset a.api-item:hover {
+    color: var(--md-typeset-color);
+    text-decoration: none;
+}
+
+.md-typeset a.api-item:hover {
+    background: var(--md-code-bg-color);
+}
+
+/* Signature text (raw rows keep literal newlines) */
+.md-typeset .api-list code.sig,
+.md-typeset .api-list li > p:first-child > code {
+    background: none;
+    padding: 0;
+    font-size: .7rem;
+    white-space: pre-wrap;
+}
+
+/* Type chip: explicit .ret in raw rows, last inline code in list rows */
+.md-typeset .api-list code.ret,
+.md-typeset .api-list li > p:first-child > code:last-child {
+    float: right;
+    margin-left: .75em;
+    margin-top: .15em;
+    padding: .1em .5em;
+    border-radius: .2em;
+    background: var(--md-code-bg-color);
+    color: var(--api-type-fg);
+    font-size: .6rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* Visibility chips */
+.md-typeset .api-list .vis-public,
+.md-typeset .api-list .vis-protected {
+    float: left;
+    margin-right: .8em;
+    margin-top: .15em;
+    padding: .1em .5em;
+    border-radius: .2em;
+    min-width: 4.6em;
+    text-align: center;
+    font-size: .6rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.md-typeset .api-list .vis-public {
+    background: var(--api-abstract-bg);
+    color: var(--api-abstract-fg);
+}
+
+.md-typeset .api-list .vis-protected {
+    background: var(--api-protected-bg);
+    color: var(--api-protected-fg);
+}
+
+/* Signature token colors, matching the Pygments palette of the
+   fenced code blocks in both color schemes */
+.md-typeset .api-list .sig .sf {
+    color: var(--md-code-hl-function-color, #8250df);
+}
+
+.md-typeset .api-list .sig .st {
+    color: var(--md-code-hl-keyword-color, #0550ae);
+}
+
+.md-typeset .api-list .sig .sv {
+    color: var(--md-code-hl-variable-color, #953800);
+}
+
+.md-typeset .api-list .sig .sc {
+    color: var(--md-code-hl-constant-color, #0550ae);
+}
+
+.md-typeset .api-list .sig .sm {
+    color: var(--md-default-fg-color--light);
+}
+
+/* One parameter per line on signatures with 2+ parameters */
+.md-typeset .api-list .sig .prm {
+    display: block;
+    padding-left: 1.6em;
+}
+
+/* Row descriptions */
+.md-typeset .api-list .desc,
+.md-typeset .api-list li > p:not(:first-child) {
+    display: block;
+    clear: left;
+    margin: .25em 0 0;
+    font-size: .64rem;
+    line-height: 1.5;
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .api-list li > p:first-child {
+    margin: 0;
+}
+
+/* ============================================================
+   Zensical visual parity with the classic Material look.
+   Every rule restates classic Material values, so this section
+   is visually inert on Material builds and only takes effect
+   under Zensical's "modern" stylesheet.
+   ============================================================ */
+
+/* Brand-colored header and navigation tabs */
+.md-header,
+.md-tabs {
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color, hsla(0, 0%, 100%, 1));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+/* Classic dark-mode background depth */
+[data-md-color-scheme="slate"] {
+    --md-default-bg-color: hsla(var(--md-hue), 15%, 14%, 1);
+}
+
+@media screen {
+    /* Classic type scale */
+    .md-typeset {
+        font-size: .8rem;
+        letter-spacing: 0;
+        line-height: 1.6;
+    }
+
+    /* Classic heading scale and light weights */
+    .md-typeset h1 {
+        color: var(--md-default-fg-color--light);
+        font-size: 2em;
+        font-weight: 300;
+    }
+
+    .md-typeset h2 {
+        font-weight: 300;
+        letter-spacing: -.01em;
+    }
+
+    .md-typeset h3 {
+        font-weight: 400;
+    }
+
+    /* Flat sidebar links instead of padded pills */
+    .md-nav__link {
+        border-radius: 0;
+        gap: .4rem;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: .625em;
+        padding: 0;
+    }
+
+    /* Classic code block corners and inline code metrics */
+    .md-typeset code {
+        border-radius: .1rem;
+        font-size: .85em;
+        padding: 0 .2941176471em;
+    }
+
+    .md-typeset pre > code {
+        border-radius: .1rem;
+    }
+}
