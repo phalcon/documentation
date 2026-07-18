@@ -76,15 +76,6 @@ plugins:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
       minify_html: true
-  - redirects:
-      redirect_maps:
-        'index.md': 'introduction.md'
-        'loader.md': 'autoload.md'
-        'collection.md': 'support-collection.md'
-        'helper.md': 'support-helper.md'
-        'registry.md': 'support-registry.md'
-        'version.md': 'support-version.md'
-        'migrations.md': 'db-migrations.md'
 
 # Hooks
 #hooks:
