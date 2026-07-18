@@ -2803,7 +2803,7 @@ As of 5.14 the component raises granular subclasses under `Phalcon\DataMapper\Pd
 [datamapper-pdo-connection-abstractconnection]: api/phalcon_datamapper.md#datamapperpdoconnectionabstractconnection
 [datamapper-pdo-connection-connectioninterface]: api/phalcon_datamapper.md#datamapperpdoconnectionconnectioninterface
 [datamapper-pdo-connection-decorated]: api/phalcon_datamapper.md#datamapperpdoconnectiondecorated
-[datamapper-pdo-connection-pdointerface]: api/phalcon_datamapper.md#datamapperpdoconnection-pdointerface
+[datamapper-pdo-connection-pdointerface]: api/phalcon_datamapper.md#datamapperpdoconnectionpdointerface
 [datamapper-pdo-connectionlocator]: api/phalcon_datamapper.md#datamapperpdoconnectionlocator
 [datamapper-pdo-connectionlocatorinterface]: api/phalcon_datamapper.md#datamapperpdoconnectionlocatorinterface
 [datamapper-pdo-exception-cannotdisconnect]: api/phalcon_datamapper.md#datamapperpdoexceptioncannotdisconnect

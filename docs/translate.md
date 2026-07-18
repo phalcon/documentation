@@ -728,7 +728,7 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Translate\Except
 [gettext]: api/phalcon_translate.md#translateadaptergettext
 [incubator]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter
 [indexedarray]: api/phalcon_translate.md#translateinterpolatorindexedarray
-[interpolation]: api/phalcon_support.md/#supporthelperstrinterpolate
+[interpolation]: api/phalcon_support.md#supporthelperstrinterpolate
 [interpolatorfactory]: api/phalcon_translate.md#translateinterpolatorfactory
 [interpolatorinterface]: api/phalcon_translate.md#translateinterpolatorinterpolatorinterface
 [nativearray]: api/phalcon_translate.md#translateadapternativearray

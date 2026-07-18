@@ -3069,7 +3069,6 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Db\Exception` so
 | `Phalcon\Db\Exceptions\UnrecognizedDataType`              | `Phalcon\Db\Exception` | A column declares a data type the dialect cannot map.                                        |
 | `Phalcon\Db\Exceptions\UpdateFieldCountMismatch`          | `Phalcon\Db\Exception` | The number of update fields does not match the number of bound values.                       |
 
-[db-abstractdb]: api/phalcon_db.md#dbabstractdb
 [db-adapter-abstractadapter]: api/phalcon_db.md#dbadapterabstractadapter
 [db-adapter-adapterinterface]: api/phalcon_db.md#dbadapteradapterinterface
 [db-adapter-pdo-abstractpdo]: api/phalcon_db.md#dbadapterpdoabstractpdo
