@@ -75,10 +75,10 @@ We provide production-ready images. That means we do not install anything else y
 We want to thank the following people for providing us with tools for building production-ready Docker images:
 
 [PHP](https://github.com/php/)
-: The PHP Team for providing us the base image including the newest PHP Versions.
+: The PHP Team for providing the base images including the newest PHP versions.
 
 [mlocati](https://github.com/mlocati/docker-php-extension-installer)
-: For providing an even better PHP extension installer and a lot of supported extensions.
+: For the PHP extension installer and the large list of supported extensions.
 
 [renatomefi](https://github.com/renatomefi/php-fpm-healthcheck)
 : For the FPM healthcheck script.

@@ -55,22 +55,22 @@ Forwards the execution flows to another controller/action.
 
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
-use App\Back\Bootstrap as Back;
-use App\Front\Bootstrap as Front;
+use MyApp\Back\Bootstrap as Back;
+use MyApp\Front\Bootstrap as Front;
 
 $modules = [
     "frontend" => [
         "className" => Front::class,
         "path"      => __DIR__ . "/app/Modules/Front/Bootstrap.php",
         "metadata"  => [
-            "controllersNamespace" => "App\Front\Controllers",
+            "controllersNamespace" => "MyApp\Front\Controllers",
         ],
     ],
     "backend" => [
         "className" => Back::class,
         "path"      => __DIR__ . "/app/Modules/Back/Bootstrap.php",
         "metadata"  => [
-            "controllersNamespace" => "App\Back\Controllers",
+            "controllersNamespace" => "MyApp\Back\Controllers",
         ],
     ],
 ];
@@ -172,7 +172,7 @@ Gets last dispatched controller name
 
 !!! warning "WARNING"
 
-    `getControllerName()` returns the controller name exactly as it was defined - no case conversion is applied. When using string-based route definitions (e.g. `$router->add('/path', 'Page::action')`), the name returned will match the case used in the route string (`'Page'`). In Phalcon 4, this value was automatically uncamelized (e.g. `'HogeHoge'` became `'hoge_hoge'`). That conversion was removed in Phalcon 5. If your code (or Volt templates) compares `getControllerName()` against a lowercase or uncamelized value, you must update those comparisons to match the exact case used in your route definitions.
+    `getControllerName()` returns the controller name exactly as it was defined - no case conversion is applied. When using string-based route definitions (e.g. `$router->add('/path', 'Page::action')`), the name returned will match the case used in the route string (`'Page'`). If your code (or Volt templates) compares `getControllerName()` against a lowercase or uncamelized value, you must update those comparisons to match the exact case used in your route definitions.
 
 ```php
 public function getDefaultNamespace(): string
@@ -224,7 +224,7 @@ public function getParam(
 ): mixed
 ```
 
-Gets a parameter by its name or numeric index. Deprecated as of 5.15; use `getParameter()` instead.
+Gets a parameter by its name or numeric index. Deprecated; use `getParameter()` instead.
 
 ```php
 public function getParameter(
@@ -246,7 +246,7 @@ Gets action params
 public function getParams(): array
 ```
 
-Gets action params. Deprecated as of 5.15; use `getParameters()` instead.
+Gets action params. Deprecated; use `getParameters()` instead.
 
 ```php
 public function getPreviousActionName(): string
@@ -264,7 +264,7 @@ Gets previous dispatched controller name. This is an MVC-specific alias for `get
 public function getPreviousHandlerName(): string
 ```
 
-Gets previous dispatched handler name. Available on the base dispatcher as of 5.15, so both [Phalcon\Mvc\Dispatcher][mvc-dispatcher] and `Phalcon\Cli\Dispatcher` expose it.
+Gets previous dispatched handler name. Available on the base dispatcher, so both [Phalcon\Mvc\Dispatcher][mvc-dispatcher] and `Phalcon\Cli\Dispatcher` expose it.
 
 ```php
 public function getPreviousNamespaceName(): string
@@ -284,7 +284,7 @@ public function hasParam(
 ): bool
 ```
 
-Check if a param exists. Deprecated as of 5.15; use `hasParameter()` instead.
+Check if a param exists. Deprecated; use `hasParameter()` instead.
 
 ```php
 public function hasParameter(
@@ -412,7 +412,7 @@ public function setParam(
 ): void
 ```
 
-Set a param by its name or numeric index. Deprecated as of 5.15; use `setParameter()` instead.
+Set a param by its name or numeric index. Deprecated; use `setParameter()` instead.
 
 ```php
 public function setParameter(
@@ -429,7 +429,7 @@ public function setParams(
 ): void
 ```
 
-Sets action params to be dispatched. Deprecated as of 5.15; use `setParameters()` instead.
+Sets action params to be dispatched. Deprecated; use `setParameters()` instead.
 
 ```php
 public function setParameters(
@@ -684,7 +684,7 @@ In the example above, we get the `invoiceId` as the first parameter passed and a
 
 !!! info "NOTE"
 
-    As of 5.15 the `getParameter()`, `getParameters()`, `hasParameter()`, `setParameter()`, and `setParameters()` methods are the canonical parameter accessors. The shorter `getParam()`, `getParams()`, `hasParam()`, `setParam()`, and `setParams()` spellings are deprecated and will be removed in a future major release. Both spellings behave identically today, so existing code continues to work.
+    The `getParameter()`, `getParameters()`, `hasParameter()`, `setParameter()`, and `setParameters()` methods are the canonical parameter accessors. The shorter `getParam()`, `getParams()`, `hasParam()`, `setParam()`, and `setParams()` spellings are deprecated and will be removed in a future major release. Both spellings behave identically today, so existing code continues to work.
 
 ## Actions
 
@@ -1217,7 +1217,7 @@ You can use the `dispatcher::beforeForward` event to change modules and perform 
 ```php
 <?php
 
-use App\Back\Bootstrap;
+use MyApp\Back\Bootstrap;
 use Phalcon\Di\Di;
 use Phalcon\Events\Manager;
 use Phalcon\Mvc\Dispatcher;
@@ -1230,7 +1230,7 @@ $modules = [
         'className' => Bootstrap::class,
         'path'      => '/app/Modules/Back/Bootstrap.php',
         'metadata'  => [
-            'controllersNamespace' => 'App\Back\Controllers',
+            'controllersNamespace' => 'MyApp\Back\Controllers',
         ],
     ],
 ];
@@ -1255,7 +1255,7 @@ $manager->attach(
 
 $dispatcher = new Dispatcher();
 $dispatcher->setDI($container);
-dispatcher->setManager($manager);
+$dispatcher->setEventsManager($manager);
 $container->set('dispatcher', $dispatcher);
 
 $dispatcher->forward(
@@ -1271,7 +1271,7 @@ echo $dispatcher->getModuleName();
 
 ## Interfaces and Contracts
 
-As of 5.15 the dispatcher exposes canonical contracts under the `Phalcon\Contracts` namespace. These are the long-term types to code against. The historical `*Interface` types still exist and now extend the matching contract, so existing type hints keep working, but they are deprecated and will be removed in a future major release.
+The dispatcher exposes canonical contracts under the `Phalcon\Contracts` namespace. These are the long-term types to code against. The historical `*Interface` types still exist and now extend the matching contract, so existing type hints keep working, but they are deprecated and will be removed in a future major release.
 
 | Deprecated interface                     | Canonical contract                        |
 |------------------------------------------|-------------------------------------------|
@@ -1299,12 +1299,12 @@ The [Phalcon\Mvc\DispatcherInterface][mvc-dispatcherinterface] interface must be
 
 !!! info "NOTE"
 
-    As of 5.15, prefer implementing the canonical `Phalcon\Contracts\Mvc\Dispatcher` contract. `Phalcon\Mvc\DispatcherInterface` still works (it extends the contract) but is deprecated. See [Interfaces and Contracts](#interfaces-and-contracts).
+    Prefer implementing the canonical `Phalcon\Contracts\Mvc\Dispatcher` contract. `Phalcon\Mvc\DispatcherInterface` still works (it extends the contract) but is deprecated. See [Interfaces and Contracts](#interfaces-and-contracts).
 
 ```php
 <?php
 
-namespace MyApp\Mvc
+namespace MyApp\Mvc;
 
 use Phalcon\Mvc\DispatcherInterface;
 
@@ -1448,7 +1448,7 @@ Any exception thrown by the `Phalcon\Dispatcher\AbstractDispatcher` or its MVC/C
 
 ### Granular Exceptions
 
-As of 5.14 the dispatcher raises granular subclasses of its `Exception` types so callers can catch a specific failure mode. Existing `catch (Phalcon\Dispatcher\Exception $e)` blocks continue to work unchanged.
+The dispatcher raises granular subclasses of its `Exception` types so callers can catch a specific failure mode. Existing `catch (Phalcon\Dispatcher\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                          | Parent                             | Thrown when                                                                     |
 |----------------------------------------------------------------|------------------------------------|---------------------------------------------------------------------------------|

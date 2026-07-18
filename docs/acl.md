@@ -822,7 +822,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Acl\Exception` so callers can catch a specific failure mode. Legacy `catch (Phalcon\Acl\Exception $e)` still works because every subclass extends the umbrella type.
+The component raises granular subclasses of `Phalcon\Acl\Exception` so callers can catch a specific failure mode. Legacy `catch (Phalcon\Acl\Exception $e)` still works because every subclass extends the umbrella type.
 
 | Class                                                   | Parent                  | Thrown when                                                          |
 |---------------------------------------------------------|-------------------------|----------------------------------------------------------------------|

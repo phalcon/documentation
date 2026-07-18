@@ -36,7 +36,7 @@ hasMany(
     string|array $fields, 
     string $referenceModel, 
     string|array $referencedFields, 
-    array options = null
+    array $options = null
 )
 ```
 
@@ -47,7 +47,7 @@ belongsTo(
     string|array $fields, 
     string $referenceModel, 
     string|array $referencedFields, 
-    array options = null
+    array $options = null
 )
 ```
 
@@ -661,7 +661,7 @@ $products = Products::find(
     [
         'conditions' => 'prd_id IN ({array:productIds})',
         'bind'       => [
-            'productIds' => $productIds,,
+            'productIds' => $productIds,
         ],
     ]
 );

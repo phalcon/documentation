@@ -818,7 +818,7 @@ $helper = new HelperFactory();
 $source = [1, 2, 3, 4, 5];
 
 $result = $helper->validateAny(
-    $collection,
+    $source,
     function ($element) {
         return $element < 2;
     }
@@ -863,7 +863,7 @@ $whiteList = [
     3.1415,
 ];
 
-$result = $helper->whitelist($source, $blackList);
+$result = $helper->whitelist($source, $whiteList);
 
 var_dump($result);
 // [

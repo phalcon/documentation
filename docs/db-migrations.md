@@ -12,7 +12,7 @@ https://github.com/phalcon/migrations
 
 ## Requirements
 
-* PHP >= 7.5
+* PHP >= 8.1
 * Phalcon >= 5.0.0
 
 ## Installing via Composer

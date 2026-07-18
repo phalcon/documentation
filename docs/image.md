@@ -59,11 +59,11 @@ Each adapter offers getters to provide information about the component:
 
 ## GD
 
-[Phalcon\Image\Adapters\Gd][image-adapter-gd] utilizes the [GD PHP extension][gd]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
+[Phalcon\Image\Adapter\Gd][image-adapter-gd] utilizes the [GD PHP extension][gd]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
 ## Imagick
 
-[Phalcon\Image\Adapters\Imagick][image-adapter-imagick] utilizes the [ImageMagick PHP extension][imagick]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
+[Phalcon\Image\Adapter\Imagick][image-adapter-imagick] utilizes the [ImageMagick PHP extension][imagick]. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
 ## Blank Images
 
@@ -200,9 +200,9 @@ This method is only available in the [Phalcon\Image\Imagick][image-adapter-imagi
 ```php
 <?php
 
-use Phalcon\Image\Adapter\Gd;
+use Phalcon\Image\Adapter\Imagick;
 
-$image = new Gd('image.jpg');
+$image = new Imagick('image.jpg');
 
 $image->liquidRescale(500, 200, 3, 25);
 
@@ -731,7 +731,7 @@ class MyImageAdapter implements AdapterInterface
     /**
      * Rotate the image
      */
-    public function rotate(int degrees);
+    public function rotate(int $degrees);
 
     /**
      * Save the image
@@ -797,7 +797,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Image\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Image\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Image\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Image\Exception $e)` blocks continue to work unchanged.
 
 | Class                                           | Parent                    | Thrown when                                                                |
 |-------------------------------------------------|---------------------------|----------------------------------------------------------------------------|

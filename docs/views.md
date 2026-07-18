@@ -42,13 +42,13 @@ There are several constants that control the behavior of the rendering process o
 ## Methods
 
 ```php
-public function __construct(array options = [])
+public function __construct(array $options = [])
 ```
 
 Phalcon\Mvc\View constructor
 
 ```php
-public function __get(string $key): mixed | null
+public function __get(string $key): mixed
 ```
 
 Magic method to retrieve a variable passed to the view
@@ -68,7 +68,7 @@ echo isset($this->view->invoices);
 ```
 
 ```php
-public function __set(string $key, var value)
+public function __set(string $key, mixed $value)
 ```
 
 Magic method to pass variables to the views
@@ -218,7 +218,7 @@ public function getRender(
     string $controllerName, 
     string $actionName, 
     array $params = [], 
-    mixed configCallback = null
+    mixed $configCallback = null
 ): string
 ```
 
@@ -285,7 +285,7 @@ $this->partial(
 Show a partial inside another view with parameters
 
 ```php
-public function pick(var renderView): View
+public function pick(mixed $renderView): View
 ```
 
 Choose a different view to render instead of last-controller/last-action
@@ -402,7 +402,7 @@ $view->setLayoutsDir(
 
 ```php
 public function setMainView(
-    string viewPath
+    string $viewPath
 ): View
 ```
 
@@ -527,7 +527,7 @@ Starts rendering process enabling the output buffering
 public function toString(
     string $controllerName,
     string $actionName,
-    array params = []
+    array $params = []
 ): string
 ```
 
@@ -1041,7 +1041,7 @@ Automatic rendering must be disabled in [Phalcon\Mvc\Application][application] (
 ```php
 <?php
 
-use Phalcon\Di\FactoryDefault;;
+use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Application;
 
 try {
@@ -1618,7 +1618,7 @@ $manager->attach(
 
 ## Exceptions
 
-Any exceptions thrown in the view components ([Phalcon\Mvc\View][mvc-view] or [Phalcon\Mvc\View\Simple][mvc-view-simple]) will be of type [Phalcon\Mvc\Exception][mvc-view-exception] or [Phalcon\View\Engine\Volt\Exception][mvc-view-engine-volt-exception] if you are using [Volt][volt]. You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the view components ([Phalcon\Mvc\View][mvc-view] or [Phalcon\Mvc\View\Simple][mvc-view-simple]) will be of type [Phalcon\Mvc\View\Exception][mvc-view-exception] or [Phalcon\Mvc\View\Engine\Volt\Exception][mvc-view-engine-volt-exception] if you are using [Volt][volt]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -1653,7 +1653,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the view components raise granular subclasses of `Phalcon\Mvc\View\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\View\Exception $e)` blocks continue to work unchanged.
+The view components raise granular subclasses of `Phalcon\Mvc\View\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\View\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                       | Parent                       | Thrown when                                                                         |
 |-------------------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------|

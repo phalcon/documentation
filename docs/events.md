@@ -354,8 +354,8 @@ You can also create a _listener_ class, which offers more flexibility. In a list
 
 namespace MyApp\Listeners;
 
-use Phalcon\Logger;
-use Phalcon\Config;
+use Phalcon\Logger\Logger;
+use Phalcon\Config\Config;
 use Phalcon\Db\AdapterInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\Event;
@@ -410,7 +410,7 @@ Another handy listener is the `404` one:
 
 namespace MyApp\Listeners\Dispatcher;
 
-use Phalcon\Logger;
+use Phalcon\Logger\Logger;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
@@ -774,12 +774,12 @@ Now we need to create a listener for this component:
 namespace MyApp\Listeners;
 
 use Phalcon\Events\Event;
-use Phalcon\Logger;
+use Phalcon\Logger\Logger;
 
 /**
  * @property Logger $logger
  */
-class MotificationsListener
+class NotificationsListener
 {
     /**
      * @var Logger
@@ -812,12 +812,12 @@ Putting it all together
 ```php
 <?php
 
-use MyApp\Components\NotificationAware;
-use MyApp\Listeners\MotificationsListener;
+use MyApp\Components\NotificationsAware;
+use MyApp\Listeners\NotificationsListener;
 use Phalcon\Events\Manager as EventsManager;
 
 $eventsManager = new EventsManager();
-$component     = new NotificationAware();
+$component     = new NotificationsAware();
 
 $component->setEventsManager($eventsManager);
 
@@ -1164,8 +1164,8 @@ For instance, if we want to send a user to the `/login` page if they are not log
 
 namespace MyApp\Controller;
 
-use Phalcon\Logger;
-use Phalcon\Dispatcher;
+use Phalcon\Logger\Logger;
+use Phalcon\Mvc\Dispatcher;
 use Phalcon\Http\Response;
 use Phalcon\Mvc\Controller;
 use MyApp\Auth\Adapters\AbstractAdapter;
@@ -1357,7 +1357,7 @@ class EventsManager implements ManagerInterface
 
 ### Extending the Built-in Manager
 
-Instead of implementing the contract from scratch, you can extend [Phalcon\Events\Manager][events-manager] directly. `fire()` is no longer `final` as of 5.14.0, so a subclass can hook the dispatch lifecycle. Two protected extension seams are provided so common cases do not require reimplementing `fire()` itself:
+Instead of implementing the contract from scratch, you can extend [Phalcon\Events\Manager][events-manager] directly. `fire()` is not `final`, so a subclass can hook the dispatch lifecycle. Two protected extension seams are provided so common cases do not require reimplementing `fire()` itself:
 
 - `beforeFire(string $eventType, object $source, mixed $data = null, bool $cancelable = true): bool` runs before the event is dispatched. Returning `false` aborts the fire and `fire()` returns `null`. It runs before the no-listener short-circuit, so it observes every `fire()` call, including those with no attached listeners. The base implementation returns `true`.
 - `afterFire(mixed $status, string $eventType, object $source, mixed $data = null, bool $cancelable = true): mixed` runs after the event has been dispatched. It receives the computed dispatch result as `$status` and returns the value `fire()` hands back to its caller. The base implementation returns `$status` unchanged.
@@ -1428,7 +1428,7 @@ A `fire()` whose event type starts with `queue:` is pushed onto the external que
 
 !!! info "NOTE"
 
-    The events manager can be subclassed. Both [Phalcon\Events\Manager::fire()][events-manager] and [Phalcon\Events\Event][events-event] were declared `final` in 5.13.0 and reopened in 5.14.0. To add a custom event type, implement [Phalcon\Contracts\Events\Event][contracts-event] rather than extending the concrete class.
+    The events manager can be subclassed. To add a custom event type, implement [Phalcon\Contracts\Events\Event][contracts-event] rather than extending the concrete class.
 
 ## List of Events
 
@@ -1570,7 +1570,7 @@ Any exceptions thrown in the Events component will be of type [Phalcon\Events\Ex
 ```php
 <?php
 
-use Phalcon\Events\EventsManager;
+use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Events\Exception;
 
 try {
@@ -1583,7 +1583,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Events\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Events\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Events\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Events\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                      | Parent                     | Thrown when                                                                    |
 |------------------------------------------------------------|----------------------------|--------------------------------------------------------------------------------|

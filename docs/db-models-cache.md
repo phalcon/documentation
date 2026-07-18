@@ -297,9 +297,9 @@ Then you can use this abstract class to models that you need to be cachable and 
 
 namespace MyApp\Models;
 
-use MyApp\Models\AbstractCachable;
+use MyApp\Models\AbstractCacheable;
 
-class Invoices extends AbstractCachable
+class Invoices extends AbstractCacheable
 {
 
 }
@@ -552,7 +552,7 @@ class Invoices extends Model
     {
         $cache = Di::getDefault()->get('cache');
         
-        return $cache->save($cacheKey, $results);
+        return $cache->set($cacheKey, $results);
     }
 
     protected static function generateCacheKey(array $parameters)
@@ -804,7 +804,7 @@ class CustomQuery extends ModelQuery
         $result   = $this->uniqueRow ? $result->getFirst(): $result;
         $cacheKey = $this->calculateKey();
 
-        $this->getDI()->get('cache')->save($cacheKey, $result);
+        $this->getDI()->get('cache')->set($cacheKey, $result);
 
         return $result;
     }

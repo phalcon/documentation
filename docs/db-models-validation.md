@@ -39,7 +39,7 @@ class Customers extends Model
 
 Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforces your business rules.
 
-The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation][filter-validation] namespace.
+The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Filter\Validation][filter-validation] namespace.
 
 ```php
 <?php
@@ -144,8 +144,8 @@ class Invoices extends Model
                     break;
 
                 case 'InvalidUpdateAttempt':
-                    $messages[] = "The record cannot be updated '
-                                . 'because it doesn't exist";
+                    $messages[] = 'The record cannot be updated '
+                                . 'because it does not exist';
                     break;
 
                 case 'PresenceOf':
@@ -201,7 +201,7 @@ The [validation][filter-validation] document explains in detail how you can crea
 namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Message;
+use Phalcon\Messages\Message;
 
 class Invoices extends Model
 {

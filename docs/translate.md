@@ -569,7 +569,7 @@ There are more adapters available for these components in the [Phalcon Incubator
 In many cases, the translated strings need to be with data. With interpolation, you can inject a variable from your code to the translated message at a specific place. The placeholder in the message is enclosed with `%` characters.
 
 ```text
-Hello %name, good %time%!
+Hello %name%, good %time%!
 Salut %name%, bien %time%!
 ```
 
@@ -705,7 +705,7 @@ Any exception thrown in the Translate component will be of type [Phalcon\Transla
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Translate\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Translate\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Translate\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Translate\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                    | Parent                        | Thrown when                                                                      |
 |----------------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------|

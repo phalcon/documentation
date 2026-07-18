@@ -260,7 +260,7 @@ Returns an array of Phalcon\Db\Column objects describing a table
 ```php
 public function describeIndexes(
     string $table, 
-        string $schema = null
+    string $schema = null
 ): IndexInterface[]
 ```
 
@@ -336,7 +336,7 @@ Drops a view
 
 ```php
 public function escapeIdentifier(
-    mixed identifier
+    mixed $identifier
 ): string
 ```
 
@@ -381,8 +381,8 @@ Returns the nth field of the first row in a SQL query result
 
 ```php
 $invoicesCount = $connection
-    ->fetchColumn('SELECT count(*) FROM co_invoices')
-print_r($invoicesCount)
+    ->fetchColumn('SELECT count(*) FROM co_invoices');
+print_r($invoicesCount);
 
 $invoice = $connection->fetchColumn(
     'SELECT inv_id, inv_title 
@@ -390,8 +390,8 @@ $invoice = $connection->fetchColumn(
     ORDER BY inv_created_at DESC',
     [],
     1
-)
-print_r($invoice)
+);
+print_r($invoice);
 ```
 
 ```php
@@ -541,7 +541,7 @@ $success = $connection->insertAsDict(
         'inv_cst_id' => 1,
         'inv_title'  => 'Invoice for ACME Inc.',
     ]
-)
+);
 
 // SQL
 // INSERT INTO `co_invoices` 
@@ -716,7 +716,7 @@ $success = $connection->updateAsDict(
         'inv_title' => 'Invoice for ACME Inc.',
     ],
     'inv_id = 1'
-)
+);
 
 // SQL
 // UPDATE `co_invoices` 
@@ -776,9 +776,9 @@ The example below shows how you can create a MySQL adapter with the `new` keywor
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\MySQL;
+use Phalcon\Db\Adapter\Pdo\Mysql;
 
-$connection = new MySQL(
+$connection = new Mysql(
     [
         'host'     => 'localhost',
         'username' => 'root',
@@ -864,8 +864,8 @@ We instantiate the dialect. We add the custom function so that PHQL understands 
 ```php
 <?php
 
-use Phalcon\Db\Dialect\MySQL as SqlDialect;
-use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+use Phalcon\Db\Dialect\Mysql as SqlDialect;
+use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
 
 $dialect = new SqlDialect();
 
@@ -1286,7 +1286,7 @@ With conditionals escaped (alternative syntax)
 <?php
 
 $sql     = '
-DELETE 
+DELETE FROM
    `co_invoices` 
 WHERE
    `inv_id` = 4
@@ -1300,7 +1300,7 @@ Raw SQL
 <?php
 
 $sql     = '
-DELETE 
+DELETE FROM
    `co_invoices` 
 WHERE
    `inv_id` = ?
@@ -1397,7 +1397,7 @@ while ($invoice = $result->fetch()) {
 
 $invoices = $connection->fetchAll($sql, Phalcon\Db\Enum::FETCH_ASSOC);
 // or using the previous query() method
-$invoices = $result->fetchAll(Phalcon\Db\Enum::FETCH_ASSOC)
+$invoices = $result->fetchAll(Phalcon\Db\Enum::FETCH_ASSOC);
 
 foreach ($invoices as $invoice) {
    echo $invoice['inv_title'];
@@ -1822,9 +1822,9 @@ Working with transactions is supported the same way as with PDO. Using transacti
 try {
     $connection->begin();
 
-    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 1');
-    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 2');
-    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 3');
+    $connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 1');
+    $connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 2');
+    $connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 3');
 
     $connection->commit();
 } catch (Exception $e) {
@@ -1832,7 +1832,7 @@ try {
 }
 ```
 
-In addition to standard transactions, the adapters offer provides built-in support for [nested transactions][nested_transactions], if the database system used supports them. When you call `begin()` for a second time a nested transaction is created:
+In addition to standard transactions, the adapters provide built-in support for [nested transactions][nested_transactions], if the database system used supports them. When you call `begin()` for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -1840,20 +1840,20 @@ In addition to standard transactions, the adapters offer provides built-in suppo
 try {
     $connection->begin();
 
-    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 1');
+    $connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 1');
 
     try {
         $connection->begin();
 
-        $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 2');
-        $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 3');
+        $connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 2');
+        $connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 3');
 
         $connection->commit();
     } catch (Exception $e) {
         $connection->rollback();
     }
 
-    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 4');
+    $connection->execute('DELETE FROM `co_invoices` WHERE `inv_id` = 4');
 
     $connection->commit();
 } catch (Exception $e) {
@@ -2244,7 +2244,7 @@ The `createTable` method accepts an associative array describing the table. Colu
 | `generated`        | SQL expression for a generated/computed column. When set, `default` and `autoIncrement` are not allowed                                                                                  |   Yes    |
 | `generationStored` | `true` emits `STORED`, `false` (default) emits `VIRTUAL`. Only meaningful with `generated`. PostgreSQL always emits `STORED`                                                             |   Yes    |
 | `invisible`        | `true` declares an INVISIBLE column (MySQL 8.0.23+). PostgreSQL and SQLite ignore the flag                                                                                               |   Yes    |
-| `notNull`          | Column can store null values                                                                                                                                                             |   Yes    |
+| `notNull`          | Column cannot store null values                                                                                                                                                             |   Yes    |
 | `primary`          | `true` if the column is part of the table's primary key                                                                                                                                  |   Yes    |
 | `scale`            | `DECIMAL` or `NUMBER` columns maybe have a scale to specify how many decimals should be stored                                                                                           |   Yes    |
 | `size`             | Some types of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                                                               |   Yes    |
@@ -3069,6 +3069,7 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Db\Exception` so
 | `Phalcon\Db\Exceptions\UnrecognizedDataType`              | `Phalcon\Db\Exception` | A column declares a data type the dialect cannot map.                                        |
 | `Phalcon\Db\Exceptions\UpdateFieldCountMismatch`          | `Phalcon\Db\Exception` | The number of update fields does not match the number of bound values.                       |
 
+[db-abstractdb]: api/phalcon_db.md#dbabstractdb
 [db-adapter-abstractadapter]: api/phalcon_db.md#dbadapterabstractadapter
 [db-adapter-adapterinterface]: api/phalcon_db.md#dbadapteradapterinterface
 [db-adapter-pdo-abstractpdo]: api/phalcon_db.md#dbadapterpdoabstractpdo

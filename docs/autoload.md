@@ -4,7 +4,7 @@
 
 !!! warning "WARNING"
 
-    The `Phalcon\Autoload\Loader` class has been renamed `Phalcon\Autoload\Loader`. The functionality remains the same.
+    The `Phalcon\Loader` class has been renamed `Phalcon\Autoload\Loader`. The functionality remains the same.
 
 ## Overview
 
@@ -235,7 +235,7 @@ $loader->register();
 
 In the above example, we are defining the relationship between a namespaced class and a file. As you can see, the loader will be as fast as it can be but the list will start growing, the more our application grows, making maintenance difficult. If however, your application does not have that many components, there is no reason why you cannot use this method of autoloading components.
 
-As of 5.15, if a class-map entry points to a file that does not exist, the loader no longer reports the class as loaded. It falls through to the namespace and directory strategies, giving them a chance to resolve the class. Previously the missing file was reported as loaded, short-circuiting those strategies and surfacing as a `class not found` fatal.
+If a class-map entry points to a file that does not exist, the loader does not report the class as loaded. It falls through to the namespace and directory strategies, giving them a chance to resolve the class.
 
 The `setClasses()` method also accepts a second parameter `merge`. By default, it is `false`. You can however set it to `true` when having multiple calls to `setClasses()` so that the class definitions are merged.
 
@@ -463,7 +463,7 @@ foreach ($loader->getDirectories() as $key => $directory) {
 }
 ```
 
-Prior to 5.14 the key was a SHA-256 hex digest of the value. Application code that depended on that opaque digest (for example to construct a lookup key) must read the value directly or use `in_array()` / `isset($getter[$value])`.
+To test membership, read entries by value, or use `in_array()` / `isset($getter[$value])`.
 
 ## File Checking Callback
 
@@ -556,7 +556,7 @@ $loader->register();
 
 In the above example, we create a new Events Manager object, attach a method to the `loader:beforeCheckPath` event, and then set it in our autoloader. Every time the loader loops and looks for a particular file in a specific path, the path will be printed on the screen.
 
-The `getCheckedPath()` holds the path that is scanned during each iteration of the internal loop. You can also use the `getFoundPath()` method, which holds the path of the file that was loaded. As of 5.15, `getFoundPath()` is populated for every lookup strategy - class map, namespace and directory - not only for registered files. The `loader:pathFound` event also fires once per loaded file, from the point where the file is required.
+The `getCheckedPath()` holds the path that is scanned during each iteration of the internal loop. You can also use the `getFoundPath()` method, which holds the path of the file that was loaded. `getFoundPath()` is populated for every lookup strategy - class map, namespace and directory - not only for registered files. The `loader:pathFound` event also fires once per loaded file, from the point where the file is required.
 
 For events that can stop operation, all you will need to do is return `false` in the method that is attached to the particular event:
 
@@ -608,7 +608,7 @@ Some things to keep in mind when using the autoloader:
 
 The `Phalcon\Autoload\Loader` can be instantiated by passing `true` to the constructor, so that you can enable debug mode. In debug mode, the loader will collect data about searching and finding files that are requested. You can then use the `getDebug()` method to output the debug messages, to diagnose issues.
 
-As of 5.15, the debug trail spans nested autoloads. When a loaded class requires a not-yet-loaded parent, the inner autoload no longer resets the trail; the trail is reset only on the outermost call, so it reflects the full resolution of the originally requested class.
+The debug trail spans nested autoloads. When a loaded class requires a not-yet-loaded parent, the inner autoload does not reset the trail; the trail is reset only on the outermost call, so it reflects the full resolution of the originally requested class.
 
 ```php
 <?php
@@ -669,7 +669,7 @@ public function addNamespace(
   string $name,
   mixed $directories,
   bool $prepend = false
-): Loade
+): Loader
 ```
 
 Adds a namespace to the loader, mapping it to different directories. The third parameter allows to prepend the namespace.
@@ -786,8 +786,8 @@ Register files that are "non-classes" and hence need a "require". This is useful
 
 ```php
 public function setNamespaces(
-    array namespaces, 
-    bool merge = false
+    array $namespaces, 
+    bool $merge = false
 ): Loader
 ```
 
@@ -805,14 +805,14 @@ Any exceptions thrown in the `Phalcon\Autoload` component will be of type [Phalc
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Autoload\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Autoload\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Autoload\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Autoload\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                   | Parent                       | Thrown when                                                         |
 |---------------------------------------------------------|------------------------------|---------------------------------------------------------------------|
 | `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` | `Phalcon\Autoload\Exception` | A namespace or directory registration is passed a non-array value.  |
 | `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`   | `Phalcon\Autoload\Exception` | The autoload callback registered with `register()` is not callable. |
 
-As of 5.15, when `LoaderDirectoriesNotArray` is raised from a namespace registration, the message names the namespace whose directory value was invalid.
+When `LoaderDirectoriesNotArray` is raised from a namespace registration, the message names the namespace whose directory value was invalid.
 
 [apcu]: https://php.net/manual/en/book.apcu.php
 [autoloading]: https://www.php.net/manual/en/language.oop5.autoload.php

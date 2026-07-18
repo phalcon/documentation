@@ -12,7 +12,7 @@ Controllers in Phalcon **must** have the suffix `Controller` in their file and c
 
 !!! info "NOTE"
 
-    The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
+    The default controller (when no controller has been specified in the URL) is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
 
 ## Routing
 
@@ -132,7 +132,7 @@ We can utilize the [Dispatcher][dispatcher] object to forward the request to a d
 ```php
 <?php
 
-use Phalcon\Dispatcher;
+use Phalcon\Mvc\Dispatcher;
 use Phalcon\Flash\Direct;
 use Phalcon\Mvc\Controller;
 
@@ -294,7 +294,7 @@ You can also remove the parameters from the action declaration and retrieve them
 ```php
 <?php
 
-use Phalcon\Dispatcher;
+use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\Controller;
 
 /**
@@ -342,7 +342,7 @@ $controller->setEventsManager($eventsManager);
 ```php
 <?php
 
-use Phalcon\Dispatcher;
+use Phalcon\Mvc\Dispatcher;
 use Phalcon\Flash\Direct;
 use Phalcon\Mvc\Controller;
 

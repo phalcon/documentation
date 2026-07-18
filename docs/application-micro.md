@@ -2495,7 +2495,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Micro\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Micro\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Micro\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Micro\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                       | Parent                        | Thrown when                                                          |
 |-------------------------------------------------------------|-------------------------------|----------------------------------------------------------------------|
