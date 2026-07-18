@@ -448,16 +448,6 @@
         font-weight: 400;
     }
 
-    /* Flat sidebar links instead of padded pills */
-    .md-nav__link {
-        border-radius: 0;
-        gap: .4rem;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: .625em;
-        padding: 0;
-    }
-
     /* Classic code block corners and inline code metrics */
     .md-typeset code {
         border-radius: .1rem;
