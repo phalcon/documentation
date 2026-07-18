@@ -1,0 +1,64 @@
+# ADR - Error Responder
+
+- - -
+
+## Overview
+
+The error responder is the framework's safety net. The [application][front] wraps the whole request in a single `try`/`catch`, so any `Throwable` that escapes a [domain][domain], an [action][actions], or a [middleware][middleware] is handed to the error responder instead of reaching the client raw. It turns that exception into a proper response using the same [responder][responders] machinery as a successful request.
+
+It is `Phalcon\ADR\ErrorResponder`, and it is always in place: it autowires from the [container][provider] seams (a JSON responder and a logger) and is injected into the application, which routes every `Throwable` through it. There is even a bare `500` fallback if the error responder itself fails, so a request can never end without a response.
+
+## Mapping exceptions to a status
+
+The error responder chooses the HTTP status by mapping the exception's class to a [Status][payload]. Out of the box it knows the framework's own routing exceptions:
+
+| Exception | Status | HTTP |
+| --------- | ------ | ---- |
+| `Phalcon\ADR\Router\Exceptions\RouteNotFound` | `NOT_FOUND` | `404` |
+| `Phalcon\ADR\Router\Exceptions\MethodNotAllowed` | `METHOD_NOT_ALLOWED` | `405` |
+
+**Any exception it does not recognize is treated as a server error and rendered as a `500`.** So to give your own exceptions a meaningful status, add them to the map:
+
+```php
+[
+    MyApp\Exception\Forbidden::class     => Status::NOT_AUTHORIZED,   // 403
+    MyApp\Exception\Unprocessable::class => Status::NOT_VALID,        // 422
+]
+```
+
+Matching is deterministic and order-independent: an exact class match is tried first, then the nearest ancestor (parent classes, then interfaces). A broad base class in the map can never shadow a more specific subclass.
+
+## What the client sees, and what you see
+
+By default the error responder does not leak internals. The response body carries a generic message and the correlation reference:
+
+```json
+{ "message": "Internal Server Error", "ref": "a1b2c3d4e5f6a7b8" }
+```
+
+The full diagnostic (the exception class, message, file, line, and the exception object itself) goes to the **log**, not the client. Enable `debug` to include the real message and stack trace in the response during development.
+
+Every error carries that correlation **`ref`**: the request's `X-Request-Id` (set by [RequestIdMiddleware][middleware]) when one is present, otherwise a freshly generated value. The same `ref` appears in the log line and in the response body, so a user who reports a `ref` points you straight to the matching log entry.
+
+## Configuration
+
+The error responder takes four constructor arguments, all with defaults so it works with no configuration at all:
+
+```php
+public function __construct(
+    Phalcon\Contracts\ADR\Responder\Responder $chain,   // how the error payload is rendered
+    Phalcon\Contracts\Logger\Logger $logger,            // where the diagnostic is logged
+    bool $debug = false,                                // expose detail in the response?
+    array $exceptionMap = []                            // your exception => status entries
+);
+```
+
+To supply your own exception map or turn on `debug`, bind your configured error responder in the [container][provider].
+
+[front]: adr-front-controller.md
+[domain]: adr-domain.md
+[actions]: adr-actions.md
+[middleware]: adr-middleware.md
+[responders]: adr-responders.md
+[payload]: adr-payload.md
+[provider]: adr-container.md
