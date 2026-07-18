@@ -199,6 +199,21 @@ nav:
       - Container: container.md
       - DI Container: di.md
       - MVC: mvc.md
+      - ADR:
+          - Overview: adr.md
+          - Actions: adr-actions.md
+          - Domain: adr-domain.md
+          - Payload: adr-payload.md
+          - Responders: adr-responders.md
+          - Input: adr-input.md
+          - Front Controller: adr-front-controller.md
+          - Router: adr-router.md
+          - Dispatcher: adr-dispatcher.md
+          - Middleware: adr-middleware.md
+          - Emitter: adr-emitter.md
+          - Error Responder: adr-error-responder.md
+          - Container: adr-container.md
+          - Migrating from MVC: mvc-to-adr.md
       - Namespaces: namespaces.md
   - Database:
       - Layer: db-layer.md
