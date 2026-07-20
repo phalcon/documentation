@@ -5318,11 +5318,11 @@ offering lower resource consumption and high performance.
 <p>If no parameters are passed in the constructor, the component will use the <code>aes-256-cfb</code> cipher with signing by default. You can always change the cipher as well as disable signing.</p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING</p>
-<p>The constructor also accepts a parameter for signing requests. For v5, the default value for this parameter has changed to <code>true</code></p>
+<p>The constructor also accepts a parameter for signing requests. The default value for this parameter is <code>true</code></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
-<p>The constructor accepts now a <a href="../api/phalcon_encryption/#encryptioncryptpadfactory">Phalcon\Encryption\Crypt\PadFactory</a> as a third parameter. If not specified, a <a href="../api/phalcon_encryption/#encryptioncryptpadfactory">Phalcon\Encryption\Crypt\PadFactory</a> object will be created for you</p>
+<p>The constructor accepts a <a href="../api/phalcon_encryption/#encryptioncryptpadfactory">Phalcon\Encryption\Crypt\PadFactory</a> as a third parameter. If not specified, a <a href="../api/phalcon_encryption/#encryptioncryptpadfactory">Phalcon\Encryption\Crypt\PadFactory</a> object will be created for you</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -5422,8 +5422,8 @@ offering lower resource consumption and high performance.
 <p>The getter <code>getCipher()</code> returns the currently selected cipher. If none has been explicitly defined either by the setter <code>setCipher()</code> or the constructor of the object the <code>aes-256-cfb</code> is selected by default. The <code>aes-256-gcm</code> is the preferable cipher.</p>
 <p>You can always get an array of all the available ciphers for your system by calling  <code>getAvailableCiphers()</code>.</p>
 <h3 id="hash-algorithm">Hash Algorithm<a class="headerlink" href="#hash-algorithm" title="Permanent link">&para;</a></h3>
-<p>The getter <code>getHashAlgo()</code> returns the hashing algorithm used by the component. If none has been explicitly defined by the setter <code>setHashAlgo()</code> the <code>sha256</code> will be used. If the hash algorithm defined is not available in the system or is wrong, a <a href="../api/phalcon_encryption/#encryptioncryptexceptionexception">Phalcon\Encryption\Crypt\Exception</a> will be thrown.</p>
-<p>You can always get an array of all the available hashing algorithms for your system by calling <code>getAvailableHashAlgos()</code>.</p>
+<p>The getter <code>getHashAlgorithm()</code> returns the hashing algorithm used by the component. If none has been explicitly defined by the setter <code>setHashAlgorithm()</code> the <code>sha256</code> will be used. If the hash algorithm defined is not available in the system or is wrong, a <a href="../api/phalcon_encryption/#encryptioncryptexceptionexception">Phalcon\Encryption\Crypt\Exception</a> will be thrown.</p>
+<p>You can always get an array of all the available hashing algorithms for your system by calling <code>getAvailableHashAlgorithms()</code>.</p>
 <h3 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h3>
 <p>The component offers a getter and a setter for the key to be used. Once the key is set, it will be used for any encrypting or decrypting operation (provided that the <code>key</code> parameter is not defined when using these methods).</p>
 <ul>
@@ -5715,7 +5715,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses under <code>Phalcon\Encryption\Crypt\Exception\</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Encryption\Crypt\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses under <code>Phalcon\Encryption\Crypt\Exception\</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Encryption\Crypt\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>

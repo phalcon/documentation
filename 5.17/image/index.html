@@ -5571,9 +5571,9 @@ offering lower resource consumption and high performance.
 </tbody>
 </table>
 <h2 id="gd">GD<a class="headerlink" href="#gd" title="Permanent link">&para;</a></h2>
-<p><a href="../api/phalcon_image/#imageadaptergd">Phalcon\Image\Adapters\Gd</a> utilizes the <a href="https://php.net/manual/en/book.image.php">GD PHP extension</a>. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.</p>
+<p><a href="../api/phalcon_image/#imageadaptergd">Phalcon\Image\Adapter\Gd</a> utilizes the <a href="https://php.net/manual/en/book.image.php">GD PHP extension</a>. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.</p>
 <h2 id="imagick">Imagick<a class="headerlink" href="#imagick" title="Permanent link">&para;</a></h2>
-<p><a href="../api/phalcon_image/#imageadapterimagick">Phalcon\Image\Adapters\Imagick</a> utilizes the <a href="https://php.net/manual/en/book.imagick.php">ImageMagick PHP extension</a>. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.</p>
+<p><a href="../api/phalcon_image/#imageadapterimagick">Phalcon\Image\Adapter\Imagick</a> utilizes the <a href="https://php.net/manual/en/book.imagick.php">ImageMagick PHP extension</a>. In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.</p>
 <h2 id="blank-images">Blank Images<a class="headerlink" href="#blank-images" title="Permanent link">&para;</a></h2>
 <p>Each adapter can create a blank, in-memory canvas instead of loading a file. Call the static <code>create()</code> method with the width and height in pixels. It returns a ready-to-use adapter that you can draw on, composite onto, and save.</p>
 <ul>
@@ -5733,9 +5733,9 @@ offering lower resource consumption and high performance.
 </table>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">use</span> <span class="nx">Phalcon\Image\Adapter\Gd</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">use</span> <span class="nx">Phalcon\Image\Adapter\Imagick</span><span class="p">;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">$image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gd</span><span class="p">(</span><span class="s1">&#39;image.jpg&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nv">$image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imagick</span><span class="p">(</span><span class="s1">&#39;image.jpg&#39;</span><span class="p">);</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">$image</span><span class="o">-&gt;</span><span class="na">liquidRescale</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
@@ -6300,7 +6300,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-27-72" name="__codelineno-27-72" href="#__codelineno-27-72"></a>    <span class="sd">/**</span>
 <a id="__codelineno-27-73" name="__codelineno-27-73" href="#__codelineno-27-73"></a><span class="sd">     * Rotate the image</span>
 <a id="__codelineno-27-74" name="__codelineno-27-74" href="#__codelineno-27-74"></a><span class="sd">     */</span>
-<a id="__codelineno-27-75" name="__codelineno-27-75" href="#__codelineno-27-75"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">rotate</span><span class="p">(</span><span class="nx">int</span> <span class="nx">degrees</span><span class="p">);</span>
+<a id="__codelineno-27-75" name="__codelineno-27-75" href="#__codelineno-27-75"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">rotate</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$degrees</span><span class="p">);</span>
 <a id="__codelineno-27-76" name="__codelineno-27-76" href="#__codelineno-27-76"></a>
 <a id="__codelineno-27-77" name="__codelineno-27-77" href="#__codelineno-27-77"></a>    <span class="sd">/**</span>
 <a id="__codelineno-27-78" name="__codelineno-27-78" href="#__codelineno-27-78"></a><span class="sd">     * Save the image</span>
@@ -6360,7 +6360,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Image\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Image\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Image\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Image\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>

@@ -6902,7 +6902,7 @@ offering lower resource consumption and high performance.
 <p>Each entry is anchored on both ends (<code>#^...$#</code>), so <code>image/.*</code> matches <code>image/png</code> and <code>image/jpeg</code> but not <code>text/plain</code>. An exact string comparison is tried first, so literal types that contain regular-expression metacharacters, such as <code>image/svg+xml</code>, still match themselves. The option defaults to <code>false</code>, which preserves the exact-match behavior.</p>
 <h3 id="file-resolution-aspectratio">File Resolution AspectRatio<a class="headerlink" href="#file-resolution-aspectratio" title="Permanent link">&para;</a></h3>
 <p>Checks if a file has the exact aspect ratio</p>
-<p>The <code>ratio</code> option uses the same <code>WxH</code> format as the resolution validators (for instance <code>16x9</code>). The comparison uses integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches <code>16x9</code>, 1366x768 does not. The message supports the <code>:ratio</code> placeholder. Available as of 5.14.2.</p>
+<p>The <code>ratio</code> option uses the same <code>WxH</code> format as the resolution validators (for instance <code>16x9</code>). The comparison uses integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches <code>16x9</code>, 1366x768 does not. The message supports the <code>:ratio</code> placeholder.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>
 <a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation</span><span class="p">;</span>
@@ -7627,7 +7627,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
-<p>The resolution of an array <code>attribute</code> option (used when validating a combination of fields) is specific to the <code>Uniqueness</code> validator. As of 5.14.2 it is implemented in <code>Uniqueness::getOption()</code>; <code>getOption()</code> on every other validator returns the stored option unchanged.</p>
+<p>The resolution of an array <code>attribute</code> option (used when validating a combination of fields) is specific to the <code>Uniqueness</code> validator. It is implemented in <code>Uniqueness::getOption()</code>; <code>getOption()</code> on every other validator returns the stored option unchanged.</p>
 </div>
 <p>In the model:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -8185,7 +8185,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-88-16" name="__codelineno-88-16" href="#__codelineno-88-16"></a>    <span class="p">)</span>
 <a id="__codelineno-88-17" name="__codelineno-88-17" href="#__codelineno-88-17"></a><span class="p">);</span>
 </code></pre></div>
-<p>As of 5.14.2 the <code>allowEmpty</code> rule is owned by the public <code>AbstractValidator::isAllowEmpty()</code> method, and the validation run delegates to it before each validator executes. Validators can override the method to define their own emptiness semantics - the <code>File</code> validators do, treating an upload with <code>UPLOAD_ERR_NO_FILE</code> as empty - and custom validators extending <code>AbstractValidator</code> inherit the behavior described above. The per-field map form is honored consistently in this pre-check as well.</p>
+<p>The <code>allowEmpty</code> rule is owned by the public <code>AbstractValidator::isAllowEmpty()</code> method, and the validation run delegates to it before each validator executes. Validators can override the method to define their own emptiness semantics - the <code>File</code> validators do, treating an upload with <code>UPLOAD_ERR_NO_FILE</code> as empty - and custom validators extending <code>AbstractValidator</code> inherit the behavior described above. The per-field map form is honored consistently in this pre-check as well.</p>
 <h2 id="recursive-validation">Recursive Validation<a class="headerlink" href="#recursive-validation" title="Permanent link">&para;</a></h2>
 <p>You can also run Validation instances within another via the <code>afterValidation()</code> method. In this example, validating the <code>CompanyValidation</code> instance will also check the <code>PhoneValidation</code> instance:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -8241,7 +8241,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-90-21" name="__codelineno-90-21" href="#__codelineno-90-21"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Filter\Validation\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Filter\Validation\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Filter\Validation\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Filter\Validation\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>

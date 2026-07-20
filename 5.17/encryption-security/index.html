@@ -5296,8 +5296,8 @@ offering lower resource consumption and high performance.
 <p><a href="../api/phalcon_encryption/#encryptionsecurity">Phalcon\Encryption\Security</a> is a component that helps developers with common security-related tasks, such as password hashing and Cross-Site Request Forgery protection (<a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a>).</p>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
-</div>
 <p>By default the component uses PHP's <code>password_hash()</code> with <code>Phalcon\Encryption\Security::CRYPT_DEFAULT</code> (which maps to <code>Phalcon\Encryption\Security::CRYPT_BCRYPT</code> / <code>PASSWORD_BCRYPT</code>). Call <code>setDefaultHash()</code> to change the default algorithm.</p>
+</div>
 <h2 id="password-hashing">Password Hashing<a class="headerlink" href="#password-hashing" title="Permanent link">&para;</a></h2>
 <p>Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use popular one-way hashing methods <a href="https://php.net/manual/en/function.md5.php">md5</a> and <a href="https://php.net/manual/en/function.sha1.php">sha1</a>. However, hardware evolves on a daily basis and as processors become faster, these algorithms are becoming vulnerable to brute-force attacks. These attacks are also known as <a href="https://en.wikipedia.org/wiki/Rainbow_table">rainbow tables</a>.</p>
 <p>The security component uses <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a> as the hashing algorithm. Thanks to the <a href="https://en.wikipedia.org/wiki/Bcrypt#Algorithm">Eksblowfish</a> key setup algorithm, we can make the password encryption as <code>slow</code> as we want. Slow algorithms minimize the impact of brute-force attacks.</p>
@@ -5539,7 +5539,7 @@ offering lower resource consumption and high performance.
 <p>Hashes a string or password and returns the hashed string back. The second parameter is optional and allows you to set temporarily a specific <code>workFactor</code> or pass that overrides the default one.</p>
 <p><strong>checkHash()</strong></p>
 <p>Accepts a string (usually the password), an already hashed string (the hashed password), and an optional minimum password length. It checks them both and returns <code>true</code> if they are identical and <code>false</code> otherwise.</p>
-<p><strong>isLegacyHash()</strong> <strong>isLegacyHash()</strong></p>
+<p><strong>isLegacyHash()</strong></p>
 <p>Returns <code>true</code> if the provided hash is a legacy hash (i.e., not produced by PHP's <code>password_hash()</code>), such as an older <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a> variant.</p>
 <h3 id="hmac">HMAC<a class="headerlink" href="#hmac" title="Permanent link">&para;</a></h3>
 <p><strong>computeHmac()</strong></p>
@@ -5859,7 +5859,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Encryption\Security\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Encryption\Security\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Encryption\Security\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Encryption\Security\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>

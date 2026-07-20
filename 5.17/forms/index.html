@@ -5804,7 +5804,7 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getEntity</span><span class="p">()</span>
 </code></pre></div>
 <p>Returns the entity related to the model</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilteredValue</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span> <span class="o">|</span> <span class="k">null</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getFilteredValue</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
 </code></pre></div>
 <p>Gets a value from the internal filtered data or calls getValue(name)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getLabel</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
@@ -5827,8 +5827,8 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Returns the <code>Phalcon\Html\TagFactory</code> object</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getUserOption</span><span class="p">(</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="nx">string</span> <span class="nx">option</span><span class="p">,</span> 
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="nx">mixed</span> <span class="nx">defaultValue</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="nx">string</span> <span class="nv">$option</span><span class="p">,</span> 
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    <span class="nx">mixed</span> <span class="nv">$defaultValue</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
 </code></pre></div>
 <p>Returns the value of an option if present. If the option is not present the <code>defaultValue</code> will be returned.</p>
@@ -5838,7 +5838,7 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getValidation</span><span class="p">()</span><span class="o">:</span> <span class="nx">ValidationInterface</span>
 </code></pre></div>
 <p>Returns the validator object registered in the form</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getValue</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span> <span class="o">|</span> <span class="k">null</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getValue</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
 </code></pre></div>
 <p>Gets a value from the internal related entity or from the default value</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
@@ -5921,7 +5921,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>Sets the entity related to the model</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setAttributes</span><span class="p">(</span>
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    <span class="nx">Attributes</span><span class="o">&gt;</span> <span class="nv">$attributes</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    <span class="nx">Attributes</span> <span class="nv">$attributes</span>
 <a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="p">)</span><span class="o">:</span> <span class="nx">AttributesInterface</span>
 </code></pre></div>
 <p>Set form attributes collection</p>
@@ -6272,7 +6272,7 @@ offering lower resource consumption and high performance.
 <p class="admonition-title">WARNING</p>
 <p>The <code>Phalcon\Forms\Element\Check</code> and <code>Phalcon\Forms\Element\Radio</code> classes now use the <code>Phalcon\Html\Helper\Input\Checkbox</code> and <code>Phalcon\Html\Helper\Input\Radio</code> respectively. The classes use <code>checked</code> and <code>unchecked</code> parameters to set the state of each control. If the <code>checked</code> parameter is identical to the <code>$value</code> then the control will be checked. If the <code>unchecked</code> parameter is present, it will be set if the <code>$value</code> is not the same as the <code>checked</code> parameter. <a href="../html-tagfactory/">more</a></p>
 </div>
-<p>The <a href="../api/phalcon_forms/#formselementselect">Phalcon\Forms\Element\Select</a> supports the <code>useEmpty</code> option to enable the use of a blank element within the list of available options. The options <code>emptyText</code> and<code>emptyValue</code> are optional, which allow you to customize, respectively, the text and the value of the empty element</p>
+<p>The <a href="../api/phalcon_forms/#formselementselect">Phalcon\Forms\Element\Select</a> supports the <code>useEmpty</code> option to enable the use of a blank element within the list of available options. The options <code>emptyText</code> and <code>emptyValue</code> are optional, which allow you to customize, respectively, the text and the value of the empty element</p>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
 <p><code>Phalcon\Forms\Element\Select::render()</code> delegates to <code>Phalcon\Tag\Select::selectField()</code> for backwards compatibility with multiselect (<code>array</code> values). The newer <code>Phalcon\Html\Helper\Input\Select</code> only supports a single selected value and is not used by <code>Forms\Element\Select</code> directly. If you need optgroup support or per-option attributes, use <code>TagFactory</code>'s <code>inputSelect</code> helper with <code>fromData()</code> and <code>SelectDataInterface</code> instead.</p>
@@ -6280,7 +6280,7 @@ offering lower resource consumption and high performance.
 <p>You can also create your own elements by extending the <a href="../api/phalcon_forms/#formselementabstractelement">Phalcon\Forms\Element\AbstractElement</a> abstract class.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>
-<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\AbstractElement</span> <span class="p">;</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\AbstractElement</span><span class="p">;</span>
 <a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>
 <a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="k">class</span> <span class="nc">MyElement</span> <span class="k">extends</span> <span class="nx">AbstractElement</span>
 <a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="p">{</span>
@@ -6315,7 +6315,7 @@ offering lower resource consumption and high performance.
 <p>A radio element represents a group of options where only one option can be selected. Phalcon offers two ways to model this:</p>
 <ol>
 <li><strong><code>Phalcon\Forms\Element\RadioGroup</code></strong> - recommended for new code. A single form-element entry that renders all options at once and binds cleanly under the field name. See <a href="#radio-groups">Radio groups</a> below.</li>
-<li><strong>Multiple <code>Phalcon\Forms\Element\Radio</code> elements</strong> - one element per button, registered under distinct identifiers ( <code>r0</code>, <code>r1</code>, ...) but sharing the same HTML <code>name</code>. Useful when you need fine-grained control over the individual buttons. As of v5.12.2, <code>Form::bind()</code> handles this layout correctly out of the box and no longer requires the previous hidden-field workaround.</li>
+<li><strong>Multiple <code>Phalcon\Forms\Element\Radio</code> elements</strong> - one element per button, registered under distinct identifiers ( <code>r0</code>, <code>r1</code>, ...) but sharing the same HTML <code>name</code>. Useful when you need fine-grained control over the individual buttons. <code>Form::bind()</code> handles this layout correctly out of the box and does not require a hidden-field workaround.</li>
 </ol>
 <p>One thing to note when using the individual-element approach is that the first constructor argument (the <em>form-element identifier</em>) is not the same as the HTML <code>name</code> attribute. The identifier is how you reference the element on the form object (<code>$form-&gt;get('r0')</code>); the HTML <code>name</code> lives in the attributes array and is what the browser submits in <code>$_POST</code>.</p>
 <p>Assume you have to render the following HTML:</p>
@@ -6541,8 +6541,8 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>
 <a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
-<a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a><span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\PresenceOf</span><span class="p">;</span>
-<a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a><span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\StringLength</span><span class="p">;</span>
+<a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation\Validator\PresenceOf</span><span class="p">;</span>
+<a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a><span class="k">use</span> <span class="nx">Phalcon\Filter\Validation\Validator\StringLength</span><span class="p">;</span>
 <a id="__codelineno-73-6" name="__codelineno-73-6" href="#__codelineno-73-6"></a>
 <a id="__codelineno-73-7" name="__codelineno-73-7" href="#__codelineno-73-7"></a><span class="nv">$nameLast</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s1">&#39;nameLast&#39;</span><span class="p">);</span>
 <a id="__codelineno-73-8" name="__codelineno-73-8" href="#__codelineno-73-8"></a><span class="nv">$nameLast</span><span class="o">-&gt;</span><span class="na">addValidator</span><span class="p">(</span>
@@ -6966,8 +6966,8 @@ offering lower resource consumption and high performance.
 <p><code>$definitions</code> is an optional <code>name =&gt; callable</code> map for the <strong>form registry</strong> that is applied at construction time - the constructor delegates each entry to <code>set()</code>, so you get the same behavior as calling <code>setElement()</code>/<code>set()</code> after the fact but in a single statement. The element registry is always seeded with the built-in types first; you can override or extend it later via <code>setElement()</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a>
-<a id="__codelineno-88-3" name="__codelineno-88-3" href="#__codelineno-88-3"></a><span class="k">use</span> <span class="nx">App\Forms\ContactForm</span><span class="p">;</span>
-<a id="__codelineno-88-4" name="__codelineno-88-4" href="#__codelineno-88-4"></a><span class="k">use</span> <span class="nx">App\Forms\LoginForm</span><span class="p">;</span>
+<a id="__codelineno-88-3" name="__codelineno-88-3" href="#__codelineno-88-3"></a><span class="k">use</span> <span class="nx">MyApp\Forms\ContactForm</span><span class="p">;</span>
+<a id="__codelineno-88-4" name="__codelineno-88-4" href="#__codelineno-88-4"></a><span class="k">use</span> <span class="nx">MyApp\Forms\LoginForm</span><span class="p">;</span>
 <a id="__codelineno-88-5" name="__codelineno-88-5" href="#__codelineno-88-5"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\FormsLocator</span><span class="p">;</span>
 <a id="__codelineno-88-6" name="__codelineno-88-6" href="#__codelineno-88-6"></a>
 <a id="__codelineno-88-7" name="__codelineno-88-7" href="#__codelineno-88-7"></a><span class="nv">$locator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormsLocator</span><span class="p">([</span>
@@ -6986,7 +6986,7 @@ offering lower resource consumption and high performance.
 <p>Each element factory has the signature <code>fn(string $name, array $options, array $attributes): ElementInterface</code>. To teach the locator a brand-new element type, call <code>setElement()</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a>
-<a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a><span class="k">use</span> <span class="nx">App\Forms\Element\ColorPicker</span><span class="p">;</span>
+<a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a><span class="k">use</span> <span class="nx">MyApp\Forms\Element\ColorPicker</span><span class="p">;</span>
 <a id="__codelineno-89-4" name="__codelineno-89-4" href="#__codelineno-89-4"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\ElementInterface</span><span class="p">;</span>
 <a id="__codelineno-89-5" name="__codelineno-89-5" href="#__codelineno-89-5"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\FormsLocator</span><span class="p">;</span>
 <a id="__codelineno-89-6" name="__codelineno-89-6" href="#__codelineno-89-6"></a>
@@ -7037,7 +7037,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-91-21" name="__codelineno-91-21" href="#__codelineno-91-21"></a>        <span class="nv">$locator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormsLocator</span><span class="p">();</span>
 <a id="__codelineno-91-22" name="__codelineno-91-22" href="#__codelineno-91-22"></a>        <span class="nv">$locator</span><span class="o">-&gt;</span><span class="na">setElement</span><span class="p">(</span>
 <a id="__codelineno-91-23" name="__codelineno-91-23" href="#__codelineno-91-23"></a>            <span class="s1">&#39;colorpicker&#39;</span><span class="p">,</span>
-<a id="__codelineno-91-24" name="__codelineno-91-24" href="#__codelineno-91-24"></a>            <span class="nx">fn</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$n</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$o</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$a</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\App\Forms\Element\ColorPicker</span><span class="p">(</span><span class="nv">$n</span><span class="p">,</span> <span class="nv">$a</span><span class="p">)</span>
+<a id="__codelineno-91-24" name="__codelineno-91-24" href="#__codelineno-91-24"></a>            <span class="nx">fn</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$n</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$o</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$a</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\MyApp\Forms\Element\ColorPicker</span><span class="p">(</span><span class="nv">$n</span><span class="p">,</span> <span class="nv">$a</span><span class="p">)</span>
 <a id="__codelineno-91-25" name="__codelineno-91-25" href="#__codelineno-91-25"></a>        <span class="p">);</span>
 <a id="__codelineno-91-26" name="__codelineno-91-26" href="#__codelineno-91-26"></a>
 <a id="__codelineno-91-27" name="__codelineno-91-27" href="#__codelineno-91-27"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="nv">$locator</span><span class="p">);</span>
@@ -7052,7 +7052,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-92-5" name="__codelineno-92-5" href="#__codelineno-92-5"></a>
 <a id="__codelineno-92-6" name="__codelineno-92-6" href="#__codelineno-92-6"></a><span class="nv">$locator</span><span class="o">-&gt;</span><span class="na">setElement</span><span class="p">(</span>
 <a id="__codelineno-92-7" name="__codelineno-92-7" href="#__codelineno-92-7"></a>    <span class="s1">&#39;rating&#39;</span><span class="p">,</span>
-<a id="__codelineno-92-8" name="__codelineno-92-8" href="#__codelineno-92-8"></a>    <span class="nx">fn</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$n</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$o</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$a</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\App\Forms\Element\StarRating</span><span class="p">(</span><span class="nv">$n</span><span class="p">,</span> <span class="nv">$a</span><span class="p">)</span>
+<a id="__codelineno-92-8" name="__codelineno-92-8" href="#__codelineno-92-8"></a>    <span class="nx">fn</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$n</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$o</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$a</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">\MyApp\Forms\Element\StarRating</span><span class="p">(</span><span class="nv">$n</span><span class="p">,</span> <span class="nv">$a</span><span class="p">)</span>
 <a id="__codelineno-92-9" name="__codelineno-92-9" href="#__codelineno-92-9"></a><span class="p">);</span>
 </code></pre></div>
 <p>Forms are added to the forms manager and referenced by a unique name:</p>
@@ -7165,7 +7165,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-97-20" name="__codelineno-97-20" href="#__codelineno-97-20"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Forms\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Forms\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Forms\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Forms\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>

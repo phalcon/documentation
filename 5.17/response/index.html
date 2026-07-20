@@ -5519,7 +5519,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <p>To get the cookies set by the user you can use the <code>getCookies()</code> method on the <a href="../api/phalcon_http/#httpresponse">Phalcon\Http\Response</a> object. The method returns a <a href="../api/phalcon_http/#httpresponsecookies">Phalcon\Http\Response\Cookies</a> collection object. You can set the cookies in the response object using the <code>setCookies()</code>, as shown above, and then use <code>sendCookies()</code> to send them back to the caller.</p>
 <h3 id="samesite"><code>SameSite</code><a class="headerlink" href="#samesite" title="Permanent link">&para;</a></h3>
-<p>If you are using PHP 7.3, or later you can set the <code>SameSite</code> as an element to the <code>options</code> array (last parameter of the constructor) or by using <code>setOptions()</code>. It is your responsibility to assign a valid value for <code>SameSite</code> (such as <code>Strict</code>, <code>Lax</code> etc.)</p>
+<p>You can set the <code>SameSite</code> as an element to the <code>options</code> array (last parameter of the constructor) or by using <code>setOptions()</code>. It is your responsibility to assign a valid value for <code>SameSite</code> (such as <code>Strict</code>, <code>Lax</code> etc.)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Cookie</span><span class="p">;</span>
@@ -5539,7 +5539,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
-<p>If your DI container contains the <code>session</code> service and the session has been started, each cookie definition (expiration, path, domain, secure, httponly, options) is stored in the session automatically, under a key prefixed with <code>_PHCOOKIE_</code>, and restored from there on later requests. If the service is missing, the session has not been started, or the cookie has no container at all, the cookie still works for the current request - nothing is persisted and no error is raised - and you are responsible for persisting the definition if you wish to. Prior to 5.14.2, <code>send()</code> raised a fatal error when a cookie with a non-empty definition had no DI container set.</p>
+<p>If your DI container contains the <code>session</code> service and the session has been started, each cookie definition (expiration, path, domain, secure, httponly, options) is stored in the session automatically, under a key prefixed with <code>_PHCOOKIE_</code>, and restored from there on later requests. If the service is missing, the session has not been started, or the cookie has no container at all, the cookie still works for the current request - nothing is persisted and no error is raised - and you are responsible for persisting the definition if you wish to.</p>
 </div>
 <h3 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h3>
 <p>The cookies collection is automatically registered as part of the <code>response</code> service that is registered in the DI container. By default, cookies are automatically encrypted prior to sending them to the client and are decrypted when retrieved from the user.</p>
@@ -5718,16 +5718,15 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
 <a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="nv">$contents</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">();</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="nv">$response</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="o">-&gt;</span><span class="na">setFileToSend</span><span class="p">(</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="s1">&#39;/app/storage/files/invoice.pdf&#39;</span><span class="p">,</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="s1">&#39;downloaded.pdf&#39;</span><span class="p">,</span>
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>        <span class="k">true</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    <span class="p">)</span>
-<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="o">-&gt;</span><span class="na">send</span><span class="p">()</span>
-<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="p">;</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nv">$response</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="o">-&gt;</span><span class="na">setFileToSend</span><span class="p">(</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="s1">&#39;/app/storage/files/invoice.pdf&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="s1">&#39;downloaded.pdf&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="k">true</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    <span class="o">-&gt;</span><span class="na">send</span><span class="p">()</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="p">;</span>
 </code></pre></div>
 <p>In the above example, we set where the file lives (<code>/app/storage/files/invoice.pdf</code>). The second parameter will set the name of the file (when downloaded by the browser) to <code>downloaded.pdf</code>. The third parameter instructs the component to set the relevant headers for the download to happen. These are:</p>
 <ul>
@@ -5862,7 +5861,7 @@ offering lower resource consumption and high performance.
 <p>Browsers rely on the client machine's clock to identify if the date has passed or not. Therefore, this caching mechanism has some limitations that the developer must account for (different timezones, clock skew, etc.)</p>
 </div>
 <h3 id="cache-control"><code>Cache-Control</code><a class="headerlink" href="#cache-control" title="Permanent link">&para;</a></h3>
-<p>This header provides a better to cache the pages served. We specify a time in seconds, instructing the browser that our content is cached for that amount of time.</p>
+<p>This header provides a better way to cache the pages served. We specify a time in seconds, instructing the browser that our content is cached for that amount of time.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
 <a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>

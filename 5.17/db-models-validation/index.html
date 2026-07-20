@@ -4961,7 +4961,7 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <h2 id="data-integrity">Data Integrity<a class="headerlink" href="#data-integrity" title="Permanent link">&para;</a></h2>
 <p>Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforces your business rules.</p>
-<p>The special <code>validation</code> event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the <a href="../filter-validation/">Phalcon\Validation</a> namespace.</p>
+<p>The special <code>validation</code> event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the <a href="../filter-validation/">Phalcon\Filter\Validation</a> namespace.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">namespace</span> <span class="nx">MyApp\Models</span><span class="p">;</span>
@@ -5076,8 +5076,8 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>                    <span class="k">break</span><span class="p">;</span>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>                <span class="k">case</span> <span class="s1">&#39;InvalidUpdateAttempt&#39;</span><span class="o">:</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>                    <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;The record cannot be updated &#39;</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="s2">                                . &#39;because it doesn&#39;t exist&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>                    <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;The record cannot be updated &#39;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>                                <span class="o">.</span> <span class="s1">&#39;because it does not exist&#39;</span><span class="p">;</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>                    <span class="k">break</span><span class="p">;</span>
 <a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
 <a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>                <span class="k">case</span> <span class="s1">&#39;PresenceOf&#39;</span><span class="o">:</span>
@@ -5139,7 +5139,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">namespace</span> <span class="nx">MyApp\Models</span><span class="p">;</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Message</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">use</span> <span class="nx">Phalcon\Messages\Message</span><span class="p">;</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">Model</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">{</span>

@@ -6931,14 +6931,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-55-35" name="__codelineno-55-35" href="#__codelineno-55-35"></a>
 <a id="__codelineno-55-36" name="__codelineno-55-36" href="#__codelineno-55-36"></a><span class="c1">// Same profiler as the one we created above</span>
 <a id="__codelineno-55-37" name="__codelineno-55-37" href="#__codelineno-55-37"></a><span class="nv">$profiler</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getProfiler</span><span class="p">();</span>
-<a id="__codelineno-55-38" name="__codelineno-55-38" href="#__codelineno-55-38"></a><span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">setActive</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+<a id="__codelineno-55-38" name="__codelineno-55-38" href="#__codelineno-55-38"></a><span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">setActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 </code></pre></div>
 <p>and to retrieve the data stored:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>
 <a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getProfiler</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">();</span>
 <a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>
-<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$messages</span><span class="p">);</span>
+<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="nb">var_dump</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 </code></pre></div>
 <p>The messages are logged by default according to this pattern:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>&quot;{method} ({duration}s): {statement} {backtrace}&quot;
@@ -6948,7 +6948,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>
 <a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a><span class="nv">$connection</span>
 <a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>    <span class="o">-&gt;</span><span class="na">getProfiler</span><span class="p">()</span>
-<a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>    <span class="o">-&gt;</span><span class="na">setLogFormat</span><span class="p">(</span><span class="s2">&quot;{duration}: {method} {statement}{values}&quot;</span><span class="p">)</span>
+<a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>    <span class="o">-&gt;</span><span class="na">setLogFormat</span><span class="p">(</span><span class="s2">&quot;{duration}: {method} {statement}{values}&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>The parameters available are:</p>
 <table>
@@ -6995,7 +6995,7 @@ offering lower resource consumption and high performance.
 </div>
 <h2 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h2>
 <h3 id="factory">Factory<a class="headerlink" href="#factory" title="Permanent link">&para;</a></h3>
-<p>The <code>Phalcon\DataMapper\Query</code> namespace offers a handy factory, which allows for a quick creation of query objects, whether this is <code>select</code>, <code>insert</code>, <code>update</code> or `delete. The methods exposed by the <a href="../api/phalcon_datamapper/#datamapperqueryqueryfactory">Phalcon\DataMapper\Query\QueryFactory</a> accept a <a href="../api/phalcon_datamapper/#datamapperpdoconnection">Phalcon\DataMapper\Pdo\Connection</a>, binding the resulting object with the connection.</p>
+<p>The <code>Phalcon\DataMapper\Query</code> namespace offers a handy factory, which allows for a quick creation of query objects, whether this is <code>select</code>, <code>insert</code>, <code>update</code> or <code>delete</code>. The methods exposed by the <a href="../api/phalcon_datamapper/#datamapperqueryqueryfactory">Phalcon\DataMapper\Query\QueryFactory</a> accept a <a href="../api/phalcon_datamapper/#datamapperpdoconnection">Phalcon\DataMapper\Pdo\Connection</a>, binding the resulting object with the connection.</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nx">selectClass</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
 </code></pre></div>

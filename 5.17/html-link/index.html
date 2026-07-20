@@ -5139,7 +5139,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="c1">//     &lt;/2&gt;; rel=&quot;alternate next&quot;; hreflang=&quot;en&quot;; hreflang=&quot;es&quot;</span>
 <a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="p">;</span>
 </code></pre></div>
-<p>As of 5.15.0, <code>serialize()</code> emits attribute values as RFC 8288 quoted strings. An embedded double quote or backslash in a value is prefixed with a backslash, so a value cannot terminate the field early or produce a malformed header.</p>
+<p>The <code>serialize()</code> method emits attribute values as RFC 8288 quoted strings. An embedded double quote or backslash in a value is prefixed with a backslash, so a value cannot terminate the field early or produce a malformed header.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">use</span> <span class="nx">Phalcon\Html\Link\EvolvableLink</span><span class="p">;</span>

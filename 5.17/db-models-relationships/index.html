@@ -5388,7 +5388,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">array</span> <span class="nv">$fields</span><span class="p">,</span> 
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nx">string</span> <span class="nv">$referenceModel</span><span class="p">,</span> 
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">array</span> <span class="nv">$referencedFields</span><span class="p">,</span> 
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">array</span> <span class="nx">options</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
 </code></pre></div>
 <p><strong>many to one</strong></p>
@@ -5396,7 +5396,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">array</span> <span class="nv">$fields</span><span class="p">,</span> 
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nx">string</span> <span class="nv">$referenceModel</span><span class="p">,</span> 
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="nx">string</span><span class="o">|</span><span class="k">array</span> <span class="nv">$referencedFields</span><span class="p">,</span> 
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">array</span> <span class="nx">options</span> <span class="o">=</span> <span class="k">null</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">null</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span>
 </code></pre></div>
 <p><strong>many to many</strong></p>
@@ -5958,7 +5958,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>    <span class="p">[</span>
 <a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a>        <span class="s1">&#39;conditions&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;prd_id IN ({array:productIds})&#39;</span><span class="p">,</span>
 <a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>        <span class="s1">&#39;bind&#39;</span>       <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>            <span class="s1">&#39;productIds&#39;</span> <span class="o">=&gt;</span> <span class="nv">$productIds</span><span class="p">,,</span>
+<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>            <span class="s1">&#39;productIds&#39;</span> <span class="o">=&gt;</span> <span class="nv">$productIds</span><span class="p">,</span>
 <a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a>        <span class="p">],</span>
 <a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a>    <span class="p">]</span>
 <a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a><span class="p">);</span>

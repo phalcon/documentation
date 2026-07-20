@@ -5815,7 +5815,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Every subclass extends its respective parent (<code>Phalcon\Application\Exception</code> or <code>Phalcon\Mvc\Application\Exception</code>), so existing <code>catch</code> blocks against the umbrella types continue to work unchanged.</p>
+<p>The component raises granular subclasses so callers can catch a specific failure mode. Every subclass extends its respective parent (<code>Phalcon\Application\Exception</code> or <code>Phalcon\Mvc\Application\Exception</code>), so existing <code>catch</code> blocks against the umbrella types continue to work unchanged.</p>
 <table>
 <thead>
 <tr>
@@ -5847,7 +5847,7 @@ offering lower resource consumption and high performance.
 </tr>
 </tbody>
 </table>
-<p>As of 5.15 <code>Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition</code> reports which module was rejected and why. The constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are optional, so <code>new InvalidModuleDefinition()</code> still produces the base <code>Invalid module definition</code> message.</p>
+<p><code>Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition</code> reports which module was rejected and why. The constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are optional, so <code>new InvalidModuleDefinition()</code> still produces the base <code>Invalid module definition</code> message.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition</span><span class="p">;</span>

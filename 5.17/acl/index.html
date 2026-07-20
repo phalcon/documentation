@@ -5389,7 +5389,7 @@ offering lower resource consumption and high performance.
 <p>The <a href="../api/phalcon_acl/#aclenum">Phalcon\Acl\Enum</a> class provides two constants for defining access levels:</p>
 <ul>
 <li><code>Phalcon\Acl\Enum::ALLOW</code> (<code>1</code>)</li>
-<li><code>Phalcon\Acl\Enum::DENY</code> (<code>0</code> – default)</li>
+<li><code>Phalcon\Acl\Enum::DENY</code> (<code>0</code> - default)</li>
 </ul>
 <p>These constants help specify access levels within your ACL.</p>
 <h2 id="adding-roles">Adding Roles<a class="headerlink" href="#adding-roles" title="Permanent link">&para;</a></h2>
@@ -5559,11 +5559,11 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">// (Roles and Components setup...)</span>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1">// Check permissions</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;manager&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;dashboard&#39;</span><span class="p">);</span> <span class="c1">// true – explicitly defined</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;manager&#39;</span><span class="p">,</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">);</span>   <span class="c1">// true – defined with wildcard</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">);</span> <span class="c1">// true – defined with wildcard</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;guest&#39;</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">);</span>      <span class="c1">// false – explicitly defined</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;guest&#39;</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">);</span>       <span class="c1">// false – default access level</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;manager&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;dashboard&#39;</span><span class="p">);</span> <span class="c1">// true - explicitly defined</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;manager&#39;</span><span class="p">,</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">);</span>   <span class="c1">// true - defined with wildcard</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;accounting&#39;</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">);</span> <span class="c1">// true - defined with wildcard</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;guest&#39;</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">);</span>      <span class="c1">// false - explicitly defined</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;guest&#39;</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">);</span>       <span class="c1">// false - default access level</span>
 </code></pre></div>
 <p>In the above example, the <code>isAllowed()</code> method checks whether a role has permission to access a specific component and action. It returns <code>true</code> if access is allowed, and <code>false</code> otherwise. This method is valuable for implementing role-based access control in your application.</p>
 <h2 id="function-based-access">Function-Based Access<a class="headerlink" href="#function-based-access" title="Permanent link">&para;</a></h2>
@@ -5823,7 +5823,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a><span class="nv">$levelTwo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ManagerRole</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;manager&#39;</span><span class="p">);</span>
 <a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="nv">$admin</span>    <span class="o">=</span> <span class="k">new</span> <span class="nx">ManagerRole</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;manager&#39;</span><span class="p">);</span>
 <a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a>
-<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="c1">// id – name – userId</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="c1">// id - name - userId</span>
 <a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="nv">$reports</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">ReportsComponent</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a>
 <a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a><span class="c1">// Check whether our user objects have access. Returns `false`</span>
@@ -5896,7 +5896,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1">// Check whether ACL data already exist</span>
 <a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_file</span><span class="p">(</span><span class="nv">$aclFile</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="c1">// The ACL does not exist – build it</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="c1">// The ACL does not exist - build it</span>
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Memory</span><span class="p">();</span>
 <a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
 <a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="c1">// Define roles, components, access, etc.</span>
@@ -6082,7 +6082,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Acl\Exception</code> so callers can catch a specific failure mode. Legacy <code>catch (Phalcon\Acl\Exception $e)</code> still works because every subclass extends the umbrella type.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Acl\Exception</code> so callers can catch a specific failure mode. Legacy <code>catch (Phalcon\Acl\Exception $e)</code> still works because every subclass extends the umbrella type.</p>
 <table>
 <thead>
 <tr>

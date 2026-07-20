@@ -5168,7 +5168,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Url</span><span class="p">();</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setStaticBaseUri</span><span class="p">(</span><span class="s1">&#39;https://assets.phalcon.io/&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setStaticBaseUri</span><span class="p">(</span><span class="s1">&#39;https://assets.phalcon.io/&#39;</span><span class="p">);</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">getStaticBaseUri</span><span class="p">();</span> <span class="c1">// https://assets.phalcon.io/</span>
 </code></pre></div>
@@ -5180,7 +5180,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Url</span><span class="p">();</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">===</span> <span class="s1">&#39;production&#39;</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setStaticBaseUri</span><span class="p">(</span><span class="s1">&#39;https://assets.phalcon.io/&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setStaticBaseUri</span><span class="p">(</span><span class="s1">&#39;https://assets.phalcon.io/&#39;</span><span class="p">);</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">getStatic</span><span class="p">(</span><span class="s1">&#39;img/logo.png&#39;</span><span class="p">);</span> <span class="c1">// https://assets.phalcon.io/img/logo.png</span>
@@ -5215,7 +5215,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">getBaseUri</span><span class="p">();</span>
 </code></pre></div>
-<p>By default, Phalcon will try to detect your base URI. It is recommended that you specify the base URI yourself,m because it increases performance slightly.</p>
+<p>By default, Phalcon will try to detect your base URI. It is recommended that you specify the base URI yourself, because it increases performance slightly.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
@@ -5231,7 +5231,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Url</span><span class="p">();</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s1">&#39;/portal/&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s1">&#39;/portal/&#39;</span><span class="p">);</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">getBaseUri</span><span class="p">();</span> <span class="c1">// /portal/</span>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
@@ -5241,7 +5241,7 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="sd">/**</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="sd"> * @property Url $url</span>
@@ -5321,7 +5321,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="c1">// /portal/invoices/edit/1?is_paymented=true&amp;some_key=some_value</span>
 </code></pre></div>
 <h4 id="replacing-query-string-arguments">Replacing query string arguments<a class="headerlink" href="#replacing-query-string-arguments" title="Permanent link">&para;</a></h4>
-<p>By default, when the supplied URI already contains a query string, any extra arguments passed via the <code>$args</code> parameter are appended with <code>&amp;</code>. As of v5.12.2, <code>get()</code> accepts an opt-in <code>bool $replaceArgs = false</code> fifth parameter. When set to <code>true</code> and the URI already contains a query string, the existing query is parsed and merged with the supplied arguments so that user-supplied keys override colliding ones.</p>
+<p>By default, when the supplied URI already contains a query string, any extra arguments passed via the <code>$args</code> parameter are appended with <code>&amp;</code>. <code>get()</code> accepts an opt-in <code>bool $replaceArgs = false</code> fifth parameter. When set to <code>true</code> and the URI already contains a query string, the existing query is parsed and merged with the supplied arguments so that user-supplied keys override colliding ones.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
@@ -5492,7 +5492,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
 <a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Url</span><span class="p">();</span>
 <a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="s1">&#39;/data/app/&#39;</span><span class="p">);</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="s1">&#39;/data/app/&#39;</span><span class="p">);</span>
 <a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
 <a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">getBasePath</span><span class="p">();</span> <span class="c1">// /data/app/</span>
 <a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
@@ -5571,7 +5571,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="granular-exceptions">Granular Exceptions<a class="headerlink" href="#granular-exceptions" title="Permanent link">&para;</a></h3>
-<p>As of 5.14 the component raises granular subclasses of <code>Phalcon\Mvc\Url\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Mvc\Url\Exception $e)</code> blocks continue to work unchanged.</p>
+<p>The component raises granular subclasses of <code>Phalcon\Mvc\Url\Exception</code> so callers can catch a specific failure mode. Existing <code>catch (Phalcon\Mvc\Url\Exception $e)</code> blocks continue to work unchanged.</p>
 <table>
 <thead>
 <tr>
