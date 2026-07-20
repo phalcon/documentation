@@ -341,7 +341,7 @@ Array
 
 ## Previous Dispatch Accessors
 
-As of 5.15 the [Phalcon\Cli\Dispatcher][cli-dispatcher] exposes the previous-dispatch getters that were previously available only on `Phalcon\Mvc\Dispatcher`. After a `forward()`, they return the task, action, and namespace that were active before the forward took place.
+The [Phalcon\Cli\Dispatcher][cli-dispatcher] exposes the same previous-dispatch getters as `Phalcon\Mvc\Dispatcher`. After a `forward()`, they return the task, action, and namespace that were active before the forward took place.
 
 ```php
 <?php
@@ -505,7 +505,7 @@ php cli.php
 
 ### Module Definitions
 
-As of 5.14.2 the console processes module definitions the same way as `Phalcon\Mvc\Application`. A module can be defined as an array (as shown above) or as a `Closure`. The closure receives the DI container as its only argument and is invoked when the module starts:
+The console processes module definitions the same way as `Phalcon\Mvc\Application`. A module can be defined as an array (as shown above) or as a `Closure`. The closure receives the DI container as its only argument and is invoked when the module starts:
 
 ```php
 <?php
@@ -531,7 +531,7 @@ $console->registerModules(
 
 For array definitions, the class named by `className` is resolved from the container and its `registerAutoloaders()` and `registerServices()` methods are called automatically. For closure definitions, the closure body is responsible for any service registration; `registerAutoloaders()` and `registerServices()` are not called.
 
-A module name that was never registered raises `Phalcon\Application\Exceptions\ModuleNotRegistered`. A definition that is neither an array nor a `Closure` raises `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`. As of 5.15 that exception names the offending module and the reason it was rejected.
+A module name that was never registered raises `Phalcon\Application\Exceptions\ModuleNotRegistered`. A definition that is neither an array nor a `Closure` raises `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`. That exception names the offending module and the reason it was rejected.
 
 ### Methods
 
@@ -663,14 +663,9 @@ Any exception thrown in the `Phalcon\Cli\Console` component will be of type `Pha
 
 ### Granular Exceptions
 
-As of 5.14 the CLI Console and Router raise granular subclasses of their respective `Exception` types so callers can catch a specific failure mode. Existing `catch (Phalcon\Cli\Console\Exception $e)` / `catch (Phalcon\Cli\Router\Exception $e)` blocks continue to work unchanged.
+The CLI Console and Router raise granular subclasses of their respective `Exception` types so callers can catch a specific failure mode. Existing `catch (Phalcon\Cli\Console\Exception $e)` / `catch (Phalcon\Cli\Router\Exception $e)` blocks continue to work unchanged.
 
-As of 5.14.2 module processing is aligned with `Phalcon\Mvc\Application` and two classes have been removed:
-
-- `Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered` is replaced by `Phalcon\Application\Exceptions\ModuleNotRegistered`, which extends `Phalcon\Application\Exception` - **not** `Phalcon\Cli\Console\Exception`. A `catch (Phalcon\Cli\Console\Exception $e)` block no longer traps an unregistered module.
-- `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath` is replaced by `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`.
-
-Update any `catch` blocks that reference the removed classes.
+Module processing is aligned with `Phalcon\Mvc\Application`. An unregistered module name raises `Phalcon\Application\Exceptions\ModuleNotRegistered`, which extends `Phalcon\Application\Exception` - **not** `Phalcon\Cli\Console\Exception`. A `catch (Phalcon\Cli\Console\Exception $e)` block does not trap an unregistered module; catch `Phalcon\Application\Exception` or the granular subclass instead.
 
 | Class                                                         | Parent                          | Thrown when                                                      |
 |---------------------------------------------------------------|---------------------------------|------------------------------------------------------------------|
@@ -682,7 +677,7 @@ Update any `catch` blocks that reference the removed classes.
 | `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`             | `Phalcon\Cli\Router\Exception`  | Route paths cannot be processed to a routable array.             |
 | `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType`    | `Phalcon\Cli\Router\Exception`  | Arguments passed to `handle()` are not a string or array.        |
 
-As of 5.15 `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
+`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
 
 ```php
 <?php
@@ -698,7 +693,7 @@ echo $exception->getMessage();
 // Invalid module definition for module 'backend': The module definition object must be a Closure
 ```
 
-As of 5.15 the three router exceptions carry context in their messages. `BeforeMatchNotCallable` and `InvalidRoutePaths` include the route pattern, and `RouterArgumentsInvalidType` includes the received type. The constructor parameter is optional in each, so the base messages are unchanged when no context is supplied.
+The three router exceptions carry context in their messages. `BeforeMatchNotCallable` and `InvalidRoutePaths` include the route pattern, and `RouterArgumentsInvalidType` includes the received type. The constructor parameter is optional in each, so the base messages are unchanged when no context is supplied.
 
 [cli-dispatcher]: api/phalcon_cli.md#clidispatcher
 [cli-router]: api/phalcon_cli.md#clirouter

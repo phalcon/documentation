@@ -4318,8 +4318,8 @@ $container->setShared(
         $connection->setEventsManager($eventsManager);
 
         return $connection;
-    );
-}
+    }
+);
 ```
 
 ## Spatial Column Hydration
@@ -4355,7 +4355,7 @@ The value-object classes are described under [Spatial / Geometry Columns](db-lay
 
 ## Invalid parameter number
 
-In v5.6, the parameters used to instantiate PDO have reverted to the default settings. Therefore, `PDO::ATTR_EMULATE_PREPARES` defaults to `true`.
+The parameters used to instantiate PDO use the default settings. Therefore, `PDO::ATTR_EMULATE_PREPARES` defaults to `true`.
 
 However, if you encounter the following message in your code, when a bound parameter is used more than once in a query:
 
@@ -4414,7 +4414,7 @@ Any exceptions thrown in the `Phalcon\Mvc\Model` namespace will be of type `Phal
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                          | Parent                        | Thrown when                                                                           |
 |----------------------------------------------------------------|-------------------------------|---------------------------------------------------------------------------------------|
@@ -4494,7 +4494,7 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Except
 [mvc-model-queryinterface]: api/phalcon_mvc.md#mvcmodelqueryinterface
 [mvc-model-relation]: api/phalcon_mvc.md#mvcmodelrelation
 [mvc-model-relationinterface]: api/phalcon_mvc.md#mvcmodelrelationinterface
-[mvc-model-resultinterface]: api/phalcon_mvc.md#mvc-model-resultinterface
+[mvc-model-resultinterface]: api/phalcon_mvc.md#mvcmodelresultinterface
 [mvc-model-resultset]: api/phalcon_mvc.md#mvcmodelresultset
 [mvc-model-resultset-complex]: api/phalcon_mvc.md#mvcmodelresultsetcomplex
 [mvc-model-resultset-simple]: api/phalcon_mvc.md#mvcmodelresultsetsimple

@@ -253,14 +253,14 @@ This serializer can be used when using `Redis`. It corresponds to the built-in P
 
 ### Custom
 
-Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface][storage-serializer-serializerinterface]` which can be implemented in a custom class. The class can offer the serialization you require.
+Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface][storage-serializer-serializerinterface] which can be implemented in a custom class. The class can offer the serialization you require.
 
 ```php
 <?php
 
 namespace MyApp\Storage\Serializer;
 
-use Phalcon\Storage\SerializerInterface;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 class Garble implements SerializerInterface
 {
@@ -403,7 +403,7 @@ The available methods are:
 
 !!! info "NOTE"
 
-    Keys returned by `getKeys()` carry the adapter prefix. As of 5.14.2 the adapters also accept keys that already carry the prefix: `get()`, `has()`, `delete()`, `deleteMultiple()`, `set()`, `setForever()`, `increment()` and `decrement()` strip a leading prefix from the supplied key before applying their own, so the output of `getKeys()` can be passed back to these methods unchanged.
+    Keys returned by `getKeys()` carry the adapter prefix. The adapters also accept keys that already carry the prefix: `get()`, `has()`, `delete()`, `deleteMultiple()`, `set()`, `setForever()`, `increment()` and `decrement()` strip a leading prefix from the supplied key before applying their own, so the output of `getKeys()` can be passed back to these methods unchanged.
 
 !!! warning "NOTE"
 

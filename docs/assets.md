@@ -11,10 +11,10 @@
 ```php
 <?php
 
-use Phalcon\Di\FactoryDefault();
+use Phalcon\Di\FactoryDefault;
 
 $container = new FactoryDefault();
-$manager   = $container->get('assets')
+$manager   = $container->get('assets');
 ```
 
 Alternatively, you can register the [Phalcon\Assets\Manager][assets-manager] in your `Phalcon\Di\Di`:
@@ -23,8 +23,8 @@ Alternatively, you can register the [Phalcon\Assets\Manager][assets-manager] in 
 <?php
 
 use Phalcon\Assets\Manager;
-use Phalcon\Di\Di();
-use Phalcon\Html\TagFactory();
+use Phalcon\Di\Di;
+use Phalcon\Html\TagFactory;
 
 $container  = new Di();
 $tagFactory = new TagFactory();
@@ -34,7 +34,7 @@ $container->set(
     function () use ($tagFactory) {
         return new Manager($tagFactory);
     }
-)
+);
 ```
 
 If you are using the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\Html\TagFactory][html-tagfactory] is already registered as a service with the name `tag` and automatically injected into the constructor of [Phalcon\Assets\Manager][assets-manager]. This ensures object reuse and minimal memory usage. If you register the [Phalcon\Assets\Manager][assets-manager] yourself and already have [Phalcon\Html\TagFactory][html-tagfactory] in your container, you can reuse it without creating a new instance.
@@ -185,7 +185,7 @@ You can also use the [Phalcon\Assets\Inline\Js][asset-inline-js] class to create
 ```php
 <?php
 
-use Phalcon\Assets\Asset\Js;
+use Phalcon\Assets\Inline\Js;
 
 $asset = new Js(
     'alert("hello");'
@@ -265,8 +265,8 @@ use Phalcon\Assets\Inline;
 $css      = '.spinner {color: blue; }';
 $js       = 'alert("hello")';
 $manager  = new Manager();
-$assetCss = new Inline('css', $css};
-$assetJs  = new Inline('js', $js};
+$assetCss = new Inline('css', $css);
+$assetJs  = new Inline('js', $js);
 
 $manager
     ->addInlineCode($assetCss)
@@ -379,7 +379,7 @@ $footerCollection = $this->assets->collection('footer');
 if ($config->environment === 'development') {
     $footerCollection->setPrefix('/');
 } else {
-    $footerCollection->setPrefix('http:://cdn.example.com/');
+    $footerCollection->setPrefix('http://cdn.example.com/');
 }
 
 $footerCollection->addJs('js/jquery.js');
@@ -591,8 +591,8 @@ To output inline:
 
 $css      = '.spinner {color: blue; }';
 $js       = 'alert("hello")';
-$assetCss = new Inline('css', $css};
-$assetJs  = new Inline('js', $js};
+$assetCss = new Inline('css', $css);
+$assetJs  = new Inline('js', $js);
 
 $this
     ->assets
@@ -755,12 +755,12 @@ To optimize processing assets, one method is to allow your web server to handle 
 ```php
 <?php
 
-namespace App\Controllers;
+namespace MyApp\Controllers;
 
 use Phalcon\Mvc\Controller;
 
 /**
- * App\Controllers\ControllerBase
+ * MyApp\Controllers\ControllerBase
  *
  * This is the base controller for all controllers in the application.
  */
@@ -808,7 +808,7 @@ $router->addGet(
 ```php
 <?php
 
-namespace App\Controllers;
+namespace MyApp\Controllers;
 
 use Phalcon\Http\Response;
 

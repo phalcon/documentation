@@ -49,7 +49,7 @@ $files = new Stream(
         'savePath' => '/tmp',
     ]
 );
-$session->setHandler($files);
+$session->setAdapter($files);
 
 $escaper = new Escaper();
 $flash   = new FlashSession($escaper, $session);
@@ -169,7 +169,7 @@ or when using Volt
 
 The [Phalcon\Flash\Session][flash-session] adapter stores its messages in the session under a single key, `_flashMessages` by default (exposed as the `Phalcon\Flash\Session::SESSION_KEY` constant). Applications that run more than one `Session` flasher in the same request - a multi-module application, for instance - would otherwise share that one slot and overwrite each other's messages.
 
-As of 5.15 the adapter accepts an optional third constructor argument that sets the session key, so each instance can use its own slot. The argument defaults to `_flashMessages`, leaving existing code unaffected.
+The adapter accepts an optional third constructor argument that sets the session key, so each instance can use its own slot. The argument defaults to `_flashMessages`, leaving existing code unaffected.
 
 ```php
 <?php
@@ -180,7 +180,7 @@ use Phalcon\Session\Adapter\Stream;
 use Phalcon\Session\Manager;
 
 $session = new Manager();
-$session->setHandler(
+$session->setAdapter(
     new Stream(
         [
             'savePath' => '/tmp',
@@ -581,7 +581,7 @@ $files     = new Stream(
         'savePath' => '/tmp',
     ]
 );
-$session->setHandler($files);
+$session->setAdapter($files);
 
 $container->set(
     'flashSession',
@@ -638,7 +638,7 @@ Any exception thrown in the Flash component will be of type [Phalcon\Flash\Excep
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Flash\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Flash\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Flash\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Flash\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                   | Parent                    | Thrown when                                                                            |
 |---------------------------------------------------------|---------------------------|----------------------------------------------------------------------------------------|

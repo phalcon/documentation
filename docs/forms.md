@@ -266,7 +266,7 @@ public function getEntity()
 Returns the entity related to the model
 
 ```php
-public function getFilteredValue(string $name): mixed | null
+public function getFilteredValue(string $name): mixed
 ```
 
 Gets a value from the internal filtered data or calls getValue(name)
@@ -306,8 +306,8 @@ Returns the `Phalcon\Html\TagFactory` object
 
 ```php
 public function getUserOption(
-    string option, 
-    mixed defaultValue = null
+    string $option, 
+    mixed $defaultValue = null
 ): mixed
 ```
 
@@ -326,7 +326,7 @@ public function getValidation(): ValidationInterface
 Returns the validator object registered in the form
 
 ```php
-public function getValue(string $name): mixed | null
+public function getValue(string $name): mixed
 ```
 
 Gets a value from the internal related entity or from the default value
@@ -451,7 +451,7 @@ Sets the entity related to the model
 
 ```php
 public function setAttributes(
-    Attributes> $attributes
+    Attributes $attributes
 ): AttributesInterface
 ```
 
@@ -812,7 +812,7 @@ These elements use the [Phalcon\Html\TagFactory][tagfactory] component transpare
 
     The `Phalcon\Forms\Element\Check` and `Phalcon\Forms\Element\Radio` classes now use the `Phalcon\Html\Helper\Input\Checkbox` and `Phalcon\Html\Helper\Input\Radio` respectively. The classes use `checked` and `unchecked` parameters to set the state of each control. If the `checked` parameter is identical to the `$value` then the control will be checked. If the `unchecked` parameter is present, it will be set if the `$value` is not the same as the `checked` parameter. [more][tagfactory]
 
-The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and` emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
+The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and `emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
 
 !!! info "NOTE"
 
@@ -823,7 +823,7 @@ You can also create your own elements by extending the [Phalcon\Forms\Element\Ab
 ```php
 <?php
 
-use Phalcon\Forms\Element\AbstractElement ;
+use Phalcon\Forms\Element\AbstractElement;
 
 class MyElement extends AbstractElement
 {
@@ -862,7 +862,7 @@ These names correspond to getters in the `Form` object or are properties coming 
 A radio element represents a group of options where only one option can be selected. Phalcon offers two ways to model this:
 
 1. **`Phalcon\Forms\Element\RadioGroup`** - recommended for new code. A single form-element entry that renders all options at once and binds cleanly under the field name. See [Radio groups](#radio-groups) below.
-2. **Multiple `Phalcon\Forms\Element\Radio` elements** - one element per button, registered under distinct identifiers ( `r0`, `r1`, ...) but sharing the same HTML `name`. Useful when you need fine-grained control over the individual buttons. As of v5.12.2, `Form::bind()` handles this layout correctly out of the box and no longer requires the previous hidden-field workaround.
+2. **Multiple `Phalcon\Forms\Element\Radio` elements** - one element per button, registered under distinct identifiers ( `r0`, `r1`, ...) but sharing the same HTML `name`. Useful when you need fine-grained control over the individual buttons. `Form::bind()` handles this layout correctly out of the box and does not require a hidden-field workaround.
 
 One thing to note when using the individual-element approach is that the first constructor argument (the *form-element identifier*) is not the same as the HTML `name` attribute. The identifier is how you reference the element on the form object (`$form->get('r0')`); the HTML `name` lives in the attributes array and is what the browser submits in `$_POST`.
 
@@ -1142,8 +1142,8 @@ Phalcon forms are integrated with the [validation][filter-validation] component 
 <?php
 
 use Phalcon\Forms\Element\Text;
-use Phalcon\Validation\Validator\PresenceOf;
-use Phalcon\Validation\Validator\StringLength;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+use Phalcon\Filter\Validation\Validator\StringLength;
 
 $nameLast = new Text('nameLast');
 $nameLast->addValidator(
@@ -1586,8 +1586,8 @@ public function __construct(array $definitions = [])
 ```php
 <?php
 
-use App\Forms\ContactForm;
-use App\Forms\LoginForm;
+use MyApp\Forms\ContactForm;
+use MyApp\Forms\LoginForm;
 use Phalcon\Forms\FormsLocator;
 
 $locator = new FormsLocator([
@@ -1611,7 +1611,7 @@ Each element factory has the signature `fn(string $name, array $options, array $
 ```php
 <?php
 
-use App\Forms\Element\ColorPicker;
+use MyApp\Forms\Element\ColorPicker;
 use Phalcon\Forms\Element\ElementInterface;
 use Phalcon\Forms\FormsLocator;
 
@@ -1671,7 +1671,7 @@ $container->set(
         $locator = new FormsLocator();
         $locator->setElement(
             'colorpicker',
-            fn(string $n, array $o, array $a) => new \App\Forms\Element\ColorPicker($n, $a)
+            fn(string $n, array $o, array $a) => new \MyApp\Forms\Element\ColorPicker($n, $a)
         );
 
         return new Manager($locator);
@@ -1689,7 +1689,7 @@ $locator = $manager->getLocator();
 
 $locator->setElement(
     'rating',
-    fn(string $n, array $o, array $a) => new \App\Forms\Element\StarRating($n, $a)
+    fn(string $n, array $o, array $a) => new \MyApp\Forms\Element\StarRating($n, $a)
 );
 ```
 
@@ -1823,7 +1823,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Forms\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Forms\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Forms\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Forms\Exception $e)` blocks continue to work unchanged.
 
 | Class                                              | Parent                    | Thrown when                                                                      |
 |----------------------------------------------------|---------------------------|----------------------------------------------------------------------------------|

@@ -51,7 +51,7 @@ $text = $locator->hello('World');
 
     The [Phalcon\Di\FactoryDefault][factorydefault] container already has a [Phalcon\Filter\Filter][filter-filter] object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
 
-As of 5.14.2 the built-in sanitizer registry is exposed by the static `Filter::getDefaultMapper()` method. It returns the name to class map used by the `FilterFactory`, and can be used to construct a stand-alone locator that combines the built-in sanitizers with your own:
+The built-in sanitizer registry is exposed by the static `Filter::getDefaultMapper()` method. It returns the name to class map used by the `FilterFactory`, and can be used to construct a stand-alone locator that combines the built-in sanitizers with your own:
 
 ```php
 <?php
@@ -666,7 +666,7 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 
 ## The `Phalcon\Contracts\Filter\Sanitizer` Contract
 
-As of 5.14.2 every built-in sanitizer class in `Phalcon\Filter\Sanitize` implements the `Phalcon\Contracts\Filter\Sanitizer` interface. The interface defines the sanitizer contract:
+Every built-in sanitizer class in `Phalcon\Filter\Sanitize` implements the `Phalcon\Contracts\Filter\Sanitizer` interface. The interface defines the sanitizer contract:
 
 - A sanitizer is an invokable object: it exposes a public `__invoke()` method that receives the value to sanitize as its first parameter and returns the sanitized value.
 - Sanitizer-specific parameters (for example the pattern and replacement of `regex`) are declared after the value parameter. `Filter::sanitize()` forwards them in order.
@@ -680,7 +680,7 @@ Any exception thrown in the Filter component will be of type `Phalcon\Filter\Exc
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Filter\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Filter\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Filter\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Filter\Exception $e)` blocks continue to work unchanged.
 
 | Class                                           | Parent                     | Thrown when                                                    |
 |-------------------------------------------------|----------------------------|----------------------------------------------------------------|

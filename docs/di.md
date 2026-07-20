@@ -1773,7 +1773,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the container raises granular subclasses of `Phalcon\Di\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Di\Exception $e)` blocks continue to work unchanged.
+The container raises granular subclasses of `Phalcon\Di\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Di\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                     | Parent                 | Thrown when                                                                          |
 |-----------------------------------------------------------|------------------------|--------------------------------------------------------------------------------------|

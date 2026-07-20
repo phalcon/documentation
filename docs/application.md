@@ -746,7 +746,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Every subclass extends its respective parent (`Phalcon\Application\Exception` or `Phalcon\Mvc\Application\Exception`), so existing `catch` blocks against the umbrella types continue to work unchanged.
+The component raises granular subclasses so callers can catch a specific failure mode. Every subclass extends its respective parent (`Phalcon\Application\Exception` or `Phalcon\Mvc\Application\Exception`), so existing `catch` blocks against the umbrella types continue to work unchanged.
 
 | Class                                                             | Parent                              | Thrown when                                                                          |
 |-------------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------|
@@ -755,7 +755,7 @@ As of 5.14 the component raises granular subclasses so callers can catch a speci
 | `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`      | `Phalcon\Mvc\Application\Exception` | A registered module definition is not a string, array, or callable.                  |
 | `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` | `Phalcon\Mvc\Application\Exception` | The `path` key of a module definition points at a file that does not exist.          |
 
-As of 5.15 `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
+`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` reports which module was rejected and why. The constructor accepts an optional module name and reason, both folded into the exception message. Both parameters are optional, so `new InvalidModuleDefinition()` still produces the base `Invalid module definition` message.
 
 ```php
 <?php

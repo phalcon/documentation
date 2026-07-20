@@ -8,7 +8,7 @@ Websites and web applications are vulnerable to [XSS][xss] attacks and although 
 
 We designed this component based on the [XSS (Cross-Site Scripting) Prevention Cheat Sheet][xss_cheat_sheet] created by the [OWASP][owasp]. Additionally, this component relies on [mbstring][mbstring] to support almost any charset.
 
-Starting with v5.12.2, [Phalcon\Html\Escaper][escaper] is a façade over five per-context escapers, each living in the `Phalcon\Html\Escaper` namespace:
+[Phalcon\Html\Escaper][escaper] is a façade over five per-context escapers, each living in the `Phalcon\Html\Escaper` namespace:
 
 | Class                                             | Used by        |
 |---------------------------------------------------|----------------|
@@ -123,14 +123,14 @@ use Phalcon\Html\Escaper;
 $escaper = new Escaper();
 
 $url = '"><script>alert(1)</script><a href="#';
-echo $escaper->attributes($url);
+echo $escaper->url($url);
 // %22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23
 ```
 
 HTML syntax:
 
 ```html
-<?php echo $this->escaper->attributes($url); ?>
+<?php echo $this->escaper->url($url); ?>
 ```
 
 ## CSS
@@ -445,7 +445,7 @@ $container = new Di();
 
 $container->set(
     'escaper',
-    function () use  {
+    function () {
         return new Escaper();
     }
 );
@@ -491,7 +491,7 @@ namespace MyApp\Escaper;
 
 use Phalcon\Html\Escaper\EscaperInterface;
 
-class Custom extends EscaperInterface
+class Custom implements EscaperInterface
 {
     public function css(string $css): string;
 

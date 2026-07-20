@@ -90,11 +90,11 @@ The registered names for respective helpers are:
 
 !!! info "NOTE"
 
-    As of v5.12.2 the per-type input helpers (`Color`, `Date`, `DateTime`, `DateTimeLocal`, `Email`, `File`, `Hidden`, `Image`, `Input`, `Month`, `Numeric`, `Password`, `Range`, `Search`, `Submit`, `Tel`, `Text`, `Time`, `Url`, `Week`) have been removed and replaced with a single `Phalcon\Html\Helper\Input\Generic` helper that takes the `type` through its constructor (or `setType()`). Code that uses the `TagFactory` factory method names (`inputColor`, `inputDate`, ...) keeps working unchanged. See [Generic input](#generic-input) below.
+    A single `Phalcon\Html\Helper\Input\Generic` helper backs every type-only `<input>` (color, date, email, file, etc.); it takes the `type` through its constructor (or `setType()`). The `TagFactory` factory method names (`inputColor`, `inputDate`, ...) resolve to it. See [Generic input](#generic-input) below.
 
 ### Registration Pipeline
 
-Starting with v5.12.2, [Phalcon\Html\TagFactory][html-tagfactory] no longer extends `Phalcon\Factory\AbstractFactory`. Every helper is registered as a zero-argument `Closure` that returns the fully constructed helper. `set()` accepts only a `Closure`:
+[Phalcon\Html\TagFactory][html-tagfactory] does not extend `Phalcon\Factory\AbstractFactory`. Every helper is registered as a zero-argument `Closure` that returns the fully constructed helper. `set()` accepts only a `Closure`:
 
 ```php
 public function set(string $name, Closure $definition): void
@@ -1462,7 +1462,7 @@ The `inputPassword` factory name resolves to [Phalcon\Html\Helper\Input\Generic]
 
 ### `inputRadio`
 
-[Phalcon\Html\Helper\Radio][html-helper-input-radio] creates a `<input type="radio">` tag. As of v5.12.2, `Radio` no longer extends `Checkbox`; both share the new [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute matches `value` loosely (`==`) by default - call `strict(true)` to opt into strict (`===`) matching.
+[Phalcon\Html\Helper\Radio][html-helper-input-radio] creates a `<input type="radio">` tag. `Radio` does not extend `Checkbox`; both share the [Phalcon\Html\Helper\Input\AbstractChecked][html-helper-input-abstractchecked] base. The `checked` attribute matches `value` loosely (`==`) by default - call `strict(true)` to opt into strict (`===`) matching.
 
 | Parameter                | Description                       |
 |--------------------------|-----------------------------------|
@@ -1640,7 +1640,7 @@ Set the selected option
 public function strict(bool $flag = true): Select
 ```
 
-Switches between strict (`===`) and loose (`==`) comparison of an option's `value` against the `selected` value. Loose is the default in v5.12.2 so mixed `int`/`string` form input round-trips correctly.
+Switches between strict (`===`) and loose (`==`) comparison of an option's `value` against the `selected` value. Loose is the default so mixed `int`/`string` form input round-trips correctly.
 
 ```php
 <?php

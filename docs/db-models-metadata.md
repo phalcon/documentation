@@ -857,6 +857,7 @@ class Invoices extends Model
                 'inv_created_by',
                 'inv_updated_at',
                 'inv_updated_by',
+            ],
 
             MetaData::MODELS_DATA_TYPES => [
                 'inv_id'          => Column::TYPE_INTEGER,
@@ -932,7 +933,7 @@ namespace MyApp\Components\Strategy;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Di\DiInterface;
 
-class MyStrategy StrategyInterface
+class MyStrategy implements StrategyInterface
 {
     public function getColumnMaps(
         ModelInterface $model, 
@@ -953,7 +954,7 @@ Any exceptions thrown in the `Phalcon\Mvc\Model\MetaData` namespace will be of t
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                 | Parent                        | Thrown when                                                                  |
 |-----------------------------------------------------------------------|-------------------------------|------------------------------------------------------------------------------|

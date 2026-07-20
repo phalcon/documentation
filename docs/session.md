@@ -54,7 +54,7 @@ In order to work with the session, you need to start it. `start()` performs this
     - If the adapter is not set, it will throw an exception
     - It will return the result of `session_start()`
 
-Before starting the session, `start()` checks the session cookie sent by the client. A cookie value containing characters outside the PHP session ID alphabet (`a-z`, `A-Z`, `0-9`, `,`, `-`) is discarded, so `session_start()` generates a new ID. Prior to 5.14.2 only alphanumeric values were accepted, which discarded valid session cookies when `session.sid_bits_per_character` is set to `6` (an alphabet that includes `,` and `-`).
+Before starting the session, `start()` checks the session cookie sent by the client. A cookie value containing characters outside the PHP session ID alphabet (`a-z`, `A-Z`, `0-9`, `,`, `-`) is discarded, so `session_start()` generates a new ID.
 
 ```php
 <?php
@@ -214,7 +214,7 @@ You can also set the session id. The session id is set in an HTTP cookie. You ca
 
     You need to call this method before calling `start()` for the id to take effect
 
-The id must use the PHP session ID alphabet (`a-z`, `A-Z`, `0-9`, `,`, `-`). As of 5.15.0 an id containing any other character is rejected with `Phalcon\Session\Exceptions\InvalidSessionId`, matching the validation `start()` already performs on the session cookie. Earlier versions passed the value straight to `session_id()`, where an invalid id produced a PHP warning and an unusable session.
+The id must use the PHP session ID alphabet (`a-z`, `A-Z`, `0-9`, `,`, `-`). An id containing any other character is rejected with `Phalcon\Session\Exceptions\InvalidSessionId`, matching the validation `start()` already performs on the session cookie.
 
 ```php
 <?php
@@ -244,7 +244,7 @@ Each session can have a name. The session name is set in an HTTP cookie. If this
 
     You need to call this method before calling `start()` for the name to take effect
 
-The name must contain only letters, numbers, underscores, or hyphens, and cannot consist only of digits. As of 5.15.0 a name that breaks either rule is rejected with `Phalcon\Session\Exceptions\InvalidSessionName`. PHP rejects an all-digit `session.name` with a warning and leaves the name unchanged; the component now fails with a named exception instead.
+The name must contain only letters, numbers, underscores, or hyphens, and cannot consist only of digits. A name that breaks either rule is rejected with `Phalcon\Session\Exceptions\InvalidSessionName`.
 
 ```php
 <?php
@@ -351,7 +351,7 @@ unset($session->userId);
 
 [Phalcon\Session\Adapter\Libmemcached][session-adapter-libmemcached] uses the [Phalcon\Storage\Adapter\Libmemcached][storage-adapter-libmemcached] internally to store data in Memcached. In order to use this adapter you need the settings for Memcached and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
 
-The adapter sets the storage key prefix to `sess-memc-` and, as of 5.14.2, disables the storage adapters' prefix stripping (`stripPrefix` is set to `false` unless supplied): session ids are externally generated, so an id that happens to start with the prefix text must not address the same record as another session.
+The adapter sets the storage key prefix to `sess-memc-` and disables the storage adapters' prefix stripping (`stripPrefix` is set to `false` unless supplied): session ids are externally generated, so an id that happens to start with the prefix text must not address the same record as another session.
 
 The available options for Memcached are:
 
@@ -417,7 +417,7 @@ $session
 
 [Phalcon\Session\Adapter\Redis][session-adapter-redis] uses the [Phalcon\Storage\Adapter\Redis][storage-adapter-redis] internally to store data in Redis. In order to use this adapter you need the settings for Redis and a [Phalcon\Storage\AdapterFactory][storage-adapter] object in order for the adapter to be created internally.
 
-The adapter sets the storage key prefix to `sess-reds-` and, as of 5.14.2, disables the storage adapters' prefix stripping (`stripPrefix` is set to `false` unless supplied): session ids are externally generated, so an id that happens to start with the prefix text must not address the same record as another session.
+The adapter sets the storage key prefix to `sess-reds-` and disables the storage adapters' prefix stripping (`stripPrefix` is set to `false` unless supplied): session ids are externally generated, so an id that happens to start with the prefix text must not address the same record as another session.
 
 The available options for Redis are:
 
@@ -482,7 +482,7 @@ $session
 
 ### Custom
 
-The adapters implement PHP's [SessionHandlerInterface][sessionhandlerinterface] and, as of 5.14.2, [SessionUpdateTimestampHandlerInterface][sessionupdatetimestamphandlerinterface] (see [Lazy Write](#lazy-write)). You can create any adapter you need by implementing [SessionHandlerInterface][sessionhandlerinterface], and you can set any adapter that implements this interface to [Phalcon\Session\Manager][session-manager]. There are more adapters available for this component in the [Phalcon Incubator][incubator].
+The adapters implement PHP's [SessionHandlerInterface][sessionhandlerinterface] and [SessionUpdateTimestampHandlerInterface][sessionupdatetimestamphandlerinterface] (see [Lazy Write](#lazy-write)). You can create any adapter you need by implementing [SessionHandlerInterface][sessionhandlerinterface], and you can set any adapter that implements this interface to [Phalcon\Session\Manager][session-manager]. There are more adapters available for this component in the [Phalcon Incubator][incubator].
 
 ```php
 <?php
@@ -527,15 +527,13 @@ class Custom implements SessionHandlerInterface
 
 ### Lazy Write
 
-As of 5.14.2 every adapter shipped with the component also implements PHP's [SessionUpdateTimestampHandlerInterface][sessionupdatetimestamphandlerinterface]. The interface adds two methods, `updateTimestamp()` and `validateId()`, and PHP activates two session features when the registered handler provides them.
+Every adapter shipped with the component also implements PHP's [SessionUpdateTimestampHandlerInterface][sessionupdatetimestamphandlerinterface]. The interface adds two methods, `updateTimestamp()` and `validateId()`, and PHP activates two session features when the registered handler provides them.
 
 `session.lazy_write` (enabled by default in PHP): when the session data has not changed by the end of the request, PHP calls `updateTimestamp()` instead of `write()`.
 
 - `Stream` touches the session file: the modification time is refreshed without rewriting the data, so `gc()` does not remove sessions that are active but unchanged
 - `Redis` and `Libmemcached` delegate to `write()`, refreshing the lifetime of the stored entry
 - `Noop` returns `true` without storing anything
-
-Before 5.14.2 the adapters implemented only [SessionHandlerInterface][sessionhandlerinterface], so PHP fell back to calling `write()` on every request regardless of the `session.lazy_write` setting.
 
 `session.use_strict_mode`: when enabled, PHP calls `validateId()` for a session id supplied by the client before accepting it. An id with no stored session is rejected and PHP generates a new one, preventing session fixation through attacker-chosen ids.
 
@@ -572,7 +570,7 @@ To change how an adapter refreshes an unchanged session, extend it and override 
 
 ### Session Locking
 
-As of 5.14.2 the [Phalcon\Session\Adapter\Redis][session-adapter-redis] adapter can serialize concurrent requests that share a session id. Without locking, two requests arriving with the same session cookie both read the session data when they start and both write it back when they finish; the request finishing last overwrites whatever the other one wrote. PHP's `files` handler prevents this by locking the session file for the duration of the request; a storage backend such as Redis offers no equivalent protection by default.
+The [Phalcon\Session\Adapter\Redis][session-adapter-redis] adapter can serialize concurrent requests that share a session id. Without locking, two requests arriving with the same session cookie both read the session data when they start and both write it back when they finish; the request finishing last overwrites whatever the other one wrote. PHP's `files` handler prevents this by locking the session file for the duration of the request; a storage backend such as Redis offers no equivalent protection by default.
 
 - `Redis` supports locking through the constructor options listed below
 - `Libmemcached`, `Stream` and `Noop` do not implement locking
@@ -643,7 +641,7 @@ $user->name     = 'Dark Helmet';
 $user->password = 12345;
 ```
 
-The bag accepts any [Phalcon\Session\ManagerInterface][session-managerinterface] implementation. As of 5.14.2 the DI container is captured from the manager only when the manager provides a `getDI()` method - the supplied [Phalcon\Session\Manager][session-manager] does - so managers implementing only the interface can be used as well. A container can always be assigned explicitly with `setDI()`, as shown above.
+The bag accepts any [Phalcon\Session\ManagerInterface][session-managerinterface] implementation. The DI container is captured from the manager only when the manager provides a `getDI()` method - the supplied [Phalcon\Session\Manager][session-manager] does - so managers implementing only the interface can be used as well. A container can always be assigned explicitly with `setDI()`, as shown above.
 
 !!! warning "NOTE"
 
@@ -796,7 +794,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Session\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Session\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Session\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Session\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                    | Parent                      | Thrown when                                                                |
 |----------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------|

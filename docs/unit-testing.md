@@ -98,7 +98,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use App\Calculator;
+use MyApp\Calculator;
 use Phalcon\Talon\PHPUnit\AbstractUnitTestCase;
 
 final class CalculatorTest extends AbstractUnitTestCase

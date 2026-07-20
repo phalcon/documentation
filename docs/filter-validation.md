@@ -1036,7 +1036,7 @@ Each entry is anchored on both ends (`#^...$#`), so `image/.*` matches `image/pn
 
 Checks if a file has the exact aspect ratio
 
-The `ratio` option uses the same `WxH` format as the resolution validators (for instance `16x9`). The comparison uses integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches `16x9`, 1366x768 does not. The message supports the `:ratio` placeholder. Available as of 5.14.2.
+The `ratio` option uses the same `WxH` format as the resolution validators (for instance `16x9`). The comparison uses integer cross-multiplication, so the image dimensions must match the ratio exactly: 1920x1080 matches `16x9`, 1366x768 does not. The message supports the `:ratio` placeholder.
 
 ```php
 <?php
@@ -1847,7 +1847,7 @@ $validator->add(
 
 !!! info "NOTE"
 
-    The resolution of an array `attribute` option (used when validating a combination of fields) is specific to the `Uniqueness` validator. As of 5.14.2 it is implemented in `Uniqueness::getOption()`; `getOption()` on every other validator returns the stored option unchanged.
+    The resolution of an array `attribute` option (used when validating a combination of fields) is specific to the `Uniqueness` validator. It is implemented in `Uniqueness::getOption()`; `getOption()` on every other validator returns the stored option unchanged.
 
 In the model:
 
@@ -2492,7 +2492,7 @@ $validation->add(
 );
 ```
 
-As of 5.14.2 the `allowEmpty` rule is owned by the public `AbstractValidator::isAllowEmpty()` method, and the validation run delegates to it before each validator executes. Validators can override the method to define their own emptiness semantics - the `File` validators do, treating an upload with `UPLOAD_ERR_NO_FILE` as empty - and custom validators extending `AbstractValidator` inherit the behavior described above. The per-field map form is honored consistently in this pre-check as well.
+The `allowEmpty` rule is owned by the public `AbstractValidator::isAllowEmpty()` method, and the validation run delegates to it before each validator executes. Validators can override the method to define their own emptiness semantics - the `File` validators do, treating an upload with `UPLOAD_ERR_NO_FILE` as empty - and custom validators extending `AbstractValidator` inherit the behavior described above. The per-field map form is honored consistently in this pre-check as well.
 
 ## Recursive Validation
 
@@ -2558,7 +2558,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Filter\Validation\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Filter\Validation\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Filter\Validation\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                  | Parent                                | Thrown when                                                                      |
 |------------------------------------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------|

@@ -105,7 +105,7 @@ $validator
 ;
 
 # Errors printed out (if any)
-var_dump($validator->getErrors())
+var_dump($validator->getErrors());
 ```
 
 The above example gives a general view on how the component can be used to generate, parse, and validate JSON Web Tokens.
@@ -205,7 +205,7 @@ Verify the signature of the token
 
     Currently the library supports HMAC signers (symmetric): `sha512`, `sha384`, and `sha256`. The `none` signer is available for development only and should not be used in production.
 
-In order to create a JWT token, we need to supply a Signing algorithm. By default, the builder uses " none" ([Phalcon\Encryption\Security\JWT\Signer\None][security-jwt-signer-none]). You can however use the HMAC signer ([Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]). Also, for further customization, you can utilize the supplied [Phalcon\Encryption\Security\JWT\Signer\SignerInterface][security-jwt-signer-signerinterface] interface.
+In order to create a JWT token, we need to supply a Signing algorithm. By default, the builder uses "none" ([Phalcon\Encryption\Security\JWT\Signer\None][security-jwt-signer-none]). You can however use the HMAC signer ([Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]). Also, for further customization, you can utilize the supplied [Phalcon\Encryption\Security\JWT\Signer\SignerInterface][security-jwt-signer-signerinterface] interface.
 
 ```php
 <?php
@@ -308,7 +308,6 @@ Adds a custom claim in the claims collection
 public function getAudience(): array
 ```
 
----
 Returns the `aud` contents. If `aud` is not set, this method returns an empty array.
 
 ```php
@@ -519,7 +518,7 @@ public function __construct(Token $token, int $timeShift = 0)
 Constructor
 
 ```php
-public function get(string $claim): mixed | null
+public function get(string $claim): mixed
 ```
 
 Returns a claim's value - `null` if the claim does not exist
@@ -540,7 +539,7 @@ Sets the token object.
 public function validateAudience(array|string $audience): Validator
 ```
 
-Validates the audience. If it is not included in the token's `aud`, a `Validation: audience not allowed` error is added. Throws [Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType][security-jwt-exceptions-invalidaudiencetype] if the audience is not a `string` or an `array`.
+Validates the audience. If it is not included in the token's `aud`, a `Validation: audience not allowed` error is added. An audience that is not a `string` or an `array` raises a `TypeError`.
 
 ```php
 public function validateClaim(string $name, mixed $value): Validator
@@ -806,7 +805,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Validation-related classes extend `ValidatorException`; structural-input errors extend `InvalidArgumentException`; the HMAC algorithm rejection extends `UnsupportedAlgorithmException`.
+The component raises granular subclasses so callers can catch a specific failure mode. Validation-related classes extend `ValidatorException`; structural-input errors extend `InvalidArgumentException`; the HMAC algorithm rejection extends `UnsupportedAlgorithmException`.
 
 | Class                                                                 | Parent                                                                     | Thrown when                                                                    |
 |-----------------------------------------------------------------------|----------------------------------------------------------------------------|--------------------------------------------------------------------------------|

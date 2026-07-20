@@ -1532,8 +1532,6 @@ The path passed to `{% extends %}` and `{% include %}` is resolved when the temp
 - A path that begins with `./` or `../` resolves relative to the directory of the template being compiled, not the views directory.
 - An absolute path is used unchanged. A Unix path begins with `/`; a Windows path begins with a drive letter (for example `C:\`) or a UNC prefix (`\\`).
 
-Available since Phalcon 5.17.0.
-
 A template-relative path lets a template reference a sibling directory without repeating the views-directory prefix. Given a template stored at `app/views/themes/dark/index.volt`:
 
 ```twig
@@ -1827,7 +1825,7 @@ Compiles an "autoescape" statement returning PHP code
 
 ```php
 /**
- * @deprecated Will be removed in 5.0
+ * @deprecated Will be removed in a future major version
  */
 public function compileCache(
     array $statement, 
@@ -2286,7 +2284,7 @@ Any exception thrown by Volt at compile time or render time will be of type `Pha
 
 ### Granular Exceptions
 
-As of 5.14 the engine raises granular subclasses of `Phalcon\Mvc\View\Engine\Volt\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\View\Engine\Volt\Exception $e)` blocks continue to work unchanged.
+The engine raises granular subclasses of `Phalcon\Mvc\View\Engine\Volt\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\View\Engine\Volt\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                       | Parent                                   | Thrown when                                                                  |
 |-----------------------------------------------------------------------------|------------------------------------------|------------------------------------------------------------------------------|
