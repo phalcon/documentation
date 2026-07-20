@@ -402,3 +402,60 @@
 .md-typeset .api-list li > p:first-child {
     margin: 0;
 }
+
+/* ============================================================
+   Zensical visual parity with the classic Material look.
+   Every rule restates classic Material values, so this section
+   is visually inert on Material builds and only takes effect
+   under Zensical's "modern" stylesheet.
+   ============================================================ */
+
+/* Brand-colored header and navigation tabs */
+.md-header,
+.md-tabs {
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color, hsla(0, 0%, 100%, 1));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+/* Classic dark-mode background depth */
+[data-md-color-scheme="slate"] {
+    --md-default-bg-color: hsla(var(--md-hue), 15%, 14%, 1);
+}
+
+@media screen {
+    /* Classic type scale */
+    .md-typeset {
+        font-size: .8rem;
+        letter-spacing: 0;
+        line-height: 1.6;
+    }
+
+    /* Classic heading scale and light weights */
+    .md-typeset h1 {
+        color: var(--md-default-fg-color--light);
+        font-size: 2em;
+        font-weight: 300;
+    }
+
+    .md-typeset h2 {
+        font-weight: 300;
+        letter-spacing: -.01em;
+    }
+
+    .md-typeset h3 {
+        font-weight: 400;
+    }
+
+    /* Classic code block corners and inline code metrics */
+    .md-typeset code {
+        border-radius: .1rem;
+        font-size: .85em;
+        padding: 0 .2941176471em;
+    }
+
+    .md-typeset pre > code {
+        border-radius: .1rem;
+    }
+}
