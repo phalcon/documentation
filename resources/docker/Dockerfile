@@ -1,16 +1,14 @@
-FROM squidfunk/mkdocs-material:9
+FROM zensical/zensical:0.0.51
 
 LABEL authors="team@phalcon.io"
 
-# mike (versioned deploys) and markdown-include are the only packages the
-# base image does not already ship. Everything else in the toolchain
-# (mkdocs, mkdocs-material, minify, redirects, requests) comes from the base.
+# The Zensical-compatible fork of mike handles versioned deploys (it shells out
+# to `zensical build` instead of `mkdocs build`). It is not published on PyPI,
+# so pip installs it from git. git is also required at runtime for mike's
+# gh-pages branch operations, and the base (Alpine) image does not ship it.
 #
-# click is pinned below 8.3: click 8.3.x silently disables the default
-# --livereload behavior of `mkdocs serve` (no file watching, no rebuilds).
-# Remove the pin once the upstream issue is resolved:
-# https://github.com/squidfunk/mkdocs-material/issues/8478
-RUN pip install --no-cache-dir \
-    "click<8.3" \
-    markdown-include \
-    mike
+# The base image already provides the right entrypoint/CMD/workdir
+# (`/sbin/tini -- zensical`, `serve --dev-addr=0.0.0.0:8000`, `/docs`), so the
+# serve script and the CI deploy step work unchanged.
+RUN apk add --no-cache git \
+    && pip install --no-cache-dir "git+https://github.com/squidfunk/mike.git"
