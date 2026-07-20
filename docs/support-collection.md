@@ -1030,7 +1030,7 @@ Most exceptions thrown in the `Phalcon\Support\Collection` namespace extend `Pha
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. `ReadOnlyViolation` extends `Phalcon\Support\Collection\Exception` (itself a `Phalcon\Support\Exception`), so existing `catch (Phalcon\Support\Exception $e)` blocks continue to catch it. `InvalidValueType` extends the native `\InvalidArgumentException`, so it is **not** caught by `Phalcon\Support\Exception`; catch `\InvalidArgumentException` or the class itself.
+The component raises granular subclasses so callers can catch a specific failure mode. `ReadOnlyViolation` extends `Phalcon\Support\Collection\Exception` (itself a `Phalcon\Support\Exception`), so existing `catch (Phalcon\Support\Exception $e)` blocks continue to catch it. `InvalidValueType` extends the native `\InvalidArgumentException`, so it is **not** caught by `Phalcon\Support\Exception`; catch `\InvalidArgumentException` or the class itself.
 
 | Class                                                     | Parent                                 | Thrown when                                                              |
 |-----------------------------------------------------------|----------------------------------------|--------------------------------------------------------------------------|

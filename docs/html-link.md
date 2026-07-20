@@ -156,7 +156,7 @@ echo $serializer->serialize([$link]);
 ;
 ```
 
-As of 5.15.0, `serialize()` emits attribute values as RFC 8288 quoted strings. An embedded double quote or backslash in a value is prefixed with a backslash, so a value cannot terminate the field early or produce a malformed header.
+The `serialize()` method emits attribute values as RFC 8288 quoted strings. An embedded double quote or backslash in a value is prefixed with a backslash, so a value cannot terminate the field early or produce a malformed header.
 
 ```php
 <?php

@@ -1790,7 +1790,7 @@ Compiles an "autoescape" statement returning PHP code
 
 ```php
 /**
- * @deprecated Will be removed in 5.0
+ * @deprecated Will be removed in a future major version
  */
 public function compileCache(
     array $statement, 
@@ -2249,7 +2249,7 @@ Any exception thrown by Volt at compile time or render time will be of type `Pha
 
 ### Granular Exceptions
 
-As of 5.14 the engine raises granular subclasses of `Phalcon\Mvc\View\Engine\Volt\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\View\Engine\Volt\Exception $e)` blocks continue to work unchanged.
+The engine raises granular subclasses of `Phalcon\Mvc\View\Engine\Volt\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\View\Engine\Volt\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                                       | Parent                                   | Thrown when                                                                  |
 |-----------------------------------------------------------------------------|------------------------------------------|------------------------------------------------------------------------------|

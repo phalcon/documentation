@@ -685,7 +685,7 @@ $connection = new Connection(
 
 // Same profiler as the one we created above
 $profiler = $connection->getProfiler();
-$profiler->setActive(true)
+$profiler->setActive(true);
 ```
 
 and to retrieve the data stored:
@@ -695,7 +695,7 @@ and to retrieve the data stored:
 
 $data = $connection->getProfiler()->getLogger()->getMessages();
 
-var_dump($messages);
+var_dump($data);
 ```
 
 The messages are logged by default according to this pattern:
@@ -711,7 +711,7 @@ You can customize the message format using the `setLogFormat()` on the profiler
 
 $connection
     ->getProfiler()
-    ->setLogFormat("{duration}: {method} {statement}{values}")
+    ->setLogFormat("{duration}: {method} {statement}{values}");
 ```
 
 The parameters available are:
@@ -734,7 +734,7 @@ The parameters available are:
 
 ### Factory
 
-The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick creation of query objects, whether this is `select`, `insert`, `update` or `delete. The methods exposed by the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection], binding the resulting object with the connection.
+The `Phalcon\DataMapper\Query` namespace offers a handy factory, which allows for a quick creation of query objects, whether this is `select`, `insert`, `update` or `delete`. The methods exposed by the [Phalcon\DataMapper\Query\QueryFactory][datamapper-query-queryfactory] accept a [Phalcon\DataMapper\Pdo\Connection][datamapper-pdo-connection], binding the resulting object with the connection.
 
 #### Methods
 
@@ -2803,7 +2803,7 @@ As of 5.14 the component raises granular subclasses under `Phalcon\DataMapper\Pd
 [datamapper-pdo-connection-abstractconnection]: api/phalcon_datamapper.md#datamapperpdoconnectionabstractconnection
 [datamapper-pdo-connection-connectioninterface]: api/phalcon_datamapper.md#datamapperpdoconnectionconnectioninterface
 [datamapper-pdo-connection-decorated]: api/phalcon_datamapper.md#datamapperpdoconnectiondecorated
-[datamapper-pdo-connection-pdointerface]: api/phalcon_datamapper.md#datamapperpdoconnection-pdointerface
+[datamapper-pdo-connection-pdointerface]: api/phalcon_datamapper.md#datamapperpdoconnectionpdointerface
 [datamapper-pdo-connectionlocator]: api/phalcon_datamapper.md#datamapperpdoconnectionlocator
 [datamapper-pdo-connectionlocatorinterface]: api/phalcon_datamapper.md#datamapperpdoconnectionlocatorinterface
 [datamapper-pdo-exception-cannotdisconnect]: api/phalcon_datamapper.md#datamapperpdoexceptioncannotdisconnect

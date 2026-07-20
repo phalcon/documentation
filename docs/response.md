@@ -307,7 +307,7 @@ To get the cookies set by the user you can use the `getCookies()` method on the 
 
 ### `SameSite`
 
-If you are using PHP 7.3, or later you can set the `SameSite` as an element to the `options` array (last parameter of the constructor) or by using `setOptions()`. It is your responsibility to assign a valid value for `SameSite` (such as `Strict`, `Lax` etc.)
+You can set the `SameSite` as an element to the `options` array (last parameter of the constructor) or by using `setOptions()`. It is your responsibility to assign a valid value for `SameSite` (such as `Strict`, `Lax` etc.)
 
 ```php
 <?php
@@ -330,7 +330,7 @@ $cookie  = new Cookie(
 
 !!! info "NOTE"
 
-    If your DI container contains the `session` service and the session has been started, each cookie definition (expiration, path, domain, secure, httponly, options) is stored in the session automatically, under a key prefixed with `_PHCOOKIE_`, and restored from there on later requests. If the service is missing, the session has not been started, or the cookie has no container at all, the cookie still works for the current request - nothing is persisted and no error is raised - and you are responsible for persisting the definition if you wish to. Prior to 5.14.2, `send()` raised a fatal error when a cookie with a non-empty definition had no DI container set.
+    If your DI container contains the `session` service and the session has been started, each cookie definition (expiration, path, domain, secure, httponly, options) is stored in the session automatically, under a key prefixed with `_PHCOOKIE_`, and restored from there on later requests. If the service is missing, the session has not been started, or the cookie has no container at all, the cookie still works for the current request - nothing is persisted and no error is raised - and you are responsible for persisting the definition if you wish to.
 
 ### Encryption
 
@@ -445,7 +445,6 @@ The method accepts the following parameters:
 use Phalcon\Http\Response;
 
 $response = new Response();
-$contents = file_get_contents();
 
 $response
     ->setFileToSend(
@@ -598,7 +597,7 @@ $response->setExpires($expiryDate);
 
 ### `Cache-Control`
 
-This header provides a better to cache the pages served. We specify a time in seconds, instructing the browser that our content is cached for that amount of time.
+This header provides a better way to cache the pages served. We specify a time in seconds, instructing the browser that our content is cached for that amount of time.
 
 ```php
 <?php

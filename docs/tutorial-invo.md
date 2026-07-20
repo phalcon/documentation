@@ -14,8 +14,8 @@
 
 INVO runs on two Phalcon distributions from the same source tree:
 
-- **Phalcon v5** minimum `5.0` — the C extension. This is the default when the extension is loaded.
-- **Phalcon v6** currently `6.0` alpha — the `phalcon/phalcon` PHP package. No extension is required.
+- **Phalcon v5** minimum `5.0` - the C extension. This is the default when the extension is loaded.
+- **Phalcon v6** currently `6.0` alpha - the `phalcon/phalcon` PHP package. No extension is required.
 - The two are mutually exclusive at runtime. When the v5 extension is loaded, PHP uses it and the v6 package is shadowed.
 
 !!! info "NOTE"

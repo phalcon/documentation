@@ -52,7 +52,7 @@ use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-$this->setStaticBaseUri('https://assets.phalcon.io/');
+$url->setStaticBaseUri('https://assets.phalcon.io/');
 
 echo $url->getStaticBaseUri(); // https://assets.phalcon.io/
 ```
@@ -67,7 +67,7 @@ use Phalcon\Mvc\Url;
 $url = new Url();
 
 if ($environment === 'production') {
-    $this->setStaticBaseUri('https://assets.phalcon.io/');
+    $url->setStaticBaseUri('https://assets.phalcon.io/');
 }
 
 echo $url->getStatic('img/logo.png'); // https://assets.phalcon.io/img/logo.png
@@ -113,7 +113,7 @@ $url = new Url();
 echo $url->getBaseUri();
 ```
 
-By default, Phalcon will try to detect your base URI. It is recommended that you specify the base URI yourself,m because it increases performance slightly.
+By default, Phalcon will try to detect your base URI. It is recommended that you specify the base URI yourself, because it increases performance slightly.
 
 ```php
 <?php
@@ -134,7 +134,7 @@ use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-$this->setBaseUri('/portal/');
+$url->setBaseUri('/portal/');
 
 echo $url->getBaseUri(); // /portal/
 
@@ -147,7 +147,7 @@ The above code will prefix all the URLs with `/portal/`, allowing you to _group_
 <?php
 
 use Phalcon\Mvc\Url;
-use Phalcon\Mvc\Controller
+use Phalcon\Mvc\Controller;
 
 /**
  * @property Url $url
@@ -245,7 +245,7 @@ echo $url->get(
 
 #### Replacing query string arguments
 
-By default, when the supplied URI already contains a query string, any extra arguments passed via the `$args` parameter are appended with `&`. As of v5.12.2, `get()` accepts an opt-in `bool $replaceArgs = false` fifth parameter. When set to `true` and the URI already contains a query string, the existing query is parsed and merged with the supplied arguments so that user-supplied keys override colliding ones.
+By default, when the supplied URI already contains a query string, any extra arguments passed via the `$args` parameter are appended with `&`. `get()` accepts an opt-in `bool $replaceArgs = false` fifth parameter. When set to `true` and the URI already contains a query string, the existing query is parsed and merged with the supplied arguments so that user-supplied keys override colliding ones.
 
 ```php
 <?php
@@ -459,7 +459,7 @@ use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-$this->setBasePath('/data/app/');
+$url->setBasePath('/data/app/');
 
 echo $url->getBasePath(); // /data/app/
 
@@ -561,7 +561,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Url\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Url\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Url\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Url\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                 | Parent                      | Thrown when                                                                        |
 |-------------------------------------------------------|-----------------------------|------------------------------------------------------------------------------------|

@@ -11,7 +11,8 @@
 [Phalcon\Encryption\Security][security] is a component that helps developers with common security-related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
 !!! info "NOTE"
-By default the component uses PHP's `password_hash()` with `Phalcon\Encryption\Security::CRYPT_DEFAULT` (which maps to `Phalcon\Encryption\Security::CRYPT_BCRYPT` / `PASSWORD_BCRYPT`). Call `setDefaultHash()` to change the default algorithm.
+
+    By default the component uses PHP's `password_hash()` with `Phalcon\Encryption\Security::CRYPT_DEFAULT` (which maps to `Phalcon\Encryption\Security::CRYPT_BCRYPT` / `PASSWORD_BCRYPT`). Call `setDefaultHash()` to change the default algorithm.
 
 ## Password Hashing
 
@@ -310,7 +311,7 @@ Hashes a string or password and returns the hashed string back. The second param
 
 Accepts a string (usually the password), an already hashed string (the hashed password), and an optional minimum password length. It checks them both and returns `true` if they are identical and `false` otherwise.
 
-**isLegacyHash()** **isLegacyHash()**
+**isLegacyHash()**
 
 Returns `true` if the provided hash is a legacy hash (i.e., not produced by PHP's `password_hash()`), such as an older [bcrypt][bcrypt] variant.
 
@@ -708,7 +709,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Encryption\Security\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Encryption\Security\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Encryption\Security\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Encryption\Security\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                         | Parent                                  | Thrown when                                                                       |
 |---------------------------------------------------------------|-----------------------------------------|-----------------------------------------------------------------------------------|

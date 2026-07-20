@@ -769,7 +769,7 @@ use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Router\Group;
 
 $router   = new Router();
-$invoices = new RouterGroup(
+$invoices = new Group(
     [
         'module'     => 'admin',
         'controller' => 'invoices',
@@ -1024,8 +1024,8 @@ $config = [
                     'pattern' => '/users',          
                     'paths'   => [
                         'controller' => 'users', 
-                        'action'     => 'index'],
-                    ,  
+                        'action'     => 'index',
+                    ],
                     'name'    => 'api-users-list',
                 ],
                 [
@@ -1033,10 +1033,10 @@ $config = [
                     'pattern' => '/users/{id}',     
                     'paths'   => [
                         'controller' => 'users', 
-                        'action'     => 'show'],,
-                       'na
-                       me' =>    'api-users-show',
-                   ],
+                        'action'     => 'show',
+                    ],
+                    'name'    => 'api-users-show',
+                ],
                 [
                     'method'  => 'post',   
                     'pattern' => '/users',          
@@ -1283,7 +1283,7 @@ Each route that is added to the router is stored internally as a [Phalcon\Mvc\Ro
 <?php
 
 $route = $router->add(
-    '/admin/{year:[0-9]{4}}/{month:[0-9]{2}}/{day:[0-9]{2}}/{id:[0-9]{4}',
+    '/admin/{year:[0-9]{4}}/{month:[0-9]{2}}/{day:[0-9]{2}}/{id:[0-9]{4}}',
     'Invoices::view'
 );
 
@@ -1368,7 +1368,7 @@ $router->notFound(
 
 ## Defaults
 
-You can define default values for `module`, `controller`, and `action. When a route is missing any of these elements in its path, the router will automatically use the default value set.
+You can define default values for `module`, `controller`, and `action`. When a route is missing any of these elements in its path, the router will automatically use the default value set.
 
 ```php
 <?php
@@ -1929,7 +1929,7 @@ Any exception thrown in the [Phalcon\Mvc\Router][mvc-router] component will be o
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Router\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Router\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Router\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Router\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                         | Parent                         | Thrown when                                                                            |
 |---------------------------------------------------------------|--------------------------------|----------------------------------------------------------------------------------------|

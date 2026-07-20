@@ -8,7 +8,7 @@
 
 Phalcon v5.14 supports only PHP 8.1 and above.
 
-Although PHP 8.1 was released several years ago and it's [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications.
+Although PHP 8.1 was released several years ago and its [active support][php-support] as well as security updates have expired, Phalcon still supports it, in order to offer enough time for developers to upgrade their applications.
 
 !!! info "NOTE"
 

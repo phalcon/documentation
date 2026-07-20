@@ -105,7 +105,7 @@ $validator
 ;
 
 # Errors printed out (if any)
-var_dump($validator->getErrors())
+var_dump($validator->getErrors());
 ```
 
 The above example gives a general view on how the component can be used to generate, parse, and validate JSON Web Tokens.
@@ -205,7 +205,7 @@ Verify the signature of the token
 
     Currently the library supports HMAC signers (symmetric): `sha512`, `sha384`, and `sha256`. The `none` signer is available for development only and should not be used in production.
 
-In order to create a JWT token, we need to supply a Signing algorithm. By default, the builder uses " none" ([Phalcon\Encryption\Security\JWT\Signer\None][security-jwt-signer-none]). You can however use the HMAC signer ([Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]). Also, for further customization, you can utilize the supplied [Phalcon\Encryption\Security\JWT\Signer\SignerInterface][security-jwt-signer-signerinterface] interface.
+In order to create a JWT token, we need to supply a Signing algorithm. By default, the builder uses "none" ([Phalcon\Encryption\Security\JWT\Signer\None][security-jwt-signer-none]). You can however use the HMAC signer ([Phalcon\Encryption\Security\JWT\Signer\Hmac][security-jwt-signer-hmac]). Also, for further customization, you can utilize the supplied [Phalcon\Encryption\Security\JWT\Signer\SignerInterface][security-jwt-signer-signerinterface] interface.
 
 ```php
 <?php
@@ -308,7 +308,6 @@ Adds a custom claim in the claims collection
 public function getAudience(): array
 ```
 
----
 Returns the `aud` contents. If `aud` is not set, this method returns an empty array.
 
 ```php
@@ -519,7 +518,7 @@ public function __construct(Token $token, int $timeShift = 0)
 Constructor
 
 ```php
-public function get(string $claim): mixed | null
+public function get(string $claim): mixed
 ```
 
 Returns a claim's value - `null` if the claim does not exist
@@ -562,31 +561,31 @@ $validator
 public function validateExpiration(int $timestamp): Validator
 ```
 
-Validates the expiration time. If the `exp` value stored in the token is less than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the expiration time. If the `exp` value stored in the token is less than now, a `Validation: the token has expired` error is added.
 
 ```php
-public function validateId(string $id): Validator
+public function validateId(string|null $id = null): Validator
 ```
 
-Validates the id. If it is not the same as the `jti` value stored in the token, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the id. If it is not the same as the `jti` value stored in the token, a `Validation: incorrect Id` error is added. A `null` id is not validated.
 
 ```php
 public function validateIssuedAt(int $timestamp): Validator
 ```
 
-Validates the `issued at` time. If the `iat` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the `issued at` time. If the `iat` value stored in the token is greater than now, a `Validation: the token cannot be used yet (future)` error is added.
 
 ```php
-public function validateIssuer(string $issuer): Validator
+public function validateIssuer(string|null $issuer = null): Validator
 ```
 
-Validates the issuer. If it is not the same as the `iss` value stored in the token, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the issuer. If it is not the same as the `iss` value stored in the token, a `Validation: incorrect issuer` error is added. A `null` issuer is not validated.
 
 ```php
 public function validateNotBefore(int $timestamp): Validator
 ```
 
-Validates the not before time. If the `nbf` value stored in the token is greater than now, a [Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException][security-jwt-exceptions-validatorexception] will be thrown.
+Validates the not before time. If the `nbf` value stored in the token is greater than now, a `Validation: the token cannot be used yet (not before)` error is added.
 
 ```php
 public function validateSignature(SignerInterface $signer, string $passphrase): Validator
@@ -797,7 +796,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses so callers can catch a specific failure mode. Validation-related classes extend `ValidatorException`; structural-input errors extend `InvalidArgumentException`; the HMAC algorithm rejection extends `UnsupportedAlgorithmException`.
+The component raises granular subclasses so callers can catch a specific failure mode. Validation-related classes extend `ValidatorException`; structural-input errors extend `InvalidArgumentException`; the HMAC algorithm rejection extends `UnsupportedAlgorithmException`.
 
 | Class                                                                 | Parent                                                                     | Thrown when                                                                    |
 |-----------------------------------------------------------------------|----------------------------------------------------------------------------|--------------------------------------------------------------------------------|

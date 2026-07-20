@@ -181,7 +181,7 @@ try {
 
 ## Exceptions
 
-Any exceptions thrown in the Logger component will be of type [Phalcon\Mvc\Model\Transaction\Exception][mvc-model-transaction-exception] or [Phalcon\Mvc\Model\Transaction\Failed][mvc-model-transaction-failed]. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Transaction component will be of type [Phalcon\Mvc\Model\Transaction\Exception][mvc-model-transaction-exception] or [Phalcon\Mvc\Model\Transaction\Failed][mvc-model-transaction-failed]. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 Additionally, you can throw an exception if the rollback was not successful, by using the `throwRollbackException(true)` method.
 

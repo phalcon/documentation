@@ -373,7 +373,7 @@ $container->set(
             }
         );
 
-        $connection = new Mysql\(
+        $connection = new Mysql(
             [
                 'host'     => 'localhost',
                 'username' => 'root',
@@ -422,7 +422,7 @@ Using the [Phalcon\Db][db], the underlying component of [Phalcon\Mvc\Model][mvc-
 use Phalcon\Db\Profiler;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Events\Manager;
-use Phalcon\Db\Adapter\Pdo;
+use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $container = new FactoryDefault();
 $container->set(
@@ -504,7 +504,7 @@ foreach ($profiles as $profile) {
         'Elapsed: ',
         $profile->getTotalElapsedSeconds(),
         PHP_EOL
-    );
+    ;
 }
 ```
 

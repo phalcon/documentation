@@ -260,7 +260,7 @@ To make the sanitization process easier, when retrieving such fields, [Phalcon\H
 <?php
 
 use Phalcon\Di\Di;
-use Phalcon\Filter;
+use Phalcon\Filter\Filter;
 use Phalcon\Http\Request;
 
 $container = new Di();

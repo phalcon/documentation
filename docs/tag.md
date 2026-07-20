@@ -818,29 +818,29 @@ Volt syntax:
 
 ### `passwordField()`
 
-Builds an HTML `input[type='text']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
+Builds an HTML `input[type='password']` tag. Accepts an array with the attributes of the element. The first element of the array is the name of the element.
 
 ```php
 <?php
 
 use Phalcon\Tag;
 
-echo Tag::textField(
+echo Tag::passwordField(
     [
-        'name',
+        'password',
         'size' => '30',
     ]
 );
 
-// <input type='text' id='name' name='name' size='30' />
+// <input type='password' id='password' name='password' size='30' />
 ```
 
 HTML syntax:
 
 ```php
-<?php echo $this->tag->textField(
+<?php echo $this->tag->passwordField(
     [
-       'name',
+       'password',
        'size' => '30',
     ]
 ); ?>
@@ -849,7 +849,7 @@ HTML syntax:
 Volt syntax:
 
 ```twig
-{{ text_field('name', 'size': '30') }}
+{{ password_field('password', 'size': '30') }}
 ```
 
 ### `timeField()`

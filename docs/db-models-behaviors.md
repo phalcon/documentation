@@ -372,7 +372,7 @@ Any exceptions thrown in the `Phalcon\Mvc\Model\Behavior` namespace will be of t
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Mvc\Model\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                         | Parent                        | Thrown when                                                                                                          |
 |---------------------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------------------------------------------|

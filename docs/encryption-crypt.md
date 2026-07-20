@@ -43,11 +43,11 @@ If no parameters are passed in the constructor, the component will use the `aes-
 
 !!! warning "WARNING"
 
-    The constructor also accepts a parameter for signing requests. For v5, the default value for this parameter has changed to `true`
+    The constructor also accepts a parameter for signing requests. The default value for this parameter is `true`
 
 !!! info "NOTE"
 
-    The constructor accepts now a [Phalcon\Encryption\Crypt\PadFactory][pad-factory] as a third parameter. If not specified, a [Phalcon\Encryption\Crypt\PadFactory][pad-factory] object will be created for you
+    The constructor accepts a [Phalcon\Encryption\Crypt\PadFactory][pad-factory] as a third parameter. If not specified, a [Phalcon\Encryption\Crypt\PadFactory][pad-factory] object will be created for you
 
 ```php
 <?php
@@ -176,9 +176,9 @@ You can always get an array of all the available ciphers for your system by call
 
 ### Hash Algorithm
 
-The getter `getHashAlgo()` returns the hashing algorithm used by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Encryption\Crypt\Exception][crypt-exception] will be thrown.
+The getter `getHashAlgorithm()` returns the hashing algorithm used by the component. If none has been explicitly defined by the setter `setHashAlgorithm()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Encryption\Crypt\Exception][crypt-exception] will be thrown.
 
-You can always get an array of all the available hashing algorithms for your system by calling `getAvailableHashAlgos()`.
+You can always get an array of all the available hashing algorithms for your system by calling `getAvailableHashAlgorithms()`.
 
 ### Keys
 
@@ -522,7 +522,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses under `Phalcon\Encryption\Crypt\Exception\` so callers can catch a specific failure mode. Existing `catch (Phalcon\Encryption\Crypt\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses under `Phalcon\Encryption\Crypt\Exception\` so callers can catch a specific failure mode. Existing `catch (Phalcon\Encryption\Crypt\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                            | Parent                               | Thrown when                                                                           |
 |------------------------------------------------------------------|--------------------------------------|---------------------------------------------------------------------------------------|

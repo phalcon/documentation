@@ -20,7 +20,7 @@ Any exception thrown in the `Phalcon\Html` namespace will be of type `Phalcon\Ht
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Html\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Html\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Html\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Html\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                   | Parent                   | Thrown when                                                                 |
 |---------------------------------------------------------|--------------------------|-----------------------------------------------------------------------------|

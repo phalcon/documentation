@@ -76,15 +76,6 @@ plugins:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
       minify_html: true
-  - redirects:
-      redirect_maps:
-        'index.md': 'introduction.md'
-        'loader.md': 'autoload.md'
-        'collection.md': 'support-collection.md'
-        'helper.md': 'support-helper.md'
-        'registry.md': 'support-registry.md'
-        'version.md': 'support-version.md'
-        'migrations.md': 'db-migrations.md'
 
 # Hooks
 #hooks:
@@ -137,11 +128,10 @@ markdown_extensions:
   - admonition
   - attr_list
   - footnotes
-  - markdown_include.include:
-      base_path: docs
   - md_in_html
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: [docs]
   - pymdownx.extra
   - pymdownx.tabbed
   - pymdownx.emoji:
@@ -257,7 +247,7 @@ nav:
       - Loader: autoload.md
       - Logger: logger.md
       - HTTP:
-          - Cookies: response#cookies
+          - Cookies: response.md
           - Request: request.md
           - Response: response.md
       - i18n:

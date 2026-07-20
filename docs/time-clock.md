@@ -287,7 +287,7 @@ Any exception thrown by the component is a [Phalcon\Time\Clock\Exception][except
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Time\Clock\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Time\Clock\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Time\Clock\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Time\Clock\Exception $e)` blocks continue to work unchanged.
 
 | Class                                           | Parent                         | Thrown when                                                               |
 |-------------------------------------------------|--------------------------------|---------------------------------------------------------------------------|

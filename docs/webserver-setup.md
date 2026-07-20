@@ -287,7 +287,7 @@ The configuration below is for when you want to install your application in a vi
 
 ## Lighttpd
 
-[lighttpd](https://redmine.lighttpd.net/) (pronounced "lighty") is an open-source web server optimized for speed-critical environments while remaining standards-compliant, secure, and flexible. It was originally written by Jan Kneschke as a proof-of-concept of the c10k problem – how to handle 10,000 connections in parallel on one server but has gained worldwide popularity. Its name is a portmanteau of "light" and "httpd".
+[lighttpd](https://redmine.lighttpd.net/) (pronounced "lighty") is an open-source web server optimized for speed-critical environments while remaining standards-compliant, secure, and flexible. It was originally written by Jan Kneschke as a proof-of-concept of the c10k problem - how to handle 10,000 connections in parallel on one server but has gained worldwide popularity. Its name is a portmanteau of "light" and "httpd".
 
 ### Install lighttpd
 

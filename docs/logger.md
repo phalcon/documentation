@@ -22,7 +22,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 ### Stream
 
-This adapter is used when we want to log messages to a particular file stream. This adapter combines the v3 `Stream` and `File` ones. Usually, this is the most used one: logging to a file in the file system.
+This adapter is used when we want to log messages to a particular file stream. Usually, this is the most used one: logging to a file in the file system.
 
 ### Syslog
 
@@ -172,7 +172,7 @@ The log generated is as follows:
 [Tue, 25 Dec 18 12:13:14 -0400][info] This is an info message
 [Tue, 25 Dec 18 12:13:14 -0400][critical] This is a log message
 [Tue, 25 Dec 18 12:13:14 -0400][notice] This is a notice message
-[Tue, 25 Dec 18 12:13:14 -0400][warning] This is warning message
+[Tue, 25 Dec 18 12:13:14 -0400][warning] This is a warning message
 ```
 
 ## Multiple Adapters
@@ -748,7 +748,7 @@ The formatter classes above accept a [Phalcon\Logger\Item][logger-item] object. 
 
 !!! warning "WARNING"
 
-    In v5 the object now accepts a `\DateTimeImmutable` object as the `$dateTime` parameter
+    The object accepts a `\DateTimeImmutable` object as the `$dateTime` parameter
 
 ## Examples
 
@@ -990,7 +990,7 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Logger\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Logger\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Logger\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Logger\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                 | Parent                     | Thrown when                                                                        |
 |-------------------------------------------------------|----------------------------|------------------------------------------------------------------------------------|
@@ -1005,7 +1005,7 @@ As of 5.14 the component raises granular subclasses of `Phalcon\Logger\Exception
 | `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed`  | `Phalcon\Logger\Exception` | The `Syslog` adapter cannot open the syslog connection.                            |
 
 [bridge-psr3]: https://github.com/phalcon/bridge-psr3
-[config]: api/phalcon_config.md/#configconfig
+[config]: api/phalcon_config.md#configconfig
 [date-formats]: https://www.php.net/manual/en/function.date.php
 [factorydefault]: api/phalcon_di.md/#difactorydefault
 [fifo]: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)

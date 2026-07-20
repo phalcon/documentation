@@ -70,7 +70,7 @@ Every adapter requires options to operate properly. These options are passed as 
 
 !!! info "NOTE"
 
-    As of 5.15 every adapter requires the `limit` option, and the [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter requires the `model` option. A missing option throws `Phalcon\Paginator\Exceptions\MissingRequiredParameter` from the constructor. Earlier versions ignored a missing `limit` (reaching a division by zero) and a missing `model` (a notice followed by a fatal error).
+    Every adapter requires the `limit` option, and the [Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter requires the `model` option. A missing option throws `Phalcon\Paginator\Exceptions\MissingRequiredParameter` from the constructor.
 
 The methods exposed are:
 
@@ -180,7 +180,7 @@ Unlike offset-based pagination, this adapter does not use `LIMIT n OFFSET k`. In
 **Requirements and limitations:**
 
 - `cursorColumn` must be a unique, indexed column (typically the primary key).
-- The cursor column must hold numeric values. As of 5.15 a non-numeric value (for example a UUID) throws `Phalcon\Paginator\Exceptions\InvalidCursorColumn`; earlier versions cast it to `0` and ended pagination after the first page.
+- The cursor column must hold numeric values. A non-numeric value (for example a UUID) throws `Phalcon\Paginator\Exceptions\InvalidCursorColumn`.
 - Pages must be traversed sequentially; random access is not supported.
 - `getTotalItems()` and `getLast()` always return `0` - no `COUNT(*)` query is issued.
 - Items are returned as an array of associative arrays, not as model objects.
@@ -506,7 +506,7 @@ $options = [
 ];
 
 $factory   = new PaginatorFactory();
-$paginator = $factory->newInstance('queryBuilder');
+$paginator = $factory->newInstance('queryBuilder', $options);
 
 ```
 
@@ -893,13 +893,13 @@ try {
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Paginator\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Paginator\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Paginator\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Paginator\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                   | Parent                        | Thrown when                                                                          |
 |---------------------------------------------------------|-------------------------------|--------------------------------------------------------------------------------------|
 | `Phalcon\Paginator\Exceptions\BuilderModelNotDefined`   | `Phalcon\Paginator\Exception` | The `QueryBuilder` adapter is given a builder that has no model registered.          |
 | `Phalcon\Paginator\Exceptions\InvalidBuilderInstance`   | `Phalcon\Paginator\Exception` | The `QueryBuilder` adapter is given a value that is not a `Builder` instance.        |
-| `Phalcon\Paginator\Exceptions\InvalidCursorColumn`      | `Phalcon\Paginator\Exception` | The `cursorColumn` option is not a non-empty string, or (as of 5.15) the cursor column value in the resultset is not numeric. |
+| `Phalcon\Paginator\Exceptions\InvalidCursorColumn`      | `Phalcon\Paginator\Exception` | The `cursorColumn` option is not a non-empty string, or the cursor column value in the resultset is not numeric. |
 | `Phalcon\Paginator\Exceptions\InvalidLimit`             | `Phalcon\Paginator\Exception` | The `limit` option is not a positive integer.                                        |
 | `Phalcon\Paginator\Exceptions\MissingColumnsForHaving`  | `Phalcon\Paginator\Exception` | A `QueryBuilder` paginator is given a `HAVING` clause but no explicit `columns`.     |
 | `Phalcon\Paginator\Exceptions\MissingRequiredParameter` | `Phalcon\Paginator\Exception` | A required option is missing from the constructor array (`limit` for every adapter, plus `model`, `builder`, or `cursorColumn` depending on the adapter). |

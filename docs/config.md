@@ -124,7 +124,7 @@ $factory  = new ConfigFactory();
 $config = $factory->load($fileName);
 ```
 
-As of 5.14.2, `load()` resolves the `yml` file extension, or `yml` passed as the `adapter` element, to the [Yaml][yaml] adapter:
+`load()` resolves the `yml` file extension, or `yml` passed as the `adapter` element, to the [Yaml][yaml] adapter:
 
 ```php
 <?php
@@ -220,7 +220,7 @@ $config->set('host', 'localhost');  // throws InvalidValueType
 
 !!! info "NOTE"
 
-    As of 5.14.2, nested configuration objects inherit all three flags (`$insensitive`, `$strictNull`, `$type`) and the type guard is enforced. In earlier versions, nested objects inherited only `$insensitive` and the type guard was not applied by this component.
+    Nested configuration objects inherit all three flags (`$insensitive`, `$strictNull`, `$type`) and the type guard is enforced.
 
 ## Get
 
@@ -394,7 +394,7 @@ Phalcon\Config Object
 
 !!! info "NOTE"
 
-    `merge()` accepts an array or a [Phalcon\Config\Config][config] object. Any other value raises `Phalcon\Config\Exceptions\InvalidMergeData`. As of 5.14.2, the configuration object is left unchanged when the argument is rejected; in earlier versions the object was emptied before the exception was raised.
+    `merge()` accepts an array or a [Phalcon\Config\Config][config] object. Any other value raises `Phalcon\Config\Exceptions\InvalidMergeData`. The configuration object is left unchanged when the argument is rejected.
 
 ## Has
 
@@ -434,7 +434,7 @@ $database = $config->filter(
 
 !!! info "NOTE"
 
-    As of 5.14.2, these methods also work on objects created by the adapters (`Ini`, `Json`, `Php`, `Yaml`, `Grouped`). In earlier versions, calling them on an adapter instance raised an error, because the returned object was constructed with the adapter constructor signature.
+    These methods also work on objects created by the adapters (`Ini`, `Json`, `Php`, `Yaml`, `Grouped`).
 
 ## Adapters
 
@@ -452,7 +452,7 @@ In addition to the core component [Phalcon\Config\Config][config], designed to a
 
 !!! info "NOTE"
 
-    As of 5.14.2, all file based adapters share the same failure contract: when the configuration file cannot be read, `Phalcon\Config\Exceptions\CannotLoadConfigFile` is raised. In earlier versions, the [Json][json] adapter failed inside the JSON decoder and the [Php][php] adapter raised a fatal error when the file was missing.
+    All file based adapters share the same failure contract: when the configuration file cannot be read, `Phalcon\Config\Exceptions\CannotLoadConfigFile` is raised.
 
 ### Grouped
 
@@ -554,12 +554,12 @@ $options = [
 $config = new Grouped($options);
 ```
 
-As of 5.14.2, the constructor accepts an optional third parameter: a [Phalcon\Config\ConfigFactory][config-configfactory] instance used to load every file based entry. The factory is created once and reused for all entries. Supplying your own factory makes custom adapters registered on it available to the group:
+The constructor accepts an optional third parameter: a [Phalcon\Config\ConfigFactory][config-configfactory] instance used to load every file based entry. The factory is created once and reused for all entries. Supplying your own factory makes custom adapters registered on it available to the group:
 
 ```php
 <?php
 
-use App\Config\TomlAdapter;
+use MyApp\Config\TomlAdapter;
 use Phalcon\Config\Adapter\Grouped;
 use Phalcon\Config\ConfigFactory;
 
@@ -995,7 +995,7 @@ class IndexController extends Controller
 
 ### Granular Exceptions
 
-As of 5.14 the component raises granular subclasses of `Phalcon\Config\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Config\Exception $e)` blocks continue to work unchanged.
+The component raises granular subclasses of `Phalcon\Config\Exception` so callers can catch a specific failure mode. Existing `catch (Phalcon\Config\Exception $e)` blocks continue to work unchanged.
 
 | Class                                                   | Parent                     | Thrown when                                                                          |
 |---------------------------------------------------------|----------------------------|--------------------------------------------------------------------------------------|
