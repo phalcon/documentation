@@ -93,7 +93,7 @@ use Phalcon\Contracts\Http\AttributeRequestInterface;
 use Phalcon\Http\Response;
 use Phalcon\Http\ResponseInterface;
 
-final class Get implements Action
+final class GetInvoices implements Action
 {
     public function __construct(
         private ViewInvoice $domain,

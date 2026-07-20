@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 
@@ -9,16 +10,23 @@ headers = {
     'User-Agent': 'Phalcon Agent'
 }
 
+token = os.environ.get('GITHUB_TOKEN')
+if token:
+    headers['Authorization'] = f"Bearer {token}"
+
 result = {}
 page = 1
 while True:
     url = f"{comments}?per_page=100&page={page}"
 
     response = requests.get(url, headers=headers, timeout=30)
+    response.raise_for_status()
     content = response.text
 
     print(f"Got page {page}")
     data = json.loads(content)
+    if not isinstance(data, list):
+        break
 
     for comment in data:
         id = comment.get('id', '')

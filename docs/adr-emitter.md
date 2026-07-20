@@ -18,8 +18,8 @@ public function emit(Phalcon\Http\ResponseInterface $response): void;
 
 If it is asked to send after headers or output have already been sent, it throws rather than producing a corrupt response:
 
-* `Phalcon\ADR\Emitter\Exceptions\HeadersAlreadySent`
-* `Phalcon\ADR\Emitter\Exceptions\OutputAlreadySent`
+* `Phalcon\ADR\Exceptions\HeadersAlreadySent`
+* `Phalcon\ADR\Exceptions\OutputAlreadySent`
 
 Both extend the ADR exception hierarchy, so they can be caught alongside the framework's other ADR exceptions.
 

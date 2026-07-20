@@ -1665,7 +1665,7 @@ Vökuró is a sample application that demonstrates features Phalcon offers. It i
 [installation]: installation.md
 [installation-vokuro]: https://github.com/phalcon/vokuro/blob/master/docs/installation.md
 [mailpit]: https://mailpit.axllent.org
-[mvc]: https://en.wikipedia.org/wiki/Model–view–controller
+[mvc]: https://en.wikipedia.org/wiki/Model-view-controller
 [pds-skeleton]: https://github.com/php-pds/skeleton
 [phalcon6]: https://github.com/phalcon/phalcon
 [phinx]: https://github.com/cakephp/phinx

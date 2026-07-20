@@ -14,8 +14,8 @@ The error responder chooses the HTTP status by mapping the exception's class to 
 
 | Exception | Status | HTTP |
 | --------- | ------ | ---- |
-| `Phalcon\ADR\Router\Exceptions\RouteNotFound` | `NOT_FOUND` | `404` |
-| `Phalcon\ADR\Router\Exceptions\MethodNotAllowed` | `METHOD_NOT_ALLOWED` | `405` |
+| `Phalcon\ADR\Exceptions\RouteNotFound` | `NOT_FOUND` | `404` |
+| `Phalcon\ADR\Exceptions\MethodNotAllowed` | `METHOD_NOT_ALLOWED` | `405` |
 
 **Any exception it does not recognize is treated as a server error and rendered as a `500`.** So to give your own exceptions a meaningful status, add them to the map:
 

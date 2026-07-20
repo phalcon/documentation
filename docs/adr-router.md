@@ -4,14 +4,17 @@
 
 ## Overview
 
-The ADR router maps an incoming request to an action class by convention, with no route table to maintain. The HTTP method and the static path segments identify the class; any trailing segments become request attributes.
+The ADR router maps an incoming request to an action class by convention, with no route table to maintain. The class name is the HTTP method followed by the resource and, when present, an operation; the resource and any leading areas form the namespace. Trailing segments become request attributes.
 
 ```
-GET    /invoices         ->  MyApp\Action\Invoices\Get
-POST   /invoices         ->  MyApp\Action\Invoices\Post
-GET    /invoices/42      ->  MyApp\Action\Invoices\Get       (attribute 0 = "42")
-GET    /invoices/42/pdf  ->  MyApp\Action\Invoices\Pdf\Get   (attribute 0 = "42")
+GET   /invoices          ->  MyApp\Action\Invoices\GetInvoices
+POST  /invoices          ->  MyApp\Action\Invoices\PostInvoices
+GET   /invoices/42       ->  MyApp\Action\Invoices\GetInvoices       (attribute 0 = "42")
+GET   /invoices/list     ->  MyApp\Action\Invoices\GetInvoicesList
+POST  /invoices/void/42  ->  MyApp\Action\Invoices\PostInvoicesVoid  (attribute 0 = "42")
 ```
+
+A leading area nests the namespace: `POST /accounting/invoices/void/42` resolves to `MyApp\Action\Accounting\Invoices\PostInvoicesVoid`. Because the operation is part of the class name rather than a namespace segment, it may be a word like `list` or `void` that could not itself be a namespace.
 
 ## Configuration
 
@@ -32,7 +35,7 @@ $router
 `match()` receives the request and returns a `Phalcon\Contracts\ADR\Router\RouterMatch`, or reports that nothing matched:
 
 * it returns `null` when no class matches the path (a **404**);
-* it throws `Phalcon\ADR\Router\Exceptions\MethodNotAllowed` when the path exists under a different HTTP method (a **405**).
+* it throws `Phalcon\ADR\Exceptions\MethodNotAllowed` when the path exists under a different HTTP method (a **405**).
 
 The match carries the resolved action class, the positional attributes, and the middleware that applies. Trailing path segments arrive as positional attributes (`0`, `1`, and so on), which the action reads from the request:
 
@@ -53,7 +56,7 @@ $router->setMiddlewareMap([
 ]);
 ```
 
-An action at `MyApp\Action\Admin\Products\Delete` picks up `RequireAdmin` because its class lives under the `\Admin\` prefix. Prefixes stack, so an action nested under several of them inherits all of their middleware. Global middleware, which applies to every request regardless of namespace, is configured on the [dispatcher][dispatcher] instead. See [Middleware][middleware].
+An action at `MyApp\Action\Admin\Products\DeleteProducts` picks up `RequireAdmin` because its class lives under the `\Admin\` prefix. Prefixes stack, so an action nested under several of them inherits all of their middleware. Global middleware, which applies to every request regardless of namespace, is configured on the [dispatcher][dispatcher] instead. See [Middleware][middleware].
 
 [dispatcher]: adr-dispatcher.md
 [middleware]: adr-middleware.md

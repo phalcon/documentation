@@ -66,7 +66,7 @@ $acl->setDefaultAction(Enum::ALLOW);
 The [Phalcon\Acl\Enum][acl-enum] class provides two constants for defining access levels:
 
 - `Phalcon\Acl\Enum::ALLOW` (`1`)
-- `Phalcon\Acl\Enum::DENY` (`0` – default)
+- `Phalcon\Acl\Enum::DENY` (`0` - default)
 
 These constants help specify access levels within your ACL.
 
@@ -265,11 +265,11 @@ $acl = new Memory();
 // (Roles and Components setup...)
 
 // Check permissions
-$acl->isAllowed('manager', 'admin', 'dashboard'); // true – explicitly defined
-$acl->isAllowed('manager', 'session', 'login');   // true – defined with wildcard
-$acl->isAllowed('accounting', 'reports', 'view'); // true – defined with wildcard
-$acl->isAllowed('guest', 'reports', 'view');      // false – explicitly defined
-$acl->isAllowed('guest', 'reports', 'add');       // false – default access level
+$acl->isAllowed('manager', 'admin', 'dashboard'); // true - explicitly defined
+$acl->isAllowed('manager', 'session', 'login');   // true - defined with wildcard
+$acl->isAllowed('accounting', 'reports', 'view'); // true - defined with wildcard
+$acl->isAllowed('guest', 'reports', 'view');      // false - explicitly defined
+$acl->isAllowed('guest', 'reports', 'add');       // false - default access level
 ```
 
 In the above example, the `isAllowed()` method checks whether a role has permission to access a specific component and action. It returns `true` if access is allowed, and `false` otherwise. This method is valuable for implementing role-based access control in your application.
@@ -556,7 +556,7 @@ $levelOne = new ManagerRole(1, 'manager-1');
 $levelTwo = new ManagerRole(2, 'manager');
 $admin    = new ManagerRole(3, 'manager');
 
-// id – name – userId
+// id - name - userId
 $reports  = new ReportsComponent(2, 'reports', 2);
 
 // Check whether our user objects have access. Returns `false`
@@ -646,7 +646,7 @@ $aclFile = 'app/security/acl.cache';
 
 // Check whether ACL data already exist
 if (!is_file($aclFile)) {
-    // The ACL does not exist – build it
+    // The ACL does not exist - build it
     $acl = new Memory();
 
     // Define roles, components, access, etc.

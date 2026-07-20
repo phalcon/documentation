@@ -21,7 +21,7 @@ use Phalcon\Contracts\Http\AttributeRequestInterface;
 use Phalcon\Http\Response;
 use Phalcon\Http\ResponseInterface;
 
-final class Get implements Action
+final class GetInvoices implements Action
 {
     public function __construct(
         private ViewInvoice $domain,
@@ -43,12 +43,12 @@ The action holds no business logic (that lives in the [domain][domain]) and no p
 
 ## One action per route
 
-The [router][router] maps an HTTP method and a URL path directly to an action class by convention: the path segments become the namespace and the HTTP method becomes the class name.
+The [router][router] maps an HTTP method and a URL path directly to an action class by convention: the method, the resource and an optional operation form the class name, while the resource and any leading areas form the namespace.
 
 ```
-GET    /invoices        ->  MyApp\Action\Invoices\Get
-POST   /invoices        ->  MyApp\Action\Invoices\Post
-GET    /invoices/42     ->  MyApp\Action\Invoices\Get   (with "42" as a route attribute)
+GET   /invoices       ->  MyApp\Action\Invoices\GetInvoices
+POST  /invoices       ->  MyApp\Action\Invoices\PostInvoices
+GET   /invoices/42    ->  MyApp\Action\Invoices\GetInvoices   (with "42" as a route attribute)
 ```
 
 Because each route resolves to its own class, there are no controller methods to grow, no shared state between actions, and nothing to route around inside the class.
