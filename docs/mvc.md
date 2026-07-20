@@ -30,4 +30,4 @@ The controllers provide the _flow_ between models and views. Controllers are res
 [controllers]: controllers.md
 [db-models]: db-models.md
 [views]: views.md
-[wiki-mvc]: https://en.wikipedia.org/wiki/Model–view–controller
+[wiki-mvc]: https://en.wikipedia.org/wiki/Model-view-controller

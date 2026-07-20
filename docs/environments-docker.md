@@ -42,7 +42,7 @@ For the full list of extensions available through this helper, see the [docker-p
 
 ## Credits
 
-We want to thank the following people for providing us with tools for building Docker images:
+We want to thank the following people for providing us with tools for building production-ready Docker images:
 
 [PHP](https://github.com/php/)
 : The PHP Team for providing the base images including the newest PHP versions.

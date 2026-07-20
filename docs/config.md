@@ -559,7 +559,7 @@ The constructor accepts an optional third parameter: a [Phalcon\Config\ConfigFac
 ```php
 <?php
 
-use App\Config\TomlAdapter;
+use MyApp\Config\TomlAdapter;
 use Phalcon\Config\Adapter\Grouped;
 use Phalcon\Config\ConfigFactory;
 

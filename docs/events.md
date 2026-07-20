@@ -561,7 +561,7 @@ $eventsManager->clearSubscribers();
 
 ## Object and Class-Based Events
 
-In addition to the string-based `fire()` API, the manager can dispatch an event **object** and route it to listeners by the object's class name or by an explicit name. This follows the PSR-14 dispatch model - `Phalcon\Events\Manager` implements `Psr\EventDispatcher\EventDispatcherInterface` from the `psr/event-dispatcher` package.
+In addition to the string-based `fire()` API, the manager can dispatch an event **object** and route it to listeners by the object's class name or by an explicit name. This follows the dispatch model used by Symfony's EventDispatcher and PSR-14, but is built on Phalcon's own contracts - the extension does not require the `psr/event-dispatcher` package.
 
 ```php
 public function dispatch(

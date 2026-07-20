@@ -1586,8 +1586,8 @@ public function __construct(array $definitions = [])
 ```php
 <?php
 
-use App\Forms\ContactForm;
-use App\Forms\LoginForm;
+use MyApp\Forms\ContactForm;
+use MyApp\Forms\LoginForm;
 use Phalcon\Forms\FormsLocator;
 
 $locator = new FormsLocator([
@@ -1611,7 +1611,7 @@ Each element factory has the signature `fn(string $name, array $options, array $
 ```php
 <?php
 
-use App\Forms\Element\ColorPicker;
+use MyApp\Forms\Element\ColorPicker;
 use Phalcon\Forms\Element\ElementInterface;
 use Phalcon\Forms\FormsLocator;
 
@@ -1671,7 +1671,7 @@ $container->set(
         $locator = new FormsLocator();
         $locator->setElement(
             'colorpicker',
-            fn(string $n, array $o, array $a) => new \App\Forms\Element\ColorPicker($n, $a)
+            fn(string $n, array $o, array $a) => new \MyApp\Forms\Element\ColorPicker($n, $a)
         );
 
         return new Manager($locator);
@@ -1689,7 +1689,7 @@ $locator = $manager->getLocator();
 
 $locator->setElement(
     'rating',
-    fn(string $n, array $o, array $a) => new \App\Forms\Element\StarRating($n, $a)
+    fn(string $n, array $o, array $a) => new \MyApp\Forms\Element\StarRating($n, $a)
 );
 ```
 

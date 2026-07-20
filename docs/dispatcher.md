@@ -55,22 +55,22 @@ Forwards the execution flows to another controller/action.
 
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
-use App\Back\Bootstrap as Back;
-use App\Front\Bootstrap as Front;
+use MyApp\Back\Bootstrap as Back;
+use MyApp\Front\Bootstrap as Front;
 
 $modules = [
     "frontend" => [
         "className" => Front::class,
         "path"      => __DIR__ . "/app/Modules/Front/Bootstrap.php",
         "metadata"  => [
-            "controllersNamespace" => "App\Front\Controllers",
+            "controllersNamespace" => "MyApp\Front\Controllers",
         ],
     ],
     "backend" => [
         "className" => Back::class,
         "path"      => __DIR__ . "/app/Modules/Back/Bootstrap.php",
         "metadata"  => [
-            "controllersNamespace" => "App\Back\Controllers",
+            "controllersNamespace" => "MyApp\Back\Controllers",
         ],
     ],
 ];
@@ -1217,7 +1217,7 @@ You can use the `dispatcher::beforeForward` event to change modules and perform 
 ```php
 <?php
 
-use App\Back\Bootstrap;
+use MyApp\Back\Bootstrap;
 use Phalcon\Di\Di;
 use Phalcon\Events\Manager;
 use Phalcon\Mvc\Dispatcher;
@@ -1230,7 +1230,7 @@ $modules = [
         'className' => Bootstrap::class,
         'path'      => '/app/Modules/Back/Bootstrap.php',
         'metadata'  => [
-            'controllersNamespace' => 'App\Back\Controllers',
+            'controllersNamespace' => 'MyApp\Back\Controllers',
         ],
     ],
 ];

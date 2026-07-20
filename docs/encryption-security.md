@@ -167,7 +167,7 @@ The `workFactor` (or `cost`) is used when:
 
 ## Argon2i
 
-`Phalcon\Encryption\Security` also supports the new [Argon2i][argon2i] hashing algorithm. This algorithm is the winner of the [Password Hashing Competition][password-hashing-competition] and is considered to be the best algorithm for hashing passwords.
+`Phalcon\Encryption\Security` also supports the new [Argon2i][argon2i] hashing algorithm. This algorithm is the winner of the [Password Hashing Competition][password-hashing-competition] and is considered to be the best algorithm for hashing passwords. It is also the default algorithm used by PHP's `password_hash()` method.
 
 ```php 
 <?php

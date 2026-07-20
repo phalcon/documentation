@@ -3,9 +3,6 @@
 
 name: Deploy Documents 6.0
 
-env:
-  PYTHON_VERSION: "3.9"
-
 on:
   push:
     branches:
@@ -43,15 +40,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Install Requirements
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
+      - name: Build documentation image
+        run: docker build -t phalcon-docs resources/docker
 
       - name: Get sponsors and fanart
         run: |
@@ -60,9 +50,10 @@ jobs:
           wget -O overrides/fanart.md \
             https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html
 
-      - name: Update NFR list
-        run: |
-          python ./update-nfr.py
+      # NFR list update disabled for now (not essential).
+      # - name: Update NFR list
+      #   run: |
+      #     docker run --rm -v "$PWD":/docs --entrypoint python phalcon-docs update-nfr.py
 
       - name: Determine versioning parameters
         id: determine-versioning
@@ -74,6 +65,10 @@ jobs:
           VERSION="${LINE%%|*}"
           ALIAS="${LINE#*|}"
 
+          # Trim stray whitespace / CRLF so the alias gate matches exactly
+          VERSION=$(printf '%s' "$VERSION" | tr -d '[:space:]')
+          ALIAS=$(printf '%s' "$ALIAS" | tr -d '[:space:]')
+
           # Print the extracted values for verification
           echo "Version: $VERSION"
           echo "Alias: $ALIAS"
@@ -82,7 +77,7 @@ jobs:
           echo "PH_DOCS_ALIAS=$ALIAS" >> $GITHUB_ENV
 
       - name: Deploy
-        if: ${{ env.PH_DOCS_VERSION != null }}
+        if: ${{ env.PH_DOCS_VERSION != '' }}
         run: |
           # Publishing implies creating a git commit on the production branch,
           # We will need to create a user for this at some point
@@ -90,13 +85,44 @@ jobs:
           git config user.name niden
           git config user.email nikos@niden.net
           git fetch --no-tags --prune --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages
-          mike deploy \
-            --update-aliases \
-            --alias-type=redirect \
-            --push \
-            ${{ env.PH_DOCS_VERSION }} \
-            ${{ env.PH_DOCS_ALIAS }}
+          # Build and commit inside the container; push from the runner.
+          # checkout@v6 keeps its credentials outside the workspace, so they
+          # are not visible inside the container.
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/docs -v "$PWD":/docs \
+            --entrypoint mike phalcon-docs deploy ${{ env.PH_DOCS_VERSION }}
+          git push origin gh-pages
           echo "Deployed"
+
+      - name: Point Cloudflare /latest at this version
+        if: ${{ env.PH_DOCS_ALIAS == 'latest' }}
+        env:
+          CF_API_TOKEN:  ${{ secrets.CF_API_TOKEN }}
+          CF_ZONE_ID:    ${{ secrets.CF_ZONE_ID }}
+          CF_RULESET_ID: ${{ secrets.CF_RULESET_ID }}
+          CF_RULE_ID:    ${{ secrets.CF_RULE_ID }}
+        run: |
+          echo "Pointing /latest -> /${PH_DOCS_VERSION} at Cloudflare"
+          curl -sS --fail-with-body -X PATCH \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/rulesets/${CF_RULESET_ID}/rules/${CF_RULE_ID}" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data @- <<JSON
+          {
+            "action": "redirect",
+            "description": "Documentation Latest",
+            "enabled": true,
+            "expression": "(http.request.full_uri wildcard r\"https://docs.phalcon.io/latest/*\")",
+            "action_parameters": {
+              "from_value": {
+                "status_code": 301,
+                "target_url": {
+                  "expression": "wildcard_replace(http.request.full_uri, r\"https://docs.phalcon.io/latest/*\", r\"https://docs.phalcon.io/${PH_DOCS_VERSION}/\${1}\")"
+                },
+                "preserve_query_string": true
+              }
+            }
+          }
+          JSON
 
 #          git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
 #          mike deploy \

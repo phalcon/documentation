@@ -1007,10 +1007,10 @@ The component raises granular subclasses of `Phalcon\Logger\Exception` so caller
 | `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed`  | `Phalcon\Logger\Exception` | The `Syslog` adapter cannot open the syslog connection.                            |
 
 [bridge-psr3]: https://github.com/phalcon/bridge-psr3
-[config]: api/phalcon_config.md/#configconfig
+[config]: api/phalcon_config.md#configconfig
 [date-formats]: https://www.php.net/manual/en/function.date.php
 [debug-bar]: debug-bar.md
-[factorydefault]: api/phalcon_di.md/#difactorydefault
+[factorydefault]: api/phalcon_di.md#difactorydefault
 [fifo]: https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 [logger-abstractlogger]: api/phalcon_logger.md#loggerabstractlogger
 [logger-adapter-abstractadapter]: api/phalcon_logger.md#loggeradapterabstractadapter

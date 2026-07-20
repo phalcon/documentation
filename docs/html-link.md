@@ -194,7 +194,7 @@ class Custom implements SerializerInterface
 ```
 
 [html-link-evolvablelink]: api/phalcon_html.md#htmllinkevolvablelink
-[html-link-evolvablelinkprovider]: api/phalcon_html.md#htmllinkevolvablelinkprovider
+[html-link-evolvablelinkprovider]: api/phalcon_html.md#htmllinkevolvablelink
 [html-link-link]: api/phalcon_html.md#htmllinklink
 [html-link-linkprovider]: api/phalcon_html.md#htmllinklinkprovider
 [html-link-serializer-header]: api/phalcon_html.md#htmllinkserializerheader

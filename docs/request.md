@@ -764,7 +764,7 @@ Credentials: a87421000492aa874209af8bc028
 [aws-auth]: https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html
 [cookie]: https://www.php.net/manual/en/reserved.variables.cookies.php
 [di-factorydefault]: api/phalcon_di.md#difactorydefault
-[di-injectionawareinterface]: api/phalcon_di.md#diinjectionawareinterface
+[di-injectionawareinterface]: api/phalcon_di.md#diinitializationawareinterface
 [events-eventsawareinterface]: api/phalcon_events.md#eventseventsawareinterface
 [filter-filter]: filter-filter.md
 [get]: https://www.php.net/manual/en/reserved.variables.get.php

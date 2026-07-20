@@ -755,12 +755,12 @@ To optimize processing assets, one method is to allow your web server to handle 
 ```php
 <?php
 
-namespace App\Controllers;
+namespace MyApp\Controllers;
 
 use Phalcon\Mvc\Controller;
 
 /**
- * App\Controllers\ControllerBase
+ * MyApp\Controllers\ControllerBase
  *
  * This is the base controller for all controllers in the application.
  */
@@ -808,7 +808,7 @@ $router->addGet(
 ```php
 <?php
 
-namespace App\Controllers;
+namespace MyApp\Controllers;
 
 use Phalcon\Http\Response;
 
