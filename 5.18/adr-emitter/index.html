@@ -5314,8 +5314,8 @@ offering lower resource consumption and high performance.
 <p><code>Phalcon\ADR\Emitter\SapiEmitter</code> is the default. It sends the response through the standard PHP SAPI, guarding first against output that has already begun and then sending the headers and body.</p>
 <p>If it is asked to send after headers or output have already been sent, it throws rather than producing a corrupt response:</p>
 <ul>
-<li><code>Phalcon\ADR\Emitter\Exceptions\HeadersAlreadySent</code></li>
-<li><code>Phalcon\ADR\Emitter\Exceptions\OutputAlreadySent</code></li>
+<li><code>Phalcon\ADR\Exceptions\HeadersAlreadySent</code></li>
+<li><code>Phalcon\ADR\Exceptions\OutputAlreadySent</code></li>
 </ul>
 <p>Both extend the ADR exception hierarchy, so they can be caught alongside the framework's other ADR exceptions.</p>
 <p>The <a href="../adr-front-controller/">front controller</a> resolves the emitter from the container and calls <code>emit()</code> on the response returned by the application, so you do not normally interact with it directly. Providing your own emitter (for example, a streaming or PSR-7 emitter) is a matter of binding a different implementation of <code>Emitter</code> in the <a href="../adr-container/">container</a>.</p>

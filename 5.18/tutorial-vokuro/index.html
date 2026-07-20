@@ -6866,7 +6866,7 @@ offering lower resource consumption and high performance.
 </tbody>
 </table>
 <h2 id="models">Models<a class="headerlink" href="#models" title="Permanent link">&para;</a></h2>
-<p>Following the <a href="https://en.wikipedia.org/wiki/Model–view–controller">Model-View-Controller</a> pattern, Vökuró has one model per database table (excluding <code>phinxlog</code>). The models let you interact with the tables in an object-oriented manner. They live in <code>src/Models</code>. Each model defines its fields, source table, and any relationships. Some models also define validation rules.</p>
+<p>Following the <a href="https://en.wikipedia.org/wiki/Model-view-controller">Model-View-Controller</a> pattern, Vökuró has one model per database table (excluding <code>phinxlog</code>). The models let you interact with the tables in an object-oriented manner. They live in <code>src/Models</code>. Each model defines its fields, source table, and any relationships. Some models also define validation rules.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -6925,7 +6925,7 @@ offering lower resource consumption and high performance.
 <p>Open each model file to see the relationships between the models. Check the documentation for the difference between the various types of relationships.</p>
 </div>
 <h2 id="controllers">Controllers<a class="headerlink" href="#controllers" title="Permanent link">&para;</a></h2>
-<p>Following the <a href="https://en.wikipedia.org/wiki/Model–view–controller">Model-View-Controller</a> pattern, Vökuró has one controller per parent route. The <code>AboutController</code> handles the <code>/about</code> route. All controllers live in <code>src/Controllers</code>.</p>
+<p>Following the <a href="https://en.wikipedia.org/wiki/Model-view-controller">Model-View-Controller</a> pattern, Vökuró has one controller per parent route. The <code>AboutController</code> handles the <code>/about</code> route. All controllers live in <code>src/Controllers</code>.</p>
 <p>The default controller is <code>IndexController</code>. Controller classes carry the <code>Controller</code> suffix. Actions carry the <code>Action</code> suffix, and the default action is <code>indexAction</code>. Visiting the site at the root URL calls <code>IndexController</code> and runs <code>indexAction</code>.</p>
 <p>Unless you register specific routes, the default route maps:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>/profiles/search
@@ -7079,7 +7079,7 @@ offering lower resource consumption and high performance.
 </tbody>
 </table>
 <h2 id="views">Views<a class="headerlink" href="#views" title="Permanent link">&para;</a></h2>
-<p>The last element of the <a href="https://en.wikipedia.org/wiki/Model–view–controller">Model-View-Controller</a> pattern is the views. Vökuró uses <a href="../volt/">Volt</a> as the view engine.</p>
+<p>The last element of the <a href="https://en.wikipedia.org/wiki/Model-view-controller">Model-View-Controller</a> pattern is the views. Vökuró uses <a href="../volt/">Volt</a> as the view engine.</p>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
 <p>You would normally expect a <code>views</code> folder under <code>src</code>. Vökuró stores all view files under <code>themes/vokuro</code> instead.</p>
@@ -8165,7 +8165,7 @@ offering lower resource consumption and high performance.
 <li><a href="https://en.wikipedia.org/wiki/Access-control_list">Access Control List definition</a></li>
 <li><a href="https://getcomposer.org">Composer</a></li>
 <li><a href="https://github.com/vlucas/phpdotenv">Dotenv - Vance Lucas</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Model–view–controller">Model-View-Controller definition</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Model-view-controller">Model-View-Controller definition</a></li>
 <li><a href="https://github.com/php-pds/skeleton">PDS skeleton</a></li>
 <li><a href="https://github.com/cakephp/phinx">Phinx - Cake Foundation</a></li>
 <li><a href="https://symfony.com/doc/current/mailer.html">Symfony Mailer</a></li>
