@@ -14,7 +14,7 @@ Action-Domain-Responder is a refinement of [MVC][mvc] for applications that hand
 | Business logic inside the controller | The [domain][domain] |
 | Building the response inside the controller | The [responder][responders] |
 | Explicit route definitions | Convention [routing][router]: the method and path resolve the action class |
-| A view rendered for the response | A responder (which may render a view) |
+| A view rendered for the response | A responder: `ViewResponder` renders the view |
 | `Phalcon\Mvc\Model` | `Phalcon\Mvc\Model` (unchanged) |
 | The DI container | The same container, wired by the ADR [provider][provider] |
 
@@ -113,6 +113,79 @@ final class GetInvoices implements Action
 ### 3. The responder builds the response
 
 The `404`/`200` decision and the JSON encoding are no longer in your code at all. The built-in `JsonResponder` maps the payload's status to an HTTP code and serializes the result: `NOT_FOUND` becomes a `404`, `SUCCESS` becomes a `200`, and both carry a JSON body. See [Responders][responders].
+
+## A controller that renders a view
+
+A controller that returns HTML instead of JSON does the same three jobs, plus a fourth: it picks a template and hands it the variables.
+
+```php
+<?php
+
+namespace MyApp\Controllers;
+
+use MyApp\Models\Invoices;
+use Phalcon\Mvc\Controller;
+
+class InvoicesController extends Controller
+{
+    public function viewAction($id)
+    {
+        $invoice = Invoices::findFirst($id);
+
+        if ($invoice === null) {
+            $this->response->setStatusCode(404);
+            $this->view->pick('invoices/notFound');
+
+            return;
+        }
+
+        $this->view->setVar('invoice', $invoice);
+        $this->view->pick('invoices/view');
+    }
+}
+```
+
+The domain is the one written above, unchanged: it answers *found* or *not found* and knows nothing about templates. What changes is the responder. `Phalcon\ADR\Responder\ViewResponder` takes a renderer, maps the payload status to the HTTP code, and returns the rendered template as HTML. The action type-hints it directly instead of the generic `Responder`, because the action is what names the template:
+
+```php
+<?php
+
+namespace MyApp\Action\Invoices;
+
+use MyApp\Domain\ViewInvoice;
+use Phalcon\ADR\Input\Input;
+use Phalcon\ADR\Responder\ViewResponder;
+use Phalcon\Contracts\ADR\Action;
+use Phalcon\Contracts\Http\AttributeRequestInterface;
+use Phalcon\Http\Response;
+use Phalcon\Http\ResponseInterface;
+
+final class GetInvoices implements Action
+{
+    public function __construct(
+        private ViewInvoice $domain,
+        private ViewResponder $responder
+    ) {
+    }
+
+    public function __invoke(AttributeRequestInterface $request): ResponseInterface
+    {
+        $payload = ($this->domain)(Input::fromRequest($request));
+
+        return ($this->responder->withTemplate('invoices/view'))(
+            $request,
+            new Response(),
+            $payload
+        );
+    }
+}
+```
+
+`$this->view->setVar()` has no equivalent: the template receives `result`, `messages` and `status` from the payload, so the data reaches the view without the action passing it along. The `404` is gone too, since the responder derives it from the status.
+
+`$this->view->pick()` becomes `withTemplate()`. The example above renders one template for every outcome, and the template branches on `$status`. To keep a separate page per outcome, as the controller did, pick the template in the action from the status on the payload before invoking the responder.
+
+The renderer is `Phalcon\Mvc\View\Simple`, which implements the new `Phalcon\Contracts\View\Renderer` contract and is bound in your own provider. Your existing `.phtml` templates are used as they are, but the engine map must stay empty, so `.volt` templates cannot be rendered from ADR in this version. See [Responders][responders] for the wiring and the full explanation.
 
 ## Migrating a controller, step by step
 
