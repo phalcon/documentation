@@ -2820,6 +2820,17 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-controller-that-renders-a-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A controller that renders a view
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#migrating-a-controller-step-by-step" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5395,6 +5406,17 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-controller-that-renders-a-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A controller that renders a view
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#migrating-a-controller-step-by-step" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5478,7 +5500,7 @@ offering lower resource consumption and high performance.
 </tr>
 <tr>
 <td>A view rendered for the response</td>
-<td>A responder (which may render a view)</td>
+<td>A responder: <code>ViewResponder</code> renders the view</td>
 </tr>
 <tr>
 <td><code>Phalcon\Mvc\Model</code></td>
@@ -5571,6 +5593,69 @@ offering lower resource consumption and high performance.
 </code></pre></div>
 <h3 id="3-the-responder-builds-the-response">3. The responder builds the response<a class="headerlink" href="#3-the-responder-builds-the-response" title="Permanent link">&para;</a></h3>
 <p>The <code>404</code>/<code>200</code> decision and the JSON encoding are no longer in your code at all. The built-in <code>JsonResponder</code> maps the payload's status to an HTTP code and serializes the result: <code>NOT_FOUND</code> becomes a <code>404</code>, <code>SUCCESS</code> becomes a <code>200</code>, and both carry a JSON body. See <a href="../adr-responders/">Responders</a>.</p>
+<h2 id="a-controller-that-renders-a-view">A controller that renders a view<a class="headerlink" href="#a-controller-that-renders-a-view" title="Permanent link">&para;</a></h2>
+<p>A controller that returns HTML instead of JSON does the same three jobs, plus a fourth: it picks a template and hands it the variables.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">namespace</span> <span class="nx">MyApp\Controllers</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">use</span> <span class="nx">MyApp\Models\Invoices</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">class</span> <span class="nc">InvoicesController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">viewAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="nv">$invoice</span> <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="k">if</span> <span class="p">(</span><span class="nv">$invoice</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s1">&#39;invoices/notFound&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            <span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        <span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">&#39;invoice&#39;</span><span class="p">,</span> <span class="nv">$invoice</span><span class="p">);</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="s1">&#39;invoices/view&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span>
+</code></pre></div>
+<p>The domain is the one written above, unchanged: it answers <em>found</em> or <em>not found</em> and knows nothing about templates. What changes is the responder. <code>Phalcon\ADR\Responder\ViewResponder</code> takes a renderer, maps the payload status to the HTTP code, and returns the rendered template as HTML. The action type-hints it directly instead of the generic <code>Responder</code>, because the action is what names the template:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">namespace</span> <span class="nx">MyApp\Action\Invoices</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">use</span> <span class="nx">MyApp\Domain\ViewInvoice</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Input\Input</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Responder\ViewResponder</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Action</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Http\AttributeRequestInterface</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">GetInvoices</span> <span class="k">implements</span> <span class="nx">Action</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">{</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="k">private</span> <span class="nx">ViewInvoice</span> <span class="nv">$domain</span><span class="p">,</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="k">private</span> <span class="nx">ViewResponder</span> <span class="nv">$responder</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="p">}</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="p">{</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>        <span class="nv">$payload</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">domain</span><span class="p">)(</span><span class="nx">Input</span><span class="o">::</span><span class="na">fromRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">));</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="s1">&#39;invoices/view&#39;</span><span class="p">))(</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>            <span class="nv">$request</span><span class="p">,</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>            <span class="k">new</span> <span class="nx">Response</span><span class="p">(),</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>            <span class="nv">$payload</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>        <span class="p">);</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>    <span class="p">}</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>$this-&gt;view-&gt;setVar()</code> has no equivalent: the template receives <code>result</code>, <code>messages</code> and <code>status</code> from the payload, so the data reaches the view without the action passing it along. The <code>404</code> is gone too, since the responder derives it from the status.</p>
+<p><code>$this-&gt;view-&gt;pick()</code> becomes <code>withTemplate()</code>. The example above renders one template for every outcome, and the template branches on <code>$status</code>. To keep a separate page per outcome, as the controller did, pick the template in the action from the status on the payload before invoking the responder.</p>
+<p>The renderer is <code>Phalcon\Mvc\View\Simple</code>, which implements the new <code>Phalcon\Contracts\View\Renderer</code> contract and is bound in your own provider. Your existing <code>.phtml</code> templates are used as they are, but the engine map must stay empty, so <code>.volt</code> templates cannot be rendered from ADR in this version. See <a href="../adr-responders/">Responders</a> for the wiring and the full explanation.</p>
 <h2 id="migrating-a-controller-step-by-step">Migrating a controller, step by step<a class="headerlink" href="#migrating-a-controller-step-by-step" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Pick one controller action.</li>
