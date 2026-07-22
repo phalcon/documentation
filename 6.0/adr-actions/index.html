@@ -5388,7 +5388,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Input\Input</span><span class="p">;</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Action</span><span class="p">;</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Responder\Responder</span><span class="p">;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Http\AttributeRequestInterface</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Http\AttributeRequest</span><span class="p">;</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
@@ -5400,7 +5400,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="p">)</span> <span class="p">{</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="p">}</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="p">{</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="nv">$input</span>   <span class="o">=</span> <span class="nx">Input</span><span class="o">::</span><span class="na">fromRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="nv">$payload</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">domain</span><span class="p">)(</span><span class="nv">$input</span><span class="p">);</span>
