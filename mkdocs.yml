@@ -190,6 +190,7 @@ nav:
           - Invo: tutorial-invo.md
           - REST: tutorial-rest.md
           - Vokuro: tutorial-vokuro.md
+          - Vokuro ADR: tutorial-vokuro-adr.md
           - Use case: use-case.md
           - Performance: performance.md
   - Core:
