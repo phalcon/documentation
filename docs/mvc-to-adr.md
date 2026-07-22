@@ -89,7 +89,7 @@ use MyApp\Domain\ViewInvoice;
 use Phalcon\ADR\Input\Input;
 use Phalcon\Contracts\ADR\Action;
 use Phalcon\Contracts\ADR\Responder\Responder;
-use Phalcon\Contracts\Http\AttributeRequestInterface;
+use Phalcon\Contracts\Http\AttributeRequest;
 use Phalcon\Http\Response;
 use Phalcon\Http\ResponseInterface;
 
@@ -101,7 +101,7 @@ final class GetInvoices implements Action
     ) {
     }
 
-    public function __invoke(AttributeRequestInterface $request): ResponseInterface
+    public function __invoke(AttributeRequest $request): ResponseInterface
     {
         $payload = ($this->domain)(Input::fromRequest($request));
 
@@ -156,7 +156,7 @@ use MyApp\Domain\ViewInvoice;
 use Phalcon\ADR\Input\Input;
 use Phalcon\ADR\Responder\ViewResponder;
 use Phalcon\Contracts\ADR\Action;
-use Phalcon\Contracts\Http\AttributeRequestInterface;
+use Phalcon\Contracts\Http\AttributeRequest;
 use Phalcon\Http\Response;
 use Phalcon\Http\ResponseInterface;
 
@@ -168,7 +168,7 @@ final class GetInvoices implements Action
     ) {
     }
 
-    public function __invoke(AttributeRequestInterface $request): ResponseInterface
+    public function __invoke(AttributeRequest $request): ResponseInterface
     {
         $payload = ($this->domain)(Input::fromRequest($request));
 

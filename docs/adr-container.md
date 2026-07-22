@@ -13,7 +13,7 @@ An ADR application is wired by the framework's autowiring [container][container]
 | Service (alias) | Bound to |
 | --------------- | -------- |
 | `eventsManager` | `Phalcon\Events\Manager` |
-| `request`       | `Phalcon\Http\Request` (as `AttributeRequestInterface`) |
+| `request`       | `Phalcon\Http\Request` (as `AttributeRequest`) |
 | `response`      | `Phalcon\Http\Response` |
 | `responder`     | `Phalcon\ADR\Responder\JsonResponder` (the default responder) |
 | `router`        | `Phalcon\ADR\Router\Router` |
