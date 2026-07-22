@@ -459,3 +459,7 @@
         border-radius: .1rem;
     }
 }
+
+[data-md-color-scheme="default"] .md-search__button {
+    background-color: #ffffffde;
+}
