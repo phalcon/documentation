@@ -10,7 +10,7 @@ Every middleware implements `Phalcon\Contracts\ADR\Middleware`:
 
 ```php
 public function __invoke(
-    Phalcon\Contracts\Http\AttributeRequestInterface $request,
+    Phalcon\Contracts\Http\AttributeRequest $request,
     Phalcon\Contracts\ADR\Handler $next
 ): Phalcon\Http\ResponseInterface;
 ```
@@ -24,12 +24,12 @@ namespace MyApp\Middleware;
 
 use Phalcon\Contracts\ADR\Handler;
 use Phalcon\Contracts\ADR\Middleware;
-use Phalcon\Contracts\Http\AttributeRequestInterface;
+use Phalcon\Contracts\Http\AttributeRequest;
 use Phalcon\Http\ResponseInterface;
 
 final class ApiVersion implements Middleware
 {
-    public function __invoke(AttributeRequestInterface $request, Handler $next): ResponseInterface
+    public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
     {
         // run the rest of the pipeline, then act on the response
         return $next($request)->setHeader('X-Api-Version', '1');
@@ -77,7 +77,7 @@ final class RequireSuperadmin implements Middleware
     {
     }
 
-    public function __invoke(AttributeRequestInterface $request, Handler $next): ResponseInterface
+    public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
     {
         if (! $this->identity->isSuperadmin()) {
             throw new Forbidden();     // the error responder renders the 403
@@ -112,7 +112,7 @@ final class Authorize implements Middleware
     ) {
     }
 
-    public function __invoke(AttributeRequestInterface $request, Handler $next): ResponseInterface
+    public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
     {
         $role      = $this->identity->role();                               // 'customer'
         $component = (string) $request->getAttributes()->get('resource');   // 'invoices'

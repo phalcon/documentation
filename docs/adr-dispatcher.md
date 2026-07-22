@@ -11,7 +11,7 @@ The dispatcher takes the action class chosen by the [router][router], resolves i
 ```php
 public function dispatch(
     string $actionClass,
-    Phalcon\Contracts\Http\AttributeRequestInterface $request,
+    Phalcon\Contracts\Http\AttributeRequest $request,
     array $routeMiddleware = []
 ): Phalcon\Http\ResponseInterface;
 ```
