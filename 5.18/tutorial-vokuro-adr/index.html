@@ -5654,95 +5654,94 @@ offering lower resource consumption and high performance.
 <p>The delivery ring (<code>Action</code>, <code>Responder</code>, <code>Middleware</code>, <code>Forms</code>) speaks HTTP. The <code>Domain</code> does not. Everything the domain needs is a port in <code>Contracts</code>, and the adapters that satisfy those ports live in <code>Application</code> and <code>Infrastructure</code>.</p>
 <h2 id="the-request-flow">The request flow<a class="headerlink" href="#the-request-flow" title="Permanent link">&para;</a></h2>
 <p>A request travels <strong>Action → Domain → Responder</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>flowchart LR
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    R[Request] --&gt; M[Middleware]
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    M --&gt; A[Action]
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    A --&gt; D[Domain]
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    D -- Payload --&gt; A
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    A --&gt; P[Responder]
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    P --&gt; Resp[Response]
-</code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+    R[Request] --&gt; M[Middleware]
+    M --&gt; A[Action]
+    A --&gt; D[Domain]
+    D -- Payload --&gt; A
+    A --&gt; P[Responder]
+    P --&gt; Resp[Response]</code></pre>
 <p><code>AppFront</code> boots a container, the router maps the path to an action, the global and route middleware run, the action calls a domain and hands the returned payload to a responder, and the responder produces the response. The payload is the only thing that crosses the domain boundary.</p>
 <h2 id="action">Action<a class="headerlink" href="#action" title="Permanent link">&para;</a></h2>
 <p>An action is one class per route. It reads the request, calls a domain, and hands the payload to a responder. It carries no business rules. See the <a href="../adr-actions/">Actions</a> page for the contract.</p>
 <p>The action that shows the registration form does nothing but render a template:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Action\Session</span><span class="p">;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Payload\Payload</span><span class="p">;</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Action</span><span class="p">;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Http\AttributeRequest</span><span class="p">;</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">use</span> <span class="nx">Vokuro\Responder\AuthResponder</span><span class="p">;</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">GetSessionSignup</span> <span class="k">implements</span> <span class="nx">Action</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="p">{</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">AuthResponder</span> <span class="nv">$responder</span><span class="p">)</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="p">{</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="p">}</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="p">{</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="s1">&#39;session/signup&#39;</span><span class="p">))(</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>            <span class="nv">$request</span><span class="p">,</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>            <span class="k">new</span> <span class="nx">Response</span><span class="p">(),</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>            <span class="nx">Payload</span><span class="o">::</span><span class="na">success</span><span class="p">()</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>        <span class="p">);</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="p">}</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Action\Session</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Payload\Payload</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Action</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Http\AttributeRequest</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">use</span> <span class="nx">Vokuro\Responder\AuthResponder</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">GetSessionSignup</span> <span class="k">implements</span> <span class="nx">Action</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">AuthResponder</span> <span class="nv">$responder</span><span class="p">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="p">}</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="p">{</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="s1">&#39;session/signup&#39;</span><span class="p">))(</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>            <span class="nv">$request</span><span class="p">,</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>            <span class="k">new</span> <span class="nx">Response</span><span class="p">(),</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>            <span class="nx">Payload</span><span class="o">::</span><span class="na">success</span><span class="p">()</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>        <span class="p">);</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="p">}</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="p">}</span>
 </code></pre></div>
 <p>The responder the action <strong>type-hints</strong> is how it chooses a layout. This action asks for the <code>AuthResponder</code>, so the page is rendered in the authentication layout. The action never names a layout string.</p>
 <h2 id="domain">Domain<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h2>
 <p>A domain is a use case. It takes a <code>Phalcon\ADR\Input\Input</code>, does its work through ports, and returns a payload. It knows nothing about HTTP. See the <a href="../adr-domain/">Domain</a> and <a href="../adr-input/">Input</a> pages for the contracts.</p>
 <p>The rules the sign up form used to declare now live in the domain: required fields, password length, the confirmation match, uniqueness of the address. <code>SignUp</code> validates the input, creates the account, issues a confirmation code, and mails it:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Domain\Session</span><span class="p">;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Input\Input</span><span class="p">;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Payload\Payload</span><span class="p">;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Payload\Payload</span> <span class="k">as</span> <span class="nx">PayloadInterface</span><span class="p">;</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">use</span> <span class="nx">Phalcon\Encryption\Security</span><span class="p">;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="k">use</span> <span class="nx">Vokuro\Contracts\Mailer</span><span class="p">;</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">use</span> <span class="nx">Vokuro\Contracts\Repository\EmailConfirmationRepository</span><span class="p">;</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="k">use</span> <span class="nx">Vokuro\Contracts\Repository\UserRepository</span><span class="p">;</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">SignUp</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="p">{</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>        <span class="k">private</span> <span class="nx">UserRepository</span> <span class="nv">$users</span><span class="p">,</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="k">private</span> <span class="nx">EmailConfirmationRepository</span> <span class="nv">$confirmations</span><span class="p">,</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="k">private</span> <span class="nx">Security</span> <span class="nv">$security</span><span class="p">,</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="k">private</span> <span class="nx">Mailer</span> <span class="nv">$mailer</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="p">}</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">Input</span> <span class="nv">$input</span><span class="p">)</span><span class="o">:</span> <span class="nx">PayloadInterface</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>    <span class="p">{</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>        <span class="nv">$name</span>  <span class="o">=</span> <span class="nb">trim</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>        <span class="nv">$email</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">));</span>
-<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">);</span>
-<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>        <span class="k">if</span> <span class="p">([]</span> <span class="o">!==</span> <span class="nv">$messages</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>            <span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">invalid</span><span class="p">(</span><span class="nv">$messages</span><span class="p">);</span>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>        <span class="p">}</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>
-<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>        <span class="nv">$userId</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">users</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">([</span>
-<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>            <span class="s1">&#39;name&#39;</span>     <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
-<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>            <span class="s1">&#39;email&#39;</span>    <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
-<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)),</span>
-<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>            <span class="c1">// ...</span>
-<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>        <span class="p">]);</span>
-<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>
-<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">confirm</span><span class="p">(</span><span class="nv">$userId</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$email</span><span class="p">);</span>
-<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>
-<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>        <span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">created</span><span class="p">([</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">])</span>
-<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a>            <span class="o">-&gt;</span><span class="na">withMessages</span><span class="p">([</span><span class="s1">&#39;A confirmation mail has been sent to &#39;</span> <span class="o">.</span> <span class="nv">$email</span><span class="p">]);</span>
-<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>    <span class="p">}</span>
-<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Domain\Session</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Input\Input</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Payload\Payload</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Payload\Payload</span> <span class="k">as</span> <span class="nx">PayloadInterface</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">use</span> <span class="nx">Phalcon\Encryption\Security</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">use</span> <span class="nx">Vokuro\Contracts\Mailer</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">use</span> <span class="nx">Vokuro\Contracts\Repository\EmailConfirmationRepository</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">use</span> <span class="nx">Vokuro\Contracts\Repository\UserRepository</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">SignUp</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>        <span class="k">private</span> <span class="nx">UserRepository</span> <span class="nv">$users</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>        <span class="k">private</span> <span class="nx">EmailConfirmationRepository</span> <span class="nv">$confirmations</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>        <span class="k">private</span> <span class="nx">Security</span> <span class="nv">$security</span><span class="p">,</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>        <span class="k">private</span> <span class="nx">Mailer</span> <span class="nv">$mailer</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="p">}</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">Input</span> <span class="nv">$input</span><span class="p">)</span><span class="o">:</span> <span class="nx">PayloadInterface</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    <span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>        <span class="nv">$name</span>  <span class="o">=</span> <span class="nb">trim</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>        <span class="nv">$email</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">));</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">);</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>        <span class="k">if</span> <span class="p">([]</span> <span class="o">!==</span> <span class="nv">$messages</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>            <span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">invalid</span><span class="p">(</span><span class="nv">$messages</span><span class="p">);</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>        <span class="p">}</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>        <span class="nv">$userId</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">users</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">([</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>            <span class="s1">&#39;name&#39;</span>     <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">,</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>            <span class="s1">&#39;email&#39;</span>    <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)),</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>            <span class="c1">// ...</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>        <span class="p">]);</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">confirm</span><span class="p">(</span><span class="nv">$userId</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$email</span><span class="p">);</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>        <span class="k">return</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">created</span><span class="p">([</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">])</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>            <span class="o">-&gt;</span><span class="na">withMessages</span><span class="p">([</span><span class="s1">&#39;A confirmation mail has been sent to &#39;</span> <span class="o">.</span> <span class="nv">$email</span><span class="p">]);</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>    <span class="p">}</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="p">}</span>
 </code></pre></div>
 <p>The domain depends on ports (<code>UserRepository</code>, <code>EmailConfirmationRepository</code>, <code>Mailer</code>), never on a concrete class. It returns a payload for every outcome: <code>Payload::invalid()</code> when a field is wrong, <code>Payload::created()</code> when the account is made.</p>
 <p>Entities and value objects live alongside the use cases in <code>Domain\Model</code> and are readonly. Typed collections extend <code>Phalcon\Support\Collection</code> and are keyed by id.</p>
@@ -5830,38 +5829,38 @@ offering lower resource consumption and high performance.
 </tbody>
 </table>
 <p><code>AuthResponder</code> and <code>PrivateResponder</code> each wrap one <code>ViewResponder</code> bound to their layout. A renderer knows a single layout, so the layout an action wants is declared by which responder it asks for:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Responder</span><span class="p">;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Responder\ViewResponder</span><span class="p">;</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Payload\Payload</span><span class="p">;</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Responder\Responder</span><span class="p">;</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">use</span> <span class="nx">Phalcon\Http\RequestInterface</span><span class="p">;</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">AuthResponder</span> <span class="k">implements</span> <span class="nx">Responder</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">{</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">ViewResponder</span> <span class="nv">$responder</span><span class="p">)</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="p">{</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="p">}</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>        <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>        <span class="nx">Payload</span> <span class="nv">$payload</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span> <span class="p">{</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="p">)(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$payload</span><span class="p">);</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>    <span class="p">}</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">withTemplate</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$template</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>    <span class="p">{</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>        <span class="nv">$cloned</span>            <span class="o">=</span> <span class="k">clone</span> <span class="nv">$this</span><span class="p">;</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>        <span class="nv">$cloned</span><span class="o">-&gt;</span><span class="na">responder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="nv">$template</span><span class="p">);</span>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>        <span class="k">return</span> <span class="nv">$cloned</span><span class="p">;</span>
-<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>    <span class="p">}</span>
-<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Responder</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Responder\ViewResponder</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Payload\Payload</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Responder\Responder</span><span class="p">;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">use</span> <span class="nx">Phalcon\Http\RequestInterface</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">AuthResponder</span> <span class="k">implements</span> <span class="nx">Responder</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">{</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">ViewResponder</span> <span class="nv">$responder</span><span class="p">)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="p">{</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="p">}</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>        <span class="nx">Payload</span> <span class="nv">$payload</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span> <span class="p">{</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="p">)(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$payload</span><span class="p">);</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="p">}</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">withTemplate</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$template</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>    <span class="p">{</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>        <span class="nv">$cloned</span>            <span class="o">=</span> <span class="k">clone</span> <span class="nv">$this</span><span class="p">;</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>        <span class="nv">$cloned</span><span class="o">-&gt;</span><span class="na">responder</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="nv">$template</span><span class="p">);</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>        <span class="k">return</span> <span class="nv">$cloned</span><span class="p">;</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="p">}</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="ports-and-adapters">Ports and adapters<a class="headerlink" href="#ports-and-adapters" title="Permanent link">&para;</a></h2>
 <p>Everything the actions and domains depend on is a <strong>port</strong> - a small interface in <code>Contracts</code>. The adapters that implement them are split by responsibility.</p>
@@ -5917,54 +5916,54 @@ offering lower resource consumption and high performance.
 <h2 id="sign-up-end-to-end">Sign Up, end to end<a class="headerlink" href="#sign-up-end-to-end" title="Permanent link">&para;</a></h2>
 <p>The registration flow shows every ring in one pass.</p>
 <p><strong>The form</strong> renders the fields and nothing more. It declares no validators - the rules moved to the domain:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Forms</span><span class="p">;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Password</span><span class="p">;</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">class</span> <span class="nc">SignUpForm</span> <span class="k">extends</span> <span class="nx">Form</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">{</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="p">{</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">));</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Password</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">));</span>
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Password</span><span class="p">(</span><span class="s1">&#39;confirmPassword&#39;</span><span class="p">));</span>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>        <span class="c1">// terms check + submit ...</span>
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    <span class="p">}</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">namespace</span> <span class="nx">Vokuro\Forms</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Password</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">class</span> <span class="nc">SignUpForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">{</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="p">{</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">));</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Password</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">));</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Password</span><span class="p">(</span><span class="s1">&#39;confirmPassword&#39;</span><span class="p">));</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>        <span class="c1">// terms check + submit ...</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="p">}</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>The GET action</strong> (<code>GetSessionSignup</code>, shown earlier) renders <code>session/signup</code> in the auth layout with <code>Payload::success()</code>. The template renders the form and a hidden <code>$csrf-&gt;token()</code> field.</p>
 <p><strong>The POST action</strong> checks the token, then delegates to the domain. It renders the same template either way - with the per-field errors, or with the confirmation notice:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">PostSessionSignup</span> <span class="k">implements</span> <span class="nx">Action</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">{</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="k">private</span> <span class="nx">SignUp</span> <span class="nv">$domain</span><span class="p">,</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="k">private</span> <span class="nx">AuthResponder</span> <span class="nv">$responder</span><span class="p">,</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="k">private</span> <span class="nx">Csrf</span> <span class="nv">$csrf</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="p">}</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="p">{</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="nv">$payload</span> <span class="o">=</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">invalid</span><span class="p">(</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>            <span class="p">[</span><span class="s1">&#39;csrf&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The form has expired, please try again&#39;</span><span class="p">]</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="p">);</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>        <span class="k">if</span> <span class="p">(</span><span class="k">true</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">csrf</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">(</span><span class="nv">$request</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>            <span class="nv">$payload</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">domain</span><span class="p">)(</span><span class="nx">Input</span><span class="o">::</span><span class="na">fromRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">));</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>        <span class="p">}</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
-<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="s1">&#39;session/signup&#39;</span><span class="p">))(</span>
-<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>            <span class="nv">$request</span><span class="p">,</span>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>            <span class="k">new</span> <span class="nx">Response</span><span class="p">(),</span>
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>            <span class="nv">$payload</span>
-<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>        <span class="p">);</span>
-<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>    <span class="p">}</span>
-<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">PostSessionSignup</span> <span class="k">implements</span> <span class="nx">Action</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        <span class="k">private</span> <span class="nx">SignUp</span> <span class="nv">$domain</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="k">private</span> <span class="nx">AuthResponder</span> <span class="nv">$responder</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="k">private</span> <span class="nx">Csrf</span> <span class="nv">$csrf</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="p">}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="p">{</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        <span class="nv">$payload</span> <span class="o">=</span> <span class="nx">Payload</span><span class="o">::</span><span class="na">invalid</span><span class="p">(</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>            <span class="p">[</span><span class="s1">&#39;csrf&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The form has expired, please try again&#39;</span><span class="p">]</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        <span class="p">);</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        <span class="k">if</span> <span class="p">(</span><span class="k">true</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">csrf</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">(</span><span class="nv">$request</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>            <span class="nv">$payload</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">domain</span><span class="p">)(</span><span class="nx">Input</span><span class="o">::</span><span class="na">fromRequest</span><span class="p">(</span><span class="nv">$request</span><span class="p">));</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>        <span class="p">}</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>        <span class="k">return</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">responder</span><span class="o">-&gt;</span><span class="na">withTemplate</span><span class="p">(</span><span class="s1">&#39;session/signup&#39;</span><span class="p">))(</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>            <span class="nv">$request</span><span class="p">,</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>            <span class="k">new</span> <span class="nx">Response</span><span class="p">(),</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>            <span class="nv">$payload</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>        <span class="p">);</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>    <span class="p">}</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>The domain</strong> (<code>SignUp</code>, shown earlier) validates the input. On a bad field it returns <code>Payload::invalid($messages)</code>, keyed by field, and the template puts each message under the input it belongs to. On success it hashes the password, adds the user through the <code>UserRepository</code>, issues a confirmation code, mails it through the <code>Mailer</code> port, and returns <code>Payload::created()</code> with the confirmation notice.</p>
 <p><strong>The responder</strong> flattens the payload into the template variables - <code>$result</code>, <code>$messages</code>, <code>$extras</code> - renders <code>session/signup</code> inside the auth layout, and sets the response status from the payload's status. A <code>NOT_VALID</code> payload renders the form again with errors under the fields; a <code>CREATED</code> payload renders it with the confirmation notice. No branch in the action decides which - the payload does.</p>
