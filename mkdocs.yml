@@ -132,7 +132,10 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets:
       base_path: [docs]
-  - pymdownx.extra
+  - pymdownx.betterem
+  - abbr
+  - def_list
+  - tables
   - pymdownx.tabbed
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
