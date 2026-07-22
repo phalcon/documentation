@@ -1,4 +1,5 @@
 site/
+.cache/
 
 # JetBrains IDE
 .idea/
