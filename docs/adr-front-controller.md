@@ -20,7 +20,7 @@ The contract is deliberately generic: it describes an entry point into the outer
 
 1. build the container
 2. load the environment and register providers
-3. resolve the request and the application from the container
+3. resolve the request from the container and build the application
 4. handle the request and emit the response
 5. return `0`, or hand any `Throwable` to a boot-error handler and return `1`
 
@@ -32,6 +32,28 @@ exit((new MyApp\AppFront(dirname(__DIR__)))->run());
 
 Note that `run()` returns the exit status rather than calling `exit()` itself, leaving termination to the caller. This is what makes the same front controller usable from a worker loop or a test harness.
 
+## The application
+
+The front does not resolve the application from the container. It builds one through the `getApplication()` template method, which returns a `Phalcon\Contracts\ADR\Application`. The default wraps the container the front has already wired:
+
+```php
+protected function getApplication(Container $container): ApplicationInterface
+{
+    return new Application($container);
+}
+```
+
+`Phalcon\ADR\Application` is the composition root. Given a container it resolves the router, dispatcher, events manager, and error responder from it, then handles the request. Constructed with no argument — `new Application()` — it builds its own container with the ADR [provider][provider] already registered, which is how you run an ADR application without a front controller.
+
+The application exposes a fluent surface for configuration and service registration:
+
+| Method | Purpose |
+| ------ | ------- |
+| `setBaseNamespace()` | set the namespace the router derives action classes from |
+| `secureWith()` | attach a guard (middleware) to every action under a namespace prefix |
+| `bind()`, `define()`, `factory()`, `set()`, `extend()` | register services — see the [container and provider][provider] page |
+| `getContainer()` | return the underlying container |
+
 ## Customizing boot
 
 `AbstractHttpFront` exposes template methods you override to shape the boot process. A typical application supplies its own subclass:
@@ -41,8 +63,13 @@ Note that `run()` returns the exit status rather than calling `exit()` itself, l
 
 namespace MyApp;
 
+use MyApp\Infrastructure\DbOrderRepository;
+use MyApp\Order\OrderRepositoryInterface;
+use MyApp\Security\AuthGuard;
+use Phalcon\ADR\Application;
 use Phalcon\ADR\Front\AbstractHttpFront;
 use Phalcon\Container\Container;
+use Phalcon\Contracts\ADR\Application as ApplicationInterface;
 
 final class AppFront extends AbstractHttpFront
 {
@@ -55,8 +82,14 @@ final class AppFront extends AbstractHttpFront
     {
         parent::registerProviders($container);   // registers the ADR seams
 
-        $container->get('router')
-            ->setBaseNamespace('MyApp\\Action');
+        $container->bind(OrderRepositoryInterface::class, DbOrderRepository::class);
+    }
+
+    protected function getApplication(Container $container): ApplicationInterface
+    {
+        return (new Application($container))
+            ->setBaseNamespace('MyApp\\Action')
+            ->secureWith(AuthGuard::class, '\\Admin');
     }
 }
 ```
@@ -66,6 +99,7 @@ final class AppFront extends AbstractHttpFront
 | `buildContainer()` | create the DI container (defaults to a new `Phalcon\Container\Container`) |
 | `loadEnvironment()` | load configuration before services are registered |
 | `registerProviders()` | register services; the default registers the ADR [provider][provider] |
+| `getApplication()` | build the application handed the request; override to configure it or to wire a different implementation |
 | `handleBootError()` | turn a boot-time `Throwable` into an exit code (defaults to logging and a plain `500`) |
 
 `handleBootError()` covers failures during boot only. Once the application is running, an exception from the pipeline is turned into a response by the [error responder][error-responder], not here.
