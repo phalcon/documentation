@@ -283,7 +283,7 @@ Each implements `Phalcon\Contracts\ADR\Middleware` and receives the next handler
 
 ## The composition root
 
-`src/AppFront.php` extends `Phalcon\ADR\Front\AbstractHttpFront`. It builds a `Phalcon\Container\Container`, loads the environment, registers the providers - the services above, the router's base namespace and middleware map, the session, logger, and renderers - then hands off to the framework. See the [Front Controller][adr_front] page for the boot sequence.
+`src/AppFront.php` extends `Phalcon\ADR\Front\AbstractHttpFront`. It builds a `Phalcon\Container\Container`, loads the environment, and registers the providers - the services above, the session, logger, and renderers. Its `getApplication()` override builds the `Phalcon\ADR\Application`, sets the router's base namespace with `setBaseNamespace()`, and attaches the route guards with `secureWith()` - `RequireLogin` and `RequirePermission` on the `Users`, `Profiles`, and `Permissions` namespaces. The framework then matches the route, runs the middleware and action, and emits the response. See the [Front Controller][adr_front] page for the boot sequence.
 
 Two choices are deliberate:
 
