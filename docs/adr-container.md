@@ -31,10 +31,43 @@ protected function registerProviders(Container $container): void
 {
     parent::registerProviders($container);   // registers the ADR seams above
 
-    // your services, router configuration, etc.
-    $container->get('router')->setBaseNamespace('MyApp\\Action');
+    $container->bind(OrderRepositoryInterface::class, DbOrderRepository::class);
 }
 ```
+
+## Registering from the application
+
+`Phalcon\ADR\Application` exposes a small surface over the container, so you register services from the application without reaching for the container's definition API. Each registration method returns the application, so calls chain.
+
+| Method | Purpose |
+| ------ | ------- |
+| `bind($interface, $concrete)` | bind an interface to a concrete class |
+| `define($class, $parameters)` | register a class together with values for its scalar constructor parameters |
+| `factory($name, $closure)` | register a factory closure |
+| `set($name, $definition)` | register a raw definition (class-string, closure, or value) |
+| `extend($name, $closure)` | decorate a service after it is built |
+| `getContainer()` | return the underlying container |
+
+Type-hinted dependencies are autowired, so `define()` is only for the values autowiring cannot infer — scalars such as a host name, a port, or a flag:
+
+```php
+<?php
+
+use App\Mailer\MailerService;
+use App\Order\DbOrderRepository;
+use App\Order\OrderRepositoryInterface;
+use Phalcon\ADR\Application;
+
+$application = (new Application())
+    ->bind(OrderRepositoryInterface::class, DbOrderRepository::class)
+    ->define(MailerService::class, [
+        'host'   => 'smtp.example.com',
+        'port'   => 587,
+        'useTls' => true,
+    ]);
+```
+
+Constructed with no container, `new Application()` builds its own with the seams above already registered, which is how you configure an ADR application without a front controller.
 
 ## Overriding a seam
 

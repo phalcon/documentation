@@ -32,7 +32,7 @@ The responder is the only element that speaks HTTP. It takes the domain's payloa
 
 The ADR triad is surrounded by a small set of framework components that carry a request from start to finish:
 
-1. The [Front Controller][front] boots the container and runs the application.
+1. The [Front Controller][front] boots the container and hands the request to the application, the composition root that resolves the router, dispatcher, and responder from the container.
 2. The [Router][router] matches the request to an action class.
 3. The [Dispatcher][dispatcher] resolves that action and runs it through the middleware pipeline.
 4. The action drives the domain and passes its payload to a responder.
