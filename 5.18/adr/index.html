@@ -5419,7 +5419,7 @@ offering lower resource consumption and high performance.
 <h2 id="the-request-lifecycle">The request lifecycle<a class="headerlink" href="#the-request-lifecycle" title="Permanent link">&para;</a></h2>
 <p>The ADR triad is surrounded by a small set of framework components that carry a request from start to finish:</p>
 <ol>
-<li>The <a href="../adr-front-controller/">Front Controller</a> boots the container and runs the application.</li>
+<li>The <a href="../adr-front-controller/">Front Controller</a> boots the container and hands the request to the application, the composition root that resolves the router, dispatcher, and responder from the container.</li>
 <li>The <a href="../adr-router/">Router</a> matches the request to an action class.</li>
 <li>The <a href="../adr-dispatcher/">Dispatcher</a> resolves that action and runs it through the middleware pipeline.</li>
 <li>The action drives the domain and passes its payload to a responder.</li>
