@@ -2648,6 +2648,17 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#typed-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Typed parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#middleware-by-namespace" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5335,6 +5346,17 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#typed-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Typed parameters
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#middleware-by-namespace" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5406,13 +5428,45 @@ offering lower resource consumption and high performance.
 <p>The match carries the resolved action class, the positional attributes, and the middleware that applies. Trailing path segments arrive as positional attributes (<code>0</code>, <code>1</code>, and so on), which the action reads from the request:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-<p>Because attributes arrive as raw strings, casting and validation remain the responsibility of the action or domain, exactly as with any other input.</p>
+<p>By default attributes arrive as raw strings, leaving casting and validation to the action or domain. An action may instead declare its parameters up front, so the router validates, casts and names them before they reach the request — see the next section.</p>
+<h2 id="typed-parameters">Typed parameters<a class="headerlink" href="#typed-parameters" title="Permanent link">&para;</a></h2>
+<p>An action may declare a static <code>params()</code> method to have its trailing segments validated, cast and named before they reach the request. The method returns an ordered, name-keyed map; every entry is optional and may set a <code>match</code> regex, a scalar <code>type</code> (<code>int</code>, <code>float</code> or <code>string</code>) and a <code>convert</code> closure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">GetInvoices</span> <span class="k">implements</span> <span class="nx">Action</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">params</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="k">return</span> <span class="p">[</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;match&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span><span class="p">],</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="p">];</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="c1">// already validated as \d+ and cast to int, and read by name</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="c1">// ...</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">}</span>
+</code></pre></div>
+<p>The declaration keys map to the positional segments in order: the first parameter names segment <code>0</code>, the second names segment <code>1</code>, and so on. For each segment the router checks it against <code>match</code> (a miss is treated as a route miss, a <strong>404</strong>), casts it to <code>type</code> (an unknown or omitted type leaves it a string), passes the cast value through <code>convert</code> when one is given, and stores the result under the declared name.</p>
+<p>Because <code>convert</code> receives the already-cast value, it doubles as a hydration hook — trimming a slug, resolving an enum, or building a value object:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">params</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">return</span> <span class="p">[</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="s1">&#39;on&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>            <span class="s1">&#39;match&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;\d{4}-\d{2}-\d{2}&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>            <span class="s1">&#39;convert&#39;</span> <span class="o">=&gt;</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DateTimeImmutable</span><span class="p">(</span><span class="nv">$value</span><span class="p">),</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="p">],</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="p">];</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
+</code></pre></div>
+<p>A declared parameter with no matching segment is skipped — no attribute is set and no default is applied — and any segments beyond the declared parameters pass through unchanged under their positional keys. An action without a <code>params()</code> method is untouched: its segments arrive as raw, positional strings.</p>
 <h2 id="middleware-by-namespace">Middleware by namespace<a class="headerlink" href="#middleware-by-namespace" title="Permanent link">&para;</a></h2>
 <p>The middleware map attaches middleware to a namespace prefix, giving you "group" semantics without a route table: every action whose class falls under the prefix inherits that middleware.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMiddlewareMap</span><span class="p">([</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s1">&#39;\\Admin\\&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireAdmin</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s1">&#39;\\Portal\\&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireCustomer</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMiddlewareMap</span><span class="p">([</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="s1">&#39;\\Admin\\&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireAdmin</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="s1">&#39;\\Portal\\&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireCustomer</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">]);</span>
 </code></pre></div>
 <p>An action at <code>MyApp\Action\Admin\Products\DeleteProducts</code> picks up <code>RequireAdmin</code> because its class lives under the <code>\Admin\</code> prefix. Prefixes stack, so an action nested under several of them inherits all of their middleware. Global middleware, which applies to every request regardless of namespace, is configured on the <a href="../adr-dispatcher/">dispatcher</a> instead. See <a href="../adr-middleware/">Middleware</a>.</p>
 
