@@ -40,7 +40,48 @@ The match carries the resolved action class, the positional attributes, and the 
 $id = $request->getAttributes()->get(0);
 ```
 
-Because attributes arrive as raw strings, casting and validation remain the responsibility of the action or domain, exactly as with any other input.
+By default attributes arrive as raw strings, leaving casting and validation to the action or domain. An action may instead declare its parameters up front, so the router validates, casts and names them before they reach the request — see the next section.
+
+## Typed parameters
+
+An action may declare a static `params()` method to have its trailing segments validated, cast and named before they reach the request. The method returns an ordered, name-keyed map; every entry is optional and may set a `match` regex, a scalar `type` (`int`, `float` or `string`) and a `convert` closure:
+
+```php
+final class Get implements Action
+{
+    public static function params(): array
+    {
+        return [
+            'id' => ['match' => '\d+', 'type' => 'int'],
+        ];
+    }
+
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        // already validated as \d+ and cast to int, and read by name
+        $id = $request->getAttributes()->get('id');
+        // ...
+    }
+}
+```
+
+The declaration keys map to the positional segments in order: the first parameter names segment `0`, the second names segment `1`, and so on. For each segment the router checks it against `match` (a miss is treated as a route miss, a **404**), casts it to `type` (an unknown or omitted type leaves it a string), passes the cast value through `convert` when one is given, and stores the result under the declared name.
+
+Because `convert` receives the already-cast value, it doubles as a hydration hook — trimming a slug, resolving an enum, or building a value object:
+
+```php
+public static function params(): array
+{
+    return [
+        'on' => [
+            'match'   => '\d{4}-\d{2}-\d{2}',
+            'convert' => fn (string $value) => new DateTimeImmutable($value),
+        ],
+    ];
+}
+```
+
+A declared parameter with no matching segment is skipped — no attribute is set and no default is applied — and any segments beyond the declared parameters pass through unchanged under their positional keys. An action without a `params()` method is untouched: its segments arrive as raw, positional strings.
 
 ## Middleware by namespace
 
