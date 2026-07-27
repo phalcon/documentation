@@ -974,6 +974,15 @@ public function setOldSnapshotData(
 Sets the record's old snapshot data. This method is used internally to set old snapshot data when the model was set up to keep snapshot data
 
 ```php
+public function setRelated(
+    string $alias, 
+    mixed $records
+): ModelInterface
+```
+
+Stores related records in the relation cache, so that a subsequent `getRelated()` or property access returns them without querying. Does not stage the records to be saved; see [Model Relationships][db-models-relationships] for the difference.
+
+```php
 public function setSnapshotData(
     array $data, 
     array $columnMap = null
@@ -2118,6 +2127,30 @@ $invoices = Invoices::find(
         ],
     ]
 );
+```
+
+**`eager`**
+
+Pre-loads the named relations, so that accessing them on the returned records issues no further queries. The value is an array of relation paths. See [Eager Loading][models-relationships-eager] for nested paths, per-relation options and the full behavior.
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find(
+    [
+        'conditions' => 'inv_total > :total:',
+        'bind'       => [
+            'total' => 100,
+        ],
+        'eager'      => ['customer'],
+    ]
+);
+
+foreach ($invoices as $invoice) {
+    echo $invoice->customer->cst_name_last;
+}
 ```
 
 **`for_update`**
@@ -4466,6 +4499,8 @@ The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so cal
 | `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`          | `Phalcon\Mvc\Model\Exception` | `updateSnapshot()` is invoked while snapshots are disabled.                           |
 
 [binding-parameters]: #binding-parameters
+[db-models-relationships]: db-models-relationships.md
+[models-relationships-eager]: db-models-relationships.md#eager-loading
 [cache]: cache.md
 [creating-models]: #creating-models
 [db]: db-layer.md

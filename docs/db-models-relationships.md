@@ -769,10 +769,22 @@ foreach ($products as $product) {
 
 ### `setRelated()`
 
-You can set the same relationship by using `setRelated()` and defining which relationship you want to set.
+`setRelated()` is the counterpart of `getRelated()`. It stores records in the relation cache, so that a later read of that relation returns them without querying the database.
+
+```php
+public function setRelated(
+    string $alias, 
+    mixed $records
+): ModelInterface
+```
+
+The alias is the relation name and is not case sensitive. The records can be a model, a resultset, or `null` for a to-one relation with no match. The model is returned, so calls can be chained.
 
 ```php
 <?php
+
+use MyApp\Models\Customers;
+use MyApp\Models\Invoices;
 
 $customer = Customers::findFirst(
     [
@@ -782,9 +794,58 @@ $customer = Customers::findFirst(
         ],
     ]
 );
-$invoice = new Invoice();
-$customer->setRelated('invoices', [$invoice]);
+
+$invoices = Invoices::find('inv_cst_id = 1');
+
+$customer->setRelated('invoices', $invoices);
+
+// answered from the cache, no query
+$customer->getRelated('invoices');
 ```
+
+After the call, `isRelationshipLoaded()` reports the relation as loaded:
+
+```php
+<?php
+
+use MyApp\Models\Customers;
+
+$customer = Customers::findFirst('cst_id = 1');
+
+$customer->isRelationshipLoaded('invoices'); // false
+
+$customer->setRelated('invoices', []);
+
+$customer->isRelationshipLoaded('invoices'); // true
+```
+
+!!! warning "WARNING"
+
+    `setRelated()` populates the read cache only. It does not mark the record as having unsaved related records, so a following `save()` will not persist them.
+
+To save a record together with its related records, assign them as a magic property instead. That path stages the records and `save()` writes them:
+
+```php
+<?php
+
+use MyApp\Models\Customers;
+use MyApp\Models\Invoices;
+
+$customer = Customers::findFirst('cst_id = 1');
+
+$invoice = new Invoices();
+
+$invoice->inv_title = 'Invoice for ACME Inc.';
+$invoice->inv_total = 100;
+
+$customer->invoices = [$invoice];
+
+$customer->save();
+```
+
+See [Save](#save) for the full description of that behavior.
+
+`setRelated()` is the same mechanism [Eager Loading](#eager-loading) uses to attach pre-loaded records to each returned model.
 
 ## Aliases
 
@@ -955,6 +1016,194 @@ class Invoices extends Model
 }
 
 ```
+
+## Eager Loading
+
+Eager loading pre-loads a relation for every record in a resultset, using one query for the whole set instead of one query per record.
+
+Accessing a relation inside a loop issues a query on each iteration. Reading 500 invoices and their customers costs 501 queries:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find('inv_total > 100');
+
+foreach ($invoices as $invoice) {
+    echo $invoice->customer->cst_name_last;
+}
+```
+
+The `reusable` option described above does not solve this. It collapses repeated access to the *same* key, but it never combines *different* keys into a single query.
+
+Pass the `eager` parameter to `find()` to load the relation for the whole resultset at once. The cost becomes two queries, and stays at two no matter how many invoices are returned:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find(
+    [
+        'conditions' => 'inv_total > :total:',
+        'bind'       => [
+            'total' => 100,
+        ],
+        'eager'      => ['customer'],
+    ]
+);
+
+foreach ($invoices as $invoice) {
+    echo $invoice->customer->cst_name_last;
+}
+```
+
+The records are loaded into the same cache that `getRelated()` reads, so `$invoice->customer`, `$invoice->getCustomer()` and `$invoice->getRelated('customer')` all return the pre-loaded record without querying.
+
+The value of `eager` is always an array. A string throws [Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter][mvc-model-exceptions-invalideagerparameter].
+
+### Supported Relations
+
+- `belongsTo`, `hasOne` and `hasMany` cost one query each
+- `hasOneThrough` and `hasManyToMany` cost two queries each - one for the intermediate table, one for the referenced records
+- Composite keys are supported for all relation types
+
+Through-relations are loaded without a join, so parent records are never multiplied and the result is identical to the lazy path.
+
+A to-one relation with no matching record resolves to `null`. A to-many relation with no matching records resolves to an empty resultset, so it can be iterated without a guard.
+
+### Nested Relations
+
+Relations of relations are loaded with a dot-delimited path:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find(
+    [
+        'eager' => ['customer.country'],
+    ]
+);
+
+foreach ($invoices as $invoice) {
+    echo $invoice->customer->country->cnt_name;
+}
+```
+
+A path implies each of its prefixes, and prefixes are merged. Both of the following cost the same two queries - one for customers, one for countries:
+
+```php
+<?php
+
+'eager' => ['customer.country'];
+'eager' => ['customer', 'customer.country'];
+```
+
+The number of queries follows the number of distinct relations named, not the number of paths supplied. Loading `['customer.country', 'customer.address']` costs three queries: customers are fetched once and shared by both branches.
+
+Paths are limited to five segments. A longer path throws [Phalcon\Mvc\Model\Exceptions\InvalidEagerPath][mvc-model-exceptions-invalideagerpath], as does an empty segment such as `customer..country`.
+
+### Relation Options
+
+An element can be written as `path => options` to narrow what the relation loads. The accepted options are `columns`, `conditions`, `bind`, `bindTypes` and `order`.
+
+```php
+<?php
+
+use MyApp\Models\Customers;
+
+$customers = Customers::find(
+    [
+        'eager' => [
+            'invoices' => [
+                'conditions' => 'inv_status_flag = :status:',
+                'bind'       => [
+                    'status' => 1,
+                ],
+                'order'      => 'inv_created_at DESC',
+            ],
+        ],
+    ]
+);
+```
+
+Conditions declared on the relation itself - the `params` option of `hasMany()`, `belongsTo()` and the rest - are always applied, whether or not the relation is loaded eagerly. When both are present the two are combined with `AND`; the relation's own conditions are not replaced.
+
+`limit` and `offset` are rejected with [Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption][mvc-model-exceptions-unsupportedeageroption]. A limit applied to a single query for the whole set would return that many records in total rather than that many per parent, which is not what the option would appear to mean.
+
+### Selecting Columns
+
+Restricting a relation to a subset of columns returns [Phalcon\Mvc\Model\Row][mvc-model-row] objects for that relation, exactly as `columns` does on `find()`:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find(
+    [
+        'eager' => [
+            'customer' => [
+                'columns' => 'cst_id, cst_name_last',
+            ],
+        ],
+    ]
+);
+
+foreach ($invoices as $invoice) {
+    // $invoice is a model; $invoice->customer is a Row
+    echo $invoice->customer->cst_name_last;
+}
+```
+
+A `Row` carries only the selected columns. It is not a model, so it has no `save()`, no snapshots and none of the methods defined on the related model.
+
+The relation's referenced field must appear in the column list, because the returned records are matched back to their parents by that field. Omitting it throws [Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn][mvc-model-exceptions-missingeagerkeycolumn]. The same applies to the local field when the parent query itself uses `columns`.
+
+### Hydration
+
+Eager loading requires the default hydration mode, `Resultset::HYDRATE_RECORDS`. Arrays and standard objects have no relation cache to populate, so combining `eager` with `HYDRATE_ARRAYS` or `HYDRATE_OBJECTS` throws [Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration][mvc-model-exceptions-unsupportedeagerhydration].
+
+### Criteria
+
+The same parameter is available on the criteria returned by `query()`:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::query()
+    ->eager(['customer'])
+    ->where('inv_total > 100')
+    ->execute();
+```
+
+`Phalcon\Mvc\Model\Criteria::eager()` records the paths and `execute()` forwards them to `find()`, so the behavior is identical.
+
+`eager()` is defined on [Phalcon\Mvc\Model\Criteria][mvc-model-criteria] and not on [Phalcon\Mvc\Model\CriteriaInterface][mvc-model-criteriainterface], because adding a method to the interface would break every existing implementation of it. `Phalcon\Mvc\Model::query()` declares `CriteriaInterface` as its return type, so a static analyzer reports the call as undefined even though it resolves at runtime. Call `eager()` first, as above, and annotate the variable if your analysis requires it:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+use Phalcon\Mvc\Model\Criteria;
+
+/** @var Criteria $criteria */
+$criteria = Invoices::query();
+
+$invoices = $criteria
+    ->eager(['customer'])
+    ->where('inv_total > 100')
+    ->execute();
+```
+
+### Errors
+
+An unknown relation alias is reported before any query runs, with [Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation][mvc-model-exceptions-unknowneagerrelation] naming the model and the alias. Every other failure listed above is also raised as an exception rather than silently loading nothing, so a mistake in the specification is visible immediately.
 
 ## Autocompletion
 
@@ -1636,4 +1885,13 @@ if ( false === $customer->save() ) {
 [db-models-cache]: db-models-cache.md
 [db-normalization]: https://en.wikipedia.org/wiki/Database_normalization
 [mvc-model]: api/phalcon_mvc.md#mvcmodel
+[mvc-model-criteria]: api/phalcon_mvc.md#mvcmodelcriteria
+[mvc-model-criteriainterface]: api/phalcon_mvc.md#mvcmodelcriteriainterface
+[mvc-model-exceptions-invalideagerparameter]: api/phalcon_mvc.md#mvcmodelexceptionsinvalideagerparameter
+[mvc-model-exceptions-invalideagerpath]: api/phalcon_mvc.md#mvcmodelexceptionsinvalideagerpath
+[mvc-model-exceptions-missingeagerkeycolumn]: api/phalcon_mvc.md#mvcmodelexceptionsmissingeagerkeycolumn
+[mvc-model-exceptions-unknowneagerrelation]: api/phalcon_mvc.md#mvcmodelexceptionsunknowneagerrelation
+[mvc-model-exceptions-unsupportedeagerhydration]: api/phalcon_mvc.md#mvcmodelexceptionsunsupportedeagerhydration
+[mvc-model-exceptions-unsupportedeageroption]: api/phalcon_mvc.md#mvcmodelexceptionsunsupportedeageroption
 [mvc-model-relation]: api/phalcon_mvc.md#mvcmodelrelation
+[mvc-model-row]: api/phalcon_mvc.md#mvcmodelrow
