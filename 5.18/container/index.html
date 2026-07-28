@@ -2376,6 +2376,17 @@ offering lower resource consumption and high performance.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#getservicenames-registered-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getServiceNames()</code> - Registered Definitions
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5743,6 +5754,17 @@ offering lower resource consumption and high performance.
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#getservicenames-registered-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getServiceNames()</code> - Registered Definitions
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6113,6 +6135,34 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="nv">$mailer</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
 </code></pre></div>
+<h3 id="getservicenames-registered-definitions"><code>getServiceNames()</code> - Registered Definitions<a class="headerlink" href="#getservicenames-registered-definitions" title="Permanent link">&para;</a></h3>
+<p>Returns the names of every registered service definition, in registration order. Names that exist only as an alias, a pre-set instance or a parameter are not included, and neither are classes that autowiring would resolve on demand.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Definition\ServiceLifetime</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setAlias</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;logger&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setInstance</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="nv">$requestObject</span><span class="p">,</span> <span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">);</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="c1">// [&#39;mailer&#39;, &#39;logger&#39;]</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="nv">$names</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getServiceNames</span><span class="p">();</span>
+</code></pre></div>
+<p><code>has()</code> answers whether one name can be resolved, counting aliases, instances, parameters and autowirable classes. <code>getServiceNames()</code> answers the narrower question of what has been explicitly defined, which is what a debug panel, a console command listing services, or a boot-time audit needs.</p>
+<p>Pair it with <code>getDefinition()</code> to read each definition:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getServiceNames</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nv">$definition</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getDefinition</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="k">echo</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s1">&#39;: &#39;</span> <span class="o">.</span> <span class="nv">$definition</span><span class="o">-&gt;</span><span class="na">getLifetime</span><span class="p">()</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="service-lifetimes">Service Lifetimes<a class="headerlink" href="#service-lifetimes" title="Permanent link">&para;</a></h2>
 <p>Three lifetimes are available via <code>Phalcon\Container\Definition\ServiceLifetime</code>:</p>
@@ -6139,112 +6189,112 @@ offering lower resource consumption and high performance.
 </tbody>
 </table>
 <p>In standard PHP (shared-nothing model), <code>SCOPED</code> and <code>SINGLETON</code> behave identically. The distinction matters only in long-running process environments.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Definition\ServiceLifetime</span><span class="p">;</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="nx">Session</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">);</span>      <span class="c1">// cleared per-request (default)</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="nx">AppConfig</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SINGLETON</span><span class="p">);</span>   <span class="c1">// persists across requests</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">,</span> <span class="nx">QueryBuilder</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">TRANSIENT</span><span class="p">);</span>   <span class="c1">// always a fresh instance</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Definition\ServiceLifetime</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="nx">Session</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">);</span>      <span class="c1">// cleared per-request (default)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="nx">AppConfig</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SINGLETON</span><span class="p">);</span>   <span class="c1">// persists across requests</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;query&#39;</span><span class="p">,</span> <span class="nx">QueryBuilder</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">TRANSIENT</span><span class="p">);</span>   <span class="c1">// always a fresh instance</span>
 </code></pre></div>
 <hr />
 <h2 id="autowiring">Autowiring<a class="headerlink" href="#autowiring" title="Permanent link">&para;</a></h2>
 <p>Autowiring is enabled by default. When a class name is registered - or looked up directly by class name - the container uses reflection to resolve constructor dependencies automatically.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">class</span> <span class="nc">LoggerAwareMailer</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">{</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">FileLogger</span> <span class="nv">$logger</span><span class="p">)</span> <span class="p">{}</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">,</span> <span class="nx">FileLogger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">LoggerAwareMailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1">// FileLogger is injected into LoggerAwareMailer automatically</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="nv">$mailer</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="c1">// Without defining FileLogger or LoggerAwareMailer</span>
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">LoggerAwareMailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">class</span> <span class="nc">LoggerAwareMailer</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">{</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">FileLogger</span> <span class="nv">$logger</span><span class="p">)</span> <span class="p">{}</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">}</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">,</span> <span class="nx">FileLogger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">LoggerAwareMailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1">// FileLogger is injected into LoggerAwareMailer automatically</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nv">$mailer</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1">// Without defining FileLogger or LoggerAwareMailer</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">LoggerAwareMailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </code></pre></div>
 <p>Autowiring can be disabled globally. <code>setAutowire()</code> returns the container, so it can be chained with other registration calls:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setAutowire</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>          <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setAutowire</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>          <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p>When disabled, only explicitly registered services are resolved.</p>
 <hr />
 <h2 id="service-definition">Service Definition<a class="headerlink" href="#service-definition" title="Permanent link">&para;</a></h2>
 <p><code>set()</code> returns a <code>ServiceDefinition</code> object. Use it to configure the service fluently before it is first resolved.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Definition\ServiceLifetime</span><span class="p">;</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">TRANSIENT</span><span class="p">)</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>          <span class="o">-&gt;</span><span class="na">addTag</span><span class="p">(</span><span class="s1">&#39;notification.sender&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Definition\ServiceLifetime</span><span class="p">;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>          <span class="o">-&gt;</span><span class="na">setLifetime</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">TRANSIENT</span><span class="p">)</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>          <span class="o">-&gt;</span><span class="na">addTag</span><span class="p">(</span><span class="s1">&#39;notification.sender&#39;</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="the-freeze-pattern">The Freeze Pattern<a class="headerlink" href="#the-freeze-pattern" title="Permanent link">&para;</a></h3>
 <p><code>ServiceDefinition</code> is mutable during registration. On first resolution, the container calls <code>freeze()</code> on the definition: reflection runs once, constructor arguments are collated and locked, and all setters are disabled. Subsequent resolutions use the pre-computed data with no further reflection overhead.</p>
 <p>Attempting to modify a frozen definition - calling <code>setLifetime()</code>, <code>addTag()</code>, <code>setArgument()</code>, etc. - throws <code>FrozenDefinition</code>.</p>
 <h3 id="constructor-argument-overrides">Constructor Argument Overrides<a class="headerlink" href="#constructor-argument-overrides" title="Permanent link">&para;</a></h3>
 <p>Use <code>setArgument()</code> to override specific constructor parameters by name:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="nx">DatabaseConnection</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">))</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="nx">DatabaseConnection</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">))</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">));</span>
 </code></pre></div>
 <hr />
 <h2 id="interface-binding">Interface Binding<a class="headerlink" href="#interface-binding" title="Permanent link">&para;</a></h2>
 <p>Use <code>bind()</code> to map an interface to a concrete class. Services that type-hint the interface receive the concrete implementation during autowiring.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">FileLogger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1">// Mailer type-hints LoggerInterface - FileLogger is injected automatically</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nv">$mailer</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">FileLogger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1">// Mailer type-hints LoggerInterface - FileLogger is injected automatically</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nv">$mailer</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p><code>bind()</code> is a semantic wrapper around <code>set()</code> and returns a <code>ServiceDefinition</code> for further configuration.</p>
 <hr />
 <h2 id="aliases">Aliases<a class="headerlink" href="#aliases" title="Permanent link">&para;</a></h2>
 <p>Register a short name that points to an existing service. The alias chain is resolved transparently on every <code>get()</code> or <code>has()</code> call.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">FileLogger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setAlias</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;logger&#39;</span><span class="p">);</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1">// Both names resolve to the same shared instance</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nv">$a</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="nv">$b</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">FileLogger</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setAlias</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;logger&#39;</span><span class="p">);</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">// Both names resolve to the same shared instance</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="nv">$a</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="nv">$b</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">);</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
@@ -6253,30 +6303,30 @@ offering lower resource consumption and high performance.
 <hr />
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
 <p>Parameters store scalar values (strings, integers, arrays, environment variables) separately from services. They are retrieved via <code>get()</code> the same as services.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nv">$container</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.name&#39;</span><span class="p">,</span> <span class="s1">&#39;my_database&#39;</span><span class="p">)</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">))</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">))</span>
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;app.allowed_ips&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">csEnv</span><span class="p">(</span><span class="s1">&#39;ALLOWED_IPS&#39;</span><span class="p">));</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
-<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1">// Retrieve</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nv">$host</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">);</span>
-<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="nv">$port</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nv">$container</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.name&#39;</span><span class="p">,</span> <span class="s1">&#39;my_database&#39;</span><span class="p">)</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">))</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">))</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;app.allowed_ips&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">csEnv</span><span class="p">(</span><span class="s1">&#39;ALLOWED_IPS&#39;</span><span class="p">));</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="c1">// Retrieve</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="nv">$host</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">);</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="nv">$port</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p><code>Resolvable</code> parameter values (such as <code>Lazy::env()</code>) are resolved on first <code>get()</code> and their result is cached back.</p>
 <hr />
 <h2 id="lazy-values">Lazy Values<a class="headerlink" href="#lazy-values" title="Permanent link">&para;</a></h2>
 <p><code>Phalcon\Container\Resolver\Lazy\Lazy</code> is a static factory that provides convenient construction of all lazy value types. Import one class instead of twelve separate ones.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
 </code></pre></div>
 <table>
 <thead>
@@ -6337,112 +6387,112 @@ offering lower resource consumption and high performance.
 </tbody>
 </table>
 <h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nv">$container</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">))</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">));</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="nx">DatabaseConnection</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">))</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">));</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
-<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1">// Static factory</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;app.version&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">staticCall</span><span class="p">(</span><span class="nx">AppVersion</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;current&#39;</span><span class="p">,</span> <span class="p">[]));</span>
-<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>
-<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="c1">// Callable wrappers - useful for passing lazy service references</span>
-<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="nv">$getMailer</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">callableGet</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>  <span class="c1">// Closure: fn() =&gt; $container-&gt;get(&#39;mailer&#39;)</span>
-<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="nv">$newMailer</span>  <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">callableNew</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>  <span class="c1">// Closure: fn() =&gt; $container-&gt;new(&#39;mailer&#39;)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nv">$container</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">))</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">));</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="nx">DatabaseConnection</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">))</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>          <span class="o">-&gt;</span><span class="na">setArgument</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">));</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="c1">// Static factory</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;app.version&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">staticCall</span><span class="p">(</span><span class="nx">AppVersion</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;current&#39;</span><span class="p">,</span> <span class="p">[]));</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="c1">// Callable wrappers - useful for passing lazy service references</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="nv">$getMailer</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">callableGet</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>  <span class="c1">// Closure: fn() =&gt; $container-&gt;get(&#39;mailer&#39;)</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="nv">$newMailer</span>  <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">callableNew</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">);</span>  <span class="c1">// Closure: fn() =&gt; $container-&gt;new(&#39;mailer&#39;)</span>
 </code></pre></div>
 <hr />
 <h2 id="service-tags">Service Tags<a class="headerlink" href="#service-tags" title="Permanent link">&para;</a></h2>
 <p>Tag services to group them by a label. Retrieve all tagged services as resolved instances with <code>getByTag()</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;subscriber.email&#39;</span><span class="p">,</span> <span class="nx">EmailSubscriber</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>          <span class="o">-&gt;</span><span class="na">addTag</span><span class="p">(</span><span class="s1">&#39;event.subscriber&#39;</span><span class="p">);</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;subscriber.log&#39;</span><span class="p">,</span> <span class="nx">LogSubscriber</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>          <span class="o">-&gt;</span><span class="na">addTag</span><span class="p">(</span><span class="s1">&#39;event.subscriber&#39;</span><span class="p">);</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="c1">// Returns [EmailSubscriber instance, LogSubscriber instance]</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="nv">$subscribers</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getByTag</span><span class="p">(</span><span class="s1">&#39;event.subscriber&#39;</span><span class="p">);</span>
-<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>
-<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$subscribers</span> <span class="k">as</span> <span class="nv">$subscriber</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    <span class="nv">$subscriber</span><span class="o">-&gt;</span><span class="na">onEvent</span><span class="p">(</span><span class="nv">$event</span><span class="p">);</span>
-<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;subscriber.email&#39;</span><span class="p">,</span> <span class="nx">EmailSubscriber</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>          <span class="o">-&gt;</span><span class="na">addTag</span><span class="p">(</span><span class="s1">&#39;event.subscriber&#39;</span><span class="p">);</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;subscriber.log&#39;</span><span class="p">,</span> <span class="nx">LogSubscriber</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>          <span class="o">-&gt;</span><span class="na">addTag</span><span class="p">(</span><span class="s1">&#39;event.subscriber&#39;</span><span class="p">);</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="c1">// Returns [EmailSubscriber instance, LogSubscriber instance]</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="nv">$subscribers</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">getByTag</span><span class="p">(</span><span class="s1">&#39;event.subscriber&#39;</span><span class="p">);</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$subscribers</span> <span class="k">as</span> <span class="nv">$subscriber</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>    <span class="nv">$subscriber</span><span class="o">-&gt;</span><span class="na">onEvent</span><span class="p">(</span><span class="nv">$event</span><span class="p">);</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="p">}</span>
 </code></pre></div>
 <hr />
 <h2 id="service-extension-decoration">Service Extension (Decoration)<a class="headerlink" href="#service-extension-decoration" title="Permanent link">&para;</a></h2>
 <p>Decorate an existing service definition with additional callables that run after instantiation. Each extender receives the current instance and the container, and must return the (modified) instance.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1">// On the definition - fluent, before first resolution</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>          <span class="o">-&gt;</span><span class="na">addExtender</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nx">Mailer</span> <span class="nv">$mailer</span><span class="p">,</span> <span class="nx">Container</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>              <span class="nv">$mailer</span><span class="o">-&gt;</span><span class="na">setLogger</span><span class="p">(</span><span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">));</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>              <span class="k">return</span> <span class="nv">$mailer</span><span class="p">;</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>          <span class="p">});</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="c1">// Via the container - after registration, before first resolution</span>
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">extend</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Mailer</span> <span class="nv">$mailer</span><span class="p">,</span> <span class="nx">Container</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>    <span class="nv">$mailer</span><span class="o">-&gt;</span><span class="na">setDebug</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>    <span class="k">return</span> <span class="nv">$mailer</span><span class="p">;</span>
-<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="p">});</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1">// On the definition - fluent, before first resolution</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="nx">Mailer</span><span class="o">::</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>          <span class="o">-&gt;</span><span class="na">addExtender</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nx">Mailer</span> <span class="nv">$mailer</span><span class="p">,</span> <span class="nx">Container</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>              <span class="nv">$mailer</span><span class="o">-&gt;</span><span class="na">setLogger</span><span class="p">(</span><span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">));</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>              <span class="k">return</span> <span class="nv">$mailer</span><span class="p">;</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>          <span class="p">});</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="c1">// Via the container - after registration, before first resolution</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">extend</span><span class="p">(</span><span class="s1">&#39;mailer&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Mailer</span> <span class="nv">$mailer</span><span class="p">,</span> <span class="nx">Container</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>    <span class="nv">$mailer</span><span class="o">-&gt;</span><span class="na">setDebug</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>    <span class="k">return</span> <span class="nv">$mailer</span><span class="p">;</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="p">});</span>
 </code></pre></div>
 <p>Calling <code>extend()</code> after the service has already been resolved throws <code>CannotExtendResolved</code>.</p>
 <hr />
 <h2 id="service-providers">Service Providers<a class="headerlink" href="#service-providers" title="Permanent link">&para;</a></h2>
 <p>Service providers encapsulate related service registrations into a dedicated class. They implement <code>Phalcon\Contracts\Container\Service\Provider</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Collection</span><span class="p">;</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Provider</span><span class="p">;</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="k">class</span> <span class="nc">DatabaseProvider</span> <span class="k">implements</span> <span class="nx">Provider</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="p">{</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">provide</span><span class="p">(</span><span class="nx">Collection</span> <span class="nv">$services</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>    <span class="p">{</span>
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>        <span class="nv">$services</span>
-<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">))</span>
-<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">))</span>
-<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.name&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">));</span>
-<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>
-<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">object</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>            <span class="k">return</span> <span class="k">new</span> <span class="nx">DatabaseConnection</span><span class="p">(</span>
-<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">),</span>
-<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">),</span>
-<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.name&#39;</span><span class="p">),</span>
-<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>            <span class="p">);</span>
-<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>        <span class="p">});</span>
-<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a>    <span class="p">}</span>
-<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Collection</span><span class="p">;</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Provider</span><span class="p">;</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Resolver\Lazy\Lazy</span><span class="p">;</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="k">class</span> <span class="nc">DatabaseProvider</span> <span class="k">implements</span> <span class="nx">Provider</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="p">{</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">provide</span><span class="p">(</span><span class="nx">Collection</span> <span class="nv">$services</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="p">{</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>        <span class="nv">$services</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">))</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">))</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>            <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;db.name&#39;</span><span class="p">,</span> <span class="nx">Lazy</span><span class="o">::</span><span class="na">env</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">));</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">object</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>            <span class="k">return</span> <span class="k">new</span> <span class="nx">DatabaseConnection</span><span class="p">(</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.host&#39;</span><span class="p">),</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.port&#39;</span><span class="p">),</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;db.name&#39;</span><span class="p">),</span>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>            <span class="p">);</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>        <span class="p">});</span>
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>    <span class="p">}</span>
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a><span class="p">}</span>
 </code></pre></div>
 <hr />
 <h2 id="containerfactory">ContainerFactory<a class="headerlink" href="#containerfactory" title="Permanent link">&para;</a></h2>
 <p><code>Phalcon\Container\ContainerFactory</code> bootstraps a fully configured <code>Container</code> from a set of <code>Provider</code> instances, keeping the <code>Container</code> constructor lean.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">DatabaseProvider</span><span class="p">())</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">MailProvider</span><span class="p">())</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">CacheProvider</span><span class="p">())</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">DatabaseProvider</span><span class="p">())</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">MailProvider</span><span class="p">())</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">CacheProvider</span><span class="p">())</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
 </code></pre></div>
 <p><code>newContainer()</code> creates a fresh <code>Container</code>, calls <code>$provider-&gt;provide($container)</code> on each registered provider in order, and returns the fully configured container.</p>
 <hr />
@@ -6466,88 +6516,88 @@ offering lower resource consumption and high performance.
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Provider\Web</span><span class="p">;</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">Web</span><span class="p">())</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Provider\Web</span><span class="p">;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">Web</span><span class="p">())</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
 </code></pre></div>
 <hr />
 <h2 id="using-container-without-di">Using Container Without Di<a class="headerlink" href="#using-container-without-di" title="Permanent link">&para;</a></h2>
 <p><code>Container</code> can be used as the primary - or sole - dependency injection mechanism in your application. <code>Phalcon\Di\Di</code> is not required.</p>
 <h3 id="standalone-bootstrap">Standalone Bootstrap<a class="headerlink" href="#standalone-bootstrap" title="Permanent link">&para;</a></h3>
 <p>Use <code>ContainerFactory</code> with service providers to build a fully configured container, then pass it directly to <code>Phalcon\Mvc\Application</code> in place of <code>Di</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">RouterProvider</span><span class="p">())</span>
-<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">ViewProvider</span><span class="p">())</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">DatabaseProvider</span><span class="p">())</span>
-<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">MailProvider</span><span class="p">())</span>
-<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
-<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
-<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
-<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>
-<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">]);</span>
-<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">RouterProvider</span><span class="p">())</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">ViewProvider</span><span class="p">())</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">DatabaseProvider</span><span class="p">())</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">MailProvider</span><span class="p">())</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_URI&#39;</span><span class="p">]);</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </code></pre></div>
 <h3 id="registering-as-the-framework-default">Registering as the Framework Default<a class="headerlink" href="#registering-as-the-framework-default" title="Permanent link">&para;</a></h3>
 <p>Passing <code>Container</code> to <code>Di::setDefault()</code> makes it available to any component extending <code>Phalcon\Di\Injectable</code> - including controllers. Magic property access (<code>$this-&gt;serviceName</code>) resolves services from <code>Container</code> automatically.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="k">use</span> <span class="nx">Phalcon\Di\Di</span><span class="p">;</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">AppServiceProvider</span><span class="p">())</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nx">Di</span><span class="o">::</span><span class="na">setDefault</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\ContainerFactory</span><span class="p">;</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="k">use</span> <span class="nx">Phalcon\Di\Di</span><span class="p">;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">ContainerFactory</span><span class="p">())</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>    <span class="o">-&gt;</span><span class="na">addProvider</span><span class="p">(</span><span class="k">new</span> <span class="nx">AppServiceProvider</span><span class="p">())</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>    <span class="o">-&gt;</span><span class="na">newContainer</span><span class="p">();</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="nx">Di</span><span class="o">::</span><span class="na">setDefault</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
 </code></pre></div>
 <p>With this in place, a controller accessing <code>$this-&gt;logger</code> or <code>$this-&gt;db</code> will resolve those services from <code>Container</code> rather than <code>Di</code>.</p>
 <h3 id="service-provider-example-for-mvc-services">Service Provider Example for MVC Services<a class="headerlink" href="#service-provider-example-for-mvc-services" title="Permanent link">&para;</a></h3>
 <p>When using <code>Container</code> as the sole container, all services that <code>Phalcon\Mvc\Application</code> depends on must be registered - the same services that <code>FactoryDefault</code> would otherwise pre-register.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Collection</span><span class="p">;</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Provider</span><span class="p">;</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
-<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>
-<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="k">class</span> <span class="nc">MvcProvider</span> <span class="k">implements</span> <span class="nx">Provider</span>
-<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="p">{</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">provide</span><span class="p">(</span><span class="nx">Collection</span> <span class="nv">$services</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>    <span class="p">{</span>
-<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">,</span> <span class="nx">Router</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="nx">Request</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="nx">Response</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>
-<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">object</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>            <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
-<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>            <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="nx">APP_PATH</span> <span class="o">.</span> <span class="s1">&#39;/views/&#39;</span><span class="p">);</span>
-<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>            <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
-<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>        <span class="p">});</span>
-<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>
-<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">object</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>            <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Url</span><span class="p">();</span>
-<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>            <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
-<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a>            <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
-<a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>        <span class="p">});</span>
-<a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a>    <span class="p">}</span>
-<a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Collection</span><span class="p">;</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Container\Service\Provider</span><span class="p">;</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="k">class</span> <span class="nc">MvcProvider</span> <span class="k">implements</span> <span class="nx">Provider</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="p">{</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">provide</span><span class="p">(</span><span class="nx">Collection</span> <span class="nv">$services</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>    <span class="p">{</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">,</span> <span class="nx">Router</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="nx">Request</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="nx">Response</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">object</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>            <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>            <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="nx">APP_PATH</span> <span class="o">.</span> <span class="s1">&#39;/views/&#39;</span><span class="p">);</span>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a>            <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a>        <span class="p">});</span>
+<a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a>
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a>        <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">object</span> <span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a>            <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Url</span><span class="p">();</span>
+<a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a>            <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a>            <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
+<a id="__codelineno-26-31" name="__codelineno-26-31" href="#__codelineno-26-31"></a>        <span class="p">});</span>
+<a id="__codelineno-26-32" name="__codelineno-26-32" href="#__codelineno-26-32"></a>    <span class="p">}</span>
+<a id="__codelineno-26-33" name="__codelineno-26-33" href="#__codelineno-26-33"></a><span class="p">}</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">NOTE</p>
@@ -6556,42 +6606,42 @@ offering lower resource consumption and high performance.
 <hr />
 <h2 id="instance-management">Instance Management<a class="headerlink" href="#instance-management" title="Permanent link">&para;</a></h2>
 <p>For advanced use cases - such as long-running process request boundaries - shared instances can be managed directly.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Definition\ServiceLifetime</span><span class="p">;</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="c1">// Inject pre-built instances - setInstance() is fluent</span>
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="nv">$container</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="o">-&gt;</span><span class="na">setInstance</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="nv">$requestObject</span><span class="p">,</span> <span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">)</span>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>    <span class="o">-&gt;</span><span class="na">setInstance</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="nv">$responseObject</span><span class="p">,</span> <span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">);</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>
-<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="c1">// Clear all SCOPED instances at request end (Octane / Swoole pattern)</span>
-<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">unsetInstances</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">);</span>
-<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>
-<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="c1">// Remove a single cached instance</span>
-<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">unsetInstance</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Definition\ServiceLifetime</span><span class="p">;</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="c1">// Inject pre-built instances - setInstance() is fluent</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="nv">$container</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="o">-&gt;</span><span class="na">setInstance</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="nv">$requestObject</span><span class="p">,</span> <span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">)</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="o">-&gt;</span><span class="na">setInstance</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="nv">$responseObject</span><span class="p">,</span> <span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">);</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="c1">// Clear all SCOPED instances at request end (Octane / Swoole pattern)</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">unsetInstances</span><span class="p">(</span><span class="nx">ServiceLifetime</span><span class="o">::</span><span class="na">SCOPED</span><span class="p">);</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="c1">// Remove a single cached instance</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="nv">$container</span><span class="o">-&gt;</span><span class="na">unsetInstance</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">);</span>
 </code></pre></div>
 <hr />
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <p>Every exception thrown by <code>Container</code> lives under the <code>Phalcon\Container\Exceptions</code> namespace and extends <code>Phalcon\Container\Exceptions\Exception</code>, which implements the <code>Phalcon\Container\Exceptions\ContainerThrowable</code> interface. Catch the interface to handle any container failure, or catch a specific subclass to react to a single cause.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Exceptions\ContainerThrowable</span><span class="p">;</span>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Exceptions\ServiceNotFound</span><span class="p">;</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
-<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
-<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="k">try</span> <span class="p">{</span>
-<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>    <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;unknown-service&#39;</span><span class="p">);</span>
-<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ServiceNotFound</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>    <span class="k">echo</span> <span class="s1">&#39;Service not found: &#39;</span> <span class="o">.</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
-<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ContainerThrowable</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>    <span class="k">echo</span> <span class="s1">&#39;Container error: &#39;</span> <span class="o">.</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
-<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Exceptions\ContainerThrowable</span><span class="p">;</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Exceptions\ServiceNotFound</span><span class="p">;</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;unknown-service&#39;</span><span class="p">);</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ServiceNotFound</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>    <span class="k">echo</span> <span class="s1">&#39;Service not found: &#39;</span> <span class="o">.</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ContainerThrowable</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>    <span class="k">echo</span> <span class="s1">&#39;Container error: &#39;</span> <span class="o">.</span> <span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="p">}</span>
 </code></pre></div>
 <table>
 <thead>

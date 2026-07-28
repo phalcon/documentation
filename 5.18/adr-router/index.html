@@ -2637,10 +2637,76 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#namespace-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Namespace descent
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-convention-accepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What the convention accepts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#matching" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         Matching
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#word-separator" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Word separator
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Generating paths
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-a-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Naming a class
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-candidates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Listing candidates
       </span>
     </span>
   </a>
@@ -5335,10 +5401,76 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#namespace-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Namespace descent
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-convention-accepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What the convention accepts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#matching" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         Matching
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#word-separator" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Word separator
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Generating paths
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-a-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Naming a class
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-candidates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Listing candidates
       </span>
     </span>
   </a>
@@ -5401,74 +5533,311 @@ offering lower resource consumption and high performance.
 <h1 id="adr-router">ADR - Router<a class="headerlink" href="#adr-router" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The ADR router maps an incoming request to an action class by convention, with no route table to maintain. The class name is the HTTP method followed by the resource and, when present, an operation; the resource and any leading areas form the namespace. Trailing segments become request attributes.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GET   /invoices          -&gt;  MyApp\Action\Invoices\GetInvoices
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>POST  /invoices          -&gt;  MyApp\Action\Invoices\PostInvoices
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>GET   /invoices/42       -&gt;  MyApp\Action\Invoices\GetInvoices       (attribute 0 = &quot;42&quot;)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>GET   /invoices/list     -&gt;  MyApp\Action\Invoices\GetInvoicesList
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>POST  /invoices/void/42  -&gt;  MyApp\Action\Invoices\PostInvoicesVoid  (attribute 0 = &quot;42&quot;)
+<p>The ADR router maps an incoming request to an action class by convention, with no route table to maintain. Every static path segment is a namespace segment, and the class name is the HTTP method followed by all of those segments concatenated. Segments that do not correspond to a namespace become request attributes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GET   /invoices             -&gt;  MyApp\Action\Invoices\GetInvoices
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>POST  /invoices             -&gt;  MyApp\Action\Invoices\PostInvoices
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>GET   /invoices/42          -&gt;  MyApp\Action\Invoices\GetInvoices             (attribute 0 = &quot;42&quot;)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>GET   /invoices/lines       -&gt;  MyApp\Action\Invoices\Lines\GetInvoicesLines
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>POST  /invoices/cancel/42   -&gt;  MyApp\Action\Invoices\Cancel\PostInvoicesCancel  (attribute 0 = &quot;42&quot;)
 </code></pre></div>
-<p>A leading area nests the namespace: <code>POST /accounting/invoices/void/42</code> resolves to <code>MyApp\Action\Accounting\Invoices\PostInvoicesVoid</code>. Because the operation is part of the class name rather than a namespace segment, it may be a word like <code>list</code> or <code>void</code> that could not itself be a namespace.</p>
+<p>One path names exactly one class, and that class names exactly one path. There is no candidate list and no first-that-exists, so an action cannot be shadowed by another that happens to exist. Adding or deleting an action never changes the URL of a different one.</p>
+<p>A leading area nests the namespace like any other segment: <code>POST /accounting/invoices/cancel/42</code> resolves to <code>MyApp\Action\Accounting\Invoices\Cancel\PostAccountingInvoicesCancel</code>.</p>
+<p>The recognized HTTP methods are <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code> and <code>DELETE</code>.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p><code>Phalcon\ADR\Router\Router</code> has two settings: the base namespace under which your actions live, and an optional middleware map. Both are fluent:</p>
+<p><code>Phalcon\ADR\Router\Router</code> has four settings. All of them are fluent:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Required</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setBaseNamespace()</code></td>
+<td>yes</td>
+<td><code>''</code></td>
+<td>Namespace under which your actions live</td>
+</tr>
+<tr>
+<td><code>setActionDirectory()</code></td>
+<td>yes</td>
+<td><code>''</code></td>
+<td>Filesystem directory that mirrors the base namespace</td>
+</tr>
+<tr>
+<td><code>setWordSeparator()</code></td>
+<td>no</td>
+<td><code>'-'</code></td>
+<td>Delimiter joining words in a path segment</td>
+</tr>
+<tr>
+<td><code>setMiddlewareMap()</code></td>
+<td>no</td>
+<td><code>[]</code></td>
+<td>Middleware attached by namespace prefix</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$router</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">);</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">$router</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="o">-&gt;</span><span class="na">setBaseNamespace</span><span class="p">(</span><span class="s1">&#39;MyApp\\Action&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="o">-&gt;</span><span class="na">setMiddlewareMap</span><span class="p">([</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="s1">&#39;\\Admin\\&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireAdmin</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="p">]);</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="o">-&gt;</span><span class="na">setActionDirectory</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/Action&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="o">-&gt;</span><span class="na">setWordSeparator</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="o">-&gt;</span><span class="na">setMiddlewareMap</span><span class="p">([</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="s1">&#39;\\Admin\\&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireAdmin</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="p">]);</span>
 </code></pre></div>
+<p><code>setBaseNamespace()</code> strips a trailing <code>\</code>, and <code>setActionDirectory()</code> strips a trailing directory separator, so both accept either form.</p>
+<p>The action directory is not optional. The router reads it to decide which path segments are namespaces, so <code>match()</code> throws <code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code> when it has not been set. It must point at the directory that mirrors the base namespace: if <code>MyApp\Action\Invoices\GetInvoices</code> lives at <code>/app/src/Action/Invoices/GetInvoices.php</code>, the action directory is <code>/app/src/Action</code>.</p>
+<p>Both setters are also available on <code>Phalcon\ADR\Application</code>, which forwards them to the router.</p>
+<h2 id="namespace-descent">Namespace descent<a class="headerlink" href="#namespace-descent" title="Permanent link">&para;</a></h2>
+<p>The router walks the path one segment at a time and consumes a segment as a namespace only while the matching directory exists on disk. Where that walk stops decides the class: everything consumed forms the namespace and the class name, and everything left over becomes an attribute.</p>
+<p>Given this tree:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/app/src/Action/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    Get.php                          -&gt;  MyApp\Action\Get
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    Invoices/
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        GetInvoices.php
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        PostInvoices.php
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        Cancel/
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            PostInvoicesCancel.php
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        Lines/
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            GetInvoicesLines.php
+</code></pre></div>
+<p>the descent resolves as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Descends into</th>
+<th>Class</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /</code></td>
+<td>nothing</td>
+<td><code>MyApp\Action\Get</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>GET /invoices</code></td>
+<td><code>Invoices</code></td>
+<td><code>MyApp\Action\Invoices\GetInvoices</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>GET /invoices/lines</code></td>
+<td><code>Invoices</code>, <code>Lines</code></td>
+<td><code>MyApp\Action\Invoices\Lines\GetInvoicesLines</code></td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>POST /invoices/cancel/42</code></td>
+<td><code>Invoices</code>, <code>Cancel</code></td>
+<td><code>MyApp\Action\Invoices\Cancel\PostInvoicesCancel</code></td>
+<td><code>0 = "42"</code></td>
+</tr>
+<tr>
+<td><code>GET /invoices/42</code></td>
+<td><code>Invoices</code></td>
+<td><code>MyApp\Action\Invoices\GetInvoices</code></td>
+<td><code>0 = "42"</code></td>
+</tr>
+<tr>
+<td><code>GET /invoices/42/lines</code></td>
+<td><code>Invoices</code></td>
+<td><code>MyApp\Action\Invoices\GetInvoices</code></td>
+<td><code>0 = "42"</code>, <code>1 = "lines"</code></td>
+</tr>
+<tr>
+<td><code>GET /nope</code></td>
+<td>nothing</td>
+<td>none - a <strong>404</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Exactly one class is derived per request. If the first segment does not correspond to a directory, the descent stops immediately and the router produces no class at all, which <code>match()</code> reports as a <strong>404</strong>.</p>
+<p>The descent reads directories, so creating one changes how existing paths resolve. Before <code>Invoices/Lines/</code> exists, <code>GET /invoices/lines</code> reaches <code>GetInvoices</code> with <code>lines</code> as attribute <code>0</code>. After it exists, the same request looks for <code>MyApp\Action\Invoices\Lines\GetInvoicesLines</code> and returns a <strong>404</strong> until that class is written.</p>
+<h2 id="what-the-convention-accepts">What the convention accepts<a class="headerlink" href="#what-the-convention-accepts" title="Permanent link">&para;</a></h2>
+<p>The class name must repeat every segment of its own namespace, in order, after the verb. Anything else is not a name the convention would produce, and the class is unreachable.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Path it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MyApp\Action\Invoices\GetInvoices</code></td>
+<td><code>/invoices</code></td>
+</tr>
+<tr>
+<td><code>MyApp\Action\Invoices\Lines\GetInvoicesLines</code></td>
+<td><code>/invoices/lines</code></td>
+</tr>
+<tr>
+<td><code>MyApp\Action\Invoices\Lines\GetLines</code></td>
+<td>none - drops <code>Invoices</code></td>
+</tr>
+<tr>
+<td><code>MyApp\Action\Invoices\GetInvoicesLines</code></td>
+<td>none - <code>Lines</code> is not in its namespace</td>
+</tr>
+<tr>
+<td><code>MyApp\Action\Invoices\GetSomethingElse</code></td>
+<td>none - does not repeat <code>Invoices</code></td>
+</tr>
+</tbody>
+</table>
+<p>An action named for an operation on its parent - <code>MyApp\Action\Invoices\GetInvoicesList</code> directly inside <code>Invoices/</code> - is not routed to. Move it into its own directory as <code>MyApp\Action\Invoices\List\GetInvoicesList</code> and the same URL resolves again.</p>
+<p>Arguments trail the static path. The descent finds the boundary between static and dynamic once, so an argument cannot sit between two static segments:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>works          POST /invoices/cancel/42  -&gt;  Invoices\Cancel\PostInvoicesCancel  with &quot;42&quot;
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>does not work  POST /invoices/42/cancel  -&gt;  Invoices\PostInvoices  with &quot;42&quot; and &quot;cancel&quot;
+</code></pre></div>
+<p>The second form still routes, but it reaches the resource action with two positional attributes rather than the action you intended. Order the path so the static part comes first.</p>
 <h2 id="matching">Matching<a class="headerlink" href="#matching" title="Permanent link">&para;</a></h2>
 <p><code>match()</code> receives the request and returns a <code>Phalcon\Contracts\ADR\Router\RouterMatch</code>, or reports that nothing matched:</p>
 <ul>
 <li>it returns <code>null</code> when no class matches the path (a <strong>404</strong>);</li>
-<li>it throws <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> when the path exists under a different HTTP method (a <strong>405</strong>).</li>
+<li>it throws <code>Phalcon\ADR\Exceptions\MethodNotAllowed</code> when the path exists under a different HTTP method (a <strong>405</strong>);</li>
+<li>it throws <code>Phalcon\ADR\Exceptions\ActionDirectoryNotSet</code> when <code>setActionDirectory()</code> has not been called.</li>
 </ul>
 <p>The match carries the resolved action class, the positional attributes, and the middleware that applies. Trailing path segments arrive as positional attributes (<code>0</code>, <code>1</code>, and so on), which the action reads from the request:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-<p>By default attributes arrive as raw strings, leaving casting and validation to the action or domain. An action may instead declare its parameters up front, so the router validates, casts and names them before they reach the request — see the next section.</p>
+<p>By default attributes arrive as raw strings, leaving casting and validation to the action or domain. An action may instead declare its parameters up front, so the router validates, casts and names them before they reach the request - see <a href="#typed-parameters">Typed parameters</a>.</p>
+<h2 id="word-separator">Word separator<a class="headerlink" href="#word-separator" title="Permanent link">&para;</a></h2>
+<p>A single separator joins words in a path segment, and the same separator applies in both directions: path to class, and class back to path. The default is <code>-</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>/user-profiles  -&gt;  MyApp\Action\UserProfiles\GetUserProfiles
+</code></pre></div>
+<p>Any other character is literal. With the default separator, <code>/user_profiles</code> and <code>/user-profiles</code> are distinct paths and resolve to different classes.</p>
+<p><code>setWordSeparator()</code> changes it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">$router</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="o">-&gt;</span><span class="na">setBaseNamespace</span><span class="p">(</span><span class="s1">&#39;MyApp\\Action&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="o">-&gt;</span><span class="na">setActionDirectory</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/Action&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="o">-&gt;</span><span class="na">setWordSeparator</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/user_profiles  -&gt;  MyApp\Action\UserProfiles\GetUserProfiles
+</code></pre></div>
+<p>Changing the separator changes the directory names the descent looks for, so pick one for the application and keep it.</p>
+<h2 id="generating-paths">Generating paths<a class="headerlink" href="#generating-paths" title="Permanent link">&para;</a></h2>
+<p><code>pathFor()</code> is the inverse of the convention: give it an action class and it returns the path that action answers, or <code>null</code> when the class is not routable. Use it to build links without hard-coding URLs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$router</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">);</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">$router</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="o">-&gt;</span><span class="na">setBaseNamespace</span><span class="p">(</span><span class="s1">&#39;MyApp\\Action&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="o">-&gt;</span><span class="na">setActionDirectory</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/Action&#39;</span><span class="p">);</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">pathFor</span><span class="p">(</span><span class="nx">Get</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>                <span class="c1">// &#39;/&#39;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">pathFor</span><span class="p">(</span><span class="nx">GetInvoices</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>        <span class="c1">// &#39;/invoices&#39;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">pathFor</span><span class="p">(</span><span class="nx">GetInvoicesLines</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>   <span class="c1">// &#39;/invoices/lines&#39;</span>
+</code></pre></div>
+<p>Those three actions declare no parameters, so each reverses to a static path. An action that declares <a href="#typed-parameters">typed parameters</a> reverses to a path with a placeholder for each one, in declaration order, so the result is the route as it is written rather than only its static part:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">namespace</span> <span class="nx">MyApp\Action\Customers</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">GetCustomers</span> <span class="k">implements</span> <span class="nx">Action</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">params</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="k">return</span> <span class="p">[</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;match&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span><span class="p">],</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="p">];</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="p">}</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="c1">// ...</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">pathFor</span><span class="p">(</span><span class="nx">GetCustomers</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>   <span class="c1">// &#39;/customers/{id}&#39;</span>
+</code></pre></div>
+<p>For an action without <code>params()</code>, append trailing values yourself:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$url</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">pathFor</span><span class="p">(</span><span class="nx">GetInvoices</span><span class="o">::</span><span class="na">class</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/42&#39;</span><span class="p">;</span>   <span class="c1">// &#39;/invoices/42&#39;</span>
+</code></pre></div>
+<p><code>pathFor()</code> returns <code>null</code> in two cases: the class is outside the configured base namespace, or its name does not repeat every segment of its namespace after the verb. See <a href="#what-the-convention-accepts">What the convention accepts</a>.</p>
+<p>Only the class you pass is consulted - never a parent and never a sibling - so adding or removing any other action cannot change the path this one answers.</p>
+<h2 id="naming-a-class">Naming a class<a class="headerlink" href="#naming-a-class" title="Permanent link">&para;</a></h2>
+<p><code>classFor()</code> returns the class name the convention gives a method and a static path. The class does not have to exist.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">$router</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setBaseNamespace</span><span class="p">(</span><span class="s1">&#39;MyApp\\Action&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">classFor</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/invoices&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1">// &#39;MyApp\Action\Invoices\GetInvoices&#39;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">classFor</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/invoices/lines&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1">// &#39;MyApp\Action\Invoices\Lines\GetInvoicesLines&#39;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">classFor</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;/session/forgot-password&#39;</span><span class="p">);</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1">// &#39;MyApp\Action\Session\ForgotPassword\PostSessionForgotPassword&#39;</span>
+</code></pre></div>
+<p>It reads neither the filesystem nor the class, so it needs no action directory and works for code that has not been written yet. That makes it the call for generators, linters, and "no action found; expected <code>X</code>" diagnostics.</p>
+<p>Pass the static prefix only. Placeholders are the caller's concern - <code>classFor()</code> treats <code>{id}</code> as a literal segment and would fold it into the class name.</p>
+<p>For an action that declares no parameters, <code>classFor()</code> and <code>pathFor()</code> are exact inverses:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$path</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">pathFor</span><span class="p">(</span><span class="nx">GetInvoicesLines</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>   <span class="c1">// &#39;/invoices/lines&#39;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">classFor</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="nv">$path</span><span class="p">);</span>                     <span class="c1">// &#39;MyApp\Action\Invoices\Lines\GetInvoicesLines&#39;</span>
+</code></pre></div>
+<h2 id="listing-candidates">Listing candidates<a class="headerlink" href="#listing-candidates" title="Permanent link">&para;</a></h2>
+<p><code>candidatesFor()</code> returns the action classes the router would try for a given method and path. Because the convention derives exactly one class, the list holds one entry, or none when the descent finds no matching directory for the first segment.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">$router</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nv">$router</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="o">-&gt;</span><span class="na">setBaseNamespace</span><span class="p">(</span><span class="s1">&#39;MyApp\\Action&#39;</span><span class="p">)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="o">-&gt;</span><span class="na">setActionDirectory</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/Action&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nv">$candidates</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">candidatesFor</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/invoices/lines&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1">// [</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1">//     &#39;MyApp\Action\Invoices\Lines\GetInvoicesLines&#39;,</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c1">// ]</span>
+</code></pre></div>
+<p>The entry reflects the convention, not the filesystem contents: the class in it may not exist. Because the descent consults the filesystem, the result depends on the configured action directory. This is a diagnostic tool - use it to answer "why did this path 404?" in a console command or a debug panel. Compare it against <code>classFor()</code> to tell the two failure modes apart: an empty list means no directory matched, while a single entry for a class that does not exist means the directories are there and the action is missing.</p>
 <h2 id="typed-parameters">Typed parameters<a class="headerlink" href="#typed-parameters" title="Permanent link">&para;</a></h2>
 <p>An action may declare a static <code>params()</code> method to have its trailing segments validated, cast and named before they reach the request. The method returns an ordered, name-keyed map; every entry is optional and may set a <code>match</code> regex, a scalar <code>type</code> (<code>int</code>, <code>float</code> or <code>string</code>) and a <code>convert</code> closure:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">GetInvoices</span> <span class="k">implements</span> <span class="nx">Action</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">params</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="p">{</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;match&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span><span class="p">],</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="p">];</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="p">}</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="p">{</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="c1">// already validated as \d+ and cast to int, and read by name</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="c1">// ...</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="p">}</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">GetInvoices</span> <span class="k">implements</span> <span class="nx">Action</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="p">{</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">params</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="p">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>        <span class="k">return</span> <span class="p">[</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;match&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;int&#39;</span><span class="p">],</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>        <span class="p">];</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="p">}</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="nx">AttributeRequest</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    <span class="p">{</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>        <span class="c1">// already validated as \d+ and cast to int, and read by name</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getAttributes</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>        <span class="c1">// ...</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>    <span class="p">}</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="p">}</span>
 </code></pre></div>
 <p>The declaration keys map to the positional segments in order: the first parameter names segment <code>0</code>, the second names segment <code>1</code>, and so on. For each segment the router checks it against <code>match</code> (a miss is treated as a route miss, a <strong>404</strong>), casts it to <code>type</code> (an unknown or omitted type leaves it a string), passes the cast value through <code>convert</code> when one is given, and stores the result under the declared name.</p>
-<p>Because <code>convert</code> receives the already-cast value, it doubles as a hydration hook — trimming a slug, resolving an enum, or building a value object:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">params</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">return</span> <span class="p">[</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="s1">&#39;on&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>            <span class="s1">&#39;match&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;\d{4}-\d{2}-\d{2}&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>            <span class="s1">&#39;convert&#39;</span> <span class="o">=&gt;</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DateTimeImmutable</span><span class="p">(</span><span class="nv">$value</span><span class="p">),</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="p">],</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="p">];</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
+<p>Because <code>convert</code> receives the already-cast value, it doubles as a hydration hook - trimming a slug, resolving an enum, or building a value object:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">params</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="p">{</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="k">return</span> <span class="p">[</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="s1">&#39;on&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>            <span class="s1">&#39;match&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;\d{4}-\d{2}-\d{2}&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>            <span class="s1">&#39;convert&#39;</span> <span class="o">=&gt;</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">DateTimeImmutable</span><span class="p">(</span><span class="nv">$value</span><span class="p">),</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="p">],</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="p">];</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">}</span>
 </code></pre></div>
-<p>A declared parameter with no matching segment is skipped — no attribute is set and no default is applied — and any segments beyond the declared parameters pass through unchanged under their positional keys. An action without a <code>params()</code> method is untouched: its segments arrive as raw, positional strings.</p>
+<p>A declared parameter with no matching segment is skipped - no attribute is set and no default is applied - and any segments beyond the declared parameters pass through unchanged under their positional keys. An action without a <code>params()</code> method is untouched: its segments arrive as raw, positional strings.</p>
+<p><code>params()</code> does not take part in routing. It constrains, casts and converts attributes after a class has already been chosen, and it supplies the placeholder names that <code>pathFor()</code> emits. A wrong declaration is a validation error, never a different action.</p>
 <h2 id="middleware-by-namespace">Middleware by namespace<a class="headerlink" href="#middleware-by-namespace" title="Permanent link">&para;</a></h2>
 <p>The middleware map attaches middleware to a namespace prefix, giving you "group" semantics without a route table: every action whose class falls under the prefix inherits that middleware.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMiddlewareMap</span><span class="p">([</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="s1">&#39;\\Admin\\&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireAdmin</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="s1">&#39;\\Portal\\&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireCustomer</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">]);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMiddlewareMap</span><span class="p">([</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="s1">&#39;\\Admin\\&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireAdmin</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="s1">&#39;\\Portal\\&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">RequireCustomer</span><span class="o">::</span><span class="na">class</span><span class="p">],</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">]);</span>
 </code></pre></div>
-<p>An action at <code>MyApp\Action\Admin\Products\DeleteProducts</code> picks up <code>RequireAdmin</code> because its class lives under the <code>\Admin\</code> prefix. Prefixes stack, so an action nested under several of them inherits all of their middleware. Global middleware, which applies to every request regardless of namespace, is configured on the <a href="../adr-dispatcher/">dispatcher</a> instead. See <a href="../adr-middleware/">Middleware</a>.</p>
+<p>An action at <code>MyApp\Action\Admin\Products\DeleteAdminProducts</code> picks up <code>RequireAdmin</code> because its class lives under the <code>\Admin\</code> prefix. Prefixes stack, so an action nested under several of them inherits all of their middleware. Global middleware, which applies to every request regardless of namespace, is configured on the <a href="../adr-dispatcher/">dispatcher</a> instead. See <a href="../adr-middleware/">Middleware</a>.</p>
 
 
 
