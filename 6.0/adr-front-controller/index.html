@@ -5432,7 +5432,7 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
 </code></pre></div>
-<p><code>Phalcon\ADR\Application</code> is the composition root. Given a container it resolves the router, dispatcher, events manager, and error responder from it, then handles the request. Constructed with no argument — <code>new Application()</code> — it builds its own container with the ADR <a href="../adr-container/">provider</a> already registered, which is how you run an ADR application without a front controller.</p>
+<p><code>Phalcon\ADR\Application</code> is the composition root. Given a container it resolves the router, dispatcher, events manager, and error responder from it, then handles the request. Constructed with no argument - <code>new Application()</code> - it builds its own container with the ADR <a href="../adr-container/">provider</a> already registered, which is how you run an ADR application without a front controller.</p>
 <p>The application exposes a fluent surface for configuration and service registration:</p>
 <table>
 <thead>
@@ -5452,7 +5452,7 @@ offering lower resource consumption and high performance.
 </tr>
 <tr>
 <td><code>bind()</code>, <code>define()</code>, <code>factory()</code>, <code>set()</code>, <code>extend()</code></td>
-<td>register services — see the <a href="../adr-container/">container and provider</a> page</td>
+<td>register services - see the <a href="../adr-container/">container and provider</a> page</td>
 </tr>
 <tr>
 <td><code>getContainer()</code></td>
