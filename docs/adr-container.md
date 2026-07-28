@@ -48,7 +48,7 @@ protected function registerProviders(Container $container): void
 | `extend($name, $closure)` | decorate a service after it is built |
 | `getContainer()` | return the underlying container |
 
-Type-hinted dependencies are autowired, so `define()` is only for the values autowiring cannot infer — scalars such as a host name, a port, or a flag:
+Type-hinted dependencies are autowired, so `define()` is only for the values autowiring cannot infer - scalars such as a host name, a port, or a flag:
 
 ```php
 <?php

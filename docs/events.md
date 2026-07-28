@@ -142,6 +142,12 @@ final public function fireQueue(array $queue, EventInterface $event): mixed
 Internal handler to call a queue of events. Kept at this signature for backward compatibility with direct callers; the framework's own `fire()` path uses a private typed dispatch helper instead.
 
 ```php
+public function getEventTypes(): array
+```
+
+Returns the event types that currently have at least one listener attached - see [Introspection](#introspection).
+
+```php
 public function getListeners(string $type): array
 ```
 
@@ -558,6 +564,35 @@ $eventsManager->clearSubscribers();
 !!! info "NOTE"
 
     Subscribers are keyed internally by `spl_object_id()`, so re-adding the same instance is a no-op. Registering two distinct instances of the same subscriber class is allowed and attaches the listeners twice.
+
+## Introspection
+
+`getListeners()` and `hasListeners()` both require an event type, so they can only confirm what you already suspect. `getEventTypes()` supplies the missing half: the types that currently have at least one listener attached.
+
+```php
+<?php
+
+use MyApp\Listeners\AuditSubscriber;
+use MyApp\Listeners\QueryLogger;
+use Phalcon\Events\Manager as EventsManager;
+
+$eventsManager = new EventsManager();
+
+$eventsManager->attach('db:beforeQuery', new QueryLogger());
+$eventsManager->addSubscriber(new AuditSubscriber());
+
+foreach ($eventsManager->getEventTypes() as $type) {
+    echo $type . ': ' . count($eventsManager->getListeners($type)) . PHP_EOL;
+}
+```
+
+The list covers both registration routes. `addSubscriber()` attaches through the same pipeline as `attach()`, so subscriber-contributed types appear alongside directly attached ones. `getSubscribers()` alone cannot tell you this, because it reports subscriber instances and never sees a listener attached with `attach()`.
+
+Only live types are reported. When the last listener for a type is detached the key is dropped, so a type that once had listeners and no longer does is absent rather than present with an empty list.
+
+!!! info "NOTE"
+
+    `getEventTypes()` is declared on `Phalcon\Events\Manager` and not on the `Phalcon\Contracts\Events\Manager` contract. Type against the concrete class to call it. The contract's `getListeners()` requires a type argument, and widening that signature would break every third-party implementation, so the enumeration is additive for now.
 
 ## Object and Class-Based Events
 

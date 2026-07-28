@@ -43,7 +43,7 @@ protected function getApplication(Container $container): ApplicationInterface
 }
 ```
 
-`Phalcon\ADR\Application` is the composition root. Given a container it resolves the router, dispatcher, events manager, and error responder from it, then handles the request. Constructed with no argument — `new Application()` — it builds its own container with the ADR [provider][provider] already registered, which is how you run an ADR application without a front controller.
+`Phalcon\ADR\Application` is the composition root. Given a container it resolves the router, dispatcher, events manager, and error responder from it, then handles the request. Constructed with no argument - `new Application()` - it builds its own container with the ADR [provider][provider] already registered, which is how you run an ADR application without a front controller.
 
 The application exposes a fluent surface for configuration and service registration:
 
@@ -51,7 +51,7 @@ The application exposes a fluent surface for configuration and service registrat
 | ------ | ------- |
 | `setBaseNamespace()` | set the namespace the router derives action classes from |
 | `secureWith()` | attach a guard (middleware) to every action under a namespace prefix |
-| `bind()`, `define()`, `factory()`, `set()`, `extend()` | register services — see the [container and provider][provider] page |
+| `bind()`, `define()`, `factory()`, `set()`, `extend()` | register services - see the [container and provider][provider] page |
 | `getContainer()` | return the underlying container |
 
 ## Customizing boot

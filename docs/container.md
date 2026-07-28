@@ -120,6 +120,42 @@ if ($container->has('mailer')) {
 }
 ```
 
+### `getServiceNames()` - Registered Definitions
+
+Returns the names of every registered service definition, in registration order. Names that exist only as an alias, a pre-set instance or a parameter are not included, and neither are classes that autowiring would resolve on demand.
+
+```php
+<?php
+
+use Phalcon\Container\Container;
+use Phalcon\Container\Definition\ServiceLifetime;
+
+$container = new Container();
+
+$container->set('mailer', Mailer::class);
+$container->set('logger', Logger::class);
+$container->setAlias('log', 'logger');
+$container->setInstance('request', $requestObject, ServiceLifetime::SCOPED);
+$container->setParameter('db.host', 'localhost');
+
+// ['mailer', 'logger']
+$names = $container->getServiceNames();
+```
+
+`has()` answers whether one name can be resolved, counting aliases, instances, parameters and autowirable classes. `getServiceNames()` answers the narrower question of what has been explicitly defined, which is what a debug panel, a console command listing services, or a boot-time audit needs.
+
+Pair it with `getDefinition()` to read each definition:
+
+```php
+<?php
+
+foreach ($container->getServiceNames() as $name) {
+    $definition = $container->getDefinition($name);
+
+    echo $name . ': ' . $definition->getLifetime() . PHP_EOL;
+}
+```
+
 ---
 
 ## Service Lifetimes
