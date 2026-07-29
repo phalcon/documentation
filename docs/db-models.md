@@ -2508,9 +2508,13 @@ Phalcon's resultsets emulate scrollable cursors. You can get any row by accessin
 
     Some database systems do not support scrollable cursors. This forces Phalcon to re-execute the query, in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 
-Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#model-features) section.
+Storing large query results in memory will consume many resources, so a resultset reads its rows from the database one at a time by default. You can instruct Phalcon to keep a small resultset in memory instead - which removes the re-execution above when it is traversed more than once - by setting the `orm.resultset_prefetch_records` setup value to the largest number of rows worth holding. A resultset with more rows than that keeps reading one row at a time, and the default of `0` never holds one in memory. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#model-features) section.
 
-You can re-execute the underlying query at any time to update the resultset with fresh data from the database by calling `refresh()`. This is useful in long-running scripts or when you suspect the data may have changed since the resultset was last loaded.
+!!! info "NOTE"
+
+    On a database system that cannot report a row count without running a second query - SQLite - enabling this setting costs one extra statement per resultset, because the number of rows has to be known before Phalcon can decide whether to hold it in memory.
+
+You can re-execute the underlying query at any time to update the resultset with fresh data from the database by calling `refresh()`. This is useful in long-running scripts or when you suspect the data may have changed since the resultset was last loaded. The internal pointer returns to the beginning, so the refreshed resultset can be traversed again from the first row.
 
 ```php
 <?php
@@ -4236,7 +4240,7 @@ The available options are:
 | `lateStateBinding`              | `false` | Late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method |
 | `notNullValidations`            | `true`  | Automatically validate the not `null` columns present                  |
 | `phqlLiterals`                  | `true`  | Literals in the PHQL parser                                            |
-| `prefetchRecords`               |   `0`   | The number of records to prefetch when getting data from the ORM       |                       
+| `prefetchRecords`               |   `0`   | Largest resultset, in rows, held in memory (`0` = read row by row)     |                       
 | `updateSnapshotOnSave`          | `true`  | Update snapshots on `save()`                                           |
 | `virtualForeignKeys`            | `true`  | Virtual foreign keys                                                   |
 
