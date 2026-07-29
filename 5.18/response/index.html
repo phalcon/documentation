@@ -6090,7 +6090,7 @@ offering lower resource consumption and high performance.
 <tbody>
 <tr>
 <td><code>delete( string $name ): bool</code></td>
-<td>Deletes a cookie by name. This method <strong>does not remove</strong> cookies from the <code>$_COOKIE</code> superglobal</td>
+<td>Deletes a cookie by name, expiring it in the client. It checks the internal collection first and falls back to the <code>$_COOKIE</code> superglobal, so a cookie that arrived with the request can be deleted as well; it returns <code>false</code> when the name is in neither. The cookie is expired with the <code>path</code> and <code>domain</code> it was originally sent with, so one set under a different path or domain is left in place. The <code>$_COOKIE</code> superglobal itself is <strong>not modified</strong> for the current request.</td>
 </tr>
 <tr>
 <td><code>get( string $name ): CookieInterface</code></td>

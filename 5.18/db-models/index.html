@@ -8281,8 +8281,12 @@ offering lower resource consumption and high performance.
 <p class="admonition-title">NOTE</p>
 <p>Some database systems do not support scrollable cursors. This forces Phalcon to re-execute the query, in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.</p>
 </div>
-<p>Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the <code>orm.resultset_prefetch_records</code> setup value. This can be done either in <code>php.ini</code> or in the model <code>setup()</code>. More information about this can be found in the <a href="#model-features">features</a> section.</p>
-<p>You can re-execute the underlying query at any time to update the resultset with fresh data from the database by calling <code>refresh()</code>. This is useful in long-running scripts or when you suspect the data may have changed since the resultset was last loaded.</p>
+<p>Storing large query results in memory will consume many resources, so a resultset reads its rows from the database one at a time by default. You can instruct Phalcon to keep a small resultset in memory instead - which removes the re-execution above when it is traversed more than once - by setting the <code>orm.resultset_prefetch_records</code> setup value to the largest number of rows worth holding. A resultset with more rows than that keeps reading one row at a time, and the default of <code>0</code> never holds one in memory. This can be done either in <code>php.ini</code> or in the model <code>setup()</code>. More information about this can be found in the <a href="#model-features">features</a> section.</p>
+<div class="admonition info">
+<p class="admonition-title">NOTE</p>
+<p>On a database system that cannot report a row count without running a second query - SQLite - enabling this setting costs one extra statement per resultset, because the number of rows has to be known before Phalcon can decide whether to hold it in memory.</p>
+</div>
+<p>You can re-execute the underlying query at any time to update the resultset with fresh data from the database by calling <code>refresh()</code>. This is useful in long-running scripts or when you suspect the data may have changed since the resultset was last loaded. The internal pointer returns to the beginning, so the refreshed resultset can be traversed again from the first row.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-166-2" name="__codelineno-166-2" href="#__codelineno-166-2"></a>
 <a id="__codelineno-166-3" name="__codelineno-166-3" href="#__codelineno-166-3"></a><span class="k">use</span> <span class="nx">MyApp\Models\Invoices</span><span class="p">;</span>
@@ -9853,7 +9857,7 @@ offering lower resource consumption and high performance.
 <tr>
 <td><code>prefetchRecords</code></td>
 <td style="text-align: center;"><code>0</code></td>
-<td>The number of records to prefetch when getting data from the ORM</td>
+<td>Largest resultset, in rows, held in memory (<code>0</code> = read row by row)</td>
 </tr>
 <tr>
 <td><code>updateSnapshotOnSave</code></td>
