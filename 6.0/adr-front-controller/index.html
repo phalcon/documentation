@@ -2638,6 +2638,17 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#booting-without-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Booting without running
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-application" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5352,6 +5363,17 @@ offering lower resource consumption and high performance.
 </li>
       
         <li class="md-nav__item">
+  <a href="#booting-without-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Booting without running
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-application" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -5425,12 +5447,24 @@ offering lower resource consumption and high performance.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">exit</span><span class="p">((</span><span class="k">new</span> <span class="nx">MyApp\AppFront</span><span class="p">(</span><span class="nb">dirname</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">)))</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">());</span>
 </code></pre></div>
 <p>Note that <code>run()</code> returns the exit status rather than calling <code>exit()</code> itself, leaving termination to the caller. This is what makes the same front controller usable from a worker loop or a test harness.</p>
+<h2 id="booting-without-running">Booting without running<a class="headerlink" href="#booting-without-running" title="Permanent link">&para;</a></h2>
+<p><code>boot()</code> performs steps 1 and 2 of that lifecycle - build the container, load the environment, register the providers - and returns the container:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span><span class="o">:</span> <span class="nx">Container</span><span class="p">;</span>
+</code></pre></div>
+<p>Use it when you need the wired container before, or instead of, handling a request: a bootstrap file that hands the container to a test harness, a console script, or a task runner.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">// bootstrap.php</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">return</span> <span class="p">(</span><span class="k">new</span> <span class="nx">MyApp\AppFront</span><span class="p">(</span><span class="nb">dirname</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">)))</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+</code></pre></div>
+<p>The container is built once and cached, so <code>run()</code> calls <code>boot()</code> internally and the two share the same instance. Calling <code>boot()</code> yourself and then <code>run()</code> does not repeat the work.</p>
+<p><code>boot()</code> does not resolve the request, build the application, or emit a response - that is the rest of <code>run()</code>. It also does not catch exceptions: a failure while booting propagates to the caller, where <code>run()</code> would have routed it to <code>handleBootError()</code>.</p>
 <h2 id="the-application">The application<a class="headerlink" href="#the-application" title="Permanent link">&para;</a></h2>
 <p>The front does not resolve the application from the container. It builds one through the <code>getApplication()</code> template method, which returns a <code>Phalcon\Contracts\ADR\Application</code>. The default wraps the container the front has already wired:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getApplication</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">ApplicationInterface</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">getApplication</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">ApplicationInterface</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
 </code></pre></div>
 <p><code>Phalcon\ADR\Application</code> is the composition root. Given a container it resolves the router, dispatcher, events manager, and error responder from it, then handles the request. Constructed with no argument - <code>new Application()</code> - it builds its own container with the ADR <a href="../adr-container/">provider</a> already registered, which is how you run an ADR application without a front controller.</p>
 <p>The application exposes a fluent surface for configuration and service registration:</p>
@@ -5462,39 +5496,39 @@ offering lower resource consumption and high performance.
 </table>
 <h2 id="customizing-boot">Customizing boot<a class="headerlink" href="#customizing-boot" title="Permanent link">&para;</a></h2>
 <p><code>AbstractHttpFront</code> exposes template methods you override to shape the boot process. A typical application supplies its own subclass:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">namespace</span> <span class="nx">MyApp</span><span class="p">;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">use</span> <span class="nx">MyApp\Infrastructure\DbOrderRepository</span><span class="p">;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">use</span> <span class="nx">MyApp\Order\OrderRepositoryInterface</span><span class="p">;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">use</span> <span class="nx">MyApp\Security\AuthGuard</span><span class="p">;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Application</span><span class="p">;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Front\AbstractHttpFront</span><span class="p">;</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Application</span> <span class="k">as</span> <span class="nx">ApplicationInterface</span><span class="p">;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">AppFront</span> <span class="k">extends</span> <span class="nx">AbstractHttpFront</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">{</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">loadEnvironment</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="p">{</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="c1">// load configuration, .env, and so on</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="p">}</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">registerProviders</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="p">{</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        <span class="k">parent</span><span class="o">::</span><span class="na">registerProviders</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>   <span class="c1">// registers the ADR seams</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">OrderRepositoryInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">DbOrderRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    <span class="p">}</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getApplication</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">ApplicationInterface</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="p">{</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        <span class="k">return</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$container</span><span class="p">))</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>            <span class="o">-&gt;</span><span class="na">setBaseNamespace</span><span class="p">(</span><span class="s1">&#39;MyApp\\Action&#39;</span><span class="p">)</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>            <span class="o">-&gt;</span><span class="na">secureWith</span><span class="p">(</span><span class="nx">AuthGuard</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;\\Admin&#39;</span><span class="p">);</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>    <span class="p">}</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">namespace</span> <span class="nx">MyApp</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">use</span> <span class="nx">MyApp\Infrastructure\DbOrderRepository</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">use</span> <span class="nx">MyApp\Order\OrderRepositoryInterface</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">use</span> <span class="nx">MyApp\Security\AuthGuard</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Application</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">use</span> <span class="nx">Phalcon\ADR\Front\AbstractHttpFront</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">use</span> <span class="nx">Phalcon\Container\Container</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\ADR\Application</span> <span class="k">as</span> <span class="nx">ApplicationInterface</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="k">final</span> <span class="k">class</span> <span class="nc">AppFront</span> <span class="k">extends</span> <span class="nx">AbstractHttpFront</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">loadEnvironment</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="p">{</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>        <span class="c1">// load configuration, .env, and so on</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="p">}</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">registerProviders</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="p">{</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>        <span class="k">parent</span><span class="o">::</span><span class="na">registerProviders</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>   <span class="c1">// registers the ADR seams</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nx">OrderRepositoryInterface</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">DbOrderRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="p">}</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    <span class="k">protected</span> <span class="k">function</span> <span class="nf">getApplication</span><span class="p">(</span><span class="nx">Container</span> <span class="nv">$container</span><span class="p">)</span><span class="o">:</span> <span class="nx">ApplicationInterface</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>    <span class="p">{</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>        <span class="k">return</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$container</span><span class="p">))</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>            <span class="o">-&gt;</span><span class="na">setBaseNamespace</span><span class="p">(</span><span class="s1">&#39;MyApp\\Action&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>            <span class="o">-&gt;</span><span class="na">secureWith</span><span class="p">(</span><span class="nx">AuthGuard</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;\\Admin&#39;</span><span class="p">);</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    <span class="p">}</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="p">}</span>
 </code></pre></div>
 <table>
 <thead>
