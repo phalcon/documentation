@@ -59,7 +59,7 @@ Only the keys listed below are recognised. Calls to `set()` for any other key ar
 | `orm.late_state_binding`                | `bool` | Resolve static calls on the late-bound model class                                                                     |
 | `orm.not_null_validations`              | `bool` | Add not-null validations automatically                                                                                 |
 | `orm.resultset_empty_left_join_model`   | `bool` | LEFT-JOIN hydration: `true` (default) returns an empty Model instance for unmatched rows; `false` returns plain `null` |
-| `orm.resultset_prefetch_records`        | `int`  | Number of records prefetched for big resultsets (`0` = unlimited)                                                      |
+| `orm.resultset_prefetch_records`        | `int`  | Hold a resultset in memory when it has at most this many rows (`0` = never hold one, read row by row)                  |
 | `orm.update_snapshot_on_save`           | `bool` | Update the model snapshot after a successful save                                                                      |
 | `orm.virtual_foreign_keys`              | `bool` | Validate virtual foreign keys before save / delete                                                                     |
 

@@ -32,6 +32,27 @@ exit((new MyApp\AppFront(dirname(__DIR__)))->run());
 
 Note that `run()` returns the exit status rather than calling `exit()` itself, leaving termination to the caller. This is what makes the same front controller usable from a worker loop or a test harness.
 
+## Booting without running
+
+`boot()` performs steps 1 and 2 of that lifecycle - build the container, load the environment, register the providers - and returns the container:
+
+```php
+public function boot(): Container;
+```
+
+Use it when you need the wired container before, or instead of, handling a request: a bootstrap file that hands the container to a test harness, a console script, or a task runner.
+
+```php
+<?php
+
+// bootstrap.php
+return (new MyApp\AppFront(dirname(__DIR__)))->boot();
+```
+
+The container is built once and cached, so `run()` calls `boot()` internally and the two share the same instance. Calling `boot()` yourself and then `run()` does not repeat the work.
+
+`boot()` does not resolve the request, build the application, or emit a response - that is the rest of `run()`. It also does not catch exceptions: a failure while booting propagates to the caller, where `run()` would have routed it to `handleBootError()`.
+
 ## The application
 
 The front does not resolve the application from the container. It builds one through the `getApplication()` template method, which returns a `Phalcon\Contracts\ADR\Application`. The default wraps the container the front has already wired:
