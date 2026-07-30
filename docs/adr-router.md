@@ -195,6 +195,31 @@ $url = $router->pathFor(GetInvoices::class) . '/42';   // '/invoices/42'
 
 Only the class you pass is consulted - never a parent and never a sibling - so adding or removing any other action cannot change the path this one answers.
 
+## Naming a method
+
+`methodFor()` is the other half of the inverse. Give it an action class and it returns the HTTP method that action answers, uppercased, or `null` when the class is not routable.
+
+```php
+$router = $container->get('router');
+
+$router->setBaseNamespace('MyApp\\Action');
+
+$router->methodFor(GetInvoices::class);           // 'GET'
+$router->methodFor(PostInvoices::class);          // 'POST'
+$router->methodFor(DeleteInvoicesLines::class);   // 'DELETE'
+```
+
+It takes the same argument as `pathFor()` and returns `null` on exactly the same inputs, so a caller that accepts one answer accepts the other. Together they recover the whole request an action answers, which is what a link builder, a route-listing command or an OpenAPI generator needs:
+
+```php
+$method = $router->methodFor(GetInvoices::class);   // 'GET'
+$path   = $router->pathFor(GetInvoices::class);     // '/invoices'
+```
+
+Like `pathFor()`, it derives the answer from the class name alone and never consults the filesystem, so the action directory does not have to be set.
+
+Both methods are declared on the `Phalcon\Contracts\ADR\Router\Router` contract, so a replacement router supplies them too.
+
 ## Naming a class
 
 `classFor()` returns the class name the convention gives a method and a static path. The class does not have to exist.

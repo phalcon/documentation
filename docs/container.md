@@ -156,6 +156,10 @@ foreach ($container->getServiceNames() as $name) {
 }
 ```
 
+!!! info "NOTE"
+
+    `getServiceNames()` is declared on `Phalcon\Contracts\Container\Service\Enumerable`, a capability contract separate from `Phalcon\Contracts\Container\Service\Collection`. `Phalcon\Container\Container` implements both. Tooling that reports on a container - a debug panel, a console command - type-hints `Enumerable` and detects support with `instanceof`, rather than depending on the concrete class. `Collection` mirrors the service-interop surface, which has no notion of enumeration, so the capability is stated in a second interface instead of being added to the first.
+
 ---
 
 ## Service Lifetimes
