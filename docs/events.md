@@ -142,10 +142,10 @@ final public function fireQueue(array $queue, EventInterface $event): mixed
 Internal handler to call a queue of events. Kept at this signature for backward compatibility with direct callers; the framework's own `fire()` path uses a private typed dispatch helper instead.
 
 ```php
-public function getEventTypes(): array
+public function getListenerMap(): array
 ```
 
-Returns the event types that currently have at least one listener attached - see [Introspection](#introspection).
+Returns every event type that currently has at least one listener, mapped to that type's listeners - see [Introspection](#introspection).
 
 ```php
 public function getListeners(string $type): array
@@ -567,7 +567,7 @@ $eventsManager->clearSubscribers();
 
 ## Introspection
 
-`getListeners()` and `hasListeners()` both require an event type, so they can only confirm what you already suspect. `getEventTypes()` supplies the missing half: the types that currently have at least one listener attached.
+`getListeners()` and `hasListeners()` both require an event type, so they can only confirm what you already suspect. `getListenerMap()` supplies the missing half: every type that currently has at least one listener, mapped to that type's listeners.
 
 ```php
 <?php
@@ -581,18 +581,20 @@ $eventsManager = new EventsManager();
 $eventsManager->attach('db:beforeQuery', new QueryLogger());
 $eventsManager->addSubscriber(new AuditSubscriber());
 
-foreach ($eventsManager->getEventTypes() as $type) {
-    echo $type . ': ' . count($eventsManager->getListeners($type)) . PHP_EOL;
+foreach ($eventsManager->getListenerMap() as $type => $listeners) {
+    echo $type . ': ' . count($listeners) . PHP_EOL;
 }
 ```
 
-The list covers both registration routes. `addSubscriber()` attaches through the same pipeline as `attach()`, so subscriber-contributed types appear alongside directly attached ones. `getSubscribers()` alone cannot tell you this, because it reports subscriber instances and never sees a listener attached with `attach()`.
+The map covers both registration routes. `addSubscriber()` attaches through the same pipeline as `attach()`, so subscriber-contributed types appear alongside directly attached ones. `getSubscribers()` alone cannot tell you this, because it reports subscriber instances and never sees a listener attached with `attach()`.
+
+Each value holds exactly what `getListeners()` returns for that type, in the same order, so walking the map does not need a second call per type.
 
 Only live types are reported. When the last listener for a type is detached the key is dropped, so a type that once had listeners and no longer does is absent rather than present with an empty list.
 
 !!! info "NOTE"
 
-    `getEventTypes()` is declared on `Phalcon\Events\Manager` and not on the `Phalcon\Contracts\Events\Manager` contract. Type against the concrete class to call it. The contract's `getListeners()` requires a type argument, and widening that signature would break every third-party implementation, so the enumeration is additive for now.
+    `getListenerMap()` is declared on `Phalcon\Contracts\Events\Enumerable`, a capability contract separate from `Phalcon\Contracts\Events\Manager`. `Phalcon\Events\Manager` implements both. Detect support with `instanceof` and type against `Enumerable` rather than against the concrete class. Keeping the method off the `Manager` contract leaves every third-party implementation of it valid.
 
 ## Object and Class-Based Events
 
