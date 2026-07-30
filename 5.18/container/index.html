@@ -6163,6 +6163,10 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="k">echo</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s1">&#39;: &#39;</span> <span class="o">.</span> <span class="nv">$definition</span><span class="o">-&gt;</span><span class="na">getLifetime</span><span class="p">()</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">}</span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">NOTE</p>
+<p><code>getServiceNames()</code> is declared on <code>Phalcon\Contracts\Container\Service\Enumerable</code>, a capability contract separate from <code>Phalcon\Contracts\Container\Service\Collection</code>. <code>Phalcon\Container\Container</code> implements both. Tooling that reports on a container - a debug panel, a console command - type-hints <code>Enumerable</code> and detects support with <code>instanceof</code>, rather than depending on the concrete class. <code>Collection</code> mirrors the service-interop surface, which has no notion of enumeration, so the capability is stated in a second interface instead of being added to the first.</p>
+</div>
 <hr />
 <h2 id="service-lifetimes">Service Lifetimes<a class="headerlink" href="#service-lifetimes" title="Permanent link">&para;</a></h2>
 <p>Three lifetimes are available via <code>Phalcon\Container\Definition\ServiceLifetime</code>:</p>
