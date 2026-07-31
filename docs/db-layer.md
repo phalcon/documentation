@@ -2405,6 +2405,43 @@ $id = new Column(
 
 Plain scalar values, the keywords `NULL` / `CURRENT_TIMESTAMP`, and numeric values continue to behave as before. The `RawValue` path is required only when the default is an SQL expression.
 
+### Reading Column Defaults on MariaDB
+
+`Phalcon\Db\Adapter\Pdo\Mysql::describeColumns()` reports the value a column defaults to, regardless of how the server stores that information.
+
+- MySQL 8.0 returns `INFORMATION_SCHEMA.COLUMNS.COLUMN_DEFAULT` as the resolved literal
+- MariaDB 10.2.7+ returns it as the DDL source, so string, date and time literals arrive wrapped in single quotes
+- PostgreSQL and SQLite are served by their own adapters and are unaffected
+
+The adapter identifies MariaDB from the server version, then removes the quoting and resolves the escape sequences inside the literal before building the `Phalcon\Db\Column`. `Phalcon\Db\Column::getDefault()` returns the stored value on both engines.
+
+```php
+<?php
+
+$columns = $connection->describeColumns('co_invoices');
+
+foreach ($columns as $column) {
+    echo $column->getName(), ' => ', var_export($column->getDefault(), true), PHP_EOL;
+}
+```
+
+For the declarations below, `getDefault()` returns the same value on MySQL and MariaDB:
+
+| Column declaration                       | `getDefault()` |
+|------------------------------------------|----------------|
+| `VARCHAR(2) NOT NULL DEFAULT 'fi'`       | `fi`           |
+| `TIME NOT NULL DEFAULT '08:00:00'`       | `08:00:00`     |
+| `VARCHAR(20) NOT NULL DEFAULT 'it''s'`   | `it's`         |
+| `DECIMAL(10,4) NOT NULL DEFAULT 14.5678` | `14.5678`      |
+| `BIT(1) NOT NULL DEFAULT b'1'`           | `b'1'`         |
+| `VARCHAR(10) DEFAULT NULL`               | `null`         |
+
+A column declared `DEFAULT NULL` reports PHP `null` rather than the string `NULL`.
+
+Two cases are reported as the server renders them, and are not normalized. An expression default such as `DEFAULT (CONCAT('a','b'))` reports `concat('a','b')` on MariaDB and `concat(_latin1\'a\',_latin1\'b\')` on MySQL. A column declared `DEFAULT CURRENT_TIMESTAMP` reports `CURRENT_TIMESTAMP` on MySQL and `current_timestamp()` on MariaDB. Compare these case-insensitively when the value can come from either engine.
+
+MariaDB releases before 10.2.7 do not quote literal defaults at all. Those values pass through unchanged.
+
 ### Invisible Columns (MySQL 8.0.23+)
 
 An `INVISIBLE` column is hidden from `SELECT *` expansion but can still be referenced explicitly. It is useful when phasing a legacy column out of read paths before dropping it.
