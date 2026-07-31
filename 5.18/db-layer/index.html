@@ -3343,6 +3343,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#reading-column-defaults-on-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reading Column Defaults on MariaDB
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#invisible-columns-mysql-8023" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6345,6 +6356,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#reading-column-defaults-on-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reading Column Defaults on MariaDB
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#invisible-columns-mysql-8023" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -9102,95 +9124,149 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-136-15" name="__codelineno-136-15" href="#__codelineno-136-15"></a><span class="p">);</span>
 </code></pre></div>
 <p>Plain scalar values, the keywords <code>NULL</code> / <code>CURRENT_TIMESTAMP</code>, and numeric values continue to behave as before. The <code>RawValue</code> path is required only when the default is an SQL expression.</p>
-<h3 id="invisible-columns-mysql-8023">Invisible Columns (MySQL 8.0.23+)<a class="headerlink" href="#invisible-columns-mysql-8023" title="Permanent link">&para;</a></h3>
-<p>An <code>INVISIBLE</code> column is hidden from <code>SELECT *</code> expansion but can still be referenced explicitly. It is useful when phasing a legacy column out of read paths before dropping it.</p>
+<h3 id="reading-column-defaults-on-mariadb">Reading Column Defaults on MariaDB<a class="headerlink" href="#reading-column-defaults-on-mariadb" title="Permanent link">&para;</a></h3>
+<p><code>Phalcon\Db\Adapter\Pdo\Mysql::describeColumns()</code> reports the value a column defaults to, regardless of how the server stores that information.</p>
+<ul>
+<li>MySQL 8.0 returns <code>INFORMATION_SCHEMA.COLUMNS.COLUMN_DEFAULT</code> as the resolved literal</li>
+<li>MariaDB 10.2.7+ returns it as the DDL source, so string, date and time literals arrive wrapped in single quotes</li>
+<li>PostgreSQL and SQLite are served by their own adapters and are unaffected</li>
+</ul>
+<p>The adapter identifies MariaDB from the server version, then removes the quoting and resolves the escape sequences inside the literal before building the <code>Phalcon\Db\Column</code>. <code>Phalcon\Db\Column::getDefault()</code> returns the stored value on both engines.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-137-1" name="__codelineno-137-1" href="#__codelineno-137-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-137-2" name="__codelineno-137-2" href="#__codelineno-137-2"></a>
-<a id="__codelineno-137-3" name="__codelineno-137-3" href="#__codelineno-137-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
+<a id="__codelineno-137-3" name="__codelineno-137-3" href="#__codelineno-137-3"></a><span class="nv">$columns</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s1">&#39;co_invoices&#39;</span><span class="p">);</span>
 <a id="__codelineno-137-4" name="__codelineno-137-4" href="#__codelineno-137-4"></a>
-<a id="__codelineno-137-5" name="__codelineno-137-5" href="#__codelineno-137-5"></a><span class="nv">$legacy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-137-6" name="__codelineno-137-6" href="#__codelineno-137-6"></a>    <span class="s1">&#39;legacy_id&#39;</span><span class="p">,</span>
-<a id="__codelineno-137-7" name="__codelineno-137-7" href="#__codelineno-137-7"></a>    <span class="p">[</span>
-<a id="__codelineno-137-8" name="__codelineno-137-8" href="#__codelineno-137-8"></a>        <span class="s1">&#39;type&#39;</span>      <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
-<a id="__codelineno-137-9" name="__codelineno-137-9" href="#__codelineno-137-9"></a>        <span class="s1">&#39;size&#39;</span>      <span class="o">=&gt;</span> <span class="mi">11</span><span class="p">,</span>
-<a id="__codelineno-137-10" name="__codelineno-137-10" href="#__codelineno-137-10"></a>        <span class="s1">&#39;notNull&#39;</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-137-11" name="__codelineno-137-11" href="#__codelineno-137-11"></a>        <span class="s1">&#39;invisible&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-137-12" name="__codelineno-137-12" href="#__codelineno-137-12"></a>    <span class="p">]</span>
-<a id="__codelineno-137-13" name="__codelineno-137-13" href="#__codelineno-137-13"></a><span class="p">);</span>
-<a id="__codelineno-137-14" name="__codelineno-137-14" href="#__codelineno-137-14"></a>
-<a id="__codelineno-137-15" name="__codelineno-137-15" href="#__codelineno-137-15"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$legacy</span><span class="p">);</span>
+<a id="__codelineno-137-5" name="__codelineno-137-5" href="#__codelineno-137-5"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$columns</span> <span class="k">as</span> <span class="nv">$column</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-137-6" name="__codelineno-137-6" href="#__codelineno-137-6"></a>    <span class="k">echo</span> <span class="nv">$column</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s1">&#39; =&gt; &#39;</span><span class="p">,</span> <span class="nb">var_export</span><span class="p">(</span><span class="nv">$column</span><span class="o">-&gt;</span><span class="na">getDefault</span><span class="p">(),</span> <span class="k">true</span><span class="p">),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<a id="__codelineno-137-7" name="__codelineno-137-7" href="#__codelineno-137-7"></a><span class="p">}</span>
 </code></pre></div>
-<p>The MySQL dialect emits <code>INVISIBLE</code> immediately after the <code>NOT NULL</code> / <code>NULL</code> clause. PostgreSQL and SQLite have no equivalent concept and ignore the flag. Use <code>Column::isInvisible()</code> to inspect.</p>
-<h3 id="array-columns-postgresql">Array Columns (PostgreSQL)<a class="headerlink" href="#array-columns-postgresql" title="Permanent link">&para;</a></h3>
-<p>PostgreSQL allows any base type to be declared as an array (e.g. <code>INTEGER[]</code>, <code>TEXT[]</code>, <code>INET[]</code>).</p>
+<p>For the declarations below, <code>getDefault()</code> returns the same value on MySQL and MariaDB:</p>
+<table>
+<thead>
+<tr>
+<th>Column declaration</th>
+<th><code>getDefault()</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VARCHAR(2) NOT NULL DEFAULT 'fi'</code></td>
+<td><code>fi</code></td>
+</tr>
+<tr>
+<td><code>TIME NOT NULL DEFAULT '08:00:00'</code></td>
+<td><code>08:00:00</code></td>
+</tr>
+<tr>
+<td><code>VARCHAR(20) NOT NULL DEFAULT 'it''s'</code></td>
+<td><code>it's</code></td>
+</tr>
+<tr>
+<td><code>DECIMAL(10,4) NOT NULL DEFAULT 14.5678</code></td>
+<td><code>14.5678</code></td>
+</tr>
+<tr>
+<td><code>BIT(1) NOT NULL DEFAULT b'1'</code></td>
+<td><code>b'1'</code></td>
+</tr>
+<tr>
+<td><code>VARCHAR(10) DEFAULT NULL</code></td>
+<td><code>null</code></td>
+</tr>
+</tbody>
+</table>
+<p>A column declared <code>DEFAULT NULL</code> reports PHP <code>null</code> rather than the string <code>NULL</code>.</p>
+<p>Two cases are reported as the server renders them, and are not normalized. An expression default such as <code>DEFAULT (CONCAT('a','b'))</code> reports <code>concat('a','b')</code> on MariaDB and <code>concat(_latin1\'a\',_latin1\'b\')</code> on MySQL. A column declared <code>DEFAULT CURRENT_TIMESTAMP</code> reports <code>CURRENT_TIMESTAMP</code> on MySQL and <code>current_timestamp()</code> on MariaDB. Compare these case-insensitively when the value can come from either engine.</p>
+<p>MariaDB releases before 10.2.7 do not quote literal defaults at all. Those values pass through unchanged.</p>
+<h3 id="invisible-columns-mysql-8023">Invisible Columns (MySQL 8.0.23+)<a class="headerlink" href="#invisible-columns-mysql-8023" title="Permanent link">&para;</a></h3>
+<p>An <code>INVISIBLE</code> column is hidden from <code>SELECT *</code> expansion but can still be referenced explicitly. It is useful when phasing a legacy column out of read paths before dropping it.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-138-1" name="__codelineno-138-1" href="#__codelineno-138-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-138-2" name="__codelineno-138-2" href="#__codelineno-138-2"></a>
 <a id="__codelineno-138-3" name="__codelineno-138-3" href="#__codelineno-138-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
 <a id="__codelineno-138-4" name="__codelineno-138-4" href="#__codelineno-138-4"></a>
-<a id="__codelineno-138-5" name="__codelineno-138-5" href="#__codelineno-138-5"></a><span class="nv">$tags</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-138-6" name="__codelineno-138-6" href="#__codelineno-138-6"></a>    <span class="s1">&#39;tags&#39;</span><span class="p">,</span>
+<a id="__codelineno-138-5" name="__codelineno-138-5" href="#__codelineno-138-5"></a><span class="nv">$legacy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
+<a id="__codelineno-138-6" name="__codelineno-138-6" href="#__codelineno-138-6"></a>    <span class="s1">&#39;legacy_id&#39;</span><span class="p">,</span>
 <a id="__codelineno-138-7" name="__codelineno-138-7" href="#__codelineno-138-7"></a>    <span class="p">[</span>
-<a id="__codelineno-138-8" name="__codelineno-138-8" href="#__codelineno-138-8"></a>        <span class="s1">&#39;type&#39;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
-<a id="__codelineno-138-9" name="__codelineno-138-9" href="#__codelineno-138-9"></a>        <span class="s1">&#39;array&#39;</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-138-10" name="__codelineno-138-10" href="#__codelineno-138-10"></a>        <span class="s1">&#39;notNull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-138-11" name="__codelineno-138-11" href="#__codelineno-138-11"></a>    <span class="p">]</span>
-<a id="__codelineno-138-12" name="__codelineno-138-12" href="#__codelineno-138-12"></a><span class="p">);</span>
-<a id="__codelineno-138-13" name="__codelineno-138-13" href="#__codelineno-138-13"></a>
-<a id="__codelineno-138-14" name="__codelineno-138-14" href="#__codelineno-138-14"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;articles&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$tags</span><span class="p">);</span>
-<a id="__codelineno-138-15" name="__codelineno-138-15" href="#__codelineno-138-15"></a><span class="c1">// ALTER TABLE &quot;articles&quot; ADD COLUMN &quot;tags&quot; INT[] NOT NULL</span>
+<a id="__codelineno-138-8" name="__codelineno-138-8" href="#__codelineno-138-8"></a>        <span class="s1">&#39;type&#39;</span>      <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+<a id="__codelineno-138-9" name="__codelineno-138-9" href="#__codelineno-138-9"></a>        <span class="s1">&#39;size&#39;</span>      <span class="o">=&gt;</span> <span class="mi">11</span><span class="p">,</span>
+<a id="__codelineno-138-10" name="__codelineno-138-10" href="#__codelineno-138-10"></a>        <span class="s1">&#39;notNull&#39;</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-138-11" name="__codelineno-138-11" href="#__codelineno-138-11"></a>        <span class="s1">&#39;invisible&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-138-12" name="__codelineno-138-12" href="#__codelineno-138-12"></a>    <span class="p">]</span>
+<a id="__codelineno-138-13" name="__codelineno-138-13" href="#__codelineno-138-13"></a><span class="p">);</span>
+<a id="__codelineno-138-14" name="__codelineno-138-14" href="#__codelineno-138-14"></a>
+<a id="__codelineno-138-15" name="__codelineno-138-15" href="#__codelineno-138-15"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$legacy</span><span class="p">);</span>
 </code></pre></div>
-<p><code>Column::isArray()</code> reports the flag. MySQL and SQLite dialects ignore it. <code>Phalcon\Db\Adapter\Pdo\Postgresql::describeColumns()</code> reverse-engineers the flag when <code>information_schema.columns.data_type</code> reports <code>ARRAY</code>.</p>
-<h3 id="spatial-geometry-columns">Spatial / Geometry Columns<a class="headerlink" href="#spatial-geometry-columns" title="Permanent link">&para;</a></h3>
-<p>Eight spatial types are exposed via dedicated <code>Column::TYPE_*</code> constants - see the <em>Spatial Column Types</em> table earlier in this document.</p>
+<p>The MySQL dialect emits <code>INVISIBLE</code> immediately after the <code>NOT NULL</code> / <code>NULL</code> clause. PostgreSQL and SQLite have no equivalent concept and ignore the flag. Use <code>Column::isInvisible()</code> to inspect.</p>
+<h3 id="array-columns-postgresql">Array Columns (PostgreSQL)<a class="headerlink" href="#array-columns-postgresql" title="Permanent link">&para;</a></h3>
+<p>PostgreSQL allows any base type to be declared as an array (e.g. <code>INTEGER[]</code>, <code>TEXT[]</code>, <code>INET[]</code>).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-139-1" name="__codelineno-139-1" href="#__codelineno-139-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-139-2" name="__codelineno-139-2" href="#__codelineno-139-2"></a>
 <a id="__codelineno-139-3" name="__codelineno-139-3" href="#__codelineno-139-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
 <a id="__codelineno-139-4" name="__codelineno-139-4" href="#__codelineno-139-4"></a>
-<a id="__codelineno-139-5" name="__codelineno-139-5" href="#__codelineno-139-5"></a><span class="nv">$location</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-139-6" name="__codelineno-139-6" href="#__codelineno-139-6"></a>    <span class="s1">&#39;location&#39;</span><span class="p">,</span>
+<a id="__codelineno-139-5" name="__codelineno-139-5" href="#__codelineno-139-5"></a><span class="nv">$tags</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
+<a id="__codelineno-139-6" name="__codelineno-139-6" href="#__codelineno-139-6"></a>    <span class="s1">&#39;tags&#39;</span><span class="p">,</span>
 <a id="__codelineno-139-7" name="__codelineno-139-7" href="#__codelineno-139-7"></a>    <span class="p">[</span>
-<a id="__codelineno-139-8" name="__codelineno-139-8" href="#__codelineno-139-8"></a>        <span class="s1">&#39;type&#39;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_POINT</span><span class="p">,</span>
-<a id="__codelineno-139-9" name="__codelineno-139-9" href="#__codelineno-139-9"></a>        <span class="s1">&#39;notNull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-139-10" name="__codelineno-139-10" href="#__codelineno-139-10"></a>    <span class="p">]</span>
-<a id="__codelineno-139-11" name="__codelineno-139-11" href="#__codelineno-139-11"></a><span class="p">);</span>
-<a id="__codelineno-139-12" name="__codelineno-139-12" href="#__codelineno-139-12"></a>
-<a id="__codelineno-139-13" name="__codelineno-139-13" href="#__codelineno-139-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
-<a id="__codelineno-139-14" name="__codelineno-139-14" href="#__codelineno-139-14"></a>    <span class="s1">&#39;places&#39;</span><span class="p">,</span>
-<a id="__codelineno-139-15" name="__codelineno-139-15" href="#__codelineno-139-15"></a>    <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-139-16" name="__codelineno-139-16" href="#__codelineno-139-16"></a>    <span class="p">[</span>
-<a id="__codelineno-139-17" name="__codelineno-139-17" href="#__codelineno-139-17"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-139-18" name="__codelineno-139-18" href="#__codelineno-139-18"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-139-19" name="__codelineno-139-19" href="#__codelineno-139-19"></a>                <span class="s1">&#39;id&#39;</span><span class="p">,</span>
-<a id="__codelineno-139-20" name="__codelineno-139-20" href="#__codelineno-139-20"></a>                <span class="p">[</span>
-<a id="__codelineno-139-21" name="__codelineno-139-21" href="#__codelineno-139-21"></a>                    <span class="s1">&#39;type&#39;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
-<a id="__codelineno-139-22" name="__codelineno-139-22" href="#__codelineno-139-22"></a>                    <span class="s1">&#39;primary&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-139-23" name="__codelineno-139-23" href="#__codelineno-139-23"></a>                    <span class="s1">&#39;autoIncrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-139-24" name="__codelineno-139-24" href="#__codelineno-139-24"></a>                    <span class="s1">&#39;notNull&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-139-25" name="__codelineno-139-25" href="#__codelineno-139-25"></a>                <span class="p">]</span>
-<a id="__codelineno-139-26" name="__codelineno-139-26" href="#__codelineno-139-26"></a>            <span class="p">),</span>
-<a id="__codelineno-139-27" name="__codelineno-139-27" href="#__codelineno-139-27"></a>            <span class="nv">$location</span><span class="p">,</span>
-<a id="__codelineno-139-28" name="__codelineno-139-28" href="#__codelineno-139-28"></a>        <span class="p">],</span>
-<a id="__codelineno-139-29" name="__codelineno-139-29" href="#__codelineno-139-29"></a>    <span class="p">]</span>
-<a id="__codelineno-139-30" name="__codelineno-139-30" href="#__codelineno-139-30"></a><span class="p">);</span>
+<a id="__codelineno-139-8" name="__codelineno-139-8" href="#__codelineno-139-8"></a>        <span class="s1">&#39;type&#39;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+<a id="__codelineno-139-9" name="__codelineno-139-9" href="#__codelineno-139-9"></a>        <span class="s1">&#39;array&#39;</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-139-10" name="__codelineno-139-10" href="#__codelineno-139-10"></a>        <span class="s1">&#39;notNull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-139-11" name="__codelineno-139-11" href="#__codelineno-139-11"></a>    <span class="p">]</span>
+<a id="__codelineno-139-12" name="__codelineno-139-12" href="#__codelineno-139-12"></a><span class="p">);</span>
+<a id="__codelineno-139-13" name="__codelineno-139-13" href="#__codelineno-139-13"></a>
+<a id="__codelineno-139-14" name="__codelineno-139-14" href="#__codelineno-139-14"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;articles&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$tags</span><span class="p">);</span>
+<a id="__codelineno-139-15" name="__codelineno-139-15" href="#__codelineno-139-15"></a><span class="c1">// ALTER TABLE &quot;articles&quot; ADD COLUMN &quot;tags&quot; INT[] NOT NULL</span>
+</code></pre></div>
+<p><code>Column::isArray()</code> reports the flag. MySQL and SQLite dialects ignore it. <code>Phalcon\Db\Adapter\Pdo\Postgresql::describeColumns()</code> reverse-engineers the flag when <code>information_schema.columns.data_type</code> reports <code>ARRAY</code>.</p>
+<h3 id="spatial-geometry-columns">Spatial / Geometry Columns<a class="headerlink" href="#spatial-geometry-columns" title="Permanent link">&para;</a></h3>
+<p>Eight spatial types are exposed via dedicated <code>Column::TYPE_*</code> constants - see the <em>Spatial Column Types</em> table earlier in this document.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-140-2" name="__codelineno-140-2" href="#__codelineno-140-2"></a>
+<a id="__codelineno-140-3" name="__codelineno-140-3" href="#__codelineno-140-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
+<a id="__codelineno-140-4" name="__codelineno-140-4" href="#__codelineno-140-4"></a>
+<a id="__codelineno-140-5" name="__codelineno-140-5" href="#__codelineno-140-5"></a><span class="nv">$location</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
+<a id="__codelineno-140-6" name="__codelineno-140-6" href="#__codelineno-140-6"></a>    <span class="s1">&#39;location&#39;</span><span class="p">,</span>
+<a id="__codelineno-140-7" name="__codelineno-140-7" href="#__codelineno-140-7"></a>    <span class="p">[</span>
+<a id="__codelineno-140-8" name="__codelineno-140-8" href="#__codelineno-140-8"></a>        <span class="s1">&#39;type&#39;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_POINT</span><span class="p">,</span>
+<a id="__codelineno-140-9" name="__codelineno-140-9" href="#__codelineno-140-9"></a>        <span class="s1">&#39;notNull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-140-10" name="__codelineno-140-10" href="#__codelineno-140-10"></a>    <span class="p">]</span>
+<a id="__codelineno-140-11" name="__codelineno-140-11" href="#__codelineno-140-11"></a><span class="p">);</span>
+<a id="__codelineno-140-12" name="__codelineno-140-12" href="#__codelineno-140-12"></a>
+<a id="__codelineno-140-13" name="__codelineno-140-13" href="#__codelineno-140-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
+<a id="__codelineno-140-14" name="__codelineno-140-14" href="#__codelineno-140-14"></a>    <span class="s1">&#39;places&#39;</span><span class="p">,</span>
+<a id="__codelineno-140-15" name="__codelineno-140-15" href="#__codelineno-140-15"></a>    <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-140-16" name="__codelineno-140-16" href="#__codelineno-140-16"></a>    <span class="p">[</span>
+<a id="__codelineno-140-17" name="__codelineno-140-17" href="#__codelineno-140-17"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-140-18" name="__codelineno-140-18" href="#__codelineno-140-18"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
+<a id="__codelineno-140-19" name="__codelineno-140-19" href="#__codelineno-140-19"></a>                <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+<a id="__codelineno-140-20" name="__codelineno-140-20" href="#__codelineno-140-20"></a>                <span class="p">[</span>
+<a id="__codelineno-140-21" name="__codelineno-140-21" href="#__codelineno-140-21"></a>                    <span class="s1">&#39;type&#39;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+<a id="__codelineno-140-22" name="__codelineno-140-22" href="#__codelineno-140-22"></a>                    <span class="s1">&#39;primary&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-140-23" name="__codelineno-140-23" href="#__codelineno-140-23"></a>                    <span class="s1">&#39;autoIncrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-140-24" name="__codelineno-140-24" href="#__codelineno-140-24"></a>                    <span class="s1">&#39;notNull&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-140-25" name="__codelineno-140-25" href="#__codelineno-140-25"></a>                <span class="p">]</span>
+<a id="__codelineno-140-26" name="__codelineno-140-26" href="#__codelineno-140-26"></a>            <span class="p">),</span>
+<a id="__codelineno-140-27" name="__codelineno-140-27" href="#__codelineno-140-27"></a>            <span class="nv">$location</span><span class="p">,</span>
+<a id="__codelineno-140-28" name="__codelineno-140-28" href="#__codelineno-140-28"></a>        <span class="p">],</span>
+<a id="__codelineno-140-29" name="__codelineno-140-29" href="#__codelineno-140-29"></a>    <span class="p">]</span>
+<a id="__codelineno-140-30" name="__codelineno-140-30" href="#__codelineno-140-30"></a><span class="p">);</span>
 </code></pre></div>
 <p>MySQL recognizes the keywords natively from 5.7. PostgreSQL needs the PostGIS extension installed. SQLite has no native spatial support and falls through to <code>VARCHAR</code> for these constants.</p>
 <p>When selecting a spatial column directly, the underlying engine returns the raw WKB byte string. Project a server-side conversion in the SELECT to receive a usable representation:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">ST_AsText</span><span class="p">(</span><span class="k">location</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">places</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-141-1" name="__codelineno-141-1" href="#__codelineno-141-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">ST_AsText</span><span class="p">(</span><span class="k">location</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">places</span><span class="p">;</span>
 </code></pre></div>
 <p>The <code>Phalcon\Db\Geometry</code> namespace provides value objects for the eight geometry types: <code>Point</code>, <code>LineString</code>, <code>Polygon</code>, <code>MultiPoint</code>, <code>MultiLineString</code>, <code>MultiPolygon</code>, <code>GeometryCollection</code>, and the shared <code>GeometryInterface</code>. Each object exposes its coordinates and SRID and renders Well-Known Text through <code>toWkt()</code> (also available through <code>__toString()</code>).</p>
 <p>The geometry value objects implement the canonical <code>Phalcon\Contracts\Db\Geometry\Geometry</code> contract (<code>getSrid()</code>, <code>getType()</code>, <code>toWkt()</code>). New code should type-hint that contract; <code>Phalcon\Db\Geometry\GeometryInterface</code> remains as a deprecated alias that extends it and will be removed in a future major version.</p>
 <p><code>Phalcon\Db\Geometry\WkbParser</code> decodes a raw column value into the matching object. It accepts MySQL SRID-prefixed WKB and PostGIS EWKB. Coordinates are read in two dimensions; any Z or M ordinates are discarded.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-141-1" name="__codelineno-141-1" href="#__codelineno-141-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-141-2" name="__codelineno-141-2" href="#__codelineno-141-2"></a>
-<a id="__codelineno-141-3" name="__codelineno-141-3" href="#__codelineno-141-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Geometry\WkbParser</span><span class="p">;</span>
-<a id="__codelineno-141-4" name="__codelineno-141-4" href="#__codelineno-141-4"></a>
-<a id="__codelineno-141-5" name="__codelineno-141-5" href="#__codelineno-141-5"></a><span class="c1">// $raw is the value returned by the database for a POINT column</span>
-<a id="__codelineno-141-6" name="__codelineno-141-6" href="#__codelineno-141-6"></a><span class="nv">$point</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">WkbParser</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">(</span><span class="nv">$raw</span><span class="p">);</span>
-<a id="__codelineno-141-7" name="__codelineno-141-7" href="#__codelineno-141-7"></a>
-<a id="__codelineno-141-8" name="__codelineno-141-8" href="#__codelineno-141-8"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">getX</span><span class="p">();</span>    <span class="c1">// 1</span>
-<a id="__codelineno-141-9" name="__codelineno-141-9" href="#__codelineno-141-9"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">getY</span><span class="p">();</span>    <span class="c1">// 2</span>
-<a id="__codelineno-141-10" name="__codelineno-141-10" href="#__codelineno-141-10"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">getSrid</span><span class="p">();</span> <span class="c1">// 4326</span>
-<a id="__codelineno-141-11" name="__codelineno-141-11" href="#__codelineno-141-11"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">toWkt</span><span class="p">();</span>   <span class="c1">// POINT(1 2)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-142-2" name="__codelineno-142-2" href="#__codelineno-142-2"></a>
+<a id="__codelineno-142-3" name="__codelineno-142-3" href="#__codelineno-142-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Geometry\WkbParser</span><span class="p">;</span>
+<a id="__codelineno-142-4" name="__codelineno-142-4" href="#__codelineno-142-4"></a>
+<a id="__codelineno-142-5" name="__codelineno-142-5" href="#__codelineno-142-5"></a><span class="c1">// $raw is the value returned by the database for a POINT column</span>
+<a id="__codelineno-142-6" name="__codelineno-142-6" href="#__codelineno-142-6"></a><span class="nv">$point</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">WkbParser</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">(</span><span class="nv">$raw</span><span class="p">);</span>
+<a id="__codelineno-142-7" name="__codelineno-142-7" href="#__codelineno-142-7"></a>
+<a id="__codelineno-142-8" name="__codelineno-142-8" href="#__codelineno-142-8"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">getX</span><span class="p">();</span>    <span class="c1">// 1</span>
+<a id="__codelineno-142-9" name="__codelineno-142-9" href="#__codelineno-142-9"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">getY</span><span class="p">();</span>    <span class="c1">// 2</span>
+<a id="__codelineno-142-10" name="__codelineno-142-10" href="#__codelineno-142-10"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">getSrid</span><span class="p">();</span> <span class="c1">// 4326</span>
+<a id="__codelineno-142-11" name="__codelineno-142-11" href="#__codelineno-142-11"></a><span class="k">echo</span> <span class="nv">$point</span><span class="o">-&gt;</span><span class="na">toWkt</span><span class="p">();</span>   <span class="c1">// POINT(1 2)</span>
 </code></pre></div>
 <p>A value that cannot be decoded throws <code>Phalcon\Db\Exceptions\InvalidWkb</code>.</p>
 <p>Models hydrate spatial columns into these objects on read when <code>orm.cast_on_hydrate</code> is enabled. See <a href="../db-models/">Spatial Column Hydration</a> in the models documentation.</p>
@@ -9202,172 +9278,172 @@ offering lower resource consumption and high performance.
 <li>SQLite has always enforced CHECK constraints</li>
 </ul>
 <p>Use the <code>Phalcon\Db\Check</code> class. Its definition array accepts a single <code>expression</code> key (a non-empty SQL string):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-142-2" name="__codelineno-142-2" href="#__codelineno-142-2"></a>
-<a id="__codelineno-142-3" name="__codelineno-142-3" href="#__codelineno-142-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Check</span><span class="p">;</span>
-<a id="__codelineno-142-4" name="__codelineno-142-4" href="#__codelineno-142-4"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
-<a id="__codelineno-142-5" name="__codelineno-142-5" href="#__codelineno-142-5"></a>
-<a id="__codelineno-142-6" name="__codelineno-142-6" href="#__codelineno-142-6"></a><span class="nv">$positivePrice</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Check</span><span class="p">(</span>
-<a id="__codelineno-142-7" name="__codelineno-142-7" href="#__codelineno-142-7"></a>    <span class="s1">&#39;chk_price_positive&#39;</span><span class="p">,</span>
-<a id="__codelineno-142-8" name="__codelineno-142-8" href="#__codelineno-142-8"></a>    <span class="p">[</span>
-<a id="__codelineno-142-9" name="__codelineno-142-9" href="#__codelineno-142-9"></a>        <span class="s1">&#39;expression&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;price &gt; 0&#39;</span><span class="p">,</span>
-<a id="__codelineno-142-10" name="__codelineno-142-10" href="#__codelineno-142-10"></a>    <span class="p">]</span>
-<a id="__codelineno-142-11" name="__codelineno-142-11" href="#__codelineno-142-11"></a><span class="p">);</span>
-<a id="__codelineno-142-12" name="__codelineno-142-12" href="#__codelineno-142-12"></a>
-<a id="__codelineno-142-13" name="__codelineno-142-13" href="#__codelineno-142-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
-<a id="__codelineno-142-14" name="__codelineno-142-14" href="#__codelineno-142-14"></a>    <span class="s1">&#39;products&#39;</span><span class="p">,</span>
-<a id="__codelineno-142-15" name="__codelineno-142-15" href="#__codelineno-142-15"></a>    <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-142-16" name="__codelineno-142-16" href="#__codelineno-142-16"></a>    <span class="p">[</span>
-<a id="__codelineno-142-17" name="__codelineno-142-17" href="#__codelineno-142-17"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-142-18" name="__codelineno-142-18" href="#__codelineno-142-18"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-142-19" name="__codelineno-142-19" href="#__codelineno-142-19"></a>                <span class="s1">&#39;id&#39;</span><span class="p">,</span>
-<a id="__codelineno-142-20" name="__codelineno-142-20" href="#__codelineno-142-20"></a>                <span class="p">[</span>
-<a id="__codelineno-142-21" name="__codelineno-142-21" href="#__codelineno-142-21"></a>                    <span class="s1">&#39;type&#39;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
-<a id="__codelineno-142-22" name="__codelineno-142-22" href="#__codelineno-142-22"></a>                    <span class="s1">&#39;primary&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-142-23" name="__codelineno-142-23" href="#__codelineno-142-23"></a>                    <span class="s1">&#39;autoIncrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-142-24" name="__codelineno-142-24" href="#__codelineno-142-24"></a>                    <span class="s1">&#39;notNull&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-142-25" name="__codelineno-142-25" href="#__codelineno-142-25"></a>                <span class="p">]</span>
-<a id="__codelineno-142-26" name="__codelineno-142-26" href="#__codelineno-142-26"></a>            <span class="p">),</span>
-<a id="__codelineno-142-27" name="__codelineno-142-27" href="#__codelineno-142-27"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-142-28" name="__codelineno-142-28" href="#__codelineno-142-28"></a>                <span class="s1">&#39;price&#39;</span><span class="p">,</span>
-<a id="__codelineno-142-29" name="__codelineno-142-29" href="#__codelineno-142-29"></a>                <span class="p">[</span>
-<a id="__codelineno-142-30" name="__codelineno-142-30" href="#__codelineno-142-30"></a>                    <span class="s1">&#39;type&#39;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_DECIMAL</span><span class="p">,</span>
-<a id="__codelineno-142-31" name="__codelineno-142-31" href="#__codelineno-142-31"></a>                    <span class="s1">&#39;size&#39;</span>    <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-142-32" name="__codelineno-142-32" href="#__codelineno-142-32"></a>                    <span class="s1">&#39;scale&#39;</span>   <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-142-33" name="__codelineno-142-33" href="#__codelineno-142-33"></a>                    <span class="s1">&#39;notNull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-142-34" name="__codelineno-142-34" href="#__codelineno-142-34"></a>                <span class="p">]</span>
-<a id="__codelineno-142-35" name="__codelineno-142-35" href="#__codelineno-142-35"></a>            <span class="p">),</span>
-<a id="__codelineno-142-36" name="__codelineno-142-36" href="#__codelineno-142-36"></a>        <span class="p">],</span>
-<a id="__codelineno-142-37" name="__codelineno-142-37" href="#__codelineno-142-37"></a>        <span class="s1">&#39;checks&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$positivePrice</span><span class="p">],</span>
-<a id="__codelineno-142-38" name="__codelineno-142-38" href="#__codelineno-142-38"></a>    <span class="p">]</span>
-<a id="__codelineno-142-39" name="__codelineno-142-39" href="#__codelineno-142-39"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-143-2" name="__codelineno-143-2" href="#__codelineno-143-2"></a>
+<a id="__codelineno-143-3" name="__codelineno-143-3" href="#__codelineno-143-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Check</span><span class="p">;</span>
+<a id="__codelineno-143-4" name="__codelineno-143-4" href="#__codelineno-143-4"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
+<a id="__codelineno-143-5" name="__codelineno-143-5" href="#__codelineno-143-5"></a>
+<a id="__codelineno-143-6" name="__codelineno-143-6" href="#__codelineno-143-6"></a><span class="nv">$positivePrice</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Check</span><span class="p">(</span>
+<a id="__codelineno-143-7" name="__codelineno-143-7" href="#__codelineno-143-7"></a>    <span class="s1">&#39;chk_price_positive&#39;</span><span class="p">,</span>
+<a id="__codelineno-143-8" name="__codelineno-143-8" href="#__codelineno-143-8"></a>    <span class="p">[</span>
+<a id="__codelineno-143-9" name="__codelineno-143-9" href="#__codelineno-143-9"></a>        <span class="s1">&#39;expression&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;price &gt; 0&#39;</span><span class="p">,</span>
+<a id="__codelineno-143-10" name="__codelineno-143-10" href="#__codelineno-143-10"></a>    <span class="p">]</span>
+<a id="__codelineno-143-11" name="__codelineno-143-11" href="#__codelineno-143-11"></a><span class="p">);</span>
+<a id="__codelineno-143-12" name="__codelineno-143-12" href="#__codelineno-143-12"></a>
+<a id="__codelineno-143-13" name="__codelineno-143-13" href="#__codelineno-143-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
+<a id="__codelineno-143-14" name="__codelineno-143-14" href="#__codelineno-143-14"></a>    <span class="s1">&#39;products&#39;</span><span class="p">,</span>
+<a id="__codelineno-143-15" name="__codelineno-143-15" href="#__codelineno-143-15"></a>    <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-143-16" name="__codelineno-143-16" href="#__codelineno-143-16"></a>    <span class="p">[</span>
+<a id="__codelineno-143-17" name="__codelineno-143-17" href="#__codelineno-143-17"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-143-18" name="__codelineno-143-18" href="#__codelineno-143-18"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
+<a id="__codelineno-143-19" name="__codelineno-143-19" href="#__codelineno-143-19"></a>                <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+<a id="__codelineno-143-20" name="__codelineno-143-20" href="#__codelineno-143-20"></a>                <span class="p">[</span>
+<a id="__codelineno-143-21" name="__codelineno-143-21" href="#__codelineno-143-21"></a>                    <span class="s1">&#39;type&#39;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+<a id="__codelineno-143-22" name="__codelineno-143-22" href="#__codelineno-143-22"></a>                    <span class="s1">&#39;primary&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-143-23" name="__codelineno-143-23" href="#__codelineno-143-23"></a>                    <span class="s1">&#39;autoIncrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-143-24" name="__codelineno-143-24" href="#__codelineno-143-24"></a>                    <span class="s1">&#39;notNull&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-143-25" name="__codelineno-143-25" href="#__codelineno-143-25"></a>                <span class="p">]</span>
+<a id="__codelineno-143-26" name="__codelineno-143-26" href="#__codelineno-143-26"></a>            <span class="p">),</span>
+<a id="__codelineno-143-27" name="__codelineno-143-27" href="#__codelineno-143-27"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
+<a id="__codelineno-143-28" name="__codelineno-143-28" href="#__codelineno-143-28"></a>                <span class="s1">&#39;price&#39;</span><span class="p">,</span>
+<a id="__codelineno-143-29" name="__codelineno-143-29" href="#__codelineno-143-29"></a>                <span class="p">[</span>
+<a id="__codelineno-143-30" name="__codelineno-143-30" href="#__codelineno-143-30"></a>                    <span class="s1">&#39;type&#39;</span>    <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_DECIMAL</span><span class="p">,</span>
+<a id="__codelineno-143-31" name="__codelineno-143-31" href="#__codelineno-143-31"></a>                    <span class="s1">&#39;size&#39;</span>    <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-143-32" name="__codelineno-143-32" href="#__codelineno-143-32"></a>                    <span class="s1">&#39;scale&#39;</span>   <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-143-33" name="__codelineno-143-33" href="#__codelineno-143-33"></a>                    <span class="s1">&#39;notNull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-143-34" name="__codelineno-143-34" href="#__codelineno-143-34"></a>                <span class="p">]</span>
+<a id="__codelineno-143-35" name="__codelineno-143-35" href="#__codelineno-143-35"></a>            <span class="p">),</span>
+<a id="__codelineno-143-36" name="__codelineno-143-36" href="#__codelineno-143-36"></a>        <span class="p">],</span>
+<a id="__codelineno-143-37" name="__codelineno-143-37" href="#__codelineno-143-37"></a>        <span class="s1">&#39;checks&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$positivePrice</span><span class="p">],</span>
+<a id="__codelineno-143-38" name="__codelineno-143-38" href="#__codelineno-143-38"></a>    <span class="p">]</span>
+<a id="__codelineno-143-39" name="__codelineno-143-39" href="#__codelineno-143-39"></a><span class="p">);</span>
 </code></pre></div>
 <p>The first argument is the constraint name. Pass an empty string for an anonymous check; the dialect omits the <code>CONSTRAINT &lt;name&gt;</code> prefix in that case.</p>
 <p>CHECK constraints can also be added to or removed from an existing table on MySQL and PostgreSQL. SQLite cannot - its CHECK constraints can only be declared at <code>CREATE TABLE</code> time:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-143-2" name="__codelineno-143-2" href="#__codelineno-143-2"></a>
-<a id="__codelineno-143-3" name="__codelineno-143-3" href="#__codelineno-143-3"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addCheck</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$positivePrice</span><span class="p">);</span>
-<a id="__codelineno-143-4" name="__codelineno-143-4" href="#__codelineno-143-4"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropCheck</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;chk_price_positive&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-144-2" name="__codelineno-144-2" href="#__codelineno-144-2"></a>
+<a id="__codelineno-144-3" name="__codelineno-144-3" href="#__codelineno-144-3"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addCheck</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$positivePrice</span><span class="p">);</span>
+<a id="__codelineno-144-4" name="__codelineno-144-4" href="#__codelineno-144-4"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropCheck</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;chk_price_positive&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p>Reverse-engineering of CHECK constraints from <code>information_schema.CHECK_CONSTRAINTS</code> is not currently exposed through <code>describeReferences()</code> - the constraints exist on the table but are not enumerated by the adapter.</p>
 <h3 id="advanced-index-features">Advanced Index Features<a class="headerlink" href="#advanced-index-features" title="Permanent link">&para;</a></h3>
 <h4 id="definition-array-constructor">Definition-Array Constructor<a class="headerlink" href="#definition-array-constructor" title="Permanent link">&para;</a></h4>
 <p>The <code>Phalcon\Db\Index</code> constructor now accepts either the legacy positional form or a definition-array form. The definition-array form is required to opt in to invisible / descending / partial / functional / concurrent indexes:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-144-2" name="__codelineno-144-2" href="#__codelineno-144-2"></a>
-<a id="__codelineno-144-3" name="__codelineno-144-3" href="#__codelineno-144-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
-<a id="__codelineno-144-4" name="__codelineno-144-4" href="#__codelineno-144-4"></a>
-<a id="__codelineno-144-5" name="__codelineno-144-5" href="#__codelineno-144-5"></a><span class="c1">// Legacy positional form (unchanged)</span>
-<a id="__codelineno-144-6" name="__codelineno-144-6" href="#__codelineno-144-6"></a><span class="nv">$idxA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span><span class="s1">&#39;idx_email&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span> <span class="s1">&#39;UNIQUE&#39;</span><span class="p">);</span>
-<a id="__codelineno-144-7" name="__codelineno-144-7" href="#__codelineno-144-7"></a>
-<a id="__codelineno-144-8" name="__codelineno-144-8" href="#__codelineno-144-8"></a><span class="c1">// Definition-array form</span>
-<a id="__codelineno-144-9" name="__codelineno-144-9" href="#__codelineno-144-9"></a><span class="nv">$idxB</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
-<a id="__codelineno-144-10" name="__codelineno-144-10" href="#__codelineno-144-10"></a>    <span class="s1">&#39;idx_email&#39;</span><span class="p">,</span>
-<a id="__codelineno-144-11" name="__codelineno-144-11" href="#__codelineno-144-11"></a>    <span class="p">[</span>
-<a id="__codelineno-144-12" name="__codelineno-144-12" href="#__codelineno-144-12"></a>        <span class="s1">&#39;columns&#39;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span>
-<a id="__codelineno-144-13" name="__codelineno-144-13" href="#__codelineno-144-13"></a>        <span class="s1">&#39;type&#39;</span>       <span class="o">=&gt;</span> <span class="s1">&#39;UNIQUE&#39;</span><span class="p">,</span>
-<a id="__codelineno-144-14" name="__codelineno-144-14" href="#__codelineno-144-14"></a>        <span class="s1">&#39;invisible&#39;</span>  <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                 <span class="c1">// MySQL 8.0+</span>
-<a id="__codelineno-144-15" name="__codelineno-144-15" href="#__codelineno-144-15"></a>        <span class="s1">&#39;directions&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;DESC&#39;</span><span class="p">],</span>             <span class="c1">// per-column ASC / DESC</span>
-<a id="__codelineno-144-16" name="__codelineno-144-16" href="#__codelineno-144-16"></a>        <span class="s1">&#39;where&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;active = true&#39;</span><span class="p">,</span>      <span class="c1">// partial index, PgSQL + SQLite</span>
-<a id="__codelineno-144-17" name="__codelineno-144-17" href="#__codelineno-144-17"></a>        <span class="s1">&#39;concurrently&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>               <span class="c1">// PostgreSQL</span>
-<a id="__codelineno-144-18" name="__codelineno-144-18" href="#__codelineno-144-18"></a>    <span class="p">]</span>
-<a id="__codelineno-144-19" name="__codelineno-144-19" href="#__codelineno-144-19"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-145-2" name="__codelineno-145-2" href="#__codelineno-145-2"></a>
+<a id="__codelineno-145-3" name="__codelineno-145-3" href="#__codelineno-145-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
+<a id="__codelineno-145-4" name="__codelineno-145-4" href="#__codelineno-145-4"></a>
+<a id="__codelineno-145-5" name="__codelineno-145-5" href="#__codelineno-145-5"></a><span class="c1">// Legacy positional form (unchanged)</span>
+<a id="__codelineno-145-6" name="__codelineno-145-6" href="#__codelineno-145-6"></a><span class="nv">$idxA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span><span class="s1">&#39;idx_email&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span> <span class="s1">&#39;UNIQUE&#39;</span><span class="p">);</span>
+<a id="__codelineno-145-7" name="__codelineno-145-7" href="#__codelineno-145-7"></a>
+<a id="__codelineno-145-8" name="__codelineno-145-8" href="#__codelineno-145-8"></a><span class="c1">// Definition-array form</span>
+<a id="__codelineno-145-9" name="__codelineno-145-9" href="#__codelineno-145-9"></a><span class="nv">$idxB</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
+<a id="__codelineno-145-10" name="__codelineno-145-10" href="#__codelineno-145-10"></a>    <span class="s1">&#39;idx_email&#39;</span><span class="p">,</span>
+<a id="__codelineno-145-11" name="__codelineno-145-11" href="#__codelineno-145-11"></a>    <span class="p">[</span>
+<a id="__codelineno-145-12" name="__codelineno-145-12" href="#__codelineno-145-12"></a>        <span class="s1">&#39;columns&#39;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span>
+<a id="__codelineno-145-13" name="__codelineno-145-13" href="#__codelineno-145-13"></a>        <span class="s1">&#39;type&#39;</span>       <span class="o">=&gt;</span> <span class="s1">&#39;UNIQUE&#39;</span><span class="p">,</span>
+<a id="__codelineno-145-14" name="__codelineno-145-14" href="#__codelineno-145-14"></a>        <span class="s1">&#39;invisible&#39;</span>  <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                 <span class="c1">// MySQL 8.0+</span>
+<a id="__codelineno-145-15" name="__codelineno-145-15" href="#__codelineno-145-15"></a>        <span class="s1">&#39;directions&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;DESC&#39;</span><span class="p">],</span>             <span class="c1">// per-column ASC / DESC</span>
+<a id="__codelineno-145-16" name="__codelineno-145-16" href="#__codelineno-145-16"></a>        <span class="s1">&#39;where&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;active = true&#39;</span><span class="p">,</span>      <span class="c1">// partial index, PgSQL + SQLite</span>
+<a id="__codelineno-145-17" name="__codelineno-145-17" href="#__codelineno-145-17"></a>        <span class="s1">&#39;concurrently&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>               <span class="c1">// PostgreSQL</span>
+<a id="__codelineno-145-18" name="__codelineno-145-18" href="#__codelineno-145-18"></a>    <span class="p">]</span>
+<a id="__codelineno-145-19" name="__codelineno-145-19" href="#__codelineno-145-19"></a><span class="p">);</span>
 </code></pre></div>
 <p>Detection is based on the presence of a <code>columns</code> key in the second argument. When the definition form is used the third positional <code>type</code> argument is ignored - <code>type</code> is taken from the definition array.</p>
 <p>The definition-array path throws <code>Phalcon\Db\Exception</code> if <code>columns</code> is not an array, if <code>directions</code> is not an array, or if <code>where</code> is not a string.</p>
 <h4 id="invisible-indexes-mysql-80">Invisible Indexes (MySQL 8.0+)<a class="headerlink" href="#invisible-indexes-mysql-80" title="Permanent link">&para;</a></h4>
 <p>An invisible index is maintained by the engine but ignored by the query planner. Use it to validate that a table still performs adequately after a planned index drop without paying for the rebuild on rollback.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-145-2" name="__codelineno-145-2" href="#__codelineno-145-2"></a>
-<a id="__codelineno-145-3" name="__codelineno-145-3" href="#__codelineno-145-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
-<a id="__codelineno-145-4" name="__codelineno-145-4" href="#__codelineno-145-4"></a>
-<a id="__codelineno-145-5" name="__codelineno-145-5" href="#__codelineno-145-5"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
-<a id="__codelineno-145-6" name="__codelineno-145-6" href="#__codelineno-145-6"></a>    <span class="s1">&#39;idx_hidden&#39;</span><span class="p">,</span>
-<a id="__codelineno-145-7" name="__codelineno-145-7" href="#__codelineno-145-7"></a>    <span class="p">[</span>
-<a id="__codelineno-145-8" name="__codelineno-145-8" href="#__codelineno-145-8"></a>        <span class="s1">&#39;columns&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span>
-<a id="__codelineno-145-9" name="__codelineno-145-9" href="#__codelineno-145-9"></a>        <span class="s1">&#39;type&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;UNIQUE&#39;</span><span class="p">,</span>
-<a id="__codelineno-145-10" name="__codelineno-145-10" href="#__codelineno-145-10"></a>        <span class="s1">&#39;invisible&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-145-11" name="__codelineno-145-11" href="#__codelineno-145-11"></a>    <span class="p">]</span>
-<a id="__codelineno-145-12" name="__codelineno-145-12" href="#__codelineno-145-12"></a><span class="p">);</span>
-<a id="__codelineno-145-13" name="__codelineno-145-13" href="#__codelineno-145-13"></a>
-<a id="__codelineno-145-14" name="__codelineno-145-14" href="#__codelineno-145-14"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
-<a id="__codelineno-145-15" name="__codelineno-145-15" href="#__codelineno-145-15"></a><span class="c1">// ALTER TABLE `robots` ADD UNIQUE INDEX `idx_hidden` (`email`) INVISIBLE</span>
-</code></pre></div>
-<p><code>Index::isInvisible()</code> reports the flag at runtime. <code>Phalcon\Db\Adapter\Pdo\Mysql::describeIndexes()</code> reverse-engineers it from the <code>Visible</code> column of <code>SHOW INDEXES</code> (MySQL 8.0+; absent on 5.7, which defaults to visible). PostgreSQL and SQLite ignore the flag.</p>
-<h4 id="descending-indexes">Descending Indexes<a class="headerlink" href="#descending-indexes" title="Permanent link">&para;</a></h4>
-<p>Per-column <code>ASC</code> / <code>DESC</code> directions are declared with the <code>directions</code> key - a parallel array, one entry per column. Missing trailing positions default to <code>ASC</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-146-2" name="__codelineno-146-2" href="#__codelineno-146-2"></a>
 <a id="__codelineno-146-3" name="__codelineno-146-3" href="#__codelineno-146-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
 <a id="__codelineno-146-4" name="__codelineno-146-4" href="#__codelineno-146-4"></a>
 <a id="__codelineno-146-5" name="__codelineno-146-5" href="#__codelineno-146-5"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
-<a id="__codelineno-146-6" name="__codelineno-146-6" href="#__codelineno-146-6"></a>    <span class="s1">&#39;idx_recent_active&#39;</span><span class="p">,</span>
+<a id="__codelineno-146-6" name="__codelineno-146-6" href="#__codelineno-146-6"></a>    <span class="s1">&#39;idx_hidden&#39;</span><span class="p">,</span>
 <a id="__codelineno-146-7" name="__codelineno-146-7" href="#__codelineno-146-7"></a>    <span class="p">[</span>
-<a id="__codelineno-146-8" name="__codelineno-146-8" href="#__codelineno-146-8"></a>        <span class="s1">&#39;columns&#39;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">],</span>
-<a id="__codelineno-146-9" name="__codelineno-146-9" href="#__codelineno-146-9"></a>        <span class="s1">&#39;directions&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;DESC&#39;</span><span class="p">,</span> <span class="s1">&#39;ASC&#39;</span><span class="p">],</span>
-<a id="__codelineno-146-10" name="__codelineno-146-10" href="#__codelineno-146-10"></a>    <span class="p">]</span>
-<a id="__codelineno-146-11" name="__codelineno-146-11" href="#__codelineno-146-11"></a><span class="p">);</span>
-<a id="__codelineno-146-12" name="__codelineno-146-12" href="#__codelineno-146-12"></a>
-<a id="__codelineno-146-13" name="__codelineno-146-13" href="#__codelineno-146-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
-<a id="__codelineno-146-14" name="__codelineno-146-14" href="#__codelineno-146-14"></a><span class="c1">// ALTER TABLE `events` ADD INDEX `idx_recent_active`</span>
-<a id="__codelineno-146-15" name="__codelineno-146-15" href="#__codelineno-146-15"></a><span class="c1">//     (`created_at` DESC, `status` ASC)</span>
+<a id="__codelineno-146-8" name="__codelineno-146-8" href="#__codelineno-146-8"></a>        <span class="s1">&#39;columns&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span>
+<a id="__codelineno-146-9" name="__codelineno-146-9" href="#__codelineno-146-9"></a>        <span class="s1">&#39;type&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;UNIQUE&#39;</span><span class="p">,</span>
+<a id="__codelineno-146-10" name="__codelineno-146-10" href="#__codelineno-146-10"></a>        <span class="s1">&#39;invisible&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-146-11" name="__codelineno-146-11" href="#__codelineno-146-11"></a>    <span class="p">]</span>
+<a id="__codelineno-146-12" name="__codelineno-146-12" href="#__codelineno-146-12"></a><span class="p">);</span>
+<a id="__codelineno-146-13" name="__codelineno-146-13" href="#__codelineno-146-13"></a>
+<a id="__codelineno-146-14" name="__codelineno-146-14" href="#__codelineno-146-14"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
+<a id="__codelineno-146-15" name="__codelineno-146-15" href="#__codelineno-146-15"></a><span class="c1">// ALTER TABLE `robots` ADD UNIQUE INDEX `idx_hidden` (`email`) INVISIBLE</span>
 </code></pre></div>
-<p>Honored by MySQL 8.0+ (5.7 parsed <code>DESC</code> but ignored it at the optimizer level), PostgreSQL, and SQLite. <code>Index::getDirections()</code> returns the configured list; an empty array preserves the legacy plain <code>(col1, col2)</code> rendering.</p>
-<p><code>Phalcon\Db\Adapter\Pdo\Mysql::describeIndexes()</code> reverse-engineers directions from the <code>Collation</code> field of <code>SHOW INDEXES</code> (<code>A</code>=ASC, <code>D</code>=DESC). PostgreSQL and SQLite reverse-engineering of directions is deferred.</p>
-<h4 id="partial-indexes">Partial Indexes<a class="headerlink" href="#partial-indexes" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL and SQLite allow an index to be restricted to rows matching a predicate.</p>
+<p><code>Index::isInvisible()</code> reports the flag at runtime. <code>Phalcon\Db\Adapter\Pdo\Mysql::describeIndexes()</code> reverse-engineers it from the <code>Visible</code> column of <code>SHOW INDEXES</code> (MySQL 8.0+; absent on 5.7, which defaults to visible). PostgreSQL and SQLite ignore the flag.</p>
+<h4 id="descending-indexes">Descending Indexes<a class="headerlink" href="#descending-indexes" title="Permanent link">&para;</a></h4>
+<p>Per-column <code>ASC</code> / <code>DESC</code> directions are declared with the <code>directions</code> key - a parallel array, one entry per column. Missing trailing positions default to <code>ASC</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-147-1" name="__codelineno-147-1" href="#__codelineno-147-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
 <a id="__codelineno-147-2" name="__codelineno-147-2" href="#__codelineno-147-2"></a>
 <a id="__codelineno-147-3" name="__codelineno-147-3" href="#__codelineno-147-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
 <a id="__codelineno-147-4" name="__codelineno-147-4" href="#__codelineno-147-4"></a>
 <a id="__codelineno-147-5" name="__codelineno-147-5" href="#__codelineno-147-5"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
-<a id="__codelineno-147-6" name="__codelineno-147-6" href="#__codelineno-147-6"></a>    <span class="s1">&#39;idx_active_users&#39;</span><span class="p">,</span>
+<a id="__codelineno-147-6" name="__codelineno-147-6" href="#__codelineno-147-6"></a>    <span class="s1">&#39;idx_recent_active&#39;</span><span class="p">,</span>
 <a id="__codelineno-147-7" name="__codelineno-147-7" href="#__codelineno-147-7"></a>    <span class="p">[</span>
-<a id="__codelineno-147-8" name="__codelineno-147-8" href="#__codelineno-147-8"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span>
-<a id="__codelineno-147-9" name="__codelineno-147-9" href="#__codelineno-147-9"></a>        <span class="s1">&#39;where&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;active = true&#39;</span><span class="p">,</span>
+<a id="__codelineno-147-8" name="__codelineno-147-8" href="#__codelineno-147-8"></a>        <span class="s1">&#39;columns&#39;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">],</span>
+<a id="__codelineno-147-9" name="__codelineno-147-9" href="#__codelineno-147-9"></a>        <span class="s1">&#39;directions&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;DESC&#39;</span><span class="p">,</span> <span class="s1">&#39;ASC&#39;</span><span class="p">],</span>
 <a id="__codelineno-147-10" name="__codelineno-147-10" href="#__codelineno-147-10"></a>    <span class="p">]</span>
 <a id="__codelineno-147-11" name="__codelineno-147-11" href="#__codelineno-147-11"></a><span class="p">);</span>
 <a id="__codelineno-147-12" name="__codelineno-147-12" href="#__codelineno-147-12"></a>
-<a id="__codelineno-147-13" name="__codelineno-147-13" href="#__codelineno-147-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
-<a id="__codelineno-147-14" name="__codelineno-147-14" href="#__codelineno-147-14"></a><span class="c1">// CREATE INDEX &quot;idx_active_users&quot; ON &quot;users&quot; (&quot;email&quot;) WHERE active = true</span>
+<a id="__codelineno-147-13" name="__codelineno-147-13" href="#__codelineno-147-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
+<a id="__codelineno-147-14" name="__codelineno-147-14" href="#__codelineno-147-14"></a><span class="c1">// ALTER TABLE `events` ADD INDEX `idx_recent_active`</span>
+<a id="__codelineno-147-15" name="__codelineno-147-15" href="#__codelineno-147-15"></a><span class="c1">//     (`created_at` DESC, `status` ASC)</span>
+</code></pre></div>
+<p>Honored by MySQL 8.0+ (5.7 parsed <code>DESC</code> but ignored it at the optimizer level), PostgreSQL, and SQLite. <code>Index::getDirections()</code> returns the configured list; an empty array preserves the legacy plain <code>(col1, col2)</code> rendering.</p>
+<p><code>Phalcon\Db\Adapter\Pdo\Mysql::describeIndexes()</code> reverse-engineers directions from the <code>Collation</code> field of <code>SHOW INDEXES</code> (<code>A</code>=ASC, <code>D</code>=DESC). PostgreSQL and SQLite reverse-engineering of directions is deferred.</p>
+<h4 id="partial-indexes">Partial Indexes<a class="headerlink" href="#partial-indexes" title="Permanent link">&para;</a></h4>
+<p>PostgreSQL and SQLite allow an index to be restricted to rows matching a predicate.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-148-2" name="__codelineno-148-2" href="#__codelineno-148-2"></a>
+<a id="__codelineno-148-3" name="__codelineno-148-3" href="#__codelineno-148-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
+<a id="__codelineno-148-4" name="__codelineno-148-4" href="#__codelineno-148-4"></a>
+<a id="__codelineno-148-5" name="__codelineno-148-5" href="#__codelineno-148-5"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
+<a id="__codelineno-148-6" name="__codelineno-148-6" href="#__codelineno-148-6"></a>    <span class="s1">&#39;idx_active_users&#39;</span><span class="p">,</span>
+<a id="__codelineno-148-7" name="__codelineno-148-7" href="#__codelineno-148-7"></a>    <span class="p">[</span>
+<a id="__codelineno-148-8" name="__codelineno-148-8" href="#__codelineno-148-8"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span>
+<a id="__codelineno-148-9" name="__codelineno-148-9" href="#__codelineno-148-9"></a>        <span class="s1">&#39;where&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;active = true&#39;</span><span class="p">,</span>
+<a id="__codelineno-148-10" name="__codelineno-148-10" href="#__codelineno-148-10"></a>    <span class="p">]</span>
+<a id="__codelineno-148-11" name="__codelineno-148-11" href="#__codelineno-148-11"></a><span class="p">);</span>
+<a id="__codelineno-148-12" name="__codelineno-148-12" href="#__codelineno-148-12"></a>
+<a id="__codelineno-148-13" name="__codelineno-148-13" href="#__codelineno-148-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
+<a id="__codelineno-148-14" name="__codelineno-148-14" href="#__codelineno-148-14"></a><span class="c1">// CREATE INDEX &quot;idx_active_users&quot; ON &quot;users&quot; (&quot;email&quot;) WHERE active = true</span>
 </code></pre></div>
 <p>MySQL has no partial-index feature and its dialect silently drops the predicate.</p>
 <h4 id="functional-expression-indexes">Functional / Expression Indexes<a class="headerlink" href="#functional-expression-indexes" title="Permanent link">&para;</a></h4>
 <p>Index entries may be plain column names (escaped as identifiers) or <code>Phalcon\Db\RawValue</code> instances (emitted verbatim). The two may be mixed within a single index:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-148-2" name="__codelineno-148-2" href="#__codelineno-148-2"></a>
-<a id="__codelineno-148-3" name="__codelineno-148-3" href="#__codelineno-148-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
-<a id="__codelineno-148-4" name="__codelineno-148-4" href="#__codelineno-148-4"></a><span class="k">use</span> <span class="nx">Phalcon\Db\RawValue</span><span class="p">;</span>
-<a id="__codelineno-148-5" name="__codelineno-148-5" href="#__codelineno-148-5"></a>
-<a id="__codelineno-148-6" name="__codelineno-148-6" href="#__codelineno-148-6"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
-<a id="__codelineno-148-7" name="__codelineno-148-7" href="#__codelineno-148-7"></a>    <span class="s1">&#39;idx_lower_email&#39;</span><span class="p">,</span>
-<a id="__codelineno-148-8" name="__codelineno-148-8" href="#__codelineno-148-8"></a>    <span class="p">[</span>
-<a id="__codelineno-148-9" name="__codelineno-148-9" href="#__codelineno-148-9"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-148-10" name="__codelineno-148-10" href="#__codelineno-148-10"></a>            <span class="s1">&#39;tenant_id&#39;</span><span class="p">,</span>
-<a id="__codelineno-148-11" name="__codelineno-148-11" href="#__codelineno-148-11"></a>            <span class="k">new</span> <span class="nx">RawValue</span><span class="p">(</span><span class="s1">&#39;LOWER(email)&#39;</span><span class="p">),</span>
-<a id="__codelineno-148-12" name="__codelineno-148-12" href="#__codelineno-148-12"></a>        <span class="p">],</span>
-<a id="__codelineno-148-13" name="__codelineno-148-13" href="#__codelineno-148-13"></a>    <span class="p">]</span>
-<a id="__codelineno-148-14" name="__codelineno-148-14" href="#__codelineno-148-14"></a><span class="p">);</span>
-<a id="__codelineno-148-15" name="__codelineno-148-15" href="#__codelineno-148-15"></a>
-<a id="__codelineno-148-16" name="__codelineno-148-16" href="#__codelineno-148-16"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-149-2" name="__codelineno-149-2" href="#__codelineno-149-2"></a>
+<a id="__codelineno-149-3" name="__codelineno-149-3" href="#__codelineno-149-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
+<a id="__codelineno-149-4" name="__codelineno-149-4" href="#__codelineno-149-4"></a><span class="k">use</span> <span class="nx">Phalcon\Db\RawValue</span><span class="p">;</span>
+<a id="__codelineno-149-5" name="__codelineno-149-5" href="#__codelineno-149-5"></a>
+<a id="__codelineno-149-6" name="__codelineno-149-6" href="#__codelineno-149-6"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
+<a id="__codelineno-149-7" name="__codelineno-149-7" href="#__codelineno-149-7"></a>    <span class="s1">&#39;idx_lower_email&#39;</span><span class="p">,</span>
+<a id="__codelineno-149-8" name="__codelineno-149-8" href="#__codelineno-149-8"></a>    <span class="p">[</span>
+<a id="__codelineno-149-9" name="__codelineno-149-9" href="#__codelineno-149-9"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-149-10" name="__codelineno-149-10" href="#__codelineno-149-10"></a>            <span class="s1">&#39;tenant_id&#39;</span><span class="p">,</span>
+<a id="__codelineno-149-11" name="__codelineno-149-11" href="#__codelineno-149-11"></a>            <span class="k">new</span> <span class="nx">RawValue</span><span class="p">(</span><span class="s1">&#39;LOWER(email)&#39;</span><span class="p">),</span>
+<a id="__codelineno-149-12" name="__codelineno-149-12" href="#__codelineno-149-12"></a>        <span class="p">],</span>
+<a id="__codelineno-149-13" name="__codelineno-149-13" href="#__codelineno-149-13"></a>    <span class="p">]</span>
+<a id="__codelineno-149-14" name="__codelineno-149-14" href="#__codelineno-149-14"></a><span class="p">);</span>
+<a id="__codelineno-149-15" name="__codelineno-149-15" href="#__codelineno-149-15"></a>
+<a id="__codelineno-149-16" name="__codelineno-149-16" href="#__codelineno-149-16"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
 </code></pre></div>
 <p>The MySQL and PostgreSQL dialects wrap each expression entry in extra parentheses (<code>KEY idx (\</code>tenant_id`, (LOWER( email)))<code>); SQLite emits the expression directly. Expressions compose with</code>directions<code>and</code>where` without any additional API surface.</p>
 <h4 id="concurrent-index-creation-postgresql">Concurrent Index Creation (PostgreSQL)<a class="headerlink" href="#concurrent-index-creation-postgresql" title="Permanent link">&para;</a></h4>
 <p><code>CREATE INDEX CONCURRENTLY</code> builds the index without taking the strong lock that normally blocks writers - useful when adding an index to a large table in production.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-149-2" name="__codelineno-149-2" href="#__codelineno-149-2"></a>
-<a id="__codelineno-149-3" name="__codelineno-149-3" href="#__codelineno-149-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
-<a id="__codelineno-149-4" name="__codelineno-149-4" href="#__codelineno-149-4"></a>
-<a id="__codelineno-149-5" name="__codelineno-149-5" href="#__codelineno-149-5"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
-<a id="__codelineno-149-6" name="__codelineno-149-6" href="#__codelineno-149-6"></a>    <span class="s1">&#39;idx_orders_status&#39;</span><span class="p">,</span>
-<a id="__codelineno-149-7" name="__codelineno-149-7" href="#__codelineno-149-7"></a>    <span class="p">[</span>
-<a id="__codelineno-149-8" name="__codelineno-149-8" href="#__codelineno-149-8"></a>        <span class="s1">&#39;columns&#39;</span>      <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">],</span>
-<a id="__codelineno-149-9" name="__codelineno-149-9" href="#__codelineno-149-9"></a>        <span class="s1">&#39;concurrently&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-149-10" name="__codelineno-149-10" href="#__codelineno-149-10"></a>    <span class="p">]</span>
-<a id="__codelineno-149-11" name="__codelineno-149-11" href="#__codelineno-149-11"></a><span class="p">);</span>
-<a id="__codelineno-149-12" name="__codelineno-149-12" href="#__codelineno-149-12"></a>
-<a id="__codelineno-149-13" name="__codelineno-149-13" href="#__codelineno-149-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;orders&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
-<a id="__codelineno-149-14" name="__codelineno-149-14" href="#__codelineno-149-14"></a><span class="c1">// CREATE INDEX CONCURRENTLY &quot;idx_orders_status&quot; ON &quot;orders&quot; (&quot;status&quot;)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-150-2" name="__codelineno-150-2" href="#__codelineno-150-2"></a>
+<a id="__codelineno-150-3" name="__codelineno-150-3" href="#__codelineno-150-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Index</span><span class="p">;</span>
+<a id="__codelineno-150-4" name="__codelineno-150-4" href="#__codelineno-150-4"></a>
+<a id="__codelineno-150-5" name="__codelineno-150-5" href="#__codelineno-150-5"></a><span class="nv">$idx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Index</span><span class="p">(</span>
+<a id="__codelineno-150-6" name="__codelineno-150-6" href="#__codelineno-150-6"></a>    <span class="s1">&#39;idx_orders_status&#39;</span><span class="p">,</span>
+<a id="__codelineno-150-7" name="__codelineno-150-7" href="#__codelineno-150-7"></a>    <span class="p">[</span>
+<a id="__codelineno-150-8" name="__codelineno-150-8" href="#__codelineno-150-8"></a>        <span class="s1">&#39;columns&#39;</span>      <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">],</span>
+<a id="__codelineno-150-9" name="__codelineno-150-9" href="#__codelineno-150-9"></a>        <span class="s1">&#39;concurrently&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-150-10" name="__codelineno-150-10" href="#__codelineno-150-10"></a>    <span class="p">]</span>
+<a id="__codelineno-150-11" name="__codelineno-150-11" href="#__codelineno-150-11"></a><span class="p">);</span>
+<a id="__codelineno-150-12" name="__codelineno-150-12" href="#__codelineno-150-12"></a>
+<a id="__codelineno-150-13" name="__codelineno-150-13" href="#__codelineno-150-13"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">(</span><span class="s1">&#39;orders&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$idx</span><span class="p">);</span>
+<a id="__codelineno-150-14" name="__codelineno-150-14" href="#__codelineno-150-14"></a><span class="c1">// CREATE INDEX CONCURRENTLY &quot;idx_orders_status&quot; ON &quot;orders&quot; (&quot;status&quot;)</span>
 </code></pre></div>
 <p>MySQL and SQLite have no equivalent feature and silently ignore the flag.</p>
 <h3 id="row-locking">Row Locking<a class="headerlink" href="#row-locking" title="Permanent link">&para;</a></h3>
@@ -9399,27 +9475,27 @@ offering lower resource consumption and high performance.
 </tbody>
 </table>
 <p><code>NOWAIT</code> and <code>SKIP LOCKED</code> are recognized by MySQL 8.0+ and PostgreSQL 9.5+. SQLite has no row-level locking and silently ignores the modifier. MySQL's legacy <code>LOCK IN SHARE MODE</code> syntax produced by <code>sharedLock()</code> does not accept these modifiers either; the MySQL <code>sharedLock()</code> accepts the second argument for signature parity but ignores it.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-150-2" name="__codelineno-150-2" href="#__codelineno-150-2"></a>
-<a id="__codelineno-150-3" name="__codelineno-150-3" href="#__codelineno-150-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Dialect</span><span class="p">;</span>
-<a id="__codelineno-150-4" name="__codelineno-150-4" href="#__codelineno-150-4"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Enum</span><span class="p">;</span>
-<a id="__codelineno-150-5" name="__codelineno-150-5" href="#__codelineno-150-5"></a>
-<a id="__codelineno-150-6" name="__codelineno-150-6" href="#__codelineno-150-6"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM jobs WHERE state = &#39;queued&#39; LIMIT 10&quot;</span><span class="p">;</span>
-<a id="__codelineno-150-7" name="__codelineno-150-7" href="#__codelineno-150-7"></a>
-<a id="__codelineno-150-8" name="__codelineno-150-8" href="#__codelineno-150-8"></a><span class="c1">// Pop a batch of jobs without contending with peer workers</span>
-<a id="__codelineno-150-9" name="__codelineno-150-9" href="#__codelineno-150-9"></a><span class="nv">$batch</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span>
-<a id="__codelineno-150-10" name="__codelineno-150-10" href="#__codelineno-150-10"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="nx">Dialect</span><span class="o">::</span><span class="na">LOCK_SKIP_LOCKED</span><span class="p">)</span>
-<a id="__codelineno-150-11" name="__codelineno-150-11" href="#__codelineno-150-11"></a><span class="p">);</span>
-<a id="__codelineno-150-12" name="__codelineno-150-12" href="#__codelineno-150-12"></a>
-<a id="__codelineno-150-13" name="__codelineno-150-13" href="#__codelineno-150-13"></a><span class="c1">// PostgreSQL - FOR SHARE NOWAIT</span>
-<a id="__codelineno-150-14" name="__codelineno-150-14" href="#__codelineno-150-14"></a><span class="nv">$rows</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span>
-<a id="__codelineno-150-15" name="__codelineno-150-15" href="#__codelineno-150-15"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span>
-<a id="__codelineno-150-16" name="__codelineno-150-16" href="#__codelineno-150-16"></a>        <span class="s1">&#39;SELECT * FROM accounts WHERE id = :id&#39;</span><span class="p">,</span>
-<a id="__codelineno-150-17" name="__codelineno-150-17" href="#__codelineno-150-17"></a>        <span class="nx">Dialect</span><span class="o">::</span><span class="na">LOCK_NOWAIT</span>
-<a id="__codelineno-150-18" name="__codelineno-150-18" href="#__codelineno-150-18"></a>    <span class="p">),</span>
-<a id="__codelineno-150-19" name="__codelineno-150-19" href="#__codelineno-150-19"></a>    <span class="nx">Enum</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">,</span>
-<a id="__codelineno-150-20" name="__codelineno-150-20" href="#__codelineno-150-20"></a>    <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">42</span><span class="p">]</span>
-<a id="__codelineno-150-21" name="__codelineno-150-21" href="#__codelineno-150-21"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-151-2" name="__codelineno-151-2" href="#__codelineno-151-2"></a>
+<a id="__codelineno-151-3" name="__codelineno-151-3" href="#__codelineno-151-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Dialect</span><span class="p">;</span>
+<a id="__codelineno-151-4" name="__codelineno-151-4" href="#__codelineno-151-4"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Enum</span><span class="p">;</span>
+<a id="__codelineno-151-5" name="__codelineno-151-5" href="#__codelineno-151-5"></a>
+<a id="__codelineno-151-6" name="__codelineno-151-6" href="#__codelineno-151-6"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM jobs WHERE state = &#39;queued&#39; LIMIT 10&quot;</span><span class="p">;</span>
+<a id="__codelineno-151-7" name="__codelineno-151-7" href="#__codelineno-151-7"></a>
+<a id="__codelineno-151-8" name="__codelineno-151-8" href="#__codelineno-151-8"></a><span class="c1">// Pop a batch of jobs without contending with peer workers</span>
+<a id="__codelineno-151-9" name="__codelineno-151-9" href="#__codelineno-151-9"></a><span class="nv">$batch</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span>
+<a id="__codelineno-151-10" name="__codelineno-151-10" href="#__codelineno-151-10"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="nx">Dialect</span><span class="o">::</span><span class="na">LOCK_SKIP_LOCKED</span><span class="p">)</span>
+<a id="__codelineno-151-11" name="__codelineno-151-11" href="#__codelineno-151-11"></a><span class="p">);</span>
+<a id="__codelineno-151-12" name="__codelineno-151-12" href="#__codelineno-151-12"></a>
+<a id="__codelineno-151-13" name="__codelineno-151-13" href="#__codelineno-151-13"></a><span class="c1">// PostgreSQL - FOR SHARE NOWAIT</span>
+<a id="__codelineno-151-14" name="__codelineno-151-14" href="#__codelineno-151-14"></a><span class="nv">$rows</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span>
+<a id="__codelineno-151-15" name="__codelineno-151-15" href="#__codelineno-151-15"></a>    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span>
+<a id="__codelineno-151-16" name="__codelineno-151-16" href="#__codelineno-151-16"></a>        <span class="s1">&#39;SELECT * FROM accounts WHERE id = :id&#39;</span><span class="p">,</span>
+<a id="__codelineno-151-17" name="__codelineno-151-17" href="#__codelineno-151-17"></a>        <span class="nx">Dialect</span><span class="o">::</span><span class="na">LOCK_NOWAIT</span>
+<a id="__codelineno-151-18" name="__codelineno-151-18" href="#__codelineno-151-18"></a>    <span class="p">),</span>
+<a id="__codelineno-151-19" name="__codelineno-151-19" href="#__codelineno-151-19"></a>    <span class="nx">Enum</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">,</span>
+<a id="__codelineno-151-20" name="__codelineno-151-20" href="#__codelineno-151-20"></a>    <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">42</span><span class="p">]</span>
+<a id="__codelineno-151-21" name="__codelineno-151-21" href="#__codelineno-151-21"></a><span class="p">);</span>
 </code></pre></div>
 <p><code>sharedLock()</code> emits:</p>
 <ul>
@@ -9429,66 +9505,66 @@ offering lower resource consumption and high performance.
 </ul>
 <h3 id="upserts-on-conflict-do-update">Upserts - <code>ON CONFLICT DO UPDATE</code><a class="headerlink" href="#upserts-on-conflict-do-update" title="Permanent link">&para;</a></h3>
 <p>PostgreSQL 9.5+ and SQLite 3.24+ accept the SQL-standard <code>ON CONFLICT (col) DO UPDATE SET other = excluded.other</code> upsert syntax. Use <code>onConflictUpdate()</code> on the dialect or adapter to append the clause to an existing <code>INSERT</code> statement:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-151-2" name="__codelineno-151-2" href="#__codelineno-151-2"></a>
-<a id="__codelineno-151-3" name="__codelineno-151-3" href="#__codelineno-151-3"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO products (sku, name, price) VALUES (?, ?, ?)&quot;</span><span class="p">;</span>
-<a id="__codelineno-151-4" name="__codelineno-151-4" href="#__codelineno-151-4"></a>
-<a id="__codelineno-151-5" name="__codelineno-151-5" href="#__codelineno-151-5"></a><span class="nv">$upsertSql</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">onConflictUpdate</span><span class="p">(</span>
-<a id="__codelineno-151-6" name="__codelineno-151-6" href="#__codelineno-151-6"></a>    <span class="nv">$sql</span><span class="p">,</span>
-<a id="__codelineno-151-7" name="__codelineno-151-7" href="#__codelineno-151-7"></a>    <span class="p">[</span><span class="s1">&#39;sku&#39;</span><span class="p">],</span>          <span class="c1">// conflict-target columns</span>
-<a id="__codelineno-151-8" name="__codelineno-151-8" href="#__codelineno-151-8"></a>    <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="c1">// columns to overwrite with EXCLUDED.*</span>
-<a id="__codelineno-151-9" name="__codelineno-151-9" href="#__codelineno-151-9"></a><span class="p">);</span>
-<a id="__codelineno-151-10" name="__codelineno-151-10" href="#__codelineno-151-10"></a>
-<a id="__codelineno-151-11" name="__codelineno-151-11" href="#__codelineno-151-11"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span>
-<a id="__codelineno-151-12" name="__codelineno-151-12" href="#__codelineno-151-12"></a>    <span class="nv">$upsertSql</span><span class="p">,</span>
-<a id="__codelineno-151-13" name="__codelineno-151-13" href="#__codelineno-151-13"></a>    <span class="p">[</span><span class="s1">&#39;SKU-001&#39;</span><span class="p">,</span> <span class="s1">&#39;Widget&#39;</span><span class="p">,</span> <span class="mf">9.99</span><span class="p">]</span>
-<a id="__codelineno-151-14" name="__codelineno-151-14" href="#__codelineno-151-14"></a><span class="p">);</span>
-<a id="__codelineno-151-15" name="__codelineno-151-15" href="#__codelineno-151-15"></a><span class="c1">// INSERT INTO products (sku, name, price) VALUES (?, ?, ?)</span>
-<a id="__codelineno-151-16" name="__codelineno-151-16" href="#__codelineno-151-16"></a><span class="c1">//   ON CONFLICT (&quot;sku&quot;) DO UPDATE SET</span>
-<a id="__codelineno-151-17" name="__codelineno-151-17" href="#__codelineno-151-17"></a><span class="c1">//     &quot;name&quot; = excluded.&quot;name&quot;, &quot;price&quot; = excluded.&quot;price&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-152-2" name="__codelineno-152-2" href="#__codelineno-152-2"></a>
+<a id="__codelineno-152-3" name="__codelineno-152-3" href="#__codelineno-152-3"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO products (sku, name, price) VALUES (?, ?, ?)&quot;</span><span class="p">;</span>
+<a id="__codelineno-152-4" name="__codelineno-152-4" href="#__codelineno-152-4"></a>
+<a id="__codelineno-152-5" name="__codelineno-152-5" href="#__codelineno-152-5"></a><span class="nv">$upsertSql</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">onConflictUpdate</span><span class="p">(</span>
+<a id="__codelineno-152-6" name="__codelineno-152-6" href="#__codelineno-152-6"></a>    <span class="nv">$sql</span><span class="p">,</span>
+<a id="__codelineno-152-7" name="__codelineno-152-7" href="#__codelineno-152-7"></a>    <span class="p">[</span><span class="s1">&#39;sku&#39;</span><span class="p">],</span>          <span class="c1">// conflict-target columns</span>
+<a id="__codelineno-152-8" name="__codelineno-152-8" href="#__codelineno-152-8"></a>    <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="c1">// columns to overwrite with EXCLUDED.*</span>
+<a id="__codelineno-152-9" name="__codelineno-152-9" href="#__codelineno-152-9"></a><span class="p">);</span>
+<a id="__codelineno-152-10" name="__codelineno-152-10" href="#__codelineno-152-10"></a>
+<a id="__codelineno-152-11" name="__codelineno-152-11" href="#__codelineno-152-11"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span>
+<a id="__codelineno-152-12" name="__codelineno-152-12" href="#__codelineno-152-12"></a>    <span class="nv">$upsertSql</span><span class="p">,</span>
+<a id="__codelineno-152-13" name="__codelineno-152-13" href="#__codelineno-152-13"></a>    <span class="p">[</span><span class="s1">&#39;SKU-001&#39;</span><span class="p">,</span> <span class="s1">&#39;Widget&#39;</span><span class="p">,</span> <span class="mf">9.99</span><span class="p">]</span>
+<a id="__codelineno-152-14" name="__codelineno-152-14" href="#__codelineno-152-14"></a><span class="p">);</span>
+<a id="__codelineno-152-15" name="__codelineno-152-15" href="#__codelineno-152-15"></a><span class="c1">// INSERT INTO products (sku, name, price) VALUES (?, ?, ?)</span>
+<a id="__codelineno-152-16" name="__codelineno-152-16" href="#__codelineno-152-16"></a><span class="c1">//   ON CONFLICT (&quot;sku&quot;) DO UPDATE SET</span>
+<a id="__codelineno-152-17" name="__codelineno-152-17" href="#__codelineno-152-17"></a><span class="c1">//     &quot;name&quot; = excluded.&quot;name&quot;, &quot;price&quot; = excluded.&quot;price&quot;</span>
 </code></pre></div>
 <p><code>Phalcon\Db\Dialect\Mysql::onConflictUpdate()</code> throws <code>Phalcon\Db\Exception</code> because MySQL's equivalent uses the incompatible <code>INSERT ... ON DUPLICATE KEY UPDATE</code> syntax. Use raw SQL on MySQL until a dedicated helper ships.</p>
 <p>Passing an empty <code>conflictColumns</code> or <code>updateColumns</code> array throws.</p>
 <h3 id="returning-clauses"><code>RETURNING</code> Clauses<a class="headerlink" href="#returning-clauses" title="Permanent link">&para;</a></h3>
 <p>PostgreSQL and SQLite 3.35+ allow <code>INSERT</code> / <code>UPDATE</code> / <code>DELETE</code> to return rows. <code>returning()</code> on the dialect or adapter appends the clause:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-152-2" name="__codelineno-152-2" href="#__codelineno-152-2"></a>
-<a id="__codelineno-152-3" name="__codelineno-152-3" href="#__codelineno-152-3"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO articles (slug, title) VALUES (&#39;hello&#39;, &#39;Hello&#39;)&quot;</span><span class="p">;</span>
-<a id="__codelineno-152-4" name="__codelineno-152-4" href="#__codelineno-152-4"></a>
-<a id="__codelineno-152-5" name="__codelineno-152-5" href="#__codelineno-152-5"></a><span class="c1">// Specific columns</span>
-<a id="__codelineno-152-6" name="__codelineno-152-6" href="#__codelineno-152-6"></a><span class="nv">$withReturning</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">returning</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]);</span>
-<a id="__codelineno-152-7" name="__codelineno-152-7" href="#__codelineno-152-7"></a><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="nv">$withReturning</span><span class="p">);</span>
-<a id="__codelineno-152-8" name="__codelineno-152-8" href="#__codelineno-152-8"></a>
-<a id="__codelineno-152-9" name="__codelineno-152-9" href="#__codelineno-152-9"></a><span class="c1">// All columns</span>
-<a id="__codelineno-152-10" name="__codelineno-152-10" href="#__codelineno-152-10"></a><span class="nv">$withReturning</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">returning</span><span class="p">(</span>
-<a id="__codelineno-152-11" name="__codelineno-152-11" href="#__codelineno-152-11"></a>    <span class="s2">&quot;UPDATE articles SET title = &#39;Updated&#39; WHERE id = 42&quot;</span><span class="p">,</span>
-<a id="__codelineno-152-12" name="__codelineno-152-12" href="#__codelineno-152-12"></a>    <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">]</span>
-<a id="__codelineno-152-13" name="__codelineno-152-13" href="#__codelineno-152-13"></a><span class="p">);</span>
-<a id="__codelineno-152-14" name="__codelineno-152-14" href="#__codelineno-152-14"></a><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="nv">$withReturning</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-153-2" name="__codelineno-153-2" href="#__codelineno-153-2"></a>
+<a id="__codelineno-153-3" name="__codelineno-153-3" href="#__codelineno-153-3"></a><span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO articles (slug, title) VALUES (&#39;hello&#39;, &#39;Hello&#39;)&quot;</span><span class="p">;</span>
+<a id="__codelineno-153-4" name="__codelineno-153-4" href="#__codelineno-153-4"></a>
+<a id="__codelineno-153-5" name="__codelineno-153-5" href="#__codelineno-153-5"></a><span class="c1">// Specific columns</span>
+<a id="__codelineno-153-6" name="__codelineno-153-6" href="#__codelineno-153-6"></a><span class="nv">$withReturning</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">returning</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]);</span>
+<a id="__codelineno-153-7" name="__codelineno-153-7" href="#__codelineno-153-7"></a><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="nv">$withReturning</span><span class="p">);</span>
+<a id="__codelineno-153-8" name="__codelineno-153-8" href="#__codelineno-153-8"></a>
+<a id="__codelineno-153-9" name="__codelineno-153-9" href="#__codelineno-153-9"></a><span class="c1">// All columns</span>
+<a id="__codelineno-153-10" name="__codelineno-153-10" href="#__codelineno-153-10"></a><span class="nv">$withReturning</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">returning</span><span class="p">(</span>
+<a id="__codelineno-153-11" name="__codelineno-153-11" href="#__codelineno-153-11"></a>    <span class="s2">&quot;UPDATE articles SET title = &#39;Updated&#39; WHERE id = 42&quot;</span><span class="p">,</span>
+<a id="__codelineno-153-12" name="__codelineno-153-12" href="#__codelineno-153-12"></a>    <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">]</span>
+<a id="__codelineno-153-13" name="__codelineno-153-13" href="#__codelineno-153-13"></a><span class="p">);</span>
+<a id="__codelineno-153-14" name="__codelineno-153-14" href="#__codelineno-153-14"></a><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="nv">$withReturning</span><span class="p">);</span>
 </code></pre></div>
 <p><code>Phalcon\Db\Dialect\Mysql::returning()</code> throws (no <code>RETURNING</code> construct). An empty <code>columns</code> array throws on every dialect.</p>
 <h3 id="materialized-views-postgresql">Materialized Views (PostgreSQL)<a class="headerlink" href="#materialized-views-postgresql" title="Permanent link">&para;</a></h3>
 <p>A materialized view caches the result of a query as a real table; you control when it is refreshed.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-153-2" name="__codelineno-153-2" href="#__codelineno-153-2"></a>
-<a id="__codelineno-153-3" name="__codelineno-153-3" href="#__codelineno-153-3"></a><span class="c1">// Create</span>
-<a id="__codelineno-153-4" name="__codelineno-153-4" href="#__codelineno-153-4"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createMaterializedView</span><span class="p">(</span>
-<a id="__codelineno-153-5" name="__codelineno-153-5" href="#__codelineno-153-5"></a>    <span class="s1">&#39;top_orders&#39;</span><span class="p">,</span>
-<a id="__codelineno-153-6" name="__codelineno-153-6" href="#__codelineno-153-6"></a>    <span class="p">[</span>
-<a id="__codelineno-153-7" name="__codelineno-153-7" href="#__codelineno-153-7"></a>        <span class="s1">&#39;sql&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;SELECT customer_id, SUM(total) AS total</span>
-<a id="__codelineno-153-8" name="__codelineno-153-8" href="#__codelineno-153-8"></a><span class="s1">                  FROM orders</span>
-<a id="__codelineno-153-9" name="__codelineno-153-9" href="#__codelineno-153-9"></a><span class="s1">                  GROUP BY customer_id</span>
-<a id="__codelineno-153-10" name="__codelineno-153-10" href="#__codelineno-153-10"></a><span class="s1">                  ORDER BY total DESC</span>
-<a id="__codelineno-153-11" name="__codelineno-153-11" href="#__codelineno-153-11"></a><span class="s1">                  LIMIT 100&#39;</span><span class="p">,</span>
-<a id="__codelineno-153-12" name="__codelineno-153-12" href="#__codelineno-153-12"></a>    <span class="p">],</span>
-<a id="__codelineno-153-13" name="__codelineno-153-13" href="#__codelineno-153-13"></a>    <span class="s1">&#39;public&#39;</span>
-<a id="__codelineno-153-14" name="__codelineno-153-14" href="#__codelineno-153-14"></a><span class="p">);</span>
-<a id="__codelineno-153-15" name="__codelineno-153-15" href="#__codelineno-153-15"></a>
-<a id="__codelineno-153-16" name="__codelineno-153-16" href="#__codelineno-153-16"></a><span class="c1">// Refresh (concurrent = non-blocking; requires a unique index on the view)</span>
-<a id="__codelineno-153-17" name="__codelineno-153-17" href="#__codelineno-153-17"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">refreshMaterializedView</span><span class="p">(</span><span class="s1">&#39;top_orders&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-<a id="__codelineno-153-18" name="__codelineno-153-18" href="#__codelineno-153-18"></a>
-<a id="__codelineno-153-19" name="__codelineno-153-19" href="#__codelineno-153-19"></a><span class="c1">// Drop</span>
-<a id="__codelineno-153-20" name="__codelineno-153-20" href="#__codelineno-153-20"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropMaterializedView</span><span class="p">(</span><span class="s1">&#39;top_orders&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>
+<a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a><span class="c1">// Create</span>
+<a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createMaterializedView</span><span class="p">(</span>
+<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a>    <span class="s1">&#39;top_orders&#39;</span><span class="p">,</span>
+<a id="__codelineno-154-6" name="__codelineno-154-6" href="#__codelineno-154-6"></a>    <span class="p">[</span>
+<a id="__codelineno-154-7" name="__codelineno-154-7" href="#__codelineno-154-7"></a>        <span class="s1">&#39;sql&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;SELECT customer_id, SUM(total) AS total</span>
+<a id="__codelineno-154-8" name="__codelineno-154-8" href="#__codelineno-154-8"></a><span class="s1">                  FROM orders</span>
+<a id="__codelineno-154-9" name="__codelineno-154-9" href="#__codelineno-154-9"></a><span class="s1">                  GROUP BY customer_id</span>
+<a id="__codelineno-154-10" name="__codelineno-154-10" href="#__codelineno-154-10"></a><span class="s1">                  ORDER BY total DESC</span>
+<a id="__codelineno-154-11" name="__codelineno-154-11" href="#__codelineno-154-11"></a><span class="s1">                  LIMIT 100&#39;</span><span class="p">,</span>
+<a id="__codelineno-154-12" name="__codelineno-154-12" href="#__codelineno-154-12"></a>    <span class="p">],</span>
+<a id="__codelineno-154-13" name="__codelineno-154-13" href="#__codelineno-154-13"></a>    <span class="s1">&#39;public&#39;</span>
+<a id="__codelineno-154-14" name="__codelineno-154-14" href="#__codelineno-154-14"></a><span class="p">);</span>
+<a id="__codelineno-154-15" name="__codelineno-154-15" href="#__codelineno-154-15"></a>
+<a id="__codelineno-154-16" name="__codelineno-154-16" href="#__codelineno-154-16"></a><span class="c1">// Refresh (concurrent = non-blocking; requires a unique index on the view)</span>
+<a id="__codelineno-154-17" name="__codelineno-154-17" href="#__codelineno-154-17"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">refreshMaterializedView</span><span class="p">(</span><span class="s1">&#39;top_orders&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<a id="__codelineno-154-18" name="__codelineno-154-18" href="#__codelineno-154-18"></a>
+<a id="__codelineno-154-19" name="__codelineno-154-19" href="#__codelineno-154-19"></a><span class="c1">// Drop</span>
+<a id="__codelineno-154-20" name="__codelineno-154-20" href="#__codelineno-154-20"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropMaterializedView</span><span class="p">(</span><span class="s1">&#39;top_orders&#39;</span><span class="p">,</span> <span class="s1">&#39;public&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p>The MySQL and SQLite dialects throw <code>Phalcon\Db\Exception</code> from each of the three methods - neither engine has a materialized-view concept.</p>
 <h3 id="capability-detection">Capability Detection<a class="headerlink" href="#capability-detection" title="Permanent link">&para;</a></h3>
@@ -9531,37 +9607,37 @@ offering lower resource consumption and high performance.
 </table>
 <p><code>supportsAlterTable()</code> returns <code>false</code> on SQLite because it cannot modify existing columns or add or drop foreign keys, primary keys, or check constraints through <code>ALTER TABLE</code>; basic <code>ADD COLUMN</code> and <code>DROP COLUMN</code> remain available. The related <code>supportsSavepoints()</code> and <code>supportsReleaseSavepoints()</code> predicates report transaction-savepoint support.</p>
 <p>Read a predicate through the dialect, reachable from the adapter with <code>getDialect()</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-154-2" name="__codelineno-154-2" href="#__codelineno-154-2"></a>
-<a id="__codelineno-154-3" name="__codelineno-154-3" href="#__codelineno-154-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Postgresql</span><span class="p">;</span>
-<a id="__codelineno-154-4" name="__codelineno-154-4" href="#__codelineno-154-4"></a>
-<a id="__codelineno-154-5" name="__codelineno-154-5" href="#__codelineno-154-5"></a><span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Postgresql</span><span class="p">(</span>
-<a id="__codelineno-154-6" name="__codelineno-154-6" href="#__codelineno-154-6"></a>    <span class="p">[</span>
-<a id="__codelineno-154-7" name="__codelineno-154-7" href="#__codelineno-154-7"></a>        <span class="s1">&#39;host&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
-<a id="__codelineno-154-8" name="__codelineno-154-8" href="#__codelineno-154-8"></a>        <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
-<a id="__codelineno-154-9" name="__codelineno-154-9" href="#__codelineno-154-9"></a>        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
-<a id="__codelineno-154-10" name="__codelineno-154-10" href="#__codelineno-154-10"></a>        <span class="s1">&#39;dbname&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;store&#39;</span><span class="p">,</span>
-<a id="__codelineno-154-11" name="__codelineno-154-11" href="#__codelineno-154-11"></a>    <span class="p">]</span>
-<a id="__codelineno-154-12" name="__codelineno-154-12" href="#__codelineno-154-12"></a><span class="p">);</span>
-<a id="__codelineno-154-13" name="__codelineno-154-13" href="#__codelineno-154-13"></a>
-<a id="__codelineno-154-14" name="__codelineno-154-14" href="#__codelineno-154-14"></a><span class="nv">$dialect</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getDialect</span><span class="p">();</span>
-<a id="__codelineno-154-15" name="__codelineno-154-15" href="#__codelineno-154-15"></a>
-<a id="__codelineno-154-16" name="__codelineno-154-16" href="#__codelineno-154-16"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">supportsReturning</span><span class="p">())</span> <span class="p">{</span>
-<a id="__codelineno-154-17" name="__codelineno-154-17" href="#__codelineno-154-17"></a>    <span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">returning</span><span class="p">(</span>
-<a id="__codelineno-154-18" name="__codelineno-154-18" href="#__codelineno-154-18"></a>        <span class="s2">&quot;INSERT INTO articles (slug, title) VALUES (&#39;hello&#39;, &#39;Hello&#39;)&quot;</span><span class="p">,</span>
-<a id="__codelineno-154-19" name="__codelineno-154-19" href="#__codelineno-154-19"></a>        <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
-<a id="__codelineno-154-20" name="__codelineno-154-20" href="#__codelineno-154-20"></a>    <span class="p">);</span>
-<a id="__codelineno-154-21" name="__codelineno-154-21" href="#__codelineno-154-21"></a>
-<a id="__codelineno-154-22" name="__codelineno-154-22" href="#__codelineno-154-22"></a>    <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
-<a id="__codelineno-154-23" name="__codelineno-154-23" href="#__codelineno-154-23"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-155-2" name="__codelineno-155-2" href="#__codelineno-155-2"></a>
+<a id="__codelineno-155-3" name="__codelineno-155-3" href="#__codelineno-155-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Postgresql</span><span class="p">;</span>
+<a id="__codelineno-155-4" name="__codelineno-155-4" href="#__codelineno-155-4"></a>
+<a id="__codelineno-155-5" name="__codelineno-155-5" href="#__codelineno-155-5"></a><span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Postgresql</span><span class="p">(</span>
+<a id="__codelineno-155-6" name="__codelineno-155-6" href="#__codelineno-155-6"></a>    <span class="p">[</span>
+<a id="__codelineno-155-7" name="__codelineno-155-7" href="#__codelineno-155-7"></a>        <span class="s1">&#39;host&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+<a id="__codelineno-155-8" name="__codelineno-155-8" href="#__codelineno-155-8"></a>        <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+<a id="__codelineno-155-9" name="__codelineno-155-9" href="#__codelineno-155-9"></a>        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+<a id="__codelineno-155-10" name="__codelineno-155-10" href="#__codelineno-155-10"></a>        <span class="s1">&#39;dbname&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;store&#39;</span><span class="p">,</span>
+<a id="__codelineno-155-11" name="__codelineno-155-11" href="#__codelineno-155-11"></a>    <span class="p">]</span>
+<a id="__codelineno-155-12" name="__codelineno-155-12" href="#__codelineno-155-12"></a><span class="p">);</span>
+<a id="__codelineno-155-13" name="__codelineno-155-13" href="#__codelineno-155-13"></a>
+<a id="__codelineno-155-14" name="__codelineno-155-14" href="#__codelineno-155-14"></a><span class="nv">$dialect</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getDialect</span><span class="p">();</span>
+<a id="__codelineno-155-15" name="__codelineno-155-15" href="#__codelineno-155-15"></a>
+<a id="__codelineno-155-16" name="__codelineno-155-16" href="#__codelineno-155-16"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">supportsReturning</span><span class="p">())</span> <span class="p">{</span>
+<a id="__codelineno-155-17" name="__codelineno-155-17" href="#__codelineno-155-17"></a>    <span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">returning</span><span class="p">(</span>
+<a id="__codelineno-155-18" name="__codelineno-155-18" href="#__codelineno-155-18"></a>        <span class="s2">&quot;INSERT INTO articles (slug, title) VALUES (&#39;hello&#39;, &#39;Hello&#39;)&quot;</span><span class="p">,</span>
+<a id="__codelineno-155-19" name="__codelineno-155-19" href="#__codelineno-155-19"></a>        <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+<a id="__codelineno-155-20" name="__codelineno-155-20" href="#__codelineno-155-20"></a>    <span class="p">);</span>
+<a id="__codelineno-155-21" name="__codelineno-155-21" href="#__codelineno-155-21"></a>
+<a id="__codelineno-155-22" name="__codelineno-155-22" href="#__codelineno-155-22"></a>    <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<a id="__codelineno-155-23" name="__codelineno-155-23" href="#__codelineno-155-23"></a><span class="p">}</span>
 </code></pre></div>
 <p>The predicates are declared on <code>Phalcon\Db\Dialect</code> with defaults matching the base behavior and overridden per dialect. The matching exceptions (<code>Phalcon\Db\Dialect\Mysql::returning()</code> and the others) remain as the enforcement backstop.</p>
 <h3 id="sqlite-drop-column">SQLite <code>DROP COLUMN</code><a class="headerlink" href="#sqlite-drop-column" title="Permanent link">&para;</a></h3>
 <p>SQLite 3.35+ supports <code>ALTER TABLE ... DROP COLUMN ...</code> natively. <code>Phalcon\Db\Dialect\Sqlite::dropColumn()</code> now emits the statement (previously it threw unconditionally). On older SQLite versions the server itself rejects the statement at execution time.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-155-2" name="__codelineno-155-2" href="#__codelineno-155-2"></a>
-<a id="__codelineno-155-3" name="__codelineno-155-3" href="#__codelineno-155-3"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;legacy_payload&#39;</span><span class="p">);</span>
-<a id="__codelineno-155-4" name="__codelineno-155-4" href="#__codelineno-155-4"></a><span class="c1">// ALTER TABLE &quot;events&quot; DROP COLUMN &quot;legacy_payload&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-156-2" name="__codelineno-156-2" href="#__codelineno-156-2"></a>
+<a id="__codelineno-156-3" name="__codelineno-156-3" href="#__codelineno-156-3"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="s1">&#39;legacy_payload&#39;</span><span class="p">);</span>
+<a id="__codelineno-156-4" name="__codelineno-156-4" href="#__codelineno-156-4"></a><span class="c1">// ALTER TABLE &quot;events&quot; DROP COLUMN &quot;legacy_payload&quot;</span>
 </code></pre></div>
 <p><code>addPrimaryKey()</code>, <code>dropPrimaryKey()</code>, <code>modifyColumn()</code>, <code>addForeignKey()</code>, <code>dropForeignKey()</code>, <code>addCheck()</code>, and <code>dropCheck()</code> continue to throw on SQLite because of genuine engine limitations (table rebuild required).</p>
 <h3 id="table-comments">Table Comments<a class="headerlink" href="#table-comments" title="Permanent link">&para;</a></h3>
@@ -9572,37 +9648,37 @@ offering lower resource consumption and high performance.
 <li>SQLite has no native table comment and ignores the option</li>
 </ul>
 <p>Pass the comment in the <code>TABLE_COMMENT</code> key of the <code>options</code> array in the <code>createTable()</code> definition:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-156-2" name="__codelineno-156-2" href="#__codelineno-156-2"></a>
-<a id="__codelineno-156-3" name="__codelineno-156-3" href="#__codelineno-156-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
-<a id="__codelineno-156-4" name="__codelineno-156-4" href="#__codelineno-156-4"></a>
-<a id="__codelineno-156-5" name="__codelineno-156-5" href="#__codelineno-156-5"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
-<a id="__codelineno-156-6" name="__codelineno-156-6" href="#__codelineno-156-6"></a>    <span class="s1">&#39;co_invoices&#39;</span><span class="p">,</span>
-<a id="__codelineno-156-7" name="__codelineno-156-7" href="#__codelineno-156-7"></a>    <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-156-8" name="__codelineno-156-8" href="#__codelineno-156-8"></a>    <span class="p">[</span>
-<a id="__codelineno-156-9" name="__codelineno-156-9" href="#__codelineno-156-9"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-156-10" name="__codelineno-156-10" href="#__codelineno-156-10"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
-<a id="__codelineno-156-11" name="__codelineno-156-11" href="#__codelineno-156-11"></a>                <span class="s1">&#39;inv_id&#39;</span><span class="p">,</span>
-<a id="__codelineno-156-12" name="__codelineno-156-12" href="#__codelineno-156-12"></a>                <span class="p">[</span>
-<a id="__codelineno-156-13" name="__codelineno-156-13" href="#__codelineno-156-13"></a>                    <span class="s1">&#39;type&#39;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
-<a id="__codelineno-156-14" name="__codelineno-156-14" href="#__codelineno-156-14"></a>                    <span class="s1">&#39;size&#39;</span>          <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-156-15" name="__codelineno-156-15" href="#__codelineno-156-15"></a>                    <span class="s1">&#39;notNull&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-156-16" name="__codelineno-156-16" href="#__codelineno-156-16"></a>                    <span class="s1">&#39;autoIncrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-156-17" name="__codelineno-156-17" href="#__codelineno-156-17"></a>                    <span class="s1">&#39;primary&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-156-18" name="__codelineno-156-18" href="#__codelineno-156-18"></a>                <span class="p">]</span>
-<a id="__codelineno-156-19" name="__codelineno-156-19" href="#__codelineno-156-19"></a>            <span class="p">),</span>
-<a id="__codelineno-156-20" name="__codelineno-156-20" href="#__codelineno-156-20"></a>        <span class="p">],</span>
-<a id="__codelineno-156-21" name="__codelineno-156-21" href="#__codelineno-156-21"></a>        <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-156-22" name="__codelineno-156-22" href="#__codelineno-156-22"></a>            <span class="s1">&#39;TABLE_COMMENT&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Customer invoices&#39;</span><span class="p">,</span>
-<a id="__codelineno-156-23" name="__codelineno-156-23" href="#__codelineno-156-23"></a>        <span class="p">],</span>
-<a id="__codelineno-156-24" name="__codelineno-156-24" href="#__codelineno-156-24"></a>    <span class="p">]</span>
-<a id="__codelineno-156-25" name="__codelineno-156-25" href="#__codelineno-156-25"></a><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-157-2" name="__codelineno-157-2" href="#__codelineno-157-2"></a>
+<a id="__codelineno-157-3" name="__codelineno-157-3" href="#__codelineno-157-3"></a><span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>
+<a id="__codelineno-157-4" name="__codelineno-157-4" href="#__codelineno-157-4"></a>
+<a id="__codelineno-157-5" name="__codelineno-157-5" href="#__codelineno-157-5"></a><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span>
+<a id="__codelineno-157-6" name="__codelineno-157-6" href="#__codelineno-157-6"></a>    <span class="s1">&#39;co_invoices&#39;</span><span class="p">,</span>
+<a id="__codelineno-157-7" name="__codelineno-157-7" href="#__codelineno-157-7"></a>    <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-157-8" name="__codelineno-157-8" href="#__codelineno-157-8"></a>    <span class="p">[</span>
+<a id="__codelineno-157-9" name="__codelineno-157-9" href="#__codelineno-157-9"></a>        <span class="s1">&#39;columns&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-157-10" name="__codelineno-157-10" href="#__codelineno-157-10"></a>            <span class="k">new</span> <span class="nx">Column</span><span class="p">(</span>
+<a id="__codelineno-157-11" name="__codelineno-157-11" href="#__codelineno-157-11"></a>                <span class="s1">&#39;inv_id&#39;</span><span class="p">,</span>
+<a id="__codelineno-157-12" name="__codelineno-157-12" href="#__codelineno-157-12"></a>                <span class="p">[</span>
+<a id="__codelineno-157-13" name="__codelineno-157-13" href="#__codelineno-157-13"></a>                    <span class="s1">&#39;type&#39;</span>          <span class="o">=&gt;</span> <span class="nx">Column</span><span class="o">::</span><span class="na">TYPE_INTEGER</span><span class="p">,</span>
+<a id="__codelineno-157-14" name="__codelineno-157-14" href="#__codelineno-157-14"></a>                    <span class="s1">&#39;size&#39;</span>          <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-157-15" name="__codelineno-157-15" href="#__codelineno-157-15"></a>                    <span class="s1">&#39;notNull&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-157-16" name="__codelineno-157-16" href="#__codelineno-157-16"></a>                    <span class="s1">&#39;autoIncrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-157-17" name="__codelineno-157-17" href="#__codelineno-157-17"></a>                    <span class="s1">&#39;primary&#39;</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-157-18" name="__codelineno-157-18" href="#__codelineno-157-18"></a>                <span class="p">]</span>
+<a id="__codelineno-157-19" name="__codelineno-157-19" href="#__codelineno-157-19"></a>            <span class="p">),</span>
+<a id="__codelineno-157-20" name="__codelineno-157-20" href="#__codelineno-157-20"></a>        <span class="p">],</span>
+<a id="__codelineno-157-21" name="__codelineno-157-21" href="#__codelineno-157-21"></a>        <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+<a id="__codelineno-157-22" name="__codelineno-157-22" href="#__codelineno-157-22"></a>            <span class="s1">&#39;TABLE_COMMENT&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Customer invoices&#39;</span><span class="p">,</span>
+<a id="__codelineno-157-23" name="__codelineno-157-23" href="#__codelineno-157-23"></a>        <span class="p">],</span>
+<a id="__codelineno-157-24" name="__codelineno-157-24" href="#__codelineno-157-24"></a>    <span class="p">]</span>
+<a id="__codelineno-157-25" name="__codelineno-157-25" href="#__codelineno-157-25"></a><span class="p">);</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="c1">-- MySQL</span>
-<a id="__codelineno-157-2" name="__codelineno-157-2" href="#__codelineno-157-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">co_invoices</span><span class="o">`</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;Customer invoices&#39;</span><span class="p">;</span>
-<a id="__codelineno-157-3" name="__codelineno-157-3" href="#__codelineno-157-3"></a>
-<a id="__codelineno-157-4" name="__codelineno-157-4" href="#__codelineno-157-4"></a><span class="c1">-- PostgreSQL</span>
-<a id="__codelineno-157-5" name="__codelineno-157-5" href="#__codelineno-157-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;co_invoices&quot;</span><span class="w"> </span><span class="p">(...);</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;co_invoices&quot;</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;Customer invoices&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="c1">-- MySQL</span>
+<a id="__codelineno-158-2" name="__codelineno-158-2" href="#__codelineno-158-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">co_invoices</span><span class="o">`</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;Customer invoices&#39;</span><span class="p">;</span>
+<a id="__codelineno-158-3" name="__codelineno-158-3" href="#__codelineno-158-3"></a>
+<a id="__codelineno-158-4" name="__codelineno-158-4" href="#__codelineno-158-4"></a><span class="c1">-- PostgreSQL</span>
+<a id="__codelineno-158-5" name="__codelineno-158-5" href="#__codelineno-158-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;co_invoices&quot;</span><span class="w"> </span><span class="p">(...);</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="ss">&quot;co_invoices&quot;</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;Customer invoices&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>Comment values are escaped by doubling single quotes; the PostgreSQL <code>COMMENT ON COLUMN</code> emission for the column-level <code>comment</code> option is escaped the same way. To read a comment back from a live database, call <code>tableOptions()</code> on the adapter: MySQL and PostgreSQL return the comment in the <code>table_comment</code> element of the result; SQLite returns an empty array.</p>
 <h2 id="the-phalconcontractsdb-namespace">The <code>Phalcon\Contracts\Db</code> Namespace<a class="headerlink" href="#the-phalconcontractsdb-namespace" title="Permanent link">&para;</a></h2>
@@ -9647,18 +9723,18 @@ offering lower resource consumption and high performance.
 </table>
 <p>The legacy <code>Phalcon\Db\*Interface</code> types are kept as thin <code>@deprecated</code> extensions of the contracts so existing typehints (<code>function fooBar(ColumnInterface $col)</code>) and implementations (<code>class MyColumn implements ColumnInterface</code>) continue to work unchanged.</p>
 <p>For new code prefer typehinting against the contracts:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
-<a id="__codelineno-158-2" name="__codelineno-158-2" href="#__codelineno-158-2"></a>
-<a id="__codelineno-158-3" name="__codelineno-158-3" href="#__codelineno-158-3"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Db\Column</span><span class="p">;</span>
-<a id="__codelineno-158-4" name="__codelineno-158-4" href="#__codelineno-158-4"></a>
-<a id="__codelineno-158-5" name="__codelineno-158-5" href="#__codelineno-158-5"></a><span class="k">function</span> <span class="nf">describe</span><span class="p">(</span><span class="nx">Column</span> <span class="nv">$column</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
-<a id="__codelineno-158-6" name="__codelineno-158-6" href="#__codelineno-158-6"></a><span class="p">{</span>
-<a id="__codelineno-158-7" name="__codelineno-158-7" href="#__codelineno-158-7"></a>    <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-<a id="__codelineno-158-8" name="__codelineno-158-8" href="#__codelineno-158-8"></a>        <span class="s1">&#39;%s (%s)&#39;</span><span class="p">,</span>
-<a id="__codelineno-158-9" name="__codelineno-158-9" href="#__codelineno-158-9"></a>        <span class="nv">$column</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span>
-<a id="__codelineno-158-10" name="__codelineno-158-10" href="#__codelineno-158-10"></a>        <span class="nv">$column</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span>
-<a id="__codelineno-158-11" name="__codelineno-158-11" href="#__codelineno-158-11"></a>    <span class="p">);</span>
-<a id="__codelineno-158-12" name="__codelineno-158-12" href="#__codelineno-158-12"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
+<a id="__codelineno-159-2" name="__codelineno-159-2" href="#__codelineno-159-2"></a>
+<a id="__codelineno-159-3" name="__codelineno-159-3" href="#__codelineno-159-3"></a><span class="k">use</span> <span class="nx">Phalcon\Contracts\Db\Column</span><span class="p">;</span>
+<a id="__codelineno-159-4" name="__codelineno-159-4" href="#__codelineno-159-4"></a>
+<a id="__codelineno-159-5" name="__codelineno-159-5" href="#__codelineno-159-5"></a><span class="k">function</span> <span class="nf">describe</span><span class="p">(</span><span class="nx">Column</span> <span class="nv">$column</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+<a id="__codelineno-159-6" name="__codelineno-159-6" href="#__codelineno-159-6"></a><span class="p">{</span>
+<a id="__codelineno-159-7" name="__codelineno-159-7" href="#__codelineno-159-7"></a>    <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+<a id="__codelineno-159-8" name="__codelineno-159-8" href="#__codelineno-159-8"></a>        <span class="s1">&#39;%s (%s)&#39;</span><span class="p">,</span>
+<a id="__codelineno-159-9" name="__codelineno-159-9" href="#__codelineno-159-9"></a>        <span class="nv">$column</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span>
+<a id="__codelineno-159-10" name="__codelineno-159-10" href="#__codelineno-159-10"></a>        <span class="nv">$column</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span>
+<a id="__codelineno-159-11" name="__codelineno-159-11" href="#__codelineno-159-11"></a>    <span class="p">);</span>
+<a id="__codelineno-159-12" name="__codelineno-159-12" href="#__codelineno-159-12"></a><span class="p">}</span>
 </code></pre></div>
 <p>A small number of methods that landed in this release are intentionally <strong>not</strong> declared on the contracts in the v5 / v6 line - they would be a breaking change for third-party implementors. They are documented in the class-level <code>@todo v7</code> block on each contract and are reachable on the concrete classes:</p>
 <ul>
