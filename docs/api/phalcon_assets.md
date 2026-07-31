@@ -2090,3 +2090,206 @@ public function useImplicitOutput( bool $implicitOutput ): static;
 ```
 
 Sets if the HTML generated must be directly printed or returned
+
+
+## Assets\Traits\AttributesTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Traits/AttributesTrait.zep){ .src-btn }
+
+Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
+`Collection`).
+
+@todo set attributes to have a default array when introduced in zephir
+@todo v7 - share setAttributes here too (blocked: Collection is not an AssetInterface, so the return type diverges)
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Assets\Traits\AttributesTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#assetstraitsattributestrait-getattributes">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
+<span class="desc">Gets extra HTML attributes.</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$attributes</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getAttributes()` { #assetstraitsattributestrait-getattributes }
+
+```php
+public function getAttributes(): array;
+```
+
+Gets extra HTML attributes.
+
+
+## Assets\Traits\SourceTargetTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Traits/SourceTargetTrait.zep){ .src-btn }
+
+Shared source/target path, uri and locality state for asset objects
+(`Asset`, `Collection`).
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Assets\Traits\SourceTargetTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#assetstraitssourcetargettrait-getsourcepath">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getSourcePath</span>()</code>
+</a>
+<a class="api-item" href="#assetstraitssourcetargettrait-gettargetpath">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTargetPath</span>()</code>
+</a>
+<a class="api-item" href="#assetstraitssourcetargettrait-gettargeturi">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getTargetUri</span>()</code>
+</a>
+<a class="api-item" href="#assetstraitssourcetargettrait-islocal">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isLocal</span>()</code>
+<span class="desc">Checks if the asset is local or not</span>
+</a>
+<a class="api-item" href="#assetstraitssourcetargettrait-setislocal">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setIsLocal</span>( <span class="st">bool</span> <span class="sv">$flag</span> )</code>
+<span class="desc">Sets if the asset is local or external</span>
+</a>
+<a class="api-item" href="#assetstraitssourcetargettrait-setsourcepath">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setSourcePath</span>( <span class="st">string</span> <span class="sv">$sourcePath</span> )</code>
+<span class="desc">Sets the asset&#039;s source path</span>
+</a>
+<a class="api-item" href="#assetstraitssourcetargettrait-settargetpath">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setTargetPath</span>( <span class="st">string</span> <span class="sv">$targetPath</span> )</code>
+<span class="desc">Sets the asset&#039;s target path</span>
+</a>
+<a class="api-item" href="#assetstraitssourcetargettrait-settargeturi">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setTargetUri</span>( <span class="st">string</span> <span class="sv">$targetUri</span> )</code>
+<span class="desc">Sets a target uri for the generated HTML</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$isLocal</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$sourcePath</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$targetPath</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$targetUri</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 8</div>
+
+#### `getSourcePath()` { #assetstraitssourcetargettrait-getsourcepath }
+
+```php
+public function getSourcePath(): string;
+```
+
+#### `getTargetPath()` { #assetstraitssourcetargettrait-gettargetpath }
+
+```php
+public function getTargetPath(): string;
+```
+
+#### `getTargetUri()` { #assetstraitssourcetargettrait-gettargeturi }
+
+```php
+public function getTargetUri(): string;
+```
+
+#### `isLocal()` { #assetstraitssourcetargettrait-islocal }
+
+```php
+public function isLocal(): bool;
+```
+
+Checks if the asset is local or not
+
+#### `setIsLocal()` { #assetstraitssourcetargettrait-setislocal }
+
+```php
+public function setIsLocal( bool $flag ): static;
+```
+
+Sets if the asset is local or external
+
+#### `setSourcePath()` { #assetstraitssourcetargettrait-setsourcepath }
+
+```php
+public function setSourcePath( string $sourcePath ): static;
+```
+
+Sets the asset's source path
+
+#### `setTargetPath()` { #assetstraitssourcetargettrait-settargetpath }
+
+```php
+public function setTargetPath( string $targetPath ): static;
+```
+
+Sets the asset's target path
+
+#### `setTargetUri()` { #assetstraitssourcetargettrait-settargeturi }
+
+```php
+public function setTargetUri( string $targetUri ): static;
+```
+
+Sets a target uri for the generated HTML

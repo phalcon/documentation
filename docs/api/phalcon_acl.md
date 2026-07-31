@@ -1420,3 +1420,76 @@ Interface for Phalcon\Acl\Role
 
 __Uses__ `Phalcon\Contracts\Acl\Role`
 { .api-uses }
+
+
+## Acl\Traits\ItemTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Traits/ItemTrait.zep){ .src-btn }
+
+Shared name/description state for ACL Role and Component entities.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Acl\Traits\ItemTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#acltraitsitemtrait-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+</a>
+<a class="api-item" href="#acltraitsitemtrait-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+</a>
+<a class="api-item" href="#acltraitsitemtrait-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string | null</code>
+<code class="sig"><span class="sv">$description</span></code>
+<span class="desc">Element description</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Element name</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `__toString()` { #acltraitsitemtrait-__tostring }
+
+```php
+public function __toString(): string;
+```
+
+#### `getDescription()` { #acltraitsitemtrait-getdescription }
+
+```php
+public function getDescription(): string|null;
+```
+
+#### `getName()` { #acltraitsitemtrait-getname }
+
+```php
+public function getName(): string;
+```

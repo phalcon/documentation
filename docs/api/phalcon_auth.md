@@ -1064,6 +1064,50 @@ public function getFile(): string;
 ```
 
 
+## Auth\Adapter\Config\Traits\ModelConfigTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Config/Traits/ModelConfigTrait.zep){ .src-btn }
+
+Shared model-name state and accessor for auth adapter configurations.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#authadapterconfigtraitsmodelconfigtrait-getmodel">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getModel</span>()</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$model</span><span class="sm"> = null</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getModel()` { #authadapterconfigtraitsmodelconfigtrait-getmodel }
+
+```php
+public function getModel(): string|null;
+```
+
+
 ## Auth\Adapter\Memory
 
 <span class="badge badge--class">Class</span>

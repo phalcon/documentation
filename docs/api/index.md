@@ -42,4 +42,5 @@ hide:
 - [Phalcon Support](phalcon_support.md)
 - [Phalcon Tag](phalcon_tag.md)
 - [Phalcon Time](phalcon_time.md)
+- [Phalcon Traits](phalcon_traits.md)
 - [Phalcon Translate](phalcon_translate.md)

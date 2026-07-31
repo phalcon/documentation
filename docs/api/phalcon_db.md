@@ -10992,3 +10992,70 @@ $result->setFetchMode(
     \Phalcon\Enum::FETCH_OBJ
 );
 ```
+
+
+## Db\Traits\ElapsedTimeTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Traits/ElapsedTimeTrait.zep){ .src-btn }
+
+Derives elapsed milliseconds and seconds from the nanosecond total that the
+using class exposes through getTotalElapsedNanoseconds().
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Db\Traits\ElapsedTimeTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#dbtraitselapsedtimetrait-gettotalelapsedmilliseconds">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getTotalElapsedMilliseconds</span>()</code>
+<span class="desc">Returns the total time in milliseconds spent by the profiles</span>
+</a>
+<a class="api-item" href="#dbtraitselapsedtimetrait-gettotalelapsednanoseconds">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getTotalElapsedNanoseconds</span>()</code>
+<span class="desc">Returns the total time in nanoseconds spent by the profiles. Implemented</span>
+</a>
+<a class="api-item" href="#dbtraitselapsedtimetrait-gettotalelapsedseconds">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getTotalElapsedSeconds</span>()</code>
+<span class="desc">Returns the total time in seconds spent by the profiles</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `getTotalElapsedMilliseconds()` { #dbtraitselapsedtimetrait-gettotalelapsedmilliseconds }
+
+```php
+public function getTotalElapsedMilliseconds(): double;
+```
+
+Returns the total time in milliseconds spent by the profiles
+
+#### `getTotalElapsedNanoseconds()` { #dbtraitselapsedtimetrait-gettotalelapsednanoseconds }
+
+```php
+abstract public function getTotalElapsedNanoseconds(): double;
+```
+
+Returns the total time in nanoseconds spent by the profiles. Implemented
+by the using class.
+
+#### `getTotalElapsedSeconds()` { #dbtraitselapsedtimetrait-gettotalelapsedseconds }
+
+```php
+public function getTotalElapsedSeconds(): double;
+```
+
+Returns the total time in seconds spent by the profiles

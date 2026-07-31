@@ -1185,6 +1185,153 @@ public function escape( string $input ): string;
 ```
 
 
+## Html\Escaper\Traits\EscaperTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/Traits/EscaperTrait.zep){ .src-btn }
+
+Shared encoding/flags state and the encoding detection/normalization
+utilities used by the per-context escaper objects (`HtmlEscaper`,
+`AttributeEscaper`, `CssEscaper`, `JsEscaper`, `UrlEscaper`).
+
+@property bool   $doubleEncode
+@property string $encoding
+@property int    $flags
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Html\Escaper\Traits\EscaperTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#htmlescapertraitsescapertrait-detectencoding">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">detectEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Detects the character encoding of a string. Special-handling for</span>
+</a>
+<a class="api-item" href="#htmlescapertraitsescapertrait-getdoubleencode">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">getDoubleEncode</span>()</code>
+</a>
+<a class="api-item" href="#htmlescapertraitsescapertrait-getencoding">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getEncoding</span>()</code>
+</a>
+<a class="api-item" href="#htmlescapertraitsescapertrait-getflags">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">getFlags</span>()</code>
+</a>
+<a class="api-item" href="#htmlescapertraitsescapertrait-normalizeencoding">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">normalizeEncoding</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+<span class="desc">Normalizes a string&#039;s encoding to UTF-32, used by the CSS and JS</span>
+</a>
+<a class="api-item" href="#htmlescapertraitsescapertrait-setdoubleencode">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setDoubleEncode</span>( <span class="st">bool</span> <span class="sv">$doubleEncode</span> )</code>
+</a>
+<a class="api-item" href="#htmlescapertraitsescapertrait-setencoding">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setEncoding</span>( <span class="st">string</span> <span class="sv">$encoding</span> )</code>
+</a>
+<a class="api-item" href="#htmlescapertraitsescapertrait-setflags">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setFlags</span>( <span class="st">int</span> <span class="sv">$flags</span> )</code>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$doubleEncode</span><span class="sm"> = true</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$encoding</span><span class="sm"> = &quot;utf-8&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$flags</span><span class="sm"> = 11</span></code>
+<span class="desc">ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 8</div>
+
+#### `detectEncoding()` { #htmlescapertraitsescapertrait-detectencoding }
+
+```php
+final public function detectEncoding( string $input ): string|null;
+```
+
+Detects the character encoding of a string. Special-handling for
+chr(172) and chr(128) to chr(159) which fail to be detected by
+`mb_detect_encoding()`.
+
+#### `getDoubleEncode()` { #htmlescapertraitsescapertrait-getdoubleencode }
+
+```php
+public function getDoubleEncode(): bool;
+```
+
+#### `getEncoding()` { #htmlescapertraitsescapertrait-getencoding }
+
+```php
+public function getEncoding(): string;
+```
+
+#### `getFlags()` { #htmlescapertraitsescapertrait-getflags }
+
+```php
+public function getFlags(): int;
+```
+
+#### `normalizeEncoding()` { #htmlescapertraitsescapertrait-normalizeencoding }
+
+```php
+final public function normalizeEncoding( string $input ): string;
+```
+
+Normalizes a string's encoding to UTF-32, used by the CSS and JS
+escapers before invoking the C-level escape routines.
+
+#### `setDoubleEncode()` { #htmlescapertraitsescapertrait-setdoubleencode }
+
+```php
+public function setDoubleEncode( bool $doubleEncode ): static;
+```
+
+#### `setEncoding()` { #htmlescapertraitsescapertrait-setencoding }
+
+```php
+public function setEncoding( string $encoding ): static;
+```
+
+#### `setFlags()` { #htmlescapertraitsescapertrait-setflags }
+
+```php
+public function setFlags( int $flags ): static;
+```
+
+
 ## Html\Escaper\UrlEscaper
 
 <span class="badge badge--class">Class</span>

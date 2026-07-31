@@ -3097,6 +3097,477 @@ public function __construct(
 ```
 
 
+## Queue\Adapter\Traits\MessageTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/Traits/MessageTrait.zep){ .src-btn }
+
+Shared implementation of every Message getter/setter, plus the
+correlation-id / message-id / timestamp / reply-to header conveniences.
+Concrete adapter messages use this trait.
+
+The convenience accessors are stored as transport headers under fixed keys
+for binary compatibility with the wider interop ecosystem.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Queue\Adapter\Traits\MessageTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#queueadaptertraitsmessagetrait-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$body</span><span class="sm"> = &quot;&quot;</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$properties</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$headers</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Message constructor.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getbody">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getBody</span>()</code>
+<span class="desc">Returns the message body.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getCorrelationId</span>()</code>
+<span class="desc">Returns the correlation id used to correlate request/reply messages.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getheader">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single header value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getHeaders</span>()</code>
+<span class="desc">Returns all transport headers.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getMessageId</span>()</code>
+<span class="desc">Returns the message id.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getProperties</span>()</code>
+<span class="desc">Returns all application properties.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span></span>)</code>
+<span class="desc">Returns a single property value, or the default when it is not set.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-getreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getReplyTo</span>()</code>
+<span class="desc">Returns the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-gettimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sf">getTimestamp</span>()</code>
+<span class="desc">Returns the timestamp (in milliseconds) or null when it is not set.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-isredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isRedelivered</span>()</code>
+<span class="desc">Whether the message has been redelivered.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setbody">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setBody</span>( <span class="st">string</span> <span class="sv">$body</span> )</code>
+<span class="desc">Sets the message body.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setcorrelationid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setCorrelationId</span>( <span class="st">string</span> <span class="sv">$correlationId</span> )</code>
+<span class="desc">Sets the correlation id.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setheader">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single transport header.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setheaders">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setHeaders</span>( <span class="st">array</span> <span class="sv">$headers</span> )</code>
+<span class="desc">Replaces all transport headers.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setmessageid">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setMessageId</span>( <span class="st">string</span> <span class="sv">$messageId</span> )</code>
+<span class="desc">Sets the message id.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setproperties">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperties</span>( <span class="st">array</span> <span class="sv">$properties</span> )</code>
+<span class="desc">Replaces all application properties.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setproperty">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setProperty</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Sets a single application property.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setredelivered">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setRedelivered</span>( <span class="st">bool</span> <span class="sv">$redelivered</span> )</code>
+<span class="desc">Marks the message as redelivered.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-setreplyto">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setReplyTo</span>( <span class="st">string</span> <span class="sv">$replyTo</span> )</code>
+<span class="desc">Sets the reply-to destination name.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitsmessagetrait-settimestamp">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setTimestamp</span>( <span class="st">int</span> <span class="sv">$timestamp</span> )</code>
+<span class="desc">Sets the timestamp (in milliseconds).</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$body</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$headers</span><span class="sm"> = null</span></code>
+<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$properties</span><span class="sm"> = null</span></code>
+<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$redelivered</span><span class="sm"> = false</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 21</div>
+
+#### `__construct()` { #queueadaptertraitsmessagetrait-__construct }
+
+```php
+public function __construct(
+    string $body = "",
+    array $properties = [],
+    array $headers = []
+);
+```
+
+Message constructor.
+
+#### `getBody()` { #queueadaptertraitsmessagetrait-getbody }
+
+```php
+public function getBody(): string;
+```
+
+Returns the message body.
+
+#### `getCorrelationId()` { #queueadaptertraitsmessagetrait-getcorrelationid }
+
+```php
+public function getCorrelationId(): string|null;
+```
+
+Returns the correlation id used to correlate request/reply messages.
+
+#### `getHeader()` { #queueadaptertraitsmessagetrait-getheader }
+
+```php
+public function getHeader(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single header value, or the default when it is not set.
+
+#### `getHeaders()` { #queueadaptertraitsmessagetrait-getheaders }
+
+```php
+public function getHeaders(): array;
+```
+
+Returns all transport headers.
+
+#### `getMessageId()` { #queueadaptertraitsmessagetrait-getmessageid }
+
+```php
+public function getMessageId(): string|null;
+```
+
+Returns the message id.
+
+#### `getProperties()` { #queueadaptertraitsmessagetrait-getproperties }
+
+```php
+public function getProperties(): array;
+```
+
+Returns all application properties.
+
+#### `getProperty()` { #queueadaptertraitsmessagetrait-getproperty }
+
+```php
+public function getProperty(
+    string $name,
+    mixed $defaultValue = null
+): mixed;
+```
+
+Returns a single property value, or the default when it is not set.
+
+#### `getReplyTo()` { #queueadaptertraitsmessagetrait-getreplyto }
+
+```php
+public function getReplyTo(): string|null;
+```
+
+Returns the reply-to destination name.
+
+#### `getTimestamp()` { #queueadaptertraitsmessagetrait-gettimestamp }
+
+```php
+public function getTimestamp(): int|null;
+```
+
+Returns the timestamp (in milliseconds) or null when it is not set.
+
+#### `isRedelivered()` { #queueadaptertraitsmessagetrait-isredelivered }
+
+```php
+public function isRedelivered(): bool;
+```
+
+Whether the message has been redelivered.
+
+#### `setBody()` { #queueadaptertraitsmessagetrait-setbody }
+
+```php
+public function setBody( string $body ): void;
+```
+
+Sets the message body.
+
+#### `setCorrelationId()` { #queueadaptertraitsmessagetrait-setcorrelationid }
+
+```php
+public function setCorrelationId( string $correlationId ): void;
+```
+
+Sets the correlation id.
+
+#### `setHeader()` { #queueadaptertraitsmessagetrait-setheader }
+
+```php
+public function setHeader(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single transport header.
+
+#### `setHeaders()` { #queueadaptertraitsmessagetrait-setheaders }
+
+```php
+public function setHeaders( array $headers ): void;
+```
+
+Replaces all transport headers.
+
+#### `setMessageId()` { #queueadaptertraitsmessagetrait-setmessageid }
+
+```php
+public function setMessageId( string $messageId ): void;
+```
+
+Sets the message id.
+
+#### `setProperties()` { #queueadaptertraitsmessagetrait-setproperties }
+
+```php
+public function setProperties( array $properties ): void;
+```
+
+Replaces all application properties.
+
+#### `setProperty()` { #queueadaptertraitsmessagetrait-setproperty }
+
+```php
+public function setProperty(
+    string $name,
+    mixed $value
+): void;
+```
+
+Sets a single application property.
+
+#### `setRedelivered()` { #queueadaptertraitsmessagetrait-setredelivered }
+
+```php
+public function setRedelivered( bool $redelivered ): void;
+```
+
+Marks the message as redelivered.
+
+#### `setReplyTo()` { #queueadaptertraitsmessagetrait-setreplyto }
+
+```php
+public function setReplyTo( string $replyTo ): void;
+```
+
+Sets the reply-to destination name.
+
+#### `setTimestamp()` { #queueadaptertraitsmessagetrait-settimestamp }
+
+```php
+public function setTimestamp( int $timestamp ): void;
+```
+
+Sets the timestamp (in milliseconds).
+
+
+## Queue\Adapter\Traits\SubscriptionConsumerTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/Traits/SubscriptionConsumerTrait.zep){ .src-btn }
+
+Shared subscription-consumer implementation. Implements the round-robin poll
+loop that dispatches each subscribed consumer's messages to its callback; a
+callback returning false stops consumption. The loop relies only on the
+consumer's `receiveNoWait()`, so it is transport-agnostic. Concrete adapters
+keep just the constructor that captures their context and poll interval.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#queueadaptertraitssubscriptionconsumertrait-consume">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">consume</span>( <span class="st">int</span> <span class="sv">$timeout</span><span class="sm"> = 0</span> )</code>
+<span class="desc">Polls every subscription, dispatching each message to its callback,</span>
+</a>
+<a class="api-item" href="#queueadaptertraitssubscriptionconsumertrait-subscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">subscribe</span>(<span class="prm"><span class="st">\Phalcon\Contracts\Queue\Consumer</span> <span class="sv">$consumer</span>,</span><span class="prm"><span class="st">callable</span> <span class="sv">$callback</span></span>)</code>
+<span class="desc">Subscribes a consumer; the callback receives each delivered message.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitssubscriptionconsumertrait-unsubscribe">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribe</span>( <span class="st">\Phalcon\Contracts\Queue\Consumer</span> <span class="sv">$consumer</span> )</code>
+<span class="desc">Removes a previously subscribed consumer.</span>
+</a>
+<a class="api-item" href="#queueadaptertraitssubscriptionconsumertrait-unsubscribeall">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">unsubscribeAll</span>()</code>
+<span class="desc">Removes every subscribed consumer.</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sv">$pollInterval</span><span class="sm"> = 200</span></code>
+<span class="desc">Milliseconds slept between poll passes.</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$subscriptions</span><span class="sm"> = null</span></code>
+<span class="desc">Subscriptions keyed by queue name: [consumer, callback].
+
+@todo Use a default [] once Zephir supports array trait defaults</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `consume()` { #queueadaptertraitssubscriptionconsumertrait-consume }
+
+```php
+public function consume( int $timeout = 0 ): void;
+```
+
+Polls every subscription, dispatching each message to its callback,
+blocking up to timeout milliseconds (0 = block until a callback
+returns false).
+
+#### `subscribe()` { #queueadaptertraitssubscriptionconsumertrait-subscribe }
+
+```php
+public function subscribe(
+    \Phalcon\Contracts\Queue\Consumer $consumer,
+    callable $callback
+): void;
+```
+
+Subscribes a consumer; the callback receives each delivered message.
+
+#### `unsubscribe()` { #queueadaptertraitssubscriptionconsumertrait-unsubscribe }
+
+```php
+public function unsubscribe( \Phalcon\Contracts\Queue\Consumer $consumer ): void;
+```
+
+Removes a previously subscribed consumer.
+
+#### `unsubscribeAll()` { #queueadaptertraitssubscriptionconsumertrait-unsubscribeall }
+
+```php
+public function unsubscribeAll(): void;
+```
+
+Removes every subscribed consumer.
+
+
 ## Queue\Cli\ConsumerTask
 
 <span class="badge badge--class">Class</span>

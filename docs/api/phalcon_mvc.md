@@ -33773,3 +33773,142 @@ protected function loadTemplateEngines(): array;
 
 Loads registered template engines, if none are registered it will use
 Phalcon\Mvc\View\Engine\Php
+
+
+## Mvc\View\Traits\ViewParamsTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Traits/ViewParamsTrait.zep){ .src-btn }
+
+Shared view parameter and content accessors
+
+@todo v7 - inspect the View/Simple interfaces (ViewInterface vs ViewBaseInterface) to see whether these accessors can be unified behind a shared contract
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\View\Traits\ViewParamsTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getcontent">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getContent</span>()</code>
+<span class="desc">Returns output from another view stage</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getparamstoview">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getParamsToView</span>()</code>
+<span class="desc">Returns parameters to views</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getregisteredengines">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getRegisteredEngines</span>()</code>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-getvar">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed|null</code>
+<code class="sig"><span class="sf">getVar</span>( <span class="st">string</span> <span class="sv">$key</span> )</code>
+<span class="desc">Returns a parameter previously set in the view</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-setcontent">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setContent</span>( <span class="st">string</span> <span class="sv">$content</span> )</code>
+<span class="desc">Externally sets the view content</span>
+</a>
+<a class="api-item" href="#mvcviewtraitsviewparamstrait-setvar">
+<code class="vis vis-public">public</code>
+<code class="ret">static</code>
+<code class="sig"><span class="sf">setVar</span>(<span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$value</span></span>)</code>
+<span class="desc">Set a single view parameter</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$content</span><span class="sm"> = &quot;&quot;</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$registeredEngines</span><span class="sm"> = null</span></code>
+<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$viewParams</span><span class="sm"> = null</span></code>
+<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 6</div>
+
+#### `getContent()` { #mvcviewtraitsviewparamstrait-getcontent }
+
+```php
+public function getContent(): string;
+```
+
+Returns output from another view stage
+
+#### `getParamsToView()` { #mvcviewtraitsviewparamstrait-getparamstoview }
+
+```php
+public function getParamsToView(): array;
+```
+
+Returns parameters to views
+
+#### `getRegisteredEngines()` { #mvcviewtraitsviewparamstrait-getregisteredengines }
+
+```php
+public function getRegisteredEngines(): array;
+```
+
+#### `getVar()` { #mvcviewtraitsviewparamstrait-getvar }
+
+```php
+public function getVar( string $key ): mixed|null;
+```
+
+Returns a parameter previously set in the view
+
+#### `setContent()` { #mvcviewtraitsviewparamstrait-setcontent }
+
+```php
+public function setContent( string $content ): static;
+```
+
+Externally sets the view content
+
+```php
+$this->view->setContent("<h1>hello</h1>");
+```
+
+#### `setVar()` { #mvcviewtraitsviewparamstrait-setvar }
+
+```php
+public function setVar(
+    string $key,
+    mixed $value
+): static;
+```
+
+Set a single view parameter
+
+```php
+$this->view->setVar("products", $products);
+```

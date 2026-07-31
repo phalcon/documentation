@@ -6539,3 +6539,51 @@ public function setRaw( string $header ): HeadersInterface;
 ```
 
 Sets a raw header to be sent at the end of the request
+
+
+## Http\Traits\EncryptionAwareTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Traits/EncryptionAwareTrait.zep){ .src-btn }
+
+Provides the implicit encryption flag and its accessor shared by the HTTP
+cookie classes.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Http\Traits\EncryptionAwareTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#httptraitsencryptionawaretrait-isusingencryption">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">isUsingEncryption</span>()</code>
+<span class="desc">Check if implicit encryption is being used</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sv">$useEncryption</span><span class="sm"> = false</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `isUsingEncryption()` { #httptraitsencryptionawaretrait-isusingencryption }
+
+```php
+public function isUsingEncryption(): bool;
+```
+
+Check if implicit encryption is being used

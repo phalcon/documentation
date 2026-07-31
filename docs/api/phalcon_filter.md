@@ -2916,6 +2916,69 @@ public function __construct();
 ```
 
 
+## Filter\Validation\Traits\ValidatorCompositeTrait
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Traits/ValidatorCompositeTrait.zep){ .src-btn }
+
+Shared validator collection state and combined validation for composite
+validators.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#filtervalidationtraitsvalidatorcompositetrait-getvalidators">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getValidators</span>()</code>
+</a>
+<a class="api-item" href="#filtervalidationtraitsvalidatorcompositetrait-validate">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">validate</span>(<span class="prm"><span class="st">\Phalcon\Filter\Validation</span> <span class="sv">$validation</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$field</span></span>)</code>
+<span class="desc">Executes the validation</span>
+</a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$validators</span><span class="sm"> = null</span></code>
+<span class="desc">@todo Use a default [] once Zephir supports array trait defaults</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 2</div>
+
+#### `getValidators()` { #filtervalidationtraitsvalidatorcompositetrait-getvalidators }
+
+```php
+public function getValidators(): array;
+```
+
+#### `validate()` { #filtervalidationtraitsvalidatorcompositetrait-validate }
+
+```php
+public function validate(
+    \Phalcon\Filter\Validation $validation,
+    mixed $field
+): bool;
+```
+
+Executes the validation
+
+
 ## Filter\Validation\ValidationInterface
 
 <span class="badge badge--interface">Interface</span>
