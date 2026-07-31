@@ -91,10 +91,11 @@ Projects that need PHP ini flags or environment variables declare a `talon.php` 
 return [
     'php'     => ['extension=ext/modules/phalcon.so'],   // global ini flags, optional
     'suites'  => [
-        'unit'   => ['config' => 'resources/phpunit.xml.dist'],
-        'mysql'  => ['config' => 'resources/phpunit.mysql.xml'],
-        'pgsql'  => ['config' => 'resources/phpunit.pgsql.xml'],
-        'sqlite' => ['config' => 'resources/phpunit.sqlite.xml'],
+        'unit'    => ['config' => 'resources/phpunit.xml.dist'],
+        'mariadb' => ['config' => 'resources/phpunit.mariadb.xml'],
+        'mysql'   => ['config' => 'resources/phpunit.mysql.xml'],
+        'pgsql'   => ['config' => 'resources/phpunit.pgsql.xml'],
+        'sqlite'  => ['config' => 'resources/phpunit.sqlite.xml'],
     ],
     'default' => 'unit',
 ];
@@ -163,7 +164,35 @@ final class UserTest extends AbstractDatabaseTestCase
 }
 ```
 
-The driver comes from the `driver` environment variable (`sqlite`, `mysql`, or `pgsql`). Credentials come from `Settings`, read from environment variables by default.
+The driver comes from the `driver` environment variable (`sqlite`, `mysql`, `mariadb`, or `pgsql`). Credentials come from `Settings`, read from environment variables by default.
+
+Each driver reads its own block, so MySQL and MariaDB are configured independently and can point at different servers:
+
+| Driver    | Variable               | Default     | Notes                              |
+|-----------|------------------------|-------------|------------------------------------|
+| `mariadb` | `DATA_MARIADB_HOST`    | `127.0.0.1` |                                    |
+| `mariadb` | `DATA_MARIADB_PORT`    | `3306`      |                                    |
+| `mariadb` | `DATA_MARIADB_NAME`    | `talon`     | Database name                      |
+| `mariadb` | `DATA_MARIADB_USER`    | `root`      |                                    |
+| `mariadb` | `DATA_MARIADB_PASS`    | empty       |                                    |
+| `mariadb` | `DATA_MARIADB_CHARSET` | `utf8mb4`   |                                    |
+| `mysql`   | `DATA_MYSQL_HOST`      | `127.0.0.1` |                                    |
+| `mysql`   | `DATA_MYSQL_PORT`      | `3306`      |                                    |
+| `mysql`   | `DATA_MYSQL_NAME`      | `talon`     | Database name                      |
+| `mysql`   | `DATA_MYSQL_USER`      | `root`      |                                    |
+| `mysql`   | `DATA_MYSQL_PASS`      | empty       |                                    |
+| `mysql`   | `DATA_MYSQL_CHARSET`   | `utf8mb4`   |                                    |
+| `pgsql`   | `DATA_POSTGRES_HOST`   | `127.0.0.1` |                                    |
+| `pgsql`   | `DATA_POSTGRES_PORT`   | `5432`      |                                    |
+| `pgsql`   | `DATA_POSTGRES_NAME`   | `talon`     | Database name                      |
+| `pgsql`   | `DATA_POSTGRES_USER`   | `postgres`  |                                    |
+| `pgsql`   | `DATA_POSTGRES_PASS`   | empty       |                                    |
+| `pgsql`   | `DATA_POSTGRES_SCHEMA` | empty       | Sets the connection search path    |
+| `sqlite`  | `DATA_SQLITE_NAME`     | `:memory:`  | A file path, or `:memory:`         |
+
+MariaDB connects through `pdo_mysql`, so `Settings::getDatabaseDsn('mariadb')` returns a DSN carrying the `mysql:` prefix. No additional PHP extension is required.
+
+`DATA_POSTGRES_SCHEMA` is applied to the connection as `SET search_path` immediately after connecting, before any `initial_queries` run.
 
 ### Functional tests
 
@@ -239,6 +268,23 @@ final class CacheTest extends AbstractServicesTestCase
 ```
 
 Service tests skip automatically when the backend (Redis or Memcached) is unreachable, so the suite stays green on a host without those services.
+
+The backends read these environment variables:
+
+| Service        | Variable                   | Default     | Notes                                  |
+|----------------|----------------------------|-------------|----------------------------------------|
+| `redis`        | `DATA_REDIS_HOST`          | `127.0.0.1` |                                        |
+| `redis`        | `DATA_REDIS_PORT`          | `6379`      |                                        |
+| `redis`        | `DATA_REDIS_NAME`          | `0`         | The database index, not a name         |
+| `redisCluster` | `DATA_REDIS_CLUSTER_HOSTS` | empty       | Comma-separated `host:port` list       |
+| `redisCluster` | `DATA_REDIS_CLUSTER_AUTH`  | empty       |                                        |
+| `memcached`    | `DATA_MEMCACHED_HOST`      | `127.0.0.1` |                                        |
+| `memcached`    | `DATA_MEMCACHED_PORT`      | `11211`     |                                        |
+| `memcached`    | `DATA_MEMCACHED_WEIGHT`    | `0`         | Server weight passed to `addServer()`  |
+| `beanstalk`    | `DATA_BEANSTALKD_HOST`     | empty       |                                        |
+| `beanstalk`    | `DATA_BEANSTALKD_PORT`     | empty       |                                        |
+
+`ServicesTrait` provides helpers for Redis and Memcached only. The `redisCluster` and `beanstalk` options are read and exposed through `Settings::getServiceOptions()` for a project to consume, but Talon ships no assertions for them.
 
 ### Mocking a resultset
 
