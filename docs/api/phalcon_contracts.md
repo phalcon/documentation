@@ -8,6 +8,815 @@ hide:
     All classes are prefixed with `Phalcon`
 
 
+## Contracts\ADR\Action
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Action.zep){ .src-btn }
+
+Marker contract for a per-endpoint Action. An Action is a Handler:
+`__invoke(request): response`.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Contracts\ADR\Handler`](#contractsadrhandler)
+    - **`Phalcon\Contracts\ADR\Action`**
+
+</div>
+
+
+## Contracts\ADR\Application
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Application.zep){ .src-btn }
+
+Handles a request end to end: routes it, dispatches the Action and returns
+the response, routing any error through the error responder.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Application`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrapplication-handle">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">handle</span>( <span class="st">AttributeRequest</span> <span class="sv">$request</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `handle()` { #contractsadrapplication-handle }
+
+```php
+public function handle( AttributeRequest $request ): ResponseInterface;
+```
+
+
+## Contracts\ADR\Dispatcher
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Dispatcher.zep){ .src-btn }
+
+Resolves an Action by class name, builds the middleware pipeline around it and
+runs it to produce a response.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Dispatcher`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrdispatcher-dispatch">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">dispatch</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionClass</span>,</span><span class="prm"><span class="st">AttributeRequest</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$routeMiddleware</span><span class="sm"> = []</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `dispatch()` { #contractsadrdispatcher-dispatch }
+
+```php
+public function dispatch(
+    string $actionClass,
+    AttributeRequest $request,
+    array $routeMiddleware = []
+): ResponseInterface;
+```
+
+
+## Contracts\ADR\Emitter\Emitter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Emitter/Emitter.zep){ .src-btn }
+
+Sends a response to the client. Called by the front controller only.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Emitter\Emitter`**
+
+</div>
+
+__Uses__ `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadremitteremitter-emit">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">emit</span>( <span class="st">ResponseInterface</span> <span class="sv">$response</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `emit()` { #contractsadremitteremitter-emit }
+
+```php
+public function emit( ResponseInterface $response ): void;
+```
+
+
+## Contracts\ADR\Exceptions\ADRThrowable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Exceptions/ADRThrowable.zep){ .src-btn }
+
+Base throwable contract for the ADR component. Every ADR exception implements
+it, so callers can catch all ADR errors with a single type.
+
+<div class="api-tree" markdown>
+
+- `\Throwable`
+    - **`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`**
+
+</div>
+
+
+## Contracts\ADR\Handler
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Handler.zep){ .src-btn }
+
+Receives the request and returns a response. The terminal handler in the
+pipeline is the Action.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Handler`**
+    - [`Phalcon\Contracts\ADR\Action`](#contractsadraction)
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrhandler-__invoke">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">__invoke</span>( <span class="st">AttributeRequest</span> <span class="sv">$request</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__invoke()` { #contractsadrhandler-__invoke }
+
+```php
+public function __invoke( AttributeRequest $request ): ResponseInterface;
+```
+
+
+## Contracts\ADR\Middleware
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Middleware.zep){ .src-btn }
+
+Wraps the handler chain. Middleware may pass the request through to the next
+handler, decorate the response, short-circuit by returning its own response,
+or throw to route through the error responder.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Middleware`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrmiddleware-__invoke">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">AttributeRequest</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">Handler</span> <span class="sv">$next</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__invoke()` { #contractsadrmiddleware-__invoke }
+
+```php
+public function __invoke(
+    AttributeRequest $request,
+    Handler $next
+): ResponseInterface;
+```
+
+
+## Contracts\ADR\Payload\Payload
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Payload/Payload.zep){ .src-btn }
+
+Contract for the immutable payload produced by the domain layer.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Payload\Payload`**
+
+</div>
+
+__Uses__ `Throwable`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrpayloadpayload-getexception">
+<code class="vis vis-public">public</code>
+<code class="ret">Throwable|null</code>
+<code class="sig"><span class="sf">getException</span>()</code>
+<span class="desc">Gets the exception thrown in the domain layer, if any.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getextras">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getExtras</span>()</code>
+<span class="desc">Gets the arbitrary extra domain information.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getinput">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getInput</span>()</code>
+<span class="desc">Gets the domain input.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getmessages">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getMessages</span>()</code>
+<span class="desc">Gets the domain messages.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getresult">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getResult</span>()</code>
+<span class="desc">Gets the domain result.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-getstatus">
+<code class="vis vis-public">public</code>
+<code class="ret">mixed</code>
+<code class="sig"><span class="sf">getStatus</span>()</code>
+<span class="desc">Gets the payload status.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withexception">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withException</span>( <span class="st">Throwable</span> <span class="sv">$exception</span> )</code>
+<span class="desc">Returns a copy of the payload with the given exception.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withextras">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withExtras</span>( <span class="st">mixed</span> <span class="sv">$extras</span> )</code>
+<span class="desc">Returns a copy of the payload with the given extras.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withinput">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withInput</span>( <span class="st">mixed</span> <span class="sv">$input</span> )</code>
+<span class="desc">Returns a copy of the payload with the given input.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withmessages">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withMessages</span>( <span class="st">mixed</span> <span class="sv">$messages</span> )</code>
+<span class="desc">Returns a copy of the payload with the given messages.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withresult">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withResult</span>( <span class="st">mixed</span> <span class="sv">$result</span> )</code>
+<span class="desc">Returns a copy of the payload with the given result.</span>
+</a>
+<a class="api-item" href="#contractsadrpayloadpayload-withstatus">
+<code class="vis vis-public">public</code>
+<code class="ret">Payload</code>
+<code class="sig"><span class="sf">withStatus</span>( <span class="st">mixed</span> <span class="sv">$status</span> )</code>
+<span class="desc">Returns a copy of the payload with the given status.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 12</div>
+
+#### `getException()` { #contractsadrpayloadpayload-getexception }
+
+```php
+public function getException(): Throwable|null;
+```
+
+Gets the exception thrown in the domain layer, if any.
+
+#### `getExtras()` { #contractsadrpayloadpayload-getextras }
+
+```php
+public function getExtras(): mixed;
+```
+
+Gets the arbitrary extra domain information.
+
+#### `getInput()` { #contractsadrpayloadpayload-getinput }
+
+```php
+public function getInput(): mixed;
+```
+
+Gets the domain input.
+
+#### `getMessages()` { #contractsadrpayloadpayload-getmessages }
+
+```php
+public function getMessages(): mixed;
+```
+
+Gets the domain messages.
+
+#### `getResult()` { #contractsadrpayloadpayload-getresult }
+
+```php
+public function getResult(): mixed;
+```
+
+Gets the domain result.
+
+#### `getStatus()` { #contractsadrpayloadpayload-getstatus }
+
+```php
+public function getStatus(): mixed;
+```
+
+Gets the payload status.
+
+#### `withException()` { #contractsadrpayloadpayload-withexception }
+
+```php
+public function withException( Throwable $exception ): Payload;
+```
+
+Returns a copy of the payload with the given exception.
+
+#### `withExtras()` { #contractsadrpayloadpayload-withextras }
+
+```php
+public function withExtras( mixed $extras ): Payload;
+```
+
+Returns a copy of the payload with the given extras.
+
+#### `withInput()` { #contractsadrpayloadpayload-withinput }
+
+```php
+public function withInput( mixed $input ): Payload;
+```
+
+Returns a copy of the payload with the given input.
+
+#### `withMessages()` { #contractsadrpayloadpayload-withmessages }
+
+```php
+public function withMessages( mixed $messages ): Payload;
+```
+
+Returns a copy of the payload with the given messages.
+
+#### `withResult()` { #contractsadrpayloadpayload-withresult }
+
+```php
+public function withResult( mixed $result ): Payload;
+```
+
+Returns a copy of the payload with the given result.
+
+#### `withStatus()` { #contractsadrpayloadpayload-withstatus }
+
+```php
+public function withStatus( mixed $status ): Payload;
+```
+
+Returns a copy of the payload with the given status.
+
+
+## Contracts\ADR\Responder\Formatter\Formatter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Responder/Formatter/Formatter.zep){ .src-btn }
+
+Renders a payload into a string for a given content type.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Responder\Formatter\Formatter`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\ADR\Payload\Payload`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrresponderformatterformatter-accepts">
+<code class="vis vis-public">public</code>
+<code class="ret">bool</code>
+<code class="sig"><span class="sf">accepts</span>( <span class="st">string</span> <span class="sv">$acceptHeader</span> )</code>
+<span class="desc">Whether this formatter can satisfy the given <code>Accept</code> header.</span>
+</a>
+<a class="api-item" href="#contractsadrresponderformatterformatter-contenttype">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">contentType</span>()</code>
+<span class="desc">The content type this formatter produces.</span>
+</a>
+<a class="api-item" href="#contractsadrresponderformatterformatter-format">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">format</span>( <span class="st">Payload</span> <span class="sv">$payload</span> )</code>
+<span class="desc">Renders the payload into a string.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 3</div>
+
+#### `accepts()` { #contractsadrresponderformatterformatter-accepts }
+
+```php
+public function accepts( string $acceptHeader ): bool;
+```
+
+Whether this formatter can satisfy the given `Accept` header.
+
+#### `contentType()` { #contractsadrresponderformatterformatter-contenttype }
+
+```php
+public function contentType(): string;
+```
+
+The content type this formatter produces.
+
+#### `format()` { #contractsadrresponderformatterformatter-format }
+
+```php
+public function format( Payload $payload ): string;
+```
+
+Renders the payload into a string.
+
+
+## Contracts\ADR\Responder\Responder
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Responder/Responder.zep){ .src-btn }
+
+Turns a payload into an HTTP response. The only layer that speaks HTTP.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Responder\Responder`**
+
+</div>
+
+__Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrresponderresponder-__invoke">
+<code class="vis vis-public">public</code>
+<code class="ret">ResponseInterface</code>
+<code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">RequestInterface</span> <span class="sv">$request</span>,</span><span class="prm"><span class="st">ResponseInterface</span> <span class="sv">$response</span>,</span><span class="prm"><span class="st">Payload</span> <span class="sv">$payload</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__invoke()` { #contractsadrresponderresponder-__invoke }
+
+```php
+public function __invoke(
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
+): ResponseInterface;
+```
+
+
+## Contracts\ADR\Router\AttributeFilter
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Router/AttributeFilter.zep){ .src-btn }
+
+Validates, casts and converts a router match's positional tail segments into
+named request attributes, driven by the matched Action's optional static
+`params()` declaration.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Router\AttributeFilter`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrrouterattributefilter-filter">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">filter</span>(<span class="prm"><span class="st">string</span> <span class="sv">$actionClass</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$attributes</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `filter()` { #contractsadrrouterattributefilter-filter }
+
+```php
+public function filter(
+    string $actionClass,
+    array $attributes
+): array;
+```
+
+
+## Contracts\ADR\Router\Router
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Router/Router.zep){ .src-btn }
+
+Maps a request to an Action by convention: the HTTP method and the static
+path segments identify the class; trailing segments become positional
+request attributes. No route table.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Router\Router`**
+
+</div>
+
+__Uses__ `Phalcon\Http\RequestInterface`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrrouterrouter-candidatesfor">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">candidatesFor</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span></span>)</code>
+<span class="desc">Every Action class this router would try for the given method and path,</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-classfor">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">classFor</span>(<span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$path</span></span>)</code>
+<span class="desc">The class this convention names for a fully static path, derived without</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-match">
+<code class="vis vis-public">public</code>
+<code class="ret">RouterMatch|null</code>
+<code class="sig"><span class="sf">match</span>( <span class="st">RequestInterface</span> <span class="sv">$request</span> )</code>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-methodfor">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">methodFor</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+<span class="desc">The HTTP method the given Action class answers, uppercased, or null when</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-pathfor">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">pathFor</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+<span class="desc">The canonical static path the given Action class answers, or null when</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setactiondirectory">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setActionDirectory</span>( <span class="st">string</span> <span class="sv">$actionDirectory</span> )</code>
+<span class="desc">The filesystem root that backs the base namespace. The router uses it to</span>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setbasenamespace">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setBaseNamespace</span>( <span class="st">string</span> <span class="sv">$baseNamespace</span> )</code>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setmiddlewaremap">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setMiddlewareMap</span>( <span class="st">array</span> <span class="sv">$middlewareMap</span> )</code>
+</a>
+<a class="api-item" href="#contractsadrrouterrouter-setwordseparator">
+<code class="vis vis-public">public</code>
+<code class="ret">Router</code>
+<code class="sig"><span class="sf">setWordSeparator</span>( <span class="st">string</span> <span class="sv">$wordSeparator</span> )</code>
+<span class="desc">The single delimiter between words in a path segment. Applied</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 9</div>
+
+#### `candidatesFor()` { #contractsadrrouterrouter-candidatesfor }
+
+```php
+public function candidatesFor(
+    string $method,
+    string $path
+): array;
+```
+
+Every Action class this router would try for the given method and path,
+in the order it tries them. The first that exists wins at match time.
+Namespace descent consults the filesystem, so the list depends on the
+action directory.
+
+#### `classFor()` { #contractsadrrouterrouter-classfor }
+
+```php
+public function classFor(
+    string $method,
+    string $path
+): string;
+```
+
+The class this convention names for a fully static path, derived without
+consulting the filesystem - the exact inverse of pathFor().
+
+For tooling that needs the name before the code exists: generators,
+linters, documentation and "no action found; expected X" diagnostics.
+Pass the static prefix only; placeholders are the caller's concern.
+
+#### `match()` { #contractsadrrouterrouter-match }
+
+```php
+public function match( RequestInterface $request ): RouterMatch|null;
+```
+
+#### `methodFor()` { #contractsadrrouterrouter-methodfor }
+
+```php
+public function methodFor( string $className ): string|null;
+```
+
+The HTTP method the given Action class answers, uppercased, or null when
+the class is not one this convention would have produced.
+
+The counterpart to pathFor(): same argument, same null semantics, so a
+caller that accepts one answer accepts the other. Together they are the
+whole inverse of classFor().
+
+#### `pathFor()` { #contractsadrrouterrouter-pathfor }
+
+```php
+public function pathFor( string $className ): string|null;
+```
+
+The canonical static path the given Action class answers, or null when
+the class is not derivable from the base namespace. Positional
+attributes are not part of the canonical path.
+
+#### `setActionDirectory()` { #contractsadrrouterrouter-setactiondirectory }
+
+```php
+public function setActionDirectory( string $actionDirectory ): Router;
+```
+
+The filesystem root that backs the base namespace. The router uses it to
+decide whether a path segment names a sub-namespace.
+
+#### `setBaseNamespace()` { #contractsadrrouterrouter-setbasenamespace }
+
+```php
+public function setBaseNamespace( string $baseNamespace ): Router;
+```
+
+#### `setMiddlewareMap()` { #contractsadrrouterrouter-setmiddlewaremap }
+
+```php
+public function setMiddlewareMap( array $middlewareMap ): Router;
+```
+
+#### `setWordSeparator()` { #contractsadrrouterrouter-setwordseparator }
+
+```php
+public function setWordSeparator( string $wordSeparator ): Router;
+```
+
+The single delimiter between words in a path segment. Applied
+symmetrically when deriving a class name from a path and a path from a
+class name. Any other character is literal.
+
+
+## Contracts\ADR\Router\RouterMatch
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/ADR/Router/RouterMatch.zep){ .src-btn }
+
+The result of matching a request against the router: the Action class, the
+extracted route attributes, the route's middleware and its optional name.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\ADR\Router\RouterMatch`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsadrrouterroutermatch-getaction">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getAction</span>()</code>
+</a>
+<a class="api-item" href="#contractsadrrouterroutermatch-getattributes">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
+</a>
+<a class="api-item" href="#contractsadrrouterroutermatch-getmiddleware">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getMiddleware</span>()</code>
+</a>
+<a class="api-item" href="#contractsadrrouterroutermatch-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `getAction()` { #contractsadrrouterroutermatch-getaction }
+
+```php
+public function getAction(): string;
+```
+
+#### `getAttributes()` { #contractsadrrouterroutermatch-getattributes }
+
+```php
+public function getAttributes(): array;
+```
+
+#### `getMiddleware()` { #contractsadrrouterroutermatch-getmiddleware }
+
+```php
+public function getMiddleware(): array;
+```
+
+#### `getName()` { #contractsadrrouterroutermatch-getname }
+
+```php
+public function getName(): string|null;
+```
+
+
 ## Contracts\Acl\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
@@ -3180,6 +3989,58 @@ public function unsetExtenders(): static;
 ```php
 public function unsetFactory(): static;
 ```
+
+
+## Contracts\Container\Service\Enumerable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Container/Service/Enumerable.zep){ .src-btn }
+
+Optional capability contract for a container that can report the services it
+holds. Callers detect support with `instanceof`.
+
+Deliberately separate from Collection rather than a member of it. Collection
+mirrors the service-interop surface, which has no notion of enumeration, and
+adding a member to a published interface breaks every implementor. A second,
+narrow interface states the capability without touching the first.
+
+Carries no interop attribution because nothing here is copied: enumeration is
+Phalcon's own addition.
+
+Tooling that reports on a container type-hints this instead of the concrete
+Container, so it depends on a published contract rather than on an
+implementation detail that is free to change.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Container\Service\Enumerable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractscontainerserviceenumerable-getservicenames">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getServiceNames</span>()</code>
+<span class="desc">Returns the names of every registered service definition. Names that</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getServiceNames()` { #contractscontainerserviceenumerable-getservicenames }
+
+```php
+public function getServiceNames(): array;
+```
+
+Returns the names of every registered service definition. Names that
+only exist as an alias, a pre-set instance or a parameter are not
+included.
 
 
 ## Contracts\Container\Service\Provider
@@ -7233,6 +8094,55 @@ Also carries the standard RFC 4122 namespace UUIDs as constants.
 </div>
 
 
+## Contracts\Events\Enumerable
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Events/Enumerable.zep){ .src-btn }
+
+Optional capability contract for an events manager that can report every
+attached listener in one call. Callers detect support with `instanceof`.
+
+Deliberately separate from Manager rather than a member of it: adding a
+member to a published interface breaks every implementor, so a second,
+narrow interface states the capability without touching the first.
+
+Tooling that reports on an events manager type-hints this instead of the
+concrete Manager, so it depends on a published contract rather than on an
+implementation detail that is free to change.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Events\Enumerable`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractseventsenumerable-getlistenermap">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getListenerMap</span>()</code>
+<span class="desc">Returns every event type that currently has at least one listener,</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getListenerMap()` { #contractseventsenumerable-getlistenermap }
+
+```php
+public function getListenerMap(): array;
+```
+
+Returns every event type that currently has at least one listener,
+mapped to that type's listeners. Types contributed by subscribers are
+included, because addSubscriber() attaches through the regular listener
+pipeline.
+
+
 ## Contracts\Events\Event
 
 <span class="badge badge--interface">Interface</span>
@@ -7975,6 +8885,119 @@ public function load(): array;
 Returns an ordered list of normalized element definitions.
 
 
+## Contracts\Front\FrontController
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Front/FrontController.zep){ .src-btn }
+
+[_FrontController_][] affords an entry point into the outermost presentation
+layer in any execution context (HTTP, CLI, etc.).
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Front\FrontController`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsfrontfrontcontroller-run">
+<code class="vis vis-public">public</code>
+<code class="ret">int</code>
+<code class="sig"><span class="sf">run</span>()</code>
+<span class="desc">Runs the front controller.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `run()` { #contractsfrontfrontcontroller-run }
+
+```php
+public function run(): int;
+```
+
+Runs the front controller.
+
+- Directives:
+
+    - Implementations MUST report success by returning an integer `0`.
+
+    - Implementations MUST report non-success by returning an integer
+      between `1` and `254` (inclusive).
+
+    - Implementations MUST gracefully handle all [_Throwable_][]s.
+
+    - Implementations MUST NOT [`exit()`][], [`die()`][], or otherwise
+      avoid returning.
+
+- Notes:
+
+    - **The return value is intended as an exit status code.** Exit
+      status codes may be received initially by the in-process logic
+      that invoked `run()` (bootstrap scripts, test harnesses, etc.),
+      and may ultimately be received by a parent process (shell,
+      supervisor, init system, CI runner, monitoring tool, or similar)
+      via [`exit()`][]. Whether or not the exit status is consumed by the
+      calling code or parent process depends on the execution
+      environment: php-fpm and mod_php typically have no consumer,
+      whereas worker loops, supervised long-running processes, runtime
+      layers, and CI harnesses do.
+
+    - **"Success" and "non-success" are context-dependent.** In an HTTP
+      context, "success" typically means that the request was processed
+      and a response was emitted regardless of the HTTP status code,
+      whereas "non-success" may indicate that a [_Throwable_][] had to be
+      handled by the _FrontController_ itself. In a command line context,
+      "success" typically means that the command completed without
+      errors, whereas "non-success" may be one of several error
+      conditions (cf. the [`sysexits.h`][] conventions where applicable).
+
+    - **The exit status code `255` is reserved by PHP itself.** Cf.
+      [`exit()`][]: "Exit codes should be in the range 0 to 254, the exit
+      code 255 is reserved by PHP and should not be used."
+
+    - **Handle all possible exceptions.** The logic calling the front
+      controller should not have to deal with any exceptions bubbling up
+      from it.
+
+    - **Graceful handling means returning, not exiting.** A "graceful"
+      handler catches the [_Throwable_][], turns it into a non-success
+      exit status, and returns that status from `run()` rather than
+      calling [`exit()`][].
+
+    - **Return the exit status; leave termination to the caller.** The
+      value of an exit status code comes from letting the caller decide
+      what to do with it: a worker loop, queue worker, or test harness
+      needs `run()` to hand control back so it can continue, retry, or
+      assert on the result. An implementation that calls [`exit()`][]
+      inside `run()` prevents those uses, terminating the process before
+      the caller regains control.
+
+
+## Contracts\Front\FrontTypeAliases
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Front/FrontTypeAliases.zep){ .src-btn }
+
+[_FrontTypeAliases_][] provides custom PHPStan types to aid static analysis.
+
+- ```
+  front_exit_status_int int<0,254>
+  ```
+    - An `int` exit status code: `0` for success, `1` to `254` for
+      non-success. The value `255` is reserved by PHP itself.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\Front\FrontTypeAliases`**
+
+</div>
+
+
 ## Contracts\Html\Helper\Input\SelectData
 
 <span class="badge badge--interface">Interface</span>
@@ -8028,6 +9051,52 @@ ordering, or rendering is performed here.
 ```php
 public function getOptions(): array;
 ```
+
+
+## Contracts\Http\AttributeRequest
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/Http/AttributeRequest.zep){ .src-btn }
+
+Extends the request contract with the native attribute bag.
+
+`getAttributes()` already exists on the concrete `Phalcon\Http\Request`; this
+interface exposes it as a contract without touching `RequestInterface`
+(adding a method there would break userland implementers). It lets consumers
+type against the attribute-bearing request without depending on the concrete.
+
+<div class="api-tree" markdown>
+
+- [`Phalcon\Http\RequestInterface`](phalcon_http.md#httprequestinterface)
+    - **`Phalcon\Contracts\Http\AttributeRequest`**
+
+</div>
+
+__Uses__ `Phalcon\Http\RequestInterface` · `Phalcon\Http\Request\Bag\AttributeBag`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractshttpattributerequest-getattributes">
+<code class="vis vis-public">public</code>
+<code class="ret">AttributeBag</code>
+<code class="sig"><span class="sf">getAttributes</span>()</code>
+<span class="desc">Returns the request attribute bag.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `getAttributes()` { #contractshttpattributerequest-getattributes }
+
+```php
+public function getAttributes(): AttributeBag;
+```
+
+Returns the request attribute bag.
 
 
 ## Contracts\Logger\Adapter\Adapter
@@ -10635,3 +11704,47 @@ public function setTemplate(
 ```
 
 Overrides the template for the given name.
+
+
+## Contracts\View\Renderer
+
+<span class="badge badge--interface">Interface</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Contracts/View/Renderer.zep){ .src-btn }
+
+Renders a template with the given data and returns the result as a string.
+
+A neutral abstraction: it is not tied to MVC, to ADR, or to any particular
+template engine. `Phalcon\Mvc\View\Simple` satisfies it out of the box, and
+userland engines only need this one method to become a drop-in renderer.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Contracts\View\Renderer`**
+
+</div>
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#contractsviewrenderer-render">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">render</span>(<span class="prm"><span class="st">string</span> <span class="sv">$path</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$params</span><span class="sm"> = []</span></span>)</code>
+<span class="desc">Renders the template and returns the output.</span>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `render()` { #contractsviewrenderer-render }
+
+```php
+public function render(
+    string $path,
+    array $params = []
+): string;
+```
+
+Renders the template and returns the output.

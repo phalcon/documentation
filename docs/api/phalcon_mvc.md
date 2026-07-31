@@ -2813,7 +2813,7 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 </div>
 
-__Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Enum` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
+__Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Enum` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Eager\PathTree` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
 { .api-uses }
 
 ### Method Summary
@@ -3168,6 +3168,12 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 <code class="ret">void</code>
 <code class="sig"><span class="sf">setReadConnectionService</span>( <span class="st">string</span> <span class="sv">$connectionService</span> )</code>
 <span class="desc">Sets the DependencyInjection connection service name used to read data</span>
+</a>
+<a class="api-item" href="#mvcmodel-setrelated">
+<code class="vis vis-public">public</code>
+<code class="ret">ModelInterface</code>
+<code class="sig"><span class="sf">setRelated</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$records</span></span>)</code>
+<span class="desc">Stores related records in the relation cache, so that a subsequent</span>
 </a>
 <a class="api-item" href="#mvcmodel-setsnapshotdata">
 <code class="vis vis-public">public</code>
@@ -3546,7 +3552,7 @@ alias (or &quot;*&quot; wildcard) =&gt; bool. Cleared after each save().</span>
 
 ### Methods
 
-<div class="api-group">Public · 72</div>
+<div class="api-group">Public · 73</div>
 
 #### `__call()` { #mvcmodel-__call }
 
@@ -4650,6 +4656,22 @@ final public function setReadConnectionService( string $connectionService ): voi
 ```
 
 Sets the DependencyInjection connection service name used to read data
+
+#### `setRelated()` { #mvcmodel-setrelated }
+
+```php
+public function setRelated(
+    string $alias,
+    mixed $records
+): ModelInterface;
+```
+
+Stores related records in the relation cache, so that a subsequent
+getRelated() or property access returns them without querying.
+
+This is the write side of the cache getRelated() already reads. It does
+not mark the record dirty: the value lands in `related`, never in
+`dirtyRelated`, so save() is unaffected.
 
 #### `setSnapshotData()` { #mvcmodel-setsnapshotdata }
 
@@ -6380,7 +6402,7 @@ This is an class for binding models into params for handler
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\Controller\BindModelInterface` · `Phalcon\Mvc\Model\Binder\BindableInterface` · `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable` · `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn` · `Phalcon\Mvc\Model\Exceptions\MissingMethodName` · `Phalcon\Mvc\Model\Exceptions\MissingModelClassName` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType`
+__Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\Controller\BindModelInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Binder\BindableInterface` · `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable` · `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn` · `Phalcon\Mvc\Model\Exceptions\MissingMethodName` · `Phalcon\Mvc\Model\Exceptions\MissingModelClassName` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType`
 { .api-uses }
 
 ### Method Summary
@@ -6778,6 +6800,12 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 <code class="sig"><span class="sf">distinct</span>( <span class="st">mixed</span> <span class="sv">$distinct</span> )</code>
 <span class="desc">Sets SELECT DISTINCT / SELECT ALL flag</span>
 </a>
+<a class="api-item" href="#mvcmodelcriteria-eager">
+<code class="vis vis-public">public</code>
+<code class="ret">Criteria</code>
+<code class="sig"><span class="sf">eager</span>( <span class="st">array</span> <span class="sv">$paths</span> )</code>
+<span class="desc">Pre-loads the named relations when the criteria is executed</span>
+</a>
 <a class="api-item" href="#mvcmodelcriteria-execute">
 <code class="vis vis-public">public</code>
 <code class="ret">ResultsetInterface</code>
@@ -6984,7 +7012,7 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 
 ### Methods
 
-<div class="api-group">Public · 38</div>
+<div class="api-group">Public · 39</div>
 
 #### `andWhere()` { #mvcmodelcriteria-andwhere }
 
@@ -7126,6 +7154,29 @@ public function distinct( mixed $distinct ): CriteriaInterface;
 ```
 
 Sets SELECT DISTINCT / SELECT ALL flag
+
+#### `eager()` { #mvcmodelcriteria-eager }
+
+```php
+public function eager( array $paths ): Criteria;
+```
+
+Pre-loads the named relations when the criteria is executed
+
+```php
+$invoices = Invoices::query()
+    ->eager(["customer"])
+    ->where("inv_total > 100")
+    ->execute();
+```
+
+execute() forwards the parameters to Model::find(), which owns the
+loading, so this is a pass-through and takes the same shape: an array of
+dot-delimited relation paths, optionally `path => options`.
+
+Returns the concrete criteria rather than the interface because the
+method is deliberately not part of CriteriaInterface - adding it there
+would break every userland implementation.
 
 #### `execute()` { #mvcmodelcriteria-execute }
 
@@ -8061,6 +8112,320 @@ public function where(
 Sets the conditions parameter in the criteria
 
 
+## Mvc\Model\Eager\Loader
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Eager/Loader.zep){ .src-btn }
+
+Loads model relations in bulk - a bounded number of queries per relation
+node rather than one per record - and applies the result to records as they
+are hydrated.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Eager\Loader`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded` · `Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn` · `Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\Resultset\Simple`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodeleagerloader-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">ManagerInterface</span> <span class="sv">$manager</span> )</code>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-apply">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">apply</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$eagerMap</span></span>)</code>
+<span class="desc">Applies a pre-built eager map to a single record.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildkey">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">buildKey</span>( <span class="st">array</span> <span class="sv">$values</span> )</code>
+<span class="desc">Builds the lookup key for a set of key-field values.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-loadresultset">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">loadResultset</span>(<span class="prm"><span class="st">Simple</span> <span class="sv">$resultset</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$tree</span></span>)</code>
+<span class="desc">Loads a relation tree for a root resultset.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildmap">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">buildMap</span>(<span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$tree</span></span>)</code>
+<span class="desc">Builds one level of the map.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildnode">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">buildNode</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$node</span></span>)</code>
+<span class="desc">Builds a single map node: one query, indexed by the referenced field.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-buildthroughnode">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">buildThroughNode</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$node</span></span>)</code>
+<span class="desc">Through-relations in two steps rather than a join.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-collectkeys">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">collectKeys</span>(<span class="prm"><span class="st">array</span> <span class="sv">$parents</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$fields</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
+<span class="desc">Distinct, non-null local key tuples across the parent set.</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-fetchreferenced">
+<code class="vis vis-protected">protected</code>
+<code class="ret">Simple</code>
+<code class="sig"><span class="sf">fetchReferenced</span>(<span class="prm"><span class="st">RelationInterface</span> <span class="sv">$relation</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$keys</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span></span>)</code>
+<span class="desc">One query per relation node. An empty key set issues none at all -</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-normalizefields">
+<code class="vis vis-protected">protected</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">normalizeFields</span>( <span class="st">mixed</span> <span class="sv">$fields</span> )</code>
+<span class="desc">Relation fields are declared as a string for a single column and an</span>
+</a>
+<a class="api-item" href="#mvcmodeleagerloader-recordkey">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">recordKey</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$record</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$fields</span></span>)</code>
+<span class="desc">Lookup key for an already-hydrated record.</span>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MAX_ROWS_PER_LEVEL</span><span class="sm"> = 100000</span></code>
+<span class="desc">Maximum number of rows a single relation node may return before the load
+is refused. Guards against a to-many hop that follows a to-one hop, which
+can fan out to an entire table.</span>
+</div>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">ManagerInterface</code>
+<code class="sig"><span class="sv">$manager</span></code>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 4</div>
+
+#### `__construct()` { #mvcmodeleagerloader-__construct }
+
+```php
+public function __construct( ManagerInterface $manager );
+```
+
+#### `apply()` { #mvcmodeleagerloader-apply }
+
+```php
+public static function apply(
+    mixed $record,
+    array $eagerMap
+): void;
+```
+
+Applies a pre-built eager map to a single record.
+
+Shared by Resultset\Simple::current(), which stamps records as they are
+hydrated, and by the loader itself, which stamps instances it retains.
+
+Both Model and Row implement readAttribute(), so key extraction is
+uniform; only the write differs. A Row is what a column-restricted
+select produces, and it has no relation cache.
+
+#### `buildKey()` { #mvcmodeleagerloader-buildkey }
+
+```php
+public static function buildKey( array $values ): string;
+```
+
+Builds the lookup key for a set of key-field values.
+
+Always a string. A single value is cast, which also neutralizes the
+PostgreSQL-integer / MySQL-string mismatch for the same column. Multiple
+values are length-prefixed so ["a|b", "c"] cannot collide with
+["a", "b|c"].
+
+#### `loadResultset()` { #mvcmodeleagerloader-loadresultset }
+
+```php
+public function loadResultset(
+    Simple $resultset,
+    string $modelName,
+    array $tree
+): void;
+```
+
+Loads a relation tree for a root resultset.
+
+The resultset is materialized first: at this point the statement has run
+but no row has been consumed, so fetching every row costs nothing extra
+and gives the key values without a second pass over the cursor.
+
+<div class="api-group">Protected · 7</div>
+
+#### `buildMap()` { #mvcmodeleagerloader-buildmap }
+
+```php
+protected function buildMap(
+    array $parents,
+    string $modelName,
+    array $tree
+): array;
+```
+
+Builds one level of the map.
+
+#### `buildNode()` { #mvcmodeleagerloader-buildnode }
+
+```php
+protected function buildNode(
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
+): array;
+```
+
+Builds a single map node: one query, indexed by the referenced field.
+
+#### `buildThroughNode()` { #mvcmodeleagerloader-buildthroughnode }
+
+```php
+protected function buildThroughNode(
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
+): array;
+```
+
+Through-relations in two steps rather than a join.
+
+Step one fetches (parentKey, referencedKey) pairs from the intermediate
+model; step two fetches the referenced rows for the keys those pairs
+collected. The pairs then attribute referenced rows back to parents
+without a synthetic column in the select list, and without the row
+multiplication an inner join would cause.
+
+#### `collectKeys()` { #mvcmodeleagerloader-collectkeys }
+
+```php
+protected function collectKeys(
+    array $parents,
+    array $fields,
+    string $alias
+): array;
+```
+
+Distinct, non-null local key tuples across the parent set.
+
+#### `fetchReferenced()` { #mvcmodeleagerloader-fetchreferenced }
+
+```php
+protected function fetchReferenced(
+    RelationInterface $relation,
+    string $alias,
+    array $keys,
+    array $options
+): Simple;
+```
+
+One query per relation node. An empty key set issues none at all -
+WHERE IN () is a syntax error and there is nothing to attribute.
+
+#### `normalizeFields()` { #mvcmodeleagerloader-normalizefields }
+
+```php
+protected function normalizeFields( mixed $fields ): array;
+```
+
+Relation fields are declared as a string for a single column and an
+array for a composite key. Normalizing removes that fork everywhere
+downstream.
+
+#### `recordKey()` { #mvcmodeleagerloader-recordkey }
+
+```php
+protected function recordKey(
+    mixed $record,
+    array $fields
+): string;
+```
+
+Lookup key for an already-hydrated record.
+
+
+## Mvc\Model\Eager\PathTree
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Eager/PathTree.zep){ .src-btn }
+
+Turns the `eager` find parameter into a tree.
+
+Elements are either a bare path string or `path => options`. A path implies
+every one of its prefixes and prefixes are merged, so ["customer",
+"customer.country"] and ["customer.country"] produce the same two-node tree.
+The number of queries an eager load costs follows the number of nodes in
+this tree, not the number of elements supplied.
+
+<div class="api-tree" markdown>
+
+- **`Phalcon\Mvc\Model\Eager\PathTree`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exceptions\InvalidEagerPath` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodeleagerpathtree-parse">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">parse</span>( <span class="st">array</span> <span class="sv">$spec</span> )</code>
+</a>
+</div>
+
+### Constants
+
+<div class="api-list">
+<div class="api-item">
+<code class="ret">int</code>
+<code class="sig"><span class="sc">MAX_DEPTH</span><span class="sm"> = 5</span></code>
+<span class="desc">Longest path accepted. Depth alone is not what makes an eager load
+expensive, but an unbounded path is never intentional.</span>
+</div>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `parse()` { #mvcmodeleagerpathtree-parse }
+
+```php
+public static function parse( array $spec ): array;
+```
+
+
 ## Mvc\Model\Exception
 
 <span class="badge badge--class">Class</span>
@@ -8084,6 +8449,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`](#mvcmodelexceptionscorruptcolumntype)
         - [`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`](#mvcmodelexceptionscursorisimmutable)
         - [`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`](#mvcmodelexceptionsdatatypenotdefined)
+        - [`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`](#mvcmodelexceptionseagerrowlimitexceeded)
         - [`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`](#mvcmodelexceptionshandlermustimplementbindable)
         - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`](#mvcmodelexceptionsidentitynotincolumnmap)
         - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`](#mvcmodelexceptionsidentitynotintablecolumns)
@@ -8092,6 +8458,8 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`](#mvcmodelexceptionsinvalidconnectionservice)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidContainer`](#mvcmodelexceptionsinvalidcontainer)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`](#mvcmodelexceptionsinvaliddumpresultkey)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`](#mvcmodelexceptionsinvalideagerparameter)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`](#mvcmodelexceptionsinvalideagerpath)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`](#mvcmodelexceptionsinvalidfindparameters)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`](#mvcmodelexceptionsinvalidgetmodelnamereturn)
         - [`Phalcon\Mvc\Model\Exceptions\InvalidModelName`](#mvcmodelexceptionsinvalidmodelname)
@@ -8102,6 +8470,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`](#mvcmodelexceptionsinvalidserializationdata)
         - [`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`](#mvcmodelexceptionsmanagerormservicesunavailable)
         - [`Phalcon\Mvc\Model\Exceptions\MethodNotFound`](#mvcmodelexceptionsmethodnotfound)
+        - [`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`](#mvcmodelexceptionsmissingeagerkeycolumn)
         - [`Phalcon\Mvc\Model\Exceptions\MissingMethodName`](#mvcmodelexceptionsmissingmethodname)
         - [`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`](#mvcmodelexceptionsmissingmodelclassname)
         - [`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`](#mvcmodelexceptionsmodelcouldnotload)
@@ -8119,7 +8488,11 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
         - [`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`](#mvcmodelexceptionsrowisimmutable)
         - [`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`](#mvcmodelexceptionssnapshotsdisabled)
         - [`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`](#mvcmodelexceptionsstaticmethodrequiresoneargument)
+        - [`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`](#mvcmodelexceptionsunknowneagerrelation)
         - [`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`](#mvcmodelexceptionsunknownrelationtype)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`](#mvcmodelexceptionsunsupportedeagerhydration)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`](#mvcmodelexceptionsunsupportedeageroption)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`](#mvcmodelexceptionsunsupportedeagerresultset)
         - [`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`](#mvcmodelexceptionsupdatesnapshotdisabled)
         - [`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`](#mvcmodelmetadataexceptionscannotobtaintablecolumns)
         - [`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`](#mvcmodelmetadataexceptionscolumnmapnotarray)
@@ -8538,6 +8911,46 @@ public function __construct(
 ```
 
 
+## Mvc\Model\Exceptions\EagerRowLimitExceeded
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/EagerRowLimitExceeded.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionseagerrowlimitexceeded-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$rowCount</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$limit</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionseagerrowlimitexceeded-__construct }
+
+```php
+public function __construct(
+    string $modelName,
+    int $rowCount,
+    int $limit
+);
+```
+
+
 ## Mvc\Model\Exceptions\HandlerMustImplementBindable
 
 <span class="badge badge--class">Class</span>
@@ -8829,6 +9242,78 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct( string $className );
+```
+
+
+## Mvc\Model\Exceptions\InvalidEagerParameter
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidEagerParameter.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsinvalideagerparameter-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsinvalideagerparameter-__construct }
+
+```php
+public function __construct();
+```
+
+
+## Mvc\Model\Exceptions\InvalidEagerPath
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/InvalidEagerPath.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsinvalideagerpath-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$path</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsinvalideagerpath-__construct }
+
+```php
+public function __construct( string $path );
 ```
 
 
@@ -9191,6 +9676,45 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct(
     string $method,
     string $modelName
+);
+```
+
+
+## Mvc\Model\Exceptions\MissingEagerKeyColumn
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/MissingEagerKeyColumn.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsmissingeagerkeycolumn-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$alias</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$column</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsmissingeagerkeycolumn-__construct }
+
+```php
+public function __construct(
+    string $alias,
+    string $column
 );
 ```
 
@@ -9830,6 +10354,45 @@ public function __construct(
 ```
 
 
+## Mvc\Model\Exceptions\UnknownEagerRelation
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UnknownEagerRelation.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunknowneagerrelation-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>(<span class="prm"><span class="st">string</span> <span class="sv">$modelName</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$alias</span></span>)</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunknowneagerrelation-__construct }
+
+```php
+public function __construct(
+    string $modelName,
+    string $alias
+);
+```
+
+
 ## Mvc\Model\Exceptions\UnknownRelationType
 
 <span class="badge badge--class">Class</span>
@@ -9863,6 +10426,114 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct();
+```
+
+
+## Mvc\Model\Exceptions\UnsupportedEagerHydration
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UnsupportedEagerHydration.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunsupportedeagerhydration-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>()</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunsupportedeagerhydration-__construct }
+
+```php
+public function __construct();
+```
+
+
+## Mvc\Model\Exceptions\UnsupportedEagerOption
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UnsupportedEagerOption.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunsupportedeageroption-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$option</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunsupportedeageroption-__construct }
+
+```php
+public function __construct( string $option );
+```
+
+
+## Mvc\Model\Exceptions\UnsupportedEagerResultset
+
+<span class="badge badge--class">Class</span>
+[:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/Model/Exceptions/UnsupportedEagerResultset.zep){ .src-btn }
+
+<div class="api-tree" markdown>
+
+- `\Exception`
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`**
+
+</div>
+
+__Uses__ `Phalcon\Mvc\Model\Exception`
+{ .api-uses }
+
+### Method Summary
+
+<div class="api-list">
+<a class="api-item" href="#mvcmodelexceptionsunsupportedeagerresultset-__construct">
+<code class="vis vis-public">public</code>
+<code class="sig"><span class="sf">__construct</span>( <span class="st">string</span> <span class="sv">$className</span> )</code>
+</a>
+</div>
+
+### Methods
+
+<div class="api-group">Public · 1</div>
+
+#### `__construct()` { #mvcmodelexceptionsunsupportedeagerresultset-__construct }
+
+```php
+public function __construct( string $className );
 ```
 
 
@@ -9948,7 +10619,7 @@ public static function caseInsensitiveColumnMap(
 
 </div>
 
-__Uses__ `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -10350,6 +11021,12 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="sig"><span class="sf">load</span>( <span class="st">string</span> <span class="sv">$modelName</span> )</code>
 <span class="desc">Loads a model throwing an exception if it does not exist</span>
 </a>
+<a class="api-item" href="#mvcmodelmanager-mergefindparameters">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">mergeFindParameters</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsOne</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsTwo</span></span>)</code>
+<span class="desc">Merge two arrays of find parameters</span>
+</a>
 <a class="api-item" href="#mvcmodelmanager-missingmethod">
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">missingMethod</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$eventName</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span></span>)</code>
@@ -10455,12 +11132,6 @@ __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\
 <code class="ret">AdapterInterface</code>
 <code class="sig"><span class="sf">getConnection</span>(<span class="prm"><span class="st">ModelInterface</span> <span class="sv">$model</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$connectionServices</span></span>)</code>
 <span class="desc">Returns the connection to read or write data related to a model</span>
-</a>
-<a class="api-item" href="#mvcmodelmanager-mergefindparameters">
-<code class="vis vis-protected">protected</code>
-<code class="ret">array</code>
-<code class="sig"><span class="sf">mergeFindParameters</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsOne</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$findParamsTwo</span></span>)</code>
-<span class="desc">Merge two arrays of find parameters</span>
 </a>
 </div>
 
@@ -10642,7 +11313,7 @@ occurred during the current request cycle.</span>
 
 ### Methods
 
-<div class="api-group">Public · 73</div>
+<div class="api-group">Public · 74</div>
 
 #### `__destruct()` { #mvcmodelmanager-__destruct }
 
@@ -11241,6 +11912,25 @@ public function load( string $modelName ): ModelInterface;
 
 Loads a model throwing an exception if it does not exist
 
+#### `mergeFindParameters()` { #mvcmodelmanager-mergefindparameters }
+
+```php
+final public static function mergeFindParameters(
+    mixed $findParamsOne,
+    mixed $findParamsTwo
+): array;
+```
+
+Merge two arrays of find parameters
+
+The order matters. Conditions coming from key 0 or "conditions" are
+ANDed in argument order; `bind` and `bindTypes` are merged for the
+second argument only and assigned outright for the first. Pass the
+parameters whose bindings must survive as the second argument.
+
+Static because it reads nothing but its arguments, and public so bulk
+loaders can reuse the merge instead of duplicating these semantics.
+
 #### `missingMethod()` { #mvcmodelmanager-missingmethod }
 
 ```php
@@ -11443,7 +12133,7 @@ public function useDynamicUpdate(
 
 Sets if a model must use dynamic update instead of the all-field update
 
-<div class="api-group">Protected · 2</div>
+<div class="api-group">Protected · 1</div>
 
 #### `getConnection()` { #mvcmodelmanager-getconnection }
 
@@ -11456,17 +12146,6 @@ protected function getConnection(
 
 Returns the connection to read or write data related to a model
 depending on the connection services.
-
-#### `mergeFindParameters()` { #mvcmodelmanager-mergefindparameters }
-
-```php
-final protected function mergeFindParameters(
-    mixed $findParamsOne,
-    mixed $findParamsTwo
-): array;
-```
-
-Merge two arrays of find parameters
 
 
 ## Mvc\Model\ManagerInterface
@@ -14864,7 +15543,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 </div>
 
-__Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -16141,7 +16820,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 </div>
 
-__Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -21093,6 +21772,12 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 <code class="sig"><span class="sf">key</span>()</code>
 <span class="desc">Gets pointer number of active row in the resultset</span>
 </a>
+<a class="api-item" href="#mvcmodelresultset-materialize">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">materialize</span>()</code>
+<span class="desc">Fetches every remaining row of the underlying cursor into memory,</span>
+</a>
 <a class="api-item" href="#mvcmodelresultset-next">
 <code class="vis vis-public">public</code>
 <code class="ret">void</code>
@@ -21206,8 +21891,11 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">int</code>
-<code class="sig"><span class="sv">$count</span><span class="sm"> = 0</span></code>
+<code class="ret">int|null</code>
+<code class="sig"><span class="sv">$count</span><span class="sm"> = null</span></code>
+<span class="desc">Number of rows, or null while it has not been worked out yet. Resolved
+lazily by count() - asking the driver up front costs SQLite an extra
+statement on every single result-set.</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
@@ -21249,7 +21937,7 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 
 ### Methods
 
-<div class="api-group">Public · 26</div>
+<div class="api-group">Public · 27</div>
 
 #### `__construct()` { #mvcmodelresultset-__construct }
 
@@ -21401,6 +22089,20 @@ public function key(): int|null;
 
 Gets pointer number of active row in the resultset
 
+#### `materialize()` { #mvcmodelresultset-materialize }
+
+```php
+public function materialize(): void;
+```
+
+Fetches every remaining row of the underlying cursor into memory,
+turning the resultset into TYPE_RESULT_FULL.
+
+Free when called before the cursor has been advanced: the statement has
+already been executed by Model\Query::executeSelect() and only the row
+the constructor consumed is missing from the cursor, so no re-execution
+takes place. Idempotent.
+
 #### `next()` { #mvcmodelresultset-next }
 
 ```php
@@ -21501,6 +22203,10 @@ public function valid(): bool;
 ```
 
 Check whether internal resource has rows to fetch
+
+Driven by the row the cursor is parked on rather than by the count, so
+that a plain traversal never has to ask the driver how many rows there
+are - on SQLite that answer costs a second statement.
 
 
 ## Mvc\Model\ResultsetInterface
@@ -21900,7 +22606,7 @@ This class builds every complete object as it is required
 
 </div>
 
-__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings`
+__Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -21933,6 +22639,18 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 <code class="sig"><span class="sf">serialize</span>()</code>
 <span class="desc">Serializing a resultset will dump all related rows into a big array</span>
 </a>
+<a class="api-item" href="#mvcmodelresultsetsimple-seteagermap">
+<code class="vis vis-public">public</code>
+<code class="ret">void</code>
+<code class="sig"><span class="sf">setEagerMap</span>( <span class="st">array</span> <span class="sv">$eagerMap</span> )</code>
+<span class="desc">Attaches a pre-loaded relation map, applied to every record as it is</span>
+</a>
+<a class="api-item" href="#mvcmodelresultsetsimple-slicerows">
+<code class="vis vis-public">public</code>
+<code class="ret">Simple</code>
+<code class="sig"><span class="sf">sliceRows</span>( <span class="st">array</span> <span class="sv">$indexes</span> )</code>
+<span class="desc">Builds a new resultset of the same concrete class over the rows at the</span>
+</a>
 <a class="api-item" href="#mvcmodelresultsetsimple-toarray">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
@@ -21957,6 +22675,11 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
+<code class="ret">array|null</code>
+<code class="sig"><span class="sv">$eagerMap</span><span class="sm"> = null</span></code>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$keepSnapshots</span><span class="sm"> = false</span></code>
 </div>
@@ -21969,7 +22692,7 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 
 ### Methods
 
-<div class="api-group">Public · 7</div>
+<div class="api-group">Public · 9</div>
 
 #### `__construct()` { #mvcmodelresultsetsimple-__construct }
 
@@ -22012,6 +22735,29 @@ public function serialize(): string;
 ```
 
 Serializing a resultset will dump all related rows into a big array
+
+#### `setEagerMap()` { #mvcmodelresultsetsimple-seteagermap }
+
+```php
+public function setEagerMap( array $eagerMap ): void;
+```
+
+Attaches a pre-loaded relation map, applied to every record as it is
+hydrated.
+
+Records in a resultset are transient - seek() clears activeRow on every
+move and current() re-hydrates from the raw row - so hydration is the
+only durable point at which relations can be stamped.
+
+#### `sliceRows()` { #mvcmodelresultsetsimple-slicerows }
+
+```php
+public function sliceRows( array $indexes ): Simple;
+```
+
+Builds a new resultset of the same concrete class over the rows at the
+given positions, preserving the column map, record prototype and
+snapshot behavior of this resultset.
 
 #### `toArray()` { #mvcmodelresultsetsimple-toarray }
 
@@ -30500,7 +31246,7 @@ require $compiler->getCompiledTemplatePath();
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Traits\Php\FileTrait`
+__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Tag` · `Phalcon\Traits\Php\FileTrait`
 { .api-uses }
 
 ### Method Summary
@@ -32707,11 +33453,11 @@ echo $view->render(
 
 - `stdClass`
     - [`Phalcon\Di\Injectable`](phalcon_di.md#diinjectable)
-        - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
+        - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface), [`Phalcon\Contracts\View\Renderer`](phalcon_contracts.md#contractsviewrenderer)
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+__Uses__ `Closure` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 { .api-uses }
 
 ### Method Summary

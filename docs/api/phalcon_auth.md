@@ -253,7 +253,7 @@ class builder).
 
 </div>
 
-__Uses__ `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
 { .api-uses }
 
 ### Method Summary
@@ -792,7 +792,7 @@ to be used here.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
 { .api-uses }
 
 ### Method Summary
@@ -2640,7 +2640,7 @@ Phalcon\Di\Di, register the guards in it before resolution.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
+__Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
 { .api-uses }
 
 ### Method Summary

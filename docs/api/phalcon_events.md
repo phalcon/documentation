@@ -603,11 +603,11 @@ conditional execution and much more.
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface)
+- **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface), [`Phalcon\Contracts\Events\Enumerable`](phalcon_contracts.md#contractseventsenumerable)
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
+__Uses__ `Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
 { .api-uses }
 
 ### Method Summary
@@ -681,6 +681,12 @@ __Uses__ `Closure` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">fireQueue</span>(<span class="prm"><span class="st">array</span> <span class="sv">$queue</span>,</span><span class="prm"><span class="st">EventInterface</span> <span class="sv">$event</span></span>)</code>
 <span class="desc">Internal handler to call a queue of events.</span>
+</a>
+<a class="api-item" href="#eventsmanager-getlistenermap">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getListenerMap</span>()</code>
+<span class="desc">Returns every event type that currently has at least one listener,</span>
 </a>
 <a class="api-item" href="#eventsmanager-getlisteners">
 <code class="vis vis-public">public</code>
@@ -925,7 +931,7 @@ definition, so the cache never needs invalidation.</span>
 
 ### Methods
 
-<div class="api-group">Public · 28</div>
+<div class="api-group">Public · 29</div>
 
 #### `addSubscriber()` { #eventsmanager-addsubscriber }
 
@@ -1082,6 +1088,20 @@ Kept at its original 2-arg signature for BC; thin wrapper around
 the private `dispatch()` helper. Direct callers pay the cost of
 re-extracting metadata from the Event; the framework's own fire()
 path bypasses this wrapper and calls dispatch() with hoisted args.
+
+#### `getListenerMap()` { #eventsmanager-getlistenermap }
+
+```php
+public function getListenerMap(): array;
+```
+
+Returns every event type that currently has at least one listener,
+mapped to that type's listeners. Types contributed by subscribers are
+included, because addSubscriber() attaches through the regular listener
+pipeline.
+
+Unwrapping is delegated to getListeners() so the internal shape of
+this->events is read in exactly one place.
 
 #### `getListeners()` { #eventsmanager-getlisteners }
 

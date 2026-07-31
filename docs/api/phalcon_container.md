@@ -15,11 +15,11 @@ hide:
 
 <div class="api-tree" markdown>
 
-- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](phalcon_contracts.md#contractscontainerservicecollection)
+- **`Phalcon\Container\Container`** - implements [`Phalcon\Contracts\Container\Service\Collection`](phalcon_contracts.md#contractscontainerservicecollection), [`Phalcon\Contracts\Container\Service\Enumerable`](phalcon_contracts.md#contractscontainerserviceenumerable)
 
 </div>
 
-__Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`
+__Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Enumerable` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`
 { .api-uses }
 
 ### Method Summary
@@ -100,6 +100,12 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` 
 <code class="ret">object</code>
 <code class="sig"><span class="sf">getService</span>( <span class="st">string</span> <span class="sv">$serviceName</span> )</code>
 <span class="desc">Resolve an return a service</span>
+</a>
+<a class="api-item" href="#containercontainer-getservicenames">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getServiceNames</span>()</code>
+<span class="desc">Returns the names of every registered service definition. Names that</span>
 </a>
 <a class="api-item" href="#containercontainer-has">
 <code class="vis vis-public">public</code>
@@ -281,7 +287,7 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` 
 
 ### Methods
 
-<div class="api-group">Public · 34</div>
+<div class="api-group">Public · 35</div>
 
 #### `__construct()` { #containercontainer-__construct }
 
@@ -390,6 +396,16 @@ public function getService( string $serviceName ): object;
 ```
 
 Resolve an return a service
+
+#### `getServiceNames()` { #containercontainer-getservicenames }
+
+```php
+public function getServiceNames(): array;
+```
+
+Returns the names of every registered service definition. Names that
+only exist as an alias, a pre-set instance or a parameter are not
+included.
 
 #### `has()` { #containercontainer-has }
 
@@ -965,7 +981,7 @@ Process the class string
 
 </div>
 
-__Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `ReflectionClass` · `ReflectionException`
+__Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `ReflectionClass` · `ReflectionException`
 { .api-uses }
 
 ### Method Summary
@@ -2024,7 +2040,7 @@ Service not registered
 
 </div>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory`
+__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\DispatcherInterface` · `Phalcon\Cli\Router` · `Phalcon\Cli\RouterInterface` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary
@@ -2062,7 +2078,7 @@ Provider for commonly used CLI applications
 
 </div>
 
-__Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory`
+__Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Filter\FilterInterface` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Http\Response\Cookies` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\DispatcherInterface` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Model\Transaction\ManagerInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 { .api-uses }
 
 ### Method Summary

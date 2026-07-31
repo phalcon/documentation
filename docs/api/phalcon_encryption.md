@@ -1121,7 +1121,7 @@ Factory for creating pad classes
 
 </div>
 
-__Uses__ `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Factory\AbstractFactory`
+__Uses__ `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Padding\Ansi` · `Phalcon\Encryption\Crypt\Padding\Iso10126` · `Phalcon\Encryption\Crypt\Padding\IsoIek` · `Phalcon\Encryption\Crypt\Padding\Noop` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Encryption\Crypt\Padding\Pkcs7` · `Phalcon\Encryption\Crypt\Padding\Space` · `Phalcon\Encryption\Crypt\Padding\Zero` · `Phalcon\Factory\AbstractFactory`
 { .api-uses }
 
 ### Method Summary
@@ -1157,7 +1157,7 @@ __Uses__ `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Padding\PadInte
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
-<code class="sig"><span class="sv">$exception</span><span class="sm"> = &quot;Phalcon\\Encryption\\Crypt\\Exception\\Exception&quot;</span></code>
+<code class="sig"><span class="sv">$exception</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
 </div>
 

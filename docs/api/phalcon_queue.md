@@ -24,7 +24,7 @@ Phalcon\Storage\AdapterFactory.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Factory\AbstractFactory`
+__Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception`
 { .api-uses }
 
 ### Method Summary
@@ -4019,7 +4019,7 @@ Phalcon\Cache\CacheFactory.
 
 </div>
 
-__Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Factory\AbstractConfigFactory`
+__Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Queue\Exceptions\Exception`
 { .api-uses }
 
 ### Method Summary
