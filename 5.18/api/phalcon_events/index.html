@@ -5997,6 +5997,17 @@ offering lower resource consumption and high performance.
 </li>
         
           <li class="md-nav__item">
+  <a href="#eventsmanager-getlistenermap" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getListenerMap()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#eventsmanager-getlisteners" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -6718,10 +6729,10 @@ can create hooks or plugins that will offer monitoring of data, manipulation,
 conditional execution and much more.</p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Events\Manager</code></strong> - implements <a href="#eventsmanagerinterface"><code>Phalcon\Events\ManagerInterface</code></a></li>
+<li><strong><code>Phalcon\Events\Manager</code></strong> - implements <a href="#eventsmanagerinterface"><code>Phalcon\Events\ManagerInterface</code></a>, <a href="../phalcon_contracts/#contractseventsenumerable"><code>Phalcon\Contracts\Events\Enumerable</code></a></li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Contracts\Events\Stoppable</code> · <code>Phalcon\Contracts\Events\Subscriber</code> · <code>Phalcon\Events\Exceptions\InvalidEventHandler</code> · <code>Phalcon\Events\Exceptions\InvalidEventType</code> · <code>Phalcon\Events\Exceptions\InvalidSubscriberConfiguration</code> · <code>Phalcon\Events\Exceptions\NoListenersForEvent</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Closure</code> · <code>Phalcon\Contracts\Events\Enumerable</code> · <code>Phalcon\Contracts\Events\Stoppable</code> · <code>Phalcon\Contracts\Events\Subscriber</code> · <code>Phalcon\Events\Exceptions\InvalidEventHandler</code> · <code>Phalcon\Events\Exceptions\InvalidEventType</code> · <code>Phalcon\Events\Exceptions\InvalidSubscriberConfiguration</code> · <code>Phalcon\Events\Exceptions\NoListenersForEvent</code></p>
 <h3 id="method-summary_8">Method Summary<a class="headerlink" href="#method-summary_8" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#eventsmanager-addsubscriber">
@@ -6792,6 +6803,12 @@ conditional execution and much more.</p>
 <code class="vis vis-public">public</code>
 <code class="sig"><span class="sf">fireQueue</span>(<span class="prm"><span class="st">array</span> <span class="sv">$queue</span>,</span><span class="prm"><span class="st">EventInterface</span> <span class="sv">$event</span></span>)</code>
 <span class="desc">Internal handler to call a queue of events.</span>
+</a>
+<a class="api-item" href="#eventsmanager-getlistenermap">
+<code class="vis vis-public">public</code>
+<code class="ret">array</code>
+<code class="sig"><span class="sf">getListenerMap</span>()</code>
+<span class="desc">Returns every event type that currently has at least one listener,</span>
 </a>
 <a class="api-item" href="#eventsmanager-getlisteners">
 <code class="vis vis-public">public</code>
@@ -7034,7 +7051,7 @@ definition, so the cache never needs invalidation.</span>
 </div>
 
 <h3 id="methods_8">Methods<a class="headerlink" href="#methods_8" title="Permanent link">&para;</a></h3>
-<div class="api-group">Public · 28</div>
+<div class="api-group">Public · 29</div>
 
 <h4 id="eventsmanager-addsubscriber"><code>addSubscriber()</code><a class="headerlink" href="#eventsmanager-addsubscriber" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">addSubscriber</span><span class="p">(</span> <span class="nx">Subscriber</span> <span class="nv">$subscriber</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
@@ -7137,27 +7154,36 @@ restored across the call).</p>
 the private <code>dispatch()</code> helper. Direct callers pay the cost of
 re-extracting metadata from the Event; the framework's own fire()
 path bypasses this wrapper and calls dispatch() with hoisted args.</p>
+<h4 id="eventsmanager-getlistenermap"><code>getListenerMap()</code><a class="headerlink" href="#eventsmanager-getlistenermap" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getListenerMap</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+</code></pre></div>
+<p>Returns every event type that currently has at least one listener,
+mapped to that type's listeners. Types contributed by subscribers are
+included, because addSubscriber() attaches through the regular listener
+pipeline.</p>
+<p>Unwrapping is delegated to getListeners() so the internal shape of
+this-&gt;events is read in exactly one place.</p>
 <h4 id="eventsmanager-getlisteners"><code>getListeners()</code><a class="headerlink" href="#eventsmanager-getlisteners" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getListeners</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getListeners</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the attached listeners of a certain type</p>
 <h4 id="eventsmanager-getmethodexistscachelimit"><code>getMethodExistsCacheLimit()</code><a class="headerlink" href="#eventsmanager-getmethodexistscachelimit" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMethodExistsCacheLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getMethodExistsCacheLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the configured method_exists-cache cap (0 = unlimited).
 See setMethodExistsCacheLimit().</p>
 <h4 id="eventsmanager-getresponses"><code>getResponses()</code><a class="headerlink" href="#eventsmanager-getresponses" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getResponses</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getResponses</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns all the responses returned by every handler executed by the last
 'fire' executed</p>
 <h4 id="eventsmanager-getsubscribers"><code>getSubscribers()</code><a class="headerlink" href="#eventsmanager-getsubscribers" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getSubscribers</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getSubscribers</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns the list of registered subscriber instances. Useful for
 introspection and test setup/teardown.</p>
 <h4 id="eventsmanager-halt"><code>halt()</code><a class="headerlink" href="#eventsmanager-halt" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">halt</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">halt</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Manager-level kill switch. After halt(), every fire()/fireAll()/
 fireQueue() call returns immediately without dispatching, until
@@ -7165,45 +7191,45 @@ resume() is called. Use this when a listener needs to abort all
 subsequent event activity for the lifetime of the manager (e.g.
 a security check that cancels everything downstream).</p>
 <h4 id="eventsmanager-haslisteners"><code>hasListeners()</code><a class="headerlink" href="#eventsmanager-haslisteners" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasListeners</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">hasListeners</span><span class="p">(</span> <span class="nx">string</span> <span class="nv">$type</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check whether certain type of event has listeners</p>
 <h4 id="eventsmanager-iscollecting"><code>isCollecting()</code><a class="headerlink" href="#eventsmanager-iscollecting" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isCollecting</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isCollecting</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Check if the events manager is collecting all all the responses returned
 by every registered listener in a single fire</p>
 <h4 id="eventsmanager-ishalted"><code>isHalted()</code><a class="headerlink" href="#eventsmanager-ishalted" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isHalted</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isHalted</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns whether the manager-level kill switch is engaged. See halt().</p>
 <h4 id="eventsmanager-isstoponfalse"><code>isStopOnFalse()</code><a class="headerlink" href="#eventsmanager-isstoponfalse" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isStopOnFalse</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isStopOnFalse</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns whether the stop-on-false short-circuit is enabled.
 See setStopOnFalse().</p>
 <h4 id="eventsmanager-isstrict"><code>isStrict()</code><a class="headerlink" href="#eventsmanager-isstrict" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isStrict</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isStrict</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Returns whether strict mode is enabled. When true, fire()/fireAll()
 throw when an event has no matching listeners - useful in dev to
 catch typos. Default off.</p>
 <h4 id="eventsmanager-isvalidhandler"><code>isValidHandler()</code><a class="headerlink" href="#eventsmanager-isvalidhandler" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isValidHandler</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$handler</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">isValidHandler</span><span class="p">(</span> <span class="nx">mixed</span> <span class="nv">$handler</span> <span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="eventsmanager-removesubscriber"><code>removeSubscriber()</code><a class="headerlink" href="#eventsmanager-removesubscriber" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">removeSubscriber</span><span class="p">(</span> <span class="nx">Subscriber</span> <span class="nv">$subscriber</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">removeSubscriber</span><span class="p">(</span> <span class="nx">Subscriber</span> <span class="nv">$subscriber</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Removes a previously registered subscriber. Detaches every listener the
 subscriber declared via getSubscribedEvents(). Idempotent - calling
 with a subscriber that was never added (or already removed) is a no-op.</p>
 <h4 id="eventsmanager-resume"><code>resume()</code><a class="headerlink" href="#eventsmanager-resume" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resume</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">resume</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Clears the manager-level kill switch set by halt(). Subsequent
 fire()/fireAll()/fireQueue() calls resume normal dispatch.</p>
 <h4 id="eventsmanager-setmethodexistscachelimit"><code>setMethodExistsCacheLimit()</code><a class="headerlink" href="#eventsmanager-setmethodexistscachelimit" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMethodExistsCacheLimit</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$methodExistsCacheLimit</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setMethodExistsCacheLimit</span><span class="p">(</span> <span class="nx">int</span> <span class="nv">$methodExistsCacheLimit</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Caps the number of distinct handler classes retained in the
 method_exists memoization cache. 0 disables the cap (the
@@ -7211,7 +7237,7 @@ default; preserves the original unbounded behavior). When the
 cap is exceeded, the cache is cleared and re-warms on subsequent
 fires.</p>
 <h4 id="eventsmanager-setstoponfalse"><code>setStopOnFalse()</code><a class="headerlink" href="#eventsmanager-setstoponfalse" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setStopOnFalse</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setStopOnFalse</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$flag</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Enables/disables the stop-on-false short-circuit. When true, a
 listener returning literal <code>false</code> (with cancelable=true) stops
@@ -7220,20 +7246,20 @@ Later listeners cannot overwrite the cancel. Default off.</p>
 <p>Independent of halt() / event-&gt;stop() - only governs how the
 dispatch loop reacts to a <code>false</code> listener return.</p>
 <h4 id="eventsmanager-setstrict"><code>setStrict()</code><a class="headerlink" href="#eventsmanager-setstrict" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setStrict</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$strict</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">setStrict</span><span class="p">(</span> <span class="nx">bool</span> <span class="nv">$strict</span> <span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 </code></pre></div>
 <p>Enables/disables strict mode. When true, fire()/fireAll() throw
 when dispatching an event with zero matching listeners.</p>
 <div class="api-group">Protected · 2</div>
 
 <h4 id="eventsmanager-afterfire"><code>afterFire()</code><a class="headerlink" href="#eventsmanager-afterfire" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">afterFire</span><span class="p">(</span>
-<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    <span class="nx">mixed</span> <span class="nv">$status</span><span class="p">,</span>
-<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
-<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>    <span class="nx">object</span> <span class="nv">$source</span><span class="p">,</span>
-<a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">afterFire</span><span class="p">(</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>    <span class="nx">mixed</span> <span class="nv">$status</span><span class="p">,</span>
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>    <span class="nx">object</span> <span class="nv">$source</span><span class="p">,</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
 </code></pre></div>
 <p>Extension seam invoked after an event has been dispatched to its
 listener queues. Receives the computed dispatch result as <code>status</code>
@@ -7243,12 +7269,12 @@ it to run bookkeeping or to post-process / rewrite the result.</p>
 <p>Only called when the event was actually dispatched; the halted and
 no-listener short-circuits in fire() return before reaching it.</p>
 <h4 id="eventsmanager-beforefire"><code>beforeFire()</code><a class="headerlink" href="#eventsmanager-beforefire" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">beforeFire</span><span class="p">(</span>
-<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
-<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>    <span class="nx">object</span> <span class="nv">$source</span><span class="p">,</span>
-<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
-<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
-<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="k">protected</span> <span class="k">function</span> <span class="nf">beforeFire</span><span class="p">(</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>    <span class="nx">string</span> <span class="nv">$eventType</span><span class="p">,</span>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>    <span class="nx">object</span> <span class="nv">$source</span><span class="p">,</span>
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>    <span class="nx">mixed</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>    <span class="nx">bool</span> <span class="nv">$cancelable</span> <span class="o">=</span> <span class="k">true</span>
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 </code></pre></div>
 <p>Extension seam invoked before an event is dispatched. The base
 implementation returns true, so dispatch proceeds unchanged. A

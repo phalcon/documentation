@@ -11177,14 +11177,14 @@ dispatcher and controller classes. It packages the HTTP request environment.</p>
 <ul>
 <li><code>stdClass</code><ul>
 <li><a href="../phalcon_di/#diabstractinjectionaware"><code>Phalcon\Di\AbstractInjectionAware</code></a><ul>
-<li><strong><code>Phalcon\Http\Request</code></strong> - implements <a href="#httprequestinterface"><code>Phalcon\Http\RequestInterface</code></a>, <a href="#httpmessagerequestmethodinterface"><code>Phalcon\Http\Message\RequestMethodInterface</code></a></li>
+<li><strong><code>Phalcon\Http\Request</code></strong> - implements <a href="#httprequestinterface"><code>Phalcon\Http\RequestInterface</code></a>, <a href="#httpmessagerequestmethodinterface"><code>Phalcon\Http\Message\RequestMethodInterface</code></a>, <a href="../phalcon_contracts/#contractshttpattributerequest"><code>Phalcon\Contracts\Http\AttributeRequest</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Filter\FilterInterface</code> · <code>Phalcon\Http\Message\RequestMethodInterface</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code> · <code>Phalcon\Http\Request\Exception</code> · <code>Phalcon\Http\Request\Exceptions\FilterServiceUnavailable</code> · <code>Phalcon\Http\Request\Exceptions\InvalidHost</code> · <code>Phalcon\Http\Request\Exceptions\InvalidHttpMethod</code> · <code>Phalcon\Http\Request\Exceptions\MissingFilters</code> · <code>Phalcon\Http\Request\Exceptions\SanitizerNotFound</code> · <code>Phalcon\Http\Request\File</code> · <code>Phalcon\Http\Request\FileInterface</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>stdClass</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Http\AttributeRequest</code> · <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Events\ManagerInterface</code> · <code>Phalcon\Filter\FilterInterface</code> · <code>Phalcon\Http\Message\RequestMethodInterface</code> · <code>Phalcon\Http\Request\Bag\AttributeBag</code> · <code>Phalcon\Http\Request\Exception</code> · <code>Phalcon\Http\Request\Exceptions\FilterServiceUnavailable</code> · <code>Phalcon\Http\Request\Exceptions\InvalidHost</code> · <code>Phalcon\Http\Request\Exceptions\InvalidHttpMethod</code> · <code>Phalcon\Http\Request\Exceptions\MissingFilters</code> · <code>Phalcon\Http\Request\Exceptions\SanitizerNotFound</code> · <code>Phalcon\Http\Request\File</code> · <code>Phalcon\Http\Request\FileInterface</code> · <code>Phalcon\Support\Helper\Json\Decode</code> · <code>Phalcon\Traits\Php\FileTrait</code> · <code>stdClass</code></p>
 <h3 id="method-summary_6">Method Summary<a class="headerlink" href="#method-summary_6" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#httprequest-get">
@@ -12235,7 +12235,10 @@ If no parameters are given the superglobal is returned.</p>
 <p>Interface for Phalcon\Http\Request</p>
 <div class="api-tree">
 <ul>
-<li><strong><code>Phalcon\Http\RequestInterface</code></strong></li>
+<li><strong><code>Phalcon\Http\RequestInterface</code></strong><ul>
+<li><a href="../phalcon_contracts/#contractshttpattributerequest"><code>Phalcon\Contracts\Http\AttributeRequest</code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Http\Request\FileInterface</code> · <code>stdClass</code></p>
@@ -14407,7 +14410,7 @@ used to generate a message authentication code use
 </li>
 </ul>
 </div>
-<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Http\Cookie\CookieInterface</code> · <code>Phalcon\Http\Cookie\Exception</code> · <code>Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable</code> · <code>Phalcon\Http\Traits\EncryptionAwareTrait</code></p>
+<p class="api-uses"><strong>Uses</strong> <code>Phalcon\Di\AbstractInjectionAware</code> · <code>Phalcon\Di\DiInterface</code> · <code>Phalcon\Http\Cookie</code> · <code>Phalcon\Http\Cookie\CookieInterface</code> · <code>Phalcon\Http\Cookie\Exception</code> · <code>Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable</code> · <code>Phalcon\Http\Traits\EncryptionAwareTrait</code></p>
 <h3 id="method-summary_19">Method Summary<a class="headerlink" href="#method-summary_19" title="Permanent link">&para;</a></h3>
 <div class="api-list">
 <a class="api-item" href="#httpresponsecookies-__construct">
