@@ -220,7 +220,7 @@ An overlay for installing Phalcon can be found [here][gentoo-overlay]
 sudo -s
 git clone https://github.com/phalcon/cphalcon
 cd cphalcon/
-git checkout tags/v5.17.0 ./
+git checkout tags/v5.18.0 ./
 zephir fullclean
 zephir build
 ```
@@ -353,7 +353,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.17.0 ./
+git checkout tags/v5.18.0 ./
 zephir fullclean
 zephir build
 ```
@@ -378,7 +378,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.17.0 ./
+git checkout tags/v5.18.0 ./
 zephir fullclean
 zephir compile
 cd ext

@@ -24,7 +24,7 @@ Phalcon can be installed using PIE.
 
 ```
 pie install phalcon
-// pie install phalcon/cphalcon-5.17.0
+// pie install phalcon/cphalcon-5.18.0
 ```
 
 **Alternative installation**
@@ -41,7 +41,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v5.17.0 ./
+git checkout tags/v5.18.0 ./
 zephir fullclean
 zephir build
 ```
