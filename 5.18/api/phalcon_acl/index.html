@@ -6379,6 +6379,95 @@ offering lower resource consumption and high performance.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#acltraitsitemtrait" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Acl\Traits\ItemTrait
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acl\Traits\ItemTrait">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-summary_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Method Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Properties
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Methods
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acltraitsitemtrait-__tostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>__toString()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acltraitsitemtrait-getdescription" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getDescription()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acltraitsitemtrait-getname" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getName()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -7562,6 +7651,62 @@ description maps for serializer independence.</p>
 </ul>
 </div>
 <p class="api-uses"><strong>Uses</strong> <code>Phalcon\Contracts\Acl\Role</code></p>
+<h2 id="acltraitsitemtrait">Acl\Traits\ItemTrait<a class="headerlink" href="#acltraitsitemtrait" title="Permanent link">&para;</a></h2>
+<p><span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Traits/ItemTrait.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<p>Shared name/description state for ACL Role and Component entities.</p>
+<div class="api-tree">
+<ul>
+<li><strong><code>Phalcon\Acl\Traits\ItemTrait</code></strong></li>
+</ul>
+</div>
+<h3 id="method-summary_13">Method Summary<a class="headerlink" href="#method-summary_13" title="Permanent link">&para;</a></h3>
+<div class="api-list">
+<a class="api-item" href="#acltraitsitemtrait-__tostring">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">__toString</span>()</code>
+</a>
+<a class="api-item" href="#acltraitsitemtrait-getdescription">
+<code class="vis vis-public">public</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sf">getDescription</span>()</code>
+</a>
+<a class="api-item" href="#acltraitsitemtrait-getname">
+<code class="vis vis-public">public</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sf">getName</span>()</code>
+</a>
+</div>
+
+<h3 id="properties_3">Properties<a class="headerlink" href="#properties_3" title="Permanent link">&para;</a></h3>
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string | null</code>
+<code class="sig"><span class="sv">$description</span></code>
+<span class="desc">Element description</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Element name</span>
+</div>
+</div>
+
+<h3 id="methods_13">Methods<a class="headerlink" href="#methods_13" title="Permanent link">&para;</a></h3>
+<div class="api-group">Public · 3</div>
+
+<h4 id="acltraitsitemtrait-__tostring"><code>__toString()</code><a class="headerlink" href="#acltraitsitemtrait-__tostring" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">public</span> <span class="k">function</span> <span class="fm">__toString</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="acltraitsitemtrait-getdescription"><code>getDescription()</code><a class="headerlink" href="#acltraitsitemtrait-getdescription" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getDescription</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="o">|</span><span class="k">null</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="acltraitsitemtrait-getname"><code>getName()</code><a class="headerlink" href="#acltraitsitemtrait-getname" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</code></pre></div>
 
   
 

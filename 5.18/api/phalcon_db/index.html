@@ -14057,6 +14057,84 @@ offering lower resource consumption and high performance.
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dbtraitselapsedtimetrait" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Db\Traits\ElapsedTimeTrait
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Db\Traits\ElapsedTimeTrait">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-summary_79" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Method Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_79" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Methods
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbtraitselapsedtimetrait-gettotalelapsedmilliseconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getTotalElapsedMilliseconds()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbtraitselapsedtimetrait-gettotalelapsednanoseconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getTotalElapsedNanoseconds()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbtraitselapsedtimetrait-gettotalelapsedseconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>getTotalElapsedSeconds()</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -22783,6 +22861,54 @@ flag set using <code>Phalcon\Db\Result\Pdo::setFetchMode()</code></p>
 <a id="__codelineno-513-18" name="__codelineno-513-18" href="#__codelineno-513-18"></a>    <span class="nx">\Phalcon\Enum</span><span class="o">::</span><span class="na">FETCH_OBJ</span>
 <a id="__codelineno-513-19" name="__codelineno-513-19" href="#__codelineno-513-19"></a><span class="p">);</span>
 </code></pre></div>
+<h2 id="dbtraitselapsedtimetrait">Db\Traits\ElapsedTimeTrait<a class="headerlink" href="#dbtraitselapsedtimetrait" title="Permanent link">&para;</a></h2>
+<p><span class="badge badge--class">Class</span>
+<a class="src-btn" href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Traits/ElapsedTimeTrait.zep"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg></span> Source on GitHub</a></p>
+<p>Derives elapsed milliseconds and seconds from the nanosecond total that the
+using class exposes through getTotalElapsedNanoseconds().</p>
+<div class="api-tree">
+<ul>
+<li><strong><code>Phalcon\Db\Traits\ElapsedTimeTrait</code></strong></li>
+</ul>
+</div>
+<h3 id="method-summary_79">Method Summary<a class="headerlink" href="#method-summary_79" title="Permanent link">&para;</a></h3>
+<div class="api-list">
+<a class="api-item" href="#dbtraitselapsedtimetrait-gettotalelapsedmilliseconds">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getTotalElapsedMilliseconds</span>()</code>
+<span class="desc">Returns the total time in milliseconds spent by the profiles</span>
+</a>
+<a class="api-item" href="#dbtraitselapsedtimetrait-gettotalelapsednanoseconds">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getTotalElapsedNanoseconds</span>()</code>
+<span class="desc">Returns the total time in nanoseconds spent by the profiles. Implemented</span>
+</a>
+<a class="api-item" href="#dbtraitselapsedtimetrait-gettotalelapsedseconds">
+<code class="vis vis-public">public</code>
+<code class="ret">double</code>
+<code class="sig"><span class="sf">getTotalElapsedSeconds</span>()</code>
+<span class="desc">Returns the total time in seconds spent by the profiles</span>
+</a>
+</div>
+
+<h3 id="methods_79">Methods<a class="headerlink" href="#methods_79" title="Permanent link">&para;</a></h3>
+<div class="api-group">Public · 3</div>
+
+<h4 id="dbtraitselapsedtimetrait-gettotalelapsedmilliseconds"><code>getTotalElapsedMilliseconds()</code><a class="headerlink" href="#dbtraitselapsedtimetrait-gettotalelapsedmilliseconds" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-514-1" name="__codelineno-514-1" href="#__codelineno-514-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTotalElapsedMilliseconds</span><span class="p">()</span><span class="o">:</span> <span class="nx">double</span><span class="p">;</span>
+</code></pre></div>
+<p>Returns the total time in milliseconds spent by the profiles</p>
+<h4 id="dbtraitselapsedtimetrait-gettotalelapsednanoseconds"><code>getTotalElapsedNanoseconds()</code><a class="headerlink" href="#dbtraitselapsedtimetrait-gettotalelapsednanoseconds" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-515-1" name="__codelineno-515-1" href="#__codelineno-515-1"></a><span class="k">abstract</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">getTotalElapsedNanoseconds</span><span class="p">()</span><span class="o">:</span> <span class="nx">double</span><span class="p">;</span>
+</code></pre></div>
+<p>Returns the total time in nanoseconds spent by the profiles. Implemented
+by the using class.</p>
+<h4 id="dbtraitselapsedtimetrait-gettotalelapsedseconds"><code>getTotalElapsedSeconds()</code><a class="headerlink" href="#dbtraitselapsedtimetrait-gettotalelapsedseconds" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-516-1" name="__codelineno-516-1" href="#__codelineno-516-1"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">getTotalElapsedSeconds</span><span class="p">()</span><span class="o">:</span> <span class="nx">double</span><span class="p">;</span>
+</code></pre></div>
+<p>Returns the total time in seconds spent by the profiles</p>
 
   
 
