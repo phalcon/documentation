@@ -5810,13 +5810,14 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">return</span> <span class="p">[</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s1">&#39;php&#39;</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;extension=ext/modules/phalcon.so&#39;</span><span class="p">],</span>   <span class="c1">// global ini flags, optional</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s1">&#39;suites&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="s1">&#39;unit&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.xml.dist&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="s1">&#39;mysql&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.mysql.xml&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="s1">&#39;pgsql&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.pgsql.xml&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s1">&#39;sqlite&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.sqlite.xml&#39;</span><span class="p">],</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="p">],</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">];</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="s1">&#39;unit&#39;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.xml.dist&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="s1">&#39;mariadb&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.mariadb.xml&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="s1">&#39;mysql&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.mysql.xml&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s1">&#39;pgsql&#39;</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.pgsql.xml&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s1">&#39;sqlite&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;config&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;resources/phpunit.sqlite.xml&#39;</span><span class="p">],</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="p">],</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">];</span>
 </code></pre></div>
 <p>Per-suite keys:</p>
 <table>
@@ -5919,7 +5920,136 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="p">}</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">}</span>
 </code></pre></div>
-<p>The driver comes from the <code>driver</code> environment variable (<code>sqlite</code>, <code>mysql</code>, or <code>pgsql</code>). Credentials come from <code>Settings</code>, read from environment variables by default.</p>
+<p>The driver comes from the <code>driver</code> environment variable (<code>sqlite</code>, <code>mysql</code>, <code>mariadb</code>, or <code>pgsql</code>). Credentials come from <code>Settings</code>, read from environment variables by default.</p>
+<p>Each driver reads its own block, so MySQL and MariaDB are configured independently and can point at different servers:</p>
+<table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Variable</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mariadb</code></td>
+<td><code>DATA_MARIADB_HOST</code></td>
+<td><code>127.0.0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mariadb</code></td>
+<td><code>DATA_MARIADB_PORT</code></td>
+<td><code>3306</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mariadb</code></td>
+<td><code>DATA_MARIADB_NAME</code></td>
+<td><code>talon</code></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><code>mariadb</code></td>
+<td><code>DATA_MARIADB_USER</code></td>
+<td><code>root</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mariadb</code></td>
+<td><code>DATA_MARIADB_PASS</code></td>
+<td>empty</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mariadb</code></td>
+<td><code>DATA_MARIADB_CHARSET</code></td>
+<td><code>utf8mb4</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mysql</code></td>
+<td><code>DATA_MYSQL_HOST</code></td>
+<td><code>127.0.0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mysql</code></td>
+<td><code>DATA_MYSQL_PORT</code></td>
+<td><code>3306</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mysql</code></td>
+<td><code>DATA_MYSQL_NAME</code></td>
+<td><code>talon</code></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><code>mysql</code></td>
+<td><code>DATA_MYSQL_USER</code></td>
+<td><code>root</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mysql</code></td>
+<td><code>DATA_MYSQL_PASS</code></td>
+<td>empty</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mysql</code></td>
+<td><code>DATA_MYSQL_CHARSET</code></td>
+<td><code>utf8mb4</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pgsql</code></td>
+<td><code>DATA_POSTGRES_HOST</code></td>
+<td><code>127.0.0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pgsql</code></td>
+<td><code>DATA_POSTGRES_PORT</code></td>
+<td><code>5432</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pgsql</code></td>
+<td><code>DATA_POSTGRES_NAME</code></td>
+<td><code>talon</code></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><code>pgsql</code></td>
+<td><code>DATA_POSTGRES_USER</code></td>
+<td><code>postgres</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pgsql</code></td>
+<td><code>DATA_POSTGRES_PASS</code></td>
+<td>empty</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pgsql</code></td>
+<td><code>DATA_POSTGRES_SCHEMA</code></td>
+<td>empty</td>
+<td>Sets the connection search path</td>
+</tr>
+<tr>
+<td><code>sqlite</code></td>
+<td><code>DATA_SQLITE_NAME</code></td>
+<td><code>:memory:</code></td>
+<td>A file path, or <code>:memory:</code></td>
+</tr>
+</tbody>
+</table>
+<p>MariaDB connects through <code>pdo_mysql</code>, so <code>Settings::getDatabaseDsn('mariadb')</code> returns a DSN carrying the <code>mysql:</code> prefix. No additional PHP extension is required.</p>
+<p><code>DATA_POSTGRES_SCHEMA</code> is applied to the connection as <code>SET search_path</code> immediately after connecting, before any <code>initial_queries</code> run.</p>
 <h3 id="functional-tests">Functional tests<a class="headerlink" href="#functional-tests" title="Permanent link">&para;</a></h3>
 <p>Talon never owns your container. Hand it your configured application through an <code>appFactory()</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
@@ -5982,6 +6112,80 @@ offering lower resource consumption and high performance.
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">}</span>
 </code></pre></div>
 <p>Service tests skip automatically when the backend (Redis or Memcached) is unreachable, so the suite stays green on a host without those services.</p>
+<p>The backends read these environment variables:</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Variable</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>redis</code></td>
+<td><code>DATA_REDIS_HOST</code></td>
+<td><code>127.0.0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>redis</code></td>
+<td><code>DATA_REDIS_PORT</code></td>
+<td><code>6379</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>redis</code></td>
+<td><code>DATA_REDIS_NAME</code></td>
+<td><code>0</code></td>
+<td>The database index, not a name</td>
+</tr>
+<tr>
+<td><code>redisCluster</code></td>
+<td><code>DATA_REDIS_CLUSTER_HOSTS</code></td>
+<td>empty</td>
+<td>Comma-separated <code>host:port</code> list</td>
+</tr>
+<tr>
+<td><code>redisCluster</code></td>
+<td><code>DATA_REDIS_CLUSTER_AUTH</code></td>
+<td>empty</td>
+<td></td>
+</tr>
+<tr>
+<td><code>memcached</code></td>
+<td><code>DATA_MEMCACHED_HOST</code></td>
+<td><code>127.0.0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>memcached</code></td>
+<td><code>DATA_MEMCACHED_PORT</code></td>
+<td><code>11211</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>memcached</code></td>
+<td><code>DATA_MEMCACHED_WEIGHT</code></td>
+<td><code>0</code></td>
+<td>Server weight passed to <code>addServer()</code></td>
+</tr>
+<tr>
+<td><code>beanstalk</code></td>
+<td><code>DATA_BEANSTALKD_HOST</code></td>
+<td>empty</td>
+<td></td>
+</tr>
+<tr>
+<td><code>beanstalk</code></td>
+<td><code>DATA_BEANSTALKD_PORT</code></td>
+<td>empty</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>ServicesTrait</code> provides helpers for Redis and Memcached only. The <code>redisCluster</code> and <code>beanstalk</code> options are read and exposed through <code>Settings::getServiceOptions()</code> for a project to consume, but Talon ships no assertions for them.</p>
 <h3 id="mocking-a-resultset">Mocking a resultset<a class="headerlink" href="#mocking-a-resultset" title="Permanent link">&para;</a></h3>
 <p>To assert against model logic without a database, mock a resultset with <code>ResultSetTrait</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">&lt;?</span><span class="nx">php</span>
