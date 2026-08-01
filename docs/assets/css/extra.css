@@ -255,8 +255,9 @@
     border-radius: .2em;
 }
 
-/* Uses line */
-.md-typeset .api-uses {
+/* Uses / Used by lines */
+.md-typeset .api-uses,
+.md-typeset .api-used-by {
     margin: .4em 0 1.2em;
     font-size: .64rem;
     color: var(--md-default-fg-color--light);
