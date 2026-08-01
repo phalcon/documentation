@@ -7,6 +7,7 @@ hide:
 - - -
 
 - [Phalcon Acl](phalcon_acl.md)
+- [Phalcon Adr](phalcon_adr.md)
 - [Phalcon Annotations](phalcon_annotations.md)
 - [Phalcon Application](phalcon_application.md)
 - [Phalcon Assets](phalcon_assets.md)

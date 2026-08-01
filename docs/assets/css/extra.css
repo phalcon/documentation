@@ -131,6 +131,8 @@
     --api-interface-fg: #1565c0;
     --api-protected-bg: #fff3e0;
     --api-protected-fg: #9c5700;
+    --api-trait-bg: #f3e5f5;
+    --api-trait-fg: #6a1b9a;
     --api-type-fg: #00747f;
 }
 
@@ -146,6 +148,8 @@
     --api-interface-fg: #64b5f6;
     --api-protected-bg: #33291a;
     --api-protected-fg: #ffb74d;
+    --api-trait-bg: #2a1f33;
+    --api-trait-fg: #ba68c8;
     --api-type-fg: #4ec9b0;
 }
 
@@ -181,6 +185,11 @@
     color: var(--api-interface-fg);
 }
 
+.md-typeset .badge--trait {
+    background: var(--api-trait-bg);
+    color: var(--api-trait-fg);
+}
+ 
 /* Source on GitHub button */
 .md-typeset a.src-btn {
     float: right;
