@@ -2094,7 +2094,7 @@ Sets if the HTML generated must be directly printed or returned
 
 ## Assets\Traits\AttributesTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Traits/AttributesTrait.zep){ .src-btn }
 
 Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
@@ -2108,6 +2108,9 @@ Shared HTML-attributes state for asset objects (`Asset`, `Inline`,
 - **`Phalcon\Assets\Traits\AttributesTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection) · [`Phalcon\Assets\Inline`](#assetsinline)
+{ .api-used-by }
 
 ### Method Summary
 
@@ -2145,7 +2148,7 @@ Gets extra HTML attributes.
 
 ## Assets\Traits\SourceTargetTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Assets/Traits/SourceTargetTrait.zep){ .src-btn }
 
 Shared source/target path, uri and locality state for asset objects
@@ -2156,6 +2159,9 @@ Shared source/target path, uri and locality state for asset objects
 - **`Phalcon\Assets\Traits\SourceTargetTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Assets\Asset`](#assetsasset) · [`Phalcon\Assets\Collection`](#assetscollection)
+{ .api-used-by }
 
 ### Method Summary
 

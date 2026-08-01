@@ -3099,7 +3099,7 @@ public function __construct(
 
 ## Queue\Adapter\Traits\MessageTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/Traits/MessageTrait.zep){ .src-btn }
 
 Shared implementation of every Message getter/setter, plus the
@@ -3114,6 +3114,9 @@ for binary compatibility with the wider interop ecosystem.
 - **`Phalcon\Queue\Adapter\Traits\MessageTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
+{ .api-used-by }
 
 ### Method Summary
 
@@ -3463,7 +3466,7 @@ Sets the timestamp (in milliseconds).
 
 ## Queue\Adapter\Traits\SubscriptionConsumerTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Queue/Adapter/Traits/SubscriptionConsumerTrait.zep){ .src-btn }
 
 Shared subscription-consumer implementation. Implements the round-robin poll
@@ -3477,6 +3480,9 @@ keep just the constructor that captures their context and poll interval.
 - **`Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
+{ .api-used-by }
 
 ### Method Summary
 

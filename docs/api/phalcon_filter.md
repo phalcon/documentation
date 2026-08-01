@@ -2918,7 +2918,7 @@ public function __construct();
 
 ## Filter\Validation\Traits\ValidatorCompositeTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Traits/ValidatorCompositeTrait.zep){ .src-btn }
 
 Shared validator collection state and combined validation for composite
@@ -2929,6 +2929,9 @@ validators.
 - **`Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+{ .api-used-by }
 
 ### Method Summary
 

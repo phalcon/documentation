@@ -1066,7 +1066,7 @@ public function getFile(): string;
 
 ## Auth\Adapter\Config\Traits\ModelConfigTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Auth/Adapter/Config/Traits/ModelConfigTrait.zep){ .src-btn }
 
 Shared model-name state and accessor for auth adapter configurations.
@@ -1076,6 +1076,9 @@ Shared model-name state and accessor for auth adapter configurations.
 - **`Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
+{ .api-used-by }
 
 ### Method Summary
 

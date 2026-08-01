@@ -10996,7 +10996,7 @@ $result->setFetchMode(
 
 ## Db\Traits\ElapsedTimeTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Db/Traits/ElapsedTimeTrait.zep){ .src-btn }
 
 Derives elapsed milliseconds and seconds from the nanosecond total that the
@@ -11007,6 +11007,9 @@ using class exposes through getTotalElapsedNanoseconds().
 - **`Phalcon\Db\Traits\ElapsedTimeTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Db\Profiler`](#dbprofiler) · [`Phalcon\Db\Profiler\Item`](#dbprofileritem)
+{ .api-used-by }
 
 ### Method Summary
 

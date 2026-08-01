@@ -6543,7 +6543,7 @@ Sets a raw header to be sent at the end of the request
 
 ## Http\Traits\EncryptionAwareTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Http/Traits/EncryptionAwareTrait.zep){ .src-btn }
 
 Provides the implicit encryption flag and its accessor shared by the HTTP
@@ -6554,6 +6554,9 @@ cookie classes.
 - **`Phalcon\Http\Traits\EncryptionAwareTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Http\Cookie`](#httpcookie) · [`Phalcon\Http\Response\Cookies`](#httpresponsecookies)
+{ .api-used-by }
 
 ### Method Summary
 

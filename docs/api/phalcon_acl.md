@@ -1424,7 +1424,7 @@ __Uses__ `Phalcon\Contracts\Acl\Role`
 
 ## Acl\Traits\ItemTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Acl/Traits/ItemTrait.zep){ .src-btn }
 
 Shared name/description state for ACL Role and Component entities.
@@ -1434,6 +1434,9 @@ Shared name/description state for ACL Role and Component entities.
 - **`Phalcon\Acl\Traits\ItemTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Acl\AbstractElement`](#aclabstractelement)
+{ .api-used-by }
 
 ### Method Summary
 

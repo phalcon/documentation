@@ -1187,7 +1187,7 @@ public function escape( string $input ): string;
 
 ## Html\Escaper\Traits\EscaperTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Html/Escaper/Traits/EscaperTrait.zep){ .src-btn }
 
 Shared encoding/flags state and the encoding detection/normalization
@@ -1203,6 +1203,9 @@ utilities used by the per-context escaper objects (`HtmlEscaper`,
 - **`Phalcon\Html\Escaper\Traits\EscaperTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
+{ .api-used-by }
 
 ### Method Summary
 

@@ -33777,7 +33777,7 @@ Phalcon\Mvc\View\Engine\Php
 
 ## Mvc\View\Traits\ViewParamsTrait
 
-<span class="badge badge--class">Class</span>
+<span class="badge badge--trait">Trait</span>
 [:material-github: Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Mvc/View/Traits/ViewParamsTrait.zep){ .src-btn }
 
 Shared view parameter and content accessors
@@ -33789,6 +33789,9 @@ Shared view parameter and content accessors
 - **`Phalcon\Mvc\View\Traits\ViewParamsTrait`**
 
 </div>
+
+__Used by__ [`Phalcon\Mvc\View`](#mvcview) · [`Phalcon\Mvc\View\Simple`](#mvcviewsimple)
+{ .api-used-by }
 
 ### Method Summary
 
