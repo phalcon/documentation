@@ -1,4 +1,4 @@
-:root {
+up:root {
     --md-primary-fg-color: #273646;
     --md-primary-fg-color--light: #374c62;
     --md-primary-fg-color--dark: #1c2631;
@@ -468,4 +468,13 @@
     .md-typeset pre > code {
         border-radius: .1rem;
     }
+}
+
+[data-md-color-scheme="default"] .md-search__button {
+    background-color: #f2f2f2;
+}
+
+
+[data-md-color-scheme="default"] .md-search__button:hover {
+    background-color: #c4c4c4;
 }
