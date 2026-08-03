@@ -469,3 +469,12 @@
         border-radius: .1rem;
     }
 }
+
+[data-md-color-scheme="default"] .md-search__button {
+    background-color: #f2f2f2;
+}
+
+
+[data-md-color-scheme="default"] .md-search__button:hover {
+    background-color: #c4c4c4;
+}
