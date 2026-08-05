@@ -15,12 +15,6 @@ hide:
 
 Functionality common to all adapters
 
-@property string|null $activeAccess
-@property string|null $activeComponent
-@property string|null $activeRole
-@property bool        $accessGranted
-@property int         $defaultAccess
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](phalcon_events.md#eventseventsawareinterface)
@@ -369,8 +363,8 @@ __Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Ph
 <div class="api-list">
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, int&gt;|null</code>
-<code class="sig"><span class="sv">$access</span><span class="sm"> = null</span></code>
+<code class="ret">array&lt;string, int&gt;</code>
+<code class="sig"><span class="sv">$access</span><span class="sm"> = []</span></code>
 <span class="desc">Access</span>
 </div>
 <div class="api-item">
@@ -394,44 +388,44 @@ active function</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">string|null</code>
+<code class="ret">mixed</code>
 <code class="sig"><span class="sv">$activeKey</span><span class="sm"> = null</span></code>
 <span class="desc">Returns the latest key used to acquire access</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, ComponentInterface&gt;|null</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$components</span><span class="sm"> = []</span></code>
 <span class="desc">Components</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, bool&gt;</code>
+<code class="ret">array</code>
 <code class="sig"><span class="sv">$componentsNames</span><span class="sm"> = []</span></code>
 <span class="desc">Component Names</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, callable|string&gt;|null</code>
-<code class="sig"><span class="sv">$functions</span><span class="sm"> = null</span></code>
+<code class="ret">array</code>
+<code class="sig"><span class="sv">$functions</span><span class="sm"> = []</span></code>
 <span class="desc">Function List</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$noArgumentsDefaultAction</span><span class="sm"> = Enum::DENY</span></code>
-<span class="desc">Default action for no arguments is <code>deny</code></span>
+<span class="desc">Default action for no arguments is <code>allow</code></span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, array&lt;int, string&gt;&gt;|null</code>
-<code class="sig"><span class="sv">$roleInherits</span><span class="sm"> = null</span></code>
+<code class="ret">array&lt;string, array&lt;int, string&gt;&gt;</code>
+<code class="sig"><span class="sv">$roleInherits</span><span class="sm"> = []</span></code>
 <span class="desc">Role Inherits</span>
 </div>
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
-<code class="ret">array&lt;string, RoleInterface&gt;|null</code>
-<code class="sig"><span class="sv">$roles</span><span class="sm"> = null</span></code>
+<code class="ret">array&lt;string, RoleInterface&gt;</code>
+<code class="sig"><span class="sv">$roles</span><span class="sm"> = []</span></code>
 <span class="desc">Roles</span>
 </div>
 </div>
@@ -1406,9 +1400,6 @@ __Uses__ `Phalcon\Contracts\Acl\Role`
 
 This class defines role/component names and their descriptions
 
-@property string      $name
-@property string|null $description
-
 <div class="api-tree" markdown>
 
 - **`Phalcon\Acl\Traits\ItemTrait`**
@@ -1436,6 +1427,23 @@ __Used by__ [`Phalcon\Acl\Component`](#aclcomponent) · [`Phalcon\Acl\Role`](#ac
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getName</span>()</code>
 </a>
+</div>
+
+### Properties
+
+<div class="api-list">
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string|null</code>
+<code class="sig"><span class="sv">$description</span><span class="sm"> = null</span></code>
+<span class="desc">Role/Component description</span>
+</div>
+<div class="api-item">
+<code class="vis vis-protected">protected</code>
+<code class="ret">string</code>
+<code class="sig"><span class="sv">$name</span></code>
+<span class="desc">Role/Component name</span>
+</div>
 </div>
 
 ### Methods

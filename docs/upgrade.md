@@ -89,6 +89,5 @@ composer require phalcon/phalcon
 [psr-16]: https://www.php-fig.org/psr/psr-16/
 [psr-3]: https://www.php-fig.org/psr/psr-3/
 [psr-extension]: https://github.com/jbboehr/php-psr
-[support]: #support
 [volt-tag-helpers]: volt.md#tag-helpers
 [zephir-phar]: https://github.com/phalcon/zephir/releases

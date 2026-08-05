@@ -4527,7 +4527,6 @@ The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so cal
 [mvc-model-query]: api/phalcon_mvc.md#mvcmodelquery
 [mvc-model-query-builder]: api/phalcon_mvc.md#mvcmodelquerybuilder
 [mvc-model-query-builderinterface]: api/phalcon_mvc.md#mvcmodelquerybuilderinterface
-[mvc-model-query-lang]: api/phalcon_mvc.md#mvcmodelquerylang
 [mvc-model-query-status]: api/phalcon_mvc.md#mvcmodelquerystatus
 [mvc-model-query-statusinterface]: api/phalcon_mvc.md#mvcmodelquerystatusinterface
 [mvc-model-queryinterface]: api/phalcon_mvc.md#mvcmodelqueryinterface

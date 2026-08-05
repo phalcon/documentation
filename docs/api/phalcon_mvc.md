@@ -7196,6 +7196,7 @@ public function createBuilder(): BuilderInterface;
 
 Creates a query builder from criteria.
 
+```
 <?php
 
 $invoices = Invoices::query()
